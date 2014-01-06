@@ -2,7 +2,7 @@ I try not to work on master. When I start working on a project I’m either clon
 
 ``` shell
 git clone git@github.com:strand/dude.git
-# Clones the remote repository from github.
+# Clones the remote repository from github to a local repository on my machine.
 ```
 
 OR
@@ -59,7 +59,7 @@ Sometimes I make mistakes, and I might have added a file I don’t want in the c
 
 ``` shell
 git reset config/twitter.yml
-# Unstages the file, keeping it on the file system, but preventing the changes from being commited.
+# Unstages the file, keeping it on the file system, but preventing the changes from being committed.
 ```
 
 When things are looking good, I commit with:
@@ -74,15 +74,23 @@ and then I push up with
 git push origin new_branch
 ```
 
-I repeat this process for several commits, until I think my feature is complete. Then I go to github and submit a pull request to master. A team member reviews my code, and if it doesn’t complete the feature, they comment and may close the PR or let me know what I can do to complete the feature. Once the feature is completed, the PR is merged into master. On my local machine I pull down the remote master with:
+I repeat this process for several commits, until I think my feature is complete. Then I go to github and submit a pull request to master.
 
-``` shell
-git checkout master
-git pull origin master
-```
+### Personal Repository
 
-And then I start the cycle again with:
+If I am working on my own or a team repository (ie not a DBC challenge repository); a team member reviews my code, and if it doesn't complete the feature, they comment and may close the PR or let me know what I can do to complete the feature. Once the feature is completed, the PR is merged into master. On my local machine I pull down the remote master with:
 
-``` shell
-git checkout -b new_new_branch
-```
+  ``` shell
+  git checkout master
+  git pull origin master
+  ```
+
+  And then I start the cycle again with:
+
+  ``` shell
+  git checkout -b new_new_branch
+  ```
+
+### DBC Challenge Repository
+
+If I am working on a DBC challenge, I do all the above except the pull request is **NEVER MERGED TO MASTER**.  Teachers or other students will comment on the code and then close the pull request. If you like you can add commits to the original pull request to modify code based on these comments.  
