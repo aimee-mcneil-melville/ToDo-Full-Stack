@@ -10,9 +10,9 @@
 
 Let's get to know each other better, using git and github! We'll play an icebreaker called Two Truths and a Lie, but instead of sitting around and chatting in person, we're going to use github to chat about what the lie is.
 
-### Releases
+## Releases
 
-#### Release 0 : Clone the repo and create a branch
+### Release 0 : Clone the repo and create a branch
 
 Clone this repo. In your browser find the clone url in the sidebar and copy it. In your terminal, run the following command, replacing CLONE_URL with the url you copied:
 
@@ -56,10 +56,8 @@ git push origin YOUR_NAME
 
 * Why not? What would happen if everyone merged their branches into master?
 
-##Release 1 : Find The Lie
+### Release 1 : Find The Lie
 Find the cohort-mate who's name comes after yours in the alphabet [HINT](https://socrates.devbootcamp.com/cohorts/34) and try to find their lie.
-
-###Steps:
 
 1. Pull your cohort-mates branch from github into your local repository.
 
@@ -90,7 +88,7 @@ git push origin THEIR_BRANCH
 
 7. Submit a pull request on github of your changes.
 
-## Release 2: Come Clean
+### Release 2: Come Clean
 
 Now it's time to come clean (or not).
 
