@@ -111,7 +111,7 @@ In any case, close the pull request and
 
 ## Resources
 
-[My git workflow](workflow.md)
-[GitHub Help](https://help.github.com/)
-[Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
-[GitHub Cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
+- [My git workflow](workflow.md)
+- [GitHub Help](https://help.github.com/)
+- [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
+- [GitHub Cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
