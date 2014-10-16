@@ -14,6 +14,14 @@ Let's get to know each other better, using git and github! We'll play an icebrea
 
 ### Release 0 : Clone the repo and create a branch
 
+For Rubies you'll first need to enter the following terminal / iterm command. Sharpies simply open up githubshell. 
+
+```ruby
+for Ruby only:
+
+weare YOUR_GIT_USER_NAME and YOUR_PAIRS_GIT_HUB_USER_NAME
+```
+
 Clone this repo. In your browser find the clone url in the sidebar and copy it. In your terminal, run the following command, replacing CLONE_URL with the url you copied:
 
 ``` shell
@@ -25,22 +33,22 @@ Now we're going to create a branch! To do this we use the `git branch` command. 
 In your terminal, run the following command, replacing YOUR_NAME with your name:
 
 ``` shell
-git branch YOUR_NAME
-# creates a branch called YOUR_NAME
-git checkout YOUR_NAME
-# checks out a branch called YOUR_NAME
+git branch YOUR_NAME_YOUR_PAIRS_NAME 
+# creates a branch called YOUR_NAME_YOUR_PAIRS_NAME 
+git checkout YOUR_NAME_YOUR_PAIRS_NAME 
+# checks out a branch called YOUR_NAME_YOUR_PAIRS_NAME 
 
 # You can also do this in one step as:
-git checkout -b YOUR_NAME
+git checkout -b YOUR_NAME_YOUR_PAIRS_NAME 
 ```
 
-Modify the file [two_truths.md](students/two_truths.md). so that it contains your name, and three facts about you. One of these facts should be completely made up.
+Modify the file two_truths.md so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
 
 Add and commit your file to the project with the following commands:
 
 ``` shell
-git add students/two_truths.md
-# Stages the file students/two_truths.md to the repo.
+git add source/Ruby OR CS/two_truths.md
+# Stages the file two_truths.md to the repo.
 git commit -m "Added facts about Example McExampleson"
 # Commits the staged change to the repo with the message above.
 
@@ -49,7 +57,7 @@ git commit -m "Added facts about Example McExampleson"
 Now push up your branch to github with
 
 ``` shell
-git push origin YOUR_NAME
+git push origin YOUR_NAME_YOUR_PAIRS_NAME 
 ```
 
 **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
@@ -57,7 +65,7 @@ git push origin YOUR_NAME
 * Why not? What would happen if everyone merged their branches into master?
 
 ### Release 1 : Find The Lie
-Find the cohort-mate who's name comes after yours in the alphabet [HINT](https://socrates.devbootcamp.com/cohorts/34) and try to find their lie.
+Samson will guide you to find the cohort-mates who you are going totry to find their lie. Ask Samson who you're busting!
 
 1. Pull your cohort-mates branch from github into your local repository.
 
@@ -76,7 +84,7 @@ git checkout THEIR_BRANCH
 5. Add the changed file to your git staging and commit it.
 
 ```shell
-git add students/two_truths.md
+git add two_truths.md
 git commit -m "Found the lie"
 ```
 
@@ -109,6 +117,7 @@ In any case, close the pull request and
 
 ## Resources
 
+- The Phase 1 wiki has a version of this workflow
 - [My git workflow](workflow.md)
 - [GitHub Help](https://help.github.com/)
 - [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
