@@ -1,20 +1,12 @@
-I try not to work on master. When I start working on a project I’m either cloning or initializing like:
+
+
+I try not to work on master. When I start working on a project I’m either cloning or initializing. We wont cover initializing yet, but heres my work flow for cloning. 
 
 ``` shell
 git clone git@github.com:strand/dude.git
 # Clones the remote repository from github to a local repository on my machine.
 ```
 
-OR
-
-``` shell
-git init
-# Initializes the repo
-git add .
-# adds everything in the current directory (aka `.`)
-git commit -m "First commit!!! WHooOoo0!"
-# Commits changes with a message.
-```
 
 I try not to work on master ever. Instead, I checkout new branches for any work that I want to start with:
 
@@ -44,8 +36,8 @@ git add app/controllers/giraffes_controller.rb
 OR
 
 ``` shell
-git add -p
-# Progressively add chunks of code from the changed files in the project.
+git add .
+# Adds all the files I've made changes to
 ```
 
 And then I’ll double check that I’ve staged my changes with:
@@ -78,7 +70,7 @@ I repeat this process for several commits, until I think my feature is complete.
 
 ### Personal Repository
 
-If I am working on my own or a team repository (ie not a DBC challenge repository); a team member reviews my code, and if it doesn't complete the feature, they comment and may close the PR or let me know what I can do to complete the feature. Once the feature is completed, the PR is merged into master. On my local machine I pull down the remote master with:
+If I am working on my own or a team repository (ie not a EDA challenge repository); a team member reviews my code, and if it doesn't complete the feature, they comment and may close the PR or let me know what I can do to complete the feature. Once the feature is completed, the PR is merged into master. On my local machine I pull down the remote master with:
 
   ``` shell
   git checkout master
@@ -91,6 +83,6 @@ If I am working on my own or a team repository (ie not a DBC challenge repositor
   git checkout -b new_new_branch
   ```
 
-### DBC Challenge Repository
+### EDA Challenge Repository
 
 If I am working on a DBC challenge, I do all the above except the pull request is **NEVER MERGED TO MASTER**.  Teachers or other students will comment on the code and then close the pull request. If you like you can add commits to the original pull request to modify code based on these comments.  
