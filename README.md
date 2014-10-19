@@ -69,34 +69,34 @@ git push origin YOUR_NAME_YOUR_PAIRS_NAME
 ### Release 1 : Find The Lie
 Samson will guide you to find the cohort-mates who you are going totry to find their lie. Ask Samson who you're busting!
 
-1. Pull your cohort-mates branch from github into your local repository.
+1: Pull your cohort-mates branch from github into your local repository.
 
 ```shell
 git pull origin THEIR_BRANCH
 ```
 
-2. Checkout this branch.
+2: Checkout this branch.
 
 ```shell 
 git checkout THEIR_BRANCH
 ```
 
-4. Open the two_truths.md and add the word **LIE** to the line you think is a lie.
+3: Open the two_truths.md and add the word **LIE** to the line you think is a lie.
 
-5. Add the changed file to your git staging and commit it.
+4: Add the changed file to your git staging and commit it.
 
 ```shell
 git add two_truths.md
 git commit -m "Found the lie"
 ```
 
-6. Push this branch to github
+5: Push this branch to github
 
 ```shell
 git push origin THEIR_BRANCH
 ```
 
-7. Submit a pull request on github of your changes.
+6: Submit a pull request on github of your changes.
 
 ### Release 2: Come Clean
 
