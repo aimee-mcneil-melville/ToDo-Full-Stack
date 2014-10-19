@@ -16,15 +16,15 @@ Let's get to know each other better, using git and github! We'll play an icebrea
 
 For Rubies you'll first need to enter the following terminal / iterm command. Sharpies simply open up githubshell. 
 
-```ruby
-for Ruby only:
+```shell
+# For Rubyist only!
 
 weare YOUR_GIT_USER_NAME and YOUR_PAIRS_GIT_HUB_USER_NAME
 ```
 
 Clone this repo. In your browser find the clone url in the sidebar and copy it. In your terminal, run the following command, replacing CLONE_URL with the url you copied:
 
-```ruby
+```shell
 git clone CLONE_URL
 ```
 
@@ -32,7 +32,7 @@ Now we're going to create a branch! To do this we use the `git branch` command. 
 
 In your terminal, run the following command, replacing YOUR_NAME with your name:
 
-```ruby
+```shell
 git branch YOUR_NAME_YOUR_PAIRS_NAME 
 # creates a branch called YOUR_NAME_YOUR_PAIRS_NAME 
 
@@ -47,7 +47,7 @@ Modify the file two_truths.md so that for each of you it contains your name, and
 
 Add and commit your file to the project with the following commands:
 
-``` shell
+```shell
 git add source/Ruby OR CS/two_truths.md
 # Stages the file two_truths.md to the repo.
 
@@ -58,7 +58,7 @@ git commit -m "Added facts about Example McExampleson"
 
 Now push up your branch to github with
 
-``` ruby
+``` shell
 git push origin YOUR_NAME_YOUR_PAIRS_NAME 
 ```
 
@@ -71,13 +71,13 @@ Samson will guide you to find the cohort-mates who you are going totry to find t
 
 1. Pull your cohort-mates branch from github into your local repository.
 
-```ruby
+```shell
 git pull origin THEIR_BRANCH
 ```
 
 2. Checkout this branch.
 
-```ruby 
+```shell 
 git checkout THEIR_BRANCH
 ```
 
@@ -85,14 +85,14 @@ git checkout THEIR_BRANCH
 
 5. Add the changed file to your git staging and commit it.
 
-```ruby
+```shell
 git add two_truths.md
 git commit -m "Found the lie"
 ```
 
 6. Push this branch to github
 
-```ruby
+```shell
 git push origin THEIR_BRANCH
 ```
 
