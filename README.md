@@ -119,7 +119,7 @@ In any case, close the pull request and
 
 ## Resources
 
-- The Phase 1 wiki has a version of this workflow
+- [The wiki](../../../phase-1-guide/wiki) has further info on this  workflow
 - [My git workflow](workflow.md)
 - [GitHub Help](https://help.github.com/)
 - [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
