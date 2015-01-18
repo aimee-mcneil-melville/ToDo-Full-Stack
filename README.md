@@ -67,7 +67,7 @@ git push origin YOUR_NAME_YOUR_PAIRS_NAME
 * Why not? What would happen if everyone merged their branches into master?
 
 ### Release 1 : Find The Lie
-Samson will guide you to find the cohort-mates who you are going totry to find their lie. Ask Samson who you're busting!
+Joshua will guide you to find the cohort-mates who you are going totry to find their lie. Ask Joshua who you're busting!
 
 7: Pull your cohort-mates branch from github into your local repository.
 
