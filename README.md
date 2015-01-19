@@ -72,14 +72,15 @@ Joshua will guide you to find the cohort-mates who you are going totry to find t
 7: Pull your cohort-mates branch from github into your local repository.
 
 ```shell
-git pull origin THEIR_BRANCH
+git checkout -b THEIR_BRANCH origin/THEIR_BRANCH
 ```
 
-8: Checkout this branch.
+8: Create a new branch for your changes
 
 ```shell 
-git checkout THEIR_BRANCH
+git checkout -b THEIR_BRANCH-busted
 ```
+what is the difference between this command and the one in step 7? ```git --help checkout```
 
 9: Open the two_truths.md and add the word **LIE** to the line you think is a lie.
 
