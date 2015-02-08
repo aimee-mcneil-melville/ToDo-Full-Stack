@@ -1,8 +1,8 @@
-## Example McExampleson
+## Sandra
 
-- I can play the guitar.
-- I love camping.
-- I am afraid of birds.
+- I can dance	
+- I love cooking
+- I am afraid of chickens
 
 ## Specimen McSpecison
 
