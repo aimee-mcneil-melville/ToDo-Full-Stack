@@ -1,11 +1,11 @@
-## Sandra
+## Nary
 
-- I can dance	
-- I love cooking
-- I am afraid of chickens
+- I can skateboarding	
+- I am from china
+- I love  KFC 
 
-## Specimen McSpecison
+## Dhara
 
-- I can hula hoop.
+- I can cook Indian.
 - I love climbing trees.
 - I am afraid of dentists.
