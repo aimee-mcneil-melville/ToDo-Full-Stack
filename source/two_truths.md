@@ -1,11 +1,11 @@
-## Nary
+## Neil Armstrong
 
-- I can skateboarding	
-- I am from china
-- I love  KFC 
+- I can play the guitar.
+- I love camping.
+- I am afraid of birds.
 
-## Dhara
+## Buzz Aldrin
 
-- I can cook Indian.
+- I can hula hoop.
 - I love climbing trees.
 - I am afraid of dentists.
