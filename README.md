@@ -71,7 +71,8 @@ Joshua will guide you to find the cohort-mates who you are going totry to find t
 7: Pull your cohort-mates branch from github into your local repository.
 
 ```shell
-git checkout -b THEIR_BRANCH origin/THEIR_BRANCH
+git fetch
+git checkout THEIR_BRANCH
 ```
 
 8: Create a new branch for your changes
