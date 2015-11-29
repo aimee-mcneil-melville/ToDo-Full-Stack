@@ -14,10 +14,9 @@ Let's get to know each other better, using git and github! We'll play an icebrea
 
 ### Release 0 : Clone the repo and create a branch
 
-1: For Rubies you'll first need to enter the following terminal / iterm command. Sharpies simply open up githubshell. 
+1: You'll first need to enter the following terminal / iterm command.  
 
 ```shell
-# For Rubyist only!
 
 weare YOUR_GIT_USER_NAME and YOUR_PAIRS_GIT_HUB_USER_NAME
 ```
@@ -48,7 +47,7 @@ git checkout -b YOUR_NAME_YOUR_PAIRS_NAME
 5: Add and commit your file to the project with the following commands:
 
 ```shell
-git add source/Ruby OR CS/two_truths.md
+git add source/
 # Stages the file two_truths.md to the repo.
 
 git commit -m "Added facts about Example McExampleson"
