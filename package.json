@@ -1,0 +1,32 @@
+{
+  "name": "regularity",
+  "version": "1.0.0",
+  "description": "Regular expression string manipulation with ES6 and Ramda.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enspiral-dev-academy/regularity.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enspiral-dev-academy/regularity/issues"
+  },
+  "homepage": "https://github.com/enspiral-dev-academy/regularity",
+  "devDependencies": {
+    "jspm": "^0.16.15"
+  },
+  "jspm": {
+    "dependencies": {
+      "ramda": "npm:ramda@^0.18.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
