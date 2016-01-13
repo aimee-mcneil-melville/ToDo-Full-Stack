@@ -26,5 +26,5 @@ function app (data) {
 
 document.addEventListener('DOMContentLoaded', function() {
   app(data)
-  test()
+  test(data)
 })

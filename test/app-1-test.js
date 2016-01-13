@@ -1,4 +1,4 @@
-function test () {
+function test (data) {
   var element = document.querySelector('ul')
 
 
@@ -6,7 +6,7 @@ function test () {
   
   if (element && element.children.length > 0) {
     for (var i = 0; i < element.children.length; i++) {
-      console.log(element.children[i])
+      console.log('list item with the name: ' + data[i].name + ' exists', element.children[i].innerHTML === data[i].name)
     }
   }
 
