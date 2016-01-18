@@ -7,15 +7,7 @@ function hasItem (arr, item) {
   }
 }
 
-function returnErrorIfFalsy (bool) {
-  if (!bool) {
-    return new Error('On no an error!')
-  } else {
-    return bool
-  }
-}
-
-function getItem (arr, idx) {
+function getItemAtIndex (arr, idx) {
   if (idx > arr.length - 1) {
     return new Error('item at index: ' + idx + ' does not exist')
   }  
@@ -27,7 +19,7 @@ function replaceItemAtIndex (arr, idx, item) {
   return arr
 }
 
-function insertItem (arr, item,  idx) {
+function insertItemAtIndex (arr, item,  idx) {
   if (idx > arr.length) {
     return new Error('array is too short!')
   } else {
@@ -55,11 +47,11 @@ function deleteItem (arr, item) {
 
 // objects to arrays to objects
 
-function mapKeys (obj) {
+function keys (obj) {
   return Object.keys(obj)
 }
 
-function mapValues (obj) {
+function values (obj) {
   return Object.keys(obj).map(function (key) {
     return obj[key]
   })
@@ -77,13 +69,13 @@ function zipObject (keys, values) {
   return obj
 }
 
-function unZipObject (obj) {
+function unzip(obj) {
   return Object.keys(obj).map(function (key) {
     return [key, obj[key]]
   })
 }
 
-function findByProp (arr, keyValue) {
+function findByProperty (arr, keyValue) {
   var key = Object.keys(keyValue)[0]
   var result
 
@@ -94,3 +86,96 @@ function findByProp (arr, keyValue) {
   }
   return result
 }
+
+// TESTS
+
+var arrayOfDifferentTypes = [ 'a', 1, null, true ] 
+
+console.log(hasItem(arrayOfDifferentTypes, 'a') === true)
+console.log(hasItem(arrayOfDifferentTypes, 'mickey') === false)
+
+var alphabet = ['a', 'b', 'c', 'd', 'e' ]
+console.log(getItemAtIndex(alphabet, 3) === 'd')
+console.log(getItemAtIndex(alphabet, 10).name = 'Error')
+
+replaceItemAtIndex(alphabet, 0, 'alpha')
+
+console.log(alphabet)
+console.log(alphabet[0] === 'alpha')
+
+var names = [ 'Aroha', 'Bob', 'Celia', 'Eleanor' ]
+insertItemAtIndex(names, 'Dan', 3)
+console.log(names)
+console.log(names[3] === 'Dan')
+
+deleteItemAtIndex(names, 1) 
+console.log(names[1] !== 'Bob')
+
+deleteItem(names, 'Celia')
+console.log(hasItem(names, 'Celia') === false)
+
+var dracula = { 
+  name: 'Count Dracula', 
+  email: 'dracula@hotmail.com',
+  password: '12345',
+  country: 'Transylvania'
+}
+
+var expectedKeys = [ 'name', 'email', 'password', 'country' ]
+var expectedValues = [ 'Count Dracula', 'dracula@hotmail.com', '12345', 'Transylvania' ]
+
+var actualKeys = mapKeys(dracula)
+if (actualKeys) {
+  actualKeys.forEach(function (key) {
+    console.log(expectedKeys.indexOf(key) > -1, key)
+  })
+}
+
+var actualValues = mapValues(dracula)
+if (actualValues) {
+  actualValues.forEach(function (value) {
+    console.log(expectedValues.indexOf(value) > -1, value)
+  })
+}
+
+var draculaReborn = zipObject(expectedKeys, expectedValues)
+if (draculaReborn) {
+  Object.keys(draculaReborn).forEach(function (key) {
+    console.log(key + ' of draculaReborn is present on draculaReborn:  ', Object.keys(dracula).indexOf(key) > -1)
+  })
+}
+
+var pairs = unzip(dracula)
+if (pairs) {
+  pairs.forEach(function (pair) {
+    console.log(dracula[pair[0]] === pair[1])
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
