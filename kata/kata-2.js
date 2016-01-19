@@ -75,16 +75,29 @@ function unzip(obj) {
   })
 }
 
-function findByProperty (arr, keyValue) {
+function findOneByProperty (arr, keyValue) {
   var key = Object.keys(keyValue)[0]
-  var result
 
   for (var i = 0; i < arr.length; i++) {
     if (arr[i][key] === keyValue[key]) {
-      result = arr[i]
+      return arr[i]
     }
   }
-  return result
+
+  return undefined
+}
+
+function findAll (arr, keyValue) {
+  var key = Object.keys(keyValue)[0]
+  var results = []
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i][key] === keyValue[key]) {
+      results.push(arr[i])
+    }
+  }
+
+  return results
 }
 
 // TESTS
@@ -124,14 +137,14 @@ var dracula = {
 var expectedKeys = [ 'name', 'email', 'password', 'country' ]
 var expectedValues = [ 'Count Dracula', 'dracula@hotmail.com', '12345', 'Transylvania' ]
 
-var actualKeys = mapKeys(dracula)
+var actualKeys = keys(dracula)
 if (actualKeys) {
   actualKeys.forEach(function (key) {
     console.log(expectedKeys.indexOf(key) > -1, key)
   })
 }
 
-var actualValues = mapValues(dracula)
+var actualValues = values(dracula)
 if (actualValues) {
   actualValues.forEach(function (value) {
     console.log(expectedValues.indexOf(value) > -1, value)
@@ -152,10 +165,45 @@ if (pairs) {
   })
 }
 
+var monsters = [
+  { 
+    name: 'Count Dracula', 
+    email: 'dracula@hotmail.com', 
+    country: 'Transylvania',
+    age: 588,
+  },
+  { 
+    name: "Frankenstein's Monster", 
+    email: 'franky@monster.com', 
+    country: 'Switzerland',
+    age: 232,
+  },
+  { 
+    name: 'Cthulhu', 
+    email: 'cthulhu@thedeep.com', 
+    country: "R'lyeh", 
+    age: Infinity
+  },
+  { 
+    name: 'Taniwha', 
+    email: 'taniwha@awa.com', 
+    country: 'Aotearoa', 
+    age: 232
+  }
+]
 
+var foundMonster = findOneByProperty(monsters, { name: 'Taniwha' }) 
+if (foundMonster) {
+  console.log('We found the monster ' + foundMonster.name, foundMonster === monsters[3])
+}
 
-
-
+var foundMonsters = findAll(monsters, { age: 232 })
+if (foundMonsters) {
+  console.log(foundMonsters.length === 2)
+  foundMasters.forEach(function (monster) {
+    console.log('We found the monster with age 232: ' + monster.name)
+  }
+}
 
 
 
