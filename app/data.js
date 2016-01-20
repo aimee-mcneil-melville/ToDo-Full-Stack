@@ -1,6 +1,4 @@
-import { join } from 'ramda'
-
-const data = [
+module.exports = [
   "5942 Kenyon Drive",
   "in,esse,XOXO,intelligentsia",
   "1666",
@@ -381,9 +379,3 @@ const data = [
   "256.256.256.256"
 ]
 
-const text = join("\n", data)
-
-export {
-  data,
-  text
-}

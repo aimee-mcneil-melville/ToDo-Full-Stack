@@ -1,29 +1,50 @@
-import R from 'ramda'
+var assert = require('../utils/assert')
+var data = require('./data')
 
-import { data, text } from './data'
 
-// First we filter the array of strings, returning only those strings
-// for which R.test(pattern, str) returns true.
-// Then we pipe that array of matching strings through R.forEach,
-// logging each matching string out to console separately
-let matchLines = (pattern) => R.compose(
-  R.forEach((str) => console.log(str)),
-  R.filter((str) => R.test(pattern, str))
-)(data)
+function filter (func, arr) {
+  var results = []
+  
+  for (var i = 0; i < arr.length; i++) {
+    if(func(arr[i])) {
+      results.push(arr[i])
+    }
+  }
 
-let matchText = (pattern) => R.forEach(
-  (str) => console.log(str),
-  R.match(pattern, text)
-)
+  return results
+}
 
-// Freebie. The first one is done for you.
-// Use `python -m SimpleHTTPServer 3000` to start this app up.
-// Then load the page and check the console for output.
+function map (func, arr) {
+  var results = []
 
-let pcode  = /^\d{4}$/
-let pcodeMg = /^\d{4}$/mg
+  for (var i = 0; i < arr.length; i++) {
+    results.push(func(arr[i]))
+  }
 
-console.log("-----")
-console.log("count:", matchLines(pcode).length)
-console.log("-----")
-console.log("count:", matchText(pcodeMg).length)
+  return results
+}
+
+function filterEmails (str) {
+  return str.indexOf('@') > -1 && str.indexOf('.')
+}
+
+function filterStringsWithCommas (str) {
+  return str.indexOf(',') > 1 
+}
+
+
+
+
+
+var emails = filter(filterEmails, data)
+ assert(emails.length, 44, 'The filter function returns the correctnumber of emails' )
+
+var stringsWithCommas = filter(filterStringswithCommas, data)
+
+
+
+
+
+
+
+
