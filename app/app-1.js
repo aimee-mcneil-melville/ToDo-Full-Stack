@@ -6,25 +6,23 @@ var data = [
 
 function liTemplate (name) {
   var li = document.createElement('li')
-  li.innerHTML = name
+  li.textContent = name
   return li
-}
-
-function renderListItems (ul, data) {
-  for (var i = 0; i < data.length; i++) {
-    var li = liTemplate(data[i].name)
-    ul.appendChild(li)
-  }
 }
 
 function app (data) {
   var ul = document.createElement('ul')
   document.body.appendChild(ul)
 
-  renderListItems(ul, data)
+  var listItems = data.map(function (d) {
+    return liTemplate(d.name)
+  })
+
+  listItems.forEach(function (item) {
+    ul.appendChild(item)
+  })
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   app(data)
-  test(data)
 })

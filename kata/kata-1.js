@@ -93,6 +93,7 @@ var expectedPeopleWithGreetings = [
   { name: 'Celia', greeting: 'Hello Celia' }, 
   { name: 'Dan', greeting: 'Hello Dan' } 
 ]
+
 var actualPeopleWithGreetings = people.map(function (person) {
   person.greeting = getGreeting(person.name)
   return person

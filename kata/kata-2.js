@@ -182,7 +182,7 @@ var monsters = [
     name: 'Cthulhu', 
     email: 'cthulhu@thedeep.com', 
     country: "R'lyeh", 
-    age: Infinity
+    age: 1032988 
   },
   { 
     name: 'Taniwha', 

@@ -28,7 +28,7 @@ var monsters = [
 
 function liTemplate (name, country, age) {
   var li = document.createElement('li')
-  li.innerHTML = [ 
+  li.textContent = [ 
     'Name: ',
     name,
     '; Country: ',
@@ -52,19 +52,14 @@ function renderListItems (list, data) {
   }
 }
 
-function setupElements (data) {
-  var list = document.createElement('ul')
+function setupElements () {
   var input = document.createElement('input')
   var label = document.createElement('label')
+  var list = document.createElement('ul')
   input.type = 'number'
-  label.innerHTML = 'filter the monsters by age' 
+  label.textContent = 'filter the monsters by age' 
 
-  var elements = [ input, label, list ]
-  elements.forEach(function (el) {
-    document.body.appendChild(el)
-  })
-
-  renderListItems(list, data)
+  return [ input, label, list ]
 }
 
 function filter (arr, keyValue) {
@@ -81,17 +76,19 @@ function filter (arr, keyValue) {
 }
 
 function app (data) {
-  setupElements(data)
-  var inputFilter = document.querySelector('input')
+  var elements = setupElements()
+  elements.forEach(function (el) {
+    document.body.appendChild(el)
+  })
+  renderListItems(elements[2], data)
 
+  var inputFilter = elements[0]
   inputFilter.addEventListener('input', function (e) {
-    console.log(e)
     var list = document.querySelector('ul')
     if (e.target.value === '') {
       renderListItems(list, data)
     } else {
-      var filteredMonsters = filter(data, { age: inputFilter.valueAsNumber})
-      console.log(filteredMonsters)
+      var filteredMonsters = filter(data, { age: inputFilter.valueAsNumber })
       renderListItems(list, filteredMonsters) 
     }
   }, true)
@@ -99,8 +96,10 @@ function app (data) {
 
 document.addEventListener('DOMContentLoaded', function() {
   app(monsters)
-  test(monsters)
 })
+
+
+// test(monsters)
 
 
 
