@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/regularity/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/regularity#readme"
+  "homepage": "https://github.com/dev-academy-challenges/regularity#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "iso8601-validator": "^1.0.1",
+    "js-object-pretty-print": "^0.2.0",
+    "node-emoji": "^1.0.4",
+    "pretty-js": "^0.1.8",
+    "pretty-print": "^1.1.0",
+    "pretty-print-object": "^1.1.0"
+  }
 }
