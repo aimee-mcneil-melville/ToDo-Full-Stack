@@ -56,11 +56,11 @@ In part 2 we'll use a "common" strategy to manage the size of our main file.
 
 First, take a look in `utils/assert.js`.
 
-Then the top of the `app/main.js` file:
+Then the top of the `main.js` file:
 
 ```js
-var assert = require('../utils/assert')
-var data = require('./data')
+var assert = require('utils/assert')
+var data = require('data/data')
 
 // more code
 ```
@@ -78,7 +78,17 @@ Node allows us to write code "modules" using the [Common JS](https://nodejs.org/
 
 ### Common JS: Three flavours
 
-1. Exporting an object with functions as properties:
+1. Exporting using the `exports.myFunctionName = ` syntax:
+```js
+// utils/index.js
+
+exports.map = function () {
+  // your code
+}
+
+```
+
+2. Exporting an object with functions as properties:
 
 ```js
 // utils/index.js
@@ -95,7 +105,7 @@ module.exports = {
 
 ```
 
-2(a). Exporting functions in separate files: 
+3(a). Exporting functions in separate files: 
 ```js
 // utils/filter.js 
 module.exports = function () {
@@ -104,12 +114,12 @@ module.exports = function () {
 
 
 //main.js
-var filter = require('../utils/filter.js')
+var filter = require('./utils/filter.js')
 
 ```
-2(b) Exporting functions in separate files then combining them into a an object in `index.js`:
+3(b) Exporting functions in separate files then combining them into a an object in `index.js`:
 ```js
-// index.js
+// utils/index.js
 
 module.exports = {
   filter: require('./filter.js'),
@@ -121,29 +131,63 @@ module.exports = {
 // main.js
 // note: require will automatically look for the index.js file
 // if it requires a folder path
-var utils = require('../utils')
+var utils = require('./utils')
 
 var numbers = utils.map(toNumber, data)
 
 ```
 
-3. Exporting using the `exports.myFunctionName = ` syntax:
+
+## Part 3: npm modules
+
+
+1. go to your personal github account and create a new repo: "[your name]-utils" - select "Node" for .gitignore and AGPL v3 for license.
+2. git clone you new repo and change directory into it (git clone; cd).
+3. create two new directories `test/` and `lib/` in your new repo (mkdir).
+4. copy your index.js and the other files file from 3(b) into the root folder of your local repo (cp).
+5. copy your function files into `lib/` and the `main.js into `test/test.js` (renaming it test.js) (cp).
+6. copy `'utils/assert.js` into `test/assert.js` (cp).
+7. delete all the code in `test/test.js that doesn't test filter, map, or countIf.
+8. adjust the file paths in index.js and test.js so that they reflect the new file and folder setup.
+9. from the root directory run `npm init -y`.
+10. this creates a `package.json` file in your root directory. open it in a text editor, it should look something like this:
+
 ```js
-// index.js
-
-exports.map = function () {
-  // your code
+{
+  "name": "[your name]-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/[your name]/[your name]-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPLv3",
+  "bugs": {
+    "url": "git+https://github.com/[your name]/[your name]-utils.git"
+  },
+  "homepage": "git+https://github.com/[your name]/[your name]-utils#readme"
+  "dependencies": {
+  }
 }
-
 ```
+11. Edit the description of the package.json to "a utility library for common
 
-## Part 3: npm modules
+12. run `npm install colors js-object-prettty-print node-emoji --save-dev` in the terminal.
+ 
+This installs the packages that the assert depends on -its "dependencies". Check your package.json. Has anything changed?
 
 
+13. run the tests by running `node test/test.js` in the terminal. Do they still passs?
 
-
-
-## Part 3: npm modules
 
 
 

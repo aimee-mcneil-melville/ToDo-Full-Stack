@@ -1,6 +1,6 @@
-var assert = require('../utils/assert')
-var data = require('./data')
-var expectedArrayOfArrays = require('./array-of-arrays')
+var assert = require('./utils/assert')
+var data = require('./data/data')
+var expectedArrayOfArrays = require('./data/array-of-arrays')
 
 function each (func, arr) {
   for (var i = 0; i < arr.length; i++) {
@@ -17,11 +17,11 @@ function isNumber (thing) {
 }
 
 function isStringNumber (str) {
-  return !Number.isNaN(parseInt(str))
+  return !Number.isNaN(parseInt(str, 10))
 }
 
 function toNumber (str) {
-  return parseInt(str)
+  return parseInt(str, 10)
 }
 
 function add (a, b) {
@@ -29,7 +29,7 @@ function add (a, b) {
 }
 
 function addStrings (a, b) {
-  return String(parseInt(a) + parseInt(b))
+  return String(parseInt(a, 10) + parseInt(b, 10))
 }
 
 function addStringsOrNumbers (a, b) {
@@ -105,10 +105,11 @@ assert(getType(meaningOfLife), expectedType, 'meaningOfLife is a ' + expectedTyp
 assert(getType(data), 'object', 'data is an object!?')
 assert(isNumber(meaningOfLife), false, 'meaningOfLife is not a number datatype')
 assert(isStringNumber(meaningOfLife), true, 'we can convert meaningOfLife to number')
-assert(toNumber(meaningOfLife), 42, 'meaningOfLife as an integer') 
+assert(isStringNumber('jsksk'), false, 'isStringNumber does not give a false positive')
+assert(toNumber(meaningOfLife), 42, 'toNumber can convert strings to number if possible') 
 assert(add(2, 3), 5, 'add() can add')
-assert(addStrings(meaningOfLife, '10'), '52', 'addStrings can can add strings and convert them back to a string')
-assert(addStringsOrNumbers(2, 3), 5, 'addStringsOrNumbers can add number')
+assert(addStrings(meaningOfLife, '10'), '52', 'addStrings can add strings and convert them back to a string')
+assert(addStringsOrNumbers(2, 3), 5, 'addStringsOrNumbers can add numbers')
 assert(addStringsOrNumbers('1', '2'), '3', 'addStringsOrNumbers can add numbers')
 assert(addStringsOrNumbers('10', 10), '20', 'addStringsOrNumbers can add strings and numbers (returning a string)')
 
@@ -124,10 +125,10 @@ assert(isEmail('thedonald@makeamericagreatagain.com'), true, 'isEmail detects an
 assert(isEmail('3333@'), false, 'isEmail does not give a false positive')
 
 var emails = filter(isEmail, data)
-assert(emails.length, 43, 'The filter function returns the correct number of emails' )
+assert(emails.length, 43, 'filter and isEmail returns the correct number of emails' )
 
 var stringsWithCommas = filter(filterStringsWithCommas, data)
-assert(stringsWithCommas.length, 62, 'filterStringsWithCommas return the correct number of commas')
+assert(stringsWithCommas.length, 62, 'filter and filterStringsWithCommas returns the correct number of commas')
 
 var arrayOfArrays = map(splitStringByCommas, stringsWithCommas)
 var matchesExpected = arrayOfArrays.every(function (arr, i) {
@@ -136,7 +137,7 @@ var matchesExpected = arrayOfArrays.every(function (arr, i) {
   })
 })
 
-assert(matchesExpected, true, 'the generated array of array of strings maches the expected array')  
+assert(matchesExpected, true, 'the generated array of array of strings matches the expected array')  
 
 var dates = filter(filterDates, data)
 var formattedDates = map(formatDate, dates)
