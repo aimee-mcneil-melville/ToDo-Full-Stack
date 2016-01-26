@@ -74,7 +74,7 @@ Node allows us to write code "modules" using the [Common JS](https://nodejs.org/
 4. Your goal is to "export" the functions from `utils/index.js` and require them into `main.js`
 5. Make your tests pass once again - this time using the "required" functions in `utils/index.js`. 
 6. Refactor your code using all three "flavours" of requiring and exporting described below -your tests should pass each time!.
-7. Discuss with you pair the advantages and disadvantages of using modules and each flavour exporting..
+7. Discuss with you pair the advantages and disadvantages of using modules and the different exporting and importing flavours.
 
 ### Common JS: Three flavours
 
