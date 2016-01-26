@@ -65,9 +65,14 @@ var data = require('data/data')
 // more code
 ```
 
-Node allows us to write code "modules" using the [Common JS](https://nodejs.org/docs/latest/api/modules.html) format. 
+One of the useful things about Node is it allows us to write code "modules" in [common JS](https://nodejs.org/docs/latest/api/modules.html) format. 
 
-0. Read [Understanding module.exports and exports in Node.js](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
+Modules allow us to break code up into separate files. This allows code be more:
+
+ * Testable - we can test pieces of the code separately.
+ * Readable - the code in one small file may perform a very specific task making easier to hold in heads.
+
+0. Read [understanding module.exports and exports in Node.js](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
 1. Discuss with your pair how you think the `main.js` 'finds' and uses `assert()`
 2. Create a new file `utils/index.js`
 3. Move your `filter`, `map`, and `countIf` functions over to `utils/index.js` (deleting them in `main.js`!).
@@ -123,7 +128,7 @@ var filter = require('./utils/filter.js')
 
 module.exports = {
   filter: require('./filter.js'),
-  map: require('./map.js),
+  map: require('./map.js'),
   ...
 }
 
