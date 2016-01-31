@@ -2,45 +2,26 @@
 // simple objects
 
 function makeObject (key, value) {
-  const obj = {}
-  obj[key] = value
-  return obj
 }
 
 function getValue (obj, key) {
-  return obj[key]
 }
 
 function ageOneYear (obj) {
-  obj.age += 1
-  return obj
 }
 
 function deleteProp (obj, key) {
-  delete obj[key]
-  return obj
 }
 
 // simple arrays
 
 function makeArrayOfItem (item, length) {
-  var arr = []
-  for (var i = 0; i < length; i++) {
-    arr.push(item)
-  }
-  return arr
 }
 
 function makeArrayOfItems () {
-  var arr = []
-  for (var i = 0; i < arguments.length; i++) {
-    arr.push(arguments[i])
-  }
-  return arr
 }
 
 function getGreeting (name) {
-  return 'Hello ' + name
 }
 
 

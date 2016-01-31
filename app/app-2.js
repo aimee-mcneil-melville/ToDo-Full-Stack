@@ -27,29 +27,10 @@ var monsters = [
 ]
 
 function liTemplate (name, country, age) {
-  var li = document.createElement('li')
-  li.textContent = [ 
-    'Name: ',
-    name,
-    '; Country: ',
-    country,
-    '; Age: ',
-    age
-  ].join('')
-
-  return li
 }
 
 function renderListItems (list, data) {
   // remove element and create a fresh one
-  list.parentNode.removeChild(list) 
-  var newList = document.createElement('ul')
-  document.body.appendChild(newList)
-  
-  for (var i = 0; i < data.length; i++) {
-    var li = liTemplate(data[i].name, data[i].country, data[i].age)
-    newList.appendChild(li)
-  }
 }
 
 function setupElements () {
@@ -63,16 +44,6 @@ function setupElements () {
 }
 
 function filter (arr, keyValue) {
-  var key = Object.keys(keyValue)[0]
-  var results = []
-
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i][key] === keyValue[key]) {
-      results.push(arr[i])
-    }
-  }
-
-  return results
 }
 
 function app (data) {
@@ -84,13 +55,6 @@ function app (data) {
 
   var inputFilter = elements[0]
   inputFilter.addEventListener('input', function (e) {
-    var list = document.querySelector('ul')
-    if (e.target.value === '') {
-      renderListItems(list, data)
-    } else {
-      var filteredMonsters = filter(data, { age: inputFilter.valueAsNumber })
-      renderListItems(list, filteredMonsters) 
-    }
   }, true)
 }
 
