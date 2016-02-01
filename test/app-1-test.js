@@ -8,6 +8,7 @@ function test (data) {
     for (var i = 0; i < element.children.length; i++) {
       console.log('list item with the name: ' + data[i].name + ' exists', element.children[i].innerHTML === data[i].name)
     }
+  } else {
+    console.log('list items exist: ', false) 
   }
-
 }
