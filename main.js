@@ -10,90 +10,63 @@ function each (func, arr) {
 }
 
 function getType (thing) {
-  return typeof thing
+
 }
 
 function isNumber (thing) {
-  return typeof thing === 'number'
+
 }
 
 function isStringNumber (str) {
-  return !Number.isNaN(parseInt(str, 10))
+
 }
 
 function toNumber (str) {
-  return parseInt(str, 10)
+
 }
 
 function add (a, b) {
-  return a + b 
+
 }
 
 function addStrings (a, b) {
-  return String(parseInt(a, 10) + parseInt(b, 10))
+
 }
 
 function addStringsOrNumbers (a, b) {
-  if (isNumber(a) && isNumber(a)) {
-    return add(a, b)
-  } else {
-    return addStrings(a, b)
-  }
+
 }
 
 function isEmail (str) {
-  return str.indexOf('@') > -1 && str.indexOf('.') > -1
+
 }
 
 function isDate (str) {
-  return str.indexOf('-') > -1 && !Number.isNaN(Date.parse(str))
+
 }
 
 function countIf (testFunc, arr) {
-  var count = 0
 
-  for (var i = 0; i < arr.length; i++) {
-    if(testFunc(arr[i])) {
-      count ++
-    }
-  }
-
-  return count
 }
 
 function filter (func, arr) {
-  var results = []
-  
-  for (var i = 0; i < arr.length; i++) {
-    if(func(arr[i])) {
-      results.push(arr[i])
-    }
-  }
 
-  return results
 }
 
 function map (func, arr) {
-  var results = []
 
-  for (var i = 0; i < arr.length; i++) {
-    results.push(func(arr[i]))
-  }
-
-  return results
 }
 
 function filterStringsWithCommas (str) {
-  return str.indexOf(',') > 1 
+
 }
 
 function formatDate (dateString) {
-  var date = new Date(dateString)
-  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+
 }
 
 function splitStringByCommas (str) {
-  return str.split(',')
+
 }
 
 
