@@ -1,17 +1,13 @@
 var domready = require('domready')
-var k = require('../')
+var kata = require('../')
+var lib = require('./lib')
+var initialRender = lib.initialRender
 
-function render (board) {
-  
-}
 
 function updateBoard (board) {
 
 }
 
-function listen () {
-
-}
 
 function handleSquareClick (e) {
 
@@ -25,8 +21,13 @@ function app () {
 
 domready(function () {
   
-  var boardData = k.getMatrix(3)
-  var boardElements = render(board)
+  var boardData = kata.getMatrix(3)
+  var table = initialRender(boardData, '#root')
+
+  table.addEventListener('click', function (e) {
+  	console.log(e.target)
+
+  })
   
   
   
