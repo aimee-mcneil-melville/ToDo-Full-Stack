@@ -63,10 +63,6 @@ function updateMatrix (matrix, coords, value) {
 }
 
 
-//objects
-
-
-
 module.exports = {
 	each: each,
 	getType: getType,

@@ -7,8 +7,7 @@ function initialRender (board, rootSelector) {
 		row.forEach(function (cell, j) {
 			var tCell = document.createElement('td')
 			tCell.textContent = cell
-			tCell.classList.add('row-' + i)
-			tCell.classList.add('col-' + j)
+			tCell.id = 'row-' + i + '-col-' + j
 			tRow.appendChild(tCell)
 		})
 		table.appendChild(tRow)
