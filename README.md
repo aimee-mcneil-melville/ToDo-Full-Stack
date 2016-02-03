@@ -1,4 +1,4 @@
-# Date Structures
+# Data Structures
 
 ## Intro
 
