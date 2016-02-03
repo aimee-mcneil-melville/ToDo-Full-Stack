@@ -15,7 +15,7 @@ test('it renders the table matrix on the page', function (t) {
 	document.body.appendChild(root)
 
 	var table = initialRender(matrix, '#root')
-	t.ok(table)
+	t.ok(table.childNodes.length > 0, 'table has rows')
 
   for (var i = 0; i < table.childNodes.length; i++) {
     var row = table.childNodes[i]
