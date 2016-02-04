@@ -20,16 +20,8 @@ There are a complete set of tests to code against which will really help.
 ## Hints
 Printing to the console and getting the formatting will be a challenge. Piet can help if needed but try it for yourself first. Check out the node module 'clear.' 
 
-Suggested order:
-- underPopulated
-- overPopulated
-- ressurectable
-- outOfBounds
-- indicesOutOfBounds
-- 
-
 Look at the tests! What are they expecting back from each function?
 
 Start with easy functions that don't depend on any other functions. overPopulated, underPopulated and ressurectable are good ones to start with.
 
-The tests are a different framework to what you've seen before! Oh noes! The testing framework is called tape. You can run all the test with ```npm test``` or you can run any single test file with the node command eg ```node test/overPopulated.js```
+You can run all the test with ```npm test``` or you can run any single test file with the node command eg ```node test/overPopulated.js```
