@@ -1,0 +1,29 @@
+{
+  "name": "conways",
+  "version": "0.0.1",
+  "description": "Conways game of life node module",
+  "main": "conway.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "test": "tape test/**/*.js"
+  },
+  "standard": {
+    "globals": [ ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pietgeursen/conways.git"
+  },
+  "author": "pietgeursen@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pietgeursen/conways/issues"
+  },
+  "homepage": "https://github.com/pietgeursen/conways#readme"
+}
