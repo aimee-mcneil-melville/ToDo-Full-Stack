@@ -83,36 +83,8 @@ var actualPeopleWithGreetings = people.map(function (person) {
 for (var i = 0; i < expectedPeopleWithGreetings.length; i++) {
   console.log(expectedPeopleWithGreetings[i].greeting === actualPeopleWithGreetings[i].greeting)
 }
-
-
-
-
-
-
-
-
-
-
-// break 
-
-
-console.log(hasItem(arrayOfDifferentItems, 'a') === true)
-console.log(hasItem(arrayOfDifferentItems, 'mickey') === false)
-
 var err = returnErrorIfFalsy(false)
 console.log(err.name === 'Error' && err.message === 'Oh no an error!')
 
 var notErr = returnErrorIfFalsy({})
 console.log(notErr === true)
-
-
-
-
-
-
-
-
-
-
-
-

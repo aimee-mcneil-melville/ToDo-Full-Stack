@@ -1,4 +1,3 @@
-
 function hasItem (arr, item) {
 }
 
@@ -39,6 +38,10 @@ function findAll (arr, keyValue) {
 }
 
 // TESTS
+
+
+console.log(hasItem(arrayOfDifferentItems, 'a') === true)
+console.log(hasItem(arrayOfDifferentItems, 'mickey') === false)
 
 var arrayOfDifferentTypes = [ 'a', 1, null, true ] 
 
