@@ -1,4 +1,4 @@
-# Two Truths and a Lie.
+# Two Truths and a Lie
 
 ## Learning Competencies
 
@@ -14,7 +14,7 @@ Let's get to know each other better, using git and github! We'll play an icebrea
 
 ### Release 0 : Clone the repo and create a branch
 
-1: You'll first need to enter the following terminal / iterm command.  
+1: You'll first need to enter the following terminal / iterm command.
 
 ```shell
 
@@ -32,14 +32,14 @@ git clone CLONE_URL
 In your terminal, run the following command, replacing YOUR_NAME with your name:
 
 ```shell
-git branch YOUR_NAME_YOUR_PAIRS_NAME 
-# creates a branch called YOUR_NAME_YOUR_PAIRS_NAME 
+git branch YOUR_NAME_YOUR_PAIRS_NAME
+# creates a branch called YOUR_NAME_YOUR_PAIRS_NAME
 
-git checkout YOUR_NAME_YOUR_PAIRS_NAME 
-# checks out a branch called YOUR_NAME_YOUR_PAIRS_NAME 
+git checkout YOUR_NAME_YOUR_PAIRS_NAME
+# checks out a branch called YOUR_NAME_YOUR_PAIRS_NAME
 
 # You can also do this in one step as:
-git checkout -b YOUR_NAME_YOUR_PAIRS_NAME 
+git checkout -b YOUR_NAME_YOUR_PAIRS_NAME
 ```
 
 4: Modify the file two_truths.md so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
@@ -58,7 +58,7 @@ git commit -m "Added facts about Example McExampleson"
 6: Now push up your branch to github with
 
 ``` shell
-git push origin YOUR_NAME_YOUR_PAIRS_NAME 
+git push origin YOUR_NAME_YOUR_PAIRS_NAME
 ```
 
 **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
@@ -77,7 +77,7 @@ git checkout THEIR_BRANCH
 
 8: Create a new branch for your changes
 
-```shell 
+```shell
 git checkout -b THEIR_BRANCH-busted
 ```
 what is the difference between this command and the one in step 7? ```git --help checkout```
