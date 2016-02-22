@@ -1,10 +1,12 @@
 # Two Truths and a Lie
 
-## Learning Competencies
+## Concepts
 
-* Use git and github to work on projects.
-* Use a standard git workflow, including branching and pull requests
-* Communicate with others using github.
+Number | Name
+-------|-------------------
+1.     | [git](https://git-scm.com/)
+2.     | [GitHub](https://guides.github.com/activities/hello-world/)
+3.     | [Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
 ## Summary
 
