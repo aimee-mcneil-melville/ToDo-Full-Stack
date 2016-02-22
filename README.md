@@ -1,11 +1,13 @@
 # JavaScript Kata: Objects and Arrays
 
-## Learning Competencies
+## Concepts
 
-* Learn about JavaScript objects and arrays
-* Get introduced to using nodemon for automatic updates
-* Become familiar with the concept of code "kata"
-* Apply what you've learned about objects and arrays on a simple web page
+Number | Name
+-------|-------------------
+1.     | [JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+2.     | [JavaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+3.     | [Nodemon](http://nodemon.io/)
+4.     | <a href="https://en.wikipedia.org/wiki/Kata_(programming)">Code kata</a>
 
 ## Introduction
 
