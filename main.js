@@ -41,10 +41,6 @@ function isEmail (str) {
 
 }
 
-function isDate (str) {
-
-}
-
 function countIf (testFunc, arr) {
 
 }
@@ -61,9 +57,6 @@ function filterStringsWithCommas (str) {
 
 }
 
-function formatDate (dateString) {
-
-}
 
 function splitStringByCommas (str) {
 
@@ -96,28 +89,14 @@ var stringCount = countIf(function (x) { return typeof x === 'string' }, mixedAr
 assert(numberCount, expectedNumberCount, 'countIf can count the numbers in an array' )
 assert(stringCount, expectedStringCount, 'countIf can count the strings in an array')
 
-var anISO8601String = "2015-11-15 04:30:11 +1300"
 assert(isEmail('thedonald@makeamericagreatagain.com'), true, 'isEmail detects an email')
 assert(isEmail('3333@'), false, 'isEmail does not give a false positive')
-assert(isDate(anISO8601String), true, 'isDate identifies ISO8601 Date and Time')
-assert(isDate('200E-ii:iE'), false, 'isDate does not give a false positive')
-assert(formatDate(anISO8601String), "15/11/2015", 'formatDate converts a date to dd/mm/yyyy format')
 var emails = filter(isEmail, data)
 assert(emails.length, 44, 'filter and isEmail returns the correct number of emails' )
 
 var stringsWithCommas = filter(filterStringsWithCommas, data)
 assert(stringsWithCommas.length, 62, 'filter and filterStringsWithCommas returns the correct number of commas')
 
-var dates = filter(isDate, data)
-assert(dates.length, 51, 'filter and isDate return the correct number of dates from data')
-
-var formattedDates = map(formatDate, dates)
-var matchesFormattedDates = formattedDates.every(function (d, i) {
-  console.log(d, expectedFormattedDates[i])
-  return d === expectedFormattedDates[i]
-})
-
-assert(matchesFormattedDates, true, 'formatDate and map correctly format dates') 
 
 var arrayOfArrays = map(splitStringByCommas, stringsWithCommas)
 var matchesArrayOfArrays = arrayOfArrays.every(function (arr, i) {
