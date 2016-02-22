@@ -85,7 +85,7 @@ Modules allow us to break code up into separate files. This allows code be more:
 
 ### Common JS: Three flavours
 
-1. Exporting using the `exports.myFunctionName = ` syntax:
+(1.) Exporting using the `exports.myFunctionName = ` syntax:
 ```js
 // utils/index.js
 
@@ -95,7 +95,7 @@ exports.map = function () {
 
 ```
 
-2. Exporting an object with functions as properties:
+(2.) Exporting an object with functions as properties:
 
 ```js
 // utils/index.js
@@ -112,7 +112,7 @@ module.exports = {
 
 ```
 
-3(a). Exporting functions in separate files:
+(3(a).) Exporting functions in separate files:
 ```js
 // utils/filter.js
 module.exports = function () {
@@ -124,7 +124,7 @@ module.exports = function () {
 var filter = require('./utils/filter.js')
 
 ```
-3(b) Exporting functions in separate files then combining them into a an object in `index.js`:
+(3(b)) Exporting functions in separate files then combining them into a an object in `index.js`:
 ```js
 // utils/index.js
 
