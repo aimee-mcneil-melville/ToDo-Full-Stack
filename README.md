@@ -41,9 +41,9 @@ The other difference is that instead of just using `console.log()' to test our c
 
 We'll cover how this works in Part 2. For now, pull down the git repo, in your root directory of this exercise in the terminal run:
 
-`node app/main.js`
+`node main.js`
 
-(make sure you remember to `npm install`)
+(Make sure you remember to `npm install`)
 
 You should a series of failing tests, but our `assert` function is coloring the console output red and printin a red x. Your goal, once aagain, is to make the tests pass.
 
