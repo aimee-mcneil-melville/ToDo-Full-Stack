@@ -1,5 +1,13 @@
 # Data Structures
 
+## Concepts
+
+Number | Name
+-------|-------------------
+1.     | [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+2.     | [Browserify](https://www.npmjs.com/package/browserify)
+3.     | [Tape](https://www.npmjs.com/package/tape)
+
 ## Intro
 
 cd into the directory and run `npm install` (this could take a while).
@@ -12,21 +20,21 @@ Run the kata tests with `npm run test` (have a look in package.json to see what 
 
 Make them pass.
 
-## Part 2: Mini-app with browserify and tape. 
+## Part 2: Mini-app with browserify and tape.
 
 1. Take a look at the [browserify](https://www.npmjs.com/package/browserify) npm docs.
 
 Don't worry if this doesn't make sense.
 
-A much more detailed guide is available [here](https://github.com/substack/browserify-handbook)
+There is [a much more detailed Browserify Handbook](https://github.com/substack/browserify-handbook)
 
-2. Browserify the `index.js` transforming it into `bundle.js`. 
+2. Browserify the `index.js` transforming it into `bundle.js`.
 
-Open up your `bundle.js` and take a look at it. What has browserify done!!?? 
+Open up your `bundle.js` and take a look at it. What has browserify done!!??
 
 3. Browserify the app/index.js
 
-Now we're going to write node-style code with module.exports and use browserify to convert it into browser compatible code. 
+Now we're going to write node-style code with module.exports and use browserify to convert it into browser compatible code.
 
 Take a look at the app/ folder and get familiar with the require paths in app/index.js
 
