@@ -1,7 +1,8 @@
 var test = require('tape')
 
 var countAliveNeighbours = require('../countAliveNeighbours')
-var createBoard = require('../conway').createBoard
+var createBoard = require('../createBoard')
+
 test('countAliveNeighbours', function (t) {
   var board = createBoard(10)
   board[0][0] = true

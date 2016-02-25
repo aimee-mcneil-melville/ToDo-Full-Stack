@@ -1,6 +1,6 @@
 var test = require('tape')
 var getNeighbours = require('../getNeighbours')
-var createBoard = require('../conway.js').createBoard
+var createBoard = require('../createBoard.js')
 
 test('getNeighbours in corner', function (t) {
   var board = createBoard(10)
@@ -11,6 +11,7 @@ test('getNeighbours in corner', function (t) {
   t.equal(neighbours.reduce(function (sum, val) { return sum + val }, 0), 19)
   t.end()
 })
+
 test('getNeighbours in middle', function (t) {
   var board = createBoard(10)
   var total = 0
