@@ -2,24 +2,35 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+//---------------------Ignore above here-------------------//
 
+var cats = {
+ cats: [
+  {name: 'fluffy'},
+  {name: 'tick'}
+ ]
+}
 
+app.get('/', function(req, res) {
+ res.redirect('/cats') 
+})
+
+app.get('/cats', function(req, res) {
+ res.render('catsIndex', cats)
+})
+
+app.get('/cats/:id', function(req,res){
+  console.log(req.params); // try going to /cats/1
+})
 
 module.exports = app;
