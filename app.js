@@ -29,8 +29,17 @@ app.get('/cats', function(req, res) {
  res.render('catsIndex', cats)
 })
 
+app.get('/cats/new', function(req, res) {
+ res.render('catsNew')
+})
+
 app.get('/cats/:id', function(req,res){
   console.log(req.params); // try going to /cats/1
+})
+
+app.post('/cats', function(req,res) {
+  console.log(req.body);
+  console.log(req.body.name)
 })
 
 module.exports = app;
