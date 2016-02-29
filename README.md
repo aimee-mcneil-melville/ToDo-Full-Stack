@@ -4,9 +4,9 @@
 
 Number | Name
 -------|------
-1 | REST
-2 | Express
-3 | Handlebars
+1 | [REST](http://guides.rubyonrails.org/routing.html)
+2 | [Express](http://expressjs.com/)
+3 | [Handlebars](http://handlebarsjs.com/)
 4 | Eugene
 
 
