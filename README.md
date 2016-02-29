@@ -51,7 +51,7 @@ Write a new route that listens for requests to cats/edit/:id. Go get the cat by 
 
 ## Release 7 
 
-Add a route that listens for PUT request to /cat/id. Use what you've learned to update the catin the cats array.
+Add a route that listens for PUT request to /cat/id. Use what you've learned to update the cat in the cats array.
 
 ## More
 
@@ -59,4 +59,8 @@ Work out how to store the cats variable in a json file. You might want to make s
 
 Add the help page.
 
-Implement the rule that removes lives from the cat when it's viewed.
+Implement the rule that removes lives from the cat when it's viewed. Delete a cat when it's got zero lives.
+
+Sort cats by when they were last viewed by a user.
+
+Appropriate Eugene's css file and add it to your server. 
