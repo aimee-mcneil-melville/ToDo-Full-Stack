@@ -41,4 +41,8 @@ Write a new route that listens for requests to /cats/new. Render out the catsNew
 
 ## Release 5
 
-What happens when you submit your form. You should see some stuff in logged in the console. Take that data, make a new cat object and add it to your cats variable. 
+What happens when you submit your form? You should see some stuff in logged in the console. Take that data, make a new cat object and add it to your cats variable. 
+
+## Release 6
+Copy the contents of the new cat form and add some handlebars expressions {{}} so that we can fill in the form with the cats existing data.
+Write a new route that listens for requests to cats/edit/:id. Go get the cat by id. Pass it to the render function. 
