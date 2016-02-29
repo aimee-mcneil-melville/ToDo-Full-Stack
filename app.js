@@ -22,7 +22,7 @@ var cats = {
 }
 
 app.get('/', function(req, res) {
- res.redirect('/cats') 
+ res.redirect('/cats') // what is this doing?
 })
 
 app.get('/cats', function(req, res) {
@@ -39,7 +39,6 @@ app.get('/cats/:id', function(req,res){
 
 app.post('/cats', function(req,res) {
   console.log(req.body);
-  console.log(req.body.name)
 })
 
 module.exports = app;
