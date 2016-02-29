@@ -18,3 +18,12 @@ Eugene is an EDA grad, taught some of the course and is some kind of blend of co
 Unfortunately Eugene's version of meowtown is written in rails. That's oldschool so we're going to improve things and rewrite it using node.
 
 
+## Release 1
+
+Clone down the repo, run ```npm i``` and then run ```npm start```. Visit [http://localhost:3000](http://localhost:3000)
+
+Notice that when you run npm start it doesn't exit. The server has to stay running to listen for requests from your browser.
+
+## Release 2
+
+
