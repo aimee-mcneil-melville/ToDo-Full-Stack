@@ -19,6 +19,7 @@ Unfortunately Eugene's version of meowtown is written in rails. That's oldschool
 
 
 ## Release 1
+Install nodemon. This will watch for changes to our files and restart the server. ```npm i -g nodemon```
 
 Clone down the repo, run ```npm i``` and then run ```npm start```. Visit [http://localhost:3000](http://localhost:3000)
 
