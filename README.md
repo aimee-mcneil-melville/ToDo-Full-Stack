@@ -25,5 +25,10 @@ Clone down the repo, run ```npm i``` and then run ```npm start```. Visit [http:/
 Notice that when you run npm start it doesn't exit. The server has to stay running to listen for requests from your browser.
 
 ## Release 2
+Visit [http://localhost:3000/cats/1](http://localhost:3000/cats/1)
+You should see the id printed in the console. Yay! Now we can find the cat the user is looking for and render just that cat out to the user. Get the correct cat from the cats variable and pass it as the second argument to the render function.
 
+Now fill out the catsShow.hbs template so that you can see the name of the cat. 
 
+## Release 3
+Go study meowtown and add some more properties to the cats variables. Now update the catsIndex and catsShow templates.

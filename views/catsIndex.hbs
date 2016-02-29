@@ -1,0 +1,11 @@
+<h1>Meowtown</h1>
+<nav>
+  <a class="link" href="/cats/new">generate cat</a> /
+  <a class="link" href="/cats/help">wuuut?</a>
+</nav>
+
+<ul>
+ {{#each cats}}
+  <li>{{this.name}}</li>
+ {{/each}}
+</ul>

@@ -16,8 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var cats = {
  cats: [
-  {name: 'fluffy'},
-  {name: 'tick'}
+  {id: 1, name: 'fluffy'},
+  {id: 2, name: 'tick'}
  ]
 }
 
