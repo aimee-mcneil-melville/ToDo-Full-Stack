@@ -44,5 +44,18 @@ Write a new route that listens for requests to /cats/new. Render out the catsNew
 What happens when you submit your form? You should see some stuff in logged in the console. Take that data, make a new cat object and add it to your cats variable. 
 
 ## Release 6
+
 Copy the contents of the new cat form and add some handlebars expressions {{}} so that we can fill in the form with the cats existing data.
 Write a new route that listens for requests to cats/edit/:id. Go get the cat by id. Pass it to the render function. 
+
+## Release 7 
+
+Add a route that listens for PUT request to /cat/id. Use what you've learned to update the catin the cats array.
+
+## More
+
+Work out how to store the cats variable in a json file. You might want to make some functions that can load and save cats. 
+
+Add the help page.
+
+Implement the rule that removes lives from the cat when it's viewed.
