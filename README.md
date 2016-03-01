@@ -51,7 +51,7 @@ Write a new route that listens for requests to cats/edit/:id. Go get the cat by 
 
 ## Release 7 
 
-Add a route that listens for PUT request to /cat/id. Use what you've learned to update the cat in the cats array.
+Add a route that listens for POST requests to /cat/id. Use what you've learned to update the cat in the cats array.
 
 ## More
 
