@@ -64,3 +64,4 @@ Implement the rule that removes lives from the cat when it's viewed. Delete a ca
 Sort cats by when they were last viewed by a user.
 
 Appropriate Eugene's css file and add it to your server. 
+
