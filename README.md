@@ -4,15 +4,8 @@
 
 In these exercises we'll practise some of the fundamentals of JavaScript and start learning about testing.
 
-For convenience this exercise come with its own server that restarts automatically when changes are made. First install nodemon globally in your system, run the following in the console:
+Later, we'll put these fundamentals into practice, along with using some a node module that makes us a live-updating server, to modifya webpage with javascript.
 
-`npm install -g nodemon`
-
-Then install the server locally:
-
-`npm install`
-
-Note: this command looks for the node modules listed in a project's `package.json` and installs them if they aren't already present.
 
 ## Part 1:  Kata
 
@@ -24,20 +17,22 @@ The `kata` folder has 2 files `kata-1.s` and `kata-2.js`. These files have a ser
 The driver code uses these functions and logs the output to the console. You'll see a series of console.logs written something like this:
 
 ```js
-
 function ageOneYear (obj) {
 // replace the code inside this function with your own
  return obj
 }
 
-...// later ...
+//... later ...
 
 var mickey = { name: 'Mickey Mouse', age: 64, email: 'mickey@disney.com' }
-console.log(ageOneYear(mickey).age === 65)
-
+console.log( "ageOneYear increases the age property of an object by 1: ", ageOneYear(mickey).age === 65 )
 ```
-To practise kata you must make the code inside the `console.log` evaluate to `true`. You will need to read the driver code and figure out what it "wants" from the tested functions.
-This way we can practise the basics of JavaScript and build up our muscle memory -through reading the driver code, by writing code, and by becoming familiar with Test Driven Development (TDD).
+To practise kata you must make the code inside the `console.log` evaluate to `true`.
+
+We've put a message in the console.log saying what we expect the test to demonstrate. 
+Later on, you might need to read the driver code and figure out what it "wants" from the tested functions, and write your own expectation text.
+
+This way we can practise the basics of JavaScript and build up our muscle memory - through reading the driver code, by writing code, and by becoming familiar with Test Driven Development (TDD).
 
 To evaluate your code run the following in the root folder of this exercise:
 
@@ -55,14 +50,32 @@ The `app/` folder contains HTML and JavaScript files and the `test/` folder cont
 This exercise is very similar to the kata.
 For app-1 you will transform an array of data into `li` elements.
 
+For convenience this exercise come with its own server that restarts automatically when changes are made. First install nodemon globally in your system, run the following in the console:
+
+```
+npm install -g nodemon
+```
+
+Then install the server locally:
+
+```
+npm install
+```
+
+_Note: this command looks for the node modules listed in a project's `package.json` and installs them if they aren't already present._
+
 To start the mini apps run the following in the root folder of the exercise:
 
-`npm run serve`
+```
+npm run serve
+```
 
 This will load the folders contents at `localhost:3000` visit this location with you browser and click through to index.html.
 The pages are deliberately very basic with no styling. The point of these exercises is to apply basic JavaScript in 'real' applications, not build beautiful web pages.
 
-The HTML page will import the app and test JavaScript. Much of the app code is already scafolded. Red through this code and the test code and try to under stand what its doing. Once you think you know what's going on uncomment the `test()` function to run the tests. Once you've completed your code run the tests my executing `test()` in the console (it will be loaded globally from the test file). When the test code outputs all `true` you're done.
+The HTML page will import the app and test JavaScript. Much of the app code is already scafolded. Red through this code and the test code and try to under stand what its doing. 
+Once you think you know what's going on uncomment the `test()` function to run the tests.
+Once you've completed your code run the tests my executing `test()` in the console (it will be loaded globally from the test file). When the test code outputs all `true` you're done.
 
 When you've completed the first mini app go back to repeat Parts 1 and 2 for `kata-2.js` and `app-2.js` respectively. You will need to edit the index.html files to get the app-2 and app-2-test to load properly.
 

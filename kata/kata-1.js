@@ -27,26 +27,26 @@ function getGreeting (name) {
 
 // TESTS 
 
-var expectedObj = { a: 1 }
-var actual = makeObject('a', 1)
+var expectedObj = { a: 1 }        // this is what we expect our function to make
+var actual = makeObject('a', 1)   // this is what our function actually makes
 
-console.log(actual.a === expectedObj.a)
-console.log(getValue(expectedObj, 'a') === 1)
+console.log( "makeObject makes objects: ", actual.a === expectedObj.a )     // our 'test' : when it's passing, we will console.log true 
+console.log( "getValue gets values from objects: ", getValue(expectedObj, 'a') === 1 )
 
 
 var mickey = { name: 'Mickey Mouse', age: 64, email: 'mickey@disney.com' } 
-console.log(ageOneYear(mickey).age === 65)
+console.log( "ageOneYear adds 1 year to the age property of an object: ", ageOneYear(mickey).age === 65 )
 
 
 deleteProp(mickey, 'email')
-console.log(typeof mickey.email === 'undefined')
+console.log( typeof mickey.email === 'undefined' )
 
 
 var expectedArray = [ 'a', 'a', 'a' ]
 var actualArray = makeArrayOfItem('a', 3)
 
 for (var i = 0; i < expectedArray.length; i++) {
-  console.log(expectedArray[i] === actualArray[i])
+  console.log( expectedArray[i] === actualArray[i] )
 }
 
 
@@ -54,7 +54,7 @@ var arrayOfDifferentItems = [ 'a', 2, false ]
 var actualArrayOfDifferent = makeArrayOfItems('a', 2, false)
 
 for (var i = 0; i < expectedArray.length; i++) {
-  console.log(arrayOfDifferentItems[i] === actualArrayOfDifferent[i])
+  console.log( arrayOfDifferentItems[i] === actualArrayOfDifferent[i] )
 }
 
 
@@ -63,7 +63,7 @@ var expectedGreetings = [ 'Hello Alice', 'Hello Bob', 'Hello Celia', 'Hello Dan'
 var actualGreetings = names.map(getGreeting)
 
 for (var i = 0; i < names.length; i++) {
-  console.log(actualGreetings[i] === expectedGreetings[i])
+  console.log( actualGreetings[i] === expectedGreetings[i] )
 }
 
 
@@ -81,10 +81,10 @@ var actualPeopleWithGreetings = people.map(function (person) {
 })
 
 for (var i = 0; i < expectedPeopleWithGreetings.length; i++) {
-  console.log(expectedPeopleWithGreetings[i].greeting === actualPeopleWithGreetings[i].greeting)
+  console.log( expectedPeopleWithGreetings[i].greeting === actualPeopleWithGreetings[i].greeting )
 }
 var err = returnErrorIfFalsy(false)
-console.log(err.name === 'Error' && err.message === 'Oh no an error!')
+console.log( err.name === 'Error' && err.message === 'Oh no an error!' )
 
 var notErr = returnErrorIfFalsy({})
-console.log(notErr === true)
+console.log( notErr === true )
