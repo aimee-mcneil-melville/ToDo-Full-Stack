@@ -1,14 +1,5 @@
 # JavaScript Kata: Objects and Arrays
 
-## Concepts
-
-Number | Name
--------|-------------------
-1.     | [JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-2.     | [JavaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-3.     | [Nodemon](http://nodemon.io/)
-4.     | <a href="https://en.wikipedia.org/wiki/Kata_(programming)">Code kata</a>
-
 ## Introduction
 
 In these exercises we'll practise some of the fundamentals of JavaScript and start learning about testing.
@@ -82,8 +73,11 @@ Most of the content will be familiar. The following links may help with the less
 
 [Object.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
-
-
 [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FFunctions_and_function_scope%2Farguments)
+
+[JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+[JavaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+[Nodemon](http://nodemon.io/)
+[Code kate](https://en.wikipedia.org/wiki/Kata_(programming)
 
 
