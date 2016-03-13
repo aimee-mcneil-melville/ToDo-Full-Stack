@@ -1,13 +1,5 @@
 # Two Truths and a Lie
 
-## Concepts
-
-Number | Name
--------|-------------------
-1.     | [git](https://git-scm.com/)
-2.     | [GitHub](https://guides.github.com/activities/hello-world/)
-3.     | [Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
-
 ## Summary
 
 Let's get to know each other better, using git and github! We'll play an icebreaker called Two Truths and a Lie, but instead of sitting around and chatting in person, we're going to use github to chat about what the lie is.
@@ -127,3 +119,6 @@ In any case, close the pull request and
 - [GitHub Help](https://help.github.com/)
 - [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
 - [GitHub Cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
+- [git homepage](https://git-scm.com/)
+- [GitHub hello world activity](https://guides.github.com/activities/hello-world/)
+- [Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
