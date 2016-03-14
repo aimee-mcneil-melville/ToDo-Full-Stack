@@ -47,7 +47,7 @@ console.log(hasItem(arrayOfDifferentTypes, 'mickey') === false)
 
 var alphabet = ['a', 'b', 'c', 'd', 'e' ]
 console.log(getItemAtIndex(alphabet, 3) === 'd')
-console.log(getItemAtIndex(alphabet, 10).name = 'Error')
+console.log(getItemAtIndex(alphabet, 10).name === 'Error')
 
 replaceItemAtIndex(alphabet, 0, 'alpha')
 
