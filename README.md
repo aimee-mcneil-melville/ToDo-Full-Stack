@@ -1,16 +1,5 @@
 # Modules, First-class functions, Strings and Numbers
 
-## Concepts
-
-Number | Name
---------|-------------------
-0. | [Node](https://nodejs.org/en/)
-1. | [Data-types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-2. | [Test Driven Development](https://github.com/dev-academy-programme/curriculum/tree/master/concepts/test-driven-development)
-3. | [Functions as 'first class' objects](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/)
-4. | [Common JS require and module.exports](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
-
-
 ## Part 1: Kata : strings and numbers
 
 In this kata we're going to write our own `filter` and `map` functions again. Then use them to filter and map an array of strings. Now, you have probably noticed that JavaScript already has these methods attached to the Array object:
@@ -223,9 +212,14 @@ You might also ask the original developers of the package about it. Fortunately,
 
 Congratulations! You have published and downloaded a package on npm.
 
+---
 
+## Resources 
 
-
-
-
-
+Number | Name
+--------|-------------------
+0. | [Node](https://nodejs.org/en/)
+1. | [Data-types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+2. | [Test Driven Development](https://github.com/dev-academy-programme/curriculum/tree/master/concepts/test-driven-development)
+3. | [Functions as 'first class' objects](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/)
+4. | [Common JS require and module.exports](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
