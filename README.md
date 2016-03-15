@@ -1,13 +1,5 @@
 # Data Structures
 
-## Concepts
-
-Number | Name
--------|-------------------
-1.     | [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-2.     | [Browserify](https://www.npmjs.com/package/browserify)
-3.     | [Tape](https://www.npmjs.com/package/tape)
-
 ## Intro
 
 cd into the directory and run `npm install` (this could take a while).
@@ -42,6 +34,12 @@ Browserifying on the fly as we make file changes can be a hassle to setup. This 
 
 Run the above command to start serving the app.
 
+---
 
+## Resources
 
-
+Number | Name
+-------|-------------------
+1.     | [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+2.     | [Browserify](https://www.npmjs.com/package/browserify)
+3.     | [Tape](https://www.npmjs.com/package/tape)
