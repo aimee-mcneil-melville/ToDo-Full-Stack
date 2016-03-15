@@ -22,7 +22,7 @@
     "app": "budo app/index.js:bundle.js --live --dir app",
     "app:test": "browserify app/test.js | tap-closer | smokestack -b firefox | tap-spec",
     "test": "tape test/*.js | tap-spec",
-    "app:build": "browserify app/index.js > app/bundle.js -d"
+    "app:build": "browserify app/index.js -o app/bundle.js -d"
   },
   "repository": {
     "type": "git",
