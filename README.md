@@ -29,7 +29,11 @@ Work through the tests until they're all passing.
   - Go have a look for the app script under scripts. (We'll dig into how this works later.) 
   - This script Browserifies for us on the fly as we make file changes, which saves lots of time
   - Run the script (`npm run app`)
-- Make some changes and watch the magic happen!
+  - Make some changes and watch the magic happen!
+
+5. Check out the script called `app:test` in your `package.json`
+  - run the script (you need to have firefox installed on the computer)
+  - see if you can figure out why the test is failing, then get it to pass
 
 ---
 
