@@ -1,15 +1,5 @@
 # Meowtown
 
-## Concepts
-
-Number | Name
--------|------
-1 | [REST](http://guides.rubyonrails.org/routing.html)
-2 | [Express](http://expressjs.com/)
-3 | [Handlebars](http://handlebarsjs.com/)
-4 | Eugene
-
-
 We're going to play with a fun project called [meowtown](http://meowtown.herokuapp.com/cats) that was written by [Eugene.](https://github.com/data-doge)
 
 
@@ -64,4 +54,14 @@ Implement the rule that removes lives from the cat when it's viewed. Delete a ca
 Sort cats by when they were last viewed by a user.
 
 Appropriate Eugene's css file and add it to your server. 
+
+
+## Resources
+
+Number | Name
+-------|------
+1 | [REST](http://guides.rubyonrails.org/routing.html)
+2 | [Express](http://expressjs.com/)
+3 | [Handlebars](http://handlebarsjs.com/)
+4 | Eugene
 
