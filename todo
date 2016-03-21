@@ -2,57 +2,51 @@
 var knex = require('knex')({
   client: 'sqlite3',
   connection: {
-    filename: __dirname + "/dev.sqlite3"
+    filename: __dirname + '/dev.sqlite3'
   },
   useNullAsDefault: true
-});
-
-var todos = [Todo('clean')]
-
-function Todo(task){
-
-  var _task = task
-  return {
-    getTask: function(){
-      return _task 
-    } 
-  }
-}
+})
 
 var cmd = process.argv[2]
 var note = process.argv[3]
 
-switch(cmd){
+switch (cmd) {
   case 'add':
     addTodo(note)
       .then(getAll)
       .then(listTodos)
+      .catch(logError)
       .finally(closeDB)
     break
 
   case 'list':
     getAll()
       .then(listTodos)
+      .catch(logError)
       .finally(closeDB)
     break
+
   default:
     console.log('no matched cases')
-    knex.destroy()
+    closeDB()
     break
 }
 
-function listTodos(todos){
-  todos.forEach(function(todo){console.log(todo.task)})
+function listTodos (todos) {
+  todos.forEach(function (todo) { console.log(todo.task) })
 }
 
-function getAll(){
+function logError (err) {
+  console.log('Dang, we exploded like a bomb: ', err)
+}
+function getAll () {
   return knex.raw('select * from "todos"')
 }
 
-function addTodo(task){
+function addTodo (task) {
   return knex.raw('insert into "todos" ("task") values ("' + task + '" );')
 }
 
-function closeDB(){
+function closeDB () {
   knex.destroy()
 }
