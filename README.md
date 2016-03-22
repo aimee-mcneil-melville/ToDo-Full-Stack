@@ -13,13 +13,13 @@ We're using the knex module to talk to our sqlite3 database.
 
 ### Run the migrations
 
-```knex migrate:latest```
+```knex migrate:latest```  
 What just happened? There is a new file in your folder. What is it?
 Install SQLite Manager as a firefox addon. Open your new sqlite db file and have a look around. Try and understand how the migration file corresponds to how the db looks in SQLite Manager.
 
 ### Seed the db
 
-```knex seed:run```
+```knex seed:run```  
 Now go check out your db in SQLite Manager. You should see some rows in your table!
 While you are there, write a query that adds a new task to the database.
 
@@ -79,7 +79,4 @@ Run ```knex migration:latest```
 Release 5: Build out the feature from Release 4.
 
 It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing out a task. Maybe you can filter by completed when listing?
-
-
-
 
