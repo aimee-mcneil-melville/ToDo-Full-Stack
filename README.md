@@ -74,7 +74,7 @@ Snoop on the other migration and read the knex docs to work out how to add a new
 
 What type should we use to store our data?
 
-Fill in .down function in our migration. It should be the inverse of the .up function.
+Fill in the .down function in our migration. It should be the inverse of the .up function.
 
 Run ```knex migration:latest``` to run your new migration. If you didn't get any errors check out your db in SQLite Manager. Is it what you expected? What happened to existing data in the db? 
 
@@ -82,7 +82,7 @@ Run ```knex migration:rollback``` Look in your db.
 
 Run ```knex migration:latest``` 
 
-Release 5: Build out the feature from Release 4.
+## Release 5: Build out the feature from Release 4.
 
 It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing out a task. Maybe you can filter by completed when listing?
 
