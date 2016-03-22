@@ -62,13 +62,19 @@ Busy people are complaining about having 200 tasks in their consoles. Add a feat
 
 ## Release 4: Add a migration
 
-What an oversight! We've got this production database set up, lots of users and a new feature request. 
+We've got this production database set up, lots of users and a new feature request. 
+
+We need some way of updating our db without destroying all the existing data. Migrations!
 
 Users want to be able to mark a task as complete without removing it from the db.
 
 Use ```knex migration:make addCompleteColumn``` to create a new blank migration.
 
-Snoop on the other migration and read the knex docs to work out how to add a new column to our table. What type should we use to store our data?
+Snoop on the other migration and read the knex docs to work out how to add a new column to our table. Hint: knex.schema.table lets you modify an existing table.
+
+What type should we use to store our data?
+
+Fill in .down function in our migration. It should be the inverse of the .up function.
 
 Run ```knex migration:latest``` to run your new migration. If you didn't get any errors check out your db in SQLite Manager. Is it what you expected? What happened to existing data in the db? 
 
