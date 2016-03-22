@@ -86,3 +86,11 @@ Run ```knex migration:latest```
 
 It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing out a task. Maybe you can filter by completed when listing?
 
+## Release 6: Use the knex query builder.
+
+Concatenating strings together to make SQL queries is PAINFUL. The whole point of knex is to make query strings for us so that we don't have to do it manually. It's like hyperscript for SQL. Hyperscript makes HTML strings for us. Knex makes SQL strings for us. 
+
+Refactor the todo file and change all the calls to knex.raw. Check out the "Query Builder" part of the knex docs. Your getAll() function will change to something like ```return knex.select().table('tablename')```
+
+Soooo much nicer!
+
