@@ -6,7 +6,7 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
 
 ## Releases
 
-### Release 0: clone the repo and create a branch
+### Release 0: Clone the Repo and Create a Branch
 
 1. Clone this repo. In your browser find the clone URL in the sidebar and copy it. In your terminal, run the following command, replacing `CLONE_URL` with the URL you copied:
 
@@ -56,7 +56,7 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
 
   * Why not? What would happen if everyone merged their branches into master?
 
-### Release 1 : Find The Lie
+### Release 1 : Find the Lie
 A teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
 
 1. Pull your cohort mates branch from GitHub into your local repository.
