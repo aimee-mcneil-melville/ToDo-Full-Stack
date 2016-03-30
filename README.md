@@ -72,7 +72,7 @@ A teacher will guide you to find the cohort mates with whom you're going to play
   git checkout -b THEIR_BRANCH-busted
   ```
 
-  * What is the difference between this command and the one in step 7? 
+  * What is the difference between this command and the one in the previous step? 
     * `git --help checkout`
 
 3. Open `two_truths.md` and add the word **LIE** to the line you think is a lie.
