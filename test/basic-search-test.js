@@ -43,7 +43,7 @@ test('basic search functions', function (t) {
   t.deepEqual(resultsSkullIsland[0], drEvil, 'where() finds an object by property')
 
   var resultsAge = kata.where(contacts, { age: 78 })
-  t.equal(resultsAge.length, 2, 'where() returns an array of the coorect length')
+  t.equal(resultsAge.length, 2, 'where() returns an array of the correct length')
 
   var resultsTwo = kata.where(contacts, { age: 78, address: 'Wayne Manor' })
   t.deepEqual(resultsTwo[0], alfred, 'where() finds objects with two search properties')
