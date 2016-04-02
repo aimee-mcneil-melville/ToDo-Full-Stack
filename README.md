@@ -1,39 +1,48 @@
 # Data Structures
 
-## Intro
+## Install
 
-cd into the directory and run `npm install` (this could take a while).
+1. Clone this repo, then:
+  ```shell
+  cd kata-data-structures
+  npm i
+  ```
 
-## Part 1: Kata with tape
+2. To run the tests:
+  ```shell
+  npm test
+  ```
+  Have a look in `package.json` to see what this is doing.
 
-Take a look at the [tape](https://www.npmjs.com/package/tape) docs.
 
-Run the kata tests with `npm run test` (have a look in package.json to see what this is doing)
+## Part 1: Kata with Tape
 
-Work through the tests until they're all passing.
+Take a look at the [Tape](https://www.npmjs.com/package/tape) docs.
 
-## Part 2: Mini-app with browserify and tape.
+Run the tests. Work through them until they're all passing.
 
-1. Take a look at the [browserify](https://www.npmjs.com/package/browserify) npm docs.
+## Part 2: Mini-app with Browserify and tape.
+
+1. Take a look at the [Browserify](https://www.npmjs.com/package/browserify) npm docs.
   - Don't worry if this doesn't make sense.
-  - There is a [much more detailed Browserify Handbook](https://github.com/substack/browserify-handbook)
+  - There is a [much more detailed Browserify Handbook](https://github.com/substack/browserify-handbook).
 
-2. Browserify the `index.js` transforming it into `bundle.js`.
-  - Open up your `bundle.js` and take a look at it. What has browserify done!!??
+2. Browserify `index.js` transforming it into `bundle.js`.
+  - Open up your `bundle.js` and take a look at it. What has Browserify done!!??
 
-3. Browserify the `app/index.js`
-  - Now we're going to write node-style code with module.exports and use browserify to convert it into browser compatible code.
+3. Browserify `app/index.js`.
+  - Now we're going to write Node-style code with `module.export`s and use Browserify to convert it into browser compatible code.
   - Take a look at the `app/` folder and get familiar with the require paths in `app/index.js`
 
-4. Use the 'app' script which is defined in `package.json` to serve your app
-  - Go have a look for the app script under scripts. (We'll dig into how this works later.) 
-  - This script Browserifies for us on the fly as we make file changes, which saves lots of time
-  - Run the script (`npm run app`)
+4. Use the `app` script which is defined in `package.json` to serve your app.
+  - Go have a look for the `app` script under scripts. (We'll dig into how this works later.) 
+  - This script Browserifies for us on the fly as we make file changes, which saves lots of time.
+  - Run the script: `npm run app`.
   - Make some changes and watch the magic happen!
 
 5. Check out the script called `app:test` in your `package.json`
-  - run the script (you need to have firefox installed on the computer)
-  - see if you can figure out why the test is failing, then get it to pass
+  - Run the script (you need to have Firefox installed on the computer).
+  - See if you can figure out why the test is failing, then get it to pass.
 
 ---
 
