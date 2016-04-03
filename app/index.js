@@ -11,6 +11,7 @@ function updateCell (row, col, value) {
 domready(function () {
   var board = kata.getMatrix(3)
   var table = initialRender(board, '#root')
+  document.getElementById('root').appendChild(table)
 
   table.addEventListener('click', function (e) {
     // your code here
