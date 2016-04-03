@@ -30,17 +30,25 @@ Run the tests. Work through them until they're all passing.
 2. Browserify `index.js` transforming it into `bundle.js`.
   - Open up your `bundle.js` and take a look at it. What has Browserify done!!??
 
-3. Browserify `app/index.js`.
-  - Now we're going to write Node-style code with `module.export`s and use Browserify to convert it into browser compatible code.
+3. Try this:
+  ```shell
+  browserify app/index.js > bundle.js
+  ```
+  - Take another look at `bundle.js`. Notice that it still has everything that it had before, with some additional code. That's because `app/index.js` _requires_ `index.js` with this statement:
+  ```js
+  var kata = require('../')
+  ```
+
+4. Now we're going to write Node-style code with `module.export`s and use Browserify to convert it into browser compatible code.
   - Take a look at the `app/` folder and get familiar with the require paths in `app/index.js`
 
-4. Use the `app` script which is defined in `package.json` to serve your app.
+5. Use the `app` script which is defined in `package.json` to serve your app.
   - Go have a look for the `app` script under scripts. (We'll dig into how this works later.) 
   - This script Browserifies for us on the fly as we make file changes, which saves lots of time.
   - Run the script: `npm run app`.
   - Make some changes and watch the magic happen!
 
-5. Check out the script called `app:test` in your `package.json`
+6. Check out the script called `app:test` in your `package.json`
   - Run the script (you need to have Firefox installed on the computer).
   - See if you can figure out why the test is failing, then get it to pass.
 
