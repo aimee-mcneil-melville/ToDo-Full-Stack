@@ -52,6 +52,8 @@ Run the tests. Work through them until they're all passing.
   - Run the script (you need to have Firefox installed on the computer).
   - See if you can figure out why the test is failing, then get it to pass.
 
+7. **STRETCH**: In `app/index.js` there's an empty event handler. See if you can use it to make a matrix cell _increment_ by one each time you click on it.
+
 ---
 
 ## Resources
