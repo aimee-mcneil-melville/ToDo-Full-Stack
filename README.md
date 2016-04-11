@@ -68,7 +68,7 @@ We need some way of updating our db without destroying all the existing data. Mi
 
 Users want to be able to mark a task as complete without removing it from the db.
 
-Use ```knex migration:make addCompleteColumn``` to create a new blank migration.
+Use ```knex migrate:make addCompleteColumn``` to create a new blank migration.
 
 Snoop on the other migration and read the knex docs to work out how to add a new column to our table. Hint: knex.schema.table lets you modify an existing table.
 
@@ -76,11 +76,11 @@ What type should we use to store our data?
 
 Fill in the .down function in our migration. It should be the inverse of the .up function.
 
-Run ```knex migration:latest``` to run your new migration. If you didn't get any errors check out your db in SQLite Manager. Is it what you expected? What happened to existing data in the db? 
+Run ```knex migrate:latest``` to run your new migration. If you didn't get any errors check out your db in SQLite Manager. Is it what you expected? What happened to existing data in the db? 
 
-Run ```knex migration:rollback``` Look in your db. 
+Run ```knex migrate:rollback``` Look in your db. 
 
-Run ```knex migration:latest``` 
+Run ```knex migrate:latest``` 
 
 ## Release 5: Build out the feature from Release 4.
 
