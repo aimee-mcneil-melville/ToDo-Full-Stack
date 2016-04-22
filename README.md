@@ -4,7 +4,7 @@ This challenge is designed to practice interacting with JavaScript objects, pull
 
 ## Install
 
-1. Clone this repo, then:
+Clone this repo, then:
 
   ```shell
   cd kata-data-structures
