@@ -1,5 +1,7 @@
 # Data Structures
 
+This challenge is designed to practice interacting with javascript objects, pulling values from objects in functions and testing the outcome of these in controlled tests. 
+
 ## Install
 
 1. Clone this repo, then:
@@ -8,18 +10,20 @@
   npm i
   ```
 
-2. To run the tests:
+
+## Part 1: Kata with Tape
+
+Take a look at the [Tape](https://www.npmjs.com/package/tape) docs. Look at the first file in the test folder and examine how the tests are set out. Reference this with the tape docs to understand exactly how each test function works, jot this down, and take it in turns to explain it to your pair.
+
+After this, run the tests, and change the code they are testing until they all pass. 
+
+. To run the tests:
   ```shell
   npm test
   ```
   Have a look in `package.json` to see what this is doing.
 
-
-## Part 1: Kata with Tape
-
-Take a look at the [Tape](https://www.npmjs.com/package/tape) docs.
-
-Run the tests. Work through them until they're all passing.
+When you have all the tests passing, read your code through carefully and ensure you know evertyhing that is going on before continuing to the next part of the challenge.
 
 ## Part 2: Mini-app with Browserify and tape.
 
