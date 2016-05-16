@@ -24,7 +24,7 @@ function subordinate () {
 boss(subordinate)
 ```
 
-The other difference is that instead of just using `console.log()' to test our code, we'll use our own "assert" function to make this prettier and easier, and "require" it into the main file. We'll cover how this works in Part 2. 
+The other difference is that instead of just using `console.log()` to test our code, we'll use our own "assert" function to make this prettier and easier, and "require" it into the main file. We'll cover how this works in Part 2. 
 
 To begin Part 1, in your terminal:
 
@@ -32,16 +32,14 @@ To begin Part 1, in your terminal:
 * `npm install`, which will install the dependent npm modules defined in `package.json`.
 * `node main.js`, which will run the tests.
 
-You should a series of failing tests, but our `assert` function is coloring the console output red and printing a red x. Your goal is to make the tests pass.
+You should a series of failing tests, but our `assert` function is coloring the console output red and printing a red `x`. Your goal is to make the tests pass.
 
 
 ## Part 2: CommonJS Modules
 
 You may have noticed that your `main.js` file grew reasonably large in Part 1. At 100-150 lines a file may be manageable. But much larger than this it gets much harder to navigate around the file and understand how it works. Particularly if you didn't write the file orginally. In part 2 we'll use a common strategy to manage the size of our main file.
 
-First, take a look in `utils/assert.js`.
-
-Then the top of the `main.js` file:
+At the top of the `main.js` file you will see a reference to the `assert` module:
 
 ```js
 var assert = require('utils/assert')
@@ -50,9 +48,9 @@ var data = require('data/data')
 // more code
 ```
 
-One of the useful things about Node is it allows us to write code "modules" in [common JS](https://nodejs.org/docs/latest/api/modules.html) format.
+You can find that module in the `utils/assert.js` file. This approach allows us to place `assert()` in a different file so it can be used my multiple other files.
 
-Modules allow us to break code up into separate files. This allows code be more:
+One of the useful things about Node is it allows us to write code "modules" in [CommonJS](https://nodejs.org/docs/latest/api/modules.html) format. Modules allow us to break code up into separate files. This allows code be more:
 
  * Testable - we can test pieces of the code separately.
  * Readable - the code in one small file may perform a very specific task making easier to hold in heads.
@@ -73,7 +71,7 @@ Modules allow us to break code up into separate files. This allows code be more:
 
 7. Discuss with you pair the advantages and disadvantages of using modules and the different exporting and importing flavours.
 
-### Common JS: Three flavours
+### CommonJS: Three flavours
 
 1. Exporting using the `exports.myFunctionName = ` syntax:
 
@@ -228,4 +226,4 @@ Number | Name
 1. | [Data-types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 2. | [Test Driven Development](https://github.com/dev-academy-programme/curriculum/tree/master/concepts/test-driven-development)
 3. | [Functions as 'first class' objects](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/)
-4. | [Common JS require and module.exports](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
+4. | [CommonJS require and module.exports](http://www.sitepoint.com/understanding-module-exports-exports-node-js/)
