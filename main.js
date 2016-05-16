@@ -10,7 +10,7 @@ function each (func, arr) {
 }
 
 function getType (thing) {
-  return typeof thing
+
 }
 
 function isNumber (thing) {
