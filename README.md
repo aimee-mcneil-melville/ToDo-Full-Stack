@@ -24,15 +24,15 @@ function subordinate () {
 boss(subordinate)
 ```
 
-The other difference is that instead of just using `console.log()' to test our code, we'll use our own "assert" function to make this prettier and easier, and "require" it into the main file.
+The other difference is that instead of just using `console.log()' to test our code, we'll use our own "assert" function to make this prettier and easier, and "require" it into the main file. We'll cover how this works in Part 2. 
 
-We'll cover how this works in Part 2. For now, pull down the git repo, in your root directory of this exercise in the terminal run:
+To begin Part 1, in your terminal:
 
-`node main.js`
+* Clone this repo
+* `npm install`, which will install the dependent npm modules defined in `package.json`.
+* `node main.js`, which will run the tests.
 
-(Make sure you remember to `npm install`)
-
-You should a series of failing tests, but our `assert` function is coloring the console output red and printin a red x. Your goal, once aagain, is to make the tests pass.
+You should a series of failing tests, but our `assert` function is coloring the console output red and printing a red x. Your goal is to make the tests pass.
 
 
 ## Part 2: CommonJS Modules
