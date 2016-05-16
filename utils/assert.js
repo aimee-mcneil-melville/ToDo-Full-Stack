@@ -4,7 +4,7 @@ var pretty = require('js-object-pretty-print').pretty
 
 module.exports = function (actual, expected, message) {
   var greenCheck = colors.green(emoji.get('white_check_mark'))
-  var redCross = colors.red(emoji.get('negative_squared_cross_mark'))
+  var redCross = colors.red(emoji.get('x'))
   if (actual === expected) {
     console.log(greenCheck, colors.green(message))
   } else {
