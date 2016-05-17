@@ -19,7 +19,7 @@ function getType (thing) {
 }
 
 assert(getType(meaningOfLife), 'string', 'meaningOfLife is a string data type')
-assert(getType(data), 'object', 'data is an object!?')
+assert(getType(data), 'object', 'data is an object')
 
 /*
  * isNumber
@@ -37,7 +37,7 @@ assert(isNumber(meaningOfLife), false, 'meaningOfLife is not a number datatype')
 function isStringNumber (str) {
 }
 
-assert(isStringNumber(meaningOfLife), true, 'we can convert meaningOfLife to number')
+assert(isStringNumber(meaningOfLife), true, 'meaningOfLife to string number')
 assert(isStringNumber('jsksk'), false, 'isStringNumber does not give a false positive')
 
 /*
@@ -56,7 +56,7 @@ assert(toNumber(meaningOfLife), 42, 'toNumber can convert strings to number if p
 function add (a, b) {
 }
 
-assert(add(2, 3), 5, 'add() can add')
+assert(add(2, 3), 5, 'add successfully adds two numbers')
 
 /*
  * addStrings
@@ -65,7 +65,7 @@ assert(add(2, 3), 5, 'add() can add')
 function addStrings (a, b) {
 }
 
-assert(addStrings(meaningOfLife, '10'), '52', 'addStrings can add strings and convert them back to a string')
+assert(addStrings(meaningOfLife, '10'), '52', 'addStrings can add number strings and convert them back to a string')
 
 /*
  * addStringsOrNumbers
@@ -75,7 +75,7 @@ function addStringsOrNumbers (a, b) {
 }
 
 assert(addStringsOrNumbers(2, 3), 5, 'addStringsOrNumbers can add numbers')
-assert(addStringsOrNumbers('1', '2'), '3', 'addStringsOrNumbers can add numbers')
+assert(addStringsOrNumbers('1', '2'), '3', 'addStringsOrNumbers can add strings')
 assert(addStringsOrNumbers('10', 10), '20', 'addStringsOrNumbers can add strings and numbers (returning a string)')
 
 /*
@@ -87,6 +87,7 @@ function isEmail (str) {
 
 assert(isEmail('thedonald@makeamericagreatagain.com'), true, 'isEmail detects an email')
 assert(isEmail('3333@'), false, 'isEmail does not give a false positive')
+assert(isEmail('johnny.b.good'), false, 'isEmail does not give a false positive')
 
 /*
  * countIf
@@ -95,11 +96,14 @@ assert(isEmail('3333@'), false, 'isEmail does not give a false positive')
 function countIf (testFunc, arr) {
 }
 
+var isString = function (s) {
+  return typeof s === 'string'
+}
 var mixedArray = [1, '21', null, Date.now(), 5, meaningOfLife, 42]
 var expectedNumberCount = 4 // do you know which 4 are numbers?
 var expectedStringCount = 2
 var numberCount = countIf(isNumber, mixedArray)
-var stringCount = countIf(function (x) { return typeof x === 'string' }, mixedArray)
+var stringCount = countIf(isString, mixedArray)
 
 assert(numberCount, expectedNumberCount, 'countIf can count the numbers in an array')
 assert(stringCount, expectedStringCount, 'countIf can count the strings in an array')
