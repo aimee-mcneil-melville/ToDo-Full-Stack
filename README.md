@@ -14,11 +14,11 @@ Clone this repo, then:
 
 ## Part 1: Kata with Tape
 
-Take a look at the [Tape](https://www.npmjs.com/package/tape) docs. Look at the first file in the test folder and examine how the tests are set out. Reference this with the tape docs to understand exactly how each test function works, jot this down, and take it in turns to explain it to your pair.
+First take a look at the [Tape](https://www.npmjs.com/package/tape) docs. Then look at the first file in the test folder and examine how the tests are set out. Reference this with the tape docs to understand exactly how each test function works, jot this down, and take it in turns to explain it to your pair.
 
-After this, run the tests, and change the code they are testing until they all pass. 
+After you're comfortable with how the tests work, run the tests, and change the code they are testing until all tests pass. 
 
-To run the tests, run `npm test` on the terminal. Also, have a look in `package.json` to see what this is doing.
+To run the tests, run `npm test` in your terminal. Also, have a look in `package.json` (specifically the `scripts` section) to see what this is doing.
 
 When you have all the tests passing, read your code through carefully and ensure you know evertyhing that is going on before continuing to the next part of the challenge.
 
