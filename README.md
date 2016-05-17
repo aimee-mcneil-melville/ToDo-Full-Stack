@@ -110,7 +110,7 @@ One of the useful things about Node is it allows us to write code "modules" in [
   var filter = require('./utils/filter.js')
   ```
 
-4. Exporting functions in separate files then combining them into a an object in `index.js`:
+  This approach can be used to combine functions from separate files into an "aggregate" module in `index.js`:
 
   ```js
   // utils/index.js
@@ -133,25 +133,25 @@ One of the useful things about Node is it allows us to write code "modules" in [
 
 We're going to pull out the the utils library into its own repo to get it ready for publishing
 
-1. go to your personal github account and create a new repo: "[your name]-utils" - select "Node" for .gitignore and AGPL v3 for license.
+1. Go to your personal github account and create a new repo: "[your name]-utils" - select "Node" for .gitignore and AGPL v3 for license.
 
-2. git clone you new repo and change directory into it (git clone; cd).
+2. Git clone you new repo and change directory into it (git clone; cd).
 
-3. create two new directories `test/` and `lib/` in your new repo (mkdir).
+3. Create two new directories `test/` and `lib/` in your new repo (mkdir).
 
-4. copy your index.js and the other files file from 3(b) into the root folder of your local repo (cp).
+4. Copy your index.js and the other files file from 3(b) into the root folder of your local repo (cp).
 
-5. copy your function files into `lib/` and the `main.js into `test/test.js` (renaming it test.js) (cp).
+5. Copy your function files into `lib/` and the `main.js into `test/test.js` (renaming it test.js) (cp).
 
-6. copy `'utils/assert.js` into `test/assert.js` (cp).
+6. Copy `utils/assert.js` into `test/assert.js` (cp).
 
-7. delete all the code in `test/test.js that doesn't test filter, map, forEach, or countIf.
+7. Delete all the code in `test/test.js that doesn't test filter, map, forEach, or countIf.
 
-8. adjust the file paths in index.js and test.js so that they reflect the new file and folder setup.
+8. Adjust the file paths in index.js and test.js so that they reflect the new file and folder setup.
 
-9. from the root directory run `npm init -y`.
+9. From the root directory run `npm init -y`.
 
-10. this creates a `package.json` file in your root directory. open it in a text editor, it should look something like this:
+10. This creates a `package.json` file in your root directory. open it in a text editor, it should look something like this:
 
   ```js
   {
@@ -183,11 +183,11 @@ We're going to pull out the the utils library into its own repo to get it ready 
 
 11. Edit the description of the package.json to "a utility library".
 
-12. run `npm install colors js-object-pretty-print node-emoji --save-dev` in the terminal.
+12. Run `npm install colors js-object-pretty-print node-emoji --save-dev` in the terminal.
 
   This installs the packages that the assert function depends on, its "dependencies". Check your package.json. Has anything changed?
 
-13. run the tests by running `node test/test.js` in the terminal. Do they still pass? Fix them if they don't.
+13. Run the tests by running `node test/test.js` in the terminal. Do they still pass? Fix them if they don't.
 
 14. Now perform your commit workflow and push to your new repo: `git status`, `git add .`, `git commit -m "initial"`
 
