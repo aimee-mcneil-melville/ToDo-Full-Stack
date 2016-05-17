@@ -206,7 +206,7 @@ We're going to pull out the the utils library into its own repo to get it ready 
   You may wish to update the README.md to provide examples of how to use use your library. If you don't you can never complain about poorly documented libraries ever again!
 
 
-## Part 4: Using an npm module.
+## Part 4: Using an npm module
 
 To complete this section we'll use *another pair's module* in our code by installing it from npm. If you're the first to finish the previous section you may wish to split up and help other pair's finish.
 
