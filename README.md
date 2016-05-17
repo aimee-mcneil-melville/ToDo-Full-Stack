@@ -2,14 +2,14 @@
 
 ## Part 1: Strings and numbers kata
 
-In this kata we're going to write our own `filter` and `map` functions again. Then use them to filter and map an array of strings. Now, you have probably noticed that JavaScript already has these methods attached to the Array object:
+In this kata we're going to write our own `filter` and `map` functions again. Then use them to filter and map an array of strings. You have probably noticed that JavaScript already has these methods attached to the Array object:
 
  * [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
  * [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
-So why are we going to rewrite them? There's a couple of reasons. The first is that by rewriting them we deepen our understanding of what's going on when we call these functions. Second, we're going to write them in a way that has certain advantages which we'll cover later. Third, we're going to package up our functions into our own npm package and learn about how the **n**ode **p**ackage **m**anager works.
+So why are we going to rewrite them? There are a couple of reasons. The first is that by rewriting them we deepen our understanding of what's going on when we call these functions. Second, we're going to write them in a way that has certain advantages which we'll cover later. Third, we're going to package up our functions into our own npm package and learn about how the **n**ode **p**ackage **m**anager works.
 
-Our map and filter functions will themselves accept **functions as parameters**. This is one of the interesting features of JavaScript - we can pass functions into other functions, where the enclosing function will call them. If this is unfamiliar try out the following code in the browser and talk through it with someone:
+Our map and filter functions will accept **functions as parameters**. This is one of the interesting features of JavaScript - we can pass functions into other functions, where the enclosing function will call them. If this is unfamiliar try out the following code in the browser and talk through it with someone:
 
 ```js
 function boss (subord) {
@@ -33,6 +33,8 @@ To begin Part 1, in your terminal:
 * `node main.js`, which will run the tests.
 
 You should a series of failing tests, but our `assert` function is coloring the console output red and printing a red `x`. Your goal is to make the tests pass.
+
+**Tip**: If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN("a string") === true`.
 
 
 ## Part 2: CommonJS Modules
