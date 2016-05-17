@@ -38,7 +38,7 @@ You should a series of failing tests, but our `assert` function is coloring the 
 
 **Tip 2**: If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN("a string") === true`.
 
-**Tip 3**: Some of the tests used data that is defined in `./data/data.js`. You may need to inspect that file to get a sense of the data being used.
+**Tip 3**: Some of the tests use data that is defined in `./data/data.js`. You may need to inspect that file to get a sense of the data being used.
 
 
 ## Part 2: CommonJS Modules
