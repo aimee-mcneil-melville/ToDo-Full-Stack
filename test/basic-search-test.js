@@ -1,4 +1,3 @@
-// main 
 var kata = require('../')
 var test = require('tape')
 var each = kata.each // require('your-library-name').each
@@ -6,7 +5,7 @@ var each = kata.each // require('your-library-name').each
 // var utils = require('your-library-name')
 
 // test data
-contactsObj = { 
+var contactsObj = {
   '123': { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 },
   '124': { address: 'Bag End', name: 'Bilbo Baggins', age: 78 },
   '125': { address: 'Wayne Manor', name: 'Bruce Wayne', age: 43 },
@@ -16,7 +15,7 @@ contactsObj = {
 
 var contacts = [
   { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 },
-  { id:  '124', address: 'Bag End', name: 'Bilbo Baggins', age: 78 },
+  { id: '124', address: 'Bag End', name: 'Bilbo Baggins', age: 78 },
   { id: '125', address: 'Wayne Manor', name: 'Bruce Wayne', age: 43 },
   { id: '126', address: 'Skull Island', name: 'Dr Evil', age: 51 },
   { id: '127', address: 'Wayne Manor', name: 'Alfred', age: 78 }
@@ -24,12 +23,11 @@ var contacts = [
 
 var expectedAddresses = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor' ]
 
-var marge =  { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
+var marge = { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
 var drEvil = { id: '126', address: 'Skull Island', name: 'Dr Evil', age: 51 }
 var alfred = { id: '127', address: 'Wayne Manor', name: 'Alfred', age: 78 }
 
 test('basic search functions', function (t) {
-  
   t.equal(kata.getValue(contactsObj, '123').name, 'Marge Simpson', 'getValue gets a nested object by key')
 
   var addresses = contacts.map(kata.getAddress)
@@ -47,7 +45,6 @@ test('basic search functions', function (t) {
 
   var resultsTwo = kata.where(contacts, { age: 78, address: 'Wayne Manor' })
   t.deepEqual(resultsTwo[0], alfred, 'where() finds objects with two search properties')
-
 
   t.end()
 })
