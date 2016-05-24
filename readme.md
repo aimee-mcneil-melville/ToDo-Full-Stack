@@ -1,9 +1,9 @@
 # Deployment Checklist
 
 ## Heroku setup
-[ ] You have a heroku account
-[ ] You have heroku toolbelt installed
-[ ] You can log into heroku on your command line
+- [ ] You have a heroku account
+- [ ] You have heroku toolbelt installed
+- [ ] You can log into heroku on your command line
 
 ## Setup checklist
   *If you have a database...*
