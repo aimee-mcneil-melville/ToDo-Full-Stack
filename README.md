@@ -17,4 +17,4 @@ The `week-x.md` files in this repo are options you can choose from for your coho
 2. Decide on the 'week' files you want to use, and `git rm` the others.
 3. Rename the files to `week-5.md`, `week-6.md`, etc accordingly.
 4. Delete this section of the readme.
-5. `git add .` and `git push`.
+5. Stage, commit and push your changes.
