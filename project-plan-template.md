@@ -1,18 +1,28 @@
 # Project Plan Template
 
-feel free to vary
+Feel free to vary.
 
-## Learning Objectives
+
+## Learning objectives
+
 What do you want to get better at?
 
-## Description
-A description of your project
 
-## Repo
-Link to the repo - very important
+## Description
+
+A description of your project.
+
+
+## GitHub repository
+
+Link to the repo (very important).
+
 
 ## Technologies
-What technologies are you going to play with
+
+What technologies are you using?
+
 
 ## Milestones
-What milestones and timeline do you want to commit to 
+
+What are the timings of your milestones?
