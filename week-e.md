@@ -62,10 +62,3 @@
 3. [Topic - Name]
 4. [Topic - Name]
 
-
-## Friday
-
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
