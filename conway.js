@@ -1,6 +1,2 @@
-var countAliveNeighbours = require('./countAliveNeighbours')
-var nextCellState = require('./nextCellState')
-
-
-exports.createBoard = createBoard
-exports.nextBoard = nextBoard
+exports.createBoard = require('./createBoard')
+exports.nextBoard = require('./nextBoard')
