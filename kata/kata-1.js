@@ -1,90 +1,50 @@
-
-// simple objects
-
+// makeObject should return an object like this:
+// {
+//   key: value
+// }
 function makeObject (key, value) {
 }
 
+// getValue should return the value of the property contained in `key`
 function getValue (obj, key) {
 }
 
+// ageOneYear should add one to the `age` property of `obj`
 function ageOneYear (obj) {
 }
 
+// deleteProp should remove the property contained in `key` from `obj`
 function deleteProp (obj, key) {
 }
 
-// simple arrays
-
+// makeArrayOfItem should return an array that is `length` long, made up of `item`
+// For example, makeArrayOfItem('foo', 2) would return:
+// ['foo', 'foo']
 function makeArrayOfItem (item, length) {
 }
 
+// makeArrayOfItems should return an array containing all arguments passed to it
 function makeArrayOfItems () {
 }
 
+// getGreeting should return a string containing 'Hello ' and the contents of `name`
 function getGreeting (name) {
 }
 
-
-// TESTS 
-
-var expectedObj = { a: 1 }        // this is what we expect our function to make
-var actual = makeObject('a', 1)   // this is what our function actually makes
-
-console.log( "makeObject makes objects: ", actual.a === expectedObj.a )     // our 'test' : when it's passing, we will console.log true 
-console.log( "getValue gets values from objects: ", getValue(expectedObj, 'a') === 1 )
-
-
-var mickey = { name: 'Mickey Mouse', age: 64, email: 'mickey@disney.com' } 
-console.log( "ageOneYear adds 1 year to the age property of an object: ", ageOneYear(mickey).age === 65 )
-
-
-deleteProp(mickey, 'email')
-console.log( typeof mickey.email === 'undefined' )
-
-
-var expectedArray = [ 'a', 'a', 'a' ]
-var actualArray = makeArrayOfItem('a', 3)
-
-for (var i = 0; i < expectedArray.length; i++) {
-  console.log( expectedArray[i] === actualArray[i] )
+// returnErrorIfFalsy should return a JavaScript Error object with message:
+//   'Oh no, an error!'
+// if val evaluates to false
+function returnErrorIfFalsy (val) {
 }
 
-
-var arrayOfDifferentItems = [ 'a', 2, false ]
-var actualArrayOfDifferent = makeArrayOfItems('a', 2, false)
-
-for (var i = 0; i < expectedArray.length; i++) {
-  console.log( arrayOfDifferentItems[i] === actualArrayOfDifferent[i] )
+// Leave this alone for now: it just makes your code visible so it can be tested!
+module.exports = {
+  makeObject: makeObject,
+  getValue: getValue,
+  ageOneYear: ageOneYear,
+  deleteProp: deleteProp,
+  makeArrayOfItem: makeArrayOfItem,
+  makeArrayOfItems: makeArrayOfItems,
+  getGreeting: getGreeting,
+  returnErrorIfFalsy: returnErrorIfFalsy
 }
-
-
-var names = [ 'Alice', 'Bob', 'Celia', 'Dan' ]
-var expectedGreetings = [ 'Hello Alice', 'Hello Bob', 'Hello Celia', 'Hello Dan' ]
-var actualGreetings = names.map(getGreeting)
-
-for (var i = 0; i < names.length; i++) {
-  console.log( actualGreetings[i] === expectedGreetings[i] )
-}
-
-
-var people = [ { name: 'Alice' }, { name: 'Bob' }, { name: 'Celia' }, { name: 'Dan' } ]
-var expectedPeopleWithGreetings = [ 
-  { name: 'Alice', greeting: 'Hello Alice' }, 
-  { name: 'Bob', greeting: 'Hello Bob' }, 
-  { name: 'Celia', greeting: 'Hello Celia' }, 
-  { name: 'Dan', greeting: 'Hello Dan' } 
-]
-
-var actualPeopleWithGreetings = people.map(function (person) {
-  person.greeting = getGreeting(person.name)
-  return person
-})
-
-for (var i = 0; i < expectedPeopleWithGreetings.length; i++) {
-  console.log( expectedPeopleWithGreetings[i].greeting === actualPeopleWithGreetings[i].greeting )
-}
-var err = returnErrorIfFalsy(false)
-console.log( err.name === 'Error' && err.message === 'Oh no an error!' )
-
-var notErr = returnErrorIfFalsy({})
-console.log( notErr === true )
