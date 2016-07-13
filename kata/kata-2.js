@@ -1,167 +1,75 @@
+// hasItem should return true if `item` is present in `arr` at least once, 
+// otherwise it should return false.
 function hasItem (arr, item) {
 }
 
+// getItemAtIndex should return arr[idx] but only if that index exists:
+// if it doesn't, return a JavaScript Error object.
 function getItemAtIndex (arr, idx) {
 }
 
+// replaceItemAtIndex should replace the element at `idx` with `item`
 function replaceItemAtIndex (arr, idx, item) {
 }
 
+// insertItemAtIndex should insert `item` at `idx` without overwriting
+// any array values (the array should get longer)
 function insertItemAtIndex (arr, item,  idx) {
 }
 
+// deleteItemAtIndex should remove the element at `idx` (the array
+// should get shorter).
 function deleteItemAtIndex (arr, idx) {
 }
 
+// deleteItem should return an array with every instance of `item` removed
 function deleteItem (arr, item) {
 }
 
-
-// objects to arrays to objects
-
+// keys should return an array of the object's property names (keys)
+// For example, given {foo: 1, bar: 2} it would return ['foo', 'bar']
 function keys (obj) {
 }
 
+// values should return an array of the object's own values
+// For example, given { foo: 1, bar: 2} it would return [1, 2]
 function values (obj) {
 }
 
+// zipObject should take two arrays and build them into an object.
+// For example, given ['foo', 'bar'] and [1, 2] it would return
+// { foo: 1, bar: 2}
 function zipObject (keys, values) {
 }
 
-function unzip(obj) {
+// unzipObject should return an array of arrays, each one a pair
+function unzipObject(obj) {
 }
 
-function findOneByProperty (arr, keyValue) {
+// findOneByProperty should return an object from `arr` that has the 
+// property AND value of `search`. For example, given:
+//   [ { a: 1 }, { b: 2, c: 3 } ] and { b: 2 } 
+// it will return: 
+//   { b: 2, c: 3 }
+function findOneByProperty (arr, search) {
 }
 
-function findAll (arr, keyValue) {
+// findAll should return an array containing all objects in `arr` that
+// have the property and value of `search`
+function findAll (arr, search) {
 }
 
-// TESTS
-
-
-var arrayOfDifferentTypes = [ 'a', 1, null, true ] 
-
-console.log(hasItem(arrayOfDifferentTypes, 'a') === true)
-console.log(hasItem(arrayOfDifferentTypes, 'mickey') === false)
-
-var alphabet = ['a', 'b', 'c', 'd', 'e' ]
-console.log(getItemAtIndex(alphabet, 3) === 'd')
-console.log(getItemAtIndex(alphabet, 10).name === 'Error')
-
-replaceItemAtIndex(alphabet, 0, 'alpha')
-
-console.log(alphabet)
-console.log(alphabet[0] === 'alpha')
-
-var names = [ 'Aroha', 'Bob', 'Celia', 'Eleanor' ]
-insertItemAtIndex(names, 'Dan', 3)
-console.log(names)
-console.log(names[3] === 'Dan')
-
-deleteItemAtIndex(names, 1) 
-console.log(names[1] !== 'Bob')
-
-deleteItem(names, 'Celia')
-console.log(hasItem(names, 'Celia') === false)
-
-var dracula = { 
-  name: 'Count Dracula', 
-  email: 'dracula@hotmail.com',
-  password: '12345',
-  country: 'Transylvania'
+module.exports = {
+  hasItem : hasItem,
+  getItemAtIndex : getItemAtIndex,
+  replaceItemAtIndex: replaceItemAtIndex, 
+  insertItemAtIndex: insertItemAtIndex, 
+  deleteItemAtIndex: deleteItemAtIndex,
+  deleteItem: deleteItem,
+  keys: keys, 
+  values: values, 
+  zipObject: zipObject, 
+  unzipObject: unzipObject,
+  findOneByProperty: findOneByProperty,
+  findAll: findAll 
 }
-
-var expectedKeys = [ 'name', 'email', 'password', 'country' ]
-var expectedValues = [ 'Count Dracula', 'dracula@hotmail.com', '12345', 'Transylvania' ]
-
-var actualKeys = keys(dracula)
-if (actualKeys) {
-  actualKeys.forEach(function (key) {
-    console.log(expectedKeys.indexOf(key) > -1, key)
-  })
-}
-
-var actualValues = values(dracula)
-if (actualValues) {
-  actualValues.forEach(function (value) {
-    console.log(expectedValues.indexOf(value) > -1, value)
-  })
-}
-
-var draculaReborn = zipObject(expectedKeys, expectedValues)
-if (draculaReborn) {
-  Object.keys(draculaReborn).forEach(function (key) {
-    console.log(key + ' of draculaReborn is present on draculaReborn:  ', Object.keys(dracula).indexOf(key) > -1)
-  })
-}
-
-var pairs = unzip(dracula)
-if (pairs) {
-  pairs.forEach(function (pair) {
-    console.log(dracula[pair[0]] === pair[1])
-  })
-}
-
-var monsters = [
-  { 
-    name: 'Count Dracula', 
-    email: 'dracula@hotmail.com', 
-    country: 'Transylvania',
-    age: 588,
-  },
-  { 
-    name: "Frankenstein's Monster", 
-    email: 'franky@monster.com', 
-    country: 'Switzerland',
-    age: 232,
-  },
-  { 
-    name: 'Cthulhu', 
-    email: 'cthulhu@thedeep.com', 
-    country: "R'lyeh", 
-    age: 1032988 
-  },
-  { 
-    name: 'Taniwha', 
-    email: 'taniwha@awa.com', 
-    country: 'Aotearoa', 
-    age: 232
-  }
-]
-
-var foundMonster = findOneByProperty(monsters, { name: 'Taniwha' }) 
-if (foundMonster) {
-  console.log('findOneByProperty findsthe monster ' + foundMonster.name, foundMonster === monsters[3])
-}
-
-var foundMonsters = findAll(monsters, { age: 232 })
-if (foundMonsters) {
-  console.log(foundMonsters.length === 2)
-  foundMasters.forEach(function (monster) {
-    console.log('findAll finds the monster with age 232: ' + monster.name)
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
