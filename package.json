@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/js-kata-objects-and-arrays#readme",
   "devDependencies": {
-    "live-server": "^1.0.0"
+    "live-server": "^1.0.0",
+    "tape": "^4.6.0"
   }
 }
