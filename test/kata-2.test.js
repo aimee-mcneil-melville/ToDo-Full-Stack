@@ -1,4 +1,4 @@
-var test = require('tape')
+var test = require('ava')
 var kata2 = require('../kata/kata-2.js')
 
 test('hasItem returns true if item is in array', function (t) {
@@ -6,7 +6,6 @@ test('hasItem returns true if item is in array', function (t) {
   var expected = true
   var actual = kata2.hasItem(arr, 'a')
   t.equal(actual, expected)
-  t.end()
 })
 
 test('hasItem returns false if item is not in array', function (t) {
@@ -14,7 +13,6 @@ test('hasItem returns false if item is not in array', function (t) {
   var expected = false
   var actual = kata2.hasItem(arr, 'b')
   t.equal(actual, expected)
-  t.end()
 })
 
 test('getItemAtIndex returns the correct item for an existing index', function (t) {
@@ -22,7 +20,6 @@ test('getItemAtIndex returns the correct item for an existing index', function (
   var expected = 'd'
   var actual = kata2.getItemAtIndex(alphabet, 3)
   t.equal(actual, expected)
-  t.end()
 })
 
 test('getItemAtIndex returns a JavaScript Error for a non-existent index', function (t) {
@@ -30,7 +27,6 @@ test('getItemAtIndex returns a JavaScript Error for a non-existent index', funct
   var expected = new Error()
   var actual = kata2.getItemAtIndex(alphabet, 5)
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('replaceItemAtIndex replaces the correct item', function (t) {
@@ -38,7 +34,6 @@ test('replaceItemAtIndex replaces the correct item', function (t) {
   var expected = ['alpha', 'b', 'c', 'd', 'e']
   kata2.replaceItemAtIndex(alphabet, 0, 'alpha')
   t.deepEqual(alphabet, expected)
-  t.end()
 })
 
 test('insertItemAtIndex inserts an element into the array', function (t) {
@@ -46,7 +41,6 @@ test('insertItemAtIndex inserts an element into the array', function (t) {
   var expected = [ 'Aroha', 'Bob', 'Celia', 'Dan', 'Eleanor' ]
   kata2.insertItemAtIndex(names, 'Dan', 3)
   t.deepEqual(names, expected)
-  t.end()
 })
 
 test('deleteItemAtIndex deletes an element from the array', function (t) {
@@ -54,7 +48,6 @@ test('deleteItemAtIndex deletes an element from the array', function (t) {
   var expected = [ 'Aroha', 'Bob', 'Eleanor' ]
   kata2.deleteItemAtIndex(names, 2)
   t.deepEqual(names, expected)
-  t.end()
 })
 
 test('deleteItem deletes ALL instances of item from the array', function (t) {
@@ -62,7 +55,6 @@ test('deleteItem deletes ALL instances of item from the array', function (t) {
   var expected = [ 'Aroha', 'Celia', 'Eleanor' ]
   var actual = kata2.deleteItem(names, 'Bob')
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('keys returns own property keys for an object', function (t) {
@@ -75,7 +67,6 @@ test('keys returns own property keys for an object', function (t) {
   var expected = ['name', 'email', 'password', 'country']
   var actual = kata2.keys(dracula)
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('values returns own values for an object', function (t) {
@@ -88,7 +79,6 @@ test('values returns own values for an object', function (t) {
   var expected = ['Count Dracula', 'dracula@hotmail.com', '12345', 'Transylvania']
   var actual = kata2.values(dracula)
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('zipObject returns an object by combining key and value arrays', function (t) {
@@ -103,7 +93,6 @@ test('zipObject returns an object by combining key and value arrays', function (
     ['Count Dracula', 'dracula@hotmail.com', '12345', 'Transylvania']
   )
   t.deepEqual(actual, draculaReborn)
-  t.end()
 })
 
 test('unzipObject returns an array of key/value pairs', function (t) {
@@ -119,7 +108,6 @@ test('unzipObject returns an array of key/value pairs', function (t) {
     })
   var actual = kata2.unzipObject(dracula)
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('findOneByProperty returns an object with matching property', function (t) {
@@ -157,7 +145,6 @@ test('findOneByProperty returns an object with matching property', function (t) 
   }
   var actual = kata2.findOneByProperty(monsters, { name: 'Cthulhu' })
   t.deepEqual(actual, expected)
-  t.end()
 })
 
 test('findAll returns the correct set of elements', function (t) {
@@ -203,6 +190,5 @@ test('findAll returns the correct set of elements', function (t) {
   ]
   var actual = kata2.findAll(monsters, { age: 232 })
   t.deepEqual(actual, expected)
-  t.end()
 })
 
