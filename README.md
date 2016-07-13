@@ -113,5 +113,5 @@ The following links may help with the less familiar aspects of this challenge:
 - [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FFunctions_and_function_scope%2Farguments)
 - [JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 - [JavaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- [Code kata](https://en.wikipedia.org/wiki/Kata_(programming)
+- [Code kata](https://en.wikipedia.org/wiki/Kata_(programming))
 
