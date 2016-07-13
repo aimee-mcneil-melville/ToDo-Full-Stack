@@ -1,23 +1,23 @@
 {
-  "name": "js-kata",
-  "version": "1.0.0",
+  "name": "js-kata-objects-and-arrays",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon ./node_modules/simple-server/bin/simple-server.js ./"
+    "start": "live-server --port=3000 app"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/js-kata.git"
+    "url": "git+https://github.com/dev-academy-challenges/js-kata-objects-and-arrays.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/js-kata/issues"
+    "url": "https://github.com/dev-academy-challenges/js-kata-objects-and-arrays/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/js-kata#readme",
+  "homepage": "https://github.com/dev-academy-challenges/js-kata-objects-and-arrays#readme",
   "devDependencies": {
-    "simple-server": "^1.0.1"
+    "live-server": "^1.0.0"
   }
 }
