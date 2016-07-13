@@ -41,7 +41,7 @@ npm ERR! Test failed.  See above for more details.
 The most important thing is not to panic! Welcome to your first introduction to testing. In this challenge, you're going to make all the tests go GREEN. It's rather addictive once you get started...
 
 
-## Part 1:  Kata
+## Kata
 
 "Kata" is a concept from martial arts meaning a sequence of moves composed into a "form". Martial artists practise kata to build a "muscle-memory" for the basic moves. By practicing kata the artist hopes to make the basics of their art instinctual. When danger strikes the basics will be so familiar that they can respond without thinking.
 
