@@ -7,11 +7,11 @@ In these exercises we'll practise some of the fundamentals of JavaScript and sta
 
 ## Installation
 
-First, jump into a working directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!)
+First, jump into a working directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!) Replace `cohort-year` with, for example, `kea-2015`.
 
 ```
 cd workspace
-git clone https://github.com/dev-academy-challenges/js-kata-objects-and-arrays
+git clone https://github.com/cohort-year/js-kata-objects-and-arrays
 cd js-kata-objects-and-arrays
 npm install
 ```
