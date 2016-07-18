@@ -48,13 +48,13 @@ You may have noticed that your `main.js` file grew reasonably large in Part 1. A
 At the top of the `main.js` file you will see a reference to the `assert` module:
 
 ```js
-var assert = require('utils/assert')
-var data = require('data/data')
+var assert = require('./utils/assert')
+var data = require('./data/data')
 
 // more code
 ```
 
-You can find that module in the `utils/assert.js` file. This approach allows us to place `assert()` in a different file so it can be used my multiple other files.
+You can find that module in the `./utils/assert.js` file. This approach allows us to place `assert()` in a different file so it can be used my multiple other files.
 
 One of the useful things about Node is it allows us to write code "modules" in [CommonJS](https://nodejs.org/docs/latest/api/modules.html) format. Modules allow us to break code up into separate files. This allows code be more:
 
