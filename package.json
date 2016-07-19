@@ -1,24 +1,14 @@
 {
   "name": "kata-data-structures",
   "version": "1.0.0",
-  "description": "Part 1: Kata",
+  "description": "Data Structures Kata",
   "main": "index.js",
   "directories": {},
-  "dependencies": {
-    "domready": "^1.0.8"
-  },
   "devDependencies": {
-    "budo": "^8.3.0",
-    "smokestack": "^3.4.1",
-    "tap-closer": "^1.0.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "ava": "^0.15.2"
   },
   "scripts": {
-    "app": "budo app/index.js:bundle.js --live --dir app",
-    "app:test": "browserify app/test.js | tap-closer | smokestack -b firefox | tap-spec",
-    "app:build": "browserify app/index.js -o app/bundle.js -d",
-    "test": "tape test/*.js | tap-spec"
+    "test": "ava test/**/*.test.js --fail-fast --serial"
   },
   "repository": {
     "type": "git",
