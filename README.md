@@ -12,52 +12,22 @@ Clone this repo, then:
   ```
 
 
-## Part 1: Kata with Tape
+## Kata with tests
 
-First take a look at the [Tape](https://www.npmjs.com/package/tape) docs. Then look at the first file in the test folder and examine how the tests are set out. Reference this with the tape docs to understand exactly how each test function works, jot this down, and take it in turns to explain it to your pair.
+First, take a look at the file in the test folder and examine how the tests are set out. You don't have to read and understand every single test before beginning! Instead, notice the rhythm that the tests exhibit:
 
-After you're comfortable with how the tests work, run the tests, and change the code they are testing until all tests pass. 
+ * **Arrange:** set up some data to use in the test, especially state _what we expect to happen_;
+ * **Act:** call the function that is being tested, so we can find out _what actually happens_;
+ * **Assert:** check to see if what we _expected_ to happen _actually_ happened!
 
-To run the tests, run `npm test` in your terminal. Also, have a look in `package.json` (specifically the `scripts` section) to see what this is doing.
+Ordinarily you'll be using a testing library called [Tape](https://github.com/substack/tape). For this challenge we've used [Ava](https://github.com/avajs/ava) because it lets us show only one failing test at a time, so as not to flood the screen with red text! Tape and Ava have very similar syntax, so it shouldn't be hard to move between the two.
 
-When you have all the tests passing, read your code through carefully and ensure you know evertyhing that is going on before continuing to the next part of the challenge.
+Try taking it in turns to explain what each test is doing with your pair.
 
+After you're comfortable with how the tests work, run the tests, and change the code they are testing until all tests pass. To run the tests, run `npm test` in your terminal. Also, have a look in `package.json` (specifically the `scripts` section) to see what this is doing.
 
-## Part 2: Mini-app with Browserify and Tape.
+When you have all the tests passing, read your code through carefully and ensure you know everything that is going on before continuing to the next part of the challenge.
 
-1. Take a look at the [Browserify](https://www.npmjs.com/package/browserify) npm docs.
-  - Don't worry if this doesn't make sense.
-  - There is a [much more detailed Browserify Handbook](https://github.com/substack/browserify-handbook).
-
-2. Browserify `index.js` transforming it into `bundle.js`.
-  - Open up your `bundle.js` and take a look at it. What has Browserify done!!??
-
-3. Try this:
-
-  ```shell
-  browserify app/index.js > bundle.js
-  ```
-
-  - Take another look at `bundle.js`. Notice that it still has everything that it had before, with some additional code. That's because `app/index.js` _requires_ `index.js` with this statement:
-
-  ```js
-  var kata = require('../')
-  ```
-
-4. Now we're going to write Node-style code with `module.export` and use Browserify to convert it into browser compatible code.
-  - Take a look at the `app/` folder and get familiar with the require paths in `app/index.js`
-
-5. Use the `app` script which is defined in `package.json` to serve your app.
-  - Go have a look for the `app` script under scripts. (We'll dig into how this works later.) 
-  - This script Browserifies for us on the fly as we make file changes, which saves lots of time.
-  - Run the script: `npm run app`.
-  - Make some changes and watch the magic happen!
-
-6. Check out the script called `app:test` in your `package.json`
-  - Run the script (you need to have Firefox installed on the computer).
-  - See if you can figure out why the test is failing and then get it to pass.
-
-7. **STRETCH**: In `app/index.js` there's an empty event handler. See if you can use it to make a matrix cell _increment_ by one each time you click on it.
 
 ---
 
@@ -66,5 +36,3 @@ When you have all the tests passing, read your code through carefully and ensure
 Number | Name
 -------|-------------------
 1.     | [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-2.     | [Browserify](https://www.npmjs.com/package/browserify)
-3.     | [Tape](https://www.npmjs.com/package/tape)
