@@ -1,8 +1,15 @@
 // Consolidating all the tests into one file is NOT normal practice!
 // We're more interested in getting you used to making tests pass...
 // so we didn't want you to have to deal with more than one test at a time
-var kata = require('../')
 var test = require('ava')
+
+var getValue = require('./getValue')
+var getAddress = require('./getAddress')
+var where = require('./where')
+var matrix = require('./matrix')
+var getType = require('./getType')
+var getValueTypes = require('./getValueTypes')
+var positions = require('./positions')
 
 function getContacts (asArray) {
   var contacts = {
@@ -25,42 +32,42 @@ function getContacts (asArray) {
 test('getValue gets a nested object by key', function (t) {
   var contacts = getContacts()
   var expected = { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
-  var actual = kata.getValue(contacts, '123')
+  var actual = getValue(contacts, '123')
   t.is(actual, expected)
 })
 
 test('map and getAddress return the address property from objects in an array', function (t) {
   var contacts = getContacts(true)
   var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor']
-  var actual = contacts.map(kata.getAddress)
+  var actual = contacts.map(getAddress)
   t.deepEqual(actual, expected)
 })
 
 test('where finds an object by id in an array', function (t) {
   var contacts = getContacts(true)
   var expected = { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
-  var actual = kata.where(contacts, { id: '123' })
+  var actual = where(contacts, { id: '123' })
   t.deepEqual(actual, expected)
 })
 
 test('where finds an object by property', function (t) {
   var contacts = getContacts(true)
   var expected = { address: 'Skull Island', name: 'Dr Evil', age: 51 }
-  var actual = kata.where(contacts, { address: 'Skull Island' })
+  var actual = where(contacts, { address: 'Skull Island' })
   t.deepEqual(actual, expected)
 })
 
 test('where returns an array of the correct length', function (t) {
   var contacts = getContacts(true)
   var expected = 2
-  var actual = kata.where(contacts, { age: 78 }).length
+  var actual = where(contacts, { age: 78 }).length
   t.equal(actual, expected)
 })
 
 test('where finds objects with two search properties', function (t) {
   var contacts = getContacts(true)
   var expected = { address: 'Wayne Manor', name: 'Alfred', age: 78 }
-  var actual = kata.where(contacts, { age: 78, address: 'Wayne Manor' })
+  var actual = where(contacts, { age: 78, address: 'Wayne Manor' })
   t.deepEqual(actual, expected)
 })
 
@@ -70,7 +77,7 @@ test('creating and updating matrices', function (t) {
     [ 0, 0, 0 ],
     [ 0, 0, 0 ]
   ]
-  var actual = kata.getMatrix(3)
+  var actual = matrix.getMatrix(3)
   t.deepEqual(actual, expected)
 })
 
@@ -85,20 +92,20 @@ test('updateMatrix can change the value at specified coordinates', function (t) 
     [ 0, 0, 1 ],
     [ 0, 0, 0 ]
   ]
-  var actual = kata.updateMatrix(initialMatrix, [1, 2], 1)
+  var actual = matrix.updateMatrix(initialMatrix, [1, 2], 1)
   t.deepEqual(actual, expected)
 })
 
 test('getType returns the data type of its argument', function (t) {
   var expected = 'number'
-  var actual = kata.getType(123)
+  var actual = getType(123)
   t.is(actual, expected)
 })
 
 test('getType returns the expected data types', function (t) {
   var arrayWithDifferentTypes = ['d', 3, function () { return 'hello' }, true, []]
   var expected = [ 'string', 'number', 'function', 'boolean', 'object' ]
-  var actual = arrayWithDifferentTypes.map(kata.getType)
+  var actual = arrayWithDifferentTypes.map(getType)
   t.deepEqual(actual, expected)
 })
 
@@ -111,14 +118,14 @@ test('getValueTypes returns the types of object properties', function (t) {
     e: {}
   }
   var expected = ['string', 'number', 'function', 'boolean', 'object']
-  var actual = kata.getValueTypes(objWithDifferentTypes)
+  var actual = getValueTypes(objWithDifferentTypes)
   t.deepEqual(actual, expected)
 })
 
 test('getFirst & getLast', function (t) {
   var alphabet = ['a', 'b', 'c', 'd', 'e']
-  t.is(kata.getFirst(keys), 'a', 'getFirst gets the first item in an array')
-  t.is(kata.getLast(keys), 'e', 'getLast gets the last item in an array')
-  t.is(kata.getLast(keys.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
+  t.is(positions.getFirst(keys), 'a', 'getFirst gets the first item in an array')
+  t.is(positions.getLast(keys), 'e', 'getLast gets the last item in an array')
+  t.is(positions.getLast(keys.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
 })
 

@@ -1,0 +1,2 @@
+function where (arr, propertiesObj) {
+}
