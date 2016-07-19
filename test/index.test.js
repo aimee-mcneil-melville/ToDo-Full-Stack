@@ -3,13 +3,13 @@
 // so we didn't want you to have to deal with more than one test at a time
 var test = require('ava')
 
-var getValue = require('./getValue')
-var getAddress = require('./getAddress')
-var where = require('./where')
-var matrix = require('./matrix')
-var getType = require('./getType')
-var getValueTypes = require('./getValueTypes')
-var positions = require('./positions')
+var getValue = require('../getValue')
+var getAddress = require('../getAddress')
+var where = require('../where')
+var matrix = require('../matrix')
+var getType = require('../getType')
+var getValueTypes = require('../getValueTypes')
+var positions = require('../positions')
 
 function getContacts (asArray) {
   var contacts = {
