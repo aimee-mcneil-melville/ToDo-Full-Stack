@@ -1,8 +1,5 @@
 var kata = require('../')
 var test = require('tape')
-var each = kata.each // require('your-library-name').each
-// var map = require('your-library-name').map
-// var utils = require('your-library-name')
 
 // test data
 var contactsObj = {
@@ -31,7 +28,6 @@ test('basic search functions', function (t) {
   t.equal(kata.getValue(contactsObj, '123').name, 'Marge Simpson', 'getValue gets a nested object by key')
 
   var addresses = contacts.map(kata.getAddress)
-  // var addresses = map(kata.getAddress, contacts)  // (if you're using the map function you wrote in a previous kata)
   t.deepEqual(addresses, expectedAddresses, 'map and getAddress return the address prpoerty from objects in an array')
 
   var results123 = kata.where(contacts, { id: '123' })
