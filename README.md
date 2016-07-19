@@ -24,9 +24,16 @@ Ordinarily you'll be using a testing library called [Tape](https://github.com/su
 
 Try taking it in turns to explain what each test is doing with your pair.
 
-After you're comfortable with how the tests work, run the tests, and change the code they are testing until all tests pass. To run the tests, run `npm test` in your terminal. Also, have a look in `package.json` (specifically the `scripts` section) to see what this is doing.
 
-When you have all the tests passing, read your code through carefully and ensure you know everything that is going on before continuing to the next part of the challenge.
+## Everything is everywhere
+
+After you're comfortable with how the tests work, run the tests using `npm test`. Have a look in `package.json` to see what this is doing.
+
+You should get an error saying something about being unable to find a module. Did you take a look at the directory yet? It's full of files...
+
+Remember `module.exports`? You're going to need to _export_ each function, or possibly an object containing functions as properties, before the test code will be able to see them. Then, as usual, change the code in the empty functions until all tests pass.
+
+When you have all the tests passing, read your code through carefully and ensure you know everything that is going on. Can you refactor any of it? Does it all make sense to you?
 
 
 ---
