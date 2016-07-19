@@ -1,5 +1,4 @@
 module.exports = {
-  each: each,
   getType: getType,
   getValue: getValue,
   getAddress: getAddress,
@@ -9,12 +8,6 @@ module.exports = {
   getMatrix: getMatrix,
   updateMatrix: updateMatrix,
   where: where
-}
-
-function each (func, arr) {
-  for (var i = 0; i < arr.length; i++) {
-    func(arr[i])
-  }
 }
 
 function getType (thing) {
