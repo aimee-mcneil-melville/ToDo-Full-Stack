@@ -65,7 +65,7 @@ test('getFirst & getLast', function (t) {
 })
 
 test('map and getAddress return the address property from objects in an array', function (t) {
-  var contacts = getContacts(true)
+  var contacts = getContacts()
   var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
   var actual = contacts.map(getAddress)
   t.deepEqual(actual, expected)
@@ -97,28 +97,28 @@ test('updateMatrix can change the value at specified coordinates', function (t) 
 })
 
 test('where finds an object by id in an array', function (t) {
-  var contacts = getContacts(true)
+  var contacts = getContacts()
   var expected = [{ id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }]
   var actual = where(contacts, { id: '123' })
   t.deepEqual(actual, expected)
 })
 
 test('where finds an object by property', function (t) {
-  var contacts = getContacts(true)
+  var contacts = getContacts()
   var expected = [{ id: '126', address: 'Skull Island', name: 'Dr Evil', age: 51 }]
   var actual = where(contacts, { address: 'Skull Island' })
   t.deepEqual(actual, expected)
 })
 
 test('where returns multile correct results', function (t) {
-  var contacts = getContacts(true)
+  var contacts = getContacts()
   var expected = 2
   var actual = where(contacts, { age: 78 }).length
   t.equal(actual, expected)
 })
 
 test('where finds objects with two search properties', function (t) {
-  var contacts = getContacts(true)
+  var contacts = getContacts()
   var expected = [{ address: 'Wayne Manor', name: 'Alfred', age: 78 }]
   var actual = where(contacts, { age: 78, address: 'Wayne Manor' })
   t.deepEqual(actual, expected)
