@@ -39,7 +39,7 @@ test('getType returns the data type of its argument', function (t) {
 
 test('getType returns the expected data types', function (t) {
   var arrayWithDifferentTypes = ['d', 3, function () { return 'hello' }, true, []]
-  var expected = [ 'string', 'number', 'function', 'boolean', 'object' ]
+  var expected = ['string', 'number', 'function', 'boolean', 'object']
   var actual = arrayWithDifferentTypes.map(getType)
   t.deepEqual(actual, expected)
 })
@@ -96,6 +96,13 @@ test('updateMatrix can change the value at specified coordinates', function (t) 
   t.deepEqual(actual, expected)
 })
 
+test('find finds the first matching object in the array', function (t) {
+  var contacts = getContacts()
+  var expected = { id: '125', address: 'Wayne Manor', name: 'Bruce Wayne', age: 43 }
+  var actual = find(contacts, { address: 'Wayne Manor' })
+  t.deepEqual(actual, expected)
+})
+
 test('where finds an object by id in an array', function (t) {
   var contacts = getContacts()
   var expected = [{ id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }]
@@ -119,7 +126,7 @@ test('where returns multile correct results', function (t) {
 
 test('where finds objects with two search properties', function (t) {
   var contacts = getContacts()
-  var expected = [{ address: 'Wayne Manor', name: 'Alfred', age: 78 }]
+  var expected = [{ id: '127', address: 'Wayne Manor', name: 'Alfred', age: 78 }]
   var actual = where(contacts, { age: 78, address: 'Wayne Manor' })
   t.deepEqual(actual, expected)
 })
