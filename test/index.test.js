@@ -36,14 +36,14 @@ test('getValue gets a nested object by key', function (t) {
   t.deepEqual(actual, expected)
 })
 
-test.only('map and getAddress return the address property from objects in an array', function (t) {
+test('map and getAddress return the address property from objects in an array', function (t) {
   var contacts = getContacts(true)
   var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
   var actual = contacts.map(getAddress)
   t.deepEqual(actual, expected)
 })
 
-test('where finds an object by id in an array', function (t) {
+test.only('where finds an object by id in an array', function (t) {
   var contacts = getContacts(true)
   var expected = { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
   var actual = where(contacts, { id: '123' })
@@ -124,8 +124,8 @@ test('getValueTypes returns the types of object properties', function (t) {
 
 test('getFirst & getLast', function (t) {
   var alphabet = ['a', 'b', 'c', 'd', 'e']
-  t.is(positions.getFirst(keys), 'a', 'getFirst gets the first item in an array')
-  t.is(positions.getLast(keys), 'e', 'getLast gets the last item in an array')
-  t.is(positions.getLast(keys.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
+  t.is(positions.getFirst(alphabet), 'a', 'getFirst gets the first item in an array')
+  t.is(positions.getLast(alphabet), 'e', 'getLast gets the last item in an array')
+  t.is(positions.getLast(alphabet.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
 })
 
