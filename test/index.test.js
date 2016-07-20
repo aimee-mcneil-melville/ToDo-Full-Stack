@@ -5,94 +5,29 @@ var test = require('ava')
 
 var getValue = require('../getValue')
 var getAddress = require('../getAddress')
-var where = require('../where')
-var matrix = require('../matrix')
 var getType = require('../getType')
 var getValueTypes = require('../getValueTypes')
 var positions = require('../positions')
+var matrix = require('../matrix')
+var where = require('../where')
 
-function getContacts (asArray) {
-  var contacts = {
-    '123': { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 },
-    '124': { address: 'Bag End', name: 'Bilbo Baggins', age: 78 },
-    '125': { address: 'Wayne Manor', name: 'Bruce Wayne', age: 43 },
-    '126': { address: 'Skull Island', name: 'Dr Evil', age: 51 },
-    '127': { address: 'Wayne Manor', name: 'Alfred', age: 78 }
-  }
-
-  if (asArray) {
-    return Object.keys(contacts).map(function (key) {
-      var id = { id: key }
-      return Object.assign(id, contacts[key])
-    })
-  }
-  return contacts
+function getContacts () {
+  return [
+    { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 },
+    { id: '124', address: 'Bag End', name: 'Bilbo Baggins', age: 78 },
+    { id: '125', address: 'Wayne Manor', name: 'Bruce Wayne', age: 43 },
+    { id: '126', address: 'Skull Island', name: 'Dr Evil', age: 51 },
+    { id: '127', address: 'Wayne Manor', name: 'Alfred', age: 78 }
+  ]
 }
 
 test('getValue gets a nested object by key', function (t) {
-  var contacts = getContacts()
+  var contacts = {
+    '123': { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 },
+    '124': { address: 'Bag End', name: 'Bilbo Baggins', age: 78 }
+  }
   var expected = { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
   var actual = getValue(contacts, '123')
-  t.deepEqual(actual, expected)
-})
-
-test('map and getAddress return the address property from objects in an array', function (t) {
-  var contacts = getContacts(true)
-  var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
-  var actual = contacts.map(getAddress)
-  t.deepEqual(actual, expected)
-})
-
-test.only('where finds an object by id in an array', function (t) {
-  var contacts = getContacts(true)
-  var expected = { id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
-  var actual = where(contacts, { id: '123' })
-  t.deepEqual(actual, expected)
-})
-
-test('where finds an object by property', function (t) {
-  var contacts = getContacts(true)
-  var expected = { address: 'Skull Island', name: 'Dr Evil', age: 51 }
-  var actual = where(contacts, { address: 'Skull Island' })
-  t.deepEqual(actual, expected)
-})
-
-test('where returns an array of the correct length', function (t) {
-  var contacts = getContacts(true)
-  var expected = 2
-  var actual = where(contacts, { age: 78 }).length
-  t.equal(actual, expected)
-})
-
-test('where finds objects with two search properties', function (t) {
-  var contacts = getContacts(true)
-  var expected = { address: 'Wayne Manor', name: 'Alfred', age: 78 }
-  var actual = where(contacts, { age: 78, address: 'Wayne Manor' })
-  t.deepEqual(actual, expected)
-})
-
-test('creating and updating matrices', function (t) {
-  var expected = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ]
-  ]
-  var actual = matrix.getMatrix(3)
-  t.deepEqual(actual, expected)
-})
-
-test('updateMatrix can change the value at specified coordinates', function (t) {
-  var initialMatrix = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ]
-  ]
-  var expected = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 1 ],
-    [ 0, 0, 0 ]
-  ]
-  var actual = matrix.updateMatrix(initialMatrix, [1, 2], 1)
   t.deepEqual(actual, expected)
 })
 
@@ -129,3 +64,62 @@ test('getFirst & getLast', function (t) {
   t.is(positions.getLast(alphabet.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
 })
 
+test('map and getAddress return the address property from objects in an array', function (t) {
+  var contacts = getContacts(true)
+  var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
+  var actual = contacts.map(getAddress)
+  t.deepEqual(actual, expected)
+})
+
+test('creating and updating matrices', function (t) {
+  var expected = [
+    [ 0, 0, 0 ],
+    [ 0, 0, 0 ],
+    [ 0, 0, 0 ]
+  ]
+  var actual = matrix.getMatrix(3)
+  t.deepEqual(actual, expected)
+})
+
+test('updateMatrix can change the value at specified coordinates', function (t) {
+  var initialMatrix = [
+    [ 0, 0, 0 ],
+    [ 0, 0, 0 ],
+    [ 0, 0, 0 ]
+  ]
+  var expected = [
+    [ 0, 0, 0 ],
+    [ 0, 0, 1 ],
+    [ 0, 0, 0 ]
+  ]
+  var actual = matrix.updateMatrix(initialMatrix, [1, 2], 1)
+  t.deepEqual(actual, expected)
+})
+
+test('where finds an object by id in an array', function (t) {
+  var contacts = getContacts(true)
+  var expected = [{ id: '123', address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }]
+  var actual = where(contacts, { id: '123' })
+  t.deepEqual(actual, expected)
+})
+
+test('where finds an object by property', function (t) {
+  var contacts = getContacts(true)
+  var expected = [{ id: '126', address: 'Skull Island', name: 'Dr Evil', age: 51 }]
+  var actual = where(contacts, { address: 'Skull Island' })
+  t.deepEqual(actual, expected)
+})
+
+test('where returns multile correct results', function (t) {
+  var contacts = getContacts(true)
+  var expected = 2
+  var actual = where(contacts, { age: 78 }).length
+  t.equal(actual, expected)
+})
+
+test('where finds objects with two search properties', function (t) {
+  var contacts = getContacts(true)
+  var expected = [{ address: 'Wayne Manor', name: 'Alfred', age: 78 }]
+  var actual = where(contacts, { age: 78, address: 'Wayne Manor' })
+  t.deepEqual(actual, expected)
+})
