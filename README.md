@@ -59,7 +59,6 @@ Users make mistakes. Let them update a task like so: ```./todo upate 1 'clean my
 Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given set of words. Something like
 
 ```./todo search 'clean wire' ``` should return tasks 1 and 3 that are seeded in the db
-_note : doing a multi-word search with the query building might be harder than writing a raw sql query_
 
 ## Release 4: Add a migration
 
@@ -94,4 +93,7 @@ Concatenating strings together to make SQL queries is PAINFUL. The whole point o
 Refactor the todo file and change all the calls to knex.raw. Check out the "Query Builder" part of the knex docs. Your getAll() function will change to something like ```return knex.select().table('tablename')```
 
 Soooo much nicer!
+
+_NOTE : doing a multi-word search with the query building might be harder than writing a raw sql query_
+
 
