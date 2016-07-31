@@ -1,11 +1,7 @@
 #!/usr/bin/env node
-var knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: __dirname + '/dev.sqlite3'
-  },
-  useNullAsDefault: true
-})
+
+var knexConfig = require('./knexfile').development
+var knex = require('knex')(knexConfig)
 
 var cmd = process.argv[2]
 var note = process.argv[3]
