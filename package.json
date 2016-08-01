@@ -1,0 +1,36 @@
+{
+  "name": "knex-joins-stories",
+  "version": "0.1.0",
+  "description": "Practise joins",
+  "main": "index.js",
+  "scripts": {
+    "knex": "knex",
+    "start": "node-inspector & nodemon --debug index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikau-2016/knex-joins-stories.git"
+  },
+  "keywords": [
+    "knex",
+    "joins"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikau-2016/knex-joins-stories/issues"
+  },
+  "homepage": "https://github.com/nikau-2016/knex-joins-stories#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "knex": "^0.11.9",
+    "sqlite3": "^3.1.4"
+  },
+  "devDependencies": {
+    "node-inspector": "^0.12.8",
+    "nodemon": "^1.10.0"
+  }
+}
