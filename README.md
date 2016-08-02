@@ -3,6 +3,20 @@
 User stories to implement when practising joins.
 
 
+## Installation
+
+Fork this repo, clone it down, and `cd` into the directory. Then:
+
+```
+npm install
+npm run knex migrate:latest
+npm run knex seed:run
+npm start
+```
+
+This will create and populate the database for you, and start the server with `node-inspector` in the background for debugging.
+
+
 ## Start with:
 
 _As a user, I would like to see a list of wombles so that I can know who to ask to clean up Wimbledon Commons._
