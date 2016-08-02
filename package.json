@@ -1,5 +1,5 @@
 {
-  "name": "phase1-boilerplate",
+  "name": "boilerplate-phase1",
   "version": "0.1.0",
   "description": "Boilerplate for Phase 1 EDA",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/phase1-boilerplate.git"
+    "url": "git+https://github.com/dev-academy-challenges/boilerplate-phase1.git"
   },
   "keywords": [
     "eda",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/phase1-boilerplate/issues"
+    "url": "https://github.com/dev-academy-challenges/boilerplate-phase1/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/phase1-boilerplate#readme",
+  "homepage": "https://github.com/dev-academy-challenges/boilerplate-phase1#readme",
   "devDependencies": {
     "node-inspector": "^0.12.8",
     "nodemon": "^1.10.0",
