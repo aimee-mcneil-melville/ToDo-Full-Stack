@@ -5,10 +5,9 @@ User stories for RDBMS practice.
 
 ## Install
 
-Fork the [boilerplate-knex](https://github.com/dev-academy-challenges/boilerplate-knex) repo and clone it down. Then:
+Fork the [boilerplate-knex](https://github.com/dev-academy-challenges/boilerplate-knex) repo and rename it to `knex-relationships` (you can rename repos from the settings menu, which looks like a little sprocket). Clone it down using `git clone https://github.com/your-github-name/knex-relationships`. Then:
 
 ```
-mv boilerplate-knex knex-relationships
 cd knex-relationships
 npm install
 npm run knex migrate:latest
