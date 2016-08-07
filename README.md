@@ -20,7 +20,7 @@ npm start
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
 
 ```shell
-git remote set-url origin https://github.com/YOUR-USERNAME/YOUR-REPO
+git remote set-url origin https://github.com/YOUR-USERNAME/knex-relationships
 ```
 
 
