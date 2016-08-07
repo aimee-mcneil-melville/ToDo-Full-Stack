@@ -5,14 +5,22 @@ User stories for RDBMS practice.
 
 ## Install
 
-Fork the [boilerplate-knex](https://github.com/dev-academy-challenges/boilerplate-knex) repo and rename it to `knex-relationships` (you can rename repos from the settings menu, which looks like a little sprocket). Clone it down using `git clone https://github.com/your-github-name/knex-relationships`. Then:
+Enter the commands below in your terminal to get started:
 
-```
+```shell
+git clone https://github.com/dev-academy-challenges/boilerplate-knex
+mv boilerplate-knex knex-relationships
 cd knex-relationships
 npm install
 npm run knex migrate:latest
 npm run knex seed:run
 npm start
+```
+
+If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
+
+```shell
+git remote set-url origin https://github.com/YOUR-USERNAME/YOUR-REPO
 ```
 
 
