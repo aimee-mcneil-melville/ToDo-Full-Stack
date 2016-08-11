@@ -1,3 +1,9 @@
+/* 505160: dark grey
+ * 68829e: lighter grey
+ * aebd38: moss green
+ * 598234: deeper green
+ */
+
 html, body {
   height: 100%;
 }
@@ -22,6 +28,7 @@ h2 {
 }
 
 .spinner {
+  margin-top: 5rem;
   width: 5rem;
   height: 5rem;
   -webkit-animation:spin 4s linear infinite;
@@ -34,13 +41,34 @@ h2 {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-.dog {
+.dog-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dog-wrapper .dog {
   color: white;
   margin: 0.5rem;
   padding: 0.5rem;
   width: 25rem;
   border-radius: 0.4rem;
   background-color: #68829e;
+}
+
+.dog-pic {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.4rem;
+  background-color: #aebd38;
+  width: 6rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dog-wrapper .dog-pic .dog-img {
+  width: 4rem;
+  height: 4rem;
 }
 
 .dog .dog-name-plate {
@@ -52,11 +80,12 @@ h2 {
   font-weight: bold;
   font-size: 1.2rem;
   margin: 0.5rem;
+  border-bottom: 1px #aebd38 solid;
 }
 
 .dog .dog-breed {
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0.5rem;
 }
 
