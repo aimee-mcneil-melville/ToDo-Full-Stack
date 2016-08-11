@@ -1,5 +1,6 @@
 import React from 'react'
 
+import NamePlate from './NamePlate'
 import Pic from './Pic'
 
 export default React.createClass({
@@ -13,14 +14,7 @@ export default React.createClass({
   render () {
     return (
       <div className="dog-wrapper">
-        <div className="dog">
-          <div className="dog-name-plate">
-            <span className="dog-name">{this.props.name}</span>
-            <span className="dog-breed">{this.props.breed}</span>
-          </div>
-          <span className="dog-superpower">{this.props.superpower}</span>
-        </div>
-
+        <NamePlate name={this.props.name} breed={this.props.breed} superpower={this.props.superpower} />
         <div className="dog-pic">
           <Pic image={this.props.image} alt={this.props.name} />
         </div>
