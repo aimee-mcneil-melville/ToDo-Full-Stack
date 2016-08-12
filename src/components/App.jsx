@@ -18,7 +18,12 @@ export default React.createClass({
   },
 
   render () {
-    const createDog = dog => <Dog name={dog.name} breed={dog.breed} superpower={dog.superpower} image={dog.image} />
+    const createDog = (dog, i) => <Dog
+      key={i}
+      name={dog.name}
+      breed={dog.breed}
+      superpower={dog.superpower}
+      image={dog.image} />
     return (
       <div className="container">
         <img className="spinner" src="images/paw.png" />
