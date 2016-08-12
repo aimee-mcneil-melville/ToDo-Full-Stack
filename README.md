@@ -106,7 +106,7 @@ Here, `name`, `breed`, and `superpower` are _props_. The `Dog` component will re
 }
 ```
 
-When we refer to the props in JSX we have to put it inside curly braces, like so:
+When we refer to a prop in JSX we have to put it inside curly braces, like so:
 
 ```jsx
 <span>{this.props.name}</span>
@@ -144,3 +144,35 @@ and add a Dog tag (use Desdemona, above if you like). Your `render` function sho
 You should see something like this in the browser:
 
 ![A Dog component](screenshots/dog.png)
+
+Try adding more dogs, right underneath the first one. Notice what happens when you don't provide one of the values?
+
+
+## Simpler components
+
+Components don't have to be complex. Sometimes it makes sense to have components that don't have a lot of bells and whistles. We call these _stateless_ components (or stateless functions). For example:
+
+```js
+import React from 'react'
+
+const EmphasisedLink = props => <em><a href={props.url}>{props.text}</a><em>
+EmphasisedLink.propTypes = { 
+  text: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired
+}
+export default EmphasisedLink
+```
+
+All our component does is return some JSX. We set some prop types and export it.
+
+Try it yourself. Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
+
+```jsx
+    <img className="spinner" src="images/paw.png" />
+    <Subtitle text="Canines using supercanine abilities for social good." />
+    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+```
+
+You should see something like this:
+
+![Subtitle component](screenshots/subtitle.png)
