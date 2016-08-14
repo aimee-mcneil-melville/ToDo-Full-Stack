@@ -62,9 +62,7 @@ The only thing we have here is a `render` function. All it does is return some [
 
 ## The Dog component
 
-Let's try another component. 
-
-> In your editor, make a new component called `Dog.jsx` and save it into the `src/components` directory:
+Let's try another component. In your editor, make a new component called `Dog.jsx` and save it into the `src/components` directory:
 
 ```jsx
 export default React.createClass({
@@ -124,7 +122,7 @@ We should also specify some `propTypes`. These specify what kind of JavaScript v
   },
 ```
 
-> Try it out! In `App.jsx`, import your new Dog component:
+Try it out! In `App.jsx`, import your new Dog component:
 
 ```js
 import Dog from './Dog.jsx'
@@ -167,7 +165,7 @@ export default EmphasisedLink
 
 All our component does is return some JSX. We set some prop types and export it.
 
-> Try it yourself. Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
+Try it yourself. Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
 
 ```jsx
     <img className="spinner" src="images/paw.png" />
