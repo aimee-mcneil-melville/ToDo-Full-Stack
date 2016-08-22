@@ -9,8 +9,8 @@ Enter the commands below in your terminal to get started:
 
 ```shell
 git clone https://github.com/dev-academy-challenges/boilerplate-react-redux
-mv boilerplate-react-redux react-redux
-cd react-redux
+mv boilerplate-react-redux redux-practice
+cd redux-practice
 npm install
 npm start
 ```
@@ -18,11 +18,11 @@ npm start
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
 
 ```shell
-git remote set-url origin https://github.com/YOUR-USERNAME/react-redux
+git remote set-url origin https://github.com/YOUR-USERNAME/redux-practice
 ```
 
 
-## MVP
+## Start with these
 
 _As a user, I want to enter a word or phrase and have it displayed in a list._
  - This one is done for you! But take a look at it anyway and try to make sure you understand what's going on. In particular, identify:
@@ -40,6 +40,10 @@ _As a user, I want to enter the URL of an image and have it display as an image 
    - create an `ImageContainer` container
    - create an `AddImage` component to enter the URL
 
+
+## Try these next
+
+_As a user, I want to click a button next to any word and delete it from the list._
 __
 
 
