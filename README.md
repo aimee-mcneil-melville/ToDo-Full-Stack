@@ -50,8 +50,6 @@ _As a user, I want to click a button next to any word and delete it from the lis
 _As a user, I want to click a button next to any image and delete it from the list so that I can get rid of pics that just aren't cute anymore._
  - Same same but different?
 
-__
-
 
 ## Stretch
 
