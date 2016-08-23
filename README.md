@@ -30,9 +30,7 @@ _As a user, I want to click a button and retrieve a list of post titles from the
    - the _reducer_
    - the _container_ and _presentation_ components
    - Notice that `LoadSubreddit` is a mixture of both container and presentation: it returns JSX, but it uses `react-redux`'s `connect` function to wire up the `dispatch` allowing it to fire off an _action_.
-
-_As a developer, I want to use the Redux dev tools with thunk middleware so that I can see what's going on in the store._
- - The setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details.
+   - The dev tools setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details.
 
 _As a user, I want to be able to enter a new subreddit to view the titles from so that I can see what else is happening on Reddit._
  - Initially, the subreddit is hardcoded into `LoadSubreddit`. If you put the current subreddit in the store, you'll be able to change it using actions...
