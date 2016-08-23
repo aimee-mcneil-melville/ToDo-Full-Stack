@@ -46,6 +46,9 @@ _As a user, I want to see a loading spinner while my posts are being retrieved s
 _As a user, I want to be informed when there's an error retrieving my posts so that I don't sit there looking at a blank page._
  - The error handling is fairly non-existent in the boilerplate. Try setting up an action to dispatch when there's a problem.
 
+_As a user, I want to incorporate another API and I don't care which one! So that I can, y'know, have another API to look at._
+ - Take the opportunity to practice the process by retrieving data from another API using async actions. Use the same overall structure, returning a thunk from your action creator.
+
 
 ## Stretch
 
