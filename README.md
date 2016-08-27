@@ -14,7 +14,6 @@ Depending on where you're from (or your interests) you might either be very fami
    * A spare scores ten points _plus the score for the next ball_. 
  * If a player doesn't knock down all the pins in a frame, they just get one point for each pin they do manage to knock down.
  * On the tenth frame, if the first two balls contain a strike or make a spare, the player gets a third ball.
-
  * The maximum possible score (a "perfect game" of all strikes) is 300.
 
 [This WikiHow page](http://www.wikihow.com/Score-Bowling) has some more detail on how to keep score.
