@@ -80,3 +80,10 @@ test('functions.filter takes an array as the first parameter, a function as the 
   var actual = functions.filter([1, 2, 3], function (n) { return n % 2 === 0 })
   t.deepEqual(actual, expected)
 })
+
+// Write a simple find implementation
+test('functions.find takes an array as the first parameter, a function as the second parameter, and returns the first single element for which the function returns true', function (t) {
+  var expected = 1
+  var actual = functions.find([2, 1, 2, 2, 5], function (n) {return n % 2 !== 0 })
+  t.is(actual, expected)
+})
