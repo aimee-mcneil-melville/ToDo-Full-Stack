@@ -30,7 +30,7 @@ Try taking it in turns to explain what each test is doing with your pair.
 
 After you're comfortable with how the tests work, run the tests using `npm test`. Have a look in `package.json` to see what this is doing.
 
-You should get an error saying something about '_blah_ is not a function'. Did you take a look at the directory yet? It's full of files...
+You should get an error saying something about '_blah_ is not a function'. Did you take a look at the directory yet? There are some files there...
 
 Remember `module.exports`? You're going to need to _export_ each function, or possibly an object containing functions as properties, before the test code will be able to see them. Then, as usual, change the code in the empty functions until all tests pass.
 
