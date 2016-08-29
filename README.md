@@ -34,6 +34,8 @@ You should get an error saying something about '_blah_ is not a function'. Did y
 
 Remember `module.exports`? You're going to need to _export_ each function, or possibly an object containing functions as properties, before the test code will be able to see them. Then, as usual, change the code in the empty functions until all tests pass.
 
+The last three tests walk you through implementing [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`Array.filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), and [`Array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) in very simple form. Normally we'd just use the versions that JavaScript gives us, but it's good to understand what's going on beneath the surface.
+
 When you have all the tests passing, read your code through carefully and ensure you know everything that is going on. Can you refactor any of it? Does it all make sense to you?
 
 
