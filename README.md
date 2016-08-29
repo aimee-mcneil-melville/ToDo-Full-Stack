@@ -87,7 +87,7 @@ A teacher will guide you to find the cohort mates with whom you're going to play
 5. Push this branch to GitHub
 
   ```shell
-  git push origin THEIR_BRANCH
+  git push origin THEIR_BRANCH-busted
   ```
 
 6. Submit a pull request on GitHub of your changes.
