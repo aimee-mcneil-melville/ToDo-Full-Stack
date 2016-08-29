@@ -67,8 +67,16 @@ test('functions.callsProperty accepts a parameter `obj` and calls obj.increment(
   t.is(actual.n, expected)
 })
 
-test.only('functions.map takes an array as the first parameter, a function as the second parameter, and returns the result of calling the function on each array element', function (t) {
+// Write a simple map implementation
+test('functions.map takes an array as the first parameter, a function as the second parameter, and returns the result of calling the function on each array element', function (t) {
   var expected = [1, 2, 3]
   var actual = functions.map([0, 1, 2], function (n) { return ++n })
+  t.deepEqual(actual, expected)
+})
+
+// Write a simple filter implementation
+test('functions.filter takes an array as the first parameter, a function as the second parameter, and only returns elements for which the function returns true', function (t) {
+  var expected = [2]
+  var actual = functions.filter([1, 2, 3], function (n) { return n % 2 === 0 })
   t.deepEqual(actual, expected)
 })
