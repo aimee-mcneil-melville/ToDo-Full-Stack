@@ -3,6 +3,9 @@ var emoji = require('node-emoji')
 var pretty = require('js-object-pretty-print').pretty
 
 module.exports = function (actual, expected, message) {
+  if (typeof actual === 'undefined') {
+    console.log('parameter "actual" is undefined!')
+  }
   var greenCheck = colors.green(emoji.get('white_check_mark'))
   var redCross = colors.red(emoji.get('x'))
   if (actual === expected) {
