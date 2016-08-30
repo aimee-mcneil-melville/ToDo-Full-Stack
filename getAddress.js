@@ -1,0 +1,2 @@
+function getAddress (obj) {
+}
