@@ -1,15 +1,17 @@
-var colors = require('colors')
-var emoji = require('node-emoji')
-var pretty = require('js-object-pretty-print').pretty
+var test = require('tape')
+//var htest = test.createHarness()
+var tapSpec = require('tap-spec')
 
-module.exports = function (actual, expected, message) {
-  var greenCheck = colors.green(emoji.get('white_check_mark'))
-  var redCross = colors.red(emoji.get('x'))
-  if (actual === expected) {
-    console.log(greenCheck, colors.green(message))
-  } else {
-    console.log(redCross, colors.red(message))
-    console.log('actual: ', pretty(actual))
-    console.log('expected: ', pretty(expected))
-  }
+test.createStream()
+  .pipe(tapSpec())
+  .pipe(process.stdout);
+
+function assert( expect, actual, msg ) {
+  test( msg || "please add a message",  function (t) {
+    t.equal(expect, actual)
+    t.end()
+  })
 }
+
+module.exports = assert
+

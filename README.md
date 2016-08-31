@@ -189,7 +189,7 @@ We're going to pull out the the utils library into its own repo to get it ready 
 
 11. Edit the description of the package.json to "a utility library".
 
-12. Run `npm install colors js-object-pretty-print node-emoji --save-dev` in the terminal.
+12. Run `npm install tape tap-spec --save-dev` in the terminal.
 
   This installs the packages that the assert function depends on, its "dependencies". Check your package.json. Has anything changed?
 
