@@ -155,7 +155,7 @@ Components don't have to be complex. Sometimes it makes sense to have components
 ```js
 import React from 'react'
 
-const EmphasisedLink = props => <em><a href={props.url}>{props.text}</a><em>
+const EmphasisedLink = props => <em><a href={props.url}>{props.text}</a></em>
 EmphasisedLink.propTypes = { 
   text: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired
