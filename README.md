@@ -145,7 +145,7 @@ We're going to pull out the the utils library into its own repo to get it ready 
 
 3. Create two new directories `test/` and `lib/` in your new repo (mkdir).
 
-4. Copy your index.js and the other files file from 3(b) into the root folder of your local repo (cp).
+4. Copy your index.js and the other files from this kata-strings-numbers-modules repo into the root folder of your new local repo (cp).
 
 5. Copy your function files into `lib/` and the `main.js into `test/test.js` (renaming it test.js) (cp).
 
