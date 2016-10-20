@@ -38,6 +38,13 @@ Look at the tests! What are they expecting back from each function?
 
 Start with easy functions that don't depend on any other functions. `overPopulated`, `underPopulated` and `ressurectable` are good ones to start with.
 
+## Stretch ideas
+
+Can you write it without loops?
+
+Can you get it working in the browser? (Consult with instructors for help before you start)
+
+
 ## Resources
 
 Number | Name
