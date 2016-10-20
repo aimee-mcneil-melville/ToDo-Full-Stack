@@ -4,6 +4,7 @@ var createBoard = require('../createBoard.js')
 
 test('getNeighbours in corner', function (t) {
   var board = createBoard(10)
+  board[0][0] = 1000000
   board[0][1] = 3
   board[1][0] = 5
   board[1][1] = 11
@@ -17,7 +18,10 @@ test('getNeighbours in middle', function (t) {
   var total = 0
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
-      if (i === 1 && j === 1) continue
+      if (i === 1 && j === 1) {
+        board[i][j] = "I'm the central cell!"
+        continue
+      }
       var rando = Math.random()
       total += rando
       board[i][j] = rando
