@@ -11,10 +11,10 @@ test('countAliveNeighbours', function (t) {
   board[1][0] = true
   board[2][0] = true
   board[2][1] = true
-  board[2][2] = true
+  board[2][2] = false
   board[1][2] = true
-  board[1][1] = true
-  t.equal(countAliveNeighbours(1, 1, board), 8)
-  t.equal(countAliveNeighbours(0, 0, board), 3)
+  board[1][1] = false
+  t.equal(countAliveNeighbours(1, 1, board), 7)
+  t.equal(countAliveNeighbours(0, 0, board), 2)
   t.end()
 })
