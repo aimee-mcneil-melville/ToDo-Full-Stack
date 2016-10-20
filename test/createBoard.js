@@ -11,7 +11,7 @@ test('createBoard returns boards with the correct dimensions', function (t) {
   t.end()
 })
 
-test.only('each row of the returned board is a different array', function(t) {
+test('each row of the returned board is a different array', function(t) {
   var board = createBoard(2)
   t.notEqual(board[0], board[1])
   t.end()
