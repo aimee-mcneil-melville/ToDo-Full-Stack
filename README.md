@@ -51,6 +51,8 @@ Add a new route that listens for requests to `cats/edit/:id`. Return the cat by 
 
 Add a route that listens for POST requests to `/cat/id`. Use what you've learned to update the cat in the `cats` array.
 
+Note that this isn't "proper" REST. This is because browsers can't actually do PUT requests. So instead we're using POST.
+
 ## More
 
 Work out how to store the `data` variable in a JSON file. You might want to make some functions that can load and save the data.
