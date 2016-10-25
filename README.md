@@ -7,11 +7,9 @@ Unfortunately Eugene's version of meowtown is written in Ruby on Rails. We're go
 
 ## Release 1
 
-Install `nodemon`. This will watch for changes to our files and restart the server. ```npm i -g nodemon```
-
 Clone the repo, run ```npm i``` and then run ```npm start```. Visit [http://localhost:3000](http://localhost:3000).
 
-Notice that when you run npm start it doesn't exit. The server has to stay running to listen for requests from your browser.
+Notice that when you save a file the server automatically restarts! Checkout the [nodemon](http://nodemon.io/) module.
 
 Visit [http://localhost:3000/](http://localhost:3000/)
 
