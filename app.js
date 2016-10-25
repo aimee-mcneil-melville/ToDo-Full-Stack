@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //---------------------Ignore above here-------------------//
 
-var catsObj = {
+var data = {
  cats: [
   {id: 1, name: 'fluffy'},
   {id: 2, name: 'tick'}
@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/cats', function(req, res) {
- res.render('catsIndex', catsObj)
+ res.render('catsIndex', data)
 })
 
 app.get('/cats/new', function(req, res) {
