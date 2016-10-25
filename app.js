@@ -1,16 +1,17 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
+var express = require('express')
+var expresshbs = require('express-handlebars')
+var path = require('path')
+var bodyParser = require('body-parser')
 
-var app = express();
+var app = express()
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.engine('handlebars', expresshbs({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')))
 
 //---------------------Ignore above here-------------------//
 
