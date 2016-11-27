@@ -38,12 +38,12 @@ You'll see some red output that looks like this:
 npm ERR! Test failed.  See above for more details.
 ```
 
-The most important thing is not to panic! Welcome to your first introduction to testing. In this challenge, you're going to make all the tests go GREEN. It's rather addictive once you get started...
+The most important thing is not to panic! Welcome to your first introduction to testing. In this challenge, you're going to make all the tests go GREEN. It's rather addictive once you get started.
 
 
 ## Kata
 
-"Kata" is a concept from martial arts meaning a sequence of moves composed into a "form". Martial artists practise kata to build a "muscle-memory" for the basic moves. By practicing kata the artist hopes to make the basics of their art instinctual. When danger strikes the basics will be so familiar that they can respond without thinking.
+_Kata_ is a concept from martial arts meaning a sequence of moves composed into a _form_. Martial artists practise katas to build a "muscle-memory" for the basic moves. By practicing katas the artist hopes to make the basics of their art instinctual. When danger strikes the basics will be so familiar that they can respond without thinking.
 
 ![](https://49.media.tumblr.com/10c948900ec4276131e45047bb3846a4/tumblr_n3005tWnBf1s6my4qo1_500.gif)
 
