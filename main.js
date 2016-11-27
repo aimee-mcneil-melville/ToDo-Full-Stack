@@ -79,7 +79,7 @@ assert(addStringsOrNumbers('10', 10), '20', 'addStringsOrNumbers can add strings
 function isEmail (str) {
 }
 
-assert(isEmail('thedonald@makeamericagreatagain.com'), true, 'isEmail detects an email')
+assert(isEmail('user@company.com'), true, 'isEmail detects an email')
 assert(isEmail('3333@'), false, 'isEmail does not give a false positive')
 assert(isEmail('johnny.b.good'), false, 'isEmail does not give a false positive')
 
@@ -109,7 +109,7 @@ assert(stringCount, expectedStringCount, 'countIf can count the strings in an ar
 function filter (func, arr) {
 }
 
-var emails = filter(isEmail, data)
+var emails = filter(isEmail, data) || []
 assert(emails.length, 44, 'filter and isEmail returns the correct number of emails')
 
 /*
@@ -124,7 +124,7 @@ var expectedNumbers = [4, 8, 12]
 var timesTwo = function (num) {
   return num * 2
 }
-var actualNumbers = map(timesTwo, someNumbers)
+var actualNumbers = map(timesTwo, someNumbers) || []
 for (var i = 0; i < expectedNumbers.length; i++) {
   assert(expectedNumbers[i], actualNumbers[i], 'number mapped correctly')
 }
@@ -136,7 +136,7 @@ for (var i = 0; i < expectedNumbers.length; i++) {
 function filterStringsWithCommas (str) {
 }
 
-var stringsWithCommas = filter(filterStringsWithCommas, data)
+var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 assert(stringsWithCommas.length, 62, 'filter and filterStringsWithCommas returns the correct number of commas')
 
 /*
@@ -146,8 +146,8 @@ assert(stringsWithCommas.length, 62, 'filter and filterStringsWithCommas returns
 function splitStringByCommas (str) {
 }
 
-var arrayOfArrays = map(splitStringByCommas, stringsWithCommas)
-var matchesArrayOfArrays = arrayOfArrays.every(function (arr, i) {
+var arrayOfArrays = map(splitStringByCommas, stringsWithCommas) || []
+var matchesArrayOfArrays = !!arrayOfArrays.length && arrayOfArrays.every(function (arr, i) {
   return arr.every(function (str, j) {
     return str === expectedArrayOfArrays[i][j]
   })
