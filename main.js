@@ -201,13 +201,13 @@ function assertMap () {
  * filterStringsWithCommas
  */
 
+var stringsWithCommas = filter(filterStringsWithCommas, data) || []
+
 // Uncomment when ready to test
 // assertFilterStringsWithCommas()
 
 function filterStringsWithCommas (str) {
 }
-
-var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 
 function assertFilterStringsWithCommas () {
   assert(stringsWithCommas.length, 62, 'filter and filterStringsWithCommas returns the correct number of commas')
