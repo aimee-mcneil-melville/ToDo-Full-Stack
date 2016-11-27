@@ -36,13 +36,15 @@ function keys (obj) {
 function values (obj) {
 }
 
-// zipObject should take two arrays and build them into an object.
+// zipObject should return an object built from two arrays
 // For example, given ['foo', 'bar'] and [1, 2] it would return
 // { foo: 1, bar: 2}
 function zipObject (keys, values) {
 }
 
-// unzipObject should return an array of arrays, each one a pair
+// unzipObject should return an array of arrays, each one a pair of keys and values
+// For example, given { foo: 1, bar: 2} it would return
+// [['foo', 1], ['bar', 2]]
 function unzipObject(obj) {
 }
 
