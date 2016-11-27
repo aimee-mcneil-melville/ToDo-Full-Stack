@@ -38,12 +38,12 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   git checkout -b YOUR_NAME_YOUR_PAIRS_NAME
   ```
 
-4. Modify the file `two_truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
+4. Modify the file `two-truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
 
 5. Add and commit your file to the project with the following commands:
 
   ```shell
-  git add source/
+  git add .
   git commit -m "Added facts about Example McExampleson"
   ```
 
@@ -75,12 +75,12 @@ A teacher will guide you to find the cohort mates with whom you're going to play
   * What is the difference between this command and the one in the previous step? 
     * `git --help checkout`
 
-3. Open `two_truths.md` and add the word **LIE** to the line you think is a lie.
+3. Open `two-truths.md` and add the word **LIE** to the line you think is a lie.
 
 4. Add the changed file to your Git staging and commit it.
 
   ```shell
-  git add two_truths.md
+  git add two-truths.md
   git commit -m "Found the lie"
   ```
 
