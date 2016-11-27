@@ -91,9 +91,9 @@ A teacher will guide you to find the cohort mates with whom you're going to play
 
   ![](pull-request-example.png "pull request example")
 
-  **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
+  **DO NOT MERGE YOUR PULL REQUEST INTO MASTER!!**
 
-  * Why not? What would happen if everyone merged their branches into master?
+  * Why not? What would happen if everyone merged their branches into `master`?
 
 
 ## Release 2: Come Clean
@@ -106,13 +106,13 @@ Now it's time to come clean (or not).
   * "Nope but perhaps you really meant to choose #1" or (if your devious)
   * "Nope, keep guessing".
 
-  In any case, close the pull request and **DO NOT MERGE TO MASTER!! (EVER)**.
+  In any case, close the pull request and make sure the target branch is the correct one, **not** `master`.
 
 ## Optimize Your Learning
 
 * Draw a diagram of the Git workflows you used in Release 0 and Release 1.
 * Describe the workflow using your picture and words (i.e. not code) to your pair or a teacher.
-* Make sure you understand all parts COMPLETELY. You will be using this workfow extensively in the next nine weeks. Ask questions if anything is still unclear!
+* Make sure you understand all parts _completely_. You will be using this workfow extensively in the next nine weeks. Ask questions if anything is still unclear!
 
 ## Resources
 
