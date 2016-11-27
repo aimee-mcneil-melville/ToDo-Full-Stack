@@ -4,9 +4,8 @@
 
 Let's get to know each other better, using Git and GitHub! We'll play an icebreaker called Two Truths and a Lie, but instead of sitting around and chatting in person, we're going to use GitHub to chat about what the lie is.
 
-## Releases
 
-### Release 0: Clone the Repo and Create a Branch
+## Release 0: Clone the Repo and Create a Branch
 
 1. Clone this repo. In your browser find the clone URL in the sidebar and copy it. In your terminal, run the following command, replacing `CLONE_URL` with the URL you copied:
 
@@ -40,14 +39,14 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
 
 4. Modify the file `two-truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
 
-5. Add and commit your file to the project with the following commands:
+5. Stage and commit your file to the project with the following commands:
 
   ```shell
   git add .
   git commit -m "Added facts about Example McExampleson"
   ```
 
-6. Now push up your branch to GitHub with
+6. Now push your branch to GitHub with
 
   ``` shell
   git push origin YOUR_NAME_YOUR_PAIRS_NAME
@@ -55,8 +54,9 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
 
   * Why not? What would happen if everyone merged their branches into master?
+  
 
-### Release 1 : Find the Lie
+## Release 1 : Find the Lie
 A teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
 
 1. Pull your cohort mates branch from GitHub into your local repository.
@@ -77,7 +77,7 @@ A teacher will guide you to find the cohort mates with whom you're going to play
 
 3. Open `two-truths.md` and add the word **LIE** to the line you think is a lie.
 
-4. Add the changed file to your Git staging and commit it.
+4. Stage the changed file and commit it.
 
   ```shell
   git add two-truths.md
@@ -92,7 +92,8 @@ A teacher will guide you to find the cohort mates with whom you're going to play
 
 6. Submit a pull request on GitHub of your changes.
 
-### Release 2: Come Clean
+
+## Release 2: Come Clean
 
 Now it's time to come clean (or not).
 
