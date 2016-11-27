@@ -5,12 +5,6 @@ var expectedFormattedDates = require('./data/formatted-dates')
 
 var meaningOfLife = '42'
 
-function each (func, arr) {
-  for (var i = 0; i < arr.length; i++) {
-    func(arr[i])
-  }
-}
-
 /*
  * getType
  */
