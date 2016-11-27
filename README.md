@@ -43,7 +43,7 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
 
   ```shell
   git add .
-  git commit -m "Added facts about Example McExampleson"
+  git commit -m "Added truths and lies"
   ```
 
 6. Now push your branch to GitHub with
