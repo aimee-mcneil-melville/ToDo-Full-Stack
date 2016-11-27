@@ -51,9 +51,6 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   ``` shell
   git push origin YOUR_NAME_YOUR_PAIRS_NAME
   ```
-  **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
-
-  * Why not? What would happen if everyone merged their branches into master?
   
 
 ## Release 1 : Find the Lie
@@ -90,7 +87,13 @@ A teacher will guide you to find the cohort mates with whom you're going to play
   git push origin THEIR_BRANCH-busted
   ```
 
-6. Submit a pull request on GitHub of your changes.
+6. Submit a pull request on GitHub of your changes. Be sure the pull request is from `THEIR_BRANCH-busted` into `THEIR_BRANCH` similar to this:
+
+  ![](pull-request-example.png "pull request example")
+
+  **DO NOT MERGE YOUR PULL REQUEST IN MASTER!!**
+
+  * Why not? What would happen if everyone merged their branches into master?
 
 
 ## Release 2: Come Clean
