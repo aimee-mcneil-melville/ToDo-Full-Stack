@@ -2,7 +2,7 @@
 
 ## Summary
 
-Let's get to know each other better, using Git and GitHub! We'll play an icebreaker called Two Truths and a Lie, but instead of sitting around and chatting in person, we're going to use GitHub to chat about what the lie is.
+Let's get to know each other better, using Git and GitHub! We'll play an icebreaker called Two Truths and a Lie, but instead of sitting around and chatting in person, we're going to use GitHub to chat about what the lie is. **Be sure to read the instructions very carefully as you work through this exercise** and let a teacher know if you need clarifications.
 
 
 ## Release 0: Clone the Repo and Create a Branch
