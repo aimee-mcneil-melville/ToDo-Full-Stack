@@ -34,6 +34,13 @@ To begin Part 1, in your terminal:
 
 You should see a series of failing tests, but our `assert` function is coloring the console output red and printing a red `x`. Your goal is to make the tests pass.
 
+Before implementing each function, uncomment the function that will run the assertions. 
+
+```js
+// Uncomment when ready to test
+assertIsNumber()
+```
+
 **Tip 1**: Be sure you understand how to use `typeof`.
 
 **Tip 2**: If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN("a string") === true`.
