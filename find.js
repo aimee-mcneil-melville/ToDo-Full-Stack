@@ -1,0 +1,2 @@
+function find (arr, propertiesObj) {
+}

@@ -10,6 +10,7 @@ var getValueTypes = require('../getValueTypes')
 var positions = require('../positions')
 var matrix = require('../matrix')
 var where = require('../where')
+var find = require('../find')
 
 function getContacts () {
   return [
@@ -121,7 +122,7 @@ test('where returns multile correct results', function (t) {
   var contacts = getContacts()
   var expected = 2
   var actual = where(contacts, { age: 78 }).length
-  t.equal(actual, expected)
+  t.is(actual, expected)
 })
 
 test('where finds objects with two search properties', function (t) {
