@@ -3,7 +3,7 @@ var tapSpec = require('tap-spec')
 
 test.createStream()
   .pipe(tapSpec())
-  .pipe(process.stdout);
+  .pipe(process.stdout)
 
 function assert(expect, actual, msg) {
   test(msg || "please add a message",  function (t) {
