@@ -116,7 +116,6 @@ Now it's time to come clean (or not).
 
 ## Resources
 
-- [My git workflow](workflow.md)
 - [GitHub Help](https://help.github.com/)
 - [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
 - [Git Cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
