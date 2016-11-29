@@ -28,7 +28,9 @@ test('getValue gets a nested object by key', function (t) {
     '124': { address: 'Bag End', name: 'Bilbo Baggins', age: 78 }
   }
   var expected = { address: '742 Evergreen Terrace', name: 'Marge Simpson', age: 47 }
+
   var actual = getValue(contacts, '123')
+
   t.deepEqual(actual, expected)
 })
 
@@ -43,7 +45,9 @@ test('getType returns the data type of its argument', function (t) {
 test('getType returns the expected data types', function (t) {
   var arrayWithDifferentTypes = ['d', 3, function () { return 'hello' }, true, []]
   var expected = ['string', 'number', 'function', 'boolean', 'object']
+
   var actual = arrayWithDifferentTypes.map(getType)
+
   t.deepEqual(actual, expected)
 })
 
@@ -56,50 +60,74 @@ test('getValueTypes returns the types of object properties', function (t) {
     e: {}
   }
   var expected = ['string', 'number', 'function', 'boolean', 'object']
+
   var actual = getValueTypes(objWithDifferentTypes)
+
   t.deepEqual(actual, expected)
 })
 
-test('getFirst & getLast', function (t) {
+test('getFirst gets the first item in an array', function (t) {
   var alphabet = ['a', 'b', 'c', 'd', 'e']
-  t.is(positions.getFirst(alphabet), 'a', 'getFirst gets the first item in an array')
-  t.is(positions.getLast(alphabet), 'e', 'getLast gets the last item in an array')
-  t.is(positions.getLast(alphabet.splice(0, 3)), 'c', 'getLast always gets the last item in an array')
+  var expected = 'a'
+
+  var actual = positions.getFirst(alphabet)
+
+  t.is(actual, expected)
+})
+
+test('getLast gets the last item in a small array', function (t) {
+  var alphabet = ['a', 'b', 'c', 'd', 'e']
+  var expected = 'e'
+
+  var actual = positions.getLast(alphabet)
+
+  t.is(actual, expected)
+})
+
+test.only('getLast gets the last item in a long array', function (t) {
+  var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  var expected = 'z'
+
+  var actual = positions.getLast(alphabet)
+
+  t.is(actual, expected)
 })
 
 test('map and getAddress return the address property from objects in an array', function (t) {
-  // arrange
   var contacts = getContacts()
   var expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
 
-  // act
   var actual = contacts.map(getAddress)
 
-  // assert
   t.deepEqual(actual, expected)
 })
 
-test('creating matrices of different sizes', function (t) {
+test('getMatrix creates 3x3 matrix', function (t) {
   var expected = [
     [ 0, 0, 0 ],
     [ 0, 0, 0 ],
     [ 0, 0, 0 ]
   ]
-  var actual = matrix.getMatrix(3)
-  t.deepEqual(actual, expected)
 
-  var expectedBigger = [
+  var actual = matrix.getMatrix(3)
+
+  t.deepEqual(actual, expected)
+})
+
+test('getMatrix creates 4x4 matrix', function (t) {
+  var expected = [
     [ 0, 0, 0, 0 ],
     [ 0, 0, 0, 0 ],
     [ 0, 0, 0, 0 ],
     [ 0, 0, 0, 0 ]
   ]
-  var actualBigger = matrix.getMatrix(4)
-  t.deepEqual(actualBigger, expectedBigger)
+
+  var actual = matrix.getMatrix(4)
+
+  t.deepEqual(actual, expected)
 })
 
 test('updateMatrix can change the value at specified coordinates', function (t) {
-  // arrange
   var initialMatrix = [
     [ 0, 0, 0 ],
     [ 0, 0, 0 ],
@@ -111,10 +139,8 @@ test('updateMatrix can change the value at specified coordinates', function (t) 
     [ 0, 0, 0 ]
   ]
 
-  // act
   var actual = matrix.updateMatrix(initialMatrix, [1, 2], 1)
 
-  // assert
   t.deepEqual(actual, expected)
 })
 
