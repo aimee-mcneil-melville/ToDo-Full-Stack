@@ -84,7 +84,7 @@ test('getLast gets the last item in a small array', function (t) {
   t.is(actual, expected)
 })
 
-test.only('getLast gets the last item in a long array', function (t) {
+test('getLast gets the last item in a long array', function (t) {
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   var expected = 'z'
 
