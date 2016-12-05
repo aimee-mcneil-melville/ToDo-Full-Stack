@@ -4,7 +4,7 @@
   "description": "Boilerplate for Phase 1 EDA",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect --debug-brk index",
+    "start": "nodemon --inspect index",
     "test": "tape 'tests/**/*.test.js' | tap-spec"
   },
   "repository": {
