@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "knex": "knex",
-    "start": "node-inspector & nodemon --debug index.js",
+    "dev": "nodemon index",
+    "debug": "devtool index --watch",
     "test": "tape 'tests/**/*.test.js' | tap-spec"
   },
   "repository": {
@@ -16,7 +17,7 @@
     "knex",
     "joins"
   ],
-  "author": "",
+  "author": "Enspiral Dev Academy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/knex-joins-stories/issues"
@@ -26,13 +27,13 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
-    "knex": "^0.11.9",
-    "sqlite3": "^3.1.4"
+    "knex": "^0.11.10",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
-    "node-inspector": "^0.12.8",
-    "nodemon": "^1.10.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "devtool": "^2.3.0",
+    "nodemon": "^1.11.0",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.6.3"
   }
 }

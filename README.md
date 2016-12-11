@@ -11,10 +11,10 @@ Fork this repo, clone it down, and `cd` into the directory. Then:
 npm install
 npm run knex migrate:latest
 npm run knex seed:run
-npm start
+npm run debug
 ```
 
-This will create and populate the database for you, and start the server with `node-inspector` in the background for debugging.
+This will create and populate the database for you, and start the server with `devtool` for debugging.
 
 
 ## Start with:
