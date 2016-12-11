@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-var knexConfig = require('./knexfile').development
-var knex = require('knex')(knexConfig)
+var config = require('./knexfile').development
+var db = require('knex')(config)
 
 var cmd = process.argv[2]
 var note = process.argv[3]
@@ -23,26 +23,31 @@ switch (cmd) {
     break
 
   default:
-    console.log('no matched cases')
+    console.log('No matched cases')
     closeDB()
     break
 }
 
 function listTodos (todos) {
-  todos.forEach(function (todo) { console.log(todo.task) })
+  todos.forEach(function (todo) {
+    console.info(todo.task)
+  })
 }
 
 function logError (err) {
-  console.log('Dang, we exploded like a bomb: ', err)
+  console.error('Uh oh!', err)
 }
 function getAll () {
-  return knex.raw('select * from "todos"')
+  return db.select('todos')
 }
 
 function addTodo (task) {
-  return knex.raw('insert into "todos" ("task") values ("' + task + '" );')
+  return db('todos')
+    .insert({
+      task: task
+    })
 }
 
 function closeDB () {
-  knex.destroy()
+  db.destroy()
 }

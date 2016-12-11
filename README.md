@@ -1,99 +1,138 @@
-# todo-knex
-Command line todo app using knex raw
+# knex-todo-cli
 
-## Intro
+Command-line todo app using knex
 
-We're building a simple command line app to manage our list of todos. We're finally at the point of storing our data in a database! Woooo!
+We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo!  We're using the knex module to talk to our SQLite3 database.
 
-We're using the knex module to talk to our sqlite3 database.
 
 ## Setup
-### Install knex globally
-```npm i -g knex```
 
-### Run the migrations
+* Install dependencies.
 
-```knex migrate:latest```  
-What just happened? There is a new file in your folder. What is it?
-Install SQLite Manager as a firefox addon. Open your new sqlite db file and have a look around. Try and understand how the migration file corresponds to how the db looks in SQLite Manager.
+  ```sh
+  npm init -y
+  npm i knex sqlite3 --save
+  npm i tape tap-diff --save-dev
+  ```
 
-### Seed the db
+* Create `knex` and `test` scripts in `package.json`.
 
-```knex seed:run```  
-Now go check out your db in SQLite Manager. You should see some rows in your table!
-While you are there, write a query that adds a new task to the database.
+  ```js
+  "scripts": {
+    "knex": "knex",
+    "test": "tape test/**/*-test.js"
+  }
+  ```
 
-### Set file permissions
+  This prevents us from having to install `knex` globally.
 
-Instead of running our file like ```node todo.js``` we'd like to be able to run it like any other script on our computer, just to make it easier to use.
+* Set file permissions.
 
-Run ```chmod +x todo``` in your console to add the excutable flag to the file.
+  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the excutable flag to the file. Now you can run it in your console using `./todo list`
 
-Now you can just run in in your console like ```./todo list```
+* Create the knex config file (`knexfile.js`).
 
-You should see some tasks that were seeded in your db.
+  ```sh
+  npm run knex init
+  ```
 
-## Release 0: Add task id to program output.
+
+## Setup the database
+
+* Add a migration for the `todos` table.
+
+  ```sh
+  npm run knex migrate:make todos
+  ```
+
+  1. Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos` with the following fields:
+
+      * `id` (auto incrementing)
+      * `task`: string
+
+    The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
+
+  2. Use `npm run knex migrate:latest` to apply the changes to the database.
+
+* Add some seed data.
+
+  ```sh
+  npm run knex seed:make test-tasks
+  ```
+
+  1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
+
+    The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
+
+  2. Run `npm run knex seed:run` to add the new data to the database.
+
+
+## Display task ID
 
 We want to be able to update and delete our tasks. But before we do that we need to be able to identify them.
 
 Add some code so that when we log out a task it gives the id number too. eg
-```./todo list``` => ```1: clean my room```
+ 
+```sh
+$ ./todo list
 
-## Release 1: Delete a task by id.
+1: vaccuum
+2: buy groceries
+```
 
-Users should be able to complete tasks. We'd like to be able to do something like ```./todo done 1``` which will remove the task with id 1 from the database. 
+## Delete a task by ID
 
-You'll want to add a new function that returns a promise that can delete a row by a given id. Look at how the other functions work. You might need to review promises. 
+Users should be able to complete tasks. We'd like to be able to do something like `./todo done 1` which will remove the task with `id` of `1` from the database. 
 
-What is happening with those .catch and .finally bits of code?
+You'll want to add a new function that returns a promise that can delete a row given its `id`. Look how the other functions work. You might need to review promises. 
 
-What happens when you remove the .finally calls?
+What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
 
-## Release 2: Update a task by id.
 
-Users make mistakes. Let them update a task like so: ```./todo upate 1 'clean my room thoroughly'```
+## Update a task by ID
 
-## Release 3: Searching
+Users make mistakes. Let them update a task like so:
 
-Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given word. Something like
+```sh
+./todo update 1 'clean my room thoroughly'
+```
 
-```./todo search 'wire' ```
 
-## Release 4: Add a migration
+## Add ability to search
 
-We've got this production database set up, lots of users and a new feature request. 
+Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given word. Perhaps something like:
 
-We need some way of updating our db without destroying all the existing data. Migrations!
+```sh
+./todo search 'wire'
+```
 
-Users want to be able to mark a task as complete without removing it from the db.
 
-Use ```knex migrate:make addCompleteColumn``` to create a new blank migration.
+## Add migration to mark a task complete
 
-Snoop on the other migration and read the knex docs to work out how to add a new column to our table. Hint: knex.schema.table lets you modify an existing table.
+Now we have users using our tool, but we have new features to add. We need a way of updating our database without destroying all the existing data.
 
-What type should we use to store our data?
+Users want to be able to mark a task as complete without removing it from the database.
 
-Fill in the .down function in our migration. It should be the inverse of the .up function.
+1. Use `npm run knex migrate:make add-completed-column` to create a new empty migration.
 
-Run ```knex migrate:latest``` to run your new migration. If you didn't get any errors check out your db in SQLite Manager. Is it what you expected? What happened to existing data in the db? 
+  The documentation for [`knex.schema.table`]() might be helpful when modifying an existing table.
 
-Run ```knex migrate:rollback``` Look in your db. 
+  What data type should we use to store our new field(s)?
 
-Run ```knex migrate:latest``` 
+2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
 
-## Release 5: Build out the feature from Release 4.
+3. Run `npm run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database? 
+
+4. Run `knex migrate:rollback` and look in your database. 
+
+5. Run `knex migrate:latest` and look again.
+
+
+## Finish the _mark task complete_ feature
 
 It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing out a task. Maybe you can filter by completed when listing?
 
-## Release 6: Use the knex query builder.
 
-Concatenating strings together to make SQL queries is PAINFUL. The whole point of knex is to make query strings for us so that we don't have to do it manually. It's like hyperscript for SQL. Hyperscript makes HTML strings for us. Knex makes SQL strings for us. 
+## Add the feature that's missing
 
-Refactor the todo file and change all the calls to knex.raw. Check out the "Query Builder" part of the knex docs. Your getAll() function will change to something like ```return knex.select().table('tablename')```
-
-Soooo much nicer!
-
-
-
-
+What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
