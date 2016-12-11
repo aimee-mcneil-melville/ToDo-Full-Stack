@@ -37,8 +37,9 @@ function listTodos (todos) {
 function logError (err) {
   console.error('Uh oh!', err)
 }
+
 function getAll () {
-  return db.select('todos')
+  return db('todos').select()
 }
 
 function addTodo (task) {
