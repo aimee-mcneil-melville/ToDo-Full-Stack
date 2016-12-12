@@ -6,13 +6,13 @@ var hbs = require('express-handlebars')
 
 var routes = require('./routes')
 
-var server = express()
+var app = express()
 
 module.exports = app
 
 // Middleware
 
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({extended: true}))
 app.engine('hbs', hbs({extname: 'hbs'}))
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'))
