@@ -57,20 +57,23 @@ var port = process.env.PORT || 3000
 1. Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
   - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
 
-*From heroku.com*
+*Or, from heroku.com*
 
 1. From the dashboard, click the '+' tag in the top right corner. Create a name and press 'create app'. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. This adds `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
 
-2. Provision a Postgres DB using the postgresql addon
+
+## Provision and deploy
+
+1. Provision a Postgres DB using the postgresql addon
   - `heroku addons:create heroku-postgresql:hobby-dev`
   - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
 
-3. Deploy to Heroku with `git push heroku master`.
+2. Deploy to Heroku with `git push heroku master`.
 
-4. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
+3. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
  - Apply the seed file by running `knex seed:run`.
 
-5. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
+4. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
 
 
 ## Common gotchas
