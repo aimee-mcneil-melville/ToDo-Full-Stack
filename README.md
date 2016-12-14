@@ -48,7 +48,7 @@ var port = process.env.PORT || 3000
 - [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `postinstall` to run the migrations.
 
   ```js
-  "script": "knex migrate:latest"
+  "postinstall": "knex migrate:latest"
   ```
 
 
