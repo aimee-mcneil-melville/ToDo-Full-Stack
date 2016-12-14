@@ -20,11 +20,13 @@ var port = process.env.PORT || 3000
 - [ ] You have a `production` option in the config file (if you are using knex this will be in the `knexfile.js`).
 - [ ] You have installed the Postgres module using `npm install pg --save`.
 - [ ] You are using `process.env.NODE_ENV` to dynamically choose the Knex environment. For example, in the module where you're using Knex.js (e.g. `db.js`):
+
   ```js
   var environment = process.env.NODE_ENV || 'development'
   var config = require('./knexfile')[environment]
   var db = require('knex')(config)
   ```
+
 - [ ] You have defined the structure of your database with some migrations and they run locally without error.
 - [ ] If you are seeding your database, the seed files run locally without error.
 - [ ] You have configured the production database connection. We need to make sure Knex has the correct configuration for connecting to the Postgres database in the production environment. We do this in the `knexfile.js` in the `production.connection` property. The `DATABASE_URL` environment variable will be provided by Heroku and contain all the information Knex needs to make the connection.
