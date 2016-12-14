@@ -1,0 +1,80 @@
+# Deployment Checklist
+
+## Heroku setup
+
+- [ ] You have a Heroku account.
+- [ ] You have Heroku Toolbelt installed.
+- [ ] You can login to Heroku on your command line with `heroku login`.
+
+
+## Setup checklist
+
+- [ ] Heroku sets a dynamic port which you can access with the port environment variable using `process.env.PORT`. If you are explicitly stating your port in your app without using the environment, Heroku can't expose your app. A good practice is to listen on a dynamic port or default to a local one:
+
+```js
+var port = process.env.PORT || 3000
+```
+
+*If you have a database:*
+
+- [ ] You have a `production` option in the config file (if you are using knex this will be in the `knexfile.js`).
+- [ ] You have installed the Postgres module using `npm install pg --save`.
+- [ ] You are using `process.env.NODE_ENV` to dynamically choose the Knex environment. For example, in the module where you're using Knex.js (e.g. `db.js`):
+  ```js
+  var environment = process.env.NODE_ENV || 'development'
+  var config = require('./knexfile')[environment]
+  var db = require('knex')(config)
+  ```
+- [ ] You have defined the structure of your database with some migrations and they run locally without error.
+- [ ] If you are seeding your database, the seed files run locally without error.
+- [ ] You have configured the production database connection. We need to make sure Knex has the correct configuration for connecting to the Postgres database in the production environment. We do this in the `knexfile.js` in the `production.connection` property. The `DATABASE_URL` environment variable will be provided by Heroku and contain all the information Knex needs to make the connection.
+
+  ```js
+  production: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  }
+  ```
+
+- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `postinstall` to run the migrations.
+
+  ```js
+  "script": "knex migrate:latest"
+  ```
+
+
+## Create app
+ 
+*From the command line*
+
+1. Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
+  - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+
+*From heroku.com*
+
+1. From the dashboard, click the '+' tag in the top right corner. Create a name and press 'create app'. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. This adds `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
+
+2. Provision a Postgres DB using the postgresql addon
+  - `heroku addons:create heroku-postgresql:hobby-dev`
+  - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
+
+3. Deploy to Heroku with `git push heroku master`.
+
+4. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
+ - Apply the seed file by running `knex seed:run`.
+
+5. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
+
+
+## Common gotchas
+
+- Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anyting in `devDependencies`. Also, if a package is working globaly on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will break on a remote server. A best practice is to always install locally and use npm scripts.
+
+- Any references to 'localhost' within your app will break unless they are provided with a production environement alternative.
