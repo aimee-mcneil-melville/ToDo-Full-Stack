@@ -61,7 +61,7 @@ var port = process.env.PORT || 3000
 
 *Or, from heroku.com*
 
-* From the dashboard, click the '+' tag in the top right corner. Create a name and press 'create app'. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. This adds `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
+* From the dashboard, click the 'New' button in the top right corner. Create a name and a region and press 'create app'. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
 
 
 ## Provision and deploy
