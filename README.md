@@ -57,7 +57,7 @@ Create tests for each of the routes in the MVP.
 
 ## Stretch
 
-_As a developer, I want to select, add, update and delete `activities` (like hobbies) that have `name`, `frequency`, `level` attributes.
+_As a developer, I want to select, add, update and delete `activities` (like hobbies) that have `name`, `frequency`, `level` attributes._
 
 * You'll need to create a `routes/activities.js` file and the middleware link in `server.js`.
 * You'll need to create the appropriate migrations, seeds and functions in `db.js`.
