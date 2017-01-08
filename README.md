@@ -39,4 +39,25 @@ _As a developer, I want to get the details of a single user so that I can popula
 
 _As a developer, I want to add a new user so that their information can be recalled at a later time._
 
+* You'll have to add a new `addUser` function to `db.js` in order for the route to save the new user.
+* You can use Postman to pass a new JSON user to the API.
+* You can leave off the `id` because the database schema has an auto-increment on the `id` field.
 
+_As a developer, I want to update an existing user so they can keep their details current._
+
+* You'll have to add a new `updateUser` function to `db.js` in order for the route to save the new user.
+* You can use Postman to pass an existing JSON user to the API.
+* You'll need to use the `id` of an existing user so it will know which user to update.
+
+
+## Testing
+
+Create tests for each of the routes in the MVP.
+
+
+## Stretch
+
+_As a developer, I want to select, add, update and delete `activities` (like hobbies) that have `name`, `frequency`, `level` attributes.
+
+* You'll need to create a `routes/activities.js` file and the middleware link in `server.js`.
+* You'll need to create the appropriate migrations, seeds and functions in `db.js`.
