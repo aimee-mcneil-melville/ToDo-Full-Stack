@@ -61,3 +61,7 @@ _As a developer, I want to select, add, update and delete `activities` (like hob
 
 * You'll need to create a `routes/activities.js` file and the middleware link in `server.js`.
 * You'll need to create the appropriate migrations, seeds and functions in `db.js`.
+
+_As a developer, I want an example of a script that consumes the MVP API._
+
+* Write a standalone `index.js` file that uses `superagent` to consume the MVP API.
