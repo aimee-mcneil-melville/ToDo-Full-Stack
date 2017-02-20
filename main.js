@@ -34,6 +34,7 @@ function isNumber (thing) {
 
 function assertIsNumber () {
   assert(isNumber(meaningOfLife), false, 'meaningOfLife is not a number datatype')
+  assert(isNumber(42), true, '42 is a number datatype')
 }
 
 
@@ -206,6 +207,7 @@ var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 // Uncomment when ready to test
 // assertFilterStringsWithCommas()
 
+//does the string have a comma in it?
 function filterStringsWithCommas (str) {
 }
 
