@@ -34,6 +34,7 @@ function isNumber (thing) {
 
 function assertIsNumber () {
   assert(isNumber(meaningOfLife), false, 'meaningOfLife is not a number datatype')
+  assert(isNumber(42), true, '42 is a number datatype')
 }
 
 
