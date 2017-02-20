@@ -206,6 +206,7 @@ var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 // Uncomment when ready to test
 // assertFilterStringsWithCommas()
 
+//does the string have a comma in it?
 function filterStringsWithCommas (str) {
 }
 
