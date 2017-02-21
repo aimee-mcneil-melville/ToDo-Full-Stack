@@ -89,7 +89,7 @@ test('getValueTypes returns the types of object properties', function (t) {
   t.deepEqual(actual, expected)
 })
 
-test('getFirst gets the first item in an array', function (t) {
+test('positions.getFirst gets the first item in an array', function (t) {
   // Arrange
   var alphabet = ['a', 'b', 'c', 'd', 'e']
   var expected = 'a'
@@ -101,7 +101,7 @@ test('getFirst gets the first item in an array', function (t) {
   t.is(actual, expected)
 })
 
-test('getLast gets the last item in a small array', function (t) {
+test('positions.getLast gets the last item in a small array', function (t) {
   // Arrange
   var alphabet = ['a', 'b', 'c', 'd', 'e']
   var expected = 'e'
@@ -113,7 +113,7 @@ test('getLast gets the last item in a small array', function (t) {
   t.is(actual, expected)
 })
 
-test('getLast gets the last item in a long array', function (t) {
+test('positions.getLast gets the last item in a long array', function (t) {
   // Arrange
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   var expected = 'z'
@@ -137,7 +137,7 @@ test('map and getAddress return the address property from objects in an array', 
   t.deepEqual(actual, expected)
 })
 
-test('getMatrix creates 3x3 matrix', function (t) {
+test('matrix.getMatrix creates 3x3 matrix', function (t) {
   // Arrange
   var expected = [
     [ 0, 0, 0 ],
@@ -152,7 +152,7 @@ test('getMatrix creates 3x3 matrix', function (t) {
   t.deepEqual(actual, expected)
 })
 
-test('getMatrix creates 4x4 matrix', function (t) {
+test('matrix.getMatrix creates 4x4 matrix', function (t) {
   // Arrange
   var expected = [
     [ 0, 0, 0, 0 ],
@@ -168,7 +168,7 @@ test('getMatrix creates 4x4 matrix', function (t) {
   t.deepEqual(actual, expected)
 })
 
-test('updateMatrix can change the value at specified coordinates', function (t) {
+test('matrix.updateMatrix can change the value at specified coordinates', function (t) {
   // Arrange
   var initialMatrix = [
     [ 0, 0, 0 ],
