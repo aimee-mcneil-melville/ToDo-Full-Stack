@@ -71,3 +71,12 @@ test('scores a strike in the 10th frame', function (t) {
   t.equals(strikeScore, 130)
   t.end()
 })
+
+test('scores a perfect game', function (t) {
+  var perfectGame = [
+    [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10,0], [10,0], [10, 0], [10, 0], [10, 10, 10]
+  ] 
+  var perfectScore = game.scoreGame(perfectGame)
+  t.equals(perfectScore, 300)
+  t.end()
+})
