@@ -44,7 +44,7 @@ function isSpare (frame) {
 
 function scoreStrikes (frame, nextFrame, anotherFrame) {
   var score = frame[0]
-  if (nextFrame[0] === 10 && nextFrame.length != 3) {
+  if (nextFrame[0] === 10 && nextFrame.length !== 3) {
     score = score + nextFrame[0] + anotherFrame[0]
   } else {
     score = score + nextFrame[0] + nextFrame[1]
