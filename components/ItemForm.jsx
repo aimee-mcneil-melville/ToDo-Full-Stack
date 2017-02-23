@@ -52,7 +52,9 @@ export default React.createClass({
     })
   },
 
-  resetForm () {
+  resetForm (evt) {
+    evt.preventDefault()
+
     this.setState({
       item: { ...this.itemModel }
     })
@@ -72,7 +74,7 @@ export default React.createClass({
           ))}
         </select>
         <input type="submit" className="button-primary" type="submit" value="Add" />
-        <button className="button-warning" onClick={() => this.resetForm()}>Reset</button>
+        <button className="button-warning" onClick={(evt) => this.resetForm(evt)}>Reset</button>
       </form>
     )
   }
