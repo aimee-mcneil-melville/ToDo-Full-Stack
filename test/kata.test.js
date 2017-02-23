@@ -6,14 +6,18 @@ var kata1 = require('../kata/kata-1.js')
 var kata2 = require('../kata/kata-2.js')
 
 test('makeObject makes objects', function (t) {
-  var expected = { a: 1 }
-  var actual = kata1.makeObject('a', 1)
+  var expected = { name: 'mix' }
+  var actual = kata1.makeObject('name', 'mix')
   t.deepEqual(actual, expected)
+
+  var expected2 = { age: 32 }
+  var actual2 = kata1.makeObject('age', 32)
+  t.deepEqual(actual2, expected2)
 })
 
 test('getValue gets values from objects', function (t) {
-  var expected = 1
-  var actual = kata1.getValue({ a: 1 }, 'a')
+  var expected = 21
+  var actual = kata1.getValue({ age: 21 }, 'age')
   t.is(actual, expected)
 })
 
@@ -47,8 +51,8 @@ test('deleteProp deletes properties', function (t) {
 })
 
 test('makeArrayOfItem (SINGULAR) makes an array out of one item', function (t) {
-  var expected = ['a', 'a', 'a']
-  var actual = kata1.makeArrayOfItem('a', 3)
+  var expected = ['dog', 'dog', 'dog']
+  var actual = kata1.makeArrayOfItem('dog', 3)
   t.deepEqual(actual, expected)
 })
 
