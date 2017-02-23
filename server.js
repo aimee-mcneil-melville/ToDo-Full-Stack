@@ -9,8 +9,9 @@ app.get('/compliment', function(req, res) {
 
 app.get('/profile', function(req, res) {
   var name = req.query.name
+  if (!name) res.redirect('/compliment')
 
-  var filePath = path.join(__dirname, 'public', name + '.html')
+  var filePath = path.join(__dirname, 'public', name.toLowerCase() + '.html')
   res.sendFile(filePath)
 })
 
