@@ -8,9 +8,9 @@ app.get('/compliment', function(req, res) {
 })
 
 app.get('/profile', function(req, res) {
-  // http://expressjs.com/en/api.html#res.sendFile
+  var name = req.query.name
 
-  var filePath = path.join(__dirname, 'public/silvia.html')
+  var filePath = path.join(__dirname, 'public', name + '.html')
   res.sendFile(filePath)
 })
 
