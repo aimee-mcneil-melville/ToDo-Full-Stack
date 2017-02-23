@@ -2,6 +2,8 @@ var express = require('express')
 var path = require('path')
 
 var app = express()
+// http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'))
 
 app.get('/compliment', function(req, res) {
   res.send("<h1>you are a beautiful human</h1>")
