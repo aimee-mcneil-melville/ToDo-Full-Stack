@@ -1,11 +1,10 @@
 var assert = require('./utils/assert')
 var data = require('./data/data')
 var expectedArrayOfArrays = require('./data/array-of-arrays')
-var expectedFormattedDates = require('./data/formatted-dates')
 
 var meaningOfLife = '42'
 
-assert(2+2, 4, 'test are working!')
+assert(2 + 2, 4, 'test are working!')
 
 /*
  * getType
@@ -209,7 +208,7 @@ var stringsWithCommas = filter(filterStringsWithCommas, data) || []
 // Uncomment when ready to test
 // assertFilterStringsWithCommas()
 
-//does the string have a comma in it?
+// does the string have a comma in it?
 function filterStringsWithCommas (str) {
 }
 
