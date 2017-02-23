@@ -5,6 +5,7 @@ var expectedFormattedDates = require('./data/formatted-dates')
 
 var meaningOfLife = '42'
 
+assert(2+2, 4, 'test are working!')
 
 /*
  * getType
@@ -17,7 +18,7 @@ function getType (thing) {
 }
 
 function assertGetType () {
-  assert(getType(meaningOfLife), 'string', 'meaningOfLife is a string data type')
+  assert(getType('42'), 'string', '"42" is a string data type')
   assert(getType(data), 'object', 'data is an object')
 }
 
@@ -33,8 +34,8 @@ function isNumber (thing) {
 }
 
 function assertIsNumber () {
-  assert(isNumber(meaningOfLife), false, 'meaningOfLife is not a number datatype')
-  assert(isNumber(42), true, '42 is a number datatype')
+  assert(isNumber('42'), false, '"42" is not a number datatype')
+  assert(isNumber(13), true, '13 is a number datatype')
 }
 
 
@@ -49,7 +50,7 @@ function isStringNumber (str) {
 }
 
 function assertIsStringNumber () {
-  assert(isStringNumber(meaningOfLife), true, 'meaningOfLife to string number')
+  assert(isStringNumber('42'), true, '"42" is a string number')
   assert(isStringNumber('jsksk'), false, 'isStringNumber does not give a false positive')
 }
 
@@ -65,7 +66,7 @@ function toNumber (str) {
 }
 
 function assertToNumber () {
-  assert(toNumber(meaningOfLife), 42, 'toNumber can convert strings to number if possible')
+  assert(toNumber('42'), 42, 'toNumber can convert strings to number if possible')
 }
 
 
@@ -81,6 +82,7 @@ function add (a, b) {
 
 function assertAdd () {
   assert(add(2, 3), 5, 'add successfully adds two numbers')
+  assert(add(-2, 2), 0, 'add successfully adds two numbers')
 }
 
 
