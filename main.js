@@ -5,7 +5,7 @@ var expectedFormattedDates = require('./data/formatted-dates')
 
 var meaningOfLife = '42'
 
-assert(4, 2+2, 'test are working!')
+assert(2+2, 4, 'test are working!')
 
 /*
  * getType
@@ -18,7 +18,7 @@ function getType (thing) {
 }
 
 function assertGetType () {
-  assert(getType('42'), 'string', 'meaningOfLife is a string data type')
+  assert(getType('42'), 'string', '"42" is a string data type')
   assert(getType(data), 'object', 'data is an object')
 }
 
