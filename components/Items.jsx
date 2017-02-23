@@ -21,7 +21,7 @@ const Items = React.createClass({
       <tr key={id}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
-        <td className="item-color">{color}</td>
+        <td className="item-color" style={{ backgroundColor: color }}></td>
       </tr>
     )
   },
