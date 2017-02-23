@@ -6,7 +6,8 @@ import ItemForm from './ItemForm'
 const Items = React.createClass({
   getInitialState () {
     return {
-      items: []
+      items: [],
+      editItem: null
     }
   },
 
@@ -14,11 +15,26 @@ const Items = React.createClass({
     this.refreshItemList()
   },
 
+  editItem (item) {
+    this.setState({
+      editItem: item
+    })
+  },
+
+  deleteItem (evt, id) {
+    evt.preventDefault()
+
+    localDb.deleteItem(id)
+    this.setState({
+      items: this.state.items.filter(item => item.id !== id)
+    })
+  },
+
   getItem (item) {
     const { id, name, description, color } = item
     const { deleteItem } = this.props
     return (
-      <tr key={id}>
+      <tr key={id} onContextMenu={(evt) => this.deleteItem(evt, id)}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
         <td className="item-color" style={{ backgroundColor: color }}></td>
@@ -37,6 +53,7 @@ const Items = React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
+          <p>Click to edit, right-click to delete.</p>
           <table className="u-full-width">
             <thead>
               <tr>
