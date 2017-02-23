@@ -1,0 +1,12 @@
+.item-name {
+  font-weight: bold;
+}
+
+.item-description {
+  font-style: italic;
+}
+
+.button-warning {
+  color: white;
+  background-color: tomato;
+}
