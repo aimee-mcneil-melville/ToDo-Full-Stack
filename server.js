@@ -15,5 +15,18 @@ app.get('/profile', function(req, res) {
   res.sendFile(filePath)
 })
 
+var usersTable = {
+  1: 'silvia',
+  2: 'sampson'
+}
+
+app.get('/profiles/:id', function(req, res) {
+  var id = req.params.id
+
+  var name = usersTable[id]
+  var filePath = path.join(__dirname, 'public', name + '.html')
+  res.sendFile(filePath)
+})
+
 module.exports = app
 
