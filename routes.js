@@ -5,7 +5,7 @@ module.exports = {
 }
 
 function home (req, res) {
-  var data = db.getHomeData()
+  var data = db.getRepoData()
   data.showList = req.query.showlist
   res.render('home', data)
 }

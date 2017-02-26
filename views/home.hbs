@@ -1,10 +1,10 @@
 {{> header}}
 
 {{#if showList}}
-  Fruit!
+  Repositories!
   <ul>
-    {{#each fruitList}}
-      {{> fruit}}
+    {{#each repos}}
+      <li>{{name}}</li>
     {{/each}}
   </ul>
   Ok, now you can <a href="/">hide the list</a>.

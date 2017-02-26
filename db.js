@@ -1,5 +1,8 @@
+var githubData = require('./github.json')
+
 module.exports = {
-  getHomeData: getHomeData
+  getHomeData: getHomeData,
+  getRepoData: getRepoData
 }
 
 function getHomeData () {
@@ -18,3 +21,12 @@ function getHomeData () {
     }]
   }
 }
+
+function getRepoData () {
+  var repos = githubData.map(function (repo) {
+    return { name: repo.name }
+  })
+
+  return { repos: repos }  // have to return an Object (not an Array)
+}
+
