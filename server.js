@@ -20,3 +20,5 @@ app.get('/', routes.home)
 
 app.get('/details/:id', routes.detail)
 
+app.get('/details/:id/author', routes.author)
+

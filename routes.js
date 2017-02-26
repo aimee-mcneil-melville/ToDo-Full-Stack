@@ -2,7 +2,8 @@ var db = require('./db')
 
 module.exports = {
   home: home,
-  detail: detail
+  detail: detail,
+  author: author
 }
 
 function home (req, res) {
@@ -19,3 +20,8 @@ function detail (req, res) {
   res.render('detail', data)
 }
 
+function author (req, res) {
+  var repoId = req.params.id
+  var data = db.getAuthorDetails(repoId)
+  res.render('author', data)
+}

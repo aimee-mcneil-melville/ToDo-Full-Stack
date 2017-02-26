@@ -59,3 +59,20 @@ test('GET /details/1 shows repo 1', function (t) {
     })
 })
 
+test('GET /details/1/author sets correct img src', function (t) {
+  var data = db.getRepoData().repos
+  var id = data[0].id
+  var expected = db.getAuthorDetails(id).avatar_url
+
+  request(app)
+    .get('/details/' + id + '/author')
+    .expect(200)
+    .end(function (err, res) {
+      t.error(err, 'No request errors')
+
+      var $ = cheerio.load(res.text)
+      var actual = $('img').attr('src')
+      t.equal(actual, expected)
+      t.end()
+    })
+})

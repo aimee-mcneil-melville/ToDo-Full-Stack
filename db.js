@@ -1,6 +1,7 @@
 var githubData = require('./github.json')
 
 module.exports = {
+  getAuthorDetails: getAuthorDetails,
   getHomeData: getHomeData,
   getRepoWithId: getRepoWithId,
   getRepoData: getRepoData
@@ -45,5 +46,11 @@ function getRepoWithId (id) {
   })
 
   return repo
+}
+
+function getAuthorDetails (id) {
+  var repo = getRepoWithId(id)
+
+  return repo.owner
 }
 
