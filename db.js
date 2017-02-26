@@ -2,7 +2,8 @@ var githubData = require('./github.json')
 
 module.exports = {
   getHomeData: getHomeData,
-  getRepoWithId: getRepoWithId
+  getRepoWithId: getRepoWithId,
+  getRepoData: getRepoData
 }
 
 function getHomeData () {
