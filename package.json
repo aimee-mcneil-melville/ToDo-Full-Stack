@@ -4,9 +4,9 @@
   "description": "Server-side rendering with handlebars templates",
   "main": "index.js",
   "scripts": {
-    "debug": "devtool index --watch",
+    "debug": "nodemon --inspect index",
     "test": "tape tests/**/*-test.js | tap-spec",
-    "start": "node --inspect index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.14.0",
