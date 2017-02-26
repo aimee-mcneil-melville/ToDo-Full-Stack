@@ -1,11 +1,12 @@
 var db = require('./db')
 
 module.exports = {
-  home: home
+  fruit: fruit
 }
 
-function home (req, res) {
+function fruit (req, res) {
   var data = db.getHomeData()
   data.showList = req.query.showlist
-  res.render('home', data)
+
+  res.render('fruit', data)
 }

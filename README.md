@@ -13,6 +13,27 @@
 * To start the server: `npm start`
 * To run the tests: `npm test`
 
+## Hello world
+
+When you're learning a new technology, make sure you start simple and get that working before layering on too much complexity.
+
+1. Start by creating a new home route, `/` in the server
+  - make sure it's working by having it send something like `res.send('hello!')`
+2. Make a template called `home.hbs` in the `views` folder
+  - start by putting some static text in there, like "This is the template"
+3. Plug the template in to your server
+  - replace the `res.send` with `res.render('home')`
+  - make sure you can see "This is the template" rendered
+4. Add a variable to your home template and get that working
+  - e.g. `{{name}}'s repos!`
+  - modify your route to provide that variable e.g. `res.render('home', { name: 'mixmix' })`
+  - does it work?
+5. Refactor!
+  - extract your home (req, res) function into `routes.js`
+  - move any data fetching that the route is doing out into `db.js`
+
+The rest of this exercise should follow the same arc - gradually layering up detail and complexity.
+
 
 ## User stories
 
@@ -20,10 +41,9 @@
   - Create `github.json` with:
 
     ```sh
-    curl https://api.github.com/users/[username]/repos | jq '.' > github.json
+    curl https://api.github.com/users/[username]/repos > github.json
     ```
 
-  - Create a `main.hbs` and `home.hbs` in the `views` folder.
   - Create a route for the home page (`/`) that shows a list of repos.
   - Create a `db.js` that returns a list of repositories as a JavaScript object.
 
