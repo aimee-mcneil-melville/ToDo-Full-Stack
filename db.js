@@ -2,7 +2,7 @@ var githubData = require('./github.json')
 
 module.exports = {
   getHomeData: getHomeData,
-  getRepoData: getRepoData
+  getRepoWithId: getRepoWithId
 }
 
 function getHomeData () {
@@ -24,9 +24,25 @@ function getHomeData () {
 
 function getRepoData () {
   var repos = githubData.map(function (repo) {
-    return { name: repo.name }
+    return { 
+      id: repo.id,
+      name: repo.name,
+      description: repo.description,
+      url: repo.html_url,
+      isFork: repo.fork
+    }
   })
 
   return { repos: repos }  // have to return an Object (not an Array)
+}
+
+function getRepoWithId (id) {
+  var id = Number(id) // make sure it's a number before we start comparing!
+
+  var repo = githubData.find(function(repo) {
+    return repo.id === id
+  })
+
+  return repo
 }
 
