@@ -64,7 +64,7 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the more complex version of the demo, with editing and validation. For the simple version, <Link to="/simple">click here</Link>.</p>
+          <p>This is the <strong>complex controlled component</strong> version of the demo, with editing and validation. For the simple version, <Link to="/simple">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
           <p>Left-click to edit, right-click to delete. (Probably not the best UX for a production app!)</p>
           <table className="u-full-width">
             <thead>

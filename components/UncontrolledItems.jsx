@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import * as localDb from '../localDb'
-import SimpleItemForm from './SimpleItemForm'
+import UncontrolledItemForm from './UncontrolledItemForm'
 
 export default React.createClass({
   getInitialState () {
@@ -49,7 +49,8 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the <strong>simple controlled component</strong> version of the demo, without editing or validation. It uses refs to keep form values in the DOM. For the complex version, <Link to="/">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
+          <p>This is the <strong>uncontrolled component</strong> version of the demo. For the complex (controlled component) version, <Link to="/">click here</Link>. For the simple (controlled component) version, <Link to="/simple">click here</Link>.</p>
+          <p>This technique uses refs to keep track of values in the DOM. You may like to read <a href="http://stackoverflow.com/a/29504636/122643">this Stack Overflow answer</a> on why refs aren't always a great choice.</p>
           <p>Right-click to delete. (Probably not the best UX for a production app!)</p>
           <table className="u-full-width">
             <thead>
@@ -67,7 +68,7 @@ export default React.createClass({
 
         <div className="one-third column">
           <h2>Add an item</h2>
-          <SimpleItemForm saveItem={this.saveItem} />
+          <UncontrolledItemForm saveItem={this.saveItem} />
         </div>
       </div>
     )
