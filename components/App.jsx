@@ -2,9 +2,9 @@ import React from 'react'
 
 import Items from './Items'
 
-const App = () => (
+const App = ({ children }) => (
   <div className="container">
-    <Items />
+    { children }
   </div>
 )
 

@@ -2,25 +2,18 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import * as localDb from '../localDb'
-import ItemForm from './ItemForm'
+import SimpleItemForm from './SimpleItemForm'
 
 export default React.createClass({
   getInitialState () {
     return {
-      items: [],
-      editItem: null
+      items: []
     }
   },
 
   componentDidMount () {
     this.setState({
       items: localDb.getItems()
-    })
-  },
-
-  editItem (id) {
-    this.setState({
-      editItem: { ...this.state.items.find(item => item.id === id) }
     })
   },
 
@@ -36,7 +29,7 @@ export default React.createClass({
   getItem (item) {
     const { id, name, description, color } = item
     return (
-      <tr key={id} className="item" onClick={() => this.editItem(id)} onContextMenu={(evt) => this.deleteItem(evt, id)}>
+      <tr key={id} className="item" onContextMenu={(evt) => this.deleteItem(evt, id)}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
         <td className="item-color" style={{ backgroundColor: color }}></td>
@@ -45,18 +38,10 @@ export default React.createClass({
   },
 
   saveItem (item) {
-    if (this.state.editItem) {
-      localDb.saveItem(item)
-      this.setState({
-        items: this.state.items.map(i => i.id === item.id ? item : i),
-        editItem: null
-      })
-    } else {
-      localDb.addItem(item)
-      this.setState({
-        items: localDb.getItems()
-      })
-    }
+    localDb.addItem(item)
+    this.setState({
+      items: localDb.getItems()
+    })
   },
 
   render () {
@@ -64,8 +49,8 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the more complex version of the demo, with editing and validation. For the simple version, <Link to="/simple">click here</Link>.</p>
-          <p>Left-click to edit, right-click to delete. (Probably not the best UX for a production app!)</p>
+          <p>This is the simple version of the demo, without editing or validation. For the complex version, <Link to="/">click here</Link>.</p>
+          <p>Right-click to delete. (Probably not the best UX for a production app!)</p>
           <table className="u-full-width">
             <thead>
               <tr>
@@ -81,8 +66,8 @@ export default React.createClass({
         </div>
 
         <div className="one-third column">
-          <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
-          <ItemForm editItem={this.state.editItem} saveItem={this.saveItem} />
+          <h2>Add an item</h2>
+          <SimpleItemForm saveItem={this.saveItem} />
         </div>
       </div>
     )

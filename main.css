@@ -1,13 +1,18 @@
 .item-name {
   font-weight: bold;
+  width: 20%;
+  word-wrap: break-word;
 }
 
 .item-description {
   font-style: italic;
+  word-wrap: break-word;
+  width: 70%;
 }
 
 .item-color {
   border-radius: 0.5rem;
+  width: 10%;
 }
 
 .button-warning {
@@ -21,6 +26,7 @@
 
 table {
   border-spacing: 0;
+  table-layout: fixed;
 }
 
 .item td:first-child {
