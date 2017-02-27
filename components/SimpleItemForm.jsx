@@ -59,7 +59,7 @@ export default React.createClass({
         <label htmlFor="name">Name</label>
         <input type="text" className="u-full-width" name="name" value={this.state.item.name} onChange={this.handleChange} />
         <label htmlFor="description">Description</label>
-        <input type="text" className="u-full-width" name="description" value={this.state.item.description} onChange={this.handleChange} />
+        <textarea className="u-full-width" name="description" value={this.state.item.description} onChange={this.handleChange} />
         <label htmlFor="color">Colour</label>
         <select value={this.state.item.color} onChange={this.handleChange} className="u-full-width">
           {this.itemColors.map((color, i) => (

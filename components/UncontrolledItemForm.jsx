@@ -37,7 +37,7 @@ export default React.createClass({
         <label htmlFor="name">Name</label>
         <input type="text" className="u-full-width" ref={name => this.name = name} />
         <label htmlFor="description">Description</label>
-        <input type="text" className="u-full-width" ref={description => this.description = description} />
+        <textarea className="u-full-width" ref={description => this.description = description} />
         <label htmlFor="color">Colour</label>
         <select defaultValue={this.itemColors[0]} className="u-full-width" ref={color => this.color = color} >
           {this.itemColors.map((color, i) => (
