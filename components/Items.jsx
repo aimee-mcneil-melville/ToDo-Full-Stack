@@ -53,7 +53,7 @@ const Items = React.createClass({
     } else {
       localDb.addItem(item)
       this.setState({
-        items: [ ...this.state.items, item ]
+        items: localDb.getItems()
       })
     }
   },
