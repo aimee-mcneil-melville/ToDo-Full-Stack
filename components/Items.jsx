@@ -12,12 +12,14 @@ const Items = React.createClass({
   },
 
   componentDidMount () {
-    this.refreshItemList()
+    this.setState({
+      items: localDb.getItems()
+    })
   },
 
-  editItem (item) {
+  editItem (id) {
     this.setState({
-      editItem: item
+      editItem: { ...this.state.items.find(item => item.id === id) }
     })
   },
 
@@ -32,9 +34,8 @@ const Items = React.createClass({
 
   getItem (item) {
     const { id, name, description, color } = item
-    const { deleteItem } = this.props
     return (
-      <tr key={id} onContextMenu={(evt) => this.deleteItem(evt, id)}>
+      <tr key={id} className="item" onClick={() => this.editItem(id)} onContextMenu={(evt) => this.deleteItem(evt, id)}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
         <td className="item-color" style={{ backgroundColor: color }}></td>
@@ -42,18 +43,27 @@ const Items = React.createClass({
     )
   },
 
-  refreshItemList () {
-    this.setState({
-      items: localDb.getItems()
-    })
+  saveItem (item) {
+    if (this.state.editItem) {
+      localDb.saveItem(item)
+      this.setState({
+        items: this.state.items.map(i => i.id === item.id ? item : i),
+        editItem: null
+      })
+    } else {
+      localDb.addItem(item)
+      this.setState({
+        items: [ ...this.state.items, item ]
+      })
+    }
   },
-  
+
   render () {
     return (
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>Click to edit, right-click to delete.</p>
+          <p>For simplicity: click to edit, right-click to delete. Probably not the best UX for a production app!</p>
           <table className="u-full-width">
             <thead>
               <tr>
@@ -69,8 +79,8 @@ const Items = React.createClass({
         </div>
 
         <div className="one-third column">
-          <h2>Add an item</h2>
-          <ItemForm refreshItemList={this.refreshItemList} />
+          <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
+          <ItemForm editItem={this.state.editItem} saveItem={this.saveItem} />
         </div>
       </div>
     )

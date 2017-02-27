@@ -17,12 +17,11 @@ export const addItem = item => {
 
 export const getItems = () => JSON.parse(localStorage.getItem('_eda_items') || '[]')
 
-export const saveItem = ({ id, name, description }) => {
-  const saveItem = { id, name, description }
+export const saveItem = (item) => {
   const items = JSON.parse(localStorage.getItem('_eda_items') || '[]')
   localStorage.setItem(
     '_eda_items',
-    JSON.stringify(items.map(i => i.id === id ? saveItem : i))
+    JSON.stringify(items.map(i => i.id === item.id ? item : i))
   )
 }
 
