@@ -66,7 +66,7 @@ export default React.createClass({
             <option key={i} value={color}>{color}</option>
           ))}
         </select>
-        <input type="submit" className="button-primary" type="submit" value="Add" />
+        <input type="submit" className="button-primary" value="Add" />
       </form>
     )
   }
