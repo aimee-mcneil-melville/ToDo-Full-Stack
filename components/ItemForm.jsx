@@ -36,15 +36,18 @@ export default React.createClass({
   getInitialState () {
     return {
       errors: {
-        isRequired: 'This field cannot be empty.'
+        isRequired: 'This field cannot be empty.',
+        isNotChartreuse: 'Nobody likes chartreuse.'
       },
       item: { ...this.itemModel },
       invalid: {},
       validation: {
-        name: ['isRequired']
+        name: [ 'isRequired' ],
+        color: [ 'isNotChartreuse' ]
       },
       validators: {
-        isRequired: val => val && val.length
+        isRequired: val => val && val.length,
+        isNotChartreuse: color => color !== 'chartreuse'
       }
     }
   },
@@ -59,8 +62,6 @@ export default React.createClass({
   },
 
   handleChange (evt) {
-    this.validate()
-
     // select lists have no 'name' attribute
     const field = evt.target.name || 'color'
     this.setState({
@@ -75,7 +76,8 @@ export default React.createClass({
     if (evt) evt.preventDefault()
 
     this.setState({
-      item: { ...this.itemModel }
+      item: { ...this.itemModel },
+      invalid: {}
     })
   },
 
@@ -98,18 +100,23 @@ export default React.createClass({
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
+
         <label htmlFor="name">Name</label>
         <input type="text" className="u-full-width" name="name" value={this.state.item.name} onChange={this.handleChange} />
-        {this.state.invalid.name ? (<span className="error">{this.state.invalid.name}</span>) : null}
+        {this.state.invalid.name ? (<div className="error">{this.state.invalid.name}</div>) : null}
+
         <label htmlFor="description">Description</label>
         <textarea className="u-full-width" name="description" value={this.state.item.description} onChange={this.handleChange} />
-        {this.state.invalid.description ? (<span className="error">{this.state.invalid.description}</span>) : null}
+        {this.state.invalid.description ? (<div className="error">{this.state.invalid.description}</div>) : null}
+
         <label htmlFor="color">Colour</label>
         <select value={this.state.item.color} onChange={this.handleChange} className="u-full-width">
           {this.itemColors.map((color, i) => (
             <option key={i} value={color}>{color}</option>
           ))}
         </select>
+        {this.state.invalid.color ? (<div className="error">{this.state.invalid.color}</div>) : null}
+
         <input type="submit" className="button-primary" type="submit" value={this.props.editItem ? 'Save' : 'Add'} />
         <button className="button-warning" onClick={(evt) => this.resetForm(evt)}>Reset</button>
       </form>
