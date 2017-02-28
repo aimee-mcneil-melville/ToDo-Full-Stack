@@ -20,6 +20,10 @@
   background-color: tomato;
 }
 
+.button-warning:focus {
+  color: white;
+}
+
 .item {
   cursor: pointer;
 }
