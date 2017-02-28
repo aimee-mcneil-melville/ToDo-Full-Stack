@@ -64,8 +64,9 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the <strong>complex controlled component</strong> version of the demo, with editing and validation. For the simple version, <Link to="/simple">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
           <p>Left-click to edit, right-click to delete. (Probably not the best UX for a production app!)</p>
+          <p>This is the <strong>complex controlled component</strong> version of the demo, with editing and validation.</p>
+          <p>For the simple version, <Link to="/simple">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
           <table className="u-full-width">
             <thead>
               <tr>
@@ -83,6 +84,7 @@ export default React.createClass({
         <div className="one-third column">
           <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
           <ItemForm editItem={this.state.editItem} saveItem={this.saveItem} />
+          <p>Above component is <strong>&lt;ItemForm /&gt;</strong>.</p>
         </div>
       </div>
     )

@@ -49,9 +49,10 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the <strong>uncontrolled component</strong> version of the demo. For the complex (controlled component) version, <Link to="/">click here</Link>. For the simple (controlled component) version, <Link to="/simple">click here</Link>.</p>
-          <p>This technique uses refs to keep track of values in the DOM. You may like to read <a href="http://stackoverflow.com/a/29504636/122643">this Stack Overflow answer</a> on why refs aren't always a great choice.</p>
           <p>Right-click to delete. (Probably not the best UX for a production app!)</p>
+          <p>This is the <strong>uncontrolled component</strong> version of the demo. This technique uses refs to keep track of values in the DOM. You may like to read <a href="http://stackoverflow.com/a/29504636/122643">this Stack Overflow answer</a> on why refs aren't always a great choice. However, they can often work well for simple forms (see <a href="https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/">here</a> for a balanced viewpoint).</p>
+          <p>For the complex (controlled component) version, <Link to="/">click here</Link>. For the simple (controlled component) version, <Link to="/simple">click here</Link>.</p>
+          <p></p>
           <table className="u-full-width">
             <thead>
               <tr>
@@ -69,6 +70,7 @@ export default React.createClass({
         <div className="one-third column">
           <h2>Add an item</h2>
           <UncontrolledItemForm saveItem={this.saveItem} />
+          <p>Above component is <strong>&lt;UncontrolledItemForm /&gt;</strong>.</p>
         </div>
       </div>
     )

@@ -49,8 +49,9 @@ export default React.createClass({
       <div className="row">
         <div className="two-thirds column">
           <h1>Items</h1>
-          <p>This is the <strong>simple controlled component</strong> version of the demo, without editing or validation. It uses refs to keep form values in the DOM. For the complex version, <Link to="/">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
           <p>Right-click to delete. (Probably not the best UX for a production app!)</p>
+          <p>This is the <strong>simple controlled component</strong> version of the demo, without editing or validation. It uses refs to keep form values in the DOM.</p>
+          <p>For the complex version, <Link to="/">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
           <table className="u-full-width">
             <thead>
               <tr>
@@ -68,6 +69,7 @@ export default React.createClass({
         <div className="one-third column">
           <h2>Add an item</h2>
           <SimpleItemForm saveItem={this.saveItem} />
+          <p>Above component is <strong>&lt;SimpleItemForm /&gt;</strong>.</p>
         </div>
       </div>
     )
