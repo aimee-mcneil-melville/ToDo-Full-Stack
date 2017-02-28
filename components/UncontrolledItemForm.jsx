@@ -2,8 +2,8 @@ import React from 'react'
 
 import * as localDb from '../localDb'
 
-// Controlled component form
-// https://facebook.github.io/react/docs/forms.html#controlled-components
+// Uncontrolled component form
+// https://facebook.github.io/react/docs/uncontrolled-components.html
 export default React.createClass({
   itemColors: [
     'aliceblue',
