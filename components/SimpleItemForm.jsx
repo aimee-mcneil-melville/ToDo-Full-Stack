@@ -36,10 +36,10 @@ export default React.createClass({
   handleSubmit (evt) {
     evt.preventDefault()
 
+    this.props.saveItem(this.state.item)
     this.setState({
       item: { ...this.itemModel }
     })
-    this.props.saveItem(this.state.item)
   },
 
   handleChange (evt) {
