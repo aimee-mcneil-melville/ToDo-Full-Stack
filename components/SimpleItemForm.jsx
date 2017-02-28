@@ -29,7 +29,7 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      item: { ...this.itemModel },
+      item: { ...this.itemModel }
     }
   },
 
