@@ -33,7 +33,7 @@ export default React.createClass({
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" className="u-full-width" ref={name => this.name = name} />
         <label htmlFor="description">Description</label>
