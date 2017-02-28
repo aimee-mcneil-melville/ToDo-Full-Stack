@@ -10,23 +10,23 @@ export const addItem = item => {
     id: generateUUID(),
     ...item
   }
-  const storage = JSON.parse(localStorage.getItem('_eda_items') || '[]')
+  const storage = JSON.parse(localStorage.getItem('_eda_react_form_items') || '[]')
   storage.push(newItem)
-  localStorage.setItem('_eda_items', JSON.stringify(storage))
+  localStorage.setItem('_eda_react_form_items', JSON.stringify(storage))
 }
 
-export const getItems = () => JSON.parse(localStorage.getItem('_eda_items') || '[]')
+export const getItems = () => JSON.parse(localStorage.getItem('_eda_react_form_items') || '[]')
 
 export const saveItem = (item) => {
-  const items = JSON.parse(localStorage.getItem('_eda_items') || '[]')
+  const items = JSON.parse(localStorage.getItem('_eda_react_form_items') || '[]')
   localStorage.setItem(
-    '_eda_items',
+    '_eda_react_form_items',
     JSON.stringify(items.map(i => i.id === item.id ? item : i))
   )
 }
 
 export const deleteItem = id => {
-  const items = JSON.parse(localStorage.getItem('_eda_items'))
-  localStorage.setItem('_eda_items', JSON.stringify(items.filter(r => r.id !== id)))
+  const items = JSON.parse(localStorage.getItem('_eda_react_form_items'))
+  localStorage.setItem('_eda_react_form_items', JSON.stringify(items.filter(r => r.id !== id)))
 }
 
