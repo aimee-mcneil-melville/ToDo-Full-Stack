@@ -1,5 +1,7 @@
 var fs = require('fs')
 var prompt = require('prompt')
+var readline = require('readline')
+
 var directory = require('./directory.json')
 
 prompt.message = ''
@@ -11,20 +13,32 @@ function mainMenu (cb) {
     ' Welcome!\n',
     '--------\n\n',
 
-    'Choose an artwork to display:'
+    'Choose an artwork to display:\n'
   )
   var list = directory.artworks.reduce(function (list, artwork, i) {
-    return list + ' ' + i + ': ' + artwork + '\n'
+    return list + '  ' + i + ': ' + artwork + '\n'
   }, '')
+
+  console.log(list)
 
   var choice = {
     name: 'choice',
     hidden: true,
     message: 'Choice'
   }
-  console.log(list)
-
   prompt.get(choice, cb)
+}
+
+function pressEnter () {
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  })
+
+  rl.question('Hit <enter> to continue...', function () {
+    rl.close()
+    mainMenu(loadArt)
+  })
 }
 
 function loadArt(err, result) {
@@ -32,13 +46,21 @@ function loadArt(err, result) {
     console.error("I don't understand that.")
     return
   }
-  fs.readFile(directory.artworks[result.choice], 'utf8', function (err, artwork) {
-    if (err) {
-      console.error("Can't load that file.")
-      return
-    }
-    console.log(artwork)
-  })
+  var file = directory.artworks[result.choice]
+  if (!file) {
+    console.error("That's not one of the artworks!")
+    pressEnter()
+  } else {
+    fs.readFile(file, 'utf8', function (err, artwork) {
+      if (err) {
+        console.error("Can't load that file.")
+        pressEnter()
+        return
+      }
+      console.log(artwork)
+      pressEnter()
+    })
+  }
 }
 
 mainMenu(loadArt)
