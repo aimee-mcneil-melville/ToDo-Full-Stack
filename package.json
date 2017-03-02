@@ -27,5 +27,8 @@
     "nodemon": "^1.11.0",
     "tap-diff": "^0.1.1",
     "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "prompt": "^1.0.0"
   }
 }
