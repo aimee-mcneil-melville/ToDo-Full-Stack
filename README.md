@@ -89,7 +89,19 @@ Still not enough for you? Check these out:
 
 ## Testing
 
-> Your teachers will give you an idea of when they'd like you to look at testing all this.
+> We don't always write tests that hit the filesystem, because they can be quite slow and they test more than one thing at a time. However, it's good practice using tests and testing functions that accept callbacks!
+
+It can be quite fiddly to write tests that check what gets sent to the console, so we're not going to do that now. Instead, we should focus on testing your functions that read and write files.
+
+One approach might be to create a very simple test file. Call it `test.txt` (or similar). Put a simple string inside, and keep it inside your `tests` directory so it doesn't have anything to do with the main program.
+
+This should let you test some of your functions. For example, you could check:
+ - that the string returned from your read function is the same as the one you put in `test.txt`
+ - that the number of lines in a file has changed after you write to it (hint: count the newline `\n` characters)
+ - that the file has no lines in it after your delete comments function runs (might need to use a different test file for that one)
+
+If you're writing a test that changes something on the filesystem, be sure to return the state of whatever you change to normal at the end of the test.  If you're having trouble writing your tests, remember to reach out for help sooner rather than later. Be kind to yourself, and don't expect to understand everything right away.
+
 
 ## Terminal helpers
 
