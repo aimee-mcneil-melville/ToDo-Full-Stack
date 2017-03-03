@@ -1,32 +1,7 @@
 var fs = require('fs')
-var prompt = require('prompt')
 
 var directory = require('./directory.json')
-
-prompt.message = ''
-prompt.delimiter = ' > '
-prompt.start()
-
-function mainMenu (next) {
-  console.log(' Choose an artwork to display (or `q` to quit):\n')
-  var list = directory.artworks.reduce(function (list, artwork, i) {
-    return list + '  ' + i + ': ' + artwork + '\n'
-  }, '')
-  console.log(list)
-
-  var choice = {
-    name: 'choice',
-    hidden: true,
-    message: 'Choice'
-  }
-  prompt.get(choice, next)
-}
-
-function pressEnter () {
-  prompt.get('Hit <enter> to continue...', function () {
-    mainMenu(loadArt)
-  })
-}
+var menu = require('./menu')
 
 function loadArt(err, result) {
   if (err) {
@@ -46,19 +21,19 @@ function loadArt(err, result) {
         return error("Can't load that file.")
       }
       console.log(artwork)
-      return pressEnter()
+      return menu.pressEnter(loadArt)
     })
   }
 }
 
 function error (msg) {
   console.error(msg)
-  pressEnter()
+  menu.pressEnter(loadArt)
 }
 
 console.log(
   ' Welcome!\n',
   '--------\n'
 )
-mainMenu(loadArt)
+menu.main(loadArt)
 
