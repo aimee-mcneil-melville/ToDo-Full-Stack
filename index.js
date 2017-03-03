@@ -30,27 +30,30 @@ function pressEnter () {
 
 function loadArt(err, result) {
   if (err) {
-    console.error("I don't understand that.")
-    return pressEnter()
+    return error("I don't understand that.")
   }
+
   if (result.choice === 'q') {
     process.exit()
   }
 
   var file = directory.artworks[result.choice]
   if (!file) {
-    console.error("That's not one of the artworks!")
-    return pressEnter()
+    return error("That's not one of the artworks!")
   } else {
     fs.readFile(file, 'utf8', function (err, artwork) {
       if (err) {
-        console.error("Can't load that file.")
-        return pressEnter()
+        return error("Can't load that file.")
       }
       console.log(artwork)
       return pressEnter()
     })
   }
+}
+
+function error (msg) {
+  console.error(msg)
+  pressEnter()
 }
 
 console.log(
