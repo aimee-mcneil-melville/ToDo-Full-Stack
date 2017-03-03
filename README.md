@@ -28,6 +28,27 @@ By now you should be getting used to setting up Node programs. Here's a reminder
 You'll see we've included a data directory with some text files in it. You're going to be needing those in a bit.
 
 
+## MVP
+
+> An MVP is a _Minimum Viable Product_. It's the least amount of work you can do and still have a working project!
+
+Here are some user stories to guide your work. We'll be talking a lot more about user stories during the bootcamp! In the meantime, try to make these ones come true (think of them as requests from a fictitious client).
+
+1. _As a user, I'd like to see a welcome message (so that I feel, y'know, welcome)._
+  - Start small... you'll be using `console.log` statements a lot in this project, since the terminal _is_ the console!
+
+2. _As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice._
+  - Here's where you show a list of filenames from the `data` directory. You can choose to keep these in your code for now.
+  - Hint: start counting from 0, it will make indexing an array that much easier!
+
+3. _As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)_
+  - There's a section on [Terminal Helpers](#terminal-helpers) below... try using the `readline` function, it's a good way to practice callbacks!
+  - Again, start small: try just getting the number from the user and displaying it to the terminal
+  - When you've got that down, use the number to get the filename. Maybe the filenames are in an array, and the numbers are the array indices?
+  - When you've got the right filename, use `fs.readFile` to load the file
+  - Finally, inside the callback for `fs.readFile`, use `console.log` to output the file's contents to the terminal
+
+
 ## Terminal helpers
 
 Writing programs for the terminal will be a new experience for some. Our advice is to keep it really simple at first. Something you may find is that you need a way to wait for input from the terminal, for example when choosing which file to display. `readline`, which comes with the Node standard library, will let you pause your program until the user hits enter, then call whatever function you want:
@@ -50,7 +71,7 @@ function pressEnter () {
 }
 ```
 
-If you want to get a little more fancy, try using the `prompt` npm package for input. An example of how you might use it:
+As you can see, `readline` gives you even more practice with callbacks! If you want to get a little more fancy, try using the `prompt` npm package for input. An example of how you might use it:
 
 ```js
 var prompt = require('prompt')
