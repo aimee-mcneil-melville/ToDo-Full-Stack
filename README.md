@@ -1,6 +1,6 @@
 # ASCII Art Reader
 
-Build a state of the (ASCII) art terminal client!
+Build a state of the (ASCII) art terminal client. Don't forget to maximise your terminal window on one screen... you'll need the space!
 
 
 ## Learning objectives
@@ -42,12 +42,54 @@ Here are some user stories to guide your work. We'll be talking a lot more about
   - Hint: start counting from 0, it will make indexing an array that much easier!
 
 3. _As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)_
-  - There's a section on [Terminal Helpers](#terminal-helpers) below... try using the `readline` function, it's a good way to practice callbacks!
+  - There's a section on [terminal helpers](#terminal-helpers) below... try using the `readline` function, it's a good way to practice callbacks!
   - Again, start small: try just getting the number from the user and displaying it to the terminal
   - When you've got that down, use the number to get the filename. Maybe the filenames are in an array, and the numbers are the array indices?
   - When you've got the right filename, use `fs.readFile` to load the file
   - Finally, inside the callback for `fs.readFile`, use `console.log` to output the file's contents to the terminal
 
+
+## Stretch goals
+
+> A _stretch goal_ is one you're not sure if you'll have time for, but would be great to have in the project.
+
+Ready for more? Here's some ideas for what to work on next!
+
+4. _As a user, I want the menu to display again after I view an artwork so that I can choose another one._
+  - Maybe turn the main menu into a function you can call anytime you want to?
+  - In order to not scroll the 'image' off the screen, you might want to ask the user to press enter before continuing.
+
+5. _As a user, I want to be able to quit when I press `q` so that I can return to the terminal prompt._
+  - Hint: `process.exit()`
+
+6. _As a user, I want to be able to write a comment to a file when I press `c` so that I can voice my opinion._
+  - Here's your chance to practice with `fs.writeFile`!
+  - Don't get too fancy. Just accept a line of input into a variable, and write that variable out again to a file called `data/comments.txt`.
+
+7. _As a user, I want to see the comments file listed so that I can press a number to view it._
+  - If you haven't already, add the comments file to the artworks list so it can be displayed.
+  - Try adding another comment. What happens to the first one?
+
+8. _As a user, I want my comments to be preserved so that I don't overwrite my last one with the latest one!_
+  - Here's a good use case for `fs.appendFile`.
+
+
+## More stretch
+
+Still not enough for you? Check these out:
+
+9. _As a user, I want to be able to erase all the comments so that I can start afresh._
+  - Think about how to remove the contents of the file without actually deleting it. Or perhaps it should be deleted?
+  - You'll need to add another key to the menu, perhaps 'd'.
+  - You may want to think about an "Are you sure?" prompt to prevent accidents!
+
+10. _As a user, I want any new artworks I add to the data directory to be listed, so that I don't need to modify the program every time._
+  - Hint: `fs.readdir`... another chance to practice callbacks!
+
+
+## Testing
+
+> Your teachers will give you an idea of when they'd like you to look at testing all this.
 
 ## Terminal helpers
 
