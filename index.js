@@ -8,7 +8,7 @@ prompt.message = ''
 prompt.delimiter = ' > '
 prompt.start()
 
-function mainMenu (cb) {
+function mainMenu (next) {
   console.log(
     ' Welcome!\n',
     '--------\n\n',
@@ -26,7 +26,7 @@ function mainMenu (cb) {
     hidden: true,
     message: 'Choice'
   }
-  prompt.get(choice, cb)
+  prompt.get(choice, next)
 }
 
 function pressEnter () {
