@@ -39,13 +39,15 @@ function displayComments () {
     if (err) {
       return console.error("Can't read comments from the comments file.")
     }
-    console.log(' Comments people made about art:\n', comments)
+    console.log('Comments people made about art:\n-------------------------------')
+    console.log(comments)
     return menu.pressEnter(loadArt)
   })
 }
 
 function saveComment (err, input) {
-  fs.writeFile('data/comments.txt', input.comment, 'utf8', function (err) {
+  var comment = input.comment + '\n'
+  fs.appendFile('data/comments.txt', comment, 'utf8', function (err) {
     if (err) {
       return error("Can't write to comments file.")
     }
