@@ -13,7 +13,13 @@ prompt.delimiter = ' > '
 prompt.start()
 
 function main (next) {
-  console.log(' Choose an artwork to display (or `c` to comment, `q` to quit):\n')
+  console.log(
+    ' Choose an artwork to display, or:\n',
+    '  `c` to comment\n',
+    '  `d` to delete comments\n',
+    '  `v` to view comments\n',
+    '  `q` to quit\n'
+  )
   var list = directory.artworks.reduce(function (list, artwork, i) {
     return list + '  ' + i + ': ' + artwork + '\n'
   }, '')
