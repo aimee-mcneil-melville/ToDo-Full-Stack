@@ -3,6 +3,7 @@ var prompt = require('prompt')
 var directory = require('./directory.json')
 
 module.exports = {
+  enterComment: enterComment,
   main: main,
   pressEnter: pressEnter
 }
@@ -12,7 +13,7 @@ prompt.delimiter = ' > '
 prompt.start()
 
 function main (next) {
-  console.log(' Choose an artwork to display (or `q` to quit):\n')
+  console.log(' Choose an artwork to display (or `c` to comment, `q` to quit):\n')
   var list = directory.artworks.reduce(function (list, artwork, i) {
     return list + '  ' + i + ': ' + artwork + '\n'
   }, '')
@@ -24,6 +25,15 @@ function main (next) {
     message: 'Choice'
   }
   prompt.get(choice, next)
+}
+
+function enterComment (next) {
+  var comment = {
+    name: 'comment',
+    hidden: true,
+    message: 'Enter your comment'
+  }
+  prompt.get(comment, next)
 }
 
 function pressEnter (next) {
