@@ -2,24 +2,23 @@ var fs = require('fs')
 var prompt = require('prompt')
 
 module.exports = {
-  erase: erase,
   display: display,
+  get: get,
+  erase: erase,
   save: save
 }
 
-function erase (next) {
-  fs.truncate('data/comments.txt', 0, function (err) {
+function get (next, filename) {
+  fs.readFile(filename || 'data/comments.txt', 'utf8', function (err, comments) {
     if (err) {
-      console.error("Can't delete the comments from the comments file.")
-      return next()
+      return next(err)
     }
-    console.log('All comments have been deleted.')
-    next()
+    next(null, comments)
   })
 }
 
 function display (next) {
-  fs.readFile('data/comments.txt', 'utf8', function (err, comments) {
+  get(function (err, comments) {
     if (err) {
       console.error("Can't read comments from the comments file.")
       return next()
@@ -30,9 +29,20 @@ function display (next) {
   })
 }
 
-function save (comment, next) {
+function erase (next, filename) {
+  fs.truncate(filename || 'data/comments.txt', 0, function (err) {
+    if (err) {
+      console.error("Can't delete the comments from the comments file.")
+      return next()
+    }
+    console.log('All comments have been deleted.')
+    next()
+  })
+}
+
+function save (comment, next, filename) {
   var commentLine = comment + '\n'
-  fs.appendFile('data/comments.txt', commentLine, 'utf8', function (err) {
+  fs.appendFile(filename || 'data/comments.txt', commentLine, 'utf8', function (err) {
     if (err) {
       console.error("Can't write to comments file.")
       return next()
