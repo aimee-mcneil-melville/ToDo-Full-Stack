@@ -2,6 +2,8 @@
 
 Build a state of the (ASCII) art terminal client. Don't forget to maximise your terminal window on one screen... you'll need the space!
 
+![](reader.png)
+
 
 ## Learning objectives
 
