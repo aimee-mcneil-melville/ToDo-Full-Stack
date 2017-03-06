@@ -116,7 +116,7 @@ function display (choice) {
         return error("Can't load that file.")
       }
       console.log(artwork)
-      return menu.pressEnter(core.loader)
+      pressEnter(loader)
     })
   })
 }
