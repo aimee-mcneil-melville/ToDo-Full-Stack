@@ -1,8 +1,5 @@
-var path = require('path')
 var express = require('express')
 var hbs = require('express-handlebars')
-
-var routes = require('./routes')
 
 var app = express()
 module.exports = app
@@ -13,7 +10,12 @@ app.engine('hbs', hbs({
   defaultLayout: 'main'
 }))
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
 
 // Routes
-app.get('/fruit', routes.fruit)
+app.get('/', function (req, res) {
+  var viewModel = {
+    title: 'Gallery'
+  }
+  res.render('wombat', viewModel)
+})
+
