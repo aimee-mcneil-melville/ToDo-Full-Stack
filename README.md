@@ -66,9 +66,8 @@ Ready for more? Here's some ideas for what to work on next!
   - Here's your chance to practice with `fs.writeFile`!
   - Don't get too fancy. Just accept a line of input into a variable, and write that variable out again to a file called `data/comments.txt`.
 
-7. _As a user, I want to see the comments file listed so that I can press a number to view it._
-  - If you haven't already, add the comments file to the artworks list so it can be displayed.
-  - Try adding another comment. What happens to the first one?
+7. _As a user, I want to view the comments file when I press `v` so that I can see all the latest comments._
+  - Once you've got comment display working, try adding another comment. What happens to the first one?
 
 8. _As a user, I want my comments to be preserved so that I don't overwrite my last one with the latest one!_
   - Here's a good use case for `fs.appendFile`.
