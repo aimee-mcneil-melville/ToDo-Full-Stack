@@ -6,6 +6,7 @@
   "scripts": {
     "knex": "knex",
     "dev": "nodemon index",
+    "debug": "devtool index --watch",
     "test": "tape 'tests/**/*.test.js' | tap-spec",
     "start": "node index"
   },
