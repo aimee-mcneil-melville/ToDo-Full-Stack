@@ -8,7 +8,7 @@ User stories for RDBMS practice.
 Enter the commands below in your terminal to get started:
 
 ```shell
-git clone https://github.com/[your_cohort_org]/boilerplate-knex
+git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
 npm install
