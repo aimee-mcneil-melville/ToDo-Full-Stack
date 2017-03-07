@@ -56,6 +56,8 @@ The rest of this exercise should follow the same arc - gradually layering up det
 
 ## Batteries included
 
+> Did you know you could require JSON? Pretty handy when you need a bit of configuration data! You can't leave the extension off like you can with `.js`, though.
+
 We want you to be exploring and understanding template rendering today, so we've provided you with some data to use that shouldn't take much effort to work with. It's an array of objects brought into the program using `require`. Each object represents a piece of art.
 
 The objects look like this:
@@ -81,61 +83,42 @@ The objects look like this:
 
 Any time you want to use this data, you can just `var art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an array and Handlebars expects you to pass it an object, so you might need to do something like this:
 
+
 ```js
   var viewData = {
     title: 'Gallery',
     art: art
   }
-
 ```
 
 
-## User stories
+## MVP
 
-1. As a user, I want to see a list of artwork names on the home page.
-  - Grab the data using `var art = require('art.json')`
-    - Did you know you could require JSON? Pretty handy! (You can't leave the extension off like you can with `.js`, though.)
-  - `art` is an array. Handlebars expects an object. Put the array inside an object, then pass it to `res.render`.
-  - Remeber, you can do something for each element in the array using `{{#each}}`. We suggest using an unordered list, where each artwork name could be listed using `<li>{{this.name}}</li>`.
+1. _As a user, I want to see a list of artwork names on the home page so I can see what's available._
+  - Remember, you can do something for each element in the `art` array using `{{#each}}`.
+  - We suggest using an unordered list, where each artwork name could be listed using `<li>{{this.name}}</li>`.
 
-* As a user, I want to see more details about a specific repository.
-  - Create a `detail.hbs` in the `views` folder which includes HTML markup for the details.
-  - Create a route that accepts a repo ID (`/details/:id`) that renders the details page.
-  - Add a function to `db.js` that returns the data for a specific repo based on its ID.
-  - Wrap the name repository names with an `a` element that links to the details page.
+2. _As a user, I want to see who each artwork is by so I can give them credit._
+  - Since you already have the name, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
 
-* As a user, I want to see more information about the author of the repository.
-  - Create an `author.hbs` in the `views` folder which includes HTML markup for the details.
-  - Create a route that accepts a repo ID (`/details/:id/author`) that renders the author page.
-  - Add a function to `db.js` that returns the data for the author of a specific repo based on its ID.
-  - Create a link in `details.hbs` to the authors page.
+3. _As a user, I want to see what license the artwork is under so I know if I can copy it or not._
+  - This `{{#each}}` block is getting a bit complicated. Let's add a partial! The `{{#each}}` will stay the same, but you'll move all the code inside it to the partial file (`artwork-summary.hbs`, for example).
 
+4. _As a user, I want to see a header at the top of the page displaying the page title so I know where I am._
+  - We _could_ just "hard-code" this in the template, but to keep our design flexible let's use a partial and we can include a `title` property on every data object we pass to `res.render`.
+  - Create a `header.hbs` partial. Make it look however you like, but be sure it has a `{{title}}` in there somewhere.
+  
+5. _As a user, I want to see a footer at the bottom of the page displaying contact details so that I can contact the people responsible for the site._
+  - Repetition can be a wonderful thing. Create a `footer.hbs` partial and include it in your home template.
 
-## Helpful notes
+6. _As a user, I want to see an artwork displayed when I visit `/artworks/:id` so that I can view the image._
+  - Create `artworks.hbs`. It doesn't have to be complicated: just a single `img` tag with its `src` attribute set to `{{artwork}}` will do nicely
+  - Create a new route in server.js.  In the route, you'll need to find the correct artwork using `req.params.id`. Hint: `art.find()` (see [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find))
+  - Send the artwork to the `res.render()` call
 
-These are the noteworthy parts of the code you should be sure you feel comfortable with.
+7. _As a user, I want to be able to click on the artwork name on the home page and be taken to the image view._
+  - Time to link it up! In your `artwork-summary.hbs` (or whatever you called it) partial, turn the artwork name into a link. You'll need to make use of the `id` property of the artwork object to build your links.
 
-### Handlebars configuration
-
-The `express-handlebars` module is configured in `server.js`.
-
-```js
-// Middleware
-var hbs = require('express-handlebars')
-app.engine('hbs', hbs({
-    extname: 'hbs',
-    defaultLayout: 'main'
-  }))
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
-```
-
-This lets Express know about an engine called `hbs` with a file extension of `hbs` (`extname: 'hbs'`) and the name of our `defaultLayout` (`main.hbs`). We then define the engine as a _view engine_ and specify the name of the folder where the views are kept.
-
-
-### Layouts
-
-Layouts represent top-level templates (include the `<html>` element). To include the page-specific view into the layout, use `{{{body}}}` (3 curly brackets).
 
 
 ## Further reading
