@@ -65,7 +65,7 @@ The objects look like this:
 ```js
   {
     "id": 1,
-    "name": "Kea in Flight",
+    "title": "Kea in Flight",
     "comments": [
       "Very arty."
     ],
@@ -94,12 +94,12 @@ Any time you want to use this data, you can just `var art = require('./art.json'
 
 ## MVP
 
-1. _As a user, I want to see a list of artwork names on the home page so I can see what's available._
+1. _As a user, I want to see a list of artwork titles on the home page so I can see what's available._
   - Remember, you can do something for each element in the `art` array using `{{#each}}`.
-  - We suggest using an unordered list, where each artwork name could be listed using `<li>{{this.name}}</li>`.
+  - We suggest using an unordered list, where each artwork titles could be listed using `<li>{{this.title}}</li>`.
 
 2. _As a user, I want to see who each artwork is by so I can give them credit._
-  - Since you already have the name, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
+  - Since you already have the title, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
 
 3. _As a user, I want to see what license the artwork is under so I know if I can copy it or not._
   - This `{{#each}}` block is getting a bit complicated. Let's add a partial! The `{{#each}}` will stay the same, but you'll move all the code inside it to the partial file (`artwork-summary.hbs`, for example).
@@ -116,9 +116,42 @@ Any time you want to use this data, you can just `var art = require('./art.json'
   - Create a new route in server.js.  In the route, you'll need to find the correct artwork using `req.params.id`. Hint: `art.find()` (see [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find))
   - Send the artwork to the `res.render()` call
 
-7. _As a user, I want to be able to click on the artwork name on the home page and be taken to the image view._
-  - Time to link it up! In your `artwork-summary.hbs` (or whatever you called it) partial, turn the artwork name into a link. You'll need to make use of the `id` property of the artwork object to build your links.
+7. _As a user, I want to be able to click on the artwork title on the home page and be taken to the image view._
+  - Time to link it up! In your `artwork-summary.hbs` (or whatever you called it) partial, turn the artwork title into a link. You'll need to make use of the `id` property of the artwork object to build your links.
 
+
+## Ready for more?
+
+8. _As a user, I'd like the site to have consistent styling and layout so I enjoy browsing it._
+  - Time to practice using layouts. Add a `defaultLayout` parameter to your Express Handlebars config (see [the docs](https://github.com/ericf/express-handlebars) for how to do this if you're not sure).
+  - Create a layout file in `views/layouts`, probably `main.hbs`.  It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
+  - Move the `header` and `footer` partials into the layout file, and they'll be used for every template view you create from now on.
+  - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
+
+9. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
+  - Here's another good partial opportunity! What we need is a simple partial that can be inserted anytime we need a link to the home page.
+
+10. _As a user, I want to see the artwork's title at the top of the page so I can identify it._
+  - Since you already have the artwork object, you can assign the value of its `title` property to the page `title` property. What will the data object look like that you pass to `res.render`? Talk it over with your pair.
+
+11. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
+  - Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from a `artwork-details.hbs` partial.
+  
+Take the chance to explore, play, experiment. Ask lots of questions!
+
+
+## Stretch ideas
+
+Including the title in the data object passed to `res.render` each time works ok, but what if some developer in the future forgets to pass it? It'd be great if there was some way in the template of providing a default title... maybe there's a way using the `{{#if}}` helper?
+
+Our route structure is pretty simple, but it's still probably better if we refactor it into a separate file. Change the `app.get` route definitions so they refer to functions exported from a `routes.js` file instead of inline anonymous functions.
+
+Likewise, we could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`.
+
+
+## Even more stretch
+
+Did you know you can define your own Handlebars helpers, like `{{#if}}` and `{{#each}}`? Try writing a simple helper that (for example) truncates numbers to display only two decimal places.
 
 
 ## Further reading
