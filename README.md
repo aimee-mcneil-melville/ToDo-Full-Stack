@@ -1,51 +1,102 @@
-# Server-side Rendering
+# Gallery
 
-* [Getting started](#getting-started)
-* [User stories](#user-stories)
-* [Helpful notes](#helpful-notes)
-* [Further reading](#further-reading)
+Build a photo gallery using Handlebars views.
+
+
+## Learning objectives
+
+1. Understanding server-side rendering with Handlebars.
+2. Practice dividing up a page into views, layouts, and partials.
+3. Practice testing routes.
 
 
 ## Getting started
 
 * After cloning this repo, install dependencies with `npm install`
 * To debug the server: `npm run debug`
-* To start the server: `npm start`
+* To start the server (and have it reload with Nodemon after changes): `npm start`
 * To run the tests: `npm test`
+
 
 ## Hello world
 
 When you're learning a new technology, make sure you start simple and get that working before layering on too much complexity.
 
 1. Start by creating a new home route, `/` in the server
-  - make sure it's working by having it send something like `res.send('hello!')`
-2. Make a template called `home.hbs` in the `views` folder
-  - start by putting some static text in there, like "This is the template"
-3. Plug the template in to your server
-  - replace the `res.send` with `res.render('home')`
-  - make sure you can see "This is the template" rendered
-4. Add a variable to your home template and get that working
-  - e.g. `{{name}}'s repos!`
-  - modify your route to provide that variable e.g. `res.render('home', { name: 'mixmix' })`
-  - does it work?
-5. Refactor!
-  - extract your home (req, res) function into `routes.js`
-  - move any data fetching that the route is doing out into `db.js`
+  - Make sure it's working by having it send something like `res.send('Hello, world!')`
 
+2. We've provided a single `home.hbs` template in the views folder for you. Instead of `res.send`, use `res.render` to render that template when anyone visits the `/` route.
+  - When you reload the page, you should see the text change to, 'Hello, templates!'
+
+3. Create an object in your route definition with the property `title`, like so:
+
+  ```js
+    var viewData = {
+      title: 'Gallery'
+    }
+  ```
+
+4. Pass the object as the second argument to render:
+
+  ```js
+    res.render('home', viewData)
+  ```
+
+5. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
+  - Reload the page: does it work?
+
+You'll find this pattern repeating throughout your exploration of server-side rendering:
+
+ - get some data and put it in an object
+ - pass that object to `res.render`
+ - modify the `.hbs` template to make use of the data
+ 
 The rest of this exercise should follow the same arc - gradually layering up detail and complexity.
+
+
+## Batteries included
+
+We want you to be exploring and understanding template rendering today, so we've provided you with some data to use that shouldn't take much effort to work with. It's an array of objects brought into the program using `require`. Each object represents a piece of art.
+
+The objects look like this:
+
+```js
+  {
+    "id": 1,
+    "name": "Kea in Flight",
+    "comments": [
+      "Very arty."
+    ],
+    "artwork": "images/kea.jpg",
+    "artist": {
+      "name": "Ben",
+      "url": "https://www.flickr.com/photos/seabirdnz/"
+    },
+    "license": {
+      "name": "CC BY-ND 2.0",
+      "url": "https://creativecommons.org/licenses/by-nd/2.0/"
+    }
+  },
+```
+
+Any time you want to use this data, you can just `var art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an array and Handlebars expects you to pass it an object, so you might need to do something like this:
+
+```js
+  var viewData = {
+    title: 'Gallery',
+    art: art
+  }
+
+```
 
 
 ## User stories
 
-* As a user, I want to see a list of GitHub repositories for a user.
-  - Create `github.json` with:
-
-    ```sh
-    curl https://api.github.com/users/[username]/repos > github.json
-    ```
-
-  - Create a route for the home page (`/`) that shows a list of repos.
-  - Create a `db.js` that returns a list of repositories as a JavaScript object.
+1. As a user, I want to see a list of artwork names on the home page.
+  - Grab the data using `var art = require('art.json')`
+    - Did you know you could require JSON? Pretty handy! (You can't leave the extension off like you can with `.js`, though.)
+  - `art` is an array. Handlebars expects an object. Put the array inside an object, then pass it to `res.render`.
+  - Remeber, you can do something for each element in the array using `{{#each}}`. We suggest using an unordered list, where each artwork name could be listed using `<li>{{this.name}}</li>`.
 
 * As a user, I want to see more details about a specific repository.
   - Create a `detail.hbs` in the `views` folder which includes HTML markup for the details.
