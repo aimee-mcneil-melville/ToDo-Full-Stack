@@ -1,5 +1,7 @@
 # Server-Side Gallery
 
+![](screenshot.png)
+
 Build a photo gallery using Handlebars views.
 
 
