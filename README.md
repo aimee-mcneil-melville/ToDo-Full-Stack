@@ -131,10 +131,7 @@ Any time you want to use this data, you can just `var art = require('./art.json'
 9. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
   - Here's another good partial opportunity! What we need is a simple partial that can be inserted anytime we need a link to the home page.
 
-10. _As a user, I want to see the artwork's title at the top of the page so I can identify it._
-  - Since you already have the artwork object, you can assign the value of its `title` property to the page `title` property. What will the data object look like that you pass to `res.render`? Talk it over with your pair.
-
-11. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
+10. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
   - Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
   
 Take the chance to explore, play, experiment. Ask lots of questions!
