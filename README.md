@@ -96,7 +96,7 @@ Any time you want to use this data, you can just `var art = require('./art.json'
 
 1. _As a user, I want to see a list of artwork titles on the home page so I can see what's available._
   - Remember, you can do something for each element in the `art` array using `{{#each}}`.
-  - We suggest using an unordered list, where each artwork titles could be listed using `<li>{{this.title}}</li>`.
+  - We suggest using an unordered list, where each artwork titles could be listed using `<li>{{title}}</li>`.
 
 2. _As a user, I want to see who each artwork is by so I can give them credit._
   - Since you already have the title, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
