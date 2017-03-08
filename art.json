@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Kea in Flight",
+    "title": "Kea in Flight",
     "comments": [
       "Very arty."
     ],
@@ -17,7 +17,7 @@
   },
   {
     "id": 2,
-    "name": "Kowhai Flowers",
+    "title": "Kowhai Flowers",
     "comments": [
       "Yellow.",
       "So yellow."
@@ -34,7 +34,7 @@
   },
   {
     "id": 3,
-    "name": "Kotare",
+    "title": "Kotare",
     "comments": [],
     "artwork": "/images/kotare.jpg",
     "artist": {
@@ -48,7 +48,7 @@
   },
   {
     "id": 4,
-    "name": "Harakeke Flowers",
+    "title": "Harakeke Flowers",
     "comments": [
       "Rare to see one without a tui feeding on it!"
     ],
