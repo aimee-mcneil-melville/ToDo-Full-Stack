@@ -14,8 +14,3 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 // Routes
-app.get('/', function (req, res) {
-  var viewData = art[0]
-  res.render('home', viewData)
-})
-
