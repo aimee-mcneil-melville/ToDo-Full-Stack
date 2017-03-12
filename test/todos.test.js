@@ -7,7 +7,7 @@ var knex = require('knex')
 
 // Notice that we require the `.test` property from the knexfile
 var config = require('../knexfile').test
-var todos = require('../todos')
+var todos = require('../todo')
 
 // Create a separate in-memory database before each test.
 // In our tests, we can get at the database as `t.context.db`.

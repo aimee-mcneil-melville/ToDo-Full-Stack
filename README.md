@@ -43,6 +43,9 @@ We're building a simple command-line tool to manage our list of todos. We're fin
       client: 'sqlite3',
       connection: {
         filename: ':memory:'
+      },
+      seeds: {
+        directory: './test/helpers/seeds'
       }
     }
   ```
