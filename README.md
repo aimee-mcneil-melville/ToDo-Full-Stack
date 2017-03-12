@@ -46,15 +46,15 @@ Plain ol' `DOMContentLoaded`, like in Phase 0. So to start our React app off, we
 Take a look at `src/components/App.jsx`:
 
 ```jsx
-export default React.createClass({
-  render () {
-    return (
-      <div className="container">
-        <img className="spinner" src="images/paw.png" />
-      </div>
-    )
-  }
-})
+const App = () => {
+  return (
+    <div className="container">
+      <img className="spinner" src="images/paw.png" />
+    </div>
+  )
+}
+
+export default App
 ```
 
 The only thing we have here is a `render` function. All it does is return some [markup](https://en.wikipedia.org/wiki/Markup_language), expressed as [JSX](https://jsx.github.io/). Instead of rendering a template, such as we do when using [Handlebars](https://handlebarsjs.com), we're dealing here with small chunks of the page at a time which are inserted into `index.html`. Each 'chunk' (component) can contain other components, some of which can be repeated to build lists of items on the page.
@@ -65,27 +65,27 @@ The only thing we have here is a `render` function. All it does is return some [
 Let's try another component. In your editor, make a new component called `Dog.jsx` and save it into the `src/components` directory:
 
 ```jsx
-export default React.createClass({
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    breed: React.PropTypes.string.isRequired,
-    superpower: React.PropTypes.string
-  },
-
-  render () {
-    return (
-      <div className="dog-wrapper">
-        <div className="dog">
-          <div className="dog-name-plate">
-            <span className="dog-name">{this.props.name}</span>
-            <span className="dog-breed">{this.props.breed}</span>
-          </div>
-          <span className="dog-superpower">{this.props.superpower}</span>
+const Dog = props => {
+  return (
+    <div className="dog-wrapper">
+      <div className="dog">
+        <div className="dog-name-plate">
+          <span className="dog-name">{props.name}</span>
+          <span className="dog-breed">{props.breed}</span>
         </div>
+        <span className="dog-superpower">{props.superpower}</span>
       </div>
-    )
-  }
-})
+    </div>
+  )
+}
+
+Dog.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  breed: React.PropTypes.string.isRequired,
+  superpower: React.PropTypes.string
+}
+
+export default Dog
 ```
 
 Copy/paste will do for this one. Notice that it looks a lot like `App.jsx`, except there are a few extra tags and we're making use of _props_. The props come from what we would normally think of as 'attributes' on the component's tag in JSX:
@@ -97,29 +97,27 @@ Copy/paste will do for this one. Notice that it looks a lot like `App.jsx`, exce
 Here, `name`, `breed`, and `superpower` are _props_. The `Dog` component will receive them as a JavaScript object like so:
 
 ```js
-{
-  props: {
-    name: 'Desdemona',
-    breed: 'Bulldog',
-    superpower: 'Heat vision'
-  }
+const props = {
+  name: 'Desdemona',
+  breed: 'Bulldog',
+  superpower: 'Heat vision'
 }
 ```
 
 When we refer to a prop in JSX we have to put it inside curly braces, like so:
 
 ```jsx
-<span>{this.props.name}</span>
+<span>{props.name}</span>
 ```
 
 We should also specify some `propTypes`. These specify what kind of JavaScript values our props should be treated as.
 
 ```js
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    breed: React.PropTypes.string.isRequired,
-    superpower: React.PropTypes.string
-  },
+Dog.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  breed: React.PropTypes.string.isRequired,
+  superpower: React.PropTypes.string
+}
 ```
 
 Try it out! In `App.jsx`, import your new Dog component:
@@ -128,17 +126,15 @@ Try it out! In `App.jsx`, import your new Dog component:
 import Dog from './Dog.jsx'
 ```
 
-and add a Dog tag (use Desdemona, above if you like). Your `render` function should look something like this:
+and add a Dog tag (use Desdemona, above if you like). Your return should look something like this:
 
 ```jsx
-  render () {
-    return (
-      <div className="container">
-        <img className="spinner" src="images/paw.png" />
-        <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
-      </div>
-    )
-  }
+return (
+  <div className="container">
+    <img className="spinner" src="images/paw.png" />
+    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+  </div>
+)
 ```
 
 You should see something like this in the browser:
