@@ -1,8 +1,8 @@
 # knex-todo-cli
 
-Command-line todo app using knex
+Command-line todo app using Knex.
 
-We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo!  We're using the knex module to talk to our SQLite3 database.
+We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
 
 
 ## Setup
@@ -12,7 +12,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   ```sh
   npm init -y
   npm i knex sqlite3 --save
-  npm i tape tap-diff --save-dev
+  npm i ava --save-dev
   ```
 
 * Create `knex` and `test` scripts in `package.json`.
@@ -20,11 +20,11 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   ```js
   "scripts": {
     "knex": "knex",
-    "test": "tape test/**/*-test.js"
+    "test": "ava"
   }
   ```
 
-  This prevents us from having to install `knex` globally.
+  This prevents us from having to install `knex` globally. Note that we're using AVA as our testing library because we're going to make use of some features it provides that make database testing a little easier. Its use is very similar to Tape, but remember that it uses `.is` instead of `.equals`.
 
 * Set file permissions.
 
@@ -36,8 +36,21 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   npm run knex init
   ```
 
+  Edit your `knexfile` so it has a `test` property:
 
-## Setup the database
+  ```js
+    test: {
+      client: 'sqlite3',
+      connection: {
+        filename: ':memory:'
+      }
+    }
+  ```
+
+  This introduces a new idea: that we can run an _in-memory database_! This database will only last as long as our tests, and vanishes in a puff of smoke afterwards. Because it is in memory and not on the filesystem, it works extremely quickly and is not vulnerable to any problems that might occur with the filesystem (hard disk full or busy, permissions problems with directories, etc).
+
+
+## Set up the database
 
 * Add a migration for the `todos` table.
 
@@ -50,7 +63,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
       * `id` (auto incrementing)
       * `task`: string
 
-    The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
+  The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
 
   2. Use `npm run knex migrate:latest` to apply the changes to the database.
 
@@ -62,7 +75,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
   1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
 
-    The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
+  The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
 
   2. Run `npm run knex seed:run` to add the new data to the database.
 
@@ -71,7 +84,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
 We want to be able to update and delete our tasks. But before we do that we need to be able to identify them.
 
-Add some code so that when we log out a task it gives the id number too. eg
+Add some code so that when we log out a task it gives the id number too. For example:
  
 ```sh
 $ ./todo list
@@ -79,6 +92,7 @@ $ ./todo list
 1: vaccuum
 2: buy groceries
 ```
+
 
 ## Delete a task by ID
 
@@ -136,3 +150,52 @@ It's up to you to decide how far you want to go with this. Should listing all th
 ## Add the feature that's missing
 
 What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
+
+
+## Testing your functions
+
+To make testable any function that you write, you'll need to do a couple of things:
+
+ - _export_ the function, so that it can be seen outside of the module it's a part of
+ - _pass the database connection_ into it, so that we can give it either the real database or a temporary test database
+
+The code for the second part in particular might be a new concept for you. Take a look at this:
+
+```js
+// This code is already in `todo`. Here, `db` is our database connection
+var config = require('./knexfile').development
+var db = require('knex')(config)
+
+// ...
+
+// If `testDb` is undefined, use `db`
+function getAll (testDb) {
+  var connection = testDb || db
+  return connection('todos').select()
+}
+```
+
+See what we did there?  We could pseudocode this as:
+
+```
+USING testDb OR db,
+  GET all the todos
+```
+
+Another way of managing this is to always pass the database connection to the function. It doesn't care where it comes from!
+
+```js
+  case 'add':
+    addTodo(note, db)
+      .then(function () { return getAll(db) })
+      .then(listTodos)
+      // ...
+
+// ...
+
+function getAll (connection) {
+  return connection('todos').select()
+}
+```
+
+Take a look in `test/todos.test.js` for an example of how to test such functions.
