@@ -4,7 +4,7 @@
   "description": "Server-side rendering with Handlebars templates",
   "main": "index.js",
   "scripts": {
-    "debug": "node --inspect --debug-brk index",
+    "debug": "nodemon --inspect index.js",
     "test": "tape tests/**/*.test.js | tap-diff",
     "start": "nodemon index"
   },
