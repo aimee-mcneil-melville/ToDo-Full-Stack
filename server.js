@@ -1,19 +1,16 @@
-var path = require('path')
 var express = require('express')
 var hbs = require('express-handlebars')
 
-var routes = require('./routes')
+var art = require('./art.json')
 
 var app = express()
 module.exports = app
 
 // Middleware
 app.engine('hbs', hbs({
-  extname: 'hbs',
-  defaultLayout: 'main'
+  extname: 'hbs'
 }))
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
+app.use(express.static('public'))
 
 // Routes
-app.get('/fruit', routes.fruit)
