@@ -8,7 +8,7 @@
     "dev": "nodemon index",
     "start": "node index",
     "debug": "node-debug index.js",
-    "test": "ava"
+    "test": "NODE_ENV=test ava"
   },
   "repository": {
     "type": "git",
@@ -27,12 +27,12 @@
   "devDependencies": {
     "ava": "^0.18.0",
     "nodemon": "^1.11.0",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.8",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
-    "express-handlebars": "^3.0.0",
     "knex": "^0.12.6"
   }
 }

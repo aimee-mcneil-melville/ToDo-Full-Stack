@@ -5,23 +5,11 @@
 var test = require('ava')
 var knex = require('knex')
 
-var config = require('../knexfile').test
-var db = require('../db')
+var config = require('../../knexfile').test
+var db = require('../../db')
+var setup_db = require('../setup_db.js')
 
-// Create a separate in-memory database before each test.
-// In our tests, we can get at the database as `t.context.db`.
-test.beforeEach(function (t) {
-  t.context.db = knex(config)
-  return t.context.db.migrate.latest()
-    .then(function () {
-      return t.context.db.seed.run()
-    })
-})
-
-// Destroy the database connection after each test.
-test.afterEach(function (t) {
-  t.context.db.destroy()
-})
+setup_db(test)
 
 test('getUsers gets all users', function (t) {
   // One for each letter of the alphabet!

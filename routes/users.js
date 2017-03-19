@@ -1,17 +1,16 @@
 var express = require('express')
+var router = express.Router()
 
 var db = require('../db')
 
-module.exports = {
-  get: get
-}
-
-function get (req, res) {
-  db.getUsers()
+router.get ('/', function (req, res) {
+  db.getUsers(req.app.get('knex'))
     .then(function (users) {
-      res.render('index', { users: users })
+      res.send({ users: users })
     })
     .catch(function (err) {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
-}
+})
+
+module.exports = router
