@@ -17,7 +17,7 @@ npm run knex seed:run
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and change the origin remote to point to that repo:
 
 ```sh
-git remote set-url origin https://github.com/YOUR-USERNAME/knex-relationships
+git remote set-url origin https://github.com/YOUR-USERNAME/web-api
 ```
 
 Visit http://localhost:8080 in your browser. If all went well, you should see a list of wombles.
