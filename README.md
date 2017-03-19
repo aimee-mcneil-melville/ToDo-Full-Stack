@@ -20,7 +20,7 @@ If you would like to push changes back to your own repository, you'll need to cr
 git remote set-url origin https://github.com/YOUR-USERNAME/web-api
 ```
 
-Visit http://localhost:8080/users in your browser. If all went well, you should see a list of users.
+Visit http://localhost:3000/users in your browser. If all went well, you should see a list of users.
 
 ## MVP
 
