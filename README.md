@@ -8,7 +8,7 @@ Enter the commands below in your terminal to get started:
 
 ```sh
 cd ~/workspace
-git clone https://github.com/dev-academy-challenges/boilerplate-knex web-api
+git clone https://github.com/dev-academy-challenges/boilerplate-express-api web-api
 cd web-api
 npm install
 npm run knex migrate:latest
@@ -20,16 +20,7 @@ If you would like to push changes back to your own repository, you'll need to cr
 git remote set-url origin https://github.com/YOUR-USERNAME/web-api
 ```
 
-Visit http://localhost:8080 in your browser. If all went well, you should see a list of wombles.
-
-
-## Setup
-
-Before you begin completing the user stories, you'll need to edit the project to return JSON instead of rendering views.
-
-* Rename `routes/index.js` to `routes/users.js` and edit it to `export` an `express.Router` instead of a custom object.
-* Change `server.js` to `use` the exported router.
-
+Visit http://localhost:8080/users in your browser. If all went well, you should see a list of users.
 
 ## MVP
 
