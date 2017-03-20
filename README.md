@@ -21,14 +21,12 @@ npm install
 npm start
 ```
 
-This will start `webpack-dev-server`. If you navigate to http://localhost:8080 in your browser you should see a spinning paw.
-
 ![Spinning paw](screenshots/paw.png)
 
 
 ## The App component
 
-If you take a look at `index.html`, you'll see there's a single div with the id `App`. It's just there for React to bind with. In `src/index.js`, we find this:
+If you take a look at `index.html`, you'll see there's a single div with the id `App`. It's just there for React to bind with. In `client/index.js`, we find this:
 
 ```js
 import App from './components/App'
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Plain ol' `DOMContentLoaded`, like in Phase 0. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before _rendering_ our components (making them show up on the page).
 
-Take a look at `src/components/App.jsx`:
+Take a look at `client/components/App.jsx`:
 
 ```jsx
 const App = () => {
@@ -57,12 +55,12 @@ const App = () => {
 export default App
 ```
 
-The only thing we have here is a `render` function. All it does is return some [markup](https://en.wikipedia.org/wiki/Markup_language), expressed as [JSX](https://jsx.github.io/). Instead of rendering a template, such as we do when using [Handlebars](https://handlebarsjs.com), we're dealing here with small chunks of the page at a time which are inserted into `index.html`. Each 'chunk' (component) can contain other components, some of which can be repeated to build lists of items on the page.
+Effectively this whole functional component is a `render` function. All it does is return some [markup](https://en.wikipedia.org/wiki/Markup_language), expressed as [JSX](https://jsx.github.io/). Instead of rendering a template, such as we do when using [Handlebars](https://handlebarsjs.com), we're dealing here with small chunks of the page at a time which are inserted into `index.html`. Each 'chunk' (component) can contain other components, some of which can be repeated to build lists of items on the page.
 
 
 ## The Dog component
 
-Let's try another component. In your editor, make a new component called `Dog.jsx` and save it into the `src/components` directory:
+Let's try another component. In your editor, make a new component called `Dog.jsx` and save it into the `client/components` directory:
 
 ```jsx
 const Dog = props => {
@@ -144,24 +142,9 @@ You should see something like this in the browser:
 > Try adding more dogs, right underneath the first one. Notice what happens when you don't provide one of the values?
 
 
-## Simpler components
+## Moar components!
 
-Components don't have to be complex. Sometimes it makes sense to have components that don't have a lot of bells and whistles. We call these _stateless_ components (or stateless functions). For example:
-
-```js
-import React from 'react'
-
-const EmphasisedLink = props => <em><a href={props.url}>{props.text}</a></em>
-EmphasisedLink.propTypes = { 
-  text: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired
-}
-export default EmphasisedLink
-```
-
-All our component does is return some JSX. We set some prop types and export it.
-
-Try it yourself. Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
+Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
 
 ```jsx
     <img className="spinner" src="images/paw.png" />
