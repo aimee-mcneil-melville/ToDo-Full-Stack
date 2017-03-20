@@ -3,13 +3,11 @@
 // can be done with Tape using a bit more code.
 
 var test = require('ava')
-var knex = require('knex')
 
-var config = require('../../knexfile').test
 var db = require('../../db')
-var setup_db = require('../setup_db.js')
+var setupDb = require('../setup-db.js')
 
-setup_db(test)
+setupDb(test)
 
 test('getUsers gets all users', function (t) {
   // One for each letter of the alphabet!
@@ -17,7 +15,7 @@ test('getUsers gets all users', function (t) {
   return db.getUsers(t.context.db)
     .then(function (result) {
       var actual = result.length
-      t.is(expected, actual)
+      t.is(actual, expected)
     })
 })
 
@@ -26,6 +24,6 @@ test('getUsers gets a single user', function (t) {
   return db.getUser(99901, t.context.db)
     .then(function (result) {
       var actual = result[0].name
-      t.is(expected, actual)
+      t.is(actual, expected)
     })
 })
