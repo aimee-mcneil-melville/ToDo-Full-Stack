@@ -1,6 +1,6 @@
 # Sweet As Beers
 
-In this challenge you'll build part of a fictious clearing house for beer - specifically the product listing and shopping cart pages.
+In this challenge you'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
 
 
 ## Setup
@@ -24,7 +24,7 @@ The files that create the initial experience are `public/index.html` and `public
 * `<BeerList />`
 * `<BeerListItem />`
 
-You might consider imporing `data/beers.js` into the `Listing` component and passing the array into the `BeerList` component.
+You might consider importing `data/beers.js` into the `Listing` component and passing the array into the `BeerList` component.
 
 At this point, don't worry about making the link to the cart work or even using Redux. Just get the initial view working with components instead of static HTML.
 
