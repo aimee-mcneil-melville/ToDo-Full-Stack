@@ -1,0 +1,61 @@
+body {
+  width: 75%;
+  margin: auto;
+}
+
+h1 {
+  margin-top: 30px;
+}
+
+.welcome {
+  margin-bottom: 40px;
+}
+
+.beer p {
+  margin: 5px 0;
+}
+
+.beer .name {
+  margin-top: 40px;
+  font-size: x-large;
+  font-weight: 300;
+}
+
+.beer p:last-child {
+  display: flex;
+  justify-content: space-between;
+  color: darkgray;
+}
+
+.beer .country {
+  font-style: italic;
+}
+
+.beer .abv {
+  font-style: italic;
+}
+
+.beer .cart-link {
+  text-align: right;
+}
+
+.cart table {
+  width: 100%;
+}
+
+.cart .update-input {
+  width: 40px;
+  text-align: center;
+  margin-bottom: 0px; /* skeleton override */
+}
+
+.cart tbody button {
+  border: 0;
+  padding-top: 10px;
+}
+
+.cart .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
