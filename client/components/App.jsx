@@ -1,12 +1,8 @@
 import React from 'react'
 
-import AddWord from './AddWord'
-import WordsContainer from '../containers/WordsContainer'
-
+// This might need to be turned into a stateful component (aka container)
 const App = () => (
-  <div className='app-container'>
-    <WordsContainer />
-    <AddWord />
+  <div className='app'>
   </div>
 )
 

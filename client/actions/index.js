@@ -1,9 +1,5 @@
-let nextWordId = 0
-
-export const addWord = (word) => {
+export const actionCreatorName = () => {
   return {
-    type: 'ADD_WORD',
-    id: nextWordId++,
-    word
+    type: 'ACTION_TYPE'
   }
 }
