@@ -84,8 +84,6 @@ var port = process.env.PORT || 3000
 
 - Any references to 'localhost' within your app will break unless they are provided with a production environment alternative.
 
-- Make sure you remove your webpack bundle from the .gitignore file before you deploy to production.
-
-- Make sure the start script in your package.json file references "node server/index", and not nodemon.
+- Make sure the start script in your package.json file is calling node and not nodemon.
 
 - If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
