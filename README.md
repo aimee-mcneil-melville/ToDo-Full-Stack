@@ -87,3 +87,5 @@ var port = process.env.PORT || 3000
 - Make sure the start script in your package.json file is calling node and not nodemon.
 
 - If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
+
+- Any references to 'localhost' within your app will break unless they are provided with a production environment alternative.
