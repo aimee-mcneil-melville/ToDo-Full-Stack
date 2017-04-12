@@ -53,7 +53,7 @@ var port = process.env.PORT || 3000
 
 
 ## Create app
- 
+
 *From the command line*
 
 * Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
@@ -80,6 +80,12 @@ var port = process.env.PORT || 3000
 
 ## Common gotchas
 
-- Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anyting in `devDependencies`. Also, if a package is working globaly on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will break on a remote server. A best practice is to always install locally and use npm scripts.
+- Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. Also, if a package is working globally on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will break on a remote server. A best practice is to always install locally and use npm scripts.
+
+- Any references to 'localhost' within your app will break unless they are provided with a production environment alternative.
+
+- Make sure the start script in your package.json file is calling node and not nodemon.
+
+- If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
 
 - Any references to 'localhost' within your app will break unless they are provided with a production environment alternative.
