@@ -77,4 +77,4 @@ If you've reached this point, congratulations! As a stretch, you might like to d
   - As these are async calls to begin with, you will need to write functions around them which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
 2. Separate the index and puppy routes into different files and stick these into a routes folder.
   - You will need to update both the routes and server files
-3. Write some tests using tape and supertest (don't forget to npm install these).
+3. Write some tests using tape and supertest (don't forget to `npm install` these).
