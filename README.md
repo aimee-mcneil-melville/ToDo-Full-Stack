@@ -25,7 +25,7 @@
 
 Let's get our server running with a default route
 
-1. Create a `routes.js` file in the main repo directory - this will store all of our routes for now
+1. Create a `routes.js` file in the main repo directory - this will store all of our routes
 2. Add express and the router to your `routes.js` file. Also, don't forget to export the router (which we will require in later in step 4)
 3. Add a get index `/` route - this route will eventually redirect to a `/dogs` route, but for now, let's just send the word 'Pupparazzi'
 4. `require` and `use` our newly created `routes.js` file in our `server`
@@ -65,6 +65,7 @@ For the post `/puppies/edit/:id` route:
   2. Read in the json file and locate the puppy we are going to update
   3. Update the puppy in the array
   4. Write the entire array back into the json file
+  5. Redirect to the get `/puppies/edit/:id` route
 
 If all goes well, you should be able to update the puppy information. Otherwise, if that's not happening, undoing the changes you've made to the json file might come in handy.
 
@@ -73,7 +74,7 @@ If all goes well, you should be able to update the puppy information. Otherwise,
 If you've reached this point, congratulations! As a stretch, you might like to do the following:
 
 1. Refactor the fs.readFile and fs.writeFile calls into a separate file (separation of concerns). 
-  - As these are async calls to begin with, you will need to write functions which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
+  - As these are async calls to begin with, you will need to write functions around them which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
 2. Separate the index and puppy routes into different files and stick these into a routes folder.
   - You will need to update both the routes and server files
 3. Write some tests using tape and supertest (don't forget to npm install these).
