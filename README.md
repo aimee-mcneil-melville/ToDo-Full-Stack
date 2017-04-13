@@ -33,26 +33,27 @@ Let's get our server running with a default route
 
 ## Let's see some puppies!
 
-User Story 1: *As a user, I want to see some puppies, so that you know, I can say awwww.*
+**User Story 1:** *As a user, I want to see some puppies, so that you know, I can say awwww.*
 
 Now that we have an index route, we probably want to have another route to see some puppies
 
 - In our routes, create a get `/puppies` route. We will use this route to:
+
   1. read the puppies from our `data.json` file (don't forget to parse the data into a js object)
   2. render the puppies; a view has been created for you `puppies/index` so all have to do is connect your data and your view together
 
 Once you can see puppies rendering on http://localhost:3000/puppies, update the index `/` route to redirect to `/puppies` (ask yourself why a render of puppies in the index `/` may/may not be a better approach than a redirect)
   
-User Story 2: *As a user, I want to click on a puppy and see their name, breed, and who their owner is*
+**User Story 2:** *As a user, I want to click on a puppy and see their name, breed, and who their owner is*
 
-By now you should have the puppies rendering on the `/puppies` page, if you click on picture however, the link it takes you to is broken (probably because we haven't written it yet). Let's fix that now.
+- By now you should have the puppies rendering on the `/puppies` page, if you click on picture however, the link it takes you to is broken (probably because we haven't written it yet). Let's fix that now.
 
   1. Create another get route to render a particular puppy (perhaps `/puppies/:id`).
-  - The route should probably contain the id as a parameter (so you can access it via req.params.id).
-  - Similarly to the `/puppies` route, it should read the puppies from our json file, but this time, we will need to loop through the array of puppies and match the id passed as a parameter, to the id of the puppy in the array.
-  - Render the puppy; As before the `puppies/view` view has been created for you.
+  2. The route should probably contain the id as a parameter (so you can access it via req.params.id).
+  3. Similarly to the `/puppies` route, it should read the puppies from our json file, but this time, we will need to loop through the array of puppies and match the id passed as a parameter, to the id of the puppy in the array.
+  4. Render the puppy; As before the `puppies/view` view has been created for you.
 
-User Story 3: *As a user, I want to be able to update the puppies name, breed and owner*
+**User Story 3:** *As a user, I want to be able to update the puppies name, breed and owner*
 
 For this, we are going to need to get a form to edit/update the puppy information. This form also needs to post the updated information from the form to the server. Hence, we are going to need two routes this time (don't panic!)
 
