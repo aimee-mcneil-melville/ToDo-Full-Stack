@@ -17,9 +17,9 @@
 ## Gotchas
 
 1. The order of routes is important (They work on a first come first served basis). So if you have a `/:id` route before a `/puppies` route, `/:id` will serve the `/puppies` route and any other route following it.
-2. Server responses (e.g. `res.send()` or `res.render()`) should only be sent once per request. If you route has the potential to make more than one response, make sure to `return` after you've sent it.
-3. Make sure to `JSON.parse` and `JSON.stringify` when reading in JSON data
-4. Don't forget the error response format of callback functions (if in doubt check the documentation)
+2. Server responses (e.g. `res.send()` or `res.render()`) should only be sent once per request. If your route has the potential to make more than one response, make sure to `return` after you've sent it.
+3. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data
+4. Don't forget the error response format of callback functions (if in doubt check the node fs documentation)
 
 ## Let's get our routes on
 
