@@ -8,7 +8,6 @@ router.get('/', function (req, res) {
     if (err) {
       return res.status(500).send('An Error Occured!')
     }
-
     var dogs = {
       dogs: data
     }
