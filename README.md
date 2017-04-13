@@ -14,6 +14,13 @@
 * To debug the server: `npm run debug`
 * To start the server (and have it reload with Nodemon after changes): `npm start`
 
+## Gotchas
+
+1. The order of routes is important (They work on a first come first served basis). So if you have a `/:id` route before a `/puppies` route, `/:id` will serve the `/puppies` route and any other route following it.
+2. Server responses (e.g. `res.send()` or `res.render()`) should only be sent once per request. If you route has the potential to make more than one response, make sure to `return` after you've sent it.
+3. Make sure to `JSON.parse` and `JSON.stringify` when reading in JSON data
+4. Don't forget the error response format of callback functions (if in doubt check the documentation)
+
 ## Let's get our routes on
 
 Let's get our server running with a default route
@@ -66,7 +73,7 @@ If all goes well, you should be able to update the puppy information. Otherwise,
 If you've reached this point, congratulations! As a stretch, you might like to do the following:
 
 1. Refactor the fs.readFile and fs.writeFile calls into a separate file (separation of concerns). 
-  - As these are async calls to begin with, you may need to write functions which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
+  - As these are async calls to begin with, you will need to write functions which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
 2. Separate the index and puppy routes into different files and stick these into a routes folder.
   - You will need to update both the routes and server files
 3. Write some tests using tape and supertest (don't forget to npm install these).
