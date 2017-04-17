@@ -51,6 +51,12 @@ var port = process.env.PORT || 3000
   "postinstall": "knex migrate:latest"
   ```
 
+- [ ] If you're using Webpack, you've moved all necessary `devDependencies` to `dependencies` in your `package.json` and you're calling `webpack` in your `postinstall` script.
+
+  ```js
+  "postinstall": "webpack && knex migrate:latest"
+  ```
+
 
 ## Create app
 
@@ -84,6 +90,6 @@ var port = process.env.PORT || 3000
 
 - Any references to 'localhost' within your app will break unless they are provided with a production environment alternative.
 
-- Make sure the start script in your package.json file is calling node and not nodemon.
+- Make sure the `start` script in your `package.json` file is calling `node` and not `nodemon`.
 
 - If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
