@@ -13,7 +13,7 @@ Notice that when you save a file the server automatically restarts! Checkout the
 
 Visit [http://localhost:3000/](http://localhost:3000/)
 
-What happens? Can you go to `app.js` and work out what you are seeing and why you are seeing it? Talk it through with your pair and compare ideas.
+What happens? Can you go to `server.js` and work out what you are seeing and why you are seeing it? Talk it through with your pair and compare ideas.
 
 
 ## Release 2
@@ -22,17 +22,17 @@ Visit [http://localhost:3000/cats/1](http://localhost:3000/cats/1) and check the
 
 You should see the id printed in the console. Yay! Now we can find the cat the user is looking for and render just that cat out to the user. Get the correct cat from the cats array in the data object and pass it as the second argument to the render function.
 
-Fill out the `catsShow.hbs` template so that you can see the name of the cat. Hint: if you are stuck with passing the individual cat to the `catShow` view, notice how `/cats` passes the cats array to the view.
+Fill out the `show.hbs` template so that you can see the name of the cat. Hint: if you are stuck with passing the individual cat to the `catShow` view, notice how `/cats` passes the cats array to the view.
 
 
 ## Release 3
 
-Study meowtown and add more properties to each `cat` object. Now update the `catsIndex` and `catsShow` templates.
+Study meowtown and add more properties to each `cat` object. Now update the `index` and `show` templates.
 
 
 ## Release 4
 
-Add a new route that listens for requests to `/cats/new`. Render the `catsNew` form. Check it out!
+Add a new route that listens for requests to `/cats/new`. Render the `new` form. Check it out!
 
 
 ## Release 5
@@ -65,11 +65,3 @@ Sort cats by when they were last viewed by a user.
 
 Appropriate Eugene's CSS file and add it to your server.
 
-
-## Resources
-
-Number | Name
--------|------
-1 | [REST](http://guides.rubyonrails.org/routing.html)
-2 | [Express](http://expressjs.com/)
-3 | [Handlebars](http://handlebarsjs.com/)

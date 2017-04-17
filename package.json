@@ -1,9 +1,8 @@
 {
   "name": "meowtown",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon index"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
