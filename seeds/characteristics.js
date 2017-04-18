@@ -9,6 +9,6 @@ exports.seed = function (knex, Promise) {
         knex('characteristics').insert({id: 99905, description: 'clever'}),
         knex('characteristics').insert({id: 99906, description: 'sporty'}),
         knex('characteristics').insert({id: 99907, description: 'bossy'})
-      ]);
-    });
-};
+      ])
+    })
+}
