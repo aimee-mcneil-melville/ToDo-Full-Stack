@@ -5,7 +5,11 @@ var development = require('./knexfile').development
 var knex = require('knex')(development)
 
 router.get('/', function (req, res) {
-  res.send('WOMBLES!')
+  knex('wombles')
+    .then((wombles) => {
+      res.render('list', wombles)
+    })
+  
 })
 
 module.exports = router
