@@ -31,7 +31,6 @@ router.get('/assignments', function (req, res) {
     .select('wombles.id as womble_id', 'wombles.name as womble_name', 'rubbish.name as rubbish_name')
     .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
     .then(function (wombles) {
-      console.log(wombles)
       res.render('assignments', { wombles: wombles })
     })
 })
