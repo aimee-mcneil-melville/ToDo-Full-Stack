@@ -19,5 +19,5 @@ app.set('views', path.join(__dirname, 'views'))
 
 // Routes
 
-app.get('/', routes.getHome)
+app.use('/', routes)
 

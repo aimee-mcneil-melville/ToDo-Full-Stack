@@ -1,10 +1,11 @@
+var express = require('express')
+var router = express.Router()
+
 var development = require('./knexfile').development
 var knex = require('knex')(development)
 
-module.exports = {
-  getHome: getHome
-}
-
-function getHome (req, res) {
+router.get('/', function (req, res) {
   res.send('WOMBLES!')
-}
+})
+
+module.exports = router
