@@ -1,7 +1,9 @@
 body {
+    width:100%
+    height: 100%;
   padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #ddd;
+  background: #aaa;
 
 }
 
@@ -11,29 +13,80 @@ a {
 text-decoration:none;
     
 }
-a:hover {
- color: #0095cc;   
-transition: 0.3s;
-font-weight:600;
-}
 
+a:hover {
+ color: #fff; 
+ text-shadow: 1px 1px #ddd;
+ transition: 0.3s;
+}
 nav {
  margin:20px;   
 height: 50px;
 }
 nav ul {
-     position:relative; left: -50px; top: -5px;
+     position:relative; 
+     left: -50px;
+     top: -5px;
 }
 
 nav li {
-   width: 100px; padding:10px;float: left;text-align:center; background:#004; border: 1px solid #002;border-radius:5px; margin:10px;list-style:none;
-}
-.catcreate {
-    margin:10px;
+   width: 100px;
+   padding:10px;
+   float: left;
+   text-align:center;
+   background:#004; 
+   border: 1px solid #002;
+   border-radius:5px; 
+   margin:10px;
+   list-style:none;
 }
 
-#catgen {
-    background:#003; padding:10px; border-radius:5px;border:1px #001 solid; color:#fff; width: 150px;height: 40px;margin:20px;
+nav li:hover { 
+ background:#003;
+ transition:0.7s;
+ box-shadow: 1px 1px #000;
+}
+
+#container {
+width:50%;
+margin:auto;
+}
+
+.catcreate {
+    margin:20px;
+}
+
+
+.catcreate input {
+    width:200px;
+         border-radius:5px;
+    border:1px #001 solid; 
+    
+}
+.catcreate textarea {
+    width:200px;
+       border-radius:5px;
+    border:1px #001 solid; 
+}
+
+#back {
+margin:20px;
+background: #003;
+width:auto; 
+padding:10px;
+border-radius:5px;border:1px #001 solid;
+width:70px;
+}
+.title {
+    text-align:center;
+    background:#003; 
+    padding-bottom:30px; 
+    border-radius:5px;
+    border:1px #001 solid; 
+    color:#fff; 
+    width: 250px;
+    height: 40px;
+    margin:20px;
 }
 #catnames {
 float:left;
@@ -44,15 +97,14 @@ left:-30px;
 }
 
 .cats {
- font-weight:bold;  
-color: #fff; 
+ font-style:italic;      
+color: #007; 
  
 }
 
 .cats li {
-    background: #003;
-width:auto; 
-padding:10px;
-margin:10px;
-border-radius:5px;border:1px #001 solid;
+    width:auto; 
+padding:5px;
+margin:15px;
+border-bottom: 3px solid #fff;
 }
