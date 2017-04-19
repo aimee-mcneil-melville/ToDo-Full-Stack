@@ -1,9 +1,17 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #ccc;
+  background: #ddd;
 }
 
 a {
   color: #00B7FF;
+}
+
+input {
+    margin:10px;
+}
+
+catgen {
+    background:#003; padding:10px; border-radius:5px;border:1px #001 solid; color:#fff; width: 400px;
 }
