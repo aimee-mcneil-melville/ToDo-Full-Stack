@@ -130,17 +130,19 @@ You should see something like this in the browser:
 
 ## Moar components!
 
-Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
+Try it yourself. Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
 
 ```jsx
-    <img className='spinner' src='images/paw.png' />
-    <Subtitle text='Canines using supercanine abilities for social good.' />
-    <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
+<img className='spinner' src='images/paw.png' />
+<Subtitle text='Canines using supercanine abilities for social good.' />
+<Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
 ```
 
 You should see something like this:
 
 ![Subtitle component](screenshots/subtitle.png)
 
-The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `tutorial` branch for hints if you get stuck.
+The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `solution` branch for hints if you get stuck. Ideally you'd end up with something like this:
+
+![Pic component](screenshots/pics.png)
 
