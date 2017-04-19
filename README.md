@@ -46,8 +46,8 @@ Take a look at `client/components/App.jsx`:
 ```jsx
 const App = () => {
   return (
-    <div className="container">
-      <img className="spinner" src="images/paw.png" />
+    <div className='container'>
+      <img className='spinner' src='images/paw.png' />
     </div>
   )
 }
@@ -65,13 +65,13 @@ Let's try another component. In your editor, make a new component called `Dog.js
 ```jsx
 const Dog = props => {
   return (
-    <div className="dog-wrapper">
-      <div className="dog">
-        <div className="dog-name-plate">
-          <span className="dog-name">{props.name}</span>
-          <span className="dog-breed">{props.breed}</span>
+    <div className='dog-wrapper'>
+      <div className='dog'>
+        <div className='dog-name-plate'>
+          <span className='dog-name'>{props.name}</span>
+          <span className='dog-breed'>{props.breed}</span>
         </div>
-        <span className="dog-superpower">{props.superpower}</span>
+        <span className='dog-superpower'>{props.superpower}</span>
       </div>
     </div>
   )
@@ -89,7 +89,7 @@ export default Dog
 Copy/paste will do for this one. Notice that it looks a lot like `App.jsx`, except there are a few extra tags and we're making use of _props_. The props come from what we would normally think of as 'attributes' on the component's tag in JSX:
 
 ```jsx
-<Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+<Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
 ```
 
 Here, `name`, `breed`, and `superpower` are _props_. The `Dog` component will receive them as a JavaScript object like so:
@@ -128,9 +128,9 @@ and add a Dog tag (use Desdemona, above if you like). Your return should look so
 
 ```jsx
 return (
-  <div className="container">
-    <img className="spinner" src="images/paw.png" />
-    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+  <div className='container'>
+    <img className='spinner' src='images/paw.png' />
+    <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
   </div>
 )
 ```
@@ -147,9 +147,9 @@ You should see something like this in the browser:
 Define a stateless component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
 
 ```jsx
-    <img className="spinner" src="images/paw.png" />
-    <Subtitle text="Canines using supercanine abilities for social good." />
-    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+    <img className='spinner' src='images/paw.png' />
+    <Subtitle text='Canines using supercanine abilities for social good.' />
+    <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
 ```
 
 You should see something like this:
