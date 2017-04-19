@@ -30,7 +30,7 @@ nav ul {
 }
 
 nav li {
-   width: 100px;
+   width: 93px;
    padding:10px;
    float: left;
    text-align:center;
@@ -42,9 +42,9 @@ nav li {
 }
 
 nav li:hover { 
- background:#003;
+ background:#002;
  transition:0.7s;
- box-shadow: 1px 1px #000;
+ box-shadow: 2px 1px #002;
 }
 
 #container {
@@ -61,17 +61,21 @@ margin:auto;
     width:200px;
          border-radius:5px;
     border:1px #001 solid; 
+    padding-top:5px;
+    padding-bottom:5px;
     
 }
 .catcreate textarea {
     width:200px;
        border-radius:5px;
     border:1px #001 solid; 
+    padding-top:5px;
+    padding-bottom:5px; 
 }
 
 #back {
 margin:20px;
-background: #003;
+background: #002;
 width:auto; 
 padding:10px;
 border-radius:5px;border:1px #001 solid;
@@ -79,7 +83,7 @@ width:70px;
 }
 .title {
     text-align:center;
-    background:#003; 
+    background:#002; 
     padding-bottom:30px; 
     border-radius:5px;
     border:1px #001 solid; 
@@ -103,8 +107,17 @@ color: #007;
 }
 
 .cats li {
-    width:auto; 
+    list-style-type:none;
+    width:100px; 
+margin: 0 15px 0 5px;
+text-align:center;
 padding:5px;
-margin:15px;
-border-bottom: 3px solid #fff;
+border-bottom: 3px solid #333;
+position: relative;
+left: 10px;
+float:left;
 }
+
+.cats li:hover {
+    border-bottom:3px solid #ddd;
+transition: 0.5s;
