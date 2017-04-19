@@ -63,6 +63,8 @@ Effectively this whole functional component is a `render` function. All it does 
 Let's try another component. In your editor, make a new component called `Dog.jsx` and save it into the `client/components` directory:
 
 ```jsx
+import React from 'react'
+
 const Dog = props => {
   return (
     <div className='dog-wrapper'>
@@ -75,12 +77,6 @@ const Dog = props => {
       </div>
     </div>
   )
-}
-
-Dog.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  breed: React.PropTypes.string.isRequired,
-  superpower: React.PropTypes.string
 }
 
 export default Dog
@@ -106,16 +102,6 @@ When we refer to a prop in JSX we have to put it inside curly braces, like so:
 
 ```jsx
 <span>{props.name}</span>
-```
-
-We should also specify some `propTypes`. These specify what kind of JavaScript values our props should be treated as.
-
-```js
-Dog.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  breed: React.PropTypes.string.isRequired,
-  superpower: React.PropTypes.string
-}
 ```
 
 Try it out! In `App.jsx`, import your new Dog component:
@@ -157,3 +143,4 @@ You should see something like this:
 ![Subtitle component](screenshots/subtitle.png)
 
 The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `tutorial` branch for hints if you get stuck.
+
