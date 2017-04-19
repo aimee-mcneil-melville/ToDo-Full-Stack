@@ -21,14 +21,38 @@ nav {
  margin:20px;   
 height: 50px;
 }
+nav ul {
+     position:relative; left: -50px; top: -5px;
+}
 
 nav li {
-    width: 100px; float: left;text-align:center; background:#004; border: 1px solid #002;border-radius:5px; margin:10px;list-style:none;
+   width: 100px; padding:10px;float: left;text-align:center; background:#004; border: 1px solid #002;border-radius:5px; margin:10px;list-style:none;
 }
-input {
+.catcreate {
     margin:10px;
 }
 
 #catgen {
     background:#003; padding:10px; border-radius:5px;border:1px #001 solid; color:#fff; width: 150px;height: 40px;margin:20px;
+}
+#catnames {
+float:left;
+position:relative;
+top:-20px;
+left:-30px;
+
+}
+
+.cats {
+ font-weight:bold;  
+color: #fff; 
+ 
+}
+
+.cats li {
+    background: #003;
+width:auto; 
+padding:10px;
+margin:10px;
+border-radius:5px;border:1px #001 solid;
 }
