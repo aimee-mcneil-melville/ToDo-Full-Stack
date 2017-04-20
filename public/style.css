@@ -3,7 +3,7 @@ body {
     height: 100%;
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #fff;
+  background-image: url("dotbg.png");
 
 }
 
