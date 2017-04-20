@@ -1,12 +1,18 @@
-<h1>cat generator</h1>
+<div id="container">
+
+<div class="title"><h1>cat generator</h1></div>
 
 <form action="/cats" accept-charset="UTF-8" method="post">
 
-  <div><input placeholder="name" type="text" name="name" /></div>
-  <div><input placeholder="image url" type="text" name="image" /></div>
-  <div><textarea placeholder="life story" name="life-story"></textarea></div>
-  <div><input type="submit" name="commit" value="Create Cat" /></div>
+  <div class="catcreate"><input placeholder="name" type="text" name="name" /></div>
+  <div class="catcreate"><input placeholder="image url" type="text" name="image" /></div>
+  <div class="catcreate"><textarea placeholder="life story" name="life-story"></textarea></div>
+  <div class="catcreate"><input id="submit" type="submit" name="commit" value="Create Cat" /></div>
 
 </form>
 
-<a href="/cats">nevermind</a>
+<div id="back"> <a href="/cats">nevermind</a></div>
+
+
+</div>
+<div id="meow"> </div>
