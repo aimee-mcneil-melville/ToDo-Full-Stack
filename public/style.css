@@ -16,7 +16,7 @@ text-decoration:none;
 
 a:hover {
  color: #fff; 
- text-shadow: 1px 1px #333;
+ text-shadow: 1px 1px #8B864E ;
  transition: 0.3s;
 }
 nav {
@@ -80,12 +80,14 @@ background:#FEF1B5;
     background:#FEF0DB; 
       color: #8B864E;
       width:207px;
+      padding-top:10px;
+      padding-bottom:10px;
     
 }
 
 .catcreate #submit:hover {
      color: #fff; 
- text-shadow: 1px 1px #333;
+ text-shadow: 1px 1px #8B864E ;
  transition: 0.3s;
 }
 .catcreate textarea {
@@ -152,3 +154,5 @@ float:left;
 .cats li:hover {
     border-bottom:3px solid #615E3F;
 transition: 0.5s;
+color:#fff;
+ text-shadow: 1px 1px #8B864E;
