@@ -1,168 +1,161 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("dotbg.png");
-
 }
-
 
 a {
   color: #8B864E;
-text-decoration:none;
-    
+  text-decoration: none;  
 }
 
 a:hover {
- color: #fff; 
- text-shadow: 1px 1px #8B864E ;
- transition: 0.3s;
+  color: #fff; 
+  text-shadow: 1px 1px #8B864E ;
+  transition: 0.3s;
 }
+
 nav {
- margin:20px;   
-height: 50px;
-float:left;
+  margin: 20px;   
+  height: 50px;
+  float: left;
 }
+
 nav ul {
-     position:relative; 
-     left: -50px;
-     top: -5px;
+  position: relative; 
+  left: -50px;
+  top: -5px;
 }
 
 nav li {
-   width: 93px;
-   padding:10px;
-   float: left;
-   text-align:center;
-   background:#FEF0DB; 
-   border: 1px solid #8B864E;
-   border-radius:5px; 
-   margin:10px;
-   list-style:none;
-}
-
-nav li:hover { 
-
+  width: 93px;
+  padding: 10px;
+  float: left;
+  text-align: center;
+  background: #FEF0DB; 
+  border: 1px solid #8B864E;
+  border-radius: 5px; 
+  margin: 10px;
+  list-style: none;
 }
 
 #container {
-width:350px;
-height: 400px;
-margin:auto;
-overflow:auto;
-border: 1px solid #8B864E;
-border-radius:5px;
-margin-top:40px;
-padding:30px 0 30px 60px ;
-background:#FEF1B5;
+  width: 350px;
+  height: 400px;
+  margin: auto;
+  overflow: auto;
+  border: 1px solid #8B864E;
+  border-radius: 5px;
+  margin-top: 40px;
+  padding: 30px 0 30px 60px ;
+  background: #FEF1B5;
 }
 
 .catcreate {
-    margin:20px;
-    color:#8B864E;
+  margin: 20px;
+  color: #8B864E;
 }
-
 
 .catcreate input {
-    width:200px;
-         border-radius:5px;
-    border:1px #8B864E solid; 
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-left:5px;
-    margin: 0 0 0 25px;
-    color:#8B864E;
+  width: 200px;
+  border-radius: 5px;
+  border:1px #8B864E solid; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin: 0 0 0 25px;
+  color: #8B864E;
 }
 
-
 .catcreate #submit {
-    background:#FEF0DB; 
-      color: #8B864E;
-      width:207px;
-      padding-top:10px;
-      padding-bottom:10px;
-    
+  background: #FEF0DB; 
+  color: #8B864E;
+  width: 207px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .catcreate #submit:hover {
-     color: #fff; 
- text-shadow: 1px 1px #8B864E ;
- transition: 0.3s;
+  color: #fff; 
+  text-shadow: 1px 1px #8B864E ;
+  transition: 0.3s;
 }
+
 .catcreate textarea {
-    width:200px;
-       border-radius:5px;
-    border:1px #8B864E solid; 
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-left:5px;
-        margin: 0 0 0 25px;
-color:#8B864E;
+  width: 200px;
+  border-radius: 5px;
+  border:1px #8B864E solid; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin: 0 0 0 25px;
+  color: #8B864E;
 }
 
 #back {
-margin:20px 20px 20px 100px;
-background: #FEF0DB;
-width:auto; 
-padding:10px;
-border-radius:5px;
-border:1px #8B864E solid;
-width:70px;
-color: #8B864E;
+  margin: 20px 20px 20px 100px;
+  background: #FEF0DB;
+  width: auto; 
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px #8B864E solid;
+  width: 70px;
+  color: #8B864E;
 }
-.title {
-    text-align:center;
-    background:#FEF0DB; 
-    padding-bottom:30px; 
-    border-radius:5px;
-    border:1px #8B864E solid; 
-    color:#fff; 
-    text-shadow: 1px 1px #8B864E;
-    width: 250px;
-    height: 40px;
-    margin:20px;
-    float:left;
-}
-#catnames {
-float:left;
-position:relative;
-top:-20px;
-left:-30px;
 
+.title {
+  text-align: center;
+  background: #FEF0DB; 
+  padding-bottom: 30px; 
+  border-radius: 5px;
+  border:1px #8B864E solid; 
+  color: #fff; 
+  text-shadow: 1px 1px #8B864E;
+  width: 250px;
+  height: 40px;
+  margin: 20px;
+  float: left;
+}
+
+#catnames {
+  float: left;
+  position: relative;
+  top: -20px;
+  left: -30px;
 }
 
 .cats {
- font-style:italic;      
-color: #9D8851; 
- float:left;    
- margin:20px;
+  font-style: italic;      
+  color: #9D8851; 
+  float: left;    
+  margin: 20px;
 }
 
 .cats li {
-    list-style-type:none;
-    width:100px; 
-margin: 0 15px 0 5px;
-text-align:center;
-padding:5px;
-border-bottom: 3px solid #8B864E;
-position: relative;
-left: -10px;
-
-float:left;
+  list-style-type: none;
+  width: 100px; 
+  margin: 0 15px 0 5px;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 3px solid #8B864E;
+  position: relative;
+  left: -10px;
+  float: left;
 }
 
 .cats li:hover {
-    border-bottom:3px solid #615E3F;
-transition: 0.5s;
-color:#fff;
- text-shadow: 1px 1px #8B864E;
+  border-bottom: 3px solid #615E3F;
+  transition: 0.5s;
+  color: #fff;
+  text-shadow: 1px 1px #8B864E;
 } 
  
- #meow {
- width:282px; 
- height:299px;
- background-image: url("meows.png");
- position: fixed;
- bottom:0px;
- right:0px;
- margin-right:10px;
- margin-bottom:10px;
- }
+#meow {
+  width: 282px; 
+  height: 299px;
+  background-image: url("meows.png");
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
