@@ -156,9 +156,12 @@ color:#fff;
 } 
  
  #meow {
- width:400px; 
- height:465px;
- background-image: url("meow.png");
+ width:282px; 
+ height:299px;
+ background-image: url("meows.png");
  position: fixed;
  bottom:0px;
+ right:0px;
+ margin-right:10px;
+ margin-bottom:10px;
  }
