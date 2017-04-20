@@ -1,21 +1,24 @@
 <div id="container">
 
-<div class="title"><h1>Meowtown</h1></div>
+  <div class="title"><h1>Meowtown</h1></div>
 
-<nav>
-  <ul>
-  <li><a href="/cats/new">generate cat</a></li>
-  <li><a href="/cats/help">wuuut?</a></li>
-</ul>
+  <nav>
+    <ul>
+      <li><a href="/cats/new">generate cat</a></li>
+      <li><a href="/cats/help">wuuut?</a></li>
+    </ul>
   </nav>
 
-<div id="catnames">
-<div class="cats"><ul>
- {{#each cats}}
-  <li>{{name}}</li>
- {{/each}}
-</ul></div>
+  <div id="catnames">
+    <div class="cats">
+      <ul>
+        {{#each cats}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 
 </div>
-</div>
-<div id="meow"> </div>
+
+<div id="meow"></div>
