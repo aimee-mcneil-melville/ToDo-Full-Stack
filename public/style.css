@@ -15,7 +15,7 @@ text-decoration:none;
 }
 
 a:hover {
- color: #FEF1B5; 
+ color: #fff; 
  text-shadow: 1px 1px #333;
  transition: 0.3s;
 }
@@ -70,6 +70,7 @@ background:#FEF1B5;
     border:1px #8B864E solid; 
     padding-top:5px;
     padding-bottom:5px;
+    padding-left:5px;
     margin: 0 0 0 25px;
     color:#8B864E;
 }
@@ -78,11 +79,12 @@ background:#FEF1B5;
 .catcreate #submit {
     background:#FEF0DB; 
       color: #8B864E;
+      width:207px;
     
 }
 
 .catcreate #submit:hover {
-     color: #FEF1B5; 
+     color: #fff; 
  text-shadow: 1px 1px #333;
  transition: 0.3s;
 }
@@ -92,6 +94,7 @@ background:#FEF1B5;
     border:1px #8B864E solid; 
     padding-top:5px;
     padding-bottom:5px;
+    padding-left:5px;
         margin: 0 0 0 25px;
 color:#8B864E;
 }
