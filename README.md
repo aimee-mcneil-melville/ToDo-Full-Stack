@@ -1,81 +1,73 @@
 # Enspiraled
 
-For this challenge, you'll be making a basic fractal generator that starts with a single large circle. Click on the circle and four new circles of half the original circle's radius will appear at the cardinal compass points, north, south, east and west. Click on any of those circles and the process is repeated.
+For this challenge, you'll be making a basic fractal generator that starts with a single large circle. Click on the circle and four new circles of half the original circle's radius will appear at the cardinal compass points: north, south, east and west. Click on any of those circles and the process is repeated.
 
 ## Setup
 
-Here is the base state at load:
-
-![Base case](./public/images/base-circle.png)
-
-And here is what it should look like after a few clicks:
-
-![Enspiraled](./public/images/enspiral.png)
-
-Colors are unimportant; choose your own. The initial size of the canvas should be 800 by 800, and the radius of the initial, centered circle should be 256 pixels, if you want it to look like the above images. Or choose your own.
-
-Here you'll find a browserify app all set up and ready to get started. Just clone this repo, then run:
+After cloning this repo
 
 ```sh
 npm install
-npm run build
+npm start
 ```
 
-This will build your app and run watchify to rebuild it whenever you change your JavaScript code in the `src` folder. Then open a new terminal window in the same project folder and run `npm start` to start the webserver on port 8008: [http://localhost:8008/](http://localhost:8008/). You can now load the page in your browser. Use Control-C to stop watchify and/or the server.
+and then go to [`http://localhost:3000`](http://localhost:3000).
 
-The `src/index.jsx` file looks like this:
+This is what your starting place looks like:
+
+![Base case](./public/images/base-circle.png)
+
+And after you've completed this project, this is what it can look like after a few clicks:
+
+![Enspiraled](./public/images/enspiral.png)
+
+
+## Your starting place
+
+Our journey begins in `client/components/App.jsx`. Here are its contents:
 
 ```jsx
 import React from 'react'
-import ReactDOM from 'react-dom'
 
-import App from './components/app.jsx!'
-
-const app = document.createElement('div')
-
-document.body.appendChild(app)
-
-ReactDOM.render(<App/>, app)
-```
-
-This imports React and the ReactDOM. The latter is used to render the application into a `<div>` element appended to the body. We create a new `<div>` element, append it to the document's `<body>`, and then render the React App into it. Note that we import our App component and then use it as if it were an HTML element: `<App/>` (that closing slash is important&mdash;use it on any JSX tag that doesn't have a closing tag).
-
-Here is the `src/components/app.jsx` file:
-
-```jsx
-import React, { Component } from 'react'
-
-class App extends Component {
-
-  render () {
-    return <svg>
-      <circle cx={50} cy={50} r={10} fill="red" />
-    </svg>
+const App = props => {
+  const circle = {
+    cx: props.width / 2,
+    cy: props.height / 2,
+    level: 0,
+    r: 256
   }
+
+  return (
+    <svg width={props.width} height={props.height}>
+      <circle cx={circle.cx} cy={circle.cy} r={circle.r} />
+    </svg>
+  )
 }
 
 export default App
 ```
 
-We import `Component` from React using destructuring assignment (Google it), then we extend the React Component to create our own App component. This gives us React superpowers. Then we write our own `render` method. React will call this automatically whenever it wants to render this component, and whatever we return will be processed into HTML and rendered to the window.
+Here we extend `React.Component` to create our own stateful `App` component. React will call its `render` method whenever it needs to render this component. 
 
-Here we're rendering some SVG (Scalable Vector Graphics). It draws a circle with the center 50px from the top (`cy`) and 50px from the left (`cx`) of the parent element. The circle has a radius of 10px (`r`) and is filled with red (`fill`).
+Here we're rendering some SVG (Scalable Vector Graphics). In this case, a circle with the center 400px from the top (`cy`) and 400px from the left (`cx`) of the parent `<svg>` element. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
 
-Your job is to create a new Circle component in `src/components/circle.jsx` that wraps this SVG element and adds some new features. The most important of these is an onClick property. You'll want to pass a click handling method into your Circles and then pass the center and radius back to the App, which will use that information to add the four new circles *if they don't already exist*.
 
-We've also included some tests. You can see them in `test/tests.js` and you can run them by running:
+## The requirements
 
-```sh
-npm test
-```
+Your job is to create a new Circle component in `client/components/Circle.jsx` that wraps this SVG element and adds some new features. The most important of these is an `onClick` property. You'll want to pass a click handling method into your Circles and then pass the center and radius back to the `App`, which will use that information to add the four new circles *if they don't already exist*.
 
-Maybe in a third terminal tab?
 
-You should see some failing tests, like this:
+### One way of approaching this
 
-![Failing tests](./public/images/failing-tests.png)
+Right now our circle isn't a component, but if we want to create a bunch of identical ones, it will be easier if it is. What would a `<Circle>` component look like? Since it would be responsible for rendering itself, it would need to know the `x` and `y` values of its center and it would need to know its `radius`. It would also need to know if it had been clicked or not (`hasBeenClicked = false`?). With that it can calculate the values of its child Circles.
+
+
+
+
+## Unit tests
 
 Your task: make these tests pass and create an output that looks something like the ones in the images above.
+
 
 ## Hints
 

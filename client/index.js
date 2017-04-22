@@ -5,7 +5,7 @@ import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
+    <App width={window.innerWidth} height={window.innerHeight} />,
     document.getElementById('app')
   )
 })

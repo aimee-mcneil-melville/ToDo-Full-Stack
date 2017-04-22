@@ -1,23 +1,18 @@
 import React from 'react'
 
-class App extends React.Component {
-
-  constructor (props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+const App = props => {
+  const circle = {
+    cx: props.width / 2,
+    cy: props.height / 2,
+    level: 0,
+    r: 256
   }
 
-  handleClick (event) {
-    console.log('You clicked on the circle.')
-  }
-
-  render () {
-    return (
-      <svg>
-        <circle cx={50} cy={50} r={10} onClick={this.handleClick} />
-      </svg>
-    )
-  }
+  return (
+    <svg width={props.width} height={props.height}>
+      <circle cx={circle.cx} cy={circle.cy} r={circle.r} />
+    </svg>
+  )
 }
 
 export default App
