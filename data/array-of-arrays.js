@@ -62,18 +62,3 @@ module.exports = [
  ['williamsburg', 'sed', 'ipsam', 'omnis' ],
  ['authentic', 'ab', 'reiciendis', 'asperiores' ]
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

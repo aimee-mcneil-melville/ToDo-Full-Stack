@@ -1,32 +1,20 @@
 {
-  "name": "js-kata-modules",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "kata-strings-numbers-modules",
+  "version": "0.1.0",
+  "description": "practice working with types, functions and modules",
+  "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/regularity.git"
+    "url": "git+https://github.com/dev-academy-challenges/kata-strings-numbers-modules.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Enspiral Dev Academy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/regularity/issues"
+    "url": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/regularity#readme",
-  "dependencies": {
-    "colors": "^1.1.2",
-    "iso8601-validator": "^1.0.1",
-    "js-object-pretty-print": "^0.2.0",
-    "node-emoji": "^1.0.4",
-    "pretty-js": "^0.1.8",
-    "pretty-print": "^1.1.0",
-    "pretty-print-object": "^1.1.0"
+  "homepage": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules#readme",
+  "devDependencies": {
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
   }
 }
