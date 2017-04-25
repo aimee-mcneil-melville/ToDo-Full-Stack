@@ -1,6 +1,6 @@
 # Enspiraled
 
-For this challenge, you'll be making a basic fractal generator that starts with a single large circle. Click on the circle and four new circles of half the original circle's radius will appear at the cardinal compass points: north, south, east and west. Click on any of those circles and the process is repeated.
+For this challenge, you'll be making a basic fractal generator that starts with a single large circle. As your mouse moves over the circle, four more circles appear. And each circle behaves this way.
 
 ## Setup
 
@@ -47,52 +47,43 @@ const App = props => {
 export default App
 ```
 
-Here we extend `React.Component` to create our own stateful `App` component. React will call its `render` method whenever it needs to render this component. 
-
-Here we're rendering some SVG (Scalable Vector Graphics). In this case, a circle with the center 400px from the top (`cy`) and 400px from the left (`cx`) of the parent `<svg>` element. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
+The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders Scalable Vector Graphics: an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
 
 
 ## The requirements
 
-Your job is to create a new Circle component in `client/components/Circle.jsx` that wraps this SVG element and adds some new features. The most important of these is an `onClick` property. You'll want to pass a click handling method into your Circles and then pass the center and radius back to the `App`, which will use that information to add the four new circles *if they don't already exist*.
+* As your mouse moves over the circle, four more circles should appear at the cardinal compass points: north, south, east and west.
+
+* The radius of the 4 new circles should be half of the _parent_ circle.
+
+* A circle should only create 4 new _children_ **once**. Subsequent mouseovers should create no visible change.
 
 
-### One way of approaching this
+## Some things to consider
 
-Right now our circle isn't a component, but if we want to create a bunch of identical ones, it will be easier if it is. What would a `<Circle>` component look like? Since it would be responsible for rendering itself, it would need to know the `x` and `y` values of its center and it would need to know its `radius`. It would also need to know if it had been clicked or not (`hasBeenClicked = false`?). With that it can calculate the values of its child Circles.
+Because every circle behaves the same way, you could create a new `Circle` component in `client/components/Circle.jsx` that wraps the SVG `<circle>` element and adds some new features (like state).
+
+When a `<Circle>` is showing itself, it should use the SVG `<circle>` element, but when it's showing it's children, it should use new `<Circle>` components.
+
+Because a circle should only create its children the first time, a `Circle` should have a property in its state that tracks if it has children (if it's been moused over). Perhaps `hasChildren`? If it has children it should use props to also render its children in the correct location (based on its `cx`, `cy` and `r`).
+
+You can apply a mouseover event to the SVG `circle` element like so: `<circle cx={cx} cy={cy} r={r} mouseover={handleMouseOver} />`. The `handleMouseOver` function can be defined in the same `Circle.jsx` file.
 
 
+## Resources
 
+If you don't already have it installed, you might like to add the [React Chrome extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) to Chrome. This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) created by React.
 
-## Unit tests
+And some more:
 
-Your task: make these tests pass and create an output that looks something like the ones in the images above.
-
-
-## Hints
-
-If you don't already have it installed, you might like to add the [React plugin](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) to Chrome. This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) created by React.
-
-These resources might be useful:
-
-- [SVG](https://developer.mozilla.org/en/docs/Web/SVG)
-- [`circle`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
-- [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-- [Destructuring assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-- [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) variables are mutable!
-- [`let`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let)
-- [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
-- [React Component](https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
-- [React Component API](https://facebook.github.io/react/docs/component-api.html)
-- [How State Works](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#how-state-works)
-- [`setState`](https://facebook.github.io/react/docs/component-api.html#setstate)
-- [React Event Handling](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#a-simple-example)
-- [`ReactDOM.render`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
-- [Color](https://developer.mozilla.org/en/docs/Web/CSS/color_value)
-- [React TestUtils](https://facebook.github.io/react/docs/test-utils.html)
-- [Mocha](https://mochajs.org/)
-- [Chai BDD API](http://chaijs.com/api/bdd/)
-- [Ramda](http://ramdajs.com/docs/)
-- [browserify](http://browserify.org/)
-- [watchify](http://spapas.github.io/2015/05/27/using-browserify-watchify/)
+* [SVG](https://developer.mozilla.org/en/docs/Web/SVG)
+* [SVG `circle`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
+* [React Component](https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
+* [React Component API](https://facebook.github.io/react/docs/component-api.html)
+* [How State Works](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#how-state-works)
+* [React's `setState`](https://facebook.github.io/react/docs/component-api.html#setstate)
+* [React Event Handling](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#a-simple-example)
+* [`ReactDOM.render`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
+* [Color](https://developer.mozilla.org/en/docs/Web/CSS/color_value)
+* [React TestUtils](https://facebook.github.io/react/docs/test-utils.html)
 
