@@ -17,7 +17,7 @@ This is what your starting place looks like:
 
 ![Base case](./public/images/base-circle.png)
 
-And after you've completed this project, this is what it can look like after a few clicks:
+And after you've completed this project, this is what it can look like after a few mouse overs:
 
 ![Enspiraled](./public/images/enspiral.png)
 
