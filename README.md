@@ -47,7 +47,5 @@ Can you get it working in the browser? (Consult with instructors for help before
 
 ## Resources
 
-Number | Name
--------|-------------------
-1.     | [Tape](https://github.com/substack/tape)
-2.     | [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+* [Tape](https://github.com/substack/tape)
+* [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
