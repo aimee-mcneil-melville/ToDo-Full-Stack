@@ -19,7 +19,7 @@
   ```
 
 ## See it in action
-Watch an example of it running [here](http://pmav.eu/stuff/javascript-game-of-life-v3.1.1/).
+Watch an example of it running [here](http://pmav.eu/stuff/javascript-game-of-life-v3.1.1/). And a truly breathtaking implementation [here](https://copy.sh/life/?gist=f3413564b1fa9c69f2bad4b0400b8090&step=512).
 
 ## Learn the rules
 See the rules section of [the Wikipedia article](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules). The rules are amazingly simple but with those simple rules some pretty cool complexity emerges.
