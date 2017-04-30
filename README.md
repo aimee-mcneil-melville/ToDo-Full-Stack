@@ -21,13 +21,11 @@ By now you should be getting used to setting up Node programs. Here's a reminder
 2. Create an npm `package.json` file using `npm init`.
 3. Install Nodemon, tape, and tap-diff.
   - Should these be `--save` or `--save-dev`?
-4. Write a couple of scripts in your `package.json`:
-  - one that starts the program
-  - one that runs all the tests
-5. Create a `tests` directory.
-6. Write a simple initial test that proves the tests run ok (hint: `t.pass()`).
+4. Write a script in your `package.json` that starts the program.
 
 You'll see we've included a data directory with some text files in it. You're going to be needing those in a bit.
+
+You're not required to complete this exercise using test-driven development. You should verify with your teacher, but usually we cover how to test async functions after lunch. So you can hold off on writing tests until after the lecture.
 
 
 ## MVP
@@ -103,6 +101,11 @@ This should let you test some of your functions. For example, you could check:
 
 If you're writing a test that changes something on the filesystem, be sure to return the state of whatever you change to normal at the end of the test.  If you're having trouble writing your tests, remember to reach out for help sooner rather than later. Be kind to yourself, and don't expect to understand everything right away.
 
+To get started writing tests:
+
+1. Write a script in your `package.json` that runs all your tests.
+2. Create a `tests` directory.
+3. Write a simple initial test that proves the tests run ok (hint: `t.pass()`).
 
 ## Terminal helpers
 
