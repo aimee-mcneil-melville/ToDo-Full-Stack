@@ -7,9 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "debug": "nodemon --inspect index.js",
+    "debug": "nodemon --inspect index --ignore data.json",
     "test": "tape tests/**/*.test.js | tap-diff",
-    "start": "nodemon index.js"
+    "start": "nodemon index --ignore data.json"
   },
   "repository": {
     "type": "git",
