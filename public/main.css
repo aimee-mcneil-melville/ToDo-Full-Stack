@@ -14,14 +14,14 @@ body {
   flex-direction: column;
 }
 
-.dog-list {
+.puppy-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px;
 }
 
-.dog {
+.puppy {
   display: flex;
   flex-direction: column;
   align-items: center;

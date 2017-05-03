@@ -30,7 +30,7 @@ Let's get our server running with a default route
 
 1. Create a `routes.js` file in the main repo directory - this will store all of our routes
 2. Add express and the router to your `routes.js` file. Also, don't forget to export the router (which we will require in later in step 4)
-3. Add a get index `/` route - this route will eventually redirect to a `/dogs` route, but for now, let's just send the word 'Pupparazzi'
+3. Add a get index `/` route - this route will eventually redirect to a `/puppies` route, but for now, let's just send the word 'Pupparazzi'
 4. `require` and `use` our newly created `routes.js` file in our `server`
 5. Start the server and go to http://localhost:3000 to see if we are winning
 
