@@ -8,10 +8,7 @@ var routes = require('./routes')
 
 var app = express()
 
-module.exports = app
-
 // Middleware
-
 app.use(bodyParser.urlencoded({extended: true}))
 app.engine('hbs', hbs({
   extname: 'hbs',
@@ -22,6 +19,10 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'))
 
 // Routes
-
 app.use('/', routes)
 
+//send back a creator function which links a db with the app so that it is testable
+module.exports = function(db) {
+  app.set('db', db)
+  return app
+}

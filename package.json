@@ -7,7 +7,7 @@
     "knex": "knex",
     "dev": "nodemon index",
     "debug": "node --inspect --debug-brk index",
-    "test": "tape 'tests/**/*.test.js' | tap-spec",
+    "test": "ava 'tests/**/*.test.js'",
     "start": "node index"
   },
   "repository": {
@@ -32,8 +32,8 @@
     "sqlite3": "^3.1.8"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "nodemon": "^1.11.0",
-    "tap-diff": "^0.1.1",
-    "tape": "^4.6.3"
+    "supertest": "^3.0.0"
   }
 }

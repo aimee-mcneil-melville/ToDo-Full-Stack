@@ -1,10 +1,9 @@
 var express = require('express')
 var router = express.Router()
 
-var development = require('./knexfile').development
-var knex = require('knex')(development)
-
 router.get('/', function (req, res) {
+  //use req.app.get('db') to get the knex connection that was set in server
+  //console.log(req.app.get('db'))
   res.send('WOMBLES!')
 })
 

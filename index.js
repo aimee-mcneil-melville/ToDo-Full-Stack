@@ -1,4 +1,8 @@
-var server = require('./server')
+var createServer = require('./server')
+var development = require('./knexfile').development
+var knex = require('knex')(development)
+
+var server = createServer(knex)
 
 var PORT = 3000
 
