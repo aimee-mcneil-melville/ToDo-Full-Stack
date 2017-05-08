@@ -22,8 +22,13 @@ test.afterEach(function (t) {
   t.context.db.destroy()
 })
 
-test.serial('list wombles', async (t) => {
-  let res = await request(t.context.app).get('/')
-
-  t.is('WOMBLES!', res.text)
+test('list wombles', (t) => {
+  return request(t.context.app)
+    .get('/')
+    .then((res) => {
+      return new Promise((resolve, reject) => {
+        t.is('WOMBLES!', res.text)
+        resolve()
+      })
+    })
 })
