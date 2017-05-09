@@ -16,6 +16,7 @@ module.exports = {
     },
     seeds: {
       directory: './tests/helpers/seeds'
-    }
+    },
+    useNullAsDefault: true
   }
-};
+}

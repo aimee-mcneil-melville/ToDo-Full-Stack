@@ -2,7 +2,7 @@ exports.seed = function (knex, Promise) {
   return knex('wombles').del()
     .then(function () {
       return Promise.all([
-        knex('wombles').insert({id: 88801, name: 'Great Uncle Bulgaria', characteristic_id: 99901 }),
+        knex('wombles').insert({id: 88801, name: 'Great Uncle Bulgaria', characteristic_id: 99901}),
         knex('wombles').insert({id: 88802, name: 'Tobermory', characteristic_id: 99902}),
         knex('wombles').insert({id: 88803, name: 'Madame Cholet', characteristic_id: 99903}),
         knex('wombles').insert({id: 88804, name: 'Orinoco', characteristic_id: 99904}),
