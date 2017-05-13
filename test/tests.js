@@ -1,73 +1,16 @@
+import test from 'ava'
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
+import { shallow, mount } from 'enzyme'
 
-import { expect } from 'chai'
-import { beforeEach, describe, it } from 'mocha'
+import App from '../client/components/App'
 
-import App from '../src/components/app.jsx'
+test.todo('App contains an <svg> element with the correct size')
 
-const {
-  isCompositeComponent,
-  renderIntoDocument,
-  scryRenderedDOMComponentsWithClass,
-  scryRenderedDOMComponentsWithTag,
-  Simulate
-} = TestUtils
+test.todo('App contains an initial circle in the correct location')
 
-describe('App', () => {
-  let app
+test.todo('App adds four circles on mouseover')
 
-  beforeEach(() => {
-    app = renderIntoDocument(<App/>)
-  })
+test.todo('App does not add more circles on subsequent clicks')
 
-  it('is a composite component', () => {
-    expect(isCompositeComponent(app)).to.be.ok
-  })
+test.todo('App adds four more circles when subcircle is moused over')
 
-  it('has a base circle of the right size and shape', () => {
-    const circles = scryRenderedDOMComponentsWithTag(app, 'circle')
-
-    expect(circles.length).to.equal(1)
-
-    const circle = circles[0]
-
-    expect(circle.getAttribute('r')).to.equal('256')
-    expect(circle.getAttribute('cx')).to.equal('400')
-    expect(circle.getAttribute('cy')).to.equal('400')
-    expect(circle.getAttribute('class')).to.equal('r256')
-  })
-
-  it('adds four circles on click', () => {
-    const circle = scryRenderedDOMComponentsWithTag(app, 'circle')[0]
-
-    Simulate.click(circle)
-
-    const circles = scryRenderedDOMComponentsWithTag(app, 'circle')
-
-    expect(circles.length).to.equal(5)
-  })
-
-  it('does not add more circles on subsequent clicks', () => {
-    const circle = scryRenderedDOMComponentsWithTag(app, 'circle')[0]
-
-    Simulate.click(circle)
-    Simulate.click(circle)
-
-    const circles = scryRenderedDOMComponentsWithTag(app, 'circle')
-
-    expect(circles.length).to.equal(5)
-  })
-
-  it('adds four more circles when subcircle clicked', () => {
-    Simulate.click(scryRenderedDOMComponentsWithTag(app, 'circle')[0])
-
-    const circle = scryRenderedDOMComponentsWithClass(app, 'r128')[0]
-
-    Simulate.click(circle)
-
-    const circles = scryRenderedDOMComponentsWithTag(app, 'circle')
-
-    expect(circles.length).to.equal(9)
-  })
-})
