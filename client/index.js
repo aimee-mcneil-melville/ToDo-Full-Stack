@@ -1,16 +1,8 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
+const React = require('react')
+const ReactDOM = require('react-dom')
 
-function App (props) {
-  return (
-    <h1>{props.message}</h1>
-  )
-}
+const App = require('./App')
+const placeToMount = document.getElementById('root')
 
-var data = { message: "Future home of Charlotte's web" }
-var view = App(data)
-
-var placeToMount = document.getElementById('root')
-
-ReactDOM.render(view, placeToMount)
+ReactDOM.render(<App />, placeToMount)
 
