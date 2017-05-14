@@ -1,4 +1,4 @@
-module.export = [
+module.exports = [
   {
     name: 'A warm wind',
     link: 'https://charlotte.net/blog/a-warm-wind'
