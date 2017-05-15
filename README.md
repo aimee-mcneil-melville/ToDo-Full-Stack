@@ -2,12 +2,11 @@
 
 This tutorial walks you through the basics of React development. By the end of it, you should have been exposed to:
 
- 1. Creating simple components
+ 1. Creating simple stateless components
  2. Using components inside other components
  3. Passing props to components
- 4. Setting initial state on a component
- 5. Using JavaScript expressions inside JSX.
- 6. Using `Array.map` to display a series of components.
+ 4. Using JavaScript expressions inside JSX.
+ 5. Using `Array.map` to display a series of components.
 
 
 ## Install
