@@ -5,13 +5,13 @@ function Post (props) {
   return (
     <div className='post'>
       <h2>{title}</h2>
-      <div>{date}</div>
-      {props.post.paragraphs.map(para => {
+      <div className='date'>{date}</div>
+      {props.post.paragraphs.map((para, key) => {
         return (
-          <p>{para}</p>
+          <p key={key}>{para}</p>
         )
       })}
-      <div>{commentCount}</div>
+      <div className='comment-count'>{commentCount} comments</div>
     </div>
   )
 }

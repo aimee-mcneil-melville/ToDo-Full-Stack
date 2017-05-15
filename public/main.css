@@ -1,0 +1,67 @@
+.body-container {
+  display: flex;
+}
+
+.header {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 4em;
+  text-align: center;
+}
+
+/* Other blogs */
+
+.other-blogs {
+  margin-top: 4em;
+  margin-right: 2em;
+  flex-basis: 20%;
+}
+
+.other-blogs header {
+  font-weight: bold;
+}
+
+.other-blogs ul {
+  margin-left: -2em;
+}
+
+.other-blogs li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+
+/* Posts */
+
+.posts {
+  flex-basis: 60%;
+}
+
+.posts .date,
+.posts .comment-count {
+  color: gray;
+}
+
+/* Recent entries */
+
+.recent-entries {
+  margin-top: 4em;
+  margin-left: 2em;
+  flex-basis: 20%;
+}
+
+.recent-entries header {
+  font-weight: bold;
+}
+
+.recent-entries ul {
+  margin-left: -2em;
+}
+
+.recent-entries li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+

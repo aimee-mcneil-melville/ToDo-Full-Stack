@@ -5,9 +5,10 @@ var RecentEntry = require('./RecentEntry')
 function RecentEntries (props) {
   return (
     <div className='recent-entries'>
+      <header>Recent entries</header>
       <ul>
-        {props.entries.map(entry => {
-          return <RecentEntry entry={entry} />
+        {props.entries.map((entry, key) => {
+          return <RecentEntry key={key} entry={entry} />
         })}
       </ul>
     </div>
