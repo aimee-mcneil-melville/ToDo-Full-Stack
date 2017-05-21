@@ -1,4 +1,4 @@
-# Charlotte's Web Log
+# Charlotte's Web Log API
 
 Last week you created a front end blog for Charlotte...
 In this exercise, you're going to build out the API for her blog.
