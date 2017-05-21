@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('Posts').insert([
-        {id: 126, title: 'The beginning of an idea', comment_count: 4, date_created: '17/07/1953', paragraphs: JSON.stringify([
+        {id: 126, title: 'The beginning of an idea', date_created: '17/07/1953', paragraphs: JSON.stringify([
           'Day after day the spider waited, head­down, for an idea to come to her. Hour by hour she sat motionless, deep in thought. Having promised Wilbur that she would save his life, she was determined to keep her promise. Charlotte was naturally patient. She knew from experience that if she waited long enough, a fly would come to her web; and she felt sure that if she thought long enough about Wilbur\'s problem, an idea would come to her mind. Finally, one morning toward the middle of July, the idea came. "Why, how perfectly simple!" she said to herself. "The way to save Wilbur\'s life  is  to  play a trick on Zuckerman. If I can fool a bug," thought Charlotte, "I can surely fool a man. People are not as smart as bugs."',
           'Wilbur walked into his yard just at that moment.',
           '"What are you thinking about, Charlotte?" he asked.',
@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
           '"Easy to fool," said Charlotte.',
           '"That\'s a mercy," replied Wilbur, and he lay down in the shade of his fence and went fast asleep. The spider, however, stayed wide awake, gazing affectionately at him and making plans for his future. Summer was half gone. She knew she didn\'t have much time.'
         ])},
-        {id: 125, title: 'Bad News', comment_count: 8, date_created: '24/06/1953', paragraphs: JSON.stringify([
+        {id: 125, title: 'Bad News', date_created: '24/06/1953', paragraphs: JSON.stringify([
           'Wilbur liked Charlotte better and better each day. Her campaign against insects seemed sensible and useful. Hardly anybody around the farm had a good word to say for a fly. Flies spent their time pestering others. The cows hated them. The horses detested them. The sheep loathed them. Mr. and Mrs. Zuckerman were always complaining about them, and putting up screens.',
           'Wilbur admired the way Charlotte managed. He was particularly glad that she always put her victim to sleep before eating it.',
           '"It\'s real thoughtful of you to do that, Charlotte," he said.',
@@ -26,7 +26,7 @@ exports.seed = function(knex, Promise) {
           '"No," said Wilbur.',
           '"Well, I don\'t like to spread bad news," said the sheep, "but they\'re fattening you up because they\'re going to kill you, that\'s why."'
         ])},
-        {id: 123, title: 'My first encounter with Wilber', comment_count: 5, date_created: '15/10/1952', paragraphs: JSON.stringify([
+        {id: 123, title: 'My first encounter with Wilber', date_created: '15/10/1952', paragraphs: JSON.stringify([
           '"My name is Charlotte."',
           '"Charlotte what?" asked Wilbur, eagerly.',
           '"Charlotte A. Cavatica. But just call me Charlotte."',
@@ -39,7 +39,7 @@ exports.seed = function(knex, Promise) {
           '"Next, I wrap him up." She grabbed the fly, threw a few jets of silk around it, and rolled it over and over, wrapping it so that it couldn\'t move. Wilbur watched in horror. He could hardly believe what he was seeing, and although he detested flies, he was sorry for this one.',
           '"There!" said Charlotte. "Now I knock him out, so he\'ll be more comfor table." She bit the fly. "He can\'t feel a thing now," she remarked. "He\'ll make a perfect breakfast for me."'
         ])},
-        {id: 124, title: 'Summer Days', date_created: '10/06/1953', comment_count: 9, paragraphs: JSON.stringify([
+        {id: 124, title: 'Summer Days', date_created: '10/06/1953', paragraphs: JSON.stringify([
           'The early summer days on a farm are the happiest and fairest days of the year. Lilacs bloom and make the air sweet, and then fade. Apple blossoms come with the lilacs, and the bees visit around among the apple trees. The days grow warm and soft. School ends, and children have time to play and to fish for trouts in the brook. Avery often brought a trout home in his pocket, warm and stiff and ready to be fried for supper.',
           'Now that school was over, Fern visited the barn almost every day, to sit quietly on her stool. The animals treated her as an equal. The sheep lay calmly at her feet.',
           'Around the first of July, the work horses were hitched to the mowing machine, and Mr. Zuckerman climbed into the seat and drove into the field. All morning you could hear the rattle of the machine as it went round and round,while the tall grass fell down behind the cutter bar in long green swathes. Next day, if there was no thunder shower, all hands would help rake and pitch and load, and the hay would be hauled to the Summer Days in the high hay wagon, with Fern and Avery riding at the top  of the load. Then the hay would be hoisted, sweet and warm, into the big loft, until the whole bam seemed like a wonderful bed of timothy and clover. It was fine to jump in, and perfect to hide in. And sometimes A very would find a little grass snake in the hay, and would add it to the other things in his pocket.',
