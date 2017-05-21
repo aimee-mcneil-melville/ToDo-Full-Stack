@@ -81,7 +81,7 @@ POST `/v1/posts`
 {
   "id": 144,
   "title":"This is my post",
-  "dateCreated":1495083077243,
+  "dateCreated":"22/07/1996",
   "paragraphs":"[\"I like how I can post.\",\"It is fun.\"]"
 }
 ```
@@ -92,7 +92,7 @@ PUT `/v1/posts`
 {
   "id": 144,
   "title":"This is my updated post",
-  "dateCreated":1495083077243,
+  "dateCreated":"01/01/2008",
   "paragraphs":"[\"I like how I can update posts.\",\"It is fun.\"]"
 }
 ```
@@ -102,10 +102,10 @@ GET `/v1/posts/:postId/comments`
 ```json
 [
   {
-    "id": 123,
-    "title": "Blog day 1",
-    "dateCreated": "22/08/1985",
-    "paragraphs": "[\"Today is a good day.\",\"I found a million dollars\"]"
+    "id": 36,
+    "postId": 123,
+    "datePosted": "03/12/1985",
+    "comment": "sdfsdf"
   }
 ]
 ```
@@ -113,23 +113,27 @@ GET `/v1/posts/:postId/comments`
 POST `/v1/posts/:postId/comments`
 
 ```json
-{
-  "id": 144,
-  "title":"This is my post",
-  "dateCreated":1495083077243,
-  "paragraphs":"[\"I like how I can post.\",\"It is fun.\"]"
-}
+[
+  {
+    "id": 36,
+    "postId": 123,
+    "datePosted": "03/12/1985",
+    "comment": "Newly created comment"
+  }
+]
 ```
 
 PUT `/v1/comments/:commentId`
 
 ```json
-{
-  "id": 144,
-  "title":"This is my updated post",
-  "dateCreated":1495083077243,
-  "paragraphs":"[\"I like how I can update posts.\",\"It is fun.\"]"
-}
+[
+  {
+    "id": 36,
+    "postId": 123,
+    "datePosted": "03/12/1985",
+    "comment": "Updated comment"
+  }
+]
 ```
 
 You may find using POSTMAN useful when testing routes.
