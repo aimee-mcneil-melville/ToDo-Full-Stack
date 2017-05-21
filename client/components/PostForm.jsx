@@ -42,8 +42,8 @@ class PostForm extends React.Component {
         .then((newPost) => { 
           this.props.fetchPosts()
           .then(() => this.props.history.push(`/posts/${newPost.id}`))
-          .catch(err => this.setState({ errorMessage: err.message }))
         })
+        .catch(err => this.setState({ errorMessage: err.message }))
     }
   }
    
@@ -81,6 +81,10 @@ class PostForm extends React.Component {
             <input className='pure-button' type='submit' />
           </div>          
         </fieldset>
+        
+        {this.state.errorMessage &&
+          this.state.errorMessage
+        }
       </form>
     )
   }
