@@ -6,6 +6,7 @@ class PostForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      errorMessage: null,
       title: '',
       paragraphs: ''
     }
@@ -28,16 +29,20 @@ class PostForm extends React.Component {
   
   handleSubmit (e) {
     e.preventDefault()
+    this.setState({ errorMessage: null })
     const {post} = this.props
     if (post) {
       updatePost(this.state)
         .then(() => this.props.fetchPosts())
         .then(() => this.props.history.push(`/posts/${post.id}`))
+        .catch(err => this.setState({ errorMessage: err.message }))
+        
     } else {
       addPost(this.state)
         .then((newPost) => { 
           this.props.fetchPosts()
           .then(() => this.props.history.push(`/posts/${newPost.id}`))
+          .catch(err => this.setState({ errorMessage: err.message }))
         })
     }
   }

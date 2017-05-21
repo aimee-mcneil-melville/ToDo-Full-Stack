@@ -6,6 +6,7 @@ class CommentForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      errorMessage: null,
       comment: {
         id: null,
         comment: ''
@@ -23,14 +24,17 @@ class CommentForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault()
     const {comment} = this.props
+    this.setState({ errorMessage: null })
     if (comment) {
       updateComment(this.state.comment)
-      .then(() => this.props.fetchComments(this.props.comment.postId))
-      .then(() => this.props.history.push(`/posts/${this.props.comment.postId}`))
+        .then(() => this.props.fetchComments(this.props.comment.postId))
+        .then(() => this.props.history.push(`/posts/${this.props.comment.postId}`))
+        .catch(err => this.setState({ errorMessage: err.message }))
     } else {
       addCommentByPostId(this.props.match.params.postId, this.state.comment)
         .then(() => this.props.fetchComments(this.props.match.params.postId))
         .then(() => this.props.history.push(`/posts/${this.props.match.params.postId}`))
+        .catch(err => this.setState({ errorMessage: err.message }))
     }
   }
    
@@ -44,6 +48,9 @@ class CommentForm extends React.Component {
           onChange={(e) => this.setState({ comment: { comment: e.target.value, id: this.state.comment.id } })}
         />
         <input className='pure-button' type='submit' />
+        {this.state.errorMessage &&
+          this.state.errorMessage
+        }
       </form>
     )
   }

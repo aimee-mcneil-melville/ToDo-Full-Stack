@@ -13,7 +13,7 @@ export function getPosts () {
       })
     })
     .catch(err => {
-      throw Error('You need to implement a post route!')
+      throw Error('Cannot GET Posts!')
     })
 }
 
@@ -24,6 +24,9 @@ export function addPost (post) {
       const returnedPost = data.body
       return returnedPost
     })
+    .catch(err => {
+      throw Error('Cannot POST a new Post!')
+    })
 }
 
 export function updatePost (post) {
@@ -33,6 +36,9 @@ export function updatePost (post) {
       const returnedPost = data.body
       return returnedPost
     })
+    .catch(err => {
+      throw Error('Cannot PUT a Post!')
+    })
 }
 
 export function deletePost (postId) {
@@ -41,6 +47,9 @@ export function deletePost (postId) {
     const returnedPost = data.body
     return returnedPost
   })
+  .catch(err => {
+    throw Error('Cannot DELETE a Post!')
+  })
 }
 
 export function getCommentsByPostId(postId) {
@@ -48,6 +57,9 @@ export function getCommentsByPostId(postId) {
     .then(data => {
       const returnedComments = data.body
       return returnedComments
+    })
+    .catch(err => {
+      throw Error('Cannot GET Comments By Post Id!')
     })
 }
 
@@ -58,6 +70,9 @@ export function addCommentByPostId(postId, comment) {
       const returnedComment = data.body
       return returnedComment
     })
+    .catch(err => {
+      throw Error('Cannot POST Comment By Post Id!')
+    })
 }
 
 export function updateComment (comment) {
@@ -67,6 +82,9 @@ export function updateComment (comment) {
       const returnedComment = data.body
       return returnedComment
     })
+    .catch(err => {
+      throw Error('Cannot PUT Comment!')
+    })
 }
 
 export function deleteComment (commentId) {
@@ -74,5 +92,8 @@ export function deleteComment (commentId) {
   .then(data => {
     const returnedComment = data.body
     return returnedComment
+  })
+  .catch(err => {
+    throw Error('Cannot DELETE Comment!')
   })
 }
