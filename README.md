@@ -142,6 +142,7 @@ You may find using POSTMAN useful when testing routes.
 
 - The database fields are snake case, but the front end fields are camel case. To make this work, you need to make sure you convert the fields from snake case to camel case when sending from the server to the client, and camel case to snake case when posting to the server. You may find the following links useful (https://lodash.com/docs/4.17.4#camelCase, https://lodash.com/docs/4.17.4#snakeCase)
 - Instead of using `res.render` you will need to use `res.json`
+- The `paragraphs` column in the `Posts` table is of type string and takes a ***stringified array***. However, the front end will send all data relating to the `paragraphs` column as an array of strings. You will need to convert the `paragraphs` string array into a stringified array before inserting it into the database.
 
 ## Stretch Goals
 - Write some tests for your api routes using `supertest`
