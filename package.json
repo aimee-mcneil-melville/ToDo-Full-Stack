@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-react-redux",
+  "name": "sweet-as-beers",
   "version": "0.1.0",
-  "description": "React Redux using express",
+  "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
