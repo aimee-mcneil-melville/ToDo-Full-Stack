@@ -10,8 +10,7 @@ module.exports = {
     loaders: [
       {
         loader: 'babel-loader',
-        test: /\.jsx?$/,
-        exclude: /node_modules/
+        test: /\.jsx?$/
       }
     ]
   },
