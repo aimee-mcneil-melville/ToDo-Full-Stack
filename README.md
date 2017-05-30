@@ -39,6 +39,8 @@ Now do the same _React componetisation_ exercise for `public/cart.html`. This wi
 
 Again, don't implement a Redux store, or any button actions at this point.
 
+You will need to incorporate the new React components for the cart into your existing app that is loaded on index.html. Don't try to create a separate app that is loaded into cart.html or they won't be able to talk to each other.
+
 
 ## Navigation
 
