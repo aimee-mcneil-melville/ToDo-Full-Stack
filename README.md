@@ -16,7 +16,7 @@ Make sure you can go to [http://localhost:3000](http://localhost:3000) and see t
 
 ## Listing
 
-The files that create the initial experience are `public/index.html` and `public/cart.html` along with the associated CSS styles. Start with creating React components for the listing. This will probably translate to the following components:
+The files that create the initial experience are `public/designs/listing.html` and `public/designs/cart.html` along with the associated CSS styles. Start with creating React components for the listing. This will probably translate to the following components:
 
 * `<App />` (stateful: for navigation)
 * `<Header />`
@@ -31,7 +31,7 @@ At this point, don't worry about making the link to the cart work or even using 
 
 ## Cart
 
-Now do the same _React componetisation_ exercise for `public/cart.html`. This will probably mean the following components:
+Now do the same _React componetisation_ exercise for `public/designs/cart.html`. This will probably mean the following components:
 
 * `<Cart />` (stateful: for cart)
 * `<CartList />` (`<table>`, `<thead>` and `<tbody>`)
