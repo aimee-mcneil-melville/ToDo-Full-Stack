@@ -11,7 +11,7 @@ cd sweet-as-beers && npm install
 npm start
 ```
 
-Make sure you can go to [http://localhost:3000](http://localhost:3000) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
+Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
 
 
 ## Listing
