@@ -1,5 +1,5 @@
 var express = require('express')
 
-var app = express()
+var server = express()
 
-module.exports = app
+module.exports = server
