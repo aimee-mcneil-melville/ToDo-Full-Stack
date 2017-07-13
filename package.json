@@ -4,8 +4,9 @@
   "description": "Boilerplate for Phase 1 EDA",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index",
-    "test": "tape 'tests/**/*.test.js' | tap-spec"
+    "start": "nodemon index",
+    "test": "tape 'tests/**/*.test.js' | tap-spec",
+    "debug": "nodemon --debug"
   },
   "repository": {
     "type": "git",

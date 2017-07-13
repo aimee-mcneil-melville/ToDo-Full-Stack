@@ -7,7 +7,6 @@ Phase 1 boilerplate project with:
  - body-parser
  - tape
  - tap-spec
- - Node Inspector
  - Nodemon
 
 

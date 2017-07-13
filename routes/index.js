@@ -1,10 +1,8 @@
 var express = require('express')
+var router = express.Router()
 
-module.exports = {
-  get: get
-}
+router.get('/', function (req, res) {
+  res.render('index', { hi: 'Hello World!' })
+})
 
-function get (req, res) {
-  var data = { hi: 'Hey!' }
-  res.render('index', data)
-}
+module.exports = router
