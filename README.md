@@ -132,7 +132,7 @@ Users want to be able to mark a task as complete without removing it from the da
 
 1. Use `npm run knex migrate:make add-completed-column` to create a new empty migration.
 
-  The documentation for [`knex.schema.table`]() might be helpful when modifying an existing table.
+  The documentation for [`knex.schema.table`](http://knexjs.org/#Schema-table) might be helpful when modifying an existing table.
 
   What data type should we use to store our new field(s)?
 
