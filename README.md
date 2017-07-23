@@ -25,7 +25,7 @@ npm start
 
 ## The App component
 
-If you take a look at `index.html`, you'll see there's a single div with the id `App`. It's just there for React to bind with. In `client/index.js`, we find this:
+If you take a look at `index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.js`, we find this:
 
 ```js
 import App from './components/App'
@@ -142,6 +142,4 @@ You should see something like this:
 ![Subtitle component](screenshots/subtitle.png)
 
 The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `solution` branch for hints if you get stuck. Ideally you'd end up with something like this:
-
-![Pic component](screenshots/pics.png)
 
