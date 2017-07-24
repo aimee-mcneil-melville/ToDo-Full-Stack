@@ -141,5 +141,4 @@ You should see something like this:
 
 ![Subtitle component](screenshots/subtitle.png)
 
-The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `solution` branch for hints if you get stuck. Ideally you'd end up with something like this:
-
+The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`. Look in the `solution` branch for hints if you get stuck.
