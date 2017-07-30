@@ -1,18 +1,17 @@
 {
-  "name": "boilerplate-knex",
+  "name": "boilerplate-express-api",
   "version": "0.1.2",
-  "description": "Express boilerplate with Knex.js",
+  "description": "Express boilerplate for APIs with Knex.js",
   "main": "index.js",
   "scripts": {
     "knex": "knex",
     "dev": "nodemon index",
     "start": "node index",
-    "debug": "node-debug index.js",
     "test": "NODE_ENV=test ava"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/boilerplate-knex.git"
+    "url": "git+https://github.com/dev-academy-challenges/boilerplate-express-api.git"
   },
   "keywords": [
     "eda",
@@ -21,9 +20,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/boilerplate-knex/issues"
+    "url": "https://github.com/dev-academy-challenges/boilerplate-express-api/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
+  "homepage": "https://github.com/dev-academy-challenges/boilerplate-express-api#readme",
   "devDependencies": {
     "ava": "^0.18.0",
     "nodemon": "^1.11.0",

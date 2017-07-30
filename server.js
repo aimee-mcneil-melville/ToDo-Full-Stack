@@ -17,4 +17,3 @@ server.use(bodyParser.json())
 
 // Routes
 server.use('/users', users)
-

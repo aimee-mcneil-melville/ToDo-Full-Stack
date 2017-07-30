@@ -3,12 +3,12 @@ var router = express.Router()
 
 var db = require('../db')
 
-router.get ('/', function (req, res) {
+router.get('/', (req, res) => {
   db.getUsers(req.app.get('knex'))
-    .then(function (users) {
+    .then((users) => {
       res.send({ users: users })
     })
-    .catch(function (err) {
+    .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })

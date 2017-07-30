@@ -9,20 +9,20 @@ var setupDb = require('../setup-db.js')
 
 setupDb(test)
 
-test('getUsers gets all users', function (t) {
-  // One for each letter of the alphabet!
+test('getUsers gets all users', (t) => {
+  // One for each letter of the alphabet
   var expected = 26
   return db.getUsers(t.context.db)
-    .then(function (result) {
+    .then((result) => {
       var actual = result.length
       t.is(actual, expected)
     })
 })
 
-test('getUsers gets a single user', function (t) {
+test('getUsers gets a single user', (t) => {
   var expected = 'Ambitious Aardvark'
   return db.getUser(99901, t.context.db)
-    .then(function (result) {
+    .then((result) => {
       var actual = result[0].name
       t.is(actual, expected)
     })

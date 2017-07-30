@@ -8,20 +8,19 @@ var request = require('supertest')
 var app = require('../../server')
 var setupDb = require('../setup-db')
 
-setupDb(test, function (db) {
+setupDb(test, (db) => {
   app.set('knex', db)
 })
 
-test.cb('getUsers gets all users', function (t) {
+test.cb('getUsers gets all users', (t) => {
   var expected = 26
   request(app)
     .get('/users')
     .expect('Content-Type', /json/)
     .expect(200)
-    .end(function (err, res) {
+    .end((err, res) => {
       if (err) throw err
       t.is(res.body.users.length, expected)
       t.end()
     })
 })
-

@@ -1,6 +1,6 @@
 module.exports = {
-  getUser: getUser,
-  getUsers: getUsers
+  getUser,
+  getUsers
 }
 
 function getUsers (knex) {
