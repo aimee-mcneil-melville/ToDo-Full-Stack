@@ -40,6 +40,4 @@ When you have all the tests passing, read your code through carefully and ensure
 
 ## Resources
 
-Number | Name
--------|-------------------
-1.     | [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+ * [JavaScript data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
