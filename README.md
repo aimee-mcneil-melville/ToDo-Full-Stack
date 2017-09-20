@@ -76,7 +76,7 @@ var port = process.env.PORT || 3000
   - `heroku addons:create heroku-postgresql:hobby-dev`
   - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
 
-2. Deploy to Heroku with `git push heroku master`.
+2. Deploy to Heroku with `git push heroku master`. **NOTE**: If you're deploying a branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master`. Basically, `git push heroku master` is short for `git push heroku local-master-branch:remote-master-branch`.
 
 3. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
  - Apply the seed file by running `knex seed:run`.
