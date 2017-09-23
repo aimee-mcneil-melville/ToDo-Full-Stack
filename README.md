@@ -20,7 +20,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
 ### Detailed steps
 
-1. We're going to be POSTing JSON to our endpoints so we're going to need `body-parser`.Install `body-parser` as a normal dependencies and add `body-parser`'s JSON middleware to `server/server.js`.
+1. We're going to be POSTing JSON to our endpoints so we're going to need `body-parser`.Install `body-parser` as a normal dependency and add `body-parser`'s JSON middleware to `server/server.js`.
 
     <details><summary>Show terminal command and code</summary>
 
