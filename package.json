@@ -1,21 +1,25 @@
 {
   "name": "knex-todo-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Command-line todo app using Knex.",
   "main": "commands.js",
+  "author": "EDA",
+  "license": "ISC",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "knex": "knex",
+    "test": "jest --verbose"
   },
+  "keywords": [],
+  "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
-  "keywords": [],
-  "author": "EDA",
-  "license": "ISC",
-  "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
-  "dependencies": {},
+  "dependencies": {
+    "knex": "^0.21.7",
+    "sqlite3": "^5.0.0"
+  },
   "devDependencies": {
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
