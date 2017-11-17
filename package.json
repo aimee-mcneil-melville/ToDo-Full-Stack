@@ -1,7 +1,7 @@
 {
-  "name": "kata-data-structures",
+  "name": "kata-types-modules",
   "version": "1.0.0",
-  "description": "Data Structures Kata",
+  "description": "Kata for datatypes, functions and modules",
   "main": "index.js",
   "directories": {},
   "devDependencies": {
