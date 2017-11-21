@@ -1,5 +1,5 @@
 {
-  "name": "js-kata-objects-and-arrays",
+  "name": "kata-objects-and-arrays",
   "version": "1.2.0",
   "description": "",
   "scripts": {
@@ -7,16 +7,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/js-kata-objects-and-arrays.git"
+    "url": "git+https://github.com/dev-academy-challenges/kata-objects-and-arrays.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/js-kata-objects-and-arrays/issues"
+    "url": "https://github.com/dev-academy-challenges/kata-objects-and-arrays/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/js-kata-objects-and-arrays#readme",
+  "homepage": "https://github.com/dev-academy-challenges/kata-objects-and-arrays#readme",
   "devDependencies": {
-    "ava": "^0.15.2"
+    "ava": "^0.23.0"
   }
 }

@@ -11,15 +11,15 @@ First, jump into a working directory and clone the repository from GitHub. Don't
 
 ```
 cd workspace
-git clone https://github.com/cohort-year/js-kata-objects-and-arrays
-cd js-kata-objects-and-arrays
-npm install
+git clone https://github.com/[COHORT-YEAR]/kata-objects-and-arrays
+cd kata-objects-and-arrays
+yarn install
 ```
 
 The last command installs a bunch of stuff that you'll need to make the exercise work correctly. Wait till it's done, then type:
 
 ```
-npm test
+yarn test
 ```
 
 You'll see some red output that looks like this:
@@ -47,7 +47,7 @@ _Kata_ is a concept from martial arts meaning a sequence of moves composed into 
 
 ![](https://49.media.tumblr.com/10c948900ec4276131e45047bb3846a4/tumblr_n3005tWnBf1s6my4qo1_500.gif)
 
-The `kata` folder has 2 files `kata-1.js` and `kata-2.js`. These files have a series of incomplete functions with comments describing what they ought to do. Every time you run the tests (using `npm test`) you're checking to see if you've completed each function correctly. When you finish the first one, it will show up GREEN and you'll see the next RED test.
+The `kata` folder has 2 files `kata-1.js` and `kata-2.js`. These files have a series of incomplete functions with comments describing what they ought to do. Every time you run the tests (using `yarn test`) you're checking to see if you've completed each function correctly. When you finish the first one, it will show up GREEN and you'll see the next RED test.
 
 Let's try it! Open `kata-1.js` in your editor. The first function looks like this:
 
@@ -70,7 +70,7 @@ function makeObject (key, value) {
 }
 ```
 
-Next, go back to your terminal window and type `npm test`:
+Next, go back to your terminal window and type `yarn test`:
 
 ```
    1 passed
@@ -94,7 +94,7 @@ This way we can practise the basics of JavaScript and build up our muscle memory
  * reading the requirements
  * thinking and talking about how to solve the problem
  * writing code
- * running the tests using `npm test`
+ * running the tests using `yarn test`
  * reading the red errors
  * rinse and repeat until the test passes
  
