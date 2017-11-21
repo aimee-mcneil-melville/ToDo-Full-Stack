@@ -7,7 +7,7 @@ In these exercises we'll practise some of the fundamentals of JavaScript and sta
 
 ## Installation
 
-First, jump into a working directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!) Replace `cohort-year` with, for example, `kea-2015`.
+First, jump into a working directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!).
 
 ```
 cd workspace
@@ -16,7 +16,7 @@ cd kata-objects-and-arrays
 yarn install
 ```
 
-The last command installs a bunch of stuff that you'll need to make the exercise work correctly. Wait till it's done, then type:
+The last command installs a bunch of stuff that you'll need to make the exercise work correctly. Wait until it's done and then type:
 
 ```
 yarn test
@@ -28,14 +28,18 @@ You'll see some red output that looks like this:
    1 failed
 
 
-   1. makeObject makes objects
-     
-  t.deepEqual(actual, expected)
-              |       |        
-              null    Object{a:1}
-  
-      Test.fn (kata-1.test.js:11:5)
-npm ERR! Test failed.  See above for more details.
+   makeObject makes objects
+
+   10:   var actual = kata1.makeObject('name', 'mix')
+   11:   t.deepEqual(actual, expected)
+   12:
+
+  Difference:
+
+  - undefined
+  + {
+  +   name: 'mix',
+  + }
 ```
 
 The most important thing is not to panic! Welcome to your first introduction to testing. In this challenge, you're going to make all the tests go GREEN. It's rather addictive once you get started.
@@ -60,7 +64,7 @@ function makeObject (key, value) {
 }
 ```
 
-Ok, so it wants us to create an object with a certain key and value, whatever's passed to us. Let's solve it so we can make the test go GREEN:
+Ok, so it wants us to create an object with a certain key and value, based on what is passed to the function. Let's solve it so we can make the test go GREEN:
 
 ```js
 function makeObject (key, value) {
@@ -73,36 +77,39 @@ function makeObject (key, value) {
 Next, go back to your terminal window and type `yarn test`:
 
 ```
-   1 passed
-   1 failed
+  1 passed
+  1 failed
 
+  getValue gets values from objects
 
-   1. getValue gets values from objects
-     
-  t.is(actual, expected)
-       |       |        
-       null    1        
-  
-      Test.fn (kata.test.js:17:5)
+   20:   var actual = kata1.getValue({ age: 21 }, 'age')
+   21:   t.is(actual, expected)
+   22: })
+
+  Difference:
+
+  - undefined
+  + 21
 ```
 
-One passed! Some coding pairs choose to treat these as high-five moments... we'll let you decide for yourselves.
+One passed! Some coding pairs choose to treat these as high-five moments ... you can decide for yourselves.
 
-Notice that the red part of the message has now changed. It's giving us a different message about another function that's not (yet) doing what it's supposed to do. Notice also that it's _expecting_ the number 1, and it's _actually getting_ `null`. The test is trying to give us as much information as possible about what we need to do next.
+Notice that the red part of the message has now changed. It's giving us a different message about another function that's not (yet) doing what it's supposed to do. Notice also that it's _expecting_ `21`, and it's actually getting `undefined`. The test is trying to give us as much information as possible about what we need to do to fix it.
 
-This way we can practise the basics of JavaScript and build up our muscle memory: 
- * reading the requirements
- * thinking and talking about how to solve the problem
- * writing code
- * running the tests using `yarn test`
- * reading the red errors
- * rinse and repeat until the test passes
- 
+This way we can practise the basics of JavaScript and build up our muscle memory:
+
+ * read the requirements
+ * think and talk about how to solve the problem
+ * write the code
+ * run the tests using `yarn test`
+ * read the red errors
+ * rinse and repeat until all the tests pass
+
 In later challenges we're going to become a lot more familiar with this process. A pattern very similar to this is known as Test Driven Development (TDD).
 
-Once you have completed all the functions in `kata/kata-1.js` and all those tests are passing, move on to `kata/kata-2.js` and keep repeating the same process. 
+Once you have completed all the functions in `kata/kata-1.js` and all those tests are passing, move on to `kata/kata-2.js` and keep repeating the same process.
 
-> Remember to ask for help sooner rather than later if you get stuck: don't stay blocked for long!
+> Remember to ask for help sooner rather than later if you get stuck. Don't stay blocked beyond where your learning is benefiting.
 
 
 # Useful Links
