@@ -1,4 +1,43 @@
-// hasItem should return true if `item` is present in `arr` at least once, 
+// makeObject should return an object like this:
+// {
+//   key: value
+// }
+function makeObject (key, value) {
+}
+
+// getValue should return the value of the property contained in `key`
+function getValue (obj, key) {
+}
+
+// ageOneYear should add one to the `age` property of `obj`
+function ageOneYear (obj) {
+}
+
+// deleteProp should remove the property contained in `key` from `obj`
+function deleteProp (obj, key) {
+}
+
+// makeArrayOfItem should return an array that is `length` long, made up of `item`
+// For example, makeArrayOfItem('foo', 2) would return:
+// ['foo', 'foo']
+function makeArrayOfItem (item, length) {
+}
+
+// makeArrayOfItems should return an array containing all arguments passed to it
+function makeArrayOfItems () {
+}
+
+// getGreeting should return a string containing 'Hello ' and the contents of `name`
+function getGreeting (name) {
+}
+
+// returnErrorIfFalsy should return a JavaScript Error object with message:
+//   'Oh no, an error!'
+// if val evaluates to false
+function returnErrorIfFalsy (val) {
+}
+
+// hasItem should return true if `item` is present in `arr` at least once,
 // otherwise it should return false.
 function hasItem (arr, item) {
 }
@@ -48,10 +87,10 @@ function zipObject (keys, values) {
 function unzipObject(obj) {
 }
 
-// findOneByProperty should return an object from `arr` that has the 
+// findOneByProperty should return an object from `arr` that has the
 // property AND value of `search`. For example, given:
-//   [ { a: 1 }, { b: 2, c: 3 } ] and { b: 2 } 
-// it will return: 
+//   [ { a: 1 }, { b: 2, c: 3 } ] and { b: 2 }
+// it will return:
 //   { b: 2, c: 3 }
 function findOneByProperty (arr, search) {
 }
@@ -64,14 +103,22 @@ function findAll (arr, search) {
 module.exports = {
   hasItem : hasItem,
   getItemAtIndex : getItemAtIndex,
-  replaceItemAtIndex: replaceItemAtIndex, 
-  insertItemAtIndex: insertItemAtIndex, 
+  replaceItemAtIndex: replaceItemAtIndex,
+  insertItemAtIndex: insertItemAtIndex,
   deleteItemAtIndex: deleteItemAtIndex,
   deleteItem: deleteItem,
-  keys: keys, 
-  values: values, 
-  zipObject: zipObject, 
+  keys: keys,
+  values: values,
+  zipObject: zipObject,
   unzipObject: unzipObject,
   findOneByProperty: findOneByProperty,
-  findAll: findAll 
+  findAll: findAll,
+  makeObject: makeObject,
+  getValue: getValue,
+  ageOneYear: ageOneYear,
+  deleteProp: deleteProp,
+  makeArrayOfItem: makeArrayOfItem,
+  makeArrayOfItems: makeArrayOfItems,
+  getGreeting: getGreeting,
+  returnErrorIfFalsy: returnErrorIfFalsy
 }
