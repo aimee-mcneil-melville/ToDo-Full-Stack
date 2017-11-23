@@ -1,4 +1,17 @@
-// makeObject should return an object like this:
+/**
+ * Objects, keys/properties and values
+ */
+
+// getGreeting should return a string containing 'Hello ' and the contents of `name`
+function getGreeting (name) {
+}
+
+// ageOneYear should add one to the `age` property of `obj`
+function ageOneYear (obj) {
+}
+
+// makeObject should return an object that looks like this:
+// (but using the arguments passed to the function)
 // {
 //   key: value
 // }
@@ -9,13 +22,35 @@ function makeObject (key, value) {
 function getValue (obj, key) {
 }
 
-// ageOneYear should add one to the `age` property of `obj`
-function ageOneYear (obj) {
+// addName should add a `name` property to the object with the value of the `name` argument
+function addName (obj, name) {
 }
 
-// deleteProp should remove the property contained in `key` from `obj`
-function deleteProp (obj, key) {
+// deleteProperty should remove the property contained in `key` from `obj`
+// Tip: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete
+function deleteProperty (obj, key) {
 }
+
+// returnErrorIfFalsy should return a JavaScript Error object with message:
+//   'Oh no, an error!'
+// if val evaluates to false
+// Tip: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+function returnErrorIfFalsy (val) {
+}
+
+// keys should return an array of the object's property names (keys)
+// For example, given {foo: 1, bar: 2} it would return ['foo', 'bar']
+function keys (obj) {
+}
+
+// values should return an array of the object's own values
+// For example, given { foo: 1, bar: 2} it would return [1, 2]
+function values (obj) {
+}
+
+/**
+ * Arrays
+ */
 
 // makeArrayOfItem should return an array that is `length` long, made up of `item`
 // For example, makeArrayOfItem('foo', 2) would return:
@@ -24,17 +59,8 @@ function makeArrayOfItem (item, length) {
 }
 
 // makeArrayOfItems should return an array containing all arguments passed to it
+// Tip: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
 function makeArrayOfItems () {
-}
-
-// getGreeting should return a string containing 'Hello ' and the contents of `name`
-function getGreeting (name) {
-}
-
-// returnErrorIfFalsy should return a JavaScript Error object with message:
-//   'Oh no, an error!'
-// if val evaluates to false
-function returnErrorIfFalsy (val) {
 }
 
 // hasItem should return true if `item` is present in `arr` at least once,
@@ -65,16 +91,6 @@ function deleteItemAtIndex (arr, idx) {
 function deleteItem (arr, item) {
 }
 
-// keys should return an array of the object's property names (keys)
-// For example, given {foo: 1, bar: 2} it would return ['foo', 'bar']
-function keys (obj) {
-}
-
-// values should return an array of the object's own values
-// For example, given { foo: 1, bar: 2} it would return [1, 2]
-function values (obj) {
-}
-
 // zipObject should return an object built from two arrays
 // For example, given ['foo', 'bar'] and [1, 2] it would return
 // { foo: 1, bar: 2}
@@ -101,24 +117,25 @@ function findAll (arr, search) {
 }
 
 module.exports = {
-  hasItem : hasItem,
-  getItemAtIndex : getItemAtIndex,
-  replaceItemAtIndex: replaceItemAtIndex,
-  insertItemAtIndex: insertItemAtIndex,
-  deleteItemAtIndex: deleteItemAtIndex,
+  addName: addName,
+  ageOneYear: ageOneYear,
   deleteItem: deleteItem,
-  keys: keys,
-  values: values,
-  zipObject: zipObject,
-  unzipObject: unzipObject,
+  deleteItemAtIndex: deleteItemAtIndex,
+  deleteProperty: deleteProperty,
+  getGreeting: getGreeting,
+  getItemAtIndex : getItemAtIndex,
+  getValue: getValue,
   findOneByProperty: findOneByProperty,
   findAll: findAll,
-  makeObject: makeObject,
-  getValue: getValue,
-  ageOneYear: ageOneYear,
-  deleteProp: deleteProp,
+  hasItem : hasItem,
+  insertItemAtIndex: insertItemAtIndex,
+  keys: keys,
   makeArrayOfItem: makeArrayOfItem,
   makeArrayOfItems: makeArrayOfItems,
-  getGreeting: getGreeting,
-  returnErrorIfFalsy: returnErrorIfFalsy
+  makeObject: makeObject,
+  replaceItemAtIndex: replaceItemAtIndex,
+  returnErrorIfFalsy: returnErrorIfFalsy,
+  unzipObject: unzipObject,
+  values: values,
+  zipObject: zipObject
 }

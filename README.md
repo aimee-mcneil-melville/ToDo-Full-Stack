@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In these exercises we'll practise some of the fundamentals of JavaScript and start learning about testing. We're going to start getting used to seeing tests coloured RED, and writing code to make them go GREEN.
+In this exercise we'll practise some of the fundamentals of JavaScript and start learning about automated testing. We're going to start getting used to seeing tests coloured RED, and writing code to make them go GREEN.
 
 
 ## Installation
@@ -19,27 +19,44 @@ yarn install
 The last command installs a bunch of stuff that you'll need to make the exercise work correctly. Wait until it's done and then type:
 
 ```
-yarn test
+yarn test getGreeting
 ```
 
 You'll see some red output that looks like this:
 
 ```
-   1 failed
+ FAIL  tests/getGreeting.test.js
+  ✕ getGreeting returns "Hello <name>" (4ms)
 
+  ● getGreeting returns "Hello <name>"
 
-   makeObject makes objects
+    expect(received).toBe(expected)
 
-   10:   var actual = kata1.makeObject('name', 'mix')
-   11:   t.deepEqual(actual, expected)
-   12:
+    Expected value to be (using ===):
+      "Hello Aardvark"
+    Received:
+      undefined
 
-  Difference:
+    Difference:
 
-  - undefined
-  + {
-  +   name: 'mix',
-  + }
+      Comparing two different types of values. Expected string but received undefined.
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        0.619s, estimated 1s
+Ran all test suites matching /getGreeting/i.
+
+Active Filters: filename /getGreeting/
+ › Press c to clear filters.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press o to only run tests related to changed files.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
 ```
 
 The most important thing is not to panic! Welcome to your first introduction to testing. In this challenge, you're going to make all the tests go GREEN. It's rather addictive once you get started.
@@ -51,63 +68,53 @@ _Kata_ is a concept from martial arts meaning a sequence of moves composed into 
 
 ![](https://49.media.tumblr.com/10c948900ec4276131e45047bb3846a4/tumblr_n3005tWnBf1s6my4qo1_500.gif)
 
-The `kata` folder has 2 files `kata-1.js` and `kata-2.js`. These files have a series of incomplete functions with comments describing what they ought to do. Every time you run the tests (using `yarn test`) you're checking to see if you've completed each function correctly. When you finish the first one, it will show up GREEN and you'll see the next RED test.
+The file you'll be working in is `kata.js`. This file is full of incomplete functions with comments describing what they should do. Every time you run the tests (using `yarn test nameOfTheFunctionYoureWorkingOn`) you're checking to see if you've completed each function correctly. When you finish it successfully, it will show up GREEN and you can move on to the next function.
 
-Let's try it! Open `kata-1.js` in your editor. The first function looks like this:
+Let's try it! Open `kata.js` in your editor. The first function looks like this:
 
 ```js
-// makeObject should return an object like this:
-// {
-//   key: value
-// }
-function makeObject (key, value) {
+// getGreeting should return a string containing 'Hello ' and the contents of `name`
+function getGreeting (name) {
 }
 ```
 
-Ok, so it wants us to create an object with a certain key and value, based on what is passed to the function. Let's solve it so we can make the test go GREEN:
+Ok, so it wants us to return a string using the input parameter `name`. Let's solve it so we can make the test go GREEN:
 
 ```js
-function makeObject (key, value) {
-  var result = {}
-  result[key] = value
-  return result
+function getGreeting (name) {
+  return 'Hello ' + name
 }
 ```
 
-Next, go back to your terminal window and type `yarn test`:
+You'll notice that when you save `kata.js` your terminal indicates the test is now passing. 
 
 ```
-  1 passed
-  1 failed
+ PASS  tests/getGreeting.test.js
+  ✓ getGreeting returns "Hello <name>" (1ms)
 
-  getValue gets values from objects
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.069s, estimated 1s
+Ran all test suites matching /getGreeting/i.
 
-   20:   var actual = kata1.getValue({ age: 21 }, 'age')
-   21:   t.is(actual, expected)
-   22: })
-
-  Difference:
-
-  - undefined
-  + 21
+Watch Usage: Press w to show more.
 ```
 
 One passed! Some coding pairs choose to treat these as high-five moments ... you can decide for yourselves.
 
-Notice that the red part of the message has now changed. It's giving us a different message about another function that's not (yet) doing what it's supposed to do. Notice also that it's _expecting_ `21`, and it's actually getting `undefined`. The test is trying to give us as much information as possible about what we need to do to fix it.
+Now you should press the `q` key in the terminal to stop the test runner (`w` will show you all the options) and you can move on to the next function.
 
 This way we can practise the basics of JavaScript and build up our muscle memory:
 
- * read the requirements
+ * read what the next function is supposed to do
+ * run the tests using `yarn test nameOfTheFunctionYoureWorkingOn`
  * think and talk about how to solve the problem
- * write the code
- * run the tests using `yarn test`
- * read the red errors
+ * write the code and save the file
+ * read any errors and keep trying
  * rinse and repeat until all the tests pass
 
 In later challenges we're going to become a lot more familiar with this process. A pattern very similar to this is known as Test Driven Development (TDD).
-
-Once you have completed all the functions in `kata/kata-1.js` and all those tests are passing, move on to `kata/kata-2.js` and keep repeating the same process.
 
 > Remember to ask for help sooner rather than later if you get stuck. Don't stay blocked beyond where your learning is benefiting.
 
@@ -117,7 +124,7 @@ Once you have completed all the functions in `kata/kata-1.js` and all those test
 The following links may help with the less familiar aspects of this challenge:
 
 - [Object.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
-- [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FFunctions_and_function_scope%2Farguments)
+- [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
 - [JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 - [JavaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [Code kata](https://en.wikipedia.org/wiki/Kata_(programming))
