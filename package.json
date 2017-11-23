@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "",
   "scripts": {
-    "test": "ava test/**/*.test.js --fail-fast --serial"
+    "test": "jest --watch --noStackTrace"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-objects-and-arrays#readme",
   "devDependencies": {
-    "ava": "^0.23.0"
+    "jest": "^21.2.1"
   }
 }
