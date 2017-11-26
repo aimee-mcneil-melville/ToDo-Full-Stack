@@ -119,7 +119,18 @@ In later challenges we're going to become a lot more familiar with this process.
 > Remember to ask for help sooner rather than later if you get stuck. Don't stay blocked beyond where your learning is benefiting.
 
 
-# Useful Links
+## Making sure you're finished
+
+To run all of the tests for all of the functions you've written, in terminal run:
+
+```
+yarn test tests
+```
+
+This will run all tests in the `tests` directory.
+
+
+## Useful Links
 
 The following links may help with the less familiar aspects of this challenge:
 
