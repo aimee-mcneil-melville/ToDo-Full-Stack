@@ -1,7 +1,7 @@
 {
   "name": "kata-objects-and-arrays",
-  "version": "1.2.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Kata for objects and arrays",
   "scripts": {
     "test": "jest --watch --noStackTrace"
   },
@@ -9,8 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/kata-objects-and-arrays.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "EDA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/kata-objects-and-arrays/issues"
