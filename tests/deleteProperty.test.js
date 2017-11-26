@@ -10,7 +10,7 @@ test('deleteProp deletes properties', function () {
     name: 'Mickey Mouse',
     age: 64
   }
-  kata.deleteProp(mickey, 'email')
+  kata.deleteProperty(mickey, 'email')
   expect(mickey).toEqual(expected)
 })
 
