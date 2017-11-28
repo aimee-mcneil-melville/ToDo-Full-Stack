@@ -37,11 +37,22 @@ In your terminal:
   Sweet! Now you're ready for the next test. Type `q` in your terminal to stop watching the `getType` test and run `yarn test isNumber` to begin the next function. Don't forget to export each of the functions once you've implemented them.
 
 
+## Making sure you're finished
+
+To run all of the tests for all of the functions you've written, in terminal run:
+
+```
+yarn test tests
+```
+
+This will run all tests in the `tests` directory.
+
+
 ## Tips
 
 * Be sure you understand how to use `typeof`.
 
 * If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN("a string") === true`.
 
-* Some of the tests use data defined in `./data/*.js`. You may need to inspect those files to get a sense of the data being used.
+* You're totally permitted to read the tests - it's not cheating. Also, some of the tests use data defined in `./data/*.js`, So you may need to inspect those files to get a sense of the data being used.
 
