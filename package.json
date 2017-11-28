@@ -1,20 +1,21 @@
 {
   "name": "kata-strings-numbers-modules",
-  "version": "0.1.0",
-  "description": "practice working with types, functions and modules",
-  "main": "main.js",
+  "version": "2.0.0",
+  "description": "Kata for working with types, functions and modules",
+  "scripts": {
+    "test": "jest --watch --noStackTrace"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/kata-strings-numbers-modules.git"
   },
-  "author": "Enspiral Dev Academy",
+  "author": "EDA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules/issues"
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules#readme",
   "devDependencies": {
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "jest": "^21.2.1"
   }
 }
