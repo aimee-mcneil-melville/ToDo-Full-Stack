@@ -1,2 +1,2 @@
-function find (arr, propertiesObj) {
+function find (arr, searchDetails) {
 }
