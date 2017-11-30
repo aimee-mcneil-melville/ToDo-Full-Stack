@@ -1,2 +1,2 @@
-function where (arr, propertiesObj) {
+function where (arr, searchDetails) {
 }
