@@ -1,0 +1,13 @@
+{
+  "name": "jest-demo",
+  "version": "1.0.0",
+  "description": "A small, simple Jest demo",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
