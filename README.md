@@ -42,8 +42,8 @@ Creating a web server with Express.js
 ## 4. Respond based on a URL parameter
 
 * Create a `/profiles` route (notice the `s`) that accepts an `:id` parameter.
-  - If you navigate to `/profile/1` return `silvia.html`.
-  - If you go to `/profile/2` show `sampson.html`.
+  - If you navigate to `/profiles/1` return `silvia.html`.
+  - If you go to `/profiles/2` show `sampson.html`.
 * Stage, commit and push your branch to GitHub.
 
 
