@@ -2,6 +2,7 @@
 
 Creating a web server with Express.js
 
+
 ## Setup
 
 * Clone this repo and `cd` into the folder
@@ -31,17 +32,18 @@ Creating a web server with Express.js
 
 * Create an HTML file called `sampson.html` that represents another user profile.
   - You might consider starting by copying `silvia.html`.
-* Change the `/profile` route to accept query string parameters.
-* If you navigate to `/profile?name=silvia` return `silvia.html`.
-* If you go to `/profile?name=sampson` show `sampson.html`.
+* Change the `/profile` route to accept query string parameters:
+  - If you navigate to `/profile?name=silvia` return `silvia.html`.
+  - If you go to `/profile?name=sampson` show `sampson.html`.
+  - You'll likely use an `if` statement that uses `req.query.name`
 * Stage, commit and push your branch to GitHub.
 
 
 ## 4. Respond based on a URL parameter
 
 * Create a `/profiles` route (notice the `s`) that accepts an `:id` parameter.
-* If you navigate to `/profiles/1` return `silvia.html`.
-* If you go to `/profiles/2` show `sampson.html`.
+  - If you navigate to `/profiles/1` return `silvia.html`.
+  - If you go to `/profiles/2` show `sampson.html`.
 * Stage, commit and push your branch to GitHub.
 
 
@@ -60,6 +62,7 @@ Creating a web server with Express.js
 * Make sure your code is readable, doesn't contain any duplication, and has consistent indenting and appropriate naming.
 * Make sure all previous steps still work.
 * Stage, commit and push your branch to GitHub.
+
 
 ## 7. Post data to the server
 

@@ -1,7 +1,7 @@
-var app = require('./server')
-var PORT = process.env.PORT || 3000
+var server = require('./server')
 
-app.listen(PORT, function () {
-  console.log('server listening on port: ', PORT)
+var port = process.env.PORT || 3000
+
+server.listen(port, function () {
+  console.log('Server listening on port:', port)
 })
-
