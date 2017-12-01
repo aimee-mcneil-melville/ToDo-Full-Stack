@@ -66,7 +66,7 @@ Creating a web server with Express.js
 
 ## 7. Post data to the server
 
-* Install the `body-parser` npm module (`--save`) and add its middleware to `server.js`.
+* Install the `body-parser` npm module (with `yarn add`) and add its middleware to `server.js`.
 * Create an HTML page called `get-name.html` in your `public` folder.
 * Add a form to `get-name.html` that has a `name` input field.
 * The form should `post` to `/named-compliment`.
