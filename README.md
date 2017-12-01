@@ -6,7 +6,7 @@ Creating a web server with Express.js
 ## Setup
 
 * Clone this repo and `cd` into the folder
-* Install the dependencies with `npm install`
+* Install the dependencies with `yarn`
 * Create a branch for your pair
 
 
@@ -14,7 +14,7 @@ Creating a web server with Express.js
 
 * Create a route called `/compliment` to `server.js` that responds with a nice compliment.
 * Add some HTML markup to that string to dress it up.
-* Start the server using `npm start`.
+* Start the server using `yarn start`.
 * Make sure it works by going to [http://localhost:3000/compliment](http://localhost:3000/compliment).
 * Stage, commit and push your branch to GitHub.
 
