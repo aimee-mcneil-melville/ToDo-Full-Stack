@@ -1,21 +1,14 @@
-var conways = require('./conway');
-var display = require('./displayBoard');
+const createBoard = require('./createBoard')
+const nextBoard = require('./nextBoard')
+const displayBoard = require('./displayBoard')
 
-var board = conways.createBoard(15)
+const size = 10
+const refreshInteral = 100
 
-board = spawnRandom(board)
+let board = createBoard(size)
 
-setInterval(tick, 200)
+setTimeout(() => {
+  displayBoard(board)
+  board = nextBoard(board)
+}, refreshInteral)
 
-function spawnRandom(board) {
-  newBoard = [...board] // Whaaaat is that mojo?
-
-  // ?? Put some alive cells in the empty board
-  
-  return newBoard 
-}
-
-function tick() {
-  display(board)
-  board = conways.nextBoard(board) 
-}

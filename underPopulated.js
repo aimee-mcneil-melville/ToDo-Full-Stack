@@ -1,4 +1,6 @@
-function underPopulated(neighbourCount) {
+function underPopulated (neighbourCount) {
 
 }
+
 module.exports = underPopulated
+

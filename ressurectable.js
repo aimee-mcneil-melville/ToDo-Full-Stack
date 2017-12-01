@@ -1,3 +1,6 @@
-function ressurectable(neighbourCount) {
+function ressurectable (neighbourCount) {
+
 }
+
 module.exports = ressurectable
+

@@ -2,28 +2,21 @@
   "name": "conways",
   "version": "0.0.1",
   "description": "Conways game of life node module",
-  "main": "conway.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "tape": "^4.2.2"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "tape test/**/*.js"
   },
-  "standard": {
-    "globals": [ ]
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pietgeursen/conways.git"
+    "url": "git+https://github.com/dev-academy-challenges/conways.git"
   },
-  "author": "pietgeursen@gmail.com",
+  "author": "EDA",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pietgeursen/conways/issues"
+    "url": "https://github.com/dev-academy-challenges/conways/issues"
   },
-  "homepage": "https://github.com/pietgeursen/conways#readme"
+  "homepage": "https://github.com/dev-academy-challenges/conways#readme",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
 }

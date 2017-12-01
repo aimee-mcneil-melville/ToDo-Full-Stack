@@ -1,7 +1,8 @@
-var outOfBounds = require('./outOfBounds')
+const outOfBounds = require('./outOfBounds')
 
-function indicesOutOfBounds(rowIndex, columnIndex, array) {
+function indicesOutOfBounds (rowIndex, columnIndex, array) {
   
 }
 
 module.exports = indicesOutOfBounds
+

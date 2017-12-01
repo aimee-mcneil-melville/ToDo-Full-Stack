@@ -1,5 +1,8 @@
-var indicesOutOfBounds = require('./indicesOutOfBounds')
-function getNeighbours(cellRow, cellColumn, board) {
+const indicesOutOfBounds = require('./indicesOutOfBounds')
+
+function getNeighbours (cellRow, cellColumn, board) {
   
 }
+
 module.exports = getNeighbours
+

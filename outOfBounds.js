@@ -1,3 +1,6 @@
-function outOfBounds(index, array) {
+function outOfBounds (index, array) {
+
 }
+
 module.exports = outOfBounds
+
