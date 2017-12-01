@@ -66,11 +66,10 @@ Creating a web server with Express.js
 
 ## 7. Post data to the server
 
-* Install the `body-parser` npm module (`--save`) and add its middleware to `server.js`.
+* Install the `body-parser` npm module (with `yarn add`) and add its middleware to `server.js`.
 * Create an HTML page called `get-name.html` in your `public` folder.
 * Add a form to `get-name.html` that has a `name` input field.
 * The form should `post` to `/named-compliment`.
 * Create a route called (`/named-compliment`) that responds with a nice compliment using the name. You can use `res.send('named compliment wrapped in HTML markup')`.
 * Make sure it works by going to [http://localhost:3000/get-name.html](http://localhost:3000/get-name.html), insert a name and submit the form. The compliment should be specific to the name submitted.
 * Stage, commit and push your branch to GitHub.
-
