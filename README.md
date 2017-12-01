@@ -2,10 +2,11 @@
 
 Creating a web server with Express.js
 
+
 ## Setup
 
 * Clone this repo and `cd` into the folder
-* Install the dependencies with `npm install`
+* Install the dependencies with `yarn`
 * Create a branch for your pair
 
 
@@ -13,7 +14,7 @@ Creating a web server with Express.js
 
 * Create a route called `/compliment` to `server.js` that responds with a nice compliment.
 * Add some HTML markup to that string to dress it up.
-* Start the server using `npm start`.
+* Start the server using `yarn start`.
 * Make sure it works by going to [http://localhost:3000/compliment](http://localhost:3000/compliment).
 * Stage, commit and push your branch to GitHub.
 
@@ -31,17 +32,18 @@ Creating a web server with Express.js
 
 * Create an HTML file called `sampson.html` that represents another user profile.
   - You might consider starting by copying `silvia.html`.
-* Change the `/profile` route to accept query string parameters.
-* If you navigate to `/profile?name=silvia` return `silvia.html`.
-* If you go to `/profile?name=sampson` show `sampson.html`.
+* Change the `/profile` route to accept query string parameters:
+  - If you navigate to `/profile?name=silvia` return `silvia.html`.
+  - If you go to `/profile?name=sampson` show `sampson.html`.
+  - You'll likely use an `if` statement that uses `req.query.name`
 * Stage, commit and push your branch to GitHub.
 
 
 ## 4. Respond based on a URL parameter
 
 * Create a `/profiles` route (notice the `s`) that accepts an `:id` parameter.
-* If you navigate to `/profile/1` return `silvia.html`.
-* If you go to `/profile/2` show `sampson.html`.
+  - If you navigate to `/profiles/1` return `silvia.html`.
+  - If you go to `/profiles/2` show `sampson.html`.
 * Stage, commit and push your branch to GitHub.
 
 
@@ -61,6 +63,7 @@ Creating a web server with Express.js
 * Make sure all previous steps still work.
 * Stage, commit and push your branch to GitHub.
 
+
 ## 7. Post data to the server
 
 * Install the `body-parser` npm module (`--save`) and add its middleware to `server.js`.
@@ -70,3 +73,4 @@ Creating a web server with Express.js
 * Create a route called (`/named-compliment`) that responds with a nice compliment using the name. You can use `res.send('named compliment wrapped in HTML markup')`.
 * Make sure it works by going to [http://localhost:3000/get-name.html](http://localhost:3000/get-name.html), insert a name and submit the form. The compliment should be specific to the name submitted.
 * Stage, commit and push your branch to GitHub.
+

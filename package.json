@@ -1,30 +1,28 @@
 {
   "name": "express-server",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Creating a web server with Express",
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": "node test/server-tests.js | tap-spec"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/express-response.git"
+    "url": "git+https://github.com/dev-academy-challenges/express-server.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "EDA",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/express-response/issues"
+    "url": "https://github.com/dev-academy-challenges/express-server/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/express-response#readme",
+  "homepage": "https://github.com/dev-academy-challenges/express-server#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
-    "cheerio": "^0.22.0",
-    "supertest": "^1.2.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.2"
+    "cheerio": "^1.0.0-rc.2",
+    "jest": "^21.2.1"
   }
 }

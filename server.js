@@ -1,7 +1,7 @@
-var express = require('express')
-var path = require('path')
+const express = require('express')
+const path = require('path')
 
-var app = express()
+const app = express()
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 
@@ -10,23 +10,23 @@ app.get('/compliment', function(req, res) {
 })
 
 app.get('/profile', function(req, res) {
-  var name = req.query.name
+  const name = req.query.name
   if (!name) res.redirect('/compliment')
 
-  var filePath = path.join(__dirname, 'public', name.toLowerCase() + '.html')
+  const filePath = path.join(__dirname, 'public', name.toLowerCase() + '.html')
   res.sendFile(filePath)
 })
 
-var usersTable = {
-  1: 'silvia',
-  2: 'sampson'
-}
-
 app.get('/profiles/:id', function(req, res) {
-  var id = req.params.id
+  const id = req.params.id
 
-  var name = usersTable[id]
-  var filePath = path.join(__dirname, 'public', name + '.html')
+  const usersTable = {
+    1: 'silvia',
+    2: 'sampson'
+  }
+
+  const name = usersTable[id]
+  const filePath = path.join(__dirname, 'public', name + '.html')
   res.sendFile(filePath)
 })
 
