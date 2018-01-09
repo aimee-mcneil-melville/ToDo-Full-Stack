@@ -48,7 +48,7 @@ If you'd like to work on the tests in an order of increasing difficulty, try thi
 
 * getType
 * getValue
-* getValueTypes
+* getPropTypes
 * getAddress
 * positions
 * matrix

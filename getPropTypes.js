@@ -1,2 +1,2 @@
-function getValueTypes (obj) {
+function getPropTypes (obj) {
 }
