@@ -1,73 +1,70 @@
-var fs = require('fs')
-var test = require('tape')
+const fs = require('fs')
 
-var comments = require('../comments')
+const comments = require('../comments')
 
 // Notice that some functions have been written to allow
 // an optional 'filename' parameter. This lets us pass the
 // location of our fake comments file, making the functions
 // a little more testable.
-test('comments.get returns correct text', function (t) {
+test('comments.get returns correct text', () => {
   // Arrange
-  var expected = 'wombat\n'
+  const expected = 'wombat\n'
 
   // Act
-  comments.get(assert, 'tests/data/comments.txt')
+  comments.get(assert, 'tests/data/comments-to-read.txt')
 
   function assert (err, actual) {
-    t.error(err, 'comments.txt: READ OK')
+    expect(err).toBeFalsy()
 
     // Assert
-    t.equal(actual, expected)
-    t.end()
+    expect(actual).toBe(expected)
   }
 })
 
-// Normally, we don't hit the filesystem for ordinary tests. However, it does
-// let us practice callbacks within callbacks!
-test('comments.erase removes all content in the comments file', function (t) {
+// Normally, we don't hit the filesystem for ordinary tests
+// However, it does let us practice callbacks within callbacks
+test('comments.erase removes all content in the comments file', () => {
   // Arrange
-  var expected = ''
+  const expected = ''
+  const filename = 'tests/data/comments-to-erase.txt'
 
 
   // Act
-  comments.erase(assert, 'tests/data/comments.txt')
+  comments.erase(assert, filename)
 
   function assert () {
-    fs.readFile('tests/data/comments.txt', 'utf8', function (err, actual) {
-      t.error(err, 'comments.txt: READ OK')
+    fs.readFile(filename, 'utf8', function (err, actual) {
+      expect(err).toBeFalsy()
 
       // Assert
-      t.equal(actual, expected)
+      expect(actual).toBe(expected)
 
       // Return file to it's original state
-      fs.writeFile('tests/data/comments.txt', 'wombat\n', 'utf8', function (err) {
-        t.error(err, 'comments.txt: WRITE OK')
-
-        // Notice we put the call to end() inside the very last callback!
-        t.end()
+      fs.writeFile(filename, 'wombat\n', 'utf8', function (err) {
+        expect(err).toBeFalsy()
       })
     })
   }
 })
 
-test('comments.save correctly modifies file content', function (t) {
+test('comments.save correctly modifies file content', () => {
   // Arrange
-  var expected = 'wombat\naardvark\n'
+  const filename = 'tests/data/comments-to-save.txt'
+  const expected = 'wombat\naardvark\n'
 
   // Act
-  comments.save('aardvark', assert, 'tests/data/comments.txt')
+  comments.save('aardvark', assert, filename)
 
   function assert () {
-    fs.readFile('tests/data/comments.txt', 'utf8', function (err, actual) {
-      t.error(err, 'comments.txt: READ OK')
+    fs.readFile(filename, 'utf8', (err, actual) => {
+      expect(err).toBeFalsy()
 
       // Assert
-      t.equal(actual, expected)
+      expect(actual).toBe(expected)
 
-      fs.writeFile('tests/data/comments.txt', 'wombat\n', 'utf8', function (err) {
-        t.error(err, 'comments.txt: WRITE OK')
-        t.end()
+      // Return file to it's original state
+      fs.writeFile(filename, 'wombat\n', 'utf8', err => {
+        expect(err).toBeFalsy()
       })
     })
   }
