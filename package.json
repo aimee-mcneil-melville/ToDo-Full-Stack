@@ -2,14 +2,17 @@
   "name": "meowtown",
   "version": "0.0.1",
   "scripts": {
-    "start": "nodemon index"
+    "dev": "nodemon index",
+    "start": "node index"
   },
+  "author": "EDA",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "express": "~4.13.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.14.11"
   }
 }
