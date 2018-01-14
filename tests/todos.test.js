@@ -4,13 +4,13 @@ const todos = require('../todo')
 let testDb = null
 
 // Create a separate in-memory database before each test.
-test.beforeEach(() => {
+beforeEach(() => {
   testDb = testEnv.getTestDb()
   return testEnv.initialise(testDb)
 })
 
 // Destroy the database connection after each test.
-test.afterEach(() => testEnv.cleanup(testDb))
+afterEach(() => testEnv.cleanup(testDb))
 
 // This will fail until you:
 //  - export the `getAll` function
