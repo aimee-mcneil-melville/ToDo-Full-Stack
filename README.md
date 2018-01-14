@@ -10,9 +10,9 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Install dependencies.
 
   ```sh
-  npm init -y
-  npm i knex sqlite3 --save
-  npm i ava --save-dev
+  yarn init -y
+  yarn add knex sqlite3
+  yarn add jest --dev
   ```
 
 * Create `knex` and `test` scripts in `package.json`.
@@ -20,11 +20,11 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   ```js
   "scripts": {
     "knex": "knex",
-    "test": "ava"
+    "test": "jest"
   }
   ```
 
-  This prevents us from having to install `knex` globally. Note that we're using AVA as our testing library because we're going to make use of some features it provides that make database testing a little easier. Its use is very similar to Tape, but remember that it uses `.is` instead of `.equals`.
+  This allows us to use the `knex` CLI tool, without having to install `knex` globally.
 
 * Set file permissions.
 
@@ -33,7 +33,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Create the knex config file (`knexfile.js`).
 
   ```sh
-  npm run knex init
+  yarn run knex init
   ```
 
   Edit your `knexfile` so it has a `test` property:
@@ -45,7 +45,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
         filename: ':memory:'
       },
       seeds: {
-        directory: './test/helpers/seeds'
+        directory: './tests/seeds'
       }
     }
   ```
@@ -58,7 +58,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Add a migration for the `todos` table.
 
   ```sh
-  npm run knex migrate:make todos
+  yarn run knex migrate:make todos
   ```
 
   1. Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos` with the following fields:
@@ -68,19 +68,19 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
   The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
 
-  2. Use `npm run knex migrate:latest` to apply the changes to the database.
+  2. Use `yarn run knex migrate:latest` to apply the changes to the database.
 
 * Add some seed data.
 
   ```sh
-  npm run knex seed:make test-tasks
+  yarn run knex seed:make test-tasks
   ```
 
   1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
 
   The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
 
-  2. Run `npm run knex seed:run` to add the new data to the database.
+  2. Run `yarn run knex seed:run` to add the new data to the database.
 
 
 ## Display task ID
@@ -88,7 +88,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 We want to be able to update and delete our tasks. But before we do that we need to be able to identify them.
 
 Add some code so that when we log out a task it gives the id number too. For example:
- 
+
 ```sh
 $ ./todo list
 
@@ -99,9 +99,9 @@ $ ./todo list
 
 ## Delete a task by ID
 
-Users should be able to complete tasks. We'd like to be able to do something like `./todo done 1` which will remove the task with `id` of `1` from the database. 
+Users should be able to complete tasks. We'd like to be able to do something like `./todo done 1` which will remove the task with `id` of `1` from the database.
 
-You'll want to add a new function that returns a promise that can delete a row given its `id`. Look how the other functions work. You might need to review promises. 
+You'll want to add a new function that returns a promise that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
 
 What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
 
@@ -130,7 +130,7 @@ Now we have users using our tool, but we have new features to add. We need a way
 
 Users want to be able to mark a task as complete without removing it from the database.
 
-1. Use `npm run knex migrate:make add-completed-column` to create a new empty migration.
+1. Use `yarn run knex migrate:make add-completed-column` to create a new empty migration.
 
   The documentation for [`knex.schema.table`](http://knexjs.org/#Schema-table) might be helpful when modifying an existing table.
 
@@ -138,11 +138,11 @@ Users want to be able to mark a task as complete without removing it from the da
 
 2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
 
-3. Run `npm run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database? 
+3. Run `yarn run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database?
 
-4. Run `knex migrate:rollback` and look in your database. 
+4. Run `yarn run knex migrate:rollback` and look in your database.
 
-5. Run `knex migrate:latest` and look again.
+5. Run `yarn run knex migrate:latest` and look again.
 
 
 ## Finish the _mark task complete_ feature
@@ -157,9 +157,9 @@ What is the next feature that would make this tool more useful for you? A priori
 
 ## Testing your functions
 
-To make testable any function that you write, you'll need to do a couple of things:
+To make any function you write testable, you need to do a couple of things:
 
- - _export_ the function, so that it can be seen outside of the module it's a part of
+ - _export_ the function, so it is available outside of its module
  - _pass the database connection_ into it, so that we can give it either the real database or a temporary test database
 
 The code for the second part in particular might be a new concept for you. Take a look at this:
@@ -201,4 +201,4 @@ function getAll (connection) {
 }
 ```
 
-Take a look in `test/todos.test.js` for an example of how to test such functions.
+Take a look in `tests/todos.test.js` for an example of how to test such functions.

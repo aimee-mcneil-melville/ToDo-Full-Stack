@@ -1,20 +1,12 @@
 #!/usr/bin/env node
 
-var config = require('./knexfile').development
-var db = require('knex')(config)
+const config = require('./knexfile').development
+const devDb = require('knex')(config)
 
-var cmd = process.argv[2]
-var note = process.argv[3]
+const cmd = process.argv[2]
+const note = process.argv[3]
 
 switch (cmd) {
-  case 'add':
-    addTodo(note)
-      .then(getAll)
-      .then(listTodos)
-      .catch(logError)
-      .finally(closeDB)
-    break
-
   case 'list':
     getAll()
       .then(listTodos)
@@ -38,17 +30,12 @@ function logError (err) {
   console.error('Uh oh!', err)
 }
 
-function getAll () {
+function getAll (testDb) {
+  const db = testDb || devDb
   return db('todos').select()
 }
 
-function addTodo (task) {
-  return db('todos')
-    .insert({
-      task: task
-    })
-}
-
-function closeDB () {
+function closeDB (testDb) {
+  const db = testDb || devDb
   db.destroy()
 }
