@@ -18,7 +18,7 @@ var port = process.env.PORT || 3000
 *If you have a database:*
 
 - [ ] You have a `production` option in the config file (if you are using knex this will be in the `knexfile.js`).
-- [ ] You have installed the Postgres module using `npm install pg --save`.
+- [ ] You have installed the Postgres module using `yarn add pg`.
 - [ ] You are using `process.env.NODE_ENV` to dynamically choose the Knex environment. For example, in the module where you're using Knex.js (e.g. `db.js`):
 
   ```js
@@ -45,7 +45,7 @@ var port = process.env.PORT || 3000
   }
   ```
 
-- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `postinstall` to run the migrations.
+- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `yarn`. To do this, we add an npm script called `postinstall` to run the migrations.
 
   ```js
   "postinstall": "knex migrate:latest"
@@ -99,4 +99,4 @@ var port = process.env.PORT || 3000
     - PostgreSQL returns a different result from a `.insert` command
     - The Knex `table.string('column_name')` has a 255 character limit.  PostgreSQL enforces this whereas SQLite does not.
     - Refer to the Knex documentation for solutions
-    
+
