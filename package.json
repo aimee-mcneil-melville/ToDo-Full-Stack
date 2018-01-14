@@ -4,22 +4,20 @@
   "description": "Server-side rendering with Handlebars templates",
   "main": "index.js",
   "scripts": {
-    "debug": "nodemon --inspect index.js",
-    "test": "tape tests/**/*.test.js | tap-diff",
-    "start": "nodemon index"
+    "debug": "nodemon index.js",
+    "start": "node index",
+    "test": "jest --watch --noStackTrace"
   },
+  "author": "Enspiral Dev Academy",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2",
+    "express": "^4.16.2",
     "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
-    "cheerio": "^0.22.0",
-    "nodemon": "^1.11.0",
-    "supertest": "^3.0.0",
-    "tap-diff": "^0.1.1",
-    "tape": "^4.6.3"
-  },
-  "keywords": [],
-  "author": "Enspiral Dev Academy",
-  "license": "ISC"
+    "cheerio": "^1.0.0-rc.2",
+    "jest": "^22.0.6",
+    "nodemon": "^1.14.11",
+    "supertest": "^3.0.0"
+  }
 }

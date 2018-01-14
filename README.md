@@ -14,10 +14,10 @@ Build a photo gallery using Handlebars views.
 
 ## Getting started
 
-* After cloning this repo, install dependencies with `npm install`
-* To debug the server: `npm run debug`
-* To start the server (and have it reload with Nodemon after changes): `npm start`
-* To run the tests: `npm test`
+* After cloning this repo, install dependencies with `yarn`
+* To debug the server (and have it reload with Nodemon after changes): `yarn run debug`
+* To start the server : `yarn start`
+* To run the tests: `yarn test`
 
 
 ## Hello world
@@ -52,7 +52,7 @@ You'll find this pattern repeating throughout your exploration of server-side re
  - get some data and put it in an object
  - pass that object to `res.render`
  - modify the `.hbs` template to make use of the data
- 
+
 The rest of this exercise should follow the same arc - gradually layering up detail and complexity.
 
 
@@ -109,7 +109,7 @@ Any time you want to use this data, you can just `var art = require('./art.json'
 4. _As a user, I want to see a header at the top of the page displaying the page title so I know where I am._
   - We _could_ just "hard-code" this in the template, but to keep our design flexible let's use a partial and we can include a `title` property on every data object we pass to `res.render`.
   - Create a `header.hbs` partial. Make it look however you like, but be sure it has a `{{title}}` in there somewhere.
-  
+
 5. _As a user, I want to see a footer at the bottom of the page displaying contact details so that I can contact the people responsible for the site._
   - Repetition can be a wonderful thing. Create a `footer.hbs` partial and include it in your home template.
 
@@ -135,7 +135,7 @@ Any time you want to use this data, you can just `var art = require('./art.json'
 
 10. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
   - Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
-  
+
 Take the chance to explore, play, experiment. Ask lots of questions!
 
 
