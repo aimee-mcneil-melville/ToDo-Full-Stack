@@ -28,7 +28,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
 * Set file permissions.
 
-  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the excutable flag to the file. Now you can run it in your console using `./todo list`
+  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`
 
 * Create the knex config file (`knexfile.js`).
 
