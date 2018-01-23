@@ -1,27 +1,22 @@
-var path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
+const hbs = require('express-handlebars')
 
-var express = require('express')
-var bodyParser = require('body-parser')
-var hbs = require('express-handlebars')
+const routes = require('./routes')
 
-var routes = require('./routes')
-
-var app = express()
+const server = express()
 
 // Middleware
-app.use(bodyParser.urlencoded({extended: true}))
-app.engine('hbs', hbs({
+server.engine('hbs', hbs({
   extname: 'hbs',
   defaultLayout: 'main'
 }))
-app.set('view engine', 'hbs')
-app.use(express.static('public'))
+server.set('view engine', 'hbs')
+server.use(express.static('public'))
+server.use(bodyParser.urlencoded({extended: true}))
 
 // Routes
-app.use('/', routes)
+server.use('/', routes)
 
-// Send back a creator function which links a db with the app so that it is testable
-module.exports = function (db) {
-  app.set('db', db)
-  return app
-}
+module.exports = server
+
