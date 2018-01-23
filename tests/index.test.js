@@ -1,34 +1,26 @@
-var test = require('ava')
-var knex = require('knex')
-var request = require('supertest')
+/* global test beforeEach afterEach expect */
+const request = require('supertest')
 
-// Notice that we require the `.test` property from the knexfile
-var config = require('../knexfile').test
-var createServer = require('../server')
+const server = require('../server')
+const testEnv = require('./test-environment')
+
+let testDb = testEnv.getTestDb()
 
 // Create a separate in-memory database before each test.
 // In our tests, we can get at the database as `t.context.db`.
-test.beforeEach(function (t) {
-  t.context.db = knex(config)
-  t.context.app = createServer(t.context.db)
-  return t.context.db.migrate.latest()
-    .then(function () {
-      return t.context.db.seed.run('test')
-    })
+beforeEach(() => {
+  testDb = testEnv.getTestDb()
+  return testEnv.initialise(testDb)
 })
 
 // Destroy the database connection after each test.
-test.afterEach(function (t) {
-  t.context.db.destroy()
-})
+afterEach(() => testEnv.cleanup(testDb))
 
-test('list wombles', (t) => {
-  return request(t.context.app)
+test('list wombles', () => {
+  const expected = 'WOMBLES!'
+  return request(server)
     .get('/')
-    .then((res) => {
-      return new Promise((resolve, reject) => {
-        t.is('WOMBLES!', res.text)
-        resolve()
-      })
+    .then(res => {
+      expect(res.text).toBe(expected)
     })
 })

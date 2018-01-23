@@ -6,8 +6,7 @@
   "scripts": {
     "knex": "knex",
     "dev": "nodemon index",
-    "debug": "node --inspect --debug-brk index",
-    "test": "ava 'tests/**/*.test.js'",
+    "test": "jest --watch --noStackTrace",
     "start": "node index"
   },
   "repository": {
@@ -25,15 +24,15 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
-    "knex": "^0.11.10",
-    "sqlite3": "^3.1.8"
+    "knex": "^0.14.2",
+    "sqlite3": "^3.1.13"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "nodemon": "^1.11.0",
+    "jest": "^22.1.4",
+    "nodemon": "^1.14.11",
     "supertest": "^3.0.0"
   }
 }

@@ -1,11 +1,7 @@
-var createServer = require('./server')
-var development = require('./knexfile').development
-var knex = require('knex')(development)
+const server = require('./server')
 
-var server = createServer(knex)
-
-var PORT = 3000
+const PORT = 3000
 
 server.listen(PORT, function () {
-  console.log('CLEANING UP ALL OF THE THINGS THAT WE FIND... ON PORT', PORT)
+  console.log('Server listening on port', PORT)
 })
