@@ -8,10 +8,10 @@ User stories to implement when practising joins.
 Fork this repo, clone it down, and `cd` into the directory. Then:
 
 ```
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm run dev
+yarn
+yarn knex migrate:latest
+yarn knex seed:run
+yarn dev
 ```
 
 This will create and populate the database for you, and start the server with `nodemon`.
