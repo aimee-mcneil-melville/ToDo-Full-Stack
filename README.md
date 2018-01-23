@@ -11,10 +11,10 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm start
+yarn
+yarn knex migrate:latest
+yarn knex seed:run
+yarn start
 ```
 
 
