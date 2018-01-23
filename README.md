@@ -33,7 +33,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Create the knex config file (`knexfile.js`).
 
   ```sh
-  yarn run knex init
+  yarn knex init
   ```
 
   Edit your `knexfile` so it has a `test` property:
@@ -58,7 +58,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Add a migration for the `todos` table.
 
   ```sh
-  yarn run knex migrate:make todos
+  yarn knex migrate:make todos
   ```
 
   1. Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos` with the following fields:
@@ -68,19 +68,19 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
   The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
 
-  2. Use `yarn run knex migrate:latest` to apply the changes to the database.
+  2. Use `yarn knex migrate:latest` to apply the changes to the database.
 
 * Add some seed data.
 
   ```sh
-  yarn run knex seed:make test-tasks
+  yarn knex seed:make test-tasks
   ```
 
   1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
 
   The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
 
-  2. Run `yarn run knex seed:run` to add the new data to the database.
+  2. Run `yarn knex seed:run` to add the new data to the database.
 
 
 ## Display task ID
@@ -130,7 +130,7 @@ Now we have users using our tool, but we have new features to add. We need a way
 
 Users want to be able to mark a task as complete without removing it from the database.
 
-1. Use `yarn run knex migrate:make add-completed-column` to create a new empty migration.
+1. Use `yarn knex migrate:make add-completed-column` to create a new empty migration.
 
   The documentation for [`knex.schema.table`](http://knexjs.org/#Schema-table) might be helpful when modifying an existing table.
 
@@ -138,11 +138,11 @@ Users want to be able to mark a task as complete without removing it from the da
 
 2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
 
-3. Run `yarn run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database?
+3. Run `yarn knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database?
 
-4. Run `yarn run knex migrate:rollback` and look in your database.
+4. Run `yarn knex migrate:rollback` and look in your database.
 
-5. Run `yarn run knex migrate:latest` and look again.
+5. Run `yarn knex migrate:latest` and look again.
 
 
 ## Finish the _mark task complete_ feature
