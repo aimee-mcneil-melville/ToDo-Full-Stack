@@ -1,6 +1,6 @@
 # Lightning Talks
 
-## Instructions 
+## Instructions
 
 1. Decide on a topic and a day to present.
 2. Open this file for editing.
@@ -10,54 +10,66 @@
 6. Prepare for your talk.
 
 
-## Topics
-
-* ES6
-  * [ ] ES6 - var, const, let
-  * [ ] ES6 - import, export
-  * [ ] ES6 - fat arrow functions, function shorthands
-  * [ ] ES6 - template strings
-  * [ ] ES6 - destructuring
-  * [ ] ES6 - Array.from(), Array.fill()
-  * [ ] ES6 - Default parameters, Rest + Spread
-  * [ ] ES6 - Map, Set
-  * [ ] Babel & Transpiling, getting ES6 to work with browserify
-* Task runners
-  * [ ] Task runner - gulp
-  * [ ] Task runner - grunt
-  * [ ] Task runner - webpack
-* Command line tools
-  * [ ] sed, grep, ag
-  * [ ] ln, ls
-  * [ ] chmod, chown, chgrp
-  * [ ] echo, cat, tail
-* Misc
-  * [ ] DOM vs 'virtual dom'
-  * [ ] CORS
-  * [ ] Sending data in headers vs. params vs. body
-
-
 ## Schedule
 
 ### Tuesday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
 
 
 ### Wednesday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
 
 
 ### Thursday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
+
+
+## Topics
+
+* Relational databases
+  - [ ] Database indexes
+  - [ ] DDL, DNL, DCL, TCL
+  - [ ] SQL joins (left, right, inner, outer, full)
+
+* NoSQL databases
+  - [ ] Neo4J
+  - [ ] MongoDB
+  - [ ] CouchDB
+  - [ ] [Secure Scuttlebutt](https://ssbc.github.io/secure-scuttlebutt/) (hard)
+
+* Algorithms
+  - [ ] Common sorting algorithms
+  - [ ] Binary search & Git bisect
+  - [ ] Big O notation
+
+* JavaScript libraries
+  - [ ] Zepto
+  - [ ] Lodash
+  - [ ] rx.js (hard)
+  - [ ] Immutable.js
+  - [ ] Angular
+
+* Famous Programmers
+  - [ ] Ada Lovelace
+  - [ ] Alan Turing
+  - [ ] Audrey Tang
+  - [ ] Brendan Eich
+  - [ ] Charles Babbidge
+
+* ECMAScript 6 (ES6)
+  - [ ] Destructuring
+  - [ ] `Array.from()`, `Array.fill()`
+  - [ ] Default parameters, Rest & Spread operators
+

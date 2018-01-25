@@ -10,42 +10,72 @@
 6. Prepare for your talk.
 
 
-## Topics
-
-* [ ] Sinatra (rails alternative)
-* [ ] SQL Injection attack - Red is doing this and you are not
-* [ ] Cross site scripting
-* [ ] Heartbleed ssh vulnerability
-* [ ] Fundamentals of encryption
-* [ ] Strategy Design Pattern
-* [ ] Observer Design Pattern
-* [ ] MVC overview
-* [ ] What makes an awesome lightning talk
-* [ ] The secrets to an awesome pairing session
-* [Any other topic that will be interesting for people]
-
-
 ## Schedule
 
 ### Tuesday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
 
 
 ### Wednesday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
 
 
 ### Thursday
 
-1. [Topic - Name]
-2. [Topic - Name]
-3. [Topic - Name]
-4. [Topic - Name]
+1. Name: Topic
+2. Name: Topic
+3. Name: Topic
+4. Name: Topic
+
+
+## Topics
+
+* Design patterns
+  - [ ] Strategy Design Pattern
+  - [ ] Observer Design Pattern
+  - [ ] Model View Controller (MVC)
+
+* JavaScript libraries
+  - [ ] CycleJS
+  - [ ] Three.js
+  - [ ] D3.js
+  - [ ] Ember
+
+* Famous Programmers
+  - [ ] Richard Stallman
+  - [ ] Roy Fielding
+  - [ ] Sandi Metz
+  - [ ] Steve Wozniak
+  - [ ] Barbara Liskov
+
+* Code smells
+  - [ ] Purposeless conditions
+  - [ ] Functions that do more than one thing
+  - [ ] Cyclomatic complexity [link](http://webuniverse.io/cyclomatic-complexity-refactoring-tips/) [eslint rule](http://eslint.org/docs/rules/complexity)
+
+* Transpiled languages
+  - [ ] TypeScript
+  - [ ] CoffeeScript
+  - [ ] ClosureScript
+  - [ ] Elm
+
+* JavaScript
+  - [ ] `'use strict'`
+  - [ ] StandardJS
+  - [ ] DOM vs. Virtual DOM
+
+* Other types of app experiences
+  - [ ] How to make a Chrome Extension
+  - [ ] How to make a Firefox plugin
+  - [ ] Electron
+
+* _Any other topic that will be interesting for people_ (validate with teacher first)
+
