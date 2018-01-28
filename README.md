@@ -10,8 +10,8 @@ In this exercise, you're going to build a blog for Charlotte.
 Clone this repo, and from the repo's folder
 
 ```sh
-npm install
-npm start
+yarn
+yarn start
 ```
 
 
@@ -40,3 +40,4 @@ Here is a basic layout of the page:
 ![Basic layout](basic-layout.png)
 
 Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox. Also, consider applying a class to each component using `className` (instead of the `class` we use in HTML) to _namespace_ the styles of each component.
+
