@@ -11,13 +11,11 @@ This tutorial walks you through the basics of React development. By the end of i
 
 ## Install
 
-Fork the repo from https://github.com/dev-academy-challenges/react-paws-for-effect . There are a series of tutorials and challenges that use this code base, so it makes sense to have your own copy of it. The 'fork' button is at the top right of the page. Be sure to fork it to your own GitHub account, not the cohort's one!
-
-Once you've done that, clone it down from your GitHub and:
+After cloning this repo, from the repo's folder:
 
 ```shell
-npm install
-npm start
+yarn
+yarn start
 ```
 
 ![Spinning paw](screenshots/paw.png)
