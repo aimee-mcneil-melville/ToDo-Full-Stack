@@ -7,8 +7,8 @@ For this challenge, you'll be making a basic fractal generator that starts with 
 After cloning this repo
 
 ```sh
-npm install
-npm start
+yarn
+yarn start
 ```
 
 and then go to [`http://localhost:3000`](http://localhost:3000).
@@ -47,7 +47,7 @@ const App = props => {
 export default App
 ```
 
-The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders Scalable Vector Graphics: an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
+The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
 
 
 ## The requirements
@@ -65,14 +65,14 @@ Because every circle behaves the same way, you could create a new `Circle` compo
 
 When a `<Circle>` is showing itself, it should use the SVG `<circle>` element, but when it's showing it's children, it should use new `<Circle>` components.
 
-Because a circle should only create its children the first time, a `Circle` should have a property in its state that tracks if it has children (if it's been moused over). Perhaps `hasChildren`? If it has children it should use props to also render its children in the correct location (based on its `cx`, `cy` and `r`).
+The `<Circle>` component should keep its child circles as an array in state. It will only have children if it has been moused over.
 
 You can apply a mouseover event to the SVG `circle` element like so: `<circle cx={cx} cy={cy} r={r} mouseover={handleMouseOver} />`. The `handleMouseOver` function can be defined in the same `Circle.jsx` file.
 
 
 ## Resources
 
-If you don't already have it installed, you might like to add the [React Chrome extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) to Chrome. This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) created by React.
+If you don't already have it installed, you should install the React DevTools browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) and [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)). This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) used by React.
 
 And some more:
 
