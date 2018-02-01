@@ -10,9 +10,9 @@ Enter the commands below in your terminal to get started:
 cd ~/workspace
 git clone https://github.com/dev-academy-challenges/boilerplate-express-api web-api
 cd web-api
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
+yarn
+yarn run knex migrate:latest
+yarn run knex seed:run
 ```
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and change the origin remote to point to that repo:
 
