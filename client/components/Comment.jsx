@@ -1,16 +1,15 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
-import CommentForm from './CommentForm'
+import {Switch, Route, Link} from 'react-router-dom'
 
-import { deleteComment } from '../api'
+import CommentForm from './CommentForm'
+import {deleteComment} from '../api'
 
 class Comments extends React.Component {
-  
   deleteComment () {
     deleteComment(this.props.comment.id)
       .then(() => this.props.fetchComments(this.props.postId))
   }
-  
+
   render () {
     const comment = this.props.comment
     return (
@@ -30,7 +29,7 @@ class Comments extends React.Component {
           <Route
             path={`/posts/${this.props.postId}`}
             render={(props) =>
-              <div>    
+              <div>
                 <li key={comment.id}>{comment.comment}</li>
                 <Link to={`/posts/${this.props.postId}/comments/${comment.id}`}>
                   <button className='pure-button'>Edit</button>
@@ -46,3 +45,4 @@ class Comments extends React.Component {
 }
 
 export default Comments
+

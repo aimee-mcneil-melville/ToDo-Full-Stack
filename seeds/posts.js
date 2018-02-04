@@ -1,5 +1,4 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = (knex, Promise) => {
   // Deletes ALL existing entries
   return knex('Posts').del()
     .then(function () {
@@ -45,6 +44,7 @@ exports.seed = function(knex, Promise) {
           'Around the first of July, the work horses were hitched to the mowing machine, and Mr. Zuckerman climbed into the seat and drove into the field. All morning you could hear the rattle of the machine as it went round and round,while the tall grass fell down behind the cutter bar in long green swathes. Next day, if there was no thunder shower, all hands would help rake and pitch and load, and the hay would be hauled to the Summer Days in the high hay wagon, with Fern and Avery riding at the top  of the load. Then the hay would be hoisted, sweet and warm, into the big loft, until the whole bam seemed like a wonderful bed of timothy and clover. It was fine to jump in, and perfect to hide in. And sometimes A very would find a little grass snake in the hay, and would add it to the other things in his pocket.',
           'Early summer days are a jubilee time for birds. In the fields, around the house, in the barn, in the woods, in the swamp - everywhere love and songs and nests and eggs. From the edge of the woods, the white­throated sparrow (which must come all the way from Boston) calls, "Oh, Peabody, Peabody, Peabody!" On an apple bough, the phoebe teeters and wags its tail and says, "Phoebe, phoe-bee!" The song sparrow, who knows how brief and lovely life is, says, "Sweet, sweet, sweet interlude; sweet, sweet, sweet interlude." If you enter the barn, the swallows swoop down from their nests and scold. "Cheeky, cheeky!" they say.'
         ])}
-      ]);
-    });
-};
+      ])
+    })
+}
+

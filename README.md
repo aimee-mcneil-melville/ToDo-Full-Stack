@@ -1,31 +1,36 @@
 # Charlotte's Web Log API
 
-Last week you created a front end blog for Charlotte...
-In this exercise, you're going to build out the API for her blog.
+Last week you created a front end blog for Charlotte. In this exercise, you'll build an API for her blog.
 
 ![Charlotte's Web](charlottes-web.png)
+
 
 ## Objective
 
 The objectives of this challenge are to:
+
 - refresh your database querying skills
-- practice exposing an api for client side consumption
+- practice exposing an API for client side consumption
+
 
 ## Setup
 
-Clone this repo, and from the repo's folder
+Clone this repo, and from the repo's folder:
 
 ```sh
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm start
+yarn
+yarn knex migrate:latest
+yarn knex seed:run
+yarn start
 ```
+
+
 ## Exercise
 
 ### Overview
 
-Your task is to write the api routes (and associated database queries) that will allow you to:
+Your task is to write the API routes (and associated database queries) that will allow you to:
+
  - Retrieve a list of blog posts
  - Create a new blog post
  - Update an existing blog post
@@ -34,14 +39,15 @@ Your task is to write the api routes (and associated database queries) that will
  - Create a new comment for a particular blog post
  - Update an existing comment for a particular blog post
  - Delete a comment for a particular blog post
- 
-The React front end (including client side components and routes) has already been written for you, and as you complete each part, you will be able to see the blog take shape.
+
+The React front end, including client side components and routes, have already been written for you. As you complete each part, you will be able to see the blog take shape.
 
 The database migrations and seeds have also already been written for you so you don't have to worry about populating your database with data.
 
 - Write your database functions in `server/db/db.js`
-- Write your api functions in `server/routes/posts.js`
-- Try implementing the database and api routes one at a time (i.e. write the database query first, and then write the corresponding api route before moving on to the next database query)
+- Write your API functions in `server/routes/posts.js`
+- Try implementing the database and API routes one at a time (i.e. write the database query first, and then write the corresponding API route before moving on to the next database query)
+
 
 ### Routes
 
@@ -59,6 +65,7 @@ Here is a table of routes that you need to implement as part of this exercise:
 | DELETE | `/v1/comments/:commentId`               | Delete an existing comment                 | Nothing (status OK)         |
 
 In order to complete this exercise, the JSON responses will need conform to the following formats below:
+
 
 ### Response Formats
 
@@ -136,13 +143,17 @@ PUT `/v1/comments/:commentId`
 ]
 ```
 
-You may find using POSTMAN useful when testing routes.
+You may find using Postman useful when testing routes.
+
 
 ## Gotchas
 
 - The `paragraphs` column in the `Posts` table is of type string and takes a **stringified array**. However, the front end will send all data relating to the `paragraphs` column as an array of strings. You will need to convert the `paragraphs` string array into a stringified array before inserting it into the database.
 - Instead of using `res.render` you will need to use `res.json`.
 
+
 ## Stretch Goals
-- Write some tests for your api routes using `supertest`.
-- Add the ability to like/dislike comments (once you have done the migrations/seeds/queries/api routes, you will need to write some front end `api` functions and `React` components to display these - have a particular look at the `client/api/index.js` and `client/components/Post.jsx` for pointers on how to add client side api routes and front end components).
+
+- Write some tests for your API routes using `supertest`.
+- Add the ability to like and dislike comments. Once you have applied the migrations and seeds, and written the queries and API routes, you will need to write some front end `api` functions and `React` components to display these. Have a look at the `client/api/index.js` and `client/components/Post.jsx` files for pointers on how to add client side API routes and front end components.
+

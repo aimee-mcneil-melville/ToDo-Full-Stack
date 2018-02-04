@@ -1,9 +1,11 @@
 const express = require('express')
-const router = express.Router()
+const bodyParser = require('body-parser')
 
 const db = require('../db/db')
-const bodyParser = require('body-parser')
+
+const router = express.Router()
 
 router.use(bodyParser.json())
 
 module.exports = router
+

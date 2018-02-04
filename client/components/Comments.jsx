@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 
 import Comment from './Comment'
 import CommentForm from './CommentForm'
@@ -20,11 +20,11 @@ class Comments extends React.Component {
         />
         <ul>
           {this.props.comments.map(comment =>
-            <Comment 
+            <Comment
               key={comment.id}
               postId={this.props.postId}
-              comment={comment} 
-              fetchComments={this.props.fetchComments} 
+              comment={comment}
+              fetchComments={this.props.fetchComments}
             />
           )}
         </ul>
@@ -38,3 +38,4 @@ Comments.defaultProps = {
 }
 
 export default Comments
+

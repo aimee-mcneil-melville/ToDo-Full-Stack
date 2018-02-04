@@ -1,8 +1,8 @@
 import React from 'react'
-import { addCommentByPostId, updateComment } from '../api'
+
+import {addCommentByPostId, updateComment} from '../api'
 
 class CommentForm extends React.Component {
-  
   constructor (props) {
     super(props)
     this.state = {
@@ -14,13 +14,13 @@ class CommentForm extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
+
   componentDidMount() {
     if (this.props.comment) {
       this.setState({ comment: this.props.comment })
     }
   }
-  
+
   handleSubmit (e) {
     e.preventDefault()
     const {comment} = this.props
@@ -37,15 +37,15 @@ class CommentForm extends React.Component {
         .catch(err => this.setState({ errorMessage: err.message }))
     }
   }
-   
+
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input 
-          type='text' 
-          name='comment' 
-          value={this.state.comment.comment} 
-          onChange={(e) => this.setState({ comment: { comment: e.target.value, id: this.state.comment.id } })}
+        <input
+          type='text'
+          name='comment'
+          value={this.state.comment.comment}
+          onChange={(e) => this.setState({comment: {comment: e.target.value, id: this.state.comment.id}})}
         />
         <input className='pure-button' type='submit' />
         {this.state.errorMessage &&
@@ -57,3 +57,4 @@ class CommentForm extends React.Component {
 }
 
 export default CommentForm
+

@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   return knex.schema.createTableIfNotExists('Comments', function (table) {
     table.increments().primary()
     table.integer('post_id').references('post.id')
@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
   })
 }
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   return knex.schema.dropTableIfExists('Comments')
 }
+

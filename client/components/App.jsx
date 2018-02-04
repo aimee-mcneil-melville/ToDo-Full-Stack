@@ -4,10 +4,9 @@ import Header from './Header'
 import Footer from './Footer'
 import AppRoutes from './AppRoutes'
 
-import { getPosts } from '../api'
+import {getPosts} from '../api'
 
 class App extends React.Component {
-  
   constructor (props) {
     super(props)
     this.state = {
@@ -50,7 +49,6 @@ class App extends React.Component {
       </div>
     )    
   }
-
 }
 
 module.exports = App

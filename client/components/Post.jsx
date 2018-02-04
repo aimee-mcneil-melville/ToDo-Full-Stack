@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { deletePost, getCommentsByPostId } from '../api'
+import {Link} from 'react-router-dom'
 
 import Comments from './Comments'
+import {deletePost, getCommentsByPostId} from '../api'
 
 class Post extends React.Component {
-  
   constructor (props) {
     super(props)
     this.state = {
@@ -15,14 +14,14 @@ class Post extends React.Component {
     this.deletePost = this.deletePost.bind(this)
     this.fetchComments = this.fetchComments.bind(this)
   }
-  
+
   componentDidMount () {
     const id = this.props.post.id || this.props.match.params.id
     if (id) {
       this.fetchComments(id)
     }
   }
-  
+
   fetchComments (postId) {
     getCommentsByPostId(postId)
       .then((comments) => this.setState({ comments: comments }))
@@ -34,7 +33,7 @@ class Post extends React.Component {
       .then(() => this.props.fetchPosts())
       .catch(err => this.setState({ errorMessage: err.message }))
   }
-  
+
   render () {
     const {title, dateCreated, id} = this.props.post
     return (
@@ -58,13 +57,13 @@ class Post extends React.Component {
           </Link>
           <button className='button-error pure-button' onClick={this.deletePost}>Delete</button>
         </div>
-        
+
         <Link to={`/posts/${id}`}>
           <div className='comment-count'>{this.state.comments.length} comments</div>
         </Link>
         {this.props.path !== '/' &&
           <Comments
-            comments={this.state.comments} 
+            comments={this.state.comments}
             postId={id}
             fetchComments={this.fetchComments}
           />
@@ -86,7 +85,6 @@ Post.defaultProps = {
     paragraphs: []
   }
 }
-
 
 export default Post
 
