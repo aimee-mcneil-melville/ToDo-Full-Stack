@@ -1,6 +1,8 @@
 /* global jest test expect */
 const request = require('supertest')
 
+const server = require('../../server')
+
 jest.mock('../../db', () => ({
   getUser: (id) => Promise.resolve(
     {id: id, name: 'test user', email: 'test@user.nz'}
@@ -10,8 +12,6 @@ jest.mock('../../db', () => ({
     {id: 4, name: 'test user 4', email: 'test4@user.nz'}
   ])
 }))
-
-const server = require('../../server')
 
 test('/users returns all users', () => {
   const expected = 2
