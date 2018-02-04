@@ -1,26 +1,44 @@
-// Note: we use AVA here because it makes setting up the
-// conditions for each test relatively simple. The same
-// can be done with Tape using a bit more code.
+/* global jest test expect */
+const request = require('supertest')
 
-var test = require('ava')
-var request = require('supertest')
+jest.mock('../../db', () => ({
+  getUser: (id) => Promise.resolve(
+    {id: id, name: 'test user', email: 'test@user.nz'}
+  ),
+  getUsers: () => Promise.resolve([
+    {id: 2, name: 'test user 2', email: 'test2@user.nz'},
+    {id: 4, name: 'test user 4', email: 'test4@user.nz'}
+  ])
+}))
 
-var app = require('../../server')
-var setupDb = require('../setup-db')
+const server = require('../../server')
 
-setupDb(test, (db) => {
-  app.set('knex', db)
-})
-
-test.cb('getUsers gets all users', (t) => {
-  var expected = 26
-  request(app)
+test('/users returns all users', () => {
+  const expected = 2
+  return request(server)
     .get('/users')
     .expect('Content-Type', /json/)
     .expect(200)
-    .end((err, res) => {
-      if (err) throw err
-      t.is(res.body.users.length, expected)
-      t.end()
+    .then(res => {
+      expect(res.body.users.length).toBe(expected)
+    })
+    .catch(err => {
+      expect(err).toBeFalsy()
     })
 })
+
+test('/users/:id returns a user by ID', () => {
+  const expected = 'test@user.nz'
+  return request(server)
+    .get('/users/10')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .then(res => {
+      expect(res.body.user.id).toBe(10)
+      expect(res.body.user.email).toBe(expected)
+    })
+    .catch(err => {
+      expect(err).toBeFalsy()
+    })
+})
+

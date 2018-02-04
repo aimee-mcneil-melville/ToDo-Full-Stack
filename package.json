@@ -7,31 +7,27 @@
     "knex": "knex",
     "dev": "nodemon index",
     "start": "node index",
-    "test": "NODE_ENV=test ava"
+    "test": "jest --watch --noStackTrace"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/boilerplate-express-api.git"
   },
-  "keywords": [
-    "eda",
-    "boilerplate"
-  ],
-  "author": "",
+  "author": "EDA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/boilerplate-express-api/issues"
   },
   "homepage": "https://github.com/dev-academy-challenges/boilerplate-express-api#readme",
   "devDependencies": {
-    "ava": "^0.18.0",
-    "nodemon": "^1.11.0",
-    "sqlite3": "^3.1.8",
+    "jest": "^22.1.4",
+    "nodemon": "^1.14.12",
+    "sqlite3": "^3.1.13",
     "supertest": "^3.0.0"
   },
   "dependencies": {
-    "body-parser": "^1.16.0",
-    "express": "^4.14.1",
-    "knex": "^0.12.6"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "knex": "^0.14.2"
   }
 }

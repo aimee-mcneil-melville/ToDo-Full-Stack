@@ -1,24 +1,23 @@
-# Boilerplate: Knex.js
+# Boilerplate Express API
 
-Phase 1 boilerplate project with:
+Phase 2 boilerplate project with:
 
  - Express
- - Knex
- - SQLite3
- - Express Handlebars
  - body-parser
- - AVA
- - Node Inspector
  - nodemon
+ - SQLite3
+ - Knex
+ - Jest
 
 
 ## Install
 
 ```
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm run dev
+yarn
+yarn knex migrate:latest
+yarn knex seed:run
+yarn dev
 ```
 
 Be sure to check out the other npm scripts too.
+

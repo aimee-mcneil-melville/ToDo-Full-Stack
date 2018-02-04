@@ -1,19 +1,15 @@
-var express = require('express')
-var bodyParser = require('body-parser')
+const express = require('express')
+const bodyParser = require('body-parser')
 
-var environment = process.env.NODE_ENV || 'development'
-var config = require('./knexfile')[environment]
-var knex = require('knex')(config)
+const users = require('./routes/users')
 
-var users = require('./routes/users')
-
-var server = express()
-
-server.set('knex', knex)
-module.exports = server
+const server = express()
 
 // Middleware
 server.use(bodyParser.json())
 
 // Routes
 server.use('/users', users)
+
+module.exports = server
+

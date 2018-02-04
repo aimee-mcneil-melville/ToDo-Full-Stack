@@ -1,16 +1,28 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 
-var db = require('../db')
+const db = require('../db')
 
 router.get('/', (req, res) => {
-  db.getUsers(req.app.get('knex'))
-    .then((users) => {
-      res.send({ users: users })
+  db.getUsers()
+    .then(users => {
+      res.send({users: users})
     })
-    .catch((err) => {
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.getUser(id)
+    .then(user => {
+      res.json({user: user})
+    })
+    .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
 
 module.exports = router
+
