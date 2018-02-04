@@ -15,8 +15,7 @@ class Comments extends React.Component {
     return (
       <div>
         <Switch>
-          <Route
-            path={`/posts/${this.props.postId}/comments/${comment.id}`}
+          <Route path={`/posts/${this.props.postId}/comments/${comment.id}`}
             render={(props) =>
               <CommentForm
                 fetchComments={this.props.fetchComments}
@@ -26,15 +25,15 @@ class Comments extends React.Component {
               />
             }
           />
-          <Route
-            path={`/posts/${this.props.postId}`}
-            render={(props) =>
+          <Route path={`/posts/${this.props.postId}`}
+            render={props =>
               <div>
                 <li key={comment.id}>{comment.comment}</li>
                 <Link to={`/posts/${this.props.postId}/comments/${comment.id}`}>
                   <button className='pure-button'>Edit</button>
                 </Link>
-                <button className='pure-button' onClick={this.deleteComment.bind(this)}>Delete</button>
+                <button className='pure-button'
+                  onClick={this.deleteComment.bind(this)}>Delete</button>
               </div>
             }
           />

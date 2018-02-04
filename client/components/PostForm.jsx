@@ -10,32 +10,41 @@ class PostForm extends React.Component {
       title: '',
       paragraphs: ''
     }
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount () {
     const {post} = this.props
     if (post) {
-      this.setState(Object.assign({}, post, {paragraphs: post.paragraphs.join('\n')}))
+      const paragraphs = {paragraphs: post.paragraphs.join('\n')}
+      this.setState(Object.assign({}, post, paragraphs))
     }
   }
 
   componentWillReceiveProps (nextProps) {
     const {post} = nextProps
     if (post && !this.props.post) {
-      this.setState(Object.assign({}, post, {paragraphs: post.paragraphs.join('\n')}))
+      const paragraphs = {paragraphs: post.paragraphs.join('\n')}
+      this.setState(Object.assign({}, post, paragraphs))
     }
+  }
+
+  handleChange (e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   handleSubmit (e) {
     e.preventDefault()
-    this.setState({ errorMessage: null })
+    this.setState({errorMessage: null})
     const {post} = this.props
     if (post) {
       updatePost(this.state)
         .then(() => this.props.fetchPosts())
         .then(() => this.props.history.push(`/posts/${post.id}`))
-        .catch(err => this.setState({ errorMessage: err.message }))
+        .catch(err => this.setState({errorMessage: err.message}))
     } else {
       addPost(this.state)
         .then((newPost) => {
@@ -48,31 +57,32 @@ class PostForm extends React.Component {
 
   render () {
     return (
-      <form className='pure-form pure-form-aligned' onSubmit={this.handleSubmit}>
-        {this.props.post &&
-          <h2 className='post-title'>Edit Post</h2>
-        }
-        {!this.props.post &&
-          <h2 className='post-title'>Add a New Blog Post</h2>
+      <form
+        className='pure-form pure-form-aligned'
+        onSubmit={this.handleSubmit}>
+
+        {this.props.post
+          ? <h2 className='post-title'>Edit Post</h2>
+          : <h2 className='post-title'>Add a New Blog Post</h2>
         }
 
         <fieldset>
           <div className='pure-control-group'>
-           <label htmlFor='title'>Title</label>
-           <input
-             type='text'
-             name='title'
-             value={this.state.title}
-             onChange={(e) => this.setState({ title: e.target.value })}
-           />
-         </div>
+            <label htmlFor='title'>Title</label>
+            <input
+              type='text'
+              name='title'
+              value={this.state.title}
+              onChange={this.handleChange}
+            />
+          </div>
 
-         <div className='pure-control-group'>
+          <div className='pure-control-group'>
             <label htmlFor='paragraphs'>Blog</label>
             <textarea
               name='paragraphs'
               value={this.state.paragraphs}
-              onChange={(e) => this.setState({ paragraphs: e.target.value })}
+              onChange={this.handleChange}
             ></textarea>
           </div>
 
@@ -81,9 +91,7 @@ class PostForm extends React.Component {
           </div>
         </fieldset>
 
-        {this.state.errorMessage &&
-          this.state.errorMessage
-        }
+        {this.state.errorMessage && this.state.errorMessage}
       </form>
     )
   }

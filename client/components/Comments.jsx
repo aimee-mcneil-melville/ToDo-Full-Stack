@@ -6,25 +6,27 @@ import CommentForm from './CommentForm'
 
 class Comments extends React.Component {
   render () {
+    const {postId, comments, fetchComments} = this.props
     return (
       <div>
-        <Link className='pure-button' to={`/posts/${this.props.postId}/comments/new`}>Add A New Comment</Link>
+        <Link className='pure-button'
+          to={`/posts/${postId}/comments/new`}>Add A New Comment</Link>
         <Route
           path='/posts/:postId/comments/new'
-          render={(props) =>
+          render={props =>
             <CommentForm
-              fetchComments={this.props.fetchComments}
+              fetchComments={fetchComments}
               {...props}
             />
           }
         />
         <ul>
-          {this.props.comments.map(comment =>
+          {comments.map(comment =>
             <Comment
               key={comment.id}
-              postId={this.props.postId}
+              postId={postId}
               comment={comment}
-              fetchComments={this.props.fetchComments}
+              fetchComments={fetchComments}
             />
           )}
         </ul>

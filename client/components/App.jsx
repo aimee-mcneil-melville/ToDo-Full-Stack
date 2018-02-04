@@ -15,21 +15,21 @@ class App extends React.Component {
     }
     this.fetchPosts = this.fetchPosts.bind(this)
   }
-  
+
   componentWillMount () {
     this.fetchPosts()
   }
-  
+
   fetchPosts () {
     return getPosts()
       .then(posts => {
-        this.setState({ posts: posts })
+        this.setState({posts: posts})
       })
       .catch(err => {
-        this.setState({ errorMessage: err.message })
+        this.setState({errorMessage: err.message})
       })
   }
-    
+
   render () {
     return (
       <div id='layout' className='pure-g'>
@@ -47,7 +47,7 @@ class App extends React.Component {
         </div>
         <Footer />
       </div>
-    )    
+    )
   }
 }
 
