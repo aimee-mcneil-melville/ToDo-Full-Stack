@@ -7,8 +7,8 @@ In this challenge you'll build part of a fictitious clearing house for beer - sp
 
 ```sh
 git clone https://github.com/[your_cohort]/sweet-as-beers
-cd sweet-as-beers && npm install
-npm start
+cd sweet-as-beers && yarn
+yarn start
 ```
 
 Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
@@ -140,4 +140,3 @@ Implement the **Checkout** button on the cart page. Have it go to a thank you pa
 On the listing page, add an _admin_ link that goes to a kind of Admin Portal used by Sweet As Beers to mark orders as fulfilled or cancelled. On this page, create 3 headers/sections: Pending, Cancelled, and Fulfilled. After a customer has checked out, their order should be in the _pending_ section. Next to each of these orders, provide buttons to `CANCEL_ORDER` and `FULFILL_ORDER`. When an order is cancelled, it should be moved to the cancelled section, and if fulfilled, moved to the Fulfilled section.
 
 Hopefully this exercise has given you an opportunity to become more comfortable and confident with React and managing a store with Redux.
-
