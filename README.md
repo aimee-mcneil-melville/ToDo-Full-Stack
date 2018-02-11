@@ -11,8 +11,8 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-redux-async
 mv boilerplate-redux-async async-redux-practice
 cd async-redux-practice
-npm install
-npm start
+yarn
+yarn start
 ```
 
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
@@ -57,4 +57,3 @@ _As a user, I want to be able to sort the list of posts by title and post date s
 _As a user, I want to be able to sort in both ascending and descending order so that I can see the start and end of the list._
 
 _As a user, I want to filter the list of posts based on a search that I type so that I can find the post I'm looking for._
-
