@@ -12,7 +12,7 @@ This will start a Webpack dev server. Open [http://localhost:8080](http://localh
 
 ## The Redux DevTool
 
-Install the Redux DevTool Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+Install the Redux DevTool Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/remotedev/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 
 
 ## Exercise
