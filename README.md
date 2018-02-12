@@ -5,10 +5,11 @@ In this challenge you'll build part of a fictitious clearing house for beer - sp
 
 ## Setup
 
+After cloning this repo
+
 ```sh
-git clone https://github.com/[your_cohort]/sweet-as-beers
-cd sweet-as-beers && npm install
-npm start
+cd sweet-as-beers && yarn
+yarn start
 ```
 
 Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.

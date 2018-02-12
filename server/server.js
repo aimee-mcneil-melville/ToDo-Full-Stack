@@ -1,8 +1,8 @@
-var path = require('path')
-var express = require('express')
-var bodyParser = require('body-parser')
+const path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
 
-var server = express()
+const server = express()
 
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
