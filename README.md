@@ -12,7 +12,7 @@ git clone https://github.com/dev-academy-challenges/boilerplate-redux-async
 mv boilerplate-redux-async async-redux-practice
 cd async-redux-practice
 yarn
-yarn start
+yarn dev
 ```
 
 If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
@@ -33,7 +33,7 @@ _As a user, I want to click a button and retrieve a list of post titles from the
    - The dev tools setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details.
 
 _As a user, I want to be able to enter a new subreddit to view the titles from so that I can see what else is happening on Reddit._
- - Initially, the subreddit is hardcoded into `LoadSubreddit`. If you put the current subreddit in the store, you'll be able to change it using actions...
+ - Initially, the subreddit is hardcoded into `LoadSubreddit`. If you use the component's state to keep track of the subreddit (using onChange), you'll be able to add it to the action you dispatch.
 
 _As a user, I want to view not just the title, but also a date and time and a short summary of each post so that I can preview the content._
 
