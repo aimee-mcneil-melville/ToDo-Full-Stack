@@ -1,48 +1,51 @@
 import React from 'react'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 
 import * as localDb from '../localDb'
 import ItemForm from './ItemForm'
 
-export default React.createClass({
-  getInitialState () {
-    return {
+class Items extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
       items: [],
       editItem: null
     }
-  },
+  }
 
   componentDidMount () {
     this.setState({
       items: localDb.getItems()
     })
-  },
+  }
 
   editItem (id) {
     this.setState({
-      editItem: { ...this.state.items.find(item => item.id === id) }
+      editItem: {...this.state.items.find(item => item.id === id)}
     })
-  },
+  }
 
-  deleteItem (evt, id) {
+  deleteItem (id, evt) {
     evt.preventDefault()
 
     localDb.deleteItem(id)
     this.setState({
       items: this.state.items.filter(item => item.id !== id)
     })
-  },
+  }
 
   getItem (item) {
-    const { id, name, description, color } = item
+    const {id, name, description, color} = item
+    const editItem = this.editItem.bind(this, id)
+    const deleteItem = this.deleteItem.bind(this, id)
     return (
-      <tr key={id} className="item" onClick={() => this.editItem(id)} onContextMenu={(evt) => this.deleteItem(evt, id)}>
+      <tr key={id} className="item" onClick={editItem} onContextMenu={deleteItem}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
-        <td className="item-color" style={{ backgroundColor: color }}></td>
+        <td className="item-color" style={{backgroundColor: color}}></td>
       </tr>
     )
-  },
+  }
 
   saveItem (item) {
     if (this.state.editItem) {
@@ -57,7 +60,7 @@ export default React.createClass({
         items: localDb.getItems()
       })
     }
-  },
+  }
 
   render () {
     return (
@@ -76,7 +79,7 @@ export default React.createClass({
               </tr>
             </thead>
             <tbody>
-            {this.state.items.map(item => this.getItem(item))}
+              {this.state.items.map(item => this.getItem(item))}
             </tbody>
           </table>
         </div>
@@ -89,5 +92,6 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
 
+export default Items

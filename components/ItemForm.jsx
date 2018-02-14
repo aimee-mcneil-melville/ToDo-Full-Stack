@@ -2,44 +2,37 @@ import React from 'react'
 
 import * as localDb from '../localDb'
 
-// Controlled component form
-// https://facebook.github.io/react/docs/forms.html#controlled-components
-export default React.createClass({
-  itemColors: [
-    'aliceblue',
-    'blanchedalmond',
-    'burlywood',
-    'cadetblue',
-    'chartreuse',
-    'darkgoldenrod',
-    'cornflowerblue',
-    'tomato',
-    'gainsboro',
-    'mediumaquamarine',
-    'papayawhip',
-    'thistle',
-    'whitesmoke'
-  ],
+const initialState = {
+  name: '',
+  description: '',
+  color: 'aliceblue'
+}
 
-  itemModel: {
-    name: '',
-    description: '',
-    color: 'aliceblue'
-  },
+const itemColors = [
+  'aliceblue',
+  'blanchedalmond',
+  'burlywood',
+  'cadetblue',
+  'chartreuse',
+  'darkgoldenrod',
+  'cornflowerblue',
+  'tomato',
+  'gainsboro',
+  'mediumaquamarine',
+  'papayawhip',
+  'thistle',
+  'whitesmoke'
+]
 
-  componentWillReceiveProps ({ editItem }) {
-    if (editItem) {
-      this.setState({ item: editItem })
-    }
-  },
-
-  getInitialState () {
-    return {
+class ItemForm extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
       errors: {
         isRequired: 'This field cannot be empty.',
         isNotChartreuse: 'Nobody likes chartreuse.'
       },
-      item: { ...this.itemModel },
+      item: {...initialState},
       invalid: {},
       validation: {
         name: [ 'isRequired' ],
@@ -50,7 +43,13 @@ export default React.createClass({
         isNotChartreuse: color => color !== 'chartreuse'
       }
     }
-  },
+  }
+
+  componentWillReceiveProps ({editItem}) {
+    if (editItem) {
+      this.setState({item: editItem})
+    }
+  }
 
   handleSubmit (evt) {
     evt.preventDefault()
@@ -58,8 +57,8 @@ export default React.createClass({
     if (this.validate()) {
       this.props.saveItem(this.state.item)
       this.resetForm()
-    } 
-  },
+    }
+  }
 
   handleChange (evt) {
     // select lists have no 'name' attribute
@@ -70,19 +69,19 @@ export default React.createClass({
         [field]: evt.target.value
       }
     })
-  },
+  }
 
   resetForm (evt) {
     if (evt) evt.preventDefault()
 
     this.setState({
-      item: { ...this.itemModel },
+      item: {...this.itemModel},
       invalid: {}
     })
-  },
+  }
 
   validate () {
-    const invalid = { ...this.state.invalid }
+    const invalid = {...this.state.invalid}
     for (const field in this.state.item) {
       const validators = this.state.validation[field] || []
       validators.forEach(v => {
@@ -93,9 +92,9 @@ export default React.createClass({
         }
       })
     }
-    this.setState({ invalid })
+    this.setState({invalid})
     return !Object.keys(invalid).length
-  },
+  }
 
   render () {
     return (
@@ -117,10 +116,11 @@ export default React.createClass({
         </select>
         {this.state.invalid.color ? (<div className="error">{this.state.invalid.color}</div>) : null}
 
-        <input type="submit" className="button-primary" type="submit" value={this.props.editItem ? 'Save' : 'Add'} />
+        <input type="submit" className="button-primary" value={this.props.editItem ? 'Save' : 'Add'} />
         <button className="button-warning" onClick={(evt) => this.resetForm(evt)}>Reset</button>
       </form>
     )
   }
-})
+}
 
+export default ItemForm

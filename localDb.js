@@ -29,4 +29,3 @@ export const deleteItem = id => {
   const items = JSON.parse(localStorage.getItem('_eda_react_form_items'))
   localStorage.setItem('_eda_react_form_items', JSON.stringify(items.filter(r => r.id !== id)))
 }
-

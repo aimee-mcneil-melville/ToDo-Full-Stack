@@ -1,23 +1,24 @@
 # React Form Handling
 
-Form handling in React using controlled and uncontrolled components.
+Form handling in React.
 
 
 ## Install & run
 
+After cloning this repo
+
 ```shell
-npm install
-npm start
+yarn
+yarn start
 ```
 
 
 ## Things to look at
 
-URL                                | Form                                                                             
+URL                                | Form
 -----------------------------------|-----
 http://localhost:8080/             | Relatively complex form with validation and editing using controlled components. 
-http://localhost:8080/simple       | Much simpler form, still using controlled components.                           
-http://localhost:8080/uncontrolled | Uncontrolled component form using refs.                                         
+http://localhost:8080/simple       | Much simpler form, still using controlled components.
 
 
 ## Things to try

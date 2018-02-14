@@ -1,10 +1,15 @@
 import React from 'react'
+import {Switch, Route} from 'react-router'
 
-import Items from './Items'
+import Items from './components/Items'
+import SimpleItems from './components/SimpleItems'
 
-const App = ({ children }) => (
+const App = ({children}) => (
   <div className="container">
-    { children }
+    <Switch>
+      <Route path='/' component={Items} />
+      <Route path='/simple' component={SimpleItems} />
+    </Switch>
   </div>
 )
 

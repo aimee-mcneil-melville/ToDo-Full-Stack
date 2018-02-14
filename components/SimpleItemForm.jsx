@@ -2,45 +2,43 @@ import React from 'react'
 
 import * as localDb from '../localDb'
 
-// Controlled component form
-// https://facebook.github.io/react/docs/forms.html#controlled-components
-export default React.createClass({
-  itemColors: [
-    'aliceblue',
-    'blanchedalmond',
-    'burlywood',
-    'cadetblue',
-    'chartreuse',
-    'darkgoldenrod',
-    'cornflowerblue',
-    'tomato',
-    'gainsboro',
-    'mediumaquamarine',
-    'papayawhip',
-    'thistle',
-    'whitesmoke'
-  ],
+const initialState = {
+  name: '',
+  description: '',
+  color: 'aliceblue'
+}
 
-  itemModel: {
-    name: '',
-    description: '',
-    color: 'aliceblue'
-  },
+const itemColors = [
+  'aliceblue',
+  'blanchedalmond',
+  'burlywood',
+  'cadetblue',
+  'chartreuse',
+  'darkgoldenrod',
+  'cornflowerblue',
+  'tomato',
+  'gainsboro',
+  'mediumaquamarine',
+  'papayawhip',
+  'thistle',
+  'whitesmoke'
+]
 
-  getInitialState () {
-    return {
-      item: { ...this.itemModel }
+class SimpleItemForm extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      item: {...initialState}
     }
-  },
+  }
 
   handleSubmit (evt) {
     evt.preventDefault()
-
     this.props.saveItem(this.state.item)
     this.setState({
-      item: { ...this.itemModel }
+      item: {...initialState}
     })
-  },
+  }
 
   handleChange (evt) {
     // select lists have no 'name' attribute
@@ -51,7 +49,7 @@ export default React.createClass({
         [field]: evt.target.value
       }
     })
-  },
+  }
 
   render () {
     return (
@@ -85,5 +83,6 @@ export default React.createClass({
       </form>
     )
   }
-})
+}
 
+export default SimpleItemForm

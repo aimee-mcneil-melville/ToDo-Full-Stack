@@ -1,21 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 
 import * as localDb from '../localDb'
 import SimpleItemForm from './SimpleItemForm'
 
-export default React.createClass({
-  getInitialState () {
-    return {
+class SimpleItems extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
       items: []
     }
-  },
+  }
 
   componentDidMount () {
     this.setState({
       items: localDb.getItems()
     })
-  },
+  }
 
   deleteItem (evt, id) {
     evt.preventDefault()
@@ -24,25 +25,25 @@ export default React.createClass({
     this.setState({
       items: this.state.items.filter(item => item.id !== id)
     })
-  },
+  }
 
   getItem (item) {
-    const { id, name, description, color } = item
+    const {id, name, description, color} = item
     return (
       <tr key={id} className="item" onContextMenu={(evt) => this.deleteItem(evt, id)}>
         <td className="item-name">{name}</td>
         <td className="item-description">{description}</td>
-        <td className="item-color" style={{ backgroundColor: color }}></td>
+        <td className="item-color" style={{backgroundColor: color}}></td>
       </tr>
     )
-  },
+  }
 
   saveItem (item) {
     localDb.addItem(item)
     this.setState({
       items: localDb.getItems()
     })
-  },
+  }
 
   render () {
     return (
@@ -61,7 +62,7 @@ export default React.createClass({
               </tr>
             </thead>
             <tbody>
-            {this.state.items.map(item => this.getItem(item))}
+              {this.state.items.map(item => this.getItem(item))}
             </tbody>
           </table>
         </div>
@@ -74,5 +75,6 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
 
+export default SimpleItems
