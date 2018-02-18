@@ -1,15 +1,13 @@
 import React from 'react'
-import {Switch, Route} from 'react-router'
+import {Route} from 'react-router-dom'
 
-import Items from './components/Items'
-import SimpleItems from './components/SimpleItems'
+import Items from './Items'
+import SimpleItems from './SimpleItems'
 
 const App = ({children}) => (
   <div className="container">
-    <Switch>
-      <Route path='/' component={Items} />
-      <Route path='/simple' component={SimpleItems} />
-    </Switch>
+    <Route exact path='/' component={Items} />
+    <Route path='/simple' component={SimpleItems} />
   </div>
 )
 

@@ -1,85 +1,61 @@
 import React from 'react'
 
-import * as localDb from '../localDb'
+import colorList from '../color-list'
 
-const initialState = {
+const defaultState = {
   name: '',
   description: '',
   color: 'aliceblue'
 }
 
-const itemColors = [
-  'aliceblue',
-  'blanchedalmond',
-  'burlywood',
-  'cadetblue',
-  'chartreuse',
-  'darkgoldenrod',
-  'cornflowerblue',
-  'tomato',
-  'gainsboro',
-  'mediumaquamarine',
-  'papayawhip',
-  'thistle',
-  'whitesmoke'
-]
-
 class SimpleItemForm extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      item: {...initialState}
-    }
+    this.state = {...defaultState}
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit (evt) {
+    this.props.saveItem(this.state)
+    this.setState({...defaultState})
     evt.preventDefault()
-    this.props.saveItem(this.state.item)
-    this.setState({
-      item: {...initialState}
-    })
   }
 
   handleChange (evt) {
-    // select lists have no 'name' attribute
-    const field = evt.target.name || 'color'
     this.setState({
-      item: {
-        ...this.state.item,
-        [field]: evt.target.value
-      }
+      [evt.target.name]: evt.target.value
     })
   }
 
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-
-        <label htmlFor="name">Name</label>
-        <input type="text" className="u-full-width"
-          name="name"
-          value={this.state.item.name}
+        <label htmlFor='name'>Name</label>
+        <input type='text' name='name'
+          className='u-full-width'
+          value={this.state.name}
           onChange={this.handleChange}
         />
 
-        <label htmlFor="description">Description</label>
-        <textarea className="u-full-width"
-          name="description"
-          value={this.state.item.description}
+        <label htmlFor='description'>Description</label>
+        <textarea name='description'
+          className='u-full-width'
+          value={this.state.description}
           onChange={this.handleChange}
         />
 
-        <label htmlFor="color">Colour</label>
-        <select className="u-full-width"
-          value={this.state.item.color}
+        <label htmlFor='color'>Colour</label>
+        <select name='color' className='u-full-width'
+          value={this.state.color}
           onChange={this.handleChange}
         >
-          {this.itemColors.map((color, i) => (
-            <option key={i} value={color}>{color}</option>
+          {colorList.map(color => (
+            <option key={color} value={color}>{color}</option>
           ))}
         </select>
 
-        <input type="submit" className="button-primary" value="Add" />
+        <input type='submit' className='button-primary' value='Add' />
       </form>
     )
   }

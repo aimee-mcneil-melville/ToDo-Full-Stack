@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 
 import * as localDb from '../localDb'
 import ItemForm from './ItemForm'
@@ -11,6 +11,7 @@ class Items extends React.Component {
       items: [],
       editItem: null
     }
+    this.saveItem = this.saveItem.bind(this)
   }
 
   componentDidMount () {
@@ -39,10 +40,11 @@ class Items extends React.Component {
     const editItem = this.editItem.bind(this, id)
     const deleteItem = this.deleteItem.bind(this, id)
     return (
-      <tr key={id} className="item" onClick={editItem} onContextMenu={deleteItem}>
-        <td className="item-name">{name}</td>
-        <td className="item-description">{description}</td>
-        <td className="item-color" style={{backgroundColor: color}}></td>
+      <tr key={id} className='item'
+        onClick={editItem} onContextMenu={deleteItem}>
+        <td className='item-name'>{name}</td>
+        <td className='item-description'>{description}</td>
+        <td className='item-color' style={{backgroundColor: color}}></td>
       </tr>
     )
   }
@@ -64,18 +66,18 @@ class Items extends React.Component {
 
   render () {
     return (
-      <div className="row">
-        <div className="two-thirds column">
+      <div className='row'>
+        <div className='two-thirds column'>
           <h1>Items</h1>
           <p>Left-click to edit, right-click to delete. (Probably not the best UX for a production app!)</p>
-          <p>This is the <strong>complex controlled component</strong> version of the demo, with editing and validation.</p>
-          <p>For the simple version, <Link to="/simple">click here</Link>. For the uncontrolled component version (using refs), <Link to="/uncontrolled">click here</Link>.</p>
-          <table className="u-full-width">
+          <p>This is the more <strong>complex</strong> version of the component, which includes editing and validation.</p>
+          <p>For the simple version, <Link to='/simple'>click here</Link>.</p>
+          <table className='u-full-width'>
             <thead>
               <tr>
-                <th className="item-name">Name</th>
-                <th className="item-description">Description</th>
-                <th className="item-color">Colour</th>
+                <th className='item-name'>Name</th>
+                <th className='item-description'>Description</th>
+                <th className='item-color'>Colour</th>
               </tr>
             </thead>
             <tbody>
@@ -84,9 +86,12 @@ class Items extends React.Component {
           </table>
         </div>
 
-        <div className="one-third column">
+        <div className='one-third column'>
           <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
-          <ItemForm editItem={this.state.editItem} saveItem={this.saveItem} />
+          <ItemForm
+            editItem={this.state.editItem}
+            saveItem={this.saveItem} />
+
           <p>Above component is <strong>&lt;ItemForm /&gt;</strong>.</p>
         </div>
       </div>

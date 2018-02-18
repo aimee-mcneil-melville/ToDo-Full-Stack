@@ -1,28 +1,12 @@
 import React from 'react'
 
-import * as localDb from '../localDb'
+import colorList from '../color-list'
 
-const initialState = {
+const defaultState = {
   name: '',
   description: '',
   color: 'aliceblue'
 }
-
-const itemColors = [
-  'aliceblue',
-  'blanchedalmond',
-  'burlywood',
-  'cadetblue',
-  'chartreuse',
-  'darkgoldenrod',
-  'cornflowerblue',
-  'tomato',
-  'gainsboro',
-  'mediumaquamarine',
-  'papayawhip',
-  'thistle',
-  'whitesmoke'
-]
 
 class ItemForm extends React.Component {
   constructor (props) {
@@ -32,7 +16,7 @@ class ItemForm extends React.Component {
         isRequired: 'This field cannot be empty.',
         isNotChartreuse: 'Nobody likes chartreuse.'
       },
-      item: {...initialState},
+      item: {...defaultState},
       invalid: {},
       validation: {
         name: [ 'isRequired' ],
@@ -43,6 +27,9 @@ class ItemForm extends React.Component {
         isNotChartreuse: color => color !== 'chartreuse'
       }
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.resetForm = this.resetForm.bind(this)
   }
 
   componentWillReceiveProps ({editItem}) {
@@ -51,33 +38,29 @@ class ItemForm extends React.Component {
     }
   }
 
-  handleSubmit (evt) {
-    evt.preventDefault()
-
-    if (this.validate()) {
-      this.props.saveItem(this.state.item)
-      this.resetForm()
-    }
-  }
-
   handleChange (evt) {
-    // select lists have no 'name' attribute
-    const field = evt.target.name || 'color'
     this.setState({
       item: {
         ...this.state.item,
-        [field]: evt.target.value
+        [evt.target.name]: evt.target.value
       }
     })
   }
 
-  resetForm (evt) {
-    if (evt) evt.preventDefault()
+  handleSubmit (evt) {
+    if (this.validate()) {
+      this.props.saveItem(this.state.item)
+      this.resetForm()
+    }
+    evt.preventDefault()
+  }
 
+  resetForm (evt) {
     this.setState({
-      item: {...this.itemModel},
+      item: {...defaultState},
       invalid: {}
     })
+    evt && evt.preventDefault()
   }
 
   validate () {
@@ -99,25 +82,43 @@ class ItemForm extends React.Component {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
+        <label htmlFor='name'>Name</label>
+        <input type='text'
+          className='u-full-width'
+          name='name'
+          value={this.state.item.name}
+          onChange={this.handleChange}
+        />
 
-        <label htmlFor="name">Name</label>
-        <input type="text" className="u-full-width" name="name" value={this.state.item.name} onChange={this.handleChange} />
-        {this.state.invalid.name ? (<div className="error">{this.state.invalid.name}</div>) : null}
+        {this.state.invalid.name &&
+          <div className='error'>{this.state.invalid.name}</div>
+        }
 
-        <label htmlFor="description">Description</label>
-        <textarea className="u-full-width" name="description" value={this.state.item.description} onChange={this.handleChange} />
-        {this.state.invalid.description ? (<div className="error">{this.state.invalid.description}</div>) : null}
+        <label htmlFor='description'>Description</label>
+        <textarea name='description' className='u-full-width'
+          value={this.state.item.description}
+          onChange={this.handleChange} />
 
-        <label htmlFor="color">Colour</label>
-        <select value={this.state.item.color} onChange={this.handleChange} className="u-full-width">
-          {this.itemColors.map((color, i) => (
-            <option key={i} value={color}>{color}</option>
+        {this.state.invalid.description &&
+          <div className='error'>{this.state.invalid.description}</div>}
+
+        <label htmlFor='color'>Colour</label>
+        <select name='color' className='u-full-width'
+          value={this.state.item.color}
+          onChange={this.handleChange}>
+          {colorList.map(color => (
+            <option key={color} value={color}>{color}</option>
           ))}
         </select>
-        {this.state.invalid.color ? (<div className="error">{this.state.invalid.color}</div>) : null}
 
-        <input type="submit" className="button-primary" value={this.props.editItem ? 'Save' : 'Add'} />
-        <button className="button-warning" onClick={(evt) => this.resetForm(evt)}>Reset</button>
+        {this.state.invalid.color &&
+          <div className='error'>{this.state.invalid.color}</div>
+        }
+
+        <input type='submit' className='button-primary'
+          value={this.props.editItem ? 'Save' : 'Add'} />
+        <button className='button-warning'
+          onClick={this.resetForm}>Reset</button>
       </form>
     )
   }
