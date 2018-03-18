@@ -37,7 +37,7 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   git checkout -b YOUR_NAME_YOUR_PAIRS_NAME
   ```
 
-4. Modify the file `two-truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up.
+4. Modify the file `two-truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up. You should remove the entries for Neil Armstrong and Buzz Aldrin. 
 
 5. Stage and commit your file to the project with the following commands:
 
