@@ -1,8 +1,7 @@
-var types = require('../../types')
+const types = require('../../types')
 
 test('types.getFunction returns a function', function () {
-  var expected = 'function'
-  var actual = typeof(types.getFunction())
+  const expected = 'function'
+  const actual = typeof types.getFunction()
   expect(actual).toBe(expected)
 })
-

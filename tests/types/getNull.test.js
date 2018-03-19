@@ -1,8 +1,7 @@
-var types = require('../../types')
+const types = require('../../types')
 
 test('types.getNull returns null', function () {
-  var expected = null
-  var actual = types.getNull()
+  const expected = null
+  const actual = types.getNull()
   expect(actual).toBe(expected)
 })
-
