@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 var ressurectable = require('../ressurectable')
 
 test('ressurectable normal cases', function () {
+=======
+var test = require('tape')
+var ressurectable = require('../ressurectable')
+
+test('ressurectable normal cases', function (t) {
+>>>>>>> parent of e6f1255... Bring tests back
   var expecteds = {
     0: false,
     1: false,
@@ -20,7 +27,14 @@ test('ressurectable normal cases', function () {
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'ressurectable' : 'not ressurectable')
 
+<<<<<<< HEAD
     expect(actual).toBe(expected)
   })
 
+=======
+    t.equal(actual, expected, message)
+  })
+
+  t.end()
+>>>>>>> parent of e6f1255... Bring tests back
 })
