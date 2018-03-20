@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 var overPopulated = require('../overPopulated')
 
 test('overPopulated normal cases', function () {
-=======
-var test = require('tape')
-var overPopulated = require('../overPopulated')
-
-test('overPopulated normal cases', function (t) {
->>>>>>> parent of e6f1255... Bring tests back
   var expecteds = {
     0: false,
     1: false,
@@ -26,15 +19,7 @@ test('overPopulated normal cases', function (t) {
 
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'overpopulated' : 'not overpopulated')
-<<<<<<< HEAD
     expect(actual).toBe(expected)
   })
 
-=======
-
-    t.equal(actual, expected, message)
-  })
-
-  t.end()
->>>>>>> parent of e6f1255... Bring tests back
 })
