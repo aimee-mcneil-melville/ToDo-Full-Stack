@@ -1,7 +1,6 @@
-var test = require('tape')
 var underPopulated = require('../underPopulated')
 
-test('underPopulated normal cases', function (t) {
+test('underPopulated normal cases', function () {
   var expecteds = {
     0: true,
     1: true,
@@ -21,8 +20,7 @@ test('underPopulated normal cases', function (t) {
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'underpopulated' : 'not underpopulated')
 
-    t.equal(actual, expected, message)
+    expect(actual).toBe(expected)
   })
 
-  t.end()
 })

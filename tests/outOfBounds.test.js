@@ -1,7 +1,6 @@
-var test = require('tape')
 var outOfBounds = require('../outOfBounds')
 
-test('outOfBounds', function (t) {
+test('outOfBounds', function () {
   var testArray = [1, 2, 3]
   var expecteds = {
     '-2': true,
@@ -20,7 +19,6 @@ test('outOfBounds', function (t) {
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'out of bounds' : 'not out of bounds')
 
-    t.equal(actual, expected, message)
+    expect(actual).toBe(expectged)
   })
-  t.end()
 })

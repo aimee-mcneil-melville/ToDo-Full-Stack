@@ -4,7 +4,7 @@
   "description": "Conways game of life node module",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/**/*.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

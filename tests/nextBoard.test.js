@@ -1,17 +1,17 @@
-var test = require('tape')
 var createBoard = require('../createBoard');
 var nextBoard = require('../nextBoard')
 
-test('nextBoard', function (t) {
+test('nextBoard', function () {
   (function() {
     var board = createBoard(10)
     var newBoard = nextBoard(board)
-    t.not(newBoard, board, 'nextBoard returns a new array and not the array passed in')
+    expect(board).not.toBe(newBoard)
   })()
   ;(function () {
     var board = createBoard(10)
     board[0][0] = true
     var newBoard = nextBoard(board)
+    expect(newBoard[0][0]).toBeFalsey()
     t.false(newBoard[0][0], 'Example one is correct')
   })()
   ;(function () {
@@ -21,10 +21,10 @@ test('nextBoard', function (t) {
     board[2][1] = true
     board[2][2] = true
     var newBoard = nextBoard(board)
-    t.true(newBoard[2][2], 'Example two is correct')
-    t.true(newBoard[1][1], 'Example two is correct')
-    t.true(newBoard[2][1], 'Example two is correct')
-    t.true(newBoard[1][2], 'Example two is correct')
+    expect(newBoard[2][2]).toBeTruthy()
+    expect(newBoard[1][1]).toBeTruthy()
+    expect(newBoard[2][1]).toBeTruthy()
+    expect(newBoard[1][2]).toBeTruthy()
   })()
   ;(function () {
     var board = createBoard(10)
@@ -32,7 +32,7 @@ test('nextBoard', function (t) {
     board[0][1] = true
     board[1][0] = true
     var newBoard = nextBoard(board)
-    t.true(newBoard[1][1], 'Example three is correct')
+
+    expect(newBoard[1][1]).toBeTruthy()
   })()
-  t.end()
 })

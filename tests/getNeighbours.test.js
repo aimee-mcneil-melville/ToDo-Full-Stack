@@ -1,19 +1,21 @@
-var test = require('tape')
 var getNeighbours = require('../getNeighbours')
 var createBoard = require('../createBoard.js')
 
-test('getNeighbours in corner', function (t) {
+test('getNeighbours in corner', function () {
   var board = createBoard(10)
   board[0][0] = 1000000
   board[0][1] = 3
   board[1][0] = 5
   board[1][1] = 11
+  var expected = 19
+
   var neighbours = getNeighbours(0, 0, board)
-  t.equal(neighbours.reduce(function (sum, val) { return sum + val }, 0), 19)
-  t.end()
+  var actual = neighbours.reduce(function (sum, val) { return sum + val }, 0)
+
+  expect(actual).toBe(expected)
 })
 
-test('getNeighbours in middle', function (t) {
+test('getNeighbours in middle', function () {
   var board = createBoard(10)
   var total = 0
   for (var i = 0; i < 3; i++) {
@@ -28,6 +30,7 @@ test('getNeighbours in middle', function (t) {
     }
   }
   var neighbours = getNeighbours(1, 1, board)
-  t.equal(neighbours.reduce(function (sum, val) { return sum + val }, 0), total)
-  t.end()
+  var actual = neighbours.reduce(function (sum, val) { return sum + val }, 0)
+
+  expect(actual).toBe(total)
 })

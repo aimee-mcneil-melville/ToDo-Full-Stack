@@ -1,7 +1,6 @@
-var test = require('tape')
 var ressurectable = require('../ressurectable')
 
-test('ressurectable normal cases', function (t) {
+test('ressurectable normal cases', function () {
   var expecteds = {
     0: false,
     1: false,
@@ -21,8 +20,7 @@ test('ressurectable normal cases', function (t) {
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'ressurectable' : 'not ressurectable')
 
-    t.equal(actual, expected, message)
+    expect(actual).toBe(expected)
   })
 
-  t.end()
 })
