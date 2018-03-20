@@ -13,8 +13,8 @@ test('addStringsOrNumbers can add strings', () => {
 })
 
 test('addStringsOrNumbers can add strings and number (returning a string)', () => {
-  const expected = 5
-  const actual = addStringsOrNumbers(2, 3)
+  const expected = '5'
+  const actual = addStringsOrNumbers(2, '3')
   expect(actual).toBe(expected)
 })
 
