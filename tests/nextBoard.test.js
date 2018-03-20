@@ -11,8 +11,7 @@ test('nextBoard', function () {
     var board = createBoard(10)
     board[0][0] = true
     var newBoard = nextBoard(board)
-    expect(newBoard[0][0]).toBeFalsey()
-    t.false(newBoard[0][0], 'Example one is correct')
+    expect(newBoard[0][0]).toBeFalsy()
   })()
   ;(function () {
     var board = createBoard(10)

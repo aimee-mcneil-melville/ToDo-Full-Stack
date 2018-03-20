@@ -19,6 +19,6 @@ test('outOfBounds', function () {
     var message = 'cell count ' + input + ' is ' +
       (expected ? 'out of bounds' : 'not out of bounds')
 
-    expect(actual).toBe(expectged)
+    expect(actual).toBe(expected)
   })
 })
