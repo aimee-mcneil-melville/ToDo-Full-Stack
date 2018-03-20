@@ -49,10 +49,8 @@ This will run all tests in the `tests` directory.
 
 
 ## Tips
+* If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN('a non-number string') === true`.,
 
 * Be sure you understand how to use `typeof`.
 
-* If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN("a string") === true`.
-
 * You're totally permitted to read the tests - it's not cheating. Also, some of the tests use data defined in `./data/*.js`, So you may need to inspect those files to get a sense of the data being used.
-
