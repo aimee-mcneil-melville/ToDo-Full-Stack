@@ -1,4 +1,4 @@
-var createBoard = require('../create-board')
+const createBoard = require('../createBoard')
 
 test('createBoard returns boards with the correct dimensions', () => {
   for (let i = 1; i < 5; i++) {

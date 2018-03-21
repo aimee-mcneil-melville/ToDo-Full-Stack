@@ -1,4 +1,4 @@
-const isOutOfBounds = require('./is-out-of-bounds')
+const isOutOfBounds = require('./isOutOfBounds')
 
 function indicesAreOutOfBounds (rowIndex, columnIndex, array) {
 

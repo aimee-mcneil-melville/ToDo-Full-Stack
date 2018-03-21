@@ -1,5 +1,5 @@
-const createBoard = require('../create-board')
-const nextBoard = require('../next-board')
+const createBoard = require('../createBoard')
+const nextBoard = require('../nextBoard')
 
 test('nextBoard is not equal to createBoard', () => {
   const board = createBoard(10)

@@ -1,4 +1,4 @@
-const isOutOfBounds = require('../is-out-of-bounds')
+const isOutOfBounds = require('../isOutOfBounds')
 
 test('isOutOfBounds', () => {
   const testArray = [1, 2, 3]
@@ -12,7 +12,7 @@ test('isOutOfBounds', () => {
     4: true
   }
 
-  Object.keys(expecteds).forEach((input) => {
+  Object.keys(expecteds).forEach(input => {
     const expected = expecteds[input]
     const actual = isOutOfBounds(input, testArray)
 

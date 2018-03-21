@@ -1,4 +1,4 @@
-const isUnderPopulated = require('../is-under-populated')
+const isUnderPopulated = require('../isUnderPopulated')
 
 test('isUnderPopulated normal cases', () => {
   const expecteds = {
@@ -13,7 +13,7 @@ test('isUnderPopulated normal cases', () => {
     8: false
   }
 
-  Object.keys(expecteds).forEach((input) => {
+  Object.keys(expecteds).forEach(input => {
     const expected = expecteds[input]
     const actual = isUnderPopulated(input)
 

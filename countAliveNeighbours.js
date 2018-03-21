@@ -1,4 +1,4 @@
-const getNeighbours = require('./get-neighbours')
+const getNeighbours = require('./getNeighbours')
 
 function countAliveNeighbours (cellRow, cellColumn, board) {
 

@@ -1,4 +1,4 @@
-const isOverPopulated = require('../is-over-populated')
+const isOverPopulated = require('../isOverPopulated')
 
 test('isOverPopulated normal cases', () => {
   const expecteds = {
@@ -13,7 +13,7 @@ test('isOverPopulated normal cases', () => {
     8: true
   }
 
-  Object.keys(expecteds).forEach((input) => {
+  Object.keys(expecteds).forEach(input => {
     const expected = expecteds[input]
     const actual = isOverPopulated(input)
 

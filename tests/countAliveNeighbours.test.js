@@ -1,5 +1,5 @@
-const countAliveNeighbours = require('../count-alive-neighbours')
-const createBoard = require('../create-board')
+const countAliveNeighbours = require('../countAliveNeighbours')
+const createBoard = require('../createBoard')
 
 test('countAliveNeighbours', () => {
   const board = createBoard(10)

@@ -1,5 +1,5 @@
-const getNeighbours = require('../get-neighbours')
-const createBoard = require('../create-board.js')
+const getNeighbours = require('../getNeighbours')
+const createBoard = require('../createBoard.js')
 
 test('getNeighbours in corner', () => {
   const board = createBoard(10)

@@ -1,4 +1,4 @@
-const isRessurectable = require('../is-ressurectable')
+const isRessurectable = require('../isRessurectable')
 
 test('isRessurectable normal cases', () => {
   const expecteds = {
@@ -13,7 +13,7 @@ test('isRessurectable normal cases', () => {
     8: false
   }
 
-  Object.keys(expecteds).forEach((input) => {
+  Object.keys(expecteds).forEach(input => {
     const expected = expecteds[input]
     const actual = isRessurectable(parseInt(input, 10))
 

@@ -1,4 +1,4 @@
-const indicesAreOutOfBounds = require('./indices-are-out-of-bounds')
+const indicesAreOutOfBounds = require('./indicesAreOutOfBounds')
 
 function getNeighbours (cellRow, cellColumn, board) {
 
