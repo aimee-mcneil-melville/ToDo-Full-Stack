@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn test
+  /home/don/.nvm/versions/node/v8.9.1/bin/node /usr/bin/yarn test is-over-populated
 
 PATH: 
-  /home/symeshjb/bin:/home/symeshjb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/don/.nvm/versions/node/v8.9.1/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/bin:/home/don/.local/bin:/home/don/projects/dotfiles/bin:/home/don/projects/go/bin:/home/don/.gem/ruby/2.5.0/bin:/home/don/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/home/don/.local/bin:/home/don/projects/dotfiles/bin:/home/don/projects/go/bin:/home/don/.gem/ruby/2.5.0/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools:/home/don/.cargo/bin:/usr/bin/vendor_perl
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  6.13.0
+  8.9.1
 
 Platform: 
   linux x64
@@ -16,8 +16,8 @@ Platform:
 npm manifest: 
   {
     "name": "conways",
-    "version": "0.0.1",
-    "description": "Conways game of life node module",
+    "version": "0.3.0",
+    "description": "Conways game of life",
     "main": "index.js",
     "scripts": {
       "test": "jest"
@@ -3091,15 +3091,14 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest
-  Directory: /home/symeshjb/workspace/conways
+  Arguments: -c jest is-over-populated
+  Directory: /home/don/eda/dev-academy-challenges/conways
   Output:
   
-      at ProcessTermError.Error (native)
       at ProcessTermError.MessageError (/usr/lib/node_modules/yarn/lib/cli.js:186:110)
       at new ProcessTermError (/usr/lib/node_modules/yarn/lib/cli.js:226:113)
       at ChildProcess.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:106:13)
-      at ChildProcess.emit (events.js:191:7)
-      at maybeClose (internal/child_process.js:920:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
