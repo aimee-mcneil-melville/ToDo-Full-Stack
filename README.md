@@ -12,13 +12,13 @@
 2. To run all the tests:
 
   ```shell
-  yarn test tests
+  yarn test
   ```
 
   Or, you can run any single test file by replacing `tests` with the name of the file/function. For example:
 
   ```sh
-  yarn test overPopulated
+  yarn test isOverPopulated
   ```
 
 
