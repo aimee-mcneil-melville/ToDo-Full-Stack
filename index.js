@@ -11,4 +11,3 @@ setTimeout(() => {
   displayBoard(board)
   board = nextBoard(board)
 }, refreshInteral)
-

@@ -1,6 +1,6 @@
-var nextCellState = require('../nextCellState')
+const nextCellState = require('../nextCellState')
 
-test('nextCellState', function () {
+test('nextCellState', () => {
   expect(nextCellState(true, 2)).toBeTruthy()
   expect(nextCellState(true, 3)).toBeTruthy()
   expect(nextCellState(true, 4)).toBeFalsy()

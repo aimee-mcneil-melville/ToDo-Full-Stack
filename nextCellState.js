@@ -1,6 +1,6 @@
-const overPopulated = require('./overPopulated')
-const underPopulated = require('./underPopulated')
-const ressurectable = require('./ressurectable')
+const isOverPopulated = require('./isOverPopulated')
+const isUnderPopulated = require('./isUnderPopulated')
+const isRessurectable = require('./isRessurectable')
 
 function nextCellState (cellState, neighbourCount) {
 
