@@ -18,7 +18,7 @@
   Or, you can run any single test file by replacing `tests` with the name of the file/function. For example:
 
   ```sh
-  yarn test is-over-populated
+  yarn test isOverPopulated
   ```
 
 
