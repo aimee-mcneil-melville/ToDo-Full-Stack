@@ -1,5 +1,5 @@
-var express = require('express')
+const express = require('express')
 
-var server = express()
+const server = express()
 
 module.exports = server
