@@ -17,9 +17,8 @@ Build a state of the (ASCII) art terminal client. Don't forget to maximise your 
 By now you should be getting used to setting up Node programs. Here's a reminder in case you need it:
 
 1. Clone this repo and create a new branch for you or your pair.
-2. Create an npm `package.json` file using `npm init`.
-3. Install `nodemon`, and `jest`.
-  - Should these be `--save` or `--save-dev`?
+2. Create an npm `package.json` file using `yarn init`.
+3. Install `nodemon`, and `jest` as dev dependencies (use `-D`).
 4. Write a couple of scripts in your `package.json`:
   - one that starts the program
   - one that runs all the tests
@@ -108,10 +107,10 @@ If you're writing a test that changes something on the filesystem, be sure to re
 Writing programs for the terminal will be a new experience for some. Our advice is to keep it really simple at first. Something you may find is that you need a way to wait for input from the terminal, for example when choosing which file to display. `readline`, which comes with the Node standard library, will let you pause your program until the user hits enter, then call whatever function you want:
 
 ```js
-var readline = require('readline')
+const readline = require('readline')
 
 function pressEnter () {
-  var rl = readline.createInterface({
+  const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
@@ -128,13 +127,13 @@ function pressEnter () {
 As you can see, `readline` gives you even more practice with callbacks! If you want to get a little more fancy, try using the `prompt` npm package for input. An example of how you might use it:
 
 ```js
-var prompt = require('prompt')
+const prompt = require('prompt')
 
 prompt.message = ''
 prompt.delimiter = ': '
 prompt.start()
 
-var choice = {
+const choice = {
   name: 'choice',
   hidden: true,
   message: 'Make your choice'
@@ -152,4 +151,3 @@ The callback you pass to `prompt.get` will receive an object that has a property
   choice: '1'
 }
 ```
-
