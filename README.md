@@ -20,7 +20,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
 ### Detailed steps
 
-1. We're going to be POSTing JSON to our endpoints so we're going to need `body-parser`.Install `body-parser` as a normal dependencies and add `body-parser`'s JSON middleware to `server/server.js`.
+1. We're going to be POSTing JSON to our endpoints so we're going to need to tell Express how to process the body of the request messages.
 
     <details><summary>Show terminal command and code</summary>
 
@@ -30,9 +30,8 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     ```js
     // server/server.js
-    const bodyParser = require('body-parser')
     ...
-    server.use(bodyParser.json())
+    server.use(express.json())
     ```
 
     </details>
@@ -170,13 +169,12 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     // server/server.js
     const express = require('express')
     const passport = require('passport')
-    const bodyParser = require('body-parser')
 
     const authRoutes = require('./routes/auth')
 
     const server = express()
     server.use(passport.initialize())
-    server.use(bodyParser.json())
+    server.use(express.json())
 
     server.use('/api/v1/auth', authRoutes)
 
