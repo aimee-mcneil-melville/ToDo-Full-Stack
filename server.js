@@ -1,16 +1,14 @@
-var express = require('express')
-var hbs = require('express-handlebars')
+const express = require('express')
+const hbs = require('express-handlebars')
 
-var art = require('./art.json')
-
-var app = express()
-module.exports = app
+const server = express()
+module.exports = server
 
 // Middleware
-app.engine('hbs', hbs({
+server.engine('hbs', hbs({
   extname: 'hbs'
 }))
-app.set('view engine', 'hbs')
-app.use(express.static('public'))
+server.set('view engine', 'hbs')
+server.use(express.static('public'))
 
 // Routes

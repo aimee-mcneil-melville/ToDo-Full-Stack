@@ -15,7 +15,7 @@ Build a photo gallery using Handlebars views.
 ## Getting started
 
 * After cloning this repo, install dependencies with `yarn`
-* To debug the server (and have it reload with Nodemon after changes): `yarn run debug`
+* To debug the server (and have it reload with Nodemon after changes): `yarn debug`
 * To start the server : `yarn start`
 * To run the tests: `yarn test`
 
@@ -33,7 +33,7 @@ When you're learning a new technology, make sure you start simple and get that w
 3. Create an object in your route definition with the property `title`, like so:
 
   ```js
-    var viewData = {
+    const viewData = {
       title: 'Gallery'
     }
   ```
@@ -83,11 +83,11 @@ The objects look like this:
   },
 ```
 
-Any time you want to use this data, you can just `var art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an array and Handlebars expects you to pass it an object, so you might need to do something like this:
+Any time you want to use this data, you can just `const art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an array and Handlebars expects you to pass it an object, so you might need to do something like this:
 
 
 ```js
-  var viewData = {
+  const viewData = {
     title: 'Gallery',
     art: art
   }
