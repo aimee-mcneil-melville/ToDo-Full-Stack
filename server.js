@@ -1,16 +1,15 @@
-var express = require('express')
-var hbs = require('express-handlebars')
-var bodyParser = require('body-parser')
+const express = require('express')
+const hbs = require('express-handlebars')
 
-var app = express()
+const server = express()
 
 // Middleware
-app.engine('hbs', hbs({
+server.engine('hbs', hbs({
   defaultLayout: 'main',
   extname: 'hbs'
 }))
-app.set('view engine', 'hbs')
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }))
+server.set('view engine', 'hbs')
+server.use(express.static('public'))
+server.use(express.urlencoded({extended: false}))
 
-module.exports = app
+module.exports = server

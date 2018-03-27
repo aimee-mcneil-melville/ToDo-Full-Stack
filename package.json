@@ -1,25 +1,24 @@
 {
   "name": "pupparazzi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Challenge to learn server side rendering and callbacks",
   "main": "index.js",
+  "author": "EDA",
+  "license": "ISC",
   "scripts": {
     "debug": "nodemon --inspect index --ignore data.json",
-    "test": "jest --watch --noStackTrace",
+    "test": "jest --watchAll --noStackTrace",
     "start": "node index"
   },
+  "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/pupparazzi.git"
   },
-  "author": "EDA",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0"
   },
