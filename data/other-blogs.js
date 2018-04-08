@@ -40,4 +40,3 @@ module.exports = [
     link: 'https://uncle.net/blog'
   }
 ]
-

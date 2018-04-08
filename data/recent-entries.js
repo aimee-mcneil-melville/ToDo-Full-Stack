@@ -60,4 +60,3 @@ module.exports = [
     link: 'https://charlotte.net/blog/the-miracle'
   }
 ]
-
