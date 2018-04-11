@@ -4,20 +4,31 @@ class Card extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-    isVisible: false
+      isVisible: false,
     }
-    this.showCard = this.showCard.bind(this)
+    this.onClick = this.onClick.bind(this)
     this.checkMatch = this.checkMatch.bind(this)
   }
 
-  checkMatch () {
-    if (this.props.ismatch === true)
+  onClick() {
+    const card = {
+      id: this.props.id,
+      value: this.props.value
+    }
+    this.setState({
+      isVisible: true
+    })
+    this.props.onClick(card)
+  }
+
+  checkMatch(match, notmatch) {
+    if (match)
       this.setState({
         isVisible: true
       }), () => {
         this.props.clear()
       }
-    if (this.props.ismatch === false)
+    if (notmatch)
       this.setState({
         isVisible: false
       }, () => {
@@ -29,15 +40,16 @@ class Card extends React.Component {
   render() {
     return (
       <div className='card'>
-        {this.props.isVisible ?
+        {this.state.isVisible ?
           <div className='card-visible'
-            getSelection={this.props.getSelection}
+            onClick={this.props.onClick}
             checkMatch={this.props.checkMatch}>
             {this.props.value}
           </div>
           :
           <div className='card-notvisible'
-            showCard={this.showCard} >
+            onClick={this.onClick}
+            checkMatch={this.checkMatch}>
             {'x'}
           </div>}
 
