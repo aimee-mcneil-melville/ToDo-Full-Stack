@@ -38,20 +38,19 @@ class App extends React.Component {
     const cards = this.state.cards
     const card1 = this.state.card1
     const card2 = this.state.card2
-    const newCards = [...cards]
-    const cardIndex = newCards.findIndex((card) => card.id === id)
+    const cardIndex = cards.findIndex((card) => card.id === id)
     if (card1 === null) {
-      newCards[cardIndex].isVisable = true
+      cards[cardIndex].isVisable = true
       this.setState({
         card1: id,
-        cards: newCards
+        cards: cards
       })
     }
     if ((card1 !== null) && (card2 === null)) {
-      newCards[cardIndex].isVisable = true
+      cards[cardIndex].isVisable = true
       this.setState({
         card2: id,
-        cards: newCards
+        cards: cards
       }, () => {
         this.checkMatch()
       })
@@ -65,13 +64,12 @@ class App extends React.Component {
     const card2 = cards.find(card => card.id === this.state.card2)
     if (card1.value !== card2.value) {
       setTimeout(() => {
-        const newCards = [...cards]
-        const card1Index = newCards.findIndex((card) => card.id === card1.id)
-        const card2Index = newCards.findIndex((card) => card.id === card2.id)
-        newCards[card1Index].isVisable = false
-        newCards[card2Index].isVisable = false
+        const card1Index = cards.findIndex((card) => card.id === card1.id)
+        const card2Index = cards.findIndex((card) => card.id === card2.id)
+        cards[card1Index].isVisable = false
+        cards[card2Index].isVisable = false
         this.setState({
-          cards: newCards,
+          cards: cards,
           card1: null,
           card2: null,
           mismatch: true
