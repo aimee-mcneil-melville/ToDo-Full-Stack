@@ -2,7 +2,6 @@ var path = require('path')
 
 var express = require('express')
 var hbs = require('express-handlebars')
-var bodyParser = require('body-parser')
 
 var server = express()
 
@@ -17,7 +16,7 @@ server.set('view engine', 'hbs')
 
 // middleware
 
-server.use(bodyParser.urlencoded({ extended: false }))
+server.use(express.urlencoded({ extended: false }))
 server.use(express.static(path.join(__dirname, 'public')))
 
 // sample data
