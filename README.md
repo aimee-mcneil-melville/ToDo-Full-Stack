@@ -127,7 +127,7 @@ Any time you want to use this data, you can just `const art = require('./art.jso
 8. _As a user, I'd like the site to have consistent styling and layout so I enjoy browsing it._
   - Time to practice using layouts. Add a `defaultLayout` parameter to your Express Handlebars config (see [the docs](https://github.com/ericf/express-handlebars) for how to do this if you're not sure).
   - Create a layout file in `views/layouts`, probably `main.hbs`.  It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
-  - Move the `header` and `footer` partials into the layout file, and they'll be used for every template view you create from now on.
+  - Move the `header` and `footer` partials into the `main.hbs` layout file, and they'll be used for every template view you create from now on.
   - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
 
 9. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
