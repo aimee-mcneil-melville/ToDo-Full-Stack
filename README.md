@@ -12,45 +12,17 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   ```sh
   yarn init -y
   yarn add knex sqlite3
-  yarn add jest --dev
   ```
-
-* Create `knex` and `test` scripts in `package.json`.
-
-  ```js
-  "scripts": {
-    "knex": "knex",
-    "test": "jest"
-  }
-  ```
-
-  This allows us to use the `knex` CLI tool, without having to install `knex` globally.
 
 * Set file permissions.
 
-  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`
+Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`
 
-* Create the knex config file (`knexfile.js`).
+* Create the Knex configuration file (`knexfile.js`).
 
   ```sh
   yarn knex init
   ```
-
-  Edit your `knexfile` so it has a `test` property:
-
-  ```js
-    test: {
-      client: 'sqlite3',
-      connection: {
-        filename: ':memory:'
-      },
-      seeds: {
-        directory: './tests/seeds'
-      }
-    }
-  ```
-
-  This introduces a new idea: that we can run an _in-memory database_! This database will only last as long as our tests, and vanishes in a puff of smoke afterwards. Because it is in memory and not on the filesystem, it works extremely quickly and is not vulnerable to any problems that might occur with the filesystem (hard disk full or busy, permissions problems with directories, etc).
 
 
 ## Set up the database
@@ -154,51 +126,3 @@ It's up to you to decide how far you want to go with this. Should listing all th
 
 What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
 
-
-## Testing your functions
-
-To make any function you write testable, you need to do a couple of things:
-
- - _export_ the function, so it is available outside of its module
- - _pass the database connection_ into it, so that we can give it either the real database or a temporary test database
-
-The code for the second part in particular might be a new concept for you. Take a look at this:
-
-```js
-// This code is already in `todo`. Here, `db` is our database connection
-var config = require('./knexfile').development
-var db = require('knex')(config)
-
-// ...
-
-// If `testDb` is undefined, use `db`
-function getAll (testDb) {
-  var connection = testDb || db
-  return connection('todos').select()
-}
-```
-
-See what we did there?  We could pseudocode this as:
-
-```
-USING testDb OR db,
-  GET all the todos
-```
-
-Another way of managing this is to always pass the database connection to the function. It doesn't care where it comes from!
-
-```js
-  case 'add':
-    addTodo(note, db)
-      .then(function () { return getAll(db) })
-      .then(listTodos)
-      // ...
-
-// ...
-
-function getAll (connection) {
-  return connection('todos').select()
-}
-```
-
-Take a look in `tests/todos.test.js` for an example of how to test such functions.
