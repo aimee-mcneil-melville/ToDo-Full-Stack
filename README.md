@@ -11,6 +11,7 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
+git remote set-url origin https://github.com/[your-cohort-org]/knex-relationship-stories.git
 yarn
 yarn knex migrate:latest
 yarn knex seed:run
