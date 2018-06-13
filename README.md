@@ -11,11 +11,16 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
-git remote set-url origin https://github.com/[your-cohort-org]/knex-relationship-stories.git
 yarn
 yarn knex migrate:latest
 yarn knex seed:run
 yarn start
+```
+
+If you would like to push changes to a branch in this repository, [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to this repo:
+
+```shell
+git remote set-url origin https://github.com/[YOUR-COHORT-ORG]/knex-relationships-stories
 ```
 
 
