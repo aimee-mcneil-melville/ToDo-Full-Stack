@@ -1,0 +1,41 @@
+
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "A React state exercise.",
+  "repository": "https://github.com/dev-academy-challenges/memory.git",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server & webpack --watch",
+    "test": "jest --watch --noStackTrace"
+  },
+  "author": "EDA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/memory/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/memory",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.2" 
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "enzyme": "^3.3.0",
+    "jest": "^22.1.4",
+    "jsdom": "^11.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
+    "webpack": "^3.10.0"
+  }
+}
