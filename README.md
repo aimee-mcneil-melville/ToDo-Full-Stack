@@ -1,6 +1,6 @@
-# Redux without React
+# Redux with React (but not the clean way)
 
-This repo aims to help you experiment with Redux without distractions from the extra bits to wire up React. After cloning:
+This repo aims to help you experiment with Redux using an atypical React setup (we'll improve how we integrate with React in a later exercise). After cloning this repo:
 
 ```shell
 yarn
@@ -26,35 +26,41 @@ Load up the Redux DevTool and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actio
 
 ### Write some code
 
-- In your `index.js` have a look at the `renderWombats` function.js. Notice how this function loops through and displays each of the wombats to the DOM.
-- Add an `UPDATE_WOMBAT` action to the reducer that includes the old and new value of the wombat and make sure you can dispatch the action successfully from the Redux DevTool.You'll dispatch this action from code in a later step.
+- Starting with your `index.js`, follow the *chain* from the **render** function all the way through to the `Wombats.jsx` file. Be sure to take note of the **props** being passed down the chain.
+
+- Add an `UPDATE_WOMBAT` action to the reducer in `reducer.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
+
+To Update a Wombat you will need to *expect* the **New Name** of the Wombat (so that it can be changed), but also the **Old Name** of the Wombat (so that the reducer can find the Wombat that needs to be updated).
+
+Make sure you can dispatch this new action successfully from the Redux DevTool. You'll dispatch this action from code in a later step.
 
 
 #### Delete a Wombat
 
 Add a delete button next to each of the wombats so they can be deleted:
 
-- Modify the `renderWombats` function to add a button against each of the wombats.
-- Assign the button an `id` with the wombat's name so you can find the button on the DOM later in order to add an event listener.
-- Add an event listener to handle a `click` event.
-- In the event listener, [`dispatch`](http://redux.js.org/docs/api/Store.html#dispatch) a `DEL_WOMBAT` action to the store to delete the wombat based on its name/id.
+- Modify the `Wombats.jsx` component to add a button against each of the wombats.
+- Add an event listener to handle an `onClick` event.
+- In the event listener, [`dispatch`](http://redux.js.org/docs/api/Store.html#dispatch) a `DEL_WOMBAT` action to the store to delete the wombat based on its name.
+- **Important!** Make sure that:
+  1. You can refer to the `dispatch` function from the `Wombats.jsx` file.
+  2. Ensure that the `DEL_WOMBAT` action works from your Dev Tools before making it work through your code.
+  3. The correct action is being dispatched from your code on the click event. (You could use a function to *produce* and action).
 
 
 #### Add a Wombat
 
 - Add a simple input field to the page with a button to add a wombat.
-- Add an event listener to handle the button's `click` event.
-- In the event listener, `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box.
+- Add an event listener to handle the button's `onClick` event.
+- Wire up this input so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box.
+- (It may be worth referring to the recommended problem solving steps from before)
 
 
 #### Update a Wombat
 
-- Modify the `renderWombats` function to add an input box and a button next to each of the wombats.
-- Assign the input box an `id` with the wombat's name so the event listener can find it on the DOM when the button is clicked.
-- Bind an event listener that passes in the old wombat name.
-- Add the bound event listener to handle the button's `click` event.
-- In the event listener, get the wombat's new name by using the old name as an id on the input box.
-- Construct the action using the old and new names and its type: `UPDATE_WOMBAT`.
+- Modify the `Wombats.jsx` component to add an input box and a button next to each of the wombats.
+- Add an event to this new input/button upon submission.
+- Looking back at your `UPDATE_WOMBAT` action, it expected both the **new** and **old** name of the wombat, so make sure that you can provide both of these values when you dispatch your action.
 - `dispatch` the action to the store to change the name of the wombat.
 
 
