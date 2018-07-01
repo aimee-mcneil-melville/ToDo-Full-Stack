@@ -7,7 +7,7 @@ yarn
 yarn start
 ```
 
-This will start a Webpack dev server. Open [http://localhost:8080](http://localhost:8080) in your browser.
+This will start a [Webpack dev server](https://github.com/webpack/webpack-dev-server). Open [http://localhost:8080](http://localhost:8080) in your browser.
 
 
 ## The Redux DevTool
@@ -26,7 +26,7 @@ Load up the Redux DevTool and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actio
 
 ### Write some code
 
-- In your `index.js` have a look at the `renderWombats` function.js. Notice how this function loops through and displays each of the wombats to the DOM?
+- In your `index.js` have a look at the `renderWombats` function.js. Notice how this function loops through and displays each of the wombats to the DOM.
 - Add an `UPDATE_WOMBAT` action to the reducer that includes the old and new value of the wombat and make sure you can dispatch the action successfully from the Redux DevTool.You'll dispatch this action from code in a later step.
 
 
