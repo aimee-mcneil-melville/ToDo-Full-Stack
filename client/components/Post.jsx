@@ -30,18 +30,20 @@ class Post extends React.Component {
 
   deletePost () {
     deletePost(this.props.post.id)
-      .then(() => this.props.fetchPosts())
+      .then(this.props.fetchPosts)
       .catch(err => this.setState({errorMessage: err.message}))
   }
 
   render () {
-    const {title, dateCreated, id, paragraphs} = this.props.post
+    const {title, paragraphs, dateCreated, id} = this.props.post
     return (
       <div className='post'>
         <Link to={`/posts/${id}`}>
           <header className='post-header'>
             <h2 className='post-title'>{title}</h2>
-            <p className='post-meta'>Date Created: {dateCreated}</p>
+            <p className='post-meta'>
+              Date Created: {new Date(dateCreated).toDateString()}
+            </p>
           </header>
         </Link>
 
@@ -55,18 +57,23 @@ class Post extends React.Component {
           <Link to={`/posts/edit/${id}`}>
             <button className='button-secondary pure-button'>Edit</button>
           </Link>
-          <button className='button-error pure-button'
-            onClick={this.deletePost}>Delete</button>
+          <button
+            className='button-error pure-button'
+            onClick={this.deletePost}>
+            Delete
+          </button>
         </div>
 
         <Link to={`/posts/${id}`}>
-          <div className='comment-count'>{this.state.comments.length} comments</div>
+          <div className='comment-count'>
+            {this.state.comments.length} comments
+          </div>
         </Link>
 
         {this.props.path !== '/' &&
           <Comments
-            comments={this.state.comments}
             postId={id}
+            comments={this.state.comments}
             fetchComments={this.fetchComments}
           />
         }
@@ -87,4 +94,3 @@ Post.defaultProps = {
 }
 
 export default Post
-

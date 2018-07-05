@@ -11,7 +11,8 @@ function Posts (props) {
           key={post.id}
           post={post}
           fetchPosts={props.fetchPosts}
-          path={props.location.pathname} />
+          path={props.location.pathname}
+        />
       })}
     </div>
   )
@@ -22,4 +23,3 @@ Posts.defaultProps = {
 }
 
 export default Posts
-

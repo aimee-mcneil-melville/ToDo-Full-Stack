@@ -1,11 +1,11 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 
 const db = require('../db/db')
 
 const router = express.Router()
 
-router.use(bodyParser.json())
+router.use(express.json())
+
+// put routes here
 
 module.exports = router
-

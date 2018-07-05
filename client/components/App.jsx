@@ -16,7 +16,7 @@ class App extends React.Component {
     this.fetchPosts = this.fetchPosts.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.fetchPosts()
   }
 
@@ -51,5 +51,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App
-
+export default App

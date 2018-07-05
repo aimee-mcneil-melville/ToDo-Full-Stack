@@ -1,7 +1,5 @@
-const path = require('path')
-const config = require(path.join(__dirname, '../../knexfile')).development
-const knex = require('knex')(config)
+const config = require('../../knexfile').development
+const db = require('knex')(config)
 
 module.exports = {
 }
-

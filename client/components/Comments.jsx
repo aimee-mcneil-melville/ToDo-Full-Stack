@@ -9,26 +9,29 @@ class Comments extends React.Component {
     const {postId, comments, fetchComments} = this.props
     return (
       <div>
-        <Link className='pure-button'
-          to={`/posts/${postId}/comments/new`}>Add A New Comment</Link>
+        <Link
+          className='pure-button'
+          to={`/posts/${postId}/comments/new`}>
+          Add A New Comment
+        </Link>
         <Route
           path='/posts/:postId/comments/new'
-          render={props =>
+          render={props => (
             <CommentForm
               fetchComments={fetchComments}
               {...props}
             />
-          }
+          )}
         />
         <ul>
-          {comments.map(comment =>
+          {comments.map(comment => (
             <Comment
               key={comment.id}
               postId={postId}
               comment={comment}
               fetchComments={fetchComments}
             />
-          )}
+          ))}
         </ul>
       </div>
     )
@@ -40,4 +43,3 @@ Comments.defaultProps = {
 }
 
 export default Comments
-
