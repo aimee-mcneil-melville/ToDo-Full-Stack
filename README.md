@@ -23,6 +23,9 @@ yarn start
 
 ## Exercise
 
+**Important** Read this entire file before beginning the challenge.
+
+
 ### Overview
 
 Your task is to write the API routes (and associated database queries) that will allow you to:
