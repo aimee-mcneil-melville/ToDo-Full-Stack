@@ -22,11 +22,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
 1. We're going to be POSTing JSON to our endpoints so we're going to need to tell Express how to process the body of the request messages.
 
-    <details><summary>Show terminal command and code</summary>
-
-    ```shell
-    npm i body-parser --save
-    ```
+    <details><summary>Show code</summary>
 
     ```js
     // server/server.js
