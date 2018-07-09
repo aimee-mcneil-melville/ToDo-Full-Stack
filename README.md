@@ -2,7 +2,7 @@
 
 For this challenge, you'll be making a basic Memory Game!
 
-There is a grid of randomly arranged pairs. The end goal is to have each "tile" start hidden, and be visible temporarily when you select it. When you have revealed a pair of cells with the same value, you have found a match, and that pair should stay visible for the rest of the game. If you reveal 2 tiles that are NOT a match, they should flip back to being hidden. The Game is won when ALL pairs have been matched.
+There is a grid of randomly arranged pairs. The end goal is to have each "tile" start hidden, and be visible temporarily when you select it. When you have revealed a pair of tiles with the same value, you have found a match, and that pair should stay visible for the rest of the game. If you reveal 2 tiles that are NOT a match, they should flip back to being hidden. The Game is won when ALL pairs have been matched.
 
 ## Setup
 
@@ -18,18 +18,23 @@ and then go to [`http://localhost:3000`](http://localhost:3000).
 
 ### The requirements
 
-* All cells should **start** hidden, and be **visible** upon a click event
+* All tiles should **start** hidden, and become **visible** when clicked.
 
-* When a user has selected 2 tiles to reveal, your App must find whether the pair are a **match** or not. A Match will stay visible, a non-match will be hidden again.
+* The user will select 2 tiles to reveal. If they match, they will stay visible. If they don't match, they will be hidden again after a second or two.
 
 * When all pairs are matched, the user is informed that they have won, and may restart the game.
 
 
-### Some things to consider
+### Release 1: hide tiles by default
 
-When the 2nd Card is revealed and found to not be a match, you will want to inform the user that they didn't find a match. It would also be sensible to try and give the user several seconds to see their mismatched picks (on a timeOut), or allow the user to confirm (with a button) when they are ready to try again.
 
-How do you know which Cards are **temporarily** visible? How do you know which Cards are **permanently** visible?
+
+
+### Some things to consider (do we still need this section?)
+
+When the 2nd tile is revealed and found to not be a match, you will want to inform the user that they didn't find a match. It would also be sensible to try and give the user several seconds to see their mismatched picks (on a timeOut), or allow the user to confirm (with a button) when they are ready to try again.
+
+How do you know which tiles are **temporarily** visible? How do you know which tiles are **permanently** visible?
 
 Do you store or information in the **Tile** objects, or separately within the `App.jsx` Components **state**?
 
