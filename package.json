@@ -1,13 +1,20 @@
 {
   "name": "memory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An exercise to practice React state in components",
   "repository": "https://github.com/dev-academy-challenges/memory.git",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server & webpack --watch",
-    "start": "webpack && node server"
+    "start": "webpack && node server",
+    "test": "jest --watch --noStackTrace"
   },
+  "author": "EDA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/memory/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/memory",
   "babel": {
     "presets": [
       "env",
@@ -24,7 +31,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "nodemon": "^1.17.3",
+    "babel-register": "^6.26.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^4.15.1",
