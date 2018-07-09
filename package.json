@@ -1,11 +1,12 @@
 {
   "name": "memory",
   "version": "0.1.0",
-  "description": "",
+  "description": "An exercise to practice React state in components",
   "repository": "https://github.com/dev-academy-challenges/memory.git",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server & webpack --watch"
+    "dev": "nodemon server & webpack --watch",
+    "start": "webpack && node server"
   },
   "babel": {
     "presets": [
@@ -17,7 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2"
-    
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -27,7 +27,7 @@
     "nodemon": "^1.17.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "webpack": "^3.10.0"
-    
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   }
 }
