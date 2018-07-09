@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/memory.git",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server & webpack --watch",
+    "dev": "node server & webpack --watch",
     "start": "webpack && node server",
     "test": "jest --watch --noStackTrace"
   },
