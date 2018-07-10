@@ -1,8 +1,9 @@
 # Memory
 
-For this challenge, you'll be making a basic Memory Game!
+For this challenge, you'll be applying your understanding of React state to make a basic Memory Game!
 
-There is a grid of randomly arranged pairs. The end goal is to have each "tile" start hidden, and be visible temporarily when you select it. When you have revealed a pair of tiles with the same value, you have found a match, and that pair should stay visible for the rest of the game. If you reveal 2 tiles that are NOT a match, they should flip back to being hidden. The Game is won when ALL pairs have been matched.
+There are a LOT of ways to finish this game. If you would like to have a go on your own, with very little guidance, go for it! If you'd like to follow the approach defined below, that's cool too. Just be aware that the approach below is just one of many, but it does have a specific opinion about how and where certain state properties live.
+
 
 ## Setup
 
@@ -18,25 +19,57 @@ and then go to [`http://localhost:3000`](http://localhost:3000).
 
 ### The requirements
 
-* All tiles should **start** hidden, and become **visible** when clicked.
+* All tiles should start out hidden, and become visible when clicked.
 
-* The user will select 2 tiles to reveal. If they match, they will stay visible. If they don't match, they will be hidden again after a second or two.
+* The user will select 2 tiles to reveal. If they match, they will stay visible. If they don't match, they will be hidden again after about 1 second.
 
 * When all pairs are matched, the user is informed that they have won, and may restart the game.
 
 
-### Release 1: hide tiles by default
+### Release 0: Get familiar with the existing code
+
+There are currently 3 components: `App`, `Board` and `Tile`. We'll manage some state in `App` and some in `Board`. We can get away with keeping `Tile` a higher order/functional component. Yes, there are many options for how to manage state in this game. We'll choose one that will hopefully be easiest for everyone to understand.
+
+Spend some time to understand exactly how the current code works.
+
+
+### Release 1: Hide tiles by default
+
+Right now all the tiles are visible by default. But you'll notice the `isVisible` properties in `startingTiles.js` are all set to `false`. Use the `&&` operator to conditionally show the value of the tile when `isVisible` is `true`.
+
+
+### Release 2: Display a tile when clicked
+
+We'll use the `Board` component to keep track of the 2 tiles the user has flipped and if they match. But first, let's focus on changing the `isVisible` prop on the `Tile` component when it is clicked. Because we're maintaining the state for the selected tiles in `Board`, our `onClick` event handler needs to be in the `Board` component. Pass it to `Tile` as a prop.
+
+For now, the event handler should do 3 things:
+
+1. Find the tile object in the tiles array. You'll need to pass something (the `id` or the whole object) into the event handler from the `Tile` component.
+2. Change the `isVisible` property of the tile object to `true`.
+3. Set a `tile1` state property to the tile object. Of course you'll also need to define this state property in the `Board` component's constructor.
+
+
+### Release 3: Hide unmatched tiles after 1 second
+
+After the user has clicked on the second tile, we want to hide them after 1 second. Now our event handler needs to know if the user has clicked their first or second tile. If the event handler is responding to the second tile, it should:
+
+1. Set the object as the value for a `tile2` property on state.
+2. Compare the `value` property of each of the selected tiles.
+3. If they match, send the 2 tiles to a `evalMatch` function passed from `App` as a prop.
+4. If they don't match, use `setTimeout` to wait 1 second before doing the previous step.
+5. Set the `tile1` and `tile2` state properties back to `null`.
+
+Tip: The call to `setState` is asynchronous. If you need to invoke a function after `setState` has completed, you can pass the function as the second parameter to `setState` and React will invoke it after `setState` completes.
+
+
+### Release 4: Let `App` evaluate the selected pair
+
+The `Board` component only keeps track of which tiles have been clicked. It's the `App` component that tracks how many matches have been made.
 
 
 
 
-### Some things to consider (do we still need this section?)
 
-When the 2nd tile is revealed and found to not be a match, you will want to inform the user that they didn't find a match. It would also be sensible to try and give the user several seconds to see their mismatched picks (on a timeOut), or allow the user to confirm (with a button) when they are ready to try again.
-
-How do you know which tiles are **temporarily** visible? How do you know which tiles are **permanently** visible?
-
-Do you store or information in the **Tile** objects, or separately within the `App.jsx` Components **state**?
 
 
 ### Resources
