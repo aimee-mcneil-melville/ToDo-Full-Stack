@@ -79,7 +79,7 @@ function replaceItemAtIndex (arr, idx, item) {
 
 // insertItemAtIndex should insert `item` at `idx` without overwriting
 // any array values (the array should get longer)
-function insertItemAtIndex (arr, item,  idx) {
+function insertItemAtIndex (arr, item, idx) {
 }
 
 // deleteItemAtIndex should remove the element at `idx` (the array
@@ -93,27 +93,28 @@ function deleteItem (arr, item) {
 
 // zipObject should return an object built from two arrays
 // For example, given ['foo', 'bar'] and [1, 2] it would return
-// { foo: 1, bar: 2}
+// {foo: 1, bar: 2}
 function zipObject (keys, values) {
 }
 
 // unzipObject should return an array of arrays, each one a pair of keys and values
-// For example, given { foo: 1, bar: 2} it would return
+// For example, given {foo: 1, bar: 2} it would return
 // [['foo', 1], ['bar', 2]]
 function unzipObject (obj) {
 }
 
 // findOneByProperty should return an object from `arr` that has the
 // property AND value of `search`. For example, given:
-//   [ { a: 1 }, { b: 2, c: 3 } ] and { b: 2 }
+//   [{a: 1}, {b: 2, c: 3}] and {b: 2}
 // it will return:
-//   { b: 2, c: 3 }
+//   {b: 2, c: 3}
 function findOneByProperty (arr, search) {
 }
 
 // findAll should return an array containing all objects in `arr` that
 // have the property and value of `search`
 function findAll (arr, search) {
+
 }
 
 module.exports = {
@@ -123,11 +124,11 @@ module.exports = {
   deleteItemAtIndex: deleteItemAtIndex,
   deleteProperty: deleteProperty,
   getGreeting: getGreeting,
-  getItemAtIndex : getItemAtIndex,
+  getItemAtIndex: getItemAtIndex,
   getValue: getValue,
   findOneByProperty: findOneByProperty,
   findAll: findAll,
-  hasItem : hasItem,
+  hasItem: hasItem,
   insertItemAtIndex: insertItemAtIndex,
   keys: keys,
   makeArrayOfItem: makeArrayOfItem,
