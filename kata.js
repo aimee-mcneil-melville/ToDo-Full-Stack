@@ -39,12 +39,12 @@ function returnErrorIfFalsy (val) {
 }
 
 // keys should return an array of the object's property names (keys)
-// For example, given {foo: 1, bar: 2} it would return ['foo', 'bar']
+// For example, given { foo: 1, bar: 2 } it would return ['foo', 'bar']
 function keys (obj) {
 }
 
 // values should return an array of the object's own values
-// For example, given { foo: 1, bar: 2} it would return [1, 2]
+// For example, given { foo: 1, bar: 2 } it would return [1, 2]
 function values (obj) {
 }
 
@@ -54,7 +54,7 @@ function values (obj) {
 
 // makeArrayOfItem should return an array that is `length` long, made up of `item`
 // For example, makeArrayOfItem('foo', 2) would return:
-// ['foo', 'foo']
+// [ 'foo', 'foo' ]
 function makeArrayOfItem (item, length) {
 }
 
@@ -99,8 +99,8 @@ function zipObject (keys, values) {
 
 // unzipObject should return an array of arrays, each one a pair of keys and values
 // For example, given { foo: 1, bar: 2} it would return
-// [['foo', 1], ['bar', 2]]
-function unzipObject(obj) {
+// [ [ 'foo', 1 ], [ 'bar', 2 ] ]
+function unzipObject (obj) {
 }
 
 // findOneByProperty should return an object from `arr` that has the
