@@ -1,4 +1,4 @@
-# JavaScript Kata: Objects and Arrays
+# Kata: Objects and Arrays
 
 ## Introduction
 
@@ -7,16 +7,21 @@ In this exercise we'll practise some of the fundamentals of JavaScript and start
 
 ## Installation
 
-First, jump into a working directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!).
+First, in your terminal, navigate to your `workspace` directory and clone the repository from GitHub. Don't forget, you can use the `TAB` key to complete long directory names (but not GitHub URLs!).
 
 ```
 cd workspace
 git clone https://github.com/[COHORT-YEAR]/kata-objects-and-arrays
 cd kata-objects-and-arrays
-yarn install
+yarn
 ```
 
-The last command installs a bunch of stuff that you'll need to make the exercise work correctly. Wait until it's done and then type:
+The last command installs a bunch of stuff that you'll need to make the exercise work correctly.
+
+
+## The first test
+
+To run the first test from your terminal:
 
 ```
 yarn test getGreeting
@@ -86,7 +91,7 @@ function getGreeting (name) {
 }
 ```
 
-You'll notice that when you save `kata.js` your terminal indicates the test is now passing. 
+You'll notice that when you save `kata.js` your terminal indicates the test is now passing.
 
 ```
  PASS  tests/getGreeting.test.js
