@@ -9,7 +9,7 @@ Clone this repo, then:
 
   ```shell
   cd kata-types-modules
-  npm install
+  yarn install
   ```
 
 
