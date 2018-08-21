@@ -55,11 +55,9 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
   2. Run `yarn knex seed:run` to add the new data to the database.
 
 
-## Display task ID
+## Display tasks and IDs
 
-We want to be able to update and delete our tasks. But before we do that we need to be able to identify them.
-
-Add some code so that when we log out a task it gives the id number too. For example:
+We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. This provides output that looks like this:
 
 ```sh
 $ ./todo list
@@ -68,12 +66,18 @@ $ ./todo list
 2: buy groceries
 ```
 
+Notice two things about this example:
+ * the commands are all separated into a different module, so that `todo.js` just calls a `require`d function from `commands.js`
+ * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo.js` does not (it doesn't need it)
+
 
 ## Delete a task by ID
 
 Users should be able to complete tasks. We'd like to be able to do something like `./todo done 1` which will remove the task with `id` of `1` from the database.
 
-You'll want to add a new function that returns a promise that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
+You'll want to add a new function in `db.js` that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
+
+To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). If it helps, look at how the `list` function is structured to give you some ideas. Remember that you will need to pass the `note` value as an argument from the `todo` module to get the actual id to delete.
 
 What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
 
@@ -85,6 +89,8 @@ Users make mistakes. Let them update a task like so:
 ```sh
 ./todo update 1 'clean my room thoroughly'
 ```
+
+As before, add a function to `db.js` that does the actual updating of the database. Then add a function to `commands.js` that makes use of it.
 
 
 ## Add ability to search
