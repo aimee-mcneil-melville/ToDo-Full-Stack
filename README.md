@@ -5,6 +5,21 @@ Command-line todo app using Knex.
 We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
 
 
+## A note on debugging
+
+You'll find this challenge already has debugging set up for you. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a _console_ program, you'll need to change the `args` property in the configuration to the actual command you'd like to debug. For example,
+
+```json
+    "program": "${workspaceFolder}/todo",
+    "args": [
+        "done",
+        "1"
+    ]
+```
+
+would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
+
+
 ## Setup
 
 * Install dependencies.
