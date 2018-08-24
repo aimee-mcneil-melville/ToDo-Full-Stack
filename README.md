@@ -41,13 +41,11 @@ Plain ol' `DOMContentLoaded`, like in Phase 0. So to start our React app off, we
 Take a look at `client/components/App.jsx`:
 
 ```jsx
-const App = () => {
-  return (
-    <div className='container'>
-      <img className='spinner' src='images/paw.png' />
-    </div>
-  )
-}
+const App = () => (
+  <div className='container'>
+    <img className='spinner' src='images/paw.png' />
+  </div>
+)
 
 export default App
 ```
