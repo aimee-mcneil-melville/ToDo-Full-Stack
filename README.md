@@ -105,16 +105,17 @@ Try it out! In `App.jsx`, import your new Dog component:
 import Dog from './Dog.jsx'
 ```
 
-and add a Dog tag (use Desdemona, above if you like). Your return should look something like this:
+and add a Dog tag (use Desdemona, above if you like). The JSX returned should look something like this:
 
 ```jsx
-return (
+(
   <div className='container'>
     <img className='spinner' src='images/paw.png' />
     <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
   </div>
 )
 ```
+To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 
 You should see something like this in the browser:
 
