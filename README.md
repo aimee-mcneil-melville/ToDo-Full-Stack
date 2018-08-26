@@ -115,7 +115,7 @@ and add a Dog tag (use Desdemona, above if you like). The JSX returned should lo
   </div>
 )
 ```
-To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+> To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 
 You should see something like this in the browser:
 
