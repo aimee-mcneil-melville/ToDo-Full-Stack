@@ -6,9 +6,9 @@ html, body, .viewport {
 
 #app {
   width: 100%;
-  flex-wrap: wrap;
 }
 
 div {
   display: flex;
+  flex-wrap: wrap;
 }
