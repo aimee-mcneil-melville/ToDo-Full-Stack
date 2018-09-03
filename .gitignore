@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# Webpack bundles
+**/bundle.js
+**/bundle.map.js
