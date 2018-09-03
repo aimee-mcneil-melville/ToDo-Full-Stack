@@ -62,4 +62,4 @@ typings/
 
 # Webpack bundles
 **/bundle.js
-**/bundle.map.js
+**/bundle.js.map
