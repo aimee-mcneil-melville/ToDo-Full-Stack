@@ -10,16 +10,16 @@ yarn start
 This will start a [Webpack dev server](https://github.com/webpack/webpack-dev-server). Open [http://localhost:8080](http://localhost:8080) in your browser.
 
 
-## The Redux DevTool
+## Redux DevTools
 
-Install the Redux DevTool Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/remotedev/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+Install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/remotedev/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 
 
 ## Exercise
 
-### Using the Redux DevTool
+### Using Redux DevTools
 
-Load up the Redux DevTool and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions to see what's going on. This screenshot illustrates how to dispatch actions using the dev tools.
+Load up Redux DevTools and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions to see what's going on. This screenshot illustrates how to dispatch actions:
 
 ![Dispatching actions using Redux dev tools](./screenshot1.png)
 
@@ -30,22 +30,22 @@ Load up the Redux DevTool and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actio
 
 - Add an `UPDATE_WOMBAT` action to the reducer in `reducer.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
 
-To Update a Wombat you will need to *expect* the **New Name** of the Wombat (so that it can be changed), but also the **Old Name** of the Wombat (so that the reducer can find the Wombat that needs to be updated).
+To update a wombat you will need to provide the **new** name of the wombat (so that it can be changed) but also the **old** name (so that the reducer can find the wombat that needs to be updated).
 
-Make sure you can dispatch this new action successfully from the Redux DevTool. You'll dispatch this action from code in a later step.
+Make sure you can dispatch this new action successfully from Redux DevTools. You'll dispatch this action from code in a later step.
 
 
 #### Delete a Wombat
 
 Add a delete button next to each of the wombats so they can be deleted:
 
-- Modify the `Wombats.jsx` component to add a button against each of the wombats.
+- Modify the `Wombats.jsx` component to add a button next to each of the wombats.
 - Add an event listener to handle an `onClick` event.
 - In the event listener, [`dispatch`](http://redux.js.org/docs/api/Store.html#dispatch) a `DEL_WOMBAT` action to the store to delete the wombat based on its name.
 - **Important!** Make sure that:
   1. You can refer to the `dispatch` function from the `Wombats.jsx` file.
-  2. Ensure that the `DEL_WOMBAT` action works from your Dev Tools before making it work through your code.
-  3. The correct action is being dispatched from your code on the click event. (You could use a function to *produce* and action).
+  2. Ensure that the `DEL_WOMBAT` action works from Redux DevTools before making it work through your code.
+  3. The correct action is being dispatched from your code on the click event. You could use a function to *produce* an action: these are called *action creators*.
 
 
 #### Add a Wombat
@@ -53,7 +53,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 - Add a simple input field to the page with a button to add a wombat.
 - Add an event listener to handle the button's `onClick` event.
 - Wire up this input so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box.
-- (It may be worth referring to the recommended problem solving steps from before)
+- It may be worth referring to the recommended problem solving steps above.
 
 
 #### Update a Wombat
