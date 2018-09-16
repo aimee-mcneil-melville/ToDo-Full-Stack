@@ -58,17 +58,14 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 1. Before we can complete this `/register` route, we need a place to save the new user. Here is an example knex migration you can use for your `users` table. Notice we have set `username` to be `unique()`. This produces a `UNIQUE CONSTRAINT` in the database, helping us avoid duplicate usernames which can cause all sorts of problems!
 
     ```js
-    exports.up = (knex, Promise) => {
-      return knex.schema.createTable('users', table => {
+    exports.up = knex =>
+      knex.schema.createTable('users', table => {
         table.increments('id').primary()
         table.string('username').unique()
         table.string('hash')
       })
-    }
 
-    exports.down = (knex, Promise) => {
-      return knex.schema.dropTable('users')
-    }
+    exports.down = knex => knex.schema.dropTable('users')
     ```
 
     Apply a migration so your database has a `users` table like the one above.
