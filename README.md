@@ -60,7 +60,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     ```js
     exports.up = (knex, Promise) => {
       return knex.schema.createTable('users', table => {
-        QUE constraint failed: users.usernametable.increments('id').primary()
+        table.increments('id').primary()
         table.string('username').unique()
         table.string('hash')
       })
@@ -298,10 +298,12 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     // ...
 
-    createUser({ username, password })
-      .then(id => {
-        res.locals.userId = id
-        // ...
+      createUser({username, password})
+        .then(([id]) => {
+          // Be sure to grab the id out of the array Knex returns it in!
+          // You can use array destructuring (as above) if you like.
+          res.locals.userId = id
+          // ...
     ```
 
     </details>
@@ -370,7 +372,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
           res.locals.userId = id
           next()
         })
-        .catch(({ message }) => {
+        .catch(({message}) => {
           // Fairly blunt error checking.
           if (message.includes('UNIQUE constraint failed: users.username')) {
             return res.status(400).json({ ok: false, message: 'Username already exists.' })
@@ -455,7 +457,7 @@ We must be able to verify the authenticity of the token provided before we trust
 
     function user (req, res) {
       getUser(req.user.id)
-        .then(({ username }) =>
+        .then(({username}) =>
           res.json({
             ok: true,
             username
@@ -492,7 +494,7 @@ We must be able to verify the authenticity of the token provided before we trust
 
     function userError (err, req, res, next) {
       if (err.name === 'UnauthorizedError') {
-        res.status(401).json({ ok: false, message: 'Access denied.' })
+        res.status(401).json({ok: false, message: 'Access denied.'})
       }
     }
     ```
