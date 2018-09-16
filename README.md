@@ -58,14 +58,17 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 1. Before we can complete this `/register` route, we need a place to save the new user. Here is an example knex migration you can use for your `users` table. Notice we have set `username` to be `unique()`. This produces a `UNIQUE CONSTRAINT` in the database, helping us avoid duplicate usernames which can cause all sorts of problems!
 
     ```js
-    exports.up = knex =>
-      knex.schema.createTable('users', table => {
+    exports.up = (knex, Promise) => {
+      return knex.schema.createTable('users', table => {
         table.increments('id').primary()
         table.string('username').unique()
         table.string('hash')
       })
+    }
 
-    exports.down = knex => knex.schema.dropTable('users')
+    exports.down = (knex, Promise) => {
+      return knex.schema.dropTable('users')
+    }
     ```
 
     Apply a migration so your database has a `users` table like the one above.
@@ -221,8 +224,8 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     // ...
 
     function createUser ({username, password}, db = connection) {
-      const hash = generateHash(password)
-      return db('users').insert({username, hash})
+      return generateHash(password)
+        .then(hash => db('users').insert({ username, hash }))
     }
     ```
 
@@ -365,8 +368,8 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     router.post('/register', register, token.issue)
 
     function register (req, res, next) {
-      const {username, password} = req.body
-      createUser({username, password})
+      const { username, password } = req.body
+      createUser({ username, password })
         .then(([id]) => {
           // Be sure to grab the id out of the array Knex returns it in!
           // You can use array destructuring (as above) if you like.
@@ -376,15 +379,9 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
         .catch(({message}) => {
           // Fairly blunt error checking.
           if (message.includes('UNIQUE constraint failed: users.username')) {
-            return res.status(400).json({
-              ok: false,
-              message: 'Username already exists.'
-            })
+            return res.status(400).json({ ok: false, message: 'Username already exists.' })
           }
-          res.status(500).json({
-            ok: false,
-            message: "Something bad happened. We don't know why."
-          })
+          res.status(500).json({ ok: false, message: "Something bad happened. We don't know why." })
         })
     }
 
@@ -458,7 +455,7 @@ We must be able to verify the authenticity of the token provided before we trust
     // server/routes/auth.js
     router.get(
       '/user',
-      verifyJwt({secret: process.env.JWT_SECRET}),
+      verifyJwt({ secret: process.env.JWT_SECRET }),
       user
     )
 
