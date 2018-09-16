@@ -503,7 +503,7 @@ We must be able to verify the authenticity of the token provided before we trust
     }
     ```
 
-## SSL encryption
+## HTTPS
 
 _forthcoming_
 
