@@ -225,7 +225,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     function createUser ({username, password}, db = connection) {
       return generateHash(password)
-        .then(hash => db('users').insert({ username, hash }))
+        .then(hash => db('users').insert({username, hash}))
     }
     ```
 
@@ -368,8 +368,8 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     router.post('/register', register, token.issue)
 
     function register (req, res, next) {
-      const { username, password } = req.body
-      createUser({ username, password })
+      const {username, password} = req.body
+      createUser({username, password})
         .then(([id]) => {
           // Be sure to grab the id out of the array Knex returns it in!
           // You can use array destructuring (as above) if you like.
@@ -379,9 +379,15 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
         .catch(({message}) => {
           // Fairly blunt error checking.
           if (message.includes('UNIQUE constraint failed: users.username')) {
-            return res.status(400).json({ ok: false, message: 'Username already exists.' })
+            return res.status(400).json({
+              ok: false,
+              message: 'Username already exists.'
+            })
           }
-          res.status(500).json({ ok: false, message: "Something bad happened. We don't know why." })
+          res.status(500).json({
+            ok: false,
+            message: "Something bad happened. We don't know why."
+          })
         })
     }
 
@@ -432,7 +438,7 @@ We must be able to verify the authenticity of the token provided before we trust
 
     router.get(
       '/route-we-want-to-protect',
-      verifyJwt({ secret: process.env.JWT_SECRET }),
+      verifyJwt({secret: process.env.JWT_SECRET}),
       routeWeWantToProtect
     )
 
@@ -455,7 +461,7 @@ We must be able to verify the authenticity of the token provided before we trust
     // server/routes/auth.js
     router.get(
       '/user',
-      verifyJwt({ secret: process.env.JWT_SECRET }),
+      verifyJwt({secret: process.env.JWT_SECRET}),
       user
     )
 
