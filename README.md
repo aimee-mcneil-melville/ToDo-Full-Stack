@@ -125,7 +125,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     * If the username is already taken, send back a status `400` and this JSON object: `{ok: false, message}`.
     * If the username is available, add the user and respond with a status `201` and this JSON object: `{ok: true}`.
-    * If there is an error, respond with a status `500` and this JSON object: `{ok: false, message: "Unknown error."}`.
+    * If there is an error, respond with a status `500` and this JSON object: `{ok: false, message: 'Unknown error.'}`.
 
     <details><summary>Show code</summary>
 
@@ -178,7 +178,7 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     </details>
 
-1. Saving plaintext passwords is _huge_ no-no. So let's fix that using the `libsodium-wrappers` npm package (which contains the `libsodium.js` library). Install `libsodium-wrappers` as a normal dependency. Note: the package `sodium` also exists, but is a very different beast. The `libsodium-wrappers` package has no 'native' code (it's just JavaScript) so can be easier to install and use.
+1. Saving plaintext passwords is _huge_ no-no. So let's fix that using the `libsodium-wrappers` npm package (which contains the `libsodium.js` library). Install `libsodium-wrappers` as a normal dependency. Note: the package `sodium` also exists, but is a very different beast. The `libsodium-wrappers` package has no 'native' code (it's just JavaScript) so can be easier to install and use. Sometimes you'll need a _native code_ version like `sodium` (`node-sodium`) which can handle higher memory limits and performs faster than the all-JavaScript version, but we don't need that today.
 
     <details><summary>Show terminal command</summary>
 
@@ -219,6 +219,10 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
 
     ```js
     // server/db/users.js
+    const {generateHash} = require('../auth/hash')
+
+    // ...
+
     function createUser ({username, password}, db = connection) {
       const hash = generateHash(password)
       return db('users').insert({username, hash})
@@ -280,9 +284,9 @@ Issuing a token is akin to registering for a new account. Once issued, the clien
     require('dotenv').config()
     const server = require('./server')
 
-    const PORT = process.env.PORT || 3000
+    const port = process.env.PORT || 3000
 
-    server.listen(PORT, () => console.log('Listening on port', PORT))
+    server.listen(port, () => console.log('Listening on port', port))
     ```
 
     </details>
@@ -429,10 +433,10 @@ We must be able to verify the authenticity of the token provided before we trust
     router.get(
       '/route-we-want-to-protect',
       verifyJwt({ secret: process.env.JWT_SECRET }),
-      route-we-want-to-protect
+      routeWeWantToProtect
     )
 
-    function route-we-want-to-protect (req, res) {
+    function routeWeWantToProtect (req, res) {
       // ...
     }
     ```
