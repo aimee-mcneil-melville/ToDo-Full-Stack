@@ -482,7 +482,7 @@ We must be able to verify the authenticity of the token provided before we trust
 
     </details>
 
-    Make sure you've registered a new user and captured the JWT token in the response body. Configure postman with the `Authorization` header and issue a `GET` request to `/api/v1/auth/username`. If all is well, the response will be:
+    Make sure you've registered a new user and captured the JWT token in the response body. Configure postman with the `Authorization` header and issue a `GET` request to `/api/v1/auth/user`. If all is well, the response will be:
 
     ```js
     {
