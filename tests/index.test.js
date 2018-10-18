@@ -1,6 +1,3 @@
-var test = require('tape')
-
-test('Working.', function (t) {
-  t.pass()
-  t.end()
+test('Working.', () => {
+  expect(1).toBe(1)
 })
