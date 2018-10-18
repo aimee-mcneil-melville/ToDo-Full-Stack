@@ -1,16 +1,14 @@
-var bodyParser = require('body-parser')
-var express = require('express')
-var hbs = require('express-handlebars')
-var path = require('path')
+const express = require('express')
+const hbs = require('express-handlebars')
+const path = require('path')
 
-var routes = require('./routes')
+const routes = require('./routes')
 
-var app = express()
-app.engine('hbs', hbs())
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
-app.use(bodyParser.urlencoded({ extended: true }))
+const server = express()
+server.engine('hbs', hbs())
+server.set('view engine', 'hbs')
+server.set('views', path.join(__dirname, 'views'))
+server.use(express.urlencoded({ extended: true }))
+server.use('/', routes)
 
-app.use('/', routes)
-
-module.exports = app
+module.exports = server
