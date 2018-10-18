@@ -2,7 +2,6 @@
 require('../node_modules/iconv-lite/encodings')
 
 const supertest = require('supertest')
-
 const cheerio = require('cheerio')
 
 const app = require('../server')
