@@ -5,7 +5,6 @@ const server = express()
 
 // http://expressjs.com/en/starter/static-files.html
 server.use(express.static('public'))
-server.use(express.json())
 server.use(express.urlencoded({extended: true}))
 
 server.get('/compliment', (req, res) => {

@@ -44,7 +44,7 @@ test('post function works', function () {
   supertest(app)
     .post('/named-compliment')
     .send({"name": 'alice'})
-    .set("Content-Type", "application/json")
+    .type('form')
     .end((err, res) => {
       if (err) console.log(err)
       const actual = res.text
