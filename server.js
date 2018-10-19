@@ -5,6 +5,7 @@ const server = express()
 
 // http://expressjs.com/en/starter/static-files.html
 server.use(express.static('public'))
+server.use(express.urlencoded({extended: true}))
 
 server.get('/compliment', (req, res) => {
   res.send('<h1>you are a beautiful human</h1>')
@@ -29,6 +30,10 @@ server.get('/profiles/:id', (req, res) => {
   const name = users[id]
   const filePath = path.join(__dirname, 'public', name + '.html')
   res.sendFile(filePath)
+})
+
+server.post('/named-compliment', (req, res) => {
+  res.send("You are wonderful " + req.body.name)
 })
 
 module.exports = server

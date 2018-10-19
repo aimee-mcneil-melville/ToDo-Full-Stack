@@ -1,3 +1,6 @@
+//needed to fix encoding problem with jest - https://stackoverflow.com/questions/49141927/express-body-parser-utf-8-error-in-test?rq=1
+require('../node_modules/iconv-lite/encodings')
+
 const supertest = require('supertest')
 const cheerio = require('cheerio')
 
@@ -36,3 +39,15 @@ test('profile 2 should be Sampson', function () {
     })
 })
 
+test('post function works', function () {
+  supertest(app)
+    .post('/named-compliment')
+    .send({"name": 'alice'})
+    .type('form')
+    .end((err, res) => {
+      if (err) console.log(err)
+      const actual = res.text
+      const expected = "You are wonderful alice"
+      expect(actual).toBe(expected)
+    })
+})
