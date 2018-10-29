@@ -31,7 +31,7 @@ would debug the `./todo done 1` command. Ask a teacher for help if you're not su
 
 * Set file permissions.
 
-Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`
+Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
 
 * Create the Knex configuration file (`knexfile.js`).
 
@@ -53,7 +53,7 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
       * `id` (auto incrementing)
       * `task`: string
 
-  The documentation for [`createTableIfNotExists`](http://knexjs.org/#Schema-createTableIfNotExists) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
+  The documentation for [`hasTable`](https://knexjs.org/#Schema-hasTable) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
 
   2. Use `yarn knex migrate:latest` to apply the changes to the database.
 
@@ -125,11 +125,13 @@ Users want to be able to mark a task as complete without removing it from the da
 
 2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
 
-3. Run `yarn knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager. Is it what you expected? What happened to existing data in the database?
+3. Run `yarn knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite). Is it what you expected? What happened to existing data in the database?
 
 4. Run `yarn knex migrate:rollback` and look in your database.
 
 5. Run `yarn knex migrate:latest` and look again.
+
+6. Run `yarn knex seed:run` and look again.
 
 
 ## Finish the _mark task complete_ feature
