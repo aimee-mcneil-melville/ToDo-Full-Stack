@@ -11,7 +11,8 @@
   "babel": {
     "presets": [
       "env",
-      "react"
+      "react",
+      "stage-3"
     ],
     "plugins": [
       "transform-class-properties"
