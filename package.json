@@ -11,20 +11,24 @@
     "presets": [
       "env",
       "react"
+    ],
+    "plugins": [
+      "transform-class-properties"
     ]
   },
   "author": "EDA",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.4"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "webpack": "^3.10.0"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "webpack": "^3.12.0"
   }
 }
