@@ -1,41 +1,15 @@
 #!/usr/bin/env node
 
-const config = require('./knexfile').development
-const devDb = require('knex')(config)
+const commands = require('./commands')
 
 const cmd = process.argv[2]
 const note = process.argv[3]
 
 switch (cmd) {
   case 'list':
-    getAll()
-      .then(listTodos)
-      .catch(logError)
-      .finally(closeDB)
+    commands.list()
     break
 
   default:
-    console.log('No matched cases')
-    closeDB()
-    break
-}
-
-function listTodos (todos) {
-  todos.forEach(function (todo) {
-    console.info(todo.task)
-  })
-}
-
-function logError (err) {
-  console.error('Uh oh!', err)
-}
-
-function getAll (testDb) {
-  const db = testDb || devDb
-  return db('todos').select()
-}
-
-function closeDB (testDb) {
-  const db = testDb || devDb
-  db.destroy()
+    console.log(`I don't understand that command: ${cmd}`)
 }
