@@ -44,4 +44,14 @@ If you manage to complete the previous example, try a game with a more complex e
 
 The score for this game is 141.
 
+## Perfect Game
+
+```js
+var frames = [
+  [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10],
+]
+```
+
+The score for this game is 300.
+
 If you would benefit from an interactive illustration, check out this [Bowling Score Calculator](http://www.bowlinggenius.com/).
