@@ -6,4 +6,4 @@ This is a simple kata to explore testing and the array commands:  forEach, map, 
 * Level 3: you can complete the kata solo from memory
 
 Step 1: complete the instructions in index.js
-Step 2: complete the instructions in index.test.js
+Step 2: complete the instructions in lib.test.js
