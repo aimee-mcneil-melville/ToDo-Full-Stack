@@ -18,6 +18,7 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
 
 
 ### Wednesday
@@ -26,6 +27,7 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
 
 
 ### Thursday
@@ -34,20 +36,23 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
+6. Name: Topic
 
 
 ## Topics
 
-* Relational databases
-  - [ ] Database indexes
-  - [ ] DDL, DNL, DCL, TCL
-  - [ ] SQL joins (left, right, inner, outer, full)
+* Security
+  - [ ] CORS
+  - [ ] SQL Injection attack
+  - [ ] Cross site scripting
+  - [ ] Heartbleed SSH vulnerability
+  - [ ] Fundamentals of encryption
 
-* NoSQL databases
-  - [ ] Neo4J
-  - [ ] MongoDB
-  - [ ] CouchDB
-  - [ ] [Secure Scuttlebutt](https://ssbc.github.io/secure-scuttlebutt/) (hard)
+* ECMAScript 6 (ES6)
+  - [ ] `Map` and `Set`
+  - [ ] Asynchronous JavaScript with Generators
+  - [ ] Babel & Transpiling
 
 * Algorithms
   - [ ] Common sorting algorithms
@@ -61,15 +66,14 @@
   - [ ] Immutable.js
   - [ ] Angular
 
+* UI Framework
+  - [ ] Semantic UI
+
 * Famous Programmers
-  - [ ] Ada Lovelace
-  - [ ] Alan Turing
-  - [ ] Audrey Tang
-  - [ ] Brendan Eich
-  - [ ] Charles Babbidge
+  - [ ] David Heinemeier Hansson (DHH)
+  - [ ] Grace Hopper
+  - [ ] Ken Thompson
+  - [ ] Linus Torvalds
+  - [ ] Margaret Hamilton
 
-* ECMAScript 6 (ES6)
-  - [ ] Destructuring
-  - [ ] `Array.from()`, `Array.fill()`
-  - [ ] Default parameters, Rest & Spread operators
-
+<!-- Count: 22 -->

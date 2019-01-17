@@ -18,6 +18,7 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
 
 
 ### Wednesday
@@ -26,6 +27,8 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
+6. Name: Topic
 
 
 ### Thursday
@@ -34,44 +37,53 @@
 2. Name: Topic
 3. Name: Topic
 4. Name: Topic
+5. Name: Topic
 
 
 ## Topics
 
+* Design patterns
+  - [ ] Strategy Design Pattern
+  - [ ] Observer Design Pattern
+  - [ ] Model View Controller (MVC)
+
+* JavaScript libraries
+  - [ ] CycleJS
+  - [ ] Three.js
+  - [ ] D3.js
+  - [ ] Ember
+
+* Code smells
+  - [ ] Purposeless conditions
+  - [ ] Functions that do more than one thing
+  - [ ] Cyclomatic complexity [link](http://webuniverse.io/cyclomatic-complexity-refactoring-tips/) [eslint rule](http://eslint.org/docs/rules/complexity)
+
+* Transpiled languages
+  - [ ] TypeScript
+  - [ ] CoffeeScript
+  - [ ] ClosureScript
+  - [ ] Elm
+
+* JavaScript
+  - [ ] `'use strict'`
+  - [ ] StandardJS
+  - [ ] DOM vs. Virtual DOM
+
+* Other types of app experiences
+  - [ ] How to make a Chrome Extension
+  - [ ] How to make a Firefox plugin
+  - [ ] Electron
+
+* _Any other topic that will be interesting for people_ (validate with teacher first)
+
+* UI Framework
+  - [ ] Bulma
+
 * Famous Programmers
-  - [ ] David Heinemeier Hansson (DHH)
-  - [ ] Grace Hopper
-  - [ ] Ken Thompson
-  - [ ] Linus Torvalds
-  - [ ] Margaret Hamilton
+  - [ ] Richard Stallman
+  - [ ] Roy Fielding
+  - [ ] Sandi Metz
+  - [ ] Steve Wozniak
+  - [ ] Barbara Liskov
 
-* Security
-  - [ ] CORS
-  - [ ] SQL Injection attack
-  - [ ] Cross site scripting
-  - [ ] Heartbleed SSH vulnerability
-  - [ ] Fundamentals of encryption
-
-* ECMAScript 6 (ES6)
-  - [ ] `Map` and `Set`
-  - [ ] Asynchronous JavaScript with Generators
-  - [ ] Babel & Transpiling
-
-* Git commands
-  - [ ] `git blame`
-  - [ ] `git cherry-pick`
-  - [ ] `git rebase`
-
-* Functional Programming
-  - [ ] What is functional programming
-  - [ ] Currying and partial application
-
-* Command line tools
-  - [ ] `ack`
-  - [ ] `sed`, `grep`, `ag`
-  - [ ] `ln`, `ls`
-  - [ ] `chmod`, `chown`, `chgrp`
-  - [ ] `echo`, `cat`, `tail`
-  - [ ] `nvm`
-  - _Another CLI tool of your choice_ (validate with teacher first)
-
+<!-- Count: 26 -->
