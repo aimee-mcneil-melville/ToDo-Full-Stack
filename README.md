@@ -1,6 +1,6 @@
 # Personal projects
 
-Create a personal project plan based off [the template](project-plan-template.md) provided and include a link below. Feel free to vary the plan as you wish.
+Create a personal project plan based off [the template](project-plan-template.md) provided and include a link below. Feel free to vary the plan as you wish. For more information, check out the [guidance](guidance.md) about personal projects.
 
 ## Instructions
 
