@@ -132,7 +132,7 @@ Finally, add an `onClick` attribute to your JSX that calls `this.clickHandler` w
 Play! Define a bunch of different event handlers and in each one do something different to the component when it triggers. Want a list? Try:
 
  * **onMouseEnter**: turn the components green as you pass the mouse over them
- * **onContextMenu**: turn the components black as you right-click on them (hint: `evt.preventDefault()`)
+ * **onContextMenu**: turn the components black as you right-click on them (hint: checkout `evt.preventDefault()` and `onContextMenu`)
  * **onDoubleClick**: turn the components white
  * **onDragEnter**: turn the components yellow as you click and drag through them
 
