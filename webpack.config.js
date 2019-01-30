@@ -4,8 +4,9 @@ module.exports = {
     path: __dirname,
     filename: 'bundle.js'
   },
+  mode: 'development',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/
