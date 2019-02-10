@@ -9,13 +9,18 @@
   },
   "babel": {
     "presets": [
-      "env"
+      "env",
+      "react"
     ]
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "redux": "^3.7.2",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
