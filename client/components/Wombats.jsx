@@ -1,12 +1,14 @@
 import React from 'react'
 
 function Wombats (props) {
-  const wombats = props.wombats
+  const {store} = props
+  const state = store.getState()
+  const wombats = state.wombats
   return (
     <div>
       <h1>Wombats</h1>
       <ul>
-        {wombats.map((wombat, i) => <li key={i}>{wombat}</li>)}
+        {wombats.map((wombat) => <li key={wombat}>{wombat}</li>)}
       </ul>
     </div>
   )

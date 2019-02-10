@@ -15,10 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function render () {
-  const state = store.getState()
-  const wombats = state.wombats
   ReactDOM.render(
-    <App wombats={wombats} />,
+    <App store={store} />,
     document.getElementById('app')
   )
 }
