@@ -9,7 +9,7 @@ After cloning this repo
 
 ```sh
 cd sweet-as-beers && yarn
-yarn start
+yarn dev
 ```
 
 Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
