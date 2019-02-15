@@ -1,14 +1,14 @@
 const bcrypt = require('bcrypt')
 
-function generate(password, cb) {
-  bcrypt.hash(password, 12, cb)
+function generatePasswordHash (password) {
+  return bcrypt.hash(password, 12)
 }
 
-function compare (password, hash, cb) {
-  bcrypt.compare(password, hash, cb)
+function comparePasswordToHash (password, hash) {
+  return bcrypt.compare(password, hash)
 }
 
 module.exports = {
-  generate,
-  compare
+  generatePasswordHash,
+  comparePasswordToHash,
 }
