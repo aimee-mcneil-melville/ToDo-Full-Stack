@@ -4,7 +4,7 @@ const verifyJwt = require('express-jwt')
 const {compare} = require('./hash')
 
 function issue (req, res) {
-  getUserByName(req.body.user_name, req.app.get('db'))
+  getUserByName(req.body.user_name)
     .then(user => {
       if (!user) return res.status(403).json({message: 'User does not exist'})
       compare(req.body.password, user.hash, (err, match) => {
