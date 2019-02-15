@@ -1,4 +1,4 @@
-var hash = require('../auth/hash')
+const hash = require('../auth/hash')
 
 const db = require('./connection')
 

@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 function generate(password, cb) {
   bcrypt.hash(password, 12, cb)

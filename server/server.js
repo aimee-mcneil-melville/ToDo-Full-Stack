@@ -1,10 +1,10 @@
-var path = require('path')
-var express = require('express')
-var bodyParser = require('body-parser')
-var cors = require('cors')
-var passport = require('passport')
+const path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const passport = require('passport')
 
-var server = express()
+const server = express()
 
 server.use(cors('*'))
 

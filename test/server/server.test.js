@@ -1,9 +1,9 @@
-var test = require('ava')
-var request = require('supertest')
+const test = require('ava')
+const request = require('supertest')
 
-var createServer = require('../../server/server')
-var greetingsDb = require('../../server/db/greeting')
-var setupDb = require('./setup-db')
+const createServer = require('../../server/server')
+const greetingsDb = require('../../server/db/greeting')
+const setupDb = require('./setup-db')
 
 setupDb(test,createServer)
 
