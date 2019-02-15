@@ -1,4 +1,5 @@
-require('dotenv').config()
+const envConfig = require('dotenv').config()
+if(envConfig.error) throw envConfig.error
 
 const server = require('./server')
 const PORT = process.env.PORT || 3000
