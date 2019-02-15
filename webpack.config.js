@@ -1,18 +1,26 @@
+const path = require('path');
+
 module.exports = {
   entry: './client/index.js',
+
   output: {
-    path: __dirname + '/public',
+    path: path.resolve('public'),
     filename: 'bundle.js'
   },
+
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
+    rules: [{
+      test: /\.js|\.jsx$/,
+      use: 'babel-loader',
       exclude: /node_modules/
     }]
   },
+
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  devtool: 'source-map'
-}
+
+  devtool: 'source-map',
+
+  mode: 'development'
+};
