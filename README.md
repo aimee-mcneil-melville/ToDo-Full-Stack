@@ -13,6 +13,7 @@ First, in your terminal, navigate to your `workspace` directory and clone the re
 cd workspace
 git clone https://github.com/[COHORT-YEAR]/kata-objects-and-arrays
 cd kata-objects-and-arrays
+git checkout -b "YOURNAME_YOURPARTNERSNAME"
 yarn
 ```
 
