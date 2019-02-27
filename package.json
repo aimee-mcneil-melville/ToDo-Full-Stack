@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "jest": "^22.0.6",
+    "jest": "^24.1.0",
     "nodemon": "^1.14.11",
     "supertest": "^3.0.0"
   }
