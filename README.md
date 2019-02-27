@@ -30,7 +30,7 @@ You should get an error saying something about '`getBoolean` is not a function'.
 
 In order for the tests to test the functions, you need to _export_ each function the tests are expecting. This is often done by exporting an object that contains the functions as properties. This is an example:
 
-```
+```js
 // sample.js
 module.exports = {
   doWork: doWork
