@@ -9,7 +9,7 @@ Clone this repo, then:
 
   ```shell
   cd kata-types-modules
-  yarn install
+  npm install
   ```
 
 
@@ -24,7 +24,7 @@ First, take a look at the files in the `tests` folder and examine how the tests 
 
 ## Understanding the challenge
 
-After you're comfortable with how the tests are structured, run the first test using `yarn test getBoolean`. Feel free to have a look in `package.json` to see what the `test` script is doing.
+After you're comfortable with how the tests are structured, run the first test using `npm test getBoolean`. Feel free to have a look in `package.json` to see what the `test` script is doing.
 
 You should get an error saying something about '`getBoolean` is not a function'. This is because `functions.js`, the file the test is importing/requiring, isn't exporting a `getBoolean` function.
 
@@ -60,7 +60,7 @@ You will implement simplified versions of these functions. Normally we'd just us
 To run all of the tests for all of the functions you've written and exported, in terminal run:
 
 ```
-yarn test tests
+npm test tests
 ```
 
 This will run all tests in the `tests` directory.
