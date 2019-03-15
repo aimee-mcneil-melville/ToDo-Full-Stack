@@ -1,6 +1,6 @@
 {
   "name": "kata-objects-and-arrays",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Kata for objects and arrays",
   "scripts": {
     "test": "jest --watch --noStackTrace"

@@ -14,7 +14,7 @@ cd workspace
 git clone https://github.com/[COHORT-YEAR]/kata-objects-and-arrays
 cd kata-objects-and-arrays
 git checkout -b "YOURNAME_YOURPARTNERSNAME"
-yarn
+npm install
 ```
 
 The last command installs a bunch of stuff that you'll need to make the exercise work correctly.
@@ -25,7 +25,7 @@ The last command installs a bunch of stuff that you'll need to make the exercise
 To run the first test from your terminal:
 
 ```
-yarn test getGreeting
+npm test getGreeting
 ```
 
 You'll see some red output that looks like this:
@@ -74,7 +74,7 @@ _Kata_ is a concept from martial arts meaning a sequence of moves composed into 
 
 ![](https://49.media.tumblr.com/10c948900ec4276131e45047bb3846a4/tumblr_n3005tWnBf1s6my4qo1_500.gif)
 
-The file you'll be working in is `kata.js`. This file is full of incomplete functions with comments describing what they should do. Every time you run the tests (using `yarn test nameOfTheFunctionYoureWorkingOn`) you're checking to see if you've completed each function correctly. When you finish it successfully, it will show up GREEN and you can move on to the next function.
+The file you'll be working in is `kata.js`. This file is full of incomplete functions with comments describing what they should do. Every time you run the tests (using `npm test nameOfTheFunctionYoureWorkingOn`) you're checking to see if you've completed each function correctly. When you finish it successfully, it will show up GREEN and you can move on to the next function.
 
 Let's try it! Open `kata.js` in your editor. The first function looks like this:
 
@@ -114,7 +114,7 @@ Now you should press the `q` key in the terminal to stop the test runner (`w` wi
 This way we can practise the basics of JavaScript and build up our muscle memory:
 
  * read what the next function is supposed to do
- * run the tests using `yarn test nameOfTheFunctionYoureWorkingOn`
+ * run the tests using `npm test nameOfTheFunctionYoureWorkingOn`
  * think and talk about how to solve the problem
  * write the code and save the file
  * read any errors and keep trying
@@ -130,7 +130,7 @@ In later challenges we're going to become a lot more familiar with this process.
 To run all of the tests for all of the functions you've written, in terminal run:
 
 ```
-yarn test tests
+npm test tests
 ```
 
 This will run all tests in the `tests` directory.
