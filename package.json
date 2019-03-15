@@ -1,6 +1,6 @@
 {
   "name": "kata-strings-numbers-modules",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Kata for working with types, functions and modules",
   "scripts": {
     "test": "jest --watch --noStackTrace"

@@ -7,12 +7,12 @@ This kata is similar to the others. Some tests have been written in the `tests` 
 In your terminal:
 
 * Clone this repo and `cd` into the new folder.
-* Run `yarn` to install the dependent npm modules defined in `package.json`.
+* Run `npm install` to install the dependent npm modules defined in `package.json`.
 
 ## The first test
 
 * Run `code .` and open `utilities.js`.
-* Run `yarn test getType`. This will run the first test, the `getType` function in `utilities.js`.
+* Run `npm test getType`. This will run the first test, the `getType` function in `utilities.js`.
 
   You should see it is currently failing. Jest, the test framework we're using, is watching the relevant files so it will let us know as soon as we have the test passing.
 
@@ -34,7 +34,7 @@ In your terminal:
 
 * Save `utilities.js` and you should see the test is now passing.
 
-  Sweet! Now you're ready for the next test. Type `q` in your terminal to stop watching the `getType` test and run `yarn test isNumber` to begin the next function. Don't forget to export each of the functions once you've implemented them.
+  Sweet! Now you're ready for the next test. Type `q` in your terminal to stop watching the `getType` test and run `npm test isNumber` to begin the next function. Don't forget to export each of the functions once you've implemented them.
 
 
 ## Making sure you're finished
@@ -42,7 +42,7 @@ In your terminal:
 To run all of the tests for all of the functions you've written, in terminal run:
 
 ```
-yarn test tests
+npm test tests
 ```
 
 This will run all tests in the `tests` directory.
