@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "Kata for data Structures",
   "scripts": {
-    "test": "jest --watch --noStackTrace"
+    "test": "jest --watchAll --noStackTrace"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-data-structures#readme",
   "devDependencies": {
-    "jest": "^24.1.0"
+    "jest": "^24.5.0"
   }
 }
