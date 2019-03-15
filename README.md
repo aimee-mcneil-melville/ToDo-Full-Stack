@@ -9,7 +9,7 @@ Clone this repo, then:
 
   ```
   cd kata-data-structures
-  yarn
+  npm install
   ```
 
 
@@ -26,7 +26,7 @@ Before working on a function, take turns explaining what each test is doing with
 
 ## The first test
 
-* Run the first test using `yarn test getType`. You'll notice the test is failing with a `TypeError: getType is not a function`. The test file is calling `require` on the correct file, but `getType.js` isn't exporting the function.
+* Run the first test using `npm test getType`. You'll notice the test is failing with a `TypeError: getType is not a function`. The test file is calling `require` on the correct file, but `getType.js` isn't exporting the function.
 
 * Open the folder in VS Code using `code .` and open `getType.js`.
 
@@ -61,7 +61,7 @@ If you'd like to work on the tests in an order of increasing difficulty, try thi
 To run all of the tests for all of the functions you've written, in terminal run:
 
 ```
-yarn test tests
+npm test tests
 ```
 
 This will run all tests in the `tests` directory. When you have all the tests passing, read your code through carefully and ensure you know everything that is going on. Can you refactor any of it? Does it all make sense to you?
