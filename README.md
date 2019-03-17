@@ -6,7 +6,7 @@ Creating a web server with Express.js
 ## Setup
 
 * Clone this repo and `cd` into the folder
-* Install the dependencies with `yarn`
+* Install the dependencies with `npm install`
 * Create a branch for your pair
 
 
@@ -14,7 +14,7 @@ Creating a web server with Express.js
 
 * Create a route called `/compliment` to `server.js` that responds with a nice compliment.
 * Add some HTML markup to that string to dress it up.
-* Start the server using `yarn start`.
+* Start the server using `npm start`.
 * Make sure it works by going to [http://localhost:3000/compliment](http://localhost:3000/compliment).
 * Stage, commit and push your branch to GitHub.
 
@@ -66,7 +66,6 @@ Creating a web server with Express.js
 
 ## 7. Post data to the server
 
-* Install the `body-parser` npm module (with `yarn add`) and add its middleware to `server.js`.
 * Create an HTML page called `get-name.html` in your `public` folder.
 * Add a form to `get-name.html` that has a `name` input field.
 * The form should `post` to `/named-compliment`.
