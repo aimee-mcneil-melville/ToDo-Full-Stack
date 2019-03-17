@@ -6,19 +6,19 @@
 
   ```sh
   cd conways
-  yarn
+  npm install
   ```
 
 2. To run all the tests:
 
   ```shell
-  yarn test
+  npm test
   ```
 
   Or, you can run any single test file by replacing `tests` with the name of the file/function. For example:
 
   ```sh
-  yarn test isOverPopulated
+  npm test isOverPopulated
   ```
 
 
