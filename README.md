@@ -26,7 +26,7 @@ First, take a look at the files in the `tests` folder and examine how the tests 
 
 After you're comfortable with how the tests are structured, run the first test using `npm test getBoolean`. Feel free to have a look in `package.json` to see what the `test` script is doing.
 
-You should get an error saying something about '`getBoolean` is not a function'. This is because `functions.js`, the file the test is importing/requiring, isn't exporting a `getBoolean` function.
+You should get an error saying something about '`getBoolean` is not a function'. This is because `types.js`, the file the test is importing/requiring, isn't exporting a `getBoolean` function.
 
 In order for the tests to test the functions, you need to _export_ each function the tests are expecting. This is often done by exporting an object that contains the functions as properties. This is an example:
 
