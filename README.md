@@ -17,7 +17,7 @@ Build a state of the (ASCII) art terminal client. Don't forget to maximise your 
 By now you should be getting used to setting up Node programs. Here's a reminder in case you need it:
 
 1. Clone this repo and create a new branch for you or your pair.
-2. Create an npm `package.json` file using `yarn init`.
+2. Create an npm `package.json` file using `npm init`.
 3. Install `nodemon`, and `jest` as dev dependencies (use `-D`).
 4. Write a couple of scripts in your `package.json`:
   - one that starts the program
