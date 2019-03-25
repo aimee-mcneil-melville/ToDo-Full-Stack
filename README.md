@@ -14,10 +14,10 @@ Build a photo gallery using Handlebars views.
 
 ## Getting started
 
-* After cloning this repo, install dependencies with `yarn`
-* To debug the server (and have it reload with Nodemon after changes): `yarn debug`
-* To start the server : `yarn start`
-* To run the tests: `yarn test`
+* After cloning this repo, install dependencies with `npm install`
+* To debug the server (and have it reload with Nodemon after changes): `npm run debug`
+* To start the server : `npm run start`
+* To run the tests: `npm run test`
 
 
 ## Hello world
