@@ -139,7 +139,7 @@ const choice = {
   message: 'Make your choice'
 }
 
-prompt.get(choice, function (result) {
+prompt.get(choice, function (err, result) {
   // Do something with result.choice here...
 })
 ```
