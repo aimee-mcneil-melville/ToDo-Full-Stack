@@ -11,9 +11,9 @@
 
 ## Getting started
 
-* After cloning this repo, install dependencies with `yarn`
-* To debug the server (and have it reload with Nodemon after changes): `yarn run debug`
-* To start the server: `yarn start`
+* After cloning this repo, install dependencies with `npm install`
+* To debug the server (and have it reload with Nodemon after changes): `npm run debug`
+* To start the server: `npm run start`
 
 
 ## Gotchas
