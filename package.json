@@ -28,6 +28,8 @@
     "supertest": "^3.4.2"
   },
   "jest": {
-    "watchPathIgnorePatterns": [ "data.json" ]
+    "watchPathIgnorePatterns": [
+      "data.json"
+    ]
   }
 }
