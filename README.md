@@ -75,15 +75,15 @@ const port = process.env.PORT || 3000
 *If you DON'T have a database, skip steps 1 and 3:*
 
 1. Provision a Postgres DB using the postgresql addon
-  - `heroku addons:create heroku-postgresql:hobby-dev`
-  - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
+    - `heroku addons:create heroku-postgresql:hobby-dev`
+    - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
 
-2. Deploy to Heroku with `git push heroku master`. **NOTE**: If you're deploying a branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master`. Basically, `git push heroku master` is short for `git push heroku local-master-branch:remote-master-branch`.
+1. Deploy to Heroku with `git push heroku master`. **NOTE**: If you're deploying a branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master`. Basically, `git push heroku master` is short for `git push heroku local-master-branch:remote-master-branch`.
 
-3. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
-  - Apply the seed file by running `knex seed:run`.
+1. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
+    - Apply the seed file by running `knex seed:run`.
 
-4. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
+1. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
 
 
 ## Common gotchas
