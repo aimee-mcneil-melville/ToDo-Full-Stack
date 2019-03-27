@@ -12,7 +12,7 @@
 - [ ] Heroku sets a dynamic port which you can access with the port environment variable using `process.env.PORT`. If you are explicitly stating your port in your app without using the environment, Heroku can't expose your app. A good practice is to listen on a dynamic port or default to a local one:
 
 ```js
-var port = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 ```
 
 *If you have a database:*
@@ -22,9 +22,9 @@ var port = process.env.PORT || 3000
 - [ ] You are using `process.env.NODE_ENV` to dynamically choose the Knex environment. For example, in the module where you're using Knex.js (e.g. `db.js`):
 
   ```js
-  var environment = process.env.NODE_ENV || 'development'
-  var config = require('./knexfile')[environment]
-  var db = require('knex')(config)
+  const environment = process.env.NODE_ENV || 'development'
+  const config = require('./knexfile')[environment]
+  const db = require('knex')(config)
   ```
 
 - [ ] You have defined the structure of your database with some migrations and they run locally without error.
