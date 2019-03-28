@@ -1,8 +1,8 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 
-var development = require('./knexfile').development
-var knex = require('knex')(development)
+const development = require('./knexfile').development
+const knex = require('knex')(development)
 
 router.get('/', function (req, res) {
   res.render('index')
@@ -16,12 +16,12 @@ router.get('/list', function (req, res) {
 })
 
 router.get('/view/:id', function (req, res) {
-  var id = req.params.id
+  const id = req.params.id
   knex('wombles')
     .join('characteristics', 'wombles.characteristic_id', 'characteristics.id')
     .where({ 'wombles.id': id })
     .then(function (wombles) {
-      var womble = wombles[0]
+      const womble = wombles[0]
       res.render('view', womble)
     })
 })
