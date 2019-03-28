@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const hbs = require('express-handlebars')
 
 const routes = require('./routes')
@@ -13,7 +12,7 @@ server.engine('hbs', hbs({
 }))
 server.set('view engine', 'hbs')
 server.use(express.static('public'))
-server.use(bodyParser.urlencoded({ extended: true }))
+server.use(express.urlencoded({ extended: true }))
 
 // Routes
 server.use('/', routes)
