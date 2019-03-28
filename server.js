@@ -5,21 +5,21 @@ const hbs = require('express-handlebars')
 
 const routes = require('./routes')
 
-const app = express()
+const server = express()
 
-module.exports = app
+module.exports = server
 
 // Middleware
 
-app.use(express.urlencoded({ extended: true }))
-app.engine('hbs', hbs({
+server.use(express.urlencoded({ extended: true }))
+server.engine('hbs', hbs({
   extname: 'hbs',
   defaultLayout: 'main'
 }))
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
-app.use(express.static('public'))
+server.set('view engine', 'hbs')
+server.set('views', path.join(__dirname, 'views'))
+server.use(express.static('public'))
 
 // Routes
 
-app.use('/', routes)
+server.use('/', routes)
