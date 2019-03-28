@@ -11,10 +11,10 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
-yarn
-yarn knex migrate:latest
-yarn knex seed:run
-yarn start
+npm
+npm run knex migrate:latest
+npm run knex seed:run
+npm start
 ```
 
 If you would like to push changes to a branch in this repository, [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to this repo:
