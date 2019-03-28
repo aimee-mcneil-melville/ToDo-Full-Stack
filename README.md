@@ -5,10 +5,10 @@ User stories to implement when practising joins.
 
 ## Installation
 
-Fork this repo, clone it down, and `cd` into the directory. Then:
+Clone this repo, `cd` into the new directory and then:
 
 ```
-npm install
+npm i
 npm run knex migrate:latest
 npm run knex seed:run
 npm run dev
