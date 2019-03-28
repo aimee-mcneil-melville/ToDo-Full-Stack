@@ -24,15 +24,15 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "express-handlebars": "^3.0.0",
-    "knex": "^0.15.2",
-    "sqlite3": "^4.0.2"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
-    "jest": "^22.1.4",
-    "nodemon": "^1.14.11",
-    "supertest": "^3.0.0"
+    "jest": "^24.5.0",
+    "nodemon": "^1.18.10",
+    "supertest": "^4.0.2"
   }
 }
