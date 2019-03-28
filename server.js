@@ -1,7 +1,6 @@
 var path = require('path')
 
 var express = require('express')
-var bodyParser = require('body-parser')
 var hbs = require('express-handlebars')
 
 var routes = require('./routes')
@@ -12,7 +11,7 @@ module.exports = app
 
 // Middleware
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.engine('hbs', hbs({
   extname: 'hbs',
   defaultLayout: 'main'
