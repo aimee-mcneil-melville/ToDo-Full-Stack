@@ -36,7 +36,7 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
 * Create the Knex configuration file (`knexfile.js`).
 
   ```sh
-  npm run knex init
+  npx knex init
   ```
 
 
@@ -45,7 +45,7 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
 * Add a migration for the `todos` table.
 
   ```sh
-  npm run knex migrate:make todos
+  npx knex migrate:make todos
   ```
 
   1. Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos` with the following fields:
@@ -55,19 +55,19 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
 
   The documentation for [`hasTable`](https://knexjs.org/#Schema-hasTable) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
 
-  2. Use `npm run knex migrate:latest` to apply the changes to the database.
+  2. Use `npx knex migrate:latest` to apply the changes to the database.
 
 * Add some seed data.
 
   ```sh
-  npm run knex seed:make test-tasks
+  npx knex seed:make test-tasks
   ```
 
   1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
 
   The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
 
-  2. Run `npm run knex seed:run` to add the new data to the database.
+  2. Run `npx knex seed:run` to add the new data to the database.
 
 
 ## Display tasks and IDs
@@ -123,7 +123,7 @@ Now we have users using our tool, but we have new features to add. We need a way
 
 Users want to be able to mark a task as complete without removing it from the database.
 
-1. Use `npm run knex migrate:make add-completed-column` to create a new empty migration.
+1. Use `npx knex migrate:make add-completed-column` to create a new empty migration.
 
   The documentation for [`knex.schema.table`](http://knexjs.org/#Schema-table) might be helpful when modifying an existing table.
 
@@ -131,13 +131,13 @@ Users want to be able to mark a task as complete without removing it from the da
 
 2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
 
-3. Run `npm run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite). Is it what you expected? What happened to existing data in the database?
+3. Run `npx knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite). Is it what you expected? What happened to existing data in the database?
 
-4. Run `npm run knex migrate:rollback` and look in your database.
+4. Run `npx knex migrate:rollback` and look in your database.
 
-5. Run `npm run knex migrate:latest` and look again.
+5. Run `npx knex migrate:latest` and look again.
 
-6. Run `npm run knex seed:run` and look again.
+6. Run `npx knex seed:run` and look again.
 
 
 ## Finish the _mark task complete_ feature
