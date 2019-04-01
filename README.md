@@ -11,9 +11,9 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-knex
 mv boilerplate-knex knex-relationships
 cd knex-relationships
-npm
-npm run knex migrate:latest
-npm run knex seed:run
+npm install
+npx knex migrate:latest
+npx knex seed:run
 npm start
 ```
 
