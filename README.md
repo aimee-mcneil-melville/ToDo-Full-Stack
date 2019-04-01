@@ -9,8 +9,8 @@ Clone this repo, `cd` into the new directory and then:
 
 ```
 npm i
-npm run knex migrate:latest
-npm run knex seed:run
+npx knex migrate:latest
+npx knex seed:run
 npm run dev
 ```
 
