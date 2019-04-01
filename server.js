@@ -5,7 +5,7 @@ const server = express()
 
 // http://expressjs.com/en/starter/static-files.html
 server.use(express.static('public'))
-server.use(express.urlencoded({extended: true}))
+server.use(express.urlencoded({ extended: true }))
 
 server.get('/compliment', (req, res) => {
   res.send('<h1>you are a beautiful human</h1>')
@@ -33,7 +33,7 @@ server.get('/profiles/:id', (req, res) => {
 })
 
 server.post('/named-compliment', (req, res) => {
-  res.send("You are wonderful " + req.body.name)
+  res.send('You are wonderful ' + req.body.name)
 })
 
 module.exports = server
