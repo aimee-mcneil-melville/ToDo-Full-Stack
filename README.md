@@ -8,8 +8,8 @@ Form handling in React.
 After cloning this repo
 
 ```shell
-yarn
-yarn start
+npm install
+npm start
 ```
 
 
