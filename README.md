@@ -10,8 +10,8 @@ There are a LOT of ways to finish this game. If you would like to have a go on y
 After cloning this repo
 
 ```sh
-yarn
-yarn dev
+npm install
+npm run dev
 ```
 
 and then go to [`http://localhost:3000`](http://localhost:3000).
