@@ -10,8 +10,8 @@ In this exercise, you're going to build a blog for Charlotte.
 Clone this repo, and from the repo's folder
 
 ```sh
-yarn
-yarn start
+npm install
+npm start
 ```
 
 
