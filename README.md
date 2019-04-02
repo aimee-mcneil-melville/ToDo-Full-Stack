@@ -4,9 +4,7 @@ Phase 1 boilerplate project with:
 
  - Express
  - Express Handlebars
- - body-parser
- - tape
- - tap-spec
+ - Jest
  - Nodemon
 
 
