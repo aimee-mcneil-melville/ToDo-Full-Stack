@@ -7,8 +7,8 @@ For this challenge, you'll be making a basic fractal generator that starts with 
 After cloning this repo
 
 ```sh
-yarn
-yarn start
+npm install
+npm start
 ```
 
 and then go to [`http://localhost:3000`](http://localhost:3000).
