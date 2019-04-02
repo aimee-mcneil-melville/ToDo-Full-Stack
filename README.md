@@ -14,8 +14,8 @@ This tutorial walks you through the basics of React development. By the end of i
 After cloning this repo, from the repo's folder:
 
 ```shell
-yarn
-yarn start
+npm install
+npm start
 ```
 
 ![Spinning paw](screenshots/paw.png)
