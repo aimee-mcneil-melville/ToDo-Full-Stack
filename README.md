@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 ```
 
-Plain ol' `DOMContentLoaded`, like in Phase 0. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before _rendering_ our components (making them show up on the page).
+Plain ol' `DOMContentLoaded`, like in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before _rendering_ our components (making them show up on the page).
 
 Take a look at `client/components/App.jsx`:
 
