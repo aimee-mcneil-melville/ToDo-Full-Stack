@@ -13,10 +13,10 @@ Phase 2 boilerplate project with:
 ## Install
 
 ```
-yarn
-yarn knex migrate:latest
-yarn knex seed:run
-yarn dev
+npm install
+npx knex migrate:latest
+npx knex seed:run
+npm run dev
 ```
 
 Be sure to check out the other npm scripts too.
