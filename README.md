@@ -15,8 +15,8 @@ Clone this repo, and:
 
 ```bash
 cd broken-kaleidoscope
-yarn
-yarn dev
+npm i
+npm run dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser. You'll see 'Yup.', just to confirm everything is working.
