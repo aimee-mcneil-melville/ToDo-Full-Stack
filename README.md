@@ -3,8 +3,8 @@
 This repo aims to help you experiment with Redux using an atypical React setup (we'll improve how we integrate with React in a later exercise). After cloning this repo:
 
 ```shell
-yarn
-yarn start
+npm
+npm start
 ```
 
 This will start a [Webpack dev server](https://github.com/webpack/webpack-dev-server). Open [http://localhost:8080](http://localhost:8080) in your browser.
