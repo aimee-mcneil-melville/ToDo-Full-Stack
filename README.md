@@ -19,7 +19,7 @@ npm i
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser. You'll see 'Yup.', just to confirm everything is working.
+Visit [http://localhost:3000](http://localhost:3000) in your browser. You'll see 'React development has begun!', just to confirm everything is working.
 
 
 ## Little steps: get something working
