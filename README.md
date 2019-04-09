@@ -212,7 +212,7 @@ You may find using Postman very useful when testing routes.
 
 ## Gotchas
 
-- The database fields are snake case, but the front end fields are camel case. To make this work, you need to make sure you convert the fields from snake case to camel case when sending from the server to the client, and camel case to snake case when posting to the server. You may find the following links useful (https://lodash.com/docs/4.17.4#camelCase, https://lodash.com/docs/4.17.4#snakeCase)
+- The database fields are snake case, but the front end fields are camel case. To make this work, you need to make sure you convert the fields from snake case to camel case when sending from the server to the client, and camel case to snake case when posting to the server. You may find the following links useful (https://lodash.com/docs/4.17.4#camelCase, https://lodash.com/docs/4.17.4#snakeCase, https://lodash.com/docs/4.17.11#mapKeys)
 - Instead of using `res.render` you will need to use `res.json`
 
 
