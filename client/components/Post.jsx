@@ -31,6 +31,7 @@ class Post extends React.Component {
   deletePost () {
     deletePost(this.props.post.id)
       .then(this.props.fetchPosts)
+      .then(() => this.props.history.push(`/`))
       .catch(err => this.setState({errorMessage: err.message}))
   }
 

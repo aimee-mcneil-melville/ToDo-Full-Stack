@@ -1,10 +1,7 @@
 const express = require('express')
-
-const db = require('../db/db')
-
 const router = express.Router()
 
-router.use(express.json())
+const db = require('../db/db')
 
 // put routes here
 

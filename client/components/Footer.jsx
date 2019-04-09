@@ -1,8 +1,7 @@
 import React from 'react'
 
 function Footer (props) {
-  // TODO (someday, maybe): get data from a real source
-  const copyright = 1980
+  const copyright = '1952 Harper & Brothers'
   const author = 'E. B. White'
 
   return (

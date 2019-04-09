@@ -45,7 +45,9 @@ class App extends React.Component {
             <h1>{this.state.errorMessage}</h1>
           }
         </div>
-        <Footer />
+        <div className='content pure-u-1 pure-u-md-3-4'>
+          <Footer />
+        </div>
       </div>
     )
   }

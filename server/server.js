@@ -6,6 +6,7 @@ const comments = require('./routes/comments')
 
 const server = express()
 server.use(express.static('public'))
+server.use(express.json())
 
 server.use('/v1/posts', posts)
 server.use('/v1/comments', comments)

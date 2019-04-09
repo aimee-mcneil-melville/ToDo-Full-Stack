@@ -35,6 +35,7 @@ class Routes extends React.Component {
           )} />
           <Route path='/posts/:id' render={props => (
             <Post
+              fetchPosts={this.props.fetchPosts}
               post={this.props.posts.find((post) =>
                 post.id === Number(props.match.params.id)
               )}
@@ -43,6 +44,7 @@ class Routes extends React.Component {
           )} />
           <Route path='/posts/:postId/comments/:commentId' render={(props) => (
             <Post
+              fetchPosts={this.props.fetchPosts}
               post={this.props.posts.find(post => (
                 post.id === Number(props.match.params.id)
               ))}
