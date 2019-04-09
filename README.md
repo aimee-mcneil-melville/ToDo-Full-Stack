@@ -15,10 +15,10 @@ The objectives of this challenge are to:
 Clone this repo, and from the repo's folder
 
 ```sh
-yarn
-yarn knex migrate:latest
-yarn knex seed:run
-yarn start
+npm install
+npx knex migrate:latest
+npx knex seed:run
+npm run dev
 ```
 
 ## Exercise
