@@ -20,7 +20,7 @@ class PostForm extends React.Component {
     if (post) this.setNewPost(post)
   }
 
-  componentDidReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps) {
     const {post} = nextProps
     if (post && !this.props.post) this.setNewPost(post)
   }
@@ -58,10 +58,13 @@ class PostForm extends React.Component {
   }
 
   handleChange (e) {
+    let newPost = {
+      ...this.state.post,
+      [e.target.name]: e.target.value
+    }
+    
     this.setState({
-      post: {
-        [e.target.name]: e.target.value
-      }
+      post: newPost
     })
   }
 

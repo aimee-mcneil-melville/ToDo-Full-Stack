@@ -35,15 +35,25 @@ class Comments extends React.Component {
             path={`/posts/${postId}`}
             render={props => (
               <div>
-                <li key={comment.id}>{comment.comment}</li>
-                <Link to={`/posts/${postId}/comments/${comment.id}`}>
-                  <button className='pure-button'>Edit</button>
-                </Link>
-                <button
-                  className='pure-button'
-                  onClick={this.deleteComment}>
-                  Delete
-                </button>
+                <p key={comment.id}>
+                  {comment.comment}<br/>
+
+                  <span className="post-meta">Date Posted: {new Date(comment.datePosted).toDateString()}</span><br/>
+                </p>
+
+                <p>
+                  <Link to={`/posts/${postId}/comments/${comment.id}`}>
+                    <button className='pure-button'>Edit</button>
+                  </Link>
+
+                  <button
+                    className='pure-button'
+                    onClick={this.deleteComment}>
+                    Delete
+                  </button>
+
+                  <br/><br/>
+                </p>
               </div>
             )}
           />

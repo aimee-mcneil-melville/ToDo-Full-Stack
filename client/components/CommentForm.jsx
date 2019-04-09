@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
     super(props)
     this.state = {
       errorMessage: '',
-      comment: props.comment
+      comment: props.comment || { comment: '' }
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -15,7 +15,7 @@ class CommentForm extends React.Component {
     e.preventDefault()
     const {comment, match, fetchComments, history} = this.props
     if (comment) {
-      updateComment(this.state)
+      updateComment(this.state.comment)
         .then(() => fetchComments(comment.postId))
         .then(() => history.push(`/posts/${comment.postId}`))
         .catch(err => this.setState({errorMessage: err.message}))
@@ -35,8 +35,14 @@ class CommentForm extends React.Component {
           name='comment'
           value={this.state.comment.comment}
           onChange={(e) => {
+            let newComment = 
+            {
+              ...this.state.comment,
+              [e.target.name]: e.target.value
+            }
+            
             this.setState({
-              comment: {comment: e.target.value}
+              comment: newComment
             })
           }}
         />

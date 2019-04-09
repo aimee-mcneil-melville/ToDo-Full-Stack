@@ -66,7 +66,9 @@ class Post extends React.Component {
 
         <Link to={`/posts/${id}`}>
           <div className='comment-count'>
-            {this.state.comments.length} comments
+            <p>
+              {this.state.comments.length} comments
+            </p>
           </div>
         </Link>
 

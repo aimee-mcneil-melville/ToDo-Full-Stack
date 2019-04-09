@@ -9,11 +9,13 @@ class Comments extends React.Component {
     const {postId, comments, fetchComments} = this.props
     return (
       <div>
-        <Link
-          className='pure-button'
-          to={`/posts/${postId}/comments/new`}>
-          Add A New Comment
-        </Link>
+        <p>
+          <Link
+            className='pure-button'
+            to={`/posts/${postId}/comments/new`}>
+            Add A New Comment
+          </Link>
+        </p>
         <Route
           path='/posts/:postId/comments/new'
           render={props => (
@@ -23,7 +25,7 @@ class Comments extends React.Component {
             />
           )}
         />
-        <ul>
+        <div>
           {comments.map(comment => (
             <Comment
               key={comment.id}
@@ -32,7 +34,7 @@ class Comments extends React.Component {
               fetchComments={fetchComments}
             />
           ))}
-        </ul>
+        </div>
       </div>
     )
   }
