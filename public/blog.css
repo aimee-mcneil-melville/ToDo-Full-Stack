@@ -143,6 +143,32 @@ h3 {
     text-shadow: 0 1px 1px #333;
 }
 
+.comment {
+    margin-top: 2.5em;
+}
+
+.comment-content {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.comment-date {
+    color: gray;
+    display: block;
+}
+
+.comment-form {
+    margin-top: 2.5em;
+}
+
+.comment-form input[type=submit] {
+    margin-left: 0.5em;
+}
+
+.comment .pure-button {
+    margin-top: 0.5em;
+}
+
 .footer {
     color: gray;
     padding: 1em 0;

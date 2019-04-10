@@ -34,14 +34,11 @@ class Comments extends React.Component {
           <Route
             path={`/posts/${postId}`}
             render={props => (
-              <div>
-                <p key={comment.id}>
-                  {comment.comment}<br/>
-
-                  <span className="post-meta">Date Posted: {new Date(comment.datePosted).toDateString()}</span><br/>
-                </p>
-
+              <div className="comment" key={comment.id}>
                 <p>
+                  <span className="comment-content">{comment.comment}</span>
+                  <span className="comment-date">Date Posted: {new Date(comment.datePosted).toDateString()}</span>
+
                   <Link to={`/posts/${postId}/comments/${comment.id}`}>
                     <button className='pure-button'>Edit</button>
                   </Link>
@@ -51,8 +48,6 @@ class Comments extends React.Component {
                     onClick={this.deleteComment}>
                     Delete
                   </button>
-
-                  <br/><br/>
                 </p>
               </div>
             )}

@@ -58,7 +58,7 @@ class PostForm extends React.Component {
   }
 
   handleChange (e) {
-    let newPost = {
+    const newPost = {
       ...this.state.post,
       [e.target.name]: e.target.value
     }

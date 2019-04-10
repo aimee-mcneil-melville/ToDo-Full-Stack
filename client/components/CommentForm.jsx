@@ -29,13 +29,13 @@ class CommentForm extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="comment-form pure-form" onSubmit={this.handleSubmit}>
         <input
           type='text'
           name='comment'
           value={this.state.comment.comment}
           onChange={(e) => {
-            let newComment = 
+            const newComment = 
             {
               ...this.state.comment,
               [e.target.name]: e.target.value
