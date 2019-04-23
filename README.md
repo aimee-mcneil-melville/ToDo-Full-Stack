@@ -11,7 +11,7 @@ Enter the commands below in your terminal to get started:
 git clone https://github.com/dev-academy-challenges/boilerplate-redux-async
 mv boilerplate-redux-async async-redux-practice
 cd async-redux-practice
-npm
+npm install
 npm run dev
 ```
 
