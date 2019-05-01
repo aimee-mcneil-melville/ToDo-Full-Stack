@@ -1,5 +1,5 @@
-import request from '../utils/api'
 import { saveUserToken } from '../utils/auth'
+import { login } from '../apis/auth'
 
 function requestLogin () {
   return {
@@ -30,11 +30,11 @@ export function loginError (message) {
 export function loginUser (creds) {
   return dispatch => {
     dispatch(requestLogin(creds))
-    return request('post', 'auth/login', creds)
-      .then((response) => {
-        const userInfo = saveUserToken(response.body.token)
+    return login(creds)
+      .then((token) => {
+        const userInfo = saveUserToken(token)
         dispatch(receiveLogin(userInfo))
-        document.location = "/#/"
+        document.location = '/#/'
       })
       .catch(err => {
         dispatch(loginError(err.response.body.message))

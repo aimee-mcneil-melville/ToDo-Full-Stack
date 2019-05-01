@@ -126,24 +126,19 @@ As a user:
 Run the following commands in your terminal:
 
 ```sh
-yarn install
-yarn knex migrate:latest
-yarn knex seed:run
-mv .env_example .env
+npm install
+npx knex migrate:latest
+npx knex seed:run
+mv .env.example .env
 ```
 
 To run in development:
 ```sh
-yarn dev
- - or -
 npm run dev
-
 ```
 
 To run in production:
 ```sh
-yarn start
-  - or -
 npm start
 ```
 
@@ -170,29 +165,21 @@ I have created several npm scripts that will be useful for deploying your app to
 
 To push your local master branch to your heroku app:
 ```sh
-yarn h:deploy
-  - or -
 npm run h:deploy
 ```
 
 Run heroku migrations:
 ```sh
-yarn h:migrate
-  - or -
 npm run h:migrate
 ```
 
 Run heroku seeds:
 ```sh
-yarn h:seed
-  - or -
 npm run h:seed
 ```
 
 If ever you need to rollback, you can also:
 ```sh
-yarn h:rollback
-  - or -
 npm run h:rollback
 ```
 
