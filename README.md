@@ -24,7 +24,7 @@ Depending on where you're from (or your interests) you might either be very fami
 Using what you already know about the language, write a program which scores a game assuming you already know how many pins were knocked down in each frame. You can come up with your own way to represent that data, but we suggest you use something like this example:
 
 ```js
-  var frames = [
+  const frames = [
     [1, 2], [6, 4], [5, 4], [10, 0], [7, 2], [10, 0], [10, 0], [5, 2], [7, 0], [4, 4]
   ]
 ```
@@ -37,7 +37,7 @@ The score for this game is 119.
 If you manage to complete the previous example, try a game with a more complex ending:
 
 ```js
-  var frames = [
+  const frames = [
     [1, 2], [6, 4], [5, 4], [10, 0], [7, 2], [10, 0], [10, 0], [5, 2], [7, 0], [10, 10, 10]
   ]
 ```
