@@ -1,4 +1,4 @@
-# Week 1 Tech-ins
+# Week 2 Tech-ins
 
 This is a self-assessment to help you understand how you're doing with the content and main take-aways from week 1 of the bootcamp. Each of the tasks you can try will have you displaying artist, releases and listener data in various ways inside the terminal.
 
@@ -38,5 +38,4 @@ This is a self-assessment to help you understand how you're doing with the conte
 ## Clean up
 
 1. Push your commits to GitHub.
-2. If you're using a shared computer (like during a tech-in) checkout master for the next student.
 
