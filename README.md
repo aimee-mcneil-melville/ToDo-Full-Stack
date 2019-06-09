@@ -10,11 +10,11 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 You'll find this challenge already has debugging set up for you. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a _console_ program, you'll need to change the `args` property in the configuration to the actual command you'd like to debug. For example,
 
 ```json
-    "program": "${workspaceFolder}/todo",
-    "args": [
-        "done",
-        "1"
-    ]
+  "program": "${workspaceFolder}/todo",
+  "args": [
+      "done",
+      "1"
+  ]
 ```
 
 would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
@@ -31,11 +31,11 @@ would debug the `./todo done 1` command. Ask a teacher for help if you're not su
 
 * Set file permissions.
 
-Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
-
   ```sh
   chmod +x todo
   ```
+
+  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
 
 * Create the Knex configuration file (`knexfile.js`).
 
