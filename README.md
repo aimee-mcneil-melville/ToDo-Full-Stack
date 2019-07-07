@@ -18,7 +18,7 @@ Start the app with `npm run dev` and it will be running on [http://localhost:300
 
 In order to complete the implementation of authentication for this app, we need to make changes on both the client-side and the server-side to enable user registration and sign-in. We're also going to protect certain routes (the ones that alter data) so that only authenticated users can call them. Here is a list of things we need to do:
 
-**Server-side**
+### Server-side
 
 - Create POST routes for `/auth/register` and `/auth/signin`
 - Save a hash of the user's password instead of the clear text password
@@ -27,7 +27,7 @@ In order to complete the implementation of authentication for this app, we need 
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
 
-**Client-side**
+### Client-side
 
 - Determine if the current user is logged in or not
 - Allow the user to register
@@ -93,7 +93,7 @@ The `authenticare/server` package exports a function called `applyAuthRoutes`. [
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 4. Save a hash of the user's password
+## 4. Server-side: Save a hash of the user's password
 
 While we _are_ saving a new user when they register, we're not currently saving their password properly. Have a look at `server/db/users.js` and notice how the `createUser` function is passing the  `password` to the `generateHash` function. Currently that function is just returning `"fake-hash-value"`, but we need it to generate a proper hash.
 
@@ -104,7 +104,7 @@ You may decide at this point to delete and recreate your `server/db/dev.sqlite3`
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 5. Allow the user to sign in
+## 5. Client-side: Allow the user to sign in
 
 Our existing code already has a component where the user can supply their username and password. You can see this if you select the "Sign in" link on the top right of the home page.
 
