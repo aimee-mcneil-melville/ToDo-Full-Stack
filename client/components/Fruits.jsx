@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { IfAuthenticated } from './Authenticated'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import {
@@ -120,35 +119,31 @@ class App extends React.Component {
             value={editingCalories || ''}
             onChange={this.handleEditChange} />
 
-          <IfAuthenticated>
-            <Button type='button'
-              data-testid='update-button'
-              onClick={this.handleUpdate}>Update fruit</Button>
-            <Button type='button'
-              data-testid='delete-button'
-              onClick={this.handleDelete}>Delete fruit</Button>
-          </IfAuthenticated>
+          <Button type='button'
+            data-testid='update-button'
+            onClick={this.handleUpdate}>Update fruit</Button>
+          <Button type='button'
+            data-testid='delete-button'
+            onClick={this.handleDelete}>Delete fruit</Button>
           <Button type='button'
             data-testid='clear-button'
             onClick={this.clearSelected}>Clear selection</Button>
         </GridForm>
 
-        <IfAuthenticated>
-          <h2>Add new</h2>
-          <GridForm>
-            <ColOne>Name:</ColOne>
-            <ColTwo name='name'
-              value={addingName || ''}
-              onChange={this.handleAddChange} />
+        <h2>Add new</h2>
+        <GridForm>
+          <ColOne>Name:</ColOne>
+          <ColTwo name='name'
+            value={addingName || ''}
+            onChange={this.handleAddChange} />
 
-            <ColOne>Calories:</ColOne>
-            <ColTwo name='calories'
-              value={addingCalories || ''}
-              onChange={this.handleAddChange} />
+          <ColOne>Calories:</ColOne>
+          <ColTwo name='calories'
+            value={addingCalories || ''}
+            onChange={this.handleAddChange} />
 
-            <Button type='button' onClick={this.handleAdd}>Add fruit</Button>
-          </GridForm>
-        </IfAuthenticated>
+          <Button type='button' onClick={this.handleAdd}>Add fruit</Button>
+        </GridForm>
       </React.Fragment>
     )
   }
