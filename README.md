@@ -16,9 +16,9 @@ Start the app with `npm run dev` and it will be running on [http://localhost:300
 
 ## Overview
 
-In order to complete the implementation of authentication for this app, we're going to need to make changes on both the client-side and the server-side to enable user registration and sign-in. We're also going to protect certain routes (the ones that alter data) so that only authenticated users can call them. Here is a list of things we need to do:
+In order to complete the implementation of authentication for this app, we need to make changes on both the client-side and the server-side to enable user registration and sign-in. We're also going to protect certain routes (the ones that alter data) so that only authenticated users can call them. Here is a list of things we need to do:
 
-Server-side
+**Server-side**
 
 - Create POST routes for `/auth/register` and `/auth/signin`
 - Save a hash of the user's password instead of the clear text password
@@ -27,7 +27,7 @@ Server-side
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
 
-Client-side
+**Client-side**
 
 - Determine if the current user is logged in or not
 - Allow the user to register
@@ -36,18 +36,18 @@ Client-side
 - Allow the user to log off
 - Hide/show components based on the user's auth status
 
-To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Install it with `npm install authenticare`.
+To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Install it with `npm install authenticare`. If you would rather not use `authenticare` and take the more difficult route and implement the low-level steps that `authenticare` does for you, [use these instructions](by-hand.md) instead.
 
 
-### 0. Have a look around first
+## 0. Have a look around first
 
 No need to rush into this. Get familiar with the code base first. There might be some patterns you haven't seen before.
 
-For example, this code also uses [`styled-components`](https://www.styled-components.com). It is also using the new React hooks feature for getting component state on functional components. There is also a nice use of `props.children` in the `Authenticated` components.
+For example, this code also uses [`styled-components`](https://www.styled-components.com). It is also using the new React hooks feature for using component state on functional components. There is also a nice use of `props.children` in the `Authenticated` components.
 
 Also, get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones.
 
-Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down the UI and the Web API.
+Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the Web API to only authenticated users.
 
 
 ## 1. Client-side: Determine if the current user is signed in
@@ -74,7 +74,7 @@ After we get the call to `register` in place, we should have enough implemented 
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-### 3. Server-side: Create auth routes
+## 3. Server-side: Create auth routes
 
 Our code already contains a file where we're going to place these routes: `/server/routes/auth.js`. `authenticare` is going to do all of the heavy lifting while responding to requests for new user registrations or user signins. There are 3 actions `authenticare` needs to do, but we need to provide the functions that perform these actions:
 
@@ -93,7 +93,7 @@ The `authenticare/server` package exports a function called `applyAuthRoutes`. [
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-### 4. Save a hash of the user's password
+## 4. Save a hash of the user's password
 
 While we _are_ saving a new user when they register, we're not currently saving their password properly. Have a look at `server/db/users.js` and notice how the `createUser` function is passing the  `password` to the `generateHash` function. Currently that function is just returning `"fake-hash-value"`, but we need it to generate a proper hash.
 
@@ -104,7 +104,7 @@ You may decide at this point to delete and recreate your `server/db/dev.sqlite3`
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-### 5. Allow the user to sign in
+## 5. Allow the user to sign in
 
 Our existing code already has a component where the user can supply their username and password. You can see this if you select the "Sign in" link on the top right of the home page.
 
@@ -139,7 +139,7 @@ Now that we're sending the token to authenticate our requests, our attempts to a
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## Client-side: Allow the user to log off
+## 8. Client-side: Allow the user to log off
 
 Logging off in this application is as simple as removing the `token` field from the localStorage. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOut` function from `authenticare/client` to do this for us.
 
@@ -148,7 +148,7 @@ The event handler for logging off is currently in the `client/components/Nav.jsx
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## Client-side: Hide/show components based on auth status
+## 9. Client-side: Hide/show components based on auth status
 
 You won't need `authenticare` for this step. The components you need are already in place.
 
