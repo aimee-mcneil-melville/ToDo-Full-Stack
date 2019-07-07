@@ -18,15 +18,6 @@ Start the app with `npm run dev` and it will be running on [http://localhost:300
 
 In order to complete the implementation of authentication for this app, we need to make changes on both the client-side and the server-side to enable user registration and sign-in. We're also going to protect certain routes (the ones that alter data) so that only authenticated users can call them. Here is a list of things we need to do:
 
-### Server-side
-
-- Create POST routes for `/auth/register` and `/auth/signin`
-- Save a hash of the user's password instead of the clear text password
-- Make the following routes accept only authenticated requests
-    - PUT `/api/v1/fruits`
-    - POST `/api/v1/fruits`
-    - DELETE `/api/v1/fruits`
-
 ### Client-side
 
 - Determine if the current user is logged in or not
@@ -35,6 +26,15 @@ In order to complete the implementation of authentication for this app, we need 
 - Send the authorization token with each request
 - Allow the user to log off
 - Hide/show components based on the user's auth status
+
+### Server-side
+
+- Create POST routes for `/auth/register` and `/auth/signin`
+- Save a hash of the user's password instead of the clear text password
+- Make the following routes accept only authenticated requests
+    - PUT `/api/v1/fruits`
+    - POST `/api/v1/fruits`
+    - DELETE `/api/v1/fruits`
 
 To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Install it with `npm install authenticare`. If you would rather not use `authenticare` and take the more difficult route and implement the low-level steps that `authenticare` does for you, [use these instructions](by-hand.md) instead.
 
