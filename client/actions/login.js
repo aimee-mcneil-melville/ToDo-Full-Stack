@@ -1,7 +1,7 @@
 import { saveUserToken } from '../utils/auth'
 import { login } from '../apis/auth'
 
-function requestLogin () {
+export function requestLogin () {
   return {
     type: 'LOGIN_REQUEST',
     isFetching: true,
