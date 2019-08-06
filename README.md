@@ -45,3 +45,9 @@ If you manage to complete the previous example, try a game with a more complex e
 The score for this game is 141.
 
 If you would benefit from an interactive illustration, check out this [Bowling Score Calculator](http://www.bowlinggenius.com/).
+
+You can write your code in `game.js`. To run your code you can just run:
+```
+node game.js
+```
+Remember, you will only see output from running your game.js file if your code has `console.log` calls.
