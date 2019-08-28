@@ -1,17 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import * as localDb from '../localDb'
 import SimpleItemForm from './SimpleItemForm'
 
 class SimpleItems extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      items: []
-    }
-    this.saveItem = this.saveItem.bind(this)
-    this.deleteItem = this.deleteItem.bind(this)
+  state = {
+    items: []
   }
 
   componentDidMount () {
@@ -20,14 +15,14 @@ class SimpleItems extends React.Component {
     })
   }
 
-  saveItem (item) {
+  saveItem = item => {
     localDb.addItem(item)
     this.setState({
       items: localDb.getItems()
     })
   }
 
-  deleteItem (evt, id) {
+  deleteItem = (evt, id) => {
     localDb.deleteItem(id)
     this.setState({
       items: this.state.items.filter(item => item.id !== id)
@@ -35,7 +30,7 @@ class SimpleItems extends React.Component {
     evt.preventDefault()
   }
 
-  getItem (item) {
+  getItem = item => {
     const {id, name, description, color} = item
     return (
       <tr key={id} className='item' onContextMenu={(evt) => this.deleteItem(evt, id)}>

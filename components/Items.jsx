@@ -1,17 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import * as localDb from '../localDb'
 import ItemForm from './ItemForm'
 
 class Items extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      items: [],
-      editItem: null
-    }
-    this.saveItem = this.saveItem.bind(this)
+  state = {
+    items: [],
+    editItem: null
   }
 
   componentDidMount () {
@@ -20,13 +16,13 @@ class Items extends React.Component {
     })
   }
 
-  editItem (id) {
+  editItem = id => {
     this.setState({
       editItem: {...this.state.items.find(item => item.id === id)}
     })
   }
 
-  deleteItem (id, evt) {
+  deleteItem = (id, evt) => {
     evt.preventDefault()
 
     localDb.deleteItem(id)
@@ -35,7 +31,7 @@ class Items extends React.Component {
     })
   }
 
-  getItem (item) {
+  getItem = item => {
     const {id, name, description, color} = item
     const editItem = this.editItem.bind(this, id)
     const deleteItem = this.deleteItem.bind(this, id)
@@ -49,9 +45,9 @@ class Items extends React.Component {
     )
   }
 
-  saveItem (item) {
+  saveItem = item => {
     if (this.state.editItem) {
-      localDb.saveItem(item)
+      localDb.updateItem(item)
       this.setState({
         items: this.state.items.map(i => i.id === item.id ? item : i),
         editItem: null

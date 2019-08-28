@@ -9,46 +9,45 @@ const defaultState = {
 }
 
 class SimpleItemForm extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {...defaultState}
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  state = {
+    ...defaultState
   }
 
-  handleSubmit (evt) {
+  handleSubmit = evt => {
     this.props.saveItem(this.state)
     this.setState({...defaultState})
     evt.preventDefault()
   }
 
-  handleChange (evt) {
+  handleChange = evt => {
+    const { name, value } = evt.target
     this.setState({
-      [evt.target.name]: evt.target.value
+      [name]: value
     })
   }
 
   render () {
+    const { name, description, color } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='name'>Name</label>
         <input type='text' name='name'
           className='u-full-width'
-          value={this.state.name}
           onChange={this.handleChange}
+          value={name}
         />
 
         <label htmlFor='description'>Description</label>
         <textarea name='description'
           className='u-full-width'
-          value={this.state.description}
           onChange={this.handleChange}
+          value={description}
         />
 
         <label htmlFor='color'>Colour</label>
         <select name='color' className='u-full-width'
-          value={this.state.color}
           onChange={this.handleChange}
+          value={color}
         >
           {colorList.map(color => (
             <option key={color} value={color}>{color}</option>

@@ -9,27 +9,21 @@ const defaultState = {
 }
 
 class ItemForm extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      errors: {
-        isRequired: 'This field cannot be empty.',
-        isNotChartreuse: 'Nobody likes chartreuse.'
-      },
-      item: {...defaultState},
-      invalid: {},
-      validation: {
-        name: [ 'isRequired' ],
-        color: [ 'isNotChartreuse' ]
-      },
-      validators: {
-        isRequired: val => val && val.length,
-        isNotChartreuse: color => color !== 'chartreuse'
-      }
+  state = {
+    errors: {
+      isRequired: 'This field cannot be empty.',
+      isNotChartreuse: 'Nobody likes chartreuse.'
+    },
+    item: {...defaultState},
+    invalid: {},
+    validation: {
+      name: [ 'isRequired' ],
+      color: [ 'isNotChartreuse' ]
+    },
+    validators: {
+      isRequired: val => val && val.length,
+      isNotChartreuse: color => color !== 'chartreuse'
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.resetForm = this.resetForm.bind(this)
   }
 
   componentWillReceiveProps ({editItem}) {
@@ -38,16 +32,17 @@ class ItemForm extends React.Component {
     }
   }
 
-  handleChange (evt) {
+  handleChange = evt => {
+    const { name, value } = evt.target
     this.setState({
       item: {
         ...this.state.item,
-        [evt.target.name]: evt.target.value
+        [name]: value
       }
     })
   }
 
-  handleSubmit (evt) {
+  handleSubmit = evt => {
     if (this.validate()) {
       this.props.saveItem(this.state.item)
       this.resetForm()
@@ -55,7 +50,7 @@ class ItemForm extends React.Component {
     evt.preventDefault()
   }
 
-  resetForm (evt) {
+  resetForm = evt => {
     this.setState({
       item: {...defaultState},
       invalid: {}
@@ -83,9 +78,8 @@ class ItemForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='name'>Name</label>
-        <input type='text'
+        <input type='text' name='name'
           className='u-full-width'
-          name='name'
           value={this.state.item.name}
           onChange={this.handleChange}
         />
@@ -97,10 +91,12 @@ class ItemForm extends React.Component {
         <label htmlFor='description'>Description</label>
         <textarea name='description' className='u-full-width'
           value={this.state.item.description}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+        />
 
         {this.state.invalid.description &&
-          <div className='error'>{this.state.invalid.description}</div>}
+          <div className='error'>{this.state.invalid.description}</div>
+        }
 
         <label htmlFor='color'>Colour</label>
         <select name='color' className='u-full-width'
