@@ -1,27 +1,25 @@
 # Knex Relationships
 
-User stories for RDBMS practice.
+User stories for practicing with relational databases and related tools.
 
 
-## Install
+## Setup
 
-Enter the commands below in your terminal to get started:
+Some of the setup for a sample application has already been done for you.
 
-```shell
-git clone https://github.com/dev-academy-challenges/boilerplate-knex
-mv boilerplate-knex knex-relationships
-cd knex-relationships
-npm install
-npx knex migrate:latest
-npx knex seed:run
-npm start
-```
+1. Install `knex` and `sqlite3` as normal dependencies.
 
-If you would like to push changes to a branch in this repository, [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to this repo:
+2. Install `jest` and `supertest` as dev dependencies.
 
-```shell
-git remote set-url origin https://github.com/[YOUR-COHORT-ORG]/knex-relationships-stories
-```
+3. Apply the existing migrations that have already been created for you. This will create your database with an initial `users` table.
+
+4. Add data to the database by applying the seed data.
+
+5. Ensure the initial tests pass by running `npm test`.
+
+6. You can start the app with `npm start` and navigate to [http://localhost:3000](http://localhost:3000).
+
+Now you should be ready to complete the rest of this challenge.
 
 
 ## MVP
