@@ -118,12 +118,14 @@ Response:
 Request:
 
 ```json
+{
   "id": 144,
   "title": "This is my updated post",
   "paragraphs": [
     "I like how I can update posts.",
     "It is fun."
   ]
+}
 ```
 
 Response:
