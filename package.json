@@ -21,6 +21,7 @@
     ]
   },
   "jest": {
+    "testURL": "http://localhost",
     "setupFiles": [
       "./tests/setup.js"
     ]
