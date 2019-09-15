@@ -9,7 +9,7 @@ import {
   deleteFruit
 } from '../api'
 
-class App extends React.Component {
+class Fruits extends React.Component {
   state = {
     fruits: [],
     adding: {},
@@ -149,4 +149,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default Fruits
