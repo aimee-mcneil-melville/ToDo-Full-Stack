@@ -1,5 +1,7 @@
 # Authentication with JSON Web Tokens (JWTs)
 
+# This is an assessed exercise
+
 This repo contains a working app that includes CRUD operations for fruit :wink: It has the beginnings of authentication such as a `Nav` component with hyperlinks for registering and signing in and a component to conditionally hide/show its child components based on if the user is authenticated.
 
 Your task is to complete the authentication implementation of this app.
