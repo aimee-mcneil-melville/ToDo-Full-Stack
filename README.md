@@ -1,5 +1,7 @@
 # Async Redux
 
+# This is an assessed exercise
+
 User stories for practice with async actions in Redux.
 
 
