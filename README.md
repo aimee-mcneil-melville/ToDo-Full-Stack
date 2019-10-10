@@ -1,5 +1,7 @@
 # Meowtown
 
+# This is an assessed exercise
+
 In this challenge we're going to build a fun project called Meowtown. You can probably guess its inspiration :wink:
 
 
