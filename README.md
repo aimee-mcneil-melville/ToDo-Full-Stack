@@ -1,5 +1,7 @@
 # Charlotte's Web Log API
 
+# This is an assessed exercise
+
 Last week you created a frontend blog for Charlotte. In this exercise, you'll build an API for her blog.
 
 ![Charlotte's Web](charlottes-web.png)
