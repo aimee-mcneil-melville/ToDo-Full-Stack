@@ -1,5 +1,7 @@
 # knex-joins-stories
 
+# This is an assessed exercise
+
 User stories to implement when practising joins.
 
 
