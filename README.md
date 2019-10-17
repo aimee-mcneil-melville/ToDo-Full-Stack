@@ -49,6 +49,7 @@ Creating a web server with Express.js
 
 ## 5. Enable a folder of static files
 
+* Read ExpressJS docs recommendations regarding static files: http://expressjs.com/en/starter/static-files.html
 * Create a `public` folder in the project's main folder.
 * Create a CSS file called `styles.css` that makes `silvia.html` and `sampson.html` look nicer and save it to the `public` folder. You might need to adjust the HTML files a bit.
 * Add a link to `/styles.css` to `silvia.html` and `sampson.html` so the styles will be applied.
