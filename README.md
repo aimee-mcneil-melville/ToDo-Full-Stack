@@ -41,7 +41,8 @@ When you're learning a new technology, make sure you start simple and get that w
 4. Pass the object as the second argument to render:
 
   ```js
-    res.render('home', viewData)
+    const template = 'home'
+    res.render(template, viewData)
   ```
 
 5. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
