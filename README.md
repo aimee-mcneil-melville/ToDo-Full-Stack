@@ -59,7 +59,7 @@ would debug the `./todo done 1` command. Ask a teacher for help if you're not su
       * `id` (auto incrementing)
       * `task`: string
 
-  The documentation for [`hasTable`](https://knexjs.org/#Schema-hasTable) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
+  The documentation for [`dropTable`](http://knexjs.org/#Schema-dropTable) might be helpful.
 
   2. Use `npx knex migrate:latest` to apply the changes to the database.
 
