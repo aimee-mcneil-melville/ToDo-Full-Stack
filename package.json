@@ -5,7 +5,9 @@
   "author": "EDA",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack && node server",
+    "dev": "nodemon server & webpack --watch",
+    "test": "jest --watch"
   },
   "babel": {
     "plugins": [
@@ -24,11 +26,15 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "redux": "^4.0.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
