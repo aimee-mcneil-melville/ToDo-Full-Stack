@@ -12,7 +12,7 @@ This will start a [Webpack dev server](https://github.com/webpack/webpack-dev-se
 
 ## Redux DevTools
 
-Install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/remotedev/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+Install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 
 
 ## Exercise
