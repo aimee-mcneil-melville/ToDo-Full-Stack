@@ -127,6 +127,8 @@ The `server/routes/fruits.js` file contains the fruit-related routes. To determi
 
 The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function that we can use our routes. For the fruit routes, you just need to replace the fake `decodeToken` function with the one from `authenticare`. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/getTokenDecoder.md) to see an example. Each of the `PUT`, `POST` and `DELETE` routes already have the `getTokenDecoder` function in place. So now you can try to add, update or delete some fruit from the UI and you should see errors in the developer tools console.
 
+> Note: At this point you will not be able to add, update or delete fruits because the routes are protected and you're not yet sending the token in the requests. That's what you'll do in the next step. If you try, you will get an HTTP `401` (bad request - JWT malformed) response, which is exactly what you want.
+
 Now is a good time to commit your changes and swap driver/navigator.
 
 
