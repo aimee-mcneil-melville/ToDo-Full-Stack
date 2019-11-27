@@ -11,6 +11,9 @@ test('Title renders on App', () => {
   const wrapper = shallow(<App auth={{isAuthenticated: false}}/>)
   const actual = wrapper.find('h1').text()
 
+  // Debug output
+  // console.log(wrapper.debug())
+
   // Assert
   expect(actual).toEqual(expected)
 })
