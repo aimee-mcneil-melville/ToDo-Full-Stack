@@ -1,7 +1,7 @@
 const { hashSync } = require('bcrypt')
 const saltRounds = 10
 
-exports.seed = function (knex, Promise) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(function () {
@@ -10,10 +10,10 @@ exports.seed = function (knex, Promise) {
         {
           id: 1,
           user_name: 'admin',
+          hash: hashSync('Krang', saltRounds),
           first_name: 'Admin',
           last_name: 'Istrator',
-          hash: hashSync('Krang', saltRounds),
-          hourly_wage: 300
+          hourly_wage: 300,
         }
       ])
     })

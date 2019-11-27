@@ -1,6 +1,6 @@
 # $how Me The Money
 
-# Week 7 Group Project
+## Week 7 Large group project
 
 Meetings are expensive, but sometimes we forget how expensive they are and feel the need to talk for too long about topics that are unimportant for the meeting purpose.
 
@@ -11,6 +11,20 @@ This cost is calculated based on the hourly wages of the meeting's attendees and
 
 The intended effect of this App is to make meeting attendees aware of how much this time is costing the business.
 
+## The Tech
+
+A Boilerplate is already set up for you (Thanks Harrison!) with everything you will need to get started. This boilerplate is set up to use:
+
+* [React](https://reactjs.org/docs/getting-started.html)
+* [Redux](https://redux.js.org/)
+* [Express](https://expressjs.com/en/api.html)
+* [Knex.js (SQL)](https://knexjs.org/)
+* [Bulma (CSS framework)](https://bulma.io/documentation/)
+* [JWT Auth (Local)](https://jwt.io/)
+
+The Migration and seeds for the users table, and all login functionality is already set up!
+
+The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate that view in your project goals!
 
 ## User Stories
 
