@@ -1,6 +1,6 @@
 # Charlotte's Web Log API
 
-# This is an assessed exercise
+## This is an assessed exercise
 
 Last week you created a frontend blog for Charlotte. In this exercise, you'll build an API for her blog.
 
@@ -25,8 +25,9 @@ npm run dev
 
 ## Exercise
 
-**Important** Read this entire file before beginning the challenge.
+**Important**: Read this entire file before beginning the challenge.
 
+> Because the frontend has been written with the API specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Postman to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
 
 ### Overview
 
@@ -42,11 +43,23 @@ Your task is to write the API routes (and associated database queries) that will
 
 The React frontend, including client side components and routes, has already been written for you. As you complete each part, you will be able to see the blog take shape.
 
-The database migrations and seeds have also already been written for you so you don't have to worry about populating your database with data.
+The database migrations and seeds have also already been written for you so you don't have to worry about designing the database and populating it with data.
 
 - Write your database functions in `server/db/db.js`
 - Write your API functions in `server/routes/posts.js`
 - Try implementing the database and API routes one at a time (i.e. write the database query first, and then write the corresponding api route before moving on to the next database query)
+
+
+### What's up with the paragraphs?
+
+You will notice in the request and response payloads below that the paragraphs are _arrays of strings_. This decision is motivated more for a learning opportunity than as a real-world scenario, and you're going to need to keep this in mind when building the backend. The challenge with this approach is we can't store an array of strings in a database field and joining to a `paragraphs` table is just yucky.
+
+So to make this work, you need to do two things:
+- `JSON.stringify` the `paragraphs` property before saving it to the database, and
+- `JSON.parse` it after you get the value from the database, and before you send the response to the client
+
+You can do this in either the route, the database function, or in a separate _mapping_ module. A mapping module is the most appropriate place to do it (and to convert between snake_case and camelCase), but you can choose the route or database function if you don't want to create another module.
+
 
 ### Routes
 
@@ -211,17 +224,15 @@ Response:
 }
 ```
 
-You may find using Postman very useful when testing routes.
-
 
 ## Gotchas
 
-- The database fields are snake case, but the front end fields are camel case. To make this work, you need to make sure you convert the fields from snake case to camel case when sending from the server to the client, and camel case to snake case when posting to the server. You may find the following links useful:
+- The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries. If you'd rather use an external library, you may find the following links useful:
+  - https://www.npmjs.com/package/camelcase-keys
   - https://lodash.com/docs/4.17.4#camelCase
   - https://lodash.com/docs/4.17.4#snakeCase
   - https://lodash.com/docs/4.17.11#mapKeys
 - Instead of using `res.render` you will need to use `res.json`
-- You may run into trouble with the way `paragraphs` is encoded in the database. Pay careful attention to its structure and think about how you might interpret the data before sending the response!
 
 
 ## Stretch Goals
