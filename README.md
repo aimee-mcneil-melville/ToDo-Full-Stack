@@ -52,7 +52,7 @@ The database migrations and seeds have also already been written for you so you 
 
 ### What's up with the paragraphs?
 
-You will notice in the request and response payloads below that the paragraphs are _arrays of strings_. This decision is motivated more for a learning opportunity than as a real-world scenario, and you're going to need to keep this in mind when building the backend. The challenge with this approach is we can't store an array of strings in a database field and joining to a `paragraphs` table is just yucky.
+You will notice in the request and response payloads below that the paragraphs are _arrays of strings_. This decision is motivated more for a learning opportunity than as a real-world scenario, and you're going to need to keep this in mind when building the backend. The challenge with this approach is we can't store an array of strings in a database field and joining to a `paragraphs` table isn't the database design we're going for.
 
 So to make this work, you need to do two things:
 - `JSON.stringify` the `paragraphs` property before saving it to the database, and
