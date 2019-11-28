@@ -27,7 +27,7 @@ npm run dev
 
 **Important**: Read this entire file before beginning the challenge.
 
-> Because the frontend has been written with the API specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Postman to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
+> **Pro tip**: Because the frontend has been written with the API specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Postman to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
 
 ### Overview
 
