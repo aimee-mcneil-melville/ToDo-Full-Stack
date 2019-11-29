@@ -19,13 +19,12 @@ Make sure you can go to [http://localhost:3000/designs/listing.html](http://loca
 
 The files that create the initial experience are `public/designs/listing.html` and `public/designs/cart.html` along with the associated CSS styles. Start with creating React components for the listing. This will probably translate to the following components:
 
-* `<App />` (stateful: for navigation)
-* `<Header />`
-* `<Listing />` (stateful: for beers)
+* `<App />` (stateful: for navigation and beers)
+* `<Header />` 
 * `<BeerList />`
 * `<BeerListItem />`
 
-You might consider importing `data/beers.js` into the `Listing` component and passing the array into the `BeerList` component.
+You might consider importing `data/beers.js` into the `App` component and passing the array into the `BeerList` component.
 
 At this point, don't worry about making the link to the cart work or even using Redux. Just get the initial view working with components instead of static HTML.
 
@@ -34,8 +33,7 @@ At this point, don't worry about making the link to the cart work or even using 
 
 Now do the same _React componetisation_ exercise for `public/designs/cart.html`. This will probably mean the following components:
 
-* `<Cart />` (stateful: for cart)
-* `<CartList />` (`<table>`, `<thead>` and `<tbody>`)
+* `<Cart />` (stateful: for cart with `<table>`, `<thead>` and `<tbody>`)
 * `<CartListItem />` (`<tr>`s)
 
 Again, don't implement a Redux store, or any button actions at this point.
