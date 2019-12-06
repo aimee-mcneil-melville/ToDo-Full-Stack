@@ -3,12 +3,10 @@ import request from 'superagent'
 export function getPosts () {
   return request.get('/v1/posts')
     .then(res => {
-      const posts = res.body
-      return posts
+      res.body.forEach((post) => validateNoSnakeCase(post))
+      return res.body
     })
-    .catch(() => {
-      throw Error('You need to implement an API route for /v1/posts')
-    })
+    .catch(errorHandler('GET', '/v1/posts'))
 }
 
 export function addPost (post) {
@@ -17,9 +15,11 @@ export function addPost (post) {
   return request.post('/v1/posts')
     .send(post)
     .then(res => {
-      const returnedPost = res.body
-      return returnedPost
+      validateNoSnakeCase(res.body)
+      validatePostResponse('POST', 'v1/posts', res.body)
+      return res.body
     })
+    .catch(errorHandler('POST', '/v1/posts'))
 }
 
 export function updatePost (post) {
@@ -28,49 +28,95 @@ export function updatePost (post) {
   return request.put(`/v1/posts/${post.id}`)
     .send(post)
     .then(res => {
-      const returnedPost = res.body
-      return returnedPost
+      validateNoSnakeCase(res.body)
+      validatePostResponse('PUT', 'v1/posts/:id', res.body)
+      return res.body
     })
+    .catch(errorHandler('PUT', '/v1/posts/:id'))
 }
 
 export function deletePost (postId) {
   return request.del(`/v1/posts/${postId}`)
     .then(res => {
-      const returnedPost = res.body
-      return returnedPost
+      validateNoSnakeCase(res.body)
+      return res.body
     })
+    .catch(errorHandler('DELETE', '/v1/posts/:id'))
 }
 
 export function getCommentsByPostId (postId) {
   return request.get(`/v1/posts/${postId}/comments`)
     .then(res => {
-      const returnedComments = res.body
-      return returnedComments
+      validateNoSnakeCase(res.body)
+      return res.body
     })
+    .catch(errorHandler('GET', '/v1/posts/:id/comments'))
 }
 
 export function addCommentByPostId (postId, comment) {
   return request.post(`/v1/posts/${postId}/comments`)
     .send(comment)
     .then(res => {
-      const returnedComment = res.body
-      return returnedComment
+      validateNoSnakeCase(res.body)
+      return res.body
     })
+    .catch(errorHandler('POST', '/v1/posts/:id/comments'))
 }
 
 export function updateComment (comment) {
   return request.put(`/v1/comments/${comment.id}`)
     .send(comment)
     .then(res => {
-      const returnedComment = res.body
-      return returnedComment
+      validateNoSnakeCase(res.body)
+      return res.body
     })
+    .catch(errorHandler('PUT', '/v1/comments/:id'))
 }
 
 export function deleteComment (commentId) {
   return request.del(`/v1/comments/${commentId}`)
     .then(res => {
-      const returnedComment = res.body
-      return returnedComment
+      validateNoSnakeCase(res.body)
+      return res.body
     })
+    .catch(errorHandler('DELETE', '/v1/comments/:id'))
+}
+
+function errorHandler (method, route) {
+  return (err) => {
+    if (err.message === 'Not Found') {
+      throw Error(`Error: You need to implement an API route for ${method} ${route}`)
+    }
+  }
+}
+
+function validateNoSnakeCase (response) {
+  const hasSnakeCase = Object.keys(response).some(key => key.includes('_'))
+  if (hasSnakeCase) {
+    throw Error('Error: you should not be returning properties in snake_case')
+  }
+}
+
+function validatePostResponse (method, route, post) {
+  if (!post) {
+    throw Error(`Error: ${method} ${route} should return a blog post`)
+  }
+
+  const { title, paragraphs } = post
+
+  if (!title || !paragraphs) {
+    throw Error(`Error: ${method} ${route} is not returning a correct blog post`)
+  }
+}
+
+function validateCommentResponse (method, route, comment) {
+  if (!post) {
+    throw Error(`Error: ${method} ${route} should return a comment`)
+  }
+
+  const { title, paragraphs } = comment
+
+  if (!title || !paragraphs) {
+    throw Error(`Error: ${method} ${route} is not returning a correct comment`)
+  }
 }
