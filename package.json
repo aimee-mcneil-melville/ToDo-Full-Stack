@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.17.6"
+    "knex": "^0.19.5"
   }
 }
