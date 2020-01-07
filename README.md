@@ -1,6 +1,6 @@
 # Kata: Modules, first-class functions, strings and numbers
 
-This kata is similar to the others. Some tests have been written in the `tests` folder and the challenge is to get them to pass. The stubs of the functions they tests are defined in `utilities.js`, but they are empty. You'll work through all the functions until all of the tests pass.
+This kata is similar to the others. Some tests have been written in the `tests` folder and the challenge is to get them to pass. The stubs of the functions they test are defined in `utilities.js`, but they are empty. You'll work through all the functions until all of the tests pass.
 
 ## Setup
 
