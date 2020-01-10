@@ -5,3 +5,4 @@ test('types.getObject returns an object', function () {
   const actual = typeof types.getObject()
   expect(actual).toBe(expected)
 })
+

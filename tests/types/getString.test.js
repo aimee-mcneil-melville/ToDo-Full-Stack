@@ -5,3 +5,4 @@ test('types.getString returns a string', function () {
   const actual = typeof types.getString()
   expect(actual).toBe(expected)
 })
+

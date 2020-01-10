@@ -5,3 +5,4 @@ test('types.getNull returns null', function () {
   const actual = types.getNull()
   expect(actual).toBe(expected)
 })
+

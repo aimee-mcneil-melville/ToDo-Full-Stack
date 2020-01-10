@@ -5,3 +5,4 @@ test('types.getFunction returns a function', function () {
   const actual = typeof types.getFunction()
   expect(actual).toBe(expected)
 })
+
