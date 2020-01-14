@@ -7,7 +7,7 @@ In this challenge we're going to build a fun project called Meowtown. You can pr
 
 ## Release 1
 
-Clone the repo, run `yarn && yarn start`, and visit [http://localhost:3000](http://localhost:3000).
+Clone the repo, run `npm install && npm start`, and visit [http://localhost:3000](http://localhost:3000).
 
 What happens? Can you view `server.js` and work out what you are seeing and why you are seeing it? Talk it through with your pair and compare ideas.
 
