@@ -96,9 +96,12 @@ const port = process.env.PORT || 3000
 
 - If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
 
-- SQLite and PostgreSQL have numerous small differences.  If you are using SQLite only for development, it is recommended that you also test your app using a PostgreSQL database on your local machine before deployment.  Some known differences are:
+- SQLite and PostgreSQL have numerous small differences.  If you are using SQLite only for development, it is recommended that you also test your app using a PostgreSQL database on your local machine before deployment. Refer to the Knex documentation for solutions. Some known differences are:
     - PostgreSQL enforces relationships whereas SQLite does not.
-    - PostgreSQL returns a different result from a `.insert` command
     - The Knex `table.string('column_name')` has a 255 character limit.  PostgreSQL enforces this whereas SQLite does not.
-    - Refer to the Knex documentation for solutions
-
+    - PostgreSQL returns a different result from a `.insert` command. To have the insert return the generated id, add the string `id` as the second parameter of your insert.
+    
+ ```js
+ return db('users')
+    .insert(newUser, 'id')
+ ```
