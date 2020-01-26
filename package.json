@@ -32,7 +32,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
     "superagent": "^4.1.0",
-    "webpack": "^4.29.6",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.0"
   }
 }
