@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: 126,
     title: 'The beginning of an idea',
