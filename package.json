@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.2"
+    "express-handlebars": "^3.1.0"
   },
   "devDependencies": {
     "jest": "^24.1.0",
