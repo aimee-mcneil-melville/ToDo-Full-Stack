@@ -38,7 +38,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
-    "enzyme": "^3.9.0",
+    "enzyme": "^3.11.0",
     "jest": "^24.7.1",
     "jsdom": "^14.0.0",
     "react": "^16.8.6",
