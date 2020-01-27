@@ -46,6 +46,6 @@
     "react": "^16.9.0",
     "react-dom": "^16.2.0",
     "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.3.10"
   }
 }
