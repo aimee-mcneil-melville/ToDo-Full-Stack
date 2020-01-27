@@ -46,4 +46,4 @@ Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox
 
 Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
 
-For a stretch, use [`browser-string-hasher`](https://www.npmjs.com/package/browser-string-hasher) or [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
