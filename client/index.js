@@ -1,8 +1,8 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const App = require('./App')
+import App from './App'
+
 const placeToMount = document.getElementById('root')
 
 ReactDOM.render(<App />, placeToMount)
-

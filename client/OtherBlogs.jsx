@@ -1,19 +1,16 @@
-const React = require('react')
+import React from 'react'
 
-const OtherBlog = require('./OtherBlog')
+import OtherBlog from './OtherBlog'
 
-function OtherBlogs (props) {
-  return (
-    <div className='other-blogs'>
-      <header>Other blogs</header>
-      <ul>
-        {props.blogs.map((blog, key) => {
-          return <OtherBlog key={key} blog={blog} />
-        })}
-      </ul>
-    </div>
-  )
-}
+const OtherBlogs = props => (
+  <div className='other-blogs'>
+    <header>Other blogs</header>
+    <ul>
+      {props.blogs.map(blog => {
+        return <OtherBlog key={blog.id} blog={blog} />
+      })}
+    </ul>
+  </div>
+)
 
-module.exports = OtherBlogs
-
+export default OtherBlogs

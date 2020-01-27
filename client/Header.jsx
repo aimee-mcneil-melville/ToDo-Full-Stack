@@ -1,7 +1,7 @@
-const React = require('react')
+import React from 'react'
 
-function Header (props) {
-  const {title, link} = props.content
+const Header = props => {
+  const { title, link } = props.content
   return (
     <div className='header'>
       <h1><a href={link}>{title}</a></h1>
@@ -9,5 +9,4 @@ function Header (props) {
   )
 }
 
-module.exports = Header
-
+export default Header

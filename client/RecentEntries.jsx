@@ -1,19 +1,16 @@
-var React = require('react')
+import React from 'react'
 
-var RecentEntry = require('./RecentEntry')
+import RecentEntry from './RecentEntry'
 
-function RecentEntries (props) {
-  return (
-    <div className='recent-entries'>
-      <header>Recent entries</header>
-      <ul>
-        {props.entries.map((entry, key) => {
-          return <RecentEntry key={key} entry={entry} />
-        })}
-      </ul>
-    </div>
-  )
-}
+const RecentEntries = props => (
+  <div className='recent-entries'>
+    <header>Recent entries</header>
+    <ul>
+      {props.entries.map(entry => {
+        return <RecentEntry key={entry.id} entry={entry} />
+      })}
+    </ul>
+  </div>
+)
 
-module.exports = RecentEntries
-
+export default RecentEntries

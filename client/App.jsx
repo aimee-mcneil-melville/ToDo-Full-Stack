@@ -1,30 +1,27 @@
-const React = require('react')
+import React from 'react'
 
-const Header = require('./Header')
-const OtherBlogs = require('./OtherBlogs')
-const RecentEntries = require('./RecentEntries')
-const Posts = require('./Posts')
-const Footer = require('./Footer')
+import Header from './Header'
+import OtherBlogs from './OtherBlogs'
+import RecentEntries from './RecentEntries'
+import Posts from './Posts'
+import Footer from './Footer'
 
-const headerData = require('../data/header')
-const otherBlogsData = require('../data/other-blogs')
-const recentEntriesData = require('../data/recent-entries')
-const postsData = require('../data/posts')
-const footerData = require('../data/footer')
+import headerData from '../data/header'
+import otherBlogsData from '../data/other-blogs'
+import recentEntriesData from '../data/recent-entries'
+import postsData from '../data/posts'
+import footerData from '../data/footer'
 
-function App (props) {
-  return (
-    <div className='app'>
-      <Header content={headerData} />
-      <div className='body-container'>
-        <OtherBlogs blogs={otherBlogsData} />
-        <Posts posts={postsData} />
-        <RecentEntries entries={recentEntriesData} />
-      </div>
-      <Footer content={footerData} />
+const App = props => (
+  <div className='app'>
+    <Header content={headerData} />
+    <div className='body-container'>
+      <OtherBlogs blogs={otherBlogsData} />
+      <Posts posts={postsData} />
+      <RecentEntries entries={recentEntriesData} />
     </div>
-  )
-}
+    <Footer content={footerData} />
+  </div>
+)
 
-module.exports = App
-
+export default App

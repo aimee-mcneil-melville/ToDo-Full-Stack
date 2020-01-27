@@ -1,7 +1,7 @@
-const React = require('react')
+import React from 'react'
 
-function RecentEntry (props) {
-  const {link, name} = props.entry
+const RecentEntry = props => {
+  const { link, name } = props.entry
   return (
     <li className='recent-entry'>
       <a href={link}>{name}</a>
@@ -9,5 +9,4 @@ function RecentEntry (props) {
   )
 }
 
-module.exports = RecentEntry
-
+export default RecentEntry

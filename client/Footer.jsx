@@ -1,7 +1,7 @@
-const React = require('react')
+import React from 'react'
 
-function Footer (props) {
-  const {copyright, author} = props.content
+const Footer = props => {
+  const { copyright, author } = props.content
   return (
     <div className='footer'>
       <div>&copy; {copyright}</div>
@@ -10,5 +10,4 @@ function Footer (props) {
   )
 }
 
-module.exports = Footer
-
+export default Footer

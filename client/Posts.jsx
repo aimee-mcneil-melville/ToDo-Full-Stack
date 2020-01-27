@@ -1,16 +1,13 @@
-var React = require('react')
+import React from 'react'
 
-var Post = require('./Post')
+import Post from './Post'
 
-function Posts (props) {
-  return (
-    <div className='posts'>
-      {props.posts.map(post => {
-        return <Post key={post.id} post={post} />
-      })}
-    </div>
-  )
-}
+const Posts = props => (
+  <div className='posts'>
+    {props.posts.map(post => {
+      return <Post key={post.id} post={post} />
+    })}
+  </div>
+)
 
-module.exports = Posts
-
+export default Posts

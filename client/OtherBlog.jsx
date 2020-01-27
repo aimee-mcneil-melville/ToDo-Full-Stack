@@ -1,7 +1,7 @@
-const React = require('react')
+import React from 'react'
 
-function OtherBlog (props) {
-  const {blogTitle, link} = props.blog
+const OtherBlog = props => {
+  const { blogTitle, link } = props.blog
   return (
     <li className='other-blog'>
       <a href={link}>{blogTitle}</a>
@@ -9,5 +9,4 @@ function OtherBlog (props) {
   )
 }
 
-module.exports = OtherBlog
-
+export default OtherBlog

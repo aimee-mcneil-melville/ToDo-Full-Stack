@@ -1,20 +1,18 @@
-var React = require('react')
+import React from 'react'
+import sha from 'hash-string'
 
-function Post (props) {
-  const {title, date, commentCount} = props.post
+const Post = props => {
+  const { title, date, commentCount, paragraphs } = props.post
   return (
     <div className='post'>
       <h2>{title}</h2>
       <div className='date'>{date}</div>
-      {props.post.paragraphs.map((para, key) => {
-        return (
-          <p key={key}>{para}</p>
-        )
-      })}
+      {paragraphs.map(text => (
+        <p key={sha(text)}>{text}</p>
+      ))}
       <div className='comment-count'>{commentCount} comments</div>
     </div>
   )
 }
 
-module.exports = Post
-
+export default Post
