@@ -4,7 +4,9 @@
   "description": "Circles on circles on circles, the React way.",
   "main": "server",
   "scripts": {
-    "start": "node server & webpack --watch",
+    "start": "run-p server client",
+    "server": "node server",
+    "client": "webpack --watch",
     "test": "jest --watch --noStackTrace"
   },
   "repository": {
@@ -41,6 +43,7 @@
     "enzyme": "^3.11.0",
     "jest": "^24.7.1",
     "jsdom": "^14.0.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.12.0",
