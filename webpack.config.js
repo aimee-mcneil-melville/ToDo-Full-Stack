@@ -4,7 +4,7 @@ module.exports = {
   entry: './client/index.js',
   mode: 'development',
   output: {
-    path: path.join(__dirname, '/'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
   module: {

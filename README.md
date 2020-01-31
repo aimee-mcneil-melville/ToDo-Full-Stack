@@ -2,17 +2,17 @@
 
 This repo aims to help you experiment with Redux using an atypical React setup (we'll improve how we integrate with React in a later exercise). After cloning this repo:
 
-```shell
-npm
+```sh
+cd redux-minimal && npm i
 npm start
 ```
 
-This will start a [Webpack dev server](https://github.com/webpack/webpack-dev-server). Open [http://localhost:8080](http://localhost:8080) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 
 ## Redux DevTools
 
-Install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+The computers on campus should already have the redux devtools installed. If you'd like them on your own computer you can install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 
 
 ## Exercise
