@@ -1,4 +1,4 @@
-exports.up = (knex, Promise) => {
+exports.up = (knex) => {
   return knex.schema.createTable('Comments', function (table) {
     table.increments().primary()
     table.integer('post_id').references('Posts.id')
@@ -7,6 +7,6 @@ exports.up = (knex, Promise) => {
   })
 }
 
-exports.down = (knex, Promise) => {
+exports.down = (knex) => {
   return knex.schema.dropTable('Comments')
 }
