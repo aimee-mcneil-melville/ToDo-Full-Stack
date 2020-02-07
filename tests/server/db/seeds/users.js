@@ -1,6 +1,6 @@
 // TODO: implement or import a generateHash function
 
-exports.seed = (knex, Promise) => {
+exports.seed = (knex) => {
   return knex('users').del()
     .then(() => Promise.all([
       // generateHash('jess'),
