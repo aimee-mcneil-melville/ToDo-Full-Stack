@@ -41,7 +41,7 @@ Again, don't implement a Redux store, or any button actions at this point.
 
 ## Navigation
 
-Now let's add the ability to navigate between the listing and the cart. Rather than using a client-side router, let's add a Redux store with an `activePage` property. The action creator for navigating between pages could look like this:
+At this point you probably have a property in local state to decide which page to show between the BeerList or Cart. Rather than using local state, let's add a Redux store with an `activePage` property. The action creator for navigating between pages could look like this:
 
 ```js
 export const navigate = target => {
