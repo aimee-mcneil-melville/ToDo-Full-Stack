@@ -33,6 +33,6 @@
     "react-router-dom": "^5.1.2",
     "superagent": "^5.2.1",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.11"
   }
 }
