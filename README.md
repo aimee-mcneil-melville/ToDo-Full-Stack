@@ -56,7 +56,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx` that render their child components based on the status of the user. Right now it is hard-coded to `true`. We need to make it reflect reality.
 
-Fortunately, `authenticate/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/don-smith/authenticare/blob/master/docs/client/isAuthenticated.md) although you probably won't need them.
+Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/don-smith/authenticare/blob/master/docs/client/isAuthenticated.md) although you probably won't need them.
 
 With that in place, you can now see the "Register" and "Sign in" links in the app now.
 
