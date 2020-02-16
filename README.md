@@ -101,7 +101,7 @@ While we _are_ saving a new user when they register, we're not currently saving 
 
 `authenticare/server` exports a `generateHash` function. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/generateHash.md) and replace/add the `generateHash` function in both `server/db/users.js` and `tests/server/db/seeds/users.js`.
 
-You may decide at this point to delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds with `npm run db-reset`. Verify new user registrations are saving a hash of the password in the database.
+You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds. Afterwards, verify new user registrations are saving a hash of the password in the database.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
