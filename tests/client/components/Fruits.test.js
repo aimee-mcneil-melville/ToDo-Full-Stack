@@ -1,6 +1,6 @@
 import React from 'react'
 import authenticare from 'authenticare/client'
-import { render, fireEvent, cleanup } from 'react-testing-library'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 
 import {
   // addFruit,
@@ -10,7 +10,7 @@ import {
 } from '../../../client/api'
 import Fruits from '../../../client/components/Fruits'
 
-require('babel-polyfill')
+require('@babel/polyfill')
 jest.mock('authenticare/client')
 jest.mock('../../../client/api')
 
@@ -89,7 +89,8 @@ describe('Fruits component', () => {
     const {
       // debug,
       findAllByTestId,
-      getByTestId } = render(<Fruits />)
+      getByTestId
+    } = render(<Fruits />)
 
     return findAllByTestId(fruitLink)
       .then(found => {
