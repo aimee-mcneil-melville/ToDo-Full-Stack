@@ -1,6 +1,6 @@
 const express = require('express')
 
-// TODO: implement or import a proper decodeToken function
+// TODO: implement or import a proper getTokenDecoder function
 const getTokenDecoder = () => (req, res, next) => { next() }
 
 const db = require('../db/db')
