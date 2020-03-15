@@ -19,7 +19,7 @@
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-handlebars": "^3.1.0"
   },
   "devDependencies": {
