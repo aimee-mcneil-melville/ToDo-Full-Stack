@@ -10,7 +10,7 @@ function disarmOnly () {
 function defendYourself (spell) {
   if (spell === 'Avada Kedevara') {
     return disarmOnly()
-  } else {
-    return 'Stupefy!'
   }
+
+  return 'Stupefy!'
 }

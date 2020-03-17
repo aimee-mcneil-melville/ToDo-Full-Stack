@@ -1,6 +1,6 @@
 /* global test, expect */
 
-var duel = require('../duel.js')
+const duel = require('../duel.js')
 
 // testing you're own functions from another project
 test('basic duel with a dark lord', function () {
@@ -11,7 +11,7 @@ test('basic duel with a dark lord', function () {
   expect(duel.defendYourself('Avada Kedevara')).toBe(duel.disarmOnly())
 
   // Arrange / Act / Asset
-  var expected = 'Stupefy!' // arrange
-  var actual = duel.defendYourself('crucio') // act
+  const expected = 'Stupefy!' // arrange
+  const actual = duel.defendYourself('crucio') // act
   expect(actual).toBe(expected) // assert
 })

@@ -1,6 +1,6 @@
 /* global test, expect */
 
-test('test some basic js', function () {
+test('test some basic js', () => {
   expect(2 + 2 === 4).toBeTruthy()
   expect(3 * 3).toBe(9)
 

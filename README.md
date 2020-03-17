@@ -2,7 +2,7 @@
 
 ## Setup
 
-* Run `npm` in your terminal to install Jest.
+* Run `npm install` in your terminal to install Jest.
 
 ## The tests
 
