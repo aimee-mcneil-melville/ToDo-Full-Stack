@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules#readme",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.2.2"
   }
 }
