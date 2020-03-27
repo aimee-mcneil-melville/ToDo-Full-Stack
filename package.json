@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-data-structures#readme",
   "devDependencies": {
-    "jest": "^25.2.2"
+    "jest": "^25.2.3"
   }
 }
