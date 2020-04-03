@@ -42,7 +42,7 @@
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^24.9.0",
+    "jest": "^25.2.7",
     "react": "^16.9.0",
     "react-dom": "^16.2.0",
     "webpack": "^4.15.1",
