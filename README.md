@@ -11,7 +11,7 @@ After cloning this repo
 
 ```sh
 npm install
-npm run dev
+npm start
 ```
 
 and then go to [`http://localhost:3000`](http://localhost:3000).
