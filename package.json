@@ -4,9 +4,11 @@
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
   "scripts": {
-    "start": "webpack && node server",
-    "dev": "nodemon --watch & webpack --watch",
-    "test": "jest --watch"
+    "dev": "run-p client server",
+    "client": "webpack --watch",
+    "server": "nodemon server",
+    "start": "node server",
+    "test": "jest --watchAll"
   },
   "author": "EDA",
   "license": "ISC",
@@ -29,12 +31,12 @@
     "@babel/register": "^7.9.0",
     "babel-loader": "^8.1.0",
     "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
