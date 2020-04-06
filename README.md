@@ -13,10 +13,10 @@ Ours is broken: it ain't gonna look that pretty! It will be *colourful*, however
 
 Clone this repo, and:
 
-```bash
+```sh
 cd broken-kaleidoscope
-npm i
-npm run dev
+npm install
+npm start
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser. You'll see 'React development has begun!', just to confirm everything is working.
