@@ -21,7 +21,7 @@
   "homepage": "https://github.com/dev-academy-challenges/boilerplate-express-api#readme",
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^25.3.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.3",
     "sqlite3": "^4.1.1",
