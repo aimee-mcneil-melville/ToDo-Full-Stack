@@ -18,21 +18,21 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.20.12",
+    "knex": "^0.20.13",
     "lodash": "^4.17.15",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "nodemon": "^2.0.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "superagent": "^5.2.2",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
 }
