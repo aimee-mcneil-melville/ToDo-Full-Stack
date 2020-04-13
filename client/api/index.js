@@ -37,10 +37,7 @@ export function updatePost (post) {
 
 export function deletePost (postId) {
   return request.del(`/v1/posts/${postId}`)
-    .then(res => {
-      validateNoSnakeCase(res.body)
-      return res.body
-    })
+    .then(res => res)
     .catch(errorHandler('DELETE', '/v1/posts/:id'))
 }
 
@@ -75,10 +72,7 @@ export function updateComment (comment) {
 
 export function deleteComment (commentId) {
   return request.del(`/v1/comments/${commentId}`)
-    .then(res => {
-      validateNoSnakeCase(res.body)
-      return res.body
-    })
+    .then(res => res)
     .catch(errorHandler('DELETE', '/v1/comments/:id'))
 }
 
