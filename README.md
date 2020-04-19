@@ -4,7 +4,7 @@ This repo aims to help you experiment with Redux using an atypical React setup (
 
 ```sh
 cd redux-minimal && npm i
-npm start
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
