@@ -1,0 +1,10 @@
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.wait-indicator {
+  position: absolute;
+  margin-left: 5px;
+  width: 20px;
+}
