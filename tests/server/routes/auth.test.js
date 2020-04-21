@@ -17,9 +17,9 @@ test('/register succeeds for new user', () => {
   let expected = 'OK'
 
   // Mock userExists to return false
-  usersDb.userExists.mockImplementation(user_name => Promise.resolve(false))
+  usersDb.userExists.mockImplementation(username => Promise.resolve(false))
   // Mock createUser to work (resolve)
-  usersDb.createUser.mockImplementation((user_name, first_name, last_name, password) => Promise.resolve())
+  usersDb.createUser.mockImplementation((username, first_name, last_name, password) => Promise.resolve())
   // Mock issue to do nothing
   token.issue.mockImplementation((req,res) => res.json({ message: expected, token: 'XXXX' }))
 
@@ -36,7 +36,7 @@ test('/register fails for existing user', () => {
   let expected = 'User Name Taken'
 
   // Mock userExists to return true
-  usersDb.userExists.mockImplementation(user_name => Promise.resolve(true))
+  usersDb.userExists.mockImplementation(username => Promise.resolve(true))
 
   return request(server).post('/api/auth/register')
   .expect(400)
@@ -51,9 +51,9 @@ test('/register fails for create error', () => {
   let expected = 'Server Error'
 
   // Mock userExists to return true
-  usersDb.userExists.mockImplementation(user_name => Promise.resolve(false))
+  usersDb.userExists.mockImplementation(username => Promise.resolve(false))
   // Mock createUser to fail (reject)
-  usersDb.createUser.mockImplementation((user_name, first_name, last_name, password) => Promise.reject())
+  usersDb.createUser.mockImplementation((username, first_name, last_name, password) => Promise.reject())
 
   return request(server).post('/api/auth/register')
   .expect(500)

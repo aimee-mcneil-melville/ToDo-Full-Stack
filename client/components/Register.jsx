@@ -7,7 +7,7 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user_name: '',
+      username: '',
       first_name: '',
       last_name: '',
       password: '',
@@ -25,7 +25,7 @@ class Register extends React.Component {
   submit(e) {
     e.preventDefault()
     e.target.reset()
-    let {user_name, password, confirm_password, first_name, last_name} = this.state
+    let {username, password, confirm_password, first_name, last_name} = this.state
     if (confirm_password != password) return this.props.dispatch(loginError("Passwords don't match"))
     this.props.dispatch(registerUserRequest(this.state))
   }
@@ -37,7 +37,7 @@ class Register extends React.Component {
         <hr />
         {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
         <label className="column is-6 is-offset-one-quarter label is-large has-text-centered">Username
-          <input required className="input is-large has-text-centered is-fullwidth" placeholder="User Name" type="text" name="user_name" onChange={this.updateDetails}/>
+          <input required className="input is-large has-text-centered is-fullwidth" placeholder="User Name" type="text" name="username" onChange={this.updateDetails}/>
         </label>
         <div className="columns">
           <label className="column is-6 label is-large has-text-centered">First Name

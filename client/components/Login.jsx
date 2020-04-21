@@ -6,7 +6,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user_name: '',
+      username: '',
       password: ''
     }
     this.updateDetails = this.updateDetails.bind(this)
@@ -20,8 +20,8 @@ class Login extends React.Component {
   }
   submit(e) {
     e.preventDefault()
-    let {user_name, password} = this.state
-    this.props.dispatch(loginUser({user_name, password}))
+    let {username, password} = this.state
+    this.props.dispatch(loginUser({username, password}))
   }
   render() {
     const {auth} = this.props
@@ -31,7 +31,7 @@ class Login extends React.Component {
         <hr />
         {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
         <label className="label is-large has-text-centered">Username
-          <input required className="input has-text-centered is-large is-fullwidth" placeholder="User Name" type="text" name="user_name" onChange={this.updateDetails}/>
+          <input required className="input has-text-centered is-large is-fullwidth" placeholder="User Name" type="text" name="username" onChange={this.updateDetails}/>
         </label>
         <label className="label is-large has-text-centered">Password
           <input required className="input has-text-centered is-large is-fullwidth" placeholder="Password" type="password" name="password" onChange={this.updateDetails}/>

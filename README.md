@@ -110,7 +110,7 @@ As a user:
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
-  | user_name | String |
+  | username | String |
   | first_name | String |
   | last_name | String |
   | hash | text |

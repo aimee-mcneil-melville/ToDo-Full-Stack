@@ -4,7 +4,7 @@ const verifyJwt = require('express-jwt')
 const {comparePasswordToHash} = require('./hash')
 
 function issue (req, res) {
-  getUserByUsername(req.body.user_name)
+  getUserByUsername(req.body.username)
     .then(user => {
       if (!user) {
         res.status(403).json({message: 'User does not exist'})
@@ -31,7 +31,7 @@ function issue (req, res) {
 function createToken (user, secret) {
   const payload = {
     user_id: user.user_id,
-    user_name: user.user_name
+    username: user.username
   }
 
   const options = {

@@ -6,12 +6,12 @@ const token = require('../auth/token')
 router.post('/register', register, token.issue)
 
 function register (req, res, next) {
-  const { user_name, first_name, last_name, password } = req.body
-  userExists(user_name)
+  const { username, first_name, last_name, password } = req.body
+  userExists(username)
     .then(exists => {
       if (exists) return res.status(400).send({ message: "User Name Taken" })
 
-      createUser(user_name, first_name, last_name, password)
+      createUser(username, first_name, last_name, password)
         .then(() => next())
         .catch(err => res.status(500).send({message: "Server Error"}))
     })
