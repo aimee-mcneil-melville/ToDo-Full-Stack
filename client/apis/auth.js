@@ -1,37 +1,24 @@
-import request from 'superagent'
+import { register as authRegister, signIn as authLogin } from 'authenticare/client'
 
-import { get } from '../utils/localstorage'
-import { isAuthenticated } from '../utils/auth'
+const errorMessages = {
+  "USERNAME_UNAVAILABLE": "Sorry, that username is taken.",
+  "INVALID_CREDENTIALS": "Sorry, your username or password is incorrect.",
+}
 
 export function register (creds) {
-  const token = get('token')
-  const headers = { Accept: 'application/json' }
-
-  if (isAuthenticated()) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  return request
-    .post('/api/auth/register')
-    .set(headers)
-    .send(creds)
-    .then(res => res.body.token)
+  return authRegister(creds, {
+      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
+    })
+    .catch(err => {
+      throw errorMessages[err.response.body.errorType]
+    })
 }
 
 export function login (creds) {
-  const token = get('token')
-  const headers = { Accept: 'application/json' }
-
-  if (isAuthenticated()) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  return request
-    .post('/api/auth/login')
-    .set(headers)
-    .send(creds)
-    .then(res => res.body.token)
+  return authLogin(creds, {
+    baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
+    })
     .catch(err => {
-      throw err
+      throw errorMessages[err.response.body.errorType]
     })
 }

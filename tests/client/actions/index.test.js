@@ -1,4 +1,4 @@
-import {requestLogin} from '../../../client/actions/login'
+import {requestLogin} from '../../../client/actions/auth'
 
 test('Login request', () => {
   // Arrange

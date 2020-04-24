@@ -1,19 +1,22 @@
-const testEnv = require('../setup-db')
+const testDb = require('./connection')
 const users = require('../../../server/db/users')
 
-let testDb = null
-
-beforeEach(() => {
-  testDb = testEnv.getTestDb()
-  return testEnv.initialise(testDb)
+beforeAll(() => {
+  return testDb.migrate.latest()
 })
 
-afterEach(() => testEnv.cleanup(testDb))
+beforeEach(() => {
+  return testDb.seed.run()
+})
+
+afterAll(() => {
+  return testDb.destroy()
+})
 
 test('createUser inserts a single user', () => {
   let expected = 1
 
-  return users.createUser('new_user', 'New', 'User', 's3cr3t', testDb)
+  return users.createUser({ username: 'new_user', password: 's3cr3t', first_name: 'New', last_name: 'User' }, testDb)
     .then(ids => {
       let actual = ids.length
 

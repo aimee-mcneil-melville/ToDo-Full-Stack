@@ -1,23 +1,14 @@
-const router = require('express').Router()
+const express = require('express')
+const { applyAuthRoutes } = require('authenticare/server')
 
-const { userExists, createUser } = require('../db/users')
-const token = require('../auth/token')
+const { userExists, getUserByUsername, createUser } = require('../db/users')
 
-router.post('/register', register, token.issue)
+const router = express.Router()
 
-function register (req, res, next) {
-  const { username, first_name, last_name, password } = req.body
-  userExists(username)
-    .then(exists => {
-      if (exists) return res.status(400).send({ message: "User Name Taken" })
-
-      createUser(username, first_name, last_name, password)
-        .then(() => next())
-        .catch(err => res.status(500).send({message: "Server Error"}))
-    })
-    .catch(err => res.status(500).send({message: "Server Error"}))
-}
-
-router.post('/login', token.issue)
+applyAuthRoutes(router, {
+  userExists,
+  getUserByName: getUserByUsername,
+  createUser
+})
 
 module.exports = router

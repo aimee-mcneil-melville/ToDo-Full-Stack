@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {logoutUser} from '../actions/logout'
+import {logoutUser} from '../actions/auth'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -28,12 +28,16 @@ class Nav extends React.Component {
         </div>
         <div id="navbarMenuHeroA" className={`navbar-menu ${showBurger ? "is-active" : ''}`}>
           <div className="navbar-end">
-            {auth.isAuthenticated
-              ? <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
-              : [
-                <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>,
-                <Link onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>
-              ]
+            { auth.isAuthenticated
+              ? (
+                  <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
+                )
+              : (
+                <>
+                  <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>
+                  <Link onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>
+                </>
+              )
             }
           </div>
         </div>
@@ -49,7 +53,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = ({auth}) => {
-  return {auth}
+  return {
+    auth
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)

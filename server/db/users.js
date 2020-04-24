@@ -1,11 +1,13 @@
-const {generatePasswordHash} = require('../auth/hash')
-
 const connection = require('./connection')
+const { generateHash } = require('authenticare/server')
 
-function createUser (username, first_name, last_name, password, db = connection) {
-  return generatePasswordHash(password)
-    .then(hash => {
-      return db('users').insert({username, first_name, last_name, hash})
+function createUser (user, db = connection) {
+  const newUser = {...user}
+  return generateHash(newUser.password)
+    .then(passwordHash => {
+      newUser.hash = passwordHash
+      delete newUser.password
+      return db('users').insert(newUser)
     })
 }
 
