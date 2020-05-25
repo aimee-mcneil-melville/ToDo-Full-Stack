@@ -10,24 +10,23 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
 1. Clone this repo. In your browser find the clone URL in the sidebar and copy it. In your terminal, run the following command, replacing `CLONE_URL` with the URL you copied:
 
   ```shell
+  cd ~/workspace
   git clone CLONE_URL
   cd two-truths-and-a-lie
   ```
 
-2. Identify your pair:
+2. Tell git who is driving:
 
   ```shell
-  git config user.name YOUR_NAME_YOUR_PAIRS_NAME
+  git iam DRIVERS_FIRST_NAME
   ```
-
-  Note that without the `--global` flag this will only affect the current repo, useful if you want to avoid trashing your usual Git config.
 
 3. Now we're going to create a branch! To do this we use the `git branch` command. `git branch` on its own lists out all local branches, but when you give it an argument it creates a new branch. A new branch is a copy of the current branch with a different name.
 
   In your terminal, run the following command, replacing `YourName` with your name:
 
   ```shell
-  git branch YourName-PartnersName      # e.g. emily-bryce
+  git branch YourName-PartnersName      # e.g. emily-kelly
   git checkout YourName-PartnersName
   ```
 
