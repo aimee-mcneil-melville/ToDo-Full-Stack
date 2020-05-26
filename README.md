@@ -30,8 +30,6 @@ Before working on a function, take turns explaining what each test is doing with
 
 * Open the folder in VS Code using `code .` and open `getType.js`.
 
-* Export the function by adding `module.exports = getType` Open the folder in VS Code using `code .` and open `getType.js`.
-
 * Export the function by adding `module.exports = getType` and save the file. Now you'll notice the tests are failing for different reasons.
 
 * Implement the `getType` function:
