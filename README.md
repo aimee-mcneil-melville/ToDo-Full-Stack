@@ -47,7 +47,7 @@ The score for this game is 141.
 ## Perfect Game
 
 ```js
-var frames = [
+const frames = [
   [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10],
 ]
 ```
