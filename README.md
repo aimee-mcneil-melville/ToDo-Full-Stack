@@ -6,7 +6,7 @@
 
 ## The tests
 
-The test in `tests/basic.test.js` is a wee example for a basic Jest setup.
+The test in `basic.test.js` is a wee example for a basic Jest setup.
 
 * Run `npm test basic` on your command line to see it at work. Have a look at the `test` script in `package.json` to see what this command is doing.
 
@@ -18,8 +18,6 @@ The test in `tests/basic.test.js` is a wee example for a basic Jest setup.
 ## Further exploration
 
 * How does the test get the functions from `duel.js`?
-
 * Add your own function to `duel.js` and test it.
-
 * Can you think of other things to test?
 

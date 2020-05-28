@@ -1,6 +1,6 @@
 module.exports = {
-  disarmOnly: disarmOnly,
-  defendYourself: defendYourself
+  disarmOnly,
+  defendYourself
 }
 
 function disarmOnly () {

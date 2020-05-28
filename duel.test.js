@@ -1,6 +1,6 @@
 /* global test, expect */
 
-const duel = require('../duel.js')
+const duel = require('./duel.js')
 
 // testing you're own functions from another project
 test('basic duel with a dark lord', function () {
