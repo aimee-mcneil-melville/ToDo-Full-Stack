@@ -1,16 +1,20 @@
-var kata = require('../kata.js')
+const kata = require('../kata.js')
 
-test('deleteProp deletes properties', function () {
-  var mickey = {
+test('deleteProp deletes properties', () => {
+  const mickey = {
     name: 'Mickey Mouse',
     age: 64,
     email: 'mickey@disney.com'
   }
-  var expected = {
+
+  const expected = {
     name: 'Mickey Mouse',
     age: 64
   }
-  kata.deleteProperty(mickey, 'email')
-  expect(mickey).toEqual(expected)
+
+  const actual = kata.deleteProperty(mickey, 'email')
+
+  expect(actual).toEqual(expected)
+  expect(actual).not.toBe(mickey)
 })
 

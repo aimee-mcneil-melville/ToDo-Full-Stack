@@ -1,12 +1,11 @@
-var kata = require('../kata.js')
+const kata = require('../kata.js')
 
-test('makeObject makes objects', function () {
-  var expected = { name: 'mix' }
-  var actual = kata.makeObject('name', 'mix')
-  expect(actual).toEqual(expected)
+test('makeObject makes objects', () => {
+  const expected1 = { name: 'mix' }
+  const actual1 = kata.makeObject('name', 'mix')
+  expect(actual1).toEqual(expected1)
 
-  var expected2 = { age: 32 }
-  var actual2 = kata.makeObject('age', 32)
+  const expected2 = { age: 32 }
+  const actual2 = kata.makeObject('age', 32)
   expect(actual2).toEqual(expected2)
 })
-

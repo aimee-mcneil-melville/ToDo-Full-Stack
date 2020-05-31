@@ -1,15 +1,18 @@
-var kata = require('../kata.js')
+const kata = require('../kata.js')
 
-test('addName adds a name property', function () {
-  var name = 'Matthieu Ricard'
-  var actual = {
+test('addName returns a copy of the input object with an added name property', () => {
+  const name = 'Matthieu Ricard'
+  const obj = {
     address: '123 Happy Place'
   }
-  var expected = {
+  const expected = {
     name: name,
     address: '123 Happy Place'
   }
-  kata.addName(actual, name)
+
+  const actual = kata.addName(obj, name)
+
+  expect(actual).not.toBe(obj)
   expect(actual).toEqual(expected)
 })
 

@@ -1,15 +1,20 @@
 const kata = require('../kata.js')
 
-test('unzipObject returns an array of key/value pairs', () => {
+test('getValues returns own values for an object', () => {
   const dracula = {
     name: 'Count Dracula',
     email: 'dracula@hotmail.com',
     password: '12345',
     country: 'Transylvania'
   }
-  const expected = Object.keys(dracula).map(key => [key, dracula[key]])
+  const expected = [
+    'Count Dracula',
+    'dracula@hotmail.com',
+    '12345',
+    'Transylvania'
+  ]
 
-  const actual = kata.unzipObject(dracula)
+  const actual = kata.getValues(dracula)
 
   expect(actual).toEqual(expected)
 })

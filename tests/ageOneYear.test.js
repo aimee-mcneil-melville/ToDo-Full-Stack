@@ -1,17 +1,15 @@
-var kata = require('../kata.js')
+const kata = require('../kata.js')
 
-test('ageOneYear adds 1 year to the age property of an object', function () {
-  var mickey = {
+test('ageOneYear returns a copy of the input object with an age property incremented', () => {
+  const mickey = {
     name: 'Mickey Mouse',
     age: 64,
     email: 'mickey@disney.com'
   }
-  var expected = {
-    name: 'Mickey Mouse',
-    age: 65,
-    email: 'mickey@disney.com'
-  }
-  kata.ageOneYear(mickey)
-  expect(mickey).toEqual(expected)
+
+  const result = kata.ageOneYear(mickey)
+
+  expect(result.age).toBe(65)
+  expect(result).not.toBe(mickey)
 })
 

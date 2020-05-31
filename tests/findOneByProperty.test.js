@@ -1,7 +1,7 @@
-var kata = require('../kata.js')
+const kata = require('../kata.js')
 
-test('findOneByProperty returns an object with matching property', function () {
-  var monsters = [
+test('findOneByProperty returns an object with matching property', () => {
+  const monsters = [
     {
       name: 'Count Dracula',
       email: 'dracula@hotmail.com',
@@ -24,13 +24,15 @@ test('findOneByProperty returns an object with matching property', function () {
       age: 232
     }
   ]
-  var expected = {
+
+  const expected = {
     name: 'Cthulhu',
     email: 'cthulhu@thedeep.com',
     country: "R'lyeh",
     age: 1032988
   }
-  var actual = kata.findOneByProperty(monsters, { name: 'Cthulhu' })
+
+  const actual = kata.findOneByProperty(monsters, { name: 'Cthulhu' })
+
   expect(actual).toEqual(expected)
 })
-
