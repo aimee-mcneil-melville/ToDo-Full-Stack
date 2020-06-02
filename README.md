@@ -27,10 +27,14 @@ When you're learning a new technology, make sure you start simple and get that w
 1. Start by creating a new home route, `/` in the server
   - Make sure it's working by having it send something like `res.send('Hello, world!')`
 
-2. We've provided a single `home.hbs` template in the views folder for you. Instead of `res.send`, use `res.render` to render that template when anyone visits the `/` route.
+2. Express Handlebars requires a default layout in order to render templates.
+  - Create a layout file in `views/layouts`, default is `main.hbs` (see [the docs](https://github.com/ericf/express-handlebars) for more on layouts).  It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
+  - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
+  
+3. We've provided a single `home.hbs` template in the views folder for you. Instead of `res.send`, now use `res.render` to render  `home.hbs` template when anyone visits the `/` route.
   - When you reload the page, you should see the text change to, 'Hello, templates!'
 
-3. Create an object in your route definition with the property `title`, like so:
+4. Create an object in your route definition with the property `title`, like so:
 
   ```js
     const viewData = {
@@ -38,14 +42,14 @@ When you're learning a new technology, make sure you start simple and get that w
     }
   ```
 
-4. Pass the object as the second argument to render:
+5. Pass the object as the second argument to render:
 
   ```js
     const template = 'home'
     res.render(template, viewData)
   ```
 
-5. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
+6. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
   - Reload the page: does it work?
 
 You'll find this pattern repeating throughout your exploration of server-side rendering:
@@ -113,6 +117,7 @@ Any time you want to use this data, you can just `const art = require('./art.jso
 
 5. _As a user, I want to see a footer at the bottom of the page displaying contact details so that I can contact the people responsible for the site._
   - Repetition can be a wonderful thing. Create a `footer.hbs` partial and include it in your home template.
+  - Hint: Move the `header` and `footer` partials into the `main.hbs` layout file, and they'll be used for every template view you create from now on.
 
 6. _As a user, I want to see an artwork displayed when I visit `/artworks/:id` so that I can view the image._
   - Create `artworks.hbs`. It doesn't have to be complicated: just a single `img` tag with its `src` attribute set to `{{artwork}}` will do nicely
@@ -125,16 +130,10 @@ Any time you want to use this data, you can just `const art = require('./art.jso
 
 ## Ready for more?
 
-8. _As a user, I'd like the site to have consistent styling and layout so I enjoy browsing it._
-  - Time to practice using layouts. Add a `defaultLayout` parameter to your Express Handlebars config (see [the docs](https://github.com/ericf/express-handlebars) for how to do this if you're not sure).
-  - Create a layout file in `views/layouts`, probably `main.hbs`.  It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
-  - Move the `header` and `footer` partials into the `main.hbs` layout file, and they'll be used for every template view you create from now on.
-  - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
-
-9. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
+8. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
   - Here's another good partial opportunity! What we need is a simple partial that can be inserted anytime we need a link to the home page.
 
-10. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
+9. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
   - Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
 
 Take the chance to explore, play, experiment. Ask lots of questions!
