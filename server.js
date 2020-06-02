@@ -1,13 +1,13 @@
-var path = require('path')
+const path = require('path')
 
-var express = require('express')
-var hbs = require('express-handlebars')
+const express = require('express')
+const hbs = require('express-handlebars')
 
-var server = express()
+const server = express()
 
 // view engine config
 
-var hbsConfig = {
+const hbsConfig = {
   defaultLayout: 'main',
   extname: 'hbs'
 }
@@ -21,10 +21,10 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 // sample data
 
-var data = {
+let data = {
   cats: [
-    {id: 1, name: 'fluffy'},
-    {id: 2, name: 'tick'}
+    { id: 1, name: 'fluffy' },
+    { id: 2, name: 'tick' }
   ]
 }
 
