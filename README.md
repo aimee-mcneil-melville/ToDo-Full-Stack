@@ -88,8 +88,8 @@ $ ./todo list
 ```
 
 Notice two things about this example:
- * the commands are all separated into a different module, so that `todo.js` just calls a `require`d function from `commands.js`
- * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo.js` does not (it doesn't need it)
+ * the commands are all separated into a different module, so that `todo` just calls a `require`d function from `commands.js`
+ * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo` does not (it doesn't need it)
 
 
 ## Delete a task by ID
