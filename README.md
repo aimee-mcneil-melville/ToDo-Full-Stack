@@ -19,7 +19,7 @@ Some of the setup for a sample application has already been done for you.
 
 5. Ensure the initial tests pass by running `npm test`.
 
-6. You can start the app with `npm start` and navigate to [http://localhost:3000](http://localhost:3000).
+6. You can start the server with nodemon using `npm run dev` and navigate to [http://localhost:3000](http://localhost:3000).
 
 Now you should be ready to complete the rest of this challenge.
 
