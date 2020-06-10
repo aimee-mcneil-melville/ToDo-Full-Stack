@@ -1,7 +1,5 @@
 # Pupparazzi
 
-# This is an assessed exercise
-
 ![](screenshot.png)
 
 ## Learning objectives
