@@ -1,7 +1,5 @@
 # knex-todo-cli
 
-# This is an assessed exercise
-
 Command-line todo app using Knex.
 
 We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
