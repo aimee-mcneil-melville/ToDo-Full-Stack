@@ -1,7 +1,5 @@
 # Knex Relationships
 
-# This is an assessed exercise
-
 User stories for practicing with relational databases and related tools.
 
 
