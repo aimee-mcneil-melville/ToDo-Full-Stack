@@ -4,8 +4,10 @@
   "description": "Circles on circles on circles, the React way.",
   "main": "server",
   "scripts": {
-    "start": "run-p server client",
+    "start": "run-p server webpack",
+    "dev": "run-p server client",
     "server": "node server",
+    "webpack": "webpack",
     "client": "webpack --watch",
     "test": "jest --watch --noStackTrace"
   },
