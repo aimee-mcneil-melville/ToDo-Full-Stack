@@ -47,7 +47,7 @@ const App = props => {
 export default App
 ```
 
-The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a transparent red established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
+The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
 
 
 ## The requirements
@@ -69,6 +69,7 @@ The `<Circle>` component should keep its child circles as an array in state. It 
 
 You can apply a mouseover event to the SVG `circle` element like so: `<circle cx={cx} cy={cy} r={r} mouseover={handleMouseOver} />`. The `handleMouseOver` function can be defined in the same `Circle.jsx` file.
 
+Once you've got the functionality, have fun with new colours for each generation!
 
 ## Resources
 
