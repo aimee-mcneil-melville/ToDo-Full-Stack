@@ -11,7 +11,7 @@ Clone this repo, and from the repo's folder
 
 ```sh
 npm install
-npm start
+npm run dev
 ```
 
 
