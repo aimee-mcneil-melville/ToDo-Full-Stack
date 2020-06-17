@@ -2,8 +2,8 @@
   "name": "meowtown",
   "version": "0.0.1",
   "scripts": {
-    "dev": "nodemon index",
-    "start": "node index"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "EDA",
   "license": "MIT",
