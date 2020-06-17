@@ -6,9 +6,9 @@
   "author": "EDA",
   "license": "ISC",
   "scripts": {
-    "debug": "nodemon --inspect index --ignore data.json",
-    "test": "jest --watchAll --noStackTrace",
-    "start": "node index"
+    "start": "node index",
+    "dev": "nodemon --inspect index --ignore data.json",
+    "test": "jest --watchAll --noStackTrace"
   },
   "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
   "repository": {
