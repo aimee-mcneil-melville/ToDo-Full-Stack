@@ -15,9 +15,9 @@ Build a photo gallery using Handlebars views.
 ## Getting started
 
 * After cloning this repo, install dependencies with `npm install`
-* To debug the server (and have it reload with Nodemon after changes): `npm run debug`
-* To start the server : `npm run start`
-* To run the tests: `npm run test`
+* To start the server : `npm start`
+* To debug the server (and have it reload with Nodemon after changes): `npm run dev`
+* To run the tests: `npm test`
 
 
 ## Hello world

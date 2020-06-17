@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "debug": "nodemon index.js",
     "start": "node index",
+    "dev": "nodemon index",
     "test": "jest --watchAll"
   },
   "dependencies": {
