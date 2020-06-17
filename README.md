@@ -15,7 +15,7 @@ After cloning this repo, from the repo's folder:
 
 ```shell
 npm install
-npm start
+npm run dev
 ```
 
 ![Spinning paw](screenshots/paw.png)

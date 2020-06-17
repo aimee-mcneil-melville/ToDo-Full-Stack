@@ -4,9 +4,11 @@
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.js",
   "scripts": {
+    "start": "run-p webpack server",
+    "dev": "run-p client server",
+    "webpack": "webpack",
     "client": "webpack --watch",
-    "server": "node server",
-    "start": "run-p client server"
+    "server": "node server"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",
   "author": "EDA",
