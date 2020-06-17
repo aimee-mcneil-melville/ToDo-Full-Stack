@@ -4,10 +4,10 @@
   "description": "Practise joins",
   "main": "index.js",
   "scripts": {
-    "knex": "knex",
+    "start": "node index",
     "dev": "nodemon index",
-    "test": "jest --watch --noStackTrace",
-    "start": "node index"
+    "knex": "knex",
+    "test": "jest --watch --noStackTrace"
   },
   "repository": {
     "type": "git",
