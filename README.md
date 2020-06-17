@@ -14,7 +14,7 @@ cd knex-forms
 npm install
 npx knex migrate:latest
 npx knex seed:run
-npm start
+npm run dev
 ```
 
 If you would like to push changes to a branch in this repository, [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to this repo:
