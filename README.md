@@ -15,8 +15,8 @@ Clone this repo, and:
 
 ```sh
 cd broken-kaleidoscope
-npm install
-npm start
+npm i
+npm run dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser. You'll see 'React development has begun!', just to confirm everything is working.

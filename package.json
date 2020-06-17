@@ -7,9 +7,11 @@
   "author": "EDA",
   "license": "ISC",
   "scripts": {
+    "start": "run-p webpack server",
+    "dev": "run-p client server",
+    "webpack": "webpack",
     "client": "webpack --watch",
     "server": "node server",
-    "start": "run-p client server",
     "test": "jest --watchAll"
   },
   "babel": {
