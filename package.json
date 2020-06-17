@@ -7,10 +7,10 @@
   "author": "EDA",
   "license": "MIT",
   "scripts": {
+    "start": "webpack && node server",
     "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
-    "dev": "run-p dev:client dev:server",
-    "start": "webpack && node server"
+    "dev": "run-p dev:client dev:server"
   },
   "babel": {
     "presets": [
