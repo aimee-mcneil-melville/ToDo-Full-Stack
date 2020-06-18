@@ -7,27 +7,27 @@ const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/
   return v.toString(16)
 })
 
-export const addItem = item => {
-  const newItem = {
-    id: generateUUID(),
-    ...item
+export default (storage = window.localStorage, key = storageKey) => ({
+  addItem: item => {
+    const newItem = {
+      id: generateUUID(),
+      ...item
+    }
+    const items = JSON.parse(storage.getItem(key) || '[]')
+    items.push(newItem)
+    storage.setItem(key, JSON.stringify(items))
+  },
+
+  getItems: () => JSON.parse(storage.getItem(key) || '[]'),
+
+  updateItem: item => {
+    const existing = JSON.parse(storage.getItem(key) || '[]')
+    const items = existing.map(i => i.id === item.id ? item : i)
+    storage.setItem(key, JSON.stringify(items))
+  },
+
+  deleteItem: id => {
+    const items = JSON.parse(storage.getItem(key))
+    localStorage.setItem(key, JSON.stringify(items.filter(r => r.id !== id)))
   }
-  const storage = JSON.parse(localStorage.getItem(storageKey) || '[]')
-  storage.push(newItem)
-  localStorage.setItem(storageKey, JSON.stringify(storage))
-}
-
-export const getItems = () => JSON.parse(localStorage.getItem(storageKey) || '[]')
-
-export const updateItem = (item) => {
-  const items = JSON.parse(localStorage.getItem(storageKey) || '[]')
-  localStorage.setItem(
-    storageKey,
-    JSON.stringify(items.map(i => i.id === item.id ? item : i))
-  )
-}
-
-export const deleteItem = id => {
-  const items = JSON.parse(localStorage.getItem(storageKey))
-  localStorage.setItem(storageKey, JSON.stringify(items.filter(r => r.id !== id)))
-}
+})

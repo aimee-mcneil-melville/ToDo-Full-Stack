@@ -1,34 +1,29 @@
 import React from 'react'
 
 import colorList from '../color-list'
+import { validate, rules } from '../validation'
 
 const defaultState = {
   name: '',
   description: '',
-  color: 'aliceblue'
+  color: ''
+}
+
+const validationRules = {
+  name: [ rules.isRequired ],
+  color: [ rules.isNotChartreuse ]
 }
 
 class ItemForm extends React.Component {
   state = {
-    errors: {
-      isRequired: 'This field cannot be empty.',
-      isNotChartreuse: 'Nobody likes chartreuse.'
-    },
-    item: {...defaultState},
     invalid: {},
-    validation: {
-      name: [ 'isRequired' ],
-      color: [ 'isNotChartreuse' ]
-    },
-    validators: {
-      isRequired: val => val && val.length,
-      isNotChartreuse: color => color !== 'chartreuse'
-    }
+    item: {...(this.props.editItem || defaultState)}
   }
 
-  componentWillReceiveProps ({editItem}) {
-    if (editItem) {
-      this.setState({item: editItem})
+  componentDidUpdate (prevProps) {
+    const {editItem} = this.props
+    if (editItem && editItem !== prevProps.editItem) {
+      this.setState({item: {...editItem}})
     }
   }
 
@@ -43,42 +38,44 @@ class ItemForm extends React.Component {
   }
 
   handleSubmit = evt => {
-    if (this.validate()) {
-      this.props.saveItem(this.state.item)
-      this.resetForm()
-    }
+    const {invalid, item} = this.state
+    const results = validate(item, validationRules, invalid)
     evt.preventDefault()
+
+    if (results.isValid) {
+      this.props.saveItem(item)
+      this.handleReset()
+    } else {
+      this.setState({invalid: results.details})
+    }
   }
 
-  resetForm = evt => {
+  handleReset = evt => {
+    evt && evt.preventDefault()
     this.setState({
       item: {...defaultState},
       invalid: {}
     })
-    evt && evt.preventDefault()
+    this.props.reset()
   }
 
-  validate () {
-    const invalid = {...this.state.invalid}
-    for (const field in this.state.item) {
-      const validators = this.state.validation[field] || []
-      validators.forEach(v => {
-        if (!this.state.validators[v](this.state.item[field])) {
-          invalid[field] = this.state.errors[v]
-        } else {
-          delete invalid[field]
-        }
-      })
-    }
-    this.setState({invalid})
-    return !Object.keys(invalid).length
+  handleDelete = evnt => {
+    const { deleteItem, editItem, reset } = this.props
+    deleteItem(editItem.id, evnt)
+    this.setState({
+      item: {...defaultState},
+      invalid: {}
+    })
+    reset()
   }
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form data-testid='form'
+        onSubmit={this.handleSubmit}
+        onReset={this.handleReset}>
         <label htmlFor='name'>Name</label>
-        <input type='text' name='name'
+        <input type='text' id='name' name='name'
           className='u-full-width'
           value={this.state.item.name}
           onChange={this.handleChange}
@@ -89,7 +86,8 @@ class ItemForm extends React.Component {
         }
 
         <label htmlFor='description'>Description</label>
-        <textarea name='description' className='u-full-width'
+        <textarea id="description" name='description'
+          className='u-full-width'
           value={this.state.item.description}
           onChange={this.handleChange}
         />
@@ -99,7 +97,8 @@ class ItemForm extends React.Component {
         }
 
         <label htmlFor='color'>Colour</label>
-        <select name='color' className='u-full-width'
+        <select id='color' name='color'
+          className='u-full-width'
           value={this.state.item.color}
           onChange={this.handleChange}>
           {colorList.map(color => (
@@ -111,13 +110,25 @@ class ItemForm extends React.Component {
           <div className='error'>{this.state.invalid.color}</div>
         }
 
-        <input type='submit' className='button-primary'
+        <input type='submit'
+          className='button-primary'
+          data-testid='submit'
           value={this.props.editItem ? 'Save' : 'Add'} />
-        <button className='button-warning'
-          onClick={this.resetForm}>Reset</button>
+
+        <button type='reset'
+          className='button-info'
+          data-testid='reset'>Reset</button>
+
+        {this.props.editItem && this.props.deleteItem &&
+          <button type='delete'
+            className='button-warning'
+            onClick={this.handleDelete}
+            data-testid='delete'>Delete</button>
+        }
       </form>
     )
   }
 }
 
 export default ItemForm
+

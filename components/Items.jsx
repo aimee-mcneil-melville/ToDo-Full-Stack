@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import * as localDb from '../localDb'
+import localDb from '../localDb'
 import ItemForm from './ItemForm'
 
 class Items extends React.Component {
+  // this.props.db is used during automated test runs
+  // localDb() is used during normal operation
+  // Not sure how I feel about doing this :|
+  db = this.props.db || localDb()
+
   state = {
     items: [],
     editItem: null
@@ -12,7 +16,7 @@ class Items extends React.Component {
 
   componentDidMount () {
     this.setState({
-      items: localDb.getItems()
+      items: this.db.getItems()
     })
   }
 
@@ -22,10 +26,14 @@ class Items extends React.Component {
     })
   }
 
+  reset = () => {
+    this.setState({ editItem: null })
+  }
+
   deleteItem = (id, evt) => {
     evt.preventDefault()
 
-    localDb.deleteItem(id)
+    this.db.deleteItem(id)
     this.setState({
       items: this.state.items.filter(item => item.id !== id)
     })
@@ -36,7 +44,7 @@ class Items extends React.Component {
     const editItem = this.editItem.bind(this, id)
     const deleteItem = this.deleteItem.bind(this, id)
     return (
-      <tr key={id} className='item'
+      <tr key={id} className='item' data-testid='item'
         onClick={editItem} onContextMenu={deleteItem}>
         <td className='item-name'>{name}</td>
         <td className='item-description'>{description}</td>
@@ -47,15 +55,15 @@ class Items extends React.Component {
 
   saveItem = item => {
     if (this.state.editItem) {
-      localDb.updateItem(item)
+      this.db.updateItem(item)
       this.setState({
         items: this.state.items.map(i => i.id === item.id ? item : i),
         editItem: null
       })
     } else {
-      localDb.addItem(item)
+      this.db.addItem(item)
       this.setState({
-        items: localDb.getItems()
+        items: this.db.getItems()
       })
     }
   }
@@ -65,9 +73,10 @@ class Items extends React.Component {
       <div className='row'>
         <div className='two-thirds column'>
           <h1>Items</h1>
-          <p>Left-click to edit, right-click to delete. (Probably not the best UX for a production app!)</p>
-          <p>This is the more <strong>complex</strong> version of the component, which includes editing and validation.</p>
-          <p>For the simple version, <Link to='/simple'>click here</Link>.</p>
+          <p>
+            Left-click to edit, right-click to delete.
+            (Probably not the best UX for a production app!)
+          </p>
           <table className='u-full-width'>
             <thead>
               <tr>
@@ -86,9 +95,10 @@ class Items extends React.Component {
           <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
           <ItemForm
             editItem={this.state.editItem}
-            saveItem={this.saveItem} />
-
-          <p>Above component is <strong>&lt;ItemForm /&gt;</strong>.</p>
+            deleteItem={this.deleteItem}
+            saveItem={this.saveItem}
+            reset={this.reset}
+          />
         </div>
       </div>
     )
@@ -96,3 +106,4 @@ class Items extends React.Component {
 }
 
 export default Items
+
