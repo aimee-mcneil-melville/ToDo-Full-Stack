@@ -4,12 +4,9 @@ User stories for practice building web APIs.
 
 ## Install
 
-Enter the commands below in your terminal to get started:
+Clone the repo into your workspace and enter the commands below in your terminal to get started:
 
 ```sh
-cd ~/workspace
-git clone git@github.com:dev-academy-challenges/web-api-stories.git
-cd web-api-stories
 git checkout -b <branchname>
 npm install
 npx knex migrate:latest
