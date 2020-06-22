@@ -4,20 +4,13 @@ User stories for practice building web APIs.
 
 ## Install
 
-Enter the commands below in your terminal to get started:
+Clone the repo into your workspace and enter the commands below in your terminal to get started:
 
 ```sh
-cd ~/workspace
-git clone https://github.com/dev-academy-challenges/boilerplate-express-api web-api
-cd web-api
+git checkout -b <branchname>
 npm install
 npx knex migrate:latest
 npx knex seed:run
-```
-If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and change the origin remote to point to that repo:
-
-```sh
-git remote set-url origin https://github.com/YOUR-USERNAME/web-api
 ```
 
 Visit http://localhost:3000/users in your browser. If all went well, you should see a list of users.
