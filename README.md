@@ -1,26 +1,17 @@
-# React Redux
+# React Redux Stories
 
-User stories for React Redux practice.
+User stories for practicing React and Redux.
 
 
 ## Install
 
-Enter the commands below in your terminal to get started:
+To get underway, clone this repo and enter these commands:
 
-```shell
-git clone https://github.com/dev-academy-challenges/boilerplate-react-redux
-mv boilerplate-react-redux redux-practice
-cd redux-practice
+```sh
+cd react-redux-stories
 npm i
 npm run dev
 ```
-
-If you would like to push changes back to your own repository, you'll need to create an empty repository in your GitHub and [change](https://help.github.com/articles/changing-a-remote-s-url/) the `origin` remote to point to that repo:
-
-```shell
-git remote set-url origin https://github.com/YOUR-USERNAME/redux-practice
-```
-
 
 ## Start with these
 
