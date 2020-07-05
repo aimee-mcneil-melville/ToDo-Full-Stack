@@ -1,14 +1,12 @@
 import React from 'react'
-import { toBeInTheDocument } from 'jest-dom'
-import { render, cleanup } from 'react-testing-library'
+import '@testing-library/jest-dom'
+import { render, cleanup } from '@testing-library/react'
 import authenticare from 'authenticare/client'
 
 import {
   IfAuthenticated,
   IfNotAuthenticated
 } from '../../../client/components/Authenticated'
-
-expect.extend({ toBeInTheDocument })
 
 jest.mock('authenticare/client')
 

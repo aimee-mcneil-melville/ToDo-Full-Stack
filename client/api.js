@@ -7,7 +7,7 @@ const rootUrl = '/api/v1/fruits'
 
 export function getFruits (url = rootUrl) {
   return request.get(url)
-    .set({ 'Accept': 'application/json' })
+    .set({ Accept: 'application/json' })
     .then(res => {
       return res.body.fruits
     })
@@ -16,8 +16,8 @@ export function getFruits (url = rootUrl) {
 
 export function addFruit (fruit, url = rootUrl) {
   return request.post(url)
-    .set({ 'Accept': 'application/json' })
-    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .set({ Accept: 'application/json' })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
@@ -25,8 +25,8 @@ export function addFruit (fruit, url = rootUrl) {
 
 export function updateFruit (fruit, url = rootUrl) {
   return request.put(url)
-    .set({ 'Accept': 'application/json' })
-    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .set({ Accept: 'application/json' })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
@@ -34,8 +34,8 @@ export function updateFruit (fruit, url = rootUrl) {
 
 export function deleteFruit (id, url = rootUrl) {
   return request.delete(`${url}/${id}`)
-    .set({ 'Accept': 'application/json' })
-    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .set({ Accept: 'application/json' })
+    .set({ Authorization: `Bearer ${getEncodedToken()}` })
     .then(res => res.body.fruits)
     .catch(logError)
 }

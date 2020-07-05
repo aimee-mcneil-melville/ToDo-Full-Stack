@@ -3,7 +3,8 @@ const express = require('express')
 const {
   userExists,
   getUserByName,
-  createUser } = require('../db/users')
+  createUser
+} = require('../db/users')
 
 const router = express.Router()
 
