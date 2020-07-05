@@ -14,7 +14,7 @@
     "db:seed": "npm run knex seed:run",
     "build": "webpack --config client/webpack.config.js",
     "postinstall": "run-s db:migrate db:seed",
-    "test": "jest tests/client/components tests/server"
+    "test": "jest client server"
   },
   "babel": {
     "presets": [
