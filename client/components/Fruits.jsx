@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwo, Button, Error } from './Styled'
 
 import {
   getFruits,
@@ -9,144 +9,146 @@ import {
   deleteFruit
 } from '../api'
 
-class Fruits extends React.Component {
-  state = {
-    fruits: [],
-    adding: {},
-    editing: {}
-  }
+function Fruits () {
+  const [error, setError] = useState('')
+  const [fruits, setFruits] = useState([])
+  const [adding, setAdding] = useState({})
+  const [editing, setEditing] = useState({})
 
-  handleEditChange = e => {
-    this.setState({
-      editing: {
-        ...this.state.editing,
-        [e.target.name]: e.target.value
-      }
+  const handleEditChange = e => {
+    const { name, value } = e.target
+    setEditing({
+      ...editing,
+      [name]: value
     })
   }
 
-  handleAddChange = e => {
-    this.setState({
-      adding: {
-        ...this.state.adding,
-        [e.target.name]: e.target.value
-      }
+  const handleAddChange = e => {
+    const { name, value } = e.target
+    setAdding({
+      ...adding,
+      [name]: value
     })
   }
 
-  getSelectHandler = id => {
-    const { fruits } = this.state
+  const getSelectHandler = id => {
     return e => {
       e.preventDefault()
-      this.setState({
-        editing: fruits.find(fruit => fruit.id === id)
-      })
+      setEditing(fruits.find(fruit => fruit.id === id))
     }
   }
 
-  clearSelected = () => {
-    this.setState({
-      editing: {}
-    })
+  const clearSelected = () => {
+    setEditing({})
   }
 
-  handleUpdate = () => {
-    updateFruit(this.state.editing)
-      .then(fruits => {
-        this.setState({
-          fruits,
-          editing: {}
-        })
+  const handleUpdate = () => {
+    updateFruit(editing)
+      .then(remoteFruits => {
+        setFruits(remoteFruits)
+        setEditing({})
+        setError('')
+      })
+      .catch(err => {
+        setError(err.message)
       })
   }
 
-  handleDelete = () => {
-    deleteFruit(this.state.editing.id)
-      .then(fruits => {
-        this.setState({
-          fruits,
-          editing: {}
-        })
-      })
+  const handleDelete = () => {
+    deleteFruit(editing.id)
+      .then(setFruits)
+      .then(() => setEditing({}))
+      .then(() => setError(''))
+      .catch(err => setError(err.message))
   }
 
-  handleAdd = () => {
-    const newFruit = { ...this.state.adding }
+  const handleAdd = () => {
+    const newFruit = { ...adding }
     addFruit(newFruit)
-      .then(fruits => {
-        this.setState({
-          fruits,
-          adding: {}
-        })
-      })
+      .then(setFruits)
+      .then(() => setAdding({}))
   }
 
-  componentDidMount () {
+  const hideError = () => {
+    setError('')
+  }
+
+  useEffect(() => {
     getFruits()
-      .then(fruits => {
-        this.setState({ fruits })
+      .then(remoteFruits => {
+        setFruits(remoteFruits)
       })
-  }
+  }, [])
 
-  render () {
-    const { name: addingName, calories: addingCalories } = this.state.adding
-    const { name: editingName, calories: editingCalories } = this.state.editing
-    return (
-      <React.Fragment>
-        <ul>
-          {this.state.fruits.map(fruit => (
-            <li key={fruit.id}>
-              <a href='#'
-                data-testid='fruit-link'
-                onClick={this.getSelectHandler(fruit.id)}>
-                {fruit.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+  const { name: addingName, calories: addingCalories } = adding
+  const { name: editingName, calories: editingCalories } = editing
 
-        <h2>Selected</h2>
-        <GridForm>
-          <ColOne>Name:</ColOne>
-          <ColTwo name='name'
-            data-testid='selected-name'
-            value={editingName || ''}
-            onChange={this.handleEditChange} />
+  return (
+    <>
+      <Error onClick={hideError}>
+        { error && `Error: ${error}` }
+      </Error>
+      <ul>
+        {fruits.map(fruit => (
+          <li key={fruit.id}>
+            <a href='#'
+              data-testid='fruit-link'
+              onClick={getSelectHandler(fruit.id)}>
+              {fruit.name}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-          <ColOne>Calories:</ColOne>
-          <ColTwo name='calories'
-            data-testid='selected-calories'
-            value={editingCalories || ''}
-            onChange={this.handleEditChange} />
+      <h2>Selected</h2>
+      <GridForm>
+        <ColOne>Name:</ColOne>
+        <ColTwo type='text'
+          name='name'
+          aria-label='selected-name'
+          data-testid='selected-name'
+          value={editingName || ''}
+          onChange={handleEditChange} />
 
-          <Button type='button'
-            data-testid='update-button'
-            onClick={this.handleUpdate}>Update fruit</Button>
-          <Button type='button'
-            data-testid='delete-button'
-            onClick={this.handleDelete}>Delete fruit</Button>
-          <Button type='button'
-            data-testid='clear-button'
-            onClick={this.clearSelected}>Clear selection</Button>
-        </GridForm>
+        <ColOne>Calories:</ColOne>
+        <ColTwo type='text'
+          name='calories'
+          aria-label='selected-calories'
+          data-testid='selected-calories'
+          value={editingCalories || ''}
+          onChange={handleEditChange} />
 
-        <h2>Add new</h2>
-        <GridForm>
-          <ColOne>Name:</ColOne>
-          <ColTwo name='name'
-            value={addingName || ''}
-            onChange={this.handleAddChange} />
+        <Button type='button'
+          data-testid='update-button'
+          onClick={handleUpdate}>Update fruit</Button>
+        <Button type='button'
+          data-testid='delete-button'
+          onClick={handleDelete}>Delete fruit</Button>
+        <Button type='button'
+          data-testid='clear-button'
+          onClick={clearSelected}>Clear selection</Button>
+      </GridForm>
 
-          <ColOne>Calories:</ColOne>
-          <ColTwo name='calories'
-            value={addingCalories || ''}
-            onChange={this.handleAddChange} />
+      <h2>Add new</h2>
+      <GridForm>
+        <ColOne>Name:</ColOne>
+        <ColTwo type='text'
+          name='name'
+          aria-label='adding-name'
+          value={addingName || ''}
+          onChange={handleAddChange} />
 
-          <Button type='button' onClick={this.handleAdd}>Add fruit</Button>
-        </GridForm>
-      </React.Fragment>
-    )
-  }
+        <ColOne>Calories:</ColOne>
+        <ColTwo type='text'
+          name='calories'
+          aria-label='adding-calories'
+          value={addingCalories || ''}
+          onChange={handleAddChange} />
+
+        <Button type='button' onClick={handleAdd}>Add fruit</Button>
+      </GridForm>
+    </>
+  )
 }
 
 export default Fruits

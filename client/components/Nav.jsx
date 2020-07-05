@@ -7,7 +7,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 // TODO: implement or import a proper logOff function
 const logOff = () => {}
 
-const NavGroup = styled.div`
+const NavGroup = styled.nav`
   float: right;
 `
 
@@ -17,19 +17,18 @@ const NavLink = styled(Link)`
 
 export default function Nav () {
   return (
-    <React.Fragment>
+    <>
       <NavGroup>
         <NavLink to='/'>Home</NavLink>
         <IfAuthenticated>
-          <NavLink to='#' data-testid='logoff'
-            onClick={logOff}>Log off</NavLink>
+          <NavLink to='#' onClick={logOff}>Log off</NavLink>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavLink to='/register' data-testid='register'>Register</NavLink>
-          <NavLink to='/signin' data-testid='signin'>Sign in</NavLink>
+          <NavLink to='/register'>Register</NavLink>
+          <NavLink to='/signin'>Sign in</NavLink>
         </IfNotAuthenticated>
       </NavGroup>
       <h1>Fruit FTW!</h1>
-    </React.Fragment>
+    </>
   )
 }

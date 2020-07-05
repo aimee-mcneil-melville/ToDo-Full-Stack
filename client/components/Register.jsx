@@ -1,31 +1,29 @@
 import React, { useState } from 'react'
 
+import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 // TODO: implement or import proper isAuthenticated and register functions
 const isAuthenticated = () => true
 const register = () => {}
 
-export default function Register (props) {
+function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
   })
 
   const handleChange = e => {
+    const { name, value } = e.target
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [name]: value
     })
   }
 
   const handleClick = () => {
-    register({
-      username: form.username,
-      password: form.password
-    }, {
-      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
-    })
+    const { username, password } = form
+    register({ username, password }, { baseUrl })
       .then((token) => {
         if (isAuthenticated()) {
           props.history.push('/')
@@ -34,21 +32,27 @@ export default function Register (props) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <h2>Register</h2>
       <GridForm>
-        <ColOne>Username:</ColOne>
-        <ColTwo name='username'
+        <ColOne htmlFor='username'>Username:</ColOne>
+        <ColTwo type='text'
+          id='username'
+          name='username'
           value={form.username}
           onChange={handleChange} />
 
-        <ColOne>Password:</ColOne>
-        <ColTwo name='password' type='password'
+        <ColOne htmlFor='password'>Password:</ColOne>
+        <ColTwo type='password'
+          id='password'
+          name='password'
           value={form.password}
           onChange={handleChange} />
 
         <Button type='button' onClick={handleClick}>Register</Button>
       </GridForm>
-    </React.Fragment>
+    </>
   )
 }
+
+export default Register

@@ -7,7 +7,7 @@ export const GridForm = styled.form`
   grid-template-columns: auto 1fr;
 `
 
-export const ColOne = styled.span`
+export const ColOne = styled.label`
   grid-column: 1;
 `
 
@@ -18,4 +18,9 @@ export const ColTwo = styled.input`
 export const Button = styled.button`
   grid-column: 2;
   width: 50%;
+`
+
+export const Error = styled.div`
+  color: red;
+  cursor: pointer;
 `

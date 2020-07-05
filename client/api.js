@@ -1,49 +1,55 @@
 import request from 'superagent'
 
-// TODO: implement or import a proper getEncodedToken function
-const getEncodedToken = () => 'encoded-token'
+// TODO: implement or import a proper getAuthorizationHeader function
+const getAuthorizationHeader = () => ({ Authorization: 'Bearer encoded-token' })
 
 const rootUrl = '/api/v1/fruits'
+const acceptJsonHeader = { Accept: 'application/json' }
 
-export function getFruits (url = rootUrl) {
-  return request.get(url)
-    .set({ Accept: 'application/json' })
+export function getFruits () {
+  return request.get(rootUrl)
+    .set(acceptJsonHeader)
     .then(res => {
       return res.body.fruits
     })
     .catch(logError)
 }
 
-export function addFruit (fruit, url = rootUrl) {
-  return request.post(url)
-    .set({ Accept: 'application/json' })
-    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+export function addFruit (fruit) {
+  return request.post(rootUrl)
+    .set(acceptJsonHeader)
+    .set(getAuthorizationHeader())
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function updateFruit (fruit, url = rootUrl) {
-  return request.put(url)
-    .set({ Accept: 'application/json' })
-    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+export function updateFruit (fruit) {
+  return request.put(rootUrl)
+    .set(acceptJsonHeader)
+    .set(getAuthorizationHeader())
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function deleteFruit (id, url = rootUrl) {
-  return request.delete(`${url}/${id}`)
-    .set({ Accept: 'application/json' })
-    .set({ Authorization: `Bearer ${getEncodedToken()}` })
+export function deleteFruit (id) {
+  return request.delete(`${rootUrl}/${id}`)
+    .set(acceptJsonHeader)
+    .set(getAuthorizationHeader())
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
 function logError (err) {
-  // eslint-disable-next-line no-console
-  console.error(
-    'Error consuming the API (in client/api.js):',
-    err.message
-  )
+  if (err.message === 'Forbidden') {
+    throw new Error('Only the user who added the fruit may update and delete it')
+  } else {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Error consuming the API (in client/api.js):',
+      err.message
+    )
+    throw err
+  }
 }
