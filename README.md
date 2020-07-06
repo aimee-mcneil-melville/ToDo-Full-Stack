@@ -134,7 +134,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
-Currently `client/api.js` is using a fake `getEncodedToken` function. Let's replace this with the `getEncodedToken` from `authenticare/client`. This will return the token that `authenticare` saves in localStorage. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/client/getEncodedToken.md) for more details.
+Currently `client/api.js` is using a fake `getAuthorizationHeader` function. Let's replace this with the `getAuthorizationHeader` from `authenticare/client`. This will return the token that `authenticare` saves in localStorage. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/client/getEncodedToken.md) for more details.
 
 Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed now.
 
