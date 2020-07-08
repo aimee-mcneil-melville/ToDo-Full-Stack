@@ -7,6 +7,6 @@ const server = express()
 server.use(express.json())
 server.use(express.static('public'))
 
-server.use('/api', authRoutes)
+server.use('/api/v1', authRoutes)
 
 module.exports = server

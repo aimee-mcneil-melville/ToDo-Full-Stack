@@ -1,4 +1,5 @@
 import { register as authRegister, signIn as authLogin } from 'authenticare/client'
+import { baseApiUrl as baseUrl } from '../config'
 
 const errorMessages = {
   "USERNAME_UNAVAILABLE": "Sorry, that username is taken.",
@@ -6,18 +7,14 @@ const errorMessages = {
 }
 
 export function register (creds) {
-  return authRegister(creds, {
-      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
-    })
+  return authRegister(creds, { baseUrl })
     .catch(err => {
       throw errorMessages[err.response.body.errorType]
     })
 }
 
 export function login (creds) {
-  return authLogin(creds, {
-    baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
-    })
+  return authLogin(creds, { baseUrl })
     .catch(err => {
       throw errorMessages[err.response.body.errorType]
     })
