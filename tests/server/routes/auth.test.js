@@ -19,7 +19,7 @@ test('/register succeeds for new user', () => {
   // Mock getUserByUsername to work (resolve)
   usersDb.getUserByUsername.mockImplementation((username) => Promise.resolve({ username: username }))
 
-  return request(server).post('/api/auth/register')
+  return request(server).post('/api/v1/auth/register')
   .expect(200)
   .then(res => {
     let actual = res.body.message
@@ -34,7 +34,7 @@ test('/register fails for existing user', () => {
   // Mock userExists to return true
   usersDb.userExists.mockImplementation(username => Promise.resolve(true))
 
-  return request(server).post('/api/auth/register')
+  return request(server).post('/api/v1/auth/register')
   .expect(400)
   .then(res => {
     let actual = res.body.errorType
@@ -51,7 +51,7 @@ test('/register fails for existing user', () => {
 //   // Mock createUser to fail (reject)
 //   usersDb.createUser.mockImplementation((username, first_name, last_name, password) => Promise.reject("Can't create user"))
 
-//   return request(server).post('/api/auth/register')
+//   return request(server).post('/api/v1/auth/register')
 //   .expect(500)
 //   .then(res => {
 //     let actual = res.body.errorType
