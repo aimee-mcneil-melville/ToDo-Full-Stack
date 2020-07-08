@@ -3,19 +3,16 @@ import {connect} from 'react-redux'
 import {loginUser, loginError} from '../actions/auth'
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      username: '',
-      password: ''
-    }
-    this.updateDetails = this.updateDetails.bind(this)
-    this.submit = this.submit.bind(this)
+  state = {
+    username: '',
+    password: ''
   }
-  updateDetails(e) {
+
+  handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
-  submit(e) {
+
+  handleSubmit = (e) => {
     e.preventDefault()
     let {username, password} = this.state
     const confirmSuccess = () => { this.props.history.push('/') }
@@ -24,15 +21,15 @@ class Login extends React.Component {
   render() {
     const {auth} = this.props
     return (
-      <form className="form box" onSubmit={this.submit}>
+      <form className="form box" onSubmit={this.handleSubmit}>
         <h1 className="title is-2">Login</h1>
         <hr />
         {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
         <label className="label is-large has-text-centered">Username
-          <input required className="input has-text-centered is-large is-fullwidth" placeholder="User Name" type="text" name="username" autoComplete="username" value={this.state.username} onChange={this.updateDetails}/>
+          <input required className="input has-text-centered is-large is-fullwidth" placeholder="User Name" type="text" name="username" autoComplete="username" value={this.state.username} onChange={this.handleChange}/>
         </label>
         <label className="label is-large has-text-centered">Password
-          <input required className="input has-text-centered is-large is-fullwidth" placeholder="Password" type="password" name="password" autoComplete="current-password" value={this.state.password} onChange={this.updateDetails}/>
+          <input required className="input has-text-centered is-large is-fullwidth" placeholder="Password" type="password" name="password" autoComplete="current-password" value={this.state.password} onChange={this.handleChange}/>
         </label>
         <input className="button is-large is-fullwidth is-success" value='Login' type="submit" />
       </form>

@@ -4,16 +4,16 @@ import {Link} from 'react-router-dom'
 import {logoutUser} from '../actions/auth'
 
 class Nav extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showBurger: false
-    }
-    this.toggleBurger = this.toggleBurger.bind(this)
+  state = {
+    showBurger: false
   }
-  toggleBurger() {
-    this.setState({showBurger: !this.state.showBurger})
+
+  toggleBurger = () => {
+    this.setState({
+      showBurger: !this.state.showBurger
+    })
   }
+
   render() {
     const {auth, logout} = this.props
     const {showBurger} = this.state
