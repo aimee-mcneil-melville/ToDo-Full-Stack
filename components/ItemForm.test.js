@@ -1,8 +1,5 @@
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
-import '@testing-library/jest-dom/extend-expect'
-
 import React from 'react'
+import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 
 import ItemForm from './ItemForm'
