@@ -104,7 +104,7 @@ That's more like it!
 
 ## In a state of flux
 
-Usually we define state on our components because *we expect that state to change*. State makes it easier to update our components in response to what the user is doing. 
+Usually we define state on our components because *we expect that state to change*. State makes it easier to update our components in response to what the user is doing.
 
 We can illustrate this by responding to some *events*. Here's how it'll go:
 
