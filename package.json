@@ -4,15 +4,18 @@
   "description": "Playing with random colours and React state.",
   "repository": "https://github.com/dev-academy-challenges/broken-kaleidoscope",
   "main": "server/index.js",
+  "keywords": [
+    "frontend"
+  ],
   "author": "EDA",
   "license": "ISC",
   "scripts": {
-    "start": "run-p webpack server",
-    "dev": "run-p client server",
-    "webpack": "webpack",
-    "client": "webpack --watch",
-    "server": "node server",
-    "test": "jest --watchAll"
+    "build": "webpack --config client/webpack.config.js",
+    "start": "node server",
+    "test": "jest --watchAll",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "npm run build -- --watch",
+    "dev:server": "nodemon server"
   },
   "babel": {
     "presets": [
@@ -45,6 +48,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
