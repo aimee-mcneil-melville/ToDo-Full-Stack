@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/kata-objects-and-arrays#readme",
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.2.2"
   }
 }
