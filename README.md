@@ -43,7 +43,7 @@ The last three tests walk you through implementing 3 common functions we use on 
 2. [`Array.filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 3. [`Array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 
-You will implement simplified versions of these functions. Normally we'd just use the versions that JavaScript provides, but it's good to understand how they work.
+** Do not use the built in array functions, instead write your own using loops and conditionals **
 
 
 ## Clean up
