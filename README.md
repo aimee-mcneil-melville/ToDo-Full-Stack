@@ -12,7 +12,7 @@ Creating a web server with Express.js
 
 ## 1. Respond with a string
 
-* Create a route called `/compliment` to `server.js` that responds with a nice compliment.
+* Create a route called `/compliment` within `server.js` that responds with a nice compliment.
 * Add some HTML markup to that string to dress it up.
 * Start the server using `npm start`.
 * Make sure it works by going to [http://localhost:3000/compliment](http://localhost:3000/compliment).
