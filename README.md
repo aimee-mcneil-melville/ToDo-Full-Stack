@@ -8,14 +8,14 @@ Build a state of the (ASCII) art terminal client. Don't forget to maximise your 
 ## Learning objectives
 
 1. Reading and writing files.
-1. Getting used to asynchronous functions and callbacks.
-1. A first try at writing tests for async functions.
+2. Getting used to asynchronous functions and callbacks.
+3. A first try at writing tests for async functions.
 
 
 ## Getting started
 
 1. Clone this repo and create a new branch for you or your pair.
-1. Create an `index.js` file so you can run your program with `node index`.
+2. Create an `index.js` file so you can run your program with `node index`.
 
 
 ## MVP
@@ -27,11 +27,11 @@ Here are some user stories to guide your work. We'll talk more about user storie
 1. _As a user, I'd like to see a welcome message (so that I feel, y'know, welcome)._
   - Start small. You'll use `console.log` statements a lot in this project, since the terminal _is_ the console!
 
-1. _As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice._
+2. _As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice._
   - Here's where you show a list of filenames from the `data` directory. You can choose to keep these in your code for now.
   - Hint: start counting from 0, it will make indexing an array that much easier.
 
-1. _As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)_
+3. _As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)_
   - There's a section on [terminal helpers](#terminal-helpers) below. Try using the `readline` function, it's a good way to practice callbacks.
   - Again, start small. Try to get the number from the user and display it in the terminal.
   - Once you have that, use the number to get the filename. Maybe the filenames are in an array, and the numbers are the array indices?
@@ -49,17 +49,17 @@ Ready for more? Here's some ideas for what to work on next!
   - Maybe turn the main menu into a function you can call any time you want to?
   - In order to not scroll the 'image' off the screen, you might want to ask the user to press enter before continuing.
 
-1. _As a user, I want to be able to quit when I press `q` so that I can return to the terminal prompt._
+2. _As a user, I want to be able to quit when I press `q` so that I can return to the terminal prompt._
   - Hint: `process.exit()`
 
-1. _As a user, I want to be able to write a comment to a file when I press `c` so that I can voice my opinion._
+3. _As a user, I want to be able to write a comment to a file when I press `c` so that I can voice my opinion._
   - Here's your chance to practice with `fs.writeFile`!
   - Don't get too fancy at first. Just accept a line of input into a variable, and write that variable out again to a file called `data/comments.txt`.
 
-1. _As a user, I want to view the comments file when I press `v` so that I can see all the latest comments._
+4. _As a user, I want to view the comments file when I press `v` so that I can see all the latest comments._
   - Once you have comment display working, try adding another comment. What happens to the first one?
 
-1. _As a user, I want my comments to be preserved so that I don't overwrite my last one with the latest one._
+5. _As a user, I want my comments to be preserved so that I don't overwrite my last one with the latest one._
   - Here's a good use case for `fs.appendFile`.
 
 
@@ -67,12 +67,12 @@ Ready for more? Here's some ideas for what to work on next!
 
 Still not enough for you? Check these out:
 
-1. _As a user, I want to be able to erase all the comments so that I can start afresh._
+6. _As a user, I want to be able to erase all the comments so that I can start afresh._
   - Think about how to remove the contents of the file without actually deleting it. Or perhaps it should be deleted?
   - You'll need to add another key to the menu, perhaps 'd'.
   - You may want to think about an "Are you sure?" prompt to prevent accidents.
 
-1. _As a user, I want any new artworks I add to the data directory to be listed, so that I don't need to modify the program every time._
+7. _As a user, I want any new artworks I add to the data directory to be listed, so that I don't need to modify the program every time._
   - Hint: `fs.readdir` This is another chance to practice callbacks.
 
 
@@ -85,12 +85,12 @@ Still not enough for you? Check these out:
 By now you should be getting used to setting up Node programs. Here's a reminder in case you need it:
 
 1. Create an npm `package.json` file using `npm init`.
-1. Install `jest` as dev dependencies (use `-D`).
-1. Write a couple of scripts in your `package.json`:
+2. Install `jest` as dev dependencies (use `-D`).
+3. Write a couple of scripts in your `package.json`:
   - one that starts the program
   - one that runs all the tests
-1. Create a `tests` directory.
-1. Write a simple initial test that proves the tests run ok.
+4. Create a `tests` directory.
+5. Write a simple initial test that proves the tests run ok.
 
 You'll see we've included a data directory with some text files in it. You'll need those in a bit.
 
