@@ -20,10 +20,12 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  },
+  "devDependencies": {
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
-    "supertest": "^4.0.2",
-    "express-handlebars": "^4.0.4"
+    "supertest": "^4.0.2"
   },
   "jest": {
     "watchPathIgnorePatterns": [
