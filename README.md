@@ -5,7 +5,7 @@ User stories for practicing with relational databases and related tools.
 
 ## Setup
 
-Some of the setup for a sample application has already been done for you.
+Some of the setup for a sample application has already been done for you, but you still need to do these steps.
 
 1. Install `knex` and `sqlite3` as normal dependencies.
 
