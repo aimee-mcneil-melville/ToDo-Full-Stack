@@ -44,6 +44,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
     "babel-loader": "^8.1.0",
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
