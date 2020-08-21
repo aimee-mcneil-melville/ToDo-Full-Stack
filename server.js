@@ -3,13 +3,12 @@ const hbs = require('express-handlebars')
 
 const server = express()
 
-// Middleware
-server.engine('hbs', hbs({
-  defaultLayout: 'main',
-  extname: 'hbs'
-}))
-server.set('view engine', 'hbs')
+// Server configuration
 server.use(express.static('public'))
 server.use(express.urlencoded({extended: false}))
+
+// Handlebars configuration
+server.engine('hbs', hbs({ extname: 'hbs' }))
+server.set('view engine', 'hbs')
 
 module.exports = server
