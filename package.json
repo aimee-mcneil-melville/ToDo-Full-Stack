@@ -28,6 +28,7 @@
     "express-handlebars": "^4.0.4"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
