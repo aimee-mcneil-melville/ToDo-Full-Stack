@@ -38,7 +38,7 @@ Let's get our server running with a default route
 
 **User Story 1:** *As a user, I want to see some puppies, so that you know, I can say awwww.*
 
-Now that we have an root route, we probably want to have another route to see some puppies
+Now that we have a root route, we probably want to have another route to see some puppies
 
 - In our routes file, change the GET `/` route. We will use this route to:
 
