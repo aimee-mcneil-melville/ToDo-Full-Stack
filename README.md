@@ -40,7 +40,7 @@ Let's get our server running with a default route
 
 Now that we have a root route, we probably want to have another route to see some puppies
 
-- In our routes file, change the GET `/` route. We will use this route to:
+- In our routes file, change the GET `/` route function. We will use this route to:
 
   1. read the puppies from our `data.json` file (don't forget to parse the data into a JavaScript object)
   2. render the puppies; a `home` view has been created for you so all have to do is connect your data and your view together
