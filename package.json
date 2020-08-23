@@ -4,11 +4,11 @@
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.js",
   "scripts": {
-    "start": "run-p webpack server",
-    "dev": "run-p client server",
-    "webpack": "webpack",
-    "client": "webpack --watch",
-    "server": "node server"
+    "start": "node server",
+    "build": "webpack",
+    "dev": "run-p watch:client watch:server",
+    "watch:client": "webpack --watch",
+    "watch:server": "nodemon --watch server"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",
   "author": "EDA",
@@ -21,20 +21,27 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
