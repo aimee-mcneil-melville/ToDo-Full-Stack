@@ -204,7 +204,6 @@ describe('POST /new', () => {
     })
 
     // keep the error message from lib.js out of the test run
-    const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
 
     return request(server)
       .post('/new')
