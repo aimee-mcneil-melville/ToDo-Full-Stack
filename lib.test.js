@@ -96,7 +96,7 @@ describe('getPuppyById', () => {
 
     const logger = { error: jest.fn() }
 
-    lib.getPuppyData((err, puppyData) => {
+    lib.getPuppyById(2, (err, puppyData) => {
       expect(err.message).toMatch('Unable to parse the data file')
       expect(logger.error).toHaveBeenCalledTimes(1)
       expect(puppyData).toBeUndefined()
