@@ -16,7 +16,6 @@ describe('getPuppyData', () => {
       }
     }
 
-    const logger = { error: jest.fn() }
 
     lib.getPuppyData((err, puppyData) => {
       expect(puppyData.puppies).toHaveLength(3)
