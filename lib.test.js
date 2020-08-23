@@ -16,7 +16,6 @@ describe('getPuppyData', () => {
       }
     }
 
-
     lib.getPuppyData((err, puppyData) => {
       expect(puppyData.puppies).toHaveLength(3)
     }, mockfs)
