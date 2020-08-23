@@ -11,4 +11,6 @@ server.use(express.urlencoded({extended: false}))
 server.engine('hbs', hbs({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 
+// Your routes should go here
+
 module.exports = server
