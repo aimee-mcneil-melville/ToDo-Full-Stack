@@ -91,7 +91,6 @@ describe('GET /:id', () => {
     })
 
     // keep the error message from lib.js out of the test run
-    const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
 
     return request(server)
       .get('/1')
