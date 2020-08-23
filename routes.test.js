@@ -158,7 +158,6 @@ describe('POST /edit/:id', () => {
     })
 
     // keep the error message from lib.js out of the test run
-    const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
     const updatedPuppy = {}
 
     return request(server)
