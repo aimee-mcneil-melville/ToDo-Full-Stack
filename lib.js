@@ -82,7 +82,7 @@ function addNewPuppy (newPuppy, callback, fs = nodefs, log = console) {
     // This is NOT a safe way to assign new ID values because if the last pup is
     // deleted the next one will get the reused ID when they should be different
     const latestPuppy = puppyData.puppies[puppyData.puppies.length - 1]
-    newPuppy.id = latestPuppy.id + 1
+    newPuppy.id = latestPuppy ? (latestPuppy.id + 1) : 1
 
     puppyData.puppies.push(newPuppy)
     const puppyString = JSON.stringify(puppyData, null, 2)
