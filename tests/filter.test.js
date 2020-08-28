@@ -1,11 +1,26 @@
 const filter = require('../utilities').filter
-const isEmail = require('../utilities').isEmail
 
-const randomStrings = require('../data/random-strings')
+test('filter returns an array containing only values that pass the specified condition', () => {
+  const animals = [
+    'dragon',
+    'orangutan',
+    'lizard',
+    'dog',
+    'kiwi',
+    'dingo',
+    'eagle',
+    'dinosaur'
+  ]
 
-test('filter and isEmail returns an array with the correct number of emails', () => {
-  const expected = 44
-  const actual = filter(randomStrings, isEmail) || []
-  expect(actual.length).toBe(expected)
+  const condition = animal => animal.startsWith('d')
+
+  const actual = filter(animals, condition)
+
+  expect(actual).toEqual([
+    'dragon',
+    'dog',
+    'dingo',
+    'dinosaur'
+  ])
 })
 
