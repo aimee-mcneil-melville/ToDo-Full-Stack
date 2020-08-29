@@ -67,11 +67,11 @@ Here is a table of routes that you need to implement as part of this exercise:
 |--------|-----------------------------------------|--------------------------------------------|-----------------------------|
 | GET    | `/v1/posts`                             | Get a list of blog posts                   | An array of blog posts      |
 | POST   | `/v1/posts`                             | Add a new blog post                        | The newly created blog post |
-| PUT    | `/v1/posts/:id`                         | Update an existing blog post               | The updated blog post       |
+| PATCH    | `/v1/posts/:id`                         | Update an existing blog post               | The updated blog post       |
 | DELETE | `/v1/posts/:id`                         | Delete an existing blog post               | Nothing (status OK)         |
 | GET    | `/v1/posts/:postId/comments`            | Get a list of comments for a specific post | An array of comments        |
 | POST   | `/v1/posts/:postId/comments`            | Add a new comment to a specific post       | The newly created comment   |
-| PUT    | `/v1/comments/:commentId`               | Update an existing comment                 | The updated comment         |
+| PATCH    | `/v1/comments/:commentId`               | Update an existing comment                 | The updated comment         |
 | DELETE | `/v1/comments/:commentId`               | Delete an existing comment                 | Nothing (status OK)         |
 
 In order to complete this exercise, the JSON responses will need conform to the following formats below:
@@ -126,7 +126,7 @@ Response:
 }
 ```
 
-**PUT `/v1/posts/:id`**
+**PATCH `/v1/posts/:id`**
 
 Request:
 
@@ -199,7 +199,7 @@ Response:
 }
 ```
 
-**PUT `/v1/comments/:commentId`**
+**PATCH `/v1/comments/:commentId`**
 
 Request:
 

@@ -25,14 +25,14 @@ export function addPost (post) {
 export function updatePost (post) {
   // convert the large paragraphs string into an array of paragraphs
   post.paragraphs = post.paragraphs.split('\n')
-  return request.put(`/v1/posts/${post.id}`)
+  return request.patch(`/v1/posts/${post.id}`)
     .send(post)
     .then(res => {
       validateNoSnakeCase(res.body)
-      validatePostResponse('PUT', 'v1/posts/:id', res.body)
+      validatePostResponse('PATCH', 'v1/posts/:id', res.body)
       return res.body
     })
-    .catch(errorHandler('PUT', '/v1/posts/:id'))
+    .catch(errorHandler('PATCH', '/v1/posts/:id'))
 }
 
 export function deletePost (postId) {
@@ -61,13 +61,13 @@ export function addCommentByPostId (postId, comment) {
 }
 
 export function updateComment (comment) {
-  return request.put(`/v1/comments/${comment.id}`)
+  return request.patch(`/v1/comments/${comment.id}`)
     .send(comment)
     .then(res => {
       validateNoSnakeCase(res.body)
       return res.body
     })
-    .catch(errorHandler('PUT', '/v1/comments/:id'))
+    .catch(errorHandler('PATCH', '/v1/comments/:id'))
 }
 
 export function deleteComment (commentId) {
