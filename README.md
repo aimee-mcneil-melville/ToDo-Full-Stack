@@ -8,7 +8,7 @@ In this challenge you'll build part of a fictitious clearing house for beer - sp
 After cloning this repo
 
 ```sh
-cd sweet-as-beers && npm
+cd sweet-as-beers && npm i
 npm run dev
 ```
 
