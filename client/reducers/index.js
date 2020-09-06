@@ -1,7 +1,13 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 
-// import otherReducer from './other-reducer'
+import currentPage from './current-page'
+import products from './products'
+import cart from './cart'
+import waiting from './waiting'
 
 export default combineReducers({
-  // otherReducer
+  currentPage,
+  products,
+  cart,
+  waiting
 })

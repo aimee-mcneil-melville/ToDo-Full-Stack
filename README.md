@@ -1,19 +1,15 @@
-# Sweet As Beers
+# Sweet As Organics
 
-In this challenge you'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
-
+The Sweet As team have diversified! They are now selling a variety of organic foods, but have this time chosen to store their stock data in a database.
 
 ## Setup
 
 After cloning this repo
 
 ```sh
-cd sweet-as-beers && npm i
+cd sweet-as-organics-api && npm i
 npm run dev
 ```
-
-Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
-
 
 ## Listing
 

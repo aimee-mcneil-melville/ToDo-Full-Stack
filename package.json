@@ -4,10 +4,11 @@
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
   "scripts": {
+    "start": "node server",
     "dev": "run-p client server",
     "client": "webpack --watch",
     "server": "nodemon server",
-    "start": "node server",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "test": "jest --watchAll"
   },
   "author": "EDA",
@@ -23,7 +24,10 @@
     ]
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.5",
+    "sqlite3": "^5.0.0",
+    "superagent": "^6.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",

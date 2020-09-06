@@ -11,31 +11,31 @@ h1 {
   margin-bottom: 40px;
 }
 
-.beer p {
+.product p {
   margin: 5px 0;
 }
 
-.beer .name {
+.product .name {
   margin-top: 40px;
   font-size: x-large;
   font-weight: 300;
 }
 
-.beer p:last-child {
+.product p:last-child {
   display: flex;
   justify-content: space-between;
   color: darkgray;
 }
 
-.beer .country {
+.product .country {
   font-style: italic;
 }
 
-.beer .abv {
+.product .abv {
   font-style: italic;
 }
 
-.beer .cart-link {
+.product .cart-link {
   text-align: right;
 }
 
@@ -59,3 +59,7 @@ h1 {
   justify-content: space-between;
 }
 
+.wait-indicator {
+  margin-left: 5px;
+  width: 40px;
+}
