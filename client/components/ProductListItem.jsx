@@ -8,9 +8,9 @@ const ProductListItem = (props) => {
       <p className='description'>{product.description}</p>
       <p>
         <span className='country'>Lovingly made in {product.country}</span>
-        <a href='#'
+        <button
           className='cart-link'
-          onClick={() => props.addToCart(product)}>Add to cart</a>
+          onClick={() => props.addToCart(product)}>Add to cart</button>
       </p>
     </div>
   )

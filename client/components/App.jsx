@@ -1,25 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
 
-import Cart from './Cart'
 import Header from './Header'
-import ProductList from './ProductList'
 import ErrorMessage from './ErrorMessage'
+import Cart from './Cart'
+import ProductList from './ProductList'
+import Orders from './Orders'
 
-const App = (props) => {
-  return (
-    <div className='app'>
-      <Header />
-      <ErrorMessage />
-      {props.currentPage === 'listing' ? <ProductList /> : <Cart />}
-    </div>
-  )
-}
+import { getProducts } from '../coordinators'
 
-const mapStateToProps = (state) => {
-  return {
-    currentPage: state.currentPage
+class App extends React.Component {
+  componentDidMount () {
+    const { dispatch } = this.props
+    getProducts(dispatch)
+  }
+  render () {
+    return (
+      <div className='app'>
+        <Route path='/' component={Header} />
+        <Route path='/' component={ErrorMessage} />
+        <Route exact path='/' component={ProductList} />
+        <Route path='/cart' component={Cart} />
+        <Route path='/orders' component={Orders} />
+      </div>
+    )
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect()(App)

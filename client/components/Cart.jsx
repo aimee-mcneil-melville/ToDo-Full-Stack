@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 
 import CartItem from './CartItem'
 
-import { navigate } from '../actions/navigate'
 import {
   deleteFromCart,
-  updateCart 
+  updateCart
 } from '../actions/cart'
 
 class Cart extends React.Component {
@@ -27,6 +26,10 @@ class Cart extends React.Component {
     const cart = this.state.cart.filter(item => item.id !== id)
     this.setState({ cart })
     this.props.deleteFromCart(id)
+  }
+
+  keepShopping = () => {
+    this.props.history.push('/')
   }
 
   render () {
@@ -52,9 +55,9 @@ class Cart extends React.Component {
           </tbody>
         </table>
         <p className='actions'>
-          <a href='#' onClick={this.props.keepShopping}>Continue shopping</a>
+          <button onClick={this.keepShopping}>Continue shopping</button>
           <button onClick={() => this.props.updateCart(this.state.cart)}>Update</button>
-          <button className='button-primary'>Checkout</button>
+          <button className='button-primary'>Place Order</button>
         </p>
       </div>
     )
@@ -63,19 +66,18 @@ class Cart extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-        cart: state.cart
+    cart: state.cart
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-        keepShopping: () => dispatch(navigate('listing')),
-        deleteFromCart: (id) => dispatch(deleteFromCart(id)),
-        updateCart: (cart) => dispatch(updateCart(cart))
+    deleteFromCart: (id) => dispatch(deleteFromCart(id)),
+    updateCart: (cart) => dispatch(updateCart(cart))
   }
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Cart)

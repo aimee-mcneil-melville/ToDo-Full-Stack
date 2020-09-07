@@ -1,28 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getProducts } from '../api/products'
-
 import { addToCart } from '../actions/cart'
-import { navigate } from '../actions/navigate'
-import { showError } from '../actions/error'
-import { requestProducts, receiveProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 import WaitIndicator from './WaitIndicator'
 
 class ProductList extends React.Component {
-  componentDidMount () {
-    const { dispatch } = this.props
-    dispatch(requestProducts())
-    getProducts()
-      .then(products => {
-        dispatch(receiveProducts(products))
-      })
-      .catch(err => {
-        dispatch(showError(err.message))
-      })
-  }
   render () {
     const { products, dispatch } = this.props
     return (
@@ -39,7 +23,7 @@ class ProductList extends React.Component {
               product={product}
               addToCart={item => {
                 dispatch(addToCart(item))
-                dispatch(navigate('cart'))
+                this.props.history.push('/cart') 
               }}
             />
           )
