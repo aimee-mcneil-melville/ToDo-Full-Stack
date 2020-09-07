@@ -17,11 +17,10 @@ npm run dev
 ## Release 0: Understanding the codebase
 getProducts has been done for you
 
-## Release 1: Add a product
+## Release 1: Add an order 
 
-## Release 2: Delete a product when it is out of stock
+## Release 2: View your orders
 
-## Release 3: Update products for a rebrand
+## Release 3: Update order
 
-
-## Release 4: Implement orders
+## Release 4: Delete orders
