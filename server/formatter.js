@@ -3,6 +3,13 @@ function createDateTimeString (timestamp) {
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
+function sortById (arr) {
+  arr.sort((a, b) => {
+    return a.id - b.id
+  })
+  return arr
+}
+
 function formatOrder (orderLines, currentOrder) {
   let order = currentOrder
   orderLines.forEach(item => {
@@ -25,6 +32,7 @@ function formatOrder (orderLines, currentOrder) {
         quantity: item.quantity
       })
   })
+  order.products = sortById(order.products)
   return order
 }
 
@@ -45,13 +53,13 @@ function formatOrderList (orders) {
           }
         ]
       })
-      : order.products.push({
+      : order.products = sortById([...order.products, {
         id: item.productId,
         name: item.name,
         quantity: item.quantity
-      })
+      }])
   })
-  return orderList
+  return sortById(orderList)
 }
 
 module.exports = {
