@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Order from './Order'
 import WaitIndicator from './WaitIndicator'
 
-import { getOrders } from '../coordinators'
+import { getOrders } from '../api-helpers'
 
 class OrderList extends React.Component {
   componentDidMount () {

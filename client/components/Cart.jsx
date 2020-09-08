@@ -9,7 +9,7 @@ import {
   updateCart
 } from '../actions/cart'
 
-import { addOrder } from '../coordinators'
+import { addOrder } from '../api-helpers'
 
 class Cart extends React.Component {
   state = {

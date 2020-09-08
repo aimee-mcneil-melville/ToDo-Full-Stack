@@ -7,7 +7,7 @@ import { addToCart } from '../actions/cart'
 import ProductListItem from './ProductListItem'
 import WaitIndicator from './WaitIndicator'
 
-import { getProducts } from '../coordinators'
+import { getProducts } from '../api-helpers'
 
 class ProductList extends React.Component {
   componentDidMount () {

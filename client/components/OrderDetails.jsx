@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import OrderItem from './OrderItem'
 
-import { updateOrder } from '../coordinators'
+import { updateOrder } from '../api-helpers'
 
 class OrderDetails extends React.Component {
   state = {

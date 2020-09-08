@@ -4,7 +4,7 @@ import { Link, Route } from 'react-router-dom'
 
 import OrderDetails from './OrderDetails'
 
-import { cancelOrder } from '../coordinators'
+import { cancelOrder } from '../api-helpers'
 
 const Order = props => {
   const { order, history } = props
