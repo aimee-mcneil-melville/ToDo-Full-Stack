@@ -1,20 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { addToCart } from '../actions/cart'
 
 import ProductListItem from './ProductListItem'
 import WaitIndicator from './WaitIndicator'
 
+import { getProducts } from '../coordinators'
+
 class ProductList extends React.Component {
+  componentDidMount () {
+    getProducts(this.props.dispatch)
+  }
+
   render () {
     const { products, dispatch } = this.props
     return (
       <div className='productlist'>
-        <p className='welcome'>
-          Welcome! Please choose from our delicious selection and don&apos;t
-          hesitate to let us know if we can answer any of your questions.
-        </p>
+        <div className='welcome'>
+          <p>
+            Welcome! Please choose from our delicious selection and don&apos;t
+            hesitate to let us know if we can answer any of your questions.
+          </p>
+          <button>
+            <Link to='/orders'>My Orders</Link>
+          </button>
+        </div>
         <WaitIndicator />
         {products.map(product => {
           return (
@@ -23,7 +35,7 @@ class ProductList extends React.Component {
               product={product}
               addToCart={item => {
                 dispatch(addToCart(item))
-                this.props.history.push('/cart') 
+                this.props.history.push('/cart')
               }}
             />
           )

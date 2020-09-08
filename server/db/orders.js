@@ -32,6 +32,7 @@ function addOrderLines (id, order, db = connection) {
     }
   })
   return db('orders_products').insert(orderLines)
+    .then(() => id)
 }
 
 function addOrder (order, db = connection) {
@@ -41,7 +42,7 @@ function addOrder (order, db = connection) {
     updated_at: timestamp
   })
     .then(([id]) => addOrderLines(id, order, db))
-    .then(() => listOrders(db))
+    .then(id => findOrder(id, db))
 }
 
 function editOrder (id, order, db = connection) {
@@ -54,7 +55,7 @@ function editOrder (id, order, db = connection) {
         .del()
     })
     .then(() => addOrderLines(id, order, db))
-    .then(() => listOrders(db))
+    .then(id => findOrder(id, db))
 }
 
 function removeOrder (orderId, db = connection) {
@@ -66,12 +67,10 @@ function removeOrder (orderId, db = connection) {
         .where('id', orderId)
         .del()
     })
-    .then(() => listOrders(db))
 }
 
 module.exports = {
   listOrders,
-  findOrder,
   addOrder,
   editOrder,
   removeOrder

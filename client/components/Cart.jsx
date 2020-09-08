@@ -2,11 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import CartItem from './CartItem'
+import WaitIndicator from './WaitIndicator'
 
 import {
   deleteFromCart,
   updateCart
 } from '../actions/cart'
+
+import { addOrder } from '../coordinators'
 
 class Cart extends React.Component {
   state = {
@@ -32,6 +35,11 @@ class Cart extends React.Component {
     this.props.history.push('/')
   }
 
+  placeOrder = () => {
+    addOrder(this.state.cart, this.props.dispatch)
+      .then(() => this.props.history.push('/orders'))
+  }
+
   render () {
     return (
       <div className='cart'>
@@ -46,10 +54,11 @@ class Cart extends React.Component {
           <tbody>
             {this.props.cart.map((item, id) => {
               return (
-                <CartItem key={id}
-                          item={item}
-                          update={this.update}
-                          deleteFromCart={this.deleteItem}
+                <CartItem
+                  key={id}
+                  item={item}
+                  update={this.update}
+                  deleteFromCart={this.deleteItem}
                 />)
             })}
           </tbody>
@@ -57,7 +66,10 @@ class Cart extends React.Component {
         <p className='actions'>
           <button onClick={this.keepShopping}>Continue shopping</button>
           <button onClick={() => this.props.updateCart(this.state.cart)}>Update</button>
-          <button className='button-primary'>Place Order</button>
+          <span>
+            <WaitIndicator />
+            <button className='button-primary' onClick={this.placeOrder}>Place Order</button>
+          </span>
         </p>
       </div>
     )
@@ -73,7 +85,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteFromCart: (id) => dispatch(deleteFromCart(id)),
-    updateCart: (cart) => dispatch(updateCart(cart))
+    updateCart: (cart) => dispatch(updateCart(cart)),
+    dispatch: dispatch
   }
 }
 

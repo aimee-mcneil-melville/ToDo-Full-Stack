@@ -1,15 +1,15 @@
-export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
-export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
+export const FETCH_PRODUCTS_PENDING = 'FETCH_PRODUCTS_PENDING'
+export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
 
-export const requestProducts = () => {
+export const fetchProductsPending = () => {
   return {
-    type: REQUEST_PRODUCTS
+    type: FETCH_PRODUCTS_PENDING
   }
 }
 
-export const receiveProducts = products => {
+export const fetchProductsSuccess = products => {
   return {
-    type: RECEIVE_PRODUCTS,
+    type: FETCH_PRODUCTS_SUCCESS,
     products: products
   }
 }
