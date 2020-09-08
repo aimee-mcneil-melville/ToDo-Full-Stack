@@ -18,9 +18,13 @@ npm run dev
 getProducts has been done for you
 
 ## Release 1: Add an order 
+implement the place order button from Cart
 
 ## Release 2: View your orders
+orderList componentDidMount should get the orders and add them to the redux store
 
 ## Release 3: Update order
+implement update order button
 
 ## Release 4: Delete orders
+create and implement a cancel order button

@@ -2,12 +2,15 @@ const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
+const { formatOrder, formatOrderList } = require('../formatter')
+
 function listOrders (db = connection) {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
     .select('products.id as productId', 'orders.id as orderId', 'quantity',
       'created_at as createdAt', 'updated_at as updatedAt', 'name')
+    .then(formatOrderList)
 }
 
 function findOrder (orderId, db = connection) {
@@ -17,6 +20,7 @@ function findOrder (orderId, db = connection) {
     .where('orders.id', orderId)
     .select('products.id as productId', 'orders.id as orderId', 'quantity',
       'created_at as createdAt', 'updated_at as updatedAt', 'name')
+    .then(formatOrder)
 }
 
 function addOrderLines (id, order, db = connection) {

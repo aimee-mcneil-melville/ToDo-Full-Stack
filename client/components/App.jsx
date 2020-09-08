@@ -6,7 +6,7 @@ import Header from './Header'
 import ErrorMessage from './ErrorMessage'
 import Cart from './Cart'
 import ProductList from './ProductList'
-import Orders from './Orders'
+import OrderList from './OrderList'
 
 import { getProducts } from '../coordinators'
 
@@ -22,7 +22,7 @@ class App extends React.Component {
         <Route path='/' component={ErrorMessage} />
         <Route exact path='/' component={ProductList} />
         <Route path='/cart' component={Cart} />
-        <Route path='/orders' component={Orders} />
+        <Route path='/orders' component={OrderList} />
       </div>
     )
   }

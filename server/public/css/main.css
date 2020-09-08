@@ -11,20 +11,35 @@ h1 {
   margin-bottom: 40px;
 }
 
-.product p {
+.order {
+  display: flex;
+  flex-direction: column;
+}
+
+.product p, .order p {
   margin: 5px 0;
 }
 
-.product .name {
+.product .name, .order .name {
   margin-top: 40px;
   font-size: x-large;
   font-weight: 300;
 }
 
-.product p:last-child {
+.product p:last-child, .order p:last-child {
   display: flex;
   justify-content: space-between;
   color: darkgray;
+}
+
+.timestamp {
+  font-size: small;
+  color: darkgray;
+}
+
+.order-button {
+  float: right;
+  width: fit-content;
 }
 
 .product .country {

@@ -1,8 +1,6 @@
 import { RECEIVE_PRODUCTS } from '../actions/products'
 
-const initialState = []
-
-const products = (state = initialState, action) => {
+const products = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return action.products

@@ -10,8 +10,8 @@ function sortById (arr) {
   return arr
 }
 
-function formatOrder (orderLines, currentOrder) {
-  let order = currentOrder
+function formatOrder (orderLines) {
+  let order
   orderLines.forEach(item => {
     !order
       ? order = {
