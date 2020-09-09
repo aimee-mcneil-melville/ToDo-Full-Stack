@@ -12,17 +12,15 @@ class OrderList extends React.Component {
   }
 
   render () {
-    const { orders, history } = this.props
+    const { orders } = this.props
     return (
       <div className='orderlist'>
-        <button onClick={() => this.props.history.push('/')}>New Order</button>
         <WaitIndicator />
         {orders.map(order => {
           return (
             <Order
               key={order.id}
               order={order}
-              history={history}
             />
           )
         })}

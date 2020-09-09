@@ -27,19 +27,9 @@ router.post('/', (req, res) => {
 
 router.patch('/:id', (req, res) => {
   const id = Number(req.params.id)
-  const order = req.body
-  db.editOrder(id, order)
-    .then(order => {
-      res.json(order)
-    })
-    .catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})
-
-router.delete('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  db.removeOrder(id)
+  const { status } = req.body
+  const orderChanges = { status }
+  db.editOrder(id, orderChanges)
     .then(() => {
       res.sendStatus(204)
     })

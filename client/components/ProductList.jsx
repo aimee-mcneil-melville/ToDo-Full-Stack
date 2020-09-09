@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { addToCart } from '../actions/cart'
 
@@ -23,9 +22,6 @@ class ProductList extends React.Component {
             Welcome! Please choose from our delicious selection and don&apos;t
             hesitate to let us know if we can answer any of your questions.
           </p>
-          <button>
-            <Link to='/orders'>My Orders</Link>
-          </button>
         </div>
         <WaitIndicator />
         {products.map(product => {

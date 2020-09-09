@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import CartItem from './CartItem'
 import WaitIndicator from './WaitIndicator'
@@ -31,47 +32,47 @@ class Cart extends React.Component {
     this.props.deleteFromCart(id)
   }
 
-  keepShopping = () => {
-    this.props.history.push('/')
-  }
-
   placeOrder = () => {
     addOrder(this.state.cart, this.props.dispatch)
       .then(() => this.props.history.push('/orders'))
   }
 
   render () {
-    return (
-      <div className='cart'>
-        <table>
-          <thead>
-            <tr>
-              <td>Product</td>
-              <td>Quantity</td>
-              <td>Remove</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.cart.map((item, id) => {
-              return (
-                <CartItem
-                  key={id}
-                  item={item}
-                  update={this.update}
-                  deleteFromCart={this.deleteItem}
-                />)
-            })}
-          </tbody>
-        </table>
-        <p className='actions'>
-          <button onClick={this.keepShopping}>Continue shopping</button>
-          <span>
-            <WaitIndicator />
-            <button className='button-primary' onClick={this.placeOrder}>Place Order</button>
-          </span>
-        </p>
-      </div>
-    )
+    return this.state.cart.length
+      ? (
+        <div className='cart'>
+          <table>
+            <thead>
+              <tr>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Remove</td>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.cart.map((item, id) => {
+                return (
+                  <CartItem
+                    key={id}
+                    item={item}
+                    update={this.update}
+                    deleteFromCart={this.deleteItem}
+                  />)
+              })}
+            </tbody>
+          </table>
+          <p className='actions'>
+            <Link to='/'>Continue shopping</Link>
+            <span>
+              <WaitIndicator />
+              <button className='button-primary' onClick={this.placeOrder}>
+                Place Order
+              </button>
+            </span>
+          </p>
+        </div>
+      )
+      : <p>Your cart is empty! Start shopping <Link to='/'>here</Link></p>
   }
 }
 

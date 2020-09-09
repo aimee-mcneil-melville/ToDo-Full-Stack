@@ -1,38 +1,52 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
 
-import OrderDetails from './OrderDetails'
+import OrderItem from './OrderItem'
 
-import { cancelOrder } from '../api-helpers'
+import { updateOrder, getOrders } from '../api-helpers'
 
 const Order = props => {
-  const { order, history } = props
-  const { id, createdAt, updatedAt } = order
+  const { dispatch, order } = props
+  const { id, products, createdAt, status } = order
+
+  const cancelOrder = () => {
+    const orderChanges = { status: 'cancelled' }
+    updateOrder(id, orderChanges, dispatch)
+      .then(() => {
+        getOrders(dispatch)
+      })
+  }
   return (
     <div className='order'>
       <p className='name'>Order #{id}</p>
-      <p>
-        <span>
-          <span className='timestamp'>Order placed: {createdAt}</span>
-          <br />
-          <span className='timestamp'>Last updated: {updatedAt}</span>
-        </span>
-        <span className='actions'>
-          <button onClick={() => cancelOrder(id, props.dispatch)}>
-            <span className='fa fa-trash fa-2x' />
-          </button>
-          <button className='order-button'>
-            <Link to={`/orders/${id}`}>View Order</Link>
-          </button>
-        </span>
+      <p className='order-details'>Order placed: {createdAt}</p>
+      <p className='order-details'>
+        <span className={`fa fa-circle ${status}`} aria-hidden="true"></span>
+        Status: {status}
       </p>
-      <Route path='/orders/:id' render={(props) => {
-        return <OrderDetails
-          order={order}
-          history={history}
-          match={props.match} />
-      }} />
+      <table>
+        <thead>
+          <tr>
+            <td>Product</td>
+            <td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map(item => {
+            return <OrderItem
+              key={item.id}
+              product={item}
+            />
+          })}</tbody>
+      </table>
+      <div>
+        {status === 'pending' &&
+          <button
+            onClick={cancelOrder}
+            className='order-button'
+          >Cancel Order</button>
+        }
+      </div>
     </div>
   )
 }

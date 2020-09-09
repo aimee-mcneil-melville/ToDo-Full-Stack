@@ -6,17 +6,14 @@ import {
   postOrderPending,
   postOrderSuccess,
   patchOrderPending,
-  patchOrderSuccess,
-  deleteOrderPending,
-  deleteOrderSuccess
+  patchOrderSuccess
 } from './actions/orders'
 
 import {
   fetchProducts,
   fetchOrders,
   postOrder,
-  patchOrder,
-  deleteOrder
+  patchOrder
 } from './api'
 
 export function getProducts (dispatch) {
@@ -54,22 +51,11 @@ export function addOrder (order, dispatch) {
     })
 }
 
-export function updateOrder (order, dispatch) {
+export function updateOrder (id, orderChanges, dispatch) {
   dispatch(patchOrderPending())
-  return patchOrder(order)
-    .then(updatedOrder => {
-      dispatch(patchOrderSuccess(updatedOrder))
-    })
-    .catch(err => {
-      dispatch(showError(err.message))
-    })
-}
-
-export function cancelOrder (id, dispatch) {
-  dispatch(deleteOrderPending())
-  deleteOrder(id)
+  return patchOrder(id, orderChanges)
     .then(() => {
-      dispatch(deleteOrderSuccess(id))
+      dispatch(patchOrderSuccess())
     })
     .catch(err => {
       dispatch(showError(err.message))

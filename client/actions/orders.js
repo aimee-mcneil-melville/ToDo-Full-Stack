@@ -4,8 +4,6 @@ export const POST_ORDER_PENDING = 'POST_ORDER_PENDING'
 export const POST_ORDER_SUCCESS = 'POST_ORDER_SUCCESS'
 export const PATCH_ORDER_PENDING = 'PATCH_ORDER_PENDING'
 export const PATCH_ORDER_SUCCESS = 'PATCH_ORDER_SUCCESS'
-export const DELETE_ORDER_PENDING = 'DELETE_ORDER_PENDING'
-export const DELETE_ORDER_SUCCESS = 'DELETE_ORDER_SUCCESS'
 
 export const fetchOrdersPending = () => {
   return {
@@ -38,22 +36,8 @@ export const patchOrderPending = () => {
   }
 }
 
-export const patchOrderSuccess = order => {
+export const patchOrderSuccess = () => {
   return {
-    type: PATCH_ORDER_SUCCESS,
-    order: order
-  }
-}
-
-export const deleteOrderPending = () => {
-  return {
-    type: DELETE_ORDER_PENDING
-  }
-}
-
-export const deleteOrderSuccess = orderId => {
-  return {
-    type: DELETE_ORDER_SUCCESS,
-    orderId: orderId
+    type: PATCH_ORDER_SUCCESS
   }
 }

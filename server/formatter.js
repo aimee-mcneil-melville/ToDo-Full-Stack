@@ -7,7 +7,7 @@ function createOrder (orderLine) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
-    updatedAt: createDateTimeString(orderLine.updatedAt),
+    status: orderLine.status,
     products: [ createProduct(orderLine) ]
   }
 }
@@ -27,17 +27,6 @@ function sortById (arr) {
   return arr
 }
 
-function formatOrder (orderLines) {
-  let order
-  orderLines.forEach(item => {
-    !order
-      ? order = createOrder(item)
-      : order.products.push(createProduct(item))
-  })
-  order.products = sortById(order.products)
-  return order
-}
-
 function formatOrderList (orders) {
   let orderList = []
   orders.forEach(item => {
@@ -50,6 +39,5 @@ function formatOrderList (orders) {
 }
 
 module.exports = {
-  formatOrderList,
-  formatOrder
+  formatOrderList
 }
