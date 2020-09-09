@@ -19,10 +19,10 @@ class Cart extends React.Component {
   update = (id, quantity) => {
     this.setState({
       cart: this.state.cart.map(item => {
-        if (item.id === id) item.quantity = Number(quantity)
-        return item
+        const newQuantity = (item.id === id) ? Number(quantity) : item.quantity
+        return { ...item, quantity: newQuantity }
       })
-    })
+    }, () => this.props.updateCart(this.state.cart))
   }
 
   deleteItem = (id) => {
@@ -52,7 +52,7 @@ class Cart extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.cart.map((item, id) => {
+            {this.state.cart.map((item, id) => {
               return (
                 <CartItem
                   key={id}
@@ -65,7 +65,6 @@ class Cart extends React.Component {
         </table>
         <p className='actions'>
           <button onClick={this.keepShopping}>Continue shopping</button>
-          <button onClick={() => this.props.updateCart(this.state.cart)}>Update</button>
           <span>
             <WaitIndicator />
             <button className='button-primary' onClick={this.placeOrder}>Place Order</button>
