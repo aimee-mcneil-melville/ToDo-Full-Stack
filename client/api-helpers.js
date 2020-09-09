@@ -46,8 +46,8 @@ export function getOrders (dispatch) {
 export function addOrder (order, dispatch) {
   dispatch(postOrderPending())
   return postOrder(order)
-    .then(newOrder => {
-      dispatch(postOrderSuccess(newOrder))
+    .then(() => {
+      dispatch(postOrderSuccess())
     })
     .catch(err => {
       dispatch(showError(err.message))

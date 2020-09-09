@@ -42,7 +42,6 @@ function addOrder (order, db = connection) {
     updated_at: timestamp
   })
     .then(([id]) => addOrderLines(id, order, db))
-    .then(id => findOrder(id, db))
 }
 
 function editOrder (id, order, db = connection) {

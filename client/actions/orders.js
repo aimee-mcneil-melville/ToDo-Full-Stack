@@ -26,10 +26,9 @@ export const postOrderPending = () => {
   }
 }
 
-export const postOrderSuccess = order => {
+export const postOrderSuccess = () => {
   return {
-    type: POST_ORDER_SUCCESS,
-    order: order
+    type: POST_ORDER_SUCCESS
   }
 }
 

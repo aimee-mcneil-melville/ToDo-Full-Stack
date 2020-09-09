@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const order = req.body
   db.addOrder(order)
-    .then(newOrder => {
-      res.json(newOrder)
+    .then(() => {
+      res.sendStatus(201)
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
