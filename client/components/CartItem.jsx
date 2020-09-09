@@ -1,17 +1,18 @@
 import React from 'react'
 
 const CartItem = (props) => {
-  const name = props.item.name
+  const { name, id, quantity } = props.item
+  const displayQuantity = (quantity === 0) ? '' : quantity
   return (
     <tr>
       <td>{name}</td>
       <td>
         <input
           className='update-input'
-          value={props.item.quantity}
-          onChange={(e) => props.update(props.item.id, e.target.value)} />
+          value={displayQuantity}
+          onChange={(e) => props.update(id, e.target.value)} />
       </td>
-      <td><button onClick={() => props.deleteFromCart(props.item.id)}>
+      <td><button onClick={() => props.deleteFromCart(id)}>
         <span className='fa fa-trash fa-2x' />
       </button></td>
     </tr>
