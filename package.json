@@ -1,7 +1,7 @@
 {
-  "name": "sweet-as-beers",
+  "name": "sweet-as-organics-api",
   "version": "0.2.0",
-  "description": "Getting more comfortable with React and Redux",
+  "description": "Getting familiar with Redux and async functions",
   "main": "server/index.js",
   "scripts": {
     "start": "node server",
@@ -9,7 +9,7 @@
     "client": "webpack --watch",
     "server": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --verbose"
   },
   "author": "EDA",
   "license": "ISC",
@@ -20,7 +20,9 @@
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread"
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-regenerator",
+      "@babel/plugin-transform-runtime"
     ]
   },
   "dependencies": {
@@ -31,20 +33,27 @@
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.3",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.3",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.2",
     "babel-loader": "^8.1.0",
     "jest": "^26.1.0",
     "knex": "^0.21.5",
+    "nock": "^13.0.4",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
+    "regenerator-runtime": "^0.13.7",
     "sqlite3": "^5.0.0",
     "superagent": "^6.1.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   }
