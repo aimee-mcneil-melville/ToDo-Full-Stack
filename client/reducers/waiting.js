@@ -21,8 +21,6 @@ const waiting = (state = false, action) => {
     case FETCH_ORDERS_SUCCESS:
     case POST_ORDER_SUCCESS:
     case PATCH_ORDER_SUCCESS:
-      return false
-
     case SHOW_ERROR:
       return false
 

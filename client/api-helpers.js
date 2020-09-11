@@ -18,7 +18,7 @@ import {
 
 export function getProducts (dispatch) {
   dispatch(fetchProductsPending())
-  fetchProducts()
+  return fetchProducts()
     .then(products => {
       dispatch(fetchProductsSuccess(products))
     })
@@ -29,7 +29,7 @@ export function getProducts (dispatch) {
 
 export function getOrders (dispatch) {
   dispatch(fetchOrdersPending())
-  fetchOrders()
+  return fetchOrders()
     .then(orders => {
       dispatch(fetchOrdersSuccess(orders))
     })

@@ -52,3 +52,11 @@ test('returns empty array on POST_ORDER_SUCCESS', () => {
   const newState = cart(mockCart, action)
   expect(newState).toHaveLength(0)
 })
+
+test('returns old state if action does not match', () => {
+  const action = {
+    type: 'RANDOM_TEST_ACTION_TYPE'
+  }
+  const newState = cart(mockCart, action)
+  expect(newState).toBe(mockCart)
+})

@@ -12,7 +12,7 @@ import {
 
 import { addOrder } from '../api-helpers'
 
-class Cart extends React.Component {
+export class Cart extends React.Component {
   state = {
     cart: this.props.cart
   }
