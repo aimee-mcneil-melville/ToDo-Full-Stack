@@ -65,7 +65,9 @@ export class Cart extends React.Component {
             <Link to='/'>Continue shopping</Link>
             <span>
               <WaitIndicator />
-              <button className='button-primary' onClick={this.placeOrder}>
+              <button
+                className='button-primary'
+                onClick={this.placeOrder}>
                 Place Order
               </button>
             </span>

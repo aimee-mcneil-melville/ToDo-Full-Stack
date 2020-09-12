@@ -38,8 +38,6 @@ export function getOrders (dispatch) {
     })
 }
 
-// These helpers are returning the api call promises, because the component
-// needs to know when the call is done to redirect the user.
 export function addOrder (order, dispatch) {
   dispatch(postOrderPending())
   return postOrder(order)

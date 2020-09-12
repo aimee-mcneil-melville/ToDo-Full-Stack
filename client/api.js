@@ -1,10 +1,14 @@
 import request from 'superagent'
 
-const apiRoot = '/api/v1'
+export const url = 'http://localhost:3000'
+const apiRoot = url + '/api/v1'
 
 export function fetchProducts () {
   return request.get(`${apiRoot}/products`)
     .then(res => res.body)
+    .catch(err => {
+      throw err
+    })
 }
 
 export function fetchOrders () {
