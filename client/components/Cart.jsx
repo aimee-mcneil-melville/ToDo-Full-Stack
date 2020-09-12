@@ -10,7 +10,11 @@ import {
   updateCart
 } from '../actions/cart'
 
-import { addOrder } from '../api-helpers'
+import {
+  placeOrder,
+  deleteCartItem,
+  updateCartItem
+} from './ui-helpers'
 
 export class Cart extends React.Component {
   state = {
@@ -18,23 +22,20 @@ export class Cart extends React.Component {
   }
 
   update = (id, quantity) => {
-    this.setState({
-      cart: this.state.cart.map(item => {
-        const newQuantity = (item.id === id) ? Number(quantity) : item.quantity
-        return { ...item, quantity: newQuantity }
-      })
-    }, () => this.props.updateCart(this.state.cart))
+    const updateInfo = { id, quantity }
+    const cart = this.state.cart
+    updateCartItem(updateInfo, cart, this)
   }
 
   deleteItem = (id) => {
-    const cart = this.state.cart.filter(item => item.id !== id)
-    this.setState({ cart })
-    this.props.deleteFromCart(id)
+    const cart = this.state.cart
+    deleteCartItem(id, cart, this)
   }
 
   placeOrder = () => {
-    addOrder(this.state.cart, this.props.dispatch)
-      .then(() => this.props.history.push('/orders'))
+    const { cart } = this.state
+    const { history, dispatch } = this.props
+    placeOrder(cart, history, dispatch)
   }
 
   render () {
