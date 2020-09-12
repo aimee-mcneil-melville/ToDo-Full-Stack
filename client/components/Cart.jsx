@@ -45,9 +45,9 @@ export class Cart extends React.Component {
           <table>
             <thead>
               <tr>
-                <td>Product</td>
-                <td>Quantity</td>
-                <td>Remove</td>
+                <td role='columnheader'>Product</td>
+                <td role='columnheader'>Quantity</td>
+                <td role='columnheader'>Remove</td>
               </tr>
             </thead>
             <tbody>

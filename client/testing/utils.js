@@ -7,6 +7,21 @@ import '@testing-library/jest-dom/extend-expect'
 
 import reducer from '../reducers'
 
+export const renderWithRouter = (
+  ui,
+  {
+    initialEntries = ['/']
+  } = {}
+) => {
+  return {
+    ...render(
+      <Router initialEntries={initialEntries} initialIndex={0}>
+        {ui}
+      </Router>
+    )
+  }
+}
+
 export const renderWithRedux = (
   ui,
   {
