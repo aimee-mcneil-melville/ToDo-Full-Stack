@@ -97,7 +97,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 While we _are_ saving a new user when they register, we're not currently saving their password properly. Have a look at `server/db/users.js` and notice how the `createUser` function is passing the  `password` to the `generateHash` function. Currently that function is just returning `"fake-hash-value"`, but we need it to generate a proper hash.
 
-`authenticare/server` exports a `generateHash` function. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/generateHash.md) and replace/add the `generateHash` function in both `server/db/users.js` and `tests/server/db/seeds/users.js`.
+`authenticare/server` exports a `generateHash` function. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/generateHash.md) and replace/add the `generateHash` function in both `server/db/users.js` and `server/db/seeds/users.js`.
 
 You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds. Afterwards, verify new user registrations are saving a hash of the password in the database.
 
