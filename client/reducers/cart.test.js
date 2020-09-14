@@ -42,7 +42,7 @@ test('returns the provided cart on UPDATE_CART', () => {
   }
   const newState = cart([], action)
   expect(newState).toHaveLength(3)
-  expect(newState[0].description).toBe('sexy cart item')
+  expect(newState[0].name).toBe('mocked cart item 1')
 })
 
 test('returns empty array on POST_ORDER_SUCCESS', () => {
