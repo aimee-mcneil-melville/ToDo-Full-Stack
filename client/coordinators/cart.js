@@ -12,13 +12,6 @@ export function updateCartItem (updatedInfo, cart, updateCart) {
     return { ...item, quantity: newQuantity }
   })
   updateCart(newCart)
-  return newCart
-}
-
-export function deleteCartItem (id, cart, deleteFromCart) {
-  const newCart = cart.filter(item => item.id !== id)
-  deleteFromCart(id)
-  return newCart
 }
 
 export function createOrder (cart) {

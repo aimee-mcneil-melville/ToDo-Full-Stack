@@ -16,79 +16,65 @@ import {
 } from '../actions/orders'
 
 import { placeOrder } from '../coordinators/orders'
-import {
-  deleteCartItem,
-  updateCartItem,
-  createOrder
-} from '../coordinators/cart'
+import { updateCartItem, createOrder } from '../coordinators/cart'
 
-export class Cart extends React.Component {
-  state = {
-    cart: this.props.cart
-  }
+const Cart = (props) => {
+  const { cart } = props
 
-  update = (id, quantity) => {
+  const update = (id, quantity) => {
     const updateInfo = { id, quantity }
-    const { cart } = this.state
-    const { updateCart } = this.props
-    const newCart = updateCartItem(updateInfo, cart, updateCart)
-    this.setState({ cart: newCart })
+    const { updateCart } = props
+    updateCartItem(updateInfo, cart, updateCart)
   }
 
-  deleteItem = (id) => {
-    const cart = this.state.cart
-    const { deleteFromCart } = this.props
-    const newCart = deleteCartItem(id, cart, deleteFromCart)
-    this.setState({ cart: newCart })
+  const deleteItem = (id) => {
+    props.deleteFromCart(id)
   }
 
-  placeOrder = () => {
-    const { cart } = this.state
+  const submitCart = () => {
+    const { history, postOrderPending, postOrderSuccess, showError } = props
     const order = createOrder(cart)
-    const { history, postOrderPending, postOrderSuccess, showError } = this.props
     const dispatchers = { postOrderPending, postOrderSuccess, showError }
     placeOrder(order, history, dispatchers)
   }
 
-  render () {
-    return this.state.cart.length
-      ? (
-        <div className='cart'>
-          <table>
-            <thead>
-              <tr>
-                <td role='columnheader'>Product</td>
-                <td role='columnheader'>Quantity</td>
-                <td role='columnheader'>Remove</td>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.cart.map((item, id) => {
-                return (
-                  <CartItem
-                    key={id}
-                    item={item}
-                    update={this.update}
-                    deleteFromCart={this.deleteItem}
-                  />)
-              })}
-            </tbody>
-          </table>
-          <p className='actions'>
-            <Link to='/'>Continue shopping</Link>
-            <span>
-              <WaitIndicator />
-              <button
-                className='button-primary'
-                onClick={this.placeOrder}>
-                Place Order
-              </button>
-            </span>
-          </p>
-        </div>
-      )
-      : <p>Your cart is empty! Start shopping <Link to='/'>here</Link></p>
-  }
+  return cart.length
+    ? (
+      <div className='cart'>
+        <table>
+          <thead>
+            <tr>
+              <td role='columnheader'>Product</td>
+              <td role='columnheader'>Quantity</td>
+              <td role='columnheader'>Remove</td>
+            </tr>
+          </thead>
+          <tbody>
+            {cart.map((item, id) => {
+              return (
+                <CartItem
+                  key={id}
+                  item={item}
+                  update={update}
+                  deleteFromCart={deleteItem}
+                />)
+            })}
+          </tbody>
+        </table>
+        <p className='actions'>
+          <Link to='/'>Continue shopping</Link>
+          <span>
+            <WaitIndicator />
+            <button
+              className='button-primary'
+              onClick={submitCart}>
+              Place Order
+            </button>
+          </span>
+        </p>
+      </div>
+    )
+    : <p>Your cart is empty! Start shopping <Link to='/'>here</Link></p>
 }
 
 const mapStateToProps = (state) => {
