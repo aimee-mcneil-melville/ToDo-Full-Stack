@@ -4,6 +4,8 @@ const router = express.Router()
 
 const db = require('../db/orders')
 
+module.exports = router
+
 router.get('/', (req, res) => {
   db.listOrders()
     .then(orders => {
@@ -37,5 +39,3 @@ router.patch('/:id', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
-
-module.exports = router

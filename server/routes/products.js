@@ -4,6 +4,8 @@ const router = express.Router()
 
 const db = require('../db/products')
 
+module.exports = router
+
 router.get('/', (req, res) => {
   db.listProducts()
     .then(products => {
@@ -13,5 +15,3 @@ router.get('/', (req, res) => {
       res.send('DATABASE ERROR: ' + err.message)
     })
 })
-
-module.exports = router

@@ -4,6 +4,12 @@ const connection = require('knex')(config)
 
 const { formatOrder, formatOrderList } = require('../formatter')
 
+module.exports = {
+  listOrders,
+  addOrder,
+  editOrder
+}
+
 function listOrders (db = connection) {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
@@ -48,10 +54,4 @@ function editOrder (id, orderChanges, db = connection) {
     .update(orderChanges)
     .where('id', id)
     .then(() => findOrderById(id, db))
-}
-
-module.exports = {
-  listOrders,
-  addOrder,
-  editOrder
 }
