@@ -2,19 +2,27 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { addToCart } from '../actions/cart'
+import { showError } from '../actions/error'
+import {
+  fetchProductsPending,
+  fetchProductsSuccess
+} from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 import WaitIndicator from './WaitIndicator'
 
-import { getProducts } from '../api-helpers'
+import { getProducts } from '../coordinators/products'
+import { addCartItem } from '../coordinators/cart'
 
 class ProductList extends React.Component {
   componentDidMount () {
-    getProducts(this.props.dispatch)
+    const { fetchProductsPending, fetchProductsSuccess, showError } = this.props
+    const dispatchers = { fetchProductsPending, fetchProductsSuccess, showError }
+    getProducts(dispatchers)
   }
 
   render () {
-    const { products, dispatch } = this.props
+    const { products, history, addToCart } = this.props
     return (
       <div className='productlist'>
         <div className='welcome'>
@@ -29,10 +37,7 @@ class ProductList extends React.Component {
             <ProductListItem
               key={product.id}
               product={product}
-              addToCart={item => {
-                dispatch(addToCart(item))
-                this.props.history.push('/cart')
-              }}
+              addToCart={item => addCartItem(item, history, addToCart)}
             />
           )
         })}
@@ -47,6 +52,14 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = {
+  addToCart,
+  fetchProductsPending,
+  fetchProductsSuccess,
+  showError
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProductList)

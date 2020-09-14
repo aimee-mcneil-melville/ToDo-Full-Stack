@@ -3,19 +3,24 @@ import { connect } from 'react-redux'
 
 import OrderItem from './OrderItem'
 
-import { updateOrder, getOrders } from '../api-helpers'
+import {
+  patchOrderPending,
+  patchOrderSuccess
+} from '../actions/orders'
+import { showError } from '../actions/error'
 
-const Order = props => {
-  const { dispatch, order } = props
+import { updateOrder } from '../coordinators/orders'
+
+const Order = (props) => {
+  const { patchOrderPending, patchOrderSuccess, showError, order } = props
   const { id, products, createdAt, status } = order
 
   const cancelOrder = () => {
     const orderChanges = { status: 'cancelled' }
-    updateOrder(id, orderChanges, dispatch)
-      .then(() => {
-        getOrders(dispatch)
-      })
+    const dispatchers = { patchOrderPending, patchOrderSuccess, showError }
+    updateOrder(id, orderChanges, dispatchers)
   }
+
   return (
     <div className='order'>
       <p className='name'>Order #{id}</p>
@@ -51,4 +56,10 @@ const Order = props => {
   )
 }
 
-export default connect()(Order)
+const mapDispatchToProps = {
+  patchOrderPending,
+  patchOrderSuccess,
+  showError
+}
+
+export default connect(null, mapDispatchToProps)(Order)

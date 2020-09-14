@@ -5,16 +5,22 @@ import { Link } from 'react-router-dom'
 import CartItem from './CartItem'
 import WaitIndicator from './WaitIndicator'
 
+import { showError } from '../actions/error'
 import {
   deleteFromCart,
   updateCart
 } from '../actions/cart'
-
 import {
-  placeOrder,
+  postOrderPending,
+  postOrderSuccess
+} from '../actions/orders'
+
+import { placeOrder } from '../coordinators/orders'
+import {
   deleteCartItem,
-  updateCartItem
-} from './ui-helpers'
+  updateCartItem,
+  createOrder
+} from '../coordinators/cart'
 
 export class Cart extends React.Component {
   state = {
@@ -23,19 +29,25 @@ export class Cart extends React.Component {
 
   update = (id, quantity) => {
     const updateInfo = { id, quantity }
-    const cart = this.state.cart
-    updateCartItem(updateInfo, cart, this)
+    const { cart } = this.state
+    const { updateCart } = this.props
+    const newCart = updateCartItem(updateInfo, cart, updateCart)
+    this.setState({ cart: newCart })
   }
 
   deleteItem = (id) => {
     const cart = this.state.cart
-    deleteCartItem(id, cart, this)
+    const { deleteFromCart } = this.props
+    const newCart = deleteCartItem(id, cart, deleteFromCart)
+    this.setState({ cart: newCart })
   }
 
   placeOrder = () => {
     const { cart } = this.state
-    const { history, dispatch } = this.props
-    placeOrder(cart, history, dispatch)
+    const order = createOrder(cart)
+    const { history, postOrderPending, postOrderSuccess, showError } = this.props
+    const dispatchers = { postOrderPending, postOrderSuccess, showError }
+    placeOrder(order, history, dispatchers)
   }
 
   render () {
@@ -85,12 +97,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteFromCart: (id) => dispatch(deleteFromCart(id)),
-    updateCart: (cart) => dispatch(updateCart(cart)),
-    dispatch: dispatch
-  }
+const mapDispatchToProps = {
+  updateCart,
+  deleteFromCart,
+  postOrderPending,
+  postOrderSuccess,
+  showError
 }
 
 export default connect(

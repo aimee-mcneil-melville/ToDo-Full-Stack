@@ -4,11 +4,16 @@ import { connect } from 'react-redux'
 import Order from './Order'
 import WaitIndicator from './WaitIndicator'
 
-import { getOrders } from '../api-helpers'
+import { fetchOrdersPending, fetchOrdersSuccess } from '../actions/orders'
+import { showError } from '../actions/error'
+
+import { getOrders } from '../coordinators/orders'
 
 class OrderList extends React.Component {
   componentDidMount () {
-    getOrders(this.props.dispatch)
+    const { fetchOrdersPending, fetchOrdersSuccess, showError } = this.props
+    const dispatchers = { fetchOrdersPending, fetchOrdersSuccess, showError }
+    getOrders(dispatchers)
   }
 
   render () {
@@ -35,6 +40,13 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = {
+  fetchOrdersPending,
+  fetchOrdersSuccess,
+  showError
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(OrderList)
