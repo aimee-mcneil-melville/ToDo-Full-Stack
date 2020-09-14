@@ -30,8 +30,8 @@ router.patch('/:id', (req, res) => {
   const { status } = req.body
   const orderChanges = { status }
   db.editOrder(id, orderChanges)
-    .then(() => {
-      res.sendStatus(204)
+    .then(order => {
+      res.json(order)
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)

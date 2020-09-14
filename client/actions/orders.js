@@ -36,8 +36,9 @@ export const patchOrderPending = () => {
   }
 }
 
-export const patchOrderSuccess = () => {
+export const patchOrderSuccess = order => {
   return {
-    type: PATCH_ORDER_SUCCESS
+    type: PATCH_ORDER_SUCCESS,
+    order: order
   }
 }

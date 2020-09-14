@@ -42,6 +42,7 @@ test('patchOrderPending returns the correct action', () => {
 })
 
 test('patchOrderSuccess returns the correct action', () => {
-  const action = patchOrderSuccess()
+  const action = patchOrderSuccess(mockOrders[0])
   expect(action.type).toBe(PATCH_ORDER_SUCCESS)
+  expect(action.order.id).toBe(1)
 })

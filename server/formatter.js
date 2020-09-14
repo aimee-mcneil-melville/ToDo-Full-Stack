@@ -1,3 +1,8 @@
+module.exports = {
+  formatOrder,
+  formatOrderList
+}
+
 function createDateTimeString (timestamp) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
@@ -27,17 +32,24 @@ function sortById (arr) {
   return arr
 }
 
-function formatOrderList (orders) {
+function formatOrder (orderLines) {
+  let order
+  orderLines.forEach(item => {
+    !order
+      ? order = createOrder(item)
+      : order.products.push(createProduct(item))
+  })
+  order.products = sortById(order.products)
+  return order
+}
+
+function formatOrderList (orderLines) {
   let orderList = []
-  orders.forEach(item => {
+  orderLines.forEach(item => {
     let order = orderList.find(o => o.id === item.orderId)
     !order
       ? orderList.push(createOrder(item))
       : order.products = sortById([ ...order.products, createProduct(item) ])
   })
   return sortById(orderList)
-}
-
-module.exports = {
-  formatOrderList
 }
