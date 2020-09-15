@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders header correctly 1`] = `
+<DocumentFragment>
+  <nav
+    class="nav"
+  >
+    <a
+      href="/"
+    >
+      Shop
+    </a>
+    <a
+      href="/cart"
+    >
+      Cart
+    </a>
+    <a
+      href="/orders"
+    >
+      My Orders
+    </a>
+  </nav>
+  <h1>
+    <span
+      aria-hidden="true"
+      class="fa fa-leaf"
+    />
+     Sweet As Organics 
+    <span
+      aria-hidden="true"
+      class="fa fa-leaf"
+    />
+  </h1>
+</DocumentFragment>
+`;

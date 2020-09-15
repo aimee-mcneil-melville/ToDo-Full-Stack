@@ -26,7 +26,7 @@ jest.mock('../coordinators/orders', () => {
 test('renders cart when in props', async () => {
   const mockChild = <>mock child fragment</>
   const { asFragment } = renderWithRouter(<Cart cart={mockCart}>
-    { mockChild }</Cart>)
+    {mockChild}</Cart>)
 
   const cartHeaders = await screen.getAllByRole('columnheader')
   const productCells = await screen.getAllByRole('cell')

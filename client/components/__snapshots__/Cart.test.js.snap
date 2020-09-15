@@ -45,12 +45,15 @@ exports[`renders cart when in props 1`] = `
           </td>
           <td>
             <input
+              aria-label="quantity"
               class="update-input"
               value="4"
             />
           </td>
           <td>
-            <button>
+            <button
+              aria-label="delete"
+            >
               <span
                 class="fa fa-trash fa-2x"
               />
@@ -63,12 +66,15 @@ exports[`renders cart when in props 1`] = `
           </td>
           <td>
             <input
+              aria-label="quantity"
               class="update-input"
               value="2"
             />
           </td>
           <td>
-            <button>
+            <button
+              aria-label="delete"
+            >
               <span
                 class="fa fa-trash fa-2x"
               />
@@ -81,12 +87,15 @@ exports[`renders cart when in props 1`] = `
           </td>
           <td>
             <input
+              aria-label="quantity"
               class="update-input"
               value="7"
             />
           </td>
           <td>
-            <button>
+            <button
+              aria-label="delete"
+            >
               <span
                 class="fa fa-trash fa-2x"
               />

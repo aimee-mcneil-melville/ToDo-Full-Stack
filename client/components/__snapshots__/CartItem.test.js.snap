@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders cart item correctly, with quantity in input 1`] = `
+<DocumentFragment>
+  mock cart item
+  <input
+    aria-label="quantity"
+    class="update-input"
+    value="4"
+  />
+  <button
+    aria-label="delete"
+  >
+    <span
+      class="fa fa-trash fa-2x"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`renders empty input if quantity is 0 1`] = `
+<DocumentFragment>
+  mock cart item 2
+  <input
+    aria-label="quantity"
+    class="update-input"
+    value=""
+  />
+  <button
+    aria-label="delete"
+  >
+    <span
+      class="fa fa-trash fa-2x"
+    />
+  </button>
+</DocumentFragment>
+`;

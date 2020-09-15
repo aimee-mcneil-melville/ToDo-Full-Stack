@@ -11,7 +11,7 @@ import { showError } from '../actions/error'
 
 import { updateOrder } from '../coordinators/orders'
 
-const Order = (props) => {
+export const Order = (props) => {
   const { patchOrderPending, patchOrderSuccess, showError, order } = props
   const { id, products, createdAt, status } = order
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const ErrorMessage = (props) => {
+export const ErrorMessage = (props) => {
   return (
-    <div className='error'>
+    <div role='alert' className='error'>
       {props.errorMessage}
     </div>
   )

@@ -8,11 +8,12 @@ const CartItem = (props) => {
       <td>{name}</td>
       <td>
         <input
+          aria-label='quantity'
           className='update-input'
           value={displayQuantity}
           onChange={(e) => props.update(id, e.target.value)} />
       </td>
-      <td><button onClick={() => props.deleteFromCart(id)}>
+      <td><button aria-label='delete' onClick={() => props.deleteFromCart(id)}>
         <span className='fa fa-trash fa-2x' />
       </button></td>
     </tr>
