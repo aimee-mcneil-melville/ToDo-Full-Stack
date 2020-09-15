@@ -9,7 +9,6 @@ import {
 } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
-import WaitIndicator from './WaitIndicator'
 
 import { getProducts } from '../coordinators/products'
 import { addCartItem } from '../coordinators/cart'
@@ -22,7 +21,7 @@ class ProductList extends React.Component {
   }
 
   render () {
-    const { products, history, addToCart } = this.props
+    const { children, products, history, addToCart } = this.props
     return (
       <div className='productlist'>
         <div className='welcome'>
@@ -31,7 +30,7 @@ class ProductList extends React.Component {
             hesitate to let us know if we can answer any of your questions.
           </p>
         </div>
-        <WaitIndicator />
+        {children}
         {products.map(product => {
           return (
             <ProductListItem

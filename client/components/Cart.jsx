@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import CartItem from './CartItem'
-import WaitIndicator from './WaitIndicator'
 
 import { showError } from '../actions/error'
 import {
@@ -18,8 +17,8 @@ import {
 import { placeOrder } from '../coordinators/orders'
 import { updateCartItem, createOrder } from '../coordinators/cart'
 
-const Cart = (props) => {
-  const { cart } = props
+export const Cart = (props) => {
+  const { cart, children } = props
 
   const update = (id, quantity) => {
     const updateInfo = { id, quantity }
@@ -33,8 +32,8 @@ const Cart = (props) => {
 
   const submitCart = () => {
     const { history, postOrderPending, postOrderSuccess, showError } = props
-    const order = createOrder(cart)
     const dispatchers = { postOrderPending, postOrderSuccess, showError }
+    const order = createOrder(cart)
     placeOrder(order, history, dispatchers)
   }
 
@@ -64,7 +63,7 @@ const Cart = (props) => {
         <p className='actions'>
           <Link to='/'>Continue shopping</Link>
           <span>
-            <WaitIndicator />
+            {children}
             <button
               className='button-primary'
               onClick={submitCart}>

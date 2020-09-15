@@ -6,15 +6,28 @@ import ErrorMessage from './ErrorMessage'
 import Cart from './Cart'
 import ProductList from './ProductList'
 import OrderList from './OrderList'
+import WaitIndicator from './WaitIndicator'
 
 const App = () => {
   return (
     <div className='app'>
       <Route path='/' component={Header} />
       <Route path='/' component={ErrorMessage} />
-      <Route exact path='/' component={ProductList} />
-      <Route path='/cart' component={Cart} />
-      <Route path='/orders' component={OrderList} />
+      <Route exact path='/' render={({ history }) => {
+        return <ProductList history={history}>
+          <WaitIndicator />
+        </ProductList>
+      }} />
+      <Route path='/cart' render={({ history }) => {
+        return <Cart history={history}>
+          <WaitIndicator />
+        </Cart>
+      }} />
+      <Route path='/orders' render={() => {
+        return <OrderList>
+          <WaitIndicator />
+        </OrderList>
+      }} />
     </div>
   )
 }

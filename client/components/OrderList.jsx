@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Order from './Order'
-import WaitIndicator from './WaitIndicator'
 
 import { fetchOrdersPending, fetchOrdersSuccess } from '../actions/orders'
 import { showError } from '../actions/error'
@@ -17,10 +16,10 @@ class OrderList extends React.Component {
   }
 
   render () {
-    const { orders } = this.props
+    const { children, orders } = this.props
     return (
       <div className='orderlist'>
-        <WaitIndicator />
+        {children}
         {orders.map(order => {
           return (
             <Order
