@@ -1,9 +1,18 @@
 import requestor from '../consume'
 
-export function placeOrder (order, history, dispatchers, consume = requestor) {
+export function validateOrder (order) {
+  const hasInvalidQuantity = order.some(item => item.quantity === 0)
+  if (hasInvalidQuantity) {
+    return Promise.reject(new Error('Please enter a valid quantity for all items'))
+  }
+  return Promise.resolve()
+}
+
+export function placeOrder (order, history, dispatchers, validate = validateOrder, consume = requestor) {
   const { postOrderPending, postOrderSuccess, showError } = dispatchers
   postOrderPending()
-  return consume('/orders', 'post', order)
+  return validate(order)
+    .then(() => consume('/orders', 'post', order))
     .then(() => {
       postOrderSuccess()
       history.push('/orders')
