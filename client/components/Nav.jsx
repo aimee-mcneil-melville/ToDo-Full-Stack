@@ -46,9 +46,12 @@ class Nav extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    logout: () => dispatch(logoutUser())
+    logout: () => {
+      const confirmSuccess = () => ownProps.history.push('/')
+      dispatch(logoutUser(confirmSuccess))
+    }
   }
 }
 

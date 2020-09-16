@@ -57,12 +57,12 @@ function receiveLogout () {
   }
 }
 
-export function logoutUser () {
+export function logoutUser (confirmSuccess) {
   return dispatch => {
-    document.location = '/#/'
     dispatch(requestLogout())
     removeUser()
     dispatch(receiveLogout())
+    confirmSuccess()
   }
 }
 
