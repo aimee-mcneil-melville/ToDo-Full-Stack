@@ -29,7 +29,7 @@ export function loginError (message) {
 
 export function loginUser (creds, confirmSuccess) {
   return dispatch => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return login(creds)
       .then(userInfo => {
         dispatch(receiveLogin(userInfo))
@@ -41,7 +41,7 @@ export function loginUser (creds, confirmSuccess) {
   }
 }
 
-function requestLogout () {
+export function requestLogout () {
   return {
     type: 'LOGOUT_REQUEST',
     isFetching: true,
@@ -49,7 +49,7 @@ function requestLogout () {
   }
 }
 
-function receiveLogout () {
+export function receiveLogout () {
   return {
     type: 'LOGOUT_SUCCESS',
     isFetching: false,
