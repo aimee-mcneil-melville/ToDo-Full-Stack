@@ -32,8 +32,8 @@ export const Order = (props) => {
       <table>
         <thead>
           <tr>
-            <td>Product</td>
-            <td>Quantity</td>
+            <td role='columnheader'>Product</td>
+            <td role='columnheader'>Quantity</td>
           </tr>
         </thead>
         <tbody>

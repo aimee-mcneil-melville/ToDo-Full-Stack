@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders nothing when waiting is false 1`] = `<DocumentFragment />`;
+
+exports[`renders wait indicator when waiting is true 1`] = `
+<DocumentFragment>
+  <img
+    class="wait-indicator"
+    src="/animated-circle.gif"
+  />
+</DocumentFragment>
+`;

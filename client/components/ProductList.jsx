@@ -13,15 +13,20 @@ import ProductListItem from './ProductListItem'
 import { getProducts } from '../coordinators/products'
 import { addCartItem } from '../coordinators/cart'
 
-class ProductList extends React.Component {
+export class ProductList extends React.Component {
   componentDidMount () {
     const { fetchProductsPending, fetchProductsSuccess, showError } = this.props
     const dispatchers = { fetchProductsPending, fetchProductsSuccess, showError }
     getProducts(dispatchers)
   }
 
+  addProductToCart = item => {
+    const { history, addToCart } = this.props
+    addCartItem(item, history, addToCart)
+  }
+
   render () {
-    const { children, products, history, addToCart } = this.props
+    const { children, products } = this.props
     return (
       <div className='productlist'>
         <div className='welcome'>
@@ -36,7 +41,7 @@ class ProductList extends React.Component {
             <ProductListItem
               key={product.id}
               product={product}
-              addToCart={item => addCartItem(item, history, addToCart)}
+              addToCart={this.addProductToCart}
             />
           )
         })}
