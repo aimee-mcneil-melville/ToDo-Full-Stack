@@ -2,9 +2,9 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getFruits () {
-  return request.get(rootUrl + '/fruits')
+export function getGardens () {
+  return request.get(rootUrl + '/gardens')
     .then(res => {
-      return res.body.fruits
+      return res.body.gardens
     })
 }

@@ -1,6 +1,6 @@
 {
-  "name": "restful-react-from-scratch",
-  "version": "1.0.0",
+  "name": "gardenz",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -8,9 +8,13 @@
     "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server",
     "build": "webpack --config client/webpack.config.js",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
     "server": "node server",
     "start": "run-s build server",
-    "test": "jest --verbose --watchAll"
+    "test:watch": "npm test --watchAll",
+    "test": "jest --verbose"
   },
   "babel": {
     "presets": [
@@ -22,39 +26,30 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/client/config/jsdom.js",
-      "./tests/client/config/enzyme.js"
-    ]
-  },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.20.12",
-    "pg": "^7.18.2",
-    "sqlite3": "^4.1.1"
+    "knex": "^0.21.5",
+    "pg": "^8.3.3",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.1",
-    "@babel/register": "^7.9.0",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.11.5",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^25.1.0",
-    "jsdom": "^16.2.1",
-    "nodemon": "^2.0.2",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
-    "superagent": "^5.2.2",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "react-dom": "^16.13.1",
+    "superagent": "^6.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

@@ -1,22 +1,76 @@
-# Fullstack boilerplate
+# Gardenz
 
-To get started:
+> Empowering community gardens in New Zealand
+
+## Setup
+
+To get started, clone this repo and then:
 
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
+cd gardenz
+npm install
+npm run db:migrate
+npm run db:seed
+npm run dev
 ```
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
-This repo includes:
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* a fake database module (`db.js`)
-* an API client module (`apiClient.js`)
-* configuration for Jest and Enzyme (including JSDOM)
-* configuration for server-side debugging in VS Code
-* a single client-side test (`/tests/client/App.test.js`)
+## User interface (proposal)
+
+[Wireframe source on Whimsical](https://whimsical.com/Rf7Fo4MEMGxm5eLQ4uLYTA)
+
+![Homepage](docs/gardenz-ui-home.png)
+
+
+## API routes (proposal)
+
+Failure response (HTTP status: 500):
+
+```
+{
+  "error": {
+    "title": "Unable to retrieve list of gardens"
+  }
+}
+```
+
+### `GET /api/v1/gardens`
+
+Success response (200):
+
+```
+{
+  "gardens": [
+    {
+      "id": 1,
+      "name": "Kelmarna Gardens",
+      "address": "12 Hukanui Crescent",
+      "lat": -36.86011508905973,
+      "lon": 174.7330772002716,
+      "url": "http://www.kelmarnagardens.nz",
+      "events": [{
+        "id": 1,
+        "title": "Weeding Worker Bee",
+        "datetime": "Wed, 27 Sep 2020 20:00:00 GMT"
+      }]
+    }
+  ]
+}
+```
+
+
+### `GET /api/v1/gardens/:id`
+
+### `POST /api/v1/events`
+
+### `GET /api/v1/events/:id`
+
+### `POST /api/v1/events/:id/volunteers`
+
+
+## Database schema (proposal)
+
+![Gardenz Entity Relationship Diagram](docs/gardenz-erd.png)
+[Gardenz ERD on dbdiagram.io](https://dbdiagram.io/d/5f61c9407da1ea736e2e0bda)

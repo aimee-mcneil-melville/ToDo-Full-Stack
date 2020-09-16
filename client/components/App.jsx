@@ -1,31 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { getFruits } from '../apiClient'
+import { getGardens } from '../apiClient'
 
-class App extends React.Component {
-  state = {
-    fruits: []
-  }
+function App () {
+  const [gardens, setGardens] = useState([])
 
-  componentDidMount () {
-    getFruits()
-      .then(fruits => {
-        this.setState({fruits})
-      })
-  }
+  useEffect (() => {
+    getGardens().then(setGardens)
+  }, [])
 
-  render () {
-    return (
-      <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {this.state.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
+  return (
+    <div className='app'>
+      <h1>Gardenz</h1>
+      <ul>
+        {gardens.map(({ id, name }) => (
+          <li key={id}>{name}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default App
