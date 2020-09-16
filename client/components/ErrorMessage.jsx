@@ -9,7 +9,7 @@ export const ErrorMessage = (props) => {
   )
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   return {
     errorMessage: state.errorMessage
   }

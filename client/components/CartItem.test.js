@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import CartItem from './CartItem'
 
-test('renders cart item correctly, with quantity in input', async () => {
+test('renders cart item correctly, with quantity in input', () => {
   const mockItem = { id: 1, quantity: 4, name: 'mock cart item' }
 
   const tableBody = document.createElement('tbody')
@@ -15,7 +15,7 @@ test('renders cart item correctly, with quantity in input', async () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test('renders empty input if quantity is 0', async () => {
+test('renders empty input if quantity is 0', () => {
   const mockItem = { id: 2, quantity: 0, name: 'mock cart item 2' }
 
   const tableBody = document.createElement('tbody')

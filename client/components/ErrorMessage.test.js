@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { ErrorMessage } from './ErrorMessage'
 
-test('renders the error message from props', async () => {
+test('renders the error message from props', () => {
   const errorMessage = 'mock error message'
   const { asFragment } = render(<ErrorMessage errorMessage={errorMessage} />)
 
