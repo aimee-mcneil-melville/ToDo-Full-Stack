@@ -1,6 +1,6 @@
 export function addCartItem (product, history, addToCart) {
-  const { id, quantity, name } = product
-  const newCartItem = { id, quantity, name }
+  const { id, name } = product
+  const newCartItem = { id, name }
   addToCart(newCartItem)
   history.push('/cart')
 }
