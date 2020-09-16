@@ -3,6 +3,7 @@ exports.up = (knex) => {
     table.increments('id')
     table.string('name')
     table.string('address')
+    table.string('description')
     table.decimal('lat', 2, 14)
     table.decimal('lon', 2, 14)
     table.string('url')
