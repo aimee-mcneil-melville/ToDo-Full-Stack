@@ -12,13 +12,6 @@ test('renders cart item correctly, with quantity in input', async () => {
     container: document.body.appendChild(tableBody)
   })
 
-  const itemName = await screen.getAllByRole('cell')[0]
-  const quantityInput = await screen.getByRole('textbox', { name: 'quantity' })
-  const deleteButton = await screen.getByRole('button', { name: 'delete' })
-
-  expect(itemName).toHaveTextContent('mock cart item')
-  expect(quantityInput.value).toBe('4')
-  expect(deleteButton).toBeInTheDocument()
   expect(asFragment()).toMatchSnapshot()
 })
 
@@ -30,9 +23,6 @@ test('renders empty input if quantity is 0', async () => {
     container: document.body.appendChild(tableBody)
   })
 
-  const quantityInput = await screen.getByRole('textbox', { name: 'quantity' })
-
-  expect(quantityInput.value).toBe('')
   expect(asFragment()).toMatchSnapshot()
 })
 
