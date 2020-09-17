@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 import { getGardens } from '../apiClient'
+import AuthForm from './AuthForm'
 
-function App () {
+function App() {
   const [gardens, setGardens] = useState([])
 
-  useEffect (() => {
+  useEffect(() => {
     getGardens().then(setGardens)
   }, [])
 
@@ -17,6 +18,7 @@ function App () {
           <li key={id}>{name}</li>
         ))}
       </ul>
+      <AuthForm />
     </div>
   )
 }
