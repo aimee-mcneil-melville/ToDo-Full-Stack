@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 
-import { getGardens } from '../apiClient'
+import SignIn from "./Login"
+import { getGardens } from "../apiClient"
 
-function App () {
+function App() {
   const [gardens, setGardens] = useState([])
 
-  useEffect (() => {
+  useEffect(() => {
     getGardens().then(setGardens)
   }, [])
 
   return (
-    <div className='app'>
+    <div className="app">
+      <SignIn></SignIn>
       <h1>Gardenz</h1>
       <ul>
         {gardens.map(({ id, name }) => (
