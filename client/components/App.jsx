@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { Route } from 'react-router-dom'
 
-import { getGardens } from '../apiClient'
+import Home from './Home'
+const Garden = null // replace with <Garden> import
 
 function App () {
-  const [gardens, setGardens] = useState([])
-
-  useEffect (() => {
-    getGardens().then(setGardens)
-  }, [])
-
   return (
     <div className='app'>
       <h1>Gardenz</h1>
-      <ul>
-        {gardens.map(({ id, name }) => (
-          <li key={id}>{name}</li>
-        ))}
-      </ul>
+      {/* route for home page */}
+      <Route exact path='/' component={ Home } />
+      {/* route for garden page */}
+      <Route path='/garden' component={ Garden } />
     </div>
   )
 }
