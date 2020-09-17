@@ -45,7 +45,9 @@ function SignIn(props) {
         placeholder="Password"
         type="password"
       />
-      <button onClick={handleClick}>Log in</button>
+      <button data-testid="submit-button" onClick={handleClick}>
+        Sign in
+      </button>
     </div>
   )
 }
