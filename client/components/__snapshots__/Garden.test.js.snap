@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <header>
+    <h3>
+      Kelmarna Gardens
+    </h3>
+  </header>,
+  <div>
+    <p>
+      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
+      <br />
+      <br />
+      <a
+        href="http://www.kelmarnagardens.nz/"
+      >
+        Click here to go to garden website
+      </a>
+    </p>
+  </div>,
+]
+`;
+
+exports[`renders correctly 2`] = `
+Array [
+  <header>
+    <h3>
+      Kelmarna Gardens
+    </h3>
+  </header>,
+  <div>
+    <p>
+      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
+      <br />
+      <br />
+      <a
+        href="http://www.kelmarnagardens.nz/"
+      >
+        Click here to go to garden website
+      </a>
+    </p>
+  </div>,
+]
+`;
+
+exports[`renders correctly 3`] = `
+Array [
+  <header>
+    <h3>
+      Kelmarna Gardens
+    </h3>
+  </header>,
+  <div>
+    <p>
+      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
+      <br />
+      <br />
+      <a
+        href="http://www.kelmarnagardens.nz/"
+      >
+        Click here to go to garden website
+      </a>
+    </p>
+  </div>,
+]
+`;

@@ -3,9 +3,9 @@ import React from 'react'
 const Garden = () => {
   return (
     <>
-    <div>
+    <header>
       <h3>Kelmarna Gardens</h3>
-    </ div>
+    </header>
 
       <div>
         <p>

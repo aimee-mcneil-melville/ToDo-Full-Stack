@@ -12,13 +12,13 @@ function App () {
   }, [])
 
   return (
-    <div className='app'>
+    <div className='container'>
       <h1>Gardenz</h1>
-      {/* <ul>
+      <ul>
         {gardens.map(({ id, name }) => (
           <li key={id}>{name}</li>
         ))}
-      </ul> */}
+      </ul>
       <Garden />
     </div>
   )
