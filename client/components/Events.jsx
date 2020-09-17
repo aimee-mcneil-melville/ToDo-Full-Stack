@@ -8,8 +8,8 @@ function Events () {
   return (
     <div>
       <h2>Events</h2>
-      {events.map(event => 
-        <EventItem event={event} />
+      {events.map((event, index) => 
+        <EventItem key={index} event={event} />
       )}
     </div>
   )
