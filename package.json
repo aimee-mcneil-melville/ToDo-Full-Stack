@@ -11,7 +11,7 @@
     "start": "node server",
     "test": "jest --noStackTrace --watchAll",
     "knex": "knex",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run npx knex migrate:latest",
     "h:rollback": "heroku run npx knex migrate:rollback",
