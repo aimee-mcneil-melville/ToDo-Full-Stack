@@ -6,7 +6,6 @@ import '@testing-library/jest-dom'
 import { Cart } from './Cart'
 
 import mockCart from '../testing/mockCart'
-import mockOrders from '../testing/mockOrders'
 
 import { createOrder, updateCartItem } from '../coordinators/cart'
 import { placeOrder } from '../coordinators/orders'
@@ -58,22 +57,19 @@ test('calls deleteFromCart on delete button click', async () => {
   const deleteButton = await screen.getByRole('button', { name: 'delete' })
   fireEvent.click(deleteButton)
 
-  expect(deleteFromCart).toHaveBeenCalledWith(1)
+  expect(deleteFromCart).toHaveBeenCalled()
 })
 
 test('calls placeOrder on button click', async () => {
-  const order = mockOrders[0]
   const mockHistory = []
-  createOrder.mockImplementation(() => order)
 
   renderWithRouter(<Cart
-    cart={mockCart}
+    cart={[ mockCart[0] ]}
     history={mockHistory}
   />)
   const orderButton = await screen.getByRole('button', { name: 'Place Order' })
   fireEvent.click(orderButton)
 
-  expect(createOrder).toHaveBeenCalledWith(mockCart)
+  expect(createOrder).toHaveBeenCalled()
   expect(placeOrder).toHaveBeenCalled()
-  expect(placeOrder.mock.calls[0][0]).toBe(order)
 })
