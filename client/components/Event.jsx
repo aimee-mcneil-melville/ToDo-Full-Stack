@@ -1,12 +1,12 @@
 import React from 'react'
 
-// import EventItem from './EventItem'
+import EventItem from './EventItem'
 
-const Event = () => {
+function Event () {
   return (
     <div>
       <h2>Events</h2>
-      {/* <EventItem /> */}
+      <EventItem />
     </div>
   )
 } 
