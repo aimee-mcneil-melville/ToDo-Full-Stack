@@ -1,0 +1,1 @@
+const { generateHash } = require('authenticare/server')

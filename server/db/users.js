@@ -1,6 +1,7 @@
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
+const { generateHash } = require('authenticare/server')
 
 module.exports = {
     createUser,
@@ -19,5 +20,7 @@ function createUser(user, db = connection) {
         .then(passwordHash => {
             return db('users').insert({ username: user.username, hash: passwordHash })
         })
+
+    //.then using userID to get new user
 }
 

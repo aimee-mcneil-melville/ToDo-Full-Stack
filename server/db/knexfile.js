@@ -14,7 +14,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -30,7 +30,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -39,6 +39,14 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    }
+  },
+
+  test: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: ':memory:'
     }
   }
 
