@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import { getGardens } from '../apiClient'
 
+import Event from './Event'
+
 function App () {
   const [gardens, setGardens] = useState([])
 
@@ -17,6 +19,7 @@ function App () {
           <li key={id}>{name}</li>
         ))}
       </ul>
+      <Event />
     </div>
   )
 }
