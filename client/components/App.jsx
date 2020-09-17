@@ -2,6 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 
 import Home from './Home'
+import Map from './Map'
+
 const Garden = null // replace with <Garden> import
 
 function App () {
@@ -12,6 +14,7 @@ function App () {
       <Route exact path='/' component={ Home } />
       {/* route for garden page */}
       <Route path='/garden' component={ Garden } />
+      <Map/>
     </div>
   )
 }
