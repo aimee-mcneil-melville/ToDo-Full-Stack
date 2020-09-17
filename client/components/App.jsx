@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { getGardens } from '../apiClient'
 
-import Event from './Event'
+import Events from './Events'
 
 function App () {
   const [gardens, setGardens] = useState([])
@@ -19,7 +19,7 @@ function App () {
           <li key={id}>{name}</li>
         ))}
       </ul>
-      <Event />
+      <Events />
     </div>
   )
 }
