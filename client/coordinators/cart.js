@@ -6,11 +6,7 @@ export function addCartItem (product, history, addToCart) {
 }
 
 export function updateCartItem (updatedInfo, cart, updateCart) {
-  const { id, quantity } = updatedInfo
-  const newCart = cart.map(item => {
-    const newQuantity = (item.id === id) ? Number(quantity) : item.quantity
-    return { ...item, quantity: newQuantity }
-  })
+  const newCart = createUpdatedCart(updatedInfo, cart)
   updateCart(newCart)
 }
 
@@ -20,5 +16,13 @@ export function createOrder (cart) {
       id: item.id,
       quantity: item.quantity
     }
+  })
+}
+
+function createUpdatedCart (updatedInfo, cart) {
+  const { id, quantity } = updatedInfo
+  return cart.map(item => {
+    const newQuantity = (item.id === id) ? Number(quantity) : item.quantity
+    return { ...item, quantity: newQuantity }
   })
 }
