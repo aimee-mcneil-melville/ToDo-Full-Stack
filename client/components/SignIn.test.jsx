@@ -13,9 +13,7 @@ describe("Input Value", () => {
 })
 describe("Submit button", () => {
   it("triggers submit function", () => {
-    // const handleClick = jest.fn()
     const { queryByTestId } = render(<SignIn />)
     fireEvent.click(queryByTestId("submit-button"))
-    // expect(handleClick).toHaveBeenCalled()
   })
 })
