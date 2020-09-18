@@ -10,16 +10,11 @@ function App () {
   return (
     <div className='container'>
       <h1>Gardenz</h1>
-      <ul>
-        {gardens.map(({ id, name }) => (
-          <li key={id}>{name}</li>
-        ))}
-      </ul>
-      <Events />
       {/* route for home page */}
       <Route exact path='/' component={ Home } />
       {/* route for garden page */}
       <Route path='/garden' component={ Garden } />
+      <Events />
     </div>
   )
 }
