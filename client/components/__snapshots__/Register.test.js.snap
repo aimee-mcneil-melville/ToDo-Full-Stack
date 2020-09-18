@@ -50,7 +50,6 @@ exports[`Register Renders renders correctly 1`] = `
     >
       <option
         hidden={true}
-        selected={true}
       >
         Select from this list
       </option>

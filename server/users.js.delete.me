@@ -16,7 +16,7 @@ function createUser (user, db = connection) {
   return userExists(user.username, db)
     .then(exists => {
       if (exists) {
-        throw new Error('User exists')
+        return throw new Error('User exists')
       }
       return false
     })

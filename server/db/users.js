@@ -14,13 +14,13 @@ function createUser (user, db = connection) {
   return userExists(user.username, db)
     .then(exists => {
       if (exists) {
-        return Promise.reject(new Error('User exists'))
+        throw new Error('User exists')
       }
+      return false
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
       return db('users').insert({ username: user.username, garden_id: user.garden_id, hash: passwordHash })
-      
     })
 }
 
@@ -40,10 +40,9 @@ function userExists (username, db = connection) {
     })
 }
 
-function getUserById(id, db = connection) {
-    return db('users')
+function getUserById (id, db = connection) {
+  return db('users')
     .select()
     .where('id', id)
     .first()
-    
-  }
+}

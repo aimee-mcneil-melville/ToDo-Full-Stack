@@ -1,22 +1,23 @@
-import React, { useState } from "react"
-import { register, isAuthenticated } from "authenticare/client"
+import React, { useState } from 'react'
+import { register, isAuthenticated } from 'authenticare/client'
 
-export default function Register() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+export default function Register (props) {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleClick = () => {
     register({
       username: username,
-      password: password,
+      password: password
     })
       .then(() => {
         if (isAuthenticated()) {
-          props.history.push("/")
+          return props.history.push('/')
         }
+        return null
       })
       .catch((error) => {
-        console.log("error: ", error.message)
+        console.log('error: ', error.message)
       })
   }
 
@@ -44,7 +45,7 @@ export default function Register() {
         ></input>
         <label className="label">My Garden</label>
         <select className="select" name="garden" id="name">
-          <option hidden selected>
+          <option hidden>
             Select from this list
           </option>
           <option value="Kelmarna Gardens">Kelmarna Gardens</option>
@@ -68,7 +69,7 @@ export default function Register() {
         <img
           src="./images/comGardenPlant.png"
           alt=""
-          style={{ width: "600px", height: "500px" }}
+          style={{ width: '600px', height: '500px' }}
         />
       </div>
     </div>

@@ -1,31 +1,31 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
+import { isAuthenticated, signIn } from 'authenticare/client'
 
-import { isAuthenticated, signIn } from "authenticare/client"
-
-function SignIn(props) {
+function SignIn (props) {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: ''
   })
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
   const handleClick = () => {
     const { username, password } = form
-    signIn({ username, password }, "http://localhost:3000/api/v1").then(
-      (token) => {
+    return signIn({ username, password }, 'http://localhost:3000/api/v1')
+      .then((token) => {
         if (isAuthenticated()) {
-          props.history.push("/")
+          return props.history.push('/')
         }
-      }
-    )
+        return null
+      })
   }
+
   return (
     <div>
       <h1>Sign in</h1>
