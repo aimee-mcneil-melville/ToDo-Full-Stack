@@ -28,26 +28,37 @@ function SignIn(props) {
   }
   return (
     <div>
-      <h1>Sign in</h1>
-      <input
-        id="username"
-        name="username"
-        value={form.username}
-        onChange={handleChange}
-        placeholder="Username"
-        type="text"
-      />
-      <input
-        id="password"
-        name="password"
-        value={form.password}
-        onChange={handleChange}
-        placeholder="Password"
-        type="password"
-      />
-      <button data-testid="submit-button" onClick={handleClick}>
-        Sign in
-      </button>
+      <div className="left">
+        <h1>Sign in</h1>
+        <input
+          class="input"
+          id="username"
+          name="username"
+          value={form.username}
+          onChange={handleChange}
+          placeholder="Username"
+          type="text"
+        />
+        <input
+          class="input"
+          id="password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="Password"
+          type="password"
+        />
+        <button
+          class="button is-primary"
+          data-testid="submit-button"
+          onClick={handleClick}
+        >
+          Sign in
+        </button>
+      </div>
+      <div className="right">
+        <img src="images/comGardenSpace.jpg" alt="" />
+      </div>
     </div>
   )
 }
