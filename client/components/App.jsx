@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { Route } from 'react-router-dom'
 
-import { getGardens } from '../apiClient'
+import Home from './Home'
+const Garden = null // replace with <Garden> import
 
 import Events from './Events'
 
 function App () {
-  const [gardens, setGardens] = useState([])
-
-  useEffect (() => {
-    getGardens().then(setGardens)
-  }, [])
-
   return (
     <div className='container'>
       <h1>Gardenz</h1>
@@ -20,6 +16,10 @@ function App () {
         ))}
       </ul>
       <Events />
+      {/* route for home page */}
+      <Route exact path='/' component={ Home } />
+      {/* route for garden page */}
+      <Route path='/garden' component={ Garden } />
     </div>
   )
 }
