@@ -1,36 +1,63 @@
 {
- "parser": "babel-eslint",
- "env": {
-  "browser": true,
-  "node": true,
-  "jest": true
- },
- "extends": [
-  "eslint:recommended",
-  "plugin:react/recommended",
-  "standard"
- ],
- "plugins": [
-  "standard",
-  "promise"
- ],
- "rules": {
-  "eol-last": [
-   "error",
-   "always"
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2020": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js",".jsx"]
+      }
+    }
+  },
+  "plugins": [
+    "import",
+    "jest",
+    "node",
+    "promise",
+    "react",
+    "standard"
   ],
-  "no-multiple-empty-lines": [
-   "error",
-   {
-    "max": 1,
-    "maxEOF": 0,
-    "maxBOF": 0
-   }
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/react",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:react/recommended",
+    "plugin:promise/recommended"
   ],
-  "object-curly-spacing": [
-   2,
-   "always"
-  ],
-  "react/prop-types": "off"
- }
+  "rules": {
+    "eol-last": [
+     "error",
+     "always"
+    ],
+    "no-multiple-empty-lines": [
+     "error",
+     {
+      "max": 1,
+      "maxEOF": 0,
+      "maxBOF": 0
+     }
+    ],
+    "object-curly-spacing": [
+     2,
+     "always"
+    ],
+    "react/prop-types": 0
+  }
 }
