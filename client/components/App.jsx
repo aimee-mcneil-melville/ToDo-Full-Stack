@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 
+import { getGardens } from '../apiClient'
 
-import { getGardens } from "../apiClient"
-
-function App() {
+function App () {
   const [gardens, setGardens] = useState([])
 
   useEffect(() => {
@@ -14,6 +14,7 @@ function App() {
     <div className="app">
 
       <h1>Gardenz</h1>
+      <Route exact path='/register' component={} />
       <ul>
         {gardens.map(({ id, name }) => (
           <li key={id}>{name}</li>
