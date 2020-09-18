@@ -1,27 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Register Renders renders correctly 1`] = `
-<div>
-  <h2>
-    Register
-  </h2>
-  <form>
+<div
+  className="registerContainer container"
+>
+  <div
+    className="leftRegister"
+  >
+    <div
+      className="registerTitle"
+    >
+      <h1>
+        Register
+      </h1>
+    </div>
+    <label
+      className="label"
+    >
+      Username
+    </label>
     <input
+      className="input"
       onChange={[Function]}
       placeholder="username"
       type="username"
       value=""
     />
+    <label
+      className="label"
+    >
+      Password
+    </label>
     <input
+      className="input"
       onChange={[Function]}
       placeholder="password"
       type="password"
       value=""
     />
+    <label
+      className="label"
+    >
+      My Garden
+    </label>
     <select
+      className="select"
       id="name"
       name="garden"
     >
+      <option
+        hidden={true}
+        selected={true}
+      >
+        Select from this list
+      </option>
       <option
         value="Kelmarna Gardens"
       >
@@ -38,13 +70,28 @@ exports[`Register Renders renders correctly 1`] = `
         Devonport Community Garden
       </option>
     </select>
-  </form>
-  <button
-    data-testid="submitButton"
-    onClick={[Function]}
-    type="button"
+    <button
+      className="button is-primary"
+      data-testid="submitButton"
+      onClick={[Function]}
+      type="button"
+    >
+      Register
+    </button>
+  </div>
+  <div
+    className="rightRegister"
   >
-    Submit
-  </button>
+    <img
+      alt=""
+      src="./images/comGardenPlant.png"
+      style={
+        Object {
+          "height": "500px",
+          "width": "600px",
+        }
+      }
+    />
+  </div>
 </div>
 `;
