@@ -27,8 +27,8 @@ function SignIn(props) {
     )
   }
   return (
-    <div>
-      <div className="left">
+    <div class="container columns">
+      <div className="left column">
         <h1>Sign in</h1>
         <input
           class="input"
@@ -56,7 +56,7 @@ function SignIn(props) {
           Sign in
         </button>
       </div>
-      <div className="right">
+      <div className="right column">
         <img src="images/comGardenSpace.jpg" alt="" />
       </div>
     </div>
