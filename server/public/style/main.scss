@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+// Import only what you need from Bulma
+@import "../../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../../node_modules/bulma/sass/base/_all.sass";
+@import "../../../node_modules/bulma/sass/elements/button.sass";
+@import "../../../node_modules/bulma/sass/elements/container.sass";
+@import "../../../node_modules/bulma/sass/elements/title.sass";
+@import "../../../node_modules/bulma/sass/form/_all.sass";
+@import "../../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../../node_modules/bulma/sass/layout/section.sass";
+@import "../../../node_modules/bulma/sass/components/level.sass";
+@import "../../../node_modules/bulma/sass/grid/columns.sass";
+@import "../../../node_modules/bulma/sass/helpers/_all.sass";
+// Custom CSS - Bulma Overrides
+// Modules - mostly contains variables, mixins and functions.
+@import "modules/colors";
+
+// Partials - components like buttons, header, footer, typography
+@import "partials/typography";
+
+.signInContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  .signInLeft {
+    width: 30%;
+    height: 100%;
+    padding-left: 5rem;
+    .signInTitle {
+      height: 20%;
+    }
+    label {
+      margin-top: 1rem;
+    }
+    input {
+      width: 70%;
+      display: block;
+    }
+    button {
+      margin-top: 2rem;
+    }
+  }
+  .signInRight {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .signInContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .signInLeft {
+      width: 100%;
+      padding-top: 15%;
+    }
+   
+  }
+}
+@media only screen and (max-width: 500px) {
+  .signInContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .signInLeft {
+      width: 100%;
+    }
+    .signInRight {
+      img {
+        max-height: 50%;
+      }
+    }
+  }
+}

@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React from 'react'
+import { Route } from 'react-router-dom'
 
+import Register from './Register'
+import SignIn from './SignIn'
 
-import { getGardens } from "../apiClient"
-
-function App() {
-  const [gardens, setGardens] = useState([])
-
-  useEffect(() => {
-    getGardens().then(setGardens)
-  }, [])
-
+function App () {
   return (
     <div className="app">
-    
       <h1>Gardenz</h1>
-      <ul>
-        {gardens.map(({ id, name }) => (
-          <li key={id}>{name}</li>
-        ))}
-      </ul>
+      <Route path='/register' component={Register} />
+      <Route path='/signin' component={SignIn} />
     </div>
   )
 }
