@@ -2,11 +2,8 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="app"
+  className="column"
 >
-  <p>
-    Map to be
-  </p>
   <img
     src="/placeholder_auckland.jpg"
   />

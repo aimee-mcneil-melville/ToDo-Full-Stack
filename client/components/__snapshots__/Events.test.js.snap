@@ -1,24 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div>
-  <h2>
+Array [
+  <h2
+    className="my-4"
+  >
     Events
-  </h2>
-  <div>
-    <h4>
-      Weeds worker bee
-    </h4>
-    <p>
-      28/09/2020 8.00 am
-    </p>
-    <p>
-      8
-       volunteers needed
-    </p>
-    <p>
-      We need to weed the upper planting beds
-    </p>
-  </div>
-</div>
+  </h2>,
+  <div
+    className="box"
+  >
+    <div>
+      <h4>
+        Weeds worker bee
+      </h4>
+      <p>
+        28/09/2020 8.00 am
+      </p>
+      <p>
+        8
+         volunteers needed
+      </p>
+      <p>
+        We need to weed the upper planting beds
+      </p>
+    </div>
+  </div>,
+]
 `;
