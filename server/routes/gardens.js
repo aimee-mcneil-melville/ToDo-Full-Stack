@@ -4,13 +4,23 @@ const db = require('../db')
 
 const router = express.Router()
 
+// router.get('/', (req, res) => {
+//   db.getGardens()
+//     .then(gardens => {
+//       res.json({gardens})
+//     })
+//     .catch(err => {
+//       res.status(500).json({error: err.message})
+//     })
+// })
+
 router.get('/', (req, res) => {
-  db.getGardens()
+  db.getChosenGarden()
     .then(gardens => {
-      res.json({gardens})
+      console.log(gardens)
     })
     .catch(err => {
-      res.status(500).json({error: err.message})
+      res.status(500).json({ error: err.message })
     })
 })
 
