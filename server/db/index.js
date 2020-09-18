@@ -4,7 +4,7 @@ const connection = require('knex')(config)
 
 module.exports = {
   getGardens,
-  getChosenGarden
+  getUserGarden
 }
 
 function getGardens (db = connection) {
@@ -15,10 +15,10 @@ function getGardens (db = connection) {
     })
 }
 
-function getChosenGarden (id, db = connection) {
+function getUserGarden (id, db = connection) {
   return db('gardens')
-    .join('events', 'gardens.id', 'events.garden_id')
     .where('gardens.id', id)
-    .first()
-    .then(result =>  console.log('result: ', result))
+    .join('events', 'gardens.id', 'events.garden_id')
+    // .first()
+    // .then(result =>  console.log('result: ', result))
 }

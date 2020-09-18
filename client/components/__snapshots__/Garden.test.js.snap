@@ -18,6 +18,27 @@ Array [
         Click here to go to garden website
       </a>
     </p>
+    <br />
+    <div>
+      <h2>
+        Events
+      </h2>
+      <div>
+        <h4>
+          Weeds worker bee
+        </h4>
+        <p>
+          28/09/2020 8.00 am
+        </p>
+        <p>
+          8
+           volunteers needed
+        </p>
+        <p>
+          We need to weed the upper planting beds
+        </p>
+      </div>
+    </div>
   </div>,
 ]
 `;
@@ -40,6 +61,27 @@ Array [
         Click here to go to garden website
       </a>
     </p>
+    <br />
+    <div>
+      <h2>
+        Events
+      </h2>
+      <div>
+        <h4>
+          Weeds worker bee
+        </h4>
+        <p>
+          28/09/2020 8.00 am
+        </p>
+        <p>
+          8
+           volunteers needed
+        </p>
+        <p>
+          We need to weed the upper planting beds
+        </p>
+      </div>
+    </div>
   </div>,
 ]
 `;
@@ -62,6 +104,27 @@ Array [
         Click here to go to garden website
       </a>
     </p>
+    <br />
+    <div>
+      <h2>
+        Events
+      </h2>
+      <div>
+        <h4>
+          Weeds worker bee
+        </h4>
+        <p>
+          28/09/2020 8.00 am
+        </p>
+        <p>
+          8
+           volunteers needed
+        </p>
+        <p>
+          We need to weed the upper planting beds
+        </p>
+      </div>
+    </div>
   </div>,
 ]
 `;
