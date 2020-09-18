@@ -9,6 +9,6 @@ function EventItem ({ event }) {
       <p>{event.description}</p>
     </div>
   )
-} 
+}
 
 export default EventItem

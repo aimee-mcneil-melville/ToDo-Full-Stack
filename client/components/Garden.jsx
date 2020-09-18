@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Events from './Events'
+
 const Garden = () => {
   return (
     <>
@@ -13,7 +15,8 @@ const Garden = () => {
           <br/>
           <br/>
           <a href="http://www.kelmarnagardens.nz/">Click here to go to garden website</a>
-        </p>
+        </p><br/>
+        <Events />
       </div>
     </>
   )

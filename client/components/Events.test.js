@@ -6,6 +6,6 @@ import Events from './Events'
 it('renders correctly', () => {
   const tree = renderer
     .create(<Events />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})

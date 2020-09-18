@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Events from './Events'
 import Home from './Home'
 import Garden from './Garden'
 
@@ -13,7 +12,6 @@ function App () {
       <Route exact path='/' component={ Home } />
       {/* route for garden page */}
       <Route path='/garden' component={ Garden } />
-      <Events />
     </div>
   )
 }
