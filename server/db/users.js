@@ -4,21 +4,21 @@ const connection = require('knex')(config)
 const { generateHash } = require('authenticare/server')
 
 module.exports = {
-    createUser,
-    userExists,
-    getUserByName
+  createUser,
+  userExists,
+  getUserByName
 }
 
-function createUser (username, password, db = connection) {
-  return userExists(username, db)
+function createUser (user, db = connection) {
+  return userExists(user.username, db)
     .then(exists => {
       if (exists) {
         return Promise.reject(new Error('User exists'))
       }
     })
-    .then(() => generateHash(password))
+    .then(() => generateHash(user.password))
     .then(passwordHash => {
-      return db('users').insert({ username, hash: passwordHash })
+      return db('users').insert({ username: user.username, hash: passwordHash })
     })
 }
 
@@ -37,4 +37,3 @@ function userExists (username, db = connection) {
       return count[0].n > 0
     })
 }
-
