@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="app"
+>
+  <p>
+    Map to be
+  </p>
+  <img
+    src="/placeholder_auckland.jpg"
+  />
+  <p>
+    12 Hukanui Crescent
+  </p>
+</div>
+`;

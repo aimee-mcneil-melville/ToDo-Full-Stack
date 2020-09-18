@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 
 import Events from './Events'
 import Home from './Home'
+import Map from './Map'
 
 const Garden = null // replace with <Garden> import
 
@@ -15,6 +16,7 @@ function App () {
       {/* route for garden page */}
       <Route path='/garden' component={ Garden } />
       <Events />
+      <Map/>
     </div>
   )
 }

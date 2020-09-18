@@ -6,6 +6,7 @@ function Home () {
     <div className='app'>
       <p>Home Page</p>
       <Link to={'/garden'}>Garden</Link>
+      
     </div>
   )
 }
