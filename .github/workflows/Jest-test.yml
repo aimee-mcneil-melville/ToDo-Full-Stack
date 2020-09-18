@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: install dependencies
+    # - name: install dependencies
     - uses: actions/checkout@v1
     - run: npm install
-    - name: run jest
+    # - name: run jest
     - run: npm test
       # uses: stefanoeb/jest-action@1.0.3
       # with:
