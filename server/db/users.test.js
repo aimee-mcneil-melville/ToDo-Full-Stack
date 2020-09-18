@@ -12,3 +12,13 @@ test('getUserByName returns the correct user', () => {
             expect(use.garden_id).toBe(1)
         })
 })
+
+test('createUser returns a new user', () => {
+    const user = {
+        username:'user1',
+        password: 
+        garden_id: 1
+    }
+
+    return users.createUser('')
+})
