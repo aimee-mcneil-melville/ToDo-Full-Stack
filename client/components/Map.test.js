@@ -6,6 +6,6 @@ import Map from './Map'
 it('renders correctly', () => {
   const tree = renderer
     .create(<Map />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
