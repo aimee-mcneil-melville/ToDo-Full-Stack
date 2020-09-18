@@ -57,6 +57,24 @@
     align-items: center;
     .signInLeft {
       width: 100%;
+      padding-top: 15%;
+    }
+    .singInRight {
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .signInContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .signInLeft {
+      width: 100%;
+    }
+    .signInRight {
+      img {
+        max-height: 50%;
+      }
     }
   }
 }

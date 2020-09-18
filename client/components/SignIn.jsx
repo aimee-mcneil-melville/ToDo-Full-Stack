@@ -62,7 +62,7 @@ function SignIn(props) {
       </div>
       <div className="signInRight">
         <img
-          src="images/comGardenSpace.jpg"
+          src="images/comGardenRows.png"
           alt=""
           style={{ width: "600px", height: "500px" }}
         />
