@@ -4,10 +4,18 @@ import { Route } from 'react-router-dom'
 import Home from './Home'
 const Garden = null // replace with <Garden> import
 
+import Events from './Events'
+
 function App () {
   return (
-    <div className='app'>
+    <div className='container'>
       <h1>Gardenz</h1>
+      <ul>
+        {gardens.map(({ id, name }) => (
+          <li key={id}>{name}</li>
+        ))}
+      </ul>
+      <Events />
       {/* route for home page */}
       <Route exact path='/' component={ Home } />
       {/* route for garden page */}
