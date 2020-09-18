@@ -3,8 +3,7 @@ import { Route } from 'react-router-dom'
 
 import Events from './Events'
 import Home from './Home'
-
-const Garden = null // replace with <Garden> import
+import Garden from './Garden'
 
 function App () {
   return (
