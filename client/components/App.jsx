@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-
+import SignIn from "./SignIn"
 
 import { getGardens } from "../apiClient"
 
@@ -12,13 +12,13 @@ function App() {
 
   return (
     <div className="app">
-    
-      <h1>Gardenz</h1>
+      <SignIn />
+      {/* <h1>Gardenz</h1>
       <ul>
         {gardens.map(({ id, name }) => (
           <li key={id}>{name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   )
 }
