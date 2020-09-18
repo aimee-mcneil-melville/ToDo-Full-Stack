@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="app">
-    
+
       <h1>Gardenz</h1>
       <ul>
         {gardens.map(({ id, name }) => (
