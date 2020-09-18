@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getGardens } from '../apiClient'
-import AuthForm from './AuthForm'
+import AuthForm from './Register'
 
 function App() {
   const [gardens, setGardens] = useState([])

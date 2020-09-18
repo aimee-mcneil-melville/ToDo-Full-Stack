@@ -4,7 +4,7 @@ import {
     isAuthenticated,
 } from 'authenticare/client';
 
-export default function App() {
+export default function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,8 +16,10 @@ export default function App() {
             if (isAuthenticated()) {
                 props.history.push('/');
             }
+        }).catch(error => {
+            console.log('error: ', error.message)
         });
-    };
+    }
 
     return (
         <div>
@@ -26,11 +28,13 @@ export default function App() {
                 <input
                     type="username"
                     value={username}
+                    placeholder='username'
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
                 <input
                     type="password"
                     value={password}
+                    placeholder='password'
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
                 <select name='garden' id='name'>
@@ -39,7 +43,8 @@ export default function App() {
                     <option value='Devonport Community Garden'>Devonport Community Garden</option>
                 </select>
             </form>
-            <button type="button" onclick={handleClick}>
+            <button type="button" onClick={handleClick}
+                data-testid='submitButton'  >
                 Submit
 			</button>
         </div>

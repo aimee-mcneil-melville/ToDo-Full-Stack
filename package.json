@@ -27,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@testing-library/react": "^11.0.4",
     "authenticare": "^0.4.7",
     "express": "^4.17.1",
     "knex": "^0.21.5",
@@ -51,6 +52,7 @@
     "superagent": "^6.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
+    "react-test-renderer": "^16.13.1",
     "webpack-dev-server": "^3.11.0"
   }
 }

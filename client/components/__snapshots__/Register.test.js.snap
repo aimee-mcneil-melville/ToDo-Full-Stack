@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register Renders renders correctly 1`] = `
+<div>
+  <h2>
+    Register
+  </h2>
+  <form>
+    <input
+      onChange={[Function]}
+      placeholder="username"
+      type="username"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="password"
+      type="password"
+      value=""
+    />
+    <select
+      id="name"
+      name="garden"
+    >
+      <option
+        value="Kelmarna Gardens"
+      >
+        Kelmarna Gardens
+      </option>
+      <option
+        value="Kingsland Community Orchard"
+      >
+        Kingsland Community Orchard
+      </option>
+      <option
+        value="Devonport Community Garden"
+      >
+        Devonport Community Garden
+      </option>
+    </select>
+  </form>
+  <button
+    data-testid="submitButton"
+    onClick={[Function]}
+    type="button"
+  >
+    Submit
+  </button>
+</div>
+`;
