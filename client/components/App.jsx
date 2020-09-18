@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 
-import { getGardens } from '../apiClient'
-import AuthForm from './Register'
+
+import { getGardens } from "../apiClient"
 
 function App() {
   const [gardens, setGardens] = useState([])
@@ -11,14 +11,14 @@ function App() {
   }, [])
 
   return (
-    <div className='app'>
+    <div className="app">
+
       <h1>Gardenz</h1>
       <ul>
         {gardens.map(({ id, name }) => (
           <li key={id}>{name}</li>
         ))}
       </ul>
-      <AuthForm />
     </div>
   )
 }
