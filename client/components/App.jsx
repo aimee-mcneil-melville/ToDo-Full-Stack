@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Home from './Home'
-const Garden = null // replace with <Garden> import
-
 import Events from './Events'
+import Home from './Home'
+
+const Garden = null // replace with <Garden> import
 
 function App () {
   return (
