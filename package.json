@@ -11,6 +11,7 @@
     "knex": "knex --knexfile server/db/knexfile.js",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
+    "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "server": "node server",
     "start": "run-s build server",
     "test:watch": "npm test --watchAll",
@@ -29,9 +30,11 @@
   "dependencies": {
     "@testing-library/react": "^11.0.4",
     "authenticare": "^0.4.7",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.5",
     "pg": "^8.3.3",
+    "react-router-dom": "^5.2.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
@@ -52,11 +55,11 @@
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "supertest": "^4.0.2",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "superagent": "^6.1.0",
-    "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "react-test-renderer": "^16.13.1",
