@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Events from './Events'
+
 const Garden = () => {
   return (
     <>
@@ -10,10 +12,9 @@ const Garden = () => {
       <div>
         <p>
       Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-          <br/>
-          <br/>
-          <a href="http://www.kelmarnagardens.nz/">Click here to go to garden website</a>
         </p>
+        <a href="http://www.kelmarnagardens.nz/">http://www.kelmarnagardens.nz</a>
+        <Events />
       </div>
     </>
   )

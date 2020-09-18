@@ -15,7 +15,6 @@ function Map () {
   ]
   return (
     <div className='app'>
-      <p>Map to be</p>
       <img src="/placeholder_auckland.jpg"/>
       <p>
         {fakeMap.map(garden => (garden.address))}
