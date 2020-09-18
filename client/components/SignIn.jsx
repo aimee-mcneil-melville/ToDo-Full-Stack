@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-
 import { isAuthenticated, signIn } from "authenticare/client"
 
 function SignIn(props) {
@@ -27,11 +26,15 @@ function SignIn(props) {
     )
   }
   return (
-    <div class="container columns">
-      <div className="left column">
-        <h1>Sign in</h1>
+    <div className="signInContainer container">
+      <div className="signInLeft">
+        <div className="signInTitle">
+          <h1>Sign in</h1>
+        </div>
+
+        <label className="label ">Username</label>
         <input
-          class="input"
+          className="input "
           id="username"
           name="username"
           value={form.username}
@@ -39,8 +42,9 @@ function SignIn(props) {
           placeholder="Username"
           type="text"
         />
+        <label className="label">Password</label>
         <input
-          class="input"
+          className="input"
           id="password"
           name="password"
           value={form.password}
@@ -49,15 +53,19 @@ function SignIn(props) {
           type="password"
         />
         <button
-          class="button is-primary"
+          className="button is-primary "
           data-testid="submit-button"
           onClick={handleClick}
         >
           Sign in
         </button>
       </div>
-      <div className="right column">
-        <img src="images/comGardenSpace.jpg" alt="" />
+      <div className="signInRight">
+        <img
+          src="images/comGardenSpace.jpg"
+          alt=""
+          style={{ width: "600px", height: "500px" }}
+        />
       </div>
     </div>
   )
