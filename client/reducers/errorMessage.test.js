@@ -1,5 +1,5 @@
 import errorMessage from './errorMessage'
-import { SHOW_ERROR } from '../actions/error'
+import { SHOW_ERROR, HIDE_ERROR } from '../actions/error'
 
 test('returns error message on SHOW_ERROR', () => {
   const action = {
@@ -10,10 +10,18 @@ test('returns error message on SHOW_ERROR', () => {
   expect(newState).toBe('mock error')
 })
 
-test('returns empty string if action does not match', () => {
+test('returns empty string on HIDE_ERROR', () => {
+  const action = {
+    type: HIDE_ERROR
+  }
+  const newState = errorMessage('mock old error state', action)
+  expect(newState).toBe('')
+})
+
+test('returns old state if action does not match', () => {
   const action = {
     type: 'RANDOM_TEST_ACTION_TYPE'
   }
   const newState = errorMessage('mock old error state', action)
-  expect(newState).toBe('')
+  expect(newState).toBe('mock old error state')
 })

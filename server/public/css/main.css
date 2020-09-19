@@ -10,6 +10,16 @@ h1 {
 .error {
   color: red;
   font-weight: 700;
+  background-color: #FFCCCC;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hide-error {
+  margin-bottom: 0;
+  padding: 0 20px;
 }
 
 .nav {

@@ -7,6 +7,11 @@ exports[`renders the error message from props 1`] = `
     role="alert"
   >
     mock error message
+    <button
+      class="hide-error"
+    >
+      Hide Error
+    </button>
   </div>
 </DocumentFragment>
 `;

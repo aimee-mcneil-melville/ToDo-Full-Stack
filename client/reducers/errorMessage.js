@@ -1,12 +1,15 @@
-import { SHOW_ERROR } from '../actions/error'
+import { SHOW_ERROR, HIDE_ERROR } from '../actions/error'
 
 const errorMessage = (state = '', action) => {
   switch (action.type) {
     case SHOW_ERROR:
       return action.errorMessage
 
-    default:
+    case HIDE_ERROR:
       return ''
+
+    default:
+      return state
   }
 }
 

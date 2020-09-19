@@ -1,11 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { hideError } from '../actions/error'
+
 export const ErrorMessage = (props) => {
+  const hide = () => {
+    props.hideError()
+  }
+
   return (
-    <div role='alert' className='error'>
-      {props.errorMessage}
-    </div>
+    props.errorMessage.length
+      ? <div role='alert' className='error'>
+        {props.errorMessage}
+        <button className='hide-error' onClick={hide}>Hide Error</button>
+      </div>
+      : null
   )
 }
 
@@ -15,4 +24,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ErrorMessage)
+const mapDispatchToProps = {
+  hideError
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ErrorMessage)
