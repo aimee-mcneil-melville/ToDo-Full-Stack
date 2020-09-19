@@ -25,9 +25,16 @@ function createProduct (orderLine) {
   }
 }
 
-function sortById (arr) {
+function sortByIdAscending (arr) {
   arr.sort((a, b) => {
     return a.id - b.id
+  })
+  return arr
+}
+
+function sortByIdDescending (arr) {
+  arr.sort((a, b) => {
+    return b.id - a.id
   })
   return arr
 }
@@ -39,7 +46,7 @@ function formatOrder (orderLines) {
       ? order = createOrder(item)
       : order.products.push(createProduct(item))
   })
-  order.products = sortById(order.products)
+  order.products = sortByIdAscending(order.products)
   return order
 }
 
@@ -49,7 +56,7 @@ function formatOrderList (orderLines) {
     let order = orderList.find(o => o.id === item.orderId)
     !order
       ? orderList.push(createOrder(item))
-      : order.products = sortById([ ...order.products, createProduct(item) ])
+      : order.products = sortByIdAscending([ ...order.products, createProduct(item) ])
   })
-  return sortById(orderList)
+  return sortByIdDescending(orderList)
 }
