@@ -36,7 +36,7 @@ describe('placeOrder', () => {
       .then(() => {
         const errorMessage = dispatchers.showError.mock.calls[0][0]
         expect(dispatchers.postOrderPending).toHaveBeenCalled()
-        expect(errorMessage).toMatch('Invalid order')
+        expect(errorMessage).toMatch('INVALID ORDER')
         expect(history).toHaveLength(0)
       })
   })

@@ -43,9 +43,9 @@ export function updateOrder (id, orderChanges, dispatchers, consume = requestor)
 
 function validateOrder (order) {
   return new Promise((resolve, reject) => {
-    const hasInvalidQuantity = order.some(item => item.quantity <= 0)
+    const hasInvalidQuantity = order.some(item => item.quantity === 0)
     if (hasInvalidQuantity) {
-      reject(new Error('Invalid order: quantity required for all items'))
+      reject(new Error('INVALID ORDER: Quantity required for all items'))
     }
     resolve()
   })
