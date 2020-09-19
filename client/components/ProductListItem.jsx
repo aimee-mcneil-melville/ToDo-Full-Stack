@@ -2,6 +2,11 @@ import React from 'react'
 
 const ProductListItem = (props) => {
   const product = props.product
+
+  const addToCart = () => {
+    props.addToCart(product)
+  }
+
   return (
     <div className='product'>
       <p className='name'>{product.name}</p>
@@ -10,7 +15,7 @@ const ProductListItem = (props) => {
         <span className='country'>Lovingly made in {product.country}</span>
         <button
           className='cart-link'
-          onClick={() => props.addToCart(product)}>Add to cart</button>
+          onClick={addToCart}>Add to cart</button>
       </p>
     </div>
   )
