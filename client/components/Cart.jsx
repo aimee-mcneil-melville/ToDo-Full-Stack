@@ -15,7 +15,7 @@ import {
 } from '../actions/orders'
 
 import { placeOrder } from '../coordinators/orders'
-import { updateCartItem, createOrder } from '../coordinators/cart'
+import { updateCartItem } from '../coordinators/cart'
 
 export const Cart = (props) => {
   const { cart, children } = props
@@ -33,8 +33,7 @@ export const Cart = (props) => {
   const submitCart = () => {
     const { history, postOrderPending, postOrderSuccess, showError } = props
     const dispatchers = { postOrderPending, postOrderSuccess, showError }
-    const order = createOrder(cart)
-    placeOrder(order, history, dispatchers)
+    placeOrder(cart, history, dispatchers)
   }
 
   return cart.length

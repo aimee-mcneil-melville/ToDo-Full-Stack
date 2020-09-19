@@ -1,4 +1,4 @@
-import { addCartItem, updateCartItem, createOrder } from './cart'
+import { addCartItem, updateCartItem } from './cart'
 
 import mockProducts from '../testing/mockProducts'
 import mockCart from '../testing/mockCart'
@@ -14,23 +14,24 @@ test('addCartItem calls dispatcher and redirects correctly', () => {
   expect(addToCart).toHaveBeenCalledWith({ id: 1, name: 'mocked product 1' })
 })
 
-test('updateCartItem creates new cart and calls dispatcher', () => {
-  const updatedInfo = { id: 1, quantity: 5 }
-  const updateCart = jest.fn()
+describe('updateCartItem', () => {
+  it('creates new cart and calls dispatcher', () => {
+    const updatedInfo = { id: 1, quantity: '5' }
+    const updateCart = jest.fn()
 
-  updateCartItem(updatedInfo, mockCart, updateCart)
+    updateCartItem(updatedInfo, mockCart, updateCart)
 
-  const expectedCart = [ ...mockCart ]
-  expectedCart[0].quantity = 5
+    const newCart = updateCart.mock.calls[0][0]
+    expect(Object.is(newCart, mockCart)).toBeFalsy()
+    expect(newCart[0].quantity).toBe(5)
+  })
 
-  expect(updateCart).toHaveBeenCalledWith(expectedCart)
-  expect(Object.is(updateCart.mock.calls[0][0], mockCart)).toBeFalsy()
-})
+  it('does not update if newQuantity is invalid', () => {
+    const updatedInfo = { id: 1, quantity: 'hello' }
+    const updateCart = jest.fn()
 
-test('createOrder creates an order', () => {
-  const order = createOrder(mockCart)
+    updateCartItem(updatedInfo, mockCart, updateCart)
 
-  expect(order).toHaveLength(3)
-  expect(Object.is(order, mockCart)).toBeFalsy()
-  expect(order[0]).not.toHaveProperty('name')
+    expect(updateCart).not.toHaveBeenCalled()
+  })
 })

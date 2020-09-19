@@ -1,72 +1,59 @@
-import { validateOrder, placeOrder, getOrders, updateOrder } from './orders'
+import { placeOrder, getOrders, updateOrder } from './orders'
 
+import mockCart from '../testing/mockCart'
 import mockOrders from '../testing/mockOrders'
 
-describe('validateOrder', () => {
-  it('resolves when passed an order with valid quantities', () => {
-    const validOrder = [ { id: 1, quantity: 3 }, { id: 2, quantity: 1 } ]
-    return expect(validateOrder(validOrder)).resolves.toBeUndefined()
-  })
-
-  it('rejects when passed an order with invalid quantities', () => {
-    const invalidOrder = [ { id: 1, quantity: 0 }, { id: 2, quantity: 1 } ]
-    return validateOrder(invalidOrder)
-      .catch(err => {
-        expect(err.message).toMatch('Please enter a valid quantity')
-      })
-  })
-})
-
 describe('placeOrder', () => {
-  it('dispatches and redirects correctly on success', () => {
-    const order = [ { id: 1, quantity: 3 }, { id: 2, quantity: 1 } ]
+  it('creates order, dispatches and redirects correctly on success', () => {
     let history = []
     const dispatchers = {
       postOrderPending: jest.fn(),
       postOrderSuccess: jest.fn()
     }
-    const validate = () => Promise.resolve()
-    const consume = () => Promise.resolve()
+    const consume = jest.fn(() => Promise.resolve())
 
-    return placeOrder(order, history, dispatchers, validate, consume)
+    return placeOrder(mockCart, history, dispatchers, consume)
       .then(() => {
+        const order = consume.mock.calls[0][2]
+        expect(order).toHaveLength(3)
+        expect(order[0]).not.toHaveProperty('name')
         expect(dispatchers.postOrderPending).toHaveBeenCalled()
         expect(dispatchers.postOrderSuccess).toHaveBeenCalled()
         expect(history).toHaveLength(1)
       })
   })
 
-  it('dispatches error on validate failure', () => {
-    const order = [ { id: 1, quantity: 3 }, { id: 2, quantity: 1 } ]
+  it('dispatches error if order is invalid', () => {
+    const cart = [ { id: 1, name: 'mock cart item', quantity: 0 } ]
     const history = []
     const dispatchers = {
       postOrderPending: jest.fn(),
       showError: jest.fn()
     }
-    const validate = () => Promise.reject(new Error('mock invalid error'))
     const consume = () => Promise.resolve()
 
-    return placeOrder(order, history, dispatchers, validate, consume)
+    return placeOrder(cart, history, dispatchers, consume)
       .then(() => {
+        const errorMessage = dispatchers.showError.mock.calls[0][0]
         expect(dispatchers.postOrderPending).toHaveBeenCalled()
-        expect(dispatchers.showError).toHaveBeenCalledWith('mock invalid error')
+        expect(errorMessage).toMatch('Invalid order')
+        expect(history).toHaveLength(0)
       })
   })
 
   it('dispatches error on consume failure', () => {
-    const order = [ { id: 1, quantity: 3 }, { id: 2, quantity: 1 } ]
     const history = []
     const dispatchers = {
       postOrderPending: jest.fn(),
       showError: jest.fn()
     }
-    const validate = () => Promise.resolve()
     const consume = () => Promise.reject(new Error('mock bad thing'))
 
-    return placeOrder(order, history, dispatchers, validate, consume)
+    return placeOrder(mockCart, history, dispatchers, consume)
       .then(() => {
         expect(dispatchers.postOrderPending).toHaveBeenCalled()
         expect(dispatchers.showError).toHaveBeenCalledWith('mock bad thing')
+        expect(history).toHaveLength(0)
       })
   })
 })

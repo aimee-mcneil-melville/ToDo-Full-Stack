@@ -7,12 +7,11 @@ import { Cart } from './Cart'
 
 import mockCart from '../testing/mockCart'
 
-import { createOrder, updateCartItem } from '../coordinators/cart'
+import { updateCartItem } from '../coordinators/cart'
 import { placeOrder } from '../coordinators/orders'
 
 jest.mock('../coordinators/cart', () => {
   return {
-    createOrder: jest.fn(),
     updateCartItem: jest.fn()
   }
 })
@@ -70,6 +69,5 @@ test('calls placeOrder on button click', async () => {
   const orderButton = await screen.getByRole('button', { name: 'Place Order' })
   fireEvent.click(orderButton)
 
-  expect(createOrder).toHaveBeenCalled()
   expect(placeOrder).toHaveBeenCalled()
 })

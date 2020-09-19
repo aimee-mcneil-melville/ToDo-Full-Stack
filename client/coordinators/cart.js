@@ -6,17 +6,11 @@ export function addCartItem (product, history, addToCart) {
 }
 
 export function updateCartItem (updatedInfo, cart, updateCart) {
-  const newCart = createUpdatedCart(updatedInfo, cart)
-  updateCart(newCart)
-}
-
-export function createOrder (cart) {
-  return cart.map(item => {
-    return {
-      id: item.id,
-      quantity: item.quantity
-    }
-  })
+  const isValid = !isNaN(Number(updatedInfo.quantity))
+  if (isValid) {
+    const newCart = createUpdatedCart(updatedInfo, cart)
+    updateCart(newCart)
+  }
 }
 
 function createUpdatedCart (updatedInfo, cart) {
