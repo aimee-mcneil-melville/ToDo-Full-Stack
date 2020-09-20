@@ -15,7 +15,9 @@
     "start": "run-s build server",
     "test:watch": "npm test --watchAll",
     "test": "jest --verbose",
-    "lint": "eslint client server"
+    "lint": "eslint client server",
+    "e2e": "run-p server cypress:open",
+    "cypress:open": "cypress open"
   },
   "babel": {
     "presets": [
@@ -46,6 +48,7 @@
     "babel-loader": "^8.1.0",
     "bulma": "^0.9.0",
     "css-loader": "^4.3.0",
+    "cypress": "^5.2.0",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.22.0",
