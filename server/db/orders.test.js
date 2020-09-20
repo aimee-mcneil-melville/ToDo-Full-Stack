@@ -44,14 +44,27 @@ test('addOrder adds to orders and orders_products correctly', () => {
     })
 })
 
-test('editOrder updates order, returns updated order', () => {
-  formatOrder.mockImplementation(orderLines => Promise.resolve(orderLines))
-  const id = 2
-  const orderChanges = { status: 'test status' }
+describe('editOrder', () => {
+  it('updates order and returns updated order if order exists', () => {
+    formatOrder.mockImplementation(orderLines => Promise.resolve(orderLines))
+    const id = 2
+    const orderChanges = { status: 'test status' }
 
-  return db.editOrder(id, orderChanges, testDb)
-    .then(orderLines => {
-      expect(formatOrder).toHaveBeenCalled()
-      expect(orderLines[0].status).toBe('test status')
-    })
+    return db.editOrder(id, orderChanges, testDb)
+      .then(orderLines => {
+        expect(formatOrder).toHaveBeenCalled()
+        expect(orderLines[0].status).toBe('test status')
+      })
+  })
+
+  it('throws error if order not found', () => {
+    expect.assertions(1)
+    const id = 99
+    const orderChanges = { status: 'test status' }
+
+    return db.editOrder(id, orderChanges, testDb)
+      .catch(err => {
+        expect(err.message).toBe('Order not found')
+      })
+  })
 })
