@@ -2,27 +2,31 @@
 
 exports[`renders correctly 1`] = `
 Array [
-  <header>
+  <div
+    className="column"
+  >
     <h3>
       Kelmarna Gardens
     </h3>
-  </header>,
-  <div>
-    <p>
+    <p
+      className="mb-4"
+    >
       Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-      <br />
-      <br />
-      <a
-        href="http://www.kelmarnagardens.nz/"
-      >
-        Click here to go to garden website
-      </a>
     </p>
-    <br />
-    <div>
-      <h2>
-        Events
-      </h2>
+    <a
+      className="word-wrap"
+      href="http://www.kelmarnagardens.nz/"
+    >
+      http://www.kelmarnagardens.nz/
+    </a>
+    <h2
+      className="my-4"
+    >
+      Events
+    </h2>
+    <div
+      className="box"
+    >
       <div>
         <h4>
           Weeds worker bee
@@ -40,69 +44,14 @@ Array [
       </div>
     </div>
   </div>,
-]
-`;
-
-exports[`renders correctly 2`] = `
-Array [
-  <header>
-    <h3>
-      Kelmarna Gardens
-    </h3>
-  </header>,
-  <div>
+  <div
+    className="column"
+  >
+    <img
+      src="/placeholder_auckland.jpg"
+    />
     <p>
-      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-      <br />
-      <br />
-      <a
-        href="http://www.kelmarnagardens.nz/"
-      >
-        Click here to go to garden website
-      </a>
-    </p>
-    <br />
-    <div>
-      <h2>
-        Events
-      </h2>
-      <div>
-        <h4>
-          Weeds worker bee
-        </h4>
-        <p>
-          28/09/2020 8.00 am
-        </p>
-        <p>
-          8
-           volunteers needed
-        </p>
-        <p>
-          We need to weed the upper planting beds
-        </p>
-      </div>
-    </div>
-  </div>,
-]
-`;
-
-exports[`renders correctly 3`] = `
-Array [
-  <header>
-    <h3>
-      Kelmarna Gardens
-    </h3>
-  </header>,
-  <div>
-    <p>
-      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-      <br />
-      <br />
-      <a
-        href="http://www.kelmarnagardens.nz/"
-      >
-        Click here to go to garden website
-      </a>
+      12 Hukanui Crescent
     </p>
     <br />
     <div>

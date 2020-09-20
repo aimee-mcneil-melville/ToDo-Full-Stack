@@ -10,6 +10,7 @@ module.exports = {
 function getGardens (db = connection) {
   return db('gardens').select()
     .catch(err => {
+      // eslint-disable-next-line no-console
       console.error(err)
       throw err
     })

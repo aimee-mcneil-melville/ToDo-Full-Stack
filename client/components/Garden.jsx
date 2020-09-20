@@ -1,23 +1,26 @@
 import React from 'react'
 
+import Map from './Map'
 import Events from './Events'
 
-const Garden = () => {
+// Remove once component is connected
+const fakeGarden = {
+  name: 'Kelmarna Gardens',
+  description: 'Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.',
+  url: 'http://www.kelmarnagardens.nz/'
+}
+
+const Garden = (props) => {
+  const { name, description, url } = props.garden || fakeGarden
   return (
     <>
-    <header>
-      <h3>Kelmarna Gardens</h3>
-    </header>
-
-      <div>
-        <p>
-      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-          <br/>
-          <br/>
-          <a href="http://www.kelmarnagardens.nz/">Click here to go to garden website</a>
-        </p><br/>
+      <div className="column">
+        <h3>{name}</h3>
+        <p className="mb-4">{description}</p>
+        <a className="word-wrap" href={url}>{url}</a>
         <Events />
       </div>
+      <Map/>
     </>
   )
 }
