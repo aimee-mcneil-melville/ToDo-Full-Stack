@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
-import { register, isAuthenticated } from 'authenticare/client'
+import React, { useState } from "react"
+import { register, isAuthenticated } from "authenticare/client"
+// import { createUser } from "../../server/db/connection"
 
-export default function Register (props) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+export default function Register(props) {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [garden, setGarden] = useState("")
+  // const baseurl = "http://localhost:3000/api/v1"
 
   const handleClick = () => {
     register({
       username: username,
-      password: password
+      password: password,
+      garden: garden,
     })
-      .then(() => {
+      .then((token) => {
+        console.log("work")
         if (isAuthenticated()) {
-          return props.history.push('/')
+          return props.history.push("/")
         }
         return null
       })
       .catch((error) => {
-        console.log('error: ', error.message)
+        console.log("error: ", error.message)
       })
   }
 
@@ -44,10 +49,13 @@ export default function Register (props) {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <label className="label">My Garden</label>
-        <select className="select" name="garden" id="name">
-          <option hidden>
-            Select from this list
-          </option>
+        <select
+          onChange={(e) => setGarden(e.target.value)}
+          className="select"
+          name="garden"
+          id="name"
+        >
+          <option hidden>Select from this list</option>
           <option value="Kelmarna Gardens">Kelmarna Gardens</option>
           <option value="Kingsland Community Orchard">
             Kingsland Community Orchard
@@ -69,7 +77,7 @@ export default function Register (props) {
         <img
           src="./images/comGardenPlant.png"
           alt=""
-          style={{ width: '600px', height: '500px' }}
+          style={{ width: "600px", height: "500px" }}
         />
       </div>
     </div>
