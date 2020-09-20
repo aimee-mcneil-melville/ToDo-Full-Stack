@@ -22,7 +22,6 @@ test('getGardens returns the correct number of gardens', () => {
 test('getUserGarden returns the chosen garden', () => {
   return db.getUserGarden(1, testDb)
     .then(garden => {
-      console.log(garden)
       expect(garden.id).toBe(1)
       expect(garden.name).toBe('Kelmarna Gardens')
       expect(garden.events).toHaveLength(2)
