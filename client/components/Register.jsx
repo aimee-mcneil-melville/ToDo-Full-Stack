@@ -19,7 +19,7 @@ export default function Register(props) {
     )
       .then((token) => {
         if (isAuthenticated()) {
-          return props.history.push("/")
+          return props.history.push("/garden")
         }
         return null
       })

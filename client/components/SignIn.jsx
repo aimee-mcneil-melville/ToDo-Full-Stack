@@ -19,7 +19,7 @@ function SignIn(props) {
     const { username, password } = form
     return signIn({ username, password }, { baseUrl }).then((token) => {
       if (isAuthenticated()) {
-        return props.history.push("/")
+        return props.history.push("/garden")
       }
       return null
     })
