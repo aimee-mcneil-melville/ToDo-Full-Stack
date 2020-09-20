@@ -9,3 +9,10 @@ beforeEach(() => {
 })
 
 afterEach(() => env.cleanup(testDb))
+
+test('listProducts returns an array of products', () => {
+  return db.listProducts(testDb)
+    .then(products => {
+      expect(products).toHaveLength(3)
+    })
+})
