@@ -15,8 +15,8 @@ export const Order = (props) => {
   const { patchOrderPending, patchOrderSuccess, showError, order } = props
   const { id, products, createdAt, status } = order
 
-  const cancelOrder = () => {
-    const orderChanges = { status: 'cancelled' }
+  const updateStatus = status => {
+    const orderChanges = { status }
     const dispatchers = { patchOrderPending, patchOrderSuccess, showError }
     updateOrder(id, orderChanges, dispatchers)
   }
@@ -46,10 +46,16 @@ export const Order = (props) => {
       </table>
       <div>
         {status === 'pending' &&
+          <>
           <button
-            onClick={cancelOrder}
+            onClick={() => updateStatus('cancelled')}
             className='order-button'
           >Cancel Order</button>
+          <button
+            onClick={() => updateStatus('completed')}
+            className='order-button button-primary'
+          >Order Received</button>
+          </>
         }
       </div>
     </div>

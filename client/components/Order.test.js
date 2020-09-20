@@ -27,12 +27,23 @@ test('renders cancelled order correctly', () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test('calls updateOrder on cancel button click', async () => {
+test('calls updateOrder with "cancelled" on cancel button click', async () => {
   const order = mockOrders[1]
   render(<Order order={order} />)
 
   const cancelButton = await screen.getByRole('button', { name: 'Cancel Order' })
   fireEvent.click(cancelButton)
+  const updatedStatus = updateOrder.mock.calls[0][1].status
+  expect(updatedStatus).toBe('cancelled')
+})
 
-  expect(updateOrder).toHaveBeenCalled()
+test('calls updateOrder with "completed" on received button click', async () => {
+  const order = mockOrders[1]
+  render(<Order order={order} />)
+
+  const receivedButton = await screen.getByRole('button', { name: 'Order Received' })
+  fireEvent.click(receivedButton)
+
+  const updatedStatus = updateOrder.mock.calls[1][1].status
+  expect(updatedStatus).toBe('completed')
 })

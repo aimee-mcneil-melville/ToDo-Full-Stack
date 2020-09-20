@@ -119,6 +119,11 @@ exports[`renders pending order correctly 1`] = `
       >
         Cancel Order
       </button>
+      <button
+        class="order-button button-primary"
+      >
+        Order Received
+      </button>
     </div>
   </div>
 </DocumentFragment>
