@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { logOff } from 'authenticare/client'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 export default function Nav () {
+  const [currentPage, setCurrentPage] = useState('home')
+
   return (
     <>
       <div>
@@ -13,11 +15,13 @@ export default function Nav () {
           <a href='/'>Home</a>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <a to='/register'>Register</a>
-          <a to='/signin'>Sign in</a>
+          {currentPage==='signIn' ? <a to='/register'>Register</a> : <a to='/signin'>Sign in</a>}
+          <a href='/'>Home</a>
         </IfNotAuthenticated>
       </div>
 
     </>
   )
 }
+
+// if currentPage is signin, show Register link, else show singin link
