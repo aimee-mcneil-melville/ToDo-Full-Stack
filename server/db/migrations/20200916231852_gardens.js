@@ -8,8 +8,8 @@ exports.up = (knex) => {
     table.decimal('lon', 2, 14)
     table.string('url')
   })
-};
+}
 
 exports.down = (knex) => {
   return knex.schema.dropTable('gardens')
-};
+}

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // Import from Bulma
-@import "../../..//node_modules/bulma/bulma.sass";
+@import "../../../node_modules/bulma/bulma.sass";
 
 // Custom CSS - Bulma Overrides
 
@@ -11,3 +11,4 @@
 // Partials - components like buttons, header, footer, typography
 @import "partials/typography";
 
+@import "partials/layout";
