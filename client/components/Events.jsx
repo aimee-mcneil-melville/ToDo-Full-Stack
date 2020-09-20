@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import EventItem from './EventItem'
+import AddNewEvent from './AddNewEvent'
 
 const events = [{ title: 'Weeds worker bee', datetime: '28/09/2020 8.00 am', volunteersNeeded: '8', description: 'We need to weed the upper planting beds' }]
 

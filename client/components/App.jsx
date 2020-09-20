@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 
 import Garden from './Garden'
-import AddNewEvent from './AddNewEvent'
 import Home from './Home'
 import Map from './Map'
 
@@ -16,8 +15,7 @@ function App () {
       <div className='columns'>
       <Route exact path='/' component={ Home } />
       <Route path='/garden' component={ Garden } />
-      {/* <Events /> */}
-      <Route path='/addNewEvent' component={ AddNewEvent } />
+      {/* <Route path='/addNewEvent' component={ AddNewEvent } /> */}
     </div>
     </>
   )
