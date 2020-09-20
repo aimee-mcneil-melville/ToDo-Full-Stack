@@ -18,7 +18,6 @@ export default function Register(props) {
       { baseUrl }
     )
       .then((token) => {
-        console.log("work")
         if (isAuthenticated()) {
           return props.history.push("/")
         }
