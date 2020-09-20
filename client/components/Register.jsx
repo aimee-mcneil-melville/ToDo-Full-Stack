@@ -6,14 +6,17 @@ export default function Register(props) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [garden, setGarden] = useState("")
-  // const baseurl = "http://localhost:3000/api/v1"
+  const baseUrl = "/api/v1"
 
   const handleClick = () => {
-    register({
-      username: username,
-      password: password,
-      garden: garden,
-    })
+    register(
+      {
+        username: username,
+        password: password,
+        garden: garden,
+      },
+      { baseUrl }
+    )
       .then((token) => {
         console.log("work")
         if (isAuthenticated()) {
