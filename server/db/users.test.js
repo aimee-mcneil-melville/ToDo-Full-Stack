@@ -4,10 +4,18 @@ const testDb = knex(config)
 
 const users = require('./users')
 
+beforeAll(() => {
+  return testDb.migrate.latest()
+})
+
+beforeEach(() => {
+  return testDb.seed.run()
+})
+
 test('getUserByName returns the correct user', () => {
-  return users.getUserByName('benpai', testDb)
+  return users.getUserByName('admin', testDb)
     .then(user => {
-      expect(user.username).toBe('benpai')
+      expect(user.username).toBe('admin')
       return expect(user.garden_id).toBe(1)
     })
 })
@@ -25,7 +33,7 @@ test('createUser creates a new user', () => {
 })
 
 test('userExists returns true if user exists, otherwise returns false', () => {
-  return users.userExists('benpai', testDb)
+  return users.userExists('admin', testDb)
     .then(bool => {
       return expect(bool).toBe(true)
     })
@@ -34,6 +42,6 @@ test('userExists returns true if user exists, otherwise returns false', () => {
 test('getUserById returns the correct user', () => {
   return users.getUserById(1, testDb)
     .then(user => {
-      return expect(user.username).toBe('benpai')
+      return expect(user.username).toBe('admin')
     })
 })
