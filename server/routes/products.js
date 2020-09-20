@@ -12,6 +12,6 @@ router.get('/', (req, res) => {
       res.json(products)
     })
     .catch(err => {
-      res.send('DATABASE ERROR: ' + err.message)
+      res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
