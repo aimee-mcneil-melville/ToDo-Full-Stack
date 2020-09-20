@@ -1,11 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Events from './Events'
+import Map from './Map'
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Events />)
+    .create(<Map />)
     .toJSON()
   expect(tree).toMatchSnapshot()
 })
