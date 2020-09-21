@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom'
 
 import Garden from './Garden'
 import Home from './Home'
-import Map from './Map'
+import EventForm from './EventForm'
 
 function App () {
   return (
@@ -15,7 +15,7 @@ function App () {
       <div className='columns'>
       <Route exact path='/' component={ Home } />
       <Route path='/garden' component={ Garden } />
-      {/* <Route path='/addNewEvent' component={ AddNewEvent } /> */}
+      <Route path='/event-details' component={ EventForm } />      
     </div>
     </>
   )
