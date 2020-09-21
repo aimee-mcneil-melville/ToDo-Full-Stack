@@ -2,7 +2,7 @@
 
 describe('Home', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/#/')
+    cy.visit('http://localhost:3000')
     // evenutally this will be the deployed heroku app: 'https://pohutukawa-gardenz.herokuapp.com/'
   })
 
@@ -10,6 +10,10 @@ describe('Home', () => {
     cy.get('.button')
       .contains('Garden')
       .click()
+
+      .location().should((loc) => {
+        expect(loc.hash).eq('#/garden')
+      })
   })
 
   it('renders map component', () => {
