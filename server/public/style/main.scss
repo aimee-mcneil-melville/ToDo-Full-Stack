@@ -132,3 +132,12 @@
     align-items: center;
   }
 }
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  & > * {
+    margin: 1rem;
+  }
+}

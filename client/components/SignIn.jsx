@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { isAuthenticated, signIn } from 'authenticare/client'
 
-function SignIn(props) {
+function SignIn (props) {
   const [form, setForm] = useState({
     username: '',
     password: '',
@@ -11,7 +11,7 @@ function SignIn(props) {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
