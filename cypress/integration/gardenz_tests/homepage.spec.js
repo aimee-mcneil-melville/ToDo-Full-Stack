@@ -6,10 +6,16 @@ describe('Home', () => {
     // evenutally this will be the deployed heroku app: 'https://pohutukawa-gardenz.herokuapp.com/'
   })
 
+  it('Clicks garden button', () => {
+    cy.get('.button')
+      .contains('Garden')
+      .click()
+  })
+
   it('renders map component', () => {
     // get map component
-    cy.get('img')
-    .contains('/placeholder_auckland.jpg')
+    cy.react('Map')
+      .should('have.value', 'auckland')
   })
 
   it('Click sign in', () => {

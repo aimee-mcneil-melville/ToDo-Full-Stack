@@ -49,6 +49,7 @@
     "bulma": "^0.9.0",
     "css-loader": "^4.3.0",
     "cypress": "^5.2.0",
+    "cypress-react-selector": "^2.0.3",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.22.0",
