@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer'
 import { render, fireEvent, screen } from '@testing-library/react'
 
 import Register from './Register'
-import { test } from '../../server/db/knexfile'
 
 describe('Register Renders', () => {
   it('renders correctly', () => {
@@ -40,8 +39,3 @@ describe('Submit Button Finds Handleclick', () => {
     fireEvent.click(queryByTestId('submitButton'))
   })
 })
-
-// test('Dropdown Options Available', () => {
-//   const { getByText } = render(<Register />)
-//   expect(getByText('Kelmarna Gardens')).toBeInTheDocument
-// })

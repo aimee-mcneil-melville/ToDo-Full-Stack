@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { register, isAuthenticated } from "authenticare/client"
+import { registerUser } from "../apiClient"
+
 // import { createUser } from "../../server/db/connection"
 
 export default function Register(props) {
@@ -9,23 +11,11 @@ export default function Register(props) {
   const baseUrl = "/api/v1"
 
   const handleClick = () => {
-    register(
-      {
-        username: username,
-        password: password,
-        garden: garden,
-      },
-      { baseUrl }
-    )
-      .then((token) => {
-        if (isAuthenticated()) {
-          return props.history.push("/garden")
-        }
-        return null
-      })
-      .catch((error) => {
-        console.log("error: ", error.message)
-      })
+    registerUser(username, password, garden).then(() => {
+      if (isAuthenticated()) {
+        return props.history.push("/garden")
+      }
+    }   
   }
 
   return (
@@ -85,3 +75,4 @@ export default function Register(props) {
     </div>
   )
 }
+
