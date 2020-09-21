@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, useReducer, useContext } from 'react'
+import React, {useState, createContext, useEffect, useReducer, useContext } from 'react'
 
 export const ProfileContext = createContext()
 
@@ -8,14 +8,6 @@ export const ProfileProvider = ({reducer, initialState, children}) => {
     isAdmin: '',
     gardenId: ''
   })
-
-  useEffect(() => {
-
-  }, [])
-  
-  const updateUser = (event) => {
-    setUser(props.username)
-  }
 
   
   return (
