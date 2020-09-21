@@ -39,11 +39,10 @@ jest.mock('../db', () => {
     getGardens: function () {
       return Promise.resolve(mockGarden)
     },
-    getGardenById: function (id) {
-      console.log('id:', id)
+    getUserGarden: function (id) {
       return Promise.resolve({
         'id': id,
-        'name': 'test Gardens 3',
+        'name': 'Gardens 3',
         'address': '12 Hukanui Crescent',
         'description': 'Kelmarna Gardens is a city farm and ...',
         'lat': -36.86011508905973,
@@ -68,7 +67,6 @@ test('GET / returns the correct number of gardens', () => {
     .expect('Content-Type', /json/)
     .expect(200)
     .then(res => {
-      // console.log(res.body.gardens.length)
       return expect(res.body.gardens).toHaveLength(expected)
     })
     .catch(err => {
@@ -82,7 +80,6 @@ test('GET /api/v1/gardens/:id returns the correct garden', () => {
     .expect('Content-Type', /json/)
     .expect(200)
     .then(res => {
-      // console.log(res.body.id)
       return expect(res.body.id).toBe(2)
     })
     .catch(err => {
@@ -91,13 +88,12 @@ test('GET /api/v1/gardens/:id returns the correct garden', () => {
 })
 
 test('GET /api/v1/gardens/:id returns the correct garden based on name', () => {
-  const expected = 'Kahu Gardens'
+  const expected = 'Gardens 3'
   return request(server)
     .get('/api/v1/gardens/2')
     .expect('Content-Type', /json/)
     .expect(200)
     .then(res => {
-      // console.log(res.body.name)
       return expect(res.body.name).toBe(expected)
     })
     .catch(err => {
