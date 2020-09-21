@@ -1,8 +1,8 @@
-import React, { useState, createContext, useEffect } from 'react'
+import React, { useState, createContext, useEffect, useReducer, useContext } from 'react'
 
 export const ProfileContext = createContext()
 
-export const ProfileProvider = props => {
+export const ProfileProvider = ({reducer, initialState, children}) => {
   const [profile, setProfile] = useState({
     username: '',
     isAdmin: '',
@@ -19,8 +19,10 @@ export const ProfileProvider = props => {
 
   
   return (
-    <ProfileContext.Provider value= {[profile]}>
-      {props.children}
+    <ProfileContext.Provider value= {[profile, setProfile]}>
+      {children}
     </ProfileContext.Provider>
   )
 }
+
+export const

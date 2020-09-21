@@ -22,8 +22,6 @@ function createUser (user, db = connection) {
     .then(passwordHash => {
       return db('users').insert({ username: user.username, garden_id: user.garden, hash: passwordHash, isAdmin: false })
     })
-    .then(getUserByName(user.username)
-    )
 }
 
 function getUserByName (username, db = connection) {
@@ -31,7 +29,6 @@ function getUserByName (username, db = connection) {
     .select()
     .where('username', username)
     .first()
-    .then((user) => console.log(user))
 }
 
 function userExists (username, db = connection) {
