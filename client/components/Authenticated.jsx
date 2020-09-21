@@ -8,7 +8,7 @@ export function IfAuthenticated ({ children }) {
     : null
 }
 
-export function ifNotAuthenticated ({ children }) {
+export function IfNotAuthenticated ({ children }) {
   return !isAuthenticated()
     ? <>{ children }</>
     : null
