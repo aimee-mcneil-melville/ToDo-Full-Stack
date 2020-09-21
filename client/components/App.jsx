@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import { ProfileProvider } from './ProfileContext'
 
 import Nav from './Nav'
 import Register from './Register'
@@ -8,13 +9,13 @@ import Garden from './Garden'
 
 function App() {
   return (
-    <div className="app">
-      <h1>Gardenz</h1>
-      <Route path="/" component={Nav} />
-      <Route path="/register" component={Register} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/garden" component={Garden} />
-    </div>
+    <ProfileProvider>
+      <div className="app">
+        <h1>Gardenz</h1>
+        <Route path='/register' component={Register} />
+        <Route path='/signin' component={SignIn} />
+      </div>
+    </ProfileProvider>
   )
 }
 
