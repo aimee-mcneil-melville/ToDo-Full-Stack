@@ -17,13 +17,4 @@ export default function () {
       garden: '2'
     }
   ]
-
-  return handleClick = () => {
-        registerUser(username, password, garden).then(() => {
-          if (isAuthenticated()) {
-            return props.history.push("/garden")
-          }
-        }   
-        }
-    
 }

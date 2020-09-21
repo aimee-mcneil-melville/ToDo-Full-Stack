@@ -3,9 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 
 import SignIn from './SignIn'
 
-
-
-describe('Input Value', () => {
+describe('Username Input Value', () => {
   it('Input field is changin state', () => {
     const { queryByPlaceholderText } = render(<SignIn />)
     const usernameInput = queryByPlaceholderText('Username')
@@ -14,7 +12,7 @@ describe('Input Value', () => {
   })
 })
 
-describe('Input Value', () => {
+describe('Password Input Value', () => {
   it('Input field is changin state', () => {
     const { queryByPlaceholderText } = render(<SignIn />)
     const passwordInput = queryByPlaceholderText('Password')
@@ -22,7 +20,6 @@ describe('Input Value', () => {
     expect(passwordInput.value).toBe('testing')
   })
 })
-
 
 // Don: this test needs much more work
 describe('Submit button', () => {
