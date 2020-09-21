@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { isAuthenticated, getDecodedToken } from 'authenticare/client'
+import { UserContext } from './UserContext'
+
 // import Map from './Map'
 // import Events from './Events'
 
@@ -12,9 +14,20 @@ const fakeGarden = {
 }
 
 const Garden = (props) => {
+  const [user, setUser] = useContext(UserContext)
+
   const { name, description, url } = props.garden || fakeGarden
   useEffect(() => {
-    isAuthenticated() === true ? getDecodedToken().then(res => ) : null
+    isAuthenticated()
+      ? getDecodedToken().then((user) => {
+          console.log(user)
+          setUser({
+            username: user.username,
+            isAdmin: user.isAdmin,
+            gardenId: user.garden_id,
+          })
+        })
+      : null
   }, [])
   return (
     <>

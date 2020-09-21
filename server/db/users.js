@@ -19,7 +19,6 @@ function createUser(user, db = connection) {
       return false
     })
     .then(() => generateHash(user.password))
-<<<<<<< HEAD
     .then((passwordHash) => {
       return db('users').insert({
         username: user.username,
@@ -27,10 +26,6 @@ function createUser(user, db = connection) {
         hash: passwordHash,
         isAdmin: false,
       })
-=======
-    .then(passwordHash => {
-      return db('users').insert({ username: user.username, garden_id: user.garden, hash: passwordHash, isAdmin: false })
->>>>>>> 3f4ee2978507edeb50f775780b6fb4ee9e83097f
     })
 }
 

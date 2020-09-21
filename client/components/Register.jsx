@@ -3,10 +3,10 @@ import { register, isAuthenticated } from 'authenticare/client'
 // import { createUser } from "../../server/db/connection"
 
 export default function Register(props) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [garden, setGarden] = useState(Number(""))
-  const baseUrl = "/api/v1"
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [garden, setGarden] = useState('')
+  const baseUrl = '/api/v1'
 
   const handleClick = () => {
     register(
