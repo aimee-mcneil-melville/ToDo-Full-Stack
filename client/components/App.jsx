@@ -1,19 +1,23 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 import Garden from './Garden'
 import Home from './Home'
-import Map from './Map'
+import EventForm from './EventForm'
 
 function App () {
   return (
+    <>
     <div className="container">
-      <h1 className="title">Garde<span>nz</span></h1>
-      <div className='columns'>
-        <Route exact path='/' component={ Home } />
-        <Route path='/garden' component={ Garden } />
+      <h1 className="title">
+        <Link to="/">Garde<span>nz</span></Link></h1>   
       </div>
+      <div className='columns'>
+      <Route exact path='/' component={ Home } />
+      <Route path='/garden' component={ Garden } />
+      <Route path='/event-details' component={ EventForm } />      
     </div>
+    </>
   )
 }
 
