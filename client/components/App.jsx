@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import Garden from './Garden'
 import Home from './Home'
 import AddEvent from './AddEvent'
+import EditEvent from './EditEvent'
 
 function App () {
   return (
