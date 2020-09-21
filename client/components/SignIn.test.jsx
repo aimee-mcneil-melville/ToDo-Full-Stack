@@ -12,6 +12,16 @@ describe('Input Value', () => {
   })
 })
 
+describe('Input Value', () => {
+  it('Input field is changin state', () => {
+    const { queryByPlaceholderText } = render(<SignIn />)
+    const passwordInput = queryByPlaceholderText('Password')
+    fireEvent.change(passwordInput, { target: { value: 'testing' } })
+    expect(passwordInput.value).toBe('testing')
+  })
+})
+
+
 // Don: this test needs much more work
 describe('Submit button', () => {
   // remove the next line after the test is sorted
