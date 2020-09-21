@@ -47,7 +47,7 @@ function EventForm() {
                 name="description"
                 value={description} onChange={event => setDescription(event.target.value)}/>
                 {/* <Link to='/garden' className="button my-4 is-primary">Create</Link> */}
-                <button>Submit</button>
+                <button className="button my-4 is-primary">Submit</button>
             </form>
         </div>
         </>
