@@ -19,6 +19,3 @@ function Events () {
 }
 
 export default Events
-
-// component did mount = useEffect 
-// - function API call to get DB info

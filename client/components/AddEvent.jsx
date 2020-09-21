@@ -11,13 +11,7 @@ function AddEvent() {
     function handleSubmit(e){
         e.preventDefault()
         console.log(title, date, volunteers, description)
-        // Call API here to save the new event to the database
     }
-
-    // useEffect(() => {
-    //    api.getUserGarden(1) //api fn
-    //     // Add code here to pull garden ID so it isn't hard-coded in h1 below
-    // })
 
     return (
         <>
@@ -50,7 +44,6 @@ function AddEvent() {
                     placeholder="event description"
                     name="description"
                     value={description} onChange={event => setDescription(event.target.value)}/>
-                    {/* <Link to='/garden' className="button my-4 is-primary">Create</Link> */}
                     <button className="button my-4 is-primary">Add Event</button>
                 </form>
             </div>
@@ -69,9 +62,3 @@ function AddEvent() {
 }
 
 export default AddEvent
-
-// hooks for state changes (inputs - setDate etc, use state)
-// hooks replaces class based components
-// context replaces redux
-
-// onclick/onsubmit calls my API to save info to DB
