@@ -3,7 +3,8 @@ const config = require('./knexfile')[env]
 const connection = require('knex')(config)
 
 module.exports = {
-  getGardens
+  getGardens,
+  getUserGarden
 }
 
 function getGardens (db = connection) {
@@ -12,5 +13,34 @@ function getGardens (db = connection) {
       // eslint-disable-next-line no-console
       console.error(err)
       throw err
+    })
+}
+
+function getUserGarden (id, db = connection) {
+  return db('gardens')
+    .where('gardens.id', id)
+    .join('events', 'gardens.id', 'events.garden_id')
+    .select('gardens.description as description', 'gardens.id as id', 'name', 'address', 'lat', 'lon', 'url',
+      'events.description as eventDescription', 'events.id as eventId', 'title', 'date', 'volunteers_needed as volunteersNeeded')
+    .then(result => {
+      return {
+        id: result[0].id,
+        name: result[0].name,
+        address: result[0].address,
+        description: result[0].description,
+        lat: result[0].lat,
+        lon: result[0].lon,
+        url: result[0].url,
+        events: result.map(item => {
+          return {
+            id: item.eventId,
+            volunteersNeeded: item.volunteersNeeded,
+            title: item.title,
+            datetime: item.date,
+            description: item.eventDescription
+          }
+        })
+
+      }
     })
 }
