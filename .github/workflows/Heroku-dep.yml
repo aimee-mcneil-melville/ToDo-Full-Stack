@@ -1,6 +1,6 @@
-name: Push Container to Heroku
+name: Deploy
 
-on: 
+on:
   push:
     branches:
       - master
@@ -9,9 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: pohutukawa-2020/pohutukawa-gardenz/heroku-deploy@v7.43
-      with:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: "pohutukawa-gardenz" 
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "pohutukawa-gardenz" #Must be unique in Heroku
+          heroku_email: "bhivxx@gmail.com"
 
