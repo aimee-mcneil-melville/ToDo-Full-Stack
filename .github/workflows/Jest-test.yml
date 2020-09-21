@@ -1,4 +1,4 @@
-name: Tests
+name: Jest-test
 
 on: [push]
 
@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    needs: Run linters
     steps:
     # - name: install dependencies
     - uses: actions/checkout@v1
