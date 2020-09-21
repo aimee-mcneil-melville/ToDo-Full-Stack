@@ -8,15 +8,15 @@ import EventForm from './EventForm'
 function App () {
   return (
     <>
-    <div className="container">
-      <h1 className="title">
-        <Link to="/">Garde<span>nz</span></Link></h1>   
+      <div className="container">
+        <h1 className="title">
+          <Link to="/">Garde<span>nz</span></Link></h1>   
+        <div className='columns'>
+          <Route exact path='/' component={ Home } />
+          <Route path='/garden' component={ Garden } />
+          <Route path='/event-details' component={ EventForm } />      
+        </div>
       </div>
-      <div className='columns'>
-      <Route exact path='/' component={ Home } />
-      <Route path='/garden' component={ Garden } />
-      <Route path='/event-details' component={ EventForm } />      
-    </div>
     </>
   )
 }

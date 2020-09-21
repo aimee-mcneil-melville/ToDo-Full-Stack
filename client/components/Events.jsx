@@ -6,17 +6,15 @@ const events = [{ title: 'Weeds worker bee', datetime: '28/09/2020 8.00 am', vol
 
 function Events () {
   return (
-    <>
-    <h2 className="my-4">Events</h2>
-    <Link to='/event-details'>
-      <button>Add new event</button>
-      </Link>
-    <div className="box">
+    <div className="m-6">
+    <h2 className="my-4 is-pulled-left">Events</h2>
+    <Link to='/event-details' className="button my-4 is-primary is-pulled-right">Add new event</Link>
+    <div className="box clearfix">
       {events.map((event, index) =>
         <EventItem key={index} event={event} />
       )}
     </div>
-     </>
+     </div>
   )
 }
 
