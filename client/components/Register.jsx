@@ -1,30 +1,31 @@
-import React, { useState } from "react"
-import { register, isAuthenticated } from "authenticare/client"
+import React, { useState } from 'react'
+import { register, isAuthenticated } from 'authenticare/client'
 // import { createUser } from "../../server/db/connection"
 
 export default function Register(props) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [garden, setGarden] = useState("")
-  const baseUrl = "/api/v1"
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [garden, setGarden] = useState('')
+  const baseUrl = '/api/v1'
 
   const handleClick = () => {
     register(
       {
         username: username,
         password: password,
-        garden: garden,
+        garden: Number(garden),
       },
       { baseUrl }
     )
       .then((token) => {
+        console.log(token)
         if (isAuthenticated()) {
-          return props.history.push("/garden")
+          return props.history.push('/garden')
         }
         return null
       })
       .catch((error) => {
-        console.log("error: ", error.message)
+        console.log('error: ', error.message)
       })
   }
 
@@ -58,13 +59,9 @@ export default function Register(props) {
           id="name"
         >
           <option hidden>Select from this list</option>
-          <option value="Kelmarna Gardens">Kelmarna Gardens</option>
-          <option value="Kingsland Community Orchard">
-            Kingsland Community Orchard
-          </option>
-          <option value="Devonport Community Garden">
-            Devonport Community Garden
-          </option>
+          <option value="1">Kelmarna Gardens</option>
+          <option value="2">Kingsland Community Orchard</option>
+          <option value="3">Devonport Community Garden</option>
         </select>
         <button
           type="button"
@@ -79,7 +76,7 @@ export default function Register(props) {
         <img
           src="./images/comGardenPlant.png"
           alt=""
-          style={{ width: "600px", height: "500px" }}
+          style={{ width: '600px', height: '500px' }}
         />
       </div>
     </div>

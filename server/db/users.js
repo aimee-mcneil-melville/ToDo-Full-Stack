@@ -7,42 +7,41 @@ module.exports = {
   createUser,
   userExists,
   getUserByName,
-  getUserById
+  getUserById,
 }
 
-function createUser (user, db = connection) {
+function createUser(user, db = connection) {
   return userExists(user.username, db)
-    .then(exists => {
+    .then((exists) => {
       if (exists) {
         throw new Error('User exists')
       }
       return false
     })
     .then(() => generateHash(user.password))
-    .then(passwordHash => {
-      return db('users').insert({ username: user.username, garden_id: user.garden_id, hash: passwordHash })
+    .then((passwordHash) => {
+      return db('users').insert({
+        username: user.username,
+        garden_id: user.garden,
+        hash: passwordHash,
+        isAdmin: false,
+      })
     })
 }
 
-function getUserByName (username, db = connection) {
-  return db('users')
-    .select()
-    .where('username', username)
-    .first()
+function getUserByName(username, db = connection) {
+  return db('users').select().where('username', username).first()
 }
 
-function userExists (username, db = connection) {
+function userExists(username, db = connection) {
   return db('users')
     .count('id as n')
     .where('username', username)
-    .then(count => {
+    .then((count) => {
       return count[0].n > 0
     })
 }
 
-function getUserById (id, db = connection) {
-  return db('users')
-    .select()
-    .where('id', id)
-    .first()
+function getUserById(id, db = connection) {
+  return db('users').select().where('id', id).first()
 }
