@@ -7,13 +7,10 @@ function EventForm() {
     const [volunteers, setVolunteers] = useState(0)
     const [description, setDescription] = useState('')
 
-    // function handleNameChange(e){
-    //     setTitle(e.target.value)
-    // }
-
     function handleSubmit(e){
         e.preventDefault()
         console.log(title, date, volunteers, description)
+        // Call API here to save the new event to the database
     }
 
     return (
