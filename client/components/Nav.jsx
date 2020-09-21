@@ -4,7 +4,38 @@ import { logOff } from 'authenticare/client'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 export default function Nav (props) {
-  const currentPage = props.location.pathname
+  let currentPage = props.location.pathname
+  let navLinks = null
+
+  switch (currentPage) {
+    case '/':
+      navLinks =
+      <>
+        <Link to='/signin'>Sign in</Link>
+        <Link to='/register'>Register</Link>
+      </>
+      break
+    case '/signin':
+      navLinks =
+      <>
+        <Link to='/'>Home</Link>
+        <Link to='/register'>Register</Link>
+      </>
+      break
+    case '/register':
+      navLinks =
+      <>
+        <Link to='/'>Home</Link>
+        <Link to='/signin'>Sign in</Link>
+      </>
+      break
+    default:
+      navLinks =
+      <>
+        <Link to='/signin'>Sign in</Link>
+        <Link to='/register'>Register</Link>
+      </>
+  }
   return (
     <>
       <div>
@@ -13,12 +44,9 @@ export default function Nav (props) {
           <Link to='/'>Home</Link>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          {currentPage === '/signin' ? <Link to='/register'>Register</Link> : <Link to='/signin'>Sign in</Link>}
-          <Link to='/'>Home</Link>
+          {navLinks}
         </IfNotAuthenticated>
       </div>
     </>
   )
 }
-
-// if currentPage is signin, show Register link, else show singin link
