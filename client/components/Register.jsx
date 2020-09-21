@@ -5,7 +5,7 @@ import { register, isAuthenticated } from "authenticare/client"
 export default function Register(props) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [garden, setGarden] = useState("")
+  const [garden, setGarden] = useState(Number(""))
   const baseUrl = "/api/v1"
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ export default function Register(props) {
       {
         username: username,
         password: password,
-        garden: garden,
+        garden: garden
       },
       { baseUrl }
     )
@@ -58,11 +58,11 @@ export default function Register(props) {
           id="name"
         >
           <option hidden>Select from this list</option>
-          <option value="Kelmarna Gardens">Kelmarna Gardens</option>
-          <option value="Kingsland Community Orchard">
+          <option value='1'>Kelmarna Gardens</option>
+          <option value="2">
             Kingsland Community Orchard
           </option>
-          <option value="Devonport Community Garden">
+          <option value="3">
             Devonport Community Garden
           </option>
         </select>
