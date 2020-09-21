@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
-import { logOff } from 'authenticare/client'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { render, fireEvent } from '@testing-library/react'
 
-export default function Nav () {
-  return(
-    <h1>Test Nav</h1>
-  )
-}
+import Nav from './Nav'
+
+

@@ -1,25 +1,21 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { logOff } from 'authenticare/client'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-import { AppContext } from './App.context'
-
-export default function Nav () {
-  const { currentPage, setCurrentPage } = useContext(AppContext)
-
+export default function Nav (props) {
+  const currentPage = props.location.pathname
   return (
     <>
       <div>
-        <Link to='/'>Home</Link>
         <IfAuthenticated>
           <Link to='#' onClick={logOff}>Log out</Link>
           <Link to='/'>Home</Link>
         </IfAuthenticated>
-        {/* <IfNotAuthenticated> */}
-          {currentPage==='signIn' ? <Link to='/register'>Register</Link> : <Link to='/signin'>Sign in</Link>}
+        <IfNotAuthenticated>
+          {currentPage === '/signin' ? <Link to='/register'>Register</Link> : <Link to='/signin'>Sign in</Link>}
           <Link to='/'>Home</Link>
-        {/* </IfNotAuthenticated> */}
+        </IfNotAuthenticated>
       </div>
     </>
   )

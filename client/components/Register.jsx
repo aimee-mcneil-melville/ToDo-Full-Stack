@@ -1,19 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
-import { AppContext } from './App.context'
 
 export default function Register (props) {
-  const { currentPage, setCurrentPage } = useContext(AppContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [garden, setGarden] = useState('')
   const baseUrl = '/api/v1'
 
   // import { createUser } from "../../server/db/connection"
-
-  useEffect(() => {
-    setCurrentPage('register')
-  }, [])
 
   const handleClick = () => {
     register(

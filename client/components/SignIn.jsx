@@ -1,14 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import { isAuthenticated, signIn } from 'authenticare/client'
-import { AppContext } from './App.context'
 
 function SignIn (props) {
-  const { currentPage, setCurrentPage } = useContext(AppContext)
-
-  useEffect(() => {
-    setCurrentPage('signIn')
-  }, [])
-
   const [form, setForm] = useState({
     username: '',
     password: ''
