@@ -1,8 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 
 import Register from './Register'
+import { test } from '../../server/db/knexfile'
 
 describe('Register Renders', () => {
   it('renders correctly', () => {
@@ -13,7 +14,7 @@ describe('Register Renders', () => {
   })
 })
 
-describe('Input Field Updates', () => {
+describe('Username Input Field Updates', () => {
   it('gets the text', () => {
     const { queryByPlaceholderText } = render(<Register />)
     const usernameInput = queryByPlaceholderText('username')
@@ -22,7 +23,14 @@ describe('Input Field Updates', () => {
   })
 })
 
-
+describe('Password Input Field Updates', () => {
+  it('gets the text', () => {
+    const { queryByPlaceholderText } = render(<Register />)
+    const passwordInput = queryByPlaceholderText('username')
+    fireEvent.change(passwordInput, { target: { value: 'password' } })
+    expect(passwordInput.value).toBe('password')
+  })
+})
 // Don: This test isn't useful enough - let's chat
 describe('Submit Button Finds Handleclick', () => {
   // remove the next line after fixing the test
@@ -32,3 +40,4 @@ describe('Submit Button Finds Handleclick', () => {
     fireEvent.click(queryByTestId('submitButton'))
   })
 })
+
