@@ -13,7 +13,7 @@ function SignIn (props) {
     username: '',
     password: ''
   })
-
+  const baseUrl = '/api/v1'
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm({
@@ -24,13 +24,12 @@ function SignIn (props) {
 
   const handleClick = () => {
     const { username, password } = form
-    return signIn({ username, password }, 'http://localhost:3000/api/v1')
-      .then((token) => {
-        if (isAuthenticated()) {
-          return props.history.push('/')
-        }
-        return null
-      })
+    return signIn({ username, password }, { baseUrl }).then((token) => {
+      if (isAuthenticated()) {
+        return props.history.push('/garden')
+      }
+      return null
+    })
   }
 
   return (

@@ -6,19 +6,27 @@ export default function Register (props) {
   const { currentPage, setCurrentPage } = useContext(AppContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [garden, setGarden] = useState('')
+  const baseUrl = '/api/v1'
+
+  // import { createUser } from "../../server/db/connection"
 
   useEffect(() => {
     setCurrentPage('register')
   }, [])
 
   const handleClick = () => {
-    register({
-      username: username,
-      password: password
-    })
-      .then(() => {
+    register(
+      {
+        username: username,
+        password: password,
+        garden: garden
+      },
+      { baseUrl }
+    )
+      .then((token) => {
         if (isAuthenticated()) {
-          return props.history.push('/')
+          return props.history.push('/garden')
         }
         return null
       })
@@ -50,10 +58,13 @@ export default function Register (props) {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <label className="label">My Garden</label>
-        <select className="select" name="garden" id="name">
-          <option hidden>
-            Select from this list
-          </option>
+        <select
+          onChange={(e) => setGarden(e.target.value)}
+          className="select"
+          name="garden"
+          id="name"
+        >
+          <option hidden>Select from this list</option>
           <option value="Kelmarna Gardens">Kelmarna Gardens</option>
           <option value="Kingsland Community Orchard">
             Kingsland Community Orchard
