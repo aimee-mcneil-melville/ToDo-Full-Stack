@@ -8,7 +8,7 @@ function Events () {
   return (
     <div className="m-6">
     <h2 className="my-4 is-pulled-left">Events</h2>
-    <Link to='/event-details' className="button my-4 is-primary is-pulled-right">Add new event</Link>
+    <Link to='/events/new' className="button my-4 is-primary is-pulled-right">Add new event</Link>
     <div className="box clearfix">
       {events.map((event, index) =>
         <EventItem key={index} event={event} />
