@@ -18,15 +18,15 @@ export default function Nav (props) {
     case '/signin':
       navLinks =
       <>
-        <Link to='/'>Home</Link>
         <Link to='/register'>Register</Link>
+        <Link to='/'>Home</Link>
       </>
       break
     case '/register':
       navLinks =
       <>
-        <Link to='/'>Home</Link>
         <Link to='/signin'>Sign in</Link>
+        <Link to='/'>Home</Link>
       </>
       break
     default:
@@ -38,7 +38,7 @@ export default function Nav (props) {
   }
   return (
     <>
-      <div>
+      <div className='nav'>
         <IfAuthenticated>
           <Link to='#' onClick={logOff}>Log out</Link>
           <Link to='/'>Home</Link>
