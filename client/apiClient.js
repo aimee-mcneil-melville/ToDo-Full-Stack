@@ -11,7 +11,7 @@ export function getGardens () {
 }
 
 export function registerUser (username, password, garden) {
-  register(
+  return register(
     {
       username: username,
       password: password,

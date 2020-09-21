@@ -1,21 +1,23 @@
-import React, { useState } from "react"
-import { register, isAuthenticated } from "authenticare/client"
-import { registerUser } from "../apiClient"
+import React, { useState } from 'react'
+import { isAuthenticated } from 'authenticare/client'
+import { registerUser } from '../apiClient'
 
 // import { createUser } from "../../server/db/connection"
 
-export default function Register(props) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [garden, setGarden] = useState("")
-  const baseUrl = "/api/v1"
+export default function Register (props) {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [garden, setGarden] = useState('')
 
   const handleClick = () => {
     registerUser(username, password, garden).then(() => {
       if (isAuthenticated()) {
-        return props.history.push("/garden")
+        props.history.push('/')
       }
-    }   
+    })
+      .catch((error) => {
+        console.log('error: ', error.message)
+      })
   }
 
   return (
@@ -69,10 +71,9 @@ export default function Register(props) {
         <img
           src="./images/comGardenPlant.png"
           alt=""
-          style={{ width: "600px", height: "500px" }}
+          style={{ width: '600px', height: '500px' }}
         />
       </div>
     </div>
   )
 }
-
