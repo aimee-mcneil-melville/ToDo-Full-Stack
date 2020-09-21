@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function EventForm() {
@@ -12,6 +12,10 @@ function EventForm() {
         console.log(title, date, volunteers, description)
         // Call API here to save the new event to the database
     }
+
+    // useEffect(() => {
+        // Add code here to pull garden ID so it isn't hard-coded in h1 below
+    // })
 
     return (
         <>
@@ -44,7 +48,7 @@ function EventForm() {
                 name="description"
                 value={description} onChange={event => setDescription(event.target.value)}/>
                 {/* <Link to='/garden' className="button my-4 is-primary">Create</Link> */}
-                <button className="button my-4 is-primary">Submit</button>
+                <button className="button my-4 is-primary">Add Event</button>
             </form>
         </div>
         </>
@@ -57,5 +61,4 @@ export default EventForm
 // hooks replaces class based components
 // context replaces redux
 
-// submit button calls an 
-// onclick calls my API to save info to DB
+// onclick/onsubmit calls my API to save info to DB
