@@ -10,7 +10,8 @@ function EditEvent() {
 
     return (
         <>
-        <div className="edit-event-form">
+        <div className="edit-event-form columns is-8">
+        <div className="column">
             <h1>Kelmarna Gardens</h1>
             <h3>Edit new event</h3>
             <form>
@@ -42,7 +43,7 @@ function EditEvent() {
                 <button className="button my-4 is-primary">Update Event</button>
             </form>
         </div>
-        <div className="event-preview">
+        <div className="event-preview column">
             <h1>Event Preview</h1>
             <div className="box">
                 <p>Weeds worker bee</p>
@@ -50,6 +51,7 @@ function EditEvent() {
                 <p>volunteers</p>
                 <p>Description here...</p>
             </div>
+        </div>
         </div>
         </>
     )
