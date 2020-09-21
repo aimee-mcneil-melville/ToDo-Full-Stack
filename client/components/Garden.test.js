@@ -4,18 +4,11 @@ import renderer from 'react-test-renderer'
 import Garden from './Garden'
 
 it('renders correctly', () => {
-  const tree = renderer.create(<Garden />).toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-it('renders correctly', () => {
-  const gardens = ['one']
-  const tree = renderer.create(<Garden gardens={gardens}/>).toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-it('renders correctly', () => {
-  const gardens = ['one', 'two', 'three']
-  const tree = renderer.create(<Garden gardens={gardens}/>).toJSON()
+  const fakeGarden = {
+    name: 'Kelmarna Gardens',
+    description: 'Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.',
+    url: 'http://www.kelmarnagardens.nz/'
+  }
+  const tree = renderer.create(<Garden garden={fakeGarden} />).toJSON()
   expect(tree).toMatchSnapshot()
 })

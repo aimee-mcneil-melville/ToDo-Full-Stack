@@ -6,8 +6,8 @@ const router = express.Router()
 
 function getGardenById (id) {
   const fakeGarden = {
-    'id': 1,
-    'name': 'Kelmarna Gardens',
+    'id': 2,
+    'name': 'Kahu Gardens',
     'address': '12 Hukanui Crescent',
     'description': 'Kelmarna Gardens is a city farm and ...',
     'lat': -36.86011508905973,
@@ -24,25 +24,24 @@ function getGardenById (id) {
   return Promise.resolve(fakeGarden)
 }
 
-router.get('/', (req, res) => {
-  db.getGardens()
-    .then(gardens => {
-      res.json({ gardens })
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  getGardenById(id)
+    .then(singleGarden => {
+      return res.json(singleGarden)
     })
     .catch(err => {
       res.status(500).json({ error: err.message })
     })
 })
 
-router.get('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  getGardenById(id)
-    .then(singleGarden => {
-      res.json(singleGarden)
+router.get('/', (req, res) => {
+  db.getGardens()
+    .then(gardens => {
+      return res.json({ gardens })
     })
     .catch(err => {
-      console.error(err)
-      test.status(500).send('Error id problems')
+      res.status(500).json({ error: err.message })
     })
 })
 
