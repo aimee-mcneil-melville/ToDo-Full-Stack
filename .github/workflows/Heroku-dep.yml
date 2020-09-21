@@ -50,7 +50,6 @@ jobs:
       
   Jest-test:
     runs-on: ubuntu-latest
-    if: success()
     needs: run-linters
     steps:
     - uses: actions/checkout@v1
