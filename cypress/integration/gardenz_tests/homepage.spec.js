@@ -16,10 +16,10 @@ describe('Home', () => {
       })
   })
 
-  it('renders map component', () => {
-    // get map component
-    cy.react('Map')
-      .should('have.value', 'auckland')
+  it('renders map image', () => {
+    // get map image
+    cy.get('div.column')
+      .includes('src')
   })
 
   it('Click sign in', () => {
