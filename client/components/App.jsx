@@ -6,10 +6,9 @@ import { UserContext, updateUserContext } from './UserContext'
 import Nav from './Nav'
 import Register from './Register'
 import SignIn from './SignIn'
-import Garden from './Garden'
 
 function App () {
-  const [setUser] = useContext(UserContext)
+  const [, setUser] = useContext(UserContext)
 
   useEffect(() => {
     if (isAuthenticated()) {
@@ -23,7 +22,6 @@ function App () {
       <Route path="/" component={Nav} />
       <Route path="/register" component={Register} />
       <Route path="/signin" component={SignIn} />
-      <Route path="/garden" component={Garden} />
     </div>
   )
 }

@@ -55,17 +55,17 @@ exports[`Register Renders renders correctly 1`] = `
         Select from this list
       </option>
       <option
-        value="Kelmarna Gardens"
+        value="1"
       >
         Kelmarna Gardens
       </option>
       <option
-        value="Kingsland Community Orchard"
+        value="2"
       >
         Kingsland Community Orchard
       </option>
       <option
-        value="Devonport Community Garden"
+        value="3"
       >
         Devonport Community Garden
       </option>
