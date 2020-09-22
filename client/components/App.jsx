@@ -11,12 +11,12 @@ function App () {
     <>
       <div className="container">
         <h1 className="title">
-          <Link to="/">Garde<span>nz</span></Link></h1>   
+          <Link to="/">Garde<span>nz</span></Link></h1>
         <div className='columns'>
           <Route exact path='/' component={ Home } />
           <Route path='/garden' component={ Garden } />
-          <Route path='/events/new' component={ AddEvent } /> 
-          <Route path='/events/:id/edit' component={ EditEvent } /> 
+          <Route path='/events/new' component={ AddEvent } />
+          <Route path='/events/:id/edit' component={ EditEvent } />
         </div>
       </div>
     </>

@@ -3,9 +3,9 @@ exports.up = (knex) => {
     table.increments('id')
     table.string('name')
     table.string('address')
-    table.string('description')
-    table.decimal('lat', 2, 14)
-    table.decimal('lon', 2, 14)
+    table.string('description', 1024)
+    table.decimal('lat', 17, 14)
+    table.decimal('lon', 17, 14)
     table.string('url')
   })
 }
