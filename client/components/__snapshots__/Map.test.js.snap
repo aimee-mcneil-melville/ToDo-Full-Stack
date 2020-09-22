@@ -2,13 +2,14 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="column mapContainer"
+  className="column is-half-tablet"
 >
   <div
     id="mapid"
-  />
-  <p>
-    12 Hukanui Crescent
-  </p>
+  >
+    <p>
+      12 Hukanui Crescent
+    </p>
+  </div>
 </div>
 `;
