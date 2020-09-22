@@ -13,7 +13,7 @@ export default function Register (props) {
     registerUser(username, password, garden).then(() => {
       if (isAuthenticated()) {
         props.history.push('/')
-      }
+      } return null
     })
       .catch((error) => {
         console.log('error: ', error.message)

@@ -47,6 +47,7 @@ exports[`Register Renders renders correctly 1`] = `
       className="select"
       id="name"
       name="garden"
+      onChange={[Function]}
     >
       <option
         hidden={true}

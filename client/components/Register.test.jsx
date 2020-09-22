@@ -3,6 +3,9 @@ import renderer from 'react-test-renderer'
 import { render, fireEvent, screen } from '@testing-library/react'
 
 import Register from './Register'
+import { registerUser } from '../apiClient'
+
+jest.mock('../apiClient', () => ({ registerUser: jest.fn().mockReturnValue('stringValue') }))
 
 describe('Register Renders', () => {
   it('renders correctly', () => {
@@ -30,12 +33,18 @@ describe('Password Input Field Updates', () => {
     expect(passwordInput.value).toBe('password')
   })
 })
-// Don: This test isn't useful enough - let's chat
+
 describe('Submit Button Finds Handleclick', () => {
   // remove the next line after fixing the test
-  // eslint-disable-next-line jest/expect-expect
+
   it('sends the submit button', () => {
     const { queryByTestId } = render(<Register />)
     fireEvent.click(queryByTestId('submitButton'))
+  })
+})
+
+describe('Submit button calls registerUser function', () => {
+  it('Creates a new user', () => {
+    expect(registerUser).toHaveBeenCalledTimes(1)
   })
 })
