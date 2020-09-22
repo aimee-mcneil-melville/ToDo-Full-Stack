@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
+import { UserContext, updateUserContext } from './UserContext'
 // import { createUser } from "../../server/db/connection"
 
 export default function Register(props) {
+  const [user, setUser] = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [garden, setGarden] = useState('')
@@ -20,6 +22,7 @@ export default function Register(props) {
       .then((token) => {
         console.log(token)
         if (isAuthenticated()) {
+          updateUserContext(setUser)
           return props.history.push('/garden')
         }
         return null

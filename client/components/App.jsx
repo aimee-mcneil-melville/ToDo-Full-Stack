@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import { UserProvider } from './UserContext'
+import { UserProvider, UserContext, updateUserContext } from './UserContext'
 import Nav from './Nav'
 import Register from './Register'
 import SignIn from './SignIn'

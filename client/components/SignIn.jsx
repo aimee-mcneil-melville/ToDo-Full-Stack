@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { isAuthenticated, signIn } from 'authenticare/client'
+import { UserContext, updateUserContext } from './UserContext'
 
-function SignIn (props) {
+function SignIn(props) {
+  const [user, setUser] = useContext(UserContext)
   const [form, setForm] = useState({
     username: '',
     password: '',
@@ -11,7 +13,7 @@ function SignIn (props) {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value
+      [name]: value,
     })
   }
 
@@ -20,6 +22,7 @@ function SignIn (props) {
     return signIn({ username, password }, { baseUrl }).then((token) => {
       console.log(token)
       if (isAuthenticated()) {
+        updateUserContext(setUser)
         return props.history.push('/garden')
       }
       return null
