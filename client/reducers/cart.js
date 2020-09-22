@@ -3,7 +3,7 @@ import {
   DELETE_FROM_CART,
   UPDATE_CART } from '../actions/cart'
 import { POST_ORDER_SUCCESS } from '../actions/orders'
-import { getNewCart } from './reducer-helpers'
+import { getNewCart, getUpdatedCart } from './reducer-helpers'
 
 const cart = (state = [], action) => {
   switch (action.type) {
@@ -14,7 +14,7 @@ const cart = (state = [], action) => {
       return state.filter(item => item.id !== action.id)
 
     case UPDATE_CART:
-      return action.cart
+      return getUpdatedCart(state, action.updateInfo)
 
     case POST_ORDER_SUCCESS:
       return []

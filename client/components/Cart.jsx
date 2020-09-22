@@ -6,29 +6,14 @@ import CartItem from './CartItem'
 
 import { showError } from '../actions/error'
 import {
-  deleteFromCart,
-  updateCart
-} from '../actions/cart'
-import {
   postOrderPending,
   postOrderSuccess
 } from '../actions/orders'
 
 import { placeOrder } from '../coordinators/orders'
-import { updateCartItem } from '../coordinators/cart'
 
 export const Cart = (props) => {
   const { cart, children } = props
-
-  const update = (id, quantity) => {
-    const updateInfo = { id, quantity }
-    const { updateCart } = props
-    updateCartItem(updateInfo, cart, updateCart)
-  }
-
-  const deleteItem = (id) => {
-    props.deleteFromCart(id)
-  }
 
   const submitCart = () => {
     const { history, postOrderPending, postOrderSuccess, showError } = props
@@ -53,8 +38,6 @@ export const Cart = (props) => {
                 <CartItem
                   key={id}
                   item={item}
-                  update={update}
-                  deleteFromCart={deleteItem}
                 />)
             })}
           </tbody>
@@ -82,8 +65,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  updateCart,
-  deleteFromCart,
   postOrderPending,
   postOrderSuccess,
   showError

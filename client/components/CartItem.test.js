@@ -2,7 +2,15 @@ import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import CartItem from './CartItem'
+import { CartItem } from './CartItem'
+
+import { updateCartItem } from '../coordinators/cart'
+
+jest.mock('../coordinators/cart', () => {
+  return {
+    updateCartItem: jest.fn()
+  }
+})
 
 test('renders cart item correctly, with quantity in input', () => {
   const mockItem = { id: 1, quantity: 4, name: 'mock cart item' }
@@ -41,17 +49,16 @@ test('calls deleteFromCart on delete button click ', async () => {
   expect(deleteFromCart).toHaveBeenCalled()
 })
 
-test('calls update on quantity field input change', async () => {
+test('calls updateCartItem on quantity field input change', async () => {
   const mockItem = { id: 1, quantity: 4, name: 'mock cart item' }
-  const update = jest.fn()
 
   const tableBody = document.createElement('tbody')
-  render(<CartItem item={mockItem} update={update} />, {
+  render(<CartItem item={mockItem} />, {
     container: document.body.appendChild(tableBody)
   })
 
   const quantityInput = await screen.getByRole('textbox', { name: 'quantity' })
   fireEvent.change(quantityInput, { target: { value: '5' } })
 
-  expect(update).toHaveBeenCalled()
+  expect(updateCartItem).toHaveBeenCalled()
 })

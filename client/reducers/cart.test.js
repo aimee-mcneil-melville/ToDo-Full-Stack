@@ -4,18 +4,16 @@ import cart from './cart'
 
 import mockCart from '../testing/mockCart'
 
+import { getNewCart, getUpdatedCart } from './reducer-helpers.js'
 jest.mock('./reducer-helpers', () => {
   return {
-    getNewCart: (state, product) => {
-      expect(state).toHaveLength(2)
-      expect(product.id).toBe(3)
-      return mockCart
-    }
+    getNewCart: jest.fn(),
+    getUpdatedCart: jest.fn()
   }
 })
 
 test('returns the result of getNewCart on ADD_TO_CART', () => {
-  expect.assertions(3)
+  getNewCart.mockImplementation(() => mockCart)
   const oldState = [ mockCart[0], mockCart[1] ]
   const action = {
     type: ADD_TO_CART,
@@ -23,6 +21,7 @@ test('returns the result of getNewCart on ADD_TO_CART', () => {
   }
   const newState = cart(oldState, action)
   expect(newState).toHaveLength(3)
+  expect(getNewCart).toHaveBeenCalled()
 })
 
 test('returns state with deleted item removed on DELETE_FROM_CART', () => {
@@ -35,14 +34,15 @@ test('returns state with deleted item removed on DELETE_FROM_CART', () => {
   expect(newState[0].id).toBe(2)
 })
 
-test('returns the provided cart on UPDATE_CART', () => {
+test('returns the result of getUpdatedCart on UPDATE_CART', () => {
+  getUpdatedCart.mockImplementation(() => mockCart)
   const action = {
     type: UPDATE_CART,
-    cart: mockCart
+    updateInfo: { id: 1, quantity: 2 }
   }
   const newState = cart([], action)
   expect(newState).toHaveLength(3)
-  expect(newState[0].name).toBe('mocked cart item 1')
+  expect(getUpdatedCart).toHaveBeenCalled()
 })
 
 test('returns empty array on POST_ORDER_SUCCESS', () => {

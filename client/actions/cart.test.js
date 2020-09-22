@@ -17,10 +17,11 @@ test('addToCart returns the correct action', () => {
 })
 
 test('updateCart returns the correct action', () => {
-  const action = updateCart(mockCart)
+  const updateInfo = { id: 1, quantity: 2 }
+  const action = updateCart(updateInfo)
 
   expect(action.type).toBe(UPDATE_CART)
-  expect(action.cart).toHaveLength(3)
+  expect(action.updateInfo).toBe(updateInfo)
 })
 
 test('deleteFromCart returns the correct action', () => {
