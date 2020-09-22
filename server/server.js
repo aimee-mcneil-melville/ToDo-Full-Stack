@@ -1,8 +1,8 @@
-const path = require("path")
-const express = require("express")
-require("dotenv").config({ path: path.join(__dirname, ".env") })
-const gardenRoutes = require("./routes/gardens")
-const authRoutes = require("./routes/auth")
+const path = require('path')
+const express = require('express')
+require('dotenv').config({ path: path.join(__dirname, '.env') })
+const gardenRoutes = require('./routes/gardens')
+const authRoutes = require('./routes/auth')
 const server = express()
 
 server.use(express.static(path.join(__dirname, "public")))

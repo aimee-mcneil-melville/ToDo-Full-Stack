@@ -1,20 +1,32 @@
-import React, { useState } from 'react'
-import { isAuthenticated } from 'authenticare/client'
-import { registerUser } from '../apiClient'
-
+import React, { useState, useContext } from 'react'
+import { register, isAuthenticated } from 'authenticare/client'
+import { UserContext, updateUserContext } from './UserContext'
 // import { createUser } from "../../server/db/connection"
 
 export default function Register (props) {
+  const [user, setUser] = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [garden, setGarden] = useState('')
+  const baseUrl = '/api/v1'
 
   const handleClick = () => {
-    registerUser(username, password, garden).then(() => {
-      if (isAuthenticated()) {
-        props.history.push('/')
-      } return null
-    })
+    register(
+      {
+        username: username,
+        password: password,
+        garden: Number(garden)
+      },
+      { baseUrl }
+    )
+      .then((token) => {
+        console.log(token)
+        if (isAuthenticated()) {
+          updateUserContext(setUser)
+          return props.history.push('/garden')
+        }
+        return null
+      })
       .catch((error) => {
         console.log('error: ', error.message)
       })
@@ -50,13 +62,9 @@ export default function Register (props) {
           id="name"
         >
           <option hidden>Select from this list</option>
-          <option value="Kelmarna Gardens">Kelmarna Gardens</option>
-          <option value="Kingsland Community Orchard">
-            Kingsland Community Orchard
-          </option>
-          <option value="Devonport Community Garden">
-            Devonport Community Garden
-          </option>
+          <option value="1">Kelmarna Gardens</option>
+          <option value="2">Kingsland Community Orchard</option>
+          <option value="3">Devonport Community Garden</option>
         </select>
         <button
           type="button"
