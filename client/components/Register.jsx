@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
-import { UserContext, updateUserContext } from './UserContext'
-// import { createUser } from "../../server/db/connection"
 
-export default function Register (props) {
-  const [user, setUser] = useContext(UserContext)
+import { UserContext, updateUserContext } from './UserContext'
+
+function Register (props) {
+  const [setUser] = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [garden, setGarden] = useState('')
+  const [gardenId, setGardenId] = useState('')
   const baseUrl = '/api/v1'
 
   const handleClick = () => {
@@ -15,12 +15,11 @@ export default function Register (props) {
       {
         username: username,
         password: password,
-        garden: Number(garden)
+        gardenId: Number(gardenId)
       },
       { baseUrl }
     )
-      .then((token) => {
-        console.log(token)
+      .then(() => {
         if (isAuthenticated()) {
           updateUserContext(setUser)
           return props.history.push('/garden')
@@ -56,7 +55,7 @@ export default function Register (props) {
         ></input>
         <label className="label">My Garden</label>
         <select
-          onChange={(e) => setGarden(e.target.value)}
+          onChange={(e) => setGardenId(e.target.value)}
           className="select"
           name="garden"
           id="name"
@@ -85,3 +84,5 @@ export default function Register (props) {
     </div>
   )
 }
+
+export default Register

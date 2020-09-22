@@ -1,16 +1,14 @@
-const environment = process.env.NODE_ENV || 'development'
-const config = require('./knexfile')[environment]
-const connection = require('knex')(config)
+const connection = require('./connection')
 const { generateHash } = require('authenticare/server')
 
 module.exports = {
   createUser,
   userExists,
   getUserByName,
-  getUserById,
+  getUserById
 }
 
-function createUser(user, db = connection) {
+function createUser (user, db = connection) {
   return userExists(user.username, db)
     .then((exists) => {
       if (exists) {
@@ -24,16 +22,12 @@ function createUser(user, db = connection) {
         username: user.username,
         garden_id: user.garden,
         hash: passwordHash,
-        isAdmin: false,
+        isAdmin: false
       })
     })
 }
 
-function getUserByName(username, db = connection) {
-  return db('users').select().where('username', username).first()
-}
-
-function userExists(username, db = connection) {
+function userExists (username, db = connection) {
   return db('users')
     .count('id as n')
     .where('username', username)
@@ -42,6 +36,10 @@ function userExists(username, db = connection) {
     })
 }
 
-function getUserById(id, db = connection) {
+function getUserByName (username, db = connection) {
+  return db('users').select().where('username', username).first()
+}
+
+function getUserById (id, db = connection) {
   return db('users').select().where('id', id).first()
 }
