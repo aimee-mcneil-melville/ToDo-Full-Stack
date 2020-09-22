@@ -15,19 +15,11 @@ const fakeGarden = {
 
 const Garden = (props) => {
   const [user, setUser] = useContext(UserContext)
+  const { username, isAdmin, garden_id } = getDecodedToken()
 
   const { name, description, url } = props.garden || fakeGarden
   useEffect(() => {
-    isAuthenticated()
-      ? getDecodedToken().then((user) => {
-          console.log(user)
-          setUser({
-            username: user.username,
-            isAdmin: user.isAdmin,
-            gardenId: user.garden_id,
-          })
-        })
-      : null
+    isAuthenticated() ? setUser({ username, isAdmin, garden_id }) : null
   }, [])
   return (
     <>
