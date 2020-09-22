@@ -12,7 +12,7 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "server": "node server",
-    "start": "run-s build server",
+    "start": "node server",
     "test:watch": "npm test --watchAll",
     "test": "jest --verbose",
     "lint": "eslint client server",
