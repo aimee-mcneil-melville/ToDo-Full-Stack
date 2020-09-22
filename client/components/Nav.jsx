@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { logOff } from 'authenticare/client'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-export default function Nav(props) {
+export default function Nav (props) {
   let currentPage = props.location.pathname
   let navLinks = null
 

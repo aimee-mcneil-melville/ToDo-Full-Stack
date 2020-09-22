@@ -1,32 +1,33 @@
 import React, { useState, useContext } from 'react'
 import { isAuthenticated, signIn } from 'authenticare/client'
+
 import { UserContext, updateUserContext } from './UserContext'
 
-function SignIn(props) {
-  const [user, setUser] = useContext(UserContext)
+function SignIn (props) {
+  const [setUser] = useContext(UserContext)
   const [form, setForm] = useState({
     username: '',
-    password: '',
+    password: ''
   })
   const baseUrl = '/api/v1'
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
   const handleClick = () => {
     const { username, password } = form
-    return signIn({ username, password }, { baseUrl }).then((token) => {
-      console.log(token)
-      if (isAuthenticated()) {
-        updateUserContext(setUser)
-        return props.history.push('/garden')
-      }
-      return null
-    })
+    return signIn({ username, password }, { baseUrl })
+      .then(() => {
+        if (isAuthenticated()) {
+          updateUserContext(setUser)
+          return props.history.push('/garden')
+        }
+        return null
+      })
   }
 
   return (

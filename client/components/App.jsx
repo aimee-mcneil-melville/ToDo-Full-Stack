@@ -6,7 +6,7 @@ import Register from './Register'
 import SignIn from './SignIn'
 import Garden from './Garden'
 
-function App() {
+function App () {
   return (
     <div className="app">
       <UserProvider>

@@ -7,7 +7,7 @@ export const UserProvider = ({ reducer, initialState, children }) => {
   const [user, setUser] = useState({
     username: '',
     isAdmin: '',
-    gardenId: '',
+    gardenId: ''
   })
 
   return (
@@ -17,6 +17,6 @@ export const UserProvider = ({ reducer, initialState, children }) => {
   )
 }
 export const updateUserContext = (setUser) => {
-  const { username, isAdmin, garden_id } = getDecodedToken()
-  isAuthenticated() ? setUser({ username, isAdmin, garden_id }) : null
+  const { username, isAdmin, gardenId } = getDecodedToken()
+  return isAuthenticated() ? setUser({ username, isAdmin, gardenId }) : null
 }
