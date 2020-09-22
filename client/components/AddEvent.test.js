@@ -1,16 +1,11 @@
 import React from 'react'
-import { HashRouter } from 'react-router-dom'
 import renderer from 'react-test-renderer'
 
-import Events from './Events'
+import AddEvent from './AddEvent'
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(
-    <HashRouter>
-      <Events />
-    </HashRouter>
-    )
+    .create(<AddEvent />)
     .toJSON()
   expect(tree).toMatchSnapshot()
 })
