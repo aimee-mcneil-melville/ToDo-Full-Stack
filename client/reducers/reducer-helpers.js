@@ -20,3 +20,11 @@ export function getNewCart (cart, product) {
     return newCart
   }
 }
+
+export function getUpdatedCart (cart, updateInfo) {
+  const { id, quantity } = updateInfo
+  return cart.map(item => {
+    const newQuantity = (item.id === id) ? Number(quantity) : item.quantity
+    return { ...item, quantity: newQuantity }
+  })
+}

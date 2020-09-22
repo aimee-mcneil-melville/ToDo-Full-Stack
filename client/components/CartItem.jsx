@@ -1,17 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const CartItem = (props) => {
+import {
+  deleteFromCart,
+  updateCart
+} from '../actions/cart'
+
+import { updateCartItem } from '../coordinators/cart'
+
+export const CartItem = (props) => {
   const { name, id, quantity } = props.item
-  const displayQuantity = (quantity === 0) ? '' : quantity
 
-  const updateCart = e => {
-    props.update(id, e.target.value)
+  const update = e => {
+    const quantity = e.target.value
+    const updateInfo = { id, quantity }
+    const { updateCart } = props
+    updateCartItem(updateInfo, updateCart)
   }
 
   const deleteItem = () => {
     props.deleteFromCart(id)
   }
 
+  const displayQuantity = (quantity === 0) ? '' : quantity
   return (
     <tr>
       <td>{name}</td>
@@ -20,7 +31,7 @@ const CartItem = (props) => {
           aria-label='quantity'
           className='update-input'
           value={displayQuantity}
-          onChange={updateCart} />
+          onChange={update} />
       </td>
       <td><button aria-label='delete' onClick={deleteItem}>
         <span className='fa fa-trash fa-2x' />
@@ -29,4 +40,9 @@ const CartItem = (props) => {
   )
 }
 
-export default CartItem
+const mapDispatchToProps = {
+  updateCart,
+  deleteFromCart
+}
+
+export default connect(null, mapDispatchToProps)(CartItem)

@@ -9,16 +9,16 @@ export const addToCart = product => {
   }
 }
 
-export const deleteFromCart = (id) => {
+export const deleteFromCart = id => {
   return {
     type: DELETE_FROM_CART,
     id
   }
 }
 
-export const updateCart = (cart) => {
+export const updateCart = updateInfo => {
   return {
     type: UPDATE_CART,
-    cart
+    updateInfo
   }
 }
