@@ -8,3 +8,15 @@ export function getGardens () {
       return res.body.gardens
     })
 }
+
+export function getUserGarden (gardenId) {
+  return request.get(rootUrl + '/gardens/' + gardenId)
+    .then(res => {
+      return res.body
+    })
+}
+
+export default {
+  getGardens,
+  getUserGarden
+}
