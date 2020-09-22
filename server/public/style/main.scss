@@ -10,6 +10,8 @@
 // Partials - components like buttons, header, footer, typography
 @import "partials/typography";
 
+@import "partials/layout";
+
 .signInContainer {
   display: flex;
   height: 100vh;
