@@ -23,7 +23,7 @@ function getUserGarden (id, db = connection) {
     .select('gardens.description as description', 'gardens.id as id', 'name', 'address', 'lat', 'lon', 'url',
       'events.description as eventDescription', 'events.id as eventId', 'title', 'date', 'volunteers_needed as volunteersNeeded')
     .then(result => {
-      console.log(result)
+      // console.log(result)
       return {
         id: result[0].id,
         name: result[0].name,
