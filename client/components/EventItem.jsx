@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 function EventItem ({ event }) {
   return (
     <div>
-      <h4 >{event.title}</h4>
-      <Link to='/event-details'>
-      <button>Edit Event</button>
+      <h4 className="is-pulled-left">{event.title}</h4>
+      <Link to='/events/4/edit' className="button is-primary is-pulled-right">Edit Event
       </Link>
-      <p>{event.datetime}</p>
+      <p className="clearfix">{event.datetime}</p>
       <p>{event.volunteersNeeded} volunteers needed</p>
       <p>{event.description}</p>
     </div>
