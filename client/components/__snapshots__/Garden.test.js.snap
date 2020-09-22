@@ -5,20 +5,14 @@ Array [
   <div
     className="column"
   >
-    <h3>
-      Kelmarna Gardens
-    </h3>
+    <h3 />
     <p
       className="mb-4"
-    >
-      Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.
-    </p>
+    />
     <a
       className="word-wrap"
-      href="http://www.kelmarnagardens.nz/"
-    >
-      http://www.kelmarnagardens.nz/
-    </a>
+      href={null}
+    />
     <div
       className="m-6"
     >
@@ -67,14 +61,15 @@ Array [
     </div>
   </div>,
   <div
-    className="column mapContainer"
+    className="column is-half-tablet"
   >
     <div
       id="mapid"
-    />
-    <p>
-      12 Hukanui Crescent
-    </p>
+    >
+      <p>
+        12 Hukanui Crescent
+      </p>
+    </div>
   </div>,
 ]
 `;
