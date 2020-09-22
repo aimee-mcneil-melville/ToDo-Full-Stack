@@ -10,6 +10,13 @@ export function getGardens () {
     })
 }
 
+export function getUserGarden (gardenId) {
+  return request.get(rootUrl + '/gardens/' + gardenId)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function getMap () {
   const mymap = L.map('mapid').setView([-36.8666700, 174.7666700], 12)
 

@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserContext } from './UserContext'
 
 import Map from './Map'
 import Events from './Events'
 
-// Remove once component is connected
-const fakeGarden = {
-  name: 'Kelmarna Gardens',
-  description: 'Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.',
-  url: 'http://www.kelmarnagardens.nz/'
-}
+import { getUserGarden } from '../apiClient.js'
 
 const Garden = (props) => {
-  const { name, description, url } = props.garden || fakeGarden
+  const [user] = useContext(UserContext)
+  const [name, setName] = useState(null)
+  const [description, setDescription] = useState(null)
+  const [url, setUrl] = useState(null)
+
+  const gardenId = user.garden_id
+
+  useEffect(() => {
+    getUserGarden(gardenId)
+      .then(res => {
+        setName(res.name)
+        setDescription(res.description)
+        setUrl(res.url)
+        return null
+      })
+      .catch((error) => {
+        console.log('error: ', error.message)
+      })
+  }, [])
+
   return (
     <>
       <div className="column">
