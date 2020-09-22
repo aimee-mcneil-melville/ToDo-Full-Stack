@@ -15,7 +15,7 @@ function App () {
     if (isAuthenticated()) {
       updateUserContext(setUser)
     }
-  })
+  }, [])
 
   return (
     <div className="app">
