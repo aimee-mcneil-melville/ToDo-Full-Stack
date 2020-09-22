@@ -1,28 +1,33 @@
-import React, { useState } from "react"
-import { isAuthenticated, signIn } from "authenticare/client"
+import React, { useState, useContext } from 'react'
+import { isAuthenticated, signIn } from 'authenticare/client'
 
-function SignIn(props) {
+import { UserContext, updateUserContext } from './UserContext'
+
+function SignIn (props) {
+  const [setUser] = useContext(UserContext)
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: ''
   })
-  const baseUrl = "/api/v1"
+  const baseUrl = '/api/v1'
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
   const handleClick = () => {
     const { username, password } = form
-    return signIn({ username, password }, { baseUrl }).then((token) => {
-      if (isAuthenticated()) {
-        return props.history.push("/garden")
-      }
-      return null
-    })
+    return signIn({ username, password }, { baseUrl })
+      .then(() => {
+        if (isAuthenticated()) {
+          updateUserContext(setUser)
+          return props.history.push('/garden')
+        }
+        return null
+      })
   }
 
   return (
@@ -64,7 +69,7 @@ function SignIn(props) {
         <img
           src="images/comGardenRows.png"
           alt=""
-          style={{ width: "600px", height: "500px" }}
+          style={{ width: '600px', height: '500px' }}
         />
       </div>
     </div>

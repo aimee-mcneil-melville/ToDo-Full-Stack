@@ -1,30 +1,33 @@
-import React, { useState } from "react"
-import { register, isAuthenticated } from "authenticare/client"
-// import { createUser } from "../../server/db/connection"
+import React, { useState, useContext } from 'react'
+import { register, isAuthenticated } from 'authenticare/client'
 
-export default function Register(props) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [garden, setGarden] = useState("")
-  const baseUrl = "/api/v1"
+import { UserContext, updateUserContext } from './UserContext'
+
+function Register (props) {
+  const [setUser] = useContext(UserContext)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [gardenId, setGardenId] = useState('')
+  const baseUrl = '/api/v1'
 
   const handleClick = () => {
     register(
       {
         username: username,
         password: password,
-        garden: garden,
+        gardenId: Number(gardenId)
       },
       { baseUrl }
     )
-      .then((token) => {
+      .then(() => {
         if (isAuthenticated()) {
-          return props.history.push("/garden")
+          updateUserContext(setUser)
+          return props.history.push('/garden')
         }
         return null
       })
       .catch((error) => {
-        console.log("error: ", error.message)
+        console.log('error: ', error.message)
       })
   }
 
@@ -52,19 +55,15 @@ export default function Register(props) {
         ></input>
         <label className="label">My Garden</label>
         <select
-          onChange={(e) => setGarden(e.target.value)}
+          onChange={(e) => setGardenId(e.target.value)}
           className="select"
           name="garden"
           id="name"
         >
           <option hidden>Select from this list</option>
-          <option value="Kelmarna Gardens">Kelmarna Gardens</option>
-          <option value="Kingsland Community Orchard">
-            Kingsland Community Orchard
-          </option>
-          <option value="Devonport Community Garden">
-            Devonport Community Garden
-          </option>
+          <option value="1">Kelmarna Gardens</option>
+          <option value="2">Kingsland Community Orchard</option>
+          <option value="3">Devonport Community Garden</option>
         </select>
         <button
           type="button"
@@ -79,9 +78,11 @@ export default function Register(props) {
         <img
           src="./images/comGardenPlant.png"
           alt=""
-          style={{ width: "600px", height: "500px" }}
+          style={{ width: '600px', height: '500px' }}
         />
       </div>
     </div>
   )
 }
+
+export default Register
