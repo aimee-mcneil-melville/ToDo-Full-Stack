@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-// import { UserContext } from './UserContext'
+import { UserContext } from './UserContext'
 
 import Map from './Map'
 import Events from './Events'
@@ -7,13 +7,12 @@ import Events from './Events'
 import { getUserGarden } from '../apiClient.js'
 
 const Garden = (props) => {
-  // const [user, setUser] = useContext(UserContext)
+  const [user] = useContext(UserContext)
   const [name, setName] = useState(null)
   const [description, setDescription] = useState(null)
   const [url, setUrl] = useState(null)
 
-  const gardenId = 1
-  // const gardenId = user.garden_id
+  const gardenId = user.garden_id
 
   useEffect(() => {
     getUserGarden(gardenId)

@@ -15,8 +15,3 @@ export function getUserGarden (gardenId) {
       return res.body
     })
 }
-
-export default {
-  getGardens,
-  getUserGarden
-}
