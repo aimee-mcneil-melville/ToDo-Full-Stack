@@ -21,6 +21,7 @@ const Garden = (props) => {
   useEffect(() => {
     isAuthenticated() ? setUser({ username, isAdmin, garden_id }) : null
   }, [])
+  
   return (
     <>
       <div className="column">
