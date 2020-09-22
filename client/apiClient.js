@@ -21,5 +21,5 @@ export function getMap () {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibWljaGFlbC1yIiwiYSI6ImNrZXM1Zm9iaDJiNmYycW1za2dobDZ4d3gifQ.a5mK2DxNqWhlzvoa8Zxb2Q'
   }).addTo(mymap)
-    const marker = L.marker([-36.8514, 174.731]).addTo(mymap)
+  L.marker([-36.8514, 174.731]).addTo(mymap)
 }

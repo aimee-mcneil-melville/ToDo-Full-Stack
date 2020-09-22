@@ -67,10 +67,10 @@ Array [
     </div>
   </div>,
   <div
-    className="column"
+    className="column mapContainer"
   >
-    <img
-      src="/placeholder_auckland.jpg"
+    <div
+      id="mapid"
     />
     <p>
       12 Hukanui Crescent

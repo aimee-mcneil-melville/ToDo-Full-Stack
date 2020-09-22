@@ -11,9 +11,9 @@ it('renders correctly', () => {
     url: 'http://www.kelmarnagardens.nz/'
   }
   const tree = renderer.create(
-  <HashRouter>
-    <Garden garden={fakeGarden} />
-  </HashRouter>
+    <HashRouter>
+      <Garden garden={fakeGarden} />
+    </HashRouter>
   ).toJSON()
   expect(tree).toMatchSnapshot()
 })

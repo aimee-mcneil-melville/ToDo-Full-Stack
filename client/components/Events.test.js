@@ -7,9 +7,9 @@ import Events from './Events'
 it('renders correctly', () => {
   const tree = renderer
     .create(
-    <HashRouter>
-      <Events />
-    </HashRouter>
+      <HashRouter>
+        <Events />
+      </HashRouter>
     )
     .toJSON()
   expect(tree).toMatchSnapshot()
