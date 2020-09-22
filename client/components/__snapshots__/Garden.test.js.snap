@@ -19,36 +19,58 @@ Array [
     >
       http://www.kelmarnagardens.nz/
     </a>
-    <h2
-      className="my-4"
-    >
-      Events
-    </h2>
     <div
-      className="box"
+      className="m-6"
     >
-      <div>
-        <h4>
-          Weeds worker bee
-        </h4>
-        <p>
-          28/09/2020 8.00 am
-        </p>
-        <p>
-          8
-           volunteers needed
-        </p>
-        <p>
-          We need to weed the upper planting beds
-        </p>
+      <h2
+        className="my-4 is-pulled-left"
+      >
+        Events
+      </h2>
+      <a
+        className="button my-4 is-primary is-pulled-right"
+        href="#/events/new"
+        onClick={[Function]}
+      >
+        Add new event
+      </a>
+      <div
+        className="box clearfix"
+      >
+        <div>
+          <h4
+            className="is-pulled-left"
+          >
+            Weeds worker bee
+          </h4>
+          <a
+            className="button is-primary is-pulled-right"
+            href="#/events/4/edit"
+            onClick={[Function]}
+          >
+            Edit Event
+          </a>
+          <p
+            className="clearfix"
+          >
+            28/09/2020 8.00 am
+          </p>
+          <p>
+            8
+             volunteers needed
+          </p>
+          <p>
+            We need to weed the upper planting beds
+          </p>
+        </div>
       </div>
     </div>
   </div>,
   <div
-    className="column"
+    className="column mapContainer"
   >
-    <img
-      src="/placeholder_auckland.jpg"
+    <div
+      id="mapid"
     />
     <p>
       12 Hukanui Crescent

@@ -3,20 +3,22 @@ import { Route, Link } from 'react-router-dom'
 
 import Garden from './Garden'
 import Home from './Home'
-import EventForm from './EventForm'
+import AddEvent from './AddEvent'
+import EditEvent from './EditEvent'
 
 function App () {
   return (
     <>
-    <div className="container">
-      <h1 className="title">
-        <Link to="/">Garde<span>nz</span></Link></h1>   
+      <div className="container">
+        <h1 className="title">
+          <Link to="/">Garde<span>nz</span></Link></h1>
+        <div className='columns'>
+          <Route exact path='/' component={ Home } />
+          <Route path='/garden' component={ Garden } />
+          <Route path='/events/new' component={ AddEvent } />
+          <Route path='/events/:id/edit' component={ EditEvent } />
+        </div>
       </div>
-      <div className='columns'>
-      <Route exact path='/' component={ Home } />
-      <Route path='/garden' component={ Garden } />
-      <Route path='/event-details' component={ EventForm } />      
-    </div>
     </>
   )
 }

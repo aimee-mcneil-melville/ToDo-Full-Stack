@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { getMap } from '../apiClient'
 
 function Map () {
+  useEffect(()=> {
+    getMap()
+  })
+  
+
 // fakeMap can be deleted once our API is in place and using our databse
   const fakeMap = [
     {
@@ -14,8 +20,9 @@ function Map () {
     }
   ]
   return (
-    <div className='column'>
-      <img src="/placeholder_auckland.jpg"/>
+    <div className='column mapContainer'>
+      <div id="mapid"/>
+      {/* <img src="/placeholder_auckland.jpg"/> */}
       <p>
         {fakeMap.map(garden => (garden.address))}
       </p>
