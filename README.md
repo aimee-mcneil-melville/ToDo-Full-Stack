@@ -104,7 +104,7 @@ Now it's time to come clean (or not).
 1. Once someone has submitted a LIE pull request on your branch you can comment on the pull request with:
 
   * "Yep you got it" or
-  * "Nope but perhaps you really meant to choose #1" or (if your devious)
+  * "Nope but perhaps you really meant to choose #1" or (if you're devious)
   * "Nope, keep guessing".
 
   In any case, close the pull request and make sure the target branch is the correct one, **not** `master`.
