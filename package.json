@@ -1,0 +1,25 @@
+{
+  "name": "exercise-arrays",
+  "version": "0.2.0",
+  "description": "A kata that explores testing and the array commands",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/exercise-arrays.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/exercise-arrays/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/exercise-arrays#readme",
+  "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.5.3"
+  }
+}
