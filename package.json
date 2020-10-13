@@ -1,0 +1,28 @@
+{
+  "name": "object-array-practice",
+  "version": "0.2.0",
+  "description": "A self-assessment to help you understand how you're going",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/object-array-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/object-array-practice/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/object-array-practice#readme",
+  "dependencies": {
+    "eslint-config-eda": "^0.1.4",
+    "eslint": "^7.9.0"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  }
+}
