@@ -18,11 +18,9 @@
     "url": "https://github.com/dev-academy-challenges/object-array-practice/issues"
   },
   "homepage": "https://github.com/dev-academy-challenges/object-array-practice#readme",
-  "dependencies": {
-    "eslint-config-eda": "^0.1.4",
-    "eslint": "^7.9.0"
-  },
   "devDependencies": {
+    "eslint-config-eda": "^0.1.4",
+    "eslint": "^7.9.0",
     "jest": "^26.5.3"
   }
 }
