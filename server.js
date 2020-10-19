@@ -21,7 +21,7 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 // sample data
 
-let data = {
+const data = {
   cats: [
     { id: 1, name: 'fluffy' },
     { id: 2, name: 'tick' }
