@@ -49,7 +49,7 @@ When you're learning a new technology, make sure you start simple and get that w
     res.render(template, viewData)
   ```
 
-6. Alter `home.hbs` to refer to the property using `{{{title}}}`. Maybe put it inside `<h1></h1>` tags?
+6. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
   - Reload the page: does it work?
 
 You'll find this pattern repeating throughout your exploration of server-side rendering:
