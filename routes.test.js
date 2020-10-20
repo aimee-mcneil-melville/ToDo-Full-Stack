@@ -11,10 +11,10 @@ jest.mock('./lib', () => ({
   editPuppy: jest.fn()
 }))
 
-mockPuppies = {
+const mockPuppies = {
   puppies: [
-    { id: 1, name: "Fido", owner: "Fred", image: "1.jpg", breed: "Lab" },
-    { id: 2, name: "Coco", owner: "Chloe", image: "2.jpg", breed: "Pug" }
+    { id: 1, name: 'Fido', owner: 'Fred', image: '1.jpg', breed: 'Lab' },
+    { id: 2, name: 'Coco', owner: 'Chloe', image: '2.jpg', breed: 'Pug' }
   ]
 }
 
@@ -30,6 +30,7 @@ describe('GET /', () => {
       .then(res => {
         const $ = cheerio.load(res.text)
         expect($('.puppy-list a')).toHaveLength(2)
+        return null
       })
   })
 
@@ -43,6 +44,7 @@ describe('GET /', () => {
       .expect(500)
       .then(res => {
         expect(res.text).toMatch('test error message')
+        return null
       })
   })
 })
@@ -67,6 +69,7 @@ describe('GET /:id', () => {
         expect($('.puppy a').attr('href')).toMatch('/edit/2')
         expect($('.puppy div').first().text()).toMatch('Pug')
         expect($('.puppy div').last().text()).toMatch('Chloe')
+        return null
       })
   })
 
@@ -82,6 +85,7 @@ describe('GET /:id', () => {
       .expect(404)
       .then(res => {
         expect(res.text).toMatch('Not Found')
+        return null
       })
   })
 
@@ -97,6 +101,7 @@ describe('GET /:id', () => {
       .expect(500)
       .then(res => {
         expect(res.text).toMatch('test error message')
+        return null
       })
   })
 })
@@ -126,10 +131,11 @@ describe('POST /edit/:id', () => {
     return request(server)
       .post('/edit/2')
       .send(updatedPuppy)
-      .set({ 'Content-Type': 'application/x-www-form-urlencoded'})
+      .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(302)
       .then(res => {
         expect(res.header.location).toBe('/2')
+        return null
       })
   })
 
@@ -145,10 +151,11 @@ describe('POST /edit/:id', () => {
     return request(server)
       .post('/edit/9999')
       .send(updatedPuppy)
-      .set({ 'Content-Type': 'application/x-www-form-urlencoded'})
+      .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(404)
       .then(res => {
         expect(res.text).toMatch('Not Found')
+        return null
       })
   })
 
@@ -163,10 +170,11 @@ describe('POST /edit/:id', () => {
     return request(server)
       .post('/edit/1')
       .send(updatedPuppy)
-      .set({ 'Content-Type': 'application/x-www-form-urlencoded'})
+      .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(500)
       .then(res => {
         expect(res.text).toMatch('test error message')
+        return null
       })
   })
 })
@@ -194,6 +202,7 @@ describe('POST /new', () => {
       .expect(302)
       .then(res => {
         expect(res.header.location).toBe('/3')
+        return null
       })
   })
 
@@ -207,10 +216,11 @@ describe('POST /new', () => {
     return request(server)
       .post('/new')
       .send({})
-      .set({ 'Content-Type': 'application/x-www-form-urlencoded'})
+      .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(500)
       .then(res => {
         expect(res.text).toMatch('test error message')
+        return null
       })
   })
 })

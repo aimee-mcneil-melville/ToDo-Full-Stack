@@ -40,7 +40,7 @@ router.post('/edit/:id', (req, res) => {
       return
     }
 
-    res.redirect('/'+id)
+    res.redirect('/' + id)
   })
 })
 
@@ -57,7 +57,7 @@ router.post('/new', (req, res) => {
       return res.status(500).send(err.message)
     }
 
-    res.redirect('/'+id)
+    res.redirect('/' + id)
   })
 })
 
@@ -76,4 +76,3 @@ router.get('/:id', (req, res) => {
     res.render('details', puppyDetails)
   })
 })
-

@@ -2,9 +2,9 @@ const lib = require('./lib')
 
 const mockPuppies = {
   puppies: [
-    { id: 1, name: "Fido", owner: "Fred", image: "/img/1.jpg", breed: "Lab" },
-    { id: 2, name: "Coco", owner: "Chloe", image: "/img/2.jpg", breed: "Lab" },
-    { id: 3, name: "Mags", owner: "Mike", image: "/img/3.jpg", breed: "Rottie" }
+    { id: 1, name: 'Fido', owner: 'Fred', image: '/img/1.jpg', breed: 'Lab' },
+    { id: 2, name: 'Coco', owner: 'Chloe', image: '/img/2.jpg', breed: 'Lab' },
+    { id: 3, name: 'Mags', owner: 'Mike', image: '/img/3.jpg', breed: 'Rottie' }
   ]
 }
 
@@ -12,11 +12,12 @@ describe('getPuppyData', () => {
   it('returns an array of puppy data on success', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       }
     }
 
     lib.getPuppyData((err, puppyData) => {
+      expect(err).toBeNull()
       expect(puppyData.puppies).toHaveLength(3)
     }, mockfs)
   })
@@ -58,11 +59,12 @@ describe('getPuppyById', () => {
   it('returns puppy details on success', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       }
     }
 
     lib.getPuppyById(2, (err, puppyDetails) => {
+      expect(err).toBeNull()
       expect(puppyDetails.name).toBe('Coco')
       expect(puppyDetails.owner).toBe('Chloe')
       expect(puppyDetails.image).toBe('/img/2.jpg')
@@ -105,7 +107,7 @@ describe('getPuppyById', () => {
   it('returns an error when it cannot find the puppy id', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       }
     }
 
@@ -122,7 +124,7 @@ describe('addNewPuppy', () => {
 
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       },
       writeFile: (filepath, contents, enc, callback) => {
         const encoding = enc.toLowerCase().replace('-', '')
@@ -135,7 +137,7 @@ describe('addNewPuppy', () => {
       }
     }
 
-    const newPup = { name: "Rex", owner: "Sue", image: "rex.jpg", breed: "Pug" }
+    const newPup = { name: 'Rex', owner: 'Sue', image: 'rex.jpg', breed: 'Pug' }
 
     lib.addNewPuppy(newPup, (err, id) => {
       expect(err).toBeNull()
@@ -178,7 +180,7 @@ describe('addNewPuppy', () => {
   it('returns an error when it cannot write the file', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       },
       writeFile: (filepath, contents, enc, callback) => {
         callback(new Error('test error message'))
@@ -200,7 +202,7 @@ describe('editPuppy', () => {
     expect.assertions(6)
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       },
       writeFile: (filepath, contents, enc, callback) => {
         const encoding = enc.toLowerCase().replace('-', '')
@@ -215,10 +217,10 @@ describe('editPuppy', () => {
 
     const updatedPuppy = {
       id: 2,
-      name: "Test Pup",
-      owner: "Test Owner",
-      image: "/images/test.jpg",
-      breed: "Test breed"
+      name: 'Test Pup',
+      owner: 'Test Owner',
+      image: '/images/test.jpg',
+      breed: 'Test breed'
     }
 
     lib.editPuppy(updatedPuppy, (err) => {
@@ -261,7 +263,7 @@ describe('editPuppy', () => {
   it('returns an error when it cannot write the file', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       },
       writeFile: (filepath, contents, enc, callback) => {
         callback(new Error('test error message'))
@@ -281,7 +283,7 @@ describe('editPuppy', () => {
   it('returns an error when it cannot find the puppy id', () => {
     const mockfs = {
       readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({...mockPuppies}))
+        callback(null, JSON.stringify({ ...mockPuppies }))
       }
     }
 
