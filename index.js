@@ -5,9 +5,21 @@ const displayBoard = require('./displayBoard')
 const size = 10
 const refreshInteral = 100
 
-let board = createBoard(size)
+let board = randomiseBoard(createBoard(size))
 
-setTimeout(() => {
+setInterval(() => {
   displayBoard(board)
-  board = nextBoard(board)
+  let theNextBoard = nextBoard(board)
+
+  if (boardIsStable(board, theNextBoard)) process.exit()
+
+  board = theNextBoard
 }, refreshInteral)
+
+function randomiseBoard(board) {
+  return board.map(row => row.map(cell => Math.random() > 0.5))
+}
+
+function boardIsStable(thisBoard, thatBoard) {
+  return JSON.stringify(thisBoard) == JSON.stringify(thatBoard)
+}
