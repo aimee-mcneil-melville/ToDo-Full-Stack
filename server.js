@@ -5,15 +5,13 @@ const routes = require('./routes')
 
 const server = express()
 
-// Middleware
-server.engine('hbs', hbs({
-  defaultLayout: 'main',
-  extname: 'hbs'
-}))
+// Server configuration
+server.use(express.static('public'))
+server.use(express.urlencoded({ extended: false }))
 
-app.set('view engine', 'hbs')
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: false }))
+// Handlebars configuration
+server.engine('hbs', hbs({ extname: 'hbs' }))
+server.set('view engine', 'hbs')
 
 // Routes
 server.use('/', routes)
