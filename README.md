@@ -5,21 +5,6 @@ Command-line todo app using Knex.
 We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
 
 
-## A note on debugging
-
-You'll find this challenge already has debugging set up for you. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a _console_ program, you'll need to change the `args` property in the configuration to the actual command you'd like to debug. For example,
-
-```json
-    "program": "${workspaceFolder}/todo",
-    "args": [
-        "done",
-        "1"
-    ]
-```
-
-would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
-
-
 ## Setup
 
 * Install dependencies.
@@ -30,7 +15,11 @@ would debug the `./todo done 1` command. Ask a teacher for help if you're not su
 
 * Set file permissions.
 
-Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Run `chmod +x todo` in your terminal to add the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
+  ```sh
+  chmod +x todo
+  ```
+
+  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
 
 * Create the Knex configuration file (`knexfile.js`).
 
@@ -52,7 +41,7 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
       * `id` (auto incrementing)
       * `task`: string
 
-  The documentation for [`hasTable`](https://knexjs.org/#Schema-hasTable) and [`dropTableIfExists`](http://knexjs.org/#Schema-dropTableIfExists) might be helpful.
+  The documentation for [`dropTable`](http://knexjs.org/#Schema-dropTable) might be helpful.
 
   2. Use `npx knex migrate:latest` to apply the changes to the database.
 
@@ -69,6 +58,9 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
   2. Run `npx knex seed:run` to add the new data to the database.
 
 
+## Viewing data in the database
+There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the EDA computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
+
 ## Display tasks and IDs
 
 We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. This provides output that looks like this:
@@ -81,8 +73,8 @@ $ ./todo list
 ```
 
 Notice two things about this example:
- * the commands are all separated into a different module, so that `todo.js` just calls a `require`d function from `commands.js`
- * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo.js` does not (it doesn't need it)
+ * the commands are all separated into a different module, so that `todo` just calls a `require`d function from `commands.js`
+ * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo` does not (it doesn't need it)
 
 
 ## Delete a task by ID
@@ -147,4 +139,20 @@ It's up to you to decide how far you want to go with this. Should listing all th
 ## Add the feature that's missing
 
 What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
+
+
+
+## A note on using the debugger
+
+You'll find this challenge already has debugging set up for you, if you would like to use it. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a _console_ program, you'll need to change the `args` property in you debugger configuration to the actual command you'd like to debug. For example,
+
+```json
+  "program": "${workspaceFolder}/todo",
+  "args": [
+      "done",
+      "1"
+  ]
+```
+
+would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
 
