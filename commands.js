@@ -1,7 +1,7 @@
 const db = require('./db')
 
 function list () {
-  db.getAll()
+  return db.getAll()
     .then(listTodos)
     .catch(logError)
     .finally(db.close)

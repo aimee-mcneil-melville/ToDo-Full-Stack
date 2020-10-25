@@ -25,7 +25,6 @@ would debug the `./todo done 1` command. Ask a teacher for help if you're not su
 * Install dependencies.
 
   ```sh
-  npm init -y
   npm i knex sqlite3
   ```
 
