@@ -7,32 +7,28 @@
     "start": "node index",
     "dev": "nodemon index",
     "knex": "knex",
+    "lint": "eslint .",
     "test": "jest --watch --noStackTrace"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/knex-joins-stories.git"
   },
-  "keywords": [
-    "knex",
-    "joins"
-  ],
+  "keywords": [],
   "author": "Enspiral Dev Academy",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/knex-joins-stories/issues"
-  },
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4",
-    "knex": "^0.21.1",
-    "sqlite3": "^4.2.0"
+    "express-handlebars": "^5.2.0",
+    "knex": "^0.21.7",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "eslint": "7.12.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.1",
+    "nodemon": "^2.0.6",
+    "supertest": "^5.0.0"
   }
 }

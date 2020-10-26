@@ -1,6 +1,6 @@
 const getDbConn = require('knex')
 
-const testConfig = require('../knexfile').test
+const testConfig = require('./knexfile').test
 
 module.exports = {
   // Test database connection
@@ -20,4 +20,3 @@ module.exports = {
     return db.destroy()
   }
 }
-
