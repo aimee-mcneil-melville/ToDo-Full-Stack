@@ -1,4 +1,4 @@
-# Knex Relationships
+# Knex Relationships Stories
 
 User stories for practicing with relational databases and related tools.
 
@@ -7,17 +7,13 @@ User stories for practicing with relational databases and related tools.
 
 Some of the setup for a sample application has already been done for you, but you still need to do these steps.
 
-1. Install `knex` and `sqlite3` as normal dependencies.
+1. Apply the existing migrations that have already been created for you. This will create your database with an initial `users` table.
 
-2. Install `jest` and `supertest` as dev dependencies.
+1. Add data to the database by applying the seed data.
 
-3. Apply the existing migrations that have already been created for you. This will create your database with an initial `users` table.
+1. Ensure the initial tests pass by running `npm test`.
 
-4. Add data to the database by applying the seed data.
-
-5. Ensure the initial tests pass by running `npm test`.
-
-6. You can start the server with nodemon using `npm run dev` and navigate to [http://localhost:3000](http://localhost:3000).
+1. You can start the server with nodemon using `npm run dev` and navigate to [http://localhost:3000](http://localhost:3000).
 
 Now you should be ready to complete the rest of this challenge.
 
