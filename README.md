@@ -95,12 +95,6 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   "build": "knex migrate:latest"
   ```
 
-- [ ] If you're using Webpack, you've moved all necessary `devDependencies` to `dependencies` in your `package.json` and you're calling `webpack` in your `build` script.
-
-  ```js
-  "build": "webpack && knex migrate:latest"
-  ```
-
 
 1. Provision a Postgres DB using the postgresql addon
     - `heroku addons:create heroku-postgresql:hobby-dev`
@@ -136,7 +130,7 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
   // OR
 
-  "build": "run-s build:client build:server",
+  "build": "run-p build:client build:server",
   "build:client": "webpack",
   "build:server": "knex migrate:latest",
   ```
@@ -153,7 +147,7 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode. e.g. your server index.js file should have a block of code that looks like this:
 
   ```js
-  if(!process.env.NODE_ENV || process.env.NODE_ENV == 'development') {
+  if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     const envConfig = require('dotenv').config()
     if(envConfig.error) throw envConfig.error
   }
@@ -167,5 +161,5 @@ heroku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
 
 ## Gotchas
 
-- [ ] After inserting seeds into tables, if you have issues on the first supsequent insert, you have likely hit a Heroku/Postgres sequence issue.  You can prevent this in future by reseting all sequences after seeding.  To do this, add [this seed file](./resources/z_reset_sequences.js) as the LAST seed in your seeds folder.  
+- [ ] After inserting seeds into tables, if you have issues on the first subsequent insert, you have likely hit a Heroku/Postgres sequence issue.  You can prevent this in future by reseting all sequences after seeding.  To do this, add [this seed file](./resources/z_resetSequences.js) as the LAST seed in your seeds folder.  
 
