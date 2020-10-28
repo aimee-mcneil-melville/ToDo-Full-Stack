@@ -25,11 +25,11 @@ No key modules are in your devDependencies
 
 - Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. 
 
-- If a package is working globally on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will not be installed for the deployed version. 
+- If a package is working globally on your machine you may have forgotten to add it to your project explicitly with `npm install <package name>`, which means it will not be installed for the deployed version. 
 
 The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
-- Heroku will use the start script to run your application and, unlike us, doesn't need the server restarting with changes.
+- Heroku will use the start script (`npm run start`) to run your application and, unlike us, doesn't need the server restarting with changes.
 
 ### Check the sections below for any requirements specific to those technologies
 - [Databases](#databases)
@@ -89,16 +89,16 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   }
   ```
 
-- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `postinstall` to run the migrations.
+- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `build` to run the migrations.
 
   ```js
-  "postinstall": "knex migrate:latest"
+  "build": "knex migrate:latest"
   ```
 
-- [ ] If you're using Webpack, you've moved all necessary `devDependencies` to `dependencies` in your `package.json` and you're calling `webpack` in your `postinstall` script.
+- [ ] If you're using Webpack, you've moved all necessary `devDependencies` to `dependencies` in your `package.json` and you're calling `webpack` in your `build` script.
 
   ```js
-  "postinstall": "webpack && knex migrate:latest"
+  "build": "webpack && knex migrate:latest"
   ```
 
 
@@ -123,11 +123,47 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
 ## React
 
-build script
+- [ ] If you're using Webpack, this needs to run after every deploy.  You can do this by adding the command to the `build` script.
+
+  ```js
+  "build": "webpack"
+  ```
+
+- [ ] If you're using Webpack AND have a database, you will need to be able to run both Webpack and your migrations at each deploy.You can do this by adding the commands to the `build` script separated by `&&`.  Note: If you use this project on a Windows platform, you will need to use a module like `npm-run-all` as the `&&` operator does not work on Windows.
+
+  ```js
+  "build": "webpack && knex db:migrate"
+
+  // OR
+
+  "build": "run-s build:client build:server",
+  "build:client": "webpack",
+  "build:server": "knex migrate:latest",
+  ```
+
+- [ ] If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in `production mode` script.
+
+  ```js
+  "build": "webpack --mode=production"
+  ```
+
 
 ## .env files
 
-api keys and auth variables
+- [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode. e.g. your server index.js file should have a block of code that looks like this:
+
+  ```js
+  if(!process.env.NODE_ENV || process.env.NODE_ENV == 'development') {
+    const envConfig = require('dotenv').config()
+    if(envConfig.error) throw envConfig.error
+  }
+  ```
+
+- [ ] Also make sure you set each of the secret values in the Heroku config area using the following command:
+
+```sh
+heroku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
+```
 
 ## Gotchas
 
