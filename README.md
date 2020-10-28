@@ -167,4 +167,5 @@ heroku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
 
 ## Gotchas
 
-Heroku seed weirdness
+- [ ] After inserting seeds into tables, if you have issues on the first supsequent insert, you have likely hit a Heroku/Postgres sequence issue.  You can prevent this in future by reseting all sequences after seeding.  To do this, add [this seed file](./resources/z_reset_sequences.js) as the LAST seed in your seeds folder.  
+
