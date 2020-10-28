@@ -7,53 +7,59 @@
 
 ## General app setup
 
-Across all apps there are some things we need to make sure are done when we try and deploy it.
+- Across all apps there are some things we need to make sure are done when we try and deploy it.
 
-- [ ] **Is the port hardcoded to port 3000?**
+Is the port hardcoded to port 3000?
 
-Heroku will set a dynamic port when you deploy. If you are explicitly naming your port, Heroku can't expose your app on their chosen port. To make this work locally and also when deployed, we listen on a dynamic port if available or else default to a local one:
+- Heroku will set a dynamic port when you deploy. If you are explicitly naming your port, Heroku can't expose your app on their chosen port. To make this work locally and also when deployed, we listen on a dynamic port if available or else default to a local one:
 
 ```js
 const port = process.env.PORT || 3000
 ```
 
-- [ ] **Are there any references to localhost?**
+Are there any references to localhost?
 
-Any references to 'localhost' within your app will break it, unless an alternative is provided. Best to avoid this unless absolutely necessary.
+- Any references to 'localhost' within your app will break it, unless an alternative is provided. Best to avoid this unless absolutely necessary.
 
-- [ ] **No key modules are in your devDependencies**
+No key modules are in your devDependencies
 
-Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. Also, if a package is working globally on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will not be installed for the deployed version. 
+- Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. 
 
-- [ ] **The `start` script in your `package.json` file calls `node` and not `nodemon`.**
+- If a package is working globally on your machine you may have forgotten to add it to your project explicitly with `--save`, which means it will not be installed for the deployed version. 
 
-Heroku will use the start script to run your application, and unlike us, doesn't want the server restarting.
+The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
-#### Check the sections below for any requirements specific to those technologies
-- Databases
-- React
-- .env files
+- Heroku will use the start script to run your application and, unlike us, doesn't need the server restarting with changes.
+
+### Check the sections below for any requirements specific to those technologies
+- [Databases](#databases)
+- [React](#react)
+- [.env files](#env-files) (Auth & API keys)
 
 ## Creating your Heroku app
 
 *From the command line*
 
-* Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
+- Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
   - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
 
 *Or, from heroku.com*
 
-* From the dashboard, click the 'New' button in the top right corner. Create a name and a region and press 'create app'. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
+1. From the Heroku site's dashboard, click the 'New' button in the top right corner. Create a name and a region and press 'create app'. 
+
+2. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
 
 ## Deploy the app
 
-1. Deploy to Heroku with `git push heroku master`. **NOTE**: If you're deploying a branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master`. Basically, `git push heroku master` is short for `git push heroku local-master-branch:remote-master-branch`.
+**NOTE**: Heroku only has a `master` branch. so if you're deploying a local branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master` (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
 
-1. Share and enjoy! If you see the application error page, type `heroku logs` into your command line in order to debug what may have gone wrong.
+1. Deploy to Heroku with `git push heroku YOUR_BRANCH_NAME:master`. 
 
+2. If you see the application error page, or if you have type `heroku logs --tail` into your command line in order to debug what may have gone wrong.
+
+3. Share and enjoy!
 
 ## Databases
-
 
 - [ ] You have a `production` option in the config file (if you are using knex this will be in the `knexfile.js`).
 - [ ] You have installed the Postgres module using `npm install pg`.
@@ -122,3 +128,7 @@ build script
 ## .env files
 
 api keys and auth variables
+
+## Gotchas
+
+Heroku seed weirdness
