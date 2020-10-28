@@ -135,7 +135,7 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   "build:server": "knex migrate:latest",
   ```
 
-- [ ] If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in `production mode` script.
+- [ ] If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in production mode.
 
   ```js
   "build": "webpack --mode=production"
