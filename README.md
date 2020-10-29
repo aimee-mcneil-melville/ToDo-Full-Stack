@@ -58,11 +58,11 @@ You should now have the puppies rendering on the `/` page, if you click on pictu
 
 For this, we are going to need to get a form to edit/update the puppy information. This form also needs to post the updated information from the form to the server. Hence, we are going to need two routes this time (don't panic!)
 
-For the get `/puppies/edit/:id` route:
+For the get `/puppies/:id/edit` route:
   1. Loop through our JSON file and find the puppy that we want to edit (don't forget that id as a parameter)
   1. Render the form using the `edit` view and the puppy that we want to edit
 
-For the post `/puppies/edit/:id` route:
+For the post `/puppies/:id/edit` route:
   1. Create an object that represents all the data of the puppy we are going to update
   2. Read in the JSON file and locate the puppy we are going to update
   3. Update the puppy in the array
