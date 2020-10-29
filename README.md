@@ -106,7 +106,7 @@ The version of the database that we run during development varies slightly from 
   }
   ```
 
-- You are applying the migrations as the last step of deployment (after Heroku runs `npm install`). To do this, we add an npm script called `build` to run the migrations.
+- You are applying the migrations as the last step of deployment (after Heroku runs `npm install`). To do this, we add an npm script called `build` to the `package.json` which will run the migrations.
 
   ```js
   "build": "knex migrate:latest"
@@ -116,7 +116,7 @@ The version of the database that we run during development varies slightly from 
     - PostgreSQL enforces relationships (such as `.references`) whereas SQLite does not.
     - PostgreSQL enforces the Knex string (i.e. `table.string('column_name')`) character limit of 255 characters. We can use the `text` column type for this instead.
     - PostgreSQL returns a different result from a `.insert` command. To have the insert return the generated id, add the string `id` as the second parameter of your insert.
-    
+
   ```js
   return db('users')
       .insert(newUser, 'id')
