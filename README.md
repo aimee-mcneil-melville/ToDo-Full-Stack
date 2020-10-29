@@ -31,13 +31,13 @@ Are there any references to localhost?
 
 - Any references to 'localhost' within your app will break it, unless an alternative is provided. Best to avoid this unless absolutely necessary.
 
-Are any key modules in your devDependencies
+Are any key modules in your devDependencies?
 
 - Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. 
 
 - If a package is working globally on your machine you may have forgotten to add it to your project explicitly with `npm install <package name>`, which means it will not be installed for the deployed version. 
 
-The `start` script in your `package.json` file calls `node` and not `nodemon`.
+Does the `start` script in your `package.json` file call `node` and not `nodemon`?
 
 - Heroku will use the start script (`npm run start`) to run your application and, unlike us, doesn't need the server restarting with changes.
 
