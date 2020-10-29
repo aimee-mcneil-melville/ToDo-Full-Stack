@@ -37,7 +37,11 @@ Now that we have a root route, let's use it to see some puppies
 - In our server file, change the GET `/` route function. We will use this route to:
 
   1. read the puppies from our `data.json` file using `fs.readFile` (don't forget to parse the data into a JavaScript object)
-  2. render the puppies; a `home` view has been created for you so all have to do is connect your data and your view together
+  2. render the puppies using the `home` view (that has already been created) and your puppies data
+  
+*If your page renders, but there are no puppies:*
+  - check what data the view is expecting to receive 
+  - `console.log` the view data object you are passing to the render and make sure this matches what the view is expecting
 
 
 ## Getting our routes on
@@ -48,11 +52,11 @@ You should now have the puppies rendering on the `/` page, if you click on pictu
 
   1. Take note of the url you are sent to (perhaps `/puppies/1`).
   1. Create a `routes.js` file in the main repo directory - this will store all of our routes
-  1. `require` express and the Router in your `routes.js` file. Also, don't forget to export the router 
-  1. `require` and `use` our newly created `routes.js` file in our `server`. We'll use the string `/puppies` to define the path out router will use
+  1. `require` express in your `routes.js` file and create a router. Also, don't forget to export the router 
+  1. `require` and `use` our newly created `routes.js` file in our `server`. We'll use the string `/puppies` to define the path our router will use
   1. Create a get route in your `router.js` to render a particular puppy. The route should contain the id as a parameter so you can access it via `req.params.id` (so perhaps `/:id`).
-  1. Similarly to the `/` route, it should read the puppies from our JSON file, but this time, we will need to loop through the array of puppies and match the id passed as a parameter, to the id of the puppy in the array.
-  1. Render the puppy; As before the `details` view has been created for you.
+  1. Similarly to the `/` route, it should read the puppies from our JSON file, but this time, we will need to loop through the array of puppies and match the id, passed as a parameter, to the id of the puppy in the array.
+  1. Render the puppy; As before the `details` view has already been created for you.
 
 **User Story 3:** *As a user, I want to be able to update the puppies name, breed and owner*
 
