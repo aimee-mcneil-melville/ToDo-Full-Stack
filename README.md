@@ -1,5 +1,15 @@
 # Deployment Checklist
 
+### Contents
+- [Heroku setup](#heroku-setup)
+- [General app setup](#general-app-setup)
+- [Creating your Heroku app](#creating-your-heroku-app)
+- [Deploy the app](#deploy-the-app)
+- [Databases](#databases)
+- [React](#react)
+- [.env files](#env-files) (Auth & API keys)
+- [Gotchas](#gotchas)
+
 ## Heroku setup
 - [ ] You have a [Heroku account](https://signup.heroku.com/).
 - [ ] You have [`heroku-cli`](https://devcenter.heroku.com/articles/heroku-cli) installed.
@@ -45,10 +55,6 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
 2. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
 
-### Check the sections below for any requirements specific to those technologies
-- [Databases](#databases)
-- [React](#react)
-- [.env files](#env-files) (Auth & API keys)
 
 ## Deploy the app
 
