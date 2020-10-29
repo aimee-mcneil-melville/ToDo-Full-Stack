@@ -36,13 +36,13 @@ Now that we have a root route, let's use it to see some puppies
 
 - In our server file, change the GET `/` route function. We will use this route to:
 
-  1. read the puppies from our `data.json` file (don't forget to parse the data into a JavaScript object)
+  1. read the puppies from our `data.json` file using `fs.readFile` (don't forget to parse the data into a JavaScript object)
   2. render the puppies; a `home` view has been created for you so all have to do is connect your data and your view together
 
 
 ## Getting our routes on
 
-You should now have the puppies rendering on the `/` page, if you click on picture however, the link it takes you to is broken (probably because we haven't written it yet). Let's fix that now.
+You should now have the puppies rendering on the `/` page, if you click on picture however, the link it takes you to is broken (because we haven't written it yet). Let's fix that now.
 
 **User Story 2:** *As a user, I want to click on a puppy and see their name, breed, and who their owner is*
 
