@@ -21,7 +21,7 @@ Are there any references to localhost?
 
 - Any references to 'localhost' within your app will break it, unless an alternative is provided. Best to avoid this unless absolutely necessary.
 
-No key modules are in your devDependencies
+Are any key modules in your devDependencies
 
 - Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. 
 
@@ -49,21 +49,31 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
 2. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
 
+*And if you have a database*
+
+- Provision a Postgres DB using the postgresql addon
+    - `heroku addons:create heroku-postgresql:hobby-dev`
+    - This can also be done on heroku.com from the 'Resources' section. Find 'heroku postgres' in the addons and select the 'Hobby Dev' (aka. free) option.
+
 ## Deploy the app
 
 **NOTE**: Heroku only has a `master` branch. so if you're deploying a local branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master` (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
 
 1. Deploy to Heroku with `git push heroku YOUR_BRANCH_NAME:master`. 
 
-2. If you see the application error page, or if you have type `heroku logs --tail` into your command line in order to debug what may have gone wrong.
+2. If you see the application error page, or if your site has issues starting, type `heroku logs --tail` into your command line in order to debug what may have gone wrong.
 
 3. Share and enjoy!
 
 ## Databases
 
-- [ ] You have a `production` option in the config file (if you are using knex this will be in the `knexfile.js`).
-- [ ] You have installed the Postgres module using `npm install pg`.
-- [ ] You are using `process.env.NODE_ENV` to dynamically choose the Knex environment. For example, in the module where you're using Knex.js (e.g. `db.js`):
+The version of the database that we run during development varies slightly from the one we run once we have deployed to Heroku. Make sure your database is ready for Heroku by checking the setup below:
+
+-  You have a `production` option in the config file (when using knex this means in the `knexfile.js`).
+
+- You have installed the Postgres module using `npm install pg`.
+
+- In files where you use knex (e.g. `db.js`), you are using `process.env.NODE_ENV` to dynamically choose the Knex environment:
 
   ```js
   const environment = process.env.NODE_ENV || 'development'
@@ -71,9 +81,10 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   const db = require('knex')(config)
   ```
 
-- [ ] You have defined the structure of your database with some migrations and they run locally without error.
-- [ ] If you are seeding your database, the seed files run locally without error.
-- [ ] You have configured the production database connection. We need to make sure Knex has the correct configuration for connecting to the Postgres database in the production environment. We do this in the `knexfile.js` in the `production.connection` property. The `DATABASE_URL` environment variable will be provided by Heroku and contain all the information Knex needs to make the connection.
+- Any migration and/or seed files run locally without error.
+
+- You have configured the production database connection. 
+  - We need to make sure Knex has the correct configuration for connecting to the Postgres database in the production environment. We do this in the `knexfile.js` in the `production.connection` property. The `DATABASE_URL` environment variable will be provided by Heroku and contain all the information Knex needs to make the connection.
 
   ```js
   production: {
@@ -89,41 +100,37 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   }
   ```
 
-- [ ] You are applying the migrations as the last step of deployment. We need our migrations to run after Heroku runs `npm install`. To do this, we add an npm script called `build` to run the migrations.
+- You are applying the migrations as the last step of deployment (after Heroku runs `npm install`). To do this, we add an npm script called `build` to run the migrations.
 
   ```js
   "build": "knex migrate:latest"
   ```
 
-
-1. Provision a Postgres DB using the postgresql addon
-    - `heroku addons:create heroku-postgresql:hobby-dev`
-    - This can also be done on heroku.com from the 'addons' section. Look for 'heroku postgres'.
-
-1. Now it's time to seed your database with any data you'd like it to have, so we need to login to the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
-- Apply the seed file by running `knex seed:run`.
-
-- If you are running seeds, keep in mind they run in alphabetical order, so if one of your seeds is dependent on another seed running first, make sure they're running in the right order.
-
-- SQLite and PostgreSQL have numerous small differences.  If you are using SQLite only for development, it is recommended that you also test your app using a PostgreSQL database on your local machine before deployment. Refer to the Knex documentation for solutions. Some known differences are:
-    - PostgreSQL enforces relationships whereas SQLite does not.
-    - The Knex `table.string('column_name')` has a 255 character limit.  PostgreSQL enforces this whereas SQLite does not.
+- SQLite and PostgreSQL have numerous small differences. Some known differences are:
+    - PostgreSQL enforces relationships (such as `.references`) whereas SQLite does not.
+    - PostgreSQL enforces the Knex string (i.e. `table.string('column_name')`) character limit of 255 characters. We can use the `text` column type for this instead.
     - PostgreSQL returns a different result from a `.insert` command. To have the insert return the generated id, add the string `id` as the second parameter of your insert.
     
- ```js
- return db('users')
-    .insert(newUser, 'id')
- ```
+  ```js
+  return db('users')
+      .insert(newUser, 'id')
+  ```
+
+*Once you have successfully deployed your app*
+
+1. Seed your database via the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
+
+2. Apply the seed file by running `knex seed:run`.
 
 ## React
 
-- [ ] If you're using Webpack, this needs to run after every deploy.  You can do this by adding the command to the `build` script.
+- If you're using Webpack, this needs to run after every deploy.  You can do this by adding the command to the `build` script.
 
   ```js
   "build": "webpack"
   ```
 
-- [ ] If you're using Webpack AND have a database, you will need to be able to run both Webpack and your migrations at each deploy.You can do this by adding the commands to the `build` script separated by `&&`.  Note: If you use this project on a Windows platform, you will need to use a module like `npm-run-all` as the `&&` operator does not work on Windows.
+- If you're using Webpack AND have a database, you will need to be able to run both Webpack and your migrations at each deploy.You can do this by adding the commands to the `build` script separated by `&&`.  Note: If you use this project on a Windows platform, you will need to use a module like `npm-run-all` as the `&&` operator does not work on Windows.
 
   ```js
   "build": "webpack && knex db:migrate"
@@ -135,7 +142,7 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   "build:server": "knex migrate:latest",
   ```
 
-- [ ] If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in production mode.
+- If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in production mode.
 
   ```js
   "build": "webpack --mode=production"
@@ -144,7 +151,7 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
 ## .env files
 
-- [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode. e.g. your server index.js file should have a block of code that looks like this:
+- If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode. i.e. your server `index.js` file should have a block of code that looks like this:
 
   ```js
   if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -153,13 +160,15 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
   }
   ```
 
-- [ ] Also make sure you set each of the secret values in the Heroku config area using the following command:
+- Make sure you set each of the secret values in the Heroku config area by going to using the following command:
 
-```sh
-heroku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
-```
+  ```sh
+  heroku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
+  ```
+
+  Or set your Config Vars in the Settings section of your app in Heroku website.
 
 ## Gotchas
 
-- [ ] After inserting seeds into tables, if you have issues on the first subsequent insert, you have likely hit a Heroku/Postgres sequence issue.  You can prevent this in future by reseting all sequences after seeding.  To do this, add [this seed file](./resources/z_resetSequences.js) as the LAST seed in your seeds folder.  
+- After inserting seeds into tables, if you have issues on the next subsequent insert, you have likely hit a Heroku/Postgres sequence issue.  In future, you can prevent this by reseting all sequences after seeding. To do this, add [this seed file](./resources/z_resetSequences.js) as the LAST seed file (you can see ours starts with a `z`) in your seeds folder.  
 
