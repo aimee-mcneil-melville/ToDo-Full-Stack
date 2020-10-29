@@ -31,10 +31,6 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 
 - Heroku will use the start script (`npm run start`) to run your application and, unlike us, doesn't need the server restarting with changes.
 
-### Check the sections below for any requirements specific to those technologies
-- [Databases](#databases)
-- [React](#react)
-- [.env files](#env-files) (Auth & API keys)
 
 ## Creating your Heroku app
 
@@ -48,6 +44,11 @@ The `start` script in your `package.json` file calls `node` and not `nodemon`.
 1. From the Heroku site's dashboard, click the 'New' button in the top right corner. Create a name and a region and press 'create app'. 
 
 2. Scroll down to the 'deploy using heroku git' section and copy the line that starts 'heroku git:remote -a YOUR_HEROKU_APP'. When you run this line in your terminal, it will add `heroku` as a new remote to your repo, similar to `origin`. Type `git remote -v` to see it.
+
+### Check the sections below for any requirements specific to those technologies
+- [Databases](#databases)
+- [React](#react)
+- [.env files](#env-files) (Auth & API keys)
 
 ## Deploy the app
 
