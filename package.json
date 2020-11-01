@@ -29,8 +29,8 @@
     "express-handlebars": "^4.0.4"
   },
   "devDependencies": {
-    "eslint": "^7.11.0",
-    "eslint-config-eda": "^0.1.4",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
