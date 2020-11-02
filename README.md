@@ -75,7 +75,7 @@ Oooooo... k? There sure are a lot of components, but it's kind of hard to distin
 
 ## State your business
 
-To easily work with the values we use in the `style` JSX attribute, we should put them into component state. Define a constructor (don't forget to call `super`!) and set the initial value of `this.state`. It should have a `style` property on it which is an object suitable for use in the `style` JSX attribute.
+To easily work with the values we use in the `style` JSX attribute, we should put them into component state. Define the initial value of `state` - it should have a `style` property on it which is an object suitable for use in the `style` JSX attribute.
 
 Next, change your component JSX to refer to `this.state.style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
 
