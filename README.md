@@ -13,7 +13,7 @@ npx knex migrate:latest
 npx knex seed:run
 ```
 
-Visit http://localhost:3000/users in your browser. If all went well, you should see a list of users.
+Visit [http://localhost:3000/users](http://localhost:3000/users) in your browser (or better yet, issue a GET request using Postman). If all went well, you should see a list of users.
 
 ## MVP
 

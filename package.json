@@ -1,34 +1,36 @@
 {
-  "name": "boilerplate-express-api",
-  "version": "0.1.2",
-  "description": "Express boilerplate for APIs with Knex.js",
+  "name": "web-api-stories",
+  "version": "0.2.0",
+  "description": "Practice creating Web APIs",
   "main": "index.js",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "knex": "knex",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/boilerplate-express-api.git"
+    "url": "git+https://github.com/dev-academy-challenges/web-api-stories.git"
   },
   "author": "EDA",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dev-academy-challenges/boilerplate-express-api/issues"
+    "url": "https://github.com/dev-academy-challenges/web-api-stories/issues"
   },
-  "homepage": "https://github.com/dev-academy-challenges/boilerplate-express-api#readme",
+  "homepage": "https://github.com/dev-academy-challenges/web-api-stories#readme",
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.4",
-    "sqlite3": "^4.2.0",
-    "supertest": "^4.0.2"
+    "babel-jest": "^26.6.3",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "sqlite3": "^5.0.0",
+    "supertest": "^6.0.1"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.21.1"
+    "knex": "^0.21.12"
   }
 }
