@@ -139,7 +139,7 @@ The version of the database that we run during development varies slightly from 
 - If you're using Webpack AND have a database, you will need to be able to run both Webpack and your migrations at each deploy.You can do this by adding the commands to the `build` script separated by `&&`.  Note: If you use this project on a Windows platform, you will need to use a module like `npm-run-all` as the `&&` operator does not work on Windows.
 
   ```js
-  "build": "webpack && knex db:migrate"
+  "build": "webpack && knex migrate:latest"
 
   // OR
 
