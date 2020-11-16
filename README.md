@@ -31,7 +31,7 @@ At this point, don't worry about making the link to the cart work or even using 
 
 ## Cart
 
-Now do the same _React componetisation_ exercise for `public/designs/cart.html`. This will probably mean the following components:
+Now do the same _React componentisation_ exercise for `public/designs/cart.html`. This will probably mean the following components:
 
 * `<Cart />` (stateful: for cart with `<table>`, `<thead>` and `<tbody>`)
 * `<CartListItem />` (`<tr>`s)
