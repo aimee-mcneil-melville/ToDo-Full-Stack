@@ -1,4 +1,4 @@
-import {RECEIVE_POSTS} from '../actions'
+import { RECEIVE_POSTS } from '../actions'
 
 function subreddits (state = [], action) {
   switch (action.type) {
