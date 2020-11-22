@@ -23,11 +23,12 @@ function SignIn (props) {
 
   const handleClick = () => {
     const { username, password } = form
-    signIn({ username, password }, { baseUrl })
+    return signIn({ username, password }, { baseUrl })
       .then((token) => {
         if (isAuthenticated()) {
           props.history.push('/')
         }
+        return null
       })
   }
 

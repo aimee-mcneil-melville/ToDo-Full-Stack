@@ -48,6 +48,7 @@ function Fruits () {
         setFruits(remoteFruits)
         setEditing({})
         setError('')
+        return null
       })
       .catch(err => {
         setError(err.message)
@@ -64,7 +65,7 @@ function Fruits () {
 
   const handleAdd = () => {
     const newFruit = { ...adding }
-    addFruit(newFruit)
+    return addFruit(newFruit)
       .then(setFruits)
       .then(() => setAdding({}))
   }
@@ -77,6 +78,10 @@ function Fruits () {
     getFruits()
       .then(remoteFruits => {
         setFruits(remoteFruits)
+        return null
+      })
+      .catch((err) => {
+        setError(err.message)
       })
   }, [])
 

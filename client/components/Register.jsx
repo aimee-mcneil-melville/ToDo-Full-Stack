@@ -23,11 +23,12 @@ function Register (props) {
 
   const handleClick = () => {
     const { username, password } = form
-    register({ username, password }, { baseUrl })
+    return register({ username, password }, { baseUrl })
       .then((token) => {
         if (isAuthenticated()) {
           props.history.push('/')
         }
+        return null
       })
   }
 

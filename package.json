@@ -14,7 +14,8 @@
     "db:seed": "npm run knex seed:run",
     "build": "webpack --config client/webpack.config.js",
     "postinstall": "run-s db:migrate db:seed",
-    "test": "jest client server"
+    "test": "jest client server",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "presets": [
@@ -31,6 +32,12 @@
   },
   "jest": {
     "verbose": true
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "authenticare": "^0.4.7",
@@ -53,7 +60,8 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "eslint": "^7.4.0",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-cypress": "^2.11.1",
