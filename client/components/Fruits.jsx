@@ -1,77 +1,33 @@
 import React, { useState, useEffect } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button, Error } from './Styled'
+import { Error } from './Styled'
+import SelectedFruit from './SelectedFruit'
+import AddFruit from './AddFruit'
 
-import {
-  getFruits,
-  addFruit,
-  updateFruit,
-  deleteFruit
-} from '../api'
+import { getFruits } from '../api'
 
 function Fruits () {
   const [error, setError] = useState('')
   const [fruits, setFruits] = useState([])
-  const [adding, setAdding] = useState({})
-  const [editing, setEditing] = useState({})
+  const [adding, setAdding] = useState(false)
+  const [selected, setSelected] = useState(null)
 
-  const handleEditChange = e => {
-    const { name, value } = e.target
-    setEditing({
-      ...editing,
-      [name]: value
-    })
-  }
-
-  const handleAddChange = e => {
-    const { name, value } = e.target
-    setAdding({
-      ...adding,
-      [name]: value
-    })
-  }
-
-  const getSelectHandler = id => {
-    return e => {
-      e.preventDefault()
-      setEditing(fruits.find(fruit => fruit.id === id))
-    }
-  }
-
-  const clearSelected = () => {
-    setEditing({})
-  }
-
-  const handleUpdate = () => {
-    updateFruit(editing)
-      .then(remoteFruits => {
-        setFruits(remoteFruits)
-        setEditing({})
-        setError('')
-        return null
-      })
-      .catch(err => {
-        setError(err.message)
-      })
-  }
-
-  const handleDelete = () => {
-    deleteFruit(editing.id)
-      .then(setFruits)
-      .then(() => setEditing({}))
-      .then(() => setError(''))
-      .catch(err => setError(err.message))
-  }
-
-  const handleAdd = () => {
-    const newFruit = { ...adding }
-    return addFruit(newFruit)
-      .then(setFruits)
-      .then(() => setAdding({}))
+  const setSelectHandler = (fruit, e) => {
+    e.preventDefault()
+    setSelected(fruit)
   }
 
   const hideError = () => {
     setError('')
+  }
+
+  const clearSelected = () => {
+    setSelected(null)
+  }
+
+  const toggleAdding = e => {
+    e.preventDefault()
+    setAdding(!adding)
   }
 
   useEffect(() => {
@@ -85,73 +41,41 @@ function Fruits () {
       })
   }, [])
 
-  const { name: addingName, calories: addingCalories } = adding
-  const { name: editingName, calories: editingCalories } = editing
-
   return (
     <>
       <Error onClick={hideError}>
         { error && `Error: ${error}` }
       </Error>
+
       <ul>
         {fruits.map(fruit => (
           <li key={fruit.id}>
             <a href='#'
               data-testid='fruit-link'
-              onClick={getSelectHandler(fruit.id)}>
-              {fruit.name}
-            </a>
+              onClick={(e) => setSelectHandler(fruit, e)}>
+                {fruit.name}
+              </a>
           </li>
         ))}
       </ul>
 
-      <h2>Selected</h2>
-      <GridForm>
-        <ColOne>Name:</ColOne>
-        <ColTwo type='text'
-          name='name'
-          aria-label='selected-name'
-          data-testid='selected-name'
-          value={editingName || ''}
-          onChange={handleEditChange} />
+      {selected && <SelectedFruit 
+        fruit={selected} 
+        clearSelected={clearSelected}
+        setError={setError}
+        setFruits={setFruits}
+      />}
 
-        <ColOne>Calories:</ColOne>
-        <ColTwo type='text'
-          name='calories'
-          aria-label='selected-calories'
-          data-testid='selected-calories'
-          value={editingCalories || ''}
-          onChange={handleEditChange} />
-
-        <Button type='button'
-          data-testid='update-button'
-          onClick={handleUpdate}>Update fruit</Button>
-        <Button type='button'
-          data-testid='delete-button'
-          onClick={handleDelete}>Delete fruit</Button>
-        <Button type='button'
-          data-testid='clear-button'
-          onClick={clearSelected}>Clear selection</Button>
-      </GridForm>
-
-      <h2>Add new</h2>
-      <GridForm>
-        <ColOne>Name:</ColOne>
-        <ColTwo type='text'
-          name='name'
-          aria-label='adding-name'
-          value={addingName || ''}
-          onChange={handleAddChange} />
-
-        <ColOne>Calories:</ColOne>
-        <ColTwo type='text'
-          name='calories'
-          aria-label='adding-calories'
-          value={addingCalories || ''}
-          onChange={handleAddChange} />
-
-        <Button type='button' onClick={handleAdd}>Add fruit</Button>
-      </GridForm>
+      {adding ? (
+        <AddFruit 
+          setFruits={setFruits}
+          hideAdding={toggleAdding}
+        /> 
+      ) : (
+        <a href='#' onClick={toggleAdding}>
+          Add a Fruit
+        </a>
+      )}
     </>
   )
 }
