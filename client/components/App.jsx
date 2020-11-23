@@ -1,7 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import { Link, Route } from 'react-router-dom'
-import { isAuthenticated } from 'authenticare/client'
+import { connect } from 'react-redux'
+import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
+import { setUser } from '../actions'
 import { UserContext, updateUserContext } from './UserContext'
 import Nav from './Nav'
 import Register from './Register'
@@ -11,12 +13,14 @@ import Home from './Home'
 import AddEvent from './AddEvent'
 import EditEvent from './EditEvent'
 
-function App () {
-  const [, setUser] = useContext(UserContext)
+function App (props) {
+  const [, settheUser] = useContext(UserContext)
 
   useEffect(() => {
     if (isAuthenticated()) {
-      updateUserContext(setUser)
+      updateUserContext(settheUser)
+      const { username, isAdmin, garden_id: gardenId } = getDecodedToken()
+      props.dispatch(setUser({ username, isAdmin, gardenId }))
     }
   }, [])
 
@@ -39,4 +43,4 @@ function App () {
   )
 }
 
-export default App
+export default connect()(App)
