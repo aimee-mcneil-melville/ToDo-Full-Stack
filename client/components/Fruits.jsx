@@ -61,6 +61,7 @@ function Fruits () {
 
       {adding ? (
         <AddFruit
+          setError={setError}
           setFruits={setFruits}
           closeAddForm={closeAddForm}
         />

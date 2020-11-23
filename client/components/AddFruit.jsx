@@ -4,7 +4,7 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { addFruit } from '../api'
 
-function AddFruit ({ setFruits, closeAddForm }) {
+function AddFruit ({ setFruits, closeAddForm, setError }) {
   const [newFruit, setNewFruit] = useState(false)
 
   const handleAddChange = e => {
@@ -20,6 +20,7 @@ function AddFruit ({ setFruits, closeAddForm }) {
     addFruit(fruit)
       .then(setFruits)
       .then(closeAddForm)
+      .catch(err => setError(err.message))
   }
 
   const { name: addingName, calories: addingCalories } = newFruit
