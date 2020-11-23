@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { UserContext } from './UserContext'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 
 import Map from './Map'
 import Events from './Events'
@@ -7,12 +7,11 @@ import Events from './Events'
 import { getUserGarden } from '../api/gardens'
 
 const Garden = (props) => {
-  const [user] = useContext(UserContext)
   const [name, setName] = useState(null)
   const [description, setDescription] = useState(null)
   const [url, setUrl] = useState(null)
 
-  const gardenId = user.garden_id
+  const { gardenId } = props.user
 
   useEffect(() => {
     getUserGarden(gardenId)
@@ -40,4 +39,10 @@ const Garden = (props) => {
   )
 }
 
-export default Garden
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Garden)
