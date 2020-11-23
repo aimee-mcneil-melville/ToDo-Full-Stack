@@ -12,22 +12,22 @@ function Fruits () {
   const [adding, setAdding] = useState(false)
   const [selected, setSelected] = useState(null)
 
-  const setSelectHandler = (fruit, e) => {
-    e.preventDefault()
-    setSelected(fruit)
-  }
-
   const hideError = () => {
     setError('')
-  }
-
-  const clearSelected = () => {
-    setSelected(null)
   }
 
   const toggleAdding = e => {
     e.preventDefault()
     setAdding(!adding)
+  }
+
+  const setSelectHandler = (fruit, e) => {
+    e.preventDefault()
+    setSelected(fruit)
+  }
+
+  const clearSelected = () => {
+    setSelected(null)
   }
 
   useEffect(() => {
@@ -59,13 +59,6 @@ function Fruits () {
         ))}
       </ul>
 
-      {selected && <SelectedFruit 
-        fruit={selected} 
-        clearSelected={clearSelected}
-        setError={setError}
-        setFruits={setFruits}
-      />}
-
       {adding ? (
         <AddFruit 
           setFruits={setFruits}
@@ -76,6 +69,13 @@ function Fruits () {
           Add a Fruit
         </a>
       )}
+
+      {selected && <SelectedFruit 
+        fruit={selected} 
+        clearSelected={clearSelected}
+        setError={setError}
+        setFruits={setFruits}
+      />}
     </>
   )
 }
