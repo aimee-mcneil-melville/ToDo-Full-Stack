@@ -15,10 +15,14 @@ function Fruits () {
   const hideError = () => {
     setError('')
   }
+  
+  const openAddForm = e => {
+    e.preventDefault()
+    setAdding(true)
+  }
 
-  const toggleAdding = e => {
-    if(e) e.preventDefault() // TODO: make this better
-    setAdding(!adding)
+  const closeAddForm = () => {
+    setAdding(false)
   }
 
   const setSelectHandler = (fruit, e) => {
@@ -57,10 +61,10 @@ function Fruits () {
       {adding ? (
         <AddFruit 
           setFruits={setFruits}
-          hideAdding={toggleAdding}
+          closeAddForm={closeAddForm}
         /> 
       ) : (
-        <a href='#' onClick={toggleAdding}>
+        <a href='#' onClick={openAddForm}>
           Add a Fruit
         </a>
       )}

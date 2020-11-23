@@ -4,7 +4,7 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { addFruit } from '../api'
 
-function AddFruit ({setFruits, hideAdding}) {
+function AddFruit ({setFruits, closeAddForm}) {
   const [newFruit, setNewFruit] = useState(false)
 
   const handleAddChange = e => {
@@ -19,7 +19,7 @@ function AddFruit ({setFruits, hideAdding}) {
     const fruit = { ...newFruit }
     return addFruit(fruit)
       .then(setFruits)
-      .then(hideAdding)
+      .then(closeAddForm)
   }
 
   const { name: addingName, calories: addingCalories } = newFruit
@@ -43,7 +43,7 @@ function AddFruit ({setFruits, hideAdding}) {
           onChange={handleAddChange} />
 
         <Button type='button' onClick={handleAdd}>Add fruit</Button>
-        <Button type='button' onClick={hideAdding}>Close</Button>
+        <Button type='button' onClick={closeAddForm}>Close</Button>
       </GridForm>
     </>
   )
