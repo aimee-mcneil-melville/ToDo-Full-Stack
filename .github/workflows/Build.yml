@@ -1,0 +1,27 @@
+name: Build
+
+on: 
+  push:
+    branches-ignore: 
+      - master  
+
+jobs:
+  build-lint-test:
+    name: build-lint-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Build bundle
+        run: npm run build
+      - name: Run linter
+        run: npm run lint
+      - name: Run tests
+        run: npm test

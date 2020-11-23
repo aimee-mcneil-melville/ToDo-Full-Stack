@@ -16,6 +16,8 @@ npm run dev
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
+### CSS
+SASS and Bulma have been added to the project. To use Bulmas variables and classes please refer to the documentation https://bulma.io/documentation/
 
 ## User stories (from highest priority)
 
