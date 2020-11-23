@@ -46,7 +46,7 @@ SASS and Bulma have been added to the project. To use Bulmas variables and class
 
 Failure response (HTTP status: 500):
 
-```
+```json
 {
   "error": {
     "title": "Unable to retrieve list of gardens"
@@ -58,7 +58,7 @@ Failure response (HTTP status: 500):
 
 Response (200):
 
-```
+```json
 {
   "gardens": [
     {
@@ -83,7 +83,7 @@ Response (200):
 
 Response (200):
 
-```
+```json
 {
   "id": 1,
   "name": "Kelmarna Gardens",
@@ -106,7 +106,7 @@ Response (200):
 
 Request:
 
-```
+```json
 {
   "gardenId": 1,
   "volunteersNeeded": 8,
@@ -118,7 +118,7 @@ Request:
 
 Response (201):
 
-```
+```json
 {
   "id": 167,
   "gardenId": 1,
@@ -133,7 +133,7 @@ Response (201):
 
 Response (200):
 
-```
+```json
 {
   "id": 167,
   "gardenId": 1,
@@ -148,16 +148,16 @@ Response (200):
 
 Request:
 
-```
+```json
 {
   "eventId": 167,
-  "volunteerId": 48,
+  "volunteerId": 48
 }
 ```
 
 Response (201):
 
-```
+```json
 {
   "eventId": 167,
   "volunteerId": 48,
@@ -169,7 +169,7 @@ Response (201):
 
 Request:
 
-```
+```json
 {
   "eventId": 167,
   "volunteerId": 48,
@@ -179,7 +179,7 @@ Request:
 
 Response (200):
 
-```
+```json
 {
   "eventId": 167,
   "volunteerId": 48,
