@@ -17,7 +17,7 @@ function AddFruit ({ setFruits, closeAddForm }) {
 
   const handleAdd = () => {
     const fruit = { ...newFruit }
-    return addFruit(fruit)
+    addFruit(fruit)
       .then(setFruits)
       .then(closeAddForm)
   }
