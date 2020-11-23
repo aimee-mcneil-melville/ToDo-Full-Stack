@@ -15,7 +15,7 @@ function Fruits () {
   const hideError = () => {
     setError('')
   }
-  
+
   const openAddForm = e => {
     e.preventDefault()
     setAdding(true)
@@ -51,26 +51,27 @@ function Fruits () {
           <li key={fruit.id}>
             <a href='#'
               data-testid='fruit-link'
-              onClick={(e) => setSelectHandler(fruit, e)}>
-                {fruit.name}
-              </a>
+              onClick={(e) => setSelectHandler(fruit, e)}
+            >
+              {fruit.name}
+            </a>
           </li>
         ))}
       </ul>
 
       {adding ? (
-        <AddFruit 
+        <AddFruit
           setFruits={setFruits}
           closeAddForm={closeAddForm}
-        /> 
+        />
       ) : (
         <a href='#' onClick={openAddForm}>
           Add a Fruit
         </a>
       )}
 
-      {selected && <SelectedFruit 
-        fruit={selected} 
+      {selected && <SelectedFruit
+        fruit={selected}
         clearSelected={clearSelected}
         setError={setError}
         setFruits={setFruits}
