@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
-import { register, isAuthenticated } from 'authenticare/client'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { register, isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { UserContext, updateUserContext } from './UserContext'
+import { setUser } from '../actions'
 
 function Register (props) {
-  const [, setUser] = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [gardenId, setGardenId] = useState('')
@@ -21,7 +21,8 @@ function Register (props) {
     )
       .then(() => {
         if (isAuthenticated()) {
-          updateUserContext(setUser)
+          const { username, isAdmin, garden_id: gardenId } = getDecodedToken()
+          props.dispatch(setUser({ username, isAdmin, gardenId }))
           return props.history.push('/garden')
         }
         return null
@@ -85,4 +86,4 @@ function Register (props) {
   )
 }
 
-export default Register
+export default connect()(Register)
