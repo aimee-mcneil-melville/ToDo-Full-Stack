@@ -1,21 +1,4 @@
-import request from 'superagent'
 import L from 'leaflet'
-
-const rootUrl = '/api/v1'
-
-export function getGardens () {
-  return request.get(rootUrl + '/gardens')
-    .then(res => {
-      return res.body.gardens
-    })
-}
-
-export function getUserGarden (gardenId) {
-  return request.get(rootUrl + '/gardens/' + gardenId)
-    .then(res => {
-      return res.body
-    })
-}
 
 export function getMap () {
   const mymap = L.map('mapid').setView([-36.8666700, 174.7666700], 12)
@@ -31,5 +14,4 @@ export function getMap () {
   L.marker([-36.8514, 174.731]).addTo(mymap)
   L.marker([-36.8700223, 174.7470399]).addTo(mymap)
   L.marker([-36.8248188, 174.7807962]).addTo(mymap)
-
 }

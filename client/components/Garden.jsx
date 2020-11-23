@@ -4,7 +4,7 @@ import { UserContext } from './UserContext'
 import Map from './Map'
 import Events from './Events'
 
-import { getUserGarden } from '../apiClient.js'
+import { getUserGarden } from '../api/gardens'
 
 const Garden = (props) => {
   const [user] = useContext(UserContext)
