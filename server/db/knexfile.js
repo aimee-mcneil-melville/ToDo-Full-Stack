@@ -10,6 +10,20 @@ module.exports = {
     }
   },
 
+  test: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: ':memory:'
+    },
+    seeds: {
+      directory: path.join(__dirname, 'seeds')
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
+    }
+  },
+
   staging: {
     client: 'postgresql',
     connection: {
@@ -37,5 +51,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
-};
+}

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav> renders correctly renders correctly on the "/" route 1`] = `
+<div
+  className="nav"
+>
+  <a
+    href="#/signin"
+    onClick={[Function]}
+  >
+    Sign in
+  </a>
+  <a
+    href="#/register"
+    onClick={[Function]}
+  >
+    Register
+  </a>
+</div>
+`;
+
+exports[`<Nav> renders correctly renders correctly on the "/register" route 1`] = `
+<div
+  className="nav"
+>
+  <a
+    href="#/signin"
+    onClick={[Function]}
+  >
+    Sign in
+  </a>
+  <a
+    href="#/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+</div>
+`;
+
+exports[`<Nav> renders correctly renders correctly on the "/signin" route 1`] = `
+<div
+  className="nav"
+>
+  <a
+    href="#/register"
+    onClick={[Function]}
+  >
+    Register
+  </a>
+  <a
+    href="#/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+</div>
+`;
