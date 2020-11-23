@@ -8,14 +8,6 @@ export default function Nav (props) {
   let navLinks = null
 
   switch (currentPage) {
-    case '/':
-      navLinks = (
-        <>
-          <Link to="/signin">Sign in</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )
-      break
     case '/signin':
       navLinks = (
         <>
@@ -40,6 +32,7 @@ export default function Nav (props) {
         </>
       )
   }
+
   return (
     <>
       <div className="nav">
