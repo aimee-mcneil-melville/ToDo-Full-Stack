@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
-import { isAuthenticated, signIn } from 'authenticare/client'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { isAuthenticated, signIn, getDecodedToken } from 'authenticare/client'
 
-import { UserContext, updateUserContext } from './UserContext'
+import { setUser } from '../actions'
 
 function SignIn (props) {
-  const [, setUser] = useContext(UserContext)
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -23,7 +23,8 @@ function SignIn (props) {
     return signIn({ username, password }, { baseUrl })
       .then(() => {
         if (isAuthenticated()) {
-          updateUserContext(setUser)
+          const { username, isAdmin, garden_id: gardenId } = getDecodedToken()
+          props.dispatch(setUser({ username, isAdmin, gardenId }))
           return props.history.push('/garden')
         }
         return null
@@ -75,4 +76,4 @@ function SignIn (props) {
     </div>
   )
 }
-export default SignIn
+export default connect()(SignIn)
