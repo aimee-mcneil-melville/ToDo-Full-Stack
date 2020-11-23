@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
+
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit ({fruit: selectedFruit, clearSelected, setError, setFruits}) {
@@ -16,21 +17,16 @@ function SelectedFruit ({fruit: selectedFruit, clearSelected, setError, setFruit
 
   const handleUpdate = () => {
     updateFruit(editing)
-      .then(remoteFruits => {
-        setFruits(remoteFruits)
-        clearSelected()
-        setError('')
-        return null
-      })
-      .catch(err => {
-        setError(err.message)
-      })
+      .then(remoteFruits => setFruits(remoteFruits))
+      .then(clearSelected)
+      .then(() => setError(''))
+      .catch(err => setError(err.message))
   }
 
   const handleDelete = () => {
     deleteFruit(editing.id)
       .then(setFruits)
-      .then(() => setEditing({}))
+      .then(clearSelected)
       .then(() => setError(''))
       .catch(err => setError(err.message))
   }

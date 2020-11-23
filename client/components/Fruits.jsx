@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import { Error } from './Styled'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
+import { Error } from './Styled'
 
 import { getFruits } from '../api'
 
@@ -17,7 +17,7 @@ function Fruits () {
   }
 
   const toggleAdding = e => {
-    e.preventDefault()
+    if(e) e.preventDefault() // TODO: make this better
     setAdding(!adding)
   }
 
@@ -32,13 +32,8 @@ function Fruits () {
 
   useEffect(() => {
     getFruits()
-      .then(remoteFruits => {
-        setFruits(remoteFruits)
-        return null
-      })
-      .catch((err) => {
-        setError(err.message)
-      })
+      .then(remoteFruits => setFruits(remoteFruits))
+      .catch(err => setError(err.message))
   }, [])
 
   return (

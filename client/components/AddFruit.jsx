@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button, Error } from './Styled'
+import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { addFruit } from '../api'
 
@@ -19,7 +19,7 @@ function AddFruit ({setFruits, hideAdding}) {
     const fruit = { ...newFruit }
     return addFruit(fruit)
       .then(setFruits)
-      .then(() => hideAdding())
+      .then(hideAdding)
   }
 
   const { name: addingName, calories: addingCalories } = newFruit
