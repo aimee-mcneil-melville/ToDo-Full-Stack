@@ -4,8 +4,8 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
-function SelectedFruit ({ fruit: selectedFruit, clearSelected, setError, setFruits }) {
-  const [editing, setEditing] = useState(selectedFruit)
+function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
+  const [editing, setEditing] = useState(selected)
 
   const handleEditChange = e => {
     const { name, value } = e.target
@@ -32,8 +32,8 @@ function SelectedFruit ({ fruit: selectedFruit, clearSelected, setError, setFrui
   }
 
   useEffect(() => {
-    setEditing(selectedFruit)
-  }, [selectedFruit])
+    setEditing(selected)
+  }, [selected])
 
   const { name: editingName, calories: editingCalories } = editing
 

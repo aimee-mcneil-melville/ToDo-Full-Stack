@@ -71,7 +71,7 @@ function Fruits () {
       )}
 
       {selected && <SelectedFruit
-        fruit={selected}
+        selected={selected}
         clearSelected={clearSelected}
         setError={setError}
         setFruits={setFruits}
