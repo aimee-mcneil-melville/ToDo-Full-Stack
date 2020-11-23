@@ -1,9 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logOff } from 'authenticare/client'
+
+import { clearUser } from '../actions'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-export default function Nav (props) {
+function Nav (props) {
   let currentPage = props.location.pathname
   let navLinks = null
 
@@ -33,11 +36,16 @@ export default function Nav (props) {
       )
   }
 
+  const logOut = () => {
+    logOff()
+    props.dispatch(clearUser())
+  }
+
   return (
     <>
       <div className="nav">
         <IfAuthenticated>
-          <Link to="/" onClick={logOff}>
+          <Link to="/" onClick={logOut}>
             Log out
           </Link>
           <Link to="/">Home</Link>
@@ -47,3 +55,5 @@ export default function Nav (props) {
     </>
   )
 }
+
+export default connect()(Nav)
