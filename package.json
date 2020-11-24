@@ -14,8 +14,8 @@
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "server": "node server",
     "start": "node server",
-    "test:watch": "jest --watchAll --verbose",
-    "test": "jest --verbose",
+    "test:watch": "jest --watchAll --verbose --testPathIgnorePatterns cypress",
+    "test": "jest --verbose --testPathIgnorePatterns cypress",
     "lint": "eslint client server",
     "e2e": "run-p server cypress:open",
     "cypress:open": "cypress open"
