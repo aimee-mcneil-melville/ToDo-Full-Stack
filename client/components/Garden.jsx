@@ -10,18 +10,20 @@ class Garden extends React.Component {
   state = {
     name: '',
     description: '',
-    url: ''
+    url: '',
+    events: []
   }
 
   componentDidMount () {
     const { gardenId } = this.props.user
     gardenId && getUserGarden(gardenId)
       .then(res => {
-        const { name, description, url } = res
+        const { name, description, url, events } = res
         this.setState({
           name,
           description,
-          url
+          url,
+          events
         })
         return null
       })
@@ -31,14 +33,14 @@ class Garden extends React.Component {
   }
 
   render () {
-    const { name, description, url } = this.state
+    const { name, description, url, events } = this.state
     return (
       <>
         <div className="column">
           <h3>{name}</h3>
           <p className="mb-4">{description}</p>
           <a className="word-wrap" href={url}>{url}</a>
-          <Events />
+          <Events events={events} />
         </div>
         <Map/>
       </>
