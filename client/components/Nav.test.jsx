@@ -1,42 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import renderer from 'react-test-renderer'
 import '@testing-library/jest-dom'
 import { HashRouter as Router } from 'react-router-dom'
 
 import Nav from './Nav'
-
-describe('<Nav> renders correctly', () => {
-  it('renders correctly on the "/" route', () => {
-    const tree = renderer
-      .create(
-        <Router>
-          <Nav location={{ pathname: '/' }}/>
-        </Router>)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
-  it('renders correctly on the "/signin" route', () => {
-    const tree = renderer
-      .create(
-        <Router>
-          <Nav location={{ pathname: '/signin' }}/>
-        </Router>)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
-  it('renders correctly on the "/register" route', () => {
-    const tree = renderer
-      .create(
-        <Router>
-          <Nav location={{ pathname: '/register' }}/>
-        </Router>)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-})
 
 test('<Nav> renders a "register" and a "sign in" link on the "/" route', () => {
   render(

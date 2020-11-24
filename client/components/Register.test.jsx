@@ -1,19 +1,9 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Register from './Register.jsx'
 import { UserProvider } from './UserContext.jsx'
-
-describe('Register Renders', () => {
-  it('renders correctly', () => {
-    const tree = renderer
-      .create(<UserProvider><Register /></UserProvider>)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-})
 
 describe('Username Input Field Updates', () => {
   it('gets the text', () => {
