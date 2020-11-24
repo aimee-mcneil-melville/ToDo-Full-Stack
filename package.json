@@ -14,11 +14,9 @@
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "server": "node server",
     "start": "node server",
-    "test:watch": "jest --watchAll --verbose --testPathIgnorePatterns cypress",
-    "test": "jest --verbose --testPathIgnorePatterns cypress",
-    "lint": "eslint client server",
-    "e2e": "run-p server cypress:open",
-    "cypress:open": "cypress open"
+    "test:watch": "jest --watchAll --verbose",
+    "test": "jest --verbose",
+    "lint": "eslint client server"
   },
   "babel": {
     "presets": [
@@ -54,8 +52,6 @@
     "babel-loader": "^8.1.0",
     "bulma": "^0.9.0",
     "css-loader": "^4.3.0",
-    "cypress": "^5.2.0",
-    "cypress-react-selector": "^2.0.3",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.22.0",
