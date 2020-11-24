@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { register, isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions'
+import { setUser } from '../actions/user'
 
 class Register extends React.Component {
   state = {

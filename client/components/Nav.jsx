@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logOff } from 'authenticare/client'
 
-import { clearUser } from '../actions'
+import { clearUser } from '../actions/user'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Nav (props) {

@@ -1,4 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions'
+import { SET_USER, CLEAR_USER } from '../actions/user'
 
 const emptyUser = {
   username: '',

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { isAuthenticated, signIn, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions'
+import { setUser } from '../actions/user'
 
 class SignIn extends React.Component {
   state = {

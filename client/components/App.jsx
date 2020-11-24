@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions'
+import { setUser } from '../actions/user'
 
 import Nav from './Nav'
 import Register from './Register'
