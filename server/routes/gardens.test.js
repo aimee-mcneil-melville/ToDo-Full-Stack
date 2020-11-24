@@ -34,7 +34,7 @@ const mockGarden = [{
   }]
 }]
 
-jest.mock('../db', () => {
+jest.mock('../db/gardens', () => {
   return {
     getGardens: function () {
       return Promise.resolve(mockGarden)
