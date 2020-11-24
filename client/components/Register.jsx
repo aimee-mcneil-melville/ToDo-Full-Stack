@@ -27,7 +27,7 @@ class Register extends React.Component {
     { baseUrl: '/api/v1' })
       .then(() => {
         if (isAuthenticated()) {
-          const { username, isAdmin, garden_id: gardenId } = getDecodedToken()
+          const { username, isAdmin, gardenId } = getDecodedToken()
           this.props.dispatch(setUser({ username, isAdmin, gardenId }))
           return this.props.history.push('/garden')
         }

@@ -16,7 +16,7 @@ test('getUserByName returns the correct user', () => {
   return users.getUserByName('admin', testDb)
     .then(user => {
       expect(user.username).toBe('admin')
-      return expect(user.garden_id).toBe(1)
+      return expect(user.gardenId).toBe(1)
     })
 })
 

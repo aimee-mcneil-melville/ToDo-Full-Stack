@@ -16,7 +16,7 @@ import EditEvent from './EditEvent'
 class App extends React.Component {
   componentDidMount () {
     if (isAuthenticated()) {
-      const { username, isAdmin, garden_id: gardenId } = getDecodedToken()
+      const { username, isAdmin, gardenId } = getDecodedToken()
       this.props.dispatch(setUser({ username, isAdmin, gardenId }))
     }
   }
