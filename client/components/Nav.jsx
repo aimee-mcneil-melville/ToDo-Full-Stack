@@ -7,7 +7,7 @@ import { clearUser } from '../actions/user'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Nav (props) {
-  let currentPage = props.location.pathname
+  const currentPage = props.location.pathname
   let navLinks = null
 
   switch (currentPage) {

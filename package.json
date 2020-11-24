@@ -16,7 +16,7 @@
     "start": "node server",
     "test:watch": "jest --watchAll --verbose",
     "test": "jest --verbose",
-    "lint": "eslint client server"
+    "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
     "presets": [
@@ -27,6 +27,10 @@
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "authenticare": "^0.4.7",
@@ -52,7 +56,8 @@
     "babel-loader": "^8.2.1",
     "bulma": "^0.9.1",
     "css-loader": "^5.0.1",
-    "eslint": "^7.14.0",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.3",
