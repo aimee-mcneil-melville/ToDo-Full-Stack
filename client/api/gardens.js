@@ -1,16 +1,14 @@
-import request from 'superagent'
+import requestor from './consume'
 
-const rootUrl = '/api/v1'
-
-export function getGardens () {
-  return request.get(rootUrl + '/gardens')
+export function getGardens (consume = requestor) {
+  return consume('/gardens')
     .then(res => {
       return res.body.gardens
     })
 }
 
-export function getUserGarden (gardenId) {
-  return request.get(rootUrl + '/gardens/' + gardenId)
+export function getUserGarden (gardenId, consume = requestor) {
+  return consume(`/gardens/${gardenId}`)
     .then(res => {
       return res.body
     })
