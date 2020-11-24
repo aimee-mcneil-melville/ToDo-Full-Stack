@@ -22,12 +22,3 @@ describe('Password Input Field Updates', () => {
     expect(passwordInput.value).toBe('password')
   })
 })
-// Don: This test isn't useful enough - let's chat
-describe('Submit Button Finds Handleclick', () => {
-  // remove the next line after fixing the test
-  // eslint-disable-next-line jest/expect-expect
-  it('sends the submit button', () => {
-    const { queryByTestId } = renderWithRedux(<Register />)
-    fireEvent.click(queryByTestId('submitButton'))
-  })
-})

@@ -21,13 +21,3 @@ describe('Password Input Value', () => {
     expect(passwordInput.value).toBe('testing')
   })
 })
-
-// Don: this test needs much more work
-describe('Submit button', () => {
-  // remove the next line after the test is sorted
-  // eslint-disable-next-line jest/expect-expect
-  it('triggers submit function', () => {
-    const { queryByTestId } = renderWithRedux(<SignIn />)
-    fireEvent.click(queryByTestId('submit-button'))
-  })
-})
