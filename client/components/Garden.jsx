@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import Map from './Map'
@@ -6,37 +6,44 @@ import Events from './Events'
 
 import { getUserGarden } from '../api/gardens'
 
-const Garden = (props) => {
-  const [name, setName] = useState(null)
-  const [description, setDescription] = useState(null)
-  const [url, setUrl] = useState(null)
+class Garden extends React.Component {
+  state = {
+    name: '',
+    description: '',
+    url: ''
+  }
 
-  const { gardenId } = props.user
-
-  useEffect(() => {
-    getUserGarden(gardenId)
+  componentDidMount () {
+    const { gardenId } = this.props.user
+    gardenId && getUserGarden(gardenId)
       .then(res => {
-        setName(res.name)
-        setDescription(res.description)
-        setUrl(res.url)
+        const { name, description, url } = res
+        this.setState({
+          name,
+          description,
+          url
+        })
         return null
       })
       .catch((error) => {
         console.log('error: ', error.message)
       })
-  }, [])
+  }
 
-  return (
-    <>
-      <div className="column">
-        <h3>{name}</h3>
-        <p className="mb-4">{description}</p>
-        <a className="word-wrap" href={url}>{url}</a>
-        <Events />
-      </div>
-      <Map/>
-    </>
-  )
+  render () {
+    const { name, description, url } = this.state
+    return (
+      <>
+        <div className="column">
+          <h3>{name}</h3>
+          <p className="mb-4">{description}</p>
+          <a className="word-wrap" href={url}>{url}</a>
+          <Events />
+        </div>
+        <Map/>
+      </>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {

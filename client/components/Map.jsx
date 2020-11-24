@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react'
-// import { getMap } from '../apiClient'
+import React from 'react'
+// import { getMap } from '../api/map'
 
 function Map () {
-  useEffect(() => {
-    // getMap()
-  })
-
   // fakeMap can be deleted once our API is in place and using our databse
   const fakeMap = [
     {
