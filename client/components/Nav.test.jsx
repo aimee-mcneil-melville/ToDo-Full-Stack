@@ -1,33 +1,24 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { HashRouter as Router } from 'react-router-dom'
 
 import Nav from './Nav'
+import { renderWithRedux } from '../test-utils'
 
 test('<Nav> renders a "register" and a "sign in" link on the "/" route', () => {
-  render(
-    <Router>
-      <Nav location={{ pathname: '/' }}/>
-    </Router>)
+  renderWithRedux(<Nav location={{ pathname: '/' }}/>)
   expect(screen.getByText('Register')).toHaveTextContent('Register')
   expect(screen.getByText('Sign in')).toHaveTextContent('Sign in')
 })
 
 test('<Nav> renders a "register" and a "home" link on the "/signin" route', () => {
-  render(
-    <Router>
-      <Nav location={{ pathname: '/signin' }}/>
-    </Router>)
+  renderWithRedux(<Nav location={{ pathname: '/signin' }}/>)
   expect(screen.getByText('Register')).toHaveTextContent('Register')
   expect(screen.getByText('Home')).toHaveTextContent('Home')
 })
 
 test('<Nav> renders a "sign in" and a "home" link on the "/register" route', () => {
-  render(
-    <Router>
-      <Nav location={{ pathname: '/register' }}/>
-    </Router>)
+  renderWithRedux(<Nav location={{ pathname: '/register' }}/>)
   expect(screen.getByText('Sign in')).toHaveTextContent('Sign in')
   expect(screen.getByText('Home')).toHaveTextContent('Home')
 })
