@@ -9,7 +9,6 @@ class EditEvent extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.type)
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -17,7 +16,7 @@ class EditEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    // implement submit
   }
 
   render () {
