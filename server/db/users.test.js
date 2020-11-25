@@ -24,7 +24,7 @@ test('createUser creates a new user', () => {
   const user = {
     username: 'new',
     password: 'hello',
-    garden_id: 1
+    gardenId: 1
   }
   return users.createUser(user, testDb)
     .then(user => {
@@ -36,12 +36,5 @@ test('userExists returns true if user exists, otherwise returns false', () => {
   return users.userExists('admin', testDb)
     .then(bool => {
       return expect(bool).toBe(true)
-    })
-})
-
-test('getUserById returns the correct user', () => {
-  return users.getUserById(1, testDb)
-    .then(user => {
-      return expect(user.username).toBe('admin')
     })
 })

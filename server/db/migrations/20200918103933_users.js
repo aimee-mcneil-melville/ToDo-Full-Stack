@@ -4,7 +4,7 @@ exports.up = (knex) => {
     table.int('garden_id')
     table.string('username')
     table.binary('hash')
-    table.boolean('isAdmin')
+    table.boolean('is_admin')
   })
 }
 
