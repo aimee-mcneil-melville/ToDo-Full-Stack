@@ -42,17 +42,15 @@ function Nav (props) {
   }
 
   return (
-    <>
-      <div className="nav">
-        <IfAuthenticated>
-          <Link to="/" onClick={logOut}>
+    <nav className="navbar">
+      <IfAuthenticated>
+        <Link to="/" onClick={logOut}>
             Log out
-          </Link>
-          <Link to="/">Home</Link>
-        </IfAuthenticated>
-        <IfNotAuthenticated>{navLinks}</IfNotAuthenticated>
-      </div>
-    </>
+        </Link>
+        <Link to="/">Home</Link>
+      </IfAuthenticated>
+      <IfNotAuthenticated>{navLinks}</IfNotAuthenticated>
+    </nav>
   )
 }
 

@@ -40,11 +40,9 @@ class Register extends React.Component {
 
   render () {
     return (
-      <div className="registerContainer container">
-        <div className="leftRegister">
-          <div className="registerTitle">
-            <h1>Register</h1>
-          </div>
+      <>
+        <div className="column is-one-quarter-desktop">
+          <h1 className="registerTitle">Register</h1>
           <label className="label">Username</label>
           <input
             className="input"
@@ -83,14 +81,14 @@ class Register extends React.Component {
             Register
           </button>
         </div>
-        <div className="rightRegister">
+        <div className="column is-two-thirds-desktop">
           <img
             src="./images/comGardenPlant.png"
             alt=""
             style={{ width: '600px', height: '500px' }}
           />
         </div>
-      </div>
+      </>
     )
   }
 }

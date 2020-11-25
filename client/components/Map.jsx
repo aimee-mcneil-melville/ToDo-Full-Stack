@@ -16,7 +16,7 @@ function Map () {
   ]
   return (
     <div className='column is-half-tablet'>
-      <div id="mapid">
+      <div id="mapid" className="map-box">
         <img src="/placeholder_auckland.jpg"/>
         <p>
           {fakeMap.map(garden => (garden.address))}

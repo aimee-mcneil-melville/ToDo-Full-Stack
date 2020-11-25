@@ -23,21 +23,22 @@ class App extends React.Component {
 
   render () {
     return (
-      <>
-        <div className="container">
-          <h1 className="title">
-            <Link to="/">Garde<span>nz</span></Link></h1>
-          <div className='columns'>
-            <Route exact path='/' component={Home} />
-            <Route path="/" component={Nav} />
-            <Route path="/register" component={Register} />
-            <Route path="/signin" component={SignIn} />
-            <Route path='/garden' component={Garden} />
-            <Route path='/events/new' component={AddEvent} />
-            <Route path='/events/:id/edit' component={EditEvent} />
-          </div>
+      <main className="container">
+        <header>
+          <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
+          <Route path="/" component={Nav} />
+        </header>
+        <div className="columns">
+          <Route exact path='/' component={Home} />
         </div>
-      </>
+        <div className='columns'>
+          <Route path="/register" component={Register} />
+          <Route path="/signin" component={SignIn} />
+          <Route path='/garden' component={Garden} />
+          <Route path='/events/new' component={AddEvent} />
+          <Route path='/events/:id/edit' component={EditEvent} />
+        </div>
+      </main>
     )
   }
 }
