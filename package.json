@@ -30,7 +30,9 @@
   },
   "eslintConfig": {
     "extends": "eda",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "authenticare": "^0.4.7",
