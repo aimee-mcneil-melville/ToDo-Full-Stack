@@ -3,7 +3,6 @@ const connection = require('./connection')
 module.exports = {
   getGardens,
   getUserGarden,
-  createNewGarden,
 }
 
 function getGardens (db = connection) {

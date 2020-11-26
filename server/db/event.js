@@ -5,10 +5,10 @@ module.exports = {
   addEvent
 }
 
-function getEvents(){
+function getEvents(db = connection){
     return db('events').select('id','garden_id','title','date','description','volunteers_needed')
 }
-function addEvent (newEvent, db = connection) {
+function addEvent(newEvent, db = connection) {
     return db('events')
         .insert(newEvent)
 }
