@@ -25,13 +25,15 @@ Goal: Monitor community garden engagement to determine influence on key wellbein
 
 1. Decide on the next ticket
 1. Have an Elaboration (resolve ambiguity)
-1. Create/pull feature branch
-1. Create task branch
-1. Do the work
-1. Run the lint and test scripts
+1. Drag the ticket into **In Progress**, add the time estimation label and assign yourself
+1. Create/pull the feature branch
+1. Create a task branch for the work
+1. Implement the task and write tests
+1. Run the `lint` and `test` scripts
 1. Verify what you intend to commit
 1. Commit with a descriptive comment
 1. Grab a dev lead to do a code review
 1. Merge your commit into the feature branch
 1. Pull the feature branch and verify integration
+1. Add the _actual_ time label to the ticket
 1. Rinse and repeat :wink:
