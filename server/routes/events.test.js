@@ -8,7 +8,7 @@ jest.mock('../db/event')
 const mockEvents = [{
   id: 1,
   gardenId: 1,
-  title: 'Poo poo',
+  title: 'Weeding worker Bee',
   date: 'Wed, 27 Sep 2020 20:00:00 GMT',
   description: 'Its time to get these weeds under control.',
   volunteersNeeded: 8
@@ -16,7 +16,7 @@ const mockEvents = [{
 {
   id: 2,
   gardenId: 1,
-  title: 'Pee pee',
+  title: 'Sowing Corn',
   date: 'Wed, 28 Sep 2020 20:00:00 GMT',
   description: 'Help get out the lovely corns in the ground!.',
   volunteersNeeded: 4
@@ -58,7 +58,7 @@ describe('POST /api/v1/events', () => {
       expect(newEvent.description).toBe('test')
       return Promise.resolve({
         gardenId: 3,
-        title: 'Crystal isCool',
+        title: 'Gardening Event',
         dateTime: 'test',
         volunteersNeeded: 'test',
         description: 'test'
@@ -67,7 +67,7 @@ describe('POST /api/v1/events', () => {
     return request(server)
       .post('/api/v1/events')
       .send({
-        title: 'Crystal isCool',
+        title: 'Gardening Event',
         dateTime: 'test',
         volunteersNeeded: 'test',
         description: 'test'
@@ -75,10 +75,22 @@ describe('POST /api/v1/events', () => {
       .expect('Content-Type', /json/)
       .expect(201)
       .then(res => {
-        expect(res.body.title).toBe('Crystal isCool')
+        expect(res.body.title).toBe('Gardening Event')
         return null
       })
   })
 })
 
-
+it('responds with 500 and correct error object on DB error', () => {
+  db.addEvent.mockImplementation(() => Promise.reject(
+    new Error('mock DB error')
+  ))
+  return request(server)
+    .get('/api/v1/events')
+    .expect('Content-Type', /json/)
+    .expect(500)
+    .then(res => {
+      expect(res.body.error).toBe('mock DB error')
+      return null
+    })
+})
