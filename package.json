@@ -28,6 +28,10 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horoeka-2020/gardenz.git"
+  },
   "eslintConfig": {
     "extends": "eda",
     "ignorePatterns": [
