@@ -18,10 +18,10 @@ function Map () {
     <div className='column is-half-tablet'>
       <div id="mapid" className="map-box">
         <img src="/placeholder_auckland.jpg"/>
-        <p>
+        {/* <p>
           {fakeMap.map(garden => (garden.address))}
 
-        </p>
+        </p> */}
       </div>
     </div>
   )
