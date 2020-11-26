@@ -18,6 +18,7 @@
     "test:watch": "jest --watchAll --verbose",
     "test": "jest --verbose",
     "test:e2e": "jest",
+    // "test:e2e": "jest --testPathPattern=e2e",
     "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
