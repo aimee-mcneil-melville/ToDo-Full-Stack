@@ -7,12 +7,9 @@ export function getEvents (gardenId, consume = requestor) {
     })
 }
 
-export function addEvent (gardenId, newEvent, consume = requestor) {
-  return consume('/api/v1/events/new', 'post', {
-    gardenId: gardenId,
-    title: newEvent.title,
-    dateTime: newEvent.dateTime,
-    volunteersNeeded: newEvent.volunteersNeeded,
-    description: newEvent.description
-  })
+export function addEvent (newEvent, consume = requestor) {
+  return consume('/api/v1/events/new', 'post', newEvent)
+    .then(res => {
+      return res.body
+    })
 }
