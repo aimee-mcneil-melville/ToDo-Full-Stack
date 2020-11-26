@@ -1,16 +1,15 @@
 const express = require('express')
 
-// const db = require('../db/events')
+const db = require('../db/event')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.json('get route ')
-  // db.getEvents()
-  //   .then(events => {
-  //     res.json(events)
-  //     return null
-  //   })
+  db.getEvents()
+    .then(events => {
+      res.json(events)
+      return null
+    })
     .catch(err => {
       res.status(500).json({ error: err.message })
     })

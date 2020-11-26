@@ -27,11 +27,11 @@ describe('GET /api/v1/events', () => {
   it('responds with events on res body', () => {
     db.getEvents.mockImplementation(() => Promise.resolve(mockEvents))
     return request(server)
-      .get('api/v1/events')
+      .get('/api/v1/events')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body.events).toHaveLength(2)
+        expect(res.body).toHaveLength(2)
         return null
       })
   })
@@ -49,4 +49,8 @@ describe('GET /api/v1/events', () => {
         return null
       })
   })
+})
+
+describe('POST /api/v1/events', () => {
+  it('')
 })
