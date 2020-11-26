@@ -17,6 +17,7 @@
     "start": "node server",
     "test:watch": "jest --watchAll --verbose",
     "test": "jest --verbose",
+    "test:e2e": "jest",
     "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
