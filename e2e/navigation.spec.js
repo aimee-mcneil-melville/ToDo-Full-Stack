@@ -23,10 +23,11 @@ test('clicking on sign-in takes you to sign in page', async () => {
   // Go to http://localhost:3000/#/
   await page.goto(app)
 
-  // Click text="Sign in"
   await page.click('text="Sign in"')
+  await page.goto('http://localhost:3000/#/signin')
 
   const signIn = page.url('http://localhost:3000/#/signin')
 
-  expect(page).toBe(signIn)
+  // expect(page).toBe(signIn)
+  expect(page).toBe('http://localhost:3000/#/signin')
 })
