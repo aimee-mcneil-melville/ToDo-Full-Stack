@@ -2,7 +2,9 @@ const { chromium } = require('playwright');
 
 (async () => {
   const browser = await chromium.launch({
-    headless: false
+    headless: false,
+    // if you want devtools to open in your browser
+    devtools: true
   })
   const context = await browser.newContext()
 

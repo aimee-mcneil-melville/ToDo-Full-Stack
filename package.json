@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
-  "jest": {
-    "preset": "jest-playwright-preset"
-  },
+
   "scripts": {
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
@@ -30,6 +28,9 @@
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
+  },
+  "jest": {
+    "preset": "jest-playwright-preset"
   },
   "eslintConfig": {
     "extends": "eda",

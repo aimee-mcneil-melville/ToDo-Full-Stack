@@ -1,9 +1,10 @@
 const playwright = require('playwright');
 
 (async () => {
-  // Code execution happens within here
+  // Launch the browser
   const browser = await playwright.chromium.launch({
-    headless: false
+    headless: false,
+    devtools: true
   })
 
   // make a new context
@@ -15,5 +16,6 @@ const playwright = require('playwright');
   // Go to http://localhost:3000/#/
   await page.goto('http://localhost:3000/#/')
 
+  // Close the browser
 //   await browser.close()
 })()
