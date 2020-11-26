@@ -32,11 +32,9 @@ class SignIn extends React.Component {
 
   render () {
     return (
-      <div className="signInContainer container">
-        <div className="signInLeft">
-          <div className="signInTitle">
-            <h1>Sign in</h1>
-          </div>
+      <>
+        <div className="column is-one-third">
+          <h1>Sign in</h1>
 
           <label className="label ">Username</label>
           <input
@@ -63,17 +61,17 @@ class SignIn extends React.Component {
             data-testid="submit-button"
             onClick={this.handleClick}
           >
-            Sign in
+          Sign in
           </button>
         </div>
-        <div className="signInRight">
+        <div className="column is-four-fifths">
           <img
             src="images/comGardenRows.png"
             alt=""
             style={{ width: '600px', height: '500px' }}
           />
         </div>
-      </div>
+      </>
     )
   }
 }

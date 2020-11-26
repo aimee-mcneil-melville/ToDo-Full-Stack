@@ -42,7 +42,7 @@ function Nav (props) {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar column">
       <IfAuthenticated>
         <Link to="/" onClick={logOut}>
             Log out

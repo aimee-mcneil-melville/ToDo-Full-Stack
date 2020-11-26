@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
 import { setUser } from '../actions/user'
 
-import Nav from './Nav'
+import Header from './Header'
 import Register from './Register'
 import SignIn from './SignIn'
 import Garden from './Garden'
@@ -24,13 +24,8 @@ class App extends React.Component {
   render () {
     return (
       <main className="container">
-        <header>
-          <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
-          <Route path="/" component={Nav} />
-        </header>
-        <div className="columns">
-          <Route exact path='/' component={Home} />
-        </div>
+        <Route path="/" component={Header} />
+        <Route exact path='/' component={Home} />
         <div className='columns'>
           <Route path="/register" component={Register} />
           <Route path="/signin" component={SignIn} />
