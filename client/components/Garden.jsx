@@ -34,13 +34,15 @@ class Garden extends React.Component {
 
   render () {
     const { name, description, url, events } = this.state
+console.log(this.props.user)
     return (
       <>
         <div className="column">
           <h3>{name}</h3>
           <p className="mb-4">{description}</p>
           <a className="word-wrap" href={url}>{url}</a>
-          <Events events={events} />
+
+          <Events events={events} isAdmin={this.props.user.isAdmin}/>
         </div>
         <Map/>
       </>
