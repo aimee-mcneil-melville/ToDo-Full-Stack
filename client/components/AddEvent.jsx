@@ -1,4 +1,5 @@
 import React from 'react'
+import { addEvent } from '../api/events'
 
 class AddEvent extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class AddEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // implement submit
+    addEvent(this.state)
   }
 
   render () {

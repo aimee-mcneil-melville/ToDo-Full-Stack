@@ -1,3 +1,5 @@
-import events from './events'
+import { addEvent } from './events'
 
-test('')
+test('addEvent', () => {
+
+})

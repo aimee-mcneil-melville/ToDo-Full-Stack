@@ -1,3 +1,5 @@
+import requestor from './consume'
+
 export function getEvents (gardenId, consume = requestor) {
   return consume(`/gardens/${gardenId}`)
     .then(res => {
@@ -6,13 +8,11 @@ export function getEvents (gardenId, consume = requestor) {
 }
 
 export function addEvent (gardenId, newEvent, consume = requestor) {
-  return consume
-    .post('/api/v1/events/new')
-    .send({
-      gardenId: gardenId,
-      title: newEvent.state.title,
-      dateTime: newEvent.state.dateTime,
-      volunteersNeeded: newEvent.state.volunteersNeeded,
-      description: newEvent.state.description
-    })
+  return consume('/api/v1/events/new', 'post', {
+    gardenId: gardenId,
+    title: newEvent.title,
+    dateTime: newEvent.dateTime,
+    volunteersNeeded: newEvent.volunteersNeeded,
+    description: newEvent.description
+  })
 }
