@@ -1,4 +1,6 @@
 import React from 'react'
+import { addEvent } from '../api/events'
+import { connect } from 'react-redux'
 
 class AddEvent extends React.Component {
   state = {
@@ -16,7 +18,14 @@ class AddEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // implement submit
+    const newEvent = {
+      ...this.state,
+      gardenId: this.props.gardenId
+    }
+    return addEvent(newEvent).then(() => {
+      this.props.history.push('/garden')
+      return null
+    })
   }
 
   render () {
@@ -83,7 +92,18 @@ class AddEvent extends React.Component {
           </div>
         </div>
       </>
-    )
+                onClick={this.handleSubmit}
+              >Add Event</button>
+
+            </form>
+          </div>
   }
 }
-export default AddEvent
+
+const mapStateToProps = (state) => {
+  return {
+    gardenId: state.user.gardenId
+  }
+}
+
+export default connect(mapStateToProps)(AddEvent)
