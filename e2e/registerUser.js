@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 const { chromium } = require('playwright');
 
 (async () => {

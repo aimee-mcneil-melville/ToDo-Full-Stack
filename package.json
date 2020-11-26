@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
-
   "scripts": {
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
@@ -34,11 +33,18 @@
   "jest": {
     "preset": "jest-playwright-preset"
   },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horoeka-2020/gardenz.git"
+  },
   "eslintConfig": {
     "extends": "eda",
     "ignorePatterns": [
       "bundle.js"
     ]
+  },
+  "engines": {
+    "node": ">=12.0"
   },
   "dependencies": {
     "authenticare": "^0.4.7",
@@ -46,8 +52,7 @@
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "leaflet": "^1.7.1",
-    "pg": "^8.5.1",
-    "sqlite3": "^5.0.0"
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -66,29 +71,22 @@
     "css-loader": "^5.0.1",
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.1.0",
     "jest": "^26.6.3",
     "jest-playwright-preset": "^1.4.1",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.6.2",
+    "regenerator-runtime": "^0.13.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-test-renderer": "^17.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
+    "sqlite3": "^5.0.0",
     "style-loader": "^2.0.0",
     "superagent": "^6.1.0",
     "supertest": "^6.0.1",

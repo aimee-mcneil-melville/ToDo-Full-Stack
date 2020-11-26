@@ -11,6 +11,7 @@ cd gardenz
 npm install
 npm run db:migrate
 npm run db:seed
+cp server/.env.example server/.env
 npm run dev
 ```
 
