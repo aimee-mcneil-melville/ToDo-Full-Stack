@@ -6,13 +6,13 @@ const playwright = require('playwright');
     headless: false
   })
 
-  // context
+  // make a new context
   const context = await browser.newContext()
 
-  // page
+  // Open a new page
   const page = await context.newPage()
 
-  // navigate to page
+  // Go to http://localhost:3000/#/
   await page.goto('http://localhost:3000/#/')
 
 //   await browser.close()
