@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime'
+// import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
 
 // Declare app variable
@@ -11,10 +11,10 @@ test('browser title should display Gardenz', async () => {
   })
 
   // make a new context (think of it like a tab in your browser)
-  const context = await browser.newContext()
+  // const context = await browser.newContext()
 
   // Open a new page
-  const page = await context.newPage()
+  // const page = await context.newPage()
 
   // User goes to the homepage
   await page.goto(app)
