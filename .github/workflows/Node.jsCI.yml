@@ -4,10 +4,10 @@ name: Node.js CI
 on:
   push:
     branches:
-      - e2e
+      - navigation
 pull_request:
     branches:
-      - e2e
+      - navigation
 
 jobs:
   build:
