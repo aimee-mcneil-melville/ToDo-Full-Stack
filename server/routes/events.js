@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
   const { title, dateTime, volunteersNeeded, description } = req.body
   const newEvent = { title, dateTime, volunteersNeeded, description }
   db.addEvent(newEvent)
-    .then((events) => {
-      res.json(events)
+    .then((event) => {
+      res.status(201).json(event)
       return null
     })
     .catch(err => {
