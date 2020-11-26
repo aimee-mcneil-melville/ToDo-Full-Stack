@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class AddEvent extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class AddEvent extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     // implement submit
+    this.props.history.push('/garden')
   }
 
   render () {
@@ -86,4 +88,9 @@ class AddEvent extends React.Component {
     )
   }
 }
-export default AddEvent
+const mapStateToProps = (state) => {
+  return {
+    gardenId: state.user.gardenId
+  }
+}
+export default connect(mapStateToProps)(AddEvent)
