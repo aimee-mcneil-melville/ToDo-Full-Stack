@@ -5,10 +5,7 @@ on:
   push:
     branches:
       - navigation
-pull_request:
-    branches:
-      - navigation
-
+      
 jobs:
   build:
 
