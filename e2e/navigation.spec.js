@@ -1,5 +1,4 @@
 import 'regenerator-runtime/runtime'
-const { chromium } = require('playwright')
 const playwright = require('playwright')
 let browser
 let page
@@ -27,7 +26,7 @@ test('clicking on sign-in takes you to sign in page', async () => {
   // Click text="Sign in"
   await page.click('text="Sign in"')
 
-  const signIn = page.url()
+  const signIn = page.url('http://localhost:3000/#/signin')
 
   expect(page).toBe(signIn)
 })
