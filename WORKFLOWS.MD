@@ -12,7 +12,7 @@
 6. Revert "Node.js CI" branch to listen to "main"
 7. Add in Workflow badges to README file.
 
-### CI mportant notes
+### CI important notes
 1. Issue found with SASS - will only work on node 12.0 or greater.  As such Node Workflow only validates with Windows, MacOS & Ubuntu for Node version 12.0 or greater.
 2. Ensuring Heroku uses 12.0 or greater during deployment by adding "engines" into package.json
 
