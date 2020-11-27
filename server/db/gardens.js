@@ -2,7 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   getGardens,
-  getUserGarden,
+  getUserGarden
 }
 
 function getGardens (db = connection) {
