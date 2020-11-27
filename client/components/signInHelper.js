@@ -17,6 +17,6 @@ export function signInUser (user, navigateTo) {
       return null
     })
     .catch((error) => {
-      dispatch(showError(error))
+      dispatch(showError(error.message))
     })
 }
