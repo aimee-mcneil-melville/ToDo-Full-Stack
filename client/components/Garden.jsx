@@ -33,8 +33,7 @@ class Garden extends React.Component {
   }
 
   render () {
-    const { name, description, url, events, EventItem } = this.state
-// console.log(this.props.user)
+    const { name, description, url, events } = this.state
     return (
       <>
         <div className="column">
