@@ -9,7 +9,7 @@ on:
 jobs:
   job1:
       name: install npm
-      runs-on: [ubuntu-latest, windows-latest, macos-latest]
+      runs-on: [ubuntu-latest]
 
       strategy:
         matrix:
