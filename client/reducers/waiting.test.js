@@ -1,8 +1,9 @@
+import { SET_WAITING } from '../actions/waiting'
 import waitingReducer from './waiting'
 
 test('returns true on "SET_WAITING"', () => {
   const action = {
-    type: 'SET_WAITING'
+    type: SET_WAITING
   }
   const newState = waitingReducer(false, action)
   expect(newState).toBeTruthy()
