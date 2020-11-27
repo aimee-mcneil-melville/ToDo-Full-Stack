@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { isAuthenticated } from 'authenticare/client'
+import { isAuthenticated } from '../auth'
 
 export function IfAuthenticated ({ children }) {
   return isAuthenticated()

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
+import { isAuthenticated, getDecodedToken } from '../auth'
 import { setUser } from '../actions/user'
 
 import Nav from './Nav'

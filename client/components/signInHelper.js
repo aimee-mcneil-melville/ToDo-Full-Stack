@@ -1,5 +1,4 @@
-import { isAuthenticated, signIn, getDecodedToken } from 'authenticare/client'
-
+import { isAuthenticated, signIn, getDecodedToken } from '../auth'
 import { dispatch } from '../store'
 import { setUser } from '../actions/user'
 
