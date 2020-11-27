@@ -16,7 +16,7 @@
     "start": "node server",
     "test:watch": "jest --watchAll --verbose",
     "test": "jest --verbose",
-    "test:e2e": "jest",
+    "test:e2e": "NODE_ENV=e2e jest",
     "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
@@ -32,7 +32,7 @@
   "jest": {
     "preset": "jest-playwright-preset"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/horoeka-2020/gardenz.git"
   },
