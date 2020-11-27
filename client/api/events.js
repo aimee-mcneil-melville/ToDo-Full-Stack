@@ -8,7 +8,7 @@ export function getEvents (gardenId, consume = requestor) {
 }
 
 export function addEvent (newEvent, consume = requestor) {
-  return consume('/api/v1/events/new', 'post', newEvent)
+  return consume('/events', 'post', newEvent)
     .then(res => {
       return res.body
     })

@@ -92,11 +92,8 @@ class AddEvent extends React.Component {
           </div>
         </div>
       </>
-                onClick={this.handleSubmit}
-              >Add Event</button>
 
-            </form>
-          </div>
+    )
   }
 }
 
