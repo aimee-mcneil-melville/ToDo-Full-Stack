@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <main className="container">
+      <main className="container is-max-desktop">
         <Route path="/" component={Header} />
         <Route exact path='/' component={Home} />
         <div className='columns'>

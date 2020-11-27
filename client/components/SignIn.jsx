@@ -58,8 +58,6 @@ class SignIn extends React.Component {
           />
           <button
             className="button"
-            color="$green"
-            background-color="$dark-green"
             data-testid="submit-button"
             onClick={this.handleClick}
           >
