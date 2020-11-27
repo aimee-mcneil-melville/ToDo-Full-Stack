@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { register, isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions/user'
+import { registerUser } from './registerHelper'
 
 class Register extends React.Component {
   state = {
@@ -18,24 +16,7 @@ class Register extends React.Component {
   }
 
   handleClick = () => {
-    const { username, password, gardenId } = this.state
-    register({
-      username,
-      password,
-      gardenId: Number(gardenId)
-    },
-    { baseUrl: '/api/v1' })
-      .then(() => {
-        if (isAuthenticated()) {
-          const { username, isAdmin, gardenId } = getDecodedToken()
-          this.props.dispatch(setUser({ username, isAdmin, gardenId }))
-          return this.props.history.push('/garden')
-        }
-        return null
-      })
-      .catch((error) => {
-        console.log('error: ', error.message)
-      })
+    registerUser(this.state, this.props.history.push)
   }
 
   render () {
@@ -93,4 +74,4 @@ class Register extends React.Component {
   }
 }
 
-export default connect()(Register)
+export default Register
