@@ -9,7 +9,6 @@ on:
 jobs:
   job1:
     name: Install node modules 
-    build:
 
       runs-on:  ${{ matrix.os }}
 
