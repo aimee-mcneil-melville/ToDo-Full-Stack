@@ -34,35 +34,34 @@ class SignIn extends React.Component {
     return (
       <>
         <div className="column is-one-third">
-          <h1>Sign in</h1>
-
-          <label className="label ">Username</label>
-          <input
-            className="input "
-            id="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            placeholder="Username"
-            type="text"
-          />
-          <label className="label">Password</label>
-          <input
-            className="input"
-            id="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            placeholder="Password"
-            type="password"
-          />
-          <button
-            className="button"
-            data-testid="submit-button"
-            onClick={this.handleClick}
-          >
-          Sign in
-          </button>
+          <form className="pr-5">
+            <label className="label ">Username</label>
+            <input
+              className="input"
+              id="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              placeholder="Username"
+              type="text"
+            />
+            <label className="label">Password</label>
+            <input
+              className="input"
+              id="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              placeholder="Password"
+              type="password"
+            />
+            <button
+              className="button"
+              data-testid="submit-button"
+              onClick={this.handleClick}
+            >Sign in
+            </button>
+          </form>
         </div>
         <div className="column is-four-fifths">
           <img
