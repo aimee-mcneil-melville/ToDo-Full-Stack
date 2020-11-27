@@ -1,24 +1,33 @@
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Register from './Register.jsx'
-import { renderWithRedux } from '../test-utils'
+import { registerUser } from './registerHelper'
 
-describe('Username Input Field Updates', () => {
-  it('gets the text', () => {
-    const { queryByPlaceholderText } = renderWithRedux(<Register />)
-    const usernameInput = queryByPlaceholderText('username')
-    fireEvent.change(usernameInput, { target: { value: 'username' } })
-    expect(usernameInput.value).toBe('username')
-  })
+jest.mock('./registerHelper')
+
+test('register fields update correctly on user input', () => {
+  render(<Register />)
+  const usernameInput = screen.getByRole('textbox', { name: 'Username' })
+  // need getByLabelText for password as type="hidden" hides it for getByRole
+  const passwordInput = screen.getByLabelText('Password')
+  const gardenInput = screen.getByRole('combobox', { name: 'My Garden' })
+
+  fireEvent.change(usernameInput, { target: { value: 'test username' } })
+  fireEvent.change(passwordInput, { target: { value: 'test password' } })
+  fireEvent.change(gardenInput, { target: { value: 2 } })
+
+  expect(usernameInput.value).toBe('test username')
+  expect(passwordInput.value).toBe('test password')
+  expect(gardenInput.value).toBe('2')
 })
 
-describe('Password Input Field Updates', () => {
-  it('gets the text', () => {
-    const { queryByPlaceholderText } = renderWithRedux(<Register />)
-    const passwordInput = queryByPlaceholderText('username')
-    fireEvent.change(passwordInput, { target: { value: 'password' } })
-    expect(passwordInput.value).toBe('password')
-  })
+test('calls registerUser on register button click', () => {
+  render(<Register history={[]} />)
+
+  const registerButton = screen.getByRole('button', { name: 'Register' })
+  fireEvent.click(registerButton)
+
+  expect(registerUser).toHaveBeenCalled()
 })

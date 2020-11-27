@@ -24,29 +24,31 @@ class Register extends React.Component {
       <>
         <div className="column is-one-quarter-desktop">
           <h1 className="registerTitle">Register</h1>
-          <label className="label">Username</label>
+          <label htmlFor="username" className="label">Username</label>
           <input
             className="input"
+            id="username"
             name="username"
             value={this.state.username}
             placeholder="username"
             onChange={this.handleChange}
           ></input>
-          <label className="label">Password</label>
+          <label htmlFor="password" className="label">Password</label>
           <input
             className="input"
             type="password"
+            id="password"
             name="password"
             value={this.state.password}
             placeholder="password"
             onChange={this.handleChange}
           ></input>
-          <label className="label">My Garden</label>
+          <label htmlFor="gardenId" className="label">My Garden</label>
           <select
             onChange={this.handleChange}
             className="select"
             name="gardenId"
-            id="name"
+            id="gardenId"
           >
             <option hidden>Select from this list</option>
             <option value={1}>Kelmarna Gardens</option>
