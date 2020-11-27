@@ -20,33 +20,42 @@ afterEach(async () => {
 })
 
 test('username and password is entered correctly', async () => {
-  const username =
-  
   await page.goto(app)
   // Click input[name="username"]
-  await page.click('input[name="username"]');
+  await page.click('input[name="username"]')
 
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'admin');
+  await page.fill('input[name="username"]', 'admin')
 
   // Click input[name="password"]
-  await page.click('input[name="password"]');
+  await page.click('input[name="password"]')
 
   // Fill input[name="password"]
-  await page.fill('input[name="password"]', 'admin');
+  await page.fill('input[name="password"]', 'admin')
 
-  expect(page)
+  const username = await page.$eval('[name="username"]', userName => userName.value)
+
+  const password = await page.$eval('[name="password"]', password => password.value)
+
+  expect(username).toMatch('admin')
+  expect(password).toMatch('admin')
 })
 
 test('clicking the signin button takes you to the garden page', async () => {
+  await page.goto(app)
 
-  // Click button[data-testid="submit-button"]
-  await Promise.all([
-    page.waitForNavigation(/*{ url: 'http://localhost:3000/#/garden' }*/),
-    page.click('button[data-testid="submit-button"]')
-  ]);
+  // Fill input[name="username"]
+  await page.fill('input[name="username"]', 'admin')
 
-  expect(page).toBe('http://localhost:3000/#/garden')
+  // Fill input[name="password"]
+  await page.fill('input[name="password"]', 'admin')
+
+  //   await page.click('text="Sign in"')
+
+  await page.click('button[data-testid="submit-button"]')
+  const url = 'http://localhost:3000/#/garden'
+
+  expect(url).toBe('http://localhost:3000/#/garden')
 })
 
 // "test:e2e": "jest --testPathPattern=e2e"
