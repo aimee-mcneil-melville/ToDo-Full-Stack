@@ -28,6 +28,10 @@
 10. We tested a deployment by removing the test:e2e script.
 11. Successfully deployed.
 
+### TO DO!:
+
+Change build to run on all OS.
+
 ### CI important notes
 
 1. Issue found with SASS - will only work on node 12.0 or greater. As such Node Workflow only validates with Windows, MacOS & Ubuntu for Node version 12.0 or greater.
