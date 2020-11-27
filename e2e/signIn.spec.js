@@ -43,17 +43,19 @@ test('username and password is entered correctly', async () => {
 
 test('clicking the signin button takes you to the garden page', async () => {
   await page.goto(app)
-
+  await page.click('input[name="username"]')
   // Fill input[name="username"]
   await page.fill('input[name="username"]', 'admin')
-
+  await page.click('input[name="password"]')
   // Fill input[name="password"]
   await page.fill('input[name="password"]', 'admin')
 
   //   await page.click('text="Sign in"')
 
   await page.click('button[data-testid="submit-button"]')
-  const url = 'http://localhost:3000/#/garden'
+  await page.waitForLoadState('networkidle')
+
+  const url = await page.url()
 
   expect(url).toBe('http://localhost:3000/#/garden')
 })
