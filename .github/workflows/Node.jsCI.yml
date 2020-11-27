@@ -8,9 +8,8 @@ on:
       
 jobs:
   job1:
-    name: Install node modules 
 
-      runs-on:  [ubuntu-latest, windows-latest, macos-latest]
+      runs-on: [ubuntu-latest, windows-latest, macos-latest]
 
       strategy:
         matrix:
