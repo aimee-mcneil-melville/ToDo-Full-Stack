@@ -1,5 +1,6 @@
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { SET_USER } from '../actions/user'
+import { SHOW_ERROR } from '../actions/error'
 import waitingReducer from './waiting'
 
 test('returns true on "SET_WAITING"', () => {
@@ -21,6 +22,14 @@ test('returns false on "SET_USER"', () => {
 test('returns false on "CLEAR_WAITING"', () => {
   const action = {
     type: CLEAR_WAITING
+  }
+  const newState = waitingReducer(true, action)
+  expect(newState).toBeFalsy()
+})
+
+test('returns false on "SHOW_ERROR"', () => {
+  const action = {
+    type: SHOW_ERROR
   }
   const newState = waitingReducer(true, action)
   expect(newState).toBeFalsy()

@@ -1,4 +1,5 @@
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
+import { SHOW_ERROR } from '../actions/error'
 import { SET_USER } from '../actions/user'
 
 const waiting = (state = false, action) => {
@@ -7,6 +8,7 @@ const waiting = (state = false, action) => {
       return true
 
     case SET_USER:
+    case SHOW_ERROR:
     case CLEAR_WAITING:
       return false
 
