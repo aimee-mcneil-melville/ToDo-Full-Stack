@@ -7,8 +7,8 @@ on:
       - main
       
 jobs:
-  job1:
-      name: install npm
+  Build:
+      name: Build
       runs-on: [ubuntu-latest]
 
       strategy:
@@ -21,28 +21,30 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
       - run: npm install
+      - name: Building
+      - run: npm run build --if-present
         env:
           CI: true
-  job2:
-    name: run test scripts
+  Linting:
+    name: Linting
     runs-on: [ubuntu-latest]
 
     strategy:
       matrix:
         node-version:  [12.x]
 
-
-    needs: job1
+    needs: [Build]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm run build --if-present
     - run: npm run lint
     - run: npm run test
     - run: npm run test:e2e
       env:
         CI: true
+  
