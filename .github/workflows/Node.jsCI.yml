@@ -26,7 +26,7 @@ jobs:
           CI: true
   job2:
     name: run test scripts
-    runs-on: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: [ubuntu-latest]
 
     needs: job1
     steps:
