@@ -7,8 +7,9 @@ function Events ({ events, isAdmin }) {
     <div className="m-6">
       <h2 className="my-4 is-pulled-left">Events</h2>
       {
-        isAdmin && <Link to='/events/new'
-          className="button my-4 is-primary is-pulled-right">Add new event</Link>
+        isAdmin
+          ? <Link to='/events/new' className="button my-4 is-primary is-pulled-right">Add new event</Link>
+          : null
       }
       <div className="box clearfix">
         {events.map((event) =>
