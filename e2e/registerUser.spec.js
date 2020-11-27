@@ -33,7 +33,7 @@ afterEach(async () => {
   await page.close()
 })
 
-test('Username is a string', async () => {
+test.skip('Username is a string', async () => {
   await page.goto(register)
 
   await page.click('[name="username"]')
@@ -61,18 +61,20 @@ test('User can register', async () => {
   // Select garden dropdown
   await page.selectOption('select[id="name"]', '2')
 
-  // Click submit
-  await page.click('button[data-testid="submitButton"]')
-  await page.waitForLoadState('networkidle')
-
-  const url = page.url()
-
   // Define and target username value
   const userName = await page.$eval('[name="username"]', userName => userName.value)
 
   // Define and target password value
   const userPass = await page.$eval('[name="password"]', userName => userName.value)
-  console.log(await page.click('button[data-testid="submitButton"]'))
+
+  // Click button
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button[data-testid="submitButton"]')
+  ])
+
+  const url = page.url()
+
   expect(url).toBe('http://localhost:3000/#/garden')
   expect(userName).toBe('Leshgooo123')
   expect(userPass).toBe('12356')
