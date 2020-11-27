@@ -36,7 +36,7 @@ describe('registerUser', () => {
       })
   })
 
-  it('registers but doesn\'t redirect if not authenticated', () => {
+  it('registers but dispatches error if not authenticated', () => {
     expect.assertions(2)
     register.mockImplementation(() => Promise.resolve())
     isAuthenticated.mockImplementation(() => false)
@@ -49,7 +49,7 @@ describe('registerUser', () => {
     return registerUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).not.toHaveBeenCalled()
-        expect(dispatch).toHaveBeenCalledTimes(1)
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('Not authenticated')
         return null
       })
   })

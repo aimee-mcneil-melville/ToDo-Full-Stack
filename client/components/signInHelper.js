@@ -13,6 +13,8 @@ export function signInUser (user, navigateTo) {
         const { username, isAdmin, gardenId } = getDecodedToken()
         dispatch(setUser({ username, isAdmin, gardenId }))
         navigateTo('/garden')
+      } else {
+        throw new Error('Not authenticated')
       }
       return null
     })

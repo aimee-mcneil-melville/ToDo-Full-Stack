@@ -35,7 +35,7 @@ describe('signInUser', () => {
       })
   })
 
-  it('signs in but doesn\'t redirect if not authenticated', () => {
+  it('signs in but dispatches error if not authenticated', () => {
     expect.assertions(2)
     signIn.mockImplementation(() => Promise.resolve())
     isAuthenticated.mockImplementation(() => false)
@@ -47,7 +47,7 @@ describe('signInUser', () => {
     return signInUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).not.toHaveBeenCalled()
-        expect(dispatch).toHaveBeenCalledTimes(1)
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('Not authenticated')
         return null
       })
   })
