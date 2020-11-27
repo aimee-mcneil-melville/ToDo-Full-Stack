@@ -5,6 +5,7 @@ let page
 // Declare app variable
 const app = 'http://localhost:3000/#/'
 const signIn = 'http://localhost:3000/#/signin'
+const myRegister = 'http://localhost:3000/#/register'
 
 beforeAll(async () => {
   browser = await playwright.chromium.launch({
@@ -25,7 +26,6 @@ afterEach(async () => {
 // THE FOLLOWING TESTS ARE FROM THE HOME PAGE!!!!!!!!!!!!!!
 
 test('clicking on sign-in takes you to sign in page', async () => {
-  // Go to http://localhost:3000/#/
   await page.goto(app)
 
   await page.click('text="Sign in"')
@@ -36,7 +36,6 @@ test('clicking on sign-in takes you to sign in page', async () => {
 })
 
 test('clicking on register takes you to register page', async () => {
-  // Go to http://localhost:3000/#/
   await page.goto(app)
 
   await page.click('text="Register"')
@@ -47,8 +46,6 @@ test('clicking on register takes you to register page', async () => {
 })
 
 test('clicking on garden button takes you to garden page', async () => {
-  // Go to http://localhost:3000/#/
-
   await page.goto(app)
 
   await page.click('text="Garden"')
@@ -61,7 +58,6 @@ test('clicking on garden button takes you to garden page', async () => {
 // THE FOLLOWING TESTS ARE FROM THE SIGN IN PAGE!!!!!!!!!!!!!!
 
 test('clicking on register (from sign in page) takes you to register page', async () => {
-  // Go to http://localhost:3000/#/
   await page.goto(signIn)
 
   await page.click('text="Register"')
@@ -72,10 +68,51 @@ test('clicking on register (from sign in page) takes you to register page', asyn
 })
 
 test('clicking on Home(from sign in page) takes you to Home page', async () => {
-  // Go to http://localhost:3000/#/
   await page.goto(signIn)
 
   await page.click('text="Home"')
+
+  const url = page.url()
+
+  expect(url).toBe('http://localhost:3000/#/')
+})
+
+test('clicking on LOGO(from sign in page) takes you to Home page', async () => {
+  await page.goto(signIn)
+
+  await page.click('text="Garde"')
+
+  const url = page.url()
+
+  expect(url).toBe('http://localhost:3000/#/')
+})
+
+// THE FOLLOWING TESTS ARE FROM THE REGISTER PAGE!!!!!!!!!!!!!!
+
+test('clicking on sign in (from register page) takes you to sign in page', async () => {
+  await page.goto(myRegister)
+
+  await page.click('text="Sign in"')
+
+  const url = page.url()
+
+  expect(url).toBe('http://localhost:3000/#/signin')
+})
+
+test('clicking on Home(from register page) takes you to Home page', async () => {
+  await page.goto(myRegister)
+
+  await page.click('text="Home"')
+
+  const url = page.url()
+
+  expect(url).toBe('http://localhost:3000/#/')
+})
+
+test('clicking on LOGO(from register page) takes you to Home page', async () => {
+  await page.goto(myRegister)
+
+  await page.click('text="Garde"')
 
   const url = page.url()
 
