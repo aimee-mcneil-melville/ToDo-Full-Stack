@@ -1,6 +1,5 @@
 import React from 'react'
 import { screen, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom'
 
 import { renderWithRedux } from '../test-utils'
 import Error from './Error.jsx'
