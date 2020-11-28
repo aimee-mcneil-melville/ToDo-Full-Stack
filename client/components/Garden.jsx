@@ -1,10 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Map from './Map'
 import Events from './Events'
-
-import { getUserGarden } from '../api/gardens'
+import { getGarden } from './gardenHelper'
 
 class Garden extends React.Component {
   state = {
@@ -15,20 +13,10 @@ class Garden extends React.Component {
   }
 
   componentDidMount () {
-    const { gardenId } = this.props.user
-    gardenId && getUserGarden(gardenId)
+    return getGarden()
       .then(res => {
-        const { name, description, url, events } = res
-        this.setState({
-          name,
-          description,
-          url,
-          events
-        })
+        res && this.setState(res)
         return null
-      })
-      .catch((error) => {
-        console.log('error: ', error.message)
       })
   }
 
@@ -48,10 +36,4 @@ class Garden extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(Garden)
+export default Garden
