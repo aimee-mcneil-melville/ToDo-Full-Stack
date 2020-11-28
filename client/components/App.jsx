@@ -12,6 +12,7 @@ import Garden from './Garden'
 import Home from './Home'
 import AddEvent from './AddEvent'
 import EditEvent from './EditEvent'
+import Error from './Error'
 
 class App extends React.Component {
   componentDidMount () {
@@ -28,6 +29,8 @@ class App extends React.Component {
           <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
           <Route path="/" component={Nav} />
         </header>
+        { /* TODO: Talk to Field and Claire -> where is Error going? */ }
+        <Error />
         <div className="columns">
           <Route exact path='/' component={Home} />
         </div>
