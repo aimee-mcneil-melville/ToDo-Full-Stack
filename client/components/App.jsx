@@ -13,6 +13,7 @@ import Home from './Home'
 import AddEvent from './AddEvent'
 import EditEvent from './EditEvent'
 import Error from './Error'
+import WaitIndicator from './WaitIndicator'
 
 class App extends React.Component {
   componentDidMount () {
@@ -29,7 +30,8 @@ class App extends React.Component {
           <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
           <Route path="/" component={Nav} />
         </header>
-        { /* TODO: Talk to Field and Claire -> where is Error going? */ }
+        { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
+        <WaitIndicator />
         <Error />
         <div className="columns">
           <Route exact path='/' component={Home} />
