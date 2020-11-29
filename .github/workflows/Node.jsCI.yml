@@ -1,0 +1,54 @@
+name: Node.js CI
+
+# Run this workflow every time a new commit pushed to your repository
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Build:
+    name: Build
+    runs-on: [ubuntu-latest]
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Building
+        run: npm run build --if-present
+      - run: npm run lint
+      - run: npm run test
+        # - run: npm run test:e2e
+        env:
+          CI: true
+  Deploy:
+    name: Deploy
+    runs-on: [ubuntu-latest]
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: [Build]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: akhileshns/heroku-deploy@v3.6.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.APP_NAME}}
+          heroku_email: ${{secrets.EMAIL}}
+        env:
+          CI: true

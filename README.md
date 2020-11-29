@@ -1,3 +1,6 @@
+![Node.js CI](https://github.com/horoeka-2020/gardenz/workflows/Node.js%20CI/badge.svg)
+![Deploy to Heroku](https://github.com/horoeka-2020/gardenz/workflows/Deploy%20to%20Heroku/badge.svg)
+
 # Gardenz
 
 > Empowering community gardens in New Zealand
@@ -11,6 +14,7 @@ cd gardenz
 npm install
 npm run db:migrate
 npm run db:seed
+cp server/.env.example server/.env
 npm run dev
 ```
 
