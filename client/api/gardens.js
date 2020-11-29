@@ -13,4 +13,3 @@ export function getUserGarden (gardenId, consume = requestor) {
       return res.body
     })
 }
-
