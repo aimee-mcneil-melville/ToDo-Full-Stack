@@ -4,12 +4,12 @@ import { isAuthenticated } from '../auth'
 
 export function IfAuthenticated ({ children }) {
   return isAuthenticated()
-    ? <>{children} </>
+    ? <>{children}</>
     : null
 }
 
 export function IfNotAuthenticated ({ children }) {
   return !isAuthenticated()
-    ? <>{ children }</>
+    ? <>{children}</>
     : null
 }
