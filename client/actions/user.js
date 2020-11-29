@@ -16,7 +16,6 @@ export const clearUser = () => {
 }
 
 export const setUserLocation = (location) => {
-  console.log('actions/user.js > setUserLocation > location:', location)
   return {
     type: USER_LOCATION,
     location

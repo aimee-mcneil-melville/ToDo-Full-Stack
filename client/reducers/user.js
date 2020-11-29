@@ -3,7 +3,9 @@ import { SET_USER, CLEAR_USER, USER_LOCATION } from '../actions/user'
 const emptyUser = {
   username: '',
   isAdmin: false,
-  gardenId: null
+  gardenId: null,
+  latitude: null,
+  longitude: null
 }
 
 const user = (state = emptyUser, action) => {
@@ -15,8 +17,15 @@ const user = (state = emptyUser, action) => {
       return emptyUser
 
     case USER_LOCATION:
-      console.log('reducers/user.js > action.location:', action.location)
-      return action.location
+    {
+      const latitude = action.location.latitude
+      const longitude = action.location.longitude
+      return {
+        ...state,
+        latitude,
+        longitude
+      }
+    }
 
     default:
       return state

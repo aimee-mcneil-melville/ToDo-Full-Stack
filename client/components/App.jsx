@@ -15,13 +15,15 @@ import EditEvent from './EditEvent'
 
 class App extends React.Component {
   componentDidMount () {
+    const setLocation = (location) => {
+      this.props.dispatch(setUserLocation(location))
+    }
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         console.log('Latitude is: ', position.coords.latitude)
         console.log('Longitude is: ', position.coords.longitude)
         const { latitude, longitude } = position.coords
-        setUserLocation({ latitude, longitude })
-        // console.log('App.jsx > componentDidMount() > props:', this.props)
+        setLocation({ latitude, longitude })
       })
     } else {
       console.log('Not Available')
