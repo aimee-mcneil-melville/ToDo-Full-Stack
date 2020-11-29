@@ -1,4 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions/user'
+import { SET_USER, CLEAR_USER, USER_LOCATION } from '../actions/user'
 
 const emptyUser = {
   username: '',
@@ -13,6 +13,10 @@ const user = (state = emptyUser, action) => {
 
     case CLEAR_USER:
       return emptyUser
+
+    case USER_LOCATION:
+      console.log('reducers/user.js > action.location:', action.location)
+      return action.location
 
     default:
       return state
