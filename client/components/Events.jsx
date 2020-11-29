@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import EventItem from './EventItem'
 
 function Events ({ events, isAdmin }) {
@@ -20,4 +22,10 @@ function Events ({ events, isAdmin }) {
   )
 }
 
-export default Events
+function mapStateToProps (state) {
+  return {
+    isAdmin: state.user.isAdmin
+  }
+}
+
+export default connect(mapStateToProps)(Events)

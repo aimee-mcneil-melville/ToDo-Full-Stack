@@ -1,16 +1,18 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Events from './Events'
-import { MemoryRouter } from 'react-router'
+import { renderWithRedux } from '../test-utils'
 
 test('events show add event button for admin', () => {
-  render(<MemoryRouter> <Events isAdmin={true} events={[]}/> </MemoryRouter>)
+  renderWithRedux(<Events events={[]}/>, {
+    initialState: { user: { isAdmin: true } }
+  })
   expect(screen.getByRole('link')).toHaveTextContent('Add new event')
 })
 
 test('events hide add event button for member', () => {
-  render(<MemoryRouter><Events isAdmin={false} events={[]}/> </MemoryRouter>)
+  renderWithRedux(<Events events={[]}/>)
   expect(screen.queryByRole('link')).toBeNull()
 })

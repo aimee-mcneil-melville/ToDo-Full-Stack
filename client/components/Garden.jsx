@@ -29,7 +29,7 @@ class Garden extends React.Component {
           <p className="mb-4">{description}</p>
           <a className="word-wrap" href={url}>{url}</a>
 
-          <Events events={events} isAdmin={this.props.user.isAdmin}/>
+          <Events events={events} />
         </div>
         <Map/>
       </>
