@@ -14,8 +14,8 @@ class Garden extends React.Component {
 
   componentDidMount () {
     return getGarden()
-      .then(res => {
-        res && this.setState(res)
+      .then(garden => {
+        this.setState(garden)
         return null
       })
   }
