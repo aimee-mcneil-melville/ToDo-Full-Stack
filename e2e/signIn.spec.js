@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
 
 const connection = require('../server/db/connection')
+// const environment = process.env.NODE_ENV
 
 let browser
 let page
@@ -39,13 +40,13 @@ test('username and password are each a string', async () => {
   await page.click('input[name="username"]')
 
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'caroline')
+  await page.fill('input[name="username"]', 'test')
 
   // Click input[name="password"]
   await page.click('input[name="password"]')
 
   // Fill input[name="password"]
-  await page.fill('input[name="password"]', 'chocolate')
+  await page.fill('input[name="password"]', 'test')
 
   const username = await page.$eval('[name="username"]', userName => userName.value)
 
@@ -59,17 +60,20 @@ test('clicking the signin button takes you to the garden page', async () => {
   await page.goto(app)
   await page.click('input[name="username"]')
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'caroline')
+  await page.fill('input[name="username"]', 'test')
   await page.click('input[name="password"]')
   // Fill input[name="password"]
-  await page.fill('input[name="password"]', 'chocolate')
-
-  //   await page.click('text="Sign in"')
+  await page.fill('input[name="password"]', 'test')
 
   await page.click('button[data-testid="submit-button"]')
   await page.waitForLoadState('networkidle')
 
-  const url = await page.url()
+  // await Promise.all([
+  //   page.waitForNavigation(),
+  //   page.click('button[data-testid="submitButton"]')
+  // ])
+
+  const url = page.url()
 
   expect(url).toBe('http://localhost:3000/#/garden')
 })
