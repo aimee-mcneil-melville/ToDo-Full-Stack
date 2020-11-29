@@ -2,11 +2,7 @@ import { HIDE_ERROR } from '../actions/error'
 import { hide } from './errorHelper'
 import { dispatch } from '../store'
 
-jest.mock('../store', () => {
-  return {
-    dispatch: jest.fn()
-  }
-})
+jest.mock('../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

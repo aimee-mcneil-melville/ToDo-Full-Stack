@@ -4,11 +4,7 @@ import { dispatch } from '../store'
 import { logOut } from './navHelper'
 
 jest.mock('../auth')
-jest.mock('../store', () => {
-  return {
-    dispatch: jest.fn()
-  }
-})
+jest.mock('../store')
 
 test('logOut logs off and dispatches the clear user action', () => {
   logOut()

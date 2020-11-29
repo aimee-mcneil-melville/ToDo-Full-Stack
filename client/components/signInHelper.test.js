@@ -3,11 +3,7 @@ import { signIn, isAuthenticated, getDecodedToken } from '../auth'
 import { dispatch } from '../store'
 
 jest.mock('../auth')
-jest.mock('../store', () => {
-  return {
-    dispatch: jest.fn()
-  }
-})
+jest.mock('../store')
 
 afterEach(() => {
   return jest.resetAllMocks()
