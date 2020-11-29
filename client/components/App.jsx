@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions/user'
+import { setUser, setUserLocation } from '../actions/user'
 
 import Nav from './Nav'
 import Register from './Register'
@@ -15,10 +15,15 @@ import EditEvent from './EditEvent'
 
 class App extends React.Component {
   componentDidMount () {
+    const setLocation = (location) => {
+      this.props.dispatch(setUserLocation(location))
+    }
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         console.log('Latitude is: ', position.coords.latitude)
         console.log('Longitude is: ', position.coords.longitude)
+        const { latitude, longitude } = position.coords
+        setLocation({ latitude, longitude })
       })
     } else {
       console.log('Not Available')
