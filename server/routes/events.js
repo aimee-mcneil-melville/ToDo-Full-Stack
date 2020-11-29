@@ -16,8 +16,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { title, dateTime, volunteersNeeded, description } = req.body
-  const newEvent = { title, dateTime, volunteersNeeded, description }
+  const { title, date, volunteers, description, gardenId } = req.body
+  const newEvent = {
+    title,
+    dateTime: date,
+    volunteersNeeded: volunteers,
+    description,
+    gardenId
+  }
+  console.log(newEvent)
   db.addEvent(newEvent)
     .then((event) => {
       res.status(201).json(event)
