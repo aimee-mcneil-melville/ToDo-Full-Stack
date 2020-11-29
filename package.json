@@ -16,7 +16,7 @@
     "start": "node server",
     "test:watch": "jest --watchAll --verbose",
     "test": "jest --verbose",
-    "test:e2e": "NODE_ENV=e2e jest",
+    "test:e2e": "DEBUG=pw:api NODE_ENV=e2e jest",
     "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
