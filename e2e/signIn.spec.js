@@ -4,17 +4,25 @@ let browser
 let page
 // Declare app variable
 const app = 'http://localhost:3000/#/signin'
+
+// Run this before all tests
 beforeAll(async () => {
   browser = await playwright.chromium.launch({
     headless: true
   })
 })
+
+// Run this before each test
 beforeEach(async () => {
   page = await browser.newPage()
 })
+
+// Run this after all tests
 afterAll(async () => {
   await browser.close()
 })
+
+// Run this after each test
 afterEach(async () => {
   await page.close()
 })
