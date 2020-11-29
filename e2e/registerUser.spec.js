@@ -2,7 +2,6 @@ import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
 
 const connection = require('../server/db/connection')
-const enviroment = process.env.NODE_ENV
 
 // Declare variables
 let browser
@@ -68,12 +67,10 @@ test('User can register', async () => {
   // Define and target password value
   const userPass = await page.$eval('[name="password"]', userName => userName.value)
 
-  console.log(enviroment)
   // Click button
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[data-testid="submitButton"]'),
-    console.log(enviroment)
+    page.click('button[data-testid="submitButton"]')
   ])
   const url = page.url()
 
