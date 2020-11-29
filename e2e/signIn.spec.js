@@ -39,13 +39,13 @@ test('username and password are each a string', async () => {
   await page.click('input[name="username"]')
 
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'member')
+  await page.fill('input[name="username"]', 'caroline')
 
   // Click input[name="password"]
   await page.click('input[name="password"]')
 
   // Fill input[name="password"]
-  await page.fill('input[name="password"]', 'member')
+  await page.fill('input[name="password"]', 'chocolate')
 
   const username = await page.$eval('[name="username"]', userName => userName.value)
 
@@ -59,10 +59,10 @@ test('clicking the signin button takes you to the garden page', async () => {
   await page.goto(app)
   await page.click('input[name="username"]')
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'admin')
+  await page.fill('input[name="username"]', 'caroline')
   await page.click('input[name="password"]')
   // Fill input[name="password"]
-  await page.fill('input[name="password"]', 'admin')
+  await page.fill('input[name="password"]', 'chocolate')
 
   //   await page.click('text="Sign in"')
 
