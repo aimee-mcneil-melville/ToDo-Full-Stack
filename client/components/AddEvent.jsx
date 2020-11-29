@@ -49,7 +49,7 @@ class AddEvent extends React.Component {
               <h5>Date</h5>
               <input
                 className="input is-normal"
-                type="datetime-local"
+                type="date"
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}

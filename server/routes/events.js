@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
   const { title, date, volunteers, description, gardenId } = req.body
   const newEvent = {
     title,
-    dateTime: date,
+    date: date,
     volunteersNeeded: volunteers,
     description,
     gardenId
