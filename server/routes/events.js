@@ -24,7 +24,6 @@ router.post('/', (req, res) => {
     description,
     gardenId
   }
-  console.log(newEvent)
   db.addEvent(newEvent)
     .then((event) => {
       res.status(201).json(event)
