@@ -14,7 +14,6 @@ test('getGardens returns gardens from res body', () => {
     })
 })
 
-
 test('getUserGarden returns res body', () => {
   expect.assertions(2)
   const consume = (path) => {
