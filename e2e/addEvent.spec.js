@@ -6,11 +6,12 @@ let page
 const app = 'http://localhost:3000/#/'
 const garden = 'http://localhost:3000/#/garden'
 const newEvent = 'http://localhost:3000/#/events/new'
+const signIn = 'http://localhost:3000/#/signin'
 
 beforeAll(async () => {
   browser = await playwright.chromium.launch({
     headless: false,
-    slowMo: 1000
+    slowMo: 2000
   })
 })
 beforeEach(async () => {
@@ -25,21 +26,41 @@ afterEach(async () => {
 
 test('clicking on add event button takes you to add event page', async () => {
   // Goes to 'http://localhost:3000/#/garden'
-  await page.goto(garden)
+  await page.goto(app)
 
   // Clicks on the Add new event button/tag
-  await page.click('text="Add new event"')
+  await page.click('text="Garden"')
 
   // Grabs the new url of the page
   const url = page.url()
 
   // Checks the Url and sets what is epxected
-  expect(url).toBe('http://localhost:3000/#/events/new')
+  expect(url).toBe(garden)
 })
 
 test('Form is present and takes users input for new event', async () => {
-  // Goes to 'http://localhost:3000/#/garden'
-  await page.goto(newEvent)
+  await page.goto(app)
+
+  await page.click('text="Sign in"')
+
+  // await page.goto('http://localhost:3000/#/signin')
+
+  await page.click('input[name="username"]')
+
+  // Fill event title field with test data
+  await page.fill('input[name="username"]', 'admin')
+
+  await page.click('input[name="password"]')
+
+  // Fill event title field with test data
+  await page.fill('input[name="password"]', 'admin')
+
+  await page.click('button[data-testid="submit-button"]')
+
+  await page.click('text="Add new event"')
+
+  // // Goes to 'http://localhost:3000/#/garden'
+  // await page.goto(newEvent)
 
   // Clicks on Event title field
   await page.click('input[name="title"]')
@@ -68,7 +89,10 @@ test('Form is present and takes users input for new event', async () => {
 
   await page.click('button[class="button my-4 is-primary"]')
 
-  await page.goto()
+  // await page.goto('http://localhost:3000/#/garden')
 
-  expect(title).toBe('Test Event')
-}, 40000)
+  const url = page.url()
+
+  expect(url).toBe('http://localhost:3000/#/garden')
+  expect('Test Event').toBeVisible()
+}, 90000)
