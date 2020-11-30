@@ -12,7 +12,6 @@ class EditEvent extends React.Component {
   componentDidMount () {
     getEventById(this.props.match.params.id)
       .then((res) => {
-        console.log(res)
         // eslint-disable-next-line camelcase
         const { title, date, volunteers_needed, description } = res
         return this.setState({
@@ -22,7 +21,7 @@ class EditEvent extends React.Component {
           description: description
         })
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   handleChange = (e) => {

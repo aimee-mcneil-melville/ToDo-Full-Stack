@@ -47,7 +47,6 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.patch('/:id/edit', (req, res) => {
-  console.log(req.body)
   const { title, date, volunteers, description, id, gardenId } = req.body
   const updatedEvent = {
     title,
