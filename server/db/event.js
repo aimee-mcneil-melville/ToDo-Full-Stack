@@ -1,9 +1,11 @@
+const { update } = require('./connection')
 const connection = require('./connection')
 
 module.exports = {
   getEvents,
   getEventById,
-  addEvent
+  addEvent,
+  updateEvent
 }
 
 function getEvents (db = connection) {
@@ -29,6 +31,29 @@ function addEvent (newEvent, db = connection) {
         ...event,
         gardenId: event.garden_id,
         volunteersNeeded: event.volunteers_needed
+      }
+    })
+}
+
+function updateEvent (updatedEvent, db = connection) {
+  return db('events').where('id', updatedEvent.id)
+    .update({
+      title: updatedEvent.title,
+      date: updatedEvent.date,
+      description: updatedEvent.description,
+      volunteers_needed: updatedEvent.volunteersNeeded
+    })
+    .then(() => getEventById(updatedEvent.id, db))
+    .then(event => {
+      // eslint-disable-next-line camelcase
+      const { title, date, description, id, garden_id, volunteers_needed } = event
+      return {
+        title,
+        description,
+        date,
+        id,
+        gardenId: garden_id,
+        volunteersNeeded: volunteers_needed
       }
     })
 }
