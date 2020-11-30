@@ -124,7 +124,7 @@ describe('GET /api/v1/events/:id/edit', () => {
 })
 
 describe('PATCH /api/v1/events/:id/edit', () => {
-  it('responds with the correct event on res body', () => {
+  it('responds with the correct event by id on res body', () => {
     expect.assertions(2)
     db.updateEvent.mockImplementation((updateEvent) => {
       expect(updateEvent.description).toBe('test')
