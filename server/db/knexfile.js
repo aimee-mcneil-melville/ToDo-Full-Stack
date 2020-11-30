@@ -10,6 +10,20 @@ module.exports = {
     }
   },
 
+  e2e: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: path.join(__dirname, '../../e2e/dev.sqlite3')
+    },
+    seeds: {
+      directory: path.join(__dirname, 'tests/seeds')
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
+    }
+  },
+
   test: {
     client: 'sqlite3',
     useNullAsDefault: true,
