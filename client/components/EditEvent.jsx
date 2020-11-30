@@ -113,7 +113,7 @@ class EditEvent extends React.Component {
               }
               {volunteers === 0
                 ? <p>Number of volunteers</p>
-                : <p>{volunteers}</p>
+                : <p>{volunteers} volunteers needed</p>
               }
               {description === ''
                 ? <p>Your description here</p>
