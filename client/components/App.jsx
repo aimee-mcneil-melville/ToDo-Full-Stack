@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
 import { setUser, setUserLocation } from '../actions/user'
+import { fetchGardens } from '../actions/gardens'
 
 import Nav from './Nav'
 import Register from './Register'
@@ -17,6 +18,7 @@ class App extends React.Component {
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
+      this.props.dispatch(fetchGardens())
     }
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {

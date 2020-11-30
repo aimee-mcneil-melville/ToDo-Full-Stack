@@ -30,7 +30,7 @@ export function fetchGardens () {
     return getGardens()
       .then((res) => {
         dispatch(receiveGardens(res))
-        return null
+        return res
       })
       .catch((err) => {
         dispatch(showError(err.message))

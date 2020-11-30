@@ -71,6 +71,5 @@ test('returns user location data attached to object on "USER_LOCATION"', () => {
     location
   }
   const newState = userReducer(oldState, action)
-  // expect(newState.latitude.toBe(-36.8721312)
   expect(newState).not.toBe(oldState)
 })
