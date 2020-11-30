@@ -45,3 +45,23 @@ test('addEvent inserts one new event', () => {
       return null
     })
 })
+
+test('updateEvent returns the updatedEvent', () => {
+  // Updated event
+  const updated = {
+    id: 1,
+    title: 'gardening at daves',
+    date: 'Wed, 28 Sep 2020 20:00:00 GMT',
+    description: 'Leshgoooooo!',
+    volunteersNeeded: 10
+  }
+
+  return db.updateEvent(updated, testDb)
+    .then(event => {
+      expect(event.title).toBe('gardening at daves')
+      expect(event.date).toBe('Wed, 28 Sep 2020 20:00:00 GMT')
+      expect(event.description).toBe('Leshgoooooo!')
+      expect(event.volunteersNeeded).toBe(10)
+      return null
+    })
+})
