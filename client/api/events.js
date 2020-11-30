@@ -7,6 +7,13 @@ export function getEvents (gardenId, consume = requestor) {
     })
 }
 
+export function editEvent (event, consume = requestor) {
+  return consume(`/edit/${event.id}`, 'patch', event)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function addEvent (newEvent, consume = requestor) {
   return consume('/events', 'post', newEvent)
     .then(res => {
