@@ -1,4 +1,4 @@
-import { addEvent, editEvent, getEventsById } from './events'
+import { addEvent, editEvent, getEventById } from './events'
 
 test('addEvent', () => {
   const consume = () => Promise.resolve({
@@ -32,7 +32,7 @@ test('editEvent', () => {
     })
 })
 
-test('getEvents return a id', () => {
+test('getEventById return a id', () => {
   const consume = () => Promise.resolve({
     body: {
       id: 1,
@@ -40,9 +40,10 @@ test('getEvents return a id', () => {
     }
   })
   const id = consume.id
-  return getEventsById(id, consume)
+  return getEventById(id, consume)
     .then((event) => {
       expect(event.id).toBe(1)
+      expect(event.title).toBe('Patrick')
       return null
     })
 })
