@@ -20,3 +20,10 @@ export function addEvent (newEvent, consume = requestor) {
       return res.body
     })
 }
+
+export function getEventsById (id, consume = requestor) {
+  return consume(`/events/${id}`)
+    .then(res => {
+      return res.body
+    })
+}
