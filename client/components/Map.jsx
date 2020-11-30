@@ -3,8 +3,9 @@ import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 function Map (props) {
-  console.log('Map.jsx > props.gardens: ', props.gardens)
-  console.log('Map.jsx > props.userLocation: ', props.location)
+  console.log('Map.jsx > props.userCoordinates: ', props.userCoordinates)
+  console.log('Map.jsx > props.gardensCoordinates: ', props.gardensCoordinates)
+  console.log('Map.jsx > props.addresses: ', props.addresses)
   return (
     <div className='column'>
       <MapContainer

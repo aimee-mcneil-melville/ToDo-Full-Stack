@@ -8,15 +8,16 @@ import { setUserLocation } from '../actions/user'
 
 class Home extends React.Component {
   state = {
-    gardens: [],
-    userLatitude: 1,
-    userLongitude: 1
+    userCoordinates: [],
+    gardensCoordinates: [],
+    addresses: []
   }
 
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
     }
+
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         console.log('Latitude is: ', position.coords.latitude)
@@ -29,17 +30,23 @@ class Home extends React.Component {
     }
     return fetchGardens()
       .then(gardens => {
-        this.setState({
-          gardens: gardens,
-          userLatitude: this.props.user.latitude,
-          userLongitude: this.props.user.longitude
+        const coords = gardens.map(garden => {
+          const gardenCoords = { lat: garden.lat, lon: garden.lon }
+          return gardenCoords
         })
-        return null
+        const addresses = gardens.map(garden => garden.address)
+        const userCords = [{ lat: this.props.user.latitude, lon: this.props.user.longitude }]
+        this.setState({
+          gardensCoordinates: coords,
+          userCoordinates: userCords,
+          addresses: addresses
+        })
+        return this.state
       })
   }
 
   render () {
-    const { gardens, userLatitude, userLongitude } = this.state
+    const { userCoordinates, gardensCoordinates, addresses } = this.state
     return (
       <>
         <div className='column is-half-tablet'>
@@ -47,8 +54,10 @@ class Home extends React.Component {
           <Link className="button is-primary my-4" to={'/garden'}>Garden</Link>
         </div>
         <Map
-          gardens={gardens}
-          location={[{ userLatitude, userLongitude }]}/>
+          userCoordinates={userCoordinates}
+          gardensCoordinates={gardensCoordinates}
+          addresses={addresses}
+        />
       </>
     )
   }
@@ -56,10 +65,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    gardens: state.gardens,
-    userLatitude: state.userLatitude,
-    userLongitude: state.userLongitude
+    user: state.user
   }
 }
 
