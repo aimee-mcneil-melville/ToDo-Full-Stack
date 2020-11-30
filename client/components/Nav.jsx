@@ -1,9 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logOff } from 'authenticare/client'
 
-import { clearUser } from '../actions/user'
+import { logOut } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Nav (props) {
@@ -36,11 +34,6 @@ function Nav (props) {
       )
   }
 
-  const logOut = () => {
-    logOff()
-    props.dispatch(clearUser())
-  }
-
   return (
     <nav className="navbar column">
       <IfAuthenticated>
@@ -54,4 +47,4 @@ function Nav (props) {
   )
 }
 
-export default connect()(Nav)
+export default Nav

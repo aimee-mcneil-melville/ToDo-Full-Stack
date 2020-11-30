@@ -1,4 +1,6 @@
 import React from 'react'
+import { addEvent } from '../api/events'
+import { connect } from 'react-redux'
 
 class AddEvent extends React.Component {
   state = {
@@ -16,7 +18,14 @@ class AddEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // implement submit
+    const newEvent = {
+      ...this.state,
+      gardenId: this.props.gardenId
+    }
+    return addEvent(newEvent).then(() => {
+      this.props.history.push('/garden')
+      return null
+    })
   }
 
   render () {
@@ -40,7 +49,7 @@ class AddEvent extends React.Component {
               <h5>Date</h5>
               <input
                 className="input is-normal"
-                type="datetime-local"
+                type="date"
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
@@ -83,7 +92,15 @@ class AddEvent extends React.Component {
           </div>
         </div>
       </>
+
     )
   }
 }
-export default AddEvent
+
+const mapStateToProps = (state) => {
+  return {
+    gardenId: state.user.gardenId
+  }
+}
+
+export default connect(mapStateToProps)(AddEvent)

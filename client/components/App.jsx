@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
+import { isAuthenticated, getDecodedToken } from '../auth'
 import { setUser } from '../actions/user'
 
 import Header from './Header'
@@ -12,6 +12,8 @@ import Garden from './Garden'
 import Home from './Home'
 import AddEvent from './AddEvent'
 import EditEvent from './EditEvent'
+import Error from './Error'
+import WaitIndicator from './WaitIndicator'
 
 class App extends React.Component {
   componentDidMount () {
@@ -23,9 +25,14 @@ class App extends React.Component {
 
   render () {
     return (
-      <main className="container is-max-desktop">
+      <main className="container">
         <Route path="/" component={Header} />
-        <Route exact path='/' component={Home} />
+        { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
+        <WaitIndicator />
+        <Error />
+        <div className="columns">
+          <Route exact path='/' component={Home} />
+        </div>
         <div className='columns'>
           <Route path="/register" component={Register} />
           <Route path="/signin" component={SignIn} />

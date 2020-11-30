@@ -12,6 +12,6 @@ export default function consume (endpoint, method = 'get', data = {}) {
     .set(headers)[payLoadMethod](data)
     .then(res => res)
     .catch(err => {
-      throw err
+      throw new Error(err.response.body.error)
     })
 }
