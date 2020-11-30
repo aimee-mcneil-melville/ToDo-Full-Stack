@@ -9,7 +9,9 @@ class Garden extends React.Component {
     name: '',
     description: '',
     url: '',
-    events: []
+    events: [],
+    lat: 1,
+    lon: 1
   }
 
   componentDidMount () {
@@ -21,7 +23,7 @@ class Garden extends React.Component {
   }
 
   render () {
-    const { name, description, url, events } = this.state
+    const { name, description, url, events, lat, lon } = this.state
     return (
       <>
         <div className="column">
@@ -31,7 +33,7 @@ class Garden extends React.Component {
 
           <Events events={events} />
         </div>
-        <Map/>
+        <Map coordinates={[{ lat: lat, lon: lon }]}/>
       </>
     )
   }
