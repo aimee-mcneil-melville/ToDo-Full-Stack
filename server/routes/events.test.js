@@ -97,7 +97,7 @@ it('responds with 500 and correct error object on DB error', () => {
 
 describe('GET /api/v1/events/:id/edit', () => {
   it('responds with correct event by id on res body', () => {
-    db.getEventsById.mockImplementation(() => Promise.resolve(mockEvents))
+    db.getEventById.mockImplementation(() => Promise.resolve(mockEvents))
     return request(server)
       .get('/api/v1/events/:id/edit')
       .expect('Content-Type', /json/)
@@ -109,7 +109,7 @@ describe('GET /api/v1/events/:id/edit', () => {
   })
 
   it('responds with 500 and correct error object on DB error', () => {
-    db.getEventsbyId.mockImplementation(() => Promise.reject(
+    db.getEventById.mockImplementation(() => Promise.reject(
       new Error('mock DB error')
     ))
     return request(server)
@@ -123,7 +123,7 @@ describe('GET /api/v1/events/:id/edit', () => {
   })
 })
 
-describe('POST /api/v1/events/:id/edit', () => {
+describe('PATCH /api/v1/events/:id/edit', () => {
   it('responds with the correct event on res body', () => {
     expect.assertions(2)
     db.updateEvent.mockImplementation((updateEvent) => {
@@ -137,7 +137,7 @@ describe('POST /api/v1/events/:id/edit', () => {
       })
     })
     return request(server)
-      .post('/api/v1/events/:id/edit')
+      .patch('/api/v1/events/:id/edit')
       .send({
         title: 'test',
         dateTime: 'test',

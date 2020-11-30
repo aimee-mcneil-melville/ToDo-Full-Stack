@@ -47,14 +47,16 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.patch('/:id/edit', (req, res) => {
-  const id = Number(req.params.id)
-  const updateEvent = {
-    // title,
-    // date,
-    // volunteersNeeded,
-    // description,
+  const { title, date, volunteers, description, id, gardenId } = req.body
+  const updatedEvent = {
+    title,
+    date: date,
+    volunteersNeeded: volunteers,
+    description,
+    id,
+    gardenId
   }
-  db.getEventById(updateEvent)
+  db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(201).json(event)
       return null
