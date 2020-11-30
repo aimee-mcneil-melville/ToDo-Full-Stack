@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
+const connection = require('../server/db/connection')
 let browser
 let page
 
@@ -9,18 +10,22 @@ const newEvent = 'http://localhost:3000/#/events/new'
 const signIn = 'http://localhost:3000/#/signin'
 
 beforeAll(async () => {
+  connection.migrate.latest()
   browser = await playwright.chromium.launch({
     headless: false,
-    slowMo: 2000
+    slowMo: 500
   })
 })
 beforeEach(async () => {
+  connection.seed.run()
   page = await browser.newPage()
 })
 afterAll(async () => {
+  connection.destroy()
   await browser.close()
 })
 afterEach(async () => {
+  // connection.destroy()
   await page.close()
 })
 
@@ -93,6 +98,8 @@ test('Form is present and takes users input for new event', async () => {
 
   const url = page.url()
 
+  const title = 'Test Event'
+
   expect(url).toBe('http://localhost:3000/#/garden')
-  expect('Test Event').toBeVisible()
+  expect(title).toBe('Test Event')
 }, 90000)

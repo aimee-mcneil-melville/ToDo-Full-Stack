@@ -59,7 +59,7 @@ test('User can register', async () => {
   await page.fill('input[name="password"]', '12356')
 
   // Select garden dropdown
-  await page.selectOption('select[id="name"]', '2')
+  await page.selectOption('select[id="gardenId"]', '2')
 
   // Define and target username value
   const userName = await page.$eval('[name="username"]', userName => userName.value)
