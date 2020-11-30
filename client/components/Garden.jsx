@@ -10,6 +10,7 @@ class Garden extends React.Component {
     description: '',
     url: '',
     events: [],
+    address: '',
     lat: 1,
     lon: 1
   }
@@ -23,7 +24,7 @@ class Garden extends React.Component {
   }
 
   render () {
-    const { name, description, url, events, lat, lon } = this.state
+    const { name, description, address, url, events, lat, lon } = this.state
     return (
       <>
         <div className="column">
@@ -33,7 +34,10 @@ class Garden extends React.Component {
 
           <Events events={events} />
         </div>
-        <Map coordinates={[{ lat: lat, lon: lon }]}/>
+        <Map
+          coordinates={[{ lat: lat, lon: lon }]}
+          address={address}
+        />
       </>
     )
   }

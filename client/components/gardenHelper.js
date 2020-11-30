@@ -10,10 +10,11 @@ export function getGarden () {
   return getUserGarden(gardenId)
     .then(garden => {
       dispatch(clearWaiting())
-      const { name, description, url, events, lat, lon } = garden
+      const { name, description, url, address, events, lat, lon } = garden
       return {
         name,
         description,
+        address,
         url,
         events,
         lat,
