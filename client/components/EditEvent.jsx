@@ -1,4 +1,5 @@
 import React from 'react'
+import { editEvent, getEventById } from '../api/events'
 
 class EditEvent extends React.Component {
   state = {
@@ -6,6 +7,21 @@ class EditEvent extends React.Component {
     date: '',
     volunteers: 0,
     description: ''
+  }
+
+  componentDidMount () {
+    getEventById(this.props.match.params.id)
+      .then((res) => {
+        // eslint-disable-next-line camelcase
+        const { title, date, volunteers_needed, description } = res
+        return this.setState({
+          title: title,
+          date: date,
+          volunteers: volunteers_needed,
+          description: description
+        })
+      })
+      .catch((err) => console.error(err))
   }
 
   handleChange = (e) => {
@@ -17,9 +33,19 @@ class EditEvent extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     // implement submit
+    const updatedEvent = {
+      id: Number(this.props.match.params.id),
+      ...this.state
+    }
+    return editEvent(updatedEvent)
+      .then(() => {
+        this.props.history.push('/garden')
+        return null
+      })
   }
 
   render () {
+    const { title, date, volunteers, description } = this.state
     return (
       <>
         <div className="edit-event-form columns is-8">
@@ -40,7 +66,8 @@ class EditEvent extends React.Component {
               <h5>Date</h5>
               <input
                 className="input is-normal"
-                type="datetime-local"
+                // Just need to work on the format of the date
+                type="date"
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
@@ -51,6 +78,7 @@ class EditEvent extends React.Component {
                 className="input is-normal"
                 type="number"
                 name="volunteers"
+                min="0"
                 value={this.state.volunteers}
                 onChange={this.handleChange}
               />
@@ -74,10 +102,23 @@ class EditEvent extends React.Component {
           <div className="event-preview column">
             <h1>Event Preview</h1>
             <div className="box">
-              <p>Weeds worker bee</p>
-              <p>Date</p>
-              <p>volunteers</p>
-              <p>Description here...</p>
+              {title === ''
+                ? <p>Your title here</p>
+                : <p>{title}</p>
+              }
+              {date === ''
+                ? <p>Your date here</p>
+                : <p>{date}</p>
+              }
+              {volunteers === 0
+                ? <p>Number of volunteers</p>
+                : <p>{volunteers} volunteers needed</p>
+              }
+              {description === ''
+                ? <p>Your description here</p>
+                : <p>{description}</p>
+              }
+
             </div>
           </div>
         </div>

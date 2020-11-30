@@ -22,6 +22,7 @@ class AddEvent extends React.Component {
       ...this.state,
       gardenId: this.props.gardenId
     }
+
     return addEvent(newEvent).then(() => {
       this.props.history.push('/garden')
       return null

@@ -94,3 +94,61 @@ it('responds with 500 and correct error object on DB error', () => {
       return null
     })
 })
+
+describe('GET /api/v1/events/:id/edit', () => {
+  it('responds with correct event by id on res body', () => {
+    db.getEventById.mockImplementation(() => Promise.resolve(mockEvents))
+    return request(server)
+      .get('/api/v1/events/:id/edit')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body).toHaveLength(2)
+        return null
+      })
+  })
+
+  it('responds with 500 and correct error object on DB error', () => {
+    db.getEventById.mockImplementation(() => Promise.reject(
+      new Error('mock DB error')
+    ))
+    return request(server)
+      .get('/api/v1/events/:id/edit')
+      .expect('Content-Type', /json/)
+      .expect(500)
+      .then(res => {
+        expect(res.body.error).toBe('mock DB error')
+        return null
+      })
+  })
+})
+
+describe('PATCH /api/v1/events/:id/edit', () => {
+  it('responds with the correct event by id on res body', () => {
+    expect.assertions(2)
+    db.updateEvent.mockImplementation((updateEvent) => {
+      expect(updateEvent.description).toBe('test')
+      return Promise.resolve({
+        id: 2,
+        title: 'test',
+        dateTime: 'test',
+        volunteersNeeded: 'test',
+        description: 'test'
+      })
+    })
+    return request(server)
+      .patch('/api/v1/events/:id/edit')
+      .send({
+        title: 'test',
+        dateTime: 'test',
+        volunteersNeeded: 'test',
+        description: 'test'
+      })
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .then(res => {
+        expect(res.body.title).toBe('test')
+        return null
+      })
+  })
+})
