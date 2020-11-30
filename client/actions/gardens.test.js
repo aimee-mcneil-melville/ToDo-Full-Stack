@@ -1,4 +1,4 @@
-import { requestGardens, receiveGardens, showError} from './gardens'
+import { requestGardens, receiveGardens, showError } from './gardens'
 
 test('REQUEST_GARDENS returns the correct action', () => {
   const action = requestGardens()
