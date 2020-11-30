@@ -1,4 +1,5 @@
 import React from 'react'
+import { editEvent, getEventById } from '../api/events'
 
 class EditEvent extends React.Component {
   state = {
@@ -6,6 +7,24 @@ class EditEvent extends React.Component {
     date: '',
     volunteers: 0,
     description: ''
+  }
+
+  componentDidMount () {
+    // request.get()
+    getEventById(this.props.match.params.id)
+      .then((res) => {
+        console.log(res)
+        // Destructur response properties
+        // eslint-disable-next-line camelcase
+        const { title, date, volunteers_needed, description } = res
+        return this.setState({
+          title: title,
+          date: date,
+          volunteers: volunteers_needed,
+          description: description
+        })
+      })
+      .catch((err) => console.log(err))
   }
 
   handleChange = (e) => {
@@ -17,10 +36,20 @@ class EditEvent extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     // implement submit
+    const updatedEvent = {
+      id: Number(this.props.match.params.id),
+      ...this.state
+    }
+    return editEvent(updatedEvent)
+      .then(() => {
+        this.props.history.push('/garden')
+        return null
+      })
   }
 
   render () {
     const { title, date, volunteers, description } = this.state
+    console.log(this.props.match.params.id)
     return (
       <>
         <div className="edit-event-form columns is-8">
@@ -41,7 +70,7 @@ class EditEvent extends React.Component {
               <h5>Date</h5>
               <input
                 className="input is-normal"
-                type="datetime-local"
+                type="date"
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
