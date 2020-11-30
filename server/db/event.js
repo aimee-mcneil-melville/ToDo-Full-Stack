@@ -48,11 +48,11 @@ function updateEvent (updatedEvent, db = connection) {
       // eslint-disable-next-line camelcase
       const { title, date, description, id, garden_id, volunteers_needed } = event
       return {
-        title,
-        description,
-        date,
         id,
         gardenId: garden_id,
+        title,
+        date,
+        description,
         volunteersNeeded: volunteers_needed
       }
     })
