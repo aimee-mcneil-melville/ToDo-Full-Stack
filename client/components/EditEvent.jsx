@@ -10,11 +10,9 @@ class EditEvent extends React.Component {
   }
 
   componentDidMount () {
-    // request.get()
     getEventById(this.props.match.params.id)
       .then((res) => {
         console.log(res)
-        // Destructur response properties
         // eslint-disable-next-line camelcase
         const { title, date, volunteers_needed, description } = res
         return this.setState({
@@ -49,7 +47,6 @@ class EditEvent extends React.Component {
 
   render () {
     const { title, date, volunteers, description } = this.state
-    console.log(this.props.match.params.id)
     return (
       <>
         <div className="edit-event-form columns is-8">
@@ -70,6 +67,7 @@ class EditEvent extends React.Component {
               <h5>Date</h5>
               <input
                 className="input is-normal"
+                // Just need to work on the format of the date
                 type="date"
                 name="date"
                 value={this.state.date}
