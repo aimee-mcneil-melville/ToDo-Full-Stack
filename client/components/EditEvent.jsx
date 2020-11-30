@@ -77,9 +77,7 @@ class EditEvent extends React.Component {
             <h1>Event Preview</h1>
             <div className="box">
               {title === ''
-                // if title is empty string render 'title goes here'
                 ? <p>Your title here</p>
-                // else render this.state.title
                 : <p>{title}</p>
               }
               {date === ''
