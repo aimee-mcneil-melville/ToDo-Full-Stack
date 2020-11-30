@@ -1,12 +1,14 @@
 @charset "utf-8";
+
+// Partials - variables, mixins and functions
+@import "partials/colors";
+
 // Bulma 
 // Here are the docs https://bulma.io/documentation/
 @import "bulma/bulma.sass";
 
 // Custom CSS - Bulma Overrides
 
-// Partials - variables, mixins and functions
-@import "partials/colors";
 
 // Base
 @import "base/typography";

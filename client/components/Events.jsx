@@ -4,9 +4,9 @@ import EventItem from './EventItem'
 
 function Events ({ events }) {
   return (
-    <div className="m-6">
+    <div className="mr-6">
+      <Link to='/events/new' className="button is-pulled-right mt-4 pt-1">Add New Event</Link>
       <h2 className="my-4 is-pulled-left">Events</h2>
-      <Link to='/events/new' className="button my-4 is-primary is-pulled-right">Add new event</Link>
       <div className="box clearfix">
         {events.map((event) =>
           <EventItem key={event.id} event={event} />

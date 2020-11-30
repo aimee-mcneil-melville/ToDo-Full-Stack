@@ -84,7 +84,7 @@ class Register extends React.Component {
         </div>
         <div className="column is-two-thirds-tablet">
           <img
-            className='regImg'
+            className='rightHeroImage'
             src="./images/comGardenPlant.png"
             alt=""
             style={{ width: '600px', height: '500px' }}
