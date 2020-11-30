@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { setUser, setUserLocation } from '../actions/user'
+import { fetchGardens } from '../actions/gardens'
 import { isAuthenticated, getDecodedToken } from '../auth'
 
 import Nav from './Nav'
@@ -19,6 +20,7 @@ class App extends React.Component {
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
+      this.props.dispatch(fetchGardens())
     }
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {

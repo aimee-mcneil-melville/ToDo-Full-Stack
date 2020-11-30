@@ -1,4 +1,4 @@
-import { setUser, clearUser, setUserLocation } from './user'
+import { setUser, clearUser, setUserLocation, SET_USER, CLEAR_USER, USER_LOCATION } from './user'
 
 test('setUser returns the correct action', () => {
   const user = {
@@ -20,5 +20,5 @@ test('clearUser returns the correct action', () => {
 
 test('setUserLocation returns the correct action', () => {
   const action = setUserLocation()
-  expect(action.type).toBe('USER_LOCATION')
+  expect(action.type).toBe(USER_LOCATION)
 })
