@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { isAuthenticated, signIn, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions/user'
+import { signInUser } from './signInHelper'
 
 class SignIn extends React.Component {
   state = {
@@ -18,16 +16,7 @@ class SignIn extends React.Component {
   }
 
   handleClick = () => {
-    const { username, password } = this.state
-    return signIn({ username, password }, { baseUrl: '/api/v1' })
-      .then(() => {
-        if (isAuthenticated()) {
-          const { username, isAdmin, gardenId } = getDecodedToken()
-          this.props.dispatch(setUser({ username, isAdmin, gardenId }))
-          return this.props.history.push('/garden')
-        }
-        return null
-      })
+    signInUser(this.state, this.props.history.push)
   }
 
   render () {
@@ -38,7 +27,7 @@ class SignIn extends React.Component {
             <h1>Sign in</h1>
           </div>
 
-          <label className="label ">Username</label>
+          <label htmlFor="username" className="label ">Username</label>
           <input
             className="input "
             id="username"
@@ -48,7 +37,7 @@ class SignIn extends React.Component {
             placeholder="Username"
             type="text"
           />
-          <label className="label">Password</label>
+          <label htmlFor="password" className="label">Password</label>
           <input
             className="input"
             id="password"
@@ -78,4 +67,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default connect()(SignIn)
+export default SignIn

@@ -9,13 +9,13 @@ test('setUser returns the correct action', () => {
 
   const action = setUser(user)
 
-  expect(action.type).toBe('SET_USER')
+  expect(action.type).toBe(SET_USER)
   expect(action.user.username).toBe('testuser')
 })
 
 test('clearUser returns the correct action', () => {
   const action = clearUser()
-  expect(action.type).toBe('CLEAR_USER')
+  expect(action.type).toBe(CLEAR_USER)
 })
 
 test('setUserLocation returns the correct action', () => {
