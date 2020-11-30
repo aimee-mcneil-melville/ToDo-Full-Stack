@@ -20,6 +20,7 @@ class EditEvent extends React.Component {
   }
 
   render () {
+    const { title, date, volunteers, description } = this.state
     return (
       <>
         <div className="edit-event-form columns is-8">
@@ -51,6 +52,7 @@ class EditEvent extends React.Component {
                 className="input is-normal"
                 type="number"
                 name="volunteers"
+                min="0"
                 value={this.state.volunteers}
                 onChange={this.handleChange}
               />
@@ -74,10 +76,23 @@ class EditEvent extends React.Component {
           <div className="event-preview column">
             <h1>Event Preview</h1>
             <div className="box">
-              <p>Weeds worker bee</p>
-              <p>Date</p>
-              <p>volunteers</p>
-              <p>Description here...</p>
+              {title === ''
+                ? <p>Your title here</p>
+                : <p>{title}</p>
+              }
+              {date === ''
+                ? <p>Your date here</p>
+                : <p>{date}</p>
+              }
+              {volunteers === 0
+                ? <p>Number of volunteers</p>
+                : <p>{volunteers}</p>
+              }
+              {description === ''
+                ? <p>Your description here</p>
+                : <p>{description}</p>
+              }
+
             </div>
           </div>
         </div>
