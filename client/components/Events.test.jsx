@@ -9,7 +9,7 @@ test('events show add event button for admin', () => {
   renderWithRedux(<Events events={[]}/>, {
     initialState: { user: { isAdmin: true } }
   })
-  expect(screen.getByRole('link')).toHaveTextContent('Add new event')
+  expect(screen.getByRole('link')).toHaveTextContent('Add New Event')
 })
 
 test('events hide add event button for member', () => {

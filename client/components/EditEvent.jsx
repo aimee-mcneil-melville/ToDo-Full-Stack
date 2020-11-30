@@ -51,7 +51,7 @@ class EditEvent extends React.Component {
         <div className="edit-event-form columns is-8">
           <div className="column">
             <h1>Kelmarna Gardens</h1>
-            <h3>Edit this event</h3>
+            <label>Edit this event</label>
             <form>
               <h5>Event Title</h5>
               <input
