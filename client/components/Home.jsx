@@ -14,7 +14,6 @@ class Home extends React.Component {
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
-      this.props.dispatch(fetchGardens())
     }
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
