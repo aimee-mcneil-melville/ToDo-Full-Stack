@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <main className="container">
+      <main className="container is-max-desktop">
         <Route path="/" component={Header} />
         { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
         <WaitIndicator />

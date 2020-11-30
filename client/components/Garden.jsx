@@ -28,7 +28,6 @@ class Garden extends React.Component {
           <h3>{name}</h3>
           <p className="mb-4">{description}</p>
           <a className="word-wrap" href={url}>{url}</a>
-
           <Events events={events} />
         </div>
         <Map/>
