@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { isAuthenticated, getDecodedToken } from 'authenticare/client'
 
+import { isAuthenticated, getDecodedToken } from '../auth'
 import { setUser } from '../actions/user'
 
 import Nav from './Nav'
@@ -12,6 +12,8 @@ import Garden from './Garden'
 import Home from './Home'
 import AddEvent from './AddEvent'
 import EditEvent from './EditEvent'
+import Error from './Error'
+import WaitIndicator from './WaitIndicator'
 
 class App extends React.Component {
   componentDidMount () {
@@ -28,6 +30,9 @@ class App extends React.Component {
           <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
           <Route path="/" component={Nav} />
         </header>
+        { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
+        <WaitIndicator />
+        <Error />
         <div className="columns">
           <Route exact path='/' component={Home} />
         </div>
