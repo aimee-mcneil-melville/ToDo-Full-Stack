@@ -6,7 +6,7 @@ import EventItem from './EventItem'
 
 function Events ({ events, isAdmin }) {
   return (
-    <div className="m-6">
+    <div className="mr-6">
       <h2 className="my-4 is-pulled-left">Events</h2>
       {
         isAdmin
