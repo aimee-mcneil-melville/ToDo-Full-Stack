@@ -1,4 +1,4 @@
-import { requestGardens, receiveGardens, showError, fetchGardens } from './gardens'
+import { requestGardens, receiveGardens, showError} from './gardens'
 
 test('REQUEST_GARDENS returns the correct action', () => {
   const action = requestGardens()
@@ -18,10 +18,3 @@ test('SHOW_ERROR action returns the correct action', () => {
   expect(action.type).toBe('SHOW_ERROR')
   expect(action.errorMessage).toBe('Houston, we have a problem')
 })
-
-// TODO complete fetchGardens() test
-// test('fetchGardens returns gardens object', () => {
-//   const action = fetchGardens()
-//   console.log('actions/garden.test.js > action:', JSON.stringify(action, null, 2))
-//   expect(action.gardens).toBe('Hmmm')
-// })
