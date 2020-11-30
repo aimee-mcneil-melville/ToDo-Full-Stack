@@ -55,8 +55,8 @@ class Home extends React.Component {
         </div>
         <Map
           userCoordinates={userCoordinates}
-          gardensCoordinates={gardensCoordinates}
-          addresses={addresses}
+          coordinates={gardensCoordinates}
+          address={addresses}
         />
       </>
     )

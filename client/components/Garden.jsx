@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Map from './Map'
 import Events from './Events'
@@ -18,6 +19,7 @@ class Garden extends React.Component {
   componentDidMount () {
     return getGarden()
       .then(garden => {
+        console.log('Gardens.jsx > garden:', garden)
         this.setState(garden)
         return null
       })
@@ -25,6 +27,7 @@ class Garden extends React.Component {
 
   render () {
     const { name, description, address, url, events, lat, lon } = this.state
+    console.log('Gardens.jsx > this.state:', this.state)
     return (
       <>
         <div className="column">
@@ -43,4 +46,4 @@ class Garden extends React.Component {
   }
 }
 
-export default Garden
+export default connect()(Garden)

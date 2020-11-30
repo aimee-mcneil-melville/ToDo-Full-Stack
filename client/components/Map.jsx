@@ -4,8 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 function Map (props) {
   console.log('Map.jsx > props.userCoordinates: ', props.userCoordinates)
-  console.log('Map.jsx > props.gardensCoordinates: ', props.gardensCoordinates)
-  console.log('Map.jsx > props.addresses: ', props.addresses)
+  console.log('Map.jsx > props.coordinates: ', props.coordinates)
+  console.log('Map.jsx > props.address: ', props.address)
   return (
     <div className='column'>
       <MapContainer
@@ -15,10 +15,18 @@ function Map (props) {
         <TileLayer
           url='https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWljaGFlbC1yIiwiYSI6ImNrZXM1Zm9iaDJiNmYycW1za2dobDZ4d3gifQ.a5mK2DxNqWhlzvoa8Zxb2Q'/>
         {props.coordinates?.map(location => {
-          return <Marker key={location.lat}
+          return <Marker key={props.coordinates.indexOf(location)}
             position={[location.lat, location.lon]}>
             <Popup>
-              {props.address}
+              {props.address[props.coordinates.indexOf(location)]}
+            </Popup>
+          </Marker>
+        })}
+        {props.userCoordinates?.map(location => {
+          return <Marker key={props.userCoordinates.indexOf(location)}
+            position={[location.lat, location.lon]}>
+            <Popup>
+              Your Location
             </Popup>
           </Marker>
         })}
