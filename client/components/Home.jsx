@@ -8,7 +8,9 @@ import { setUserLocation } from '../actions/user'
 
 class Home extends React.Component {
   state = {
-    gardens: []
+    gardens: [],
+    userLatitude: 1,
+    userLongitude: 1
   }
 
   componentDidMount () {
@@ -28,15 +30,16 @@ class Home extends React.Component {
     return fetchGardens()
       .then(gardens => {
         this.setState({
-          gardens: gardens
+          gardens: gardens,
+          userLatitude: this.props.user.latitude,
+          userLongitude: this.props.user.longitude
         })
         return null
       })
   }
 
   render () {
-    const { gardens } = this.state
-    console.log('render > gardens:', gardens)
+    const { gardens, userLatitude, userLongitude } = this.state
     return (
       <>
         <div className='column is-half-tablet'>
@@ -44,7 +47,8 @@ class Home extends React.Component {
           <Link className="button is-primary my-4" to={'/garden'}>Garden</Link>
         </div>
         <Map
-          gardens={gardens}/>
+          gardens={gardens}
+          location={[{ userLatitude, userLongitude }]}/>
       </>
     )
   }
@@ -53,7 +57,9 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    gardens: state.gardens
+    gardens: state.gardens,
+    userLatitude: state.userLatitude,
+    userLongitude: state.userLongitude
   }
 }
 
