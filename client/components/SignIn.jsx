@@ -24,7 +24,7 @@ class SignIn extends React.Component {
       <>
         <div className="column is-one-quarter-desktop">
           <form className="pr-5">
-            <label className="label ">Username</label>
+            <label htmlFor="username" className="label">Username</label>
             <input
               className="input"
               id="username"
@@ -34,7 +34,7 @@ class SignIn extends React.Component {
               placeholder="Username"
               type="text"
             />
-            <label className="label">Password</label>
+            <label htmlFor="password" className="label">Password</label>
             <input
               className="input"
               id="password"
