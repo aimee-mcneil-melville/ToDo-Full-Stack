@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { register, isAuthenticated, getDecodedToken } from 'authenticare/client'
 
-import { setUser } from '../actions/user'
+import { registerUser } from './registerHelper'
 
 class Register extends React.Component {
   state = {
@@ -18,24 +16,7 @@ class Register extends React.Component {
   }
 
   handleClick = () => {
-    const { username, password, gardenId } = this.state
-    register({
-      username,
-      password,
-      gardenId: Number(gardenId)
-    },
-    { baseUrl: '/api/v1' })
-      .then(() => {
-        if (isAuthenticated()) {
-          const { username, isAdmin, gardenId } = getDecodedToken()
-          this.props.dispatch(setUser({ username, isAdmin, gardenId }))
-          return this.props.history.push('/garden')
-        }
-        return null
-      })
-      .catch((error) => {
-        console.log('error: ', error.message)
-      })
+    registerUser(this.state, this.props.history.push)
   }
 
   render () {
@@ -43,29 +24,31 @@ class Register extends React.Component {
       <>
         <div className="column is-one-quarter-desktop">
           <h1 className="registerTitle">Register</h1>
-          <label className="label">Username</label>
+          <label htmlFor="username" className="label">Username</label>
           <input
             className="input"
+            id="username"
             name="username"
             value={this.state.username}
             placeholder="username"
             onChange={this.handleChange}
           ></input>
-          <label className="label">Password</label>
+          <label htmlFor="password" className="label">Password</label>
           <input
             className="input"
             type="password"
+            id="password"
             name="password"
             value={this.state.password}
             placeholder="password"
             onChange={this.handleChange}
           ></input>
-          <label className="label">My Garden</label>
+          <label htmlFor="gardenId" className="label">My Garden</label>
           <select
             onChange={this.handleChange}
             className="select"
             name="gardenId"
-            id="name"
+            id="gardenId"
           >
             <option hidden>Select from this list</option>
             <option value={1}>Kelmarna Gardens</option>
@@ -93,4 +76,4 @@ class Register extends React.Component {
   }
 }
 
-export default connect()(Register)
+export default Register

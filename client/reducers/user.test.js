@@ -1,3 +1,4 @@
+import { SET_USER, CLEAR_USER } from '../actions/user'
 import userReducer from './user'
 
 test('returns new user object on "SET_USER"', () => {
@@ -10,7 +11,7 @@ test('returns new user object on "SET_USER"', () => {
   }
 
   const action = {
-    type: 'SET_USER',
+    type: SET_USER,
     user: {
       username: 'test user',
       isAdmin: false,
@@ -33,7 +34,7 @@ test('returns default empty user object on "CLEAR_USER"', () => {
     longitude: null
   }
   const action = {
-    type: 'CLEAR_USER'
+    type: CLEAR_USER
   }
   const newState = userReducer(oldState, action)
   expect(newState.gardenId).toBeNull()
