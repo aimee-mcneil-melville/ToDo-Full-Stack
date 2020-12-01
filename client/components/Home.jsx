@@ -16,17 +16,14 @@ class Home extends React.Component {
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
+      this.setState({ userCoordinates: [{ lat: location.latitude, lon: location.longitude }] })
     }
 
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log('Latitude is: ', position.coords.latitude)
-        console.log('Longitude is: ', position.coords.longitude)
         const { latitude, longitude } = position.coords
         setLocation({ latitude, longitude })
       })
-    } else {
-      console.log('Not Available')
     }
     return fetchGardens()
       .then(gardens => {
@@ -35,10 +32,8 @@ class Home extends React.Component {
           return gardenCoords
         })
         const addresses = gardens.map(garden => garden.address)
-        const userCords = [{ lat: this.props.user.latitude, lon: this.props.user.longitude }]
         this.setState({
           gardensCoordinates: coords,
-          userCoordinates: userCords,
           addresses: addresses
         })
         return this.state
