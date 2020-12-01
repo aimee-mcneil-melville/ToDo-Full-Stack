@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import Map from './Map'
 import Events from './Events'
 import { getGarden } from './gardenHelper'
-import { isAuthenticated, getDecodedToken } from '../auth'
-import { setUser } from '../actions/user'
+// import { isAuthenticated, getDecodedToken } from '../auth'
+// import { setUser } from '../actions/user'
 
 class Garden extends React.Component {
   state = {
