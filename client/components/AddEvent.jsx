@@ -1,5 +1,6 @@
 import React from 'react'
 import { addEvent } from '../api/events'
+import { showError } from '../actions/error'
 import { connect } from 'react-redux'
 
 class AddEvent extends React.Component {
@@ -23,10 +24,14 @@ class AddEvent extends React.Component {
       gardenId: this.props.gardenId
     }
 
-    return addEvent(newEvent).then(() => {
-      this.props.history.push('/garden')
-      return null
-    })
+    return addEvent(newEvent)
+      .then(() => {
+        this.props.history.push('/garden')
+        return null
+      })
+      .catch((error) => {
+        this.props.dispatch(showError(error.message))
+      })
   }
 
   render () {
@@ -95,7 +100,8 @@ class AddEvent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    gardenId: state.user.gardenId
+    gardenId: state.user.gardenId,
+    error: state.error
   }
 }
 
