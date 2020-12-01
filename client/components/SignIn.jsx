@@ -15,7 +15,8 @@ class SignIn extends React.Component {
     })
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
+    e.preventDefault()
     signInUser(this.state, this.props.history.push)
   }
 
