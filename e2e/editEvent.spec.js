@@ -73,7 +73,7 @@ test('That input fields are populated with events original data', async () => {
   expect(date).toBe('27082020')
   expect(volunteers).toBe('8')
   expect(description).toBe('Its time to get these weeds under control.')
-})
+}, 99999)
 
 test('That input fields for event are editable', async () => {
   await page.goto(app)
@@ -97,7 +97,7 @@ test('That input fields for event are editable', async () => {
   // Fill event title field with test data
   await page.fill('input[name="title"]', 'Test Event')
 
-  await page.click('button[class="button my-4 is-primary"]')
+  await page.click('button[class="button mt-6"]')
 
   expect(title).toBe('Test Event')
 }, 90000)
