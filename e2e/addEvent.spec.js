@@ -12,7 +12,7 @@ const garden = 'http://localhost:3000/#/garden'
 beforeAll(async () => {
   connection.migrate.latest()
   browser = await playwright.chromium.launch({
-    headless: true
+    headless: false
   })
 })
 beforeEach(async () => {
