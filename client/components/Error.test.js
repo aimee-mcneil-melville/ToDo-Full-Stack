@@ -26,7 +26,7 @@ test('calls hide on hide error button click', () => {
     initialState: { error: 'mock error message' }
   })
 
-  const hideErrorButton = screen.getByRole('button', { name: 'Hide Error' })
+  const hideErrorButton = screen.getByText('✕')
   fireEvent.click(hideErrorButton)
 
   expect(hide).toHaveBeenCalled()
