@@ -15,7 +15,8 @@ class Register extends React.Component {
     })
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
+    e.preventDefault()
     registerUser(this.state, this.props.history.push)
   }
 
