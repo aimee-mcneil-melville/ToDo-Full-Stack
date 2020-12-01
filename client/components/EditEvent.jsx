@@ -50,8 +50,8 @@ class EditEvent extends React.Component {
       <>
         <div className="column form">
           <div className="column is-two-fifths pl-0 is-pulled-left">
-            <h2 className='mb-6'>Kelmarna Gardens</h2>
-            <h2>Edit this event</h2>
+            {/* <h2 className='mb-6'>Kelmarna Gardens</h2> */}
+            <h2 className="mb-6">Edit This Event</h2>
             <form>
               <h5 className="label">Event Title</h5>
               <input
@@ -99,7 +99,7 @@ class EditEvent extends React.Component {
             </form>
           </div>
 
-          <div className="column is two-fifths is pulled-right">
+          <div className="column is-two-fifths is-pulled-right">
             <h1 className="mb-6">Event Preview</h1>
             <div className="eventPreview box mt-78">
               {title === ''

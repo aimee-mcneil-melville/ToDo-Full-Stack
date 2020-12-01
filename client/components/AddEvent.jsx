@@ -83,22 +83,22 @@ class AddEvent extends React.Component {
             <div className='eventPreview'>
               <h1 className='mb-6'>Event Preview</h1>
               <div className="box mt-78">
-              {title === ''
-                ? <p>Your title here</p>
-                : <p>{title}</p>
-              }
-              {date === ''
-                ? <p>Your date here</p>
-                : <p>{date}</p>
-              }
-              {volunteers === 0
-                ? <p>Number of volunteers</p>
-                : <p>{volunteers} volunteers needed</p>
-              }
-              {description === ''
-                ? <p>Your description here</p>
-                : <p>{description}</p>
-              }
+                {title === ''
+                  ? <p>Your title here</p>
+                  : <p>{title}</p>
+                }
+                {date === ''
+                  ? <p>Your date here</p>
+                  : <p>{date}</p>
+                }
+                {volunteers === 0
+                  ? <p>Number of volunteers</p>
+                  : <p>{volunteers} volunteers needed</p>
+                }
+                {description === ''
+                  ? <p>Your description here</p>
+                  : <p>{description}</p>
+                }
               </div>
             </div>
           </div>
