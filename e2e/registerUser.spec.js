@@ -50,7 +50,7 @@ test('User can register', async () => {
   await page.click('input[name="username"]')
 
   // Fill input[name="username"]
-  await page.fill('input[name="username"]', 'Leshgooo123')
+  await page.fill('input[name="username"]', 'Leshgooo1234')
 
   // Click input[name="password"]
   await page.click('input[name="password"]')
@@ -75,7 +75,7 @@ test('User can register', async () => {
   const url = page.url()
 
   expect(url).toBe('http://localhost:3000/#/garden')
-  expect(userName).toBe('Leshgooo123')
+  expect(userName).toBe('Leshgooo1234')
   expect(userPass).toBe('12356')
 }, 99999)
 

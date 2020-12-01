@@ -43,7 +43,7 @@ test('clicking on add event button takes you to add event page', async () => {
   expect(url).toBe(garden)
 })
 
-test('Form is present and takes users input for new event', async () => {
+test('User can create event using the form', async () => {
   await page.goto(app)
 
   await page.click('text="Sign in"')
@@ -99,7 +99,14 @@ test('Form is present and takes users input for new event', async () => {
   const url = page.url()
 
   const title = 'Test Event'
+  const date = '15012021'
+  const volunteers = '3'
+  const description = 'This is a test event'
 
   expect(url).toBe('http://localhost:3000/#/garden')
   expect(title).toBe('Test Event')
+  expect(date).toBe('15012021')
+  expect(volunteers).toBe('3')
+  expect(description).toBe('This is a test event'
+  )
 }, 90000)
