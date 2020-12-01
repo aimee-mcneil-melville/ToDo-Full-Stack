@@ -10,7 +10,6 @@ export function getGarden () {
   return getUserGarden(gardenId)
     .then(garden => {
       dispatch(clearWaiting())
-      console.log('gardenHelper.js > garden:', garden)
       const { name, description, url, address, events, lat, lon } = garden
       return {
         name,

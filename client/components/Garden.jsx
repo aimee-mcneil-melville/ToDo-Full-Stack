@@ -19,21 +19,19 @@ class Garden extends React.Component {
   }
 
   componentDidMount () {
-    if (isAuthenticated()) {
-      const { username, isAdmin, gardenId } = getDecodedToken()
-      this.props.dispatch(setUser({ username, isAdmin, gardenId }))
-      return getGarden()
-        .then(garden => {
-          console.log('Gardens.jsx > garden:', garden)
-          this.setState(garden)
-          return null
-        })
-    }
+    // if (isAuthenticated()) {
+    //   const { username, isAdmin, gardenId } = getDecodedToken()
+    //   this.props.dispatch(setUser({ username, isAdmin, gardenId }))
+    return getGarden()
+      .then(garden => {
+        this.setState(garden)
+        return null
+      })
   }
+  // }
 
   render () {
     const { name, description, address, url, events, lat, lon } = this.state
-    console.log('Gardens.jsx > this.state:', this.state)
     return (
       <>
         <div className="column">
