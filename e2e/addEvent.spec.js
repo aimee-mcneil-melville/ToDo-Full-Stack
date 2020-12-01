@@ -6,8 +6,8 @@ let page
 
 const app = 'http://localhost:3000/#/'
 const garden = 'http://localhost:3000/#/garden'
-const newEvent = 'http://localhost:3000/#/events/new'
-const signIn = 'http://localhost:3000/#/signin'
+// const newEvent = 'http://localhost:3000/#/events/new'
+// const signIn = 'http://localhost:3000/#/signin'
 
 beforeAll(async () => {
   connection.migrate.latest()
