@@ -2,8 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { isAuthenticated, getDecodedToken } from '../auth'
 import { setUser } from '../actions/user'
+import { isAuthenticated, getDecodedToken } from '../auth'
 
 import Header from './Header'
 import Register from './Register'

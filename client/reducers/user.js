@@ -1,9 +1,11 @@
-import { SET_USER, CLEAR_USER } from '../actions/user'
+import { SET_USER, CLEAR_USER, USER_LOCATION } from '../actions/user'
 
 const emptyUser = {
   username: '',
   isAdmin: false,
-  gardenId: null
+  gardenId: null,
+  latitude: null,
+  longitude: null
 }
 
 const user = (state = emptyUser, action) => {
@@ -13,6 +15,17 @@ const user = (state = emptyUser, action) => {
 
     case CLEAR_USER:
       return emptyUser
+
+    case USER_LOCATION:
+    {
+      const latitude = action.location.latitude
+      const longitude = action.location.longitude
+      return {
+        ...state,
+        latitude,
+        longitude
+      }
+    }
 
     default:
       return state

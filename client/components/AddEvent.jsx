@@ -35,6 +35,7 @@ class AddEvent extends React.Component {
   }
 
   render () {
+    const { title, date, volunteers, description } = this.state
     return (
       <>
         <div className="column form">
@@ -87,7 +88,22 @@ class AddEvent extends React.Component {
             <div className='eventPreview'>
               <h1 className='mb-6'>Event Preview</h1>
               <div className="box mt-78">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quasi, harum omnis a non, voluptas quam ipsam possimus iure ipsa est, aut error doloribus saepe aliquam nostrum fuga! Aperiam, non.
+                {title === ''
+                  ? <p>Your title here</p>
+                  : <p>{title}</p>
+                }
+                {date === ''
+                  ? <p>Your date here</p>
+                  : <p>{date}</p>
+                }
+                {volunteers === 0
+                  ? <p>Number of volunteers</p>
+                  : <p>{volunteers} volunteers needed</p>
+                }
+                {description === ''
+                  ? <p>Your description here</p>
+                  : <p>{description}</p>
+                }
               </div>
             </div>
           </div>
