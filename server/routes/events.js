@@ -34,4 +34,36 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/:id/edit', (req, res) => {
+  const id = Number(req.params.id)
+  db.getEventById(id)
+    .then(event => {
+      res.json(event)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
+router.patch('/:id/edit', (req, res) => {
+  const { title, date, volunteers, description, id, gardenId } = req.body
+  const updatedEvent = {
+    title,
+    date: date,
+    volunteersNeeded: volunteers,
+    description,
+    id,
+    gardenId
+  }
+  db.updateEvent(updatedEvent)
+    .then((event) => {
+      res.status(201).json(event)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
 module.exports = router

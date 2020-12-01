@@ -8,7 +8,7 @@ function EventItem ({ event, isAdmin }) {
       <h4 className="is-pulled-left">{title}</h4>
       {
         isAdmin
-          ? <Link to={`/events/${id}/edit`} className="button is-primary is-pulled-right">Edit Event</Link>
+          ? <Link to={`/events/${id}/edit`} className="button is-pulled-right">Edit Event</Link>
           : null
       }
       <p className="clearfix">{datetime}</p>

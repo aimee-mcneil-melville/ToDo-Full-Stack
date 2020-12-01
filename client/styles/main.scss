@@ -1,5 +1,4 @@
 @charset "utf-8";
-// Bulma variables overrides need to be above Bulma import
 // Partials - variables, mixins and functions
 @import "partials/colors";
 
@@ -8,11 +7,22 @@
 @import "bulma/bulma.sass";
 
 // Custom CSS - Bulma Overrides
+
 // Base
 @import "base/typography";
 @import "base/layout";
 
+
 // Components
-@import "components/navigation"
+@import "components/navigation";
+@import "components/button";
+@import "components/usernameInput";
+@import "components/label";
+@import "components/inputColumn";
+@import "components/select";
+@import "components/home";
+@import "components/register";
+@import "components/addEvent";
+@import "components/gardenInfo";
 
 // NO DIRECT STYLES IN HERE MAKE A NEW FILE AND IMPORT IT.

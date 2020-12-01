@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { setUser } from '../actions/user'
 import { isAuthenticated, getDecodedToken } from '../auth'
 
-import Nav from './Nav'
+import Header from './Header'
 import Register from './Register'
 import SignIn from './SignIn'
 import Garden from './Garden'
@@ -25,11 +25,8 @@ class App extends React.Component {
 
   render () {
     return (
-      <main className="container">
-        <header>
-          <h1 className="title"><Link to="/">Garde<span>nz</span></Link></h1>
-          <Route path="/" component={Nav} />
-        </header>
+      <main className="container is-max-desktop">
+        <Route path="/" component={Header} />
         { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
         <WaitIndicator />
         <Error />
