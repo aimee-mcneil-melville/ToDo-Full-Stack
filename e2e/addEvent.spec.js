@@ -34,7 +34,7 @@ test('clicking on add event button takes you to add event page', async () => {
   await page.goto(app)
 
   // Clicks on the Add new event button/tag
-  await page.click('text="Garden"')
+  await page.click('text="Get Started"')
 
   // Grabs the new url of the page
   const url = page.url()
@@ -62,7 +62,7 @@ test('User can create event using the form', async () => {
 
   await page.click('button[data-testid="submit-button"]')
 
-  await page.click('text="Add new event"')
+  await page.click('text="Add New Event"')
 
   // // Goes to 'http://localhost:3000/#/garden'
   // await page.goto(newEvent)
@@ -92,7 +92,7 @@ test('User can create event using the form', async () => {
   // Fill event title field with test data
   await page.fill('textarea[name="description"]', 'This is a test event')
 
-  await page.click('button[class="button my-4 is-primary"]')
+  await page.click('button[class="button mt-6"]')
 
   // await page.goto('http://localhost:3000/#/garden')
 
