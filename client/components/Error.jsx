@@ -7,9 +7,9 @@ function Error ({ error }) {
   // TODO: Talk to Field and Claire => styling/layout of this component?
   return (
     error
-      ? <div role='alert'>
+      ? <div className="message-error" role='alert'>
         {error}
-        <button onClick={hide}>Hide Error</button>
+        <a className="button-cancel" onClick={hide}>&#10005;</a>
       </div>
       : null
   )

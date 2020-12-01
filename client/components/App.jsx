@@ -26,10 +26,10 @@ class App extends React.Component {
   render () {
     return (
       <main className="container is-max-desktop">
+        <Error />
         <Route path="/" component={Header} />
         { /* TODO: Field + Claire -> where are WaitIndicator/Error going? */ }
         <WaitIndicator />
-        <Error />
         <div className="columns">
           <Route exact path='/' component={Home} />
         </div>
