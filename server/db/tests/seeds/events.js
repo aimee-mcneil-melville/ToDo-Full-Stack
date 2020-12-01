@@ -5,7 +5,7 @@ exports.seed = (knex) => {
         id: 1,
         garden_id: 1,
         title: 'Weeding worker Bee',
-        date: 'Wed, 27 Sep 2020 20:00:00 GMT',
+        date: '2020-08-27',
         description: 'Its time to get these weeds under control.',
         volunteers_needed: 8
       },
@@ -13,7 +13,7 @@ exports.seed = (knex) => {
         id: 2,
         garden_id: 1,
         title: 'Sowing Corn',
-        date: 'Wed, 28 Sep 2020 20:00:00 GMT',
+        date: '2020-08-28',
         description: 'Help get out the lovely corns in the ground!.',
         volunteers_needed: 4
       }])
