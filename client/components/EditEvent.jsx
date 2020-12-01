@@ -48,12 +48,12 @@ class EditEvent extends React.Component {
     const { title, date, volunteers, description } = this.state
     return (
       <>
-        <div className="edit-event-form columns is-8">
-          <div className="column">
-            <h1>Kelmarna Gardens</h1>
-            <label>Edit this event</label>
+        <div className="column form">
+          <div className="column is-two-fifths pl-0 is-pulled-left">
+            <h2 className='mb-6'>Kelmarna Gardens</h2>
+            <h2>Edit this event</h2>
             <form>
-              <h5>Event Title</h5>
+              <h5 className="label">Event Title</h5>
               <input
                 className="input is-normal"
                 type="text"
@@ -63,7 +63,7 @@ class EditEvent extends React.Component {
                 onChange={this.handleChange}
               />
 
-              <h5>Date</h5>
+              <h5 className="label">Date</h5>
               <input
                 className="input is-normal"
                 // Just need to work on the format of the date
@@ -73,7 +73,7 @@ class EditEvent extends React.Component {
                 onChange={this.handleChange}
               />
 
-              <h5>Volunteers Needed</h5>
+              <h5 className="label">Volunteers Needed</h5>
               <input
                 className="input is-normal"
                 type="number"
@@ -83,7 +83,7 @@ class EditEvent extends React.Component {
                 onChange={this.handleChange}
               />
 
-              <h5>Event Description</h5>
+              <h5 className="label">Event Description</h5>
               <textarea
                 className="textarea is-normal"
                 placeholder="event description"
@@ -93,15 +93,15 @@ class EditEvent extends React.Component {
               />
 
               <button
-                className="button my-4 is-primary"
+                className="button mt-6"
                 onClick={this.handleSubmit}
               >Update Event</button>
             </form>
           </div>
 
-          <div className="event-preview column">
-            <h1>Event Preview</h1>
-            <div className="box">
+          <div className="column is two-fifths is pulled-right">
+            <h1 className="mb-6">Event Preview</h1>
+            <div className="eventPreview box mt-78">
               {title === ''
                 ? <p>Your title here</p>
                 : <p>{title}</p>
