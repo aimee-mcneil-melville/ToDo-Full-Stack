@@ -51,3 +51,19 @@ test('Clicking on edit event button takes you to edit page', async () => {
 
   expect(url).toBe('http://localhost:3000/#/events/1/edit')
 })
+
+test('That input fields are populated with events original data', async () => {
+  await page.goto(app)
+  await page.click('text="Sign in"')
+  // Steps to sign in
+  await page.click('input[name="username"]')
+  await page.fill('input[name="username"]', 'admin')
+  await page.click('input[name="password"]')
+  await page.fill('input[name="password"]', 'admin')
+  await page.click('button[data-testid="submit-button"]')
+  await page.waitForLoadState('networkidle')
+  // Getting to editEvent page
+  await page.click('text="Edit Event"')
+
+  expect(url).toBe('http://localhost:3000/#/events/1/edit')
+})
