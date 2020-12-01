@@ -7,12 +7,11 @@ function Home () {
   return (
     <>
       <div className='column is-half-tablet'>
-        <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        <Link className="button is-primary my-4" to={'/garden'}>Garden</Link>
+        <p className='homeText'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies.</p>
+        <Link className="button is-medium" to={'/garden'}>Get Started</Link>
       </div>
       <Map/>
     </>
   )
 }
-
 export default Home

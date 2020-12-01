@@ -26,9 +26,10 @@ class Garden extends React.Component {
       <>
         <div className="column">
           <h3>{name}</h3>
-          <p className="mb-4">{description}</p>
-          <a className="word-wrap" href={url}>{url}</a>
-
+          <div className='gardenInfo mb-10'>
+            <p className="mb-4">{description}</p>
+            <a className="word-wrap " href={url}><em><u>{url}</u></em></a>
+          </div>
           <Events events={events} />
         </div>
         <Map/>

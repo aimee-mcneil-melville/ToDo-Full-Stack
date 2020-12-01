@@ -8,10 +8,10 @@ jest.mock('./registerHelper')
 
 test('register fields update correctly on user input', () => {
   render(<Register />)
-  const usernameInput = screen.getByRole('textbox', { name: 'Username' })
+  const usernameInput = screen.getByLabelText('Username')
   // need getByLabelText for password as type="hidden" hides it for getByRole
   const passwordInput = screen.getByLabelText('Password')
-  const gardenInput = screen.getByRole('combobox', { name: 'My Garden' })
+  const gardenInput = screen.getByLabelText('My Garden')
 
   fireEvent.change(usernameInput, { target: { value: 'test username' } })
   fireEvent.change(passwordInput, { target: { value: 'test password' } })
