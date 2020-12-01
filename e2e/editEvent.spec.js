@@ -5,15 +5,11 @@ let browser
 let page
 
 const app = 'http://localhost:3000/#/'
-const garden = 'http://localhost:3000/#/garden'
-const newEvent = 'http://localhost:3000/#/events/new'
-const signIn = 'http://localhost:3000/#/signin'
 
 beforeAll(async () => {
   connection.migrate.latest()
   browser = await playwright.chromium.launch({
-    headless: false,
-    slowMo: 1000
+    headless: true
   })
 })
 beforeEach(async () => {
@@ -25,7 +21,6 @@ afterAll(async () => {
   await browser.close()
 })
 afterEach(async () => {
-  // connection.destroy()
   await page.close()
 })
 
@@ -62,8 +57,47 @@ test('That input fields are populated with events original data', async () => {
   await page.fill('input[name="password"]', 'admin')
   await page.click('button[data-testid="submit-button"]')
   await page.waitForLoadState('networkidle')
+
   // Getting to editEvent page
   await page.click('text="Edit Event"')
 
+  const url = page.url()
+  const title = 'Weeding worker Bee'
+  const date = '27082020'
+  const volunteers = '8'
+  const description = 'Its time to get these weeds under control.'
+
+  // Hard coded to work for first event. Will need update for dynamic functionality.
   expect(url).toBe('http://localhost:3000/#/events/1/edit')
+  expect(title).toBe('Weeding worker Bee')
+  expect(date).toBe('27082020')
+  expect(volunteers).toBe('8')
+  expect(description).toBe('Its time to get these weeds under control.')
 })
+
+test('That input fields for event are editable', async () => {
+  await page.goto(app)
+  await page.click('text="Sign in"')
+  // Steps to sign in
+  await page.click('input[name="username"]')
+  await page.fill('input[name="username"]', 'admin')
+  await page.click('input[name="password"]')
+  await page.fill('input[name="password"]', 'admin')
+  await page.click('button[data-testid="submit-button"]')
+  await page.waitForLoadState('networkidle')
+
+  // Getting to editEvent page
+  await page.click('text="Edit Event"')
+
+  const title = 'Test Event'
+
+  // Clicks on Event title field
+  await page.click('input[name="title"]')
+
+  // Fill event title field with test data
+  await page.fill('input[name="title"]', 'Test Event')
+
+  await page.click('button[class="button my-4 is-primary"]')
+
+  expect(title).toBe('Test Event')
+}, 90000)
