@@ -1,27 +1,37 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Map from './Map'
 import Events from './Events'
 import { getGarden } from './gardenHelper'
+// import { isAuthenticated, getDecodedToken } from '../auth'
+// import { setUser } from '../actions/user'
 
 class Garden extends React.Component {
   state = {
     name: '',
     description: '',
     url: '',
-    events: []
+    events: [],
+    address: '',
+    lat: 1,
+    lon: 1
   }
 
   componentDidMount () {
+    // if (isAuthenticated()) {
+    //   const { username, isAdmin, gardenId } = getDecodedToken()
+    //   this.props.dispatch(setUser({ username, isAdmin, gardenId }))
     return getGarden()
       .then(garden => {
         this.setState(garden)
         return null
       })
   }
+  // }
 
   render () {
-    const { name, description, url, events } = this.state
+    const { name, description, address, url, events, lat, lon } = this.state
     return (
       <>
         <div className="column">
@@ -32,10 +42,13 @@ class Garden extends React.Component {
           </div>
           <Events events={events} />
         </div>
-        <Map/>
+        <Map
+          coordinates={[{ lat: lat, lon: lon }]}
+          address={address}
+        />
       </>
     )
   }
 }
 
-export default Garden
+export default connect()(Garden)
