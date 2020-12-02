@@ -1,6 +1,3 @@
-![Node.js CI](https://github.com/horoeka-2020/gardenz/workflows/Node.js%20CI/badge.svg)
-![Staging](https://github.com/horoeka-2020/gardenz/workflows/Staging/badge.svg)
-
 # Gardenz
 
 > Empowering community gardens in New Zealand
