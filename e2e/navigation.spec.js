@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
 let browser
 let page

@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime'
 const playwright = require('playwright')
 const connection = require('../server/db/connection')
 let browser
