@@ -4,7 +4,7 @@ This challenge is designed to help you get more comfortable with managing compon
 
 In case you've never played with one, here's what you might see if you looked into a kaleidoscope:
 
-![Kaleidoscope](./kaleidoscope.jpg)
+![Kaleidoscope](./_images/kaleidoscope.jpg)
 
 Ours is broken: it ain't gonna look that pretty! It will be *colourful*, however.
 
@@ -30,7 +30,7 @@ Leave the `<div>` empty. You won't be able to see it, but you'll be able to chec
 
 Place your `<Pixel />` component in the render method of `<App /` so that it'll make it into the DOM. Check that it exists in the devtools before moving on. It'll look like this:
 
-![Stage 0](./stage0.jpg)
+![Stage 0](./_images/stage0.jpg)
 
 
 ## Let there be colour
@@ -59,7 +59,7 @@ The height and width are necessary so that we can *see* the element when it's re
 
 If you happened to choose that colour, here's what you'd see:
 
-![Stage 1](./stage1.jpg)
+![Stage 1](./_images/stage1.jpg)
 
 Pretty exciting! Or not. But it gets better...
 
@@ -68,7 +68,7 @@ Pretty exciting! Or not. But it gets better...
 
 We're going to need more than one `<Pixel />` here. Go into your `<App />` component and add a bunch more of them. Go crazy. Add screeds and screeds. You'll end up with something like this:
 
-![Stage 2](./stage2.jpg)
+![Stage 2](./_images/stage2.jpg)
 
 Oooooo... k? There sure are a lot of components, but it's kind of hard to distinguish between them. Let's fix that.
 
@@ -97,7 +97,7 @@ You can place the above in your `<Pixel />` component. When you've done that, ed
 
 When you refresh the page, what you're aiming for is something like this:
 
-![Stage 3](./stage3.jpg)
+![Stage 3](./_images/stage3.jpg)
 
 That's more like it!
 
@@ -168,7 +168,7 @@ Ok, so if we can return an array of components, presumably we can automatically 
 
 You should see something that looks a bit like this:
 
-![Stage 4](./stage4.jpg)
+![Stage 4](./_images/stage4.jpg)
 
 Depending on your computer, you may find that takes several seconds (sometimes 10 or 15) to render. We're pushing React to the limit by rendering so many components at once! If 100,000 components doesn't fill your browser screen, try 200,000! You can also turn the pixel size down to 1 just to see what'll happen, but be warned you'll need a *lot* of components to come close to filling the browser. Don't blame us if your browser stops responding...
 
