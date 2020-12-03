@@ -16,7 +16,7 @@
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "presets": [
@@ -26,6 +26,12 @@
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
     ]
   },
   "jest": {
