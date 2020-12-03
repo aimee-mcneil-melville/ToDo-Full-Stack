@@ -16,8 +16,8 @@
     "start": "node server",
     "test:watch": "jest --testPathIgnorePatterns e2e --watchAll --verbose",
     "test": "jest --testPathIgnorePatterns e2e --verbose",
-    "test:e2e": "NODE_ENV=e2e jest e2e",
-    "test:e2e:debug": "DEBUG=pw:api NODE_ENV=e2e jest e2e",
+    "test:e2e": "NODE_ENV=e2e jest e2e --config e2e/jest.config.js",
+    "test:e2e:debug": "DEBUG=pw:api NODE_ENV=e2e jest e2e --config e2e/jest.config.js",
     "lint": "eslint --ext .js,.jsx client server"
   },
   "babel": {
@@ -31,9 +31,6 @@
       "@babel/plugin-transform-regenerator",
       "@babel/plugin-transform-runtime"
     ]
-  },
-  "jest": {
-    "preset": "jest-playwright-preset"
   },
   "repository": {
     "type": "git",
