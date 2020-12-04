@@ -1,6 +1,6 @@
 import React from 'react'
 import { editEvent } from '../api/events'
-import { getEvent } from './EditEventHelper'
+import { getEvent } from './editEventHelper'
 
 class EditEvent extends React.Component {
   state = {

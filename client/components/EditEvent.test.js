@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 
 import EditEvent from './EditEvent'
 
-jest.mock('./EditEventHelper', () => {
+jest.mock('./editEventHelper', () => {
   return {
     getEvent: () => Promise.resolve({ title: 'Tai\'s anime fight', date: '2020-12-17', volunteersNeeded: 1000, description: '1000 man fight battle royale. Leshgooooo' })
   }

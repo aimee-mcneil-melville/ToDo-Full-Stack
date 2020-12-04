@@ -1,4 +1,4 @@
-import { getEvent } from './EditEventHelper'
+import { getEvent } from './editEventHelper'
 import { getEventById } from '../api/events'
 import { CLEAR_WAITING } from '../actions/waiting'
 import { dispatch } from '../store'
