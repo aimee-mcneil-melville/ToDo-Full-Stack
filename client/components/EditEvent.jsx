@@ -1,5 +1,6 @@
 import React from 'react'
-import { editEvent, getEventById } from '../api/events'
+import { editEvent } from '../api/events'
+import { getEvent } from './EditEventHelper'
 
 class EditEvent extends React.Component {
   state = {
@@ -10,18 +11,12 @@ class EditEvent extends React.Component {
   }
 
   componentDidMount () {
-    getEventById(this.props.match.params.id)
-      .then((res) => {
-        // eslint-disable-next-line camelcase
-        const { title, date, volunteers_needed, description } = res
-        return this.setState({
-          title: title,
-          date: date,
-          volunteers: volunteers_needed,
-          description: description
-        })
+    const { id } = this.props.match.params
+    return getEvent(id)
+      .then((event) => {
+        this.setState(event)
+        return null
       })
-      .catch((err) => console.error(err))
   }
 
   handleChange = (e) => {
