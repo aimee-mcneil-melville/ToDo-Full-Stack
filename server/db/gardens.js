@@ -2,7 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   getGardens,
-  getUserGarden
+  getGardenById
 }
 
 function getGardens (db = connection) {
@@ -14,7 +14,7 @@ function getGardens (db = connection) {
     })
 }
 
-function getUserGarden (id, db = connection) {
+function getGardenById (id, db = connection) {
   return db('gardens')
     .where('gardens.id', id)
     .leftJoin('events', 'gardens.id', 'events.garden_id')

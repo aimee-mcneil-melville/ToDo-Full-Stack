@@ -7,7 +7,7 @@ export function getGardens (consume = requestor) {
     })
 }
 
-export function getUserGarden (gardenId, consume = requestor) {
+export function getGardenById (gardenId, consume = requestor) {
   return consume(`/gardens/${gardenId}`)
     .then(res => {
       return res.body

@@ -1,23 +1,23 @@
-import { addEvent, editEvent, getEventById } from './events'
+import { postEvent, patchEvent, getEventById } from './events'
 import { dispatch } from '../store'
 
 jest.mock('../store')
 
-test('addEvent', () => {
+test('postEvent', () => {
   const consume = () => Promise.resolve({
     body: {
       id: 1,
       title: 'testevent'
     }
   })
-  return addEvent({}, consume)
+  return postEvent({}, consume)
     .then((event) => {
       expect(event.id).toBe(1)
       return null
     })
 })
 
-test('editEvent', () => {
+test('patchEvent', () => {
   const consume = () => Promise.resolve({
     body: {
       id: 1,
@@ -28,7 +28,7 @@ test('editEvent', () => {
 
     }
   })
-  return editEvent({}, consume)
+  return patchEvent({}, consume)
     .then((event) => {
       expect(event.id).toBe(1)
       return null
@@ -51,11 +51,11 @@ test('getEventById return a id', () => {
     })
 })
 
-test('addEvent shows an error message', () => {
+test('postEvent shows an error message', () => {
   expect.assertions(1)
   const consume = () => Promise.reject(new Error('testError'))
   dispatch.mockImplementation(action => {
     expect(action.errorMessage).toBe('testError')
   })
-  return addEvent({}, consume)
+  return postEvent({}, consume)
 })

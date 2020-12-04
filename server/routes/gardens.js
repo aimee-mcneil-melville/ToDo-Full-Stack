@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
-  db.getUserGarden(id)
+  db.getGardenById(id)
     .then(singleGarden => {
       return res.json(singleGarden)
     })

@@ -1,7 +1,7 @@
 import { getGarden } from './gardenHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
-import { getUserGarden } from '../api/gardens'
+import { getGardenById } from '../api/gardens'
 
 jest.mock('../store')
 jest.mock('../api/gardens')
@@ -11,10 +11,10 @@ afterEach(() => {
 })
 
 describe('getGarden', () => {
-  it('calls getUserGarden, dispatches correctly and returns the garden', () => {
+  it('calls getGardenById, dispatches correctly and returns the garden', () => {
     expect.assertions(7)
     getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
-    getUserGarden.mockImplementation((id) => {
+    getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve({
         name: 'test garden',
@@ -35,9 +35,9 @@ describe('getGarden', () => {
       })
   })
 
-  it('dispatches error if getUserGarden rejects', () => {
+  it('dispatches error if getGardenById rejects', () => {
     getState.mockImplementation(() => ({ user: { gardenId: null } }))
-    getUserGarden.mockImplementation(() => Promise.reject(new Error('mock error')))
+    getGardenById.mockImplementation(() => Promise.reject(new Error('mock error')))
     return getGarden()
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')

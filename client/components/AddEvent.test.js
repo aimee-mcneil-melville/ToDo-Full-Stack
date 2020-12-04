@@ -5,7 +5,7 @@ import { renderWithRedux } from '../test-utils'
 
 jest.mock('../api/events', () => {
   return {
-    addEvent: () => Promise.resolve()
+    postEvent: () => Promise.resolve()
   }
 })
 

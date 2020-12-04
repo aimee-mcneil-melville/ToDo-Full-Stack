@@ -1,5 +1,5 @@
 import { getEvent, updateEvent } from './editEventHelper'
-import { getEventById, editEvent } from '../api/events'
+import { getEventById, patchEvent } from '../api/events'
 import { CLEAR_WAITING } from '../actions/waiting'
 import { dispatch } from '../store'
 
@@ -44,7 +44,7 @@ describe('getEvent', () => {
 })
 
 describe('updateEvent', () => {
-  it('calls editEvent, dispatches and redirects correctly', () => {
+  it('calls patchEvent, dispatches and redirects correctly', () => {
     expect.assertions(8)
     const event = {
       title: 'test event',
@@ -53,7 +53,7 @@ describe('updateEvent', () => {
       description: 'really rad event'
     }
     const navigateTo = jest.fn()
-    editEvent.mockImplementation((eventToUpdate) => {
+    patchEvent.mockImplementation((eventToUpdate) => {
       expect(eventToUpdate).not.toBe(event)
       expect(eventToUpdate.id).toBe(1)
       expect(eventToUpdate.title).toBe('test event')
@@ -70,9 +70,9 @@ describe('updateEvent', () => {
       })
   })
 
-  it('dispatches error if editEvent rejects', () => {
+  it('dispatches error if patchEvent rejects', () => {
     const navigateTo = jest.fn()
-    editEvent.mockImplementation(() => Promise.reject(new Error('mock error')))
+    patchEvent.mockImplementation(() => Promise.reject(new Error('mock error')))
     return updateEvent(999, {}, navigateTo)
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')

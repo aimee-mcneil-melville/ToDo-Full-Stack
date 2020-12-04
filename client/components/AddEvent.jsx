@@ -1,5 +1,5 @@
 import React from 'react'
-import { addEvent } from '../api/events'
+import { postEvent } from '../api/events'
 import { showError } from '../actions/error'
 import { connect } from 'react-redux'
 
@@ -24,7 +24,7 @@ class AddEvent extends React.Component {
       gardenId: this.props.gardenId
     }
 
-    return addEvent(newEvent)
+    return postEvent(newEvent)
       .then(() => {
         this.props.history.push('/garden')
         return null

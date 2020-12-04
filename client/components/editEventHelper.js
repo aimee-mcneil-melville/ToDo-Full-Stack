@@ -1,7 +1,7 @@
 import { dispatch } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
-import { getEventById, editEvent } from '../api/events'
+import { getEventById, patchEvent } from '../api/events'
 
 export function getEvent (id) {
   dispatch(setWaiting())
@@ -22,7 +22,7 @@ export function updateEvent (id, event, navigateTo) {
     ...event
   }
   dispatch(setWaiting())
-  return editEvent(eventToUpdate)
+  return patchEvent(eventToUpdate)
     .then(() => {
       dispatch(clearWaiting())
       navigateTo('/garden')

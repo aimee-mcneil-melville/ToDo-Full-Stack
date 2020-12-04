@@ -1,4 +1,4 @@
-import { getGardens, getUserGarden } from './gardens'
+import { getGardens, getGardenById } from './gardens'
 
 test('getGardens returns gardens from res body', () => {
   const consume = () => Promise.resolve({
@@ -14,14 +14,14 @@ test('getGardens returns gardens from res body', () => {
     })
 })
 
-test('getUserGarden returns res body', () => {
+test('getGardenById returns res body', () => {
   expect.assertions(2)
   const consume = (path) => {
     expect(path).toMatch('2')
     return Promise.resolve({ body: { gardenId: 2 } })
   }
 
-  return getUserGarden(2, consume)
+  return getGardenById(2, consume)
     .then((garden) => {
       expect(garden.gardenId).toBe(2)
       return null
