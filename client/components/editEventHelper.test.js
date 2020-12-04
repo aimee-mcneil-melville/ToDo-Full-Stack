@@ -1,5 +1,5 @@
-import { getEvent } from './editEventHelper'
-import { getEventById } from '../api/events'
+import { getEvent, updateEvent } from './editEventHelper'
+import { getEventById, editEvent } from '../api/events'
 import { CLEAR_WAITING } from '../actions/waiting'
 import { dispatch } from '../store'
 
@@ -38,6 +38,45 @@ describe('getEvent', () => {
     return getEvent(999)
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
+  })
+})
+
+describe('updateEvent', () => {
+  it('calls editEvent, dispatches and redirects correctly', () => {
+    expect.assertions(8)
+    const event = {
+      title: 'test event',
+      date: '2021-03-22',
+      volunteersNeeded: 5,
+      description: 'really rad event'
+    }
+    const navigateTo = jest.fn()
+    editEvent.mockImplementation((eventToUpdate) => {
+      expect(eventToUpdate).not.toBe(event)
+      expect(eventToUpdate.id).toBe(1)
+      expect(eventToUpdate.title).toBe('test event')
+      expect(eventToUpdate.date).toMatch('03-22')
+      expect(eventToUpdate.volunteersNeeded).toBe(5)
+      expect(eventToUpdate.description).toMatch('rad event')
+      return Promise.resolve()
+    })
+    return updateEvent('1', event, navigateTo)
+      .then(() => {
+        expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
+        expect(navigateTo).toHaveBeenCalledWith('/garden')
+        return null
+      })
+  })
+
+  it('dispatches error if editEvent rejects', () => {
+    const navigateTo = jest.fn()
+    editEvent.mockImplementation(() => Promise.reject(new Error('mock error')))
+    return updateEvent(999, {}, navigateTo)
+      .then(() => {
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(navigateTo).not.toHaveBeenCalled()
         return null
       })
   })

@@ -1,6 +1,5 @@
 import React from 'react'
-import { editEvent } from '../api/events'
-import { getEvent } from './editEventHelper'
+import { getEvent, updateEvent } from './editEventHelper'
 
 class EditEvent extends React.Component {
   state = {
@@ -27,16 +26,9 @@ class EditEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // implement submit
-    const updatedEvent = {
-      id: Number(this.props.match.params.id),
-      ...this.state
-    }
-    return editEvent(updatedEvent)
-      .then(() => {
-        this.props.history.push('/garden')
-        return null
-      })
+    const { id } = this.props.match.params
+    const navigate = this.props.history.push
+    updateEvent(id, this.state, navigate)
   }
 
   render () {

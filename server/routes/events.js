@@ -41,8 +41,8 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.patch('/:id/edit', (req, res) => {
-  const { title, date, volunteersNeeded, description, id, gardenId } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id, gardenId }
+  const { title, date, volunteersNeeded, description, id } = req.body
+  const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(201).json(event)
