@@ -6,16 +6,11 @@ import { getEventById } from '../api/events'
 export function getEvent (id) {
   dispatch(setWaiting())
   return getEventById(id)
-    .then((res) => {
+    .then((event) => {
       dispatch(clearWaiting())
-      // eslint-disable-next-line camelcase
-      const { title, date, volunteers_needed, description } = res
-      return {
-        title,
-        date,
-        description,
-        volunteers: volunteers_needed
-      }
+      const { title, date, volunteersNeeded, description } = event
+      console.log('helper', volunteersNeeded)
+      return { title, date, description, volunteersNeeded }
     })
     .catch((err) => {
       dispatch(showError(err.message))

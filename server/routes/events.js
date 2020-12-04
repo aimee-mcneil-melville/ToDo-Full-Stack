@@ -16,14 +16,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { title, date, volunteers, description, gardenId } = req.body
-  const newEvent = {
-    title,
-    date: date,
-    volunteersNeeded: volunteers,
-    description,
-    gardenId
-  }
+  const { title, date, volunteersNeeded, description, gardenId } = req.body
+  const newEvent = { title, date, volunteersNeeded, description, gardenId }
   db.addEvent(newEvent)
     .then((event) => {
       res.status(201).json(event)
@@ -47,15 +41,8 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.patch('/:id/edit', (req, res) => {
-  const { title, date, volunteers, description, id, gardenId } = req.body
-  const updatedEvent = {
-    title,
-    date: date,
-    volunteersNeeded: volunteers,
-    description,
-    id,
-    gardenId
-  }
+  const { title, date, volunteersNeeded, description, id, gardenId } = req.body
+  const updatedEvent = { title, date, volunteersNeeded, description, id, gardenId }
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(201).json(event)

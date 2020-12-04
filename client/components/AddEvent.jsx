@@ -7,7 +7,7 @@ class AddEvent extends React.Component {
   state = {
     title: '',
     date: '',
-    volunteers: 0,
+    volunteersNeeded: 0,
     description: ''
   }
 
@@ -35,7 +35,7 @@ class AddEvent extends React.Component {
   }
 
   render () {
-    const { title, date, volunteers, description } = this.state
+    const { title, date, volunteersNeeded, description } = this.state
     return (
       <>
         <div className="column form">
@@ -64,8 +64,8 @@ class AddEvent extends React.Component {
             <input
               className="input is-normal"
               type="number"
-              name="volunteers"
-              value={this.state.volunteers}
+              name="volunteersNeeded"
+              value={this.state.volunteersNeeded}
               onChange={this.handleChange}
             />
 
@@ -96,9 +96,9 @@ class AddEvent extends React.Component {
                   ? <p>Your date here</p>
                   : <p>{date}</p>
                 }
-                {volunteers === 0
+                {volunteersNeeded === 0
                   ? <p>Number of volunteers</p>
-                  : <p>{volunteers} volunteers needed</p>
+                  : <p>{volunteersNeeded} volunteers needed</p>
                 }
                 {description === ''
                   ? <p>Your description here</p>

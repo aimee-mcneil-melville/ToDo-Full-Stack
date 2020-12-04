@@ -25,7 +25,7 @@ test('getEventById returns the chosen Event', () => {
     .then(event => {
       expect(event.id).toBe(2)
       expect(event.title).toBe('Sowing Corn')
-      expect(event.volunteers_needed).toBe(4)
+      expect(event.volunteersNeeded).toBe(4)
       return null
     })
 })

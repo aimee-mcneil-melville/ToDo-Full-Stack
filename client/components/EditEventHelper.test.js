@@ -19,7 +19,7 @@ describe('getEvent', () => {
         title: 'test event',
         date: '2020-12-18',
         description: 'epic test event',
-        volunteers_needed: 14
+        volunteersNeeded: 14
       })
     })
     return getEvent(1)
@@ -28,7 +28,7 @@ describe('getEvent', () => {
         expect(event.title).toBe('test event')
         expect(event.date).toBe('2020-12-18')
         expect(event.description).toMatch('epic')
-        expect(event.volunteers).toBe(14)
+        expect(event.volunteersNeeded).toBe(14)
         return null
       })
   })
