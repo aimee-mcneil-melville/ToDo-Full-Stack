@@ -1,21 +1,23 @@
 import React from 'react'
-import { fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import AddEvent from './AddEvent'
-import { renderWithRedux } from '../test-utils'
+import { addEvent } from './addEventHelper'
 
-jest.mock('../api/events', () => {
-  return {
-    postEvent: () => Promise.resolve()
+jest.mock('./addEventHelper')
+
+test('calls addEvent with correct values on submit', () => {
+  expect.assertions(5)
+  const fakeHistory = {
+    push: jest.fn()
   }
-})
-
-describe('Adding a new event', () => {
-  it('Redirects to /garden', () => {
-    const fakeHistory = []
-    const { getByRole } = renderWithRedux(<AddEvent history={fakeHistory} />)
-    const addButton = getByRole('button')
-    fireEvent.click(addButton)
-    return waitFor(() => expect(fakeHistory).toHaveLength(1))
-      .then(() => expect(fakeHistory[0]).toBe('/garden'))
+  addEvent.mockImplementation((event, navigateTo) => {
+    expect(navigateTo).toBe(fakeHistory.push)
+    expect(event).toHaveProperty('title')
+    expect(event).toHaveProperty('date')
+    expect(event).toHaveProperty('volunteersNeeded')
+    expect(event).toHaveProperty('description')
   })
+  const { getByRole } = render(<AddEvent history={fakeHistory} />)
+  const addButton = getByRole('button')
+  fireEvent.click(addButton)
 })

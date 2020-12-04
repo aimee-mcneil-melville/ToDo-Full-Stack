@@ -1,7 +1,5 @@
 import React from 'react'
-import { postEvent } from '../api/events'
-import { showError } from '../actions/error'
-import { connect } from 'react-redux'
+import { addEvent } from './addEventHelper'
 
 class AddEvent extends React.Component {
   state = {
@@ -19,19 +17,8 @@ class AddEvent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const newEvent = {
-      ...this.state,
-      gardenId: this.props.gardenId
-    }
-
-    return postEvent(newEvent)
-      .then(() => {
-        this.props.history.push('/garden')
-        return null
-      })
-      .catch((error) => {
-        this.props.dispatch(showError(error.message))
-      })
+    const navigate = this.props.history.push
+    addEvent(this.state, navigate)
   }
 
   render () {
@@ -114,11 +101,4 @@ class AddEvent extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    gardenId: state.user.gardenId,
-    error: state.error
-  }
-}
-
-export default connect(mapStateToProps)(AddEvent)
+export default AddEvent
