@@ -2,7 +2,7 @@ import React from 'react'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-function Map (props) {
+function Map ({ address, coordinates, userCoordinates }) {
   return (
     <div className='column'>
       <MapContainer
@@ -11,24 +11,24 @@ function Map (props) {
         scrollWheelZoom={true}>
         <TileLayer
           url='https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWljaGFlbC1yIiwiYSI6ImNrZXM1Zm9iaDJiNmYycW1za2dobDZ4d3gifQ.a5mK2DxNqWhlzvoa8Zxb2Q'/>
-        {props.coordinates?.map(location => {
-          return <Marker key={props.coordinates.indexOf(location)}
+        {coordinates?.map(location => {
+          return <Marker key={coordinates.indexOf(location)}
             position={[location.lat, location.lon]}
           >
             <Popup>
-              {props.address[props.coordinates.indexOf(location)]}
+              {address[coordinates.indexOf(location)]}
             </Popup>
           </Marker>
         })}
-        {props.userCoordinates?.map(location => {
-          return <Marker key={props.userCoordinates.indexOf(location)}
-            position={[location.lat, location.lon]}
+        {userCoordinates &&
+          <Marker
+            position={[userCoordinates.lat, userCoordinates.lon]}
           >
             <Popup>
               Your Location
             </Popup>
           </Marker>
-        })}
+        }
       </MapContainer>
     </div>
   )

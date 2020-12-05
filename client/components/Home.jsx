@@ -8,7 +8,7 @@ import { setUserLocation } from '../actions/user'
 
 class Home extends React.Component {
   state = {
-    userCoordinates: [],
+    userCoordinates: null,
     gardensCoordinates: [],
     addresses: []
   }
@@ -16,7 +16,7 @@ class Home extends React.Component {
   componentDidMount () {
     const setLocation = (location) => {
       this.props.dispatch(setUserLocation(location))
-      this.setState({ userCoordinates: [{ lat: location.latitude, lon: location.longitude }] })
+      this.setState({ userCoordinates: { lat: location.latitude, lon: location.longitude } })
     }
 
     if ('geolocation' in navigator) {
