@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import Map from './Map'
 import Events from './Events'
 import { getGarden } from './gardenHelper'
-// import { isAuthenticated, getDecodedToken } from '../auth'
-// import { setUser } from '../actions/user'
 
 class Garden extends React.Component {
   state = {
@@ -19,16 +17,12 @@ class Garden extends React.Component {
   }
 
   componentDidMount () {
-    // if (isAuthenticated()) {
-    //   const { username, isAdmin, gardenId } = getDecodedToken()
-    //   this.props.dispatch(setUser({ username, isAdmin, gardenId }))
     return getGarden()
       .then(garden => {
         this.setState(garden)
         return null
       })
   }
-  // }
 
   render () {
     const { name, description, address, url, events, lat, lon } = this.state

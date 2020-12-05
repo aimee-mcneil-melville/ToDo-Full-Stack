@@ -37,7 +37,6 @@ class EditEvent extends React.Component {
       <>
         <div className="column form">
           <div className="column is-two-fifths pl-0 is-pulled-left">
-            {/* <h2 className='mb-6'>Kelmarna Gardens</h2> */}
             <h2 className="mb-6">Edit This Event</h2>
             <form>
               <h5 className="label">Event Title</h5>
@@ -53,7 +52,6 @@ class EditEvent extends React.Component {
               <h5 className="label">Date</h5>
               <input
                 className="input is-normal"
-                // Just need to work on the format of the date
                 type="date"
                 name="date"
                 value={this.state.date}

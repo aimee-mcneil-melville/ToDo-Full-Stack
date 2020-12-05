@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { hide } from './errorHelper'
 
 function Error ({ error }) {
-  // TODO: Talk to Field and Claire => styling/layout of this component?
   return (
     error
       ? <div className="message-error" role='alert'>
