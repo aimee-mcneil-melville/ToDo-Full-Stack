@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import Map from './Map'
 import { fetchGardens } from './gardenHelper'
-import { setUserLocation } from '../actions/user'
+import { getUserLocation } from './homeHelper'
 
 class Home extends React.Component {
   state = {
@@ -14,17 +14,9 @@ class Home extends React.Component {
   }
 
   componentDidMount () {
-    const setLocation = (location) => {
-      this.props.dispatch(setUserLocation(location))
-      this.setState({ userCoordinates: { lat: location.latitude, lon: location.longitude } })
-    }
-
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const { latitude, longitude } = position.coords
-        setLocation({ latitude, longitude })
-      })
-    }
+    getUserLocation((userCoords) => {
+      this.setState(userCoords)
+    })
     return fetchGardens()
       .then(gardens => {
         const coords = gardens.map(garden => {
