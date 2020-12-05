@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Map from './Map'
-import { fetchGardens } from './gardenHelper'
-import { getUserLocation } from './homeHelper'
+import { getUserLocation, getGardenLocations } from './homeHelper'
 
 class Home extends React.Component {
   state = {
@@ -17,7 +16,7 @@ class Home extends React.Component {
     getUserLocation((userCoords) => {
       this.setState(userCoords)
     })
-    return fetchGardens()
+    return getGardenLocations()
       .then(gardens => {
         const coords = gardens.map(garden => {
           const gardenCoords = { lat: garden.lat, lon: garden.lon }
