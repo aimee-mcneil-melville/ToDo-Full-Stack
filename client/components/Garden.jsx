@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Map from './Map'
 import Events from './Events'
@@ -45,4 +44,4 @@ class Garden extends React.Component {
   }
 }
 
-export default connect()(Garden)
+export default Garden
