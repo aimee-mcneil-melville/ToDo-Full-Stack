@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 import Map from './Map'
 import { getUserLocation, getGardenLocations } from './homeHelper'
@@ -17,17 +16,9 @@ class Home extends React.Component {
       this.setState(userCoords)
     })
     return getGardenLocations()
-      .then(gardens => {
-        const coords = gardens.map(garden => {
-          const gardenCoords = { lat: garden.lat, lon: garden.lon }
-          return gardenCoords
-        })
-        const addresses = gardens.map(garden => garden.address)
-        this.setState({
-          gardensCoordinates: coords,
-          addresses: addresses
-        })
-        return this.state
+      .then((locations) => {
+        this.setState(locations)
+        return null
       })
   }
 
@@ -49,4 +40,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect()(Home)
+export default Home

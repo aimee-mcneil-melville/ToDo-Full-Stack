@@ -17,7 +17,14 @@ export function getGardenLocations () {
   return getGardens()
     .then((gardens) => {
       dispatch(clearWaiting())
-      return gardens
+      const gardensCoordinates = gardens.map(({ lat, lon }) => {
+        return { lat, lon }
+      })
+      const addresses = gardens.map(({ address }) => address)
+      return {
+        gardensCoordinates,
+        addresses
+      }
     })
     .catch((error) => {
       dispatch(showError(error.message))
