@@ -2,16 +2,6 @@ import requestor from './consume'
 import { showError } from '../actions/error'
 import { dispatch } from '../store'
 
-export function getEvents (gardenId, consume = requestor) {
-  return consume(`/gardens/${gardenId}`)
-    .then(res => {
-      return res.body
-    })
-    .catch((error) => {
-      dispatch(showError(error.message))
-    })
-}
-
 export function getEventById (id, consume = requestor) {
   return consume(`/events/${id}/edit`)
     .then(res => {

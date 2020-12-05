@@ -1,14 +1,9 @@
 const connection = require('./connection')
 
 module.exports = {
-  getEvents,
   getEventById,
   addEvent,
   updateEvent
-}
-
-function getEvents (db = connection) {
-  return db('events').select('id', 'garden_id as gardenId', 'title', 'date', 'description', 'volunteers_needed as volunteersNeeded')
 }
 
 function getEventById (id, db = connection) {

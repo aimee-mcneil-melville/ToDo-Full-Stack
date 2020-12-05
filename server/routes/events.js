@@ -4,17 +4,6 @@ const db = require('../db/event')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.getEvents()
-    .then(events => {
-      res.json(events)
-      return null
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
-    })
-})
-
 router.post('/', (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const newEvent = { title, date, volunteersNeeded, description, gardenId }

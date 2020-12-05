@@ -12,14 +12,6 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
-test('getEvents returns the correct number of Events', () => {
-  return db.getEvents(testDb)
-    .then(events => {
-      expect(events).toHaveLength(2)
-      return null
-    })
-})
-
 test('getEventById returns the chosen Event', () => {
   return db.getEventById(2, testDb)
     .then(event => {
