@@ -1,27 +1,38 @@
 const express = require('express')
 
+const log = require('../logger')
 const db = require('../db/gardens')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getGardens()
-    .then(gardens => {
+    .then((gardens) => {
       return res.json({ gardens })
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve gardens'
+        }
+      })
     })
 })
 
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getGardenById(id)
-    .then(singleGarden => {
+    .then((singleGarden) => {
       return res.json(singleGarden)
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve garden'
+        }
+      })
     })
 })
 

@@ -2,8 +2,10 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/event')
+const log = require('../logger')
 
 jest.mock('../db/event')
+jest.mock('../logger')
 
 const mockEvents = [{
   id: 1,
@@ -38,14 +40,15 @@ describe('GET /api/v1/events/:id', () => {
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getEventById.mockImplementation(() => Promise.reject(
-      new Error('mock DB error')
+      new Error('mock getEventById error')
     ))
     return request(server)
       .get('/api/v1/events/999')
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
-        expect(res.body.error).toBe('mock DB error')
+        expect(log).toHaveBeenCalledWith('mock getEventById error')
+        expect(res.body.error.title).toBe('Unable to retrieve event')
         return null
       })
   })
@@ -82,14 +85,15 @@ describe('POST /api/v1/events', () => {
 
   it('responds with 500 and correct error object on DB error', () => {
     db.addEvent.mockImplementation(() => Promise.reject(
-      new Error('mock DB error')
+      new Error('mock addEvent error')
     ))
     return request(server)
       .post('/api/v1/events')
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
-        expect(res.body.error).toBe('mock DB error')
+        expect(log).toHaveBeenCalledWith('mock addEvent error')
+        expect(res.body.error.title).toBe('Unable to add event')
         return null
       })
   })

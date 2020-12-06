@@ -1,5 +1,6 @@
 const express = require('express')
 
+const log = require('../logger')
 const db = require('../db/event')
 
 const router = express.Router()
@@ -7,12 +8,17 @@ const router = express.Router()
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
-    .then(event => {
+    .then((event) => {
       res.json(event)
       return null
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve event'
+        }
+      })
     })
 })
 
@@ -24,8 +30,13 @@ router.post('/', (req, res) => {
       res.status(201).json(event)
       return null
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to add event'
+        }
+      })
     })
 })
 
@@ -37,8 +48,13 @@ router.patch('/:id', (req, res) => {
       res.status(201).json(event)
       return null
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to update event'
+        }
+      })
     })
 })
 

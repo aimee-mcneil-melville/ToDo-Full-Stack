@@ -10,8 +10,9 @@ export default function consume (endpoint, method = 'get', data = {}) {
 
   return request[method](baseUrl + endpoint)
     .set(headers)[payLoadMethod](data)
-    .then(res => res)
-    .catch(err => {
-      throw new Error(err.response.body.error)
+    .then((res) => res)
+    .catch((err) => {
+      const errMessage = err.response?.body?.error?.title
+      throw new Error(errMessage || err.message)
     })
 }

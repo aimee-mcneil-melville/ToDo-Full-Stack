@@ -2,8 +2,10 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/gardens')
+const log = require('../logger')
 
 jest.mock('../db/gardens')
+jest.mock('../logger')
 
 const mockGardens = [{
   id: 1,
@@ -61,14 +63,15 @@ describe('GET /api/v1/gardens', () => {
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getGardens.mockImplementation(() => Promise.reject(
-      new Error('mock DB error')
+      new Error('mock getGardens error')
     ))
     return request(server)
       .get('/api/v1/gardens')
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
-        expect(res.body.error).toBe('mock DB error')
+        expect(log).toHaveBeenCalledWith('mock getGardens error')
+        expect(res.body.error.title).toBe('Unable to retrieve gardens')
         return null
       })
   })
@@ -93,14 +96,16 @@ describe('GET /api/v1/gardens/:id', () => {
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getGardenById.mockImplementation(() => Promise.reject(
-      new Error('mock DB error')
+      new Error('mock getGardenById error')
     ))
     return request(server)
       .get('/api/v1/gardens/999')
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
-        return expect(res.body.error).toBe('mock DB error')
+        expect(log).toHaveBeenCalledWith('mock getGardenById error')
+        expect(res.body.error.title).toBe('Unable to retrieve garden')
+        return null
       })
   })
 })
