@@ -4,7 +4,7 @@ const db = require('../db/event')
 
 const router = express.Router()
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then(event => {
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.patch('/:id/edit', (req, res) => {
+router.patch('/:id', (req, res) => {
   const { title, date, volunteersNeeded, description, id } = req.body
   const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)

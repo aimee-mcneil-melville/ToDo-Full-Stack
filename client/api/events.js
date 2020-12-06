@@ -3,7 +3,7 @@ import { showError } from '../actions/error'
 import { dispatch } from '../store'
 
 export function getEventById (id, consume = requestor) {
-  return consume(`/events/${id}/edit`)
+  return consume(`/events/${id}`)
     .then(res => {
       return res.body
     })
@@ -13,7 +13,7 @@ export function getEventById (id, consume = requestor) {
 }
 
 export function patchEvent (event, consume = requestor) {
-  return consume(`/events/${event.id}/edit`, 'patch', event)
+  return consume(`/events/${event.id}`, 'patch', event)
     .then(res => {
       return res.body
     })
