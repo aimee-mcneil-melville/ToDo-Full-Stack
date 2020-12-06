@@ -14,27 +14,44 @@ beforeEach(() => {
 
 test('getUserByName returns the correct user', () => {
   return users.getUserByName('admin', testDb)
-    .then(user => {
+    .then((user) => {
       expect(user.username).toBe('admin')
-      return expect(user.gardenId).toBe(1)
+      expect(user.isAdmin).toBeTruthy()
+      expect(user.gardenId).toBe(1)
+      expect(user).toHaveProperty('hash')
+      return null
     })
 })
 
 test('createUser creates a new user', () => {
   const user = {
-    username: 'new',
+    username: 'newuser',
     password: 'hello',
-    gardenId: 1
+    gardenId: 3
   }
   return users.createUser(user, testDb)
-    .then(user => {
-      return expect(user).toEqual([4])
+    .then(() => users.getUserByName('newuser', testDb))
+    .then((user) => {
+      expect(user.username).toBe('newuser')
+      expect(user.isAdmin).toBeFalsy()
+      expect(user.gardenId).toBe(3)
+      return null
     })
 })
 
-test('userExists returns true if user exists, otherwise returns false', () => {
-  return users.userExists('admin', testDb)
-    .then(bool => {
-      return expect(bool).toBe(true)
-    })
+describe('userExists', () => {
+  it('returns true if user exists', () => {
+    return users.userExists('admin', testDb)
+      .then((exists) => {
+        expect(exists).toBeTruthy()
+        return null
+      })
+  })
+  it('returns false if user not found', () => {
+    return users.userExists('other-non-existent-user', testDb)
+      .then((exists) => {
+        expect(exists).toBeFalsy()
+        return null
+      })
+  })
 })

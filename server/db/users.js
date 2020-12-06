@@ -7,6 +7,13 @@ module.exports = {
   getUserByName
 }
 
+function getUserByName (username, db = connection) {
+  return db('users')
+    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash')
+    .where('username', username)
+    .first()
+}
+
 function createUser (user, db = connection) {
   return userExists(user.username, db)
     .then((exists) => {
@@ -33,11 +40,4 @@ function userExists (username, db = connection) {
     .then((count) => {
       return count[0].n > 0
     })
-}
-
-function getUserByName (username, db = connection) {
-  return db('users')
-    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash')
-    .where('username', username)
-    .first()
 }
