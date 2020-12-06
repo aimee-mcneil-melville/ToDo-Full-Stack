@@ -1,5 +1,4 @@
 import { postEvent, patchEvent, getEventById } from './events'
-import { dispatch } from '../store'
 
 jest.mock('../store')
 
@@ -49,13 +48,4 @@ test('getEventById return a id', () => {
       expect(event.title).toBe('Patrick')
       return null
     })
-})
-
-test('postEvent shows an error message', () => {
-  expect.assertions(1)
-  const consume = () => Promise.reject(new Error('testError'))
-  dispatch.mockImplementation(action => {
-    expect(action.errorMessage).toBe('testError')
-  })
-  return postEvent({}, consume)
 })
