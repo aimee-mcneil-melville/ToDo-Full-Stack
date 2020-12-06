@@ -1,7 +1,7 @@
-import { dispatch, getState } from '../store'
-import { setWaiting, clearWaiting } from '../actions/waiting'
-import { showError } from '../actions/error'
-import { postEvent } from '../api/events'
+import { dispatch, getState } from '../../store'
+import { setWaiting, clearWaiting } from '../../actions/waiting'
+import { showError } from '../../actions/error'
+import { postEvent } from '../../api/events'
 
 export function addEvent (event, navigateTo) {
   const storeState = getState()

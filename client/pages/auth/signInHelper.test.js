@@ -1,9 +1,9 @@
 import { signInUser } from './signInHelper'
-import { signIn, isAuthenticated, getDecodedToken } from '../auth'
-import { dispatch } from '../store'
+import { signIn, isAuthenticated, getDecodedToken } from '../../auth'
+import { dispatch } from '../../store'
 
-jest.mock('../auth')
-jest.mock('../store')
+jest.mock('../../auth')
+jest.mock('../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

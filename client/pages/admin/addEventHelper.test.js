@@ -1,10 +1,10 @@
 import { addEvent } from './addEventHelper'
-import { postEvent } from '../api/events'
-import { CLEAR_WAITING } from '../actions/waiting'
-import { dispatch, getState } from '../store'
+import { postEvent } from '../../api/events'
+import { CLEAR_WAITING } from '../../actions/waiting'
+import { dispatch, getState } from '../../store'
 
-jest.mock('../api/events')
-jest.mock('../store')
+jest.mock('../../api/events')
+jest.mock('../../store')
 
 afterEach(() => {
   return jest.resetAllMocks()

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Map from './Map'
-import Events from './Events'
+import Map from '../components/Map'
+import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
 
 class Garden extends React.Component {

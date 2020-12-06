@@ -1,8 +1,8 @@
-import { isAuthenticated, signIn, getDecodedToken } from '../auth'
-import { dispatch } from '../store'
-import { setUser } from '../actions/user'
-import { setWaiting } from '../actions/waiting'
-import { showError } from '../actions/error'
+import { isAuthenticated, signIn, getDecodedToken } from '../../auth'
+import { dispatch } from '../../store'
+import { setUser } from '../../actions/user'
+import { setWaiting } from '../../actions/waiting'
+import { showError } from '../../actions/error'
 
 export function signInUser (user, navigateTo) {
   const { username, password } = user

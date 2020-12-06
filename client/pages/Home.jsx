@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Map from './Map'
+import Map from '../components/Map'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 
 class Home extends React.Component {

@@ -1,7 +1,7 @@
-import { dispatch } from '../store'
-import { setWaiting, clearWaiting } from '../actions/waiting'
-import { showError } from '../actions/error'
-import { getEventById, patchEvent } from '../api/events'
+import { dispatch } from '../../store'
+import { setWaiting, clearWaiting } from '../../actions/waiting'
+import { showError } from '../../actions/error'
+import { getEventById, patchEvent } from '../../api/events'
 
 export function getEvent (id) {
   dispatch(setWaiting())
