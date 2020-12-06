@@ -27,13 +27,17 @@ const mockEvents = [{
 
 describe('GET /api/v1/events/:id', () => {
   it('responds with correct event by id on res body', () => {
-    db.getEventById.mockImplementation(() => Promise.resolve(mockEvents))
+    expect.assertions(2)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockEvents[1])
+    })
     return request(server)
       .get('/api/v1/events/2')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body).toHaveLength(2)
+        expect(res.body.title).toBe('Sowing Corn')
         return null
       })
   })
@@ -56,24 +60,30 @@ describe('GET /api/v1/events/:id', () => {
 
 describe('POST /api/v1/events', () => {
   it('respond with the event on res body', () => {
-    expect.assertions(2)
+    expect.assertions(6)
     db.addEvent.mockImplementation((newEvent) => {
-      expect(newEvent.description).toBe('test')
+      expect(newEvent.description).toMatch('cool event')
+      expect(newEvent.date).toMatch('12-31')
+      expect(newEvent.volunteersNeeded).toBe(500)
+      expect(newEvent.title).toMatch('Gardening')
+      expect(newEvent.gardenId).toBe(3)
       return Promise.resolve({
+        id: 4,
         gardenId: 3,
         title: 'Gardening Event',
-        dateTime: 'test',
-        volunteersNeeded: 'test',
-        description: 'test'
+        date: '2020-12-31',
+        volunteersNeeded: 500,
+        description: 'supremely cool event'
       })
     })
     return request(server)
       .post('/api/v1/events')
       .send({
+        gardenId: 3,
         title: 'Gardening Event',
-        dateTime: 'test',
-        volunteersNeeded: 'test',
-        description: 'test'
+        date: '2020-12-31',
+        volunteersNeeded: 500,
+        description: 'supremely cool event'
       })
       .expect('Content-Type', /json/)
       .expect(201)
@@ -101,29 +111,49 @@ describe('POST /api/v1/events', () => {
 
 describe('PATCH /api/v1/events/:id', () => {
   it('responds with the correct event by id on res body', () => {
-    expect.assertions(2)
-    db.updateEvent.mockImplementation((updateEvent) => {
-      expect(updateEvent.description).toBe('test')
+    expect.assertions(6)
+    db.updateEvent.mockImplementation((updatedEvent) => {
+      expect(updatedEvent.description).toMatch('best event')
+      expect(updatedEvent.id).toBe(2)
+      expect(updatedEvent.title).toBe('cooler event')
+      expect(updatedEvent.volunteersNeeded).toBe(1000)
+      expect(updatedEvent.date).toBe('2021-01-01')
       return Promise.resolve({
         id: 2,
-        title: 'test',
-        dateTime: 'test',
-        volunteersNeeded: 'test',
-        description: 'test'
+        title: 'cooler event',
+        date: '2021-01-01',
+        volunteersNeeded: 1000,
+        description: 'the best event ever'
       })
     })
     return request(server)
       .patch('/api/v1/events/2')
       .send({
-        title: 'test',
-        dateTime: 'test',
-        volunteersNeeded: 'test',
-        description: 'test'
+        id: 2,
+        title: 'cooler event',
+        date: '2021-01-01',
+        volunteersNeeded: 1000,
+        description: 'the best event ever'
       })
       .expect('Content-Type', /json/)
-      .expect(201)
+      .expect(200)
       .then(res => {
-        expect(res.body.title).toBe('test')
+        expect(res.body.title).toBe('cooler event')
+        return null
+      })
+  })
+
+  it('responds with 500 and correct error object on DB error', () => {
+    db.updateEvent.mockImplementation(() => Promise.reject(
+      new Error('mock updateEvent error')
+    ))
+    return request(server)
+      .patch('/api/v1/events/999')
+      .expect('Content-Type', /json/)
+      .expect(500)
+      .then(res => {
+        expect(log).toHaveBeenCalledWith('mock updateEvent error')
+        expect(res.body.error.title).toBe('Unable to update event')
         return null
       })
   })

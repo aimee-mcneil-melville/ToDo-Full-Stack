@@ -45,7 +45,7 @@ router.patch('/:id', (req, res) => {
   const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)
     .then((event) => {
-      res.status(201).json(event)
+      res.status(200).json(event)
       return null
     })
     .catch((err) => {
