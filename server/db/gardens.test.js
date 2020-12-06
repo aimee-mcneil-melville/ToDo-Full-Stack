@@ -43,7 +43,7 @@ describe('getGardenById', () => {
         expect(event.id).toBe(3)
         expect(event.volunteersNeeded).toBe(4)
         expect(event.description).toMatch('lovely corns')
-        expect(event.datetime).toMatch('08-28')
+        expect(event.date).toMatch('08-28')
         expect(event.title).toBe('Sowing Corn')
         return null
       })

@@ -30,7 +30,7 @@ function getGardenById (id, db = connection) {
             id: event.eventId,
             volunteersNeeded: event.volunteersNeeded,
             title: event.title,
-            datetime: event.date,
+            date: event.date,
             description: event.eventDescription
           }
         })

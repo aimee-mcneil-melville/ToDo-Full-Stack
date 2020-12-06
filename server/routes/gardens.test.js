@@ -37,13 +37,13 @@ const mockUserGarden = {
     id: 1,
     volunteersNeeded: 8,
     title: 'Weeding Worker Bee',
-    datetime: 'Wed, 27 Sep 2020 20:00:00 GMT',
+    date: 'Wed, 27 Sep 2020 20:00:00 GMT',
     description: "It's time to get these weeds under control."
   }, {
     id: 1,
     volunteersNeeded: 99,
     title: 'ROCKING THE GARDENS',
-    datetime: 'Wed, 26 Sep 2020 20:00:00 GMT',
+    date: 'Wed, 26 Sep 2020 20:00:00 GMT',
     description: 'ITS TIME TO ROCK GARDENS.'
   }]
 }
