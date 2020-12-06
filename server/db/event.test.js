@@ -13,45 +13,50 @@ beforeEach(() => {
 })
 
 test('getEventById returns the chosen Event', () => {
-  return db.getEventById(2, testDb)
-    .then(event => {
-      expect(event.id).toBe(2)
+  return db.getEventById(3, testDb)
+    .then((event) => {
+      expect(event.id).toBe(3)
+      expect(event.gardenId).toBe(1)
       expect(event.title).toBe('Sowing Corn')
       expect(event.volunteersNeeded).toBe(4)
+      expect(event).toHaveProperty('date')
+      expect(event).toHaveProperty('description')
       return null
     })
 })
 
-test('addEvent inserts one new event', () => {
-  const actual = {
-    gardenId: 1,
+test('addEvent inserts event correctly', () => {
+  const newEvent = {
+    gardenId: 2,
     title: 'Gardens of Testers',
-    date: 'Wed, 27 Sep 2020 20:00:00 GMT',
-    description: 'Testing',
+    date: '2020-12-25',
+    description: 'Christmas test gardening',
     volunteersNeeded: 6
   }
-  return db.addEvent(actual, testDb)
-    .then(event => {
+  return db.addEvent(newEvent, testDb)
+    .then((event) => {
       expect(event.title).toBe('Gardens of Testers')
       expect(event.volunteersNeeded).toBe(6)
+      expect(event.gardenId).toBe(2)
+      expect(event.description).toMatch('Christmas')
+      expect(event.date).toMatch('12-25')
       return null
     })
 })
 
 test('updateEvent returns the updatedEvent', () => {
-  // Updated event
-  const updated = {
+  const updatedEvent = {
     id: 1,
     title: 'gardening at daves',
-    date: 'Wed, 28 Sep 2020 20:00:00 GMT',
+    date: '2020-12-01',
     description: 'Leshgoooooo!',
     volunteersNeeded: 10
   }
 
-  return db.updateEvent(updated, testDb)
+  return db.updateEvent(updatedEvent, testDb)
     .then(event => {
       expect(event.title).toBe('gardening at daves')
-      expect(event.date).toBe('Wed, 28 Sep 2020 20:00:00 GMT')
+      expect(event.date).toBe('2020-12-01')
       expect(event.description).toBe('Leshgoooooo!')
       expect(event.volunteersNeeded).toBe(10)
       return null
