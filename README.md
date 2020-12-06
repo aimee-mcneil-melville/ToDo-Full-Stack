@@ -68,12 +68,7 @@ Response (200):
       "address": "12 Hukanui Crescent",
       "lat": -36.86011508905973,
       "lon": 174.7330772002716,
-      "url": "http://www.kelmarnagardens.nz",
-      "events": [{
-        "id": 1,
-        "title": "Weeding Worker Bee",
-        "datetime": "Wed, 27 Sep 2020 20:00:00 GMT"
-      }]
+      "url": "http://www.kelmarnagardens.nz"
     }
   ]
 }
@@ -97,7 +92,7 @@ Response (200):
     "id": 1,
     "volunteersNeeded": 8,
     "title": "Weeding Worker Bee",
-    "datetime": "Wed, 27 Sep 2020 20:00:00 GMT",
+    "date": "2020-12-31",
     "description": "It's time to get these weeds under control."
   }]
 }
@@ -112,7 +107,7 @@ Request:
   "gardenId": 1,
   "volunteersNeeded": 8,
   "title": "Weeding Worker Bee",
-  "datetime": "Wed, 27 Sep 2020 20:00:00 GMT",
+  "date": "2020-12-31",
   "description": "It's time to get these weeds under control."
 }
 ```
@@ -125,7 +120,7 @@ Response (201):
   "gardenId": 1,
   "volunteersNeeded": 8,
   "title": "Weeding Worker Bee",
-  "datetime": "Wed, 27 Sep 2020 20:00:00 GMT",
+  "date": "2020-12-31",
   "description": "It's time to get these weeds under control."
 }
 ```
@@ -140,7 +135,34 @@ Response (200):
   "gardenId": 1,
   "volunteersNeeded": 8,
   "title": "Weeding Worker Bee",
-  "datetime": "Wed, 27 Sep 2020 20:00:00 GMT",
+  "date": "2020-12-31",
+  "description": "It's time to get these weeds under control."
+}
+```
+
+### `PATCH /api/v1/events/:id`
+
+Request:
+
+```json
+{
+  "id": 167,
+  "volunteersNeeded": 8,
+  "title": "Weeding Worker Bee",
+  "date": "2020-12-31",
+  "description": "It's time to get these weeds under control."
+}
+```
+
+Response (201):
+
+```json
+{
+  "id": 167,
+  "gardenId": 1,
+  "volunteersNeeded": 8,
+  "title": "Weeding Worker Bee",
+  "date": "2020-12-31",
   "description": "It's time to get these weeds under control."
 }
 ```
