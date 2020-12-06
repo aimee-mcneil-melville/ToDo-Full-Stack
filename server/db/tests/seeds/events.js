@@ -11,6 +11,14 @@ exports.seed = (knex) => {
       },
       {
         id: 2,
+        garden_id: 3,
+        title: 'Odd jobs',
+        date: '2020-09-27',
+        description: 'Help us get cleaned up for summer',
+        volunteers_needed: 5
+      },
+      {
+        id: 3,
         garden_id: 1,
         title: 'Sowing Corn',
         date: '2020-08-28',
