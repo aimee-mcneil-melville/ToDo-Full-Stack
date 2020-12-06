@@ -1,4 +1,4 @@
-const { generateHash } = require('authenticare/server')
+const { generateHash } = require('../../auth')
 
 exports.seed = function (knex) {
   return knex('users').del()
