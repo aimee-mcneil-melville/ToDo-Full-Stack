@@ -73,6 +73,7 @@
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Grace Hopper
   - [ ] Ken Thompson
+  - [ ] Annie Easley
   - [ ] Linus Torvalds
   - [ ] Margaret Hamilton
 
