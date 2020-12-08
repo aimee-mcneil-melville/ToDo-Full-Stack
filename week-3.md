@@ -85,5 +85,6 @@
   - [ ] Audrey Tang
   - [ ] Brendan Eich
   - [ ] Charles Babbidge
+  - [ ] Mary Wilkes
 
 <!-- Count: 27 -->
