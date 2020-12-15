@@ -31,6 +31,10 @@
       "@babel/plugin-proposal-class-properties"
     ]
   },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": ["bundle.js"]
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
