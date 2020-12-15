@@ -146,6 +146,14 @@ The version of the database that we run during development varies slightly from 
   "build": "run-p build:client build:server",
   "build:client": "webpack",
   "build:server": "knex migrate:latest",
+  
+  // OR (if you are using our full stack project layout)
+
+  "build": "run-p build:client build:server",
+  "build:client": "npm run webpack -- --mode production",
+  "build:server": "npm run knex -- migrate:latest",
+  "webpack": "webpack --config ./client/webpack.config.js",
+  "knex": "knex --knexfile ./server/db/knexfile.js"
   ```
 
 - If you're also using Authenticare or another library that has build environment switching in the front-end (`process.env.NODE_ENV` etc). You're calling `webpack` in your `build` in production mode.
