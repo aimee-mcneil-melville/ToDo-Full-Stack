@@ -23,7 +23,7 @@ npm run dev
 
 ## The App component
 
-If you take a look at `index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.js`, we find this:
+If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.js`, we find this:
 
 ```js
 import App from './components/App'
@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 ```
 
-Plain ol' `DOMContentLoaded`, like in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before _rendering_ our components (making them show up on the page).
+Plain 'ole `DOMContentLoaded`, like in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before _rendering_ our components (making them show up on the page).
 
 Take a look at `client/components/App.jsx`:
 
 ```jsx
 const App = () => (
   <div className='container'>
-    <img className='spinner' src='images/paw.png' />
+    <img className='spinner' src='/images/paw.png' />
   </div>
 )
 
@@ -60,7 +60,7 @@ Let's try another component. In your editor, make a new component called `Dog.js
 ```jsx
 import React from 'react'
 
-const Dog = props => {
+const Dog = (props) => {
   return (
     <div className='dog-wrapper'>
       <div className='dog'>
@@ -110,7 +110,7 @@ and add a Dog tag (use Desdemona, above if you like). The JSX returned should lo
 ```jsx
 (
   <div className='container'>
-    <img className='spinner' src='images/paw.png' />
+    <img className='spinner' src='/images/paw.png' />
     <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
   </div>
 )
@@ -129,7 +129,7 @@ You should see something like this in the browser:
 Try it yourself. Define a component called `Subtitle` that takes just one prop, `text`, and wraps it in `<h2>` tags. Import it in the App component and use it like so:
 
 ```jsx
-<img className='spinner' src='images/paw.png' />
+<img className='spinner' src='/images/paw.png' />
 <Subtitle text='Canines using supercanine abilities for social good.' />
 <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
 ```
@@ -138,5 +138,5 @@ You should see something like this:
 
 ![Subtitle component](screenshots/subtitle.png)
 
-The `images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`.
+The `server/public/images` directory contains a few dog silhouettes. Try modifying the components to add an image for each `Dog`.
 

@@ -7,9 +7,10 @@
     "start": "node server",
     "build": "webpack",
     "dev": "run-p watch:client watch:server",
-    "watch:client": "webpack --watch",
+    "watch:client": "webpack --config ./client/webpack.config.js --watch",
     "watch:server": "nodemon --watch server",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx .",
+    "test": "jest --verbose"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",
   "author": "EDA",
@@ -28,6 +29,12 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
@@ -40,11 +47,11 @@
     "babel-loader": "^8.1.0",
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
-    "jest": "^26.6.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
