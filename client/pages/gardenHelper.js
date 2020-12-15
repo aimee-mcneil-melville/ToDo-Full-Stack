@@ -3,7 +3,7 @@ import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 import { getGardenById } from '../api/gardens'
 
-export function getGarden () {
+export function getGarden (setGarden) {
   const storeState = getState()
   const { gardenId } = storeState.user
   dispatch(setWaiting())
@@ -11,7 +11,7 @@ export function getGarden () {
     .then((garden) => {
       dispatch(clearWaiting())
       const { name, description, url, address, events, lat, lon } = garden
-      return {
+      setGarden({
         name,
         description,
         address,
@@ -19,7 +19,8 @@ export function getGarden () {
         events,
         lat,
         lon
-      }
+      })
+      return null
     })
     .catch((error) => {
       dispatch(showError(error.message))

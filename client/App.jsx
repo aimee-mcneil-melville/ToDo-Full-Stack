@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -15,33 +15,30 @@ import EditEvent from './pages/admin/EditEvent'
 import Error from './components/Error'
 import WaitIndicator from './components/WaitIndicator'
 
-class App extends React.Component {
-  componentDidMount () {
+function App (props) {
+  useEffect(() => {
     if (isAuthenticated()) {
       const { username, isAdmin, gardenId } = getDecodedToken()
-      this.props.dispatch(setUser({ username, isAdmin, gardenId }))
+      props.dispatch(setUser({ username, isAdmin, gardenId }))
     }
-  }
-
-  render () {
-    return (
-      <main className="container is-max-desktop">
-        <Error />
-        <Route path="/" component={Header} />
-        <WaitIndicator />
-        <div className="columns">
-          <Route exact path='/' component={Home} />
-        </div>
-        <div className='columns'>
-          <Route path="/register" component={Register} />
-          <Route path="/signin" component={SignIn} />
-          <Route path='/garden' component={Garden} />
-          <Route path='/events/new' component={AddEvent} />
-          <Route path='/events/:id/edit' component={EditEvent} />
-        </div>
-      </main>
-    )
-  }
+  }, [])
+  return (
+    <main className="container is-max-desktop">
+      <Error />
+      <Route path="/" component={Header} />
+      <WaitIndicator />
+      <div className="columns">
+        <Route exact path='/' component={Home} />
+      </div>
+      <div className='columns'>
+        <Route path="/register" component={Register} />
+        <Route path="/signin" component={SignIn} />
+        <Route path='/garden' component={Garden} />
+        <Route path='/events/new' component={AddEvent} />
+        <Route path='/events/:id/edit' component={EditEvent} />
+      </div>
+    </main>
+  )
 }
 
 export default connect()(App)

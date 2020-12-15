@@ -8,11 +8,11 @@ export function getUserLocation (setLocation, browser = navigator) {
   browser.geolocation?.getCurrentPosition((position) => {
     const { latitude, longitude } = position.coords
     dispatch(setUserLocation({ latitude, longitude }))
-    setLocation({ userCoordinates: { lat: latitude, lon: longitude } })
+    setLocation({ lat: latitude, lon: longitude })
   })
 }
 
-export function getGardenLocations () {
+export function getGardenLocations (setGardenCoords, setAddresses) {
   dispatch(setWaiting())
   return getGardens()
     .then((gardens) => {
@@ -21,10 +21,9 @@ export function getGardenLocations () {
         return { lat, lon }
       })
       const addresses = gardens.map(({ address }) => address)
-      return {
-        gardensCoordinates,
-        addresses
-      }
+      setGardenCoords(gardensCoordinates)
+      setAddresses(addresses)
+      return null
     })
     .catch((error) => {
       dispatch(showError(error.message))

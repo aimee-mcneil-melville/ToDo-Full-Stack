@@ -1,43 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Map from '../components/Map'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 
-class Home extends React.Component {
-  state = {
-    userCoordinates: null,
-    gardensCoordinates: [],
-    addresses: []
-  }
+function Home () {
+  const [userCoordinates, setUserCoordinates] = useState(null)
+  const [gardensCoordinates, setGardensCoordinates] = useState([])
+  const [addresses, setAddresses] = useState([])
 
-  componentDidMount () {
-    getUserLocation((userCoords) => {
-      this.setState(userCoords)
-    })
-    return getGardenLocations()
-      .then((locations) => {
-        this.setState(locations)
-        return null
-      })
-  }
+  useEffect(() => {
+    getUserLocation(setUserCoordinates)
+    return getGardenLocations(setGardensCoordinates, setAddresses)
+  }, [])
 
-  render () {
-    const { userCoordinates, gardensCoordinates, addresses } = this.state
-    return (
-      <>
-        <div className='column is-half-tablet'>
-          <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-          <Link className="button is-medium my-4 mt-6" to={'/garden'}>Get Started</Link>
-        </div>
-        <Map
-          userCoordinates={userCoordinates}
-          coordinates={gardensCoordinates}
-          address={addresses}
-        />
-      </>
-    )
-  }
+  return (
+    <>
+      <div className='column is-half-tablet'>
+        <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
+        <Link className="button is-medium my-4 mt-6" to={'/garden'}>Get Started</Link>
+      </div>
+      <Map
+        userCoordinates={userCoordinates}
+        coordinates={gardensCoordinates}
+        address={addresses}
+      />
+    </>
+  )
 }
 
 export default Home

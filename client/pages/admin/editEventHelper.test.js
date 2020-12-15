@@ -22,13 +22,15 @@ describe('getEvent', () => {
         volunteersNeeded: 14
       })
     })
-    return getEvent(1)
-      .then((event) => {
+    const mockSetEventDetails = (event) => {
+      expect(event.title).toBe('test event')
+      expect(event.date).toBe('2020-12-18')
+      expect(event.description).toMatch('epic')
+      expect(event.volunteersNeeded).toBe(14)
+    }
+    return getEvent(1, mockSetEventDetails)
+      .then(() => {
         expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
-        expect(event.title).toBe('test event')
-        expect(event.date).toBe('2020-12-18')
-        expect(event.description).toMatch('epic')
-        expect(event.volunteersNeeded).toBe(14)
         return null
       })
   })
