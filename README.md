@@ -15,11 +15,11 @@ and then go to [`http://localhost:3000`](http://localhost:3000).
 
 This is what your starting place looks like:
 
-![Base case](./public/images/base-circle.png)
+![Base case](./server/public/images/base-circle.png)
 
 And after you've completed this project, this is what it can look like after a few mouse overs:
 
-![Enspiraled](./public/images/enspiral.png)
+![Enspiraled](./server/public/images/enspiral.png)
 
 
 ## Your starting place
@@ -47,7 +47,7 @@ const App = props => {
 export default App
 ```
 
-The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey established in `public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
+The `App` component is implemented as a stateless functional component. The `props` are defined in `client/index.js` if you're curious. We use the width and height of the window to center the circle in the browser. This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey established in `server/public/css/app.css`. It's important to note that this JSX will render The SVG elements, _not React controls_. We know this because `<svg>` and `<circle>` are lower case.
 
 
 ## The requirements

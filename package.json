@@ -7,10 +7,10 @@
     "start": "run-p server webpack",
     "dev": "run-p server client",
     "server": "node server",
-    "webpack": "webpack",
-    "client": "webpack --watch",
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "client": "npm run webpack -- --watch",
     "test": "jest --watch --noStackTrace",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx ."
   },
   "repository": {
     "type": "git",
