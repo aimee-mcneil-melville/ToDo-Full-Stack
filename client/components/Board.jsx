@@ -2,10 +2,9 @@ import React from 'react'
 
 import Tile from './Tile'
 
-class Board extends React.Component {
-  render () {
+function Board (props) {
     return <div className='tiles'>
-      {this.props.tiles.map(tile => {
+      {props.tiles.map(tile => {
         return <Tile
           key={tile.id}
           info={tile.info}
@@ -13,7 +12,6 @@ class Board extends React.Component {
           isVisible={tile.isVisible} />
       })}
     </div>
-  }
 }
 
 export default Board
