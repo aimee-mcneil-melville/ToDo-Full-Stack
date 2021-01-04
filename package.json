@@ -3,19 +3,21 @@
   "version": "2.0.1",
   "description": "Kata for working with types, functions and modules",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace"
+    "test": "jest --watchAll --noStackTrace",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/kata-strings-numbers-modules.git"
   },
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "author": "EDA",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules/issues"
-  },
-  "homepage": "https://github.com/dev-academy-challenges/kata-strings-numbers-modules#readme",
   "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^26.0.1"
   }
 }

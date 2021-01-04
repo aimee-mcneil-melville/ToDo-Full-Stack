@@ -23,4 +23,3 @@ test('filter returns an array containing only values that pass the specified con
     'dinosaur'
   ])
 })
-

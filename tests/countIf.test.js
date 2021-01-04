@@ -3,6 +3,7 @@ const countIf = require('../utilities').countIf
 const mixedArray = [1, '21', null, Date.now(), 5, {}, 42]
 
 function isType (type) {
+  // eslint-disable-next-line valid-typeof
   return (thing) => typeof thing === type
 }
 
@@ -23,4 +24,3 @@ test('countIf can count the objects in an array', () => {
   const actual = countIf(mixedArray, isType('object'))
   expect(actual).toBe(expected)
 })
-

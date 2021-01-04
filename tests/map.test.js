@@ -10,4 +10,3 @@ test('map returns the correct array of values', () => {
     expect(expectedNumbers[i]).toBe(actualNumbers[i])
   }
 })
-

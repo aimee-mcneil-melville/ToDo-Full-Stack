@@ -16,4 +16,3 @@ test('the generated array of array of strings matches the expected array', () =>
   })
   expect(arraysMatch).toBeTruthy()
 })
-

@@ -17,4 +17,3 @@ test('addStringsOrNumbers can add strings and number (returning a string)', () =
   const actual = addStringsOrNumbers(2, '3')
   expect(actual).toBe(expected)
 })
-

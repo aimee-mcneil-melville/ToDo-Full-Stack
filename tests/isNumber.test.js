@@ -11,4 +11,3 @@ test('13 is a number', () => {
   const actual = isNumber(13)
   expect(actual).toBe(expected)
 })
-
