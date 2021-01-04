@@ -7,39 +7,26 @@ import BeerList from './BeerList'
 import beerData from '../../data/beers'
 
 class App extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      onListing: true,
-      cart: []
-    }
-    this.addToCart = this.addToCart.bind(this)
-    this.keepShopping = this.keepShopping.bind(this)
+  state = {
+    activePage: 'listing'
   }
 
-  addToCart (id) {
-    this.setState({
-      cart: [
-        ...this.state.cart,
-        {id, quantity: 1} // TODO: increment if already added
-      ],
-      onListing: false
-    })
+  handleKeepShopping = () => {
+    // TODO: implement
   }
 
-  keepShopping () {
-    this.setState({
-      onListing: true
-    })
+  handleAddToCart = () => {
+    // TODO: implement
   }
 
   render () {
-    const cart = <Cart cart={this.state.cart} keepShopping={this.keepShopping} />
-    const beerList = <BeerList beers={beerData.beers} addToCart={this.addToCart} />
+    const cart = <Cart cart={[]} keepShopping={this.handleKeepShopping} />
+    const beerList = <BeerList beers={beerData.beers} addToCart={this.handleAddToCart} />
+
     return (
       <div className='app'>
         <Header />
-        {this.state.onListing ? beerList : cart}
+        {this.state.activePage === 'listing' ? beerList : cart}
       </div>
     )
   }

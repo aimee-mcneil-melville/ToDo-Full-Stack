@@ -4,12 +4,17 @@
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
   "scripts": {
-    "start": "webpack && node server",
-    "dev": "nodemon --watch & webpack --watch",
-    "test": "jest --watch"
+    "dev": "run-p client server",
+    "client": "webpack --watch",
+    "server": "nodemon server",
+    "start": "node server",
+    "test": "jest --watchAll"
   },
   "author": "EDA",
   "license": "ISC",
+  "keywords": [
+    "frontend"
+  ],
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -20,23 +25,28 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": ["bundle.js"]
+  },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "nodemon": "^1.14.12",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1"
   }
 }
