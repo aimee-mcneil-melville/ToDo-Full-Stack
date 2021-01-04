@@ -8,51 +8,49 @@ In this challenge you'll build part of a fictitious clearing house for beer - sp
 After cloning this repo
 
 ```sh
-cd sweet-as-beers && npm
+cd sweet-as-beers && npm i
 npm run dev
 ```
 
-Make sure you can go to [http://localhost:3000/designs/listing.html](http://localhost:3000/designs/listing.html) and see the page. Any change to the server will cause a restart and any change to client code will rebuild `bundle.js`.
+
+## Starting place
+
+* All of the React components are in place.
+* You can find the beer data in `data/beers.js`.
+* Redux has been installed, but not yet configured.
+* The `actions` and `reducers` folders have been created, but no actions or reducers have been created yet.
+* The beer listing displays the beers, but the _Add to cart_ link doesn't do anything yet.
+
+Before we jump into the code editor, let's do some thinking about what we need to accomplish.
 
 
-## Listing
+## Shape of the store
 
-The files that create the initial experience are `public/designs/listing.html` and `public/designs/cart.html` along with the associated CSS styles. Start with creating React components for the listing. This will probably translate to the following components:
+One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of data that will be changing that multiple components will be using:
 
-* `<App />` (stateful: for navigation and beers)
-* `<Header />` 
-* `<BeerList />`
-* `<BeerListItem />`
+1. The contents of the cart as an array of cart item objects
+2. The user's active page (React Router is a more appropriate choice to manage navigation, but let's use Redux instead because we need the practice)
 
-You might consider importing `data/beers.js` into the `App` component and passing the array into the `BeerList` component.
-
-At this point, don't worry about making the link to the cart work or even using Redux. Just get the initial view working with components instead of static HTML.
-
-
-## Cart
-
-Now do the same _React componetisation_ exercise for `public/designs/cart.html`. This will probably mean the following components:
-
-* `<Cart />` (stateful: for cart with `<table>`, `<thead>` and `<tbody>`)
-* `<CartListItem />` (`<tr>`s)
-
-Again, don't implement a Redux store, or any button actions at this point.
-
-
-## Navigation
-
-At this point you probably have a property in local state to decide which page to show between the BeerList or Cart. Rather than using local state, let's add a Redux store with an `activePage` property. The action creator for navigating between pages could look like this:
+Given that, our Redux store needs to look similar to this:
 
 ```js
-export const navigate = target => {
-  return {
-    type: 'NAVIGATE',
-    target // 'listing' or 'cart'
-  }
+{
+  cart: [
+    {
+      id: 1,
+      quantity: 3,
+      name: 'HBIB Ginger Fusion'
+    }, {
+      id: 2,
+      quantity: 1,
+      name: 'Mangose & Melons'
+    }
+  ],
+  activePage: 'listing' // or 'cart'
 }
 ```
 
-Of course you'll need to create the associated `navigation` reducer as well. You can use this value in `<App />` to determine whether to show the `<Listing />` or `<Cart />`.
+Now we have a clear understanding about what reducers we'll be creating below. But what about actions the reducers should respond to?
 
 
 ## Add to cart
@@ -86,6 +84,23 @@ The items in the cart can be managed by a `cart` reducer, which probably makes s
 ```
 
 When the reducer is processing the `ADD_TO_CART` action, it should default to `1` for the quantity.
+
+
+## Navigation
+
+Let's add an `activePage` property to our Redux store. The action creator for navigating between pages could look like this:
+
+```js
+export const navigate = target => {
+  return {
+    type: 'NAVIGATE',
+    target // 'listing' or 'cart'
+  }
+}
+```
+
+Of course you'll need to create the associated `navigation` reducer as well. You can use this value in `<App />` to determine whether to show the `<Listing />` or `<Cart />`.
+
 
 
 ## Delete from cart
