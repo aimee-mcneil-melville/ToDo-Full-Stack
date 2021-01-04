@@ -49,6 +49,13 @@ function addName (obj, name) {
 // that matches the `key` parameter
 // Tip: consider JavaScript's `delete` operator
 function deleteProperty (obj, key) {
+  var newObj = {
+    ...obj
+  }
+  
+  delete newObj[key]
+
+  return newObj
 }
 
 // returnErrorIfFalsy should return a JavaScript Error object with message:
@@ -56,16 +63,33 @@ function deleteProperty (obj, key) {
 // if val evaluates to false
 // Tip: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 function returnErrorIfFalsy (val) {
+  if (val == false) {
+    return new Error('Oh no, an error!')
+  }
 }
 
 // keys should return an array of the object's property names (keys)
 // For example, given { foo: 1, bar: 2 } it would return ['foo', 'bar']
 function getKeys (obj) {
+  let arr = []
+
+  for (const property in obj){
+    arr.push(property)
+  }
+
+  return arr
 }
 
 // getValues should return an array of the object's own values
 // For example, given { foo: 1, bar: 2 } it would return [1, 2]
 function getValues (obj) {
+  let arr = []
+
+  for (const property in obj){
+    arr.push(obj[property])
+  }
+
+  return arr
 }
 
 /**
