@@ -3,7 +3,8 @@
   "version": "2.0.1",
   "description": "Kata for objects and arrays",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace"
+    "test": "jest --watchAll --noStackTrace",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -11,11 +12,13 @@
   },
   "author": "EDA",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/kata-objects-and-arrays/issues"
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": ["bundle.js"]
   },
-  "homepage": "https://github.com/dev-academy-challenges/kata-objects-and-arrays#readme",
   "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^26.2.2"
   }
 }

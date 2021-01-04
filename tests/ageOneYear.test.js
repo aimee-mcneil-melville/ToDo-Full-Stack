@@ -12,4 +12,3 @@ test('ageOneYear returns a copy of the input object with an age property increme
   expect(result.age).toBe(65)
   expect(result).not.toBe(mickey)
 })
-

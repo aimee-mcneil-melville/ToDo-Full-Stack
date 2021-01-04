@@ -6,13 +6,13 @@ test('findAll returns the correct set of elements', () => {
       name: 'Count Dracula',
       email: 'dracula@hotmail.com',
       country: 'Transylvania',
-      age: 588,
+      age: 588
     },
     {
       name: "Frankenstein's Monster",
       email: 'franky@monster.com',
       country: 'Switzerland',
-      age: 232,
+      age: 232
     },
     {
       name: 'Cthulhu',
@@ -33,7 +33,7 @@ test('findAll returns the correct set of elements', () => {
       name: "Frankenstein's Monster",
       email: 'franky@monster.com',
       country: 'Switzerland',
-      age: 232,
+      age: 232
     },
     {
       name: 'Taniwha',

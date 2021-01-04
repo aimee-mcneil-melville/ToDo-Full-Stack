@@ -13,4 +13,3 @@ test('zipObject returns an object by combining key and value arrays', () => {
   )
   expect(actual).toEqual(draculaReborn)
 })
-

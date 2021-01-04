@@ -17,4 +17,3 @@ test('deleteProp deletes properties', () => {
   expect(actual).toEqual(expected)
   expect(actual).not.toBe(mickey)
 })
-

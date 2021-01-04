@@ -18,4 +18,3 @@ test('getValues returns own values for an object', () => {
 
   expect(actual).toEqual(expected)
 })
-

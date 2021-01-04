@@ -13,4 +13,3 @@ test('unzipObject returns an array of key/value pairs', () => {
 
   expect(actual).toEqual(expected)
 })
-

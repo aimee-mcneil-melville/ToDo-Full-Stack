@@ -7,4 +7,3 @@ test('replaceItemAtIndex replaces the correct item', () => {
   expect(actual).toEqual(expected)
   expect(actual).not.toBe(alphabet)
 })
-
