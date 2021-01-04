@@ -202,12 +202,28 @@ function unzipObject (obj) {
 // it will return:
 //   {b: 2, c: 3}
 function findOneByProperty (arr, search) {
+  for (i = 0; i < arr.length; i++){
+    for (const property in arr[i]){
+      if (arr[i][property] == search[property]){
+        return arr[i]
+      }
+    }
+  }
 }
 
 // findAll should return an array containing all objects in `arr` that
 // have the property and value of `search`
 function findAll (arr, search) {
+  let newArr = []
 
+  for (i = 0; i < arr.length; i++){
+    for (const property in arr[i]){
+      if (arr[i][property] == search[property]){
+        newArr.push(arr[i])
+      }
+    }
+  }
+  return newArr
 }
 
 module.exports = {
