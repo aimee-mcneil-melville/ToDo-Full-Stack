@@ -8,7 +8,8 @@
     "client": "webpack --watch",
     "server": "nodemon server",
     "start": "node server",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "author": "EDA",
   "license": "ISC",
@@ -27,7 +28,9 @@
   },
   "eslintConfig": {
     "extends": "eda",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -37,6 +40,9 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "^0.1.4",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",

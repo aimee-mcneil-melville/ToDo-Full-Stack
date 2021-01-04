@@ -9,9 +9,7 @@ const BeerListItem = (props) => {
       <p>
         <span className='country'>{beer.country}</span>
         <span className='abv'>{beer.abv} abv</span>
-        <a href='#'
-          className='cart-link'
-          onClick={() => props.addToCart(beer.id)}>Add to cart</a>
+        <a href='#' className='cart-link'>Add to cart</a>
       </p>
     </div>
   )
