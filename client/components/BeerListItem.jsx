@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BeerListItem = (props) => {
+function BeerListItem (props) {
   const beer = props.beer
   return (
     <div className='beer'>

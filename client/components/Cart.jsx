@@ -2,7 +2,7 @@ import React from 'react'
 
 import beerData from '../../data/beers'
 
-const Cart = (props) => {
+function Cart (props) {
   return (
     <div className='cart'>
       <table>
