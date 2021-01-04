@@ -176,12 +176,24 @@ function deleteItem (arr, item) {
 // For example, given ['foo', 'bar'] and [1, 2] it would return
 // { foo: 1, bar: 2 }
 function zipObject (keys, values) {
+  let obj = {}
+  for (i = 0; i < keys.length; i++){
+    obj[keys[i]] = values[i]
+  }
+  return obj
 }
 
 // unzipObject should return an array of arrays, each one a pair of keys and values
 // For example, given {foo: 1, bar: 2} it would return
 // [['foo', 1], ['bar', 2]]
 function unzipObject (obj) {
+
+  let newArr = []
+
+  for (const property in obj){
+    newArr.push([property, obj[property]])
+  }
+  return newArr
 }
 
 // findOneByProperty should return an object from `arr` that has the
