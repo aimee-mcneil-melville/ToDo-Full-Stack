@@ -5,4 +5,3 @@ test('types.getNumber returns a number', function () {
   const actual = typeof types.getNumber()
   expect(actual).toBe(expected)
 })
-

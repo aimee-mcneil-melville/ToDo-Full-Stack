@@ -11,4 +11,3 @@ test('functions.callsFunction takes a function as a parameter and calls it once'
   functions.callsFunction(increment)
   expect(actual).toBe(expected)
 })
-

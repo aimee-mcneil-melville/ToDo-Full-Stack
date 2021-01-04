@@ -12,4 +12,3 @@ test('functions.callsProperty accepts a parameter `obj` and calls obj.increment(
   functions.callsProperty(actual)
   expect(actual.n).toBe(expected)
 })
-
