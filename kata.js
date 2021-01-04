@@ -100,42 +100,76 @@ function getValues (obj) {
 // `item`. For example, makeArrayOfItem('foo', 2) would return:
 // ['foo', 'foo']
 function makeArrayOfItem (item, length) {
+  let arr = []
+
+  for (i = 0; i < length; i++){
+    arr.push(item)
+  }
+
+  return arr
 }
 
 // makeArrayOfItems should return an array containing all arguments passed to it
 // Tip: consider JavaScript's Rest parameters
-function makeArrayOfItems () {
+function makeArrayOfItems (...args) {
+  let arr = []
+
+  for (i = 0; i < args.length; i++){
+    arr.push(args[i])
+  }
+
+  return arr
 }
 
 // hasItem should return true if `item` is present in `arr` at least once,
 // otherwise it should return false.
 // Tip: there is an array function that makes this straightforward
 function hasItem (arr, item) {
+  if (arr.find(element => element == item) != null){
+    return true
+  } else {
+    return false
+  }
 }
 
 // getItemAtIndex should return arr[idx] but only if that index exists:
 // if it doesn't, return a JavaScript Error object.
 function getItemAtIndex (arr, idx) {
+  if (idx >= 0 && idx < arr.length){
+    return arr[idx]
+  } else {
+    return new Error()
+  }
 }
 
 // replaceItemAtIndex should return a copy of `arr` with
 // the element at `idx` replaced with `item`
 // Tip: consider the array literal spread syntax
 function replaceItemAtIndex (arr, idx, item) {
+  let newArr = [...arr]
+  newArr.splice(idx, 1, item)
+  return newArr
 }
 
 // insertItemAtIndex should return a copy of `arr` with `item` inserted at
 // `idx` without overwriting any array values (the array should get longer)
 function insertItemAtIndex (arr, item,  idx) {
+  let newArr = [...arr]
+  newArr.splice(idx, 0, item)
+  return newArr
 }
 
 // deleteItemAtIndex should return a copy of `arr` without
 // the element at `idx` (the array should get shorter).
 function deleteItemAtIndex (arr, idx) {
+  let newArr = [...arr]
+  newArr.splice(idx, 1)
+  return newArr
 }
 
 // deleteItem should return an array with every instance of `item` removed
 function deleteItem (arr, item) {
+  return arr.filter(element => element != item)
 }
 
 // zipObject should return an object built from two arrays
