@@ -33,4 +33,3 @@ test('getType returns the expected data types', function () {
   // Assert
   expect(actual).toEqual(expected)
 })
-

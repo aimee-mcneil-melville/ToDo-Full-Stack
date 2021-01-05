@@ -17,4 +17,3 @@ test('getPropTypes returns the types of object properties', function () {
   // Assert
   expect(actual).toEqual(expected)
 })
-

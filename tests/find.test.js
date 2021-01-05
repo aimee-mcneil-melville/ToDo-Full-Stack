@@ -12,4 +12,3 @@ test('find finds the first matching object in the array', function () {
   // Assert
   expect(actual).toEqual(expected)
 })
-

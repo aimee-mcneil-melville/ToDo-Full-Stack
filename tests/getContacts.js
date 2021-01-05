@@ -9,4 +9,3 @@ function getContacts () {
     { id: '127', address: 'Wayne Manor', name: 'Alfred', age: 78 }
   ]
 }
-

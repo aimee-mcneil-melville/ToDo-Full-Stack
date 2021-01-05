@@ -48,4 +48,3 @@ test('where finds objects with two search properties', function () {
   // Assert
   expect(actual).toEqual(expected)
 })
-

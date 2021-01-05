@@ -4,7 +4,7 @@ const getAddress = require('../getAddress')
 test('map and getAddress return the address property from objects in an array', function () {
   // Arrange
   const contacts = getContacts()
-  const expected = [ '742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
+  const expected = ['742 Evergreen Terrace', 'Bag End', 'Wayne Manor', 'Skull Island', 'Wayne Manor']
 
   // Act
   const actual = contacts.map(getAddress)
@@ -12,4 +12,3 @@ test('map and getAddress return the address property from objects in an array', 
   // Assert
   expect(actual).toEqual(expected)
 })
-

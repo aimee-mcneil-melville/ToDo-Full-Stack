@@ -3,9 +3,9 @@ const matrix = require('../matrix')
 test('matrix.getMatrix creates 3x3 matrix', function () {
   // Arrange
   const expected = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ]
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
   ]
 
   // Act
@@ -18,10 +18,10 @@ test('matrix.getMatrix creates 3x3 matrix', function () {
 test('matrix.getMatrix creates 4x4 matrix', function () {
   // Arrange
   const expected = [
-    [ 0, 0, 0, 0 ],
-    [ 0, 0, 0, 0 ],
-    [ 0, 0, 0, 0 ],
-    [ 0, 0, 0, 0 ]
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
   ]
 
   // Act
@@ -34,14 +34,14 @@ test('matrix.getMatrix creates 4x4 matrix', function () {
 test('matrix.updateMatrix can change the value at specified coordinates', function () {
   // Arrange
   const initialMatrix = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ],
-    [ 0, 0, 0 ]
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
   ]
   const expected = [
-    [ 0, 0, 0 ],
-    [ 0, 0, 1 ],
-    [ 0, 0, 0 ]
+    [0, 0, 0],
+    [0, 0, 1],
+    [0, 0, 0]
   ]
 
   // Act
@@ -50,4 +50,3 @@ test('matrix.updateMatrix can change the value at specified coordinates', functi
   // Assert
   expect(actual).toEqual(expected)
 })
-

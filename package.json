@@ -3,7 +3,8 @@
   "version": "2.0.1",
   "description": "Kata for data Structures",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace"
+    "test": "jest --watchAll --noStackTrace",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -11,11 +12,12 @@
   },
   "author": "EDA",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/kata-data-structures/issues"
+  "eslintConfig": {
+    "extends": "eda"
   },
-  "homepage": "https://github.com/dev-academy-challenges/kata-data-structures#readme",
   "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^26.0.1"
   }
 }

@@ -35,4 +35,3 @@ test('positions.getLast gets the last item in a long array', function () {
   // Assert
   expect(actual).toBe(expected)
 })
-
