@@ -18,7 +18,6 @@ npm start
 URL                                | Form
 -----------------------------------|-----
 http://localhost:8080/             | Relatively complex form with validation and editing using controlled components. 
-http://localhost:8080/simple       | Much simpler form, still using controlled components.
 
 
 ## Things to try

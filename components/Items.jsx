@@ -1,51 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import localDb from '../localDb'
 import ItemForm from './ItemForm'
 
-class Items extends React.Component {
-  // this.props.db is used during automated test runs
+function Items (props) {
+  // props.db is used during automated test runs
   // localDb() is used during normal operation
   // Not sure how I feel about doing this :|
-  db = this.props.db || localDb()
+  const db = props.db || localDb()
+  const [items, setItems] = useState([])
+  const [edit, setEdit] = useState(null)
 
-  state = {
-    items: [],
-    editItem: null
+  useEffect ( () => {
+    setItems(db.getItems())
+  }, [])
+
+  const editItem = id => {
+    setEdit({...items.find(item => item.id === id)})
   }
 
-  componentDidMount () {
-    this.setState({
-      items: this.db.getItems()
-    })
+  const reset = () => {
+    setEdit(null)
   }
 
-  editItem = id => {
-    this.setState({
-      editItem: {...this.state.items.find(item => item.id === id)}
-    })
-  }
-
-  reset = () => {
-    this.setState({ editItem: null })
-  }
-
-  deleteItem = (id, evt) => {
+  const deleteItem = (id, evt) => {
     evt.preventDefault()
 
-    this.db.deleteItem(id)
-    this.setState({
-      items: this.state.items.filter(item => item.id !== id)
-    })
+    db.deleteItem(id)
+    setItems(items.filter(item => item.id !== id))
   }
 
-  getItem = item => {
+  const getItem = item => {
     const {id, name, description, color} = item
-    const editItem = this.editItem.bind(this, id)
-    const deleteItem = this.deleteItem.bind(this, id)
     return (
       <tr key={id} className='item' data-testid='item'
-        onClick={editItem} onContextMenu={deleteItem}>
+        onClick={() => editItem(id)} onContextMenu={() => deleteItem(id)}>
         <td className='item-name'>{name}</td>
         <td className='item-description'>{description}</td>
         <td className='item-color' style={{backgroundColor: color}}></td>
@@ -53,22 +42,17 @@ class Items extends React.Component {
     )
   }
 
-  saveItem = item => {
-    if (this.state.editItem) {
-      this.db.updateItem(item)
-      this.setState({
-        items: this.state.items.map(i => i.id === item.id ? item : i),
-        editItem: null
-      })
+  const saveItem = item => {
+    if (edit) {
+      db.updateItem(item)
+      setItems(items.map(i => i.id === item.id ? item : i))
+      setEdit(null)
     } else {
-      this.db.addItem(item)
-      this.setState({
-        items: this.db.getItems()
-      })
+      db.addItem(item)
+      setItems(db.getItems())
     }
   }
 
-  render () {
     return (
       <div className='row'>
         <div className='two-thirds column'>
@@ -86,24 +70,23 @@ class Items extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.items.map(item => this.getItem(item))}
+              {items.map(item => getItem(item))}
             </tbody>
           </table>
         </div>
 
         <div className='one-third column'>
-          <h2>{this.state.editItem ? 'Edit' : 'Add an'} item</h2>
+          <h2>{edit ? 'Edit' : 'Add an'} item</h2>
           <ItemForm
-            editItem={this.state.editItem}
-            deleteItem={this.deleteItem}
-            saveItem={this.saveItem}
-            reset={this.reset}
+            editItem={edit}
+            deleteItem={deleteItem}
+            saveItem={saveItem}
+            reset={reset}
           />
         </div>
       </div>
     )
   }
-}
 
 export default Items
 
