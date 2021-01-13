@@ -75,11 +75,11 @@ Oooooo... k? There sure are a lot of components, but it's kind of hard to distin
 
 ## State your business
 
-To easily work with the values we use in the `style` JSX attribute, we should put them into component state. Define the initial value of `state` - it should have a `style` property on it which is an object suitable for use in the `style` JSX attribute.
+To easily work with the values we use in the `style` JSX attribute, we should put them into component state using the `useState` method. Create a new state called `style` and give it an initial state of an object suitable for use in the `style` JSX attribute.
 
-Next, change your component JSX to refer to `this.state.style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
+Next, change your component JSX to refer to `style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
 
-What you've just done is make your component more *flexbile*. We can now manipulate the values any way we'd like using `this.setState()`.
+What you've just done is make your component more *flexbile*. We can now manipulate the values any way we'd like using `setStyle()`.
 
 
 ## Rainbow pixels
@@ -93,7 +93,7 @@ const randomHexColor = () =>
   `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 ```
 
-You can place the above in your `<Pixel />` component. When you've done that, edit the constructor to change the definition of `style` so that it uses the new function to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
+Place the above *outside* your `<Pixel />` component. When you've done that, edit the constructor to change the definition of `style` so that it uses the new function to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
 
 When you refresh the page, what you're aiming for is something like this:
 
@@ -110,19 +110,19 @@ We can illustrate this by responding to some *events*. Here's how it'll go:
 
  * user triggers an event (say by clicking the mouse on one of our components)
  * our *event handler* function is called
- * we update the component's state to change its appearance in some way
+ * we update the component's state which in turn changes its appearance in some way
 
  In your component, define an *event handler*. Use the event handler to change the component's colour to another random colour. It will look like this:
 
  ```js
- clickHandler = evt => {
-   this.setState({
-     // ... update style here ...
+ const clickHandler = evt => {
+   setStyle({
+     // ... new style here ...
    })
  }
  ```
 
-Finally, add an `onClick` attribute to your JSX that calls `this.clickHandler` whenever the component is clicked. Check your work in the browser: you should see the `<Pixel />`s change colour when you click on them.
+Finally, add an `onClick` attribute to your JSX that calls `clickHandler` whenever the component is clicked. Check your work in the browser: you should see the `<Pixel />`s change colour when you click on them.
 
 > Don't forget to look in the JavaScript console in your devtools to see any errors that might be occurring, especially if the result you see is not what you expected.
 
