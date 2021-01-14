@@ -63,9 +63,9 @@ Does the `start` script in your `package.json` file call `node` and not `nodemon
 
 ## Deploy the app
 
-**NOTE**: Heroku only has a `master` branch. so if you're deploying a local branch _other than_ `master`, you must specify which branch you're deploying with `git push heroku local-branch-name:master` (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
+**NOTE**: Heroku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with `git push heroku local-branch-name:main` (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
 
-1. Deploy to Heroku with `git push heroku YOUR_BRANCH_NAME:master`. 
+1. Deploy to Heroku with `git push heroku YOUR_BRANCH_NAME:main`. 
 
 2. If you see the application error page, or if your site has issues starting, type `heroku logs --tail` into your command line in order to debug what may have gone wrong.
 
