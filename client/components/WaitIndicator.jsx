@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const WaitIndicator = ({ waiting }) => {
+function WaitIndicator ({ waiting }) {
   return waiting
     ? <p>WAITING</p>
     : null
