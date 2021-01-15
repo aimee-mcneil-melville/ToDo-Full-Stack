@@ -1,13 +1,19 @@
 const db = require('./db')
 
 function list () {
-  return db.getAll()
-    .then(listTodos)
-    .catch(logError)
-    .finally(db.close)
+  db.getTodos()
+    .then(todos => {
+      printTodos(todos)
+    })
+    .catch(err => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
 }
 
-function listTodos (todos) {
+function printTodos (todos) {
   todos.forEach(todo => {
     console.info(`${todo.id}: ${todo.task}`)
   })
@@ -19,6 +25,4 @@ function logError (err) {
 
 module.exports = {
   list,
-  listTodos,
-  logError
 }
