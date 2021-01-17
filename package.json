@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "keywords": [],
   "author": "EDA",
   "license": "ISC",

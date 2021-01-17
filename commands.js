@@ -1,9 +1,10 @@
 const db = require('./db')
 
 function list () {
-  db.getTodos()
+  return db.getTodos()
     .then(todos => {
       printTodos(todos)
+      return null
     })
     .catch(err => {
       logError(err)
@@ -24,5 +25,5 @@ function logError (err) {
 }
 
 module.exports = {
-  list,
+  list
 }

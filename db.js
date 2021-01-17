@@ -7,12 +7,11 @@ function getTodos (db = database) {
 
 // Your DB functions go here
 
-
 function close (db = database) {
   db.destroy()
 }
 
 module.exports = {
   getTodos,
-  close,
+  close
 }
