@@ -1,9 +1,8 @@
-import React, { useState, useEffect} from "react"
+import React, { useState } from 'react'
 
-import Tile from "./Tile"
+import Tile from './Tile'
 
-function Board(props) {
- 
+function Board (props) {
   const [tile1, setTile1] = useState(null)
   const [tile2, setTile2] = useState(null)
 
@@ -23,11 +22,10 @@ function Board(props) {
     // if the second tile is being flipped
     setTile2(tile)
     processPair(tile)
-
   }
 
   const processPair = (tile2) => {
-    if(tile1) {
+    if (tile1) {
       const isMatch = tile1.value === tile2.value
 
       const processSelectedTiles = () => {

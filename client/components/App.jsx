@@ -7,7 +7,6 @@ const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'
 
 function App (props) {
-
   const [isMatch, setIsMatch] = useState(false)
   const [matchCount, setMatchCount] = useState(0)
   const [tiles, setTiles] = useState(startingTiles)
@@ -25,7 +24,7 @@ function App (props) {
     setIsMatch(true)
   }
 
-  const  evalMatch = (tile1, tile2) => {
+  const evalMatch = (tile1, tile2) => {
     const isMatch = tile1.value === tile2.value
     const updatedTiles = tiles.map(tile => {
       if (!isMatch && (tile === tile1 || tile === tile2)) {
