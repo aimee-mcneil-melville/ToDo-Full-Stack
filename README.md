@@ -1,6 +1,6 @@
 # Memory
 
-For this challenge, you'll be applying your understanding of React state to make a basic Memory Game!
+For this challenge, you'll be applying your understanding of React state and the useState hook to make a basic Memory Game!
 
 There are a LOT of ways to finish this game. If you would like to have a go on your own, with very little guidance, go for it! If you'd like to follow the approach defined below, that's cool too. Just be aware that the approach below is just one of many, but it does have a specific opinion about how and where certain state properties live.
 
@@ -28,7 +28,7 @@ and then go to [`http://localhost:3000`](http://localhost:3000).
 
 ### Release 0: Get familiar with the existing code
 
-There are currently 3 components: `App`, `Board` and `Tile`. We'll manage some state in `App` and some in `Board`. We can get away with keeping `Tile` a higher order/functional component. Yes, there are many options for how to manage state in this game. We'll choose one that will hopefully be easiest for everyone to understand.
+There are currently 3 components: `App`, `Board` and `Tile`. We'll manage some state in `App` and some in `Board`. We can get away with not using state in `Tile`. Yes, there are many options for how to manage state in this game. We'll choose one that will hopefully be easiest for everyone to understand.
 
 Spend some time to understand exactly how the current code works.
 
@@ -46,7 +46,7 @@ For now, the event handler should do 3 things:
 
 1. Find the tile object in the tiles array. You'll need to pass something (the `id` or the whole object) into the event handler from the `Tile` component.
 2. Change the `isVisible` property of the tile object to `true`.
-3. Set a `tile1` state property to the tile object. Of course you'll also need to define this state property in the `Board` component's constructor.
+3. Set a `tile1` state property to the tile object. Of course you'll also need to define this state property in the `Board` component.
 
 
 ### Release 3: Hide unmatched tiles after 1 second
@@ -59,7 +59,7 @@ After the user has clicked on the second tile, we want to hide them after 1 seco
 4. If they don't match, use `setTimeout` to wait 1 second before doing the previous step.
 5. Set the `tile1` and `tile2` state properties back to `null`.
 
-Tip: The call to `setState` is asynchronous. If you need to invoke a function after `setState` has completed, you can pass the function as the second parameter to `setState` and React will invoke it after `setState` completes.
+Tip: Updating state is asynchronous.
 
 
 ### Release 4: Let `App` evaluate the selected pair

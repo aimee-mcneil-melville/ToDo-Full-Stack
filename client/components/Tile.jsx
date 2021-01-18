@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tile = props => {
+function Tile (props) {
   return (
     <div className='tile'>
       {props.value}
