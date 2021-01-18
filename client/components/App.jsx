@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Board from './Board'
 import startingTiles from '../startingTiles'
@@ -7,10 +7,14 @@ const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'
 
 function App (props) {
-  const [isMatch, setIsMatch] = useState(false)
-  const [matchCount, setMatchCount] = useState(0)
+  const isMatch = false
+  const matchCount = 0
 
   const hasWon = matchCount === (startingTiles.length / 2)
+
+  const reset = () => {
+
+  }
 
   const evalMatch = () => {
 
