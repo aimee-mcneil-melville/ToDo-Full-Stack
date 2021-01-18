@@ -70,9 +70,11 @@
   - [ ] Semantic UI
 
 * Famous Programmers
+  - [ ] Radia Perlman
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Grace Hopper
   - [ ] Ken Thompson
+  - [ ] Annie Easley
   - [ ] Linus Torvalds
   - [ ] Margaret Hamilton
 

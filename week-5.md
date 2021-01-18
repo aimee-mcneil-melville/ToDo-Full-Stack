@@ -85,5 +85,6 @@
   - [ ] Sandi Metz
   - [ ] Steve Wozniak
   - [ ] Barbara Liskov
+  - [ ] Hedy Lamarr
 
 <!-- Count: 26 -->
