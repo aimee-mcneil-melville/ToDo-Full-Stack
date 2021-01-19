@@ -19,7 +19,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   chmod +x todo
   ```
 
-  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means we'll be working in the `todo` file.
+Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin running in the `todo` file.
 
 * Create the Knex configuration file (`knexfile.js`).
 
@@ -63,7 +63,7 @@ There are a number of different options for peeking into your SQLite database. Y
 
 ## Display tasks and IDs
 
-We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. This provides output that looks like this:
+We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. This provides an output that looks like this:
 
 ```sh
 $ ./todo list
@@ -76,6 +76,9 @@ Notice two things about this example:
  * the commands are all separated into a different module, so that `todo` just calls a `require`d function from `commands.js`
  * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo` does not (it doesn't need it)
 
+Before you move on, make sure you understand the contents of the `todo` file. In particular, what is `process.argv`? And how is it being used to get the command (`cmd`) that was typed (in our example, `list`)?
+
+Start by using `console.log` to explore this, and try adding more inputs to see how that changes the result (i.e. `./todo list hello testing 123`)
 
 ## Delete a task by ID
 
@@ -83,10 +86,9 @@ Users should be able to complete tasks. We'd like to be able to do something lik
 
 You'll want to add a new function in `db.js` that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
 
-To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). If it helps, look at how the `list` function is structured to give you some ideas. Remember that you will need to pass the `note` value as an argument from the `todo` module to get the actual id to delete.
+To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). Remember that you will need to pass an argument through from the `todo` module to so you can tell your DB function which task to delete. _Hint: accessing that `userInputs` array might come in handy right about now..._
 
-What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
-
+If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
 
 ## Update a task by ID
 
