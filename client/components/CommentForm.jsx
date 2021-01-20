@@ -11,12 +11,12 @@ function CommentForm (props) {
       updateComment(comment)
         .then(() => fetchComments(comment.postId))
         .then(() => history.push(`/posts/${comment.postId}`))
-        .catch(err => setErrorMessage({ errorMessage: err.message }))
+        .catch(err => setErrorMessage(err.Message)
     } else {
       addCommentByPostId(match.params.postId, comment)
         .then(() => fetchComments(match.params.postId))
         .then(() => history.push(`/posts/${match.params.postId}`))
-        .catch(err => setErrorMessage({ errorMessage: err.message }))
+        .catch(err => setErrorMessage(err.Message)
     }
   }
 

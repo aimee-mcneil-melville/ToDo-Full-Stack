@@ -19,7 +19,7 @@ function App () {
         return null
       })
       .catch(err => {
-        setErrorMessage({ errorMessage: err.message })
+        setErrorMessage(err.message)
       })
   }
 
