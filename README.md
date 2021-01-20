@@ -93,7 +93,7 @@ const randomHexColor = () =>
   `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 ```
 
-Place the above *outside* your `<Pixel />` component. When you've done that, edit the constructor to change the definition of `style` so that it uses the new function to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
+Place the above *outside* your `<Pixel />` component. When you've done that, edit the initial state for `style` so that it uses the new function to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
 
 When you refresh the page, what you're aiming for is something like this:
 
