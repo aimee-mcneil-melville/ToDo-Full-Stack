@@ -1,55 +1,41 @@
-import React from 'react'
-import {addPost, updatePost} from '../api'
+import React, { useState, useEffect } from 'react'
+import { addPost, updatePost } from '../api'
 
-class PostForm extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      errorMessage: '',
-      post: {
-        title: '',
-        paragraphs: ''
-      }
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+function PostForm (props) {
+  const [post, setPost] = useState({ title: '', paragraphs: [] })
+  const [errorMessage, setErrorMessage] = useState('')
 
-  componentDidMount () {
-    const {post} = this.props
-    if (post) this.setNewPost(post)
-  }
+  const currentPost = props.post
+  useEffect(() => {
+    if (currentPost) setNewPost(currentPost)
+  }, [])
 
-  componentWillReceiveProps (nextProps) {
-    const {post} = nextProps
-    if (post && !this.props.post) this.setNewPost(post)
-  }
+  useEffect(() => {
+    if (post && !currentPost)setNewPost(post)
+  }, [props.post])
 
-  setNewPost (post) {
-    const paragraphs = {
-      paragraphs: post.paragraphs.join('\n')
-    }
-    this.setState({
-      post: Object.assign({}, post, paragraphs)
+  const setNewPost = (post) => {
+    const paragraphs = post.paragraphs.join('\n')
+    setPost({
+      ...post, paragraphs
     })
   }
 
-  handleSubmit (e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const {post, history, fetchPosts} = this.props
-
-    if (post) {
-      updatePost(this.state.post)
+    const { history, fetchPosts } = props
+    if (props.post) {
+      updatePost(post)
         .then(fetchPosts)
         .then(navigateToPost(post.id))
-        .catch(err => this.setState({errorMessage: err.message}))
+        .catch(err => setErrorMessage({ errorMessage: err.message }))
     } else {
-      addPost(this.state.post)
+      addPost(post)
         .then(newPost => {
-          fetchPosts()
+          return fetchPosts()
             .then(navigateToPost(newPost.id))
         })
-        .catch(err => this.setState({errorMessage: err.message}))
+        .catch(err => setErrorMessage({ errorMessage: err.message }))
     }
 
     function navigateToPost (id) {
@@ -57,54 +43,45 @@ class PostForm extends React.Component {
     }
   }
 
-  handleChange (e) {
-    const newPost = {
-      ...this.state.post,
-      [e.target.name]: e.target.value
-    }
-    
-    this.setState({
-      post: newPost
-    })
+  const handleChange = (e) => {
+    setPost({ ...post, [e.target.name]: e.target.value })
   }
 
-  render () {
-    return (
-      <form className='pure-form pure-form-aligned' onSubmit={this.handleSubmit}>
-        {this.props.post
-          ? <h2 className='post-title'>Edit Post</h2>
-          : <h2 className='post-title'>Add a New Blog Post</h2>
-        }
+  return (
+    <form className='pure-form pure-form-aligned' onSubmit={handleSubmit}>
+      {props.post
+        ? <h2 className='post-title'>Edit Post</h2>
+        : <h2 className='post-title'>Add a New Blog Post</h2>
+      }
 
-        <fieldset>
-          <div className='pure-control-group'>
-            <label htmlFor='title'>Title</label>
-            <input
-              type='text'
-              name='title'
-              value={this.state.post.title}
-              onChange={this.handleChange}
-            />
-          </div>
+      <fieldset>
+        <div className='pure-control-group'>
+          <label htmlFor='title'>Title</label>
+          <input
+            type='text'
+            name='title'
+            value={post.title}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className='pure-control-group'>
-            <label htmlFor='paragraphs'>Blog</label>
-            <textarea
-              name='paragraphs'
-              value={this.state.post.paragraphs}
-              onChange={this.handleChange}>
-            </textarea>
-          </div>
+        <div className='pure-control-group'>
+          <label htmlFor='paragraphs'>Blog</label>
+          <textarea
+            name='paragraphs'
+            value={post.paragraphs}
+            onChange={handleChange}>
+          </textarea>
+        </div>
 
-          <div className='pure-controls'>
-            <input className='pure-button' type='submit' />
-          </div>
-        </fieldset>
+        <div className='pure-controls'>
+          <input className='pure-button' type='submit' />
+        </div>
+      </fieldset>
 
-        <p>{this.state.errorMessage && this.state.errorMessage}</p>
-      </form>
-    )
-  }
+      <p>{errorMessage && errorMessage}</p>
+    </form>
+  )
 }
 
 export default PostForm

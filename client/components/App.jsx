@@ -1,56 +1,47 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import AppRoutes from './AppRoutes'
+import { getPosts } from '../api'
 
-import {getPosts} from '../api'
+function App () {
+  const [posts, setPosts] = useState([])
+  const [errorMessage, setErrorMessage] = useState('')
 
-class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      posts: [],
-      errorMessage: ''
-    }
-    this.fetchPosts = this.fetchPosts.bind(this)
-  }
+  useEffect(() => {
+    fetchPosts()
+  }, [])
 
-  componentDidMount () {
-    this.fetchPosts()
-  }
-
-  fetchPosts () {
+  const fetchPosts = () => {
     return getPosts()
       .then(posts => {
-        this.setState({posts: posts})
+        setPosts(posts)
+        return null
       })
       .catch(err => {
-        this.setState({errorMessage: err.message})
+        setErrorMessage({ errorMessage: err.message })
       })
   }
 
-  render () {
-    return (
-      <div id='layout' className='pure-g'>
-        <div className='sidebar pure-u-1 pure-u-md-1-4'>
-          <Header />
-        </div>
-        <div className='content pure-u-1 pure-u-md-3-4'>
-          <AppRoutes
-            posts={this.state.posts}
-            fetchPosts={this.fetchPosts}
-          />
-          {this.state.errorMessage &&
-            <h1>{this.state.errorMessage}</h1>
-          }
-        </div>
-        <div className='content pure-u-1 pure-u-md-3-4'>
-          <Footer />
-        </div>
+  return (
+    <div id='layout' className='pure-g'>
+      <div className='sidebar pure-u-1 pure-u-md-1-4'>
+        <Header />
       </div>
-    )
-  }
+      <div className='content pure-u-1 pure-u-md-3-4'>
+        <AppRoutes
+          posts={posts}
+          fetchPosts={fetchPosts}
+        />
+        {errorMessage &&
+          <h1>{errorMessage}</h1>
+        }
+      </div>
+      <div className='content pure-u-1 pure-u-md-3-4'>
+        <Footer />
+      </div>
+    </div>
+  )
 }
 
 export default App
