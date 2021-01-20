@@ -28,14 +28,14 @@ function PostForm (props) {
       updatePost(post)
         .then(fetchPosts)
         .then(navigateToPost(post.id))
-        .catch(err => setErrorMessage(err.message)
+        .catch(err => setErrorMessage(err.message))
     } else {
       addPost(post)
         .then(newPost => {
           return fetchPosts()
             .then(navigateToPost(newPost.id))
         })
-        .catch(err => setErrorMessage(err.message)
+        .catch(err => setErrorMessage(err.message))
     }
 
     function navigateToPost (id) {

@@ -25,7 +25,7 @@ function Post (props) {
         setComments(comments)
         return null
       })
-      .catch(err => setErrorMessage(err.message)
+      .catch(err => setErrorMessage(err.message))
   }
 
   // ### Is causing a memory leak, I need to do this within a useEffect?
@@ -33,7 +33,7 @@ function Post (props) {
     deletePost(props.post.id)
       .then(props.fetchPosts)
       .then(() => props.history.push('/'))
-      .catch(err => setErrorMessage(err.message)
+      .catch(err => setErrorMessage(err.message))
   }
 
   // const handleRemovePost = () => {
