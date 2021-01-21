@@ -25,16 +25,15 @@ function Items (props) {
 
   const deleteItem = (id, evt) => {
     evt.preventDefault()
-
-    db.deleteItem(id)
     setItems(items.filter(item => item.id !== id))
+    return false
   }
 
   const getItem = item => {
     const {id, name, description, color} = item
     return (
       <tr key={id} className='item' data-testid='item'
-        onClick={() => editItem(id)} onContextMenu={() => deleteItem(id)}>
+        onClick={() => editItem(id)} onContextMenu={(evt) => deleteItem(id, evt)}>
         <td className='item-name'>{name}</td>
         <td className='item-description'>{description}</td>
         <td className='item-color' style={{backgroundColor: color}}></td>
