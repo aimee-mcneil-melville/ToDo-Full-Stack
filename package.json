@@ -1,6 +1,6 @@
 {
   "name": "sweet-as-beers",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
   "scripts": {
@@ -32,27 +32,27 @@
       "bundle.js"
     ]
   },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/register": "^7.9.0",
-    "babel-loader": "^8.1.0",
-    "eslint": "7.9.0",
-    "eslint-config-eda": "^0.1.4",
-    "jest": "^26.6.3",
-    "nodemon": "^2.0.2",
-    "npm-run-all": "^4.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0"
   }
 }
