@@ -8,7 +8,7 @@ function SignIn (props) {
     password: ''
   })
 
-  const handleChange = (e) => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -16,7 +16,7 @@ function SignIn (props) {
     })
   }
 
-  const handleClick = (e) => {
+  function handleClick (e) {
     e.preventDefault()
     signInUser(form, props.history.push)
   }

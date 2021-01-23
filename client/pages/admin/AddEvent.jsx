@@ -9,7 +9,7 @@ function AddEvent (props) {
     description: ''
   })
 
-  const handleChange = (e) => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -17,7 +17,7 @@ function AddEvent (props) {
     })
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit (e) {
     e.preventDefault()
     const navigate = props.history.push
     addEvent(form, navigate)

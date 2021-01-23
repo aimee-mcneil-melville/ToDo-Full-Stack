@@ -8,7 +8,7 @@ const emptyUser = {
   longitude: null
 }
 
-const user = (state = emptyUser, action) => {
+function user (state = emptyUser, action) {
   switch (action.type) {
     case SET_USER:
       return action.user

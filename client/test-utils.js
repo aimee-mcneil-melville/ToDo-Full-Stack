@@ -7,14 +7,14 @@ import '@testing-library/jest-dom/extend-expect'
 
 import reducer from './reducers'
 
-export const renderWithRedux = (
+export function renderWithRedux (
   ui,
   {
     initialState,
     initialEntries = ['/'],
     store = createStore(reducer, initialState)
   } = {}
-) => {
+) {
   return {
     ...render(
       <Provider store={store}>

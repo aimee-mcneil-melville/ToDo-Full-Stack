@@ -9,7 +9,7 @@ function EditEvent (props) {
     description: ''
   })
 
-  const handleChange = (e) => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -22,7 +22,7 @@ function EditEvent (props) {
     return getEvent(id, setForm)
   }, [])
 
-  const handleSubmit = (e) => {
+  function handleSubmit (e) {
     e.preventDefault()
     const { id } = props.match.params
     const navigate = props.history.push

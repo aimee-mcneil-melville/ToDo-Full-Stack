@@ -9,7 +9,7 @@ function Register (props) {
     gardenId: null
   })
 
-  const handleChange = (e) => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -17,7 +17,7 @@ function Register (props) {
     })
   }
 
-  const handleClick = (e) => {
+  function handleClick (e) {
     e.preventDefault()
     registerUser(form, props.history.push)
   }
