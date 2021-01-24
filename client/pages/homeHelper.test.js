@@ -1,6 +1,5 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
-import { USER_LOCATION } from '../actions/user'
-import { CLEAR_WAITING } from '../actions/waiting'
+import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { getGardens } from '../api/gardens'
 import { dispatch } from '../store'
 
@@ -18,33 +17,35 @@ describe('getUserLocation', () => {
         }
       }
     }
-    it('dispatches setUserLocation correctly', () => {
-      expect.assertions(3)
-      const mockSetLocationCallback = jest.fn(() => {
-        const dispatchCall = dispatch.mock.calls[0][0]
-        expect(dispatchCall.type).toBe(USER_LOCATION)
-        expect(dispatchCall.location.latitude).toBe(123)
-        expect(dispatchCall.location.longitude).toBe(-123)
-      })
-      getUserLocation(mockSetLocationCallback, mockNavigator)
-    })
-    it('calls setLocation callback correctly', () => {
+
+    it('calls setLocation callback correctly if isMounted returns true', () => {
       expect.assertions(2)
       const mockSetLocationCallback = jest.fn((userCoordinates) => {
         expect(userCoordinates.lat).toBe(123)
         expect(userCoordinates.lon).toBe(-123)
       })
-      getUserLocation(mockSetLocationCallback, mockNavigator)
+      function isMounted () {
+        return true
+      }
+      getUserLocation(mockSetLocationCallback, isMounted, mockNavigator)
+    })
+
+    it('does not call setLocation callback if isMounted returns false', () => {
+      const mockSetLocationCallback = jest.fn()
+      function isMounted () {
+        return false
+      }
+      getUserLocation(mockSetLocationCallback, isMounted, mockNavigator)
+      expect(mockSetLocationCallback).not.toHaveBeenCalled()
     })
   })
 
   describe('-> when geolocation not available', () => {
     const mockNavigator = {}
-    it('does not call dispatch nor the callback', () => {
+    it('does not call the callback', () => {
       const mockSetLocationCallback = jest.fn()
       getUserLocation(mockSetLocationCallback, mockNavigator)
       expect(mockSetLocationCallback).not.toHaveBeenCalled()
-      expect(dispatch).not.toHaveBeenCalled()
     })
   })
 })
@@ -53,16 +54,15 @@ describe('getGardenLocations', () => {
   describe('-> on getGardens success', () => {
     it('dispatches waiting actions correctly', () => {
       getGardens.mockImplementation(() => Promise.resolve())
-      const mockSetGardensCallback = jest.fn()
-      const mockSetAddressesCallback = jest.fn()
-      return getGardenLocations(mockSetGardensCallback, mockSetAddressesCallback)
+      return getGardenLocations()
         .then(() => {
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
           return null
         })
     })
 
-    it('calls state setting functions', () => {
+    it('returns correct locations object', () => {
       expect.assertions(4)
       getGardens.mockImplementation(() => Promise.resolve([{
         lat: 111,
@@ -73,15 +73,14 @@ describe('getGardenLocations', () => {
         lon: -222,
         address: '222 Two Lane'
       }]))
-      const mockSetGardensCallback = jest.fn((gardensCoordinates) => {
-        expect(gardensCoordinates[1].lon).toBe(-222)
-        expect(gardensCoordinates).toHaveLength(2)
-      })
-      const mockSetAddressesCallback = jest.fn((addresses) => {
-        expect(addresses).toHaveLength(2)
-        expect(addresses[0]).toMatch('111 One')
-      })
-      return getGardenLocations(mockSetGardensCallback, mockSetAddressesCallback)
+      return getGardenLocations()
+        .then(({ gardenCoords, addrs }) => {
+          expect(gardenCoords[1].lon).toBe(-222)
+          expect(gardenCoords).toHaveLength(2)
+          expect(addrs).toHaveLength(2)
+          expect(addrs[0]).toMatch('111 One')
+          return null
+        })
     })
   })
 

@@ -10,8 +10,29 @@ function Home () {
   const [addresses, setAddresses] = useState([])
 
   useEffect(() => {
-    getUserLocation(setUserCoordinates)
-    return getGardenLocations(setGardensCoordinates, setAddresses)
+    // eslint-disable-next-line promise/catch-or-return
+    getGardenLocations()
+      .then(({ gardenCoords, addrs }) => {
+        setGardensCoordinates(gardenCoords)
+        setAddresses(addrs)
+        return null
+      })
+
+    let mounted = true
+
+    function isMounted () {
+      return mounted
+    }
+
+    getUserLocation((location) => {
+      setUserCoordinates(location)
+    }, isMounted)
+
+    // you can return a "clean up" function from useEffect - this runs when
+    // the component unmounts
+    return () => {
+      mounted = false
+    }
   }, [])
 
   return (
