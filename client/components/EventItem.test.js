@@ -1,16 +1,18 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import '@testing-library/jest-dom'
+import { screen } from '@testing-library/react'
+
+import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
-import { MemoryRouter } from 'react-router'
 
-test('events show edit event button for admin', () => {
-  render(<MemoryRouter> <EventItem isAdmin={true} event={{}}/> </MemoryRouter>)
-  expect(screen.getByRole('link')).toHaveTextContent('Edit Event')
-})
+describe('Edit Event button', () => {
+  it('displays for admin', () => {
+    renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
+    expect(screen.getByRole('link')).toHaveTextContent('Edit Event')
+  })
 
-test('events hide edit event button for member', () => {
-  render(<MemoryRouter><EventItem isAdmin={false} event={{}}/> </MemoryRouter>)
-  expect(screen.queryByRole('link')).toBeNull()
+  it('does not display if not an admin', () => {
+    renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
+    expect(screen.queryByRole('link')).toBeNull()
+  })
 })

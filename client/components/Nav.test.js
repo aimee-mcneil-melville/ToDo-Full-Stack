@@ -1,52 +1,60 @@
 import React from 'react'
-import { MemoryRouter as Router } from 'react-router-dom'
-import { fireEvent, render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { fireEvent, screen } from '@testing-library/react'
+
+import { renderWithRouter } from '../test-utils'
 
 import Nav from './Nav'
+
 import { isAuthenticated } from '../auth'
 import { logOut } from './navHelper'
 
 jest.mock('../auth')
 jest.mock('./navHelper')
 
-test('renders "register" and "sign in" links on the "/" route', () => {
-  render(<Router><Nav location={{ pathname: '/' }}/></Router>)
-  const links = screen.getAllByRole('link')
-  expect(links).toHaveLength(2)
-  expect(links[0]).toHaveTextContent('Sign in')
-  expect(links[1]).toHaveTextContent('Register')
+describe('nav links', () => {
+  describe('-> when user not authenticated', () => {
+    it('displays "register" and "sign in" on the "/" route', () => {
+      renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+      const links = screen.getAllByRole('link')
+      expect(links).toHaveLength(2)
+      expect(links[0]).toHaveTextContent('Sign in')
+      expect(links[1]).toHaveTextContent('Register')
+    })
+
+    it('displays "register" and "home" on the "/signin" route', () => {
+      renderWithRouter(<Nav location={{ pathname: '/signin' }}/>)
+      const links = screen.getAllByRole('link')
+      expect(links).toHaveLength(2)
+      expect(links[0]).toHaveTextContent('Register')
+      expect(links[1]).toHaveTextContent('Home')
+    })
+
+    it('displays "sign in" and "home" on the "/register" route', () => {
+      renderWithRouter(<Nav location={{ pathname: '/register' }}/>)
+      const links = screen.getAllByRole('link')
+      expect(links).toHaveLength(2)
+      expect(links[0]).toHaveTextContent('Sign in')
+      expect(links[1]).toHaveTextContent('Home')
+    })
+  })
+  describe('-> when user is authenticated', () => {
+    it('displays "Log Out" and "Home" when authenticated', () => {
+      isAuthenticated.mockImplementation(() => true)
+      renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+      const links = screen.getAllByRole('link')
+      expect(links).toHaveLength(2)
+      expect(links[0]).toHaveTextContent('Log out')
+      expect(links[1]).toHaveTextContent('Home')
+    })
+  })
 })
 
-test('renders "register" and "home" links on the "/signin" route', () => {
-  render(<Router><Nav location={{ pathname: '/signin' }}/></Router>)
-  const links = screen.getAllByRole('link')
-  expect(links).toHaveLength(2)
-  expect(links[0]).toHaveTextContent('Register')
-  expect(links[1]).toHaveTextContent('Home')
-})
-
-test('renders "sign in" and "home" links on the "/register" route', () => {
-  render(<Router><Nav location={{ pathname: '/register' }}/></Router>)
-  const links = screen.getAllByRole('link')
-  expect(links).toHaveLength(2)
-  expect(links[0]).toHaveTextContent('Sign in')
-  expect(links[1]).toHaveTextContent('Home')
-})
-
-test('renders "Log Out" and "Home" links when authenticated', () => {
-  isAuthenticated.mockImplementation(() => true)
-  render(<Router><Nav location={{ pathname: '/' }}/></Router>)
-  const links = screen.getAllByRole('link')
-  expect(links).toHaveLength(2)
-  expect(links[0]).toHaveTextContent('Log out')
-  expect(links[1]).toHaveTextContent('Home')
-})
-
-test('calls logOut on Log out link click', () => {
-  isAuthenticated.mockImplementation(() => true)
-  render(<Router><Nav location={{ pathname: '/' }}/></Router>)
-  const logOutLink = screen.getByRole('link', { name: 'Log out' })
-  fireEvent.click(logOutLink)
-  expect(logOut).toHaveBeenCalled()
+describe('Log Out link', () => {
+  it('calls logOut helper on click', () => {
+    isAuthenticated.mockImplementation(() => true)
+    renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+    const logOutLink = screen.getByRole('link', { name: 'Log out' })
+    fireEvent.click(logOutLink)
+    expect(logOut).toHaveBeenCalled()
+  })
 })

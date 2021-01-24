@@ -6,8 +6,9 @@ import { dispatch } from '../../store'
 jest.mock('../../api/events')
 jest.mock('../../store')
 
+// resets the store.dispatch calls between tests
 afterEach(() => {
-  return jest.resetAllMocks()
+  return dispatch.mockClear()
 })
 
 describe('getEvent', () => {
@@ -22,7 +23,7 @@ describe('getEvent', () => {
         volunteersNeeded: 14
       })
     })
-    const mockSetEventDetails = (event) => {
+    function mockSetEventDetails (event) {
       expect(event.title).toBe('test event')
       expect(event.date).toBe('2020-12-18')
       expect(event.description).toMatch('epic')

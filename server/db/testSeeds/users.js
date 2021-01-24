@@ -1,4 +1,4 @@
-const { generateHash } = require('../../../auth')
+const { generateHash } = require('../../auth')
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries

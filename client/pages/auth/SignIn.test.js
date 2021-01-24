@@ -6,24 +6,28 @@ import { signInUser } from './signInHelper'
 
 jest.mock('./signInHelper')
 
-test('sign in fields update correctly on user input', () => {
-  render(<SignIn />)
-  const usernameInput = screen.getByLabelText('Username')
-  // need getByLabelText for password as type="hidden" hides it for getByRole
-  const passwordInput = screen.getByLabelText('Password')
+describe('form fields', () => {
+  it('update correctly on user input', () => {
+    render(<SignIn />)
+    const usernameInput = screen.getByLabelText('Username')
+    // need getByLabelText for password as type="hidden" hides it for getByRole
+    const passwordInput = screen.getByLabelText('Password')
 
-  fireEvent.change(usernameInput, { target: { value: 'Hey' } })
-  fireEvent.change(passwordInput, { target: { value: 'testing' } })
+    fireEvent.change(usernameInput, { target: { value: 'Hey' } })
+    fireEvent.change(passwordInput, { target: { value: 'testing' } })
 
-  expect(usernameInput.value).toBe('Hey')
-  expect(passwordInput.value).toBe('testing')
+    expect(usernameInput.value).toBe('Hey')
+    expect(passwordInput.value).toBe('testing')
+  })
 })
 
-test('calls signInUser on sign in button click', () => {
-  render(<SignIn history={[]} />)
+describe('Sign In button', () => {
+  it('calls signInUser helper on click', () => {
+    render(<SignIn history={[]} />)
 
-  const signInButton = screen.getByRole('button', { name: 'Sign in' })
-  fireEvent.click(signInButton)
+    const signInButton = screen.getByRole('button', { name: 'Sign in' })
+    fireEvent.click(signInButton)
 
-  expect(signInUser).toHaveBeenCalled()
+    expect(signInUser).toHaveBeenCalled()
+  })
 })

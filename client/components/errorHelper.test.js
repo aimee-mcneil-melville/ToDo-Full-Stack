@@ -4,11 +4,9 @@ import { dispatch } from '../store'
 
 jest.mock('../store')
 
-afterEach(() => {
-  return jest.resetAllMocks()
-})
-
-test('hide dispatches the hideError action', () => {
-  hide()
-  expect(dispatch).toHaveBeenCalledWith({ type: HIDE_ERROR })
+describe('hide', () => {
+  it('dispatches the hideError action', () => {
+    hide()
+    expect(dispatch).toHaveBeenCalledWith({ type: HIDE_ERROR })
+  })
 })

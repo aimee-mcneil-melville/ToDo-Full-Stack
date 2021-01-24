@@ -6,8 +6,10 @@ import { logOut } from './navHelper'
 jest.mock('../auth')
 jest.mock('../store')
 
-test('logOut logs off and dispatches the clear user action', () => {
-  logOut()
-  expect(logOff).toHaveBeenCalled()
-  expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_USER })
+describe('logOut', () => {
+  it('calls logOff and dispatches the clear user action', () => {
+    logOut()
+    expect(logOff).toHaveBeenCalled()
+    expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_USER })
+  })
 })

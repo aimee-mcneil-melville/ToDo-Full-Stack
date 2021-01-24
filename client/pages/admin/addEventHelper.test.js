@@ -6,13 +6,14 @@ import { dispatch, getState } from '../../store'
 jest.mock('../../api/events')
 jest.mock('../../store')
 
+// resets the store.dispatch calls between tests
 afterEach(() => {
-  return jest.resetAllMocks()
+  return dispatch.mockClear()
 })
 
 describe('addEvent', () => {
   it('calls postEvent, dispatches and redirects correctly', () => {
-    expect.assertions(8)
+    expect.assertions(5)
     const event = {
       title: 'test event',
       date: '2021-03-22',
@@ -25,9 +26,6 @@ describe('addEvent', () => {
       expect(newEvent).not.toBe(event)
       expect(newEvent.gardenId).toBe(1)
       expect(newEvent.title).toBe('test event')
-      expect(newEvent.date).toMatch('03-22')
-      expect(newEvent.volunteersNeeded).toBe(5)
-      expect(newEvent.description).toMatch('rad event')
       return Promise.resolve()
     })
     return addEvent(event, navigateTo)

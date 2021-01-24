@@ -17,7 +17,7 @@ module.exports = {
       filename: path.join(__dirname, '../../e2e/dev.sqlite3')
     },
     seeds: {
-      directory: path.join(__dirname, 'tests/seeds')
+      directory: path.join(__dirname, 'testSeeds')
     },
     migrations: {
       directory: path.join(__dirname, 'migrations')
@@ -31,7 +31,7 @@ module.exports = {
       filename: ':memory:'
     },
     seeds: {
-      directory: path.join(__dirname, 'tests/seeds')
+      directory: path.join(__dirname, 'testSeeds')
     },
     migrations: {
       directory: path.join(__dirname, 'migrations')
