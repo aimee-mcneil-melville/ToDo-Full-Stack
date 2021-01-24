@@ -32,7 +32,7 @@ function Garden () {
       </div>
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
-        address={address}
+        addresses={[address]}
       />
     </>
   )

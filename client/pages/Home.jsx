@@ -23,7 +23,7 @@ function Home () {
       <Map
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}
-        address={addresses}
+        addresses={addresses}
       />
     </>
   )
