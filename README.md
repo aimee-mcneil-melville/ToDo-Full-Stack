@@ -79,12 +79,6 @@ And some more:
 
 * [SVG](https://developer.mozilla.org/en/docs/Web/SVG)
 * [SVG `circle`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
-* [React Component](https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
-* [React Component API](https://facebook.github.io/react/docs/component-api.html)
-* [How State Works](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#how-state-works)
-* [React's `setState`](https://facebook.github.io/react/docs/component-api.html#setstate)
-* [React Event Handling](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#a-simple-example)
-* [`ReactDOM.render`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
+* [React Component](https://facebook.github.io/react/docs/reusable-components.html)
+* [React's `useState`](https://reactjs.org/docs/hooks-reference.html#usestate)
 * [Color](https://developer.mozilla.org/en/docs/Web/CSS/color_value)
-* [React TestUtils](https://facebook.github.io/react/docs/test-utils.html)
-
