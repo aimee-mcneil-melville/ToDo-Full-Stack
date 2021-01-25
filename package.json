@@ -2,33 +2,30 @@
   "name": "enspiraled",
   "version": "1.1.0",
   "description": "Circles on circles on circles, the React way.",
+  "repository": "https://github.com/dev-academy-challenges/enspiraled.git",
   "main": "server",
   "scripts": {
     "start": "run-p server webpack",
     "dev": "run-p server client",
     "server": "node server",
-    "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
+    "webpack": "webpack --config ./client/webpack.config.js",
     "test": "jest --watch --noStackTrace",
     "lint": "eslint --ext .js,.jsx ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dev-academy-challenges/enspiraled.git"
-  },
   "author": "EDA",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dev-academy-challenges/enspiraled/issues"
-  },
-  "homepage": "https://github.com/dev-academy-challenges/enspiraled",
+  "keywords": [
+    "frontend"
+  ],
   "babel": {
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
@@ -41,25 +38,19 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.10.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
-    "babel-loader": "^8.1.0",
-    "enzyme": "^3.11.0",
-    "eslint": "7.9.0",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-loader": "^8.2.1",
+    "eslint": "7.13.0",
     "eslint-config-eda": "0.1.4",
-    "jest": "^26.0.1",
-    "jsdom": "^16.2.2",
+    "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
