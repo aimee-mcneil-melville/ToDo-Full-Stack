@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Circle from './Circle'
+
 const App = props => {
   const circle = {
     cx: props.width / 2,
@@ -10,7 +12,7 @@ const App = props => {
 
   return (
     <svg width={props.width} height={props.height}>
-      <circle cx={circle.cx} cy={circle.cy} r={circle.r} />
+      <Circle cx={circle.cx} cy={circle.cy} r={circle.r} />
     </svg>
   )
 }
