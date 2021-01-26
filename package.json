@@ -1,6 +1,6 @@
 {
   "name": "broken-kaleidoscope",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Playing with random colours and React state.",
   "repository": "https://github.com/dev-academy-challenges/broken-kaleidoscope",
   "main": "server/index.js",
@@ -32,12 +32,6 @@
     "extends": "eda",
     "ignorePatterns": [
       "bundle.js"
-    ]
-  },
-  "jest": {
-    "testURL": "http://localhost",
-    "setupFiles": [
-      "./client/testing/setup.js"
     ]
   },
   "dependencies": {
