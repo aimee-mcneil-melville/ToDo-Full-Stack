@@ -1,14 +1,14 @@
 import { dispatch } from '../../store'
 import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
-import { getEventById, patchEvent } from '../../api/events'
+import requestor from '../../consume'
 
-export function getEvent (id) {
+export function getEvent (id, consume = requestor) {
   dispatch(setWaiting())
-  return getEventById(id)
-    .then((event) => {
+  return consume(`/events/${id}`)
+    .then((res) => {
       dispatch(clearWaiting())
-      const { title, date, volunteersNeeded, description } = event
+      const { title, date, volunteersNeeded, description } = res.body
       return { title, date, description, volunteersNeeded }
     })
     .catch((err) => {
@@ -16,13 +16,13 @@ export function getEvent (id) {
     })
 }
 
-export function updateEvent (id, event, navigateTo) {
+export function updateEvent (id, event, navigateTo, consume = requestor) {
   const eventToUpdate = {
     id: Number(id),
     ...event
   }
   dispatch(setWaiting())
-  return patchEvent(eventToUpdate)
+  return consume(`/events/${id}`, 'patch', eventToUpdate)
     .then(() => {
       dispatch(clearWaiting())
       navigateTo('/garden')

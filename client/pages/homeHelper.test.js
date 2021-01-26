@@ -1,10 +1,8 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
-import { getGardens } from '../api/gardens'
 import { getState, dispatch } from '../store'
 
 jest.mock('../store')
-jest.mock('../api/gardens')
 
 afterEach(() => dispatch.mockClear())
 
@@ -89,10 +87,12 @@ describe('getUserLocation', () => {
 })
 
 describe('getGardenLocations', () => {
-  describe('-> on getGardens success', () => {
+  describe('-> on GET /gardens api call success', () => {
     it('dispatches waiting actions correctly', () => {
-      getGardens.mockImplementation(() => Promise.resolve())
-      return getGardenLocations()
+      function consume () {
+        return Promise.resolve()
+      }
+      return getGardenLocations(consume)
         .then(() => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
@@ -101,17 +101,22 @@ describe('getGardenLocations', () => {
     })
 
     it('returns correct locations object', () => {
-      expect.assertions(4)
-      getGardens.mockImplementation(() => Promise.resolve([{
-        lat: 111,
-        lon: -111,
-        address: '111 One Lane'
-      }, {
-        lat: 222,
-        lon: -222,
-        address: '222 Two Lane'
-      }]))
-      return getGardenLocations()
+      function consume () {
+        return Promise.resolve({
+          body: {
+            gardens: [{
+              lat: 111,
+              lon: -111,
+              address: '111 One Lane'
+            }, {
+              lat: 222,
+              lon: -222,
+              address: '222 Two Lane'
+            }]
+          }
+        })
+      }
+      return getGardenLocations(consume)
         .then(({ gardenCoords, addrs }) => {
           expect(gardenCoords[1].lon).toBe(-222)
           expect(gardenCoords).toHaveLength(2)
@@ -122,10 +127,12 @@ describe('getGardenLocations', () => {
     })
   })
 
-  describe('-> on getGardens rejection', () => {
+  describe('-> on GET /gardens api call rejection', () => {
     it('dispatches error correctly', () => {
-      getGardens.mockImplementation(() => Promise.reject(new Error('mock error')))
-      return getGardenLocations()
+      function consume () {
+        return Promise.reject(new Error('mock error'))
+      }
+      return getGardenLocations(consume)
         .then(() => {
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null

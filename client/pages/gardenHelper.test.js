@@ -1,23 +1,21 @@
 import { getGarden } from './gardenHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
-import { getGardenById } from '../api/gardens'
 
 jest.mock('../store')
-jest.mock('../api/gardens')
 
 afterEach(() => {
   return jest.resetAllMocks()
 })
 
 describe('getGarden', () => {
-  describe('-> getGardenById success', () => {
+  describe('-> GET /gardens/:id api call success', () => {
     it('dispatches waiting correctly', () => {
-      expect.assertions(2)
       getState.mockImplementation(() => ({ user: {} }))
-      getGardenById.mockImplementation(() => Promise.resolve({}))
-      const mockSetGarden = jest.fn()
-      return getGarden(mockSetGarden)
+      function consume () {
+        return Promise.resolve({ body: {} })
+      }
+      return getGarden(consume)
         .then(() => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
@@ -25,21 +23,22 @@ describe('getGarden', () => {
         })
     })
     it('return correct garden object', () => {
-      expect.assertions(4)
       getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
-      getGardenById.mockImplementation((id) => {
-        expect(id).toBe(2)
+      function consume (path) {
+        expect(path).toMatch('2')
         return Promise.resolve({
-          name: 'test garden',
-          description: 'a rad test garden',
-          url: 'cooltestgarden.com',
-          events: [],
-          address: 'cool place, nz',
-          lat: 123,
-          lon: -123
+          body: {
+            name: 'test garden',
+            description: 'a rad test garden',
+            url: 'cooltestgarden.com',
+            events: [],
+            address: 'cool place, nz',
+            lat: 123,
+            lon: -123
+          }
         })
-      })
-      return getGarden()
+      }
+      return getGarden(consume)
         .then((garden) => {
           expect(garden.name).toBe('test garden')
           expect(garden.url).toMatch('cooltestgarden')
@@ -49,11 +48,13 @@ describe('getGarden', () => {
     })
   })
 
-  describe('-> getGardenById rejection', () => {
+  describe('-> GET /gardens/:id api call rejection', () => {
     it('dispatches error correctly', () => {
       getState.mockImplementation(() => ({ user: { gardenId: null } }))
-      getGardenById.mockImplementation(() => Promise.reject(new Error('mock error')))
-      return getGarden()
+      function consume () {
+        return Promise.reject(new Error('mock error'))
+      }
+      return getGarden(consume)
         .then(() => {
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null

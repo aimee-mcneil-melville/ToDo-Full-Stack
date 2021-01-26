@@ -2,7 +2,7 @@ import { getState, dispatch } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import { setLocation } from '../actions/location'
 import { showError } from '../actions/error'
-import { getGardens } from '../api/gardens'
+import requestor from '../consume'
 
 export function getUserLocation (setCoords, isMounted, browser = navigator) {
   const storeState = getState()
@@ -28,11 +28,12 @@ export function getUserLocation (setCoords, isMounted, browser = navigator) {
   })
 }
 
-export function getGardenLocations () {
+export function getGardenLocations (consume = requestor) {
   dispatch(setWaiting())
-  return getGardens()
-    .then((gardens) => {
+  return consume('/gardens')
+    .then((res) => {
       dispatch(clearWaiting())
+      const { gardens } = res.body
       const gardenCoords = gardens.map(({ lat, lon }) => {
         return { lat, lon }
       })

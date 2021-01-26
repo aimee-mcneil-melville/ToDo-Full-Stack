@@ -1,9 +1,9 @@
 import { dispatch, getState } from '../../store'
 import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
-import { postEvent } from '../../api/events'
+import requestor from '../../consume'
 
-export function addEvent (event, navigateTo) {
+export function addEvent (event, navigateTo, consume = requestor) {
   const storeState = getState()
   const { gardenId } = storeState.user
   const newEvent = {
@@ -11,7 +11,7 @@ export function addEvent (event, navigateTo) {
     ...event
   }
   dispatch(setWaiting())
-  return postEvent(newEvent)
+  return consume('/events', 'post', newEvent)
     .then(() => {
       dispatch(clearWaiting())
       navigateTo('/garden')

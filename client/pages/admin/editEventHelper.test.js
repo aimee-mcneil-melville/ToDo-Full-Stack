@@ -1,9 +1,7 @@
 import { getEvent, updateEvent } from './editEventHelper'
-import { getEventById, patchEvent } from '../../api/events'
 import { CLEAR_WAITING } from '../../actions/waiting'
 import { dispatch } from '../../store'
 
-jest.mock('../../api/events')
 jest.mock('../../store')
 
 // resets the store.dispatch calls between tests
@@ -12,18 +10,19 @@ afterEach(() => {
 })
 
 describe('getEvent', () => {
-  it('gets and returns event, and dispatches correctly', () => {
-    expect.assertions(4)
-    getEventById.mockImplementation((id) => {
-      expect(id).toBe(1)
+  it('returns event, dispatches correctly on GET /events/:id api call success', () => {
+    function consume (url) {
+      expect(url).toBe('/events/1')
       return Promise.resolve({
-        title: 'test event',
-        date: '2020-12-18',
-        description: 'epic test event',
-        volunteersNeeded: 14
+        body: {
+          title: 'test event',
+          date: '2020-12-18',
+          description: 'epic test event',
+          volunteersNeeded: 14
+        }
       })
-    })
-    return getEvent(1)
+    }
+    return getEvent(1, consume)
       .then((event) => {
         expect(event.title).toBe('test event')
         expect(event.volunteersNeeded).toBe(14)
@@ -32,9 +31,11 @@ describe('getEvent', () => {
       })
   })
 
-  it('dispatches error if getEventById rejects', () => {
-    getEventById.mockImplementation(() => Promise.reject(new Error('mock error')))
-    return getEvent(999)
+  it('dispatches error on GET /events/:id api call rejection', () => {
+    function consume () {
+      return Promise.reject(new Error('mock error'))
+    }
+    return getEvent(999, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
         return null
@@ -43,8 +44,7 @@ describe('getEvent', () => {
 })
 
 describe('updateEvent', () => {
-  it('calls patchEvent, dispatches and redirects correctly', () => {
-    expect.assertions(8)
+  it('dispatches, redirects correctly on PATCH /events/:id api call success', () => {
     const event = {
       title: 'test event',
       date: '2021-03-22',
@@ -52,16 +52,14 @@ describe('updateEvent', () => {
       description: 'really rad event'
     }
     const navigateTo = jest.fn()
-    patchEvent.mockImplementation((eventToUpdate) => {
-      expect(eventToUpdate).not.toBe(event)
-      expect(eventToUpdate.id).toBe(1)
+    function consume (url, method, eventToUpdate) {
+      expect(url).toBe('/events/1')
+      expect(method).toBe('patch')
       expect(eventToUpdate.title).toBe('test event')
-      expect(eventToUpdate.date).toMatch('03-22')
-      expect(eventToUpdate.volunteersNeeded).toBe(5)
-      expect(eventToUpdate.description).toMatch('rad event')
+      expect(eventToUpdate).not.toBe(event)
       return Promise.resolve()
-    })
-    return updateEvent('1', event, navigateTo)
+    }
+    return updateEvent('1', event, navigateTo, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
         expect(navigateTo).toHaveBeenCalledWith('/garden')
@@ -69,10 +67,12 @@ describe('updateEvent', () => {
       })
   })
 
-  it('dispatches error if patchEvent rejects', () => {
+  it('dispatches error on PATCH /events/id api call rejection', () => {
     const navigateTo = jest.fn()
-    patchEvent.mockImplementation(() => Promise.reject(new Error('mock error')))
-    return updateEvent(999, {}, navigateTo)
+    function consume () {
+      return Promise.reject(new Error('mock error'))
+    }
+    return updateEvent(999, {}, navigateTo, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
         expect(navigateTo).not.toHaveBeenCalled()
