@@ -79,9 +79,6 @@ If you don't already have it installed, you should install the React DevTools br
 And some more:
 
 * [React Component](https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
-* [React Component API](https://facebook.github.io/react/docs/component-api.html)
-* [How State Works](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#how-state-works)
-* [React's `setState`](https://facebook.github.io/react/docs/component-api.html#setstate)
-* [React Event Handling](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#a-simple-example)
+* [React's `useState`](https://reactjs.org/docs/hooks-reference.html#usestate)
 * [`ReactDOM.render`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
-* [React TestUtils](https://facebook.github.io/react/docs/test-utils.html)
+
