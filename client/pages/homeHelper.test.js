@@ -1,7 +1,7 @@
 import { getUserLocation, getGardenLocations } from './homeHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { getGardens } from '../api/gardens'
-import { dispatch } from '../store'
+import { getState, dispatch } from '../store'
 
 jest.mock('../store')
 jest.mock('../api/gardens')
@@ -9,43 +9,81 @@ jest.mock('../api/gardens')
 afterEach(() => dispatch.mockClear())
 
 describe('getUserLocation', () => {
-  describe('-> when geolocation available', () => {
-    const mockNavigator = {
-      geolocation: {
-        getCurrentPosition: (cbFunc) => {
-          cbFunc({ coords: { latitude: 123, longitude: -123 } })
-        }
-      }
-    }
-
-    it('calls setLocation callback correctly if isMounted returns true', () => {
+  describe('-> when location is in the store', () => {
+    it('calls setCoords callback with stored location', () => {
       expect.assertions(2)
-      const mockSetLocationCallback = jest.fn((userCoordinates) => {
-        expect(userCoordinates.lat).toBe(123)
-        expect(userCoordinates.lon).toBe(-123)
+      getState.mockImplementation(() => {
+        return {
+          location: {
+            lat: 321,
+            lon: -321
+          }
+        }
       })
-      function isMounted () {
-        return true
-      }
-      getUserLocation(mockSetLocationCallback, isMounted, mockNavigator)
-    })
-
-    it('does not call setLocation callback if isMounted returns false', () => {
-      const mockSetLocationCallback = jest.fn()
-      function isMounted () {
-        return false
-      }
-      getUserLocation(mockSetLocationCallback, isMounted, mockNavigator)
-      expect(mockSetLocationCallback).not.toHaveBeenCalled()
+      const setCoords = jest.fn((userCoordinates) => {
+        expect(userCoordinates.lat).toBe(321)
+        expect(userCoordinates.lon).toBe(-321)
+      })
+      getUserLocation(setCoords)
     })
   })
 
-  describe('-> when geolocation not available', () => {
-    const mockNavigator = {}
-    it('does not call the callback', () => {
-      const mockSetLocationCallback = jest.fn()
-      getUserLocation(mockSetLocationCallback, mockNavigator)
-      expect(mockSetLocationCallback).not.toHaveBeenCalled()
+  describe('-> when location not in the store', () => {
+    describe('-> when geolocation available', () => {
+      const mockNavigator = {
+        geolocation: {
+          getCurrentPosition: (cbFunc) => {
+            cbFunc({ coords: { latitude: 123, longitude: -123 } })
+          }
+        }
+      }
+
+      it('dispatches setLocation action correctly', () => {
+        getState.mockImplementation(() => {
+          return { location: { lat: null, lon: null } }
+        })
+        getUserLocation(() => {}, () => false, mockNavigator)
+        expect(dispatch.mock.calls[0][0].location.lat).toBe(123)
+      })
+
+      it('calls setCoords callback correctly if isMounted returns true', () => {
+        getState.mockImplementation(() => {
+          return { location: { lat: null, lon: null } }
+        })
+        expect.assertions(2)
+        const setCoords = jest.fn((userCoordinates) => {
+          expect(userCoordinates.lat).toBe(123)
+          expect(userCoordinates.lon).toBe(-123)
+        })
+        function isMounted () {
+          return true
+        }
+        getUserLocation(setCoords, isMounted, mockNavigator)
+      })
+
+      it('does not call setCoords callback if isMounted returns false', () => {
+        getState.mockImplementation(() => {
+          return { location: { lat: null, lon: null } }
+        })
+        const setCoords = jest.fn()
+        function isMounted () {
+          return false
+        }
+        getUserLocation(setCoords, isMounted, mockNavigator)
+        expect(setCoords).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('-> when geolocation not available', () => {
+      const mockNavigator = {}
+      it('does not call the callback', () => {
+        getState.mockImplementation(() => {
+          return { location: { lat: null, lon: null } }
+        })
+        const setCoords = jest.fn()
+        getUserLocation(setCoords, mockNavigator)
+        expect(setCoords).not.toHaveBeenCalled()
+      })
     })
   })
 })

@@ -1,10 +1,8 @@
 import {
   setUser,
   clearUser,
-  setUserLocation,
   SET_USER,
-  CLEAR_USER,
-  USER_LOCATION
+  CLEAR_USER
 } from './user'
 
 describe('setUser', () => {
@@ -24,17 +22,5 @@ describe('clearUser', () => {
   it('returns the correct action', () => {
     const action = clearUser()
     expect(action.type).toBe(CLEAR_USER)
-  })
-})
-
-describe('setUserLocation', () => {
-  it('returns the correct action', () => {
-    const location = {
-      latitude: 123.45,
-      longitude: -123.45
-    }
-    const action = setUserLocation(location)
-    expect(action.type).toBe(USER_LOCATION)
-    expect(action.location.longitude).toBe(-123.45)
   })
 })

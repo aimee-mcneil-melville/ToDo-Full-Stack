@@ -1,12 +1,10 @@
 import { isAuthenticated, getDecodedToken } from '../auth'
-import { SET_USER, CLEAR_USER, USER_LOCATION } from '../actions/user'
+import { SET_USER, CLEAR_USER } from '../actions/user'
 
 const emptyUser = {
   username: '',
   isAdmin: false,
-  gardenId: null,
-  latitude: null,
-  longitude: null
+  gardenId: null
 }
 
 export default function user (state = getUser(), action) {
@@ -16,17 +14,6 @@ export default function user (state = getUser(), action) {
 
     case CLEAR_USER:
       return emptyUser
-
-    case USER_LOCATION:
-    {
-      const latitude = action.location.latitude
-      const longitude = action.location.longitude
-      return {
-        ...state,
-        latitude,
-        longitude
-      }
-    }
 
     default:
       return state
@@ -39,9 +26,7 @@ export function getUser () {
     return {
       username,
       isAdmin,
-      gardenId,
-      latitude: null,
-      longitude: null
+      gardenId
     }
   }
   return emptyUser
