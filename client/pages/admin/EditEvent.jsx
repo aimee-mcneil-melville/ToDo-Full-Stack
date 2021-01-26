@@ -19,7 +19,12 @@ function EditEvent (props) {
 
   useEffect(() => {
     const { id } = props.match.params
-    return getEvent(id, setForm)
+    // eslint-disable-next-line promise/catch-or-return
+    getEvent(id)
+      .then((eventData) => {
+        setForm(eventData)
+        return null
+      })
   }, [])
 
   function handleSubmit (e) {

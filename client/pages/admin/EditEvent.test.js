@@ -18,11 +18,12 @@ describe('form field', () => {
     const params = { params: { id: 2 } }
     render(<EditEvent match={params}/>)
 
-    const input = screen.getByPlaceholderText('event title')
-    expect(input.value).toBe('')
-
-    fireEvent.change(input, { target: { value: 'Weeding Worker Bee' } })
-
-    expect(input.value).toBe('Weeding Worker Bee')
+    return screen.findByPlaceholderText('event title')
+      .then((input) => {
+        expect(input).toHaveValue('Tai\'s anime fight')
+        fireEvent.change(input, { target: { value: 'Weeding Worker Bee' } })
+        expect(input).toHaveValue('Weeding Worker Bee')
+        return null
+      })
   })
 })

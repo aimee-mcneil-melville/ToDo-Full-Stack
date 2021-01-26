@@ -16,7 +16,12 @@ function Garden () {
   })
 
   useEffect(() => {
-    getGarden(setGarden)
+    // eslint-disable-next-line promise/catch-or-return
+    getGarden()
+      .then((gardenData) => {
+        setGarden(gardenData)
+        return null
+      })
   }, [])
 
   const { name, description, address, url, events, lat, lon } = garden

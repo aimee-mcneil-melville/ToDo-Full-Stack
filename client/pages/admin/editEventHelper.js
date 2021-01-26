@@ -3,14 +3,13 @@ import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 import { getEventById, patchEvent } from '../../api/events'
 
-export function getEvent (id, setEventDetails) {
+export function getEvent (id) {
   dispatch(setWaiting())
   return getEventById(id)
     .then((event) => {
       dispatch(clearWaiting())
       const { title, date, volunteersNeeded, description } = event
-      setEventDetails({ title, date, description, volunteersNeeded })
-      return null
+      return { title, date, description, volunteersNeeded }
     })
     .catch((err) => {
       dispatch(showError(err.message))

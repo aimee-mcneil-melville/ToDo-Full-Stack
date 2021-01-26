@@ -24,8 +24,8 @@ describe('getGarden', () => {
           return null
         })
     })
-    it('calls setGarden with correct values', () => {
-      expect.assertions(8)
+    it('return correct garden object', () => {
+      expect.assertions(4)
       getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
       getGardenById.mockImplementation((id) => {
         expect(id).toBe(2)
@@ -39,16 +39,13 @@ describe('getGarden', () => {
           lon: -123
         })
       })
-      const mockSetGarden = (garden) => {
-        expect(garden.name).toBe('test garden')
-        expect(garden.description).toMatch('rad test garden')
-        expect(garden.url).toMatch('cooltestgarden')
-        expect(garden.events).toHaveLength(0)
-        expect(garden.address).toMatch('cool place')
-        expect(garden.lat).toBe(123)
-        expect(garden.lon).toBe(-123)
-      }
-      return getGarden(mockSetGarden)
+      return getGarden()
+        .then((garden) => {
+          expect(garden.name).toBe('test garden')
+          expect(garden.url).toMatch('cooltestgarden')
+          expect(garden.events).toHaveLength(0)
+          return null
+        })
     })
   })
 

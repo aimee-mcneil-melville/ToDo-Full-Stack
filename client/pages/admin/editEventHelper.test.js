@@ -13,7 +13,7 @@ afterEach(() => {
 
 describe('getEvent', () => {
   it('gets and returns event, and dispatches correctly', () => {
-    expect.assertions(6)
+    expect.assertions(4)
     getEventById.mockImplementation((id) => {
       expect(id).toBe(1)
       return Promise.resolve({
@@ -23,14 +23,10 @@ describe('getEvent', () => {
         volunteersNeeded: 14
       })
     })
-    function mockSetEventDetails (event) {
-      expect(event.title).toBe('test event')
-      expect(event.date).toBe('2020-12-18')
-      expect(event.description).toMatch('epic')
-      expect(event.volunteersNeeded).toBe(14)
-    }
-    return getEvent(1, mockSetEventDetails)
-      .then(() => {
+    return getEvent(1)
+      .then((event) => {
+        expect(event.title).toBe('test event')
+        expect(event.volunteersNeeded).toBe(14)
         expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
         return null
       })
