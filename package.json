@@ -42,6 +42,11 @@
       "bundle.js"
     ]
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom"
+    ]
+  },
   "engines": {
     "node": ">=12.0"
   },

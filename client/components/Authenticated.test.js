@@ -1,6 +1,5 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
-import '@testing-library/jest-dom'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.jsx'
 import { isAuthenticated } from '../auth'
