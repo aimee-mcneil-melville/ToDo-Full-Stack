@@ -1,5 +1,8 @@
+import { isAuthenticated, getDecodedToken } from '../auth'
 import { SET_USER, CLEAR_USER } from '../actions/user'
-import userReducer from './user'
+import userReducer, { getUser } from './user'
+
+jest.mock('../auth')
 
 describe('user reducer', () => {
   it('returns new user object on "SET_USER"', () => {
@@ -74,5 +77,27 @@ describe('user reducer', () => {
     }
     const newState = userReducer(oldState, action)
     expect(newState).toBe(oldState)
+  })
+})
+
+describe('getUser', () => {
+  it('returns user data from token if authenticated', () => {
+    isAuthenticated.mockImplementation(() => true)
+    getDecodedToken.mockImplementation(() => {
+      return {
+        username: 'test username',
+        isAdmin: false,
+        gardenId: 2
+      }
+    })
+    const user = getUser()
+    expect(user.username).toBe('test username')
+  })
+
+  it('returns empty user object if user not authenticated', () => {
+    isAuthenticated.mockImplementation(() => false)
+    getDecodedToken.mockImplementation(() => ({}))
+    const user = getUser()
+    expect(user.username).toBe('')
   })
 })

@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-
-import { setUser } from './actions/user'
-import { isAuthenticated, getDecodedToken } from './auth'
 
 import Header from './components/Header'
 import Register from './pages/auth/Register'
@@ -15,13 +11,7 @@ import EditEvent from './pages/admin/EditEvent'
 import Error from './components/Error'
 import WaitIndicator from './components/WaitIndicator'
 
-function App (props) {
-  useEffect(() => {
-    if (isAuthenticated()) {
-      const { username, isAdmin, gardenId } = getDecodedToken()
-      props.dispatch(setUser({ username, isAdmin, gardenId }))
-    }
-  }, [])
+function App () {
   return (
     <main className="container is-max-desktop">
       <Error />
@@ -41,4 +31,4 @@ function App (props) {
   )
 }
 
-export default connect()(App)
+export default App

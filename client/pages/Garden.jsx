@@ -16,7 +16,7 @@ function Garden () {
   })
 
   useEffect(() => {
-    return getGarden(setGarden)
+    getGarden(setGarden)
   }, [])
 
   const { name, description, address, url, events, lat, lon } = garden

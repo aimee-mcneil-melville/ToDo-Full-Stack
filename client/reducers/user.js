@@ -1,3 +1,4 @@
+import { isAuthenticated, getDecodedToken } from '../auth'
 import { SET_USER, CLEAR_USER, USER_LOCATION } from '../actions/user'
 
 const emptyUser = {
@@ -8,7 +9,7 @@ const emptyUser = {
   longitude: null
 }
 
-function user (state = emptyUser, action) {
+export default function user (state = getUser(), action) {
   switch (action.type) {
     case SET_USER:
       return action.user
@@ -32,4 +33,16 @@ function user (state = emptyUser, action) {
   }
 }
 
-export default user
+export function getUser () {
+  if (isAuthenticated()) {
+    const { username, isAdmin, gardenId } = getDecodedToken()
+    return {
+      username,
+      isAdmin,
+      gardenId,
+      latitude: null,
+      longitude: null
+    }
+  }
+  return emptyUser
+}
