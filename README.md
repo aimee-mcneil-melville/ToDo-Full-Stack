@@ -28,7 +28,7 @@ Create a component that only has one job: return a `<div>` using JSX.
 
 Leave the `<div>` empty. You won't be able to see it, but you'll be able to check if it has been rendered using the inspect feature of your browser's development tools. You can call the component whatever you like. We like `<Pixel />` because it evokes the idea of a small colourful square, and that's what we're going to be working with: lots of colourful squares!
 
-Place your `<Pixel />` component in the render method of `<App /` so that it'll make it into the DOM. Check that it exists in the devtools before moving on. It'll look like this:
+Place your `<Pixel />` component in the return of `<App />` so that it'll make it into the DOM. Check that it exists in the devtools before moving on. It'll look like this:
 
 ![Stage 0](./_images/stage0.jpg)
 
@@ -40,7 +40,7 @@ We need to see our component. For today, we'll make it visible by using the `sty
 ```jsx
   <div style={{
     fontFamily: 'Times New Roman'
-  }}
+  }} >
 ```
 
 Notice three things about this sample:
@@ -75,9 +75,9 @@ Oooooo... k? There sure are a lot of components, but it's kind of hard to distin
 
 ## State your business
 
-To easily work with the values we use in the `style` JSX attribute, we should put them into component state using the `useState` method. Create a new state called `style` and give it an initial state of an object suitable for use in the `style` JSX attribute.
+To easily work with the values we use in the `style` JSX attribute, we should put them into state using the `useState` function. Create a new state called `style` and give it an initial state of an object suitable for use in the `style` JSX attribute.
 
-Next, change your component JSX to refer to `style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
+Next, change your JSX (in the return) to refer to `style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
 
 What you've just done is make your component more *flexbile*. We can now manipulate the values any way we'd like using `setStyle()`.
 
