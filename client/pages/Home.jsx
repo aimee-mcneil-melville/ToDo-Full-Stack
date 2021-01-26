@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Map from '../components/Map'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 
-function Home () {
+export default function Home () {
   const [userCoordinates, setUserCoordinates] = useState(null)
   const [gardensCoordinates, setGardensCoordinates] = useState([])
   const [addresses, setAddresses] = useState([])
@@ -49,5 +49,3 @@ function Home () {
     </>
   )
 }
-
-export default Home

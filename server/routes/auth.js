@@ -9,10 +9,10 @@ const {
 
 const router = express.Router()
 
+module.exports = router
+
 applyAuthRoutes(router, {
   userExists,
   getUserByName,
   createUser
 })
-
-module.exports = router

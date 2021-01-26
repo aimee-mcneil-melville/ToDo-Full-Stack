@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { signInUser } from './signInHelper'
 
-function SignIn (props) {
+export default function SignIn (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -64,5 +64,3 @@ function SignIn (props) {
     </>
   )
 }
-
-export default SignIn

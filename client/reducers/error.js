@@ -1,6 +1,6 @@
 import { SHOW_ERROR, HIDE_ERROR } from '../actions/error'
 
-function error (state = null, action) {
+export default function error (state = null, action) {
   switch (action.type) {
     case SHOW_ERROR:
       return action.errorMessage
@@ -12,5 +12,3 @@ function error (state = null, action) {
       return state
   }
 }
-
-export default error

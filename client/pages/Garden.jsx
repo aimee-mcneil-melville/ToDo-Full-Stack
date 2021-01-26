@@ -4,7 +4,7 @@ import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
 
-function Garden () {
+export default function Garden () {
   const [garden, setGarden] = useState({
     name: '',
     description: '',
@@ -42,5 +42,3 @@ function Garden () {
     </>
   )
 }
-
-export default Garden

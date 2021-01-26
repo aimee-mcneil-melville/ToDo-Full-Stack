@@ -5,6 +5,8 @@ const db = require('../db/event')
 
 const router = express.Router()
 
+module.exports = router
+
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
@@ -57,5 +59,3 @@ router.patch('/:id', (req, res) => {
       })
     })
 })
-
-module.exports = router

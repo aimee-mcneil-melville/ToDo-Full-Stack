@@ -11,7 +11,7 @@ import EditEvent from './pages/admin/EditEvent'
 import Error from './components/Error'
 import WaitIndicator from './components/WaitIndicator'
 
-function App () {
+export default function App () {
   return (
     <main className="container is-max-desktop">
       <Error />
@@ -30,5 +30,3 @@ function App () {
     </main>
   )
 }
-
-export default App

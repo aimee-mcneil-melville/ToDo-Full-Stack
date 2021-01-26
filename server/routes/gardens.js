@@ -5,6 +5,8 @@ const db = require('../db/gardens')
 
 const router = express.Router()
 
+module.exports = router
+
 router.get('/', (req, res) => {
   db.getGardens()
     .then((gardens) => {
@@ -35,5 +37,3 @@ router.get('/:id', (req, res) => {
       })
     })
 })
-
-module.exports = router

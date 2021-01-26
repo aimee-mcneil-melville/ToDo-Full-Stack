@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getEvent, updateEvent } from './editEventHelper'
 
-function EditEvent (props) {
+export default function EditEvent (props) {
   const [form, setForm] = useState({
     title: '',
     date: '',
@@ -112,5 +112,3 @@ function EditEvent (props) {
     </>
   )
 }
-
-export default EditEvent

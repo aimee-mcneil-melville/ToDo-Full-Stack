@@ -9,11 +9,11 @@ const authRoutes = require('./routes/auth')
 
 const server = express()
 
+module.exports = server
+
 server.use(express.static(path.join(__dirname, 'public')))
 server.use(express.json())
 
 server.use('/api/v1/gardens', gardenRoutes)
 server.use('/api/v1/events', eventRoutes)
 server.use('/api/v1', authRoutes)
-
-module.exports = server

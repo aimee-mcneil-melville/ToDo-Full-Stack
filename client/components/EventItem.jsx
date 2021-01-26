@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function EventItem ({ event, isAdmin }) {
+export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description } = event
   return (
     <div>
@@ -17,5 +17,3 @@ function EventItem ({ event, isAdmin }) {
     </div>
   )
 }
-
-export default EventItem

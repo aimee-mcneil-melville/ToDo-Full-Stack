@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom'
 
 import Nav from './Nav'
 
-function Header () {
+export default function Header () {
   return (
     <header className="columns py-5">
       <h1 className="logo column">
@@ -13,5 +13,3 @@ function Header () {
     </header>
   )
 }
-
-export default Header

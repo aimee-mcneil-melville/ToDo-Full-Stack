@@ -2,7 +2,7 @@ import React from 'react'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-function Map ({ addresses, coordinates, userCoordinates }) {
+export default function Map ({ addresses, coordinates, userCoordinates }) {
   return (
     <div className='column'>
       <MapContainer
@@ -33,5 +33,3 @@ function Map ({ addresses, coordinates, userCoordinates }) {
     </div>
   )
 }
-
-export default Map

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addEvent } from './addEventHelper'
 
-function AddEvent (props) {
+export default function AddEvent (props) {
   const [form, setForm] = useState({
     title: '',
     date: '',
@@ -100,5 +100,3 @@ function AddEvent (props) {
 
   )
 }
-
-export default AddEvent

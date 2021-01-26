@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { registerUser } from './registerHelper'
 
-function Register (props) {
+export default function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: '',
@@ -78,5 +78,3 @@ function Register (props) {
     </>
   )
 }
-
-export default Register
