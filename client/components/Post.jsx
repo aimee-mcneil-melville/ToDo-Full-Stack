@@ -6,7 +6,6 @@ import { deletePost, getCommentsByPostId } from '../api'
 function Post (props) {
   const [errorMessage, setErrorMessage] = useState('')
   const [comments, setComments] = useState([])
-  // const [deleteButton, setDeleteButton] = useState("");
 
   useEffect(() => {
     const id = props.post.id || props.match.params.id
@@ -14,10 +13,6 @@ function Post (props) {
       fetchComments(id)
     }
   }, [])
-
-  // useEffect(() => {
-  //     removePost()
-  //   }, [deleteButton])
 
   const fetchComments = (postId) => {
     getCommentsByPostId(postId)
@@ -28,17 +23,12 @@ function Post (props) {
       .catch(err => setErrorMessage(err.message))
   }
 
-  // ### Is causing a memory leak, I need to do this within a useEffect?
   const removePost = () => {
     deletePost(props.post.id)
       .then(props.fetchPosts)
       .then(() => props.history.push('/'))
       .catch(err => setErrorMessage(err.message))
   }
-
-  // const handleRemovePost = () => {
-  //   setDeleteButton("yes")
-  // }
 
   const { title, paragraphs, dateCreated, id } = props.post
   return (

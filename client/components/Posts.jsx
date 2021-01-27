@@ -10,6 +10,7 @@ function Posts (props) {
           post={post}
           fetchPosts={props.fetchPosts}
           path={props.location.pathname}
+          history={props.history}
         />
       })}
     </div>
