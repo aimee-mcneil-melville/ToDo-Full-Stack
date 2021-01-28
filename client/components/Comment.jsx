@@ -4,7 +4,7 @@ import CommentForm from './CommentForm'
 import { deleteComment } from '../api'
 
 function Comment (props) {
-  const handleDeleteComment = () => {
+  function handleDeleteComment () {
     return deleteComment(props.comment.id)
       .then(() => props.fetchComments(props.postId))
   }

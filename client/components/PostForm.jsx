@@ -14,14 +14,14 @@ function PostForm (props) {
     if (post && !currentPost)setNewPost(post)
   }, [props.post])
 
-  const setNewPost = (post) => {
+  function setNewPost (post) {
     const paragraphs = post.paragraphs.join('\n')
     setPost({
       ...post, paragraphs
     })
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit (e) {
     e.preventDefault()
     const { history, fetchPosts } = props
     if (props.post) {
@@ -43,7 +43,7 @@ function PostForm (props) {
     }
   }
 
-  const handleChange = (e) => {
+  function handleChange (e) {
     setPost({ ...post, [e.target.name]: e.target.value })
   }
 

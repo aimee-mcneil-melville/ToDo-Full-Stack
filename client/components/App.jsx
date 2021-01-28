@@ -12,7 +12,7 @@ function App () {
     fetchPosts()
   }, [])
 
-  const fetchPosts = () => {
+  function fetchPosts () {
     return getPosts()
       .then(posts => {
         setPosts(posts)

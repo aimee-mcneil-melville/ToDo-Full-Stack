@@ -14,7 +14,7 @@ function Post (props) {
     }
   }, [])
 
-  const fetchComments = (postId) => {
+  function fetchComments (postId) {
     getCommentsByPostId(postId)
       .then(comments => {
         setComments(comments)
@@ -23,7 +23,7 @@ function Post (props) {
       .catch(err => setErrorMessage(err.message))
   }
 
-  const removePost = () => {
+  function removePost () {
     deletePost(props.post.id)
       .then(props.fetchPosts)
       .then(() => props.history.push('/'))

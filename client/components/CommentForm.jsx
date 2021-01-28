@@ -4,7 +4,8 @@ import { addCommentByPostId, updateComment } from '../api'
 function CommentForm (props) {
   const [errorMessage, setErrorMessage] = useState('')
   const [comment, setComment] = useState(props.comment || { comment: '' })
-  const handleSubmit = (e) => {
+
+  function handleSubmit (e) {
     e.preventDefault()
     const { match, fetchComments, history } = props
     if (props.comment) {
