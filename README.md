@@ -26,7 +26,7 @@ Before we jump into the code editor, let's do some thinking about what we need t
 
 ## Shape of the store
 
-One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of data that will be changing that multiple components will be using:
+One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of changing data that multiple components will use:
 
 1. The contents of the cart as an array of cart item objects
 2. The user's active page (React Router is a more appropriate choice to manage navigation, but let's use Redux instead because we need the practice)
@@ -50,7 +50,7 @@ Given that, our Redux store needs to look similar to this:
 }
 ```
 
-Now we have a clear understanding about what reducers we'll be creating below. But what about actions the reducers should respond to?
+Now we have a clear understanding about what reducers we'll be creating below. But what about the actions our reducers should respond to?
 
 
 ## Add to cart
@@ -100,7 +100,6 @@ export const navigate = target => {
 ```
 
 Of course you'll need to create the associated `navigation` reducer as well. You can use this value in `<App />` to determine whether to show the `<Listing />` or `<Cart />`.
-
 
 
 ## Delete from cart
