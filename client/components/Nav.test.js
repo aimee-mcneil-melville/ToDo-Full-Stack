@@ -7,35 +7,23 @@ import { renderWithRouter } from '../test-utils'
 import Nav from './Nav'
 
 import { isAuthenticated } from '../auth'
-import { logOut } from './navHelper'
+import { logOut, getLinks } from './navHelper'
 
 jest.mock('../auth')
 jest.mock('./navHelper')
 
 describe('nav links', () => {
   describe('-> when user not authenticated', () => {
-    it('displays "register" and "sign in" on the "/" route', () => {
+    it('maps and displays links from getLinks helper', () => {
+      getLinks.mockImplementation(() => [
+        { to: '/signin', name: 'Sign in' },
+        { to: '/register', name: 'Register' }
+      ])
       renderWithRouter(<Nav location={{ pathname: '/' }}/>)
       const links = screen.getAllByRole('link')
       expect(links).toHaveLength(2)
       expect(links[0]).toHaveTextContent('Sign in')
       expect(links[1]).toHaveTextContent('Register')
-    })
-
-    it('displays "register" and "home" on the "/signin" route', () => {
-      renderWithRouter(<Nav location={{ pathname: '/signin' }}/>)
-      const links = screen.getAllByRole('link')
-      expect(links).toHaveLength(2)
-      expect(links[0]).toHaveTextContent('Register')
-      expect(links[1]).toHaveTextContent('Home')
-    })
-
-    it('displays "sign in" and "home" on the "/register" route', () => {
-      renderWithRouter(<Nav location={{ pathname: '/register' }}/>)
-      const links = screen.getAllByRole('link')
-      expect(links).toHaveLength(2)
-      expect(links[0]).toHaveTextContent('Sign in')
-      expect(links[1]).toHaveTextContent('Home')
     })
   })
   describe('-> when user is authenticated', () => {

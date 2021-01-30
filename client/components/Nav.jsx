@@ -1,38 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { logOut } from './navHelper'
+import { logOut, getLinks } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 export default function Nav (props) {
   const currentPage = props.location.pathname
-  let navLinks = null
-
-  switch (currentPage) {
-    case '/signin':
-      navLinks = (
-        <>
-          <Link to="/register">Register</Link>
-          <Link to="/">Home</Link>
-        </>
-      )
-      break
-    case '/register':
-      navLinks = (
-        <>
-          <Link to="/signin">Sign in</Link>
-          <Link to="/">Home</Link>
-        </>
-      )
-      break
-    default:
-      navLinks = (
-        <>
-          <Link to="/signin">Sign in</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )
-  }
+  const navLinks = getLinks(currentPage)
 
   return (
     <nav className="navbar column">
@@ -42,7 +16,13 @@ export default function Nav (props) {
         </Link>
         <Link to="/">Home</Link>
       </IfAuthenticated>
-      <IfNotAuthenticated>{navLinks}</IfNotAuthenticated>
+      <IfNotAuthenticated>
+        {navLinks.map(({ to, name }) => (
+          <Link key={to} to={to}>
+            {name}
+          </Link>
+        ))}
+      </IfNotAuthenticated>
     </nav>
   )
 }
