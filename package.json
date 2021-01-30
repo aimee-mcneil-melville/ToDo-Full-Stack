@@ -19,6 +19,9 @@
     "url": "https://github.com/dev-academy-challenges/web-api-stories/issues"
   },
   "homepage": "https://github.com/dev-academy-challenges/web-api-stories#readme",
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
