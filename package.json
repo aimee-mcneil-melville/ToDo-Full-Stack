@@ -10,6 +10,7 @@
     "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
     "dev": "run-p dev:client dev:server",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx .",
     "lint:fix": "eslint . --fix",
     "start": "webpack && node server"

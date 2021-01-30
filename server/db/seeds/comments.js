@@ -1,7 +1,7 @@
-exports.seed = (knex, Promise) => {
+exports.seed = (knex) => {
   // Deletes ALL existing entries
   return knex('Comments').del()
-    .then(function () {
+    .then(() => {
       // Inserts seed entries
       return knex('Comments').insert([
         {

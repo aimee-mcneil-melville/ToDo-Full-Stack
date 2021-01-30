@@ -16,8 +16,8 @@ Clone this repo, and from the repo's folder
 
 ```sh
 npm install
-npx knex migrate:latest
-npx knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 npm run dev
 ```
 
