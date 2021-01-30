@@ -1,5 +1,6 @@
 import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { renderWithRedux } from '../test-utils'
 import Error from './Error.jsx'
@@ -29,7 +30,7 @@ describe('hide error button', () => {
       initialState: { error: 'mock error message' }
     })
     const hideErrorButton = screen.getByText('✕')
-    fireEvent.click(hideErrorButton)
+    userEvent.click(hideErrorButton)
     expect(hide).toHaveBeenCalled()
   })
 })

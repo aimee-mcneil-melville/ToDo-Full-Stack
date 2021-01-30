@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import SignIn from './SignIn'
 import { signInUser } from './signInHelper'
@@ -13,11 +14,11 @@ describe('form fields', () => {
     // need getByLabelText for password as type="hidden" hides it for getByRole
     const passwordInput = screen.getByLabelText('Password')
 
-    fireEvent.change(usernameInput, { target: { value: 'Hey' } })
-    fireEvent.change(passwordInput, { target: { value: 'testing' } })
+    userEvent.type(usernameInput, 'Hey')
+    userEvent.type(passwordInput, 'testing')
 
-    expect(usernameInput.value).toBe('Hey')
-    expect(passwordInput.value).toBe('testing')
+    expect(usernameInput).toHaveValue('Hey')
+    expect(passwordInput).toHaveValue('testing')
   })
 })
 
@@ -26,7 +27,7 @@ describe('Sign In button', () => {
     render(<SignIn history={[]} />)
 
     const signInButton = screen.getByRole('button', { name: 'Sign in' })
-    fireEvent.click(signInButton)
+    userEvent.click(signInButton)
 
     expect(signInUser).toHaveBeenCalled()
   })

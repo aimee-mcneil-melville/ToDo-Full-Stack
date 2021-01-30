@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import Register from './Register.jsx'
 import { registerUser } from './registerHelper'
@@ -14,13 +15,13 @@ describe('form fields', () => {
     const passwordInput = screen.getByLabelText('Password')
     const gardenInput = screen.getByLabelText('My Garden')
 
-    fireEvent.change(usernameInput, { target: { value: 'test username' } })
-    fireEvent.change(passwordInput, { target: { value: 'test password' } })
-    fireEvent.change(gardenInput, { target: { value: 2 } })
+    userEvent.type(usernameInput, 'test username')
+    userEvent.type(passwordInput, 'test password')
+    userEvent.selectOptions(gardenInput, '2')
 
-    expect(usernameInput.value).toBe('test username')
-    expect(passwordInput.value).toBe('test password')
-    expect(gardenInput.value).toBe('2')
+    expect(usernameInput).toHaveValue('test username')
+    expect(passwordInput).toHaveValue('test password')
+    expect(gardenInput).toHaveValue('2')
   })
 })
 
@@ -29,7 +30,7 @@ describe('Register button', () => {
     render(<Register history={[]} />)
 
     const registerButton = screen.getByRole('button', { name: 'Register' })
-    fireEvent.click(registerButton)
+    userEvent.click(registerButton)
 
     expect(registerUser).toHaveBeenCalled()
   })
