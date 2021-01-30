@@ -30,11 +30,13 @@ function PostForm (props) {
         .then(navigateToPost(post.id))
         .catch(err => setErrorMessage(err.message))
     } else {
+      let postId = null
       addPost(post)
-        .then(newPost => {
+        .then((newPost) => {
+          postId = newPost.id
           return fetchPosts()
-            .then(navigateToPost(newPost.id))
         })
+        .then(navigateToPost(postId))
         .catch(err => setErrorMessage(err.message))
     }
 

@@ -105,14 +105,15 @@ function validatePostResponse (method, route, post) {
   }
 }
 
-function validateCommentResponse (method, route, comment) {
-  if (!post) {
-    throw Error(`Error: ${method} ${route} should return a comment`)
-  }
+// TODO: Use this.
+// function validateCommentResponse (method, route, comment) {
+//   if (!comment) {
+//     throw Error(`Error: ${method} ${route} should return a comment`)
+//   }
 
-  const { title, paragraphs } = comment
+//   const { title, paragraphs } = comment
 
-  if (!title || !paragraphs) {
-    throw Error(`Error: ${method} ${route} is not returning a correct comment`)
-  }
-}
+//   if (!title || !paragraphs) {
+//     throw Error(`Error: ${method} ${route} is not returning a correct comment`)
+//   }
+// }
