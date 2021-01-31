@@ -14,12 +14,11 @@ function Cart (props) {
           </tr>
         </thead>
         <tbody>
-          {props.cart.map((item, id) => {
-            const name = getNameFromId(item.id)
+          {props.cart.map(({ id, quantity }) => {
             return (
               <tr key={id}>
-                <td>{name}</td>
-                <td><input className='update-input' value={item.quantity} /></td>
+                <td>{getNameFromId(id)}</td>
+                <td><input className='update-input' value={quantity} /></td>
                 <td><button><span className='fa fa-trash fa-2x' /></button></td>
                 {/* TODO: implement deletes */}
               </tr>
@@ -38,8 +37,7 @@ function Cart (props) {
 }
 
 function getNameFromId (id) {
-  const beer = beerData.beers.find(beer => beer.id === id)
-  return beer.name
+  return beerData.beers.find((beer) => beer.id === id).name
 }
 
 export default Cart
