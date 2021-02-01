@@ -27,7 +27,7 @@ function PostForm (props) {
     if (props.post) {
       updatePost(post)
         .then(fetchPosts)
-        .then(navigateToPost(post.id))
+        .then(() => navigateToPost(post.id))
         .catch(err => setErrorMessage(err.message))
     } else {
       let postId = null
@@ -36,12 +36,12 @@ function PostForm (props) {
           postId = newPost.id
           return fetchPosts()
         })
-        .then(navigateToPost(postId))
+        .then(() => navigateToPost(postId))
         .catch(err => setErrorMessage(err.message))
     }
 
     function navigateToPost (id) {
-      return () => history.push(`/posts/${id}`)
+      return history.push(`/posts/${id}`)
     }
   }
 
