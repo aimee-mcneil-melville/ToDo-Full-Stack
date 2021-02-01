@@ -7,14 +7,18 @@
   "author": "EDA",
   "license": "MIT",
   "scripts": {
-    "dev:client": "webpack --watch",
+    "build": "webpack --config ./client/webpack.config.js",
+    "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server",
     "dev": "run-p dev:client dev:server",
     "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx .",
     "lint:fix": "eslint . --fix",
-    "start": "webpack && node server"
+    "start": "node server"
   },
+  "keywords": [
+    "fullstack"
+  ],
   "babel": {
     "presets": [
       "@babel/preset-env",
