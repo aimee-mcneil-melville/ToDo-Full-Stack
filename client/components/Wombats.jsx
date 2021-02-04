@@ -1,8 +1,9 @@
 import React from 'react'
 import Wombat from './Wombat'
 
-function Wombats(props) {
-  const { store } = props
+import store from '../store'
+
+function Wombats () {
   const state = store.getState()
   const wombats = state.wombats
   return (
