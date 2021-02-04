@@ -5,14 +5,15 @@
   "author": "EDA",
   "license": "ISC",
   "scripts": {
-    "build": "webpack",
+    "build": "npm run webpack",
     "server": "node server",
     "start": "run-s build server",
     "dev": "run-p dev:build dev:server",
-    "dev:build": "webpack --watch",
+    "dev:build": "npm run webpack -- --watch",
     "dev:server": "nodemon server",
+    "webpack": "webpack --config client/webpack.config.js",
     "test": "jest --watchAll",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "plugins": [
@@ -22,6 +23,12 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
     ]
   },
   "dependencies": {
