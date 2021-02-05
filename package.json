@@ -1,24 +1,28 @@
 {
   "name": "gardenz",
-  "version": "0.1.0",
-  "main": "index.js",
+  "version": "0.1.1",
+  "main": "server/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harakeke-2021/gardenz.git"
+  },
   "scripts": {
+    "start": "node server",
+    "build": "webpack --config client/webpack.config.js",
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server",
-    "build": "webpack --config client/webpack.config.js",
     "knex": "knex --knexfile server/db/knexfile.js",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
-    "server": "node server",
-    "start": "node server",
-    "test:watch": "jest --testPathIgnorePatterns e2e --watchAll --verbose",
     "test": "jest --testPathIgnorePatterns e2e --verbose",
-    "test:e2e": "NODE_ENV=e2e jest e2e --config e2e/jest.config.js",
-    "test:e2e:debug": "DEBUG=pw:api NODE_ENV=e2e jest e2e --config e2e/jest.config.js",
-    "lint": "eslint --ext .js,.jsx client server"
+    "test:watch": "jest --testPathIgnorePatterns e2e --watchAll --verbose",
+    "test:e2e": "NODE_ENV=e2e PORT=3001 server-test 3001 e2e",
+    "test:e2e:debug": "DEBUG=pw:api npm run test:e2e",
+    "e2e": "jest e2e --config e2e/jest.config.js --verbose",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "presets": [
@@ -32,12 +36,11 @@
       "@babel/plugin-transform-runtime"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/horoeka-2020/gardenz.git"
-  },
   "eslintConfig": {
-    "extends": "eda",
+    "extends": [
+      "eda",
+      "plugin:jest-playwright/recommended"
+    ],
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -77,13 +80,14 @@
     "css-loader": "^5.0.1",
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
+    "eslint-plugin-jest-playwright": "^0.2.1",
     "jest": "^26.6.3",
-    "jest-playwright-preset": "^1.4.1",
+    "jest-playwright-preset": "^1.4.5",
     "leaflet": "^1.7.1",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
-    "playwright": "^1.6.2",
+    "playwright": "^1.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-leaflet": "^3.0.2",
@@ -94,6 +98,7 @@
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "sqlite3": "^5.0.0",
+    "start-server-and-test": "^1.12.0",
     "style-loader": "^2.0.0",
     "superagent": "^6.1.0",
     "supertest": "^6.0.1",
