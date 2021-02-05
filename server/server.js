@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const helmet = require('helmet')
 
 require('dotenv').config({ path: path.join(__dirname, '.env') })
 
@@ -11,6 +12,7 @@ const server = express()
 
 module.exports = server
 
+server.use(helmet()) // security middleware
 server.use(express.static(path.join(__dirname, 'public')))
 server.use(express.json())
 
