@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { hideError } from '../actions/error'
 
-export const ErrorMessage = (props) => {
+const ErrorMessage = (props) => {
   const hide = () => {
     props.hideError()
   }

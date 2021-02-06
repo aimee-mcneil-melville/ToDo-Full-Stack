@@ -3,5 +3,5 @@ exports.seed = knex => {
     () => knex(table).del()
 
   return empty('products')()
-    // .then(empty('table_name'))
+  // .then(empty('table_name'))
 }

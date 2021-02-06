@@ -8,7 +8,7 @@ import {
 
 import { updateCartItem } from '../coordinators/cart'
 
-export const CartItem = (props) => {
+const CartItem = (props) => {
   const { name, id, quantity } = props.item
 
   const update = e => {

@@ -8,7 +8,7 @@ import { showError } from '../actions/error'
 
 import { getOrders } from '../coordinators/orders'
 
-export class OrderList extends React.Component {
+class OrderList extends React.Component {
   componentDidMount () {
     const { fetchOrdersPending, fetchOrdersSuccess, showError } = this.props
     const dispatchers = { fetchOrdersPending, fetchOrdersSuccess, showError }

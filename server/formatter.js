@@ -13,7 +13,7 @@ function createOrder (orderLine) {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
     status: orderLine.status,
-    products: [ createProduct(orderLine) ]
+    products: [createProduct(orderLine)]
   }
 }
 
@@ -51,12 +51,12 @@ function formatOrder (orderLines) {
 }
 
 function formatOrderList (orderLines) {
-  let orderList = []
+  const orderList = []
   orderLines.forEach(item => {
-    let order = orderList.find(o => o.id === item.orderId)
+    const order = orderList.find(o => o.id === item.orderId)
     !order
       ? orderList.push(createOrder(item))
-      : order.products = sortByIdAscending([ ...order.products, createProduct(item) ])
+      : order.products = sortByIdAscending([...order.products, createProduct(item)])
   })
   return sortByIdDescending(orderList)
 }

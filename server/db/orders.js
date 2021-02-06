@@ -53,6 +53,7 @@ function orderExists (id, db = connection) {
     .first()
     .then(order => {
       if (!order) throw new Error('Order not found')
+      return null
     })
 }
 

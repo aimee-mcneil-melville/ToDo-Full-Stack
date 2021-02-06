@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   db.listOrders()
     .then(orders => {
       res.json(orders)
+      return null
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
@@ -21,6 +22,7 @@ router.post('/', (req, res) => {
   db.addOrder(order)
     .then(() => {
       res.sendStatus(201)
+      return null
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
@@ -34,6 +36,7 @@ router.patch('/:id', (req, res) => {
   db.editOrder(id, orderChanges)
     .then(order => {
       res.json(order)
+      return null
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)

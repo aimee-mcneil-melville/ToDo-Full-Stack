@@ -13,7 +13,7 @@ import ProductListItem from './ProductListItem'
 import { getProducts } from '../coordinators/products'
 import { addCartItem } from '../coordinators/cart'
 
-export class ProductList extends React.Component {
+class ProductList extends React.Component {
   componentDidMount () {
     const { fetchProductsPending, fetchProductsSuccess, showError } = this.props
     const dispatchers = { fetchProductsPending, fetchProductsSuccess, showError }

@@ -9,6 +9,7 @@ export function placeOrder (cart, history, dispatchers, consume = requestor) {
     .then(() => {
       postOrderSuccess()
       history.push('/orders')
+      return null
     })
     .catch(err => {
       showError(err.message)
@@ -22,6 +23,7 @@ export function getOrders (dispatchers, consume = requestor) {
     .then(res => {
       const orders = res.body
       fetchOrdersSuccess(orders)
+      return null
     })
     .catch(err => {
       showError(err.message)
@@ -35,6 +37,7 @@ export function updateOrder (id, orderChanges, dispatchers, consume = requestor)
     .then(res => {
       const order = res.body
       patchOrderSuccess(order)
+      return null
     })
     .catch(err => {
       showError(err.message)

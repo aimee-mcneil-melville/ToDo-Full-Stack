@@ -7,6 +7,7 @@ export function getProducts (dispatchers, consume = requestor) {
     .then(res => {
       const products = res.body
       fetchProductsSuccess(products)
+      return null
     })
     .catch(err => {
       showError(err.message)

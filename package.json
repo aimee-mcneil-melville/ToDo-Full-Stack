@@ -9,7 +9,8 @@
     "client": "webpack --watch --config client/webpack.config.js",
     "server": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "author": "EDA",
   "license": "ISC",
@@ -23,6 +24,12 @@
       "@babel/plugin-proposal-object-rest-spread",
       "@babel/plugin-transform-regenerator",
       "@babel/plugin-transform-runtime"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
     ]
   },
   "dependencies": {
@@ -41,6 +48,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.2",
     "babel-loader": "^8.1.0",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^26.1.0",
     "knex": "^0.21.5",
     "nock": "^13.0.4",

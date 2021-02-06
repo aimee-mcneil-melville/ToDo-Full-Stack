@@ -11,7 +11,7 @@ import { showError } from '../actions/error'
 
 import { updateOrder } from '../coordinators/orders'
 
-export const Order = (props) => {
+const Order = (props) => {
   const { patchOrderPending, patchOrderSuccess, showError, order } = props
   const { id, products, createdAt, status } = order
 
@@ -47,14 +47,14 @@ export const Order = (props) => {
       <div>
         {status === 'pending' &&
           <>
-          <button
-            onClick={() => updateStatus('cancelled')}
-            className='order-button'
-          >Cancel Order</button>
-          <button
-            onClick={() => updateStatus('completed')}
-            className='order-button button-primary'
-          >Order Received</button>
+            <button
+              onClick={() => updateStatus('cancelled')}
+              className='order-button'
+            >Cancel Order</button>
+            <button
+              onClick={() => updateStatus('completed')}
+              className='order-button button-primary'
+            >Order Received</button>
           </>
         }
       </div>

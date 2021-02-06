@@ -1,7 +1,8 @@
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
-  UPDATE_CART } from '../actions/cart'
+  UPDATE_CART
+} from '../actions/cart'
 import { POST_ORDER_SUCCESS } from '../actions/orders'
 import { getNewCart, getUpdatedCart } from './reducer-helpers'
 

@@ -12,7 +12,7 @@ import {
 
 import { placeOrder } from '../coordinators/orders'
 
-export const Cart = (props) => {
+const Cart = (props) => {
   const { cart, children } = props
 
   const submitCart = () => {
