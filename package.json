@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "dev": "run-p client server",
-    "client": "webpack --watch",
+    "client": "webpack --watch --config client/webpack.config.js",
     "server": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
     "test": "jest --watchAll --verbose"
