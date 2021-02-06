@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Order from './Order'
@@ -8,29 +8,27 @@ import { showError } from '../actions/error'
 
 import { getOrders } from '../coordinators/orders'
 
-class OrderList extends React.Component {
-  componentDidMount () {
-    const { fetchOrdersPending, fetchOrdersSuccess, showError } = this.props
+function OrderList (props) {
+  useEffect(() => {
+    const { fetchOrdersPending, fetchOrdersSuccess, showError } = props
     const dispatchers = { fetchOrdersPending, fetchOrdersSuccess, showError }
     getOrders(dispatchers)
-  }
+  }, [])
 
-  render () {
-    const { children, orders } = this.props
-    return (
-      <div className='orderlist'>
-        {children}
-        {orders.map(order => {
-          return (
-            <Order
-              key={order.id}
-              order={order}
-            />
-          )
-        })}
-      </div>
-    )
-  }
+  const { children, orders } = props
+  return (
+    <div className='orderlist'>
+      {children}
+      {orders.map(order => {
+        return (
+          <Order
+            key={order.id}
+            order={order}
+          />
+        )
+      })}
+    </div>
+  )
 }
 
 function mapStateToProps (state) {

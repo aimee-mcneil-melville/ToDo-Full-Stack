@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { addToCart } from '../actions/cart'
@@ -13,41 +13,39 @@ import ProductListItem from './ProductListItem'
 import { getProducts } from '../coordinators/products'
 import { addCartItem } from '../coordinators/cart'
 
-class ProductList extends React.Component {
-  componentDidMount () {
-    const { fetchProductsPending, fetchProductsSuccess, showError } = this.props
+function ProductList (props) {
+  useEffect(() => {
+    const { fetchProductsPending, fetchProductsSuccess, showError } = props
     const dispatchers = { fetchProductsPending, fetchProductsSuccess, showError }
     getProducts(dispatchers)
-  }
+  }, [])
 
   function addProductToCart (item) {
-    const { history, addToCart } = this.props
+    const { history, addToCart } = props
     addCartItem(item, history, addToCart)
   }
 
-  render () {
-    const { children, products } = this.props
-    return (
-      <div className='productlist'>
-        <div className='welcome'>
-          <p>
-            Welcome! Please choose from our delicious selection and don&apos;t
-            hesitate to let us know if we can answer any of your questions.
-          </p>
-        </div>
-        {children}
-        {products.map(product => {
-          return (
-            <ProductListItem
-              key={product.id}
-              product={product}
-              addToCart={this.addProductToCart}
-            />
-          )
-        })}
+  const { children, products } = props
+  return (
+    <div className='productlist'>
+      <div className='welcome'>
+        <p>
+          Welcome! Please choose from our delicious selection and don&apos;t
+          hesitate to let us know if we can answer any of your questions.
+        </p>
       </div>
-    )
-  }
+      {children}
+      {products.map(product => {
+        return (
+          <ProductListItem
+            key={product.id}
+            product={product}
+            addToCart={addProductToCart}
+          />
+        )
+      })}
+    </div>
+  )
 }
 
 function mapStateToProps (state) {
