@@ -12,10 +12,10 @@ import {
 
 import { placeOrder } from '../coordinators/orders'
 
-const Cart = (props) => {
+function Cart (props) {
   const { cart, children } = props
 
-  const submitCart = () => {
+  function submitCart () {
     const { history, postOrderPending, postOrderSuccess, showError } = props
     const dispatchers = { postOrderPending, postOrderSuccess, showError }
     placeOrder(cart, history, dispatchers)
@@ -58,7 +58,7 @@ const Cart = (props) => {
     : <p>Your cart is empty! Start shopping <Link to='/'>here</Link></p>
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     cart: state.cart
   }

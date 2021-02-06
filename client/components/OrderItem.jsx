@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderItem = (props) => {
+function OrderItem (props) {
   const { name, quantity } = props.product
   return (
     <tr>

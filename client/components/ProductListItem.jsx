@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProductListItem = (props) => {
+function ProductListItem (props) {
   const product = props.product
 
-  const addToCart = () => {
+  function addToCart () {
     props.addToCart(product)
   }
 

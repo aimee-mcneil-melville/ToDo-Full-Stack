@@ -8,7 +8,7 @@ import ProductList from './ProductList'
 import OrderList from './OrderList'
 import WaitIndicator from './WaitIndicator'
 
-const App = () => {
+function App () {
   return (
     <div className='app'>
       <Route path='/' component={Header} />

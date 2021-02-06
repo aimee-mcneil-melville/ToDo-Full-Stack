@@ -5,38 +5,38 @@ export const POST_ORDER_SUCCESS = 'POST_ORDER_SUCCESS'
 export const PATCH_ORDER_PENDING = 'PATCH_ORDER_PENDING'
 export const PATCH_ORDER_SUCCESS = 'PATCH_ORDER_SUCCESS'
 
-export const fetchOrdersPending = () => {
+export function fetchOrdersPending () {
   return {
     type: FETCH_ORDERS_PENDING
   }
 }
 
-export const fetchOrdersSuccess = orders => {
+export function fetchOrdersSuccess (orders) {
   return {
     type: FETCH_ORDERS_SUCCESS,
     orders: orders
   }
 }
 
-export const postOrderPending = () => {
+export function postOrderPending () {
   return {
     type: POST_ORDER_PENDING
   }
 }
 
-export const postOrderSuccess = () => {
+export function postOrderSuccess () {
   return {
     type: POST_ORDER_SUCCESS
   }
 }
 
-export const patchOrderPending = () => {
+export function patchOrderPending () {
   return {
     type: PATCH_ORDER_PENDING
   }
 }
 
-export const patchOrderSuccess = order => {
+export function patchOrderSuccess (order) {
   return {
     type: PATCH_ORDER_SUCCESS,
     order: order

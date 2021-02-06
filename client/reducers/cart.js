@@ -6,7 +6,7 @@ import {
 import { POST_ORDER_SUCCESS } from '../actions/orders'
 import { getNewCart, getUpdatedCart } from './reducer-helpers'
 
-const cart = (state = [], action) => {
+function cart (state = [], action) {
   switch (action.type) {
     case ADD_TO_CART:
       return getNewCart(state, action.product)

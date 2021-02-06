@@ -33,7 +33,7 @@ class OrderList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     orders: state.orders
   }

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import { hideError } from '../actions/error'
 
-const ErrorMessage = (props) => {
-  const hide = () => {
+function ErrorMessage (props) {
+  function hide () {
     props.hideError()
   }
 
@@ -18,7 +18,7 @@ const ErrorMessage = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     errorMessage: state.errorMessage
   }

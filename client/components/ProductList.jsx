@@ -20,7 +20,7 @@ class ProductList extends React.Component {
     getProducts(dispatchers)
   }
 
-  addProductToCart = item => {
+  function addProductToCart (item) {
     const { history, addToCart } = this.props
     addCartItem(item, history, addToCart)
   }
@@ -50,7 +50,7 @@ class ProductList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     products: state.products
   }

@@ -8,17 +8,17 @@ import {
 
 import { updateCartItem } from '../coordinators/cart'
 
-const CartItem = (props) => {
+function CartItem (props) {
   const { name, id, quantity } = props.item
 
-  const update = e => {
+  function update (e) {
     const quantity = e.target.value
     const updateInfo = { id, quantity }
     const { updateCart } = props
     updateCartItem(updateInfo, updateCart)
   }
 
-  const deleteItem = () => {
+  function deleteItem () {
     props.deleteFromCart(id)
   }
 

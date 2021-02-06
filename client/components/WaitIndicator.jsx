@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const WaitIndicator = (props) => {
+function WaitIndicator (props) {
   return props.waiting
     ? <img className='wait-indicator' src='/animated-circle.gif' />
     : null

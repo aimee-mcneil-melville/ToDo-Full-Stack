@@ -3,7 +3,7 @@ import {
   PATCH_ORDER_SUCCESS
 } from '../actions/orders'
 
-const orders = (state = [], action) => {
+function orders (state = [], action) {
   switch (action.type) {
     case FETCH_ORDERS_SUCCESS:
       return action.orders

@@ -11,11 +11,11 @@ import { showError } from '../actions/error'
 
 import { updateOrder } from '../coordinators/orders'
 
-const Order = (props) => {
+function Order (props) {
   const { patchOrderPending, patchOrderSuccess, showError, order } = props
   const { id, products, createdAt, status } = order
 
-  const updateStatus = status => {
+  function updateStatus (status) {
     const orderChanges = { status }
     const dispatchers = { patchOrderPending, patchOrderSuccess, showError }
     updateOrder(id, orderChanges, dispatchers)
