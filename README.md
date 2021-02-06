@@ -34,6 +34,10 @@ This is the first time we've seen the full stack in play, redux included, and th
 
 <br>
 
+Both the Shop and Cart pages are completed, with their data managed in the Redux store. _It may be worth noting that unlike in Sweet As Beers, an `UPDATE_CART` action is being dispatched from the `CartItem` change handler (every time the user types), rather than storing the updated values in component state and dispatching on a button click._
+
+Your job will be to implement the functionality for the Orders page. The React components and the database functions are already in place, so you'll be working with the stuff in the middle - Redux, and the API calls to server side routes.
+
 ## Release 1: Add an order 
 implement the place order button from Cart
 

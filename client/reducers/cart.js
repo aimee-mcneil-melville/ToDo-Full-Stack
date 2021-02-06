@@ -4,7 +4,6 @@ import {
   UPDATE_CART
 } from '../actions/cart'
 import { POST_ORDER_SUCCESS } from '../actions/orders'
-import { getNewCart, getUpdatedCart } from './reducer-helpers'
 
 function cart (state = [], action) {
   switch (action.type) {
@@ -24,5 +23,35 @@ function cart (state = [], action) {
       return state
   }
 }
-
 export default cart
+
+//
+// --- REDUCER HELPER FUNCTIONS ---
+//
+export function getNewCart (cart, product) {
+  let exists = false
+  const newCart = cart.map(item => {
+    // If the id already exists, the quantity will be incremented.
+    if (item.id === product.id) {
+      item.quantity += 1
+      exists = true
+    }
+    return item
+  })
+
+  if (exists) {
+    return newCart
+  } else {
+    // If the id doesn't exist, it will be added with a quantity of 1.
+    newCart.push({ ...product, quantity: 1 })
+    return newCart
+  }
+}
+
+export function getUpdatedCart (cart, updateInfo) {
+  const { id, newQuantity } = updateInfo
+  return cart.map(item => {
+    const quantity = (item.id === id) ? Number(newQuantity) : item.quantity
+    return { ...item, quantity }
+  })
+}

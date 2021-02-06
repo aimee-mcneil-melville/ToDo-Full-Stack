@@ -6,20 +6,20 @@ import {
   updateCart
 } from '../actions/cart'
 
-import { updateCartItem } from '../coordinators/cart'
-
 function CartItem (props) {
   const { name, id, quantity } = props.item
 
   function update (e) {
-    const quantity = e.target.value
-    const updateInfo = { id, quantity }
-    const { updateCart } = props
-    updateCartItem(updateInfo, updateCart)
+    const newQuantity = e.target.value
+    const isValidQuantity = !isNaN(Number(newQuantity))
+    if (isValidQuantity) {
+      const updateInfo = { id, newQuantity }
+      props.dispatch(updateCart(updateInfo))
+    }
   }
 
   function deleteItem () {
-    props.deleteFromCart(id)
+    props.dispatch(deleteFromCart(id))
   }
 
   const displayQuantity = (quantity === 0) ? '' : quantity
@@ -40,9 +40,4 @@ function CartItem (props) {
   )
 }
 
-const mapDispatchToProps = {
-  updateCart,
-  deleteFromCart
-}
-
-export default connect(null, mapDispatchToProps)(CartItem)
+export default connect()(CartItem)
