@@ -2,30 +2,22 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { addToCart } from '../actions/cart'
-import { showError } from '../actions/error'
-import {
-  fetchProductsPending,
-  fetchProductsSuccess
-} from '../actions/products'
+import { fetchProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 
-import { getProducts } from '../coordinators/products'
-import { addCartItem } from '../coordinators/cart'
-
 function ProductList (props) {
   useEffect(() => {
-    const { fetchProductsPending, fetchProductsSuccess, showError } = props
-    const dispatchers = { fetchProductsPending, fetchProductsSuccess, showError }
-    getProducts(dispatchers)
+    props.dispatch(fetchProducts())
   }, [])
 
-  function addProductToCart (item) {
-    const { history, addToCart } = props
-    addCartItem(item, history, addToCart)
+  function addProductToCart (product) {
+    const { id, name } = product
+    const newCartItem = { id, name }
+    props.dispatch(addToCart(newCartItem))
+    props.history.push('/cart')
   }
 
-  const { children, products } = props
   return (
     <div className='productlist'>
       <div className='welcome'>
@@ -34,8 +26,8 @@ function ProductList (props) {
           hesitate to let us know if we can answer any of your questions.
         </p>
       </div>
-      {children}
-      {products.map(product => {
+      {props.children} {/* This holds the WaitIndicator (from App) */}
+      {props.products.map(product => {
         return (
           <ProductListItem
             key={product.id}
@@ -54,14 +46,4 @@ function mapStateToProps (state) {
   }
 }
 
-const mapDispatchToProps = {
-  addToCart,
-  fetchProductsPending,
-  fetchProductsSuccess,
-  showError
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductList)
+export default connect(mapStateToProps)(ProductList)
