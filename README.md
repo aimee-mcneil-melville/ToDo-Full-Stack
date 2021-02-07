@@ -34,22 +34,44 @@ This is the first time we've seen the full stack in play, redux included, and th
 
 <br>
 
-Both the Shop and Cart pages are completed, with their data managed in the Redux store. _It may be worth noting that unlike in Sweet As Beers, an `UPDATE_CART` action is being dispatched from the `CartItem` change handler (every time the user types), rather than storing the updated values in component state and dispatching on a button click._
+Both the Shop and Cart pages are completed, with their data managed in the Redux store. _It may be worth noting that unlike in Sweet As Beers, an `UPDATE_CART` action is being dispatched from the onChange handler (every time the user types) in `CartItem`, rather than storing the updated values in component state and dispatching on a button click. Also, we're using React Router again, rather than managing the page state in Redux._
 
-Your job will be to implement the functionality for the Orders page. The React components and the database functions are already in place, so you'll be working with the stuff in the middle - Redux, and the API calls to server side routes.
+Your job will be to implement the functionality for the My Orders page. The React components and the database functions are already in place, so you'll be working with the stuff in the middle - Redux, API calls with Superagent and server side routes.
 
-## Release 1: Add an order 
-implement the place order button from Cart
+## Release 1: Add an order
+Once a user has updated their cart to how they would like it to look, they should be able to place their order with Sweet As Organics. Let's get the Place Order button working in `Cart`.
+
+A potential approach could be:
+* Start on the server side. Create a new routes file (`server/routes/orders.js`) and configure `server/server.js` to use it with an `/api/v1/orders` prefix.
+* Create a new POST route that uses the `addOrder` function from `server/db/orders.js`.
+  * `addOrder` accepts an order in the same shape as the `cart` in Redux on our client side (meaning you shouldn't need to reformat the cart data).
+  * It returns null, so it would make sense for your route to simply respond with a status of `201` (`Created`).
+* Test your route works as expected with a tool like Postman or Insomnia before continuing to the client side. You may need to also browse your `dev.sqlite3` file to ensure your order is being inserted. You should see rows added to both the `orders` and `orders_products` tables.
+* Moving on to the client side, add a `client/api/orders.js` file. Create a `postOrder` function that uses `superagent` to make a POST request to the route you just made. (Remember it's going to need to send some order data.)
+* Using `client/actions/products.js` for inspiration, create a `client/actions/orders.js` file to hold your new action creators. Think about what you're going to need the `placeOrder` async action creator to do.
+  * First, it should dispatch a pending action, so the user gets feedback that something is happening.
+  * Then we'll need to call the `postOrder` function from `client/api/orders.js`. Seeing as that function accepts an order (which it sends to the server), we're going to need to pass one in. To be able to do that, our `placeOrder` action creator is also going to need to accept an order as an argument (we'll pass it in when we dispatch the action from `Cart.jsx`).
+  * We know our route only sends back a `201` status, so we won't have any data to deal with when the `postOrder` promise resolves.
+  * We should still dispatch a success action though, so our wait indicator stops spinning.
+  * A catch block is always a good idea ;)
+* It looks like the only part of the Redux store that cares about these `placeOrder` actions is the `waiting` state - update the `waiting` reducer so it sets the ` state to `true` and `false` appropriately.
+* For the final piece of the puzzle, let's dispatch this `placeOrder` action from the `Cart.jsx` Place Order submit handler (remember to pass in the `cart`).
+* Try it! Add something to your cart and place your order. Can you see the pending and success actions in your Redux devtools? Has your order been added to the database?
+
+<br> 
+
+* Notice that even when placing the order occurs successfully, the cart doesn't empty. When a user starts shopping again, they would have to manually remove the previous order items from their cart, or end up with double ups! Perhaps the `cart` reducer could also be watching for a `PLACE_ORDER_SUCCESS` action?
+* It would also be great to redirect the user to the My Orders page once their order had been placed. However, we'd only want to redirect if the API call succeeds.
+  * The `dispatch` function doesn't have a `.then()`, because it doesn't expect actions to be async. If we want to redirect after the order is placed, we'll need to do so inside the `.then()` in the `placeOrder` action creator.
+  * You could pass `props.history` into the action creator, along with the `cart`, and push onto it after you dispatch the success action.
 
 ## Release 2: View your orders
+We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (ProductList) page. 
+
 orderList componentDidMount should get the orders and add them to the redux store
 
-## Release 3: Update order
-implement update order button
-
-## Release 4: Delete orders
-create and implement a cancel order button
-
+## Release 3: Update order status
+implement click handlers for cancel and received
 
 ## Stretch
 Refactor some of the logic out of your components and into helper files. By pulling this logic out of components, we're making our code much easier to test, and keeping to the _single responsibility principle_.

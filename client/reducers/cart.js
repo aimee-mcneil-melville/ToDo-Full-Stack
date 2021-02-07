@@ -3,7 +3,6 @@ import {
   DELETE_FROM_CART,
   UPDATE_CART
 } from '../actions/cart'
-import { POST_ORDER_SUCCESS } from '../actions/orders'
 
 function cart (state = [], action) {
   switch (action.type) {
@@ -15,9 +14,6 @@ function cart (state = [], action) {
 
     case UPDATE_CART:
       return getUpdatedCart(state, action.updateInfo)
-
-    case POST_ORDER_SUCCESS:
-      return []
 
     default:
       return state

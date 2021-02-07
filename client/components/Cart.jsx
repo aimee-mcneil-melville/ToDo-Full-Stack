@@ -4,21 +4,11 @@ import { Link } from 'react-router-dom'
 
 import CartItem from './CartItem'
 
-import { showError } from '../actions/error'
-import {
-  postOrderPending,
-  postOrderSuccess
-} from '../actions/orders'
-
-import { placeOrder } from '../coordinators/orders'
-
 function Cart (props) {
   const { cart, children } = props
 
   function submitCart () {
-    const { history, postOrderPending, postOrderSuccess, showError } = props
-    const dispatchers = { postOrderPending, postOrderSuccess, showError }
-    placeOrder(cart, history, dispatchers)
+    console.log('coming soon!')
   }
 
   return cart.length
@@ -45,7 +35,7 @@ function Cart (props) {
         <p className='actions'>
           <Link to='/'>Continue shopping</Link>
           <span>
-            {children}
+            {children} { /* Holds the WaitIndicator */ }
             <button
               className='button-primary'
               onClick={submitCart}>
@@ -64,13 +54,4 @@ function mapStateToProps (state) {
   }
 }
 
-const mapDispatchToProps = {
-  postOrderPending,
-  postOrderSuccess,
-  showError
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Cart)
+export default connect(mapStateToProps)(Cart)
