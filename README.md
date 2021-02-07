@@ -23,10 +23,10 @@ This is the first time we've seen the full stack in play, redux included, and th
 
 * `ProductList` is using `mapStateToProps` to take the `products` array from our global Redux store and add those products to its props. It is then mapping over the `products` array and rendering a `ProductListItem` for each one. Cool... how are the products getting into the Redux store?
 * Because the products are stored in a database, we need to make an API call to retrieve them. This gets kicked off in `ProductList`'s `useEffect()` method, where we dispatch `fetchProducts()`.
-* Let's check out that action creator - we're importing it into our component from `client/actions/products.js`. `fetchProducts()` is an _async action creator_. It returns a function rather than an object, which means we're making use of the `redux-thunk` middleware. It first dispatches the action from `fetchProductsPending()`. In our Redux devtools, we can see that this action is setting the `waiting` state to `true`, which we can confirm by taking a look at `client/reducers/waiting.js`. That causes our loading indicator to render, so our users get some feedback that the products are on their way. 
+* Let's check out that action creator - we're importing it into our component from `client/actions/products.js`. `fetchProducts()` is an _async action creator_. It returns a function rather than an object, which means we're making use of the `redux-thunk` middleware. It first dispatches the action returned from `fetchProductsPending()`. In our Redux devtools, we can see that this action is setting the `waiting` state to `true`, which we can confirm by taking a look at `client/reducers/waiting.js`. That causes our loading indicator to render, so our users get some feedback that the products are on their way. 
 * Then the `getProducts()` function is called, which is from `client/api/products.js`. In there, we can see we're using `superagent` to make a GET request to `/api/v1/products`.
-* This hits our products GET route in `server/routes/products.js`. We're then calling the `listProducts` function from `server/db/products.js`, which returns an array of all of the items in the `products` database table. In the route, we `res.json` back to the client side.
-* `getProducts()` (in `client/api/products.js`) returns the body of the HTTP response back to our `fetchProducts()` action creator. With the resulting `products` array, we then dispatch the action from `fetchProductsSuccess`. 
+* This hits our products GET route in `server/routes/products.js`. We're then calling the `listProducts` function from `server/db/products.js`, which returns an array of all of the items in the `products` database table. In the route, we `res.json` that products array back to the client side.
+* `getProducts()` (in `client/api/products.js`) returns the body of the HTTP response back to our `fetchProducts()` action creator. With the resulting `products` array, we then dispatch the action returned from `fetchProductsSuccess`. 
 * From the Redux devtools, we can see that this updated both the `waiting` state to false (so the wait indicator becomes hidden again) and puts the products array we just retrieved into the `products` state. Both the `products` and `waiting` reducers are watching for an action type of `FETCH_PRODUCTS_SUCCESS`, so those two different parts of the Redux store state get updated from the one action!
 * Note: There is also a `.catch()` block which would dispatch an error action if something went wrong with our API call. The `ErrorMessage` component will render to let the user know that something is amiss.
 
@@ -34,7 +34,7 @@ This is the first time we've seen the full stack in play, redux included, and th
 
 <br>
 
-Both the Shop and Cart pages are completed, with their data managed in the Redux store. _It may be worth noting that unlike in Sweet As Beers, an `UPDATE_CART` action is being dispatched from the onChange handler (every time the user types) in `CartItem`, rather than storing the updated values in component state and dispatching on a button click. Also, we're using React Router again, rather than managing the page state in Redux._
+Both the Shop and Cart pages are completed, with their data managed in the Redux store. _It may be worth noting that unlike in Sweet As Beers, an `UPDATE_CART` action is being dispatched from the onChange handler in `CartItem`, rather than storing the updated values in component state and dispatching on a button click. Also, we're using React Router again, rather than managing the page state in Redux._
 
 Your job will be to implement the functionality for the My Orders page. The React components and the database functions are already in place, so you'll be working with the stuff in the middle - Redux, API calls with Superagent and server side routes.
 
@@ -54,7 +54,7 @@ A potential approach could be:
   * We know our route only sends back a `201` status, so we won't have any data to deal with when the `postOrder` promise resolves.
   * We should still dispatch a success action though, so our wait indicator stops spinning.
   * A catch block is always a good idea ;)
-* It looks like the only part of the Redux store that cares about these `placeOrder` actions is the `waiting` state - update the `waiting` reducer so it sets the ` state to `true` and `false` appropriately.
+* It looks like the only part of the Redux store that cares about these `placeOrder` actions is the `waiting` state - update the `waiting` reducer so it sets the state to `true` and `false` appropriately.
 * For the final piece of the puzzle, let's dispatch this `placeOrder` action from the `Cart.jsx` Place Order submit handler (remember to pass in the `cart`).
 * Try it! Add something to your cart and place your order. Can you see the pending and success actions in your Redux devtools? Has your order been added to the database?
 
