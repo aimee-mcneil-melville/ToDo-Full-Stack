@@ -90,6 +90,18 @@ To use the new function, add a function in `commands.js` called `deleteTodo` (or
 
 If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
 
+## Add a new task
+
+It's all very well and good being able to delete tasks, but what happens when we run out of things to do? Let's enable our users to add some more. 
+
+The command should look something like this:
+
+```sh
+./todo add 'pet cat'
+```
+
+You will need to add a function to `db.js` so we can insert a new task into our database, and also add a function to `commands.js` (that we will then call from our `todo` file) to make use of this.
+
 ## Update a task by ID
 
 Users make mistakes. Let them update a task like so:
