@@ -156,7 +156,15 @@ Write a click handler for the delete button that dispatches the `removeFromCart`
 
 ## Update the cart
 
-Now let's give the user an easier way of changing the quantities of an item in the cart. In this section, you'll create a new action creator, update and existing reducer function and a dispatch the new action from a new event handler in `<Cart>`. You will also have to manage some component state to keep track of which items have had their quantities updated.
+Now let's give the user an easier way of changing the quantities of items in the cart. In this section, you'll create a new action creator, update the existing reducer function and dispatch the new action from an event handler in `<Cart>`. You will also have to manage some component state to keep track of which items have had their quantities updated.
+
+As the user is updating the quantities of the items in their cart, you'll maintain those changes in the Cart's component state. When they click the _Update_ button, that's when you'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
+
+Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that the `cart` is being passed in as a `prop`. **This is a really good opportunity for problem solving, so don't cheat yourself out of a chance for some quality learning.**
+
+// if you want a challenge, you could try to implement this feature from here. If you'd like a little more guidance, see below...
+
+
 
 Create an action creator for an `UPDATE_QUANTITIES` action that looks similar to this:
 
@@ -169,7 +177,7 @@ export function updateQuantities (cart) {
 }
 ```
 
-And the `cart` parameter to pass to `updateQuantities` can have this shape:
+The `cart` parameter passed to `updateQuantities` can have this shape:
 
 ```js
 [{
@@ -181,7 +189,7 @@ And the `cart` parameter to pass to `updateQuantities` can have this shape:
 }]
 ```
 
-Again, our existing `cart` reducer can be used once you've taught it how the state should change when this action is dispatched.
+Our existing `cart` reducer can be used once you've added to it how the state should change when this `updateQuantities` action is dispatched.
 
 Add component state to `<Cart>` called `updates` that has the same shape as the `cart` above with a default value of `[]`.
 
