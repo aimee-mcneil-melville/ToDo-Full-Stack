@@ -68,7 +68,17 @@ A potential approach could be:
 ## Release 2: View your orders
 We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (ProductList) page. 
 
-orderList componentDidMount should get the orders and add them to the redux store
+You'll need:
+* A new GET route in `server/routes/orders.js` that uses `db.listOrders()`.
+  * This db function returns an array of orders, which you can `res.json` back to your client side.
+  * Test your route works as you expect before moving on.
+* A `getOrders` function in `client/api/orders.js` which makes an API call to that route with Superagent.
+* A `fetchOrders` async action creator, which dispatches pending and success actions, and calls the `getOrders` function.
+* A new `orders` reducer, which can watch for the `FETCH_ORDERS_SUCCESS` action and set the store state to the new `orders` array. 
+  * Be sure to import this new reducer into `client/reducers/index.js` and use it inside the `combineReducers` so we get some orders showing up in our Redux store!
+* Also make sure to update the `waiting` reducer.
+* Dispatch your `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to connect the OrderList component to access the `dispatch` function. Check your Redux devtools - can you see the orders?
+* `OrderList` is expecting to find an `orders` array on its props. You'll need to do a `mapStateToProps` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
 
 ## Release 3: Update order status
 Amazing! There are all of our orders - but currently they're all pending. Let's give our users a way to let Sweet As Organics know when they've received their order, or cancel their order if they make a mistake.
@@ -78,19 +88,17 @@ Sweet As Organics wants to keep track of all orders, even cancelled ones, so rat
 You'll need:
 * A PATCH route on your server side that uses `db.editOrderStatus(id: Number, newStatus: String)`.
   * You can decide whether you'd prefer to get the `id` from `params` or as part of the `req.body`.
-  * `editOrderStatus` returns the updated order, so you can `res.json` the order back to your client side.
+  * `editOrderStatus` returns the updated order, which you can respond with.
   * Test your route works as you expect before hitting it from the client side.
 * A client side `patchOrderStatus` function which makes the API call to that route, sending the new status (and the id in whichever way you chose).
 * An `updateOrderStatus` async action creator, which dispatches pending and success actions.
   * The success action should have an `order` property, so you can update the `orders` array in `client/reducers/orders.js`.
   * Also make sure to update the `waiting` reducer.
-* Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.jsx`. You'll need to connect `Order` to gain access to the `dispatch` function.
+* Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.jsx`. You'll need to connect `Order` to the redux store.
 * _Tip: use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!_
 
 
 ## Stretch
 Give the Sweet As team some admin rights - add the ability to add, remove or update a product.
-
-Refactor some of the logic out of your components and into helper files. By pulling this logic out of components, we're making our code much easier to test, and keeping to the _single responsibility principle_.
 
 Write some tests! You've got the full stack available to you to test - write some that you feel you've had the least practice in.
