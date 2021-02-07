@@ -1,24 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import OrderItem from './OrderItem'
 
-import {
-  patchOrderPending,
-  patchOrderSuccess
-} from '../actions/orders'
-import { showError } from '../actions/error'
-
-import { updateOrder } from '../coordinators/orders'
-
 function Order (props) {
-  const { patchOrderPending, patchOrderSuccess, showError, order } = props
-  const { id, products, createdAt, status } = order
+  const { id, products, createdAt, status } = props.order
 
-  function updateStatus (status) {
-    const orderChanges = { status }
-    const dispatchers = { patchOrderPending, patchOrderSuccess, showError }
-    updateOrder(id, orderChanges, dispatchers)
+  function cancelOrder () {
+    console.log('coming soon!')
+  }
+
+  function completeOrder () {
+    console.log('coming soon!')
   }
 
   return (
@@ -48,11 +40,11 @@ function Order (props) {
         {status === 'pending' &&
           <>
             <button
-              onClick={() => updateStatus('cancelled')}
+              onClick={cancelOrder}
               className='order-button'
             >Cancel Order</button>
             <button
-              onClick={() => updateStatus('completed')}
+              onClick={completeOrder}
               className='order-button button-primary'
             >Order Received</button>
           </>
@@ -62,10 +54,4 @@ function Order (props) {
   )
 }
 
-const mapDispatchToProps = {
-  patchOrderPending,
-  patchOrderSuccess,
-  showError
-}
-
-export default connect(null, mapDispatchToProps)(Order)
+export default Order

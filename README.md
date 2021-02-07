@@ -71,9 +71,26 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
 orderList componentDidMount should get the orders and add them to the redux store
 
 ## Release 3: Update order status
-implement click handlers for cancel and received
+Amazing! There are all of our orders - but currently they're all pending. Let's give our users a way to let Sweet As Organics know when they've received their order, or cancel their order if they make a mistake.
+
+Sweet As Organics wants to keep track of all orders, even cancelled ones, so rather than deleting the order, we'll just change its status to `cancelled`. Likewise, we can change the status to `completed` once an order has been received.
+
+You'll need:
+* A PATCH route on your server side that uses `db.editOrderStatus(id: Number, newStatus: String)`.
+  * You can decide whether you'd prefer to get the `id` from `params` or as part of the `req.body`.
+  * `editOrderStatus` returns the updated order, so you can `res.json` the order back to your client side.
+  * Test your route works as you expect before hitting it from the client side.
+* A client side `patchOrderStatus` function which makes the API call to that route, sending the new status (and the id in whichever way you chose).
+* An `updateOrderStatus` async action creator, which dispatches pending and success actions.
+  * The success action should have an `order` property, so you can update the `orders` array in `client/reducers/orders.js`.
+  * Also make sure to update the `waiting` reducer.
+* Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.jsx`. You'll need to connect `Order` to gain access to the `dispatch` function.
+* _Tip: use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!_
+
 
 ## Stretch
+Give the Sweet As team some admin rights - add the ability to add, remove or update a product.
+
 Refactor some of the logic out of your components and into helper files. By pulling this logic out of components, we're making our code much easier to test, and keeping to the _single responsibility principle_.
 
-Give the Sweet As team some admin rights - add the ability to add, remove or update a product.
+Write some tests! You've got the full stack available to you to test - write some that you feel you've had the least practice in.

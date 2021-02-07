@@ -16,17 +16,3 @@ router.get('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
-
-router.patch('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const { status } = req.body
-  const orderChanges = { status }
-  db.editOrder(id, orderChanges)
-    .then(order => {
-      res.json(order)
-      return null
-    })
-    .catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})

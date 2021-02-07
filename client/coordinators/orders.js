@@ -13,17 +13,3 @@ export function getOrders (dispatchers, consume = requestor) {
       showError(err.message)
     })
 }
-
-export function updateOrder (id, orderChanges, dispatchers, consume = requestor) {
-  const { patchOrderPending, patchOrderSuccess, showError } = dispatchers
-  patchOrderPending()
-  return consume(`/orders/${id}`, 'patch', orderChanges)
-    .then(res => {
-      const order = res.body
-      patchOrderSuccess(order)
-      return null
-    })
-    .catch(err => {
-      showError(err.message)
-    })
-}
