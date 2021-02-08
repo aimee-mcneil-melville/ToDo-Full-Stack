@@ -4,20 +4,20 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export const requestPosts = () => {
+export function requestPosts () {
   return {
     type: REQUEST_POSTS
   }
 }
 
-export const receivePosts = (posts) => {
+export function receivePosts (posts) {
   return {
     type: RECEIVE_POSTS,
     posts: posts.map(post => post.data)
   }
 }
 
-export const showError = (errorMessage) => {
+export function showError (errorMessage) {
   return {
     type: SHOW_ERROR,
     errorMessage: errorMessage

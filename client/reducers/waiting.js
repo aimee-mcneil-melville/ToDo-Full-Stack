@@ -4,7 +4,7 @@ import {
   RECEIVE_POSTS
 } from '../actions'
 
-const waiting = (state = false, action) => {
+function waiting (state = false, action) {
   switch (action.type) {
     case REQUEST_POSTS:
       return true
