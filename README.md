@@ -92,7 +92,7 @@ Amazing! There are all of our orders - but currently they're all pending. Let's 
 Sweet As Organics wants to keep track of all orders, even cancelled ones, so rather than deleting the order, we'll just change its status to `cancelled`. Likewise, we can change the status to `completed` once an order has been received.
 
 You'll need:
-* A PATCH route on your server side that uses `db.editOrderStatus(id: Number, newStatus: String)`.
+* A PATCH route on your server side that uses `db.editOrderStatus(id: number, newStatus: string)`.
   * `editOrderStatus` returns the updated order, which you can respond with.
   * Test your route works as you expect before hitting it from the client side.
 * A client side `patchOrderStatus` function which makes the API call to that route, sending the new status and the id.
