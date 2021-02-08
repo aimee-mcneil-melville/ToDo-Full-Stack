@@ -9,7 +9,7 @@ Your task is to complete the authentication implementation of this app.
 
 After cloning this repo, install dependencies with `npm install`. The `postinstall` script will create the database and populate the tables with test data.
 
-Create a `.env` file by running `cp .env.example .env`. It contains `JWT_SECRET`, which you can use in your implementation and `BASE_API_URL`, which the frontend already uses (see `webpack.config.js`).
+Create a `.env` file by running `cp server/.env.example server/.env`. It contains `JWT_SECRET`, which you can use in your implementation.
 
 Start the app with `npm run dev` and it will be running on [http://localhost:3000](http://localhost:3000).
 
