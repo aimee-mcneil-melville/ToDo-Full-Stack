@@ -5,11 +5,12 @@
   "main": "server/index",
   "scripts": {
     "dev": "run-p dev:server dev:client",
-    "dev:client": "webpack --watch",
-    "dev:server": "nodemon --watch server",
+    "dev:client": "npm run webpack -- --watch",
+    "dev:server": "nodemon server",
     "test": "jest --watchAll",
     "start": "node server",
-    "postinstall": "webpack",
+    "webpack": "webpack --config client/webpack.config.js",
+    "postinstall": "npm run webpack",
     "lint": "eslint --ext .js,.jsx ."
   },
   "author": "EDA",
@@ -25,7 +26,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "eda"
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "express": "^4.17.1"
