@@ -1,10 +1,17 @@
 import React from 'react'
 
-// This might need to be turned into a stateful (class-based) component
-const App = () => (
-  <div className='app'>
-    Ready to rock and roll
-  </div>
-)
+import Header from './Header'
+import BeerList from './BeerList'
+
+import beerData from '../../data/beers'
+
+function App () {
+  return (
+    <div className='app'>
+      <Header />
+      <BeerList beers={beerData.beers} />
+    </div>
+  )
+}
 
 export default App
