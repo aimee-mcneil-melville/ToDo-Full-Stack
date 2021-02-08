@@ -1,16 +1,17 @@
 {
-  "name": "boilerplate-react-redux",
+  "name": "react-redux-stories",
   "version": "0.2.0",
-  "description": "React Redux using express",
+  "description": "A small React Redux exercise",
   "main": "server/index.js",
   "scripts": {
-    "client": "webpack",
+    "client": "npm run webpack",
     "server": "node server",
-    "dev:client": "webpack --watch",
+    "dev:client": "npm run webpack --watch",
     "dev:server": "nodemon server",
     "start": "run-s client server",
     "dev": "run-p dev:client dev:server",
-    "lint": "eslint ."
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "author": "EDA",
   "license": "ISC",
@@ -22,6 +23,12 @@
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
     ]
   },
   "dependencies": {
