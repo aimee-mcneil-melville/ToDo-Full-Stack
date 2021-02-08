@@ -1,7 +1,5 @@
 import React from 'react'
 
-import beerData from '../../data/beers'
-
 function Cart (props) {
   return (
     <div className='cart'>
@@ -14,13 +12,13 @@ function Cart (props) {
           </tr>
         </thead>
         <tbody>
-          {props.cart.map(({ id, quantity }) => {
+          {props.cart.map(({ id, name, quantity }) => {
             return (
               <tr key={id}>
-                <td>{getNameFromId(id)}</td>
+                <td>{name}</td>
                 <td><input className='update-input' value={quantity} /></td>
-                <td><button><span className='fa fa-trash fa-2x' /></button></td>
                 {/* TODO: implement deletes */}
+                <td><button><span className='fa fa-trash fa-2x' /></button></td>
               </tr>
             )
           })}
@@ -34,10 +32,6 @@ function Cart (props) {
       </p>
     </div>
   )
-}
-
-function getNameFromId (id) {
-  return beerData.beers.find((beer) => beer.id === id).name
 }
 
 export default Cart
