@@ -60,9 +60,11 @@ In this section, you'll create an action creator, a reducer function and a dispa
 First, create an action creator for an `ADD_TO_CART` action that looks similar to this:
 
 ```js
+export const ADD_TO_CART = 'ADD_TO_CART'
+
 export function addToCart (id, name) {
   return {
-    type: 'ADD_TO_CART',
+    type: ADD_TO_CART,
     id: id,
     name: name
   }
@@ -101,9 +103,11 @@ In this section, you'll create an action creator, a reducer function and a dispa
 Add an `activePage` property to the Redux store by creating a reducer that processes an action that contains the destination/target we're navigating to. The action creator that returns the action to dispatch for navigating between pages could look like this:
 
 ```js
+export const NAVIGATE = 'NAVIGATE'
+
 export function navigate (target) {
   return {
-    type: 'NAVIGATE',
+    type: NAVIGATE,
     target: target // 'listing' or 'cart'
   }
 }
@@ -141,9 +145,11 @@ Let's make it possible to remove an item from the cart. To do so, you'll create 
 Create an action creator for a `REMOVE_FROM_CART` action that looks similar to this:
 
 ```js
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+
 export function removeFromCart (id) {
   return {
-    type: 'REMOVE_FROM_CART',
+    type: REMOVE_FROM_CART,
     id: id
   }
 }
@@ -160,18 +166,22 @@ Now let's give the user an easier way of changing the quantities of items in the
 
 As the user is updating the quantities of the items in their cart, you'll maintain those changes in the Cart's component state. When they click the _Update_ button, that's when you'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
 
-Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that the `cart` is being passed in as a `prop`. **This is a really good opportunity for problem solving, so don't cheat yourself out of a chance for some quality learning.**
+Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that the `cart` data is being passed in as a `prop`. **This is a really good opportunity for problem solving, so don't cheat yourself out of a chance for some quality learning.**
 
-// if you want a challenge, you could try to implement this feature from here. If you'd like a little more guidance, see below...
+If you want more of a challenge, you could try to implement this feature from here. If you'd like a little more guidance, keep reading.
 
+Currently, the cart item quantity being rendered is the value from `props.cart`, but because this value can change, it should be rendered from component state. A reasonable approach is to use `props.cart` as the initial value for the component state.
 
+Add a `handleUpdate` event handler in `<Cart>` and call it from the input boxes. Be sure to pass the `id` of the cart item so the function will know which cat item to update. Use the React DevTool to ensure the updates are working as expected.
 
 Create an action creator for an `UPDATE_QUANTITIES` action that looks similar to this:
 
 ```js
+export const UPDATE_QUANTITIES = 'UPDATE_QUANTITIES'
+
 export function updateQuantities (cart) {
   return {
-    type: 'UPDATE_QUANTITIES',
+    type: UPDATE_QUANTITIES,
     cart: cart
   }
 }
@@ -189,11 +199,11 @@ The `cart` parameter passed to `updateQuantities` can have this shape:
 }]
 ```
 
-Our existing `cart` reducer can be used once you've added to it how the state should change when this `updateQuantities` action is dispatched.
+Dispatch the `updateQuantities` action from the `onClick` handler of the Update button.
 
-Add component state to `<Cart>` called `updates` that has the same shape as the `cart` above with a default value of `[]`.
+Our existing `cart` reducer can be used once you've added to it how the state should change when this `updateQuantities` action is dispatched. Make these edits and verify the reducer is working correctly using the Redux DevTool if you need to troubleshoot anything.
 
-Add a `handleUpdate` event handler in `<Cart>` that keeps track
+Verify everything is working as expected and troubleshoot any issues that you notice. Well done!
 
 
 ## Stretch
