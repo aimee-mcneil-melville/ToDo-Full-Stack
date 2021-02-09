@@ -15,7 +15,7 @@ const NavLink = styled(Link)`
   margin-right: 30px;
 `
 
-export default function Nav () {
+function Nav () {
   return (
     <>
       <NavGroup>
@@ -32,3 +32,5 @@ export default function Nav () {
     </>
   )
 }
+
+export default Nav

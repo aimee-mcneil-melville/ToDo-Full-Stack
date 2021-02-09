@@ -6,7 +6,7 @@ import Fruits from './Fruits'
 import Register from './Register'
 import SignIn from './SignIn'
 
-export default function App () {
+function App () {
   return (
     <Router>
       <Route path='/' component={Nav} />
@@ -16,3 +16,5 @@ export default function App () {
     </Router>
   )
 }
+
+export default App

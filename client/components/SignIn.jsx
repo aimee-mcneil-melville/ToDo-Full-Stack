@@ -13,7 +13,7 @@ function SignIn (props) {
     password: ''
   })
 
-  const handleChange = e => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -21,7 +21,7 @@ function SignIn (props) {
     })
   }
 
-  const handleClick = () => {
+  function handleClick () {
     const { username, password } = form
     return signIn({ username, password }, { baseUrl })
       .then((token) => {
