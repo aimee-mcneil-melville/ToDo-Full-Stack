@@ -82,19 +82,21 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 3. Server-side: Create auth routes
 
-Our code already contains a file where we're going to place these routes: `/server/routes/auth.js`. `authenticare` is going to do all of the heavy lifting while responding to requests for new user registrations or user signins. There are 3 actions `authenticare` needs to do, but we need to provide the functions that perform these actions:
+You'll need to create a file to hold these routes: `server/routes/auth.js`. Wire up your server (`server/server.js`) to use these auth routes with prefix of `/api/v1/auth` (because we told `authenticare/client` to make requests with this prefix in `client/config.js`).
 
-- create a new user
-- determine if a username is already in use
+`authenticare` is going to do all of the heavy lifting around responding to requests for new user registrations or user signins. There are 3 actions `authenticare` needs to do, but we need to provide the functions that perform these actions:
+
+- determine if a username is already in use (whether a user exists)
 - retrieve a user object based on its username
+- create a new user
 
-Fortunately, our `/server/db/users.js` file already exports these functions:
+Fortunately, our `server/db/users.js` file already exports these functions:
 
-- `createUser`
 - `userExists`
 - `getUserByName`
+- `createUser`
 
-The `authenticare/server` package exports a function called `applyAuthRoutes`. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/applyAuthRoutes.md). Use `applyAuthRoutes` in `server/routes/auth.js`.
+The `authenticare/server` package exports a function called `applyAuthRoutes`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md). Use `applyAuthRoutes` in `server/routes/auth.js`.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
