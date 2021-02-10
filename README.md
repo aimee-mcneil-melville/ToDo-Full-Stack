@@ -9,7 +9,7 @@ Your task is to complete the authentication implementation of this app.
 
 After cloning this repo, install dependencies with `npm install`. The `postinstall` script will create the database and populate the tables with test data.
 
-Create a `.env` file by running `cp server/.env.example server/.env`. It contains `JWT_SECRET`, which you can use in your implementation.
+Create a `.env` file by running `cp server/.env.example server/.env`. It contains `JWT_SECRET`, which you can use in your implementation. The `.env` file is listed in our `.gitignore`, so our secrets aren't available on GitHub.
 
 Start the app with `npm run dev` and it will be running on [http://localhost:3000](http://localhost:3000).
 
@@ -23,7 +23,7 @@ In order to complete the implementation of authentication for this app, we need 
 - Determine if the current user is logged in or not
 - Allow the user to register
 - Allow the user to sign in
-- Send the authorization token with each request
+- Send the authorisation token with each request
 - Allow the user to log off
 - Hide/show components based on the user's auth status
 
@@ -36,18 +36,20 @@ In order to complete the implementation of authentication for this app, we need 
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
 
-To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Install it with `npm install authenticare`. If you would rather not use `authenticare` and take the more difficult route and implement the low-level steps that `authenticare` does for you, [use these instructions](by-hand.md) instead.
+To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Authenticare does a lot of the work for us, so we'll just need to integrate the functions it exports into our app.
+
+_Note: The `authenticare` library was built as a learning tool, __not__ for production. It's designed to help facilitate your understanding of adding authentication and authorisation to an application, but it's not a library you'll use in the real world._
 
 
 ## 0. Have a look around first
 
 No need to rush into this. Get familiar with the code base first. There might be some patterns you haven't seen before.
 
-For example, this code also uses [`styled-components`](https://www.styled-components.com). It is also using the new React hooks feature for using component state on functional components. There is also a nice use of `props.children` in the `Authenticated` components.
+For example, this codebase uses [`styled-components`](https://www.styled-components.com). There is also a nice use of `props.children` in the `Authenticated` components.
 
-Also, get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones.
+Get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones.
 
-Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the Web API to only authenticated users.
+Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
 
 
 ## 1. Client-side: Determine if the current user is signed in
@@ -130,7 +132,7 @@ The `authenticare/server` package exports a `getTokenDecoder` function that retu
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 7. Client-side: Send the authorization token with each request
+## 7. Client-side: Send the authorisation token with each request
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
