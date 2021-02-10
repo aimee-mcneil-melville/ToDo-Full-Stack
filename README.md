@@ -67,11 +67,15 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 Our existing code already has a component where the user can supply their username and password. You can see this if you select the "Register" link on the top right of the home page. Note: If you see "Log off", ensure you've completed the previous step and refresh your browser.
 
-In `client/components/Register.jsx`, you'll notice it also has an `isAuthenticated` function that is hard-coded to return `true`. Make the same change you made in the previous step to use `authenticare/client/isAuthenticated` instead of the hard-coded value.
+In `client/components/Register.jsx`, you'll need to implement the `handleClick` function for the Register button.
 
-To send a registration request to the server from our `Register` component, we call the `register` function available from `authenticare/client`. You can [read the docs here](https://github.com/don-smith/authenticare/blob/master/docs/client/register.md).
+To send a registration request to the server from our `Register` component, you'll call the `register` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/register.md).
 
-After we get the call to `register` in place, we should have enough implemented on the client-side to let the user register, but before we can test it, we need some server-side routes for the client to talk to.
+_Note: the `baseUrl` has already been imported for you at the top of the file._
+
+After the call to `register`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
+
+We should now have enough implemented on the client-side to let the user register, but before we can test it, we need some server-side routes for the client to talk to.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
