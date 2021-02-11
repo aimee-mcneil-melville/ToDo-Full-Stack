@@ -9,7 +9,9 @@ Your task is to complete the authentication implementation of this app.
 
 After cloning this repo, install dependencies with `npm install`. The `postinstall` script will create the database and populate the tables with test data.
 
-Create a `.env` file by running `cp server/.env.example server/.env`. It contains `JWT_SECRET`, which you can use in your implementation. The `.env` file is listed in our `.gitignore`, so our secrets aren't available on GitHub.
+Create a `.env` file by running `cp server/.env.example server/.env`. This file holds any special environment variables or secret keys that we need. We're using a package called `dotenv` in our `server/index.js` to make the environment variables available to our server code.
+
+This `.env` file contains a `JWT_SECRET`, which you will use in your implementation. You don't ever want a `.env` file committed to your source repository, so we've added it to our `.gitignore`.
 
 Start the app with `npm run dev` and it will be running on [http://localhost:3000](http://localhost:3000).
 
@@ -38,7 +40,7 @@ In order to complete the implementation of authentication for this app, we need 
 
 To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Authenticare does a lot of the work for us, so we'll just need to integrate the functions it exports into our app.
 
-_Note: The `authenticare` library was built as a learning tool, __not__ for production. It's designed to help facilitate your understanding of adding authentication and authorisation to an application, but it's not a library you'll use in the real world._
+_Note: The `authenticare` library was built as a learning tool, __not__ for production. It's designed to help facilitate your understanding of adding authentication to an application, but it's not a library you'll use in the real world._
 
 
 ## 0. Have a look around first
@@ -56,9 +58,9 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user. Right now it is hard-coded to `true`. We need to make it reflect reality.
 
-Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md).
+Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's localStorage, and that it hasn't yet expired. We'll get to adding the token later.
 
-With that in place, you can now see the "Register" and "Sign in" links in the app now.
+With that in place, you can now see the "Register" and "Sign in" links in the app.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
@@ -94,7 +96,7 @@ Fortunately, our `server/db/users.js` file already exports these functions:
 
 - `userExists`
 - `getUserByName`
-- `createUser`
+- `createUser` - you'll need to write the implementation for this function.
 
 The `authenticare/server` package exports a function called `applyAuthRoutes`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md). Use `applyAuthRoutes` in `server/routes/auth.js`.
 
@@ -103,7 +105,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 4. Server-side: Adding users: hashing the user's password
 
-While the `userExists` and `getUserByName` database functions in `server/db/users` are in place, you'll need to implement `createUser`. As per the `applyAuthRoutes` [documentation](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md), `createUser` accepts a `user` object, which is going to have `username` and `password` properties (at least).
+While the `userExists` and `getUserByName` database functions in `server/db/users` are in place, you'll need to implement `createUser`. As per the `applyAuthRoutes` [documentation](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md), `createUser` accepts a `user` object, which is going to have `username` and `password` properties.
 
 Think about what you're going to need this `createUser` function to do. It should:
 
@@ -115,7 +117,7 @@ While we're here, you should also import and use the authenticare `generateHash`
 
 You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds.
 
-Users should now be able to register! Navigate back to [localhost:3000](http://localhost:3000) and try it - verify that new user registrations are saving a hash of the password to the database.
+Users should now be able to register! Navigate back to [localhost:3000](http://localhost:3000) and try it - verify that new user registrations are saving a hash of the password to the database and not their clear-text password.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
@@ -130,7 +132,7 @@ To send a signin request to the server from our `SignIn` component, you'll call 
 
 _Note: the `baseUrl` has already been imported for you at the top of the file._
 
-After the call to `register`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
+After the call to `signin`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
 
 We should now have enough implemented on the client-side to let the user sign in. We configured the server-side auth routes in step #3 so we should be able to sign in with a registered user.
 
@@ -153,6 +155,10 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 
 ## 7. Client-side: Send the authorisation token with each request
+
+Behind the scenes, authenticare's `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to localStorage. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
+
+To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature will change, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
@@ -180,6 +186,6 @@ Use `IfAuthenticated` and `IfNotAuthenticated` from `client/components/Authentic
 
 Once you're finished you can see how the components will show and hide when you sign in and log out of the application.
 
-Now is a good time to commit your changes and high five your pairing partner (or yourself)!
+Now is a good time to commit your changes and high five your pairing partner (and/or yourself)!
 
 Nice work!
