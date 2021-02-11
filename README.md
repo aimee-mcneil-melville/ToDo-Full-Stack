@@ -25,7 +25,7 @@ In order to complete the implementation of authentication for this app, we need 
 - Determine if the current user is logged in or not
 - Allow the user to register
 - Allow the user to sign in
-- Send the authorisation token with each request
+- Send the authorization token with each request
 - Allow the user to log off
 - Hide/show components based on the user's auth status
 
@@ -38,7 +38,7 @@ In order to complete the implementation of authentication for this app, we need 
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
 
-To make completing these steps a little easier, we'll be using the [authenticare](https://npmjs.com/package/authenticare) npm package. Authenticare does a lot of the work for us, so we'll just need to integrate the functions it exports into our app.
+To make completing these steps a little easier, we'll be using the [`authenticare`](https://npmjs.com/package/authenticare) npm package. `authenticare` does a lot of the work for us, so we'll just need to integrate the functions it exports into our app.
 
 _Note: The `authenticare` library was built as a learning tool, __not__ for production. It's designed to help facilitate your understanding of adding authentication to an application, but it's not a library you'll use in the real world._
 
@@ -56,9 +56,11 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 ## 1. Client-side: Determine if the current user is signed in
 
-Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user. Right now it is hard-coded to `true`. We need to make it reflect reality.
+Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's localStorage, and that it hasn't yet expired. We'll get to adding the token later.
+Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's local storage, and that it hasn't yet expired. We'll get to adding the token later.
+
+Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Make use of `authenticare`'s `isAuthenticated` function instead.
 
 With that in place, you can now see the "Register" and "Sign in" links in the app.
 
@@ -73,9 +75,9 @@ In `client/components/Register.jsx`, you'll need to implement the `handleClick` 
 
 To send a registration request to the server from our `Register` component, you'll call the `register` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/register.md).
 
-_Note: the `baseUrl` has already been imported for you at the top of the file._
+_Note: you'll need to pass `register` a second argument, an options object with a `baseUrl` property, so `authenticare` knows where make its API call to. The `baseUrl` itself has already been imported for you at the top of the file._
 
-After the call to `register`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
+After the call to `register` has succeeded, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
 
 We should now have enough implemented on the client-side to let the user register, but before we can test it, we need some server-side routes for the client to talk to.
 
@@ -110,10 +112,10 @@ While the `userExists` and `getUserByName` database functions in `server/db/user
 Think about what you're going to need this `createUser` function to do. It should:
 
 * Determine whether the username is already taken (_hint: the `userExists` db function might come in handy!_) and throw an error if it's already in use.
-* Create a _hash_ of the user's password. We __never__ save passwords as plain text. Authenticare exports a `generateHash` function - [the docs are here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/generateHash.md).
+* Create a _hash_ of the user's password. We __never__ save passwords as plain text. `authenticare` exports a `generateHash` function - [the docs are here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/generateHash.md).
 * Save the new user, with their username and hashed password, to the `users` database table.
 
-While we're here, you should also import and use the authenticare `generateHash` function in `server/db/seeds/users.js`.
+While we're here, you should also import and use the `authenticare` `generateHash` function in `server/db/seeds/users.js`.
 
 You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds.
 
@@ -124,13 +126,15 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 5. Client-side: Allow the user to sign in
 
-Our existing code already has a component where the user can supply their username and password to sign in. You can see this if you select the "Sign in" link on the top right of the home page (you'll need to be logged out first).
+Our existing code already has a component where the user can supply their username and password to sign in. You can see this if you select the "Sign in" link on the top right of the home page. 
+
+If you're still logged in from registering, you'll need to delete the token from local storage to see the Sign In link (we haven't implemented the log out functionality yet). You can do this from the dev tools - either the `Application` tab on Chromium browsers, or the `Storage` tab on Firefox.
 
 In `client/components/SignIn.jsx`, you'll need to implement the `handleClick` function for the Sign In button.
 
 To send a signin request to the server from our `SignIn` component, you'll call the `signIn` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/signIn.md).
 
-_Note: the `baseUrl` has already been imported for you at the top of the file._
+_Note: you'll need to send the `baseUrl` in an options object again - the `baseUrl` has already been imported for you at the top of the file._
 
 After the call to `signin`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
 
@@ -156,24 +160,24 @@ Try to add, update or delete some fruit from the UI now. You should see errors i
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 7. Client-side: Send the authorisation token with each request
+## 7. Client-side: Send the authorization token with each request
 
-Behind the scenes, authenticare's `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to localStorage. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
+Behind the scenes, `authenticare`'s `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to local storage. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
 
 To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature will change, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
-`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token that `authenticare` saves in localStorage, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
+`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from local storage, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
 
-Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed now.
+Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
 
 ## 8. Client-side: Allow the user to log off
 
-Logging off in this application is as simple as removing the `token` field from the localStorage. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOff` function from `authenticare/client` to do this for us.
+Logging off in this application is as simple as removing the `token` field from the local storage. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOff` function from `authenticare/client` to do this for us.
 
 The link a user clicks in order to log off is currently in the `client/components/Nav.jsx` component. Add an `onClick` event handler to it that uses the `logOff` function from `authenticare/client`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/logOff.md) if you need to. Once you're done, you should be able to log off, sign in, and register using the UI.
 
