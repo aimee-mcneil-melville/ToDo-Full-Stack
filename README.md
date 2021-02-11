@@ -65,7 +65,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 2. Client-side: Allow the user to register
 
-Our existing code already has a component where the user can supply their username and password. You can see this if you select the "Register" link on the top right of the home page. Note: If you see "Log off", ensure you've completed the previous step and refresh your browser.
+Our existing code already has a component where the user can supply their username and password to register. You can see this if you select the "Register" link on the top right of the home page. Note: If you see "Log off", ensure you've completed the previous step and refresh your browser.
 
 In `client/components/Register.jsx`, you'll need to implement the `handleClick` function for the Register button.
 
@@ -122,13 +122,17 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 5. Client-side: Allow the user to sign in
 
-Our existing code already has a component where the user can supply their username and password. You can see this if you select the "Sign in" link on the top right of the home page.
+Our existing code already has a component where the user can supply their username and password to sign in. You can see this if you select the "Sign in" link on the top right of the home page (you'll need to be logged out first).
 
-In `client/components/SignIn.jsx`, you'll notice it also has an `isAuthenticated` function that is hard-coded to return `true`. Make the same change you made in step #1 to use `authenticare/client/isAuthenticated` instead of the hard-coded value.
+In `client/components/SignIn.jsx`, you'll need to implement the `handleClick` function for the Sign In button.
 
-To send a signin request to the server from our `SignIn` component, we call the `signIn` function available from `authenticare/client`. You can [read the docs here](https://github.com/don-smith/authenticare/blob/master/docs/client/signIn.md).
+To send a signin request to the server from our `SignIn` component, you'll call the `signIn` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/signIn.md).
 
-After we get the call to `signIn` in place, we should have enough implemented on the client-side to let the user sign in. We implemented the server-side auth routes in step #3 so we should be able to sign in with a registered user.
+_Note: the `baseUrl` has already been imported for you at the top of the file._
+
+After the call to `register`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
+
+We should now have enough implemented on the client-side to let the user sign in. We configured the server-side auth routes in step #3 so we should be able to sign in with a registered user.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
