@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // POST /api/v1/fruits
 router.post('/', async (req, res) => {
   const newFruit = req.body
-  const user = req.user
+  const user = { id: 1 }
   try {
     const fruits = await db.addFruit(newFruit, user)
     res.json({ fruits })
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 // PUT /api/v1/fruits
 router.put('/', async (req, res) => {
   const newFruit = req.body
-  const user = req.user
+  const user = { id: 1 }
   try {
     const fruits = await db.updateFruit(newFruit, user)
     res.json({ fruits })
@@ -48,7 +48,7 @@ router.put('/', async (req, res) => {
 // DELETE /api/v1/fruits
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  const user = req.user
+  const user = { id: 1 }
   try {
     const fruits = await db.deleteFruit(id, user)
     res.json({ fruits })

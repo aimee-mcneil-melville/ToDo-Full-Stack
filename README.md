@@ -145,7 +145,9 @@ At the moment, we are able to add, update and delete fruit whether we are signed
 
 The `server/routes/fruits.js` file contains the fruit-related routes. To determine if a request is authenticated or not, we attempt to decode the token sent in the `Authorization` request header. This is often done as a piece of Express middleware.
 
-The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function, which we can use in our routes. For each of the `POST`, `PUT` and `DELETE` the fruit routes, apply this middleware function. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/getTokenDecoder.md) to see an example of how to do this.
+The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function, which we can use in our routes. It will put the result of the decoded token on `req.user`.
+
+For each of the `POST`, `PUT` and `DELETE` the fruit routes, apply this `getTokenDecoder()` middleware function, and update the `user` variable to be the value from `req.user`, rather than the hard-coded `{ id: 1 }`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/getTokenDecoder.md) to see an example of how to do this.
 
 Try to add, update or delete some fruit from the UI now. You should see errors in the developer tools console.
 
