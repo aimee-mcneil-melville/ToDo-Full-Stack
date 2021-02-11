@@ -101,13 +101,21 @@ The `authenticare/server` package exports a function called `applyAuthRoutes`. [
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 4. Server-side: Save a hash of the user's password
+## 4. Server-side: Adding users: hashing the user's password
 
-While we _are_ saving a new user when they register, we're not currently saving their password properly. Have a look at `server/db/users.js` and notice how the `createUser` function is passing the  `password` to the `generateHash` function. Currently that function is just returning `"fake-hash-value"`, but we need it to generate a proper hash.
+While the `userExists` and `getUserByName` database functions in `server/db/users` are in place, you'll need to implement `createUser`. As per the `applyAuthRoutes` [documentation](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md), `createUser` accepts a `user` object, which is going to have `username` and `password` properties (at least).
 
-`authenticare/server` exports a `generateHash` function. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/generateHash.md) and replace/add the `generateHash` function in both `server/db/users.js` and `server/db/seeds/users.js`.
+Think about what you're going to need this `createUser` function to do. It should:
 
-You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds. Afterwards, verify new user registrations are saving a hash of the password in the database.
+* Determine whether the username is already taken (_hint: the `userExists` db function might come in handy!_) and throw an error if it's already in use.
+* Create a _hash_ of the user's password. We __never__ save passwords as plain text. Authenticare exports a `generateHash` function - [the docs are here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/generateHash.md).
+* Save the new user, with their username and hashed password, to the `users` database table.
+
+While we're here, you should also import and use the authenticare `generateHash` function in `server/db/seeds/users.js`.
+
+You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds.
+
+Users should now be able to register! Navigate back to [localhost:3000](http://localhost:3000) and try it - verify that new user registrations are saving a hash of the password to the database.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
