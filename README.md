@@ -156,7 +156,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
-Currently `client/api.js` is using a fake `getAuthorizationHeader` function. Let's replace this with the `getAuthorizationHeader` from `authenticare/client`. This will return the token that `authenticare` saves in localStorage. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/client/getAuthorizationHeader.md) for more details.
+`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token that `authenticare` saves in localStorage, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
 
 Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed now.
 

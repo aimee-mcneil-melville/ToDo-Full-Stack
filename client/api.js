@@ -1,8 +1,5 @@
 import request from 'superagent'
 
-// TODO: implement or import a proper getAuthorizationHeader function
-const getAuthorizationHeader = () => ({ Authorization: 'Bearer encoded-token' })
-
 const rootUrl = '/api/v1/fruits'
 const acceptJsonHeader = { Accept: 'application/json' }
 
@@ -18,7 +15,6 @@ export function getFruits () {
 export function addFruit (fruit) {
   return request.post(rootUrl)
     .set(acceptJsonHeader)
-    .set(getAuthorizationHeader())
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
@@ -27,7 +23,6 @@ export function addFruit (fruit) {
 export function updateFruit (fruit) {
   return request.put(rootUrl)
     .set(acceptJsonHeader)
-    .set(getAuthorizationHeader())
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
@@ -36,7 +31,6 @@ export function updateFruit (fruit) {
 export function deleteFruit (id) {
   return request.delete(`${rootUrl}/${id}`)
     .set(acceptJsonHeader)
-    .set(getAuthorizationHeader())
     .then(res => res.body.fruits)
     .catch(logError)
 }
