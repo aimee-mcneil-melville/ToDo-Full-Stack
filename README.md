@@ -139,11 +139,13 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 6. Server-side: Protect routes from unauthenticated requests
 
-At the moment, we are able to add, update and delete fruit when we are signed in and logged out. For our requirements, unauthenticated users can read data, but only authenticated users may add, update and delete fruit. We'll facilitate this on the client-side as well, but this step is about securing the Web API.
+At the moment, we are able to add, update and delete fruit whether we are signed in or logged out. For our requirements, unauthenticated users can read data, but only authenticated users may add, update and delete fruit. We'll facilitate this on the client-side as well, but this step is about securing the Web API.
 
 The `server/routes/fruits.js` file contains the fruit-related routes. To determine if a request is authenticated or not, we attempt to decode the token sent in the `Authorization` request header. This is often done as a piece of Express middleware.
 
-The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function that we can use our routes. For the fruit routes, you just need to replace the fake `decodeToken` function with the one from `authenticare`. [Check out the docs](https://github.com/don-smith/authenticare/blob/master/docs/server/getTokenDecoder.md) to see an example. Each of the `PUT`, `POST` and `DELETE` routes already have the `getTokenDecoder` function in place. So now you can try to add, update or delete some fruit from the UI and you should see errors in the developer tools console.
+The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function, which we can use in our routes. For each of the `POST`, `PUT` and `DELETE` the fruit routes, apply this middleware function. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/getTokenDecoder.md) to see an example of how to do this.
+
+Try to add, update or delete some fruit from the UI now. You should see errors in the developer tools console.
 
 > Note: At this point you will not be able to add, update or delete fruits because the routes are protected and you're not yet sending the token in the requests. That's what you'll do in the next step. If you try, you will get an HTTP `401` (bad request - JWT malformed) response, which is exactly what you want.
 

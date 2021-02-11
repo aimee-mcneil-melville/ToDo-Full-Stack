@@ -1,8 +1,5 @@
 const express = require('express')
 
-// TODO: implement or import a proper getTokenDecoder function
-const getTokenDecoder = () => (req, res, next) => { req.user = { id: 1 }; next() }
-
 const db = require('../db/fruits')
 
 const router = express.Router()
@@ -20,7 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 // POST /api/v1/fruits
-router.post('/', getTokenDecoder(), async (req, res) => {
+router.post('/', async (req, res) => {
   const newFruit = req.body
   const user = req.user
   try {
@@ -32,7 +29,7 @@ router.post('/', getTokenDecoder(), async (req, res) => {
 })
 
 // PUT /api/v1/fruits
-router.put('/', getTokenDecoder(), async (req, res) => {
+router.put('/', async (req, res) => {
   const newFruit = req.body
   const user = req.user
   try {
@@ -49,7 +46,7 @@ router.put('/', getTokenDecoder(), async (req, res) => {
 })
 
 // DELETE /api/v1/fruits
-router.delete('/:id', getTokenDecoder(), async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
   const user = req.user
   try {
