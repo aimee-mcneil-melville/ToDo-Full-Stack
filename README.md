@@ -164,11 +164,11 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 Behind the scenes, `authenticare`'s `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to `localStorage`. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
 
-To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature will change, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
+To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature won't match, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
-`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from `localStorage`, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
+`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from `localStorage` and format it as an HTTP header so you can use it in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
 
 Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed.
 
