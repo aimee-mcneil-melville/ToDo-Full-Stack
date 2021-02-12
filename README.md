@@ -58,7 +58,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's local storage, and that it hasn't yet expired. We'll get to adding the token later.
+Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. We'll get to adding the token later.
 
 Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Make use of `authenticare`'s `isAuthenticated` function instead.
 
@@ -128,7 +128,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 Our existing code already has a component where the user can supply their username and password to sign in. You can see this if you select the "Sign in" link on the top right of the home page. 
 
-If you're still logged in from registering, you'll need to delete the token from local storage to see the Sign In link (we haven't implemented the log out functionality yet). You can do this from the dev tools - either the `Application` tab on Chromium browsers, or the `Storage` tab on Firefox.
+If you're still logged in from registering, you'll need to delete the token from `localStorage` to see the Sign In link (we haven't implemented the log out functionality yet). You can do this from the dev tools - either the `Application` tab on Chromium browsers, or the `Storage` tab on Firefox.
 
 In `client/components/SignIn.jsx`, you'll need to implement the `handleClick` function for the Sign In button.
 
@@ -162,13 +162,13 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 7. Client-side: Send the authorization token with each request
 
-Behind the scenes, `authenticare`'s `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to local storage. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
+Behind the scenes, `authenticare`'s `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to `localStorage`. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
 
 To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature will change, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
 
 In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
 
-`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from local storage, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
+`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from `localStorage`, in a format you can use as a request header in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
 
 Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed.
 
@@ -177,7 +177,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 8. Client-side: Allow the user to log off
 
-Logging off in this application is as simple as removing the `token` field from the local storage. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOff` function from `authenticare/client` to do this for us.
+Logging off in this application is as simple as removing the `token` field from the `localStorage`. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOff` function from `authenticare/client` to do this for us.
 
 The link a user clicks in order to log off is currently in the `client/components/Nav.jsx` component. Add an `onClick` event handler to it that uses the `logOff` function from `authenticare/client`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/logOff.md) if you need to. Once you're done, you should be able to log off, sign in, and register using the UI.
 
