@@ -1,4 +1,4 @@
-// TODO: implement or import a generateHash function
+// TODO: import a generateHash function
 
 exports.seed = (knex) => {
   return knex('users').del()

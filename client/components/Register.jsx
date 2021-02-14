@@ -3,17 +3,13 @@ import React, { useState } from 'react'
 import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
-// TODO: implement or import proper isAuthenticated and register functions
-const isAuthenticated = () => true
-const register = () => {}
-
 function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
   })
 
-  const handleChange = e => {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -21,15 +17,7 @@ function Register (props) {
     })
   }
 
-  const handleClick = () => {
-    const { username, password } = form
-    return register({ username, password }, { baseUrl })
-      .then((token) => {
-        if (isAuthenticated()) {
-          props.history.push('/')
-        }
-        return null
-      })
+  function handleClick () {
   }
 
   return (

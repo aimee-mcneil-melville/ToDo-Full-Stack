@@ -7,7 +7,7 @@ import { updateFruit, deleteFruit } from '../api'
 function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   const [editing, setEditing] = useState(selected)
 
-  const handleEditChange = e => {
+  function handleEditChange (e) {
     const { name, value } = e.target
     setEditing({
       ...editing,
@@ -15,7 +15,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
     })
   }
 
-  const handleUpdate = () => {
+  function handleUpdate () {
     updateFruit(editing)
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)
@@ -23,7 +23,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
       .catch(err => setError(err.message))
   }
 
-  const handleDelete = () => {
+  function handleDelete () {
     deleteFruit(editing.id)
       .then(setFruits)
       .then(clearSelected)

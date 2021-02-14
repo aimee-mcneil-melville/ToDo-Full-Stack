@@ -1,26 +1,9 @@
 const connection = require('./connection')
 
-// TODO: implement or import a proper generateHash function
-const generateHash = () => 'fake-hash-value'
-
 module.exports = {
-  createUser,
   userExists,
-  getUserByName
-}
-
-function createUser (user, db = connection) {
-  return userExists(user.username, db)
-    .then(exists => {
-      if (exists) {
-        throw new Error('User exists')
-      }
-      return null
-    })
-    .then(() => generateHash(user.password))
-    .then(passwordHash => {
-      return db('users').insert({ username: user.username, hash: passwordHash })
-    })
+  getUserByName,
+  createUser
 }
 
 function userExists (username, db = connection) {
@@ -37,4 +20,8 @@ function getUserByName (username, db = connection) {
     .select()
     .where('username', username)
     .first()
+}
+
+function createUser (user, db = connection) {
+  // you'll need to write this one
 }

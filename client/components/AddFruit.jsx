@@ -7,7 +7,7 @@ import { addFruit } from '../api'
 function AddFruit ({ setFruits, closeAddForm, setError }) {
   const [newFruit, setNewFruit] = useState(false)
 
-  const handleAddChange = e => {
+  function handleAddChange (e) {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
@@ -15,7 +15,7 @@ function AddFruit ({ setFruits, closeAddForm, setError }) {
     })
   }
 
-  const handleAdd = () => {
+  function handleAdd () {
     const fruit = { ...newFruit }
     addFruit(fruit)
       .then(setFruits)

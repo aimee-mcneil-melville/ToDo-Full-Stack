@@ -12,25 +12,25 @@ function Fruits () {
   const [adding, setAdding] = useState(false)
   const [selected, setSelected] = useState(null)
 
-  const hideError = () => {
+  function hideError () {
     setError('')
   }
 
-  const openAddForm = e => {
+  function openAddForm (e) {
     e.preventDefault()
     setAdding(true)
   }
 
-  const closeAddForm = () => {
+  function closeAddForm () {
     setAdding(false)
   }
 
-  const setSelectHandler = (fruit, e) => {
+  function setSelectHandler (fruit, e) {
     e.preventDefault()
     setSelected(fruit)
   }
 
-  const clearSelected = () => {
+  function clearSelected () {
     setSelected(null)
   }
 

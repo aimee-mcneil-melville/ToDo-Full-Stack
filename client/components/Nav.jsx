@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-// TODO: implement or import a proper logOff function
-const logOff = () => {}
-
 const NavGroup = styled.nav`
   float: right;
 `
@@ -15,13 +12,13 @@ const NavLink = styled(Link)`
   margin-right: 30px;
 `
 
-export default function Nav () {
+function Nav () {
   return (
     <>
       <NavGroup>
         <NavLink to='/'>Home</NavLink>
         <IfAuthenticated>
-          <NavLink to='#' onClick={logOff}>Log off</NavLink>
+          <NavLink to='#'>Log off</NavLink>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <NavLink to='/register'>Register</NavLink>
@@ -32,3 +29,5 @@ export default function Nav () {
     </>
   )
 }
+
+export default Nav
