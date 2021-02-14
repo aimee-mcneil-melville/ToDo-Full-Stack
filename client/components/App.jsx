@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -7,16 +7,16 @@ import Register from './Register'
 import Nav from './Nav'
 import Meeting from './Meeting'
 import History from './History'
-import { checkAuth } from '../actions/auth'
 
-export class App extends React.Component {
-  componentDidMount() {
+import {checkAuth} from '../actions/auth'
+
+function App ({auth, dispatch}) {
+  
+  useEffect(() => {
     const confirmSuccess = () => { }
-    this.props.dispatch(checkAuth(confirmSuccess))
-  }
+    dispatch(checkAuth(confirmSuccess))
+  }, [])
 
-  render() {
-    const {auth} = this.props
     return (
       <Router>
         <div className="container has-text-centered">
@@ -43,7 +43,6 @@ export class App extends React.Component {
         </div>
       </Router>
     )
-  }
 }
 
 const mapStateToProps = ({auth}) => {
