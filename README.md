@@ -86,7 +86,7 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 ## 3. Server-side: Create auth routes
 
-You'll need to create a file to hold these routes: `server/routes/auth.js`. Wire up your server (`server/server.js`) to use these auth routes with prefix of `/api/v1/auth` (because we told `authenticare/client` to make requests with this prefix in `client/config.js`).
+You'll need to create a file to hold these routes: `server/routes/auth.js`. Wire up your server (`server/server.js`) to use these auth routes with prefix of `/api/v1` (because we told `authenticare/client` to make requests with this prefix in `client/config.js`). Note: Authenticare's client and server will add `/auth/register` and `/auth/signin` to this prefix.
 
 `authenticare` is going to do all of the heavy lifting around responding to requests for new user registrations or user signins. There are 3 actions `authenticare` needs to do, but we need to provide the functions that perform these actions:
 
