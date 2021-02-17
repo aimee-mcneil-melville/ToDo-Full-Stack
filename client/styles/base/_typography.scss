@@ -1,0 +1,36 @@
+// Google Font equivalent of DIN
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
+
+// Update Bulma font-family
+$family-sans-serif: 'Barlow', sans-serif;
+
+body {
+  font-family: $family-sans-serif;
+  font-weight: $weight-normal;
+  font-size: $size-4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $weight-bold
+}
+
+.logo a {
+  font-size: $size-1;
+  color: $green;
+  
+  span {
+    color: $dark-green;
+  }
+}
+
+.word-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

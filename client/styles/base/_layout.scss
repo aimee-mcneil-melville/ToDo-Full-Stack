@@ -1,0 +1,28 @@
+.clearfix {
+  clear: both;
+}
+
+.box {
+  box-shadow: none;
+  border: 3px solid $border;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.leaflet-container {
+  height: 30rem; 
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rightHeroImage {
+  margin-left: 82px;
+}
+
+.message-error {
+  border: 2px solid $red;
+  padding: 0.5rem;
+  background-color: #ffcccc;
+  margin-top: 1rem;
+}
