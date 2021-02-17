@@ -1,32 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+
 import {logoutUser} from '../actions/auth'
 
-class Nav extends React.Component {
-  state = {
-    showBurger: false
-  }
+function Nav ({auth, logout}) {
+  const [burgerVisible, setBurgerVisible] = useState(false)
 
-  toggleBurger = () => {
-    this.setState({
-      showBurger: !this.state.showBurger
+  const toggleBurger = () => {
+    setBurgerVisible(currentBurgerState => {
+      return !currentBurgerState
     })
   }
 
-  render() {
-    const {auth, logout} = this.props
-    const {showBurger} = this.state
     return <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          <span onClick={this.toggleBurger} className={`navbar-burger burger ${showBurger ? 'is-active': ''}`} data-target="navbarMenuHeroA">
+          <span onClick={toggleBurger} className={`navbar-burger burger ${burgerVisible ? 'is-active': ''}`} data-target="navbarMenuHeroA">
             <span></span>
             <span></span>
             <span></span>
           </span>
         </div>
-        <div id="navbarMenuHeroA" className={`navbar-menu ${showBurger ? "is-active" : ''}`}>
+        <div id="navbarMenuHeroA" className={`navbar-menu ${burgerVisible ? "is-active" : ''}`}>
           <div className="navbar-end">
             { auth.isAuthenticated
               ? (
@@ -34,8 +30,8 @@ class Nav extends React.Component {
                 )
               : (
                 <>
-                  <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>
-                  <Link onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>
+                  <Link onClick={toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>
+                  <Link onClick={toggleBurger} className="navbar-item" to='/register'>Register</Link>
                 </>
               )
             }
@@ -43,7 +39,6 @@ class Nav extends React.Component {
         </div>
       </div>
     </nav>
-  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
