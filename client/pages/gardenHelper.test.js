@@ -19,7 +19,7 @@ describe('getGarden', () => {
       return getGarden(consume)
         .then(() => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_GARDEN, garden: {} })
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_GARDEN, garden: { } })
           return null
         })
     })
