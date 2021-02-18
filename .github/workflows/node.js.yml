@@ -14,7 +14,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - run: eslint . --ext .js,.jsx
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    -run: npm ci
+    -run: npm lint
+    
 
   build:
     runs-on: ubuntu-latest
