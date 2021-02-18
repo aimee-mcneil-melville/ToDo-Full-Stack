@@ -23,7 +23,8 @@ describe('getGarden', () => {
             events: [],
             address: 'cool place, nz',
             lat: 123,
-            lon: -123
+            lon: -123,
+            fake: 'asdf'
           }
         })
       }
