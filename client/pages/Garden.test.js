@@ -4,6 +4,7 @@ import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 
 import Garden from './Garden'
+import { getGarden } from './gardenHelper'
 
 jest.mock('./gardenHelper')
 
@@ -25,6 +26,7 @@ describe('Garden', () => {
     return screen.findByRole('heading', { name: 'test garden' })
       .then(() => {
         const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
+        expect(getGarden).toHaveBeenCalled()
         expect(url).toBeInTheDocument()
         expect(url.href).toMatch('cooltestgarden.com')
         return null
