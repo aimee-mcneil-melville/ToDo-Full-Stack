@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
+import { connect } from 'react-redux'
 
-export default function Garden () {
-  const [garden, setGarden] = useState({
-    name: '',
-    description: '',
-    url: '',
-    events: [],
-    address: '',
-    lat: 0,
-    lon: 0
-  })
+function Garden (props) {
+  const { garden } = props
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
     getGarden()
-      .then((gardenData) => {
-        setGarden(gardenData)
-        return null
-      })
   }, [])
 
   const { name, description, address, url, events, lat, lon } = garden
@@ -42,3 +30,6 @@ export default function Garden () {
     </>
   )
 }
+
+const mapStateToProps = (state) => ({ garden: state.garden })
+export default connect(mapStateToProps)(Garden)
