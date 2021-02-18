@@ -9,7 +9,7 @@ module.exports = {
 
 function getUserByName (username, db = connection) {
   return db('users')
-    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash')
+    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash', 'email')
     .where('username', username)
     .first()
 }
@@ -28,7 +28,8 @@ function createUser (user, db = connection) {
         username: user.username,
         garden_id: user.gardenId,
         hash: passwordHash,
-        is_admin: false
+        is_admin: false,
+        email: user.email
       })
     })
 }
