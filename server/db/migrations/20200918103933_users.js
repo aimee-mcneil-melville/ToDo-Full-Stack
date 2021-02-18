@@ -3,6 +3,7 @@ exports.up = (knex) => {
     table.increments('id')
     table.integer('garden_id')
     table.string('username')
+    table.string('email')
     table.binary('hash')
     table.boolean('is_admin')
   })
