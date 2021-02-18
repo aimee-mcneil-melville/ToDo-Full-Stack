@@ -2,6 +2,7 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/event')
+const volunteer = require('../db/volunteers')
 const log = require('../logger')
 
 jest.mock('../db/event')
@@ -156,5 +157,17 @@ describe('PATCH /api/v1/events/:id', () => {
         expect(res.body.error.title).toBe('Unable to update event')
         return null
       })
+  })
+})
+
+describe('addVolunteer adds Volunteer', () => {
+  it('addVolunteer returns correct response', () => {
+    const test = {
+      user_id: 4,
+      event_id: 4
+    }
+    volunteer.addVolunteer((test) => {
+
+    })
   })
 })

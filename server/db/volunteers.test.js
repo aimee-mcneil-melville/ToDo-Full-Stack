@@ -15,14 +15,14 @@ beforeEach(() => {
 describe('addVolunteer', () => {
   it('adds a volunteer', () => {
     const test = {
-      userId: 1,
+      username: 'Tausani',
       eventId: 1
     }
     return volunteers.addVolunteer(test, testDb)
       .then(() => volunteers.getVolunteer(testDb))
       .then(info => {
         console.log(info)
-        expect(info[0].user_id).toBe(1)
+        expect(info[0].username).toBe('Steve')
         expect(info[0].event_id).toBe(1)
         return null
       })

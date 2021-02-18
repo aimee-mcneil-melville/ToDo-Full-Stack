@@ -2,6 +2,7 @@ const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/event')
+const volunteer = require('../db/volunteers')
 
 const router = express.Router()
 
@@ -59,3 +60,23 @@ router.patch('/:id', (req, res) => {
       })
     })
 })
+
+// ADD VOLUNTEER TO eventVolunteer table
+router.post('/addvolunteer', (req, res) => {
+  const info = req.body
+  volunteer.addVolunteer(info)
+    .then(() => {
+      res.status(201)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to update event'
+        }
+      })
+    })
+})
+
+
