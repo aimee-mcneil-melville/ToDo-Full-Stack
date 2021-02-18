@@ -18,12 +18,12 @@ describe('form fields', () => {
 
     userEvent.type(usernameInput, 'test username')
     userEvent.type(passwordInput, 'test password')
-    userEvent.type(emailInput, 'test email')
+    userEvent.type(emailInput, 'test@email.com')
     userEvent.selectOptions(gardenInput, '2')
 
     expect(usernameInput).toHaveValue('test username')
     expect(passwordInput).toHaveValue('test password')
-    expect(emailInput).toHaveValue('testemail')
+    expect(emailInput).toHaveValue('test@email.com')
     expect(gardenInput).toHaveValue('2')
   })
 })
