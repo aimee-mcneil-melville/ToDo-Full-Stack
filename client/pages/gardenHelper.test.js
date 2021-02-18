@@ -11,19 +11,7 @@ afterEach(() => {
 
 describe('getGarden', () => {
   describe('-> GET /gardens/:id api call success', () => {
-    it('dispatches waiting correctly', () => {
-      getState.mockImplementation(() => ({ user: {} }))
-      function consume () {
-        return Promise.resolve({ body: {} })
-      }
-      return getGarden(consume)
-        .then(() => {
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_GARDEN, garden: { } })
-          return null
-        })
-    })
-    it('return correct garden object', () => {
+    it('dispatches with the correct garden action', () => {
       getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
       function consume (path) {
         expect(path).toMatch('2')
