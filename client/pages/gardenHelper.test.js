@@ -1,6 +1,7 @@
 import { getGarden } from './gardenHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
+import { SET_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
+import { SET_GARDEN } from '../actions/garden'
 
 jest.mock('../store')
 
@@ -18,7 +19,7 @@ describe('getGarden', () => {
       return getGarden(consume)
         .then(() => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_GARDEN, garden: {} })
           return null
         })
     })
@@ -40,9 +41,19 @@ describe('getGarden', () => {
       }
       return getGarden(consume)
         .then((garden) => {
-          expect(garden.name).toBe('test garden')
-          expect(garden.url).toMatch('cooltestgarden')
-          expect(garden.events).toHaveLength(0)
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+          expect(dispatch).toHaveBeenCalledWith({
+            type: SET_GARDEN,
+            garden: {
+              name: 'test garden',
+              description: 'a rad test garden',
+              url: 'cooltestgarden.com',
+              events: [],
+              address: 'cool place, nz',
+              lat: 123,
+              lon: -123
+            }
+          })
           return null
         })
     })
