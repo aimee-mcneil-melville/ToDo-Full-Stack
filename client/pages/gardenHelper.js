@@ -10,7 +10,16 @@ export function getGarden (consume = requestor) {
   dispatch(setWaiting())
   return consume(`/gardens/${gardenId}`)
     .then((res) => {
-      dispatch(setGarden(res.body))
+      const { name, description, url, address, events, lat, lon } = res.body
+      dispatch(setGarden({
+        name,
+        description,
+        address,
+        url,
+        events,
+        lat,
+        lon
+      }))
       return null
     })
     .catch((error) => {
