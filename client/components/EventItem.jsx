@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getIfVolunteer } from './EventItemHelper'
+import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description } = event
   // volunteers to be recieved from event object
-  const volunteers = ['member', 'anna', 'tausani']
+  const volunteers = [{ id: 1, username: 'member' }, { id: 2, username: 'anna' }, { id: 3, username: 'steve' }]
 
   useEffect(() => {
     const ifVolunteer = getIfVolunteer(volunteers)
@@ -16,6 +16,7 @@ export default function EventItem ({ event, isAdmin }) {
 
   function clickHandler () {
     setIsVolunteer(!isVolunteer)
+    toggleVolunteerButton(id, isVolunteer)
   }
 
   return (
