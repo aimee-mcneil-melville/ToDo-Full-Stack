@@ -30,9 +30,10 @@ describe('addVolunteer', () => {
 })
 
 describe('deleteVolunteer', () => {
-  it('deletes correct user', () => {
+  it('deletes correct volunteer entry', () => {
     const test = {
-      id: 2
+      userId: 2,
+      eventId: 3
     }
     return volunteers.deleteVolunteer(test, testDb)
       .then(() => volunteers.getVolunteer(testDb))
