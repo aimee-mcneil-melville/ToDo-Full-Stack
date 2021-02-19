@@ -4,11 +4,10 @@ import requestor from '../consume'
 
 export function getIfVolunteer (volunteers) {
   const storeState = getState()
-  const { userId } = storeState.user
-  // change to match user.id
+  const { id } = storeState.user
 
   const index = volunteers.findIndex((volunteerObj) => {
-    return volunteerObj.id === userId
+    return volunteerObj.id === id
   })
 
   const ifVolunteer = index !== -1
@@ -16,15 +15,18 @@ export function getIfVolunteer (volunteers) {
   return ifVolunteer
 }
 
-export function toggleVolunteerButton (id, isVolunteer, consume = requestor) {
+export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor) {
   const storeState = getState()
-  const { userId } = storeState.user
+  const { id } = storeState.user
+
   dispatch(setWaiting())
 
   // query if, add or delete
-  const routeMethod = isVolunteer ? 'delete' : 'post'
+  // const routeMethod = isVolunteer ? 'delete' : 'post'
 
-  return consume('/events/volunteer', routeMethod, { userId, eventId: id })
+  const userData = { userId: id, eventId }
+
+  return consume('/events/volunteer', 'post', userData)
     .then(() => {
       dispatch(clearWaiting())
       return null

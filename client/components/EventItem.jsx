@@ -5,7 +5,7 @@ import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
 export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description } = event
   // volunteers to be recieved from event object
-  const volunteers = [{ id: 1, username: 'member' }, { id: 2, username: 'anna' }, { id: 3, username: 'steve' }]
+  const volunteers = [{ id: 3, username: 'steve' }]
 
   useEffect(() => {
     const ifVolunteer = getIfVolunteer(volunteers)
