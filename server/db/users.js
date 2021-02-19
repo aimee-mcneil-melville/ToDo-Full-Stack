@@ -8,12 +8,12 @@ module.exports = {
   getUserEmailsByGarden
 }
 
-function getUserEmailsByGarden (gardenID, db = connection) {
+function getUserEmailsByGarden (gardenId, db = connection) {
   return db('users')
     .select('id', 'garden_id', 'email', 'is_admin')
-    .where('garden_id', gardenID)
+    .where('garden_id', gardenId)
     .where('is_admin', false)
-    .then(users => users.map(user => user.email))
+    // .then(users => users.map(user => user.email))
 }
 
 getUserEmailsByGarden(1)
