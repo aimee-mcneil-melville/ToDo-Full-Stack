@@ -15,14 +15,13 @@ beforeEach(() => {
 describe('addVolunteer', () => {
   it('adds a volunteer', () => {
     const test = {
-      username: 'Tausani',
+      userId: 1,
       eventId: 1
     }
     return volunteers.addVolunteer(test, testDb)
       .then(() => volunteers.getVolunteer(testDb))
       .then(info => {
-        console.log(info)
-        expect(info[0].username).toBe('Steve')
+        expect(info[0].user_id).toBe(1)
         expect(info[0].event_id).toBe(1)
         return null
       })
@@ -33,7 +32,7 @@ describe('deleteVolunteer', () => {
   it('deletes correct volunteer entry', () => {
     const test = {
       userId: 2,
-      eventId: 3
+      eventId: 2
     }
     return volunteers.deleteVolunteer(test, testDb)
       .then(() => volunteers.getVolunteer(testDb))

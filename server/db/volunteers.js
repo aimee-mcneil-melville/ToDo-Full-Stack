@@ -7,10 +7,10 @@ module.exports = {
 }
 
 function addVolunteer (info, db = connection) {
-  const { username, eventId } = info
+  const { userId, eventId } = info
   return db('eventVolunteers')
     .insert({
-      username,
+      user_id: userId,
       event_id: eventId
     })
 }
