@@ -4,8 +4,19 @@ const { generateHash } = require('../auth')
 module.exports = {
   createUser,
   userExists,
-  getUserByName
+  getUserByName,
+  getUserEmailsByGarden
 }
+
+function getUserEmailsByGarden (gardenID, db = connection) {
+  return db('users')
+    .select('id', 'garden_id', 'email', 'is_admin')
+    .where('garden_id', gardenID)
+    .where('is_admin', false)
+    .then(users => users.map(user => user.email))
+}
+
+getUserEmailsByGarden(1)
 
 function getUserByName (username, db = connection) {
   return db('users')
