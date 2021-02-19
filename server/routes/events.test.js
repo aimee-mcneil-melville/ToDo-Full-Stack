@@ -7,6 +7,7 @@ const log = require('../logger')
 
 jest.mock('../db/event')
 jest.mock('../logger')
+jest.mock('../db/volunteers')
 
 const mockEvents = [{
   id: 1,
@@ -160,14 +161,15 @@ describe('PATCH /api/v1/events/:id', () => {
   })
 })
 
+
 describe('addVolunteer adds Volunteer', () => {
   it('addVolunteer returns correct response', () => {
-    const test = {
-      user_id: 4,
-      event_id: 4
-    }
-    volunteer.addVolunteer((test) => {
 
-    })
+    volunteer.addVolunteer.mockImplementation(() => Promise.resolve(201))
+
+    return request(server)
+      .post('/api/v1/events/volunteer')
+      .send({username: "christo", eventId: 4})
+      .expect(201)
   })
 })

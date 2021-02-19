@@ -61,12 +61,12 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-// ADD VOLUNTEER TO eventVolunteer table
-router.post('/addvolunteer', (req, res) => {
+
+router.post('/volunteer', (req, res) => {
   const info = req.body
   volunteer.addVolunteer(info)
     .then(() => {
-      res.status(201)
+      res.status(201).json({STATUS: "OK"})
       return null
     })
     .catch((err) => {
@@ -79,4 +79,20 @@ router.post('/addvolunteer', (req, res) => {
     })
 })
 
+router.delete('/volunteer', (req, res) => {
+  const info = req.body
+  volunteer.deleteVolunteer(info)
+    .then(() => {
+      res.status(201).json({STATUS: "OK"})
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to update event'
+        }
+      })
+    })
+})
 

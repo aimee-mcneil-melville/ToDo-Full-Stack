@@ -16,17 +16,13 @@ function addVolunteer (info, db = connection) {
 }
 
 function deleteVolunteer (info, db = connection) {
-  const { id } = info
+  const { userId, eventId } = info
   return db('eventVolunteers')
-    .where('id', id)
+    .where('user_id', userId)
+    .where('event_id', eventId)
     .delete()
 }
 
 function getVolunteer (db = connection) {
   return db('eventVolunteers').select()
 }
-
-//
-// DnB -christo id, event id
-
-// id 1 christos id, event id

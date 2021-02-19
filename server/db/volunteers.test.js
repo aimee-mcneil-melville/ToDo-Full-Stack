@@ -42,13 +42,3 @@ describe('deleteVolunteer', () => {
       })
   })
 })
-
-describe('getVolunteer', () => {
-  it('returns all user_id and event_id', () => {
-    return volunteers.getVolunteer(testDb)
-      .then(info => {
-        expect(info).toHaveLength(3)
-        return null
-      })
-  })
-})
