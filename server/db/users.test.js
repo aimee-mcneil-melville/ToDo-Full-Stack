@@ -62,3 +62,14 @@ describe('userExists', () => {
       })
   })
 })
+
+describe('get users emails by garden', () => {
+  it('returns the emails of the users in that garden', () => {
+    return users.getUserEmailsByGarden('1', testDb)
+      .then((user) => {
+        expect(Array.isArray(user)).toBe(true)
+        expect(user[0]).toBe('test@outlook.com')
+        return null
+      })
+  })
+})
