@@ -9,7 +9,8 @@ describe('user reducer', () => {
     const oldState = {
       username: '',
       isAdmin: false,
-      gardenId: null
+      gardenId: null,
+      id: null
     }
 
     const action = {
@@ -17,7 +18,8 @@ describe('user reducer', () => {
       user: {
         username: 'test user',
         isAdmin: false,
-        gardenId: 2
+        gardenId: 2,
+        id: 5
       }
     }
     const newState = userReducer(oldState, action)
@@ -29,7 +31,8 @@ describe('user reducer', () => {
     const oldState = {
       username: 'test user',
       isAdmin: false,
-      gardenId: 2
+      gardenId: 2,
+      id: 5
     }
     const action = {
       type: CLEAR_USER
@@ -43,7 +46,8 @@ describe('user reducer', () => {
     const oldState = {
       username: 'test user',
       isAdmin: false,
-      gardenId: 2
+      gardenId: 2,
+      id: 5
     }
     const action = {
       type: 'RANDOM_OTHER_ACTION'
@@ -60,7 +64,8 @@ describe('getUser', () => {
       return {
         username: 'test username',
         isAdmin: false,
-        gardenId: 2
+        gardenId: 2,
+        id: 5
       }
     })
     const user = getUser()
