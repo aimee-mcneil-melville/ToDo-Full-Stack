@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 
 import { renderWithRouter } from '../test-utils'
 
@@ -23,13 +23,24 @@ describe('Volunteer/ Un-Volunteer button', () => {
     const button = screen.queryByRole('button')
     expect(button.textContent).toBe('Volunteer')
   })
-  // it('displays Un-Volunteer for member if already volunteered for event', () => {
-  //   renderWithRouter(<EventItem isAdmin={false} isVolunteer={true} event={{}} />)
-  //   const button = screen.queryByRole('button')
-  //   expect(button.textContent).toBe('Un-Volunteer')
-  // })
+  // isVolunteer not working currently
+  it('displays Un-Volunteer for member if already volunteered for event', () => {
+    renderWithRouter(<EventItem isAdmin={false} isVolunteer={true} event={{}} />)
+    const button = screen.queryByRole('button')
+    expect(button.textContent).toBe('Un-Volunteer')
+  })
+
   it('does not display if not a member', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
     expect(screen.queryByRole('button')).toBeNull()
+  })
+
+  it('clicking volunteer button changes the button to Un-Volunteer', () => {
+    renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
+    const initial = screen.queryByRole('button')
+    expect(initial.textContent).toBe('Volunteer')
+    fireEvent.click(initial)
+    const newButton = screen.queryByRole('button')
+    expect(newButton.textContent).toBe('Un-Volunteer')
   })
 })
