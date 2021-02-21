@@ -28,11 +28,9 @@ export default function Garden () {
   return (
     <>
       <div className="column">
-        <h3>{name}</h3>
-        <div className='gardenInfo mb-10'>
-          <p className="mb-4">{description}</p>
-          <a className="word-wrap " href={url}><em><u>{url}</u></em></a>
-        </div>
+        <h2>{name}</h2>
+        <p className="mb-4">{description} </p>
+        <p><a className="" href={url}>{url}</a></p>
         <Events events={events} />
       </div>
       <Map

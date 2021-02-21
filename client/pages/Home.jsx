@@ -37,7 +37,7 @@ export default function Home () {
 
   return (
     <>
-      <div className='column is-half-tablet'>
+      <div className='column'>
         <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
         <Link className="button is-medium my-4 mt-6" to={'/garden'}>Get Started</Link>
       </div>
