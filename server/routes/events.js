@@ -1,3 +1,5 @@
+const notificationFile = require('../notificationFunction')
+
 const express = require('express')
 
 const log = require('../logger')
@@ -26,13 +28,14 @@ router.get('/:id', (req, res) => {
 })
 
 function testEvent (event) {
-  // const newEvent = event
+  const newEvent = event
   const gardenId = event.gardenId
   dbUser.getUserEmailsByGarden(gardenId)
-    .then(result => console.log(result))
+    .then(result => notificationFile.sendNotification(result, newEvent))
     .catch(result => console.log(result))
   console.log('this is inside event function', event)
   console.log(event.gardenId)
+
 }
 
 router.post('/', (req, res) => {
@@ -72,3 +75,5 @@ router.patch('/:id', (req, res) => {
       })
     })
 })
+
+// notificationFile.sendNotification()
