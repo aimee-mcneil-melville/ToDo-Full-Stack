@@ -1,6 +1,9 @@
 require('dotenv').config()
 
-export function sendNotification (userdata, eventdata) {
+function sendNotification (userdata, eventdata) {
+  console.log(userdata)
+  const { email, name, id } = userdata
+  console.log(userdata[0].email)
   const http = require('https')
 
   const options = {
@@ -36,8 +39,8 @@ export function sendNotification (userdata, eventdata) {
       {
         to: [
           {
-            email: 'zeppamariano@gmail.com',
-            name: 'John Doe'
+            email: userdata[0].email,
+            name: name
           }
         ],
         dynamic_template_data: {
@@ -68,4 +71,8 @@ export function sendNotification (userdata, eventdata) {
     template_id: 'd-78cba85ace40431b84f04f35d9f51f8d'
   }))
   req.end()
+}
+
+module.exports = {
+  sendNotification
 }
