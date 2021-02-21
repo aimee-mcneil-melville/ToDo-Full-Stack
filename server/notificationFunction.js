@@ -2,8 +2,9 @@ require('dotenv').config()
 
 function sendNotification (userdata, eventdata) {
   console.log(userdata)
-  const { email, name, id } = userdata
-  console.log(userdata[0].email)
+  console.log(userdata.email)
+  console.log(eventdata)
+
   const http = require('https')
 
   const options = {
@@ -39,8 +40,8 @@ function sendNotification (userdata, eventdata) {
       {
         to: [
           {
-            email: userdata[0].email,
-            name: name
+            email: userdata.email,
+            name: 'Mariano'
           }
         ],
         dynamic_template_data: {

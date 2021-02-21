@@ -31,11 +31,14 @@ function testEvent (event) {
   const newEvent = event
   const gardenId = event.gardenId
   dbUser.getUserEmailsByGarden(gardenId)
-    .then(result => notificationFile.sendNotification(result, newEvent))
+    .then(result => mapOverUsers(result, newEvent))
     .catch(result => console.log(result))
-  console.log('this is inside event function', event)
-  console.log(event.gardenId)
+}
 
+function mapOverUsers (userData, eventData) {
+  const details = eventData
+  console.log(userData)
+  userData.map(result => notificationFile.sendNotification(result, details))
 }
 
 router.post('/', (req, res) => {
