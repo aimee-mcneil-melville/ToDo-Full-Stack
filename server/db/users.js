@@ -4,12 +4,23 @@ const { generateHash } = require('../auth')
 module.exports = {
   createUser,
   userExists,
-  getUserByName
+  getUserByName,
+  getUserEmailsByGarden
 }
+
+function getUserEmailsByGarden (gardenId, db = connection) {
+  return db('users')
+    .select('id', 'garden_id', 'email', 'is_admin')
+    .where('garden_id', gardenId)
+    .where('is_admin', false)
+    // .then(users => users.map(user => user.email))
+}
+
+getUserEmailsByGarden(1)
 
 function getUserByName (username, db = connection) {
   return db('users')
-    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash')
+    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash', 'email')
     .where('username', username)
     .first()
 }
@@ -28,7 +39,8 @@ function createUser (user, db = connection) {
         username: user.username,
         garden_id: user.gardenId,
         hash: passwordHash,
-        is_admin: false
+        is_admin: false,
+        email: user.email
       })
     })
 }
