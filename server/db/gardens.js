@@ -13,6 +13,8 @@ function getGardenById (id, db = connection) {
   return db('gardens')
     .where('gardens.id', id)
     .leftJoin('events', 'gardens.id', 'events.garden_id')
+    .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
+    .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
     .select(
       'gardens.description as description',
       'gardens.id as id',
@@ -25,7 +27,9 @@ function getGardenById (id, db = connection) {
       'events.id as eventId',
       'title',
       'date',
-      'volunteers_needed as volunteersNeeded'
+      'volunteers_needed as volunteersNeeded',
+      'users.id as userId',
+      'username'
     )
     .then((result) => {
       const garden = result[0]
@@ -43,7 +47,11 @@ function getGardenById (id, db = connection) {
             volunteersNeeded: event.volunteersNeeded,
             title: event.title,
             date: event.date,
-            description: event.eventDescription
+            description: event.eventDescription,
+            volunteer: {
+              username: event.username,
+              userId: event.userId
+            }
           }
         })
 
