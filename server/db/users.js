@@ -10,13 +10,10 @@ module.exports = {
 
 function getUserEmailsByGarden (gardenId, db = connection) {
   return db('users')
-    .select('id', 'garden_id', 'email', 'is_admin')
+    .select('id', 'username', 'garden_id', 'email', 'is_admin')
     .where('garden_id', gardenId)
     .where('is_admin', false)
-    // .then(users => users.map(user => user.email))
 }
-
-getUserEmailsByGarden(1)
 
 function getUserByName (username, db = connection) {
   return db('users')

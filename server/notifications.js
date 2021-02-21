@@ -41,33 +41,29 @@ function sendNotification (userdata, eventdata) {
         to: [
           {
             email: userdata.email,
-            name: 'Mariano'
+            name: userdata.username
           }
         ],
         dynamic_template_data: {
-          name: 'Mariano',
-          id: '1',
-          gardenID: 'Grow this',
-          eventID: '5',
-          title: 'This is a title',
-          date: 'date',
-          description: 'This is a description',
-          volunteersneeded: '5',
-          verb: '',
-          adjective: '',
-          noun: '',
-          currentDayofWeek: ''
+          name: userdata.username,
+          id: userdata.id,
+          gardenID: eventdata.gardenID,
+          eventID: eventdata.id,
+          title: eventdata.title,
+          date: eventdata.date,
+          description: eventdata.description,
+          volunteersneeded: eventdata.volunteersneeded
         },
-        subject: 'Hello, World!'
+        subject: 'New event in the garden!'
       }
     ],
     from: {
       email: 'zeppamariano@gmail.com',
-      name: 'John Doe'
+      name: 'Gardenz'
     },
     reply_to: {
       email: 'noreply@johndoe.com',
-      name: 'John Doe'
+      name: 'Gardenz'
     },
     template_id: 'd-78cba85ace40431b84f04f35d9f51f8d'
   }))
