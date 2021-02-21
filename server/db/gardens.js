@@ -69,5 +69,5 @@ const extractVolunteers = events =>
       : [...acc, { ...event, volunteers: [event.volunteer] }]
   , [])
     .map(({ id, volunteersNeeded, title, date, description, volunteers }) => (
-      { id, volunteersNeeded, title, date, description, volunteers }
+      { id, volunteersNeeded, title, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
     ))
