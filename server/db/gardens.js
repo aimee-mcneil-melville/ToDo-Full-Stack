@@ -56,5 +56,18 @@ function getGardenById (id, db = connection) {
         })
 
       }
-    })
+    }).then(garden => ({
+      ...garden,
+      events: extractVolunteers(garden.events)
+    }))
 }
+
+const extractVolunteers = events =>
+  events.reduce((acc, event) =>
+    acc.some(e => e.id === event.id)
+      ? acc.map(e => e.id === event.id ? { ...e, volunteers: [...e.volunteers, event.volunteer] } : e)
+      : [...acc, { ...event, volunteers: [event.volunteer] }]
+  , [])
+    .map(({ id, volunteersNeeded, title, date, description, volunteers }) => (
+      { id, volunteersNeeded, title, date, description, volunteers }
+    ))
