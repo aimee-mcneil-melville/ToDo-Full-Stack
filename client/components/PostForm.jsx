@@ -21,10 +21,12 @@ function PostForm (props) {
     })
   }
 
-  function incompletePostData (post) {
-    if (!post.paragraphs || !post.title) {
-      setErrorMessage('Your blog entry is incomplete')
+  function completePostData (post) {
+    if (post.paragraphs && post.title) {
       return true
+    } else {
+      setErrorMessage('Your blog entry is incomplete')
+      return false
     }
   }
 
@@ -32,7 +34,7 @@ function PostForm (props) {
     e.preventDefault()
     const { history, fetchPosts } = props
     if (props.post) {
-      if (!incompletePostData(post)) {
+      if (completePostData(post)) {
         updatePost(post)
           .then(fetchPosts)
           .then(() => navigateToPost(post.id))
@@ -40,7 +42,7 @@ function PostForm (props) {
       }
     } else {
       let postId = null
-      if (!incompletePostData(post)) {
+      if (completePostData(post)) {
         addPost(post)
           .then((newPost) => {
             postId = newPost.id
