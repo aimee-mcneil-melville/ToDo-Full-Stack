@@ -2,7 +2,7 @@ const playwright = require('playwright')
 
 const connection = require('../server/db/connection')
 
-const homeUrl = 'http://localhost:3001/#/'
+const homeUrl = 'http://localhost:3000/#/'
 const gardenUrl = homeUrl + 'garden'
 const registerUrl = homeUrl + 'register'
 const signInUrl = homeUrl + 'signin'
@@ -20,7 +20,7 @@ test('User can register, sign out and sign in again', async () => {
   // navigate to register pages
   await Promise.all([
     page.waitForNavigation(),
-    page.click('a:text("Register")')
+    page.click('a:text("Register")'),
   ])
   expect(page.url()).toBe(registerUrl)
 
@@ -38,22 +38,16 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Register")')
+    page.click('button:text("Register")'),
   ])
   expect(page.url()).toBe(gardenUrl)
 
   // Log out
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click('a:text("Log out")')
-  ])
+  await Promise.all([page.waitForNavigation(), page.click('a:text("Log out")')])
   expect(page.url()).toBe(homeUrl)
 
   // Navigate to sign in page
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click('a:text("Sign in")')
-  ])
+  await Promise.all([page.waitForNavigation(), page.click('a:text("Sign in")')])
   expect(page.url()).toBe(signInUrl)
 
   // fill out sign in form
@@ -68,7 +62,7 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Sign in")')
+    page.click('button:text("Sign in")'),
   ])
   expect(page.url()).toBe(gardenUrl)
 
