@@ -4,7 +4,7 @@ import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 
 import Garden from './Garden'
-import { getGarden } from './gardenHelper'
+import { getGarden, signedIn } from './gardenHelper'
 
 jest.mock('./gardenHelper')
 
@@ -20,6 +20,7 @@ describe('Garden', () => {
       lon: -123
     })
     )
+    signedIn.mockImplementation(() => true)
     // we need renderWithRedux even though Garden isn't connecting to the store
     // because it's child component (Events) does
     renderWithRedux(<Garden />)

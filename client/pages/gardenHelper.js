@@ -2,6 +2,7 @@ import { dispatch, getState } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 import requestor from '../consume'
+import { isAuthenticated } from '../auth'
 
 export function getGarden (consume = requestor) {
   const storeState = getState()
@@ -24,4 +25,8 @@ export function getGarden (consume = requestor) {
     .catch((error) => {
       dispatch(showError(error.message))
     })
+}
+
+export function signedIn () {
+  return isAuthenticated()
 }
