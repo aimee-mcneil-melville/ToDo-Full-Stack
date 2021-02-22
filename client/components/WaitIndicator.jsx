@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 function WaitIndicator ({ waiting }) {
   return waiting
     ? <p>WAITING</p>
-    : null
+    : <br/>
 }
 
 function mapStateToProps (state) {
