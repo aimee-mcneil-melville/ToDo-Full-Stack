@@ -1,4 +1,4 @@
-import { isAuthenticated, getDecodedToken } from '../auth'
+import { getUser } from '../auth-utils'
 import { SET_USER, CLEAR_USER } from '../actions/user'
 
 const emptyUser = {
@@ -19,17 +19,4 @@ export default function user (state = getUser(), action) {
     default:
       return state
   }
-}
-
-export function getUser () {
-  if (isAuthenticated()) {
-    const { username, isAdmin, gardenId, id } = getDecodedToken()
-    return {
-      username,
-      isAdmin,
-      gardenId,
-      id
-    }
-  }
-  return emptyUser
 }
