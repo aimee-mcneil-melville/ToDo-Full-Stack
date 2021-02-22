@@ -1,26 +1,11 @@
 const path = require('path')
 
 module.exports = {
-
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
       filename: path.join(__dirname, 'dev.sqlite3')
-    }
-  },
-
-  e2e: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
-    connection: {
-      filename: path.join(__dirname, '../../e2e/dev.sqlite3')
-    },
-    seeds: {
-      directory: path.join(__dirname, 'testSeeds')
-    },
-    migrations: {
-      directory: path.join(__dirname, 'migrations')
     }
   },
 
@@ -36,6 +21,24 @@ module.exports = {
     migrations: {
       directory: path.join(__dirname, 'migrations')
     }
+  },
+
+  e2e: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: path.join(__dirname, 'testSeeds')
+    }
+    // migrations: {
+    //   directory: path.join(__dirname, 'migrations'),
+    // },
   },
 
   staging: {
