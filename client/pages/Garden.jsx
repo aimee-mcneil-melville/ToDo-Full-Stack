@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
+import { isAuthenticated } from '../auth'
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
+import { Redirect } from 'react-router'
 
 export default function Garden () {
+  if (!isAuthenticated()) return <Redirect to={'/signin'} />
+
   const [garden, setGarden] = useState({
     name: '',
     description: '',
