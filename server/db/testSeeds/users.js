@@ -13,9 +13,9 @@ exports.seed = function (knex) {
     )
     .then(([adminHash, testHash, randomHash]) =>
       knex('users').insert([
-        { garden_id: 1, username: 'admin', hash: adminHash, is_admin: true },
-        { garden_id: 1, username: 'test', hash: testHash, is_admin: false },
-        { garden_id: 2, username: 'random', hash: randomHash, is_admin: false }
+        { id: 1, garden_id: 1, username: 'admin', hash: adminHash, is_admin: true },
+        { id: 2, garden_id: 1, username: 'test', hash: testHash, is_admin: false },
+        { id: 3, garden_id: 2, username: 'random', hash: randomHash, is_admin: false }
       ])
     )
 }
