@@ -15,7 +15,6 @@ describe('getUser', () => {
       }
     })
     const user = getUser()
-    console.log(getUser)
     expect(user.username).toBe('test username')
   })
 

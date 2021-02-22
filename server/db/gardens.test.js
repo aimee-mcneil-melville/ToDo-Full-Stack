@@ -26,7 +26,6 @@ describe('getGardenById', () => {
   it('returns the chosen garden, with events mapped correctly', () => {
     return db.getGardenById(1, testDb)
       .then(garden => {
-        console.log(garden)
         expect(garden.id).toBe(1)
         expect(garden.name).toBe('Kelmarna Gardens')
         expect(garden.events).toHaveLength(2)
