@@ -63,13 +63,15 @@ describe('userExists', () => {
   })
 })
 
-// describe('get users emails by garden', () => {
-//   it('returns the emails of the users in that garden', () => {
-//     return users.getUserEmailsByGarden('1', testDb)
-//       .then((user) => {
-//         expect(Array.isArray(user)).toBe(true)
-//         expect(user[0]).toBe('test@outlook.com')
-//         return null
-//       })
-//   })
-// })
+describe('get users details by garden', () => {
+  it('returns the details of the non admin users in that garden', () => {
+    return users.getUserDetailsByGarden('1', testDb)
+      .then((user) => {
+        expect(Array.isArray(user)).toBe(true)
+        expect(user[0].email).toBe('test@outlook.com')
+        expect(user[0].id).toBe(2)
+        expect(user[0].is_admin).toBeFalsy()
+        return null
+      })
+  })
+})

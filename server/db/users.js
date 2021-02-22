@@ -5,10 +5,10 @@ module.exports = {
   createUser,
   userExists,
   getUserByName,
-  getUserEmailsByGarden
+  getUserDetailsByGarden
 }
 
-function getUserEmailsByGarden (gardenId, db = connection) {
+function getUserDetailsByGarden (gardenId, db = connection) {
   return db('users')
     .select('id', 'username', 'garden_id', 'email', 'is_admin')
     .where('garden_id', gardenId)
