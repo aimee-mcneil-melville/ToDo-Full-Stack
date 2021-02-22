@@ -1,10 +1,10 @@
 require('dotenv').config()
-
+const jwt = require('jsonwebtoken')
 function sendNotification (userdata, eventdata) {
   console.log(userdata)
   console.log(userdata.email)
   console.log(eventdata)
-
+  const token = jwt.sign({ user_id: userdata.id, event_id: eventdata.id }, process.env.JWT_SECRET)
   const http = require('https')
 
   const options = {
@@ -13,7 +13,7 @@ function sendNotification (userdata, eventdata) {
     port: null,
     path: '/v3/mail/send',
     headers: {
-      authorization: `Bearer ${process.env.JWT_SECRET}`,
+      authorization: `Bearer ${process.env.SENDGRID_API_KEY_MARIANO}`,
       'content-type': 'application/json'
     }
   }
@@ -47,12 +47,11 @@ function sendNotification (userdata, eventdata) {
         dynamic_template_data: {
           name: userdata.username,
           id: userdata.id,
-          gardenID: eventdata.gardenID,
-          eventID: eventdata.id,
           title: eventdata.title,
           date: eventdata.date,
           description: eventdata.description,
-          volunteersneeded: eventdata.volunteersneeded
+          volunteersneeded: eventdata.volunteersNeeded,
+          url: token
         },
         subject: 'New event in the garden!'
       }
@@ -62,10 +61,10 @@ function sendNotification (userdata, eventdata) {
       name: 'Gardenz'
     },
     reply_to: {
-      email: 'noreply@johndoe.com',
+      email: 'zeppamariano@gmail.com',
       name: 'Gardenz'
     },
-    template_id: 'd-78cba85ace40431b84f04f35d9f51f8d'
+    template_id: 'd-459f20360d9e46acade3c36f6e66f259'
   }))
   req.end()
 }
