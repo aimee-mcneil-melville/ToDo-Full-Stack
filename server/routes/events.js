@@ -4,6 +4,8 @@ const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/event')
+const { decode } = require('../emailTokens')
+const { addVolunteer } = require('../db/volunteers')
 
 const router = express.Router()
 
@@ -61,6 +63,20 @@ router.patch('/:id', (req, res) => {
           title: 'Unable to update event'
         }
       })
+    })
+})
+
+router.get('/emailsignup', (req, res) => {
+  const { token } = req.query
+  const volunteer = decode(token)
+
+  addVolunteer(volunteer)
+    .then(() => {
+      res.redirect('/')
+      return null
+    })
+    .catch(e => {
+      res.status(500).send()
     })
 })
 
