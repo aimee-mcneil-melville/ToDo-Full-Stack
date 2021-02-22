@@ -1,5 +1,4 @@
-const notification = require('../notificationHelper')
-// const {testEvent} from './notification'
+const { sendEventNotifications } = require('../notificationHelper')
 const express = require('express')
 
 const log = require('../logger')
@@ -31,7 +30,7 @@ router.post('/', (req, res) => {
   const newEvent = { title, date, volunteersNeeded, description, gardenId }
   db.addEvent(newEvent)
     .then((event) => {
-      notification.usersByGarden(event)
+      sendEventNotifications(event)
       res.status(201).json(event)
       return null
     })
@@ -43,7 +42,6 @@ router.post('/', (req, res) => {
         }
       })
     })
-  // console.log('from end of post route ', newEvent)
 })
 
 router.patch('/:id', (req, res) => {
@@ -63,5 +61,3 @@ router.patch('/:id', (req, res) => {
       })
     })
 })
-
-// notificationFile.sendNotification()

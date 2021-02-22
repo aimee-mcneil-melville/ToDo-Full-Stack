@@ -1,19 +1,18 @@
 const dbUser = require('./db/users')
-const notificationFile = require('./notifications')
+const { sendNotification } = require('./notifications')
 
-function usersByGarden (event) {
-  const newEvent = event
+function sendEventNotifications (event) {
   const gardenId = event.gardenId
   dbUser.getUserDetailsByGarden(gardenId)
-    .then(result => mapOverUsers(result, newEvent))
-    .catch(result => console.log(result))
+    .then(users => sendUserNotifications(users, event))
+    .catch(err => console.error(err))
 }
 
-function mapOverUsers (userData, eventData) {
-  const details = eventData
-  userData.map(result => notificationFile.sendNotification(result, details))
+function sendUserNotifications (users, event) {
+  users.forEach(user => sendNotification(user, event))
 }
 
 module.exports = {
-  usersByGarden
+  sendEventNotifications,
+  sendUserNotifications
 }

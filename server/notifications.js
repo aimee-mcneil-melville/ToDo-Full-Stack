@@ -1,10 +1,6 @@
 require('dotenv').config()
 
 function sendNotification (userdata, eventdata) {
-  console.log(userdata)
-  console.log(userdata.email)
-  console.log(eventdata)
-
   const http = require('https')
 
   const options = {
