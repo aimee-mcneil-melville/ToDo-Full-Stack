@@ -68,10 +68,12 @@ export default function Register (props) {
         </form>
       </div>
       <div className="column ">
-        <img
-          src="./images/comGardenPlant.png"
-          alt=""
-        />
+        <div className="imageFit">
+          <img
+            src="./images/comGardenPlant.png"
+            alt=""
+          />
+        </div>
       </div>
     </>
   )

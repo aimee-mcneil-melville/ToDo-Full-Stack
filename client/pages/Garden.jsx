@@ -30,7 +30,7 @@ export default function Garden () {
       <div className="column">
         <h2>{name}</h2>
         <p className="mb-4">{description} </p>
-        <p><a className="gardenLink" href={url}>{url}</a></p>
+        <p><a className="gardenLink word-wrap" href={url}>{url}</a></p>
         <Events events={events} />
       </div>
       <Map

@@ -54,10 +54,12 @@ export default function SignIn (props) {
         </form>
       </div>
       <div className="column">
-        <img
-          src="images/comGardenRows.png"
-          alt=""
-        />
+        <div className="imageFit">
+          <img
+            src="images/comGardenRows.png"
+            alt=""
+          />
+        </div>
       </div>
     </>
   )
