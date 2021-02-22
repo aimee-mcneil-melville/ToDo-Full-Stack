@@ -7,7 +7,7 @@ module.exports = {
   getUserByName,
   getUserDetailsByGarden
 }
-
+// TODO: alias isAdmin and gardenId
 function getUserDetailsByGarden (gardenId, db = connection) {
   return db('users')
     .select('id', 'username', 'garden_id', 'email', 'is_admin')

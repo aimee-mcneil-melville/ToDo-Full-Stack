@@ -13,6 +13,5 @@ function sendUserNotifications (users, event) {
 }
 
 module.exports = {
-  sendEventNotifications,
-  sendUserNotifications
+  sendEventNotifications
 }
