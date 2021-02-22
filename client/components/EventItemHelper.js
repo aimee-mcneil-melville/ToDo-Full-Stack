@@ -1,18 +1,13 @@
 import { dispatch, getState } from '../store'
-import { setWaiting, clearWaiting } from '../actions/waiting'
+import { setWaiting } from '../actions/waiting'
 import requestor from '../consume'
+import { getGarden } from '../pages/gardenHelper'
 
 export function getIfVolunteer (volunteers) {
   const storeState = getState()
   const { id } = storeState.user
 
-  const index = volunteers.findIndex((volunteerObj) => {
-    return volunteerObj.id === id
-  })
-
-  const ifVolunteer = index !== -1
-
-  return ifVolunteer
+  return volunteers.some(vol => vol.userId === id)
 }
 
 export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor) {
@@ -27,8 +22,8 @@ export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor
   const userData = { userId: id, eventId }
 
   return consume('/events/volunteer', routeMethod, userData)
-    .then(() => {
-      dispatch(clearWaiting())
+    .then((event) => {
+      getGarden()
       return null
     })
 }
