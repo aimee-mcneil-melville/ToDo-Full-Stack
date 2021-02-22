@@ -61,12 +61,14 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-
 router.post('/volunteer', (req, res) => {
   const info = req.body
   volunteer.addVolunteer(info)
     .then(() => {
-      res.status(201).json({STATUS: "OK"})
+      return db.getEventById(info.eventId)
+    })
+    .then((eventUpdated) => {
+      res.status(201).json(eventUpdated)
       return null
     })
     .catch((err) => {
@@ -83,7 +85,10 @@ router.delete('/volunteer', (req, res) => {
   const info = req.body
   volunteer.deleteVolunteer(info)
     .then(() => {
-      res.status(201).json({STATUS: "OK"})
+      return db.getEventById(info.eventId)
+    })
+    .then((eventUpdated) => {
+      res.status(201).json(eventUpdated)
       return null
     })
     .catch((err) => {
@@ -95,4 +100,3 @@ router.delete('/volunteer', (req, res) => {
       })
     })
 })
-
