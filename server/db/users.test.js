@@ -64,7 +64,8 @@ describe('userExists', () => {
 })
 
 describe('get users details by garden', () => {
-  it('returns the details of the non admin users in that garden', () => {
+  it('returns the details of the non admin users in related garden', () => {
+    expect.assertions(4)
     return users.getUserDetailsByGarden('1', testDb)
       .then((user) => {
         expect(Array.isArray(user)).toBe(true)
