@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 
+import { isAuthenticated } from '../auth'
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
-function Garden (props) {
-  const { garden } = props
+function Garden ({ garden }) {
+  if (!isAuthenticated()) return <Redirect to={'/signin'} />
 
   useEffect(() => {
     getGarden()
