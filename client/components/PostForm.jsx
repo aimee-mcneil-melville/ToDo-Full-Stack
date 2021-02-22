@@ -21,23 +21,34 @@ function PostForm (props) {
     })
   }
 
+  function incompletePostData (post) {
+    if (!post.paragraphs || !post.title) {
+      setErrorMessage('Your blog entry is incomplete')
+      return true
+    }
+  }
+
   function handleSubmit (e) {
     e.preventDefault()
     const { history, fetchPosts } = props
     if (props.post) {
-      updatePost(post)
-        .then(fetchPosts)
-        .then(() => navigateToPost(post.id))
-        .catch(err => setErrorMessage(err.message))
+      if (!incompletePostData(post)) {
+        updatePost(post)
+          .then(fetchPosts)
+          .then(() => navigateToPost(post.id))
+          .catch(err => setErrorMessage(err.message))
+      }
     } else {
       let postId = null
-      addPost(post)
-        .then((newPost) => {
-          postId = newPost.id
-          return fetchPosts()
-        })
-        .then(() => navigateToPost(postId))
-        .catch(err => setErrorMessage(err.message))
+      if (!incompletePostData(post)) {
+        addPost(post)
+          .then((newPost) => {
+            postId = newPost.id
+            return fetchPosts()
+          })
+          .then(() => navigateToPost(postId))
+          .catch(err => setErrorMessage(err.message))
+      }
     }
 
     function navigateToPost (id) {
