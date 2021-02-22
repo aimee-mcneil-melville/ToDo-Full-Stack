@@ -23,7 +23,7 @@
     "test:e2e:debug": "DEBUG=pw:api npm run test:e2e",
     "e2e": "jest e2e --config e2e/jest.config.js --verbose",
     "lint": "eslint --ext .js,.jsx .",
-    "docker": "run-p db:migrate start"
+    "docker": "npm run db:migrate && npm run db:seed && npm run start"
   },
   "babel": {
     "presets": [
