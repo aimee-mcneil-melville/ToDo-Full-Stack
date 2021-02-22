@@ -10,6 +10,7 @@ jest.mock('./gardenHelper')
 
 describe('Garden', () => {
   it('calls getGarden helper and displays garden data on mount', () => {
+    signedIn.mockImplementation(() => true)
     renderWithRedux(<Garden />, {
       initialState: {
         garden: {
@@ -24,10 +25,8 @@ describe('Garden', () => {
       }
     })
 
-    signedIn.mockImplementation(() => true)
     // we need renderWithRedux even though Garden isn't connecting to the store
     // because it's child component (Events) does
-    renderWithRedux(<Garden />)
     return screen.findByRole('heading', { name: 'test garden' })
       .then(() => {
         const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
