@@ -3,19 +3,12 @@ import { Link } from 'react-router-dom'
 import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
-  const { id, title, date, volunteersNeeded, description } = event
+  const { id, title, date, volunteersNeeded, description, volunteers } = event
   // volunteers to be recieved from event object
-  const volunteers = [{ id: 3, username: 'steve' }]
 
-  useEffect(() => {
-    const ifVolunteer = getIfVolunteer(volunteers)
-    setIsVolunteer(ifVolunteer)
-  }, [])
-
-  const [isVolunteer, setIsVolunteer] = useState(false)
+  const isVolunteer = getIfVolunteer(volunteers)
 
   function clickHandler () {
-    setIsVolunteer(!isVolunteer)
     toggleVolunteerButton(id, isVolunteer)
   }
 
