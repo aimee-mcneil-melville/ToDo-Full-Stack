@@ -1,10 +1,6 @@
-require('dotenv').config()
 const jwt = require('jsonwebtoken')
 function sendNotification (userdata, eventdata) {
-  console.log(userdata)
-  console.log(userdata.email)
-  console.log(eventdata)
-  const token = jwt.sign({ user_id: userdata.id, event_id: eventdata.id }, process.env.JWT_SECRET)
+  const token = jwt.sign({ userId: userdata.id, eventId: eventdata.id }, process.env.JWT_SECRET)
   const http = require('https')
 
   const options = {
@@ -17,10 +13,6 @@ function sendNotification (userdata, eventdata) {
       'content-type': 'application/json'
     }
   }
-
-  // const data = {
-
-  // }
 
   const req = http.request(options, function (res) {
     const chunks = []
