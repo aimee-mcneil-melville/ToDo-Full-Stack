@@ -5,6 +5,8 @@ import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
 
+jest.mock('./eventItemHelper')
+
 describe('Edit Event button', () => {
   it('displays for admin', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
