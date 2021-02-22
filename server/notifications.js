@@ -13,7 +13,7 @@ function sendNotification (userdata, eventdata) {
     port: null,
     path: '/v3/mail/send',
     headers: {
-      authorization: `Bearer ${process.env.SENDGRID_API_KEY_MARIANO}`,
+      authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
       'content-type': 'application/json'
     }
   }
@@ -57,14 +57,14 @@ function sendNotification (userdata, eventdata) {
       }
     ],
     from: {
-      email: 'zeppamariano@gmail.com',
+      email: 'admin@gardenz.eda.nz',
       name: 'Gardenz'
     },
     reply_to: {
-      email: 'zeppamariano@gmail.com',
+      email: 'reply@gardenz.eda.nz',
       name: 'Gardenz'
     },
-    template_id: 'd-459f20360d9e46acade3c36f6e66f259'
+    template_id: 'd-5f8909decdc94fa08d818b740e47a025'
   }))
   req.end()
 }
