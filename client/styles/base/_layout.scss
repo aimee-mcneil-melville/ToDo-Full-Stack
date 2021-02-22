@@ -2,18 +2,34 @@
   clear: both;
 }
 
-.box {
+.event-box {
   box-shadow: none;
-  border: 3px solid $border;
-  border-radius: 0;
-  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 5px;
+  overflow: auto;
+  height: 250px;
+  padding: 1rem;
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  h4{ 
+    margin-bottom:0.5rem;
+  }
+}
+
+.eventDesc{
+  margin-bottom:0.7rem;
 }
 
 .leaflet-container {
-  height: 30rem; 
+  height: 100%; 
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
 }
 
 .message-error {

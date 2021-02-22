@@ -12,8 +12,8 @@ function Events ({ events, isAdmin }) {
           ? <Link to='/events/new' className="button my-4 is-pulled-right">Add New Event</Link>
           : null
       }
-      <h2 className="">Events</h2>
-      <div className="box clearfix">
+      <h2>Events</h2>
+      <div className="event-box clearfix">
         {events.map((event) =>
           <EventItem key={event.id} event={event} isAdmin={isAdmin} />
         )}
