@@ -1,9 +1,10 @@
 import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
+import { screen, fireEvent, waitFor } from '@testing-library/react'
 
-import { renderWithRouter } from '../test-utils'
+import { renderWithRedux, renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
+import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
 
 jest.mock('./eventItemHelper')
 
@@ -19,30 +20,38 @@ describe('Edit Event button', () => {
   })
 })
 
-describe('Volunteer/ Un-Volunteer button', () => {
+describe('Volunteer button', () => {
   it('displays Volunteer for member if not volunteered for event', () => {
-    renderWithRouter(<EventItem isAdmin={false} isVolunteer={false} event={{}} />)
+    getIfVolunteer.mockImplementation(() => false)
+
+    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
     const button = screen.queryByRole('button')
+    expect(getIfVolunteer).toHaveBeenCalled()
     expect(button.textContent).toBe('Volunteer')
-  })
-  // isVolunteer not working currently
-  it('displays Un-Volunteer for member if already volunteered for event', () => {
-    renderWithRouter(<EventItem isAdmin={false} isVolunteer={true} event={{}} />)
-    const button = screen.queryByRole('button')
-    expect(button.textContent).toBe('Un-Volunteer')
   })
 
   it('does not display if not a member', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
     expect(screen.queryByRole('button')).toBeNull()
   })
+})
 
-  it('clicking volunteer button changes the button to Un-Volunteer', () => {
+describe('Un-Volunteer button', () => {
+  it('displays Un-Volunteer for member if already volunteered for event', () => {
+    getIfVolunteer.mockImplementation(() => true)
+
+    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
+    const button = screen.queryByRole('button')
+    expect(getIfVolunteer).toHaveBeenCalled()
+    expect(button.textContent).toBe('Un-Volunteer')
+  })
+})
+
+describe('toggle volunteer button', () => {
+  it('clicking volunteer button calls toggleVolunteerButton', () => {
+    getIfVolunteer.mockImplementation(() => false)
     renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
-    const initial = screen.queryByRole('button')
-    expect(initial.textContent).toBe('Volunteer')
-    fireEvent.click(initial)
-    const newButton = screen.queryByRole('button')
-    expect(newButton.textContent).toBe('Un-Volunteer')
+    fireEvent.click(screen.queryByRole('button'))
+    expect(toggleVolunteerButton).toHaveBeenCalled()
   })
 })
