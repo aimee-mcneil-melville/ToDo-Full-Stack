@@ -22,7 +22,8 @@
     "test:e2e": "NODE_ENV=e2e PORT=3001 server-test 3001 e2e",
     "test:e2e:debug": "DEBUG=pw:api npm run test:e2e",
     "e2e": "jest e2e --config e2e/jest.config.js --verbose",
-    "lint": "eslint --ext .js,.jsx ."
+    "lint": "eslint --ext .js,.jsx .",
+    "docker": "run-p db:migrate start"
   },
   "babel": {
     "presets": [

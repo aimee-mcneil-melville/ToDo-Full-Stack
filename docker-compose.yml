@@ -8,6 +8,22 @@ services:
       PORT: 3000
     ports:
       - '3000:3000'
+    depends_on:
+      - 'postgres'
+    command:
+      ./wait-for-it.sh postgres:5432 -- npm run docker
+      # [
+      #   './wait-for-it.sh',
+      #   'postgres:5432',
+      #   '--',
+      #   'npm',
+      #   'run',
+      #   'db:migrate',
+      #   '&&',
+      #   'npm',
+      #   'run',
+      #   'start',
+      # ]
   postgres:
     image: postgres
     ports:
