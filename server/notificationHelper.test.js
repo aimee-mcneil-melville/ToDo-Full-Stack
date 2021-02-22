@@ -5,7 +5,7 @@ jest.mock('./db/users')
 jest.mock('./notifications')
 
 describe('send each user a notification', () => {
-  it('runs sendNotification 1 time', () => {
+  it('takes the new event and sends notifications to users with gardenid', () => {
     expect.assertions(4)
     dbUser.getUserDetailsByGarden.mockImplementation((gardenId) => {
       expect(gardenId).toBe(1)
