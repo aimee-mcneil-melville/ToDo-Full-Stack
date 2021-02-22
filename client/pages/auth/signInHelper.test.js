@@ -48,7 +48,7 @@ describe('signInUser', () => {
       })
   })
 
-  it('dispatches error if signIn rejects', () => {
+  it('dispatches a generic error if signIn rejects', () => {
     expect.assertions(2)
     signIn.mockImplementation(() => Promise.reject(new Error('mock error')))
     const user = {
@@ -60,6 +60,22 @@ describe('signInUser', () => {
       .then(() => {
         expect(navigateTo).not.toHaveBeenCalled()
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
+  })
+
+  it('dispatches an error if username/password mismatch', () => {
+    expect.assertions(2)
+    signIn.mockImplementation(() => Promise.reject(new Error('INVALID_CREDENTIALS')))
+    const user = {
+      username: 'baduser',
+      password: 'badpassword'
+    }
+    const navigateTo = jest.fn()
+    return signInUser(user, navigateTo)
+      .then(() => {
+        expect(navigateTo).not.toHaveBeenCalled()
+        expect(dispatch.mock.calls[1][0].errorMessage).toMatch('combination not found')
         return null
       })
   })
