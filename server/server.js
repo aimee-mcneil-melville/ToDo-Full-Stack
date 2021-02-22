@@ -7,7 +7,6 @@ const gardenRoutes = require('./routes/gardens')
 const eventRoutes = require('./routes/events')
 const authRoutes = require('./routes/auth')
 
-
 const server = express()
 
 module.exports = server

@@ -7,7 +7,28 @@ module.exports = {
 }
 
 function getEventById (id, db = connection) {
-  return db('events').where('id', id).select('id', 'garden_id as gardenId', 'title', 'date', 'description', 'volunteers_needed as volunteersNeeded').first()
+  return db('events')
+    .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
+    .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
+    .select('events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username')
+    .where('events.id', id)
+    .then(result => {
+      const event = result[0]
+      return {
+        id: event.id,
+        gardenId: event.gardenId,
+        volunteersNeeded: event.volunteersNeeded,
+        title: event.title,
+        date: event.date,
+        description: event.description,
+        volunteers: !result.some(evts => evts.userId) ? [] : result.map((volunteer) => {
+          return {
+            userId: volunteer.userId,
+            username: volunteer.username
+          }
+        })
+      }
+    })
 }
 
 function addEvent (newEvent, db = connection) {

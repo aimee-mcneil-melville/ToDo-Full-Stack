@@ -61,12 +61,11 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-
 router.post('/volunteer', (req, res) => {
   const info = req.body
   volunteer.addVolunteer(info)
     .then(() => {
-      res.status(201).json({STATUS: "OK"})
+      res.status(201).json({ STATUS: 'OK' })
       return null
     })
     .catch((err) => {
@@ -83,7 +82,7 @@ router.delete('/volunteer', (req, res) => {
   const info = req.body
   volunteer.deleteVolunteer(info)
     .then(() => {
-      res.status(201).json({STATUS: "OK"})
+      res.status(201).json({ STATUS: 'OK' })
       return null
     })
     .catch((err) => {
@@ -95,4 +94,3 @@ router.delete('/volunteer', (req, res) => {
       })
     })
 })
-
