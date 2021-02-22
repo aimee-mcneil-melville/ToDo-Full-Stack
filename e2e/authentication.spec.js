@@ -20,7 +20,7 @@ test('User can register, sign out and sign in again', async () => {
   // navigate to register pages
   await Promise.all([
     page.waitForNavigation(),
-    page.click('a:text("Register")'),
+    page.click('a:text("Register")')
   ])
   expect(page.url()).toBe(registerUrl)
 
@@ -38,7 +38,7 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Register")'),
+    page.click('button:text("Register")')
   ])
   expect(page.url()).toBe(gardenUrl)
 
@@ -62,7 +62,7 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Sign in")'),
+    page.click('button:text("Sign in")')
   ])
   expect(page.url()).toBe(gardenUrl)
 
