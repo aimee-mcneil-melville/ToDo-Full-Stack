@@ -1,6 +1,6 @@
-require('dotenv').config()
-
+const jwt = require('jsonwebtoken')
 function sendNotification (userdata, eventdata) {
+  const token = jwt.sign({ userId: userdata.id, eventId: eventdata.id }, process.env.JWT_SECRET)
   const http = require('https')
 
   const options = {
@@ -9,14 +9,10 @@ function sendNotification (userdata, eventdata) {
     port: null,
     path: '/v3/mail/send',
     headers: {
-      authorization: `Bearer ${process.env.JWT_SECRET}`,
+      authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
       'content-type': 'application/json'
     }
   }
-
-  // const data = {
-
-  // }
 
   const req = http.request(options, function (res) {
     const chunks = []
@@ -43,25 +39,24 @@ function sendNotification (userdata, eventdata) {
         dynamic_template_data: {
           name: userdata.username,
           id: userdata.id,
-          gardenID: eventdata.gardenID,
-          eventID: eventdata.id,
           title: eventdata.title,
           date: eventdata.date,
           description: eventdata.description,
-          volunteersneeded: eventdata.volunteersneeded
+          volunteersneeded: eventdata.volunteersNeeded,
+          url: token
         },
         subject: 'New event in the garden!'
       }
     ],
     from: {
-      email: 'zeppamariano@gmail.com',
+      email: 'admin@gardenz.eda.nz',
       name: 'Gardenz'
     },
     reply_to: {
-      email: 'noreply@johndoe.com',
+      email: 'reply@gardenz.eda.nz',
       name: 'Gardenz'
     },
-    template_id: 'd-78cba85ace40431b84f04f35d9f51f8d'
+    template_id: 'd-5f8909decdc94fa08d818b740e47a025'
   }))
   req.end()
 }
