@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 
 function WaitIndicator ({ waiting }) {
   return waiting
-    ? <p>WAITING</p>
-    : null
+    ? <p className= "waitIndicator">loading...</p>
+    // ? <div className="loader">Loading...</div>
+    : <br/>
 }
 
 function mapStateToProps (state) {

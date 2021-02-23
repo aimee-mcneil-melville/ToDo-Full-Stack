@@ -30,12 +30,10 @@ export default function Garden () {
   const { name, description, address, url, events, lat, lon } = garden
   return (
     <>
-      <div className="column">
-        <h3>{name}</h3>
-        <div className='gardenInfo mb-10'>
-          <p className="mb-4">{description}</p>
-          <a className="word-wrap " href={url}><em><u>{url}</u></em></a>
-        </div>
+      <div className="column garden">
+        <h2>{name}</h2>
+        <p className="mb-4">{description} </p>
+        <p><a className="gardenLink word-wrap" href={url}>{url}</a></p>
         <Events events={events} />
       </div>
       <Map

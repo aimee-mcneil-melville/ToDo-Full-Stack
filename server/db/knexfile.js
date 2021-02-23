@@ -30,15 +30,12 @@ module.exports = {
       min: 2,
       max: 10
     },
-    migrations: {
-      tableName: 'knex_migrations'
-    },
     seeds: {
       directory: path.join(__dirname, 'testSeeds')
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
     }
-    // migrations: {
-    //   directory: path.join(__dirname, 'migrations'),
-    // },
   },
 
   staging: {

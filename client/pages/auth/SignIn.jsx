@@ -23,8 +23,8 @@ export default function SignIn (props) {
 
   return (
     <>
-      <div className="column is-one-quarter-desktop">
-        <form className="pr-5">
+      <div className="column">
+        <form className="inputForm">
           <label htmlFor="username" className="label">Username</label>
           <input
             className="input"
@@ -53,13 +53,13 @@ export default function SignIn (props) {
           </button>
         </form>
       </div>
-      <div className="column is-two-thirds-tablet">
-        <img
-          className='rightHeroImage'
-          src="images/comGardenRows.png"
-          alt=""
-          style={{ width: '600px', height: '500px' }}
-        />
+      <div className="column">
+        <div className="imageFit">
+          <img
+            src="images/comGardenRows.png"
+            alt=""
+          />
+        </div>
       </div>
     </>
   )

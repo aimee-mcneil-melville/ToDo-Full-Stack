@@ -1,0 +1,22 @@
+name: E2E
+
+on:
+  push:
+    branches:
+      - actionE2E
+  pull_request:
+    branches:
+      - actionE2E
+
+jobs:
+
+  E2E:
+    runs-on: ubuntu-latest
+    environment: testing
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+    steps:
+    # todo
+    - uses: actions/checkout@v2
+    - name: Docker compose
+      run: docker-compose up --abort-on-container-exit
