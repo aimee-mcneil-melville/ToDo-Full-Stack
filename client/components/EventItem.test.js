@@ -4,7 +4,7 @@ import { screen, fireEvent } from '@testing-library/react'
 import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
-import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
+import { getIfVolunteer, toggleVolunteerButton } from './eventItemHelper'
 
 jest.mock('./eventItemHelper')
 

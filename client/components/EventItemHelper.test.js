@@ -1,6 +1,6 @@
 import { SET_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
-import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
+import { getIfVolunteer, toggleVolunteerButton } from './eventItemHelper'
 
 jest.mock('../store')
 jest.mock('../pages/gardenHelper')
@@ -16,9 +16,9 @@ describe('getIfVolunteer', () => {
       { userId: 2, eventId: 2 },
       { userId: 3, eventId: 1 }
     ]
-    const test = getIfVolunteer(volunteers)
+    const isVolunteer = getIfVolunteer(volunteers)
     expect(getState).toHaveBeenCalled()
-    expect(test).toBe(true)
+    expect(isVolunteer).toBe(true)
   })
 })
 
@@ -34,9 +34,8 @@ describe('toggleVolunteerButton', () => {
       return Promise.resolve()
     }
     return toggleVolunteerButton(eventId, isVolunteer, consume)
-      .then((result) => {
+      .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(result).toBeNull()
         return null
       })
   })
@@ -52,9 +51,8 @@ describe('toggleVolunteerButton', () => {
       return Promise.resolve()
     }
     return toggleVolunteerButton(eventId, isVolunteer, consume)
-      .then((result) => {
+      .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(result).toBeNull()
         return null
       })
   })
