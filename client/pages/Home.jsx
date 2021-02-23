@@ -39,7 +39,7 @@ export default function Home () {
     <>
       <div className='column'>
         <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        <Link className="button is-medium my-4 mt-6" to={'/garden'}>Get Started</Link>
+        <Link className="button homeButton" to={'/garden'}>Get Started</Link>
       </div>
       <Map
         userCoordinates={userCoordinates}

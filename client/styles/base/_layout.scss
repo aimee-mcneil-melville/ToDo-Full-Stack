@@ -51,7 +51,34 @@ img{
 .imageFit{
   @include from ($tablet) {
     height:536px;
-  width:660px;
-  overflow: hidden;
+    width:564px;
+    overflow: hidden;
     }
   }
+
+  .level{
+    margin-bottom: 0px;
+  }
+  
+  .level-item{ 
+    justify-content: flex-start;   
+  }
+
+  .event-box .level button.level-item {
+    /* width: 120px; */
+    flex-grow: unset;
+    }
+
+    .inputForm{
+      padding-right:0.75rem;
+    }
+
+    .waitIndicator{ 
+      font-size:small;
+      font-style: italic;
+      color: #B1BDC7;
+      opacity: 0.7;
+      transition: 2s;
+    }
+
+   

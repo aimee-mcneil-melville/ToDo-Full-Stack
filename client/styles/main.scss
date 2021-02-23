@@ -16,12 +16,9 @@
 // Components
 @import "components/navigation";
 @import "components/button";
-@import "components/usernameInput";
-@import "components/label";
-@import "components/inputColumn";
-@import "components/select";
-@import "components/home";
+@import "components/forms";
 @import "components/addEvent";
-@import "components/eventItem"
+@import "components/eventItem";
+@import "components/loader"
 
 // NO DIRECT STYLES IN HERE MAKE A NEW FILE AND IMPORT IT.

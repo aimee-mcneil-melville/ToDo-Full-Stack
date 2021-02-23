@@ -27,7 +27,7 @@ export default function Garden () {
   const { name, description, address, url, events, lat, lon } = garden
   return (
     <>
-      <div className="column">
+      <div className="column garden">
         <h2>{name}</h2>
         <p className="mb-4">{description} </p>
         <p><a className="gardenLink word-wrap" href={url}>{url}</a></p>

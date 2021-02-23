@@ -24,7 +24,7 @@ export default function SignIn (props) {
   return (
     <>
       <div className="column">
-        <form className="pr-5">
+        <form className="inputForm">
           <label htmlFor="username" className="label">Username</label>
           <input
             className="input"

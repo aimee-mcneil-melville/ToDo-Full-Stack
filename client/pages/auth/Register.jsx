@@ -25,7 +25,7 @@ export default function Register (props) {
   return (
     <>
       <div className="column ">
-        <form className="pr-5">
+        <form className="inputForm">
           <label htmlFor="username" className="label">Username</label>
           <input
             className="input"
@@ -59,7 +59,7 @@ export default function Register (props) {
           </select>
           <button
             type="button"
-            className="button"
+            className="button ml-3 registerButton"
             onClick={handleClick}
             data-testid="submitButton"
           >

@@ -41,6 +41,14 @@ h4{
   // text-decoration-thickness: 1px;
 }
 
+.garden{
+  @include until ($tablet){ 
+    p{ 
+      font-size: 1.2rem;
+    }
+  }
+}
+
 
 
 .word-wrap {
