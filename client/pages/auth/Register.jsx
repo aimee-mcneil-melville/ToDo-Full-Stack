@@ -6,7 +6,8 @@ export default function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: '',
-    gardenId: null
+    gardenId: null,
+    email: ''
   })
 
   function handleChange (e) {
@@ -45,6 +46,18 @@ export default function Register (props) {
             placeholder="Password"
             onChange={handleChange}
           ></input>
+
+          <label htmlFor="email" className="label">Email</label>
+          <input
+            className="input"
+            id="email"
+            type="email"
+            name="email"
+            value={form.email}
+            placeholder="Email"
+            onChange={handleChange}
+          ></input>
+
           <label htmlFor="garden" className="label">My Garden</label>
           <select
             onChange={handleChange}
@@ -63,7 +76,7 @@ export default function Register (props) {
             onClick={handleClick}
             data-testid="submitButton"
           >
-          Register
+            Register
           </button>
         </form>
       </div>

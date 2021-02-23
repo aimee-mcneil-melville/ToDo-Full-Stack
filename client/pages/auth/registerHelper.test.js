@@ -21,7 +21,8 @@ describe('registerUser', () => {
     const user = {
       username: 'testuser',
       password: 'testpassword',
-      gardenId: '1'
+      gardenId: '1',
+      email: 'testemail'
     }
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)
@@ -39,7 +40,8 @@ describe('registerUser', () => {
     const user = {
       username: 'testuser2',
       password: 'testpassword',
-      gardenId: '1'
+      gardenId: '1',
+      email: 'testemail'
     }
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)
@@ -56,7 +58,8 @@ describe('registerUser', () => {
     const user = {
       username: 'baduser',
       password: 'badpassword',
-      gardenId: '3'
+      gardenId: '3',
+      email: 'bademail'
     }
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)

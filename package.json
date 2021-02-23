@@ -62,6 +62,7 @@
     "authenticare": "^0.4.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.12",
     "pg": "^8.5.1"
   },

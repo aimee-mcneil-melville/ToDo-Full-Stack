@@ -5,18 +5,19 @@ import { setWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 
 export function registerUser (user, navigateTo) {
-  const { username, password, gardenId } = user
+  const { username, password, gardenId, email } = user
   dispatch(setWaiting())
   return register({
     username,
     password,
-    gardenId: Number(gardenId)
+    gardenId: Number(gardenId),
+    email
   },
   { baseUrl: '/api/v1' })
     .then(() => {
       if (isAuthenticated()) {
-        const { username, isAdmin, gardenId } = getDecodedToken()
-        dispatch(setUser({ username, isAdmin, gardenId }))
+        const { username, isAdmin, gardenId, email } = getDecodedToken()
+        dispatch(setUser({ username, isAdmin, gardenId, email }))
         navigateTo('/garden')
       } else {
         throw new Error('Not authenticated')
