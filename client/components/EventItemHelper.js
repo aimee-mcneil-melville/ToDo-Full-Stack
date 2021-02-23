@@ -16,7 +16,6 @@ export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor
 
   dispatch(setWaiting())
 
-  // query if, add or delete
   const routeMethod = isVolunteer ? 'delete' : 'post'
 
   const userData = { userId: id, eventId }
@@ -27,8 +26,3 @@ export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor
       return null
     })
 }
-
-// dispatch waiting
-// add or delete to volunteers table
-// dispatch success
-// toggle button
