@@ -25,6 +25,8 @@ export function registerUser (user, navigateTo) {
       return null
     })
     .catch((error) => {
-      dispatch(showError(error.message))
+      error.message === 'USERNAME_UNAVAILABLE'
+        ? dispatch(showError('This username is not available'))
+        : dispatch(showError(error.message))
     })
 }

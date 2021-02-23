@@ -19,6 +19,8 @@ export function signInUser (user, navigateTo) {
       return null
     })
     .catch((error) => {
-      dispatch(showError(error.message))
+      error.message === 'INVALID_CREDENTIALS'
+        ? dispatch(showError('Username/password combination not found'))
+        : dispatch(showError(error.message))
     })
 }
