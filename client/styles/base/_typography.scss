@@ -8,10 +8,21 @@ body {
   font-family: $family-sans-serif;
   font-weight: $weight-normal;
   font-size: $size-4;
+  padding:1.5rem;
+  line-height:1.3;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: $weight-bold
+}
+
+h2{ 
+  font-size: 2rem;
+  margin: 1rem 0rem 1rem 0rem;
+}
+
+h4{
+  font-size: 1.5rem;
 }
 
 .logo a {
@@ -22,6 +33,23 @@ h1, h2, h3, h4, h5, h6 {
     color: $dark-green;
   }
 }
+
+.gardenLink{ 
+  font-style:italic;
+  // text-decoration: underline;
+  // border-bottom: 1px solid;
+  // text-decoration-thickness: 1px;
+}
+
+.garden{
+  @include until ($tablet){ 
+    p{ 
+      font-size: 1.2rem;
+    }
+  }
+}
+
+
 
 .word-wrap {
   overflow-wrap: break-word;

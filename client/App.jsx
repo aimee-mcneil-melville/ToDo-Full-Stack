@@ -13,7 +13,7 @@ import WaitIndicator from './components/WaitIndicator'
 
 export default function App () {
   return (
-    <main className="container is-max-desktop">
+    <main className="container">
       <Error />
       <Route path="/" component={Header} />
       <WaitIndicator />

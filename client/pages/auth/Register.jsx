@@ -24,8 +24,8 @@ export default function Register (props) {
 
   return (
     <>
-      <div className="column is-one-quarter-desktop">
-        <form className="pr-5">
+      <div className="column ">
+        <form className="inputForm">
           <label htmlFor="username" className="label">Username</label>
           <input
             className="input"
@@ -59,7 +59,7 @@ export default function Register (props) {
           </select>
           <button
             type="button"
-            className="button"
+            className="button ml-3 registerButton"
             onClick={handleClick}
             data-testid="submitButton"
           >
@@ -67,13 +67,13 @@ export default function Register (props) {
           </button>
         </form>
       </div>
-      <div className="column is-two-thirds-tablet">
-        <img
-          className='rightHeroImage'
-          src="./images/comGardenPlant.png"
-          alt=""
-          style={{ width: '600px', height: '500px' }}
-        />
+      <div className="column ">
+        <div className="imageFit">
+          <img
+            src="./images/comGardenPlant.png"
+            alt=""
+          />
+        </div>
       </div>
     </>
   )

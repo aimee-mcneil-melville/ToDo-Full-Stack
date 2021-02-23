@@ -5,7 +5,7 @@ import Nav from './Nav'
 
 export default function Header () {
   return (
-    <header className="columns py-5">
+    <header className="columns is-mobile">
       <h1 className="logo column">
         <Link to="/">Garde<span>nz</span></Link>
       </h1>
