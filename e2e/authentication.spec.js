@@ -2,15 +2,15 @@ const playwright = require('playwright')
 
 const connection = require('../server/db/connection')
 
-const homeUrl = 'http://localhost:3000/#/'
+const homeUrl = process.env.E2E_URL || 'http://localhost:3000/#/'
 const gardenUrl = homeUrl + 'garden'
 const registerUrl = homeUrl + 'register'
 const signInUrl = homeUrl + 'signin'
 
 test('User can register, sign out and sign in again', async () => {
   // SETUP -----------------------
-  await connection.migrate.latest()
-  await connection.seed.run()
+  // await connection.migrate.latest()
+  // await connection.seed.run()
   browser = await playwright.chromium.launch()
   page = await browser.newPage()
   // -----------------------------
