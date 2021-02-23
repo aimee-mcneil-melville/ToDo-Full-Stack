@@ -4,6 +4,10 @@ const testDb = knex(config)
 
 const volunteers = require('./volunteers')
 
+function getTestVolunteers () {
+  return testDb('eventVolunteers').select()
+}
+
 beforeAll(() => {
   return testDb.migrate.latest()
 })
@@ -19,7 +23,7 @@ describe('addVolunteer', () => {
       eventId: 1
     }
     return volunteers.addVolunteer(test, testDb)
-      .then(() => volunteers.getVolunteer(testDb))
+      .then(() => getTestVolunteers())
       .then(info => {
         expect(info[0].user_id).toBe(1)
         expect(info[0].event_id).toBe(1)
@@ -35,7 +39,7 @@ describe('deleteVolunteer', () => {
       eventId: 3
     }
     return volunteers.deleteVolunteer(test, testDb)
-      .then(() => volunteers.getVolunteer(testDb))
+      .then(() => getTestVolunteers())
       .then((info) => {
         expect(info).toHaveLength(2)
         return null

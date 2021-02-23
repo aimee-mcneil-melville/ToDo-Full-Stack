@@ -62,8 +62,8 @@ function getGardenById (id, db = connection) {
     }))
 }
 
-const extractVolunteers = events =>
-  events.reduce((acc, event) =>
+function extractVolunteers (events) {
+  return events.reduce((acc, event) =>
     acc.some(e => e.id === event.id)
       ? acc.map(e => e.id === event.id ? { ...e, volunteers: [...e.volunteers, event.volunteer] } : e)
       : [...acc, { ...event, volunteers: [event.volunteer] }]
@@ -71,3 +71,4 @@ const extractVolunteers = events =>
     .map(({ id, volunteersNeeded, title, date, description, volunteers }) => (
       { id, volunteersNeeded, title, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
     ))
+}

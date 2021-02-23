@@ -177,11 +177,11 @@ describe('addVolunteer adds Volunteer', () => {
 
 describe('deleteVolunteer adds Volunteer', () => {
   it('deleteVolunteer returns correct response', () => {
-    volunteer.deleteVolunteer.mockImplementation(() => Promise.resolve(201))
+    volunteer.deleteVolunteer.mockImplementation(() => Promise.resolve(200))
     return request(server)
       .delete('/api/v1/events/volunteer')
       .send({ userId: 1, eventId: 1 })
-      .expect(201)
+      .expect(200)
       .then(res => {
         expect(res.body.STATUS).toBe('OK')
         return null
