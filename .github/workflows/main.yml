@@ -26,10 +26,18 @@ jobs:
     - run: npm run lint
     - run: npm test
 
-  # add e2e testing here
+  e2e:
+    runs-on: ubuntu-latest
+    environment: testing
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker compose
+      run: docker-compose up --abort-on-container-exit
 
   deploy:
-    needs: [ test ] # and e2e
+    needs: [ test, e2e ] 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
