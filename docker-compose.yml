@@ -8,7 +8,6 @@ services:
       DATABASE_URL: postgres://user:pass@postgres:5432/db
       NODE_ENV: e2e
       PORT: 3000
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
     ports:
       - '3000:3000'
     depends_on:
