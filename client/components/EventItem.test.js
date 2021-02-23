@@ -1,7 +1,7 @@
 import React from 'react'
-import { screen, fireEvent, waitFor } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 
-import { renderWithRedux, renderWithRouter } from '../test-utils'
+import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
 import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'

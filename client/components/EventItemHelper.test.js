@@ -1,5 +1,4 @@
 import { SET_WAITING } from '../actions/waiting'
-import { SET_GARDEN } from '../actions/garden'
 import { dispatch, getState } from '../store'
 import { getIfVolunteer, toggleVolunteerButton } from './EventItemHelper'
 
@@ -36,7 +35,7 @@ describe('toggleVolunteerButton', () => {
     }
     return toggleVolunteerButton(eventId, isVolunteer, consume)
       .then((result) => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING, SET_GARDEN })
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(result).toBeNull()
         return null
       })
@@ -54,7 +53,7 @@ describe('toggleVolunteerButton', () => {
     }
     return toggleVolunteerButton(eventId, isVolunteer, consume)
       .then((result) => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING, SET_GARDEN })
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(result).toBeNull()
         return null
       })

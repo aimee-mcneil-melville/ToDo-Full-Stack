@@ -161,27 +161,30 @@ describe('PATCH /api/v1/events/:id', () => {
   })
 })
 
-
 describe('addVolunteer adds Volunteer', () => {
   it('addVolunteer returns correct response', () => {
-
     volunteer.addVolunteer.mockImplementation(() => Promise.resolve(201))
-
     return request(server)
       .post('/api/v1/events/volunteer')
-      .send({userId: 1, eventId: 1})
+      .send({ userId: 1, eventId: 1 })
       .expect(201)
+      .then(res => {
+        expect(res.body.STATUS).toBe('OK')
+        return null
+      })
   })
 })
 
 describe('deleteVolunteer adds Volunteer', () => {
   it('deleteVolunteer returns correct response', () => {
-
     volunteer.deleteVolunteer.mockImplementation(() => Promise.resolve(201))
-
     return request(server)
       .delete('/api/v1/events/volunteer')
-      .send({userId: 1, eventId: 1})
+      .send({ userId: 1, eventId: 1 })
       .expect(201)
+      .then(res => {
+        expect(res.body.STATUS).toBe('OK')
+        return null
+      })
   })
 })

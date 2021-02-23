@@ -7,7 +7,7 @@ export function getIfVolunteer (volunteers) {
   const storeState = getState()
   const { id } = storeState.user
 
-  return volunteers.some(vol => vol.userId === id)
+  return volunteers ? volunteers.some(vol => vol.userId === id) : false
 }
 
 export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor) {
