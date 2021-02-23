@@ -1,4 +1,4 @@
-import { isAuthenticated, signIn, getDecodedToken } from '../../auth'
+import { isAuthenticated, signIn } from '../../auth'
 import { dispatch } from '../../store'
 import { setUser } from '../../actions/user'
 import { setWaiting } from '../../actions/waiting'
@@ -10,8 +10,7 @@ export function signInUser (user, navigateTo) {
   return signIn({ username, password }, { baseUrl: '/api/v1' })
     .then(() => {
       if (isAuthenticated()) {
-        const { username, isAdmin, gardenId } = getDecodedToken()
-        dispatch(setUser({ username, isAdmin, gardenId }))
+        dispatch(setUser())
         navigateTo('/garden')
       } else {
         throw new Error('Not authenticated')

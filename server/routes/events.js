@@ -4,7 +4,7 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 const { decode } = require('../notifications/emailTokens')
-const { addVolunteer } = require('../db/volunteers')
+const { addVolunteer, deleteVolunteer } = require('../db/volunteers')
 
 const router = express.Router()
 
@@ -66,6 +66,40 @@ router.get('/:id', (req, res) => {
   db.getEventById(id)
     .then((event) => {
       res.json(event)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to retrieve event'
+        }
+      })
+    })
+})
+
+router.post('/volunteer', (req, res) => {
+  const { userId, eventId } = req.body
+  addVolunteer({ userId, eventId })
+    .then(() => {
+      res.status(201).json({ STATUS: 'OK' })
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to update event'
+        }
+      })
+    })
+})
+
+router.delete('/volunteer', (req, res) => {
+  const { userId, eventId } = req.body
+  deleteVolunteer({ userId, eventId })
+    .then(() => {
+      res.status(200).json({ STATUS: 'OK' })
       return null
     })
     .catch((err) => {

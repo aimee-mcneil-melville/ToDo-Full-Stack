@@ -1,30 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden, signedIn } from './gardenHelper'
 import { Redirect } from 'react-router'
+import { connect } from 'react-redux'
 
-export default function Garden () {
+function Garden ({ garden }) {
   if (!signedIn()) return <Redirect to={'/signin'} />
 
-  const [garden, setGarden] = useState({
-    name: '',
-    description: '',
-    url: '',
-    events: [],
-    address: '',
-    lat: 0,
-    lon: 0
-  })
-
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
     getGarden()
-      .then((gardenData) => {
-        setGarden(gardenData)
-        return null
-      })
   }, [])
 
   const { name, description, address, url, events, lat, lon } = garden
@@ -43,3 +29,6 @@ export default function Garden () {
     </>
   )
 }
+
+const mapStateToProps = (state) => ({ garden: state.garden })
+export default connect(mapStateToProps)(Garden)

@@ -2,10 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function WaitIndicator ({ waiting }) {
-  return waiting
-    ? <p className= "waitIndicator">loading...</p>
-    // ? <div className="loader">Loading...</div>
-    : <br/>
+  return <p className="waitIndicator"> { waiting ? 'loading...' : '\u00a0' }</p>
 }
 
 function mapStateToProps (state) {

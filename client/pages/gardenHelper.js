@@ -1,7 +1,8 @@
 import { dispatch, getState } from '../store'
-import { setWaiting, clearWaiting } from '../actions/waiting'
+import { setWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 import requestor from '../consume'
+import { setGarden } from '../actions/garden'
 import { isAuthenticated } from '../auth'
 
 export function getGarden (consume = requestor) {
@@ -10,9 +11,8 @@ export function getGarden (consume = requestor) {
   dispatch(setWaiting())
   return consume(`/gardens/${gardenId}`)
     .then((res) => {
-      dispatch(clearWaiting())
       const { name, description, url, address, events, lat, lon } = res.body
-      return {
+      dispatch(setGarden({
         name,
         description,
         address,
@@ -20,7 +20,8 @@ export function getGarden (consume = requestor) {
         events,
         lat,
         lon
-      }
+      }))
+      return null
     })
     .catch((error) => {
       dispatch(showError(error.message))
