@@ -1,7 +1,8 @@
 version: '3.9'
 services:
   web:
-    build: .
+    build:
+      dockerfile: Dockerfile-web
     environment:
       DATABASE_URL: postgres://user:pass@postgres:5432/db
       NODE_ENV: e2e
@@ -10,20 +11,7 @@ services:
       - '3000:3000'
     depends_on:
       - 'postgres'
-    command:
-      ./wait-for-it.sh postgres:5432 -- npm run docker
-      # [
-      #   './wait-for-it.sh',
-      #   'postgres:5432',
-      #   '--',
-      #   'npm',
-      #   'run',
-      #   'db:migrate',
-      #   '&&',
-      #   'npm',
-      #   'run',
-      #   'start',
-      # ]
+    command: ['./wait-for-it.sh', 'postgres:5432', '--', 'npm', 'run', 'docker']
   postgres:
     image: postgres
     ports:
@@ -32,3 +20,22 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: db
+  e2e:
+    build:
+      dockerfile: Dockerfile-e2e
+    environment:
+      NODE_ENV: e2e
+      E2E_URL: http://web:3000/#/
+    depends_on:
+      - 'web'
+    command:
+      [
+        './wait-for-it.sh',
+        'web:3000',
+        '-t',
+        '60',
+        '--',
+        'npm',
+        'run',
+        'docker:e2e'
+      ]

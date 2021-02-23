@@ -2,15 +2,15 @@ const playwright = require('playwright')
 
 const connection = require('../server/db/connection')
 
-const homeUrl = 'http://localhost:3000/#/'
+const homeUrl = process.env.E2E_URL || 'http://localhost:3000/#/'
 const gardenUrl = homeUrl + 'garden'
 const registerUrl = homeUrl + 'register'
 const signInUrl = homeUrl + 'signin'
 
 test('User can register, sign out and sign in again', async () => {
   // SETUP -----------------------
-  await connection.migrate.latest()
-  await connection.seed.run()
+  // await connection.migrate.latest()
+  // await connection.seed.run()
   browser = await playwright.chromium.launch()
   page = await browser.newPage()
   // -----------------------------
@@ -20,7 +20,7 @@ test('User can register, sign out and sign in again', async () => {
   // navigate to register pages
   await Promise.all([
     page.waitForNavigation(),
-    page.click('a:text("Register")'),
+    page.click('a:text("Register")')
   ])
   expect(page.url()).toBe(registerUrl)
 
@@ -38,7 +38,7 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Register")'),
+    page.click('button:text("Register")')
   ])
   expect(page.url()).toBe(gardenUrl)
 
@@ -62,7 +62,7 @@ test('User can register, sign out and sign in again', async () => {
     page.waitForNavigation(),
     // this really should be an assertion rather than a waitFor...
     page.waitForSelector('h3:text("Kingsland Community Orchard")'),
-    page.click('button:text("Sign in")'),
+    page.click('button:text("Sign in")')
   ])
   expect(page.url()).toBe(gardenUrl)
 

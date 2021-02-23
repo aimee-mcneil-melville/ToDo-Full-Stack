@@ -19,11 +19,12 @@
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "test": "jest --testPathIgnorePatterns e2e --verbose",
     "test:watch": "jest --testPathIgnorePatterns e2e --watchAll --verbose",
-    "test:e2e": "NODE_ENV=e2e PORT=3001 server-test 3001 e2e",
+    "test:e2e": "NODE_ENV:e2e PORT:3001 server-test 3001 e2e",
     "test:e2e:debug": "DEBUG=pw:api npm run test:e2e",
     "e2e": "jest e2e --config e2e/jest.config.js --verbose",
     "lint": "eslint --ext .js,.jsx .",
-    "docker": "npm run db:migrate && npm run db:seed && npm run start"
+    "docker": "npm run db:reset && npm run start",
+    "docker:e2e": "npm run e2e"
   },
   "babel": {
     "presets": [
