@@ -19,4 +19,4 @@ jobs:
     # todo
     - uses: actions/checkout@v2
     - name: Docker compose
-      run: docker-compose up
+      run: docker-compose up --abort-on-container-exit
