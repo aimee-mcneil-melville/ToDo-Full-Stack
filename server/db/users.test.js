@@ -67,11 +67,11 @@ describe('get users details by garden', () => {
   it('returns the details of the non admin users in related garden', () => {
     expect.assertions(4)
     return users.getUserDetailsByGarden('1', testDb)
-      .then((user) => {
-        expect(Array.isArray(user)).toBe(true)
-        expect(user[0].email).toBe('test@outlook.com')
-        expect(user[0].id).toBe(2)
-        expect(user[0].is_admin).toBeFalsy()
+      .then((users) => {
+        expect(users).toHaveLength(1)
+        expect(users[0].email).toBe('test@outlook.com')
+        expect(users[0].id).toBe(2)
+        expect(users[0].is_admin).toBeFalsy()
         return null
       })
   })

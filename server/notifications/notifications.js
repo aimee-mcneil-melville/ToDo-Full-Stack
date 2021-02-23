@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken')
+const { encode } = require('./emailTokens')
+
 function sendNotification (userdata, eventdata) {
-  const token = jwt.sign({ userId: userdata.id, eventId: eventdata.id }, process.env.JWT_SECRET)
+  const token = encode({ userId: userdata.id, eventId: eventdata.id }, process.env.JWT_SECRET)
   const http = require('https')
 
   const options = {

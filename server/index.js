@@ -1,5 +1,5 @@
-const server = require('./server')
 require('dotenv').config()
+const server = require('./server')
 
 // https://stackoverflow.com/a/18024792
 const port = process.env.PORT || 3000
