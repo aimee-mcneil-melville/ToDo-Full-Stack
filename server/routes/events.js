@@ -62,8 +62,8 @@ router.patch('/:id', (req, res) => {
 })
 
 router.post('/volunteer', (req, res) => {
-  const info = req.body
-  volunteer.addVolunteer(info)
+  const { userId, eventId } = req.body
+  volunteer.addVolunteer({ userId, eventId })
     .then(() => {
       res.status(201).json({ STATUS: 'OK' })
       return null
@@ -79,10 +79,10 @@ router.post('/volunteer', (req, res) => {
 })
 
 router.delete('/volunteer', (req, res) => {
-  const info = req.body
-  volunteer.deleteVolunteer(info)
+  const { userId, eventId } = req.body
+  volunteer.deleteVolunteer({ userId, eventId })
     .then(() => {
-      res.status(201).json({ STATUS: 'OK' })
+      res.status(200).json({ STATUS: 'OK' })
       return null
     })
     .catch((err) => {
