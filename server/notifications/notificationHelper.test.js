@@ -1,7 +1,8 @@
 const { sendEventNotifications } = require('./notificationHelper')
 const { sendNotification } = require('./notifications')
-const dbUser = require('./db/users')
-jest.mock('./db/users')
+const dbUser = require('../db/users')
+
+jest.mock('../db/users')
 jest.mock('./notifications')
 
 describe('send each user a notification', () => {

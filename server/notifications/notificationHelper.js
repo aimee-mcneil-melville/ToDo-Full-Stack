@@ -1,4 +1,4 @@
-const dbUser = require('./db/users')
+const dbUser = require('../db/users')
 const { sendNotification } = require('./notifications')
 
 function sendEventNotifications (event) {

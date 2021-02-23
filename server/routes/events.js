@@ -1,9 +1,9 @@
-const { sendEventNotifications } = require('../notificationHelper')
+const { sendEventNotifications } = require('../notifications/notificationHelper')
 const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/event')
-const { decode } = require('../emailTokens')
+const { decode } = require('../notifications/emailTokens')
 const { addVolunteer } = require('../db/volunteers')
 
 const router = express.Router()
