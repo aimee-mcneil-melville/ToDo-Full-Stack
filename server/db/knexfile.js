@@ -31,11 +31,11 @@ module.exports = {
       max: 10
     },
     seeds: {
-      directory: path.join(__dirname, 'testSeeds'),
+      directory: path.join(__dirname, 'testSeeds')
     },
     migrations: {
-      directory: path.join(__dirname, 'migrations'),
-    },
+      directory: path.join(__dirname, 'migrations')
+    }
   },
 
   staging: {
