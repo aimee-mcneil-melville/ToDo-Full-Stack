@@ -2,11 +2,5 @@ FROM mcr.microsoft.com/playwright
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install
-<<<<<<< HEAD:Dockerfile-e2e
-COPY . . 
-# RUN chmod +x ./wait-for-it.sh
-=======
 COPY . .
-RUN npm run build
-RUN chmod +x ./wait-for-it.sh
->>>>>>> 69fc9ee6cbdc62056d86e3ec6a5c5f62237cd631:Dockerfile
+# RUN chmod +x ./wait-for-it.sh
