@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "jest": {
     "watchPathIgnorePatterns": [
       "data.json"
