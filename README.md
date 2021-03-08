@@ -100,33 +100,33 @@ When you have this in place, ensure that when you click the beer links, you can 
 
 In this section, you'll create an action creator, a reducer function and a dispatch the action from the event handler you wrote in the previous section.
 
-Add an `activePage` property to the Redux store by creating a reducer that processes an action that contains the destination/target we're navigating to. The action creator that returns the action to dispatch for navigating between pages could look like this:
+Add an `activePage` property to the Redux store by creating a reducer that processes an action that contains the page we're navigating to. The action creator that returns the action to dispatch for navigating between pages could look like this:
 
 ```js
 export const NAVIGATE = 'NAVIGATE'
 
-export function navigate (target) {
+export function navigate (activePage) {
   return {
     type: NAVIGATE,
-    target: target // 'listing' or 'cart'
+    activePage: activePage // 'listing' or 'cart'
   }
 }
 ```
 
 Now `connect` the `<App />` component and use the value of `activePage` to determine whether to show the `<BeerListing />` or `<Cart />` component. Tip: consider using the ternary operator for this.
 
-In the click event handler in `client/components/BeerListItem.jsx` have it also dispatch the `navigate` action with `target` having a value of `'cart'`.
+In the click event handler in `client/components/BeerListItem.jsx` have it also dispatch the `navigate` action with `activePage` having a value of `'cart'`.
 
 If you try to click the "Add to cart" link for a beer now, you should get an error in your `Cart` component that `props.cart` is undefined. Connect the `Cart` component to the Redux store so it can render the cart.
 
 Now when you add a beer to the cart, you are taken to the cart and the item has been added.
 
-Note: if you refresh the page, you'll empty the cart. So if you want to add and see multiple items in the cart, you'll need to use the Redux DevTool to dispatch the `NAVIGATE` action with a `target` of `'listing'`. Then you'll be able to add another beer to the cart.
+Note: if you refresh the page, you'll empty the cart. So if you want to add and see multiple items in the cart, you'll need to use the Redux DevTool to dispatch the `NAVIGATE` action with a `activePage` of `'listing'`. Then you'll be able to add another beer to the cart.
 
 
 ## Continue shopping
 
-Rather than dispatching actions from the DevTool, add a click event handler to the "Continue shopping" link in the `<Cart>` component. This handler should dispatch the `NAVIGATE` action with a `target` of `'listing'`.
+Rather than dispatching actions from the DevTool, add a click event handler to the "Continue shopping" link in the `<Cart>` component. This handler should dispatch the `NAVIGATE` action with a `activePage` of `'listing'`.
 
 Ensure that clicking "Continue shopping" takes you back to the listing so you can add more beers to the cart.
 
