@@ -1,3 +1,27 @@
+module.exports = {
+  addName,
+  ageOneYear,
+  deleteItem,
+  deleteItemAtIndex,
+  deleteProperty,
+  getGreeting,
+  getItemAtIndex,
+  getKeys,
+  getPropertyValue,
+  getValues,
+  findOneByProperty,
+  findAll,
+  hasItem,
+  insertItemAtIndex,
+  makeArrayOfItem,
+  makeArrayOfItems,
+  makeObject,
+  replaceItemAtIndex,
+  returnErrorIfFalsy,
+  unzipObject,
+  zipObject
+}
+
 /**
  * Objects, keys/properties and values
  */
@@ -278,28 +302,4 @@ function findAll (arr, search) {
     const hasKey = Object.keys(item).includes(prop)
     return hasKey && item[prop] === search[prop]
   })
-}
-
-module.exports = {
-  addName,
-  ageOneYear,
-  deleteItem,
-  deleteItemAtIndex,
-  deleteProperty,
-  getGreeting,
-  getItemAtIndex,
-  getKeys,
-  getPropertyValue,
-  getValues,
-  findOneByProperty,
-  findAll,
-  hasItem,
-  insertItemAtIndex,
-  makeArrayOfItem,
-  makeArrayOfItems,
-  makeObject,
-  replaceItemAtIndex,
-  returnErrorIfFalsy,
-  unzipObject,
-  zipObject
 }
