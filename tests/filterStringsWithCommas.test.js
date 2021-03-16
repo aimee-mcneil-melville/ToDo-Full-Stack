@@ -9,7 +9,7 @@ test('filterStringsWithCommas returns true if there is a comma present', () => {
   expect(actual).toBe(expected)
 })
 
-test('filterStringsWithCommas returns true if there is a comma present', () => {
+test('filterStringsWithCommas returns false if there is no comma present', () => {
   const expected = false
   const actual = filterStringsWithCommas('hello world')
   expect(actual).toBe(expected)

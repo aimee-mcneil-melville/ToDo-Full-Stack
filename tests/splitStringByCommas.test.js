@@ -15,7 +15,7 @@ test('splitStringByCommas will split a string at each comma', () => {
 test('splitStringByCommas will split all strings in the arrayOfArrays, at each comma', () => {
   const stringsWithCommas = filter(randomStrings, filterStringsWithCommas) || []
   const mappedArray = map(stringsWithCommas, splitStringByCommas) || []
-  
+
   const arraysMatch = mappedArray.length && mappedArray.every((arr, i) => {
     return arr.every((str, j) => {
       return str === arrayOfArrays[i][j]
