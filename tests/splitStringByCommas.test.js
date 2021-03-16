@@ -8,7 +8,7 @@ const arrayOfArrays = require('../data/array-of-arrays')
 
 test('splitStringByCommas will split a string at each comma', () => {
   const expected = ['hello', 'world']
-  const actual = splitStringByCommas('hello, world')
+  const actual = splitStringByCommas('hello,world')
   expect(actual).toEqual(expected)
 })
 
