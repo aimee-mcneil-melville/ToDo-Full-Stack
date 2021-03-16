@@ -17,6 +17,9 @@
     "url": "https://github.com/dev-academy-challenges/exercise-arrays/issues"
   },
   "homepage": "https://github.com/dev-academy-challenges/exercise-arrays#readme",
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "devDependencies": {
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
