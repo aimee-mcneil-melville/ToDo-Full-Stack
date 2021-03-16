@@ -42,6 +42,10 @@ Before working on a function, take turns explaining what each test is doing with
 
 * Now the tests should be passing. Type `q` to stop the test.
 
+## Next steps
+
+When working through these, it is important that you make sure you **look at the tests** that have been written and understand what is being asked of each function. 
+
 If you'd like to work on the tests in an order of increasing difficulty, try this order:
 
 * getType
