@@ -1,0 +1,31 @@
+{
+  "name": "kata-number-patterns",
+  "version": "0.1.0",
+  "description": "A kata to practice conditionals and iteration",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --noStackTrace",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/kata-number-patterns.git"
+  },
+  "keywords": [
+    "kata"
+  ],
+  "author": "EDA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/kata-number-patterns/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/kata-number-patterns#readme",
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3"
+  }
+}
