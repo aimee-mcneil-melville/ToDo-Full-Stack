@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/object-array-practice/issues"
   },
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "homepage": "https://github.com/dev-academy-challenges/object-array-practice#readme",
   "devDependencies": {
     "eslint-config-eda": "^0.1.4",
