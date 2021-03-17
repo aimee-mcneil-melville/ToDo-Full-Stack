@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "location_id": 1,
+    "name": "event name 1",
+    "description": "event description 1"
+  },
+  {
+    "id": 2,
+    "location_id": 1,
+    "name": "event name 2",
+    "description": "event description 2"
+  },
+  {
+    "id": 3,
+    "location_id": 2,
+    "name": "event name 3",
+    "description": "event description 3"
+  },
+  {
+    "id": 4,
+    "location_id": 2,
+    "name": "event name 4",
+    "description": "event description 4"
+  }
+]

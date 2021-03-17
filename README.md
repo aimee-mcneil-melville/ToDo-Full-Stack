@@ -13,6 +13,9 @@ The design team has worked up the UI and routes, but they haven't added any of t
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
+1. `npm run dev`
+1. [http://localhost:3000](http://localhost:3000)
+1. Get familiar with the existing codebase
 
 ## Create the migrations
 
@@ -32,11 +35,11 @@ You'll need to create 2 tables: `locations` and `events`
 * `description`: string
 * `location_id`: number (foreign key to locations.id)
 
-Apply these migrations and use a database tool to verify they were created correctly.
+Apply these migrations (using `npm run knex ...`) and use a database tool to verify they were created correctly.
 
 ## Add some seed data
 
-Create and apply the seed data based on the JSON files in the `/db/data` folder. Use a database tool to verify the data was added correctly.
+Create and apply the seed data (using `npm run knex ...`) based on the JSON files in the `/db/data` folder. Use a database tool to verify the data was added correctly.
 
 ## Show the list of locations
 

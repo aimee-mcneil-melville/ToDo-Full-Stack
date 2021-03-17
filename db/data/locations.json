@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "max_attendee_count": 10,
+    "name": "location name 1",
+    "description": "location description 1"
+  },
+  {
+    "id": 2,
+    "max_attendee_count": 40,
+    "name": "location name 2",
+    "description": "location description 2"
+  },
+  {
+    "id": 3,
+    "max_attendee_count": 200,
+    "name": "location name 3",
+    "description": "location description 3"
+  },
+  {
+    "id": 4,
+    "max_attendee_count": 100,
+    "name": "location name 4",
+    "description": "location description 4"
+  }
+]

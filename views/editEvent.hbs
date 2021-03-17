@@ -1,0 +1,22 @@
+<h2>Edit Event {{id}}</h2>
+
+<form method="POST" action="/events">
+  <input type="hidden" name="id" value="{{id}}">
+
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" value="{{name}}" placeholder="{{name}}">
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <input id="description" value="{{description}}" placeholder="{{description}}">
+  </div>
+
+  <div>
+    <label for="maxAttendeeCount">Max attendee count:</label>
+    <input id="maxAttendeeCount" value="{{maxAttendeeCount}}" placeholder="{{maxAttendeeCount}}">
+  </div>
+
+  <button>Save event</button>
+</form>

@@ -1,0 +1,41 @@
+{
+  "name": "dreamfest",
+  "version": "0.1.0",
+  "description": "NZ's premier culture festival",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "knex": "knex --knexfile db/knexfile.js",
+    "build": "tailwindcss build -o public/main.css",
+    "test": "jest"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "keywords": [
+    "db",
+    "database",
+    "backend"
+  ],
+  "homepage": "https://github.com/dev-academy-challenges/dreamfest#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/dreamfest.git"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "knex": "^0.95.2",
+    "sqlite3": "^5.0.2",
+    "tailwindcss-cli": "^0.1.2"
+  },
+  "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  }
+}
