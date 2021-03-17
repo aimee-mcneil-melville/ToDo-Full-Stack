@@ -27,12 +27,6 @@ function isEmail (str) {
 function countIf (array, fn) {
 }
 
-function filter (array, fn) {
-}
-
-function map (array, fn) {
-}
-
 function filterStringsWithCommas (str) {
 }
 

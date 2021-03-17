@@ -1,4 +1,3 @@
-const filter = require('../utilities').filter
 const filterStringsWithCommas = require('../utilities').filterStringsWithCommas
 
 const randomStrings = require('../data/random-strings')
@@ -17,6 +16,6 @@ test('filterStringsWithCommas returns false if there is no comma present', () =>
 
 test('filter, when using filterStringsWithCommas, returns an array with the correct number of commas', () => {
   const expected = 62
-  const stringsWithCommas = filter(randomStrings, filterStringsWithCommas) || []
+  const stringsWithCommas = randomStrings.filter(filterStringsWithCommas) || []
   expect(stringsWithCommas.length).toBe(expected)
 })
