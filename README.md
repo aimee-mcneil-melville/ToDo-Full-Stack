@@ -1,6 +1,6 @@
 # Dreamfest
 
-You've just landed your first dev role and you're responsible for creating an app that manages Dreamfest, a wholesome 3 day festival that offers attendees daily yoga and meditation, arts and crafts, eateries, workshops and sweet beats.
+You've just landed your first dev role and you're responsible for creating an app that manages Dreamfest, a wholesome 3 day festival that offers attendees daily yoga and meditation, arts and crafts, healthy eateries, well-being workshops and sweet beats.
 
 Your app needs to allow the festival organisers the ability to add _locations_ and add _events_ at those locations. As plans change, they will also need to be able to add, edit and delete events.
 
@@ -25,15 +25,18 @@ You'll need to create 2 tables: `locations` and `events`
 
 * `id`: number (primary key)
 * `name`: string
+* `image`: string
 * `description`: string
 * `max_attendee_count`: number
 
-### events
+### `events`
 
 * `id`: number (primary key)
 * `name`: string
 * `description`: string
 * `location_id`: number (foreign key to locations.id)
+* `day`: string
+* `time`: string
 
 Apply these migrations (using `npm run knex ...`) and use a database tool to verify they were created correctly.
 

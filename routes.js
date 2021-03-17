@@ -5,12 +5,18 @@ const router = express.Router()
 module.exports = router
 
 router.get('/', (req, res) => {
-  res.render('home')
+  const locations = [ // TODO: get this from the database instead
+    { id: 1, name: 'test location' }
+  ]
+  res.render('home', { locations })
 })
 
 router.get('/schedule/:date', (req, res) => {
   const { date } = req.params
-  res.render('showDate', { date })
+  const events = [ // TODO: get this from the database instead
+    { id: 1, name: 'test event' }
+  ]
+  res.render('showDate', { date, events })
 })
 
 router.get('/locations/edit/:id', (req, res) => {
