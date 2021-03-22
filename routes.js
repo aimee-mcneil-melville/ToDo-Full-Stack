@@ -5,12 +5,18 @@ const router = express.Router()
 module.exports = router
 
 router.get('/', (req, res) => {
-  res.render('home')
+  const locations = [ // TODO: get this from the database instead
+    { id: 1, name: 'test location' }
+  ]
+  res.render('home', { locations })
 })
 
 router.get('/schedule/:date', (req, res) => {
   const { date } = req.params
-  res.render('showDate', { date })
+  const events = [ // TODO: get this from the database instead
+    { id: 1, name: 'test event' }
+  ]
+  res.render('showDate', { date, events })
 })
 
 router.get('/locations/edit/:id', (req, res) => {
@@ -36,7 +42,14 @@ router.get('/events/edit/:id', (req, res) => {
 
 router.get('/events/:id', (req, res) => {
   const { id } = req.params
-  res.render('showEvent', { id })
+  const viewData = {
+    id,
+    name: 'test event',
+    icon: getEventIconPath(id),
+    description: 'test description',
+    location: { id: 1, name: 'test location' }
+  }
+  res.render('showEvent', viewData)
 })
 
 router.post('/events', (req, res) => {
@@ -44,3 +57,7 @@ router.post('/events', (req, res) => {
   console.log('POSTed to /events with ID ' + id)
   res.redirect(`/events/${id}`)
 })
+
+function getEventIconPath (id) {
+  return `/images/eventIcons/event${(id % 6) + 1}.svg`
+}

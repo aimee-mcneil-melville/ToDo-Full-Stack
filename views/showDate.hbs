@@ -4,7 +4,7 @@
 
 <h3>Events</h3>
 <ul>
-  <li><a href="/events/1">event 1</a></li>
-  <li><a href="/events/2">event 2</a></li>
-  <li><a href="/events/3">event 3</a></li>
+  {{#each events}}
+    <li><a href="/events/{{id}}">{{name}}</a></li>
+  {{/each}}
 </ul>
