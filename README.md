@@ -30,7 +30,7 @@ When you're learning a new technology, make sure you start simple and get that w
 2. Express Handlebars requires a default layout in order to render templates.
   - Create a layout file in `views/layouts`, default is `main.hbs` (see [the docs](https://github.com/ericf/express-handlebars) for more on layouts).  It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
   - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
-  
+
 3. We've provided a single `home.hbs` template in the views folder for you. Instead of `res.send`, now use `res.render` to render  `home.hbs` template when anyone visits the `/` route.
   - When you reload the page, you should see the text change to, 'Hello, templates!'
 
@@ -136,6 +136,8 @@ Any time you want to use this data, you can just `const art = require('./art.jso
 9. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
   - Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
 
+Write some tests for your routes with Supertest and Cheerio. These testing libraries have already been installed for you - create a `server.test.js` and test away! Particularly testing both sides of any `{{#if}}`s you have, and that your `{{#each}}`s loop correctly, would be a great start!
+
 Take the chance to explore, play, experiment. Ask lots of questions!
 
 
@@ -143,9 +145,7 @@ Take the chance to explore, play, experiment. Ask lots of questions!
 
 Including the title in the data object passed to `res.render` each time works ok, but what if some developer in the future forgets to pass it? It'd be great if there was some way in the template of providing a default title... maybe there's a way using the `{{#if}}` helper?
 
-Our route structure is pretty simple, but it's still probably better if we refactor it into a separate file. Change the `app.get` route definitions so they refer to functions exported from a `routes.js` file instead of inline anonymous functions.
-
-Likewise, we could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`.
+You could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`.
 
 
 ## Even more stretch
