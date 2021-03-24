@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+.text-stroke {
+  -webkit-text-stroke: 2px #F3B997;
+}
+
+.text-fill {
+  -webkit-text-fill-color: #BA3F37;
+}
+
+@tailwind utilities;
