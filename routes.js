@@ -1,22 +1,27 @@
 const express = require('express')
 
+// TODO: Remove these
+const events = require('./db/data/events.json')
+const locations = require('./db/data/locations.json')
+
 const router = express.Router()
 
 module.exports = router
 
 router.get('/', (req, res) => {
-  const locations = [ // TODO: get this from the database instead
-    { id: 1, name: 'test location' }
-  ]
-  res.render('home', { locations })
+  res.redirect('/schedule/friday')
 })
 
-router.get('/schedule/:date', (req, res) => {
-  const { date } = req.params
-  const events = [ // TODO: get this from the database instead
-    { id: 1, name: 'test event' }
-  ]
-  res.render('showDate', { date, events })
+router.get('/schedule/:day', (req, res) => {
+  const dayEvents = events.map(event => {
+    return {
+      ...event,
+      icon: getEventIconPath(event.id),
+      location: locations.find(loc => loc.id === event.location_id)
+    }
+  })
+  const day = capitalise(req.params.day)
+  res.render('showDay', { day, events: dayEvents })
 })
 
 router.get('/locations/edit/:id', (req, res) => {
@@ -60,4 +65,9 @@ router.post('/events', (req, res) => {
 
 function getEventIconPath (id) {
   return `/images/eventIcons/event${(id % 6) + 1}.svg`
+}
+
+function capitalise (name) {
+  if (typeof name !== 'string') return ''
+  return name[0].toUpperCase() + name.substring(1)
 }

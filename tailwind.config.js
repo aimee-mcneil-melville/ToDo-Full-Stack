@@ -1,10 +1,23 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   theme: {
     colors: {
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
-      red: colors.rose,
-      pink: colors.fuchsia
+      red: {
+        DEFAULT: '#E54B4A',
+        dark: '#BA3F37'
+      },
+      green: {
+        DEFAULT: '#4D7883',
+        dark: '#465768'
+      },
+      black: colors.black,
+      white: colors.white
+    },
+    extend: {
+      colors: {
+        peach: '#F3B997'
+      }
     },
     fontFamily: {
       sans: ['"Roboto Slab"', 'sans-serif'],
@@ -12,8 +25,3 @@ module.exports = {
     }
   }
 }
-// deepRed: '#BA3F37',
-// midRed: '#E54B4A',
-// borderPeach: '#F3B997',
-// h1Teal: '#465768',
-// h2Teal: '#4D7883'

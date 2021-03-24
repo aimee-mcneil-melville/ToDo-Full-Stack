@@ -3,12 +3,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
 
-.text-stroke {
-  -webkit-text-stroke: 2px #F3B997;
+@font-face {
+  font-family: 'RubberNippleFactoryBlack';
+  src: url('/RubberNippleFactoryBlack.ttf');
 }
 
-.text-fill {
-  -webkit-text-fill-color: #BA3F37;
+.title-header {
+  font-family: 'RubberNippleFactoryBlack'
+}
+
+.text-stroke-peach {
+  -webkit-text-stroke: 2px #F3B997;
 }
 
 @tailwind utilities;

@@ -1,26 +1,26 @@
 [
   {
     "id": 1,
-    "max_attendee_count": 10,
-    "name": "location name 1",
-    "description": "location description 1"
+    "max_attendee_count": 80,
+    "name": "TangleStage",
+    "description": "Not the biggest stage, but perhaps the most hip."
   },
   {
     "id": 2,
     "max_attendee_count": 40,
-    "name": "location name 2",
-    "description": "location description 2"
+    "name": "Yella Yurt",
+    "description": "It's a freakin' yurt! Get in here!"
   },
   {
     "id": 3,
     "max_attendee_count": 200,
-    "name": "location name 3",
-    "description": "location description 3"
+    "name": "Puffy Paddock",
+    "description": "A nice spot in the grass. Just look before you sit."
   },
   {
     "id": 4,
     "max_attendee_count": 100,
-    "name": "location name 4",
-    "description": "location description 4"
+    "name": "Kombutcha Karavan",
+    "description": "Whet your whistle with some yummy living organisms."
   }
 ]
