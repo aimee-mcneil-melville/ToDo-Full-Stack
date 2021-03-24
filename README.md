@@ -37,7 +37,7 @@ Are any key modules in your devDependencies?
 
 - If a package is working globally on your machine you may have forgotten to add it to your project explicitly with `npm install <package name>`, which means it will not be installed for the deployed version. 
 
-Does the `start` script in your `package.json` file call `node` and not `nodemon`?
+Does the `start` script in your `package.json` file call `nodemon` instead of `node`?
 
 - Heroku will use the start script (`npm run start`) to run your application and, unlike us, doesn't need the server restarting with changes.
 
