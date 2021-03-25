@@ -12,16 +12,16 @@ module.exports = {
         dark: '#465768'
       },
       black: colors.black,
+      gray: colors.coolGray,
       white: colors.white
     },
     extend: {
       colors: {
         peach: '#F3B997'
+      },
+      fontFamily: {
+        roboto: ['"Roboto Slab"']
       }
-    },
-    fontFamily: {
-      sans: ['"Roboto Slab"', 'sans-serif'],
-      serif: ['Merriweather', 'serif']
     }
   }
 }
