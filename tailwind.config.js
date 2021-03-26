@@ -2,6 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./views/**/*.hbs'],
+  plugins: [require('@tailwindcss/forms')],
   theme: {
     colors: {
       red: {
