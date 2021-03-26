@@ -12,8 +12,18 @@
   font-family: 'RubberNippleFactoryBlack'
 }
 
-.text-stroke-peach {
-  -webkit-text-stroke: 2px #F3B997;
+@layer utilities {
+  @variants responsive {
+    .text-stroke-peach {
+      text-shadow: 0 2px 3px black;
+      -webkit-text-stroke: 2px #F3B997;
+    }
+
+    .text-stroke-peach-thick {
+      text-shadow: 0 3px 4px black;
+      -webkit-text-stroke: 3px #F3B997;
+    }
+  }
 }
 
 @tailwind utilities;

@@ -1,0 +1,16 @@
+<div class="rnfb-font flex flex-1 bg-red text-white text-md md:text-lg lg:text-xl xl:text-2xl font-bold">
+  <div class="bg-red-dark p-3.5 lg:p-5">View Locations</div>
+  <div class="bg-red p-3.5 lg:p-5 flex-grow"><a href="/schedule/friday">Manage Events</a></div>
+</div>
+
+<h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Locations:</h2>
+
+<div class="flex flex-row flex-wrap mx-6 mb-6">
+{{#each locations}}
+  <div class="border-red border-l-4 px-4 mb-8 w-max md:w-2/5">
+    <a href="/events/{{id}}" class="text-green font-roboto font-bold text-xl">{{name}}</a>
+    <p class="text-gray-500">{{description}}</p>
+    <span class="font-roboto text-xl font-bold text-red"><a href="/locations/{{id}}/edit">Edit Location</a></span>
+  </div>
+{{/each}}
+</div>

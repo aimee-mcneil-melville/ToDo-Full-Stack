@@ -24,14 +24,13 @@ router.get('/schedule/:day', (req, res) => {
   res.render('showDay', { day, events: dayEvents })
 })
 
-router.get('/locations/edit/:id', (req, res) => {
+router.get('/locations/:id/edit', (req, res) => {
   const { id } = req.params
   res.render('editLocation', { id })
 })
 
-router.get('/locations/:id', (req, res) => {
-  const { id } = req.params
-  res.render('showLocation', { id })
+router.get('/locations', (req, res) => {
+  res.render('showLocations', { locations })
 })
 
 router.post('/locations', (req, res) => {
@@ -40,12 +39,23 @@ router.post('/locations', (req, res) => {
   res.redirect(`/locations/${id}`)
 })
 
-router.get('/events/edit/:id', (req, res) => {
+router.get('/events/add', (req, res) => {
+  res.render('addEvent')
+})
+
+router.post('/events/add', (req, res) => {
+  const { id } = req.body
+  console.log('POSTed to /events with ID ' + id)
+  res.redirect(`/events/${id}`)
+})
+
+router.get('/events/:id/edit', (req, res) => {
   const { id } = req.params
+  // find the event and pass it as viewData
   res.render('editEvent', { id })
 })
 
-router.get('/events/:id', (req, res) => {
+router.post('/events/edit', (req, res) => {
   const { id } = req.params
   const viewData = {
     id,
@@ -54,13 +64,7 @@ router.get('/events/:id', (req, res) => {
     description: 'test description',
     location: { id: 1, name: 'test location' }
   }
-  res.render('showEvent', viewData)
-})
-
-router.post('/events', (req, res) => {
-  const { id } = req.body
-  console.log('POSTed to /events with ID ' + id)
-  res.redirect(`/events/${id}`)
+  res.redirect('showEvent', viewData) // to the day of the event
 })
 
 function getEventIconPath (id) {
