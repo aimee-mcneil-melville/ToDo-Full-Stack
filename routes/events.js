@@ -73,3 +73,12 @@ router.post('/edit', (req, res) => {
   db.updateEvent({ id, name, description, day, time, locationId })
   res.redirect(`/schedule/${day}`)
 })
+
+// POST /events/delete
+router.post('/delete', (req, res) => {
+  // Foregoing data validation on req.body for the sake of brevity,
+  // but for security reasons do NOT do this in a real production application
+  const id = Number(req.body.id)
+  db.deleteEvent(id)
+  res.redirect(`/schedule/${req.body.day}`)
+})

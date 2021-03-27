@@ -10,7 +10,7 @@
 
 <h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Edit Event: {{event.name}}</h2>
 
-<form method="POST" action="/events/edit" class="ml-6 pl-4 border-red border-l-4 w-5/6 max-w-lg">
+<form method="POST" action="/events/edit" class="ml-6 pl-4 border-red border-l-4 w-5/6 max-w-lg mb-6">
   <input type="hidden" name="id" value="{{event.id}}">
 
   <label for="name" class="block mb-4">
@@ -23,7 +23,7 @@
     <textarea id="description" name="description" placeholder="Event description" rows="3" class="text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">{{event.description}}</textarea>
   </label>
 
-  <div class="grid grid-cols-12 grid-rows-3 mb-4">
+  <div class="grid grid-cols-12 grid-rows-3">
     <label for="location" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
       Location
     </label>
@@ -49,4 +49,12 @@
   </div>
 
   <button class="font-roboto font-bold text-red text-2xl block w-full text-align-center">Update event</button>
+</form>
+
+<form method="POST" action="/events/delete" class="ml-6 pl-4 w-5/6 max-w-lg mb-6">
+  <input type="hidden" name="id" value="{{id}}">
+  <input type="hidden" name="day" value="{{day}}">
+  <button class="font-roboto font-bold text-white text-2xl block w-auto bg-red rounded-md px-2 py-1 text-align-center mx-auto">
+    Delete event
+  </button>
 </form>

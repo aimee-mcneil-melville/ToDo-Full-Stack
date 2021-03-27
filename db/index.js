@@ -1,5 +1,5 @@
 // TODO: Remove these
-const events = require('./data/events.json')
+let events = require('./data/events.json')
 const locations = require('./data/locations.json')
 
 module.exports = {
@@ -9,7 +9,8 @@ module.exports = {
   getLocationById,
   addNewEvent,
   getEventById,
-  updateEvent
+  updateEvent,
+  deleteEvent
 }
 
 function getEventsByDay (day) {
@@ -67,6 +68,10 @@ function updateEvent (updatedEvent) {
   changingEvent.location_id = updatedEvent.locationId
   changingEvent.time = updatedEvent.time
   changingEvent.day = updatedEvent.day
+}
+
+function deleteEvent (id) {
+  events = events.filter(event => event.id !== id)
 }
 
 /*
