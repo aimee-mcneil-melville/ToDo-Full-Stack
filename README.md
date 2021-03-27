@@ -8,6 +8,12 @@ Fortunately, the team has already confirmed the location and dates so they know 
 
 The design team has worked up the UI and routes, but they haven't added any of the data layer. That's where you come in. You'll create the migrations and seeds and then create some database functions that can be used from the routes. Let's get stuck in!
 
+## Overview
+
+0. [Setup](#Setup)
+1. [Create the migrations](#create-the-migrations)
+1. [Add the seed data](#add-the-seed-data)
+
 ## Setup
 
 1. Clone this repo
@@ -17,6 +23,12 @@ The design team has worked up the UI and routes, but they haven't added any of t
 1. [http://localhost:3000](http://localhost:3000)
 1. Get familiar with the existing codebase
 
+### What you're starting with
+
+The application is usable ... _ish_. You can view/add/edit events and view/edit locations. However, all changes are not being persisted - they only live in the server's memory. When the server is restarted, all changes will disappear. That's because `db/index.js` isn't currently using a database - its functions aren't even asynchronous. You will need to re-write all of the exported functions in `db/index.js` and, because they will be asynchronous once you've implemented them properly, you'll need to fix where they are being called in `routes.js`. But first, you'll need to create the database.
+
+Knex has been installed, the `knexfile.js` has been created and a `knex` script is waiting patiently for you in `package.json`.
+
 ## Create the migrations
 
 You'll need to create 2 tables: `locations` and `events`
@@ -25,24 +37,27 @@ You'll need to create 2 tables: `locations` and `events`
 
 * `id`: number (primary key)
 * `name`: string
-* `image`: string
 * `description`: string
-* `max_attendee_count`: number
 
 ### `events`
 
-* `id`: number (primary key)
-* `name`: string
-* `description`: string
-* `location_id`: number (foreign key to locations.id)
-* `day`: string
-* `time`: string
+  * `id`: number (primary key)
+  * `location_id`: number (foreign key to locations.id)
+  * `day`: string
+  * `time`: string
+  * `name`: string
+  * `description`: string
 
-Apply these migrations (using `npm run knex ...`) and use a database tool to verify they were created correctly.
+### Steps
 
-## Add some seed data
+1. Create the migration files for these 2 tables and apply them using `npm run knex`.
+1. Use a database tool, such as the DB Browser for SQLite, to verify they were created correctly.
 
-Create and apply the seed data (using `npm run knex ...`) based on the JSON files in the `/db/data` folder. Use a database tool to verify the data was added correctly.
+## Add the seed data
+
+1. Create the seed files based on the JSON files in the `/db/data` folder.
+1. Add the seed data to the database using `npm run knex`.
+1. Use a database tool to verify the data was added correctly.
 
 ## Show the list of locations
 
