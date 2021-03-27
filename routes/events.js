@@ -16,8 +16,15 @@ router.get('/add/:day', (req, res) => {
     name: capitalise(eventDay),
     selected: eventDay === day ? 'selected' : ''
   }))
-  const locations = db.getAllLocations()
-  res.render('addEvent', { locations, days, day })
+  db.getAllLocations()
+    .then(locations => {
+      res.render('addEvent', { locations, days, day })
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to retrieve locations')
+    })
 })
 
 // POST /events/add
@@ -40,12 +47,20 @@ router.get('/:id/edit', (req, res) => {
     name: capitalise(eventDay),
     selected: eventDay === event.day ? 'selected' : ''
   }))
-  const locations = db.getAllLocations().map(loc => ({
-    id: loc.id,
-    name: loc.name,
-    selected: loc.id === event.locationId ? 'selected' : ''
-  }))
-  res.render('editEvent', { event, days, locations })
+  db.getAllLocations()
+    .then(locs => {
+      const locations = locs.map(loc => ({
+        id: loc.id,
+        name: loc.name,
+        selected: loc.id === event.locationId ? 'selected' : ''
+      }))
+      res.render('editEvent', { event, days, locations })
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to retrieve locations')
+    })
 })
 
 // POST /events/edit

@@ -7,8 +7,15 @@ module.exports = router
 
 // GET /locations
 router.get('/', (req, res) => {
-  const locations = db.getAllLocations()
-  res.render('showLocations', { locations })
+  db.getAllLocations()
+    .then(locations => {
+      res.render('showLocations', { locations })
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send('Unable to retrieve locations')
+    })
 })
 
 // POST /locations/edit

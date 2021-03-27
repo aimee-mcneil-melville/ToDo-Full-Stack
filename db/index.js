@@ -26,7 +26,7 @@ function getEventsByDay (day) {
 }
 
 function getAllLocations () {
-  return locations
+  return Promise.resolve(locations)
 }
 
 function updateLocation (location) {
