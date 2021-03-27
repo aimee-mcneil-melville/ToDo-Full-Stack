@@ -10,20 +10,20 @@ The design team has worked up the UI and routes, but they haven't added the data
 
 ## Steps
 
-🙌 indicates an assessment opportunity<br>
-💪 indicates a stretch opportunity
+:raised_hands: indicates an assessment opportunity<br>
+:muscle: indicates a stretch opportunity
 
-0. 🙌 [Setup](#Setup)
-1. 🙌 [Create migrations](#create-migrations)
-1. 🙌 [Add seed data](#add-seed-data)
-1. 🙌 [Show all locations](#show-all-locations)
-1. 🙌 [Show events for a day](#show-events-for-a-day)
-1. 🙌 [Edit locations](#edit-locations)
-1. 🙌 [Add new events](#add-new-events)
-1. 🙌 [Delete events](#delete-events)
-1. 💪 [Edit events](#edit-events)
-1. 💪 [Add new locations](#add-new-locations)
-1. 💪 [Delete locations](#delete-locations)
+0. :raised_hands: [Setup](#Setup)
+1. :raised_hands: [Create migrations](#create-migrations)
+1. :raised_hands: [Add seed data](#add-seed-data)
+1. :raised_hands: [Show all locations](#show-all-locations)
+1. :raised_hands: [Show events for a day](#show-events-for-a-day)
+1. :raised_hands: [Edit locations](#edit-locations)
+1. :raised_hands: [Add new events](#add-new-events)
+1. :raised_hands: [Delete events](#delete-events)
+1. :muscle: [Edit events](#edit-events)
+1. :muscle: [Add new locations](#add-new-locations)
+1. :muscle: [Delete locations](#delete-locations)
 
 FYI: [A note about styling](#a-note-about-styling)
 
@@ -33,7 +33,7 @@ FYI: [A note about styling](#a-note-about-styling)
 1. `cd dreamfest`
 1. `npm install`
 1. `npm run dev`
-1. [http://localhost:3000](http://localhost:3000)
+1. Have a little [play with the app](http://localhost:3000) as it is
 1. Get familiar with the existing codebase
 
 ### What you're starting with
@@ -85,34 +85,77 @@ You'll need to create 2 tables: `locations` and `events`
 
 ## Edit locations
 
+**Show the form**
+
 1. `GET /locations/4/edit` in `routes/locations.js`
 1. `getLocationById()` in `db/index.js`
+1. SELECT `events` table WHERE `events.location_id = locationId`
 1. Be sure the form is being populated correctly
-1. `POST /locations/edit`
+
+**Submit the form**
+
+1. Happens in `POST /locations/edit` in `routes/locations.js`
 1. `updateLocation()`
+1. UPDATE `events` table with `event`
 1. `res.redirect('/locations')`
 
 ## Add new events
 
-1. `POST /events/add` in `routes/events.js`
+1. Happens in `POST /events/add` in `routes/events.js`
 1. `addNewEvent()` in `db/index.js`
 1. `res.redirect('/schedule/:day)`
 
 ## Delete events
 
-
+1. Happens in `POST /events/delete` in `routes/events.js`
+1. `deleteEvent()` in `db/index.js`
+1. `res.redirect('/schedule/:day)`
 
 ## Edit events
 
+**Show form**
 
+1. Happens in `GET /events/:id/edit` in `routes/events.js`
+1. `getEventById(id)` and `getAllLocations()` (recommend `Promise.all`)
+1. `res.render('editEvent', { event, days, locations })`
+
+**Submit form**
+
+1. Update `POST /events/edit` in `routes/events.js`
+1. `updateEvent(updatedEvent)` in `db/index.js`
+1. `res.redirect('/schedule/:day')`
 
 ## Add new locations
 
+You'll have to create new things in this step, but referring to existing features will help.
 
+**Show form**
+
+1. Create link to "Add location" in `views/showLocations.hbs`
+    - Styling will be very similar to the "Add event" link in `views/showDay.hbs`
+1. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`)
+1. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`
+
+**Submit form**
+
+1. Create `POST /locations/add` in `routes/locations.js`
+1. Create an `addNewLocation()` in `db/index.js`
+1. `res.redirect('/locations')`
 
 ## Delete locations
 
+You'll also have to create new things in this step, but referring to existing features will help.
 
+**Create link**
+
+1. Add new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`)
+
+**Create route**
+
+1. Create a `POST /locations/delete` in `routes/locations.js`
+    - pass the `id` as a hidden form field
+1. Create and export a `deleteLocation(id)` in `db/index.js`
+1. `res.redirect('/locations')`
 
 ## A note about styling
 
