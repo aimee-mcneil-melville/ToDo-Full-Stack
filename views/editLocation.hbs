@@ -3,24 +3,20 @@
   <div class="bg-red p-3.5 lg:p-5 flex-grow"><a href="/schedule/friday">Manage Events</a></div>
 </div>
 
-<h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Edit Location</h2>
+<h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Edit Location: {{name}}</h2>
 
-<form method="POST" action="/locations">
+<form method="POST" action="/locations/edit">
   <input type="hidden" name="id" value="{{id}}">
+
   <div>
-    <label for="name">Name:</label>
-    <input id="name" value="{{name}}" placeholder="{{name}}">
+    <label for="name" class="">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Location name" value="{{name}}">
   </div>
 
   <div>
     <label for="description">Description:</label>
-    <input id="description" value="{{description}}" placeholder="{{description}}">
+    <textarea id="description" name="description" placeholder="Location description">{{description}}</textarea>
   </div>
 
-  <div>
-    <label for="maxAttendeeCount">Max attendee count:</label>
-    <input id="maxAttendeeCount" value="{{maxAttendeeCount}}" placeholder="{{maxAttendeeCount}}">
-  </div>
-
-  <button>Save location</button>
+  <button class="">Update location</button>
 </form>

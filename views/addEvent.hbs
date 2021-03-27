@@ -10,3 +10,39 @@
 
 <h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Add New Event</h2>
 
+<form method="POST" action="/events/add">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Event name">
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" placeholder="Event description"></textarea>
+  </div>
+
+  <div>
+    <label for="location">Location:</label>
+    <select id="location" name="locationId">
+      {{#each locations}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div>
+    <label for="day">Day:</label>
+    <select id="day" name="day">
+      {{#each days}}
+        <option value="{{value}}" {{selected}}>{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div>
+    <label for="time">Time:</label>
+    <input type="text" id="time" name="time" placeholder="Example: 1pm - 2pm">
+  </div>
+
+  <button>Add new event</button>
+</form>
