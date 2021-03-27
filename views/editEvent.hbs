@@ -10,41 +10,43 @@
 
 <h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Edit Event: {{event.name}}</h2>
 
-<form method="POST" action="/events/edit">
+<form method="POST" action="/events/edit" class="ml-6 pl-4 border-red border-l-4 w-5/6 max-w-lg">
   <input type="hidden" name="id" value="{{event.id}}">
 
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Event name" value="{{event.name}}">
-  </div>
+  <label for="name" class="block mb-4">
+    <span class="font-roboto text-green text-xl font-bold">Event Name</span>
+    <input type="text" id="name" name="name" placeholder="Event name" value="{{event.name}}" class="text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
+  </label>
 
-  <div>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" placeholder="Event description">{{event.description}}</textarea>
-  </div>
+  <label for="description" class="block mb-4">
+    <span class="font-roboto text-green text-xl font-bold">Description</span>
+    <textarea id="description" name="description" placeholder="Event description" rows="3" class="text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">{{event.description}}</textarea>
+  </label>
 
-  <div>
-    <label for="location">Location:</label>
-    <select id="location" name="locationId">
+  <div class="grid grid-cols-12 grid-rows-3 mb-4">
+    <label for="location" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
+      Location
+    </label>
+    <select id="location" name="locationId" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
       {{#each locations}}
       <option value="{{id}}" {{selected}}>{{name}}</option>
       {{/each}}
     </select>
-  </div>
 
-  <div>
-    <label for="day">Day:</label>
-    <select id="day" name="day">
+    <label for="day" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
+      Day
+    </label>
+    <select id="day" name="day" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
       {{#each days}}
         <option value="{{value}}" {{selected}}>{{name}}</option>
       {{/each}}
     </select>
+
+    <label for="time" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
+      Time
+    </label>
+    <input type="text" id="time" name="time" placeholder="Example: 1pm - 2pm" value="{{event.time}}" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
   </div>
 
-  <div>
-    <label for="time">Time:</label>
-    <input type="text" id="time" name="time" placeholder="Example: 1pm - 2pm" value="{{event.time}}">
-  </div>
-
-  <button>Update event</button>
+  <button class="font-roboto font-bold text-red text-2xl block w-full text-align-center">Update event</button>
 </form>

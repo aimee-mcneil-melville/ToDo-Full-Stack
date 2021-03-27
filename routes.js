@@ -36,7 +36,6 @@ router.post('/locations/edit', (req, res) => {
   // but for security reasons do NOT do this in a real production application
   const { name, description } = req.body
   const id = Number(req.body.id)
-  console.log('id, name, description:', id, name, description)
   db.updateLocation({ id, name, description })
   res.redirect('/locations')
 })
