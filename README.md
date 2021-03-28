@@ -19,7 +19,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   chmod +x todo
   ```
 
-Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin running in the `todo` file.
+Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin with the `todo` file. Note: if you run `./todo list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
 
 * Create the Knex configuration file (`knexfile.js`).
 
