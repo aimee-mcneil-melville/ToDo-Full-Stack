@@ -14,6 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/knex-joins-stories.git"
   },
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "keywords": [],
   "author": "Enspiral Dev Academy",
   "license": "ISC",
