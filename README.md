@@ -79,7 +79,7 @@ To easily work with the values we use in the `style` JSX attribute, we should pu
 
 Next, change your JSX (in the return) to refer to `style` instead of including an object literal. When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
 
-What you've just done is make your component more *flexbile*. We can now manipulate the values any way we'd like using `setStyle()`.
+What you've just done is make your component more *flexible*. We can now manipulate the values any way we'd like using `setStyle()`.
 
 
 ## Rainbow pixels
