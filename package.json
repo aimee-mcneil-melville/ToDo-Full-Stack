@@ -12,11 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-academy-challenges/boilerplate-knex.git"
+    "url": "git+https://github.com/dev-academy-challenges/knex-relationships-stories.git"
+  },
+  "eslintConfig": {
+    "extends": "eda"
   },
   "author": "EDA",
   "license": "ISC",
-  "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
+  "homepage": "https://github.com/dev-academy-challenges/knex-relationships-stories#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
