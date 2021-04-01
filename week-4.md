@@ -44,38 +44,53 @@
 
 * Security
   - [ ] CORS
-  - [ ] SQL Injection attack
   - [ ] Cross site scripting
-  - [ ] Heartbleed SSH vulnerability
   - [ ] Fundamentals of encryption
+  - [ ] Heartbleed SSH vulnerability
+  - [ ] SQL Injection attack
 
 * ECMAScript 6 (ES6)
-  - [ ] `Map` and `Set`
+  - [ ] `Array.from()`, `Array.fill()`
   - [ ] Asynchronous JavaScript with Generators
   - [ ] Babel & Transpiling
+  - [ ] Default parameters, Rest & Spread operators
+  - [ ] Destructuring
+  - [ ] `Map` and `Set`
+
+* Relational databases
+  - [ ] Database indexes
+  - [ ] DDL, DNL, DCL, TCL
+  - [ ] SQL joins (left, right, inner, outer, full)
+
+* Git commands
+  - [ ] `git blame`
+  - [ ] `git cherry-pick`
+  - [ ] `git rebase`
 
 * Algorithms
-  - [ ] Common sorting algorithms
-  - [ ] Binary search & Git bisect
   - [ ] Big O notation
+  - [ ] Binary search & Git bisect
+  - [ ] Common sorting algorithms
 
 * JavaScript libraries
-  - [ ] Zepto
+  - [ ] Angular
+  - [ ] Immutable.js
   - [ ] Lodash
   - [ ] rx.js (hard)
-  - [ ] Immutable.js
-  - [ ] Angular
+  - [ ] Zepto
 
 * UI Framework
+  - [ ] Material Design
   - [ ] Semantic UI
 
 * Famous Programmers
-  - [ ] Radia Perlman
+  - [ ] Ada Lovelace
+  - [ ] Alan Turing
+  - [ ] Annie Easley
+  - [ ] Charles Babbidge
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Grace Hopper
   - [ ] Ken Thompson
-  - [ ] Annie Easley
   - [ ] Linus Torvalds
   - [ ] Margaret Hamilton
-
-<!-- Count: 22 -->
+  - [ ] Radia Perlman

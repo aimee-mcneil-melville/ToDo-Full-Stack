@@ -42,10 +42,20 @@
 
 ## Topics
 
+* Functional Programming
+  - [ ] What is functional programming
+  - [ ] Currying and partial application
+
 * Design patterns
   - [ ] Strategy Design Pattern
   - [ ] Observer Design Pattern
   - [ ] Model View Controller (MVC)
+
+* NoSQL databases
+  - [ ] Neo4J
+  - [ ] MongoDB
+  - [ ] CouchDB
+  - [ ] [Secure Scuttlebutt](https://ssbc.github.io/secure-scuttlebutt/) (hard)
 
 * JavaScript libraries
   - [ ] CycleJS
@@ -58,16 +68,25 @@
   - [ ] Functions that do more than one thing
   - [ ] Cyclomatic complexity [link](http://webuniverse.io/cyclomatic-complexity-refactoring-tips/) [eslint rule](http://eslint.org/docs/rules/complexity)
 
+* JavaScript
+  - [ ] `'use strict'`
+  - [ ] StandardJS
+  - [ ] DOM vs. Virtual DOM
+
 * Transpiled languages
   - [ ] TypeScript
   - [ ] CoffeeScript
   - [ ] ClosureScript
   - [ ] Elm
 
-* JavaScript
-  - [ ] `'use strict'`
-  - [ ] StandardJS
-  - [ ] DOM vs. Virtual DOM
+* Command line tools
+  - [ ] `ack`
+  - [ ] `sed`, `grep`, `ag`
+  - [ ] `ln`, `ls`
+  - [ ] `chmod`, `chown`, `chgrp`
+  - [ ] `echo`, `cat`, `tail`
+  - [ ] `nvm`
+  - _Another CLI tool of your choice_ (validate with teacher first)
 
 * Other types of app experiences
   - [ ] How to make a Chrome Extension
@@ -80,11 +99,12 @@
   - [ ] Bulma
 
 * Famous Programmers
+  - [ ] Audrey Tang
+  - [ ] Barbara Liskov
+  - [ ] Brendan Eich
+  - [ ] Hedy Lamarr
+  - [ ] Mary Wilkes
   - [ ] Richard Stallman
   - [ ] Roy Fielding
   - [ ] Sandi Metz
   - [ ] Steve Wozniak
-  - [ ] Barbara Liskov
-  - [ ] Hedy Lamarr
-
-<!-- Count: 26 -->
