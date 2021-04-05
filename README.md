@@ -19,9 +19,9 @@ npm run dev
 
 Your task is to create all of the components that comprise the page and wire up data for the component to render. One approach would be to create the HTML of the page with static data first, and afterwards, decompose the page into the components below.
 
-The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `data` folder.
+The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
 
-Import the data from the appropriate components and pass the needed data to the components using props.
+Import the data from the appropriate files and pass the needed data to the components using props.
 
 The components that make up Charlotte's blog are:
 
