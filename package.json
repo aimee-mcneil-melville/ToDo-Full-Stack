@@ -21,6 +21,12 @@
       "@babel/plugin-proposal-class-properties"
     ]
   },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
   "author": "EDA",
   "license": "ISC",
   "dependencies": {
