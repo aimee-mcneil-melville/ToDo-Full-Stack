@@ -1,15 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-function App (props) {
-  return (
-    <h1>{props.message.text}</h1>
-  )
-}
-
-const message = { text: "Future home of Charlotte's web" }
+import App from './components/App'
 
 ReactDOM.render(
-  <App message={message} />,
+  <App />,
   document.getElementById('root')
 )

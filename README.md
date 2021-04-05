@@ -25,7 +25,7 @@ Import the data from the appropriate files and pass the needed data to the compo
 
 The components that make up Charlotte's blog are:
 
-* `App`: already in place, but could be refactored out into `App.jsx`.
+* `App`: already in place, you'll hold your other components within this one as you build them.
 * `Header`: the header of the page.
 * `Footer`: the footer of the page.
 * `Posts`: to hold all posts.
