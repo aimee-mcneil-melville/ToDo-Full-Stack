@@ -10,7 +10,7 @@
     "webpack": "webpack",
     "client": "webpack --watch",
     "server": "node server",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "presets": [
