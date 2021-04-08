@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from 'react'
+import React, { useEffect, useState } from 'react'
 
 import colorList from '../color-list'
 import { validate, rules } from '../validation'
@@ -18,14 +18,9 @@ function ItemForm (props) {
   const [invalid, setInvalid] = useState({})
   const [item, setItem] = useState({...(props.editItem || defaultState)})
 
-  const prevItemRef = useRef()
   useEffect(() => {
     const {editItem} = props
-    const prevItem = prevItemRef.current
-    prevItemRef.current = item
-    if (editItem && editItem !== prevItem) {
-      setItem({...editItem})
-    }
+    setItem(editItem || defaultState)
   }, [props.editItem])
 
   const handleChange = evt => {
