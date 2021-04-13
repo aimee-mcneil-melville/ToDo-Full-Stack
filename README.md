@@ -13,7 +13,7 @@ The design team has worked up the UI and routes, but they haven't added the data
 :raised_hands: indicates an assessment opportunity<br>
 :muscle: indicates a stretch opportunity
 
-0. :raised_hands: [Setup](#Setup)
+0. :raised_hands: [Setup](#setup)
 1. :raised_hands: [Create migrations](#create-migrations)
 1. :raised_hands: [Add seed data](#add-seed-data)
 1. :raised_hands: [Show all locations](#show-all-locations)
