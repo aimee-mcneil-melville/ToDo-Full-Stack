@@ -8,7 +8,7 @@
     "dev": "nodemon index",
     "lint": "eslint .",
     "knex": "knex",
-    "test": "jest"
+    "test": "jest --verbose --watchAll"
   },
   "repository": {
     "type": "git",

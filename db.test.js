@@ -1,32 +1,30 @@
-const testEnv = require('./test-environment')
+const knex = require('knex')
+const testConfig = require('./knexfile').test
+const testDb = knex(testConfig)
+
 const db = require('./db')
 
-let testDb = null
-
-beforeEach(() => {
-  testDb = testEnv.getTestDb()
-  return testEnv.initialise(testDb)
+beforeAll(() => {
+  return testDb.migrate.latest()
 })
 
-afterEach(() => testEnv.cleanup(testDb))
+beforeEach(() => {
+  return testDb.seed.run()
+})
 
 test('getUsers gets all users', () => {
   // One for each letter of the alphabet!
-  const expected = 26
   return db.getUsers(testDb)
     .then(users => {
-      const actual = users.length
-      return expect(actual).toBe(expected)
+      expect(users).toHaveLength(26)
+      return null
     })
-    .catch(err => expect(err).toBeNull())
 })
 
 test('getUser gets a single user', () => {
-  const expected = 'Ambitious Aardvark'
   return db.getUser(99901, testDb)
     .then(user => {
-      const actual = user.name
-      return expect(actual).toBe(expected)
+      expect(user.name).toBe('Ambitious Aardvark')
+      return null
     })
-    .catch(err => expect(err).toBeNull())
 })
