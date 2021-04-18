@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchFruits } from '../actions'
+import { fetchFriends } from '../actions/index.js'
 
 function App (props) {
   useEffect(() => {
-    props.dispatch(fetchFruits())
+    props.dispatch(fetchFriends())
   }, [])
 
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>rcmndr</h1>
         <ul>
           {props.fruits.map(fruit => (
             <li key={fruit}>{fruit}</li>

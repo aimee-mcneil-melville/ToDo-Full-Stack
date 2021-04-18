@@ -2,9 +2,9 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getFruits () {
-  return request.get(rootUrl + '/fruits')
+export function getFriends () {
+  return request.get(rootUrl + '/friends')
     .then(res => {
-      return res.body.fruits
+      return res.body.fruits // need to update //
     })
 }

@@ -1,4 +1,4 @@
-import { getFruits } from '../apis/fruits'
+import { getFriends } from '../apis/fruits'
 
 export const SET_FRUITS = 'SET_FRUITS'
 
@@ -9,9 +9,9 @@ export function setFruits (fruits) {
   }
 }
 
-export function fetchFruits () {
+export function fetchFriends () {
   return dispatch => {
-    return getFruits()
+    return getFriends()
       .then(fruits => {
         dispatch(setFruits(fruits))
         return null
