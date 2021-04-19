@@ -6,7 +6,7 @@
   "scripts": {
     "client": "npm run webpack",
     "server": "node server",
-    "dev:client": "npm run webpack --watch",
+    "dev:client": "npm run webpack -- --watch",
     "dev:server": "nodemon server",
     "start": "run-s client server",
     "dev": "run-p dev:client dev:server",
