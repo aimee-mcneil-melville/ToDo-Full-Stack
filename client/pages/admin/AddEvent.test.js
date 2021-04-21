@@ -2,6 +2,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { renderWithRouter } from '../../test-utils'
+
 import AddEvent from './AddEvent'
 import { addEvent } from './addEventHelper'
 
@@ -23,16 +25,12 @@ describe('submit button', () => {
   })
 
   it('calls addEvent helper with event data on click', () => {
-    const fakeHistory = {
-      push: () => {}
-    }
-
     addEvent.mockImplementation((event, navigateTo) => {
-      expect(navigateTo).toBe(fakeHistory.push)
       expect(event.title).toBe('test title')
+      expect(typeof navigateTo).toBe('function')
     })
 
-    render(<AddEvent history={fakeHistory} />)
+    renderWithRouter(<AddEvent />)
 
     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
     const addButton = screen.getByRole('button')

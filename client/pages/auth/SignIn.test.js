@@ -2,6 +2,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { renderWithRouter } from '../../test-utils'
+
 import SignIn from './SignIn'
 import { signInUser } from './signInHelper'
 
@@ -24,7 +26,7 @@ describe('form fields', () => {
 
 describe('Sign In button', () => {
   it('calls signInUser helper on click', () => {
-    render(<SignIn history={[]} />)
+    renderWithRouter(<SignIn />)
 
     const signInButton = screen.getByRole('button', { name: 'Sign in' })
     userEvent.click(signInButton)
