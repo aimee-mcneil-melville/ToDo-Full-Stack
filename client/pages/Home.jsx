@@ -17,7 +17,9 @@ export default function Home () {
         setAddresses(addrs)
         return null
       })
+  }, [])
 
+  useEffect(() => {
     let mounted = true
 
     function isMounted () {
