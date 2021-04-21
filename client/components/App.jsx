@@ -17,7 +17,7 @@ function App (props) {
         {/* <WaitIndicator /> */}
         <ul>
           {props.friends.map(friend => (
-            <li key={friend.id}>User ID: {friend.user_id}</li>
+            <li key={friend}>Ol mate: {friend.name} {friend.lastName}</li>
           ))}
         </ul>
       </div>
