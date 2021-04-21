@@ -1,12 +1,15 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+
 import { addEvent } from './addEventHelper'
 
 import EventForm from '../../components/EventForm'
 
 export default function AddEvent (props) {
+  const history = useHistory()
+
   function submitEvent (event) {
-    const navigate = props.history.push
-    addEvent(event, navigate)
+    addEvent(event, history.push)
   }
 
   return (

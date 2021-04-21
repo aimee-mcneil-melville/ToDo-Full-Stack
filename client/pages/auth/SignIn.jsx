@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { signInUser } from './signInHelper'
 
@@ -7,6 +8,7 @@ export default function SignIn (props) {
     username: '',
     password: ''
   })
+  const history = useHistory()
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -18,7 +20,7 @@ export default function SignIn (props) {
 
   function handleClick (e) {
     e.preventDefault()
-    signInUser(form, props.history.push)
+    signInUser(form, history.push)
   }
 
   return (

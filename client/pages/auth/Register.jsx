@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { registerUser } from './registerHelper'
 
@@ -9,6 +10,7 @@ export default function Register (props) {
     gardenId: null,
     email: ''
   })
+  const history = useHistory()
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -20,7 +22,7 @@ export default function Register (props) {
 
   function handleClick (e) {
     e.preventDefault()
-    registerUser(form, props.history.push)
+    registerUser(form, history.push)
   }
 
   return (
