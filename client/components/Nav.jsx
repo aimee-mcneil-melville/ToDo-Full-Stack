@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { logOut, getLinks } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
-export default function Nav (props) {
+export default function Nav () {
   const location = useLocation()
   const navLinks = getLinks(location.pathname)
 

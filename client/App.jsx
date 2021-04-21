@@ -15,7 +15,7 @@ export default function App () {
   return (
     <main className="container">
       <Error />
-      <Route path="/" component={Header} />
+      <Header />
       <WaitIndicator />
       <div className="columns">
         <Route exact path='/' component={Home} />
