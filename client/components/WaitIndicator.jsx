@@ -1,14 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-function WaitIndicator ({ waiting }) {
+function WaitIndicator () {
+  const waiting = useSelector(globalState => globalState.waiting)
+
   return <p className="waitIndicator"> { waiting ? 'loading...' : '\u00a0' }</p>
 }
 
-function mapStateToProps (state) {
-  return {
-    waiting: state.waiting
-  }
-}
-
-export default connect(mapStateToProps)(WaitIndicator)
+export default WaitIndicator

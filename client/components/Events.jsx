@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import EventItem from './EventItem'
 
-function Events ({ events, isAdmin }) {
+function Events ({ events }) {
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+
   return (
     <>
       {
@@ -22,10 +24,4 @@ function Events ({ events, isAdmin }) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    isAdmin: state.user.isAdmin
-  }
-}
-
-export default connect(mapStateToProps)(Events)
+export default Events
