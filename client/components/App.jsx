@@ -15,9 +15,10 @@ function App (props) {
         {/* <ErrorMessage /> */}
         <h1>rcmndr</h1>
         {/* <WaitIndicator /> */}
+        <p>Friends List:</p>
         <ul>
           {props.friends.map(friend => (
-            <li key={friend}>Ol mate: {friend.name} {friend.lastName}</li>
+            <li key={friend}>{friend.name} {friend.lastName}</li>
           ))}
         </ul>
       </div>
