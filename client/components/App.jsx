@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+// import { combineReducers } from '../reducers'
 
-import { fetchFriends } from '../actions/index.js'
+import { fetchFriends } from './appHelper'
 
 function App (props) {
   useEffect(() => {
-    props.dispatch(fetchFriends())
+    fetchFriends(props.dispatch)
   }, [])
-
+  console.log(props.friends)
   return (
     <>
       <div className='app'>
+        {/* <ErrorMessage /> */}
         <h1>rcmndr</h1>
+        {/* <WaitIndicator /> */}
         <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
+          {props.friends.map(friend => (
+            <li key={friend.id}>User ID: {friend.user_id}</li>
           ))}
         </ul>
       </div>
@@ -23,7 +26,7 @@ function App (props) {
 }
 const mapStateToProps = (globalState) => {
   return {
-    fruits: globalState.fruits
+    friends: globalState.friends
   }
 }
 
