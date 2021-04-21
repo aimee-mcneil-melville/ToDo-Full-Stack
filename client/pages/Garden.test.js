@@ -4,13 +4,12 @@ import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 
 import Garden from './Garden'
-import { getGarden, signedIn } from './gardenHelper'
+import { getGarden } from './gardenHelper'
 
 jest.mock('./gardenHelper')
 
 describe('Garden', () => {
   it('calls getGarden helper and displays garden data on mount', () => {
-    signedIn.mockImplementation(() => true)
     renderWithRedux(<Garden />, {
       initialState: {
         garden: {

@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react'
-import { Redirect } from 'react-router'
 import { useSelector } from 'react-redux'
 
 import Map from '../components/Map'
 import Events from '../components/Events'
-import { getGarden, signedIn } from './gardenHelper'
+import { getGarden } from './gardenHelper'
 
 function Garden () {
   const garden = useSelector(globalState => globalState.garden)
-
-  if (!signedIn()) return <Redirect to={'/signin'} />
 
   useEffect(() => {
     getGarden()
