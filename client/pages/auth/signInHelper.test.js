@@ -1,6 +1,7 @@
 import { signInUser } from './signInHelper'
-import { signIn, isAuthenticated, getDecodedToken } from '../../auth'
+import { signIn, isAuthenticated } from '../../auth'
 import { dispatch } from '../../store'
+import { SET_USER } from '../../actions/user'
 
 jest.mock('../../auth')
 jest.mock('../../store')
@@ -17,7 +18,6 @@ describe('signInUser', () => {
       return Promise.resolve()
     })
     isAuthenticated.mockImplementation(() => true)
-    getDecodedToken.mockImplementation(() => ({}))
     const user = {
       username: 'testuser',
       password: 'testpassword'
@@ -26,7 +26,7 @@ describe('signInUser', () => {
     return signInUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).toHaveBeenCalledWith('/garden')
-        expect(dispatch.mock.calls[1][0]).toHaveProperty('user')
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_USER })
         return null
       })
   })
