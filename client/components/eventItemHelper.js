@@ -10,7 +10,7 @@ export function getIfVolunteer (volunteers) {
   return volunteers ? volunteers.some(vol => vol.userId === id) : false
 }
 
-export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor) {
+export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
   const storeState = getState()
   const { id } = storeState.user
 
@@ -22,6 +22,7 @@ export function toggleVolunteerButton (eventId, isVolunteer, consume = requestor
 
   return consume('/events/volunteer', routeMethod, userData)
     .then((event) => {
+      console.log(event)
       getGarden()
       return null
     })

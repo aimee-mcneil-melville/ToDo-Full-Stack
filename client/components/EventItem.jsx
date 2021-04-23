@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getIfVolunteer, toggleVolunteerButton } from './eventItemHelper'
+import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description, volunteers } = event
   const isVolunteer = getIfVolunteer(volunteers)
 
   function clickHandler () {
-    toggleVolunteerButton(id, isVolunteer)
+    toggleVolunteerStatus(id, isVolunteer)
   }
 
   return (

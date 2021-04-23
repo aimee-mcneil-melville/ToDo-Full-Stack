@@ -4,7 +4,7 @@ import { screen, fireEvent } from '@testing-library/react'
 import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
-import { getIfVolunteer, toggleVolunteerButton } from './eventItemHelper'
+import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
 
 jest.mock('./eventItemHelper')
 
@@ -48,10 +48,10 @@ describe('Un-Volunteer button', () => {
 })
 
 describe('toggle volunteer button', () => {
-  it('clicking volunteer button calls toggleVolunteerButton', () => {
+  it('clicking volunteer button calls toggleVolunteerStatus', () => {
     getIfVolunteer.mockImplementation(() => false)
     renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
     fireEvent.click(screen.queryByRole('button'))
-    expect(toggleVolunteerButton).toHaveBeenCalled()
+    expect(toggleVolunteerStatus).toHaveBeenCalled()
   })
 })
