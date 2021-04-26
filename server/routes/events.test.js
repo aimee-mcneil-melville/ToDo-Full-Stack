@@ -2,12 +2,10 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/event')
-const volunteer = require('../db/volunteers')
 const log = require('../logger')
 
 jest.mock('../db/event')
 jest.mock('../logger')
-jest.mock('../db/volunteers')
 
 const mockEvents = [{
   id: 1,
@@ -156,34 +154,6 @@ describe('PATCH /api/v1/events/:id', () => {
       .then(res => {
         expect(log).toHaveBeenCalledWith('mock updateEvent error')
         expect(res.body.error.title).toBe('Unable to update event')
-        return null
-      })
-  })
-})
-
-describe('addVolunteer adds Volunteer', () => {
-  it('addVolunteer returns correct response', () => {
-    volunteer.addVolunteer.mockImplementation(() => Promise.resolve(201))
-    return request(server)
-      .post('/api/v1/events/volunteer')
-      .send({ userId: 1, eventId: 1 })
-      .expect(201)
-      .then(res => {
-        expect(res.body.STATUS).toBe('OK')
-        return null
-      })
-  })
-})
-
-describe('deleteVolunteer adds Volunteer', () => {
-  it('deleteVolunteer returns correct response', () => {
-    volunteer.deleteVolunteer.mockImplementation(() => Promise.resolve(200))
-    return request(server)
-      .delete('/api/v1/events/volunteer')
-      .send({ userId: 1, eventId: 1 })
-      .expect(200)
-      .then(res => {
-        expect(res.body.STATUS).toBe('OK')
         return null
       })
   })

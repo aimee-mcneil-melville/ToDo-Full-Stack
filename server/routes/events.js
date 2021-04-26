@@ -1,10 +1,8 @@
-const { sendEventNotifications } = require('../notifications/notificationHelper')
 const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/event')
-const { decode } = require('../notifications/emailTokens')
-const { addVolunteer, deleteVolunteer } = require('../db/volunteers')
+const { sendEventNotifications } = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
@@ -47,59 +45,11 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-router.get('/emailsignup', (req, res) => {
-  const { token } = req.query
-  const volunteer = decode(token)
-
-  addVolunteer(volunteer)
-    .then(() => {
-      res.redirect('/#/garden')
-      return null
-    })
-    .catch(e => {
-      res.status(500).send()
-    })
-})
-
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
       res.json(event)
-      return null
-    })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to retrieve event'
-        }
-      })
-    })
-})
-
-router.post('/volunteer', (req, res) => {
-  const { userId, eventId } = req.body
-  addVolunteer({ userId, eventId })
-    .then(() => {
-      res.status(201).json({ STATUS: 'OK' })
-      return null
-    })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to update event'
-        }
-      })
-    })
-})
-
-router.delete('/volunteer', (req, res) => {
-  const { userId, eventId } = req.body
-  deleteVolunteer({ userId, eventId })
-    .then(() => {
-      res.status(200).json({ STATUS: 'OK' })
       return null
     })
     .catch((err) => {

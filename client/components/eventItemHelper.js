@@ -20,7 +20,7 @@ export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor
 
   const userData = { userId: id, eventId }
 
-  return consume('/events/volunteer', routeMethod, userData)
+  return consume('/volunteer', routeMethod, userData)
     .then((event) => {
       console.log(event)
       getGarden()
