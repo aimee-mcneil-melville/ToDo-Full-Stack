@@ -22,7 +22,6 @@ export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor
 
   return consume('/volunteer', routeMethod, userData)
     .then((event) => {
-      console.log(event)
       getGarden()
       return null
     })
