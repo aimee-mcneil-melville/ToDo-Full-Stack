@@ -14,7 +14,7 @@ router.get('/emailsignup', (req, res) => {
 
   db.addVolunteer(volunteer)
     .then(() => {
-      res.redirect('/#/garden')
+      res.redirect('/garden')
       return null
     })
     .catch(e => {

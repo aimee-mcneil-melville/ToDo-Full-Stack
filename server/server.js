@@ -19,3 +19,8 @@ server.use('/api/v1/gardens', gardenRoutes)
 server.use('/api/v1/events', eventRoutes)
 server.use('/api/v1/volunteer', volunteerRoutes)
 server.use('/api/v1', authRoutes)
+
+server.get('*', (req, res) => {
+  const appPath = path.join(__dirname, 'public', 'index.html')
+  res.sendFile(appPath)
+})
