@@ -8,10 +8,12 @@ function Error () {
 
   return (
     error
-      ? <div className="message-error" role='alert'>
-        {error}
-        <a className="button-cancel" onClick={hide}>&#10005;</a>
-      </div>
+      ? <article className='message is-danger' role='alert'>
+        <div className='message-header'>
+          <p>{error}</p>
+          <a className='delete' onClick={hide}>&#10005;</a>
+        </div>
+      </article>
       : null
   )
 }

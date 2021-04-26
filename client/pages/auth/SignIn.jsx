@@ -25,43 +25,40 @@ export default function SignIn (props) {
 
   return (
     <>
-      <div className="column">
-        <form className="inputForm">
-          <label htmlFor="username" className="label">Username</label>
+      <form className='column'>
+        <div className="field">
+          <label htmlFor='username' className='label'>Username</label>
           <input
-            className="input"
-            id="username"
-            name="username"
+            className='input'
+            id='username'
+            name='username'
             value={form.username}
             onChange={handleChange}
-            placeholder="Username"
-            type="text"
-          />
-          <label htmlFor="password" className="label">Password</label>
-          <input
-            className="input"
-            id="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Password"
-            type="password"
-          />
-          <button
-            className="button"
-            data-testid="submit-button"
-            onClick={handleClick}
-          >Sign in
-          </button>
-        </form>
-      </div>
-      <div className="column">
-        <div className="imageFit">
-          <img
-            src="images/comGardenRows.png"
-            alt=""
+            placeholder='Username'
+            type='text'
           />
         </div>
+        <div className="field">
+          <label htmlFor='password' className='label'>Password</label>
+          <input
+            className='input'
+            id='password'
+            name='password'
+            value={form.password}
+            onChange={handleChange}
+            placeholder='Password'
+            type='password'
+          />
+        </div>
+        <button
+          className='button'
+          data-testid='submit-button'
+          onClick={handleClick}
+        >Sign in
+        </button>
+      </form>
+      <div className='column'>
+          <img src='images/comGardenRows.png' alt='image of garden rows' />
       </div>
     </>
   )

@@ -10,19 +10,21 @@ export default function Nav () {
 
   return (
     <nav className="navbar column">
-      <IfAuthenticated>
-        <Link to="/" onClick={logOut}>
-            Log out
-        </Link>
-        <Link to="/">Home</Link>
-      </IfAuthenticated>
-      <IfNotAuthenticated>
-        {navLinks.map(({ to, name }) => (
-          <Link key={to} to={to}>
-            {name}
+      <div className="navbar-item">
+        <IfAuthenticated>
+          <Link to="/" onClick={logOut} className='ml-4'>
+              Log out
           </Link>
-        ))}
-      </IfNotAuthenticated>
+          <Link to="/" className='ml-4'>Home</Link>
+        </IfAuthenticated>
+        <IfNotAuthenticated>
+          {navLinks.map(({ to, name }) => (
+            <Link key={to} to={to} className='ml-4'>
+              {name}
+            </Link>
+          ))}
+        </IfNotAuthenticated>
+      </div>
     </nav>
   )
 }
