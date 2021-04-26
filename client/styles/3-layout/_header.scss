@@ -1,0 +1,9 @@
+@use '../1-helpers/colors';
+
+.logo a {
+    color: colors.$green;
+
+    span {
+        color: colors.$dark-green;
+    }
+}

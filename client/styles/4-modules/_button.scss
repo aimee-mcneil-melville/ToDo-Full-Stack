@@ -1,0 +1,11 @@
+@use '../1-helpers/colors';
+
+.button {
+  background-color: colors.$dark-green;
+  color: #ffffff;
+}
+
+.button-cancel {
+  float: right;
+  color: #000000;
+}
