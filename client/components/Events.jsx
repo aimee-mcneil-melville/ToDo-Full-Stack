@@ -13,14 +13,14 @@ function Events ({ events }) {
         <h1 className='title is-4 is-flex-grow-1'>Events</h1>
         {
           isAdmin
-          ? <Link to='/events/new' className='button'>Add New Event</Link>
-          : null
+            ? <Link to='/events/new' className='button'>Add New Event</Link>
+            : null
         }
-        </div>
-        <section>
-          {events.map((event) =>
+      </div>
+      <section>
+        {events.map((event) =>
           <EventItem key={event.id} event={event} isAdmin={isAdmin} />
-          )}
+        )}
       </section>
     </>
   )

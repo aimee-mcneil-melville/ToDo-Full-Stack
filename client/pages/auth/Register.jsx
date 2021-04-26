@@ -76,7 +76,7 @@ export default function Register (props) {
             <option value={2}>Kingsland Community Orchard</option>
             <option value={3}>Devonport Community Garden</option>
           </select>
-        </div>  
+        </div>
         <button
           type='button'
           className='button'
@@ -87,7 +87,7 @@ export default function Register (props) {
         </button>
       </form>
       <div className='column'>
-          <img src='./images/comGardenPlant.png' alt='Person gardening with trowel'/>
+        <img src='./images/comGardenPlant.png' alt='Person gardening with trowel'/>
       </div>
     </>
   )
