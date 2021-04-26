@@ -15,12 +15,16 @@ function Garden () {
   const { name, description, address, url, events, lat, lon } = garden
   return (
     <>
-      <div className="column garden">
-        <h2>{name}</h2>
-        <p className="mb-4">{description} </p>
-        <p><a className="gardenLink word-wrap" href={url}>{url}</a></p>
+      <article className='column'>
+        <div className='columns'>
+          <article className='column is-three-quarters'>
+            <h2 className='title is-4'>{name}</h2>
+            <p className='mb-2'>{description}</p>
+            <a className='page__link' href={url}>{url}</a>
+          </article>
+        </div>
         <Events events={events} />
-      </div>
+      </article>
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
         addresses={[address]}

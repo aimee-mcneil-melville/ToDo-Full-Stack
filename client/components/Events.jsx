@@ -9,17 +9,19 @@ function Events ({ events }) {
 
   return (
     <>
-      {
-        isAdmin
-          ? <Link to='/events/new' className="button my-4 is-pulled-right">Add New Event</Link>
-          : null
-      }
-      <h2>Events</h2>
-      <div className="event-box clearfix">
+      <div className='is-flex'>
+        <h1 className='title is-4 is-flex-grow-1'>Events</h1>
+        {
+          isAdmin
+            ? <Link to='/events/new' className='button'>Add New Event</Link>
+            : null
+        }
+      </div>
+      <section>
         {events.map((event) =>
           <EventItem key={event.id} event={event} isAdmin={isAdmin} />
         )}
-      </div>
+      </section>
     </>
   )
 }

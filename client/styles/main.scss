@@ -1,24 +1,29 @@
 @charset "utf-8";
-// Partials - variables, mixins and functions
-@import "partials/colors";
-
 // Bulma 
 // Here are the docs https://bulma.io/documentation/
-@import "bulma/bulma.sass";
+@use "bulma/bulma.sass";
 
 // Custom CSS - Bulma Overrides
 
-// Base
-@import "base/typography";
-@import "base/layout";
+// 0 - TOOLS 
+// *** CSS Resets, etc ***
 
+// 1 - HELPERS 
+// *** All variables, mixins.scss and functions.scss ***
 
-// Components
-@import "components/navigation";
-@import "components/button";
-@import "components/forms";
-@import "components/addEvent";
-@import "components/eventItem";
-@import "components/loader"
+// 2 - Base 
+// *** It includes basic styles to HTML tags like H1, H2, section, article, ul ***
+@use './2-base/__base.scss';
 
-// NO DIRECT STYLES IN HERE MAKE A NEW FILE AND IMPORT IT.
+// 3 - LAYOUT 
+// *** Header, footer, reusable components classes ***
+@use './3-layout/_layout.scss';
+
+// 4 - MODULES 
+// *** Similar to layout but for smaller groups of elements like buttons, cards, sliders ***
+@use './4-modules/__modules.scss';
+
+// 5 - PAGES 
+// *** For single pages only. And only for overrides. Make sure you can't add the CSS in 4 & 5 before using this. ***
+
+// NO DIRECT STYLES IN THIS FILE MAKE A NEW FILE AND IMPORT IT.

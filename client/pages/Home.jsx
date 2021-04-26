@@ -38,16 +38,18 @@ export default function Home () {
   }, [])
 
   return (
-    <>
-      <div className='column'>
-        <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        <Link className="button homeButton" to={'/garden'}>Get Started</Link>
-      </div>
+    <section className='columns'>
+      <article className='column'>
+        <div className='columns'>
+          <p className='column is-three-quarters'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
+        </div>
+        <Link className='button' to={'/garden'}>Get Started</Link>
+      </article>
       <Map
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}
         addresses={addresses}
       />
-    </>
+    </section>
   )
 }

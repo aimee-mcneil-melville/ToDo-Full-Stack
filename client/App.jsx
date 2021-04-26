@@ -18,53 +18,53 @@ export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   return (
-    <main className="container">
+    <main className='container p-3'>
       <Error />
       <Header />
       <WaitIndicator />
-      <div className="columns">
+      <section className='columns'>
         <Route exact path='/' component={Home} />
         <Route
-          path="/register"
+          path='/register'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to="/" />
+              ? <Redirect to='/' />
               : <Register />
           }}
         />
         <Route
-          path="/signin"
+          path='/signin'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to="/" />
+              ? <Redirect to='/' />
               : <SignIn />
           }}
         />
         <Route
-          path="/garden"
+          path='/garden'
           render={() => {
             return isAuthenticated()
               ? <Garden />
-              : <Redirect to="/signin" />
+              : <Redirect to='/signin' />
           }}
         />
         <Route
-          path="/events/new"
+          path='/events/new'
           render={() => {
             return isAdmin
               ? <AddEvent />
-              : <Redirect to="/garden" />
+              : <Redirect to='/garden' />
           }}
         />
         <Route
-          path="/events/:id/edit"
+          path='/events/:id/edit'
           render={() => {
             return isAdmin
               ? <EditEvent />
-              : <Redirect to="/garden" />
+              : <Redirect to='/garden' />
           }}
         />
-      </div>
+      </section>
     </main>
   )
 }

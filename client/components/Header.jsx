@@ -6,9 +6,9 @@ import Nav from './Nav'
 export default function Header () {
   return (
     <header className="columns is-mobile">
-      <h1 className="logo column">
-        <Link to="/">Garde<span>nz</span></Link>
-      </h1>
+      <div className="column">
+        <Link className="logo title is-size-1-desktop" to="/">Garde<span>nz</span></Link>
+      </div>
       <Nav />
     </header>
   )

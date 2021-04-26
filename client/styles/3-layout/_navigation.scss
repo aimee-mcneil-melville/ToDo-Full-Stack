@@ -1,0 +1,11 @@
+@use '../1-helpers/colors';
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        color: colors.$green;
+        text-decoration: underline;
+    }
+}

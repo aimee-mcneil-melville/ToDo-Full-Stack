@@ -12,18 +12,20 @@ export default function EventItem ({ event, isAdmin }) {
 
   return (
     <>
-      <div className="level">
-        <h4 className="level-item">{title}</h4>
-        { isAdmin
-          ? <Link to={`/events/${id}/edit`} className="button is-pulled-right level-item">Edit Event</Link>
-          : !isVolunteer
-            ? <button onClick={clickHandler} className=" button level-item">Volunteer</button>
-            : <button onClick={clickHandler} className=" button level-item">Un-Volunteer</button>
-        }
-      </div>
-      <p className="clearfix ">{date}</p>
-      <p>{volunteersNeeded} volunteers needed</p>
-      <p className="eventDesc">{description}</p>
+      <article className='box my-5'>
+        <div className="is-flex">
+          <h2 className='title is-5 is-flex-grow-1'>{title}</h2>
+          { isAdmin
+            ? <Link to={`/events/${id}/edit`} className='button'>Edit Event</Link>
+            : !isVolunteer
+              ? <button onClick={clickHandler} className='button'>Volunteer</button>
+              : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
+          }
+        </div>
+        <p>{date}</p>
+        <p>{volunteersNeeded} volunteers needed</p>
+        <p>{description}</p>
+      </article>
     </>
   )
 }
