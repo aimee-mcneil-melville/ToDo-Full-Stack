@@ -7,7 +7,7 @@ jest.mock('./notifications')
 
 describe('send each user a notification', () => {
   it('takes the new event and sends notifications to users with gardenid', () => {
-    expect.assertions(4)
+    expect.assertions(2)
     dbUser.getUserDetailsByGarden.mockImplementation((gardenId) => {
       expect(gardenId).toBe(1)
       return Promise.resolve([{
@@ -16,12 +16,13 @@ describe('send each user a notification', () => {
         username: 'admin',
         isAdmin: true,
         email: 'admin@outlook.com'
+      }, {
+        id: 5,
+        gardenId: 1,
+        username: 'otheruser',
+        isAdmin: false,
+        email: 'user@outlook.com'
       }])
-    })
-    sendNotification.mockImplementation((user, event) => {
-      expect(user.id).toBe(4)
-      expect(event.title).toBe('test event name')
-      expect(event.id).toBe(2)
     })
 
     const event = {
@@ -33,6 +34,10 @@ describe('send each user a notification', () => {
       volunteersNeeded: 1
     }
 
-    sendEventNotifications(event)
+    return sendEventNotifications(event)
+      .then(() => {
+        expect(sendNotification).toHaveBeenCalledTimes(2)
+        return null
+      })
   })
 })

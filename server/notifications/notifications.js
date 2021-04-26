@@ -1,7 +1,7 @@
 const { encode } = require('./emailTokens')
 
 function sendNotification (userdata, eventdata) {
-  const token = encode({ userId: userdata.id, eventId: eventdata.id }, process.env.JWT_SECRET)
+  const token = encode({ userId: userdata.id, eventId: eventdata.id })
   const http = require('https')
 
   const options = {

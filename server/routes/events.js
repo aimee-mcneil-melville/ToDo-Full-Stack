@@ -10,11 +10,15 @@ module.exports = router
 
 router.post('/', (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
-  const newEvent = { title, date, volunteersNeeded, description, gardenId }
-  db.addEvent(newEvent)
+  const event = { title, date, volunteersNeeded, description, gardenId }
+  let createdEvent = null
+  db.addEvent(event)
     .then((event) => {
-      sendEventNotifications(event)
-      res.status(201).json(event)
+      createdEvent = event
+      return sendEventNotifications(event)
+    })
+    .then(() => {
+      res.status(201).json(createdEvent)
       return null
     })
     .catch((err) => {

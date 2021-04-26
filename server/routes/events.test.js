@@ -2,10 +2,12 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/event')
+const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
 
 jest.mock('../db/event')
 jest.mock('../logger')
+jest.mock('../notifications/notificationHelper')
 
 const mockEvents = [{
   id: 1,
@@ -76,6 +78,7 @@ describe('POST /api/v1/events', () => {
         description: 'supremely cool event'
       })
     })
+    sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
       .post('/api/v1/events')
       .send({
