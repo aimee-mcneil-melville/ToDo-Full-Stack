@@ -153,9 +153,10 @@ The `authenticare/server` package exports a `getTokenDecoder` function that retu
 
 For each of the `POST`, `PUT` and `DELETE` the fruit routes, apply this `getTokenDecoder()` middleware function, and update the `user` variable to be the value from `req.user`, rather than the hard-coded `{ id: 1 }`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/getTokenDecoder.md) to see an example of how to do this.
 
-Try to add, update or delete some fruit from the UI now. You should see errors in the developer tools console.
+Let's check to see if our `getTokenDecoder()` function is doing it's job. If you try to add, update or delete some fruit from the UI you should see errors in the developer tools console.  
+If you try, you will get an HTTP `401` (bad request - JWT malformed) response, which is exactly what you want.
 
-> Note: At this point you will not be able to add, update or delete fruits because the routes are protected and you're not yet sending the token in the requests. That's what you'll do in the next step. If you try, you will get an HTTP `401` (bad request - JWT malformed) response, which is exactly what you want.
+> Note: At this point you will not be able to add, update or delete fruits because the routes are protected and you're not yet sending the token in the requests. That's what you'll do in the next step!
 
 Now is a good time to commit your changes and swap driver/navigator.
 
