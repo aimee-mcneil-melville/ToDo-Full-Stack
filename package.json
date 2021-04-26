@@ -1,6 +1,6 @@
 {
   "name": "gardenz",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "main": "server/index.js",
   "license": "MIT",
   "repository": {
