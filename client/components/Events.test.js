@@ -38,7 +38,7 @@ describe('events list', () => {
       }
     ]
     renderWithRedux(<Events events={events} />)
-    const eventItems = screen.getAllByRole('heading', { level: 4 })
+    const eventItems = screen.getAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(2)
   })
 })
