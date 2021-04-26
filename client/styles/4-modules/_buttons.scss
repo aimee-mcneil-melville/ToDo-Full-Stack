@@ -2,7 +2,14 @@
 
 .button {
   background-color: colors.$dark-green;
+  border: none;
   color: #ffffff;
+
+  &:hover{
+    background-color: colors.$green;
+    border: none;
+    color: #ffffff;
+  }
 }
 
 .button-cancel {

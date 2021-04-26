@@ -6,4 +6,8 @@
     span {
         color: colors.$dark-green;
     }
+
+    &:hover {
+        color: colors.$green;
+    }
 }
