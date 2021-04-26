@@ -58,7 +58,7 @@ export default function SignIn (props) {
         </button>
       </form>
       <div className='column'>
-          <img src='images/comGardenRows.png' alt='image of garden rows' />
+        <img src='images/comGardenRows.png' alt='image of garden rows' />
       </div>
     </>
   )
