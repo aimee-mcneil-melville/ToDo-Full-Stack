@@ -44,7 +44,7 @@ function sendNotification (userdata, eventdata) {
           date: eventdata.date,
           description: eventdata.description,
           volunteersneeded: eventdata.volunteersNeeded,
-          url: token
+          token: token
         },
         subject: 'New event in the garden!'
       }
