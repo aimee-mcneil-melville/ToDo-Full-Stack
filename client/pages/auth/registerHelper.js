@@ -1,4 +1,4 @@
-import { register, isAuthenticated } from '../../auth'
+import { register, isAuthenticated, config } from '../../auth'
 import { dispatch } from '../../store'
 import { setUser } from '../../actions/user'
 import { setWaiting } from '../../actions/waiting'
@@ -12,8 +12,7 @@ export function registerUser (user, navigateTo) {
     password,
     gardenId: Number(gardenId),
     email
-  },
-  { baseUrl: '/api/v1' })
+  }, config)
     .then(() => {
       if (isAuthenticated()) {
         dispatch(setUser())
