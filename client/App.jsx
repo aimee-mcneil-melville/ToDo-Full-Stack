@@ -28,7 +28,7 @@ export default function App () {
           path='/register'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/' />
+              ? <Redirect to='/garden' />
               : <Register />
           }}
         />
@@ -36,7 +36,7 @@ export default function App () {
           path='/signin'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/' />
+              ? <Redirect to='/garden' />
               : <SignIn />
           }}
         />
