@@ -7,8 +7,8 @@ exports.seed = (knex) => {
           name: 'Kelmarna Gardens',
           address: '12 Hukanui Crescent',
           description: 'Kelmarna Gardens is a city farm and organic community garden, situated on 4.5 acres of council land in Ponsonby, close to the heart of Auckland City.',
-          lat: -36.845500,
-          lon: 174.732810,
+          lat: -36.8508867,
+          lon: 174.7329663,
           url: 'http://www.kelmarnagardens.nz/'
         },
         {
