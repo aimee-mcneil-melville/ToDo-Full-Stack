@@ -50,7 +50,7 @@ Failure response (HTTP status: 500):
 ```json
 {
   "error": {
-    "title": "Unable to retrieve list of gardens"
+    "title": "Sanitised error message here"
   }
 }
 ```
@@ -167,48 +167,33 @@ Response (201):
 }
 ```
 
-### `POST /api/v1/events/:id/volunteers`
+### `POST /api/v1/volunteers`
 
 Request:
 
 ```json
 {
   "eventId": 167,
-  "volunteerId": 48
+  "userId": 48
 }
 ```
 
-Response (201):
+Response (201)
 
-```json
-{
-  "eventId": 167,
-  "volunteerId": 48,
-  "status": "added"
-}
-```
 
-### `PATCH /api/v1/events/:id/volunteers`
+### `DELETE /api/v1/volunteers`
 
 Request:
 
 ```json
 {
   "eventId": 167,
-  "volunteerId": 48,
-  "action": "remove"
+  "userId": 48
 }
 ```
 
-Response (200):
+Response (200)
 
-```json
-{
-  "eventId": 167,
-  "volunteerId": 48,
-  "status": "removed"
-}
-```
 
 ## Database schema (proposal)
 
@@ -229,6 +214,6 @@ Within the notifications.js file personalised data is contained within the 'dyna
 
 To change the volunteer button in the template, select the button and the url will display on the left hand side of the screen. The url will have to change if testing the volunteer link on localhost or once it has been deployed.
 
-http://localhost:3000/api/v1/events/emailsignup?token={{url}}
+http://localhost:3000/api/v1/events/emailsignup?token={{token}}
 
-https://gardenz-app.herokuapp.com/api/v1/events/emailsignup?token={{url}}
+https://gardenz-app.herokuapp.com/api/v1/events/emailsignup?token={{token}}
