@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 
 import { getEvent, updateEvent } from './editEventHelper'
 
@@ -6,9 +7,10 @@ import EventForm from '../../components/EventForm'
 
 export default function EditEvent (props) {
   const [event, setEvent] = useState(null)
+  const history = useHistory()
+  const { id } = useParams()
 
   useEffect(() => {
-    const { id } = props.match.params
     // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((eventData) => {
@@ -18,9 +20,7 @@ export default function EditEvent (props) {
   }, [])
 
   function submitEvent (form) {
-    const { id } = props.match.params
-    const navigate = props.history.push
-    updateEvent(id, form, navigate)
+    updateEvent(id, form, history.push)
   }
 
   return (

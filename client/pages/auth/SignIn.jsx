@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { signInUser } from './signInHelper'
 
@@ -7,6 +8,7 @@ export default function SignIn (props) {
     username: '',
     password: ''
   })
+  const history = useHistory()
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -18,48 +20,45 @@ export default function SignIn (props) {
 
   function handleClick (e) {
     e.preventDefault()
-    signInUser(form, props.history.push)
+    signInUser(form, history.push)
   }
 
   return (
     <>
-      <div className="column is-one-quarter-desktop">
-        <form className="pr-5">
-          <label htmlFor="username" className="label">Username</label>
+      <form className='column'>
+        <div className="field">
+          <label htmlFor='username' className='label'>Username</label>
           <input
-            className="input"
-            id="username"
-            name="username"
+            className='input'
+            id='username'
+            name='username'
             value={form.username}
             onChange={handleChange}
-            placeholder="Username"
-            type="text"
+            placeholder='Username'
+            type='text'
           />
-          <label htmlFor="password" className="label">Password</label>
+        </div>
+        <div className="field">
+          <label htmlFor='password' className='label'>Password</label>
           <input
-            className="input"
-            id="password"
-            name="password"
+            className='input'
+            id='password'
+            name='password'
             value={form.password}
             onChange={handleChange}
-            placeholder="Password"
-            type="password"
+            placeholder='Password'
+            type='password'
           />
-          <button
-            className="button"
-            data-testid="submit-button"
-            onClick={handleClick}
-          >Sign in
-          </button>
-        </form>
-      </div>
-      <div className="column is-two-thirds-tablet">
-        <img
-          className='rightHeroImage'
-          src="images/comGardenRows.png"
-          alt=""
-          style={{ width: '600px', height: '500px' }}
-        />
+        </div>
+        <button
+          className='button'
+          data-testid='submit-button'
+          onClick={handleClick}
+        >Sign in
+        </button>
+      </form>
+      <div className='column'>
+        <img src='images/comGardenRows.png' alt='image of garden rows' />
       </div>
     </>
   )

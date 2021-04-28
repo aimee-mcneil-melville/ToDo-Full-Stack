@@ -1,19 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
-  const { id, title, date, volunteersNeeded, description } = event
+  const { id, title, date, volunteersNeeded, description, volunteers } = event
+  const isVolunteer = getIfVolunteer(volunteers)
+
+  function clickHandler () {
+    toggleVolunteerStatus(id, isVolunteer)
+  }
+
   return (
-    <div>
-      <h4 className="is-pulled-left">{title}</h4>
-      {
-        isAdmin
-          ? <Link to={`/events/${id}/edit`} className="button is-pulled-right">Edit Event</Link>
-          : null
-      }
-      <p className="clearfix">{date}</p>
-      <p>{volunteersNeeded} volunteers needed</p>
-      <p>{description}</p>
-    </div>
+    <>
+      <article className='box my-5'>
+        <div className="is-flex">
+          <h2 className='title is-5 is-flex-grow-1'>{title}</h2>
+          { isAdmin
+            ? <Link to={`/events/${id}/edit`} className='button'>Edit Event</Link>
+            : !isVolunteer
+              ? <button onClick={clickHandler} className='button'>Volunteer</button>
+              : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
+          }
+        </div>
+        <p>{date}</p>
+        <p>{volunteersNeeded} volunteers needed</p>
+        <p>{description}</p>
+      </article>
+    </>
   )
 }

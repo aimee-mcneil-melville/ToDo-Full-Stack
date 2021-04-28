@@ -1,6 +1,7 @@
 import { signInUser } from './signInHelper'
-import { signIn, isAuthenticated, getDecodedToken } from '../../auth'
+import { signIn, isAuthenticated } from '../../auth'
 import { dispatch } from '../../store'
+import { SET_USER } from '../../actions/user'
 
 jest.mock('../../auth')
 jest.mock('../../store')
@@ -17,7 +18,6 @@ describe('signInUser', () => {
       return Promise.resolve()
     })
     isAuthenticated.mockImplementation(() => true)
-    getDecodedToken.mockImplementation(() => ({}))
     const user = {
       username: 'testuser',
       password: 'testpassword'
@@ -26,7 +26,7 @@ describe('signInUser', () => {
     return signInUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).toHaveBeenCalledWith('/garden')
-        expect(dispatch.mock.calls[1][0]).toHaveProperty('user')
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_USER })
         return null
       })
   })
@@ -48,7 +48,7 @@ describe('signInUser', () => {
       })
   })
 
-  it('dispatches error if signIn rejects', () => {
+  it('dispatches a generic error if signIn rejects', () => {
     expect.assertions(2)
     signIn.mockImplementation(() => Promise.reject(new Error('mock error')))
     const user = {
@@ -60,6 +60,22 @@ describe('signInUser', () => {
       .then(() => {
         expect(navigateTo).not.toHaveBeenCalled()
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
+  })
+
+  it('dispatches an error if username/password mismatch', () => {
+    expect.assertions(2)
+    signIn.mockImplementation(() => Promise.reject(new Error('INVALID_CREDENTIALS')))
+    const user = {
+      username: 'baduser',
+      password: 'badpassword'
+    }
+    const navigateTo = jest.fn()
+    return signInUser(user, navigateTo)
+      .then(() => {
+        expect(navigateTo).not.toHaveBeenCalled()
+        expect(dispatch.mock.calls[1][0].errorMessage).toMatch('combination not found')
         return null
       })
   })

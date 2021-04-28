@@ -7,14 +7,8 @@ import {
 
 describe('setUser', () => {
   it('returns the correct action', () => {
-    const user = {
-      username: 'testuser',
-      gardenId: 1,
-      isAdmin: false
-    }
-    const action = setUser(user)
+    const action = setUser()
     expect(action.type).toBe(SET_USER)
-    expect(action.user.username).toBe('testuser')
   })
 })
 

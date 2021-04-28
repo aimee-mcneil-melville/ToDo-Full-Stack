@@ -1,0 +1,13 @@
+@use '../1-helpers/colors';
+
+.logo {
+    color: colors.$green;
+
+    span {
+        color: colors.$dark-green;
+    }
+
+    &:hover {
+        color: colors.$green;
+    }
+}

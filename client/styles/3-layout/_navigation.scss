@@ -1,15 +1,11 @@
+@use '../1-helpers/colors';
+
 .navbar {
     display: flex;
     justify-content: flex-end;
 
     a {
-        margin: 1rem 2rem;
-        color: $green;
+        color: colors.$green;
         text-decoration: underline;
-        font-size: large;
     }
-
-    
-    
 }
-

@@ -1,6 +1,8 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+import { renderWithRouter } from '../../test-utils'
 
 import EditEvent from './EditEvent'
 
@@ -16,11 +18,9 @@ getEvent.mockImplementation(() => Promise.resolve({
   description: 'truly radical event'
 })
 )
-const match = { params: { id: 23 } }
-
 describe('form field values', () => {
   it('contains event data from helper', () => {
-    render(<EditEvent match={match} />)
+    renderWithRouter(<EditEvent />, { initialEntries: ['/events/23/edit'], route: '/events/:id/edit' })
 
     return screen.findByRole('textbox', { name: 'Event Title' })
       .then((titleInput) => {
@@ -32,7 +32,7 @@ describe('form field values', () => {
 
 describe('submit button', () => {
   it('has text from action prop', () => {
-    render(<EditEvent match={match} />)
+    renderWithRouter(<EditEvent />, { initialEntries: ['/events/23/edit'], route: '/events/:id/edit' })
     return screen.findByRole('button')
       .then((editButton) => {
         expect(editButton).toHaveTextContent('Update Event')
@@ -41,17 +41,13 @@ describe('submit button', () => {
   })
 
   it('calls helper correctly on click', () => {
-    const fakeHistory = {
-      push: () => {}
-    }
-
     updateEvent.mockImplementation((id, event, navigateTo) => {
-      expect(id).toBe(23)
-      expect(navigateTo).toBe(fakeHistory.push)
+      expect(id).toBe('23')
       expect(event.title).toBe('test title')
+      expect(typeof navigateTo).toBe('function')
     })
 
-    render(<EditEvent match={match} history={fakeHistory} />)
+    renderWithRouter(<EditEvent />, { initialEntries: ['/events/23/edit'], route: '/events/:id/edit' })
 
     return screen.findByRole('textbox', { name: 'Event Title' })
       .then((titleInput) => {
@@ -68,7 +64,7 @@ describe('submit button', () => {
 
 describe('event form', () => {
   it('is rendered only when event data is available', () => {
-    render(<EditEvent match={match} />)
+    renderWithRouter(<EditEvent />, { initialEntries: ['/events/23/edit'], route: '/events/:id/edit' })
     const inputs = screen.queryByRole('textbox')
     expect(inputs).toBeNull()
     return screen.findByRole('textbox', { name: 'Event Title' })

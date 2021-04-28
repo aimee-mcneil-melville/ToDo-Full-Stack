@@ -21,6 +21,7 @@ describe('getEventById', () => {
         expect(event.volunteersNeeded).toBe(4)
         expect(event).toHaveProperty('date')
         expect(event).toHaveProperty('description')
+        expect(event.volunteers).toHaveLength(2)
         return null
       })
   })

@@ -1,6 +1,7 @@
 import { registerUser } from './registerHelper'
-import { register, isAuthenticated, getDecodedToken } from '../../auth'
+import { register, isAuthenticated } from '../../auth'
 import { dispatch } from '../../store'
+import { SET_USER } from '../../actions/user'
 
 jest.mock('../../auth')
 jest.mock('../../store')
@@ -17,17 +18,17 @@ describe('registerUser', () => {
       return Promise.resolve()
     })
     isAuthenticated.mockImplementation(() => true)
-    getDecodedToken.mockImplementation(() => ({}))
     const user = {
       username: 'testuser',
       password: 'testpassword',
-      gardenId: '1'
+      gardenId: '1',
+      email: 'testemail'
     }
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).toHaveBeenCalledWith('/garden')
-        expect(dispatch.mock.calls[1][0]).toHaveProperty('user')
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_USER })
         return null
       })
   })
@@ -39,7 +40,8 @@ describe('registerUser', () => {
     const user = {
       username: 'testuser2',
       password: 'testpassword',
-      gardenId: '1'
+      gardenId: '1',
+      email: 'testemail'
     }
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)
@@ -50,9 +52,27 @@ describe('registerUser', () => {
       })
   })
 
-  it('dispatches error if register rejects', () => {
+  it('dispatches a generic error if register rejects', () => {
     expect.assertions(2)
     register.mockImplementation(() => Promise.reject(new Error('mock error')))
+    const user = {
+      username: 'baduser',
+      password: 'badpassword',
+      gardenId: '3',
+      email: 'bademail'
+    }
+    const navigateTo = jest.fn()
+    return registerUser(user, navigateTo)
+      .then(() => {
+        expect(navigateTo).not.toHaveBeenCalled()
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
+  })
+
+  it('dispatches an error when registering an existing username', () => {
+    expect.assertions(2)
+    register.mockImplementation(() => Promise.reject(new Error('USERNAME_UNAVAILABLE')))
     const user = {
       username: 'baduser',
       password: 'badpassword',
@@ -62,7 +82,7 @@ describe('registerUser', () => {
     return registerUser(user, navigateTo)
       .then(() => {
         expect(navigateTo).not.toHaveBeenCalled()
-        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(dispatch.mock.calls[1][0].errorMessage).toMatch('username is not available')
         return null
       })
   })

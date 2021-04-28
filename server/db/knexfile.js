@@ -1,7 +1,6 @@
 const path = require('path')
 
 module.exports = {
-
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -10,11 +9,11 @@ module.exports = {
     }
   },
 
-  e2e: {
+  test: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: path.join(__dirname, '../../e2e/dev.sqlite3')
+      filename: ':memory:'
     },
     seeds: {
       directory: path.join(__dirname, 'testSeeds')
@@ -24,11 +23,12 @@ module.exports = {
     }
   },
 
-  test: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
-    connection: {
-      filename: ':memory:'
+  e2e: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
     },
     seeds: {
       directory: path.join(__dirname, 'testSeeds')
