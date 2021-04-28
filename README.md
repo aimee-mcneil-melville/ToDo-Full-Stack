@@ -214,6 +214,6 @@ Within the notifications.js file personalised data is contained within the 'dyna
 
 To change the volunteer button in the template, select the button and the url will display on the left hand side of the screen. The url will have to change if testing the volunteer link on localhost or once it has been deployed.
 
-http://localhost:3000/api/v1/events/emailsignup?token={{token}}
+http://localhost:3000/api/v1/volunteers/emailsignup?token={{token}}
 
-https://gardenz-app.herokuapp.com/api/v1/events/emailsignup?token={{token}}
+https://gardenz-app.herokuapp.com/api/v1/volunteers/emailsignup?token={{token}}
