@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { hide } from './errorHelper'
 
-function Error () {
+function Error() {
   const error = useSelector(globalState => globalState.error)
 
   return (
