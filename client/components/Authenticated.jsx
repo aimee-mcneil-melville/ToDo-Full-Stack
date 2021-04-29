@@ -13,5 +13,3 @@ export function IfNotAuthenticated ({ children }) {
     ? <>{children}</>
     : null
 }
-
-//some comments
