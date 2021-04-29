@@ -17,6 +17,8 @@ describe('getEventById', () => {
       .then((event) => {
         expect(event.id).toBe(3)
         expect(event.gardenId).toBe(1)
+        expect(event.gardenName).toMatch('Kelmarna')
+        expect(event.gardenAddress).toMatch('Hukanui')
         expect(event.title).toBe('Sowing Corn')
         expect(event.volunteersNeeded).toBe(4)
         expect(event).toHaveProperty('date')
