@@ -4,11 +4,12 @@ Goal: Monitor community garden engagement to determine influence on key wellbein
 
 ## Teams
 
+#### Higher Priority
 - Security
 - Event Details
 - DevOps
 
-
+#### Smaller/Lower Priority
 - End to end testing
 - Styling (SASS and Bulma)
 - Smaller tickets (`/garden` -> `/:id`, proper loading indicator etc.)
