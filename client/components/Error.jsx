@@ -19,5 +19,3 @@ function Error () {
 }
 
 export default Error
-
-//some comments
