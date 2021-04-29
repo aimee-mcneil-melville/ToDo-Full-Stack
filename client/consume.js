@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { getAuthorizationHeader } from './auth'
 
 const baseUrl = '/api/v1'
 
@@ -9,6 +10,7 @@ export default function consume (endpoint, method = 'get', data = {}) {
   }
 
   return request[method](baseUrl + endpoint)
+    .set(getAuthorizationHeader())
     .set(headers)[payLoadMethod](data)
     .then((res) => res)
     .catch((err) => {
