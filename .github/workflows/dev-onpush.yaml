@@ -16,7 +16,7 @@ jobs:
         run: npm ci
       - name: Linting
         run: npm run lint
-      - run: echo ":green_apple: This job's status is ${{ job.status }}."
+      - run: echo "🍏 This job's status is ${{ job.status }}."
   Unit_Tests: 
     needs: Linting
     runs-on: ubuntu-latest
@@ -27,4 +27,4 @@ jobs:
         run: npm ci
       - name: Unit Tests
         run: npm test
-      - run: echo ":green_apple: This job's status is ${{ job.status }}."
+      - run: echo "🍏 This job's status is ${{ job.status }}."
