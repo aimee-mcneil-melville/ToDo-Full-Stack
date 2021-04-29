@@ -133,6 +133,8 @@ Response (200):
 {
   "id": 167,
   "gardenId": 1,
+  "gardenName": "Kelmarna Gardens",
+  "gardenAddress": "12 Hukanui Crescent",
   "volunteersNeeded": 8,
   "title": "Weeding Worker Bee",
   "date": "2020-12-31",
