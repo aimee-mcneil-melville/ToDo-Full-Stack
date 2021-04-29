@@ -4,6 +4,7 @@ const log = require('../logger')
 const db = require('../db/volunteers')
 const { decode } = require('../notifications/emailTokens')
 const { getTokenDecoder } = require('../auth')
+const { verifyUser } = require('./verification-middleware')
 
 const router = express.Router()
 
@@ -23,8 +24,9 @@ router.get('/emailsignup', (req, res) => {
     })
 })
 
-router.post('/', getTokenDecoder(), (req, res) => {
+router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
+
   db.addVolunteer({ userId, eventId })
     .then(() => {
       res.sendStatus(201)
@@ -40,7 +42,7 @@ router.post('/', getTokenDecoder(), (req, res) => {
     })
 })
 
-router.delete('/', getTokenDecoder(), (req, res) => {
+router.delete('/', getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
   db.deleteVolunteer({ userId, eventId })
     .then(() => {
