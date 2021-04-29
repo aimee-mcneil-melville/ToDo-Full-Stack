@@ -2,6 +2,7 @@ const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/gardens')
+const { getTokenDecoder } = require('../auth')
 
 const router = express.Router()
 
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
   db.getGardenById(id)
     .then((singleGarden) => {
