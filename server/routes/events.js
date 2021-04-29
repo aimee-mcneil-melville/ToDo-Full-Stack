@@ -2,13 +2,14 @@ const express = require('express')
 
 const log = require('../logger')
 const db = require('../db/event')
+const { getTokenDecoder } = require('../auth')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
 module.exports = router
 
-router.post('/', (req, res) => {
+router.post('/', getTokenDecoder(), (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
   let createdEvent = null
@@ -31,7 +32,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
+router.patch('/:id', getTokenDecoder(), (req, res) => {
   const { title, date, volunteersNeeded, description, id } = req.body
   const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)
@@ -49,7 +50,7 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
