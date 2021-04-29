@@ -1,6 +1,7 @@
 import { getGarden } from './gardenHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
+import { SET_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
+import { SET_GARDEN } from '../actions/garden'
 
 jest.mock('../store')
 
@@ -10,19 +11,7 @@ afterEach(() => {
 
 describe('getGarden', () => {
   describe('-> GET /gardens/:id api call success', () => {
-    it('dispatches waiting correctly', () => {
-      getState.mockImplementation(() => ({ user: {} }))
-      function consume () {
-        return Promise.resolve({ body: {} })
-      }
-      return getGarden(consume)
-        .then(() => {
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
-          return null
-        })
-    })
-    it('return correct garden object', () => {
+    it('dispatches with the correct garden action', () => {
       getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
       function consume (path) {
         expect(path).toMatch('2')
@@ -34,15 +23,26 @@ describe('getGarden', () => {
             events: [],
             address: 'cool place, nz',
             lat: 123,
-            lon: -123
+            lon: -123,
+            fake: 'asdf'
           }
         })
       }
       return getGarden(consume)
         .then((garden) => {
-          expect(garden.name).toBe('test garden')
-          expect(garden.url).toMatch('cooltestgarden')
-          expect(garden.events).toHaveLength(0)
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+          expect(dispatch).toHaveBeenCalledWith({
+            type: SET_GARDEN,
+            garden: {
+              name: 'test garden',
+              description: 'a rad test garden',
+              url: 'cooltestgarden.com',
+              events: [],
+              address: 'cool place, nz',
+              lat: 123,
+              lon: -123
+            }
+          })
           return null
         })
     })

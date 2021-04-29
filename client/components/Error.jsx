@@ -1,23 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { hide } from './errorHelper'
 
-function Error ({ error }) {
+function Error () {
+  const error = useSelector(globalState => globalState.error)
+
   return (
     error
-      ? <div className="message-error" role='alert'>
-        {error}
-        <a className="button-cancel" onClick={hide}>&#10005;</a>
-      </div>
+      ? <article className='message is-danger' role='alert'>
+        <div className='message-header'>
+          <p>{error}</p>
+          <a className='delete' onClick={hide}>&#10005;</a>
+        </div>
+      </article>
       : null
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    error: state.error
-  }
-}
-
-export default connect(mapStateToProps)(Error)
+export default Error

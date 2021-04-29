@@ -1,5 +1,8 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+import { isAuthenticated } from './auth'
 
 import Header from './components/Header'
 import Register from './pages/auth/Register'
@@ -12,21 +15,56 @@ import Error from './components/Error'
 import WaitIndicator from './components/WaitIndicator'
 
 export default function App () {
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+
   return (
-    <main className="container is-max-desktop">
+    <main className='container p-3'>
       <Error />
-      <Route path="/" component={Header} />
+      <Header />
       <WaitIndicator />
-      <div className="columns">
+      <section className='columns'>
         <Route exact path='/' component={Home} />
-      </div>
-      <div className='columns'>
-        <Route path="/register" component={Register} />
-        <Route path="/signin" component={SignIn} />
-        <Route path='/garden' component={Garden} />
-        <Route path='/events/new' component={AddEvent} />
-        <Route path='/events/:id/edit' component={EditEvent} />
-      </div>
+        <Route
+          path='/register'
+          render={() => {
+            return isAuthenticated()
+              ? <Redirect to='/garden' />
+              : <Register />
+          }}
+        />
+        <Route
+          path='/signin'
+          render={() => {
+            return isAuthenticated()
+              ? <Redirect to='/garden' />
+              : <SignIn />
+          }}
+        />
+        <Route
+          path='/garden'
+          render={() => {
+            return isAuthenticated()
+              ? <Garden />
+              : <Redirect to='/signin' />
+          }}
+        />
+        <Route
+          path='/events/new'
+          render={() => {
+            return isAdmin
+              ? <AddEvent />
+              : <Redirect to='/garden' />
+          }}
+        />
+        <Route
+          path='/events/:id/edit'
+          render={() => {
+            return isAdmin
+              ? <EditEvent />
+              : <Redirect to='/garden' />
+          }}
+        />
+      </section>
     </main>
   )
 }
