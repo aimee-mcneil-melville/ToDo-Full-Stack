@@ -13,6 +13,7 @@ import AddEvent from './pages/admin/AddEvent'
 import EditEvent from './pages/admin/EditEvent'
 import Error from './components/Error'
 import WaitIndicator from './components/WaitIndicator'
+import Event from './pages/Event'
 
 export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
@@ -65,6 +66,7 @@ export default function App () {
           }}
         />
       </section>
+      <Event />
     </main>
   )
 }
