@@ -9,9 +9,9 @@ export function getEvent (consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`)
     .then((res) => {
-      const { title, date, volunteersNeeded, description } = res.body
+      const { gardenId, title, date, volunteersNeeded, description } = res.body
       dispatch(clearWaiting())
-      return { title, date, volunteersNeeded, description }
+      return { gardenId, title, date, volunteersNeeded, description }
     })
     .catch((error) => {
       dispatch(showError(error.message))
