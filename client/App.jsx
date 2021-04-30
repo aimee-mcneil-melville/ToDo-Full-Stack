@@ -65,8 +65,8 @@ export default function App () {
               : <Redirect to='/garden' />
           }}
         />
+        <Route exact path='/events/:id' component={Event} />
       </section>
-      <Event />
     </main>
   )
 }

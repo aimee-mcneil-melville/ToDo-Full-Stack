@@ -1,46 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { getIfVolunteer, toggleVolunteerStatus } from '../components/eventItemHelper'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getEvent } from './eventHelper'
+import { useParams } from 'react-router-dom'
 
 
-function Event ({event}) {
-  const details = {
-    title: 'Wednesday Weeding',
-    gardenName: 'Kelmarna Gardens',
-    gardenAddress: '12 Hukanui Crescent, Ponsonby, Auckland 1021',
-    date: '29th April 2021',
-    volunteers: 'Volunteers Needed: 8',
-    description: 'This is a really cool description of this really cool event coming up.'
+
+function Event(props) {
+  const [event, setEvent] = useState()
+  const { id } = useParams()
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  const { title, gardenName, date, volunteersNeeded, description } = event
+
+  // const { title, gardenName, gardenAddress,  date, description, volunteers } = event
+  const isVolunteer = false
+
+  useEffect(() => {
+    event
+  }, [])
+
+  useEffect(() => {
+    getEvent(id)
+        return null
+  }, [])
+
+  function clickHandler() {
+    // toggleVolunteerStatus(id, isVolunteer)
+    console.log(isAdmin)
   }
 
-    const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-    // const { id, title, date, volunteersNeeded, description, volunteers } = event
-    // const isVolunteer = getIfVolunteer(volunteers)
-  
-    function clickHandler () {
-      // toggleVolunteerStatus(id, isVolunteer)
-      console.log(isAdmin)
-    }
-  
 
   return (
     <>
-      <h1>{details.title}</h1>
-      <h2>{details.gardenName}</h2>
-      <h2>{details.gardenAddress}</h2>
-      <h3>{details.date}</h3>
-      <h3>{details.volunteers}</h3>
-      <p>{details.description}</p>
-      
-      { !isAdmin && 
+      <h1>{title}</h1>
+      <h2>{gardenName}</h2>
+      <h3>{date}</h3>
+      <h3>{volunteersNeeded}</h3>
+      <p>{description}</p>
+
+      { !isAdmin &&
         <div>
-      { !isAdmin 
-          ? <button onClick={clickHandler} className='button'>Volunteer</button>
-          : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
+          {!isVolunteer
+            ? <button onClick={clickHandler} className='button'>Volunteer</button>
+            : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
           }
-          </div>
-    }
+        </div>
+      }
     </>
   )
 }
