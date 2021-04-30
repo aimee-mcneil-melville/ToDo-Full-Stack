@@ -27,6 +27,60 @@ const mockEvents = [{
 }
 ]
 
+const mockUserEvents = [{
+  id: 1,
+  gardenId: 1,
+  gardenName: 'Kelmarna Gardens',
+  gardenAddress: '12 Hukanui Crescent',
+  volunteersNeeded: 8,
+  title: 'Weeding worker Bee',
+  date: '2020-08-27',
+  description: 'Its time to get these weeds under control.',
+  isVolunteered: false
+},
+{
+  id: 2,
+  gardenId: 1,
+  gardenName: 'Kelmarna Gardens',
+  gardenAddress: '12 Hukanui Crescent',
+  volunteersNeeded: 8,
+  title: 'Sowing Corn',
+  date: '2020-08-27',
+  description: 'Its time to get these plants under control.',
+  isVolunteered: true
+}
+]
+
+const mockAdminEvents = [{
+  id: 1,
+  gardenId: 1,
+  gardenName: 'Kelmarna Gardens',
+  gardenAddress: '12 Hukanui Crescent',
+  volunteersNeeded: 8,
+  title: 'Weeding worker Bee',
+  date: '2020-08-27',
+  description: 'Its time to get these weeds under control.',
+  volunteers: {
+    userId: 3,
+    username: 'jdog'
+  }
+},
+{
+  id: 2,
+  gardenId: 1,
+  gardenName: 'Kelmarna Gardens',
+  gardenAddress: '12 Hukanui Crescent',
+  volunteersNeeded: 8,
+  title: 'Sowing Corn',
+  date: '2020-08-27',
+  description: 'Its time to get these plants under control.',
+  volunteers: {
+    userId: 2,
+    username: 'rdog'
+  }
+}
+]
+
 describe('GET /api/v1/events/:id', () => {
   it('responds with correct event by id on res body', () => {
     expect.assertions(2)
