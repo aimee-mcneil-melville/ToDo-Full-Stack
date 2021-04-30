@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-
+.
 import { registerUser } from './registerHelper'
 
 export default function Register (props) {
