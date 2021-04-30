@@ -7,27 +7,27 @@ on:
     branches:
     - main
 jobs:
-  # Linting:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v2
-  #     - name: Clean install of code
-  #       run: npm ci
-  #     - name: Linting
-  #       run: npm run lint
-  #     - run: echo "🍏 This job's status is ${{ job.status }}."
-  # Unit_Tests: 
-  #   needs: Linting
-  #   runs-on: ubuntu-latest
-  #   steps:   
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v2
-  #     - name: Clean install of code
-  #       run: npm ci
-  #     - name: Unit Tests
-  #       run: npm test
-  #     - run: echo "🍏 This job's status is ${{ job.status }}."
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Clean install of code
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  Unit_Tests: 
+    needs: Linting
+    runs-on: ubuntu-latest
+    steps:   
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Clean install of code
+        run: npm ci
+      - name: Unit Tests
+        run: npm test
+      - run: echo "🍏 This job's status is ${{ job.status }}."
   deploy:
     runs-on: ubuntu-latest
     steps:
