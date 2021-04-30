@@ -4,7 +4,7 @@ function getMockToken(userId, username, email, isAdmin) {
   const tokenObject = {
     id: userId,
     username: username,
-    is_admin: isAdmin,
+    isAdmin: isAdmin,
     email: email
   }
   return jwt.sign(tokenObject, process.env.JWT_SECRET)

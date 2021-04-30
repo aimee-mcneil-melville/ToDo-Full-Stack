@@ -41,7 +41,8 @@ const mockUserGarden = {
     volunteersNeeded: 8,
     title: 'Weeding Worker Bee',
     date: 'Wed, 27 Sep 2020 20:00:00 GMT',
-    description: "It's time to get these weeds under control."
+    description: "It's time to get these weeds under control.",
+    volunteers: []
   }, {
     id: 1,
     volunteersNeeded: 99,
@@ -66,12 +67,27 @@ const mockUser = {
   email: 'test@test.co',
   isAdmin: true
 }
+const mockUserNonAdmin = {
+  id: 3,
+  username: 'sam',
+  email: 'test@test.co',
+  isAdmin: false
+}
 const testAuthHeader = {
   Authorization: `Bearer ${getMockToken(
     mockUser.id,
     mockUser.username,
     mockUser.email,
     mockUser.isAdmin
+  )}`
+}
+
+const testAuthHeaderNonAdmin = {
+  Authorization: `Bearer ${getMockToken(
+    mockUserNonAdmin.id,
+    mockUserNonAdmin.username,
+    mockUserNonAdmin.email,
+    mockUserNonAdmin.isAdmin
   )}`
 }
 
@@ -161,7 +177,7 @@ describe('GET /api/v1/gardens/:id', () => {
       })
   })
 
-  it('adds isVolunteer to return object if user is not an admin', () => {
+  it('returns volunteers array if user is admin', () => {
     const expected = {
       volunteers: [{
         username: 'Sam',
@@ -182,6 +198,21 @@ describe('GET /api/v1/gardens/:id', () => {
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.body.events[1]).toMatchObject(expected)
+        return null
+      })
+  })
+
+  it.only('includes isVolunteer in object if user is not admin', () => {
+    db.getGardenById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockUserGarden)
+    })
+    return request(server)
+      .get('/api/v1/gardens/2')
+      .set(testAuthHeaderNonAdmin)
+      .expect('Content-Type', /json/)
+      .then(res => {
+        expect(res.body.events[0]).toHaveProperty('isVolunteer')
         return null
       })
   })
