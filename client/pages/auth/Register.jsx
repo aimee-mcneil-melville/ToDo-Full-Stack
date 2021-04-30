@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-.
+
 import { registerUser } from './registerHelper'
 
 export default function Register (props) {
@@ -28,6 +28,28 @@ export default function Register (props) {
   return (
     <>
       <form className='column'>
+      <div className="field">
+          <label htmlFor='firstName' className='label'>First Name</label>
+          <input
+            className='input'
+            id='firstName'
+            name='firstName'
+            value={form.firstName}
+            placeholder='First Name'
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="field">
+          <label htmlFor='lastName' className='label'>Last Name</label>
+          <input
+            className='input'
+            id='lastName'
+            name='lastName'
+            value={form.lastName}
+            placeholder='Last Name'
+            onChange={handleChange}
+          ></input>
+        </div>
         <div className="field">
           <label htmlFor='username' className='label'>Username</label>
           <input
