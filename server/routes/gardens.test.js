@@ -2,15 +2,13 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/gardens')
+const dbUsers = require('../db/users')
 const log = require('../logger')
-const getToken = require('./mock-token')
+const { getMockToken } = require('./mockToken')
 
 jest.mock('../db/gardens')
+jest.mock('../db/users')
 jest.mock('../logger')
-
-const REQUEST_HEADER = {
-  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
-}
 
 const mockGardens = [{
   id: 1,
@@ -61,6 +59,22 @@ const mockUserGarden = {
   }]
 }
 
+const mockUsername = 'test'
+const mockUser = {
+  id: 1,
+  username: mockUsername,
+  email: 'test@test.co',
+  isAdmin: true
+}
+const testAuthHeader = {
+  Authorization: `Bearer ${getMockToken(
+    mockUser.id,
+    mockUser.username,
+    mockUser.email,
+    mockUser.isAdmin
+  )}`
+}
+
 describe('GET /api/v1/gardens', () => {
   it('responds with gardens on res body', () => {
     db.getGardens.mockImplementation(() => Promise.resolve(mockGardens))
@@ -92,14 +106,20 @@ describe('GET /api/v1/gardens', () => {
 
 describe('GET /api/v1/gardens/:id', () => {
   it('responds with user\'s garden as res body when token is provided', () => {
-    expect.assertions(2)
+    expect.assertions(3)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
+
+    dbUsers.getUserByName.mockImplementation((username) => {
+      expect(username).toBe(mockUsername)
+      return Promise.resolve(mockUser)
+    })
+
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -109,13 +129,14 @@ describe('GET /api/v1/gardens/:id', () => {
   })
 
   it('responds with user\'s garden as res body when token is not provided', () => {
-    expect.assertions(2)
+    expect.assertions(3)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
     return request(server)
       .get('/api/v1/gardens/2')
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -130,6 +151,7 @@ describe('GET /api/v1/gardens/:id', () => {
     ))
     return request(server)
       .get('/api/v1/gardens/999')
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
@@ -156,7 +178,7 @@ describe('GET /api/v1/gardens/:id', () => {
     })
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.body.events[1]).toMatchObject(expected)

@@ -4,13 +4,13 @@ const jwt = require('jsonwebtoken')
 const server = require('../server')
 const db = require('../db/volunteers')
 const log = require('../logger')
-const getToken = require('./mock-token')
+const { getMockToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
 
-const REQUEST_HEADER = {
-  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+const testAuthHeader = {
+  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
 describe('POST /api/v1/volunteer', () => {
@@ -28,7 +28,7 @@ describe('POST /api/v1/volunteer', () => {
     db.addVolunteer.mockImplementation(() => Promise.resolve(201))
     return request(server)
       .post('/api/v1/volunteer')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(201)
@@ -42,7 +42,7 @@ describe('POST /api/v1/volunteer', () => {
     ))
     return request(server)
       .post('/api/v1/volunteer')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
       .expect(500)
@@ -69,7 +69,7 @@ describe('deleteVolunteer adds Volunteer', () => {
     db.deleteVolunteer.mockImplementation(() => Promise.resolve(200))
     return request(server)
       .delete('/api/v1/volunteer')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(200)
@@ -83,7 +83,7 @@ describe('deleteVolunteer adds Volunteer', () => {
     ))
     return request(server)
       .delete('/api/v1/volunteer')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
       .expect(500)

@@ -28,6 +28,7 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
   const userName = req.user.username
   Promise.all([dbUsers.getUserByName(userName), db.getGardenById(id)])
     .then(([user, garden]) => {
+      console.log(user)
       garden.events.forEach(event => {
         if (!user.isAdmin) {
           event.isVolunteer = event.volunteers.some((v) => v.username === userName)

@@ -4,7 +4,7 @@ const server = require('../server')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
-const getToken = require('./mock-token')
+const { getMockToken } = require('./mockToken')
 
 jest.mock('../db/event')
 jest.mock('../logger')
@@ -28,8 +28,8 @@ const mockEvents = [{
 }
 ]
 
-const REQUEST_HEADER = {
-  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+const testAuthHeader = {
+  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
 describe('GET /api/v1/events/:id', () => {
@@ -97,9 +97,8 @@ describe('POST /api/v1/events', () => {
     })
     sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
-      .expect(401)
       .post('/api/v1/events')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({
         gardenId: 3,
         title: 'Gardening Event',
@@ -121,7 +120,7 @@ describe('POST /api/v1/events', () => {
     ))
     return request(server)
       .post('/api/v1/events')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
@@ -160,7 +159,7 @@ describe('PATCH /api/v1/events/:id', () => {
     })
     return request(server)
       .patch('/api/v1/events/2')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .send({
         id: 2,
         title: 'cooler event',
@@ -182,7 +181,7 @@ describe('PATCH /api/v1/events/:id', () => {
     ))
     return request(server)
       .patch('/api/v1/events/999')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
