@@ -3,9 +3,14 @@ const request = require('supertest')
 const server = require('../server')
 const db = require('../db/gardens')
 const log = require('../logger')
+const getToken = require('./mock-token')
 
 jest.mock('../db/gardens')
 jest.mock('../logger')
+
+const REQUEST_HEADER = {
+  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+}
 
 const mockGardens = [{
   id: 1,
@@ -44,7 +49,15 @@ const mockUserGarden = {
     volunteersNeeded: 99,
     title: 'ROCKING THE GARDENS',
     date: 'Wed, 26 Sep 2020 20:00:00 GMT',
-    description: 'ITS TIME TO ROCK GARDENS.'
+    description: 'ITS TIME TO ROCK GARDENS.',
+    volunteers: [{
+      username: 'Sam',
+      userId: 3
+    },
+    {
+      username: 'StevePuce',
+      userId: 4
+    }]
   }]
 }
 
@@ -105,6 +118,31 @@ describe('GET /api/v1/gardens/:id', () => {
       .then(res => {
         expect(log).toHaveBeenCalledWith('mock getGardenById error')
         expect(res.body.error.title).toBe('Unable to retrieve garden')
+        return null
+      })
+  })
+
+  it('adds isVolunteer to return object if user is not an admin', () => {
+    const expected = {
+      volunteers: [{
+        username: 'Sam',
+        userId: 3
+      },
+      {
+        username: 'StevePuce',
+        userId: 4
+      }]
+    }
+    db.getGardenById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockUserGarden)
+    })
+    return request(server)
+      .get('/api/v1/gardens/2')
+      .set(REQUEST_HEADER)
+      .expect('Content-Type', /json/)
+      .then(res => {
+        expect(res.body.events[1]).toMatchObject(expected)
         return null
       })
   })
