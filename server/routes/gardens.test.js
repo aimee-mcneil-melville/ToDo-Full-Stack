@@ -83,7 +83,6 @@ describe('GET /api/v1/gardens', () => {
 })
 
 describe('GET /api/v1/gardens/:id', () => {
-
   it('responds with user\'s garden as res body when token is provided', () => {
     expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
@@ -116,8 +115,6 @@ describe('GET /api/v1/gardens/:id', () => {
         return null
       })
   })
-
-
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getGardenById.mockImplementation(() => Promise.reject(

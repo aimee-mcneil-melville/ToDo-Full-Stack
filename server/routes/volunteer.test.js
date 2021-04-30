@@ -14,16 +14,17 @@ const REQUEST_HEADER = {
 }
 
 describe('POST /api/v1/volunteer', () => {
-
   it('addVolunteer response with 401 when no token passed', () => {
     return request(server)
       .post('/api/v1/volunteer')
       .send({ userId: 1, eventId: 1 })
-      .expect(401)
+      .then(res => {
+        expect(res.status).toBe(401)
+        return null
+      })
   })
 
   it('addVolunteer returns correct response', () => {
-
     db.addVolunteer.mockImplementation(() => Promise.resolve(201))
     return request(server)
       .post('/api/v1/volunteer')
@@ -54,12 +55,14 @@ describe('POST /api/v1/volunteer', () => {
 })
 
 describe('deleteVolunteer adds Volunteer', () => {
-
   it('deleteVolunteer response with 401 when no token passed', () => {
     return request(server)
       .delete('/api/v1/volunteer')
       .send({ userId: 1, eventId: 1 })
-      .expect(401)
+      .then(res => {
+        expect(res.status).toBe(401)
+        return null
+      })
   })
 
   it('deleteVolunteer returns correct response', () => {

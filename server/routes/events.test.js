@@ -66,16 +66,17 @@ describe('GET /api/v1/events/:id', () => {
 })
 
 describe('POST /api/v1/events', () => {
-
   it('responds with 401 when no token passed', () => {
     db.addEvent.mockImplementation(() => Promise.reject(
       new Error('mock addEvent error')
     ))
     return request(server)
       .post('/api/v1/events')
-      .expect(401)
+      .then(res => {
+        expect(res.status).toBe(401)
+        return null
+      })
   })
-
 
   it('respond with the event on res body', () => {
     expect.assertions(6)
@@ -96,6 +97,7 @@ describe('POST /api/v1/events', () => {
     })
     sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
+      .expect(401)
       .post('/api/v1/events')
       .set(REQUEST_HEADER)
       .send({
@@ -131,7 +133,6 @@ describe('POST /api/v1/events', () => {
 })
 
 describe('PATCH /api/v1/events/:id', () => {
-
   it('responds with 401 when no token passed', () => {
     db.addEvent.mockImplementation(() => Promise.reject(
       new Error('mock addEvent error')

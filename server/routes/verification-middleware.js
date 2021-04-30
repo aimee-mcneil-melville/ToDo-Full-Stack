@@ -1,16 +1,15 @@
-function verifyUser(req, res, next) {
-    const authenticatedUser = req.user
-    const { userId } = req.body
+function verifyUser (req, res, next) {
+  const authenticatedUser = req.user
+  const { userId } = req.body
 
-    if (authenticatedUser.id !== userId) {
-        res.status(401).send()
-        return
-    }
+  if (authenticatedUser.id !== userId) {
+    res.status(401).send()
+    return
+  }
 
-    next()
-
+  next()
 }
 
 module.exports = {
-    verifyUser
+  verifyUser
 }
