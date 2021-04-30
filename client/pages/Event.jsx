@@ -6,28 +6,26 @@ import { useParams } from 'react-router-dom'
 
 
 function Event(props) {
-  const [event, setEvent] = useState()
+  const [event, setEvent] = useState({})
   const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  const { title, gardenName, date, volunteersNeeded, description } = event
 
-  // const { title, gardenName, gardenAddress,  date, description, volunteers } = event
-  const isVolunteer = false
+  const isVolunteer = false //hard coded for now
 
-  useEffect(() => {
-    event
-  }, [])
 
   useEffect(() => {
     getEvent(id)
+    .then ((event) => {
+      setEvent(event)
+    })
         return null
   }, [])
 
   function clickHandler() {
-    // toggleVolunteerStatus(id, isVolunteer)
     console.log(isAdmin)
   }
 
+  const { title, gardenName, date, volunteersNeeded, description } = event
 
   return (
     <>

@@ -4,8 +4,6 @@ import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 
 export function getEvent (id, consume = requestor) {
-  // const storeState = getState()
-  // const { id } = storeState.event
   dispatch(setWaiting())
   return consume(`/events/${id}`)
     .then((res) => {
