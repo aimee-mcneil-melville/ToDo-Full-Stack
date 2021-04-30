@@ -58,7 +58,24 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
     .then((event) => {
       const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
 
-      if (req.user === undefined) {
+      if (req.user) {
+        if (req.user.isAdmin) {
+          return res.json(event)
+        } else {
+          const memberObject = {
+            id,
+            gardenId,
+            gardenName,
+            gardenAddress,
+            volunteersNeeded,
+            title,
+            date,
+            description,
+            isVolunteered: volunteers.some((v) => v.userId === req.user.id)
+          }
+          return res.json(memberObject)
+        }
+      } else {
         const guestObject = {
           id,
           gardenId,
@@ -70,21 +87,6 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
           description
         }
         return res.json(guestObject)
-      } else if (req.user.id) {
-        const memberObject = {
-          id,
-          gardenId,
-          gardenName,
-          gardenAddress,
-          volunteersNeeded,
-          title,
-          date,
-          description,
-          isVolunteered: volunteers.some((v) => v.userId === req.user.id)
-        }
-        return res.json(memberObject)
-      } else {
-        return res.json(event)
       }
     })
     .catch((err) => {
