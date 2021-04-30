@@ -18,7 +18,6 @@ function Event(props) {
     .then ((event) => {
       setEvent(event)
     })
-        return null
   }, [])
 
   function clickHandler() {
