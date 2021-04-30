@@ -3,6 +3,7 @@ const request = require('supertest')
 const server = require('../server')
 const db = require('../db/gardens')
 const log = require('../logger')
+const getToken = require('./mock-token')
 
 jest.mock('../db/gardens')
 jest.mock('../logger')
@@ -48,6 +49,10 @@ const mockUserGarden = {
   }]
 }
 
+const REQUEST_HEADER = {
+  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+}
+
 describe('GET /api/v1/gardens', () => {
   it('responds with gardens on res body', () => {
     db.getGardens.mockImplementation(() => Promise.resolve(mockGardens))
@@ -78,7 +83,25 @@ describe('GET /api/v1/gardens', () => {
 })
 
 describe('GET /api/v1/gardens/:id', () => {
-  it('responds with user\'s garden as res body', () => {
+
+  it('responds with user\'s garden as res body when token is provided', () => {
+    expect.assertions(2)
+    db.getGardenById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockUserGarden)
+    })
+    return request(server)
+      .get('/api/v1/gardens/2')
+      .set(REQUEST_HEADER)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body.events).toHaveLength(2)
+        return null
+      })
+  })
+
+  it('responds with user\'s garden as res body when token is not provided', () => {
     expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
@@ -93,6 +116,8 @@ describe('GET /api/v1/gardens/:id', () => {
         return null
       })
   })
+
+
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getGardenById.mockImplementation(() => Promise.reject(

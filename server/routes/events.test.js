@@ -4,6 +4,7 @@ const server = require('../server')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
+const getToken = require('./mock-token')
 
 jest.mock('../db/event')
 jest.mock('../logger')
@@ -26,6 +27,10 @@ const mockEvents = [{
   volunteersNeeded: 4
 }
 ]
+
+const REQUEST_HEADER = {
+  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+}
 
 describe('GET /api/v1/events/:id', () => {
   it('responds with correct event by id on res body', () => {
@@ -61,6 +66,17 @@ describe('GET /api/v1/events/:id', () => {
 })
 
 describe('POST /api/v1/events', () => {
+
+  it('responds with 401 when no token passed', () => {
+    db.addEvent.mockImplementation(() => Promise.reject(
+      new Error('mock addEvent error')
+    ))
+    return request(server)
+      .post('/api/v1/events')
+      .expect(401)
+  })
+
+
   it('respond with the event on res body', () => {
     expect.assertions(6)
     db.addEvent.mockImplementation((newEvent) => {
@@ -81,6 +97,7 @@ describe('POST /api/v1/events', () => {
     sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
       .post('/api/v1/events')
+      .set(REQUEST_HEADER)
       .send({
         gardenId: 3,
         title: 'Gardening Event',
@@ -102,6 +119,7 @@ describe('POST /api/v1/events', () => {
     ))
     return request(server)
       .post('/api/v1/events')
+      .set(REQUEST_HEADER)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
@@ -113,6 +131,16 @@ describe('POST /api/v1/events', () => {
 })
 
 describe('PATCH /api/v1/events/:id', () => {
+
+  it('responds with 401 when no token passed', () => {
+    db.addEvent.mockImplementation(() => Promise.reject(
+      new Error('mock addEvent error')
+    ))
+    return request(server)
+      .patch('/api/v1/events/2')
+      .expect(401)
+  })
+
   it('responds with the correct event by id on res body', () => {
     expect.assertions(6)
     db.updateEvent.mockImplementation((updatedEvent) => {
@@ -131,6 +159,7 @@ describe('PATCH /api/v1/events/:id', () => {
     })
     return request(server)
       .patch('/api/v1/events/2')
+      .set(REQUEST_HEADER)
       .send({
         id: 2,
         title: 'cooler event',
@@ -152,6 +181,7 @@ describe('PATCH /api/v1/events/:id', () => {
     ))
     return request(server)
       .patch('/api/v1/events/999')
+      .set(REQUEST_HEADER)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
