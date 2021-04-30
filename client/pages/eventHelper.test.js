@@ -1,7 +1,6 @@
 import { getEvent } from './eventHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
-import { dispatch, getState } from '../store'
-// NOTE! Not written for eventHelper - must edit
+import { dispatch } from '../store'
 
 jest.mock('../store')
 
@@ -12,7 +11,6 @@ afterEach(() => {
 describe('getEvent', () => {
   describe('-> GET /events/:id api call success', () => {
     it('dispatches with the correct event action', () => {
-      getState.mockImplementation(() => ({ event: { id: 2 } }))
       function consume (path) {
         expect(path).toMatch('2')
         return Promise.resolve({
@@ -27,7 +25,7 @@ describe('getEvent', () => {
         })
       }
 
-      return getEvent(consume)
+      return getEvent(2, consume)
         .then((event) => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({
@@ -42,11 +40,10 @@ describe('getEvent', () => {
 
   describe('-> GET /event/:id api call rejection', () => {
     it('dispatches error correctly', () => {
-      getState.mockImplementation(() => ({ event: { id: null } }))
       function consume () {
         return Promise.reject(new Error('mock error'))
       }
-      return getEvent(consume)
+      return getEvent(null, consume)
         .then(() => {
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null
