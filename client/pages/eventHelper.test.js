@@ -1,8 +1,7 @@
 import requestor from '../consume'
-import { checkVolunteerStatus } from './eventHelper'
+import { getEvent, checkVolunteerStatus } from './eventHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
-// NOTE! Not written for eventHelper - must edit
 
 jest.mock('../store')
 
@@ -10,75 +9,50 @@ afterEach(() => {
   return jest.resetAllMocks()
 })
 
-// describe('getGarden', () => {
-//   describe('-> GET /gardens/:id api call success', () => {
-//     it('dispatches with the correct garden action', () => {
-//       getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
-//       function consume (path) {
-//         expect(path).toMatch('2')
-//         return Promise.resolve({
-//           body: {
-//             name: 'test garden',
-//             description: 'a rad test garden',
-//             url: 'cooltestgarden.com',
-//             events: [],
-//             address: 'cool place, nz',
-//             lat: 123,
-//             lon: -123,
-//             fake: 'asdf'
-//           }
-//         })
-//       }
+describe('getEvent', () => {
+  describe('-> GET /events/:id api call success', () => {
+    it('dispatches with the correct event action', () => {
+      function consume (path) {
+        expect(path).toMatch('2')
+        return Promise.resolve({
+          body: {
+            gardenName: 'test name',
+            title: 'test event',
+            date: '2021-04-30',
+            volunteersNeeded: 3,
+            description: 'wow great description',
+            fake: 'asdf'
+          }
+        })
+      }
 
-//       return getGarden(consume)
-//         .then((garden) => {
-//           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-//           expect(dispatch).toHaveBeenCalledWith({
-//             type: SET_GARDEN,
-//             garden: {
-//               name: 'test garden',
-//               description: 'a rad test garden',
-//               url: 'cooltestgarden.com',
-//               events: [],
-//               address: 'cool place, nz',
-//               lat: 123,
-//               lon: -123
-//             }
-//           })
-//           return null
-//         })
-//     })
-//   })
-
-//   describe('-> GET /gardens/:id api call rejection', () => {
-//     it('dispatches error correctly', () => {
-//       getState.mockImplementation(() => ({ user: { gardenId: null } }))
-//       function consume () {
-//         return Promise.reject(new Error('mock error'))
-//       }
-//       return getGarden(consume)
-//         .then(() => {
-//           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
-//           return null
-//         })
-//     })eerStatus', (consume = requestor) => {
-  
-  it('dispatches post', () => {
-    getState.mockImplementation(() => ({ user: { id: 2 } }))
-    const eventId = 1
-    const isVolunteer = false
-
-    function consume (url, method, userData) {
-      expect(method).toBe('post')
-      expect(userData.userId).toBe(2)
-      return Promise.resolve()
-    }
-    return checkVolunteerStatus(eventId, isVolunteer, consume)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        return null
-      })
+      return getEvent(2, consume)
+        .then((event) => {
+          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+          expect(dispatch).toHaveBeenCalledWith({
+            type: CLEAR_WAITING
+          })
+          expect(event.title).toBe('test event')
+          expect(event).not.toHaveProperty('fake')
+          return null
+        })
+    })
   })
+
+
+  describe('-> GET /event/:id api call rejection', () => {
+    it('dispatches error correctly', () => {
+      function consume () {
+        return Promise.reject(new Error('mock error'))
+      }
+      return getEvent(null, consume)
+        .then(() => {
+          expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+          return null
+        })
+    })
+  })
+})
 
 describe('checkVolunteerStatus', (consume = requestor) => {
   it('dispatches post', () => {
@@ -136,7 +110,6 @@ describe('checkVolunteerStatus', (consume = requestor) => {
     }
     return checkVolunteerStatus(null, null, consume)
       .then(() => {
-        console.log(dispatch)
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
         return null
       })

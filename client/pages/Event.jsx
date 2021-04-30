@@ -1,23 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { getEvent } from './eventHelper'
+import { useParams } from 'react-router-dom'
 
-function Event () {
-  const details = {
-    title: 'Wednesday Weeding',
-    gardenName: 'Kelmarna Gardens',
-    gardenAddress: '12 Hukanui Crescent, Ponsonby, Auckland 1021',
-    date: '29th April 2021',
-    volunteers: 'Volunteers Needed: 8',
-    description: 'This is a really cool description of this really cool event coming up.'
+
+
+function Event(props) {
+  const [event, setEvent] = useState({})
+  const { id } = useParams()
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+
+  const isVolunteer = false //hard coded for now
+
+
+  useEffect(() => {
+    getEvent(id)
+    .then ((event) => {
+      setEvent(event)
+    })
+  }, [])
+
+  function clickHandler() {
+    console.log(isAdmin)
   }
+
+  const { title, gardenName, date, volunteersNeeded, description } = event
 
   return (
     <>
-      <h1>{details.title}</h1>
-      <h2>{details.gardenName}</h2>
-      <h2>{details.gardenAddress}</h2>
-      <h3>{details.date}</h3>
-      <h3>{details.volunteers}</h3>
-      <p>{details.description}</p>
+      <h1>{title}</h1>
+      <h2>{gardenName}</h2>
+      <h3>{date}</h3>
+      <h3>{volunteersNeeded}</h3>
+      <p>{description}</p>
+
+      { !isAdmin &&
+        <div>
+          {!isVolunteer
+            ? <button onClick={clickHandler} className='button'>Volunteer</button>
+            : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
+          }
+        </div>
+      }
     </>
   )
 }
