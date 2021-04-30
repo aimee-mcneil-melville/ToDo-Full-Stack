@@ -3,7 +3,7 @@ const request = require('supertest')
 const server = require('../server')
 const db = require('../db/gardens')
 const log = require('../logger')
-const getToken = require('./mock-token')
+const { getMockToken } = require('./mockToken')
 
 jest.mock('../db/gardens')
 jest.mock('../logger')
@@ -49,8 +49,8 @@ const mockUserGarden = {
   }]
 }
 
-const REQUEST_HEADER = {
-  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
+const testAuthHeader = {
+  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
 describe('GET /api/v1/gardens', () => {
@@ -91,7 +91,7 @@ describe('GET /api/v1/gardens/:id', () => {
     })
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(REQUEST_HEADER)
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -122,6 +122,7 @@ describe('GET /api/v1/gardens/:id', () => {
     ))
     return request(server)
       .get('/api/v1/gardens/999')
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {

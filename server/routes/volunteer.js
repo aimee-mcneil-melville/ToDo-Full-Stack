@@ -4,7 +4,7 @@ const log = require('../logger')
 const db = require('../db/volunteers')
 const { decode } = require('../notifications/emailTokens')
 const { getTokenDecoder } = require('../auth')
-const { verifyUser } = require('./verification-middleware')
+const { verifyUser } = require('./verificationMiddleware')
 
 const router = express.Router()
 

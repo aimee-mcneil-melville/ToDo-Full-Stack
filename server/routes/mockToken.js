@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-function getToken (userId, username, email, isAdmin) {
+function getMockToken(userId, username, email, isAdmin) {
   const tokenObject = {
     id: userId,
     username: username,
@@ -10,4 +10,6 @@ function getToken (userId, username, email, isAdmin) {
   return jwt.sign(tokenObject, process.env.JWT_SECRET)
 }
 
-module.exports = getToken
+module.exports = {
+  getMockToken
+}
