@@ -5,6 +5,8 @@ import { registerUser } from './registerHelper'
 
 export default function Register (props) {
   const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
     username: '',
     password: '',
     gardenId: null,
@@ -28,7 +30,7 @@ export default function Register (props) {
   return (
     <>
       <form className='column'>
-      <div className="field">
+        <div className="field">
           <label htmlFor='firstName' className='label'>First Name</label>
           <input
             className='input'
@@ -109,7 +111,7 @@ export default function Register (props) {
         </button>
       </form>
       <div className='column'>
-        <img src='./images/comGardenPlant.png' alt='Person gardening with trowel'/>
+        <img src='./images/comGardenPlant.png' alt='Person gardening with trowel' />
       </div>
     </>
   )
