@@ -3,9 +3,6 @@ on:
   push:
     branches:
     - dev
-  pull_request:
-    branches:
-    - dev
 jobs:
   Linting:
     runs-on: ubuntu-latest
@@ -28,3 +25,5 @@ jobs:
       - name: Unit Tests
         run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
+    env:
+        JWT_SECRET: ${{secrets.JWT_SECRET}}
