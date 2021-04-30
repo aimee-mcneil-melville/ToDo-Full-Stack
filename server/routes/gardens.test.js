@@ -61,10 +61,6 @@ const mockUserGarden = {
   }]
 }
 
-const REQUEST_HEADER = {
-  Authorization: `Bearer ${getToken(1, 'testuser', 'testuser@test.co', false)}`
-}
-
 describe('GET /api/v1/gardens', () => {
   it('responds with gardens on res body', () => {
     db.getGardens.mockImplementation(() => Promise.resolve(mockGardens))
