@@ -29,6 +29,7 @@ jobs:
         run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
   deploy:
+    needs: Unit_Tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -50,6 +51,7 @@ jobs:
               password $HEROKU_API_KEY
           EOF
         env:
+          JWT_SECRET: ${{secrets.JWT_SECRET}}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Add Heroku remote
