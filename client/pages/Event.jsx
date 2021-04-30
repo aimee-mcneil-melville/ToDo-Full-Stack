@@ -12,10 +12,9 @@ function Event (props) {
 
   useEffect(() => {
     getEvent(id)
-      .then((event) => {
-        setEvent(event)
-      })
-    return null
+    .then ((event) => {
+      setEvent(event)
+    })
   }, [])
 
   function clickHandler () {
