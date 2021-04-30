@@ -3,8 +3,8 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
-const { get } = require('superagent')
-const { useImperativeHandle } = require('react')
+const { getTokenDecoder } = require('../auth')
+const { isGeneratorFunction } = require('regenerator-runtime')
 
 const router = express.Router()
 
@@ -51,24 +51,41 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
+  // console.log(req.user)
   db.getEventById(id)
     .then((event) => {
-      // GUEST (Done)
-      // const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description } = event
-      // const guestObject = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description }
-      // res.json(guestObject)
-      //
-      // MEMBER (Done - but requires out-of-scope data from eventItemHelper.js, hardcoded isVolunteered result for now)
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description } = event
-      const memberObject = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, isVolunteered: true }
-      res.json(memberObject)
-      //
-      // ADMIN (DONE)
-      // res.json(event)
-      // }
-      return null
+      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
+
+      if (req.user === undefined) {
+        const guestObject = {
+          id,
+          gardenId,
+          gardenName,
+          gardenAddress,
+          volunteersNeeded,
+          title,
+          date,
+          description
+        }
+        return res.json(guestObject)
+      } else if (req.user.id) {
+        const memberObject = {
+          id,
+          gardenId,
+          gardenName,
+          gardenAddress,
+          volunteersNeeded,
+          title,
+          date,
+          description,
+          isVolunteered: volunteers.some((v) => v.userId === req.user.id)
+        }
+        return res.json(memberObject)
+      } else {
+        return res.json(event)
+      }
     })
     .catch((err) => {
       log(err.message)
