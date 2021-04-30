@@ -33,9 +33,9 @@ function createUser (user, db = connection) {
     .then(() => generateHash(user.password))
     .then((passwordHash) => {
       return db('users').insert({
-        username: user.username,
         first_name: user.firstName,
         last_name: user.lastName,
+        username: user.username,
         garden_id: user.gardenId,
         hash: passwordHash,
         is_admin: false,
