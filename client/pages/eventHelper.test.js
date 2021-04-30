@@ -17,7 +17,7 @@ describe('getEvent', () => {
         expect(path).toMatch('2')
         return Promise.resolve({
           body: {
-            gardenId: 1,
+            gardenName: 'test name',
             title: 'test event',
             date: '2021-04-30',
             volunteersNeeded: 3,
