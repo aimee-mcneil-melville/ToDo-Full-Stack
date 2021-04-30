@@ -53,7 +53,6 @@ router.patch('/:id', (req, res) => {
 
 router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
-  // console.log(req.user)
   db.getEventById(id)
     .then((event) => {
       const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
