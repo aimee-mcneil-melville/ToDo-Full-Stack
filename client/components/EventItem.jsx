@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
-  const { id, title, date, volunteersNeeded, description, volunteers } = event
+  const { id, title, date, volunteersNeeded, description, volunteers, totalVolunteers } = event
   const isVolunteer = getIfVolunteer(volunteers)
 
-  const remainingVolunteers = (volunteersNeeded - volunteers.length)
-
+  const remainingVolunteers = (volunteersNeeded - totalVolunteers)
   const additionalVolunteers = Math.abs(remainingVolunteers)
 
   function clickHandler () {
