@@ -25,12 +25,12 @@ router.get('/', (req, res) => {
 
 router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
-  const userName = req.user.username
-  Promise.all([dbUsers.getUserByName(userName), db.getGardenById(id)])
-    .then(([user, garden]) => {
+  const user = req.user || {}
+  db.getGardenById(id)
+    .then((garden) => {
       garden.events.forEach(event => {
-        if (!req.user.isAdmin) {
-          event.isVolunteer = event.volunteers.some((v) => v.username === userName)
+        if (!user.isAdmin) {
+          event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
           delete event.volunteers
         }
       })

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams, withRouter } from 'react-router-dom'
 
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
 
-function Garden () {
+function Garden (props) {
   const garden = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
@@ -33,4 +34,4 @@ function Garden () {
   )
 }
 
-export default Garden
+export default withRouter(Garden)

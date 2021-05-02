@@ -42,7 +42,14 @@ const mockUserGarden = {
     title: 'Weeding Worker Bee',
     date: 'Wed, 27 Sep 2020 20:00:00 GMT',
     description: "It's time to get these weeds under control.",
-    volunteers: []
+    volunteers: [{
+      username: 'Sam',
+      userId: 3
+    },
+    {
+      username: 'StevePuce',
+      userId: 4
+    }]
   }, {
     id: 1,
     volunteersNeeded: 99,
@@ -122,17 +129,11 @@ describe('GET /api/v1/gardens', () => {
 
 describe('GET /api/v1/gardens/:id', () => {
   it('responds with user\'s garden as res body when token is provided', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
-
-    dbUsers.getUserByName.mockImplementation((username) => {
-      expect(username).toBe(mockUsername)
-      return Promise.resolve(mockUser)
-    })
-
     return request(server)
       .get('/api/v1/gardens/2')
       .set(testAuthHeader)
@@ -145,7 +146,7 @@ describe('GET /api/v1/gardens/:id', () => {
   })
 
   it('responds with user\'s garden as res body when token is not provided', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
@@ -202,7 +203,7 @@ describe('GET /api/v1/gardens/:id', () => {
       })
   })
 
-  it('includes isVolunteer in object if user is not admin', () => {
+  it('includes isVolunteer in response if user is not admin', () => {
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
