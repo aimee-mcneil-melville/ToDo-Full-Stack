@@ -1,5 +1,5 @@
 import requestor from '../consume'
-import { getEvent, checkVolunteerStatus } from './eventHelper'
+import { getEvent, setVolunteerStatus } from './eventHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
 
@@ -55,7 +55,7 @@ describe('getEvent', () => {
   })
 })
 
-describe('checkVolunteerStatus', (consume = requestor) => {
+describe('setVolunteerStatus', (consume = requestor) => {
   it('dispatches post', () => {
     getState.mockImplementation(() => ({ user: { id: 2 } }))
     const eventId = 1
@@ -66,7 +66,7 @@ describe('checkVolunteerStatus', (consume = requestor) => {
       expect(userData.userId).toBe(2)
       return Promise.resolve()
     }
-    return checkVolunteerStatus(eventId, isVolunteer, consume)
+    return setVolunteerStatus(eventId, isVolunteer, consume)
       .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         return null
@@ -80,23 +80,17 @@ describe('checkVolunteerStatus', (consume = requestor) => {
 
     function consume (url, method, userData) {
       expect(method).toBe('delete')
-      expect(userData.userId).toBe(4)
-      return Promise.resolve()
-    }
-    return checkVolunteerStatus(eventId, isVolunteer, consume)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
-        return null
-      })
-  })
-
-  it('dispatches waiting actions correctly', () => {
+      expect(userData.userIdcheckVolunteerStatus
+        checkVolunteerStatus
+        checkVolunteerStatus
+        checkVolunteerStatus
+        checkVolunteerStatusons correctly', () => {
     getState.mockImplementation(() => ({ user: { id: 4 } }))
 
     function consume () {
       return Promise.resolve()
     }
-    return checkVolunteerStatus(null, null, consume)
+    return setVolunteerStatus(null, null, consume)
       .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
@@ -109,7 +103,7 @@ describe('checkVolunteerStatus', (consume = requestor) => {
     function consume () {
       return Promise.reject(new Error('mock error'))
     }
-    return checkVolunteerStatus(null, null, consume)
+    return setVolunteerStatus(null, null, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
         return null
@@ -119,7 +113,7 @@ describe('checkVolunteerStatus', (consume = requestor) => {
   it('shows error if no user id', () => {
     getState.mockImplementation(() => ({ user: {id: null}}))
 
-    return checkVolunteerStatus(consume)
+    return setVolunteerStatus(consume)
     .then(() => {
       expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
       return null
