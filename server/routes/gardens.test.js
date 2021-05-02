@@ -202,7 +202,7 @@ describe('GET /api/v1/gardens/:id', () => {
       })
   })
 
-  it.only('includes isVolunteer in object if user is not admin', () => {
+  it('includes isVolunteer in object if user is not admin', () => {
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
