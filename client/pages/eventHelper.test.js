@@ -17,6 +17,7 @@ describe('getEvent', () => {
         return Promise.resolve({
           body: {
             gardenName: 'test name',
+            gardenAddress: 'test address',
             title: 'test event',
             date: '2021-04-30',
             volunteersNeeded: 3,
