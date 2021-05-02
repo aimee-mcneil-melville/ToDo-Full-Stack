@@ -4,11 +4,13 @@ const server = require('../server')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
+const { userExists } = require('../db/users')
 
 jest.mock('../db/event')
 jest.mock('../logger')
 jest.mock('../notifications/notificationHelper')
 
+// mock events for testing guest users
 const mockEvents = [{
   id: 1,
   gardenId: 1,
@@ -27,6 +29,7 @@ const mockEvents = [{
 }
 ]
 
+// mock events for testing signed in users
 const mockUserEvents = [{
   id: 1,
   gardenId: 1,
@@ -51,6 +54,7 @@ const mockUserEvents = [{
 }
 ]
 
+// mock events for testing admin users
 const mockAdminEvents = [{
   id: 1,
   gardenId: 1,
@@ -82,8 +86,9 @@ const mockAdminEvents = [{
 ]
 
 describe('GET /api/v1/events/:id', () => {
-  it('responds with correct event by id on res body', () => {
-    expect.assertions(2)
+  // tests guest info
+  it('responds only with event details for a guest', () => {
+    expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvents[1])
@@ -94,6 +99,42 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body.title).toBe('Sowing Corn')
+        expect(res.body).not.toHaveProperty('isVolunteered')
+        expect(res.body).not.toHaveProperty('volunteers')
+        return null
+      })
+  })
+
+  // testing for user route
+  it('response includes volunteer status of member', () => {
+    expect.assertions(2)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockUserEvents[1])
+    })
+    return request(server)
+      .get('/api/v1/events/2')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body.isVolunteered).toBe(true || false)
+        return null
+      })
+  })
+  // admin route
+  it('response includes volunteers id if Admin', () => {
+    expect.assertions(2)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockUserEvents[1])
+    })
+    return request(server)
+      .get('/api/v1/events/2')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body).toHaveProperty('volunteers')
+        expect(res.body.volunteers).toBe([])
         return null
       })
   })
