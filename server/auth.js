@@ -1,7 +1,9 @@
 const {
-  generateHash
+  generateHash,
+  getTokenDecoder
 } = require('authenticare/server')
 
 module.exports = {
-  generateHash
+  generateHash,
+  getTokenDecoder
 }
