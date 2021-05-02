@@ -3,24 +3,24 @@ import { useSelector } from 'react-redux'
 import { getEvent } from './eventHelper'
 import { useParams } from 'react-router-dom'
 
-
-
-function Event(props) {
+function Event (props) {
   const [event, setEvent] = useState({})
   const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
-  const isVolunteer = false //hard coded for now
-
+  const isVolunteer = false // hard coded for now
 
   useEffect(() => {
     getEvent(id)
-    .then ((event) => {
-      setEvent(event)
-    })
+      .then((event) => {
+        setEvent(event)
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
   }, [])
 
-  function clickHandler() {
+  function clickHandler () {
     console.log(isAdmin)
   }
 

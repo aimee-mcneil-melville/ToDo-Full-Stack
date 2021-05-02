@@ -1,28 +1,38 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-
 import { renderWithRedux } from '../test-utils'
-
 import Event from './Event'
 import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
-getEvent.mockImplementation(() => Promise.resolve({
-  title: 'title to edit',
+const mockData = {
+  title: 'Mock title',
   date: '2021-03-02',
+  gardenName: 'Mock garden',
   volunteersNeeded: 4,
-  description: 'truly radical event'
-})
-)
+  description: 'this is our mock data description truly radical event'
+}
 
+getEvent.mockImplementation(() => Promise.resolve(mockData))
 describe('Page Render', () => {
-  it('Component should render event data', () => {
+  it('Event component should render event data', () => {
     renderWithRedux(<Event />)
+    expect.assertions(3)
+    return screen.findByText('Mock title').then(() => {
+      const gardenNameElement = screen.getByRole('heading', { level: 2 })
+      expect(gardenNameElement.innerHTML).toMatch('Mock garden')
+
+      const dateAndVolunteerNeeded = screen.getAllByRole('heading', { level: 3 })
+      expect(dateAndVolunteerNeeded[0].innerHTML).toMatch(mockData.date)
+      expect(Number(dateAndVolunteerNeeded[1].innerHTML)).toEqual(mockData.volunteersNeeded)
+
+      return null
+    })
   })
 })
 
-//BUTTON TESTING
+// BUTTON TESTING
 //     it('displays Volunteer for member if not volunteered for event', () => {
 //       getIfVolunteer.mockImplementation(() => false)
 
