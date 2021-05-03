@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
+
+import { getEvent, setVolunteerStatus } from './eventHelper'
+
 import VolunteersList from '../components/VolunteersList'
 
 function Event (props) {
@@ -52,7 +54,7 @@ function Event (props) {
               <dd>{volunteersNeeded}</dd>
             </dl>
             <p className='has-text-weight-semibold'>{description}</p>
-            { !isAdmin &&
+            {!isAdmin &&
               <div>
                 {!isVolunteer
                   ? <button onClick={clickHandler} className='button'>Volunteer</button>
@@ -63,11 +65,10 @@ function Event (props) {
           </article>
         </div>
 
-        {
-          isAdmin &&
-        <div>
-          <VolunteersList volunteers={volunteers} />
-        </div>
+        {isAdmin &&
+          <div>
+            <VolunteersList volunteers={volunteers} />
+          </div>
         }
 
         image or map can go here

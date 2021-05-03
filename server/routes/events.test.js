@@ -37,7 +37,6 @@ const testAuthAdminHeader = {
 }
 
 describe('GET /api/v1/events/:id', () => {
-  // tests guest info
   it('responds only with event details for a guest', () => {
     expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
@@ -56,7 +55,6 @@ describe('GET /api/v1/events/:id', () => {
       })
   })
 
-  // testing for user route
   it('response includes volunteer status of member', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
@@ -77,7 +75,6 @@ describe('GET /api/v1/events/:id', () => {
       })
   })
 
-  // testing for user route
   it('response includes non-volunteer status of member', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
@@ -95,7 +92,7 @@ describe('GET /api/v1/events/:id', () => {
         return null
       })
   })
-  // admin route
+
   it('response includes volunteers array if Admin', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
