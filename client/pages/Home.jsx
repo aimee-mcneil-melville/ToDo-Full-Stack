@@ -38,9 +38,10 @@ export default function Home () {
   }, [])
 
   return (
-    <section className='columns'>
-      <article className='column'>
-        <div className='columns'>
+    <>
+    <article className='column'>
+      <h2 className='title is-4'>Welcome!</h2>
+        <div className='columns'>        
           <p className='column is-three-quarters'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
         </div>
         <Link className='button' to={'/garden'}>Get Started</Link>
@@ -50,6 +51,7 @@ export default function Home () {
         coordinates={gardensCoordinates}
         addresses={addresses}
       />
-    </section>
+   
+    </>
   )
 }
