@@ -1,0 +1,39 @@
+.waitIndicator {
+  position: absolute;
+  top: 4.0rem;
+
+  &--img {
+    width: 55px;
+    padding: 3px;
+    -webkit-animation: rotation 4s infinite linear;
+    -moz-animation: rotation 4s infinite linear;
+    animation: rotation 4s infinite linear;
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
