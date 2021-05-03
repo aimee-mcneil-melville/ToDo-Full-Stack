@@ -89,29 +89,3 @@ describe('Not admin volunteer button test', () => {
       })
   })
 })
-
-// BUTTON TESTING
-//     it('displays Volunteer for member if not volunteered for event', () => {
-//       getIfVolunteer.mockImplementation(() => false)
-
-//       renderWithRouter(<EventItem isAdmin={false} event={{}} />)
-//       const button = screen.queryByRole('button')
-//       expect(getIfVolunteer).toHaveBeenCalled()
-//       expect(button.textContent).toBe('Volunteer')
-//     })
-
-//     it('does not display if not a member', () => {
-//       renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
-//       expect(screen.queryByRole('button')).toBeNull()
-//     })
-//   })
-
-//   describe('Un-Volunteer button', () => {
-//     it('displays Un-Volunteer for member if already volunteered for event', () => {
-//       getIfVolunteer.mockImplementation(() => true)
-
-//       renderWithRouter(<EventItem isAdmin={false} event={{}} />)
-//       const button = screen.queryByRole('button')
-//       expect(getIfVolunteer).toHaveBeenCalled()
-//       expect(button.textContent).toBe('Un-Volunteer')
-//     })

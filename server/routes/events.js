@@ -4,7 +4,6 @@ const log = require('../logger')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const { getTokenDecoder } = require('../auth')
-const { isGeneratorFunction } = require('regenerator-runtime')
 
 const router = express.Router()
 

@@ -1,4 +1,3 @@
-import requestor from '../consume'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
@@ -54,7 +53,7 @@ describe('getEvent', () => {
   })
 })
 
-describe('setVolunteerStatus', (consume = requestor) => {
+describe('setVolunteerStatus', () => {
   it('dispatches post', () => {
     getState.mockImplementation(() => ({ user: { id: 2 } }))
     const eventId = 1
