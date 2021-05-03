@@ -4,29 +4,26 @@ import { screen, fireEvent } from '@testing-library/react'
 import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
-import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
+import { toggleVolunteerStatus } from './eventItemHelper'
 
 jest.mock('./eventItemHelper')
 
 describe('Edit Event button', () => {
   it('displays for admin', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
-    expect(screen.getByRole('link')).toHaveTextContent('Edit Event')
+    expect(screen.getByRole('link', { name: 'Edit Event' })).toBeInTheDocument()
   })
 
   it('does not display if not an admin', () => {
     renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
-    expect(screen.queryByRole('link')).toBeNull()
+    expect(screen.queryByRole('link', { name: 'Edit Event' })).toBeNull()
   })
 })
 
 describe('Volunteer button', () => {
   it('displays Volunteer for member if not volunteered for event', () => {
-    getIfVolunteer.mockImplementation(() => false)
-
-    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
+    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: false }} />)
     const button = screen.queryByRole('button')
-    expect(getIfVolunteer).toHaveBeenCalled()
     expect(button.textContent).toBe('Volunteer')
   })
 
@@ -38,19 +35,15 @@ describe('Volunteer button', () => {
 
 describe('Un-Volunteer button', () => {
   it('displays Un-Volunteer for member if already volunteered for event', () => {
-    getIfVolunteer.mockImplementation(() => true)
-
-    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
+    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: true }} />)
     const button = screen.queryByRole('button')
-    expect(getIfVolunteer).toHaveBeenCalled()
     expect(button.textContent).toBe('Un-Volunteer')
   })
 })
 
 describe('toggle volunteer button', () => {
   it('clicking volunteer button calls toggleVolunteerStatus', () => {
-    getIfVolunteer.mockImplementation(() => false)
-    renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
+    renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: false }}/>)
     fireEvent.click(screen.queryByRole('button'))
     expect(toggleVolunteerStatus).toHaveBeenCalled()
   })

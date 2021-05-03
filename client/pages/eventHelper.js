@@ -8,10 +8,33 @@ export function getEvent (id, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { title, gardenName, date, volunteersNeeded, description } = res.body
-      return { title, gardenName, date, volunteersNeeded, description }
+      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered } = res.body
+      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered }
     })
     .catch((error) => {
       dispatch(showError(error.message))
     })
+}
+
+export function setVolunteerStatus (eventId, isVolunteer, consume = requestor) {
+  const storeState = getState()
+  const { id } = storeState.user
+  if (!id) {
+    dispatch(showError('Please register or sign in to volunteer.'))
+    return Promise.resolve(false)
+  } else {
+    dispatch(setWaiting())
+    const routeMethod = isVolunteer ? 'delete' : 'post'
+    const userData = { userId: id, eventId }
+
+    return consume('/volunteer', routeMethod, userData)
+      .then(() => {
+        dispatch(clearWaiting())
+        return true
+      })
+      .catch((error) => {
+        dispatch(showError(error.message))
+        return false
+      })
+  }
 }
