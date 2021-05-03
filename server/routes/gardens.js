@@ -31,6 +31,7 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
       const garden = JSON.parse(JSON.stringify(foundGarden))
       if (!user.isAdmin) {
         garden.events.forEach(event => {
+          event.totalVolunteers = event.volunteers.length
           event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
           delete event.volunteers
         })

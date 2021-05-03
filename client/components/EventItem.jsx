@@ -26,8 +26,8 @@ export default function EventItem ({ event, isAdmin }) {
         </div>
         <p>{date}</p>
         {remainingVolunteers >= 0
-          ? <p>Volunteers needed: {remainingVolunteers} out of {volunteersNeeded} </p>
-          : <><p>Volunteers needed: 0 out of {volunteersNeeded} &nbsp;&nbsp; | &nbsp;&nbsp; (Extra Volunteers: {additionalVolunteers}) </p></>
+          ? <p>{remainingVolunteers} out of {volunteersNeeded} volunteers needed</p>
+          : <p>0 out of {volunteersNeeded} volunteers needed (currently {additionalVolunteers} extra)</p>
         }
         <p>{description}</p>
       </article>
