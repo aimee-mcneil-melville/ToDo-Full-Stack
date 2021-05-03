@@ -29,7 +29,7 @@ export default function App () {
           path='/register'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/garden' />
+              ? <Redirect to='/gardens/' />
               : <Register />
           }}
         />
@@ -42,13 +42,8 @@ export default function App () {
           }}
         />
         <Route
-          path='/garden'
-          render={() => {
-            return isAuthenticated()
-              ? <Garden />
-              : <Redirect to='/signin' />
-          }}
-        />
+          exact path='/gardens/:id' component={Garden} />
+         
         <Route
           path='/event/new'
           render={() => {
