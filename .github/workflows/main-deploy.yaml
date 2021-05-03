@@ -1,0 +1,60 @@
+name: deploy after linting and testing to main
+on:
+  push:
+    branches:
+    - main
+jobs:
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Clean install of code
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  Unit_Tests: 
+    needs: Linting
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Clean install of code
+        run: npm ci
+      - name: Unit Tests
+        run: npm test
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+    env:
+        JWT_SECRET: ${{secrets.JWT_SECRET}}
+  deploy:
+    needs: Unit_Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+      - name: Heroku login credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      - name: Add Heroku remote
+        run: heroku git:remote --app $HEROKU_APP_NAME
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      - name: Push to Heroku
+        run: git push heroku main

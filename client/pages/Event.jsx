@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getEvent } from './eventHelper'
+import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
 
 function Event (props) {
   const [event, setEvent] = useState({})
+  const [isVolunteer, setIsVolunteer] = useState(false)
   const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
-  const isVolunteer = false // hard coded for now
-
   useEffect(() => {
     getEvent(id)
-    .then ((event) => {
-      setEvent(event)
-    return null
-    })
+      .then((event) => {
+        setEvent(event)
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
   }, [])
 
-  function clickHandler() {
-    console.log(isAdmin)
+  function clickHandler () {
+    return setVolunteerStatus(id, isVolunteer)
+      .then((wasSuccessful) => {
+        if (wasSuccessful) {
+          setIsVolunteer(!isVolunteer)
+        }
+        return null
+      })
   }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description } = event
 
   return (
+
     <>
       <article className='column'>
         <div className='columns'>

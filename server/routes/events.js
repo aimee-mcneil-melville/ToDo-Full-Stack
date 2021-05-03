@@ -3,6 +3,8 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
+const { getTokenDecoder } = require('../auth')
+const { isGeneratorFunction } = require('regenerator-runtime')
 
 const router = express.Router()
 
@@ -49,12 +51,42 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      res.json(event)
-      return null
+      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
+
+      if (req.user) {
+        if (req.user.isAdmin) {
+          return res.json(event)
+        } else {
+          const memberObject = {
+            id,
+            gardenId,
+            gardenName,
+            gardenAddress,
+            volunteersNeeded,
+            title,
+            date,
+            description,
+            isVolunteered: volunteers.some((v) => v.userId === req.user.id)
+          }
+          return res.json(memberObject)
+        }
+      } else {
+        const guestObject = {
+          id,
+          gardenId,
+          gardenName,
+          gardenAddress,
+          volunteersNeeded,
+          title,
+          date,
+          description
+        }
+        return res.json(guestObject)
+      }
     })
     .catch((err) => {
       log(err.message)
