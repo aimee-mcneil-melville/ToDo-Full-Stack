@@ -1,12 +1,10 @@
 import requestor from '../consume'
-import { dispatch, getState } from '../store'
+import { dispatch } from '../store'
 import { setWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 import { setGarden } from '../actions/garden'
 
 export function getGarden (id, consume = requestor) {
-  // const storeState = getState()
-  // const { gardenId } = storeState.user
   dispatch(setWaiting())
   return consume(`/gardens/${id}`)
     .then((res) => {
