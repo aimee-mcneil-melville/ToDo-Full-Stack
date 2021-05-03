@@ -2,7 +2,7 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 import Event from './Event'
-import { getEvent, setVolunteerStatus } from './eventHelper'
+import { getEvent, toggleVolunteerStatus } from './eventHelper'
 import userEvent from '@testing-library/user-event'
 
 jest.mock('./eventHelper')
@@ -65,7 +65,7 @@ describe('Admin and non admin test', () => {
 })
 
 describe('Not admin volunteer button test', () => {
-  setVolunteerStatus.mockImplementation((id, isVolunteer) => {
+  toggleVolunteerStatus.mockImplementation((id, isVolunteer) => {
     return Promise.resolve(true)
   })
 
@@ -81,7 +81,7 @@ describe('Not admin volunteer button test', () => {
     return screen.findByText('Volunteer')
       .then(volunteerButton => {
         userEvent.click(volunteerButton)
-        expect(setVolunteerStatus).toHaveBeenCalled()
+        expect(toggleVolunteerStatus).toHaveBeenCalled()
         return screen.findByText('Un-Volunteer')
       }).then(unVolunteer => {
         expect(unVolunteer.innerHTML).toMatch('Un-Volunteer')

@@ -16,7 +16,7 @@ export function getEvent (id, consume = requestor) {
     })
 }
 
-export function setVolunteerStatus (eventId, isVolunteer, consume = requestor) {
+export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
   const storeState = getState()
   const { id } = storeState.user
   if (!id) {

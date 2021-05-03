@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getEvent, setVolunteerStatus } from './eventHelper'
+import { getEvent, toggleVolunteerStatus } from './eventHelper'
 
 import VolunteersList from '../components/VolunteersList'
 
@@ -23,7 +23,7 @@ function Event (props) {
   }, [])
 
   function clickHandler () {
-    return setVolunteerStatus(id, isVolunteer)
+    return toggleVolunteerStatus(id, isVolunteer)
       .then((wasSuccessful) => {
         if (wasSuccessful) {
           setIsVolunteer(!isVolunteer)
