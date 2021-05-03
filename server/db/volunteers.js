@@ -2,7 +2,8 @@ const connection = require('./connection')
 
 module.exports = {
   addVolunteer,
-  deleteVolunteer
+  deleteVolunteer,
+  attend
 }
 
 function addVolunteer (registration, db = connection) {
@@ -20,4 +21,14 @@ function deleteVolunteer (registration, db = connection) {
     .where('user_id', userId)
     .where('event_id', eventId)
     .delete()
+}
+
+function attend (eventData, db = connection) {
+  const { isAttended, userId, eventId } = eventData
+  return db('eventVolunteers')
+    .where('user_id', userId)
+    .where('event_id', eventId)
+    .update({
+      attended: isAttended
+    })
 }
