@@ -1,5 +1,4 @@
 const express = require('express')
-
 const log = require('../logger')
 const db = require('../db/gardens')
 const { getTokenDecoder } = require('../auth')

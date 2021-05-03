@@ -26,6 +26,7 @@ router.get('/emailsignup', (req, res) => {
 
 router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
+
   db.addVolunteer({ userId, eventId })
     .then(() => {
       res.sendStatus(201)
@@ -41,7 +42,7 @@ router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
     })
 })
 
-router.delete('/',getTokenDecoder(), verifyUser, (req, res) => {
+router.delete('/', getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
   db.deleteVolunteer({ userId, eventId })
     .then(() => {
