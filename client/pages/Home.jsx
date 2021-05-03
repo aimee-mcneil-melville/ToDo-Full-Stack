@@ -41,7 +41,7 @@ export default function Home () {
     <section className='columns'>
       <article className='column'>
         <div className='columns'>
-          <p className='column is-three-quarters'>hello Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
+          <p className='column is-three-quarters'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
         </div>
         <Link className='button' to={'/garden'}>Get Started</Link>
       </article>
