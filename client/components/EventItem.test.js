@@ -11,12 +11,12 @@ jest.mock('./eventItemHelper')
 describe('Edit Event button', () => {
   it('displays for admin', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
-    expect(screen.getByRole('link')).toHaveTextContent('Edit Event')
+    expect(screen.getByRole('link', { name: 'Edit Event' })).toBeInTheDocument()
   })
 
   it('does not display if not an admin', () => {
     renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
-    expect(screen.queryByRole('link')).toBeNull()
+    expect(screen.queryByRole('link', { name: 'Edit Event' })).toBeNull()
   })
 })
 
