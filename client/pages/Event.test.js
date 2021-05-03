@@ -2,10 +2,10 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 import Event from './Event'
-import { getEvent } from './eventHelper'
+import { getEvent, setVolunteerStatus } from './eventHelper'
+import userEvent from '@testing-library/user-event'
 
 jest.mock('./eventHelper')
-
 const mockData = {
   title: 'Mock title',
   date: '2021-03-02',
@@ -42,11 +42,9 @@ describe('Admin and non admin test', () => {
       }
     })
     return screen.findByText('Mock title').then(() => {
-      return screen.findByRole('button').catch(err => {
-        expect(err).not.toBeNull()
-        expect(err.message).toMatch('Unable to find')
-        return null
-      })
+      const volunteerButton = screen.queryByRole('button')
+      expect(volunteerButton).toBeNull()
+      return null
     })
   })
   it('Event component should render the volunteer button if not admin', () => {
@@ -63,6 +61,32 @@ describe('Admin and non admin test', () => {
       expect(volunteerButton.innerHTML).toMatch('Volunteer')
       return null
     })
+  })
+})
+
+describe('Not admin volunteer button test', () => {
+  setVolunteerStatus.mockImplementation((id, isVolunteer) => {
+    return Promise.resolve(true)
+  })
+
+  it('Should volunteer when click volunteer button', () => {
+    renderWithRedux(<Event />, {
+      initialState: {
+        user: {
+          isAdmin: false
+        }
+      }
+    })
+
+    return screen.findByText('Volunteer')
+      .then(volunteerButton => {
+        userEvent.click(volunteerButton)
+        expect(setVolunteerStatus).toHaveBeenCalled()
+        return screen.findByText('Un-Volunteer')
+      }).then(unVolunteer => {
+        expect(unVolunteer.innerHTML).toMatch('Un-Volunteer')
+        return null
+      })
   })
 })
 

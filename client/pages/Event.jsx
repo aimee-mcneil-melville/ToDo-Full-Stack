@@ -20,11 +20,12 @@ function Event (props) {
   }, [])
 
   function clickHandler () {
-    setVolunteerStatus(id, isVolunteer)
+    return setVolunteerStatus(id, isVolunteer)
       .then((wasSuccessful) => {
         if (wasSuccessful) {
           setIsVolunteer(!isVolunteer)
         }
+        return null
       })
   }
 
