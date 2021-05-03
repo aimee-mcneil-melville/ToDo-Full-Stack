@@ -54,7 +54,8 @@ describe('getEvent', () => {
 })
 
 describe('toggleVolunteerStatus', () => {
-  it('dispatches post', () => {
+  it('makes post request when not volunteered', () => {
+    expect.assertions(2)
     getState.mockImplementation(() => ({ user: { id: 2 } }))
     const eventId = 1
     const isVolunteer = false
@@ -65,13 +66,9 @@ describe('toggleVolunteerStatus', () => {
       return Promise.resolve()
     }
     return toggleVolunteerStatus(eventId, isVolunteer, consume)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        return null
-      })
   })
 
-  it('dispatches delete', () => {
+  it('makes delete request when volunteered', () => {
     expect.assertions(2)
     getState.mockImplementation(() => ({ user: { id: 4 } }))
     const eventId = 3
