@@ -1,7 +1,14 @@
 @use '../1-helpers/mixins';
+@use '../1-helpers/colors';
 
 .page__link {
   @include mixins.word-wrap()
 }
 
+.title-link {
+  color: colors.$black;
 
+  &:hover {
+    color: colors.$green;
+  }
+}
