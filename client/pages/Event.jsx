@@ -17,7 +17,7 @@ function Event (props) {
     getEvent(id)
       .then((event) => {
         setEvent(event)
-        setIsVolunteer(event.isVolunteered)
+        setIsVolunteer(event.isVolunteer)
         return null
       })
   }, [])

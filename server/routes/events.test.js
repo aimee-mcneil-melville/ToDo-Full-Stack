@@ -49,7 +49,7 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body.title).toBe('Weeding worker Bee')
-        expect(res.body).not.toHaveProperty('isVolunteered')
+        expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body).not.toHaveProperty('volunteers')
         return null
       })
@@ -70,7 +70,7 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body.isVolunteered).toBe(true)
+        expect(res.body.isVolunteer).toBe(true)
         return null
       })
   })
@@ -88,7 +88,7 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body.isVolunteered).toBe(false)
+        expect(res.body.isVolunteer).toBe(false)
         return null
       })
   })
@@ -105,7 +105,7 @@ describe('GET /api/v1/events/:id', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body).not.toHaveProperty('isVolunteered')
+        expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body.volunteers).toHaveLength(1)
         return null
       })

@@ -78,7 +78,7 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
             title,
             date,
             description,
-            isVolunteered: volunteers.some((v) => v.userId === req.user.id)
+            isVolunteer: volunteers.some((v) => v.userId === req.user.id)
           }
           return res.json(memberObject)
         }

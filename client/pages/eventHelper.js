@@ -8,8 +8,8 @@ export function getEvent (id, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered } = res.body
-      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered }
+      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer } = res.body
+      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer }
     })
     .catch((error) => {
       dispatch(showError(error.message))
