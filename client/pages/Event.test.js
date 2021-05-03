@@ -2,8 +2,10 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../test-utils'
 import Event from './Event'
+import VolunteerList from '../components/VolunteersList'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import userEvent from '@testing-library/user-event'
+
 
 jest.mock('./eventHelper')
 const mockData = {
@@ -87,5 +89,35 @@ describe('Not admin volunteer button test', () => {
         expect(unVolunteer.innerHTML).toMatch('Un-Volunteer')
         return null
       })
+  })
+})
+
+describe('List of signed up volunteers', () => {
+
+  const mockData = [
+    {
+      id: 1,
+      firstName: 'Test User',
+      lastName: 'Lastname'
+    },
+    {
+      id: 2,
+      firstName: 'Test User 2',
+      lastName: 'Lastname 2'
+    }
+  ]
+
+  it('displays only for admin', () => {
+    renderWithRedux(<VolunteerList volunteers={mockData} />, {
+      initialState: { user: { isAdmin: true } }
+    })
+    expect(screen.getByRole('list')).toHaveTextContent('Test User')
+  })
+
+  it('does not display if not an admin', () => {
+    renderWithRedux(<Event />, {
+      initialState: { user: { isAdmin: false }}
+    })
+    expect(screen.queryByRole('list')).toBeNull()
   })
 })
