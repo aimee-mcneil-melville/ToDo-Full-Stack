@@ -55,8 +55,17 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
-
+      const {
+        id,
+        gardenId,
+        gardenName,
+        gardenAddress,
+        volunteersNeeded,
+        title,
+        date,
+        description,
+        volunteers
+      } = event
       if (req.user) {
         if (req.user.isAdmin) {
           return res.json(event)
