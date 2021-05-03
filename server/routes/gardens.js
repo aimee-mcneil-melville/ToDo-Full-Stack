@@ -34,10 +34,13 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
           event.totalVolunteers = event.volunteers.length
           event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
           delete event.volunteers
-        })
-      }
+        })}
+      else { garden.events.forEach(event => {
+        event.totalVolunteers = event.volunteers.length
+        event.isVolunteer = event.volunteers.some((v) => v.username === user.username)    
+      })
       return res.json(garden)
-    })
+    }})
     .catch((err) => {
       log(err.message)
       res.status(500).json({
