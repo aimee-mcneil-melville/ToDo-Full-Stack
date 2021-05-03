@@ -2,7 +2,7 @@ const { chromium } = require('playwright')
 
 let browser
 beforeAll(async () => {
-  browser = await chromium.launch({headless:false, slowMo:500})
+  browser = await chromium.launch({ headless: false, slowMo: 500 })
 })
 afterAll(async () => {
   await browser.close()
@@ -29,13 +29,20 @@ test('Clicking get started when not logged in redirects to login', async () => {
   expect(await page.url()).toBe('http://localhost:3000/signin')
 })
 
+test('Clicking get sign in goes to /signin', async () => {
+  const page = await browser.newPage()
+  await page.goto('localhost:3000')
+  await page.click('text=Sign in')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
+})
+
 test('Register fill in redirects to garden after signing up', async () => {
   const context = await browser.newContext()
   const page = await context.newPage()
   await page.goto('localhost:3000/register')
-  await page.fill('#username', 'Peteraaaaaaaa');
-  await page.fill('#password', 'Peter');
-  await page.fill('#email', 'peteraaaaaaaaa@peteremail.com');
+  await page.fill('#username', 'bob');
+  await page.fill('#password', 'bob');
+  await page.fill('#email', 'bob@peteremail.com');
   await page.selectOption('select#garden', '1');
   await page.click('button', { force: true });
   expect(await page.url()).toBe('http://localhost:3000/garden')
