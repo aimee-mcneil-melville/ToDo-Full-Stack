@@ -11,7 +11,7 @@ export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor
 
   const routeMethod = isVolunteer ? 'delete' : 'post'
   const userData = { userId: id, eventId }
-  
+
   return consume('/volunteer', routeMethod, userData)
     .then((event) => {
       getGarden()
