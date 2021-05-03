@@ -93,7 +93,9 @@ Response (200):
     "volunteersNeeded": 8,
     "title": "Weeding Worker Bee",
     "date": "2020-12-31",
-    "description": "It's time to get these weeds under control."
+    "description": "It's time to get these weeds under control.",
+    "totalVolunteers": 13,
+    "isVolunteer": false
   }]
 }
 ```
