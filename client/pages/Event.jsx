@@ -54,8 +54,11 @@ function Event (props) {
               <dd>{volunteersNeeded}</dd>
             </dl>
             <p className='has-text-weight-semibold'>{description}</p>
-            {!isAdmin &&
-              <div>
+            {isAdmin
+              ? <div>
+                <VolunteersList volunteers={volunteers} />
+              </div>
+              : <div>
                 {!isVolunteer
                   ? <button onClick={clickHandler} className='button'>Volunteer</button>
                   : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
@@ -64,12 +67,6 @@ function Event (props) {
             }
           </article>
         </div>
-
-        {isAdmin &&
-          <div>
-            <VolunteersList volunteers={volunteers} />
-          </div>
-        }
 
         image or map can go here
       </article>
