@@ -4,7 +4,7 @@ import { toggleVolunteerStatus } from './eventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description, totalVolunteers, isVolunteer } = event
-  
+
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
 
@@ -25,9 +25,9 @@ export default function EventItem ({ event, isAdmin }) {
           }
         </div>
         <p>{date}</p>
-        {remainingVolunteers >= 0 ?
-          <p>Volunteers needed: {remainingVolunteers} out of {volunteersNeeded} </p> :
-          <><p>Volunteers needed: 0 out of {volunteersNeeded} &nbsp;&nbsp; | &nbsp;&nbsp; (Extra Volunteers: {additionalVolunteers}) </p></>
+        {remainingVolunteers >= 0
+          ? <p>Volunteers needed: {remainingVolunteers} out of {volunteersNeeded} </p>
+          : <><p>Volunteers needed: 0 out of {volunteersNeeded} &nbsp;&nbsp; | &nbsp;&nbsp; (Extra Volunteers: {additionalVolunteers}) </p></>
         }
         <p>{description}</p>
       </article>
