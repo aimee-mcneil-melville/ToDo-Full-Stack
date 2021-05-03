@@ -76,7 +76,7 @@ describe('GET /api/v1/events/:id', () => {
   })
 
   // testing for user route
-  it('response includes volunteer status of member', () => {
+  it('response includes non-volunteer status of member', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
