@@ -51,7 +51,9 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-router.get('/:id', getTokenDecoder(false), (req, res) => {
+// PUT THIS BACK INTO THE ROUTER BELOW, BETWEEN ID AND REQ: getTokenDecoder(false),
+// reason: waiting on function to be completed by security team
+router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
