@@ -30,6 +30,10 @@ const testAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
+const testAuthAdminHeader = {
+  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+}
+
 describe('GET /api/v1/events/:id', () => {
   // tests guest info
   it('responds only with event details for a guest', () => {
@@ -59,7 +63,9 @@ describe('GET /api/v1/events/:id', () => {
     })
     return request(server)
       .get('/api/v1/events/2')
-      // set userId of 3 mock token
+      .set({
+        Authorization: `Bearer ${getMockToken(3, 'testuser', 'testuser@test.co', false)}`
+      })
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -78,7 +84,7 @@ describe('GET /api/v1/events/:id', () => {
     })
     return request(server)
       .get('/api/v1/events/2')
-      // set userId of 7 mock token
+      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -89,14 +95,14 @@ describe('GET /api/v1/events/:id', () => {
   })
   // admin route
   it('response includes volunteers array if Admin', () => {
-    expect.assertions(2)
+    expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
     })
     return request(server)
       .get('/api/v1/events/2')
-      // set admin mock token
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
