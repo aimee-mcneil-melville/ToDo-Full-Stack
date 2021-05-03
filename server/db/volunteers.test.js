@@ -5,7 +5,12 @@ const testDb = knex(config)
 const volunteers = require('./volunteers')
 
 function getTestVolunteers (userId, eventId) {
-  if (userId && eventId) { return testDb('eventVolunteers').where('user_id', userId).where('event_id', eventId).select() }
+  if (userId && eventId) {
+    return testDb('eventVolunteers')
+      .where('user_id', userId)
+      .where('event_id', eventId)
+      .select()
+  }
 
   return testDb('eventVolunteers').select()
 }
@@ -69,6 +74,24 @@ describe('attended test', () => {
       return null
     }).catch(err => {
       console.log(err.message)
+    })
+  })
+})
+
+describe('addExraVolunteer test', () => {
+  it('should add extra volunteers that are not registered', () => {
+    const rockUp = {
+      eventId: 1,
+      firstName: 'Erin',
+      lastName: 'Abernethy'
+    }
+    return volunteers.addExtraVolunteer(rockUp, testDb)
+    .then(() => testDb('extraVolunteers').select())
+    .then(([rockUp]) => {
+      expect(rockUp.event_id).toBe(1)
+      expect(rockUp.first_name).toBe('Erin')
+      expect(rockUp.last_name).toBe('Abernethy')
+      return null
     })
   })
 })
