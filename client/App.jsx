@@ -17,6 +17,7 @@ import Event from './pages/Event'
 
 export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  const gardenId = useSelector(globalState => globalState.user.gardenId)
 
   return (
     <main className='container p-3'>
@@ -29,7 +30,7 @@ export default function App () {
           path='/register'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/gardens/' />
+              ? <Redirect to={`/gardens/${gardenId}`} />
               : <Register />
           }}
         />
@@ -37,11 +38,19 @@ export default function App () {
           path='/signin'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/gardens' />
+              ? <Redirect to={`/gardens/${gardenId}`} />
               : <SignIn />
           }}
         />
         <Route exact path='/gardens/:id' component={Garden} />
+
+        <Route path='/gardens'
+          render={() => {
+            return isAuthenticated()
+              ? <Redirect to={`/gardens/${gardenId}`} />
+              : <Register />
+          }}
+        />
 
         <Route
           path='/event/new'
