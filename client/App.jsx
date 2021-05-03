@@ -12,7 +12,6 @@ import Home from './pages/Home'
 import AddEvent from './pages/admin/AddEvent'
 import EditEvent from './pages/admin/EditEvent'
 import Error from './components/Error'
-import WaitIndicator from './components/WaitIndicator'
 import Event from './pages/Event'
 
 export default function App () {
@@ -22,7 +21,6 @@ export default function App () {
     <main className='container p-3'>
       <Error />
       <Header />
-      <WaitIndicator />
       <section className='columns'>
         <Route exact path='/' component={Home} />
         <Route

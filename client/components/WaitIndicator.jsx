@@ -9,9 +9,9 @@ function WaitIndicator () {
       <div className="waitIndicator">
         { waiting
           ? <>
-            <img src="/images/loading.png" alt="loading indicator" className="waitIndicator--img"/>
-            <img src="/images/loading.png" alt="loading indicator" className="waitIndicator--img"/>
-            <img src="/images/loading.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="/images/loadingv2.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="/images/loadingv2.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="/images/loadingv2.png" alt="loading indicator" className="waitIndicator--img"/>
           </>
           : '\u00a0' }
       </div>
