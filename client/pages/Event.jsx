@@ -14,7 +14,6 @@ function Event (props) {
     // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((event) => {
-        console.log(event);
         setEvent(event)
         setIsVolunteer(event.isVolunteered)
         return null
@@ -32,7 +31,7 @@ function Event (props) {
   }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
-  
+
   return (
     <>
       <article className='column'>
@@ -63,15 +62,14 @@ function Event (props) {
             }
           </article>
         </div>
-      
-      
-      {
-        isAdmin &&
+
+        {
+          isAdmin &&
         <div>
-        <VolunteersList volunteers={volunteers} />
+          <VolunteersList volunteers={volunteers} />
         </div>
-      }
-       
+        }
+
         image or map can go here
       </article>
     </>
