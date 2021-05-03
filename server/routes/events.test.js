@@ -22,7 +22,9 @@ const mockEvent = {
   description: 'Its time to get these weeds under control.',
   volunteers: [{
     userId: 3,
-    username: 'jdog'
+    username: 'jdog',
+    firstName: 'Johnny',
+    lastName: 'Dawg'
   }]
 }
 
