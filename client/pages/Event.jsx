@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
+import VolunteersList from '../components/VolunteersList'
+import volunteersList from '../components/VolunteersList'
 
 function Event (props) {
   const [event, setEvent] = useState({})
@@ -25,7 +27,7 @@ function Event (props) {
     })
   }
 
-  const { title, gardenName, date, volunteersNeeded, description } = event
+  const { title, gardenName, date, volunteersNeeded, description, volunteers } = event
 
   return (
   
@@ -44,6 +46,14 @@ function Event (props) {
           }
         </div>
       }
+      
+      {
+        isAdmin &&
+        <div>
+        <VolunteersList volunteers={volunteers} />
+        </div>
+      }
+       
     </>
   )
 }
