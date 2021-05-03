@@ -32,6 +32,40 @@ describe('Page Render', () => {
   })
 })
 
+describe('Admin and non admin test', () => {
+  it('Event component should not render volunteer the button if admin', () => {
+    renderWithRedux(<Event />, {
+      initialState: {
+        user: {
+          isAdmin: true
+        }
+      }
+    })
+    return screen.findByText('Mock title').then(() => {
+      return screen.findByRole('button').catch(err => {
+        expect(err).not.toBeNull()
+        expect(err.message).toMatch('Unable to find')
+        return null
+      })
+    })
+  })
+  it('Event component should render the volunteer button if not admin', () => {
+    renderWithRedux(<Event />, {
+      initialState: {
+        user: {
+          isAdmin: false
+        }
+      }
+    })
+
+    return screen.findByText('Mock title').then(() => {
+      const volunteerButton = screen.getByRole('button')
+      expect(volunteerButton.innerHTML).toMatch('Volunteer')
+      return null
+    })
+  })
+})
+
 // BUTTON TESTING
 //     it('displays Volunteer for member if not volunteered for event', () => {
 //       getIfVolunteer.mockImplementation(() => false)
