@@ -37,19 +37,18 @@ export default function App () {
           path='/signin'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/garden' />
+              ? <Redirect to='/gardens' />
               : <SignIn />
           }}
         />
-        <Route
-          exact path='/gardens/:id' component={Garden} />
-         
+        <Route exact path='/gardens/:id' component={Garden} />
+
         <Route
           path='/events/new'
           render={() => {
             return isAdmin
               ? <AddEvent />
-              : <Redirect to='/garden' />
+              : <Redirect to='/gardens' />
           }}
         />
         <Route
