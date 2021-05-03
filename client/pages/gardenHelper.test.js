@@ -56,7 +56,6 @@ describe('getGarden', () => {
       }
       return getGarden(consume)
         .then(() => {
-          console.log(dispatch)
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null
         })
