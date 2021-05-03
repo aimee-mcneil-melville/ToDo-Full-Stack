@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-function getMockToken(userId, username, email, isAdmin) {
+function getMockToken (userId, username, email, isAdmin) {
   const tokenObject = {
     id: userId,
     username: username,

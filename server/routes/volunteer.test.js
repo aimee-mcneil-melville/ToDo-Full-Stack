@@ -1,20 +1,19 @@
 const request = require('supertest')
-const jwt = require('jsonwebtoken')
 
+const log = require('../logger')
 const server = require('../server')
 const db = require('../db/volunteers')
-const log = require('../logger')
 const { getMockToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
 
-const testAuthHeader = {
+const mockNonAdminAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
 describe('POST /api/v1/volunteer', () => {
-  it('addVolunteer response with 401 when no token passed', () => {
+  it('responds with 401 when no token passed', () => {
     return request(server)
       .post('/api/v1/volunteer')
       .send({ userId: 1, eventId: 1 })
@@ -24,11 +23,11 @@ describe('POST /api/v1/volunteer', () => {
       })
   })
 
-  it('addVolunteer returns correct response', () => {
+  it('returns correct response when token is passed', () => {
     db.addVolunteer.mockImplementation(() => Promise.resolve(201))
     return request(server)
       .post('/api/v1/volunteer')
-      .set(testAuthHeader)
+      .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(201)
@@ -42,7 +41,7 @@ describe('POST /api/v1/volunteer', () => {
     ))
     return request(server)
       .post('/api/v1/volunteer')
-      .set(testAuthHeader)
+      .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
       .expect(500)
@@ -54,8 +53,8 @@ describe('POST /api/v1/volunteer', () => {
   })
 })
 
-describe('deleteVolunteer adds Volunteer', () => {
-  it('deleteVolunteer response with 401 when no token passed', () => {
+describe('deleteVolunteer', () => {
+  it('responds with 401 when no token is passed', () => {
     return request(server)
       .delete('/api/v1/volunteer')
       .send({ userId: 1, eventId: 1 })
@@ -65,11 +64,11 @@ describe('deleteVolunteer adds Volunteer', () => {
       })
   })
 
-  it('deleteVolunteer returns correct response', () => {
+  it('returns correct response when token is passed', () => {
     db.deleteVolunteer.mockImplementation(() => Promise.resolve(200))
     return request(server)
       .delete('/api/v1/volunteer')
-      .set(testAuthHeader)
+      .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(200)
@@ -77,13 +76,13 @@ describe('deleteVolunteer adds Volunteer', () => {
       })
   })
 
-  it('responds with 500 and correct error object on DB error', () => {
+  it('responds with 500 and error object during DB error', () => {
     db.deleteVolunteer.mockImplementation(() => Promise.reject(
       new Error('mock deleteVolunteer error')
     ))
     return request(server)
       .delete('/api/v1/volunteer')
-      .set(testAuthHeader)
+      .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
       .expect(500)
