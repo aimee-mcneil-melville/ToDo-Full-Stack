@@ -18,7 +18,7 @@ export function registerUser (user, navigateTo) {
     .then(() => {
       if (isAuthenticated()) {
         dispatch(setUser())
-        navigateTo('/garden')
+        navigateTo('/gardens')
       } else {
         throw new Error('Not authenticated')
       }
