@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
+import VolunteersList from '../components/VolunteersList'
 
 function Event (props) {
   const [event, setEvent] = useState({})
@@ -10,12 +11,13 @@ function Event (props) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
+    // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((event) => {
+        console.log(event);
         setEvent(event)
+        setIsVolunteer(event.isVolunteered)
         return null
-      }).catch(err => {
-        console.log(err)
       })
   }, [])
 
@@ -29,10 +31,9 @@ function Event (props) {
       })
   }
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description } = event
-
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
+  
   return (
-
     <>
       <article className='column'>
         <div className='columns'>
@@ -62,6 +63,15 @@ function Event (props) {
             }
           </article>
         </div>
+      
+      
+      {
+        isAdmin &&
+        <div>
+        <VolunteersList volunteers={volunteers} />
+        </div>
+      }
+       
         image or map can go here
       </article>
     </>

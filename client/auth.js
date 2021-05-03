@@ -3,7 +3,8 @@ export {
   register,
   signIn,
   getDecodedToken,
-  logOff
+  logOff,
+  getAuthorizationHeader
 } from 'authenticare/client'
 
 export const config = {

@@ -15,17 +15,17 @@ const mockData = {
 }
 
 getEvent.mockImplementation(() => Promise.resolve(mockData))
+
 describe('Page Render', () => {
   it('Event component should render event data', () => {
     renderWithRedux(<Event />)
-    expect.assertions(3)
+    expect.assertions(2)
     return screen.findByText('Mock title').then(() => {
-      const gardenNameElement = screen.getByRole('heading', { level: 2 })
-      expect(gardenNameElement.innerHTML).toMatch('Mock garden')
+      const gardenNameElement = screen.getByText('Mock garden')
+      expect(gardenNameElement).toBeInTheDocument()
 
-      const dateAndVolunteerNeeded = screen.getAllByRole('heading', { level: 3 })
-      expect(dateAndVolunteerNeeded[0].innerHTML).toMatch(mockData.date)
-      expect(Number(dateAndVolunteerNeeded[1].innerHTML)).toEqual(mockData.volunteersNeeded)
+      const dateAndVolunteerNeeded = screen.getByText('2021-03-02')
+      expect(dateAndVolunteerNeeded).toBeInTheDocument()
 
       return null
     })
@@ -89,29 +89,3 @@ describe('Not admin volunteer button test', () => {
       })
   })
 })
-
-// BUTTON TESTING
-//     it('displays Volunteer for member if not volunteered for event', () => {
-//       getIfVolunteer.mockImplementation(() => false)
-
-//       renderWithRouter(<EventItem isAdmin={false} event={{}} />)
-//       const button = screen.queryByRole('button')
-//       expect(getIfVolunteer).toHaveBeenCalled()
-//       expect(button.textContent).toBe('Volunteer')
-//     })
-
-//     it('does not display if not a member', () => {
-//       renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
-//       expect(screen.queryByRole('button')).toBeNull()
-//     })
-//   })
-
-//   describe('Un-Volunteer button', () => {
-//     it('displays Un-Volunteer for member if already volunteered for event', () => {
-//       getIfVolunteer.mockImplementation(() => true)
-
-//       renderWithRouter(<EventItem isAdmin={false} event={{}} />)
-//       const button = screen.queryByRole('button')
-//       expect(getIfVolunteer).toHaveBeenCalled()
-//       expect(button.textContent).toBe('Un-Volunteer')
-//     })
