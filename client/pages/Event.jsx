@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
 import VolunteersList from '../components/VolunteersList'
-import volunteersList from '../components/VolunteersList'
 
 function Event (props) {
   const [event, setEvent] = useState({})
@@ -14,6 +13,7 @@ function Event (props) {
   useEffect(() => {
     getEvent(id)
       .then((event) => {
+        console.log(event);
         setEvent(event)
         return null
       }).catch(err => {
@@ -32,7 +32,7 @@ function Event (props) {
   }
 
   const { title, gardenName, date, volunteersNeeded, description, volunteers } = event
-
+  const mockData = [{id: 1, firstName: 'Sloane', lastName: 'Pickles'}, {id: 2, firstName: 'Steve', lastName: 'Puce'}]
   return (
 
     <>
@@ -54,7 +54,7 @@ function Event (props) {
       {
         isAdmin &&
         <div>
-        <VolunteersList volunteers={volunteers} />
+        <VolunteersList volunteers={mockData} />
         </div>
       }
        

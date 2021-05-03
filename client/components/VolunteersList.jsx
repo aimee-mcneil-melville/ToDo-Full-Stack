@@ -1,19 +1,21 @@
 import React from 'react'
+import VolunteerListItem from './VolunteerListItem'
 
-function volunteersList(props) {
+
+function VolunteersList(props) {
+  console.log("This is it " + props)
 return (
   <>
   <h4>List of Volunteers</h4>
   <ul>{props.volunteers.map(volunteer => {
     return (
-    <li key={volunteer}>
-      {volunteer.name}
-    </li>
+    
+      <VolunteerListItem key={volunteer.id} firstName={volunteer.firstName} lastName={volunteer.lastName} />
+   
 )})}
   </ul>
   </>
 )
 }
 
-
-export default volunteersList
+export default VolunteersList
