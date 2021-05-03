@@ -14,7 +14,7 @@ export default function EventItem ({ event, isAdmin }) {
     <>
       <article className='box my-5'>
         <div className="is-flex">
-          <h2 className='title is-5 is-flex-grow-1'>{title}</h2>
+          <h2 className='title is-5 is-flex-grow-1'><Link className='title-link' to={`/events/${id}`}>{title}</Link></h2>
           { isAdmin
             ? <Link to={`/events/${id}/edit`} className='button'>Edit Event</Link>
             : !isVolunteer

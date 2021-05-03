@@ -13,24 +13,28 @@ function Event (props) {
 
   useEffect(() => {
     getEvent(id)
-    .then ((event) => {
-      setEvent(event)
-    })
+      .then((event) => {
+        setEvent(event)
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
   }, [])
 
   function clickHandler () {
-   setVolunteerStatus(id, isVolunteer)
-    .then((wasSuccessful) => {
-      if (wasSuccessful) {
-        setIsVolunteer(!isVolunteer)
-      }
-    })
+    return setVolunteerStatus(id, isVolunteer)
+      .then((wasSuccessful) => {
+        if (wasSuccessful) {
+          setIsVolunteer(!isVolunteer)
+        }
+        return null
+      })
   }
 
   const { title, gardenName, date, volunteersNeeded, description, volunteers } = event
 
   return (
-  
+
     <>
       <h1>{title}</h1>
       <h2>{gardenName}</h2>

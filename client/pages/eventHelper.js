@@ -22,12 +22,11 @@ export function setVolunteerStatus (eventId, isVolunteer, consume = requestor) {
   if (!id) {
     dispatch(showError('Please register or sign in to volunteer.'))
     return Promise.resolve(false)
-  }
-  else {
+  } else {
     dispatch(setWaiting())
     const routeMethod = isVolunteer ? 'delete' : 'post'
     const userData = { userId: id, eventId }
-  
+
     return consume('/volunteer', routeMethod, userData)
       .then(() => {
         dispatch(clearWaiting())
