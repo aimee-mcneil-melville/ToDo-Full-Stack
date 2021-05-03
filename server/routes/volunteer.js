@@ -3,6 +3,8 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/volunteers')
 const { decode } = require('../notifications/emailTokens')
+const { getTokenDecoder } = require('../auth')
+const { verifyUser } = require('./verificationMiddleware')
 
 const router = express.Router()
 
@@ -22,7 +24,7 @@ router.get('/emailsignup', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
   db.addVolunteer({ userId, eventId })
     .then(() => {
@@ -39,7 +41,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.delete('/', (req, res) => {
+router.delete('/',getTokenDecoder(), verifyUser, (req, res) => {
   const { userId, eventId } = req.body
   db.deleteVolunteer({ userId, eventId })
     .then(() => {

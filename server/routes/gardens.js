@@ -32,7 +32,7 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
         event.totalVolunteers = event.volunteers.length
         if (!user.isAdmin) {
           event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
-          // delete event.volunteers
+          delete event.volunteers
         }
       })
       return res.json(garden)

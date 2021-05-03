@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
+import { toggleVolunteerStatus } from './eventItemHelper'
 
 export default function EventItem ({ event, isAdmin }) {
-  const { id, title, date, volunteersNeeded, description, volunteers, totalVolunteers } = event
-  const isVolunteer = getIfVolunteer(volunteers)
-
-  const remainingVolunteers = (volunteersNeeded - totalVolunteers)
+  const { id, title, date, volunteersNeeded, description, totalVolunteers, isVolunteer } = event
+  
+  const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
 
   function clickHandler () {
