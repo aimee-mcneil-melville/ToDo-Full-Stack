@@ -1,0 +1,15 @@
+.description--inline {
+    dt {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+
+    dd {
+        display: inline;
+
+        &:after {
+            content: '';
+            display: block
+        }
+    }
+}
