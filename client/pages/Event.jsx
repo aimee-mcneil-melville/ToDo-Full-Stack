@@ -10,12 +10,12 @@ function Event (props) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
+    // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((event) => {
         setEvent(event)
+        setIsVolunteer(event.isVolunteered)
         return null
-      }).catch(err => {
-        console.log(err)
       })
   }, [])
 
