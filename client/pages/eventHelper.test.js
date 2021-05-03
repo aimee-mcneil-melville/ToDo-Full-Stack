@@ -1,4 +1,3 @@
-import requestor from '../consume'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
@@ -40,7 +39,6 @@ describe('getEvent', () => {
     })
   })
 
-
   describe('-> GET /event/:id api call rejection', () => {
     it('dispatches error correctly', () => {
       function consume () {
@@ -55,7 +53,7 @@ describe('getEvent', () => {
   })
 })
 
-describe('setVolunteerStatus', (consume = requestor) => {
+describe('setVolunteerStatus', () => {
   it('dispatches post', () => {
     getState.mockImplementation(() => ({ user: { id: 2 } }))
     const eventId = 1
@@ -74,50 +72,56 @@ describe('setVolunteerStatus', (consume = requestor) => {
   })
 
   it('dispatches delete', () => {
+    expect.assertions(2)
     getState.mockImplementation(() => ({ user: { id: 4 } }))
     const eventId = 3
     const isVolunteer = true
 
     function consume (url, method, userData) {
       expect(method).toBe('delete')
-      expect(userData.userIdcheckVolunteerStatus
-        checkVolunteerStatus
-        checkVolunteerStatus
-        checkVolunteerStatus
-        checkVolunteerStatusons correctly', () => {
+      expect(userData.userId).toBe(4)
+      return Promise.resolve()
+    }
+
+    return setVolunteerStatus(eventId, isVolunteer, consume)
+  })
+
+  it('dispatches correct actions and returns true when api call successful', () => {
     getState.mockImplementation(() => ({ user: { id: 4 } }))
 
     function consume () {
       return Promise.resolve()
     }
     return setVolunteerStatus(null, null, consume)
-      .then(() => {
+      .then((wasSuccessful) => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        expect(wasSuccessful).toBeTruthy()
         return null
       })
   })
 
-  it('dispatches error correctly', () => {
+  it('dispatches error correctly and returns false when api call unsuccessful', () => {
     getState.mockImplementation(() => ({ user: { id: 1 } }))
     function consume () {
       return Promise.reject(new Error('mock error'))
     }
     return setVolunteerStatus(null, null, consume)
-      .then(() => {
+      .then((wasSuccessful) => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(wasSuccessful).toBeFalsy()
         return null
       })
   })
 
-  it('shows error if no user id', () => {
-    getState.mockImplementation(() => ({ user: {id: null}}))
+  it('shows error if no user id (user not logged in)', () => {
+    getState.mockImplementation(() => ({ user: { id: null } }))
 
-    return setVolunteerStatus(consume)
-    .then(() => {
-      expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
-      return null
-    })
+    return setVolunteerStatus()
+      .then((wasSuccessful) => {
+        expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
+        expect(wasSuccessful).toBeFalsy()
+        return null
+      })
   })
 })
-
