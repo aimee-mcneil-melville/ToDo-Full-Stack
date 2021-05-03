@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { isAuthenticated } from './auth'
@@ -26,6 +26,7 @@ export default function App () {
       <WaitIndicator />
       <section className='columns'>
         <Route exact path='/' component={Home} />
+        <Route exact path='/gardens/:id' component={Garden} />
         <Route
           path='/register'
           render={() => {
@@ -42,13 +43,10 @@ export default function App () {
               : <SignIn />
           }}
         />
-        <Route exact path='/gardens/:id' component={Garden} />
 
         <Route path='/gardens'
           render={() => {
-            return isAuthenticated()
-              ? <Redirect to={`/gardens/${gardenId}`} />
-              : <Register />
+            <Redirect from='/' to={`/gardens/${gardenId}`} />
           }}
         />
 
