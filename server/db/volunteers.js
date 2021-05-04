@@ -3,6 +3,8 @@ const connection = require('./connection')
 module.exports = {
   addVolunteer,
   deleteVolunteer,
+  attend,
+  addExtraVolunteer,
   setVolunteerAttendance
 }
 
@@ -27,4 +29,14 @@ function setVolunteerAttendance (eventData, db = connection) {
   return db('eventVolunteers')
     .where({ user_id: userId, event_id: eventId })
     .update({ attended: hasAttended })
+}
+
+function addExtraVolunteer (added, db = connection) {
+  const { eventId, firstName, lastName } = added
+  return db('extraVolunteers')
+    .insert({
+      event_id: eventId,
+      first_name: firstName,
+      last_name: lastName
+    })
 }
