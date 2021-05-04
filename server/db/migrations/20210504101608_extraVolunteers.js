@@ -1,4 +1,3 @@
-
 exports.up = function (knex) {
   return knex.schema.createTable('extraVolunteers', (table) => {
     table.increments('id')
@@ -6,9 +5,8 @@ exports.up = function (knex) {
     table.string('first_name')
     table.string('last_name')
   })
-
-};
+}
 
 exports.down = function (knex) {
   return knex.schema.dropTable('extraVolunteers')
-};
+}

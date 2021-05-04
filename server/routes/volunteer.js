@@ -102,4 +102,5 @@ router.post('/extras', getTokenDecoder(), (req, res) => {
           title: 'Unable to add extra volunteer'
         }
       })
-    })} )
+    })
+})

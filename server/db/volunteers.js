@@ -7,7 +7,7 @@ module.exports = {
   addExtraVolunteer
 }
 
-function addVolunteer(registration, db = connection) {
+function addVolunteer (registration, db = connection) {
   const { userId, eventId } = registration
   return db('eventVolunteers')
     .insert({
@@ -16,7 +16,7 @@ function addVolunteer(registration, db = connection) {
     })
 }
 
-function deleteVolunteer(registration, db = connection) {
+function deleteVolunteer (registration, db = connection) {
   const { userId, eventId } = registration
   return db('eventVolunteers')
     .where('user_id', userId)
@@ -24,7 +24,7 @@ function deleteVolunteer(registration, db = connection) {
     .delete()
 }
 
-function attend(eventData, db = connection) {
+function attend (eventData, db = connection) {
   const { isAttended, userId, eventId } = eventData
   return db('eventVolunteers')
     .where('user_id', userId)
@@ -34,7 +34,7 @@ function attend(eventData, db = connection) {
     })
 }
 
-function addExtraVolunteer(added, db = connection) {
+function addExtraVolunteer (added, db = connection) {
   const { eventId, firstName, lastName } = added
   return db('extraVolunteers')
     .insert({
