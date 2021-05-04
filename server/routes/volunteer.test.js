@@ -93,3 +93,60 @@ describe('deleteVolunteer', () => {
       })
   })
 })
+
+describe('PUT /api/v1/volunteer', () => {
+  db.attend.mockImplementation(() => {
+    return Promise.resolve(200)
+  })
+
+  it('Test for unauthorized accesss: no token', () => {
+    return request(server)
+      .put('/api/v1/volunteer')
+      .then(res => {
+        expect(res.status).toEqual(401)
+        return null
+      })
+  })
+
+  it('Test for unauthorized accesss: not admin user', () => {
+    const token = getMockToken(1, 'user', 'usertest@test.co', false)
+
+    return request(server)
+      .put('/api/v1/volunteer')
+      .set({
+        Authorization: `Bearer ${token}`
+      })
+      .then(res => {
+        expect(res.status).toEqual(401)
+        return null
+      })
+  })
+
+  it('Test for authorized access: admin user', () => {
+    const token = getMockToken(1, 'admin', 'admin@test.co', true)
+    return request(server)
+      .put('/api/v1/volunteer')
+      .set({
+        Authorization: `Bearer ${token}`
+      })
+      .then(res => {
+        expect(res.status).toEqual(200)
+        return null
+      })
+  })
+
+  it('Test for 500 response and expect a json error object during db error', () => {
+    db.attend.mockImplementation(() => Promise.reject(new Error('Db operation error')))
+    const token = getMockToken(1, 'admin', 'admin@test.co', true)
+    return request(server)
+      .put('/api/v1/volunteer')
+      .set({
+        Authorization: `Bearer ${token}`
+      })
+      .expect('Content-Type', /json/)
+      .then(res => {
+        expect(res.status).toEqual(500)
+        return null
+      })
+  })
+})
