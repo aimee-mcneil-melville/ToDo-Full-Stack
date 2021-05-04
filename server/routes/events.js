@@ -54,47 +54,19 @@ router.get('/:id', getTokenDecoder(false), (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      const {
-        id,
-        gardenId,
-        gardenName,
-        gardenAddress,
-        volunteersNeeded,
-        title,
-        date,
-        description,
-        volunteers
-      } = event
+      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
+      const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description }
+
       if (req.user) {
         if (req.user.isAdmin) {
-          return res.json(event)
+          eventResponse.volunteers = volunteers
         } else {
-          const memberObject = {
-            id,
-            gardenId,
-            gardenName,
-            gardenAddress,
-            volunteersNeeded,
-            title,
-            date,
-            description,
-            isVolunteered: volunteers.some((v) => v.userId === req.user.id)
-          }
-          return res.json(memberObject)
+          eventResponse.isVolunteer = volunteers.some((v) => v.userId === req.user.id)
         }
-      } else {
-        const guestObject = {
-          id,
-          gardenId,
-          gardenName,
-          gardenAddress,
-          volunteersNeeded,
-          title,
-          date,
-          description
-        }
-        return res.json(guestObject)
       }
+
+      res.json(eventResponse)
+      return null
     })
     .catch((err) => {
       log(err.message)

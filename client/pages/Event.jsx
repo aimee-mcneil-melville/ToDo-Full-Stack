@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
+
+import { getEvent, toggleVolunteerStatus } from './eventHelper'
+
 import VolunteersList from '../components/VolunteersList'
 import Map from '../components/Map'
 
@@ -16,13 +18,13 @@ function Event (props) {
     getEvent(id)
       .then((event) => {
         setEvent(event)
-        setIsVolunteer(event.isVolunteered)
+        setIsVolunteer(event.isVolunteer)
         return null
       })
   }, [])
 
   function clickHandler () {
-    return setVolunteerStatus(id, isVolunteer)
+    return toggleVolunteerStatus(id, isVolunteer)
       .then((wasSuccessful) => {
         if (wasSuccessful) {
           setIsVolunteer(!isVolunteer)
@@ -58,31 +60,28 @@ function Event (props) {
               <dd>{volunteersNeeded}</dd>
             </dl>
             <p className='has-text-weight-semibold'>{description}</p>
-            { !isAdmin &&
-              <div>
+            {!isAdmin
+              ? <div>
                 {!isVolunteer
                   ? <button onClick={clickHandler} className='button'>Volunteer</button>
                   : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
                 }
               </div>
+              : null
             }
           </article>
         </div>
       </article>
-      {
-        isAdmin &&
-        <div>
+      {isAdmin
+        ? <div>
           <VolunteersList volunteers={volunteers} />
         </div>
-      }
-      {
-        !isAdmin &&
-          <div>
-            <Map
-              coordinates={[{ lat: lat, lon: lon }]}
-              addresses={[address]}
-            />
-          </div>
+        : <div>
+          <Map
+            coordinates={[{ lat: lat, lon: lon }]}
+            addresses={[address]}
+          />
+        </div>
       }
     </>
   )
