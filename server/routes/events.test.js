@@ -10,41 +10,103 @@ jest.mock('../db/event')
 jest.mock('../logger')
 jest.mock('../notifications/notificationHelper')
 
-const mockEvents = [{
-  id: 1,
-  gardenId: 1,
-  title: 'Weeding worker Bee',
-  date: 'Wed, 27 Sep 2020 20:00:00 GMT',
-  description: 'Its time to get these weeds under control.',
-  volunteersNeeded: 8
-},
-{
+// mock events for testing guest users
+const mockEvent = {
   id: 2,
   gardenId: 1,
-  title: 'Sowing Corn',
-  date: 'Wed, 28 Sep 2020 20:00:00 GMT',
-  description: 'Help get out the lovely corns in the ground!.',
-  volunteersNeeded: 4
+  gardenName: 'Kelmarna Gardens',
+  gardenAddress: '12 Hukanui Crescent',
+  volunteersNeeded: 8,
+  title: 'Weeding worker Bee',
+  date: '2020-08-27',
+  description: 'Its time to get these weeds under control.',
+  volunteers: [{
+    userId: 3,
+    username: 'jdog',
+    firstName: 'Johnny',
+    lastName: 'Dawg'
+  }]
 }
-]
 
 const testAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
+const testAuthAdminHeader = {
+  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+}
+
 describe('GET /api/v1/events/:id', () => {
-  it('responds with correct event by id on res body', () => {
-    expect.assertions(2)
+  it('responds only with event details for a guest', () => {
+    expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
-      return Promise.resolve(mockEvents[1])
+      return Promise.resolve(mockEvent)
     })
     return request(server)
       .get('/api/v1/events/2')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body.title).toBe('Sowing Corn')
+        expect(res.body.title).toBe('Weeding worker Bee')
+        expect(res.body).not.toHaveProperty('isVolunteer')
+        expect(res.body).not.toHaveProperty('volunteers')
+        return null
+      })
+  })
+
+  it('response includes volunteer status of member', () => {
+    expect.assertions(3)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockEvent)
+    })
+    return request(server)
+      .get('/api/v1/events/2')
+      .set({
+        Authorization: `Bearer ${getMockToken(3, 'testuser', 'testuser@test.co', false)}`
+      })
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body).not.toHaveProperty('volunteers')
+        expect(res.body.isVolunteer).toBe(true)
+        return null
+      })
+  })
+
+  it('response includes non-volunteer status of member', () => {
+    expect.assertions(3)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockEvent)
+    })
+    return request(server)
+      .get('/api/v1/events/2')
+      .set(testAuthHeader)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body).not.toHaveProperty('volunteers')
+        expect(res.body.isVolunteer).toBe(false)
+        return null
+      })
+  })
+
+  it('response includes volunteers array if Admin', () => {
+    expect.assertions(3)
+    db.getEventById.mockImplementation((id) => {
+      expect(id).toBe(2)
+      return Promise.resolve(mockEvent)
+    })
+    return request(server)
+      .get('/api/v1/events/2')
+      .set(testAuthAdminHeader)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body).not.toHaveProperty('isVolunteer')
+        expect(res.body.volunteers).toHaveLength(1)
         return null
       })
   })

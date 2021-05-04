@@ -8,15 +8,15 @@ export function getEvent (id, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered } = res.body
-      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteered }
+      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer } = res.body
+      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer }
     })
     .catch((error) => {
       dispatch(showError(error.message))
     })
 }
 
-export function setVolunteerStatus (eventId, isVolunteer, consume = requestor) {
+export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
   const storeState = getState()
   const { id } = storeState.user
   if (!id) {
