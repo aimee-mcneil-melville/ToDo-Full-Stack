@@ -56,14 +56,14 @@ test('Clicking get started when not logged in redirects to login', async () => {
   await page.screenshot({ path: imgpath + 'redirect.png' })
 })
 
-test('Clicking get sign in goes to /signin', async () => {
+test('Clicking Sign in goes to /signin', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.screenshot({ path: imgpath + 'signinpage.png' })
 })
 
-test('Register fill in redirects to garden after signing up', async () => {
+test('Can Register', async () => {
   await page.goto('localhost:3000/register')
   await page.fill('#firstName', 'bob')
   await page.fill('#lastName', 'dylan')
@@ -81,7 +81,7 @@ test('Register fill in redirects to garden after signing up', async () => {
   await waitForAmount(timeOut)
 })
 
-test('Login', async () => {
+test('Can Login', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -92,7 +92,7 @@ test('Login', async () => {
   expect(await page.url()).toBe('http://localhost:3000/garden')
 })
 
-test('Login & Logout', async () => {
+test('Can Login & Logout', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -105,7 +105,7 @@ test('Login & Logout', async () => {
   expect(await page.url()).toBe('http://localhost:3000/')
 })
 
-test('Login & volunteer', async () => {
+test('Can Login & Volunteer', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -119,7 +119,7 @@ test('Login & volunteer', async () => {
   await waitForAmount(timeOut)
 })
 
-test('Login & volunteer then logout, relogin and un-volunteer', async () => {
+test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -144,7 +144,7 @@ test('Login & volunteer then logout, relogin and un-volunteer', async () => {
 
 // ADMIN TESTS
 
-test('Login as admin', async () => {
+test('Can Login as Admin', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -155,7 +155,7 @@ test('Login as admin', async () => {
   await page.screenshot({ path: imgpath + 'adminsigninsuccess.png' })
 })
 
-// test('Admin can login and add event', async () => {
+// test('Admin can login & add event', async () => {
 //   await page.goto('localhost:3000')
 //   await page.click('text=Sign in')
 //   expect(await page.url()).toBe('http://localhost:3000/signin')
@@ -176,7 +176,7 @@ test('Login as admin', async () => {
 //   await waitForAmount(timeOut)
 // })
 
-test('Admin can login edit event', async () => {
+test('Admin can login & edit event', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
