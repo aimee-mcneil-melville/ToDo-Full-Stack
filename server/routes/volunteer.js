@@ -87,7 +87,15 @@ router.put('/', getTokenDecoder(), (req, res) => {
   })
 })
 
-router.post('/extras', (req, res) => {
+router.post('/extras', getTokenDecoder(), (req, res) => {
+  // if (!req.user.isAdmin) {
+  //   res.status(401).json({
+  //     error: {
+  //       title: 'Unauthorized'
+  //     }
+  //   })
+  //   return
+  // }
   const { eventId, firstName, lastName } = req.body
 
   db.addExtraVolunteer({ eventId, firstName, lastName })
