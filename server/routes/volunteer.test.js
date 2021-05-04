@@ -101,12 +101,14 @@ describe('deleteVolunteer', () => {
 
 describe('POST addExtraVolunteer', () => {
   it('responds with 500 during db error', () => {
+    db.addExtraVolunteer.mockImplementation(() => Promise.reject(500))
     return request(server)
     .post('/api/v1/volunteer/extras')
     .set(testAuthAdminHeader)
     .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
     .then(res => {
       expect(res.status).toBe(500)
+      expect(res.body.error.title).toBe('Unable to add extra volunteer')
       return null
     })
   })
