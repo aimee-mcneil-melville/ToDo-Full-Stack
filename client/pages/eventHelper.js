@@ -2,7 +2,6 @@ import requestor from '../consume'
 import { dispatch, getState } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
-import consume from '../consume'
 
 export function getEvent (id, consume = requestor) {
   dispatch(setWaiting())
@@ -17,10 +16,10 @@ export function getEvent (id, consume = requestor) {
     })
 }
 
-export function toggleIsAttended (data) {
+export function toggleIsAttended (data, consume = requestor) {
   dispatch(setWaiting())
 
-  return consume('/volunteer', 'put', data).then(() => {
+  return consume('/volunteer', 'patch', data).then(() => {
     return true
   }).catch(error => {
     dispatch(clearWaiting())

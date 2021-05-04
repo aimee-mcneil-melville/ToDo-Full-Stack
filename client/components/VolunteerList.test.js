@@ -19,7 +19,7 @@ describe('volunteers list', () => {
         lastName: 'Lastname 2'
       }
     ]
-    renderWithRedux(<VolunteerList volunteers={mockData} />)
+    renderWithRedux(<VolunteerList key={1} volunteers={mockData} />)
     expect(screen.getAllByRole('checkbox')).toHaveLength(2)
   })
 })

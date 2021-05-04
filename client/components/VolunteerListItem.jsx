@@ -6,11 +6,11 @@ function VolunteerListItem (props) {
 
   function handleChange (e) {
     const data = {
-      isAttended: e.target.checked,
+      hasAttended: e.target.checked,
       userId: props.userId,
       eventId: props.eventId
     }
-    setIsChecked(data.isAttended)
+    setIsChecked(data.hasAttended)
     toggleIsAttended(data)
   }
 
