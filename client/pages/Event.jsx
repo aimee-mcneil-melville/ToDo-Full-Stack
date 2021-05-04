@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { getEvent, toggleVolunteerStatus } from './eventHelper'
+// import { getGarden } from './gardenHelper'
 
 import VolunteersList from '../components/VolunteersList'
 import Map from '../components/Map'
@@ -12,11 +13,19 @@ function Event (props) {
   const [isVolunteer, setIsVolunteer] = useState(false)
   const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  // currently using initial state and wipes clear on refresh - needs attention
+  // const garden = useSelector(globalState => globalState.garden)
+  const lat = useSelector(globalState => globalState.garden.lat)
+  const lon = useSelector(globalState => globalState.garden.lon)
+  const address = useSelector(globalState => globalState.garden.address)
+
+  console.log(address)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((event) => {
+        console.log(event)
         setEvent(event)
         setIsVolunteer(event.isVolunteer)
         return null
@@ -34,11 +43,6 @@ function Event (props) {
   }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
-
-  // Temporary hard coded map data
-  const lat = -36.869990
-  const lon = 174.746720
-  const address = 'Bond Street, Kingsland'
 
   return (
     <>
