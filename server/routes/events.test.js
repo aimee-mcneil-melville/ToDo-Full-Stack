@@ -6,8 +6,8 @@ const { sendEventNotifications } = require('../notifications/notificationHelper'
 const log = require('../logger')
 const { getMockToken } = require('./mockToken')
 
-jest.mock('../db/event')
 jest.mock('../logger')
+jest.mock('../db/event')
 jest.mock('../notifications/notificationHelper')
 
 // mock events for testing guest users
