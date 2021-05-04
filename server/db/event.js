@@ -15,7 +15,6 @@ function getEventById (id, db = connection) {
     .where('events.id', id)
     .then(result => {
       const event = result[0]
-      console.log(result)
       return {
         id: event.id,
         gardenId: event.gardenId,
