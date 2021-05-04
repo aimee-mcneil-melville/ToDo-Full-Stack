@@ -2,18 +2,31 @@ import requestor from '../consume'
 import { dispatch, getState } from '../store'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
+import consume from '../consume'
 
 export function getEvent (id, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer } = res.body
-      return { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer }
+      const { id, title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer } = res.body
+      return { id, title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer }
     })
     .catch((error) => {
       dispatch(showError(error.message))
     })
+}
+
+export function toggleIsAttended (data) {
+  dispatch(setWaiting())
+
+  return consume('/volunteer', 'put', data).then(() => {
+    return true
+  }).catch(error => {
+    dispatch(clearWaiting())
+    dispatch(showError(error.message))
+    return false
+  })
 }
 
 export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
