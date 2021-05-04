@@ -53,7 +53,7 @@ describe('POST /api/v1/volunteer', () => {
   })
 })
 
-describe('deleteVolunteer', () => {
+describe('DELETE /api/v1/volunteer', () => {
   it('responds with 401 when no token is passed', () => {
     return request(server)
       .delete('/api/v1/volunteer')
