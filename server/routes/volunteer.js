@@ -59,7 +59,7 @@ router.delete('/', getTokenDecoder(), verifyUser, (req, res) => {
     })
 })
 
-router.put('/', getTokenDecoder(), (req, res) => {
+router.patch('/', getTokenDecoder(), (req, res) => {
   if (!req.user.isAdmin) {
     res.status(401).json({
       error: {
@@ -69,20 +69,19 @@ router.put('/', getTokenDecoder(), (req, res) => {
     return
   }
 
-  const { isAttended, userId, eventId } = req.body
-  db.attend({
-    isAttended,
-    userId,
-    eventId
-  }).then(() => {
-    res.sendStatus(200)
-    return null
-  }).catch(err => {
-    log(err.message)
-    res.status(500).json({
-      error: {
-        title: 'Unable to set is attend to this event'
-      }
+  const { hasAttended, userId, eventId } = req.body
+
+  db.setVolunteerAttendance({ hasAttended, userId, eventId })
+    .then(() => {
+      res.sendStatus(200)
+      return null
     })
-  })
+    .catch(err => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to set attendance for this volunteer/event'
+        }
+      })
+    })
 })

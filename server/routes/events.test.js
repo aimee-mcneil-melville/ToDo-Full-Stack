@@ -6,8 +6,8 @@ const { sendEventNotifications } = require('../notifications/notificationHelper'
 const log = require('../logger')
 const { getMockToken } = require('./mockToken')
 
-jest.mock('../db/event')
 jest.mock('../logger')
+jest.mock('../db/event')
 jest.mock('../notifications/notificationHelper')
 
 // mock events for testing guest users
@@ -22,7 +22,9 @@ const mockEvent = {
   description: 'Its time to get these weeds under control.',
   volunteers: [{
     userId: 3,
-    username: 'jdog'
+    username: 'jdog',
+    firstName: 'Johnny',
+    lastName: 'Dawg'
   }]
 }
 
@@ -35,7 +37,6 @@ const testAuthAdminHeader = {
 }
 
 describe('GET /api/v1/events/:id', () => {
-  // tests guest info
   it('responds only with event details for a guest', () => {
     expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
@@ -48,13 +49,12 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body.title).toBe('Weeding worker Bee')
-        expect(res.body).not.toHaveProperty('isVolunteered')
+        expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body).not.toHaveProperty('volunteers')
         return null
       })
   })
 
-  // testing for user route
   it('response includes volunteer status of member', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
@@ -70,12 +70,11 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body.isVolunteered).toBe(true)
+        expect(res.body.isVolunteer).toBe(true)
         return null
       })
   })
 
-  // testing for user route
   it('response includes non-volunteer status of member', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
@@ -89,11 +88,11 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body.isVolunteered).toBe(false)
+        expect(res.body.isVolunteer).toBe(false)
         return null
       })
   })
-  // admin route
+
   it('response includes volunteers array if Admin', () => {
     expect.assertions(3)
     db.getEventById.mockImplementation((id) => {
@@ -106,7 +105,7 @@ describe('GET /api/v1/events/:id', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body).not.toHaveProperty('isVolunteered')
+        expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body.volunteers).toHaveLength(1)
         return null
       })
