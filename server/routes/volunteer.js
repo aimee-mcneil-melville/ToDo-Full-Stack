@@ -85,3 +85,21 @@ router.patch('/', getTokenDecoder(), (req, res) => {
       })
     })
 })
+
+router.post('/extras', getTokenDecoder(), (req, res) => {
+  const { eventId, firstName, lastName } = req.body
+
+  db.addExtraVolunteer({ eventId, firstName, lastName })
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to add extra volunteer'
+        }
+      })
+    })
+})

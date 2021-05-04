@@ -12,6 +12,10 @@ const mockNonAdminAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
 }
 
+const testAuthAdminHeader = {
+  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+}
+
 describe('POST /api/v1/volunteer', () => {
   it('responds with 401 when no token passed', () => {
     return request(server)
@@ -89,6 +93,41 @@ describe('DELETE /api/v1/volunteer', () => {
       .then(res => {
         expect(log).toHaveBeenCalledWith('mock deleteVolunteer error')
         expect(res.body.error.title).toBe('Unable to remove volunteer status')
+        return null
+      })
+  })
+})
+
+describe('POST addExtraVolunteer', () => {
+  it('responds with 500 during db error', () => {
+    db.addExtraVolunteer.mockImplementation(() => Promise.reject(Error))
+    return request(server)
+      .post('/api/v1/volunteer/extras')
+      .set(testAuthAdminHeader)
+      .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
+      .then(res => {
+        expect(res.status).toBe(500)
+        expect(res.body.error.title).toBe('Unable to add extra volunteer')
+        return null
+      })
+  })
+
+  it('returns correct response when token has passed', () => {
+    db.addExtraVolunteer.mockImplementation(() => Promise.resolve(201))
+    return request(server)
+      .post('/api/v1/volunteer/extras')
+      .set(testAuthAdminHeader)
+      .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
+      .then(res => {
+        expect(res.status).toBe(201)
+        return null
+      })
+  })
+  it('responds with status 401 when unauthorised token is passed', () => {
+    return request(server)
+      .post('/api/v1/volunteer/extras')
+      .then(response => {
+        expect(response.status).toBe(401)
         return null
       })
   })
