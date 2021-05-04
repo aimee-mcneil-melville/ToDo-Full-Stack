@@ -29,9 +29,11 @@ afterAll(async () => {
 })
 
 function waitForAmount (time) {
-  return setTimeout(() => {
-    // Do nothing
-  }, time)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
 }
 
 // USER TESTS
@@ -193,6 +195,5 @@ test('Admin can login & edit event', async () => {
   expect(await page.url()).toBe('http://localhost:3000/garden')
   expect(await page.content()).toMatch('Come for a fun day out weeding!')
   await page.screenshot({ path: imgpath + 'eventedited.png', fullPage: true })
-
   await waitForAmount(timeOut)
 })
