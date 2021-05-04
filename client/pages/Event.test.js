@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { renderWithRedux } from '../test-utils'
 
 import Event from './Event'
-import VolunteerList from '../components/VolunteersList'
+import VolunteerList from '../components/VolunteerList'
 import { getEvent, toggleVolunteerStatus } from './eventHelper'
 
 jest.mock('./eventHelper')
@@ -64,7 +64,7 @@ describe('Event details page', () => {
       })
 
       return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.getByRole('button')
+        const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
         expect(volunteerButton).toHaveTextContent('Volunteer')
         return null
       })
@@ -87,14 +87,15 @@ describe('Event details page', () => {
 
     return screen.findByText('Mock title')
       .then(() => {
-        const volunteerButton = screen.getByRole('button')
+        const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
         expect(volunteerButton).toHaveTextContent('Volunteer')
         userEvent.click(volunteerButton)
         expect(toggleVolunteerStatus).toHaveBeenCalled()
-        return screen.findByRole('button')
+        return screen.findByRole('button', { name: 'Un-Volunteer' })
       })
-      .then(volunteerButton => {
-        expect(volunteerButton).toHaveTextContent('Un-Volunteer')
+      .then(unvolunteerButton => {
+        // expect(unvolunteerButton).toHaveTextContent('Un-Volunteer')
+        expect(unvolunteerButton).toBeInTheDocument()
         return null
       })
   })
@@ -103,13 +104,15 @@ describe('Event details page', () => {
 describe('List of signed up volunteers', () => {
   const mockVolunteers = [
     {
-      id: 1,
+      userId: 1,
       firstName: 'Test User',
-      lastName: 'Lastname'
+      lastName: 'Lastname',
+      attended: true
     }, {
-      id: 2,
+      userId: 2,
       firstName: 'Test User 2',
-      lastName: 'Lastname 2'
+      lastName: 'Lastname 2',
+      attended: false
     }
   ]
 

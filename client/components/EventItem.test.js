@@ -4,9 +4,11 @@ import { screen, fireEvent } from '@testing-library/react'
 import { renderWithRouter } from '../test-utils'
 
 import EventItem from './EventItem'
-import { toggleVolunteerStatus } from './eventItemHelper'
+import { toggleVolunteerStatus } from '../pages/eventHelper'
 
-jest.mock('./eventItemHelper')
+jest.mock('../pages/eventHelper')
+
+toggleVolunteerStatus.mockImplementation(() => Promise.resolve(true))
 
 describe('Edit Event button', () => {
   it('displays for admin', () => {
@@ -45,6 +47,10 @@ describe('toggle volunteer button', () => {
   it('clicking volunteer button calls toggleVolunteerStatus', () => {
     renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: false }}/>)
     fireEvent.click(screen.queryByRole('button'))
-    expect(toggleVolunteerStatus).toHaveBeenCalled()
+    return screen.findByRole('button', { name: 'Un-Volunteer' })
+      .then(() => {
+        expect(toggleVolunteerStatus).toHaveBeenCalled()
+        return null
+      })
   })
 })

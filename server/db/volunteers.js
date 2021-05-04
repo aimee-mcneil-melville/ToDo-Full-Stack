@@ -3,7 +3,6 @@ const connection = require('./connection')
 module.exports = {
   addVolunteer,
   deleteVolunteer,
-  attend,
   addExtraVolunteer,
   setVolunteerAttendance
 }

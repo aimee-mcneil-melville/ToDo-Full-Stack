@@ -24,11 +24,13 @@ export function updateEvent (id, event, navigateTo, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`, 'patch', eventToUpdate)
     .then(() => {
-      dispatch(clearWaiting())
-      navigateTo('/garden')
+      navigateTo(`/events/${id}`)
       return null
     })
     .catch((err) => {
       dispatch(showError(err.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
     })
 }

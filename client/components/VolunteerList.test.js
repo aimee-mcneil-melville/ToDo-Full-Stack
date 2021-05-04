@@ -3,23 +3,25 @@ import { screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../test-utils'
 
-import VolunteerList from './VolunteersList'
+import VolunteerList from './VolunteerList'
 
-describe('volunteers list', () => {
+describe('Volunteers list', () => {
   it('displays the volunteers who have signed up', () => {
     const mockData = [
       {
-        id: 1,
+        userId: 1,
         firstName: 'Test User',
-        lastName: 'Lastname'
+        lastName: 'Lastname',
+        attended: true
       },
       {
-        id: 2,
+        userId: 2,
         firstName: 'Test User 2',
-        lastName: 'Lastname 2'
+        lastName: 'Lastname 2',
+        attended: false
       }
     ]
-    renderWithRedux(<VolunteerList key={1} volunteers={mockData} />)
+    renderWithRedux(<VolunteerList volunteers={mockData} />)
     expect(screen.getAllByRole('checkbox')).toHaveLength(2)
   })
 })

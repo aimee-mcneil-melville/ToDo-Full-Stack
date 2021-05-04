@@ -3,18 +3,16 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { getEvent, toggleVolunteerStatus } from './eventHelper'
-// import { getGarden } from './gardenHelper'
 
-import VolunteersList from '../components/VolunteersList'
+import VolunteerList from '../components/VolunteerList'
 import Map from '../components/Map'
 
 function Event () {
+  const { id } = useParams()
   const [event, setEvent] = useState({})
   const [isVolunteer, setIsVolunteer] = useState(false)
-  const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
   // currently using initial state and wipes clear on refresh - needs attention
-  // const garden = useSelector(globalState => globalState.garden)
   const lat = useSelector(globalState => globalState.garden.lat)
   const lon = useSelector(globalState => globalState.garden.lon)
   const address = useSelector(globalState => globalState.garden.address)
@@ -74,15 +72,14 @@ function Event () {
         </div>
       </article>
       {isAdmin
-        ? <div>
-          <VolunteersList attended={event.attended} volunteers={volunteers} eventId={event.id} />
-        </div>
-        : <div>
-          <Map
-            coordinates={[{ lat: lat, lon: lon }]}
-            addresses={[address]}
-          />
-        </div>
+        ? <VolunteerList
+          volunteers={volunteers}
+          eventId={event.id}
+        />
+        : <Map
+          coordinates={[{ lat, lon }]}
+          addresses={[address]}
+        />
       }
     </>
   )

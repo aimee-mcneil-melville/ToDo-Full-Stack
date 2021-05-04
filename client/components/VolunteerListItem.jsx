@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
-import { toggleIsAttended } from '../pages/eventHelper'
+import { toggleVolunteerStatus } from '../pages/eventHelper'
 
 function VolunteerListItem (props) {
-  const [isChecked, setIsChecked] = useState(props.attended)
+  const { firstName, lastName, attended, eventId } = props
+  const [isChecked, setIsChecked] = useState(attended)
 
   function handleChange (e) {
-    const data = {
-      hasAttended: e.target.checked,
-      userId: props.userId,
-      eventId: props.eventId
-    }
-    setIsChecked(data.hasAttended)
-    toggleIsAttended(data)
+    const isVolunteering = e.target.checked
+    setIsChecked(isVolunteering)
+    toggleVolunteerStatus(eventId, isVolunteering)
   }
 
   return (
@@ -20,7 +17,7 @@ function VolunteerListItem (props) {
         type="checkbox"
         checked={isChecked}
         onChange={handleChange} />
-      {props.firstName} {props.lastName}
+      {firstName} {lastName}
     </li>
   )
 }

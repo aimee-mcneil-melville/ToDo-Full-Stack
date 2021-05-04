@@ -1,7 +1,7 @@
 import { getGarden } from './gardenHelper'
 import { SET_WAITING } from '../actions/waiting'
-import { dispatch, getState } from '../store'
 import { SET_GARDEN } from '../actions/garden'
+import { dispatch } from '../store'
 
 jest.mock('../store')
 

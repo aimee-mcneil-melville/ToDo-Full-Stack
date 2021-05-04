@@ -8,15 +8,15 @@ export function getGarden (id, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/gardens/${id}`)
     .then((res) => {
-      const { name, description, url, address, events, lat, lon } = res.body
+      const garden = res.body
       dispatch(setGarden({
-        name,
-        description,
-        address,
-        url,
-        events,
-        lat,
-        lon
+        name: garden.name,
+        description: garden.description,
+        address: garden.address,
+        url: garden.url,
+        events: garden.events,
+        lat: garden.lat,
+        lon: garden.lon
       }))
       return null
     })

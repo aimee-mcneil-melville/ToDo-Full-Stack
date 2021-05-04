@@ -8,24 +8,22 @@ export function getEvent (id, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { id, title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer } = res.body
-      return { id, title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, isVolunteer }
+      const event = res.body
+      return {
+        id: event.id,
+        date: event.date,
+        title: event.title,
+        gardenName: event.gardenName,
+        gardenAddress: event.gardenAddress,
+        volunteersNeeded: event.volunteersNeeded,
+        description: event.description,
+        volunteers: event.volunteers,
+        isVolunteer: event.isVolunteer
+      }
     })
     .catch((error) => {
       dispatch(showError(error.message))
     })
-}
-
-export function toggleIsAttended (data, consume = requestor) {
-  dispatch(setWaiting())
-
-  return consume('/volunteer', 'patch', data).then(() => {
-    return true
-  }).catch(error => {
-    dispatch(clearWaiting())
-    dispatch(showError(error.message))
-    return false
-  })
 }
 
 export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
@@ -40,13 +38,13 @@ export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor
     const userData = { userId: id, eventId }
 
     return consume('/volunteer', routeMethod, userData)
-      .then(() => {
-        dispatch(clearWaiting())
-        return true
-      })
+      .then(() => true)
       .catch((error) => {
         dispatch(showError(error.message))
         return false
+      })
+      .finally(() => {
+        dispatch(clearWaiting())
       })
   }
 }

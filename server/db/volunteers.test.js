@@ -4,6 +4,9 @@ const volunteers = require('./volunteers')
 
 const testDb = knex(config)
 
+// Prevent Jest from timing out (5s often isn't enough)
+jest.setTimeout(10000)
+
 function getTestVolunteers (userId, eventId) {
   if (userId && eventId) {
     return testDb('eventVolunteers')

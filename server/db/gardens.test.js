@@ -4,6 +4,9 @@ const testDb = knex(config)
 
 const db = require('./gardens')
 
+// Prevent Jest from timing out (5s often isn't enough)
+jest.setTimeout(10000)
+
 beforeAll(() => {
   return testDb.migrate.latest()
 })
