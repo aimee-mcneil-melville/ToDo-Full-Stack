@@ -6,7 +6,7 @@ import { renderWithRedux } from '../test-utils'
 
 import Event from './Event'
 import VolunteerList from '../components/VolunteersList'
-import { getEvent } from './eventHelper'
+import { getEvent, toggleVolunteerStatus } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -85,8 +85,9 @@ describe('Event details page', () => {
       }
     })
 
-    return screen.findByRole('button')
-      .then(volunteerButton => {
+    return screen.findByText('Mock title')
+      .then(() => {
+        const volunteerButton = screen.getByRole('button')
         expect(volunteerButton).toHaveTextContent('Volunteer')
         userEvent.click(volunteerButton)
         expect(toggleVolunteerStatus).toHaveBeenCalled()
@@ -100,13 +101,12 @@ describe('Event details page', () => {
 })
 
 describe('List of signed up volunteers', () => {
-  const mockData = [
+  const mockVolunteers = [
     {
       id: 1,
       firstName: 'Test User',
       lastName: 'Lastname'
-    },
-    {
+    }, {
       id: 2,
       firstName: 'Test User 2',
       lastName: 'Lastname 2'
@@ -114,16 +114,24 @@ describe('List of signed up volunteers', () => {
   ]
 
   it('displays only for admin', () => {
-    renderWithRedux(<VolunteerList volunteers={mockData} />, {
+    renderWithRedux(<VolunteerList volunteers={mockVolunteers} />, {
       initialState: { user: { isAdmin: true } }
     })
-    expect(screen.getByRole('list')).toHaveTextContent('Test User')
+    return screen.findAllByRole('listitem')
+      .then(volunteers => {
+        expect(volunteers[1]).toHaveTextContent('Test User 2')
+        return null
+      })
   })
 
   it('does not display if not an admin', () => {
     renderWithRedux(<Event />, {
       initialState: { user: { isAdmin: false } }
     })
-    expect(screen.queryByRole('list')).toBeNull()
+    return screen.findByText('Mock title')
+      .then(() => {
+        expect(screen.queryByRole('list')).toBeNull()
+        return null
+      })
   })
 })
