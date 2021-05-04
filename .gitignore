@@ -4,4 +4,4 @@ bundle.*
 *.log
 dev.sqlite3
 .env
-tests/e2e/screenshots/*.png
+tests/e2e/screenshots/
