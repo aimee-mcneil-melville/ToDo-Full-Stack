@@ -6,7 +6,6 @@ jest.setTimeout(10000)
 
 const imgpath = 'tests/e2e/screenshots/'
 const timeOut = 2000
-let testNum = 1
 
 let browser
 let page
@@ -16,7 +15,6 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
-  console.log(`test ${testNum++}`)
   const context = await browser.newContext()
   page = await context.newPage()
   await db.seed.run({ directory: './server/db/seeds' })
@@ -53,10 +51,10 @@ test('Clicking register on home goes to /register', async () => {
   await page.screenshot({ path: imgpath + 'registerpage.png' })
 })
 
-test('Clicking get started when not logged in redirects to login', async () => {
+test('Clicking get started when not logged in redirects to register', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Get Started')
-  expect(await page.url()).toBe('http://localhost:3000/signin')
+  expect(await page.url()).toBe('http://localhost:3000/register')
   await page.screenshot({ path: imgpath + 'redirect.png' })
 })
 
@@ -79,7 +77,7 @@ test('Can Register', async () => {
     page.waitForNavigation(),
     await page.click('button', { force: true })
   ])
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.screenshot({ path: imgpath + 'registersuccess.png' })
 
   await waitForAmount(timeOut)
@@ -93,7 +91,7 @@ test('Can Login', async () => {
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
   await page.screenshot({ path: imgpath + 'signinsuccess.png' })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
 })
 
 test('Can Login & Logout', async () => {
@@ -103,7 +101,7 @@ test('Can Login & Logout', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Log out')
   await page.screenshot({ path: imgpath + 'logoutsuccess.png' })
   expect(await page.url()).toBe('http://localhost:3000/')
@@ -116,7 +114,7 @@ test('Can Login & Volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
   await page.screenshot({ path: imgpath + 'volunteersuccess.png' })
@@ -130,7 +128,7 @@ test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
   await page.click('text=Log out')
@@ -155,7 +153,7 @@ test('Can Login as Admin', async () => {
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.screenshot({ path: imgpath + 'adminsigninsuccess.png' })
 })
 
@@ -166,7 +164,7 @@ test('Admin can login & add event', async () => {
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Add New Event')
   expect(await page.url()).toBe('http://localhost:3000/event/new')
   await page.fill('#title', 'Christmas Gardening!')
@@ -178,7 +176,7 @@ test('Admin can login & add event', async () => {
     page.waitForNavigation(),
     page.click('button', { force: true })
   ])
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.screenshot({ path: imgpath + 'eventadded.png', fullPage: true })
   expect(await page.content()).toMatch('Christmas Gardening!')
   await waitForAmount(timeOut)
@@ -191,7 +189,7 @@ test('Admin can login & edit event', async () => {
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Edit Event')
   await page.fill('#title', 'Come for a fun day out weeding!')
   await page.fill('[type=date]', '2020-08-28')
@@ -201,7 +199,7 @@ test('Admin can login & edit event', async () => {
     page.waitForNavigation(),
     page.click('button', { force: true })
   ])
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/events/1')
   expect(await page.content()).toMatch('Come for a fun day out weeding!')
   await page.screenshot({ path: imgpath + 'eventedited.png', fullPage: true })
   await waitForAmount(timeOut)
