@@ -25,7 +25,6 @@ test('Home page should display the text Gardenz', async () => {
   await page.goto('localhost:3000')
   expect(await page.title()).toMatch('Gardenz')
   await page.screenshot({ path: 'tests/e2e/images home.png' });
-
   await page.close()
 })
 
@@ -63,6 +62,8 @@ test('Register fill in redirects to garden after signing up', async () => {
   const context = await browser.newContext()
   const page = await context.newPage()
   await page.goto('localhost:3000/register')
+  await page.fill('#firstName', 'bob')
+  await page.fill('#lastName', 'dylan')
   await page.fill('#username', 'bob')
   await page.fill('#password', 'bob')
   await page.fill('#email', 'bob@peteremail.com')
@@ -158,7 +159,7 @@ test('Login & volunteer then logout, relogin and un-volunteer', async () => {
   })
 })
 
-//  ADMIN TESTS
+// ADMIN TESTS
 
 test('Login as admin', async () => {
   const context = await browser.newContext()
@@ -195,10 +196,10 @@ test('Admin can login and add event', async () => {
   await page.screenshot({ path: 'tests/e2e/images eventadded.png', fullPage: true });
   expect(await page.content()).toMatch('Christmas Gardening!')
   await new Promise((resolve, reject) => {
-        setTimeout(() => {
+      setTimeout(() => {
           resolve(page.close())
-        }, 2000)
-      })
+      }, 2000)
+  })
 })
 
 test('Admin can login and add event, then edit', async () => {
@@ -222,8 +223,8 @@ test('Admin can login and add event, then edit', async () => {
   await page.screenshot({ path: 'tests/e2e/images eventedited.png', fullPage: true });
 
   await new Promise((resolve, reject) => {
-        setTimeout(() => {
+      setTimeout(() => {
           resolve(page.close())
-        }, 2000)
-      })
+      }, 2000)
+  })
 })
