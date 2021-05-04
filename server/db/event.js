@@ -10,13 +10,16 @@ function getEventById (id, db = connection) {
   return db('events')
     .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
     .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
-    .select('events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username')
+    .leftJoin('gardens', 'events.garden_id', 'gardens.id')
+    .select('name', 'address', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'first_name', 'last_name')
     .where('events.id', id)
     .then(result => {
       const event = result[0]
       return {
         id: event.id,
         gardenId: event.gardenId,
+        gardenName: event.name,
+        gardenAddress: event.address,
         volunteersNeeded: event.volunteersNeeded,
         title: event.title,
         date: event.date,
@@ -24,7 +27,9 @@ function getEventById (id, db = connection) {
         volunteers: !result.some(evts => evts.userId) ? [] : result.map((volunteer) => {
           return {
             userId: volunteer.userId,
-            username: volunteer.username
+            username: volunteer.username,
+            firstName: volunteer.first_name,
+            lastName: volunteer.last_name
           }
         })
       }

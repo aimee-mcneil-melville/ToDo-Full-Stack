@@ -1,25 +1,12 @@
 import { SET_WAITING } from '../actions/waiting'
 import { dispatch, getState } from '../store'
-import { getIfVolunteer, toggleVolunteerStatus } from './eventItemHelper'
+import { toggleVolunteerStatus } from './eventItemHelper'
 
 jest.mock('../store')
 jest.mock('../pages/gardenHelper')
 
 afterEach(() => {
   return dispatch.mockClear()
-})
-
-describe('getIfVolunteer', () => {
-  it('return true if userId is in the volunteers array', () => {
-    getState.mockImplementation(() => ({ user: { id: 2 } }))
-    const volunteers = [
-      { userId: 2, eventId: 2 },
-      { userId: 3, eventId: 1 }
-    ]
-    const isVolunteer = getIfVolunteer(volunteers)
-    expect(getState).toHaveBeenCalled()
-    expect(isVolunteer).toBe(true)
-  })
 })
 
 describe('toggleVolunteerStatus', () => {
