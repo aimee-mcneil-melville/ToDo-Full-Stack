@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { getEvent, setVolunteerStatus } from './eventHelper'
 import { useParams } from 'react-router-dom'
 import VolunteersList from '../components/VolunteersList'
+import Map from '../components/Map'
 
 function Event (props) {
   const [event, setEvent] = useState({})
@@ -31,6 +32,11 @@ function Event (props) {
   }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
+
+  // Temporary hard coded map data
+  const lat = -36.869990
+  const lon = 174.746720
+  const address = 'Bond Street, Kingsland'
 
   return (
     <>
@@ -62,16 +68,22 @@ function Event (props) {
             }
           </article>
         </div>
-
-        {
-          isAdmin &&
+      </article>
+      {
+        isAdmin &&
         <div>
           <VolunteersList volunteers={volunteers} />
         </div>
-        }
-
-        image or map can go here
-      </article>
+      }
+      {
+        !isAdmin &&
+          <div>
+            <Map
+              coordinates={[{ lat: lat, lon: lon }]}
+              addresses={[address]}
+            />
+          </div>
+      }
     </>
   )
 }
