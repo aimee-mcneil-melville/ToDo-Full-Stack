@@ -6,6 +6,7 @@ jest.setTimeout(10000)
 
 const imgpath = 'tests/e2e/screenshots/'
 const timeOut = 2000
+let testNum = 1
 
 let browser
 let page
@@ -15,6 +16,7 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
+  console.log(`test ${testNum++}`)
   const context = await browser.newContext()
   page = await context.newPage()
   await db.seed.run({ directory: './server/db/seeds' })
@@ -157,26 +159,30 @@ test('Can Login as Admin', async () => {
   await page.screenshot({ path: imgpath + 'adminsigninsuccess.png' })
 })
 
-// test('Admin can login & add event', async () => {
-//   await page.goto('localhost:3000')
-//   await page.click('text=Sign in')
-//   expect(await page.url()).toBe('http://localhost:3000/signin')
-//   await page.fill('#username', 'admin')
-//   await page.fill('#password', 'admin')
-//   await page.click('button', { force: true })
-//   expect(await page.url()).toBe('http://localhost:3000/garden')
-//   await page.click('text=Add New Event')
-//   expect(await page.url()).toBe('http://localhost:3000/events/new')
-//   await page.fill('#title', 'Christmas Gardening!')
-//   await page.fill('[type=date]', '2021-12-25')
-//   await page.fill('[type=number]', '100')
-//   await page.fill('#description', "I don't want a lot for Christmas, there is just one thing I need, I don't care about the presents, underneath the Christmas tree, I just want you for my own, more than you could ever know, make my wish come true, all I want for Christmas is you")
-//   await page.click('button', { force: true })
-//   expect(await page.url()).toBe('http://localhost:3000/garden')
-//   await page.screenshot({ path: imgpath + 'eventadded.png', fullPage: true })
-//   expect(await page.content()).toMatch('Christmas Gardening!')
-//   await waitForAmount(timeOut)
-// })
+test('Admin can login & add event', async () => {
+  await page.goto('localhost:3000')
+  await page.click('text=Sign in')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
+  await page.fill('#username', 'admin')
+  await page.fill('#password', 'admin')
+  await page.click('button', { force: true })
+  expect(await page.url()).toBe('http://localhost:3000/garden')
+  await page.click('text=Add New Event')
+  expect(await page.url()).toBe('http://localhost:3000/event/new')
+  await page.fill('#title', 'Christmas Gardening!')
+  await page.fill('[type=date]', '2021-12-25')
+  await page.fill('[type=number]', '100')
+  await page.fill('#description', "I don't want a lot for Christmas, there is just one thing I need, I don't care about the presents, underneath the Christmas tree, I just want you for my own, more than you could ever know, make my wish come true, all I want for Christmas is you")
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button', { force: true })
+  ])
+  expect(await page.url()).toBe('http://localhost:3000/garden')
+  await page.screenshot({ path: imgpath + 'eventadded.png', fullPage: true })
+  expect(await page.content()).toMatch('Christmas Gardening!')
+  await waitForAmount(timeOut)
+})
 
 test('Admin can login & edit event', async () => {
   await page.goto('localhost:3000')
@@ -191,7 +197,10 @@ test('Admin can login & edit event', async () => {
   await page.fill('[type=date]', '2020-08-28')
   await page.fill('[type=number]', '50')
   await page.fill('#description', 'Please come out and help us, we need alot more volunteers now on the new day.')
-  await page.click('button', { force: true })
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button', { force: true })
+  ])
   expect(await page.url()).toBe('http://localhost:3000/garden')
   expect(await page.content()).toMatch('Come for a fun day out weeding!')
   await page.screenshot({ path: imgpath + 'eventedited.png', fullPage: true })
