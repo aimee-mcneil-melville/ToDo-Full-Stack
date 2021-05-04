@@ -49,7 +49,7 @@ export default function App () {
           render={() => {
             return isAdmin
               ? <AddEvent />
-              : <Redirect to='/gardens' />
+              : <Redirect to='/' />
           }}
         />
         <Route
@@ -57,7 +57,7 @@ export default function App () {
           render={() => {
             return isAdmin
               ? <EditEvent />
-              : <Redirect to='/garden' />
+              : <Redirect to='/' />
           }}
         />
         <Route exact path='/events/:id' component={Event} />
