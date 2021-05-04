@@ -12,7 +12,7 @@ afterEach(() => {
 
 describe('registerUser', () => {
   it('registers and dispatches correctly on register success', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     register.mockImplementation((newUser) => {
       expect(newUser.gardenId).toBe(1)
       return Promise.resolve()
@@ -27,7 +27,6 @@ describe('registerUser', () => {
     const navigateTo = jest.fn()
     return registerUser(user, navigateTo)
       .then(() => {
-        expect(navigateTo).toHaveBeenCalledWith('/garden')
         expect(dispatch).toHaveBeenCalledWith({ type: SET_USER })
         return null
       })
