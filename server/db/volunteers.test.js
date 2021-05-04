@@ -50,7 +50,7 @@ describe('deleteVolunteer', () => {
 })
 
 describe('attended test', () => {
-  it('should set event to is attend to true', () => {
+  it('should set event is attend to true', () => {
     expect.assertions(2)
     const testData = {
       isAttended: true,
@@ -64,7 +64,7 @@ describe('attended test', () => {
       expect(testEvent).toEqual(expect.objectContaining({
         event_id: testData.eventId,
         user_id: testData.userId,
-        attended: testData ? 1 : 0
+        attended: testData.isAttended ? 1 : 0
       }))
       return null
     }).catch(err => {

@@ -5,7 +5,8 @@ import userEvent from '@testing-library/user-event'
 import { renderWithRedux } from '../test-utils'
 
 import Event from './Event'
-import { getEvent, toggleVolunteerStatus } from './eventHelper'
+import VolunteerList from '../components/VolunteersList'
+import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -95,5 +96,34 @@ describe('Event details page', () => {
         expect(volunteerButton).toHaveTextContent('Un-Volunteer')
         return null
       })
+  })
+})
+
+describe('List of signed up volunteers', () => {
+  const mockData = [
+    {
+      id: 1,
+      firstName: 'Test User',
+      lastName: 'Lastname'
+    },
+    {
+      id: 2,
+      firstName: 'Test User 2',
+      lastName: 'Lastname 2'
+    }
+  ]
+
+  it('displays only for admin', () => {
+    renderWithRedux(<VolunteerList volunteers={mockData} />, {
+      initialState: { user: { isAdmin: true } }
+    })
+    expect(screen.getByRole('list')).toHaveTextContent('Test User')
+  })
+
+  it('does not display if not an admin', () => {
+    renderWithRedux(<Event />, {
+      initialState: { user: { isAdmin: false } }
+    })
+    expect(screen.queryByRole('list')).toBeNull()
   })
 })
