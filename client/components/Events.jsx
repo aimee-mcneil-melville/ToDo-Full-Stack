@@ -13,7 +13,7 @@ function Events ({ events }) {
         <h1 className='title is-4 is-flex-grow-1'>Events</h1>
         {
           isAdmin
-            ? <Link to='/events/new' className='button'>Add New Event</Link>
+            ? <Link to='/event/new' className='button'>Add New Event</Link>
             : null
         }
       </div>

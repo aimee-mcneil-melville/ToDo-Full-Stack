@@ -6,7 +6,7 @@ import { getEvent, toggleVolunteerStatus } from './eventHelper'
 
 import VolunteersList from '../components/VolunteersList'
 
-function Event (props) {
+function Event () {
   const [event, setEvent] = useState({})
   const [isVolunteer, setIsVolunteer] = useState(false)
   const { id } = useParams()
