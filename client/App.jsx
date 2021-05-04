@@ -44,12 +44,6 @@ export default function App () {
           }}
         />
 
-        <Route path='/gardens'
-          render={() => {
-            <Redirect from='/' to={`/gardens/${gardenId}`} />
-          }}
-        />
-
         <Route
           path='/events/new'
           render={() => {
