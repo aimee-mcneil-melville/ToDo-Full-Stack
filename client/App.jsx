@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { isAuthenticated } from './auth'
@@ -16,6 +16,7 @@ import Event from './pages/Event'
 
 export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  const gardenId = useSelector(globalState => globalState.user.gardenId)
 
   return (
     <main className='container p-3'>
@@ -23,11 +24,12 @@ export default function App () {
       <Header />
       <section className='columns'>
         <Route exact path='/' component={Home} />
+        <Route exact path='/gardens/:id' component={Garden} />
         <Route
           path='/register'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/garden' />
+              ? <Redirect to={`/gardens/${gardenId}`} />
               : <Register />
           }}
         />
@@ -35,24 +37,17 @@ export default function App () {
           path='/signin'
           render={() => {
             return isAuthenticated()
-              ? <Redirect to='/garden' />
+              ? <Redirect to={`/gardens/${gardenId}`} />
               : <SignIn />
           }}
         />
+
         <Route
-          path='/garden'
-          render={() => {
-            return isAuthenticated()
-              ? <Garden />
-              : <Redirect to='/signin' />
-          }}
-        />
-        <Route
-          path='/events/new'
+          path='/event/new'
           render={() => {
             return isAdmin
               ? <AddEvent />
-              : <Redirect to='/garden' />
+              : <Redirect to='/' />
           }}
         />
         <Route
@@ -60,7 +55,7 @@ export default function App () {
           render={() => {
             return isAdmin
               ? <EditEvent />
-              : <Redirect to='/garden' />
+              : <Redirect to='/' />
           }}
         />
         <Route exact path='/events/:id' component={Event} />

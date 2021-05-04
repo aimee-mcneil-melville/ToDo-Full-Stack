@@ -12,7 +12,7 @@ afterEach(() => {
 
 describe('signInUser', () => {
   it('signs in and dispatches correctly on signIn success', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     signIn.mockImplementation((credentials) => {
       expect(credentials.username).toBe('testuser')
       return Promise.resolve()
@@ -25,7 +25,6 @@ describe('signInUser', () => {
     const navigateTo = jest.fn()
     return signInUser(user, navigateTo)
       .then(() => {
-        expect(navigateTo).toHaveBeenCalledWith('/garden')
         expect(dispatch).toHaveBeenCalledWith({ type: SET_USER })
         return null
       })

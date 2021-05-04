@@ -1,11 +1,15 @@
 const knex = require('knex')
 const config = require('./knexfile').test
-const testDb = knex(config)
-
 const volunteers = require('./volunteers')
 
+const testDb = knex(config)
+
 function getTestVolunteers (userId, eventId) {
-  if (userId && eventId) { return testDb('eventVolunteers').where('user_id', userId).where('event_id', eventId).select() }
+  if (userId && eventId) {
+    return testDb('eventVolunteers')
+      .where({ user_id: userId, event_id: eventId })
+      .select()
+  }
 
   return testDb('eventVolunteers').select()
 }
@@ -49,26 +53,42 @@ describe('deleteVolunteer', () => {
   })
 })
 
-describe('attended test', () => {
-  it('should set event to is attend to true', () => {
-    expect.assertions(2)
+describe('markVolunteerAttendance', () => {
+  it('marks a volunteer as having attended an event', () => {
     const testData = {
-      isAttended: true,
+      hasAttended: true,
       userId: 2,
       eventId: 3
     }
-    return volunteers.attend(testData, testDb).then(() => {
-      return getTestVolunteers(testData.userId, testData.eventId).first()
-    }).then(testEvent => {
-      expect(testEvent).not.toBeNull()
-      expect(testEvent).toEqual(expect.objectContaining({
-        event_id: testData.eventId,
-        user_id: testData.userId,
-        attended: testData ? 1 : 0
-      }))
-      return null
-    }).catch(err => {
-      console.log(err.message)
-    })
+    return volunteers.setVolunteerAttendance(testData, testDb)
+      .then(() => {
+        return getTestVolunteers(testData.userId, testData.eventId).first()
+      })
+      .then(firstTestVolunteer => {
+        expect(firstTestVolunteer).toEqual(expect.objectContaining({
+          event_id: testData.eventId,
+          user_id: testData.userId,
+          attended: testData.hasAttended ? 1 : 0
+        }))
+        return null
+      })
+  })
+})
+
+describe('addExraVolunteer test', () => {
+  it('should add extra volunteers that are not registered', () => {
+    const rockUp = {
+      eventId: 1,
+      firstName: 'Erin',
+      lastName: 'Abernethy'
+    }
+    return volunteers.addExtraVolunteer(rockUp, testDb)
+      .then(() => testDb('extraVolunteers').select())
+      .then(([rockUp]) => {
+        expect(rockUp.event_id).toBe(1)
+        expect(rockUp.first_name).toBe('Erin')
+        expect(rockUp.last_name).toBe('Abernethy')
+        return null
+      })
   })
 })
