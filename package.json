@@ -21,6 +21,7 @@
     "db:seed": "npm run knex seed:run",
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "test": "jest --verbose",
+    "test:e2e": "jest --verbose -c e2e.config.js",
     "test:watch": "jest --watchAll --verbose",
     "lint": "eslint --ext .js,.jsx ."
   },
@@ -47,6 +48,9 @@
   "jest": {
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom"
+    ],
+    "testPathIgnorePatterns": [
+      "/e2e/"
     ]
   },
   "engines": {
