@@ -56,7 +56,7 @@ function Event (props) {
             <p className='has-text-weight-semibold'>{description}</p>
             {isAdmin
               ? <div>
-                <VolunteersList volunteers={volunteers} />
+                <VolunteersList volunteers={volunteers} eventId={event.id} />
               </div>
               : <div>
                 {!isVolunteer

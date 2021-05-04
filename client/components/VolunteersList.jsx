@@ -8,7 +8,7 @@ return (
   <h4>List of Volunteers</h4>
   <ul>{props.volunteers?.map(volunteer => {
     return (
-      <VolunteerListItem key={volunteer.id} firstName={volunteer.firstName} lastName={volunteer.lastName} />
+      <VolunteerListItem key={volunteer.id} userId={volunteer.id} eventId={props.eventId} firstName={volunteer.firstName} lastName={volunteer.lastName} />
 )})}
   </ul>
   </>
