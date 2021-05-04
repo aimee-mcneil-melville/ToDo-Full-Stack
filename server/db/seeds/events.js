@@ -55,7 +55,7 @@ exports.seed = (knex) => {
         title: 'Party at the garden',
         date: '2020-08-28',
         description: 'Help get out the lovely corns in the ground!.',
-        volunteers_needed: 40
+        volunteers_needed: 4
       },
       {
         id: 8,

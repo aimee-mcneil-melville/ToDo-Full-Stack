@@ -50,7 +50,7 @@ export default function App () {
           }}
         />
         <Route
-          path='/events/new'
+          path='/event/new'
           render={() => {
             return isAdmin
               ? <AddEvent />
