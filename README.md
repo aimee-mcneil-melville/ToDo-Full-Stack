@@ -93,7 +93,9 @@ Response (200):
     "volunteersNeeded": 8,
     "title": "Weeding Worker Bee",
     "date": "2020-12-31",
-    "description": "It's time to get these weeds under control."
+    "description": "It's time to get these weeds under control.",
+    "totalVolunteers": 13,
+    "isVolunteer": false
   }]
 }
 ```
@@ -127,7 +129,7 @@ Response (201):
 
 ### `GET /api/v1/events/:id`
 
-Response (200):
+Response for GUEST (200):
 
 ```json
 {
@@ -139,6 +141,41 @@ Response (200):
   "title": "Weeding Worker Bee",
   "date": "2020-12-31",
   "description": "It's time to get these weeds under control."
+}
+```
+Response for MEMBER (200):
+
+```json
+{
+  "id": 167,
+  "gardenId": 1,
+  "gardenName": "Kelmarna Gardens",
+  "gardenAddress": "12 Hukanui Crescent",
+  "volunteersNeeded": 8,
+  "title": "Weeding Worker Bee",
+  "date": "2020-12-31",
+  "description": "It's time to get these weeds under control.",
+  "isVolunteer": true
+}
+```
+Response for ADMIN (200):
+
+```json
+{
+  "id": 167,
+  "gardenId": 1,
+  "gardenName": "Kelmarna Gardens",
+  "gardenAddress": "12 Hukanui Crescent",
+  "volunteersNeeded": 8,
+  "title": "Weeding Worker Bee",
+  "date": "2020-12-31",
+  "description": "It's time to get these weeds under control.",
+  "volunteers": [{
+    "userId": 3,
+    "username": "jdog",
+    "firstName": "Johnny",
+    "lastName": "Dawg"
+  }]
 }
 ```
 
