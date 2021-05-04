@@ -3,14 +3,21 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { getEvent, toggleVolunteerStatus } from './eventHelper'
+// import { getGarden } from './gardenHelper'
 
 import VolunteersList from '../components/VolunteersList'
+import Map from '../components/Map'
 
 function Event () {
   const [event, setEvent] = useState({})
   const [isVolunteer, setIsVolunteer] = useState(false)
   const { id } = useParams()
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  // currently using initial state and wipes clear on refresh - needs attention
+  // const garden = useSelector(globalState => globalState.garden)
+  const lat = useSelector(globalState => globalState.garden.lat)
+  const lon = useSelector(globalState => globalState.garden.lon)
+  const address = useSelector(globalState => globalState.garden.address)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -54,22 +61,29 @@ function Event () {
               <dd>{volunteersNeeded}</dd>
             </dl>
             <p className='has-text-weight-semibold'>{description}</p>
-            {isAdmin
+            {!isAdmin
               ? <div>
-                <VolunteersList volunteers={volunteers} />
-              </div>
-              : <div>
                 {!isVolunteer
                   ? <button onClick={clickHandler} className='button'>Volunteer</button>
                   : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
                 }
               </div>
+              : null
             }
           </article>
         </div>
-
-        image or map can go here
       </article>
+      {isAdmin
+        ? <div>
+          <VolunteersList attended={event.attended} volunteers={volunteers} eventId={event.id} />
+        </div>
+        : <div>
+          <Map
+            coordinates={[{ lat: lat, lon: lon }]}
+            addresses={[address]}
+          />
+        </div>
+      }
     </>
   )
 }

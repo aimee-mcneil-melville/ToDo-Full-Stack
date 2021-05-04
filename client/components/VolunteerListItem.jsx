@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toggleIsAttended } from '../pages/eventHelper'
 
 function VolunteerListItem (props) {
+  const [isChecked, setIsChecked] = useState(props.attended)
+
+  function handleChange (e) {
+    const data = {
+      hasAttended: e.target.checked,
+      userId: props.userId,
+      eventId: props.eventId
+    }
+    setIsChecked(data.hasAttended)
+    toggleIsAttended(data)
+  }
+
   return (
     <li>
-      <button>✓</button>
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleChange} />
       {props.firstName} {props.lastName}
     </li>
   )
