@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { toggleVolunteerStatus } from '../pages/eventHelper'
 
-function VolunteerListItem (props) {
-  const { firstName, lastName, attended, eventId } = props
+function VolunteerListItem ({ volunteer, eventId }) {
+  const { firstName, lastName, attended } = volunteer
   const [isChecked, setIsChecked] = useState(attended)
 
   function handleChange (e) {

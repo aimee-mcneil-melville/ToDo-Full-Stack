@@ -12,11 +12,8 @@ function VolunteerList (props) {
             return (
               <VolunteerListItem
                 key={volunteer.userId}
-                attended={volunteer.attended}
-                userId={volunteer.userId}
+                volunteer={volunteer}
                 eventId={props.eventId}
-                firstName={volunteer.firstName}
-                lastName={volunteer.lastName}
               />
             )
           })
