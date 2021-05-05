@@ -1,24 +1,22 @@
 import requestor from '../consume'
-import { dispatch, getState } from '../store'
+import { dispatch } from '../store'
 import { setWaiting } from '../actions/waiting'
 import { showError } from '../actions/error'
 import { setGarden } from '../actions/garden'
 
-export function getGarden (consume = requestor) {
-  const storeState = getState()
-  const { gardenId } = storeState.user
+export function getGarden (id, consume = requestor) {
   dispatch(setWaiting())
-  return consume(`/gardens/${gardenId}`)
+  return consume(`/gardens/${id}`)
     .then((res) => {
-      const { name, description, url, address, events, lat, lon } = res.body
+      const garden = res.body
       dispatch(setGarden({
-        name,
-        description,
-        address,
-        url,
-        events,
-        lat,
-        lon
+        name: garden.name,
+        description: garden.description,
+        address: garden.address,
+        url: garden.url,
+        events: garden.events,
+        lat: garden.lat,
+        lon: garden.lon
       }))
       return null
     })

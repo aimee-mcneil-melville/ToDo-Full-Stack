@@ -9,13 +9,13 @@ describe('wait indicator', () => {
     renderWithRedux(<WaitIndicator />, {
       initialState: { waiting: true }
     })
-    const waitIndicator = screen.getByText('loading...')
-    expect(waitIndicator).toBeInTheDocument()
+    const waitIndicators = screen.getAllByAltText('loading indicator')
+    expect(waitIndicators).toHaveLength(3)
   })
 
   it('does not display if waiting is false in redux store', () => {
     renderWithRedux(<WaitIndicator />)
-    const waitIndicator = screen.queryByText('loading...')
-    expect(waitIndicator).toBeNull()
+    const waitIndicators = screen.queryAllByAltText('loading indicator')
+    expect(waitIndicators).toHaveLength(0)
   })
 })

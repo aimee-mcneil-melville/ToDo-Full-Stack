@@ -4,10 +4,12 @@ import { setUser } from '../../actions/user'
 import { setWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 
-export function registerUser (user, navigateTo) {
-  const { username, password, gardenId, email } = user
+export function registerUser (user) {
+  const { firstName, lastName, username, password, gardenId, email } = user
   dispatch(setWaiting())
   return register({
+    firstName,
+    lastName,
     username,
     password,
     gardenId: Number(gardenId),
@@ -16,7 +18,6 @@ export function registerUser (user, navigateTo) {
     .then(() => {
       if (isAuthenticated()) {
         dispatch(setUser())
-        navigateTo('/garden')
       } else {
         throw new Error('Not authenticated')
       }

@@ -62,7 +62,7 @@ describe('updateEvent', () => {
     return updateEvent('1', event, navigateTo, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
-        expect(navigateTo).toHaveBeenCalledWith('/garden')
+        expect(navigateTo).toHaveBeenCalledWith('/events/1')
         return null
       })
   })

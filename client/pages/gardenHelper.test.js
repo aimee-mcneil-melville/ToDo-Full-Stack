@@ -1,7 +1,7 @@
 import { getGarden } from './gardenHelper'
 import { SET_WAITING } from '../actions/waiting'
-import { dispatch, getState } from '../store'
 import { SET_GARDEN } from '../actions/garden'
+import { dispatch } from '../store'
 
 jest.mock('../store')
 
@@ -12,7 +12,6 @@ afterEach(() => {
 describe('getGarden', () => {
   describe('-> GET /gardens/:id api call success', () => {
     it('dispatches with the correct garden action', () => {
-      getState.mockImplementation(() => ({ user: { gardenId: 2 } }))
       function consume (path) {
         expect(path).toMatch('2')
         return Promise.resolve({
@@ -28,7 +27,7 @@ describe('getGarden', () => {
           }
         })
       }
-      return getGarden(consume)
+      return getGarden(2, consume)
         .then((garden) => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({
@@ -50,11 +49,10 @@ describe('getGarden', () => {
 
   describe('-> GET /gardens/:id api call rejection', () => {
     it('dispatches error correctly', () => {
-      getState.mockImplementation(() => ({ user: { gardenId: null } }))
       function consume () {
         return Promise.reject(new Error('mock error'))
       }
-      return getGarden(consume)
+      return getGarden(null, consume)
         .then(() => {
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null

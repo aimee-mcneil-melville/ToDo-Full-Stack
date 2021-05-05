@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 import Map from '../components/Map'
 import Events from '../components/Events'
 import { getGarden } from './gardenHelper'
 
 function Garden () {
+  const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
-    getGarden()
+    getGarden(id)
   }, [])
 
   const { name, description, address, url, events, lat, lon } = garden

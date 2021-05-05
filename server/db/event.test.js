@@ -4,6 +4,9 @@ const testDb = knex(config)
 
 const db = require('./event')
 
+// Prevent Jest from timing out (5s often isn't enough)
+jest.setTimeout(10000)
+
 beforeAll(() => {
   return testDb.migrate.latest()
 })
@@ -17,6 +20,8 @@ describe('getEventById', () => {
       .then((event) => {
         expect(event.id).toBe(3)
         expect(event.gardenId).toBe(1)
+        expect(event.gardenName).toMatch('Kelmarna')
+        expect(event.gardenAddress).toMatch('Hukanui')
         expect(event.title).toBe('Sowing Corn')
         expect(event.volunteersNeeded).toBe(4)
         expect(event).toHaveProperty('date')

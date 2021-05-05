@@ -1,0 +1,58 @@
+.waitIndicator {
+  position: absolute;
+  top: 1rem;
+  left: 12rem;
+
+  &--img {
+    width: 3.4em;
+    padding: 0.2em;
+    -webkit-animation: rotation 1.8s infinite linear;
+    -moz-animation: rotation 1.8s infinite linear;
+    animation: rotation 1.8s infinite linear;
+  }
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(40deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(-40deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+// @-webkit-keyframes rotation {
+//   from {
+//       -webkit-transform: rotate(0deg);
+//   }
+//   to {
+//       -webkit-transform: rotate(359deg);
+//   }
+// }
+
+// @-moz-keyframes rotation {
+//   from {
+//       -webkit-transform: rotate(0deg);
+//   }
+//   to {
+//       -webkit-transform: rotate(359deg);
+//   }
+// }
+
+// @keyframes rotation {
+//   from {
+//       -webkit-transform: rotate(0deg);
+//   }
+//   to {
+//       -webkit-transform: rotate(359deg);
+//   }
+// }

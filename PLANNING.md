@@ -2,38 +2,41 @@
 
 Goal: Monitor community garden engagement to determine influence on key wellbeing indicators
 
-## Context
-
-- Previous project partnership with MSD, Massey Uni, Stats NZ
-- Paused caused by funding concerns caused by lockdowns
-- Picking the project back up since funding is locked in
-
-## Where we are now
-
-- Current application functionality
-- Brief code walk-through
-- A look at the backlog
-
 ## Teams
 
-- Styling/cleanup
-- Add Event
+#### Higher Priority
+- Security
+- Event Details
 - DevOps
-- Testing
+
+#### Smaller/Lower Priority
+- End to end testing
+- Styling (SASS and Bulma)
+- Smaller tickets (`/garden` -> `/:id`, proper loading indicator etc.)
+
 
 ## Process
 
 1. Decide on the next ticket
-1. Have an Elaboration (resolve ambiguity)
-1. Drag the ticket into **In Progress**, add the time estimation label and assign yourself
-1. Create/pull the feature branch
-1. Create a task branch for the work
-1. Implement the task and write tests
-1. Run the `lint` and `test` scripts
-1. Verify what you intend to commit
-1. Commit with a descriptive comment
-1. Grab a dev lead to do a code review
-1. Merge your commit into the feature branch
-1. Pull the feature branch and verify integration
+1. Have an Elaboration with a dev lead (resolve ambiguity)
+1. Drag the ticket into **In Progress**, add the time estimation label and assign yourself/selves
+1. Create a feature project board with sub-tickets
+1. Create the feature branch
+1. While working on sub-tickets...
+    1. Drag your sub-ticket into In Progress, add the time estimation label and assign yourself
+    1. Pull the feature branch
+    1. Create a task branch from the feature branch
+    1. Implement the functionality for your task
+    1. Write tests
+    1. Write/update any documentation
+    1. Verify the `lint` and `test` scripts pass
+    1. Check what you intend to commit
+    1. Commit with a descriptive comment
+    1. Grab a someone else in your team to do a code review
+    1. Merge your commit into the feature branch
+    1. Pull the feature branch and verify integration
+    1. Add the _actual_ time label to the sub-ticket
+1. Grab a dev lead to do a code review of the feature branch
+1. Merge into `dev`!
 1. Add the _actual_ time label to the ticket
 1. Rinse and repeat :wink:

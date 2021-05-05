@@ -13,11 +13,13 @@ export function addEvent (event, navigateTo, consume = requestor) {
   dispatch(setWaiting())
   return consume('/events', 'post', newEvent)
     .then(() => {
-      dispatch(clearWaiting())
-      navigateTo('/garden')
+      navigateTo(`/gardens/${gardenId}`)
       return null
     })
     .catch((err) => {
       dispatch(showError(err.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
     })
 }

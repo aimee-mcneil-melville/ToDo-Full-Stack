@@ -1,10 +1,19 @@
 const knex = require('knex')
 const config = require('./knexfile').test
-const testDb = knex(config)
-
 const volunteers = require('./volunteers')
 
-function getTestVolunteers () {
+const testDb = knex(config)
+
+// Prevent Jest from timing out (5s often isn't enough)
+jest.setTimeout(10000)
+
+function getTestVolunteers (userId, eventId) {
+  if (userId && eventId) {
+    return testDb('eventVolunteers')
+      .where({ user_id: userId, event_id: eventId })
+      .select()
+  }
+
   return testDb('eventVolunteers').select()
 }
 
@@ -42,6 +51,46 @@ describe('deleteVolunteer', () => {
       .then(() => getTestVolunteers())
       .then((info) => {
         expect(info).toHaveLength(2)
+        return null
+      })
+  })
+})
+
+describe('markVolunteerAttendance', () => {
+  it('marks a volunteer as having attended an event', () => {
+    const testData = {
+      hasAttended: true,
+      userId: 2,
+      eventId: 3
+    }
+    return volunteers.setVolunteerAttendance(testData, testDb)
+      .then(() => {
+        return getTestVolunteers(testData.userId, testData.eventId).first()
+      })
+      .then(firstTestVolunteer => {
+        expect(firstTestVolunteer).toEqual(expect.objectContaining({
+          event_id: testData.eventId,
+          user_id: testData.userId,
+          attended: testData.hasAttended ? 1 : 0
+        }))
+        return null
+      })
+  })
+})
+
+describe('addExraVolunteer test', () => {
+  it('should add extra volunteers that are not registered', () => {
+    const rockUp = {
+      eventId: 1,
+      firstName: 'Erin',
+      lastName: 'Abernethy'
+    }
+    return volunteers.addExtraVolunteer(rockUp, testDb)
+      .then(() => testDb('extraVolunteers').select())
+      .then(([rockUp]) => {
+        expect(rockUp.event_id).toBe(1)
+        expect(rockUp.first_name).toBe('Erin')
+        expect(rockUp.last_name).toBe('Abernethy')
         return null
       })
   })
