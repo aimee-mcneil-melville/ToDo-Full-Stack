@@ -37,7 +37,7 @@ export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor
     const routeMethod = isVolunteer ? 'delete' : 'post'
     const userData = { userId: id, eventId }
 
-    return consume('/volunteer', routeMethod, userData)
+    return consume('/volunteers', routeMethod, userData)
       .then(() => true)
       .catch((error) => {
         dispatch(showError(error.message))

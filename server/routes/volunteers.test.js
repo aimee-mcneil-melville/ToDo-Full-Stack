@@ -16,10 +16,10 @@ const testAuthAdminHeader = {
   Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
 }
 
-describe('POST /api/v1/volunteer', () => {
+describe('POST /api/v1/volunteers', () => {
   it('responds with 401 when no token passed', () => {
     return request(server)
-      .post('/api/v1/volunteer')
+      .post('/api/v1/volunteers')
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(401)
@@ -30,7 +30,7 @@ describe('POST /api/v1/volunteer', () => {
   it('returns correct response when token is passed', () => {
     db.addVolunteer.mockImplementation(() => Promise.resolve())
     return request(server)
-      .post('/api/v1/volunteer')
+      .post('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
@@ -44,7 +44,7 @@ describe('POST /api/v1/volunteer', () => {
       new Error('mock addVolunteer error')
     ))
     return request(server)
-      .post('/api/v1/volunteer')
+      .post('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
@@ -57,10 +57,10 @@ describe('POST /api/v1/volunteer', () => {
   })
 })
 
-describe('DELETE /api/v1/volunteer', () => {
+describe('DELETE /api/v1/volunteers', () => {
   it('responds with 401 when no token is passed', () => {
     return request(server)
-      .delete('/api/v1/volunteer')
+      .delete('/api/v1/volunteers')
       .send({ userId: 1, eventId: 1 })
       .then(res => {
         expect(res.status).toBe(401)
@@ -71,7 +71,7 @@ describe('DELETE /api/v1/volunteer', () => {
   it('returns correct response when token is passed', () => {
     db.deleteVolunteer.mockImplementation(() => Promise.resolve())
     return request(server)
-      .delete('/api/v1/volunteer')
+      .delete('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .then(res => {
@@ -85,7 +85,7 @@ describe('DELETE /api/v1/volunteer', () => {
       new Error('mock deleteVolunteer error')
     ))
     return request(server)
-      .delete('/api/v1/volunteer')
+      .delete('/api/v1/volunteers')
       .set(mockNonAdminAuthHeader)
       .send({ userId: 1, eventId: 1 })
       .expect('Content-Type', /json/)
@@ -98,11 +98,11 @@ describe('DELETE /api/v1/volunteer', () => {
   })
 })
 
-describe('POST /api/v1/volunteer/extras', () => {
+describe('POST /api/v1/volunteers/extras', () => {
   it('responds with 500 during db error', () => {
     db.addExtraVolunteer.mockImplementation(() => Promise.reject(Error))
     return request(server)
-      .post('/api/v1/volunteer/extras')
+      .post('/api/v1/volunteers/extras')
       .set(testAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
       .then(res => {
@@ -115,7 +115,7 @@ describe('POST /api/v1/volunteer/extras', () => {
   it('returns correct response when token has passed', () => {
     db.addExtraVolunteer.mockImplementation(() => Promise.resolve(201))
     return request(server)
-      .post('/api/v1/volunteer/extras')
+      .post('/api/v1/volunteers/extras')
       .set(testAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
       .then(res => {
@@ -126,7 +126,7 @@ describe('POST /api/v1/volunteer/extras', () => {
 
   it('responds with status 401 when unauthorised token is passed', () => {
     return request(server)
-      .post('/api/v1/volunteer/extras')
+      .post('/api/v1/volunteers/extras')
       .then(response => {
         expect(response.status).toBe(401)
         return null
@@ -134,14 +134,14 @@ describe('POST /api/v1/volunteer/extras', () => {
   })
 })
 
-describe('PATCH /api/v1/volunteer', () => {
+describe('PATCH /api/v1/volunteers', () => {
   db.setVolunteerAttendance.mockImplementation(() => {
     return Promise.resolve()
   })
 
   it('Test for unauthorized accesss: no token', () => {
     return request(server)
-      .patch('/api/v1/volunteer')
+      .patch('/api/v1/volunteers')
       .then(res => {
         expect(res.status).toEqual(401)
         return null
@@ -152,7 +152,7 @@ describe('PATCH /api/v1/volunteer', () => {
     const token = getMockToken(1, 'user', 'usertest@test.co', false)
 
     return request(server)
-      .patch('/api/v1/volunteer')
+      .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
       .then(res => {
         expect(res.status).toEqual(401)
@@ -163,7 +163,7 @@ describe('PATCH /api/v1/volunteer', () => {
   it('Test for authorized access: admin user', () => {
     const token = getMockToken(1, 'admin', 'admin@test.co', true)
     return request(server)
-      .patch('/api/v1/volunteer')
+      .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
       .then(res => {
         expect(res.status).toEqual(200)
@@ -175,7 +175,7 @@ describe('PATCH /api/v1/volunteer', () => {
     db.setVolunteerAttendance.mockImplementation(() => Promise.reject(new Error('Db operation error')))
     const token = getMockToken(1, 'admin', 'admin@test.co', true)
     return request(server)
-      .patch('/api/v1/volunteer')
+      .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
       .expect('Content-Type', /json/)
       .then(res => {
