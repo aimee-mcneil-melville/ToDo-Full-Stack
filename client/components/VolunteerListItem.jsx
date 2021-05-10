@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { toggleVolunteerStatus } from '../pages/eventHelper'
+import { toggleAttendance } from './volunteerListItemHelper'
 
 function VolunteerListItem ({ volunteer, eventId }) {
-  const { firstName, lastName, attended } = volunteer
+  const { userId, firstName, lastName, attended } = volunteer
   const [isChecked, setIsChecked] = useState(attended)
 
   function handleChange (e) {
-    const isVolunteering = e.target.checked
-    setIsChecked(isVolunteering)
-    toggleVolunteerStatus(eventId, isVolunteering)
+    const hasAttended = e.target.checked
+    setIsChecked(hasAttended)
+    toggleAttendance({ eventId, userId, hasAttended })
   }
 
   return (
