@@ -191,4 +191,14 @@ The version of the database that we run during development varies slightly from 
 
 - After inserting seeds into tables, if you have issues on the next subsequent insert, you have likely hit a Heroku/Postgres sequence issue.  In future, you can prevent this by reseting all sequences after seeding. To do this, add [this seed file](./resources/z_resetSequences.js) as the LAST seed file (you can see ours starts with a `z`) in your seeds folder.
 
-- If you hit an error that starts `FATAL: no pg_hba.conf entry for host`, while it can be hard to decypher, it's related to a setting inside Heroku where Heroku requires a secure connection from the web dyno to the database dyno. To fix this, run the following command to turn off host certificate checking: `heroku config:set PGSSLMODE=no-verify`
+- If you hit an error that starts `FATAL: no pg_hba.conf entry for host`, while it can be hard to decypher, it's related to a setting inside Heroku where Heroku requires a secure connection from the web dyno to the database dyno. To fix this, run the following command to turn off host certificate checking: `heroku config:set PGSSLMODE=no-verify`. Another option for this is to update the production config:
+
+    ```js
+    production: {
+        client: 'postgresql',
+        connection: { 
+            connectionString: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false }
+        }
+    }
+    ```
