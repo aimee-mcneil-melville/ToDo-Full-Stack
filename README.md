@@ -15,7 +15,7 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   cd two-truths-and-a-lie
   ```
 
-2. Tell git who is driving:
+2. Tell git who is driving: [in person cohort only]
 
 _This step is not required for online students - this is how we credit commits under your name when you're working on an on-campus machine. If you're working on your own machine, you will have configured git globally already._
 
