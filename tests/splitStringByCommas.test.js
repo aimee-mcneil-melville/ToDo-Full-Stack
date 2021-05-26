@@ -1,5 +1,3 @@
-const map = require('../utilities').map
-const filter = require('../utilities').filter
 const splitStringByCommas = require('../utilities').splitStringByCommas
 const filterStringsWithCommas = require('../utilities').filterStringsWithCommas
 
@@ -13,8 +11,8 @@ test('splitStringByCommas will split a string at each comma', () => {
 })
 
 test('splitStringByCommas will split all strings in the arrayOfArrays, at each comma', () => {
-  const stringsWithCommas = filter(randomStrings, filterStringsWithCommas) || []
-  const mappedArray = map(stringsWithCommas, splitStringByCommas) || []
+  const stringsWithCommas = randomStrings.filter(filterStringsWithCommas) || []
+  const mappedArray = stringsWithCommas.map(splitStringByCommas) || []
 
   const arraysMatch = mappedArray.length && mappedArray.every((arr, i) => {
     return arr.every((str, j) => {
