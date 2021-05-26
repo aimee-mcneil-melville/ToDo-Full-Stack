@@ -25,7 +25,7 @@ test('where finds an object by property', function () {
   expect(actual).toEqual(expected)
 })
 
-test('where returns multile correct results', function () {
+test('where returns multiple correct results', function () {
   // Arrange
   const contacts = getContacts()
   const expected = 2
