@@ -1,0 +1,29 @@
+{
+  "name": "ascii-art-reader",
+  "version": "1.0.0",
+  "description": "state of the (ASCII Art) terminal client",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "jest --verbose",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/ascii-art-reader.git"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/ascii-art-reader/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/ascii-art-reader#readme",
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^27.0.1"
+  }
+}

@@ -15,7 +15,7 @@ Build a state of the (ASCII) art terminal client. Don't forget to maximise your 
 ## Getting started
 
 1. Clone this repo and create a new branch for you or your pair.
-1. Create an `index.js` file so you can run your program with `node index`.
+1. You'll be working in `index.js` (once you start adding functionality, you can run your app with `npm start`)
 
 
 ## MVP
