@@ -1,0 +1,24 @@
+{
+  "name": "bowling-kata",
+  "version": "1.0.0",
+  "description": "Score a bowling game",
+  "main": "game.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/bowling-kata.git"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "devDependencies": {
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^27.0.3"
+  }
+}
