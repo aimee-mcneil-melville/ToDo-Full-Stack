@@ -13,7 +13,7 @@
 ## Heroku setup
 - [ ] You have a [Heroku account](https://signup.heroku.com/).
 - [ ] You have [`heroku-cli`](https://devcenter.heroku.com/articles/heroku-cli) installed.
-    - If you're on a Mac, please follow the install instructions on that linked page
+    - If you're on a Mac, please follow the install instructions on that linked page. You'll need to have homebrew installed, so if you get an error about "brew: command not found", go ahead and install homebrew. 
     - If you're on a Windows machine, DON'T download and run the Windows Heroku CLI installer, instead run this command from your Ubuntu terminal to install the Heroku CLI into your Linux environment: 
         ```
         curl https://cli-assets.heroku.com/install.sh | sh
