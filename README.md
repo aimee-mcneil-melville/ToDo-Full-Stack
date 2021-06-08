@@ -45,7 +45,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 But first, you'll need to create the database.
 
-Knex has been installed, the `knexfile.js` has been created and a `knex` script is waiting patiently for you in `package.json`.
+Knex has been installed, the `knexfile.js` has been created and a `knex` script is waiting patiently for you in `package.json`. So be sure to always use `npm run knex ...` and not `npx knex ...`.
 
 ## Create migrations
 
