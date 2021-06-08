@@ -8,6 +8,8 @@ Fortunately, the team has already confirmed the location and dates so they know 
 
 The design team has worked up the UI and routes, but they haven't added the data persistence layer. That's where you come in. You'll create the migrations and seeds and then implement the database functions to be used from the routes. Let's get stuck in!
 
+![DreamFest](dreamfest.png "screenshot")
+
 ## Steps
 
 :raised_hands: indicates an assessment opportunity<br>
