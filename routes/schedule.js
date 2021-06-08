@@ -11,6 +11,7 @@ router.get('/:day', (req, res) => {
   const day = capitalise(validDay)
 
   // TODO: Replace this hard-coded viewData with data from the database
+  // The events property below should only be the events where its day matches validDay
   const viewData = {
     day: day,
     events: [
