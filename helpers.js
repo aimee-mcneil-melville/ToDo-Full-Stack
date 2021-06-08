@@ -12,8 +12,25 @@ function validateDay (day, days = eventDays) {
   return day.toLowerCase()
 }
 
+function getEventIconPath (eventId) {
+  return `/images/eventIcons/event${(eventId % 6) + 1}.svg`
+}
+
+function getNextId (items) {
+  function compare (a, b) {
+    if (a.id > b.id) return -1
+    if (b.id > a.id) return 1
+    return 0
+  }
+  const sorted = items.sort(compare)
+  const nextId = sorted[0].id + 1
+  return nextId
+}
+
 module.exports = {
   eventDays,
   capitalise,
-  validateDay
+  validateDay,
+  getEventIconPath,
+  getNextId
 }

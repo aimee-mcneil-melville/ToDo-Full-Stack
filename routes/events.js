@@ -1,6 +1,5 @@
 const express = require('express')
 
-const db = require('../db')
 const { eventDays, capitalise } = require('../helpers')
 
 const router = express.Router()
@@ -8,37 +7,45 @@ module.exports = router
 
 // GET /events/add/friday
 router.get('/add/:day', (req, res) => {
-  // Foregoing data validation on req.params.day for the sake of brevity,
-  // but for security reasons do NOT do this in a real production application
   const day = req.params.day.toLowerCase()
   const days = eventDays.map(eventDay => ({
     value: eventDay,
     name: capitalise(eventDay),
     selected: eventDay === day ? 'selected' : ''
   }))
-  db.getAllLocations()
-    .then(locations => {
-      res.render('addEvent', { locations, days, day })
-      return null
-    })
-    .catch(err => {
-      console.error(err)
-      res.status(500).send('Unable to retrieve locations')
-    })
+
+  // TODO: Replace this with all of the locations in the database
+  const locations = [
+    {
+      id: 1,
+      name: 'TangleStage',
+      description: 'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.'
+    },
+    {
+      id: 2,
+      name: 'Yella Yurt',
+      description: "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!"
+    }
+  ]
+
+  const viewData = { locations, days, day }
+  res.render('addEvent', viewData)
 })
 
 // POST /events/add
 router.post('/add', (req, res) => {
-  // Foregoing data validation on req.body for the sake of brevity,
+  // Skipping data validation on req.body for the sake of brevity,
   // but for security reasons do NOT do this in a real production application
   const { name, description, day, time, locationId } = req.body
+
+  // TODO:
   db.addNewEvent({ name, description, day, time, locationId })
   res.redirect(`/schedule/${day}`) // redirect to the day of the added event
 })
 
 // GET /events/3/edit
 router.get('/:id/edit', (req, res) => {
-  // Foregoing data validation on req.params.id for the sake of brevity,
+  // Skipping data validation on req.params.id for the sake of brevity,
   // but for security reasons do NOT do this in a real production application
   const id = Number(req.params.id)
   const event = db.getEventById(id)
@@ -65,7 +72,7 @@ router.get('/:id/edit', (req, res) => {
 
 // POST /events/edit
 router.post('/edit', (req, res) => {
-  // Foregoing data validation on req.body for the sake of brevity,
+  // Skipping data validation on req.body for the sake of brevity,
   // but for security reasons do NOT do this in a real production application
   const { name, description, day, time } = req.body
   const id = Number(req.body.id)
@@ -76,7 +83,7 @@ router.post('/edit', (req, res) => {
 
 // POST /events/delete
 router.post('/delete', (req, res) => {
-  // Foregoing data validation on req.body for the sake of brevity,
+  // Skipping data validation on req.body for the sake of brevity,
   // but for security reasons do NOT do this in a real production application
   const id = Number(req.body.id)
   db.deleteEvent(id)

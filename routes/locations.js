@@ -1,38 +1,42 @@
 const express = require('express')
 
-const db = require('../db')
-
 const router = express.Router()
 module.exports = router
 
 // GET /locations
 router.get('/', (req, res) => {
-  db.getAllLocations()
-    .then(locations => {
-      res.render('showLocations', { locations })
-      return null
-    })
-    .catch(err => {
-      console.error(err)
-      res.status(500).send('Unable to retrieve locations')
-    })
+  // TODO: Replace this with all of the locations in the database
+  const locations = [
+    {
+      id: 1,
+      name: 'TangleStage',
+      description: 'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.'
+    },
+    {
+      id: 2,
+      name: 'Yella Yurt',
+      description: "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!"
+    }
+  ]
+  const viewData = { locations }
+  res.render('showLocations', viewData)
 })
 
 // POST /locations/edit
 router.post('/edit', (req, res) => {
-  // Foregoing data validation on req.body for the sake of brevity,
-  // but for security reasons do NOT do this in a real production application
-  const { name, description } = req.body
-  const id = Number(req.body.id)
-  db.updateLocation({ id, name, description })
+  // const { id, name, descriptiokn } = req.body
+  // TODO: Update the location in the database based on its id
   res.redirect('/locations')
 })
 
 // GET /locations/4/edit
 router.get('/:id/edit', (req, res) => {
-  // Foregoing data validation on req.params.id for the sake of brevity,
-  // but for security reasons do NOT do this in a real production application
   const id = Number(req.params.id)
-  const { name, description } = db.getLocationById(id)
-  res.render('editLocation', { id, name, description })
+  // TODO: Get the location based on its id and replace this viewData
+  const viewData = {
+    id: id,
+    name: 'TangleStage',
+    description: 'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.'
+  }
+  res.render('editLocation', viewData)
 })

@@ -1,60 +1,60 @@
-<div class="rnfb-font flex flex-1 bg-red text-white text-md md:text-lg lg:text-xl xl:text-2xl font-bold">
-  <div class="bg-red-dark p-3.5 lg:p-5">Line-up Manager</div>
-  <div class="bg-red p-3.5 lg:p-5">
-    <span class="mr-2"><a href="/schedule/friday">Friday</a></span>
-    <span class="mr-2"><a href="/schedule/saturday">Saturday</a></span>
-    <span class="mr-2"><a href="/schedule/sunday">Sunday</a></span>
-  </div>
-  <div class="bg-red p-3.5 lg:p-5 flex-grow text-center"><a href="/locations">View Locations</a></div>
-</div>
+{{> lineUpNav}}
 
-<h2 class="rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6">Edit Event: {{event.name}}</h2>
+<h2 class="page-header">Edit Event: {{event.name}}</h2>
 
-<form method="POST" action="/events/edit" class="ml-6 pl-4 border-red border-l-4 w-5/6 max-w-lg mb-6">
+<form method="POST" action="/events/edit" class="page-form">
   <input type="hidden" name="id" value="{{event.id}}">
 
   <label for="name" class="block mb-4">
-    <span class="font-roboto text-green text-xl font-bold">Event Name</span>
-    <input type="text" id="name" name="name" placeholder="Event name" value="{{event.name}}" class="text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
+    <span class="form-label">Event Name</span>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Event name"
+      value="{{event.name}}"
+      class="form-input">
   </label>
 
   <label for="description" class="block mb-4">
-    <span class="font-roboto text-green text-xl font-bold">Description</span>
-    <textarea id="description" name="description" placeholder="Event description" rows="3" class="text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">{{event.description}}</textarea>
+    <span class="form-label">Description</span>
+    <textarea rows="3"
+      id="description"
+      name="description"
+      placeholder="Event description"
+      class="form-input">{{event.description}}</textarea>
   </label>
 
   <div class="grid grid-cols-12 grid-rows-3">
-    <label for="location" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
-      Location
-    </label>
-    <select id="location" name="locationId" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
+    <label for="location" class="form-label-block">Location</label>
+    <select id="location" name="locationId" class="form-select">
       {{#each locations}}
       <option value="{{id}}" {{selected}}>{{name}}</option>
       {{/each}}
     </select>
 
-    <label for="day" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
-      Day
-    </label>
-    <select id="day" name="day" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
+    <label for="day" class="form-label-block">Day</label>
+    <select id="day" name="day" class="form-select">
       {{#each days}}
         <option value="{{value}}" {{selected}}>{{name}}</option>
       {{/each}}
     </select>
 
-    <label for="time" class="block font-roboto text-green text-xl font-bold mb-4 col-span-4 sm:col-span-3 self-center">
-      Time
-    </label>
-    <input type="text" id="time" name="time" placeholder="Example: 1pm - 2pm" value="{{event.time}}" class="text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20">
+    <label for="time" class="form-label-block">Time</label>
+    <input
+      type="text"
+      id="time"
+      name="time"
+      placeholder="Example: 1pm - 2pm"
+      value="{{event.time}}"
+      class="form-select">
   </div>
 
-  <button class="font-roboto font-bold text-red text-2xl block w-full text-align-center">Update event</button>
+  <button class="form-button">Update event</button>
 </form>
 
-<form method="POST" action="/events/delete" class="ml-6 pl-4 w-5/6 max-w-lg mb-6">
+<form method="POST" action="/events/delete" class="delete-event-form">
   <input type="hidden" name="id" value="{{event.id}}">
   <input type="hidden" name="day" value="{{event.day}}">
-  <button class="font-roboto font-bold text-white text-2xl block w-auto bg-red rounded-md px-2 py-1 text-align-center mx-auto">
-    Delete event
-  </button>
+  <button class="delete-event-button">Delete event</button>
 </form>
