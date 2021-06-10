@@ -80,7 +80,6 @@
 * JavaScript
   - [ ] `'use strict'`
   - [ ] StandardJS
-  - [ ] DOM vs. Virtual DOM
 
 * Transpiled languages
   - [ ] TypeScript
@@ -102,8 +101,6 @@
   - [ ] How to make a Firefox plugin
   - [ ] Electron
 
-* _Any other topic that will be interesting for people_ (validate with teacher first)
-
 * UI Framework
   - [ ] Bulma
 
@@ -117,3 +114,5 @@
   - [ ] Roy Fielding
   - [ ] Sandi Metz
   - [ ] Steve Wozniak
+
+* _Any other topic that will be interesting for people_ (validate with teacher first)
