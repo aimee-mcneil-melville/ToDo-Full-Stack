@@ -51,68 +51,49 @@
 
 ## Topics
 
+* Git commands
+  - [ ] `git blame`
+  - [ ] `git cherry-pick`
+  - [ ] `git rebase`
+
 * Functional Programming
   - [ ] What is functional programming
-  - [ ] Currying and partial application
+  - [ ] Currying
 
-* Design patterns
-  - [ ] Strategy Design Pattern
-  - [ ] Observer Design Pattern
-  - [ ] Model View Controller (MVC)
+* ECMAScript 6 (ES6)
+  - [ ] Destructuring
+  - [ ] Default parameters, Rest operators, Spread operators
+  - [ ] `Map` and `Set`
+  - [ ] Babel & Transpiling
+  - [ ] Generator functions
+  - [ ] ES7
 
-* NoSQL databases
-  - [ ] Neo4J
-  - [ ] MongoDB
-  - [ ] CouchDB
-  - [ ] [Secure Scuttlebutt](https://ssbc.github.io/secure-scuttlebutt/) (hard)
+* Security
+  - [ ] CORS
+  - [ ] SQL Injection attack
+  - [ ] Cross site scripting
+  - [ ] Heartbleed SSL vulnerability
+  - [ ] Fundamentals of encryption
+
+* Algorithms
+  - [ ] Common sorting algorithms
+  - [ ] Binary search & Git bisect
+  - [ ] Big O notation
 
 * JavaScript libraries
+  - [ ] Zepto
+  - [ ] Lodash
+  - [ ] Immutable.js
+  - [ ] Angular
   - [ ] CycleJS
   - [ ] Three.js
   - [ ] D3.js
   - [ ] Ember
 
-* Code smells
-  - [ ] Purposeless conditions
-  - [ ] Functions that do more than one thing
-  - [ ] Cyclomatic complexity [link](http://webuniverse.io/cyclomatic-complexity-refactoring-tips/) [eslint rule](http://eslint.org/docs/rules/complexity)
-
-* JavaScript
-  - [ ] `'use strict'`
-  - [ ] StandardJS
-
-* Transpiled languages
-  - [ ] TypeScript
-  - [ ] CoffeeScript
-  - [ ] ClosureScript
-  - [ ] Elm
-
-* Command line tools
-  - [ ] `ack`
-  - [ ] `sed`, `grep`, `ag`
-  - [ ] `ln`, `ls`
-  - [ ] `chmod`, `chown`, `chgrp`
-  - [ ] `echo`, `cat`, `tail`
-  - [ ] `nvm`
-  - _Another CLI tool of your choice_ (validate with teacher first)
-
-* Other types of app experiences
+* Other experiences
   - [ ] How to make a Chrome Extension
-  - [ ] How to make a Firefox plugin
   - [ ] Electron
+  - [ ] IoT (Internet of Things)
+  - [ ] TypeScript
 
-* UI Framework
-  - [ ] Bulma
-
-* Famous Programmers
-  - [ ] Audrey Tang
-  - [ ] Barbara Liskov
-  - [ ] Brendan Eich
-  - [ ] Hedy Lamarr
-  - [ ] Mary Wilkes
-  - [ ] Richard Stallman
-  - [ ] Roy Fielding
-  - [ ] Sandi Metz
-  - [ ] Steve Wozniak
-
-* _Any other topic that will be interesting for people_ (validate with teacher first)
+* Another topic that will be interesting for people _(validate with teacher first)_
