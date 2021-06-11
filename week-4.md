@@ -3,79 +3,105 @@
 ## Instructions
 
 1. Decide on a topic and a day to present.
-2. Open this file for editing.
-3. Under _Topics_, replace the space with an `x` in the `[ ]` next to the topic of your choice.
-4. Under _Schedule_, enter your topic and name on a day in the order you wish to present. There are a max of 4 talks per day.
-5. Commit your changes.
-6. Prepare for your talk.
+1. Open this file for editing.
+1. Under _Topics_, replace the space with an `x` in the `[ ]` next to the topic of your choice.
+1. Under _Schedule_, enter your topic and name on the day you wish to present. There are 6 talks per day.
+1. Sign up to give feedback to two other talks.
+1. Commit your changes.
+1. Prepare your talk.
 
 
 ## Schedule
 
 ### Tuesday
 
-1. Name: Topic
-2. Name: Topic
-3. Name: Topic
-4. Name: Topic
-5. Name: Topic
+| Order | Speaker | Topic | Feedbacker 1 | Feedbacker 2 |
+| ----- | :-----: | :---: | :----------: | :----------: |
+|   1   |         |       |              |              |
+|   2   |         |       |              |              |
+|   3   |         |       |              |              |
+|   4   |         |       |              |              |
+|   5   |         |       |              |              |
+|   6   |         |       |              |              |
 
 
 ### Wednesday
 
-1. Name: Topic
-2. Name: Topic
-3. Name: Topic
-4. Name: Topic
-5. Name: Topic
+| Order | Speaker | Topic | Feedbacker 1 | Feedbacker 2 |
+| ----- | :-----: | :---: | :----------: | :----------: |
+|   1   |         |       |              |              |
+|   2   |         |       |              |              |
+|   3   |         |       |              |              |
+|   4   |         |       |              |              |
+|   5   |         |       |              |              |
+|   6   |         |       |              |              |
+
 
 
 ### Thursday
 
-1. Name: Topic
-2. Name: Topic
-3. Name: Topic
-4. Name: Topic
-5. Name: Topic
-6. Name: Topic
+| Order | Speaker | Topic | Feedbacker 1 | Feedbacker 2 |
+| ----- | :-----: | :---: | :----------: | :----------: |
+|   1   |         |       |              |              |
+|   2   |         |       |              |              |
+|   3   |         |       |              |              |
+|   4   |         |       |              |              |
+|   5   |         |       |              |              |
+|   6   |         |       |              |              |
+
 
 
 ## Topics
 
 * Security
   - [ ] CORS
-  - [ ] SQL Injection attack
   - [ ] Cross site scripting
-  - [ ] Heartbleed SSH vulnerability
   - [ ] Fundamentals of encryption
+  - [ ] Heartbleed SSH vulnerability
+  - [ ] SQL Injection attack
 
 * ECMAScript 6 (ES6)
-  - [ ] `Map` and `Set`
+  - [ ] `Array.from()`, `Array.fill()`
   - [ ] Asynchronous JavaScript with Generators
   - [ ] Babel & Transpiling
+  - [ ] Default parameters, Rest & Spread operators
+  - [ ] Destructuring
+  - [ ] `Map` and `Set`
+
+* Relational databases
+  - [ ] Database indexes
+  - [ ] DDL, DNL, DCL, TCL
+  - [ ] SQL joins (left, right, inner, outer, full)
+
+* Git commands
+  - [ ] `git blame`
+  - [ ] `git cherry-pick`
+  - [ ] `git rebase`
 
 * Algorithms
-  - [ ] Common sorting algorithms
-  - [ ] Binary search & Git bisect
   - [ ] Big O notation
+  - [ ] Binary search & Git bisect
+  - [ ] Common sorting algorithms
 
 * JavaScript libraries
-  - [ ] Zepto
+  - [ ] Angular
+  - [ ] Immutable.js
   - [ ] Lodash
   - [ ] rx.js (hard)
-  - [ ] Immutable.js
-  - [ ] Angular
+  - [ ] Zepto
 
 * UI Framework
+  - [ ] Material Design
   - [ ] Semantic UI
 
 * Famous Programmers
-  - [ ] Radia Perlman
+  - [ ] Ada Lovelace
+  - [ ] Alan Turing
+  - [ ] Annie Easley
+  - [ ] Charles Babbidge
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Grace Hopper
   - [ ] Ken Thompson
-  - [ ] Annie Easley
   - [ ] Linus Torvalds
   - [ ] Margaret Hamilton
-
-<!-- Count: 22 -->
+  - [ ] Radia Perlman
