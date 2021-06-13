@@ -1,6 +1,9 @@
 # Built files
 main.css
 
+# DB
+dev.sqlite3
+
 # Logs
 logs
 *.log
