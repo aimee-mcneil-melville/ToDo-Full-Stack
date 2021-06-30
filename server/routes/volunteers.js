@@ -16,7 +16,7 @@ router.get('/emailsignup', (req, res) => {
 
   db.addVolunteer(volunteer)
     .then(() => {
-      res.redirect('/garden')
+      res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
     })
     .catch(e => {
