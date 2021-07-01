@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-function WaitIndicator () {
+export default function WaitIndicator () {
   const waiting = useSelector(globalState => globalState.waiting)
 
   return (
@@ -18,5 +18,3 @@ function WaitIndicator () {
     </>
   )
 }
-
-export default WaitIndicator

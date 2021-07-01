@@ -1,7 +1,7 @@
 import React from 'react'
 import VolunteerListItem from '../VolunteerListItem/VolunteerListItem'
 
-function VolunteerList (props) {
+export default function VolunteerList (props) {
   const volunteers = props.volunteers || []
   return (
     <>
@@ -22,5 +22,3 @@ function VolunteerList (props) {
     </>
   )
 }
-
-export default VolunteerList

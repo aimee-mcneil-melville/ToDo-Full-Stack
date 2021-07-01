@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ExtraVolunteerForm () {
+export default function ExtraVolunteerForm () {
   return (
     <form>
       <label htmlFor="firstName">First Name</label>
@@ -10,5 +10,3 @@ function ExtraVolunteerForm () {
     </form>
   )
 }
-
-export default ExtraVolunteerForm

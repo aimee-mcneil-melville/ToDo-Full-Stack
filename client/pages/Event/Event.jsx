@@ -8,7 +8,7 @@ import Map from '../../components/Map/Map'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 
-function Event () {
+export default function Event () {
   const { id } = useParams()
 
   const [event, setEvent] = useState({})
@@ -74,5 +74,3 @@ function Event () {
     </>
   )
 }
-
-export default Event

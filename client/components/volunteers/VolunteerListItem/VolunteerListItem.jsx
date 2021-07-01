@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { toggleAttendance } from './volunteerListItemHelper'
 
-function VolunteerListItem ({ volunteer, eventId }) {
+export default function VolunteerListItem ({ volunteer, eventId }) {
   const { userId, firstName, lastName, attended } = volunteer
   const [isChecked, setIsChecked] = useState(attended)
 
@@ -21,5 +21,3 @@ function VolunteerListItem ({ volunteer, eventId }) {
     </li>
   )
 }
-
-export default VolunteerListItem

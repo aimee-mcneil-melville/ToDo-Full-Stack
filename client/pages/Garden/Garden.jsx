@@ -6,7 +6,7 @@ import Map from '../../components/Map/Map'
 import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
 
-function Garden () {
+export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
 
@@ -34,5 +34,3 @@ function Garden () {
     </>
   )
 }
-
-export default Garden

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import EventItem from '../EventItem/EventItem'
 
-function Events ({ events }) {
+export default function Events ({ events }) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   return (
@@ -25,5 +25,3 @@ function Events ({ events }) {
     </>
   )
 }
-
-export default Events
