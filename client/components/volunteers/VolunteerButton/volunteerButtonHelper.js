@@ -3,21 +3,21 @@ import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
-export function toggleVolunteerStatus (eventId, isVolunteer, consume = requestor) {
+export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, consume = requestor) {
   const storeState = getState()
   const { id } = storeState.user
   if (!id) {
     dispatch(showError('Please register or sign in to volunteer.'))
-    return Promise.resolve()
   } else {
     dispatch(setWaiting())
-    const routeMethod = isVolunteer ? 'delete' : 'post'
+    const routeMethod = willVolunteer ? 'post' : 'delete'
     const userData = { userId: id, eventId }
 
     return consume('/volunteers', routeMethod, userData)
       .then(() => {
         dispatch(clearWaiting())
-        return true
+        setVolunteering(willVolunteer)
+        return null
       })
       .catch((error) => {
         dispatch(showError(error.message))

@@ -9,36 +9,33 @@ afterEach(() => {
 })
 
 describe('toggleVolunteerStatus', () => {
-  it('dispatches error if no user id (user not logged in)', () => {
+  it('dispatches error if user not logged in', () => {
     getState.mockImplementation(() => ({ user: { id: null } }))
 
-    return toggleVolunteerStatus()
-      .then((wasSuccessful) => {
-        expect(wasSuccessful).toBeFalsy()
-        expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
-        return null
-      })
+    toggleVolunteerStatus()
+    expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
   })
 
-  it('makes post request when not volunteered', () => {
+  it('makes post request when wanting to volunteer', () => {
     expect.assertions(2)
     getState.mockImplementation(() => ({ user: { id: 2 } }))
     const eventId = 1
-    const isVolunteer = false
+    const willVolunteer = true
 
     function consume (url, method, userData) {
       expect(method).toBe('post')
       expect(userData.userId).toBe(2)
       return Promise.resolve()
     }
-    return toggleVolunteerStatus(eventId, isVolunteer, consume)
+
+    return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
   })
 
-  it('makes delete request when volunteered', () => {
+  it('makes delete request when wanting to unvolunteer', () => {
     expect.assertions(2)
     getState.mockImplementation(() => ({ user: { id: 4 } }))
     const eventId = 3
-    const isVolunteer = true
+    const willVolunteer = false
 
     function consume (url, method, userData) {
       expect(method).toBe('delete')
@@ -46,33 +43,39 @@ describe('toggleVolunteerStatus', () => {
       return Promise.resolve()
     }
 
-    return toggleVolunteerStatus(eventId, isVolunteer, consume)
+    return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
   })
 
-  it('dispatches correct actions and returns true when api call successful', () => {
+  it('dispatches correct actions and calls setVolunteering when api call successful', () => {
     getState.mockImplementation(() => ({ user: { id: 4 } }))
+    const willVolunteer = true
+    const setVolunteering = jest.fn()
 
     function consume () {
       return Promise.resolve()
     }
-    return toggleVolunteerStatus(null, null, consume)
-      .then((wasSuccessful) => {
+
+    return toggleVolunteerStatus(null, willVolunteer, setVolunteering, consume)
+      .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
-        expect(wasSuccessful).toBeTruthy()
+        expect(setVolunteering).toHaveBeenCalledWith(true)
         return null
       })
   })
 
   it('dispatches error correctly and returns false when api call unsuccessful', () => {
     getState.mockImplementation(() => ({ user: { id: 1 } }))
+    const setVolunteering = jest.fn()
+
     function consume () {
       return Promise.reject(new Error('mock error'))
     }
-    return toggleVolunteerStatus(null, null, consume)
-      .then((wasSuccessful) => {
+
+    return toggleVolunteerStatus(null, null, setVolunteering, consume)
+      .then(() => {
         expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
-        expect(wasSuccessful).toBeFalsy()
+        expect(setVolunteering).not.toHaveBeenCalled()
         return null
       })
   })

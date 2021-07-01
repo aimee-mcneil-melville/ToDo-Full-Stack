@@ -4,13 +4,7 @@ import { toggleVolunteerStatus } from './volunteerButtonHelper'
 
 export default function VolunteerButton ({ eventId, volunteering, setVolunteering }) {
   function handleClick () {
-    return toggleVolunteerStatus(eventId, volunteering)
-      .then((wasSuccessful) => {
-        if (wasSuccessful) {
-          setVolunteering(!volunteering)
-        }
-        return null
-      })
+    toggleVolunteerStatus(eventId, !volunteering, setVolunteering)
   }
 
   return (
