@@ -2,40 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getEvent, toggleVolunteerStatus } from './eventHelper'
+import { getEvent } from './eventHelper'
 
-import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import Map from '../../components/Map/Map'
+import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
+import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 
 function Event () {
   const { id } = useParams()
+
   const [event, setEvent] = useState({})
-  const [isVolunteer, setIsVolunteer] = useState(false)
+  const [volunteering, setVolunteering] = useState(false)
+
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
   // currently using initial state and wipes clear on refresh - needs attention
-  const lat = useSelector(globalState => globalState.garden.lat)
-  const lon = useSelector(globalState => globalState.garden.lon)
-  const address = useSelector(globalState => globalState.garden.address)
+  const { lat, lon, address } = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     getEvent(id)
       .then((event) => {
         setEvent(event)
-        setIsVolunteer(event.isVolunteer)
+        setVolunteering(event.isVolunteer)
         return null
       })
   }, [])
-
-  function clickHandler () {
-    return toggleVolunteerStatus(id, isVolunteer)
-      .then((wasSuccessful) => {
-        if (wasSuccessful) {
-          setIsVolunteer(!isVolunteer)
-        }
-        return null
-      })
-  }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
 
@@ -60,12 +51,11 @@ function Event () {
             </dl>
             <p className='has-text-weight-semibold'>{description}</p>
             {!isAdmin
-              ? <div>
-                {!isVolunteer
-                  ? <button onClick={clickHandler} className='button'>Volunteer</button>
-                  : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
-                }
-              </div>
+              ? <VolunteerButton
+                eventId={id}
+                volunteering={volunteering}
+                setVolunteering={setVolunteering}
+              />
               : null
             }
           </article>

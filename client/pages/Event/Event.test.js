@@ -1,12 +1,11 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
 import { renderWithRedux } from '../../test-utils'
 
 import Event from './Event'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import { getEvent, toggleVolunteerStatus } from './eventHelper'
+import { getEvent } from './eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -69,35 +68,6 @@ describe('Event details page', () => {
         return null
       })
     })
-  })
-
-  it('calls toggleVolunteerStatus on click', () => {
-    getEvent.mockImplementation(() => Promise.resolve(mockData))
-    toggleVolunteerStatus.mockImplementation((id, isVolunteer) => {
-      return Promise.resolve(true)
-    })
-
-    renderWithRedux(<Event />, {
-      initialState: {
-        user: {
-          isAdmin: false
-        }
-      }
-    })
-
-    return screen.findByText('Mock title')
-      .then(() => {
-        const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
-        expect(volunteerButton).toHaveTextContent('Volunteer')
-        userEvent.click(volunteerButton)
-        expect(toggleVolunteerStatus).toHaveBeenCalled()
-        return screen.findByRole('button', { name: 'Un-Volunteer' })
-      })
-      .then(unvolunteerButton => {
-        // expect(unvolunteerButton).toHaveTextContent('Un-Volunteer')
-        expect(unvolunteerButton).toBeInTheDocument()
-        return null
-      })
   })
 })
 

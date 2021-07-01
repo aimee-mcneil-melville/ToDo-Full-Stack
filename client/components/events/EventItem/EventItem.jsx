@@ -1,22 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { toggleVolunteerStatus } from '../../../pages/Event/eventHelper'
+
+import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
 export default function EventItem ({ event, isAdmin }) {
   const { id, title, date, volunteersNeeded, description, totalVolunteers, isVolunteer } = event
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
-
-  function clickHandler () {
-    return toggleVolunteerStatus(id, isVolunteering)
-      .then((wasSuccessful) => {
-        if (wasSuccessful) {
-          setIsVolunteering(!isVolunteering)
-        }
-        return null
-      })
-  }
 
   return (
     <article className='box my-5'>
@@ -26,9 +17,11 @@ export default function EventItem ({ event, isAdmin }) {
         </h2>
         {isAdmin
           ? <Link to={`/events/${id}/edit`} className='button'>Edit Event</Link>
-          : !isVolunteering
-            ? <button onClick={clickHandler} className='button'>Volunteer</button>
-            : <button onClick={clickHandler} className='button'>Un-Volunteer</button>
+          : <VolunteerButton
+            eventId={id}
+            volunteering={isVolunteering}
+            setVolunteering={setIsVolunteering}
+          />
         }
       </div>
       <p>{date}</p>
