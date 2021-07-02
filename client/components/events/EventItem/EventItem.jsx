@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
@@ -8,6 +8,10 @@ export default function EventItem ({ event, isAdmin }) {
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
+
+  useEffect(() => {
+    setIsVolunteering(isVolunteer)
+  }, [isVolunteer])
 
   return (
     <article className='box my-5'>
