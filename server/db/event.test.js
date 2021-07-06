@@ -14,6 +14,11 @@ beforeAll(() => {
 beforeEach(() => {
   return testDb.seed.run()
 })
+
+afterAll(() => {
+  return testDb.destroy()
+})
+
 describe('getEventById', () => {
   it('returns the chosen Event', () => {
     return db.getEventById(3, testDb)

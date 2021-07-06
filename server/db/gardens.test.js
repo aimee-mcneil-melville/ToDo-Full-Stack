@@ -15,6 +15,10 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
+afterAll(() => {
+  return testDb.destroy()
+})
+
 describe('getGardens', () => {
   it('returns the correct number of gardens', () => {
     return db.getGardens(testDb)

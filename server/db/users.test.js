@@ -15,6 +15,10 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
+afterAll(() => {
+  return testDb.destroy()
+})
+
 describe('getUserByName', () => {
   it('returns the correct user', () => {
     return users.getUserByName('admin', testDb)
