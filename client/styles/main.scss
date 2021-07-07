@@ -1,12 +1,7 @@
 @charset "utf-8";
-// Bulma 
-// Here are the docs https://bulma.io/documentation/
-@use "bulma/bulma.sass";
-
-// Custom CSS - Bulma Overrides
-
 // 0 - TOOLS 
 // *** CSS Resets, etc ***
+@use './0-tools/__tools.scss';
 
 // 1 - HELPERS 
 // *** All variables, mixins.scss and functions.scss ***

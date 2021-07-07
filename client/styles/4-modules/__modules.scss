@@ -1,9 +1,9 @@
 // Import all modules files into here with @use. 
 // Then import this file into main.scss in root directory
 
-@use 'buttons.scss';
-@use 'map.scss';
-@use 'links.scss';
+@use 'buttons';
+@use 'map';
+@use 'links';
 @use 'description-list';
 @use 'loading-icon';
 @use 'photos';

@@ -1,14 +1,14 @@
-@use '../1-helpers/colors';
+@use '../1-helpers/vars';
 
 .logo {
-    color: colors.$green;
+    color: vars.$primary;
 
     span {
-        color: colors.$dark-green;
+        color: vars.$dark-green;
     }
 
     &:hover {
-        color: colors.$green;
+        color: vars.$primary;
     }
    
 }
