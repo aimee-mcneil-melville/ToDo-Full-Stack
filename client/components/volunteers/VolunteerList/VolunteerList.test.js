@@ -21,10 +21,12 @@ describe('Volunteers list', () => {
     ]
     render(<VolunteerList volunteers={mockVolunteers} />)
     expect(screen.getAllByRole('listitem')).toHaveLength(2)
+    expect(screen.queryByText('No volunteers yet')).toBeNull()
   })
 
-  it('does not display list if no volunteers provided', () => {
+  it('displays "No volunteers yet" if no volunteers provided', () => {
     render(<VolunteerList />)
     expect(screen.queryByRole('listitem')).toBeNull()
+    expect(screen.getByText('No volunteers yet')).toBeInTheDocument()
   })
 })
