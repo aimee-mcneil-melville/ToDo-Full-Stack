@@ -12,13 +12,13 @@ jest.mock('./registerHelper')
 describe('form fields', () => {
   it('update correctly on user input', () => {
     render(<Register />)
-    const firstNameInput = screen.getByLabelText('First Name')
-    const lastNameInput = screen.getByLabelText('Last Name')
-    const usernameInput = screen.getByLabelText('Username')
+    const firstNameInput = screen.getByRole('textbox', { name: 'First Name' })
+    const lastNameInput = screen.getByRole('textbox', { name: 'Last Name' })
+    const usernameInput = screen.getByRole('textbox', { name: 'Username' })
     // need getByLabelText for password as type="hidden" hides it for getByRole
     const passwordInput = screen.getByLabelText('Password')
-    const emailInput = screen.getByLabelText('Email')
-    const gardenInput = screen.getByLabelText('My Garden')
+    const emailInput = screen.getByRole('textbox', { name: 'Email' })
+    const gardenInput = screen.getByRole('combobox', { name: 'My Garden' })
 
     userEvent.type(firstNameInput, 'test first name')
     userEvent.type(lastNameInput, 'test last name')
