@@ -35,18 +35,18 @@ describe('getGardenById', () => {
       .then(garden => {
         expect(garden.id).toBe(1)
         expect(garden.name).toBe('Kelmarna Gardens')
-        expect(garden.events).toHaveLength(2)
+        expect(garden.events).toHaveLength(3)
         const event = garden.events[1]
-        expect(event.id).toBe(3)
-        expect(event.volunteersNeeded).toBe(4)
+        expect(event.id).toBe(4)
+        expect(event.volunteersNeeded).toBe(24)
         return null
       })
   })
   it('returns the chosen garden, with empty events array when no events', () => {
-    return db.getGardenById(2, testDb)
+    return db.getGardenById(3, testDb)
       .then(garden => {
-        expect(garden.id).toBe(2)
-        expect(garden.name).toBe('Kingsland Community Orchard')
+        expect(garden.id).toBe(3)
+        expect(garden.name).toBe('Devonport Community Garden')
         expect(garden.events).toHaveLength(0)
         return null
       })

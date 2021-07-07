@@ -16,7 +16,7 @@ module.exports = {
       filename: ':memory:'
     },
     seeds: {
-      directory: path.join(__dirname, 'testSeeds')
+      directory: path.join(__dirname, 'seeds')
     },
     migrations: {
       directory: path.join(__dirname, 'migrations')
@@ -31,7 +31,7 @@ module.exports = {
       max: 10
     },
     seeds: {
-      directory: path.join(__dirname, 'testSeeds')
+      directory: path.join(__dirname, 'seeds')
     },
     migrations: {
       directory: path.join(__dirname, 'migrations')

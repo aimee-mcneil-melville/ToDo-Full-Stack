@@ -27,7 +27,7 @@ describe('getUserByName', () => {
         expect(user.isAdmin).toBeTruthy()
         expect(user.gardenId).toBe(1)
         expect(user).toHaveProperty('hash')
-        expect(user.email).toBe('admin@outlook.com')
+        expect(user.email).toBe('admin@emailz.co')
         return null
       })
   })
@@ -39,7 +39,7 @@ describe('createUser', () => {
       username: 'newuser',
       password: 'hello',
       gardenId: 3,
-      email: 'random@testoutlook.com'
+      email: 'random@emailz.co'
     }
     return users.createUser(user, testDb)
       .then(() => users.getUserByName('newuser', testDb))
@@ -47,7 +47,7 @@ describe('createUser', () => {
         expect(user.username).toBe('newuser')
         expect(user.isAdmin).toBeFalsy()
         expect(user.gardenId).toBe(3)
-        expect(user.email).toBe('random@testoutlook.com')
+        expect(user.email).toBe('random@emailz.co')
         return null
       })
   })
@@ -72,12 +72,10 @@ describe('userExists', () => {
 
 describe('get users details by garden', () => {
   it('returns the details of the non admin users in related garden', () => {
-    expect.assertions(4)
+    expect.assertions(2)
     return users.getUserDetailsByGarden('1', testDb)
       .then((users) => {
-        expect(users).toHaveLength(1)
-        expect(users[0].email).toBe('test@outlook.com')
-        expect(users[0].id).toBe(2)
+        expect(users).toHaveLength(2)
         expect(users[0].is_admin).toBeFalsy()
         return null
       })
