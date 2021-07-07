@@ -1,22 +1,22 @@
 import React from 'react'
 import VolunteerListItem from '../VolunteerListItem/VolunteerListItem'
 
-export default function VolunteerList (props) {
-  const volunteers = props.volunteers || []
+export default function VolunteerList ({ volunteers, eventId }) {
   return (
     <>
       <h4>List of Volunteers</h4>
       <ul>
-        {
-          volunteers.map(volunteer => {
+        {volunteers?.length
+          ? volunteers.map(volunteer => {
             return (
               <VolunteerListItem
                 key={volunteer.userId}
                 volunteer={volunteer}
-                eventId={props.eventId}
+                eventId={eventId}
               />
             )
           })
+          : <p>No volunteers yet</p>
         }
       </ul>
     </>
