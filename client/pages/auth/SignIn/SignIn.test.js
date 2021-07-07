@@ -12,7 +12,7 @@ jest.mock('./signInHelper')
 describe('form fields', () => {
   it('update correctly on user input', () => {
     render(<SignIn />)
-    const usernameInput = screen.getByLabelText('Username')
+    const usernameInput = screen.getByRole('textbox', { name: 'Username' })
     // need getByLabelText for password as type="hidden" hides it for getByRole
     const passwordInput = screen.getByLabelText('Password')
 
