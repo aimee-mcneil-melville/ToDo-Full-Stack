@@ -14,16 +14,21 @@ beforeAll(() => {
 beforeEach(() => {
   return testDb.seed.run()
 })
+
+afterAll(() => {
+  return testDb.destroy()
+})
+
 describe('getEventById', () => {
   it('returns the chosen Event', () => {
     return db.getEventById(3, testDb)
       .then((event) => {
         expect(event.id).toBe(3)
-        expect(event.gardenId).toBe(1)
-        expect(event.gardenName).toMatch('Kelmarna')
-        expect(event.gardenAddress).toMatch('Hukanui')
-        expect(event.title).toBe('Sowing Corn')
-        expect(event.volunteersNeeded).toBe(4)
+        expect(event.gardenId).toBe(2)
+        expect(event.gardenName).toMatch('Kingsland')
+        expect(event.gardenAddress).toMatch('Bond Street')
+        expect(event.title).toBe('Sowing potatoes')
+        expect(event.volunteersNeeded).toBe(14)
         expect(event).toHaveProperty('date')
         expect(event).toHaveProperty('description')
         expect(event.volunteers).toHaveLength(2)

@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux'
 import { isAuthenticated } from './auth'
 
 import Header from './components/Header'
-import Register from './pages/auth/Register'
-import SignIn from './pages/auth/SignIn'
-import Garden from './pages/Garden'
-import Home from './pages/Home'
-import AddEvent from './pages/admin/AddEvent'
-import EditEvent from './pages/admin/EditEvent'
-import Error from './components/Error'
-import Event from './pages/Event'
+import Register from './pages/auth/Register/Register'
+import SignIn from './pages/auth/SignIn/SignIn'
+import Garden from './pages/Garden/Garden'
+import Home from './pages/Home/Home'
+import AddEvent from './pages/admin/AddEvent/AddEvent'
+import EditEvent from './pages/admin/EditEvent/EditEvent'
+import Error from './components/Error/Error'
+import Event from './pages/Event/Event'
 
 export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)

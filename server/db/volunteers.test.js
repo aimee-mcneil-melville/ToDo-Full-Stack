@@ -7,6 +7,18 @@ const testDb = knex(config)
 // Prevent Jest from timing out (5s often isn't enough)
 jest.setTimeout(10000)
 
+beforeAll(() => {
+  return testDb.migrate.latest()
+})
+
+beforeEach(() => {
+  return testDb.seed.run()
+})
+
+afterAll(() => {
+  return testDb.destroy()
+})
+
 function getTestVolunteers (userId, eventId) {
   if (userId && eventId) {
     return testDb('eventVolunteers')
@@ -16,14 +28,6 @@ function getTestVolunteers (userId, eventId) {
 
   return testDb('eventVolunteers').select()
 }
-
-beforeAll(() => {
-  return testDb.migrate.latest()
-})
-
-beforeEach(() => {
-  return testDb.seed.run()
-})
 
 describe('addVolunteer', () => {
   it('adds a volunteer', () => {

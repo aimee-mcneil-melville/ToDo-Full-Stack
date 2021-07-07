@@ -1,0 +1,82 @@
+import { toggleVolunteerStatus } from './volunteerButtonHelper'
+import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { dispatch, getState } from '../../../store'
+
+jest.mock('../../../store')
+
+afterEach(() => {
+  return jest.resetAllMocks()
+})
+
+describe('toggleVolunteerStatus', () => {
+  it('dispatches error if user not logged in', () => {
+    getState.mockImplementation(() => ({ user: { id: null } }))
+
+    toggleVolunteerStatus()
+    expect(dispatch.mock.calls[0][0].errorMessage).toMatch('Please register or sign in to volunteer.')
+  })
+
+  it('makes post request when wanting to volunteer', () => {
+    expect.assertions(2)
+    getState.mockImplementation(() => ({ user: { id: 2 } }))
+    const eventId = 1
+    const willVolunteer = true
+
+    function consume (url, method, userData) {
+      expect(method).toBe('post')
+      expect(userData.userId).toBe(2)
+      return Promise.resolve()
+    }
+
+    return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
+  })
+
+  it('makes delete request when wanting to unvolunteer', () => {
+    expect.assertions(2)
+    getState.mockImplementation(() => ({ user: { id: 4 } }))
+    const eventId = 3
+    const willVolunteer = false
+
+    function consume (url, method, userData) {
+      expect(method).toBe('delete')
+      expect(userData.userId).toBe(4)
+      return Promise.resolve()
+    }
+
+    return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
+  })
+
+  it('dispatches correct actions and calls setVolunteering when api call successful', () => {
+    getState.mockImplementation(() => ({ user: { id: 4 } }))
+    const willVolunteer = true
+    const setVolunteering = jest.fn()
+
+    function consume () {
+      return Promise.resolve()
+    }
+
+    return toggleVolunteerStatus(null, willVolunteer, setVolunteering, consume)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        expect(setVolunteering).toHaveBeenCalledWith(true)
+        return null
+      })
+  })
+
+  it('dispatches error correctly and returns false when api call unsuccessful', () => {
+    getState.mockImplementation(() => ({ user: { id: 1 } }))
+    const setVolunteering = jest.fn()
+
+    function consume () {
+      return Promise.reject(new Error('mock error'))
+    }
+
+    return toggleVolunteerStatus(null, null, setVolunteering, consume)
+      .then(() => {
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        expect(setVolunteering).not.toHaveBeenCalled()
+        return null
+      })
+  })
+})
