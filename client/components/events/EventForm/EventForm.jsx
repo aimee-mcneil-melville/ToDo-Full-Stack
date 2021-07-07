@@ -101,10 +101,7 @@ export default function EventForm (props) {
             ? <p>{date}</p>
             : <p>Your date here</p>
           }
-          {volunteersNeeded
-            ? <p>{volunteersNeeded} volunteers needed</p>
-            : <p>Number of volunteers</p>
-          }
+          <p>{volunteersNeeded} volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''} needed</p>
           {description
             ? <p>{description}</p>
             : <p>Your description here</p>
