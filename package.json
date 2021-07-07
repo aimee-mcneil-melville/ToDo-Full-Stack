@@ -46,14 +46,14 @@
     ]
   },
   "jest": {
-  "verbose": true,
-  "projects": [
-    "<rootDir>/client",
-    "<rootDir>/server"
-  ],
-  "testPathIgnorePatterns": [
-    "/e2e/"
-  ]
+    "verbose": true,
+    "projects": [
+      "<rootDir>/client",
+      "<rootDir>/server"
+    ],
+    "testPathIgnorePatterns": [
+      "/e2e/"
+    ]
   },
   "engines": {
     "node": "14.16",
