@@ -7,6 +7,7 @@ import { getEvent } from './eventHelper'
 import Map from '../../components/Map/Map'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
+import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 
 export default function Event () {
   const { id } = useParams()
@@ -62,10 +63,13 @@ export default function Event () {
         </div>
       </article>
       {isAdmin
-        ? <VolunteerList
-          volunteers={volunteers}
-          eventId={event.id}
-        />
+        ? <>
+          <VolunteerList
+            volunteers={volunteers}
+            eventId={event.id}
+          />
+          <AddVolunteerForm />
+        </>
         : <Map
           coordinates={[{ lat, lon }]}
           addresses={[address]}
