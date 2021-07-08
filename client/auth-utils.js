@@ -1,21 +1,21 @@
-import { isAuthenticated, getDecodedToken } from './auth'
+// import { isAuthenticated, getDecodedToken } from './auth'
 
-const emptyUser = {
-  id: null,
-  username: '',
-  isAdmin: false,
-  gardenId: null
-}
+// const emptyUser = { <---- Dont delete?
+//   id: null,
+//   username: '',
+//   isAdmin: false,
+//   gardenId: null
+// }
 
 export function getUser () {
-  if (isAuthenticated()) {
-    const { username, isAdmin, gardenId, id } = getDecodedToken()
-    return {
-      username,
-      isAdmin,
-      gardenId,
-      id
-    }
+  // if (isAuthenticated()) {
+  // const { username, isAdmin, gardenId, id } = getDecodedToken()
+  return {
+    username: 'Josh',
+    isAdmin: true,
+    gardenId: 1,
+    id: 2
   }
-  return emptyUser
+  // }
+  // return emptyUser
 }

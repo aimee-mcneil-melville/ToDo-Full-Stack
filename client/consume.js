@@ -1,5 +1,6 @@
 import request from 'superagent'
-import { getAuthorizationHeader } from './auth'
+
+// import { getAuthorizationHeader } from './auth' <---- TO DELETE
 
 const baseUrl = '/api/v1'
 
@@ -10,7 +11,7 @@ export default function consume (endpoint, method = 'get', data = {}) {
   }
 
   return request[method](baseUrl + endpoint)
-    .set(getAuthorizationHeader())
+    // .set(getAuthorizationHeader())
     .set(headers)[payLoadMethod](data)
     .then((res) => res)
     .catch((err) => {
