@@ -1,14 +1,14 @@
 @use '../1-helpers/mixins';
-@use '../1-helpers/colors';
+@use '../1-helpers/vars';
 
 .page__link {
   @include mixins.word-wrap()
 }
 
 .title-link {
-  color: colors.$black;
+  color: vars.$black;
 
   &:hover {
-    color: colors.$green;
+    color: vars.$green;
   }
 }
