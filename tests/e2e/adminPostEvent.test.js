@@ -29,7 +29,13 @@ afterAll(async () => {
 // Test goes here
 test('Admin can login & add event', async () => {
   await page.goto('localhost:3000')
+  expect(await page.textContent('h2.title')).toBe('Welcome!')
   await page.click('text=Sign in')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
+  await page.fill('#username', 'admin')
+  await page.fill('#password', '')
+  await page.click('button', { force: true })
+  expect(await page.textContent('.message-header')).toMatch('Username/password combination not found')
   expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')

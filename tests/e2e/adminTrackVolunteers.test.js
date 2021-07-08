@@ -2,6 +2,8 @@ const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
 
+jest.setTimeout(10000)
+
 let browser
 let page
 beforeAll(async () => {
@@ -21,6 +23,7 @@ afterEach(async () => {
 
 afterAll(async () => {
   await browser.close()
+  return db.destroy()
 })
 
 // Test goes here
