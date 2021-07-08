@@ -5,7 +5,7 @@ const db = require('knex')(config)
 jest.setTimeout(10000)
 
 const imgpath = 'tests/e2e/screenshots/'
-const timeOut = 2000
+const timeOut = 50
 
 let browser
 let page
@@ -128,7 +128,7 @@ test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/signin')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
   await page.click('text=Log out')
@@ -137,7 +137,7 @@ test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Un-Volunteer')
   expect(await page.content()).toMatch('Volunteer')
   await page.screenshot({ path: imgpath + 'un-volunteersuccess.png' })
