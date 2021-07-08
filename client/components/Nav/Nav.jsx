@@ -12,6 +12,7 @@ export default function Nav () {
     <nav className="navbar column">
       <div className="navbar-item">
         <IfAuthenticated>
+          <Link to="/" className='ml-4'>My Garden</Link>
           <Link to="/" onClick={logOut} className='ml-4'>
               Log out
           </Link>
