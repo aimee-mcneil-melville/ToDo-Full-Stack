@@ -1,3 +1,5 @@
+@use '../1-helpers/mixins';
+
 .container {
   position: relative;
   margin: 0 auto;
@@ -6,6 +8,10 @@
 
 .flex-container {
   display: flex;
+  flex-direction: column;
+  @include mixins.media-queries(tablet, min) {
+    flex-direction: row;
+  }
 }
 
 .flex-column {
