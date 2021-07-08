@@ -33,11 +33,6 @@ test('Admin can login & add event', async () => {
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
   await page.fill('#username', 'admin')
-  await page.fill('#password', '')
-  await page.click('button', { force: true })
-  expect(await page.textContent('.message-header')).toMatch('Username/password combination not found')
-  expect(await page.url()).toBe('http://localhost:3000/signin')
-  await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
   expect(await page.url()).toBe('http://localhost:3000/gardens/1')
@@ -47,7 +42,7 @@ test('Admin can login & add event', async () => {
   await page.fill('[type=date]', '2021-12-25')
   await page.fill('[type=number]', '100')
   await page.fill('#description', "I don't want a lot for Christmas, there is just one thing I need, I don't care about the presents, underneath the Christmas tree, I just want you for my own, more than you could ever know, make my wish come true, all I want for Christmas is you")
-
+  expect(await page.innerText('.box .title')).toBe('Christmas Gardening!')
   await Promise.all([
     page.waitForNavigation(),
     page.click('button', { force: true })

@@ -25,4 +25,5 @@ afterAll(async () => {
   await browser.close()
   return db.destroy()
 })
+
 // Test goes here
