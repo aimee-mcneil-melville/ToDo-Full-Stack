@@ -13,6 +13,7 @@
 
   &-reverse {
     flex-direction: column-reverse;
+    //complies to .flex-column-reverse
   }
 }
 
@@ -21,5 +22,7 @@
 
   &-reverse {
     flex-direction: row-reverse;
+    //complies to .flex-row-reverse
   }
 }
+
