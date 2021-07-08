@@ -1,21 +1,18 @@
 import React from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
-// import { isAuthenticated } from '../../auth' ---> IMPORT ISAUTHENTICATED FROM USEAUTH0
+
 
 export function IfAuthenticated ({ children }) {
-  function isAuthenticated () {
-    return true
-  }
-  return isAuthenticated()
+  const { isAuthenticated } = useAuth0()
+  return isAuthenticated
     ? <>{children}</>
     : null
 }
 
 export function IfNotAuthenticated ({ children }) {
-  function isAuthenticated () {
-    return true
-  }
-  return !isAuthenticated()
+  const { isAuthenticated } = useAuth0()
+  return !isAuthenticated
     ? <>{children}</>
     : null
 }
