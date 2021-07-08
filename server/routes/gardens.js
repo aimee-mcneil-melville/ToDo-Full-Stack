@@ -1,12 +1,12 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/gardens')
-const { getTokenDecoder } = require('../auth')
 
 const router = express.Router()
 
 module.exports = router
 
+// doesnt need autheniticaiton
 router.get('/', (req, res) => {
   db.getGardens()
     .then((gardens) => {
@@ -22,7 +22,9 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', getTokenDecoder(false), (req, res) => {
+// doesnt need autheniticaiton
+// handle user.isAdmin?
+router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   const user = req.user || {}
   db.getGardenById(id)
