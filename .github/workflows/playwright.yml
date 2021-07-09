@@ -7,6 +7,14 @@ on:
   # schedule:
   #   # test on schedule using cron syntax
   #   - cron: "0 * * * *" # every hour
+  
+env:
+  JWT_SECRET: ${{secrets.JWT}}
+  SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  HEADLESS: true # for running the E2E browser headless
+  PORT: 3000
+  DEBUG: pw:api
+
 jobs:
   test:
     runs-on: ubuntu-18.04
