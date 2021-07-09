@@ -27,3 +27,15 @@ afterAll(async () => {
 })
 
 // Test goes here
+test('Member can Login & Volunteer', async () => {
+  await page.goto('localhost:3000')
+  expect(await page.textContent('h2.title')).toBe('Welcome!')
+  await page.click('text=Sign in')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
+  await page.fill('#username', 'member')
+  await page.fill('#password', 'member')
+  await page.click('button', { force: true })
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
+  await page.click('text=Volunteer')
+  expect(await page.content()).toMatch('Un-Volunteer')
+})

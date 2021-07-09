@@ -27,3 +27,13 @@ afterAll(async () => {
 })
 
 // Test goes here
+test('Admin can track volunteer', async () => {
+  await page.goto('localhost:3000')
+  await page.click('text=Sign in')
+  expect(await page.url()).toBe('http://localhost:3000/signin')
+  await page.fill('#username', 'admin')
+  await page.fill('#password', 'admin')
+  await page.click('button', { force: true })
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
+  expect(await page.content()).toMatch('15 of 16 volunteers still needed')
+})
