@@ -1,4 +1,5 @@
 import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
+import updateVolCount from './gardenReducerHelper'
 
 const initialState = {
   name: '',
@@ -19,29 +20,4 @@ export default function garden (state = initialState, action) {
     default:
       return state
   }
-}
-
-function updateVolCount (state, action) {
-  const updatedEvents = state.events.map(event => {
-    if (event.id === action.eventId) {
-      if (event.isVolunteer === false) {
-        event.totalVolunteers += 1
-        event.isVolunteer = true
-      } else {
-        event.totalVolunteers -= 1
-        event.isVolunteer = false
-      }
-      return event
-    } else {
-      return event
-    }
-  })
-
-  const newGarden = {
-    ...state,
-    events: updatedEvents
-  }
-
-  console.log('newGarden', newGarden)
-  return newGarden
 }
