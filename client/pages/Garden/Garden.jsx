@@ -16,19 +16,21 @@ export default function Garden () {
 
   const { name, description, address, url, events, lat, lon } = garden
   return (
-    <section className='flex-container flex-row'>
-      <article>
-        <article >
+    <section className='flex-container'>
+      <article className='event-item-container'>
+        <article>
           <h2>{name}</h2>
           <p>{description}</p>
-          <a className='page__link' href={url}>{url}</a>
+          <a href={url}>{url}</a>
         </article>
         <Events events={events} />
       </article>
-      <Map
-        coordinates={[{ lat: lat, lon: lon }]}
-        addresses={[address]}
-      />
+      <section className='map-container'>
+        <Map
+          coordinates={[{ lat: lat, lon: lon }]}
+          addresses={[address]}
+        />
+      </section>
     </section>
   )
 }

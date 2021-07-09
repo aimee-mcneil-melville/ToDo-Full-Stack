@@ -6,12 +6,20 @@
     display: flex;
     justify-content: flex-end;
     width: functions.colWidth(6);
-    @include mixins.media-queries(desktop, max) {
-        width: functions.colWidth(2);
-    }
+    // outputs to width: 50%
 
-    a {
-        color: vars.$green;
-        text-decoration: underline;
+    @include mixins.media-queries(tablet, min) {
+        width: functions.colWidth(12);
     }
+    // outputs to:
+    // @media (min-width: 1020px) {
+    //     .navbar {
+    //       width: 100%;
+    //     }
+    //   }
+}
+
+.navbar a {
+    color: vars.$green;
+    text-decoration: underline;
 }
