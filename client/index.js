@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
       domain='gardenz.au.auth0.com'
       clientId='sF7Tf4GqnhENJ7l7gArp5c56ZFZ2WOcL'
       redirectUri={window.location.origin}
+      audience="https://garden/nz/api"
+      scope="read:current_user update:current_user_metadata" // ADD role:admin?
+      // From the docs: The actions that your React application can perform on the
+      // API depend on the scopes that your access token contains, which you define
+      // as the value of scope. Your React application will request authorization
+      // from the user to access the requested scopes, and the user will approve or deny the request.
     >
       <Provider store={store}>
         <Router>
