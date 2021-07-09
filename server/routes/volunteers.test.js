@@ -38,12 +38,16 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
   }) // returns 302, and returns /gardens/1 as per mockVolunteer
 
   it('responds with 500 and error message during DB error', () => {
-    db.addVolunteer.mockImplementation(() => Promise.reject(Error))
+    db.addVolunteer.mockImplementation(() => Promise.reject(
+      new Error('mock addVolunteer error')
+    ))
+    decode.mockImplementation(() => {})
     return request(server)
       .get('/api/v1/volunteers/emailsignup?token=foobar')
       .expect(500)
       .then(res => {
-        expect(res.text).toMatch('Unable to register volunteer from emailsignup')
+        expect(log).toHaveBeenCalledWith('mock addVolunteer error')
+        expect(res.body.error.title).toBe('Unable to register from email')
         return null
       })
   })

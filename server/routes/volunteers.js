@@ -20,7 +20,12 @@ router.get('/emailsignup', (req, res) => {
       return null
     })
     .catch(e => {
-      res.status(500).send('Unable to register volunteer from emailsignup')
+      log(e.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to register from email'
+        }
+      })
     })
 })
 
