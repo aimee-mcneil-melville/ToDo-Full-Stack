@@ -1,16 +1,15 @@
 const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
-const isHesdless = process.env.HEADLESS || true
-
-// Demo comennt to test e2e action
+const isHeadless = process.env.HEADLESS || false
 
 jest.setTimeout(20000)
 
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: isHesdless, slowMo: 800 })
+  browser = await chromium.launch({ headless: isHeadless === 'true', slowMo: 800 })
+  console.log('HEADLESS IS ', isHeadless === 'true')
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
