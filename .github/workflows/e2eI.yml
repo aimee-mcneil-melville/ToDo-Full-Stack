@@ -10,6 +10,7 @@ env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   HEADLESS: true # for running the E2E browser headless
+  PORT: 3000
 
 jobs:
   build:
