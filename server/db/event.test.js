@@ -32,6 +32,7 @@ describe('getEventById', () => {
         expect(event).toHaveProperty('date')
         expect(event).toHaveProperty('description')
         expect(event.volunteers).toHaveLength(2)
+        expect(event.extraVolunteers).toHaveLength(0)
         return null
       })
   })

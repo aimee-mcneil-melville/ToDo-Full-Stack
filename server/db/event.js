@@ -11,9 +11,11 @@ function getEventById (id, db = connection) {
     .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
     .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
     .leftJoin('gardens', 'events.garden_id', 'gardens.id')
-    .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'first_name', 'last_name')
+    .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
+    .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'users.first_name', 'users.last_name', 'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName')
     .where('events.id', id)
     .then(result => {
+      console.log(result)
       const event = result[0]
       return {
         id: event.id,
@@ -31,6 +33,13 @@ function getEventById (id, db = connection) {
             firstName: volunteer.first_name,
             lastName: volunteer.last_name,
             attended: result.find(evt => evt.userId === volunteer.userId).attended ? result.find(evt => evt.userId === volunteer.userId).attended : false
+          }
+        }),
+        extraVolunteers: !result.some(evt => evt.extraVolFirstName) ? [] : result.map((extraVolunteer) => {
+          return {
+            eventId: extraVolunteer.eventId,
+            firstName: extraVolunteer.extraVolFirstName,
+            lastName: extraVolunteer.extraVolLastName
           }
         })
       }
