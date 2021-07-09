@@ -1,0 +1,27 @@
+name: E2E TEST
+
+on:
+  push:
+    branches: [ e2e-devops-integration ]
+  pull_request:
+    branches: [ e2e-devops-integration ]
+    
+env:
+  JWT_SECRET: ${{secrets.JWT}}
+  SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  HEADLESS: true # for running the E2E browser headless
+  DEBUG: pw:api
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/e2e-devops-integration'
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+steps:
+  - uses: microsoft/playwright-github-action@v1
+  - name: Run your tests
+    run: npm test:e2e
