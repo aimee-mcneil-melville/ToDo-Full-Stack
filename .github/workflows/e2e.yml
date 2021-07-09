@@ -3,10 +3,7 @@
 
 name: End-to-end testing
 
-on:
-  push:
-    branches: 
-    - e2e-devops-integration
+on: push
     
 env:
   JWT_SECRET: ${{secrets.JWT}}
@@ -17,7 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    if: github.ref == 'refs/heads/e2e-devops-integration'
     strategy:
       matrix:
         node-version: [14.x]
