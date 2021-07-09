@@ -12,12 +12,12 @@ export default function Garden () {
 
   useEffect(() => {
     getGarden(id)
-  }, [])
+  }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
   return (
     <section className='flex-container'>
-      <article>
+      <article className='event-item-container'>
         <article>
           <h2>{name}</h2>
           <p>{description}</p>
