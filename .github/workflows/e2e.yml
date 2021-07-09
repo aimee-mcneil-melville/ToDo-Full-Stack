@@ -5,13 +5,14 @@ name: End-to-end testing
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ e2e-devops-integration, e2e-devops-integration  ]
   pull_request:
-    branches: [ main, dev ]
+    branches: [ e2e-devops-integration, e2e-devops-integration ]
     
 env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  HEADLESS: true # for running the E2E browser headless
 
 jobs:
   build:
