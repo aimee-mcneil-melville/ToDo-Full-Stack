@@ -2,9 +2,9 @@ name: End-to-end testing
 
 on:
   push:
-    branches: [ refs/heads/e2e-devops-integration ]
+    branches: [ e2e-devops-integration ]
   pull_request:
-    branches: [ refs/heads/e2e-devops-integration ]
+    branches: [ e2e-devops-integration ]
     
 env:
   JWT_SECRET: ${{secrets.JWT}}
