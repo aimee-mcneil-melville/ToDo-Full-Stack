@@ -61,5 +61,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@master
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "gardenz"
+          heroku_app_name: "bosh-gardenz-test"
           heroku_email: "ryan.julian.bosher@icloud.com"
