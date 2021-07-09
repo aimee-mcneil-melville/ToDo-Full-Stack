@@ -1,3 +1,6 @@
+// const checkJwt = require('./auth') // scope permissions
+// const jwtAuthz = require('express-jwt-authz')
+
 const express = require('express')
 
 const log = require('../logger')
