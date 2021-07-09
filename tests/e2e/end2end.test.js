@@ -1,16 +1,14 @@
 const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
+const isHesdless = process.env.HEADLESS || true
 
-jest.setTimeout(10000)
-
-const imgpath = 'tests/e2e/screenshots/'
-const timeOut = 2000
+jest.setTimeout(20000)
 
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false, slowMo: 500 })
+  browser = await chromium.launch({ headless: isHesdless, slowMo: 800 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -26,43 +24,32 @@ afterEach(async () => {
 
 afterAll(async () => {
   await browser.close()
+  return db.destroy()
 })
-
-function waitForAmount (time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, time)
-  })
-}
 
 // USER TESTS
 
 test('Home page should display the text Gardenz', async () => {
   await page.goto('localhost:3000')
   expect(await page.title()).toMatch('Gardenz')
-  await page.screenshot({ path: imgpath + 'home.png' })
 })
 
 test('Clicking register on home goes to /register', async () => {
   await page.goto('localhost:3000')
   await page.click('text=register')
   expect(await page.url()).toBe('http://localhost:3000/register')
-  await page.screenshot({ path: imgpath + 'registerpage.png' })
 })
 
 test('Clicking get started when not logged in redirects to register', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Get Started')
-  expect(await page.url()).toBe('http://localhost:3000/register')
-  await page.screenshot({ path: imgpath + 'redirect.png' })
+  expect(await page.url()).toBe('http://localhost:3000/signin')
 })
 
 test('Clicking Sign in goes to /signin', async () => {
   await page.goto('localhost:3000')
   await page.click('text=Sign in')
   expect(await page.url()).toBe('http://localhost:3000/signin')
-  await page.screenshot({ path: imgpath + 'signinpage.png' })
 })
 
 test('Can Register', async () => {
@@ -78,9 +65,6 @@ test('Can Register', async () => {
     await page.click('button', { force: true })
   ])
   expect(await page.url()).toBe('http://localhost:3000/gardens/1')
-  await page.screenshot({ path: imgpath + 'registersuccess.png' })
-
-  await waitForAmount(timeOut)
 })
 
 test('Can Login', async () => {
@@ -90,8 +74,6 @@ test('Can Login', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  await page.screenshot({ path: imgpath + 'signinsuccess.png' })
-  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
 })
 
 test('Can Login & Logout', async () => {
@@ -103,7 +85,6 @@ test('Can Login & Logout', async () => {
   await page.click('button', { force: true })
   expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Log out')
-  await page.screenshot({ path: imgpath + 'logoutsuccess.png' })
   expect(await page.url()).toBe('http://localhost:3000/')
 })
 
@@ -114,11 +95,9 @@ test('Can Login & Volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/signin')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
-  await page.screenshot({ path: imgpath + 'volunteersuccess.png' })
-  await waitForAmount(timeOut)
 })
 
 test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
@@ -128,7 +107,7 @@ test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/signin')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
   await page.click('text=Log out')
@@ -137,11 +116,9 @@ test('Can Login & volunteer, then logout, relogin & un-volunteer', async () => {
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/garden')
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
   await page.click('text=Un-Volunteer')
   expect(await page.content()).toMatch('Volunteer')
-  await page.screenshot({ path: imgpath + 'un-volunteersuccess.png' })
-  await waitForAmount(timeOut)
 })
 
 // ADMIN TESTS
@@ -153,8 +130,7 @@ test('Can Login as Admin', async () => {
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe('http://localhost:3000/signin')
-  await page.screenshot({ path: imgpath + 'adminsigninsuccess.png' })
+  expect(await page.url()).toBe('http://localhost:3000/gardens/1')
 })
 
 test('Admin can login & add event', async () => {
@@ -177,9 +153,7 @@ test('Admin can login & add event', async () => {
     page.click('button', { force: true })
   ])
   expect(await page.url()).toBe('http://localhost:3000/gardens/1')
-  await page.screenshot({ path: imgpath + 'eventadded.png', fullPage: true })
   expect(await page.content()).toMatch('Christmas Gardening!')
-  await waitForAmount(timeOut)
 })
 
 test('Admin can login & edit event', async () => {
@@ -201,6 +175,4 @@ test('Admin can login & edit event', async () => {
   ])
   expect(await page.url()).toBe('http://localhost:3000/events/1')
   expect(await page.content()).toMatch('Come for a fun day out weeding!')
-  await page.screenshot({ path: imgpath + 'eventedited.png', fullPage: true })
-  await waitForAmount(timeOut)
 })
