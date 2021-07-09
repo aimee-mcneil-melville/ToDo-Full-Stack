@@ -31,35 +31,31 @@ export default function Event () {
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
 
   return (
-    <>
-      <article className='column'>
-        <div className='columns'>
-          <article className='column is-three-quarters'>
-            <h2 className='title is-4'>{title}</h2>
-            <dl className='description--inline'>
-              <dt className='has-text-weight-bold'>Garden Name:</dt>
-              <dd>{gardenName}</dd>
+    <section className='flex-container'>
+      <article className=''>
+        <h2 className='title is-4'>{title}</h2>
+        <dl className=''>
+          <dt className='has-text-weight-bold'>Garden Name:</dt>
+          <dd>{gardenName}</dd>
 
-              <dt className = 'has-text-weight-bold'>Address:</dt>
-              <dd>{gardenAddress}</dd>
+          <dt className = 'has-text-weight-bold'>Address:</dt>
+          <dd>{gardenAddress}</dd>
 
-              <dt className = 'has-text-weight-bold'>Date:</dt>
-              <dd>{date}</dd>
+          <dt className = 'has-text-weight-bold'>Date:</dt>
+          <dd>{date}</dd>
 
-              <dt className = 'has-text-weight-bold'>Volunteers Needed:</dt>
-              <dd>{volunteersNeeded}</dd>
-            </dl>
-            <p className='has-text-weight-semibold'>{description}</p>
-            {!isAdmin
-              ? <VolunteerButton
-                eventId={id}
-                volunteering={volunteering}
-                setVolunteering={setVolunteering}
-              />
-              : null
-            }
-          </article>
-        </div>
+          <dt className = 'has-text-weight-bold'>Volunteers Needed:</dt>
+          <dd>{volunteersNeeded}</dd>
+        </dl>
+        <p className='has-text-weight-semibold'>{description}</p>
+        {!isAdmin
+          ? <VolunteerButton
+            eventId={id}
+            volunteering={volunteering}
+            setVolunteering={setVolunteering}
+          />
+          : null
+        }
       </article>
       {isAdmin
         ? <VolunteerList
@@ -71,6 +67,6 @@ export default function Event () {
           addresses={[address]}
         />
       }
-    </>
+    </section>
   )
 }
