@@ -1,12 +1,18 @@
+@use '../1-helpers/mixins';
 
 .container {
   position: relative;
   margin: 0 auto;
   width: 100%;
+  justify-content: center;
 }
 
 .flex-container {
   display: flex;
+  flex-direction: column;
+  @include mixins.media-queries(tablet, min) {
+    flex-direction: row;
+  }
 }
 
 .flex-column {
@@ -14,6 +20,7 @@
 
   &-reverse {
     flex-direction: column-reverse;
+    //complies to .flex-column-reverse
   }
 }
 
@@ -22,5 +29,10 @@
 
   &-reverse {
     flex-direction: row-reverse;
+    //complies to .flex-row-reverse
   }
+}
+
+.text-weight{
+  font-weight: bolder;
 }

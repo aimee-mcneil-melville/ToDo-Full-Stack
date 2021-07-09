@@ -1,0 +1,11 @@
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+
+// .device-adjuster {
+//   width: functions.colWidth(12);
+
+//   @include mixins.media-queries(tablet, min) {
+//       width: functions.colWidth(4);
+//   }
+// }
+
