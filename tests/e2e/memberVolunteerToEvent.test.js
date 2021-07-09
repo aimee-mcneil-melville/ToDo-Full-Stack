@@ -2,13 +2,14 @@ const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
 const { serverUrl } = require('./index')
+const isHeadless = process.env.HEADLESS || false
 
-jest.setTimeout(10000)
+jest.setTimeout(20000)
 
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false, slowMo: 500 })
+  browser = await chromium.launch({ headless: isHeadless === 'true', slowMo: 800 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
