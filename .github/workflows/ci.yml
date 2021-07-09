@@ -32,8 +32,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
-      - name: Use Playwright for testing
       - uses: microsoft/playwright-github-action@v1
 
       - name: Install Dependencies
