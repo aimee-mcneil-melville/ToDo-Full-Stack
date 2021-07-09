@@ -31,7 +31,6 @@ afterAll(async () => {
 // Test goes here
 test('Admin can login & add event', async () => {
   await page.goto(serverUrl)
-  expect(await page.textContent('h2.title')).toBe('Welcome!')
   await page.click('text=Sign in')
   expect(await page.url()).toBe(`${serverUrl}/signin`)
   await page.fill('#username', 'admin')
