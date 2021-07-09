@@ -16,18 +16,18 @@ exports.seed = (knex) => {
           name: 'Kingsland Community Orchard',
           address: 'Bond Street, Kingsland',
           description: 'A secluded edible oasis in the heart of Kingsland, Auckland. Kingsland Community Orchard; an edible urban garden and orchard located in the heart of Kingsland, Auckland.',
-          lat: -36.86011508905973,
-          lon: 174.7330772002716,
+          lat: -36.9056629,
+          lon: 174.7223555,
           url: 'https://www.facebook.com/KCOnz'
         },
         {
           id: 3,
           name: 'Devonport Community Garden',
-          address: '10 Morris Avenue, Devonport, 7310',
-          description: 'The Devonport Community Garden is an initiative of Devonport Community House through consultation with the public and was initially sponsored by Housing Tas. With support from the Devonport City Council, local schools, businesses and neighbours, the garden provides an ideal place for people to meet, learn and develop their skills.',
-          lat: -36.86011508905973,
-          lon: 174.7330772002716,
-          url: 'https://www.devonport.tas.gov.au/live/your-community/community-services/community-houses/devonport-community-garden'
+          address: '33 Vauxhall Road, Devonport, Auckland 0624',
+          description: 'Devonport Community Garden is a small garden with BIG plans',
+          lat: -36.9365604,
+          lon: 174.8403267,
+          url: 'https://sites.google.com/site/communitygardendevonportnz/home'
         }
       ])
     })
