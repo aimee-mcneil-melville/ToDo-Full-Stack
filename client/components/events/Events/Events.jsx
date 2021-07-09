@@ -9,8 +9,8 @@ export default function Events ({ events }) {
 
   return (
     <>
-      <div className='is-flex'>
-        <h1 className='title is-4 is-flex-grow-1'>Events</h1>
+      <div>
+        <h1>Events</h1>
         {
           isAdmin
             ? <Link to='/event/new' className='button'>Add New Event</Link>
