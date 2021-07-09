@@ -40,7 +40,7 @@ jobs:
         run: npm run build
 
       - name: Start test server
-        run: npm run start & npx wait-on http://localhost:${{ PORT }}
+        run: npm run start & npx wait-on http://localhost:3000 # TODO: change to port
 
       - name: Test
         run: npm run test
