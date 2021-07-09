@@ -9,7 +9,6 @@ let browser
 let page
 beforeAll(async () => {
   browser = await chromium.launch({ headless: isHeadless === 'true', slowMo: 800 })
-  console.log('HEADLESS IS ', isHeadless === 'true')
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
