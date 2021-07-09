@@ -3,6 +3,8 @@ const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
 const isHesdless = process.env.HEADLESS || true
 
+// Demo comennt to test e2e action
+
 jest.setTimeout(20000)
 
 let browser
