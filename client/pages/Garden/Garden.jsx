@@ -25,12 +25,10 @@ export default function Garden () {
         </article>
         <Events events={events} />
       </article>
-      <section className='map-container'>
-        <Map
-          coordinates={[{ lat: lat, lon: lon }]}
-          addresses={[address]}
-        />
-      </section>
+      <Map
+        coordinates={[{ lat: lat, lon: lon }]}
+        addresses={[address]}
+      />
     </section>
   )
 }
