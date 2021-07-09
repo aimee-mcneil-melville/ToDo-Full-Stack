@@ -11,6 +11,7 @@ env:
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   HEADLESS: true # for running the E2E browser headless
   PORT: 3000
+  DEBUG: pw:api
 
 jobs:
   build:
