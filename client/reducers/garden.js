@@ -15,9 +15,33 @@ export default function garden (state = initialState, action) {
     case SET_GARDEN:
       return action.garden
     case UPDATE_EVENT_VOLS:
-      //update totalvolunteers
-      return action.eventId
+      return updateVolCount(state, action)
     default:
       return state
   }
+}
+
+function updateVolCount (state, action) {
+  const updatedEvents = state.events.map(event => {
+    if (event.id === action.eventId) {
+      if (event.isVolunteer === false) {
+        event.totalVolunteers += 1
+        event.isVolunteer = true
+      } else {
+        event.totalVolunteers -= 1
+        event.isVolunteer = false
+      }
+      return event
+    } else {
+      return event
+    }
+  })
+
+  const newGarden = {
+    ...state,
+    events: updatedEvents
+  }
+
+  console.log('newGarden', newGarden)
+  return newGarden
 }
