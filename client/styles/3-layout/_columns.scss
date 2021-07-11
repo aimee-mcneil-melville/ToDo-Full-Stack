@@ -10,7 +10,9 @@
 .flex-container {
   display: flex;
   flex-direction: column-reverse;
+  align-content: flex-start;
   @include mixins.media-queries(tablet, min) {
+    display: flexbox;
     flex-direction: row;
 
   }
@@ -32,6 +34,12 @@
     flex-direction: row-reverse;
     //complies to .flex-row-reverse
   }
+}
+
+.position {
+  display: flex;
+  justify-content: center;
+  align-self: baseline;
 }
 
 // .item {
