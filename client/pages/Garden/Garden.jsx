@@ -12,7 +12,7 @@ export default function Garden () {
 
   useEffect(() => {
     getGarden(id)
-  }, [])
+  }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
   return (
