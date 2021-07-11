@@ -1,4 +1,4 @@
-const jwtAuthz = require('express-jwt-authz')
+// const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 const log = require('../logger')
@@ -8,7 +8,7 @@ const router = express.Router()
 
 module.exports = router
 
-const checkAdmin = jwtAuthz(['role:admin'])
+// const checkAdmin = jwtAuthz(['role:admin'])
 
 // doesnt need autheniticaiton
 router.get('/', (req, res) => {

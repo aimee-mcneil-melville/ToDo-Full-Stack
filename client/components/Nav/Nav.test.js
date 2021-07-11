@@ -2,7 +2,7 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { renderWithRouter } from '../../test-utils'
+import { renderWithRedux } from '../../test-utils'
 
 import Nav from './Nav'
 
@@ -19,7 +19,16 @@ describe('nav links', () => {
         { to: '/signin', name: 'Sign in' },
         { to: '/register', name: 'Register' }
       ])
-      renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+      renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
+        initialState: {
+          user: {
+            id: null,
+            username: '',
+            isAdmin: false,
+            gardenId: null
+          }
+        }
+      })
       const links = screen.getAllByRole('link')
       expect(links).toHaveLength(2)
       expect(links[0]).toHaveTextContent('Sign in')
@@ -27,13 +36,24 @@ describe('nav links', () => {
     })
   })
   describe('-> when user is authenticated', () => {
-    it('displays "Log Out" and "Home" when authenticated', () => {
+    it('displays "My Garden", "Log Out" and "Home" when authenticated', () => {
       isAuthenticated.mockImplementation(() => true)
-      renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+      renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
+        initialState: {
+          user: {
+            username: 'member',
+            isAdmin: 0,
+            gardenId: 1,
+            id: 2
+          }
+        }
+      })
       const links = screen.getAllByRole('link')
-      expect(links).toHaveLength(2)
-      expect(links[0]).toHaveTextContent('Log out')
-      expect(links[1]).toHaveTextContent('Home')
+      expect(links).toHaveLength(3)
+      expect(links[0]).toHaveTextContent('My Garden')
+      expect(links[0].href).toMatch('/gardens/1')
+      expect(links[1]).toHaveTextContent('Log out')
+      expect(links[2]).toHaveTextContent('Home')
     })
   })
 })
@@ -41,7 +61,16 @@ describe('nav links', () => {
 describe('Log Out link', () => {
   it('calls logOut helper on click', () => {
     isAuthenticated.mockImplementation(() => true)
-    renderWithRouter(<Nav location={{ pathname: '/' }}/>)
+    renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
+      initialState: {
+        user: {
+          username: 'member',
+          isAdmin: 0,
+          gardenId: 1,
+          id: 2
+        }
+      }
+    })
     const logOutLink = screen.getByRole('link', { name: 'Log out' })
     userEvent.click(logOutLink)
     expect(logOut).toHaveBeenCalled()
