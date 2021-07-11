@@ -26,15 +26,22 @@ function getEventById (id, db = connection) {
         title: event.title,
         date: event.date,
         description: event.description,
-        volunteers: !result.some(evts => evts.userId) ? [] : result.map((volunteer) => {
-          return {
-            userId: volunteer.userId,
-            username: volunteer.username,
-            firstName: volunteer.first_name,
-            lastName: volunteer.last_name,
-            attended: result.find(evt => evt.userId === volunteer.userId).attended ? result.find(evt => evt.userId === volunteer.userId).attended : false
+        volunteers: result.reduce((acc, cur) => {
+          const personIncluded = acc.some((person) => {
+            return person.userId === cur.userId
+          })
+          if (!personIncluded) {
+            acc.push({
+              userId: cur.userId,
+              username: cur.username,
+              firstName: cur.first_name,
+              lastName: cur.last_name,
+              attended: result.find(evt => evt.userId === cur.userId).attended ? result.find(evt => evt.userId === cur.userId).attended : false
+            })
           }
-        }),
+          console.log(acc)
+          return acc
+        }, []),
         extraVolunteers: !result.some(evt => evt.extraVolFirstName) ? [] : result.map((extraVolunteer) => {
           return {
             eventId: extraVolunteer.eventId,
