@@ -21,7 +21,7 @@
     "db:seed": "npm run knex seed:run",
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
     "test": "jest",
-    "test:e2e": "jest -c e2e.config.js",
+    "test:e2e": "jest --runInBand -c tests/e2e/e2e.config.js",
     "test:watch": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx ."
   },
