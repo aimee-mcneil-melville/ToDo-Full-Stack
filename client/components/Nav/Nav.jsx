@@ -1,62 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
-import { clearUser } from '../../actions/user'
-import { dispatch } from '../../store'
+import { useSelector } from 'react-redux'
 
-// import { logOut, logIn } from './navHelper'
+import { logOut, logIn } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
 import { getAccessToken } from '../../auth-utils'
-
-
 
 export default function Nav () {
   // const location = useLocation()
   // const navLinks = getLinks(location.pathname)
-  const { logout, loginWithRedirect, user } = useAuth0()
-  const [userMetadata, setUserMetadata] = useState({})
-
-  useEffect(() => {
-    const getUserMetadata = async () => {
-      try {
-        const userDetailsByIdUrl = `https://gardenz.au.auth0.com/api/v2/users/${user.sub}`
-
-        const accessToken = await getAccessToken()
-        console.log('access token: ', accessToken)
-
-        const metadataResponse = await fetch(userDetailsByIdUrl, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        })
-
-        const user_metadata = await metadataResponse.json()
-
-        setUserMetadata(user_metadata)
-        console.log('user metadata: ', userMetadata)
-      } catch (e) {
-        console.log(e.message)
-      }
-    }
-    if (user) getUserMetadata()
-  }, [user])
-
-  function logOut (e) {
-    e.preventDefault()
-    logout({ returnTo: window.location.origin })
-    // logOff()
-    dispatch(clearUser())
-  }
-
-  function logIn (e) {
-    e.preventDefault()
-    loginWithRedirect()
-  }
+  const user = useSelector(globalState => globalState.user)
 
   return (
     <nav className="navbar column">
       <div className="navbar-item">
         <IfAuthenticated>
+          <Link to={`/gardens/${user.gardenId}`} className='ml-4'>My Garden</Link>
           <Link to="/" onClick={logOut} className='ml-4'>
               Log out
           </Link>
@@ -72,7 +31,6 @@ export default function Nav () {
               Log in
           </Link>
           <Link to="/" className='ml-4'>Home</Link>
-
         </IfNotAuthenticated>
       </div>
     </nav>
