@@ -49,6 +49,14 @@ exports.seed = function (knex) {
           hash: randomHash,
           is_admin: false,
           email: 'random@emailz.co'
+        },
+        {
+          id: 5,
+          garden_id: 1,
+          username: 'Randy',
+          hash: memberHash,
+          is_admin: false,
+          email: 'randy@example.com'
         }
       ])
     )

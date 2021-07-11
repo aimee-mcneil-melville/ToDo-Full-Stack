@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 export default function Map ({ addresses, coordinates, userCoordinates }) {
   return (
     <div className='column'>
-      <MapContainer
+      <MapContainer style={{ height: '500px', width: '800px' }}
         center={[-36.8666700, 174.7666700]}
         zoom={11}
         scrollWheelZoom={true}>

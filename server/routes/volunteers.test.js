@@ -8,7 +8,7 @@ const { decode } = require('../notifications/emailTokens')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
-jest.mock('../notifications/emailTokens') // for decode.mockImplementation
+jest.mock('../notifications/emailTokens')
 
 const mockNonAdminAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
@@ -18,24 +18,22 @@ const testAuthAdminHeader = {
   Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
 }
 
-// two expects. returns redirect status(302), and redirects to /gardens/volunteers.gardenId
 describe('GET /api/v1/volunteer/emailsignup', () => {
   it('responds with 302 and then rediercts to user\'s garden page', () => {
-    // ARRANGE mockToken and mockVolunteer
     const mockToken = 'foobar'
     const mockVolunteer = {
       gardenId: 3
     }
     db.addVolunteer.mockImplementation(() => Promise.resolve())
-    decode.mockImplementation(() => mockVolunteer) // return mockVoluntter
+    decode.mockImplementation(() => mockVolunteer)
     return request(server)
       .get(`/api/v1/volunteers/emailsignup?token=${mockToken}`)
-      .expect(302) // status redirect
+      .expect(302)
       .then(res => {
         expect(res.header.location).toBe('/gardens/3')
         return null
       })
-  }) // returns 302, and returns /gardens/1 as per mockVolunteer
+  })
 
   it('responds with 500 and error message during DB error', () => {
     db.addVolunteer.mockImplementation(() => Promise.reject(
