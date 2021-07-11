@@ -14,26 +14,24 @@ export default function EventItem ({ event, isAdmin }) {
   }, [isVolunteer])
 
   return (
-    <article className='box my-5'>
-      <div className="is-flex">
-        <h2 className='title is-5 is-flex-grow-1'>
-          <Link className='title-link' to={`/events/${id}`}>{title}</Link>
-        </h2>
-        {isAdmin
-          ? <Link to={`/events/${id}/edit`} className='button'>Edit Event</Link>
-          : <VolunteerButton
-            eventId={id}
-            volunteering={isVolunteering}
-            setVolunteering={setIsVolunteering}
-          />
-        }
-      </div>
+    <article className='item-container'>
+      <h2>
+        <Link to={`/events/${id}`}>{title}</Link>
+      </h2>
       <p>{date}</p>
       {remainingVolunteers > 0
         ? <p>{remainingVolunteers} of {volunteersNeeded} volunteers still needed</p>
         : <p>No more volunteers needed, but we can always use more hands! (Currently {additionalVolunteers} extra volunteer{additionalVolunteers !== 1 ? 's' : ''})</p>
       }
       <p>{description}</p>
+      {isAdmin
+        ? <Link to={`/events/${id}/edit`} className='edit-event-link'>Edit Event</Link>
+        : <VolunteerButton
+          eventId={id}
+          volunteering={isVolunteering}
+          setVolunteering={setIsVolunteering}
+        />
+      }
     </article>
   )
 }
