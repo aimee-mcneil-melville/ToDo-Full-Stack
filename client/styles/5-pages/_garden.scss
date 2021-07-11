@@ -2,29 +2,33 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/vars';
 
-.event-item-container {
-  width: functions.colWidth(12);
+//move to eventitem
+// .event-item-container {
+//   width: functions.colWidth(12);
 
-  @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(4);
-  }
-}
+//   @include mixins.media-queries(tablet, min) {
+//       width: functions.colWidth(4);
+//   }
+// }
 
-.item-container {
-  width: 100%;
-  justify-content: center;
-  border: 3px solid grey;
-  margin-top: 10px; //placeholder gap
-  margin-bottom: 10px; //placeholder gap
-}
+// .item-container {
+//   width: 100%;
+//   justify-content: center;
+//   border: 1px solid grey;
+//   // margin-top: $base-size; //placeholder gap
+//   // margin-bottom: $base-size; //placeholder gap
+//   //padding
+//   //change link colour to primary green
+// }
 
-.event-title {
-  font-size: x-large;
-  font-weight: bold;
-}
+// .event-title {
+//   font-size: x-large;
+//   font-weight: bold;
+//   // color: #465902;
+// }
 
-.edit-event-link {
-  display: flex;
-  justify-content: center;
-  text-decoration: underline;
-}
+// .edit-event-link {
+//   display: flex;
+//   justify-content: center;
+//   text-decoration: underline;
+// }
