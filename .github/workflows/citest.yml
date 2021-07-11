@@ -18,9 +18,8 @@ jobs:
      - uses: akhileshns/heroku-deploy@master
        with:
          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-         heroku_app_name: "bosh-gardenz-test"
+         heroku_app_name: "gardenz-app"
          heroku_email: "ryan.julian.bosher@icloud.com"
          branch: "e2e-devops-integration"
        env:
-        HD_JWT_SECRET: ${{secrets.JWT}}
         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
