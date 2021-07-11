@@ -16,7 +16,7 @@ export default function garden (state = initialState, action) {
     case SET_GARDEN:
       return action.garden
     case UPDATE_EVENT_VOLS:
-      return updateVolCount(state, action)
+      return updateVolCount(state, action.eventId)
     default:
       return state
   }

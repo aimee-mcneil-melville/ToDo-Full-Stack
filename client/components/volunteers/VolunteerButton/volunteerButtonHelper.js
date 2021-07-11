@@ -6,7 +6,6 @@ import { updateEventVols } from '../../../actions/garden'
 
 export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, consume = requestor) {
   const storeState = getState()
-  console.log(eventId)
   const { id } = storeState.user
   if (!id) {
     dispatch(showError('Please register or sign in to volunteer.'))

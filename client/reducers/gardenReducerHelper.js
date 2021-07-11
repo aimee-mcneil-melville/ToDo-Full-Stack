@@ -1,6 +1,6 @@
-export default function updateVolCount (state, action) {
-  const updatedEvents = state.events.map(event => {
-    if (event.id === action.eventId) {
+export default function updateVolCount (garden, eventId) {
+  const updatedEvents = garden.events.map(event => {
+    if (event.id === eventId) {
       if (event.isVolunteer === false) {
         event.totalVolunteers += 1
         event.isVolunteer = true
@@ -13,7 +13,7 @@ export default function updateVolCount (state, action) {
   })
 
   const newGarden = {
-    ...state,
+    ...garden,
     events: updatedEvents
   }
   return newGarden
