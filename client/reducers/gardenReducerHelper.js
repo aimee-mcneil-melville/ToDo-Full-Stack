@@ -8,10 +8,8 @@ export default function updateVolCount (state, action) {
         event.totalVolunteers -= 1
         event.isVolunteer = false
       }
-      return event
-    } else {
-      return event
     }
+    return event
   })
 
   const newGarden = {

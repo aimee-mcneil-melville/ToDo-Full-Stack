@@ -35,7 +35,7 @@ describe('garden reducer', () => {
   })
 })
 
-it('increase & decrease volunteer count when clicked', () => {
+it('decrease volunteer count when clicked', () => {
   const inputState = {
     name: 'Test garden',
     description: 'A garden to test',
@@ -56,7 +56,7 @@ it('increase & decrease volunteer count when clicked', () => {
     lon: 0
   }
 
-  const expectedFalseState = {
+  const expectedState = {
     name: 'Test garden',
     description: 'A garden to test',
     url: 'www.test.com',
@@ -76,7 +76,16 @@ it('increase & decrease volunteer count when clicked', () => {
     lon: 0
   }
 
-  const expectedTrueState = {
+  const action = {
+    type: UPDATE_EVENT_VOLS,
+    eventId: 2
+  }
+  const actualState = updateVolCount(inputState, action)
+  expect(actualState.events.totalVolunteers).toBe(expectedState.events.totalVolunteers)
+})
+
+it('increase volunteer count when clicked', () => {
+  const inputState = {
     name: 'Test garden',
     description: 'A garden to test',
     url: 'www.test.com',
@@ -87,7 +96,27 @@ it('increase & decrease volunteer count when clicked', () => {
         title: 'Bla',
         date: '2020-02-20',
         description: 'bla',
-        totalVolunteers: 1,
+        totalVolunteers: 2,
+        isVolunteer: false
+      }
+    ],
+    address: '',
+    lat: 0,
+    lon: 0
+  }
+
+  const expectedState = {
+    name: 'Test garden',
+    description: 'A garden to test',
+    url: 'www.test.com',
+    events: [
+      {
+        id: '2',
+        volunteersNeeded: 20,
+        title: 'Bla',
+        date: '2020-02-20',
+        description: 'bla',
+        totalVolunteers: 3,
         isVolunteer: true
       }
     ],
@@ -101,6 +130,5 @@ it('increase & decrease volunteer count when clicked', () => {
     eventId: 2
   }
   const actualState = updateVolCount(inputState, action)
-  expect(actualState.events.totalVolunteers).toBe(expectedFalseState.events.totalVolunteers)
-  expect(actualState.events.totalVolunteers).toBe(expectedTrueState.events.totalVolunteers)
+  expect(actualState.events.totalVolunteers).toBe(expectedState.events.totalVolunteers)
 })

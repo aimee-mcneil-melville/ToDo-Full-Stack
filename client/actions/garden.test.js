@@ -10,8 +10,8 @@ describe('setGarden', () => {
 
 describe('updateEventVols', () => {
   it('returns the correct action', () => {
-    const action = updateEventVols({ eventId: 2 })
+    const action = updateEventVols(2)
     expect(action.type).toBe(UPDATE_EVENT_VOLS)
-    expect(action.garden).toEqual({ eventId: 2 })
+    expect(action.eventId).toEqual(2)
   })
 })
