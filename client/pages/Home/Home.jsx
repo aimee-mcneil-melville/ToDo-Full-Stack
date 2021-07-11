@@ -38,12 +38,10 @@ export default function Home () {
   }, [])
 
   return (
-    <>
-      <article className='column'>
-        <h2 className='title is-4'>Welcome!</h2>
-        <div className='columns'>
-          <p className='column is-three-quarters'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        </div>
+    <section className='flex-container flex-row'>
+      <article>
+        <h2 >Welcome!</h2>
+        <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
         <Link className='button' to='/signin'>Get Started</Link>
       </article>
       <Map
@@ -51,7 +49,6 @@ export default function Home () {
         coordinates={gardensCoordinates}
         addresses={addresses}
       />
-
-    </>
+    </section>
   )
 }
