@@ -1,33 +1,20 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
-import { clearUser } from '../../actions/user'
-import { dispatch } from '../../store'
+import { useSelector } from 'react-redux'
 
-// import { logOut, logIn } from './navHelper'
+import { logOut, logIn } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
 
 export default function Nav () {
   // const location = useLocation()
   // const navLinks = getLinks(location.pathname)
-  const { logout, loginWithRedirect } = useAuth0()
-
-  function logOut (e) {
-    e.preventDefault()
-    logout({ returnTo: window.location.origin })
-    // logOff()
-    dispatch(clearUser())
-  }
-
-  function logIn (e) {
-    e.preventDefault()
-    loginWithRedirect()
-  }
+  const user = useSelector(globalState => globalState.user)
 
   return (
     <nav className="navbar column">
       <div className="navbar-item">
         <IfAuthenticated>
+          <Link to={`/gardens/${user.gardenId}`} className='ml-4'>My Garden</Link>
           <Link to="/" onClick={logOut} className='ml-4'>
               Log out
           </Link>
@@ -43,7 +30,6 @@ export default function Nav () {
               Log in
           </Link>
           <Link to="/" className='ml-4'>Home</Link>
-
         </IfNotAuthenticated>
       </div>
     </nav>

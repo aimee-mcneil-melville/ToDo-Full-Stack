@@ -1,3 +1,5 @@
+@use '../1-helpers/mixins';
+
 .waitIndicator {
   position: absolute;
   top: 1rem;
@@ -12,47 +14,30 @@
   }
 }
 
-@-webkit-keyframes rotation {
+@keyframes rotation {
   0% {
-    -webkit-transform: rotate(0deg);
+    @include mixins.prefix((
+      transform: rotate(0deg)
+    ), webkit moz);
   }
   25% {
-    -webkit-transform: rotate(40deg);
+    @include mixins.prefix((
+      transform: rotate(40deg)
+    ), webkit moz);
   }
   50% {
-    -webkit-transform: rotate(0deg);
+    @include mixins.prefix((
+      transform: rotate(0deg)
+    ), webkit moz);
   }
   75% {
-    -webkit-transform: rotate(-40deg);
+    @include mixins.prefix((
+      transform: rotate(-40deg)
+    ), webkit moz);
   }
   100% {
-    -webkit-transform: rotate(0deg);
+    @include mixins.prefix((
+      transform: rotate(0deg)
+    ), webkit moz);
   }
 }
-
-// @-webkit-keyframes rotation {
-//   from {
-//       -webkit-transform: rotate(0deg);
-//   }
-//   to {
-//       -webkit-transform: rotate(359deg);
-//   }
-// }
-
-// @-moz-keyframes rotation {
-//   from {
-//       -webkit-transform: rotate(0deg);
-//   }
-//   to {
-//       -webkit-transform: rotate(359deg);
-//   }
-// }
-
-// @keyframes rotation {
-//   from {
-//       -webkit-transform: rotate(0deg);
-//   }
-//   to {
-//       -webkit-transform: rotate(359deg);
-//   }
-// }

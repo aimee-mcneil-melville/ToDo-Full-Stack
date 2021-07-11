@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+
+  &-reverse {
+    flex-direction: column-reverse;
+    //complies to .flex-column-reverse
+  }
+}
+
+.flex-row {
+  flex-direction: row;
+
+  &-reverse {
+    flex-direction: row-reverse;
+    //complies to .flex-row-reverse
+  }
+}
+
