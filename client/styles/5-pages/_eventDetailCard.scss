@@ -1,0 +1,26 @@
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+
+.card-container {
+  display: flex;
+  width: functions.colWidth(12);
+  border: solid;
+  align-items: center;
+  justify-content: flex-end;
+
+  @include mixins.media-queries(tablet, min) {
+      width: functions.colWidth(4);
+  }
+}
+
+.card-text-container {
+    border: solid;
+}
+
+.card-title {
+    font-size: 2.5rem;
+}
+
+.card-sub-title {
+    font-size: 2rem;
+}
