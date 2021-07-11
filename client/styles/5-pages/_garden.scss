@@ -1,5 +1,6 @@
 @use '../1-helpers/mixins';
 @use '../1-helpers/functions';
+@use '../1-helpers/vars';
 
 .event-item-container {
   width: functions.colWidth(12);
@@ -12,9 +13,18 @@
 .item-container {
   width: 100%;
   justify-content: center;
+  border: 3px solid grey;
+  margin-top: 10px; //placeholder gap
+  margin-bottom: 10px; //placeholder gap
+}
+
+.event-title {
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .edit-event-link {
   display: flex;
   justify-content: center;
+  text-decoration: underline;
 }

@@ -15,7 +15,7 @@ export default function EventItem ({ event, isAdmin }) {
 
   return (
     <article className='item-container'>
-      <h2>
+      <h2 className='event-title'>
         <Link to={`/events/${id}`}>{title}</Link>
       </h2>
       <p>{date}</p>
