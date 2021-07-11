@@ -48,17 +48,15 @@ jobs:
       - name: E2E Test
         run: npm run test:e2e
   deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
 
-      - uses: akhileshns/heroku-deploy@master
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "bosh-gardenz-test"
-          heroku_email: "ryan.julian.bosher@icloud.com"
-          remote_branch: "e2e-devops-integration"
-        env:
-         HD_JWT_SECRET: ${{secrets.JWT}}
-         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+     - uses: akhileshns/heroku-deploy@master
+       with:
+         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+         heroku_app_name: "gardenz-app"
+         heroku_email: "ryan.julian.bosher@icloud.com"
+         branch: "e2e-devops-integration"
+       env:
+        HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
