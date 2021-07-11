@@ -2,24 +2,14 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/mixins';
 
-.navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: functions.colWidth(6);
-    // outputs to width: 50%
 
-    @include mixins.media-queries(tablet, min) {
-        width: functions.colWidth(12);
-    }
-    // outputs to:
-    // @media (min-width: 1020px) {
-    //     .navbar {
-    //       width: 100%;
-    //     }
-    //   }
+.navi-item {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
 }
 
-.navbar a {
-    color: vars.$green;
+.navi a {
+    color: #fff;
     text-decoration: underline;
 }

@@ -1,14 +1,12 @@
 @use '../1-helpers/vars';
 
-.logo {
-    color: vars.$primary;
 
-    span {
-        color: vars.$dark-green;
-    }
+header {
+    background-color: vars.$primary;
+    display: flex;
+    justify-content: column;
+}
 
-    &:hover {
-        color: vars.$primary;
-    }
-   
+img {
+    height: 100px;
 }
