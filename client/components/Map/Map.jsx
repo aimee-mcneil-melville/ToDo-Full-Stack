@@ -14,6 +14,7 @@ export default function Map ({ addresses, coordinates, userCoordinates }) {
         {coordinates.map((location, i) => {
           return <Marker key={i}
             position={[location.lat, location.lon]}
+            draggable={true}
           >
             <Popup>
               {addresses[i]}
