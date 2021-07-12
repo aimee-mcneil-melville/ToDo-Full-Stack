@@ -44,7 +44,6 @@ function getEventById (id, db = connection) {
               attended: result.find(evt => evt.userId === cur.userId).attended ? result.find(evt => evt.userId === cur.userId).attended : false
             })
           }
-          console.log(event.lat)
           return acc
         }, []),
         extraVolunteers: !result.some(evts => evts.extraVolId) ? [] : result.reduce((acc, cur) => {

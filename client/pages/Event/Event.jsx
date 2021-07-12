@@ -11,12 +11,11 @@ import VolunteerButton from '../../components/volunteers/VolunteerButton/Volunte
 export default function Event () {
   const { id } = useParams()
 
-  const [event, setEvent] = useState({ lat: 0, lon: 0 })
-  const [volunteering, setVolunteering] = useState(false)
+  const { lat: initialLat, lon: initialLon } = useSelector(globalState => globalState.garden) // import lat and lon from global
+  const [event, setEvent] = useState({ lat: initialLat, lon: initialLon }) // set initial state from global
 
+  const [volunteering, setVolunteering] = useState(false)
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  // currently using initial state and wipes clear on refresh - needs attention
-  // const { lat, lon } = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -24,7 +23,6 @@ export default function Event () {
       .then((event) => {
         setEvent(event)
         setVolunteering(event.isVolunteer)
-        // console.log(event) // event has lat and lon. now check for error
         return null
       })
   }, [])
