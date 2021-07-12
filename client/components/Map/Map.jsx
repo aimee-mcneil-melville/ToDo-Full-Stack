@@ -3,7 +3,7 @@ import * as L from 'leaflet'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-export default function Map ({ addresses, coordinates, userCoordinates }) {
+export default function Map ({ addresses, coordinates, userCoordinates, names }) {
   const LeafIcon = L.Icon.extend({
     optios: {}
   })
@@ -26,6 +26,7 @@ export default function Map ({ addresses, coordinates, userCoordinates }) {
             position={[location.lat, location.lon]}
           >
             <Popup>
+              <h3>{names[i]}</h3>
               {addresses[i]}
             </Popup>
           </Marker>
@@ -34,7 +35,7 @@ export default function Map ({ addresses, coordinates, userCoordinates }) {
           <Marker
             position={[userCoordinates.lat, userCoordinates.lon]} icon={greenIcon}>
             <Popup>
-              Your Location
+              <h3>Your Location</h3>
             </Popup>
           </Marker>
         }
