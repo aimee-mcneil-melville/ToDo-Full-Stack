@@ -9,19 +9,19 @@ export default function Events ({ events }) {
 
   return (
     <>
+      <h1>Events</h1>
+      <section>
+        {events.map((event) =>
+          <EventItem key={event.id} event={event} isAdmin={isAdmin} />
+        )}
+      </section>
       <div>
-        <h1>Events</h1>
         {
           isAdmin
             ? <Link to='/event/new' className='button'>Add New Event</Link>
             : null
         }
       </div>
-      <section>
-        {events.map((event) =>
-          <EventItem key={event.id} event={event} isAdmin={isAdmin} />
-        )}
-      </section>
     </>
   )
 }
