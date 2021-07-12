@@ -36,7 +36,7 @@ describe('addEvent', () => {
 
   it('dispatches error on POST /events rejection', () => {
     const navigateTo = jest.fn()
-    getState.mockImplementation(() => ({ user: { gardenId: 1 } }))
+    getState.mockImplementation(() => ({ user: { gardenId: 1, token: 'dummytoken' } }))
     function consume () {
       return Promise.reject(new Error('mock error'))
     }
