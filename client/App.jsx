@@ -2,11 +2,8 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-// import { isAuthenticated } from './auth'
-
 import Header from './components/Header'
-// import Register from './pages/auth/Register/Register'
-// import SignIn from './pages/auth/SignIn/SignIn'
+import Profile from './pages/Profile/Profile'
 import Garden from './pages/Garden/Garden'
 import Home from './pages/Home/Home'
 import AddEvent from './pages/admin/AddEvent/AddEvent'
@@ -15,11 +12,7 @@ import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 
 export default function App () {
-  function isAuthenticated () {
-    return true
-  }
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  const gardenId = useSelector(globalState => globalState.user.gardenId)
+  const { isAdmin } = useSelector(globalState => globalState.user)
 
   return (
     <main className='container p-3'>
@@ -28,25 +21,7 @@ export default function App () {
       <section className='columns'>
         <Route exact path='/' component={Home} />
         <Route exact path='/gardens/:id' component={Garden} />
-        <Route
-          path='/register'
-          render={() => {
-            return isAuthenticated()
-              ? <Redirect to={`/gardens/${gardenId}`} />
-              // : <Register />
-              : console.log('nope')
-          }}
-        />
-        <Route
-          path='/signin'
-          render={() => {
-            return isAuthenticated()
-              ? <Redirect to={`/gardens/${gardenId}`} />
-              // : <SignIn />
-              : console.log('nope')
-          }}
-        />
-
+        <Route path='/profile' component={Profile} />
         <Route
           path='/event/new'
           render={() => {
