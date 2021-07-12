@@ -22,7 +22,8 @@ describe('getting garden locations on mount', () => {
         lat: -36.8888888,
         lon: 174.7777777
       }],
-      addrs: ['address 1', 'address 2']
+      addrs: ['address 1', 'address 2'],
+      names: ['name 1', 'name 2']
     }))
     renderWithRouter(<Home />)
     return screen.findAllByRole('img')
@@ -38,15 +39,16 @@ describe('getting user location on mount', () => {
   it('displays user marker', () => {
     getGardenLocations.mockImplementation(() => Promise.resolve({
       gardenCoords: [],
-      addrs: []
+      addrs: [],
+      names: []
     }))
     getUserLocation.mockImplementation((cbFunc) => {
       cbFunc({ lat: -36.8666700, lon: 174.7666700 })
     })
     renderWithRouter(<Home />)
-    return screen.findAllByRole('img')
-      .then((markers) => {
-        expect(markers).toHaveLength(2)
+    return screen.findByRole('img')
+      .then((marker) => {
+        expect(marker).toBeInTheDocument()
         return null
       })
   })
@@ -57,7 +59,8 @@ describe('unmount cleanup', () => {
     expect.assertions(1)
     getGardenLocations.mockImplementation(() => Promise.resolve({
       gardenCoords: [{ lat: -36.8666700, lon: 174.7666700 }],
-      addrs: ['address 1']
+      addrs: ['address 1'],
+      names: ['name 1']
     }))
     let assert = null
     getUserLocation.mockImplementation((cbFunc, isMounted) => {
