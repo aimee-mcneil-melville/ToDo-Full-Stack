@@ -1,6 +1,8 @@
 import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
 import gardenReducer from './garden'
-import updateVolCount from './gardenReducerHelper'
+import { updateVolCount } from '../reducers/gardenReducerHelper'
+
+jest.mock('../reducers/gardenReducerHelper')
 
 describe('garden reducer', () => {
   it('returns new garden object on "SET_GARDEN"', () => {
@@ -33,102 +35,39 @@ describe('garden reducer', () => {
     const newState = gardenReducer(oldGarden, action)
     expect(newState).toBe(oldGarden)
   })
-})
 
-it('decrease volunteer count when clicked', () => {
-  const inputState = {
-    name: 'Test garden',
-    description: 'A garden to test',
-    url: 'www.test.com',
-    events: [
-      {
-        id: '2',
-        volunteersNeeded: 20,
-        title: 'Bla',
-        date: '2020-02-20',
-        description: 'bla',
+  it('"UPDATE_EVENT_VOLS" calls updateVolCount()', () => {
+    const state = {
+      id: 11,
+      volunteersNeeded: 11,
+      title: 'Test',
+      date: '2020-2-20',
+      description: 'bla test',
+      totalVolunteers: 2,
+      isVolunteer: true
+    }
+
+    const action = {
+      type: UPDATE_EVENT_VOLS,
+      eventId: 10
+    }
+
+    updateVolCount.mockImplementation((garden, eventId) => {
+      expect(eventId).toBe(10)
+      return {
+        id: 10,
+        volunteersNeeded: 10,
+        title: 'Test',
+        date: '2020-2-20',
+        description: 'bla test',
         totalVolunteers: 2,
-        isVolunteer: false
-      }
-    ],
-    address: '',
-    lat: 0,
-    lon: 0
-  }
-
-  const expectedState = {
-    name: 'Test garden',
-    description: 'A garden to test',
-    url: 'www.test.com',
-    events: [
-      {
-        id: '2',
-        volunteersNeeded: 20,
-        title: 'Bla',
-        date: '2020-02-20',
-        description: 'bla',
-        totalVolunteers: 3,
-        isVolunteer: false
-      }
-    ],
-    address: '',
-    lat: 0,
-    lon: 0
-  }
-
-  const action = {
-    type: UPDATE_EVENT_VOLS,
-    eventId: 2
-  }
-  const actualState = updateVolCount(inputState, action)
-  expect(actualState.events.totalVolunteers).toBe(expectedState.events.totalVolunteers)
-})
-
-it('increase volunteer count when clicked', () => {
-  const inputState = {
-    name: 'Test garden',
-    description: 'A garden to test',
-    url: 'www.test.com',
-    events: [
-      {
-        id: '2',
-        volunteersNeeded: 20,
-        title: 'Bla',
-        date: '2020-02-20',
-        description: 'bla',
-        totalVolunteers: 2,
-        isVolunteer: false
-      }
-    ],
-    address: '',
-    lat: 0,
-    lon: 0
-  }
-
-  const expectedState = {
-    name: 'Test garden',
-    description: 'A garden to test',
-    url: 'www.test.com',
-    events: [
-      {
-        id: '2',
-        volunteersNeeded: 20,
-        title: 'Bla',
-        date: '2020-02-20',
-        description: 'bla',
-        totalVolunteers: 3,
         isVolunteer: true
       }
-    ],
-    address: '',
-    lat: 0,
-    lon: 0
-  }
+    })
 
-  const action = {
-    type: UPDATE_EVENT_VOLS,
-    eventId: 2
-  }
-  const actualState = updateVolCount(inputState, action)
-  expect(actualState.events.totalVolunteers).toBe(expectedState.events.totalVolunteers)
+    const newState = gardenReducer(state, action)
+
+    expect(updateVolCount).toHaveBeenCalled()
+    expect(newState).not.toBe(state)
+  })
 })

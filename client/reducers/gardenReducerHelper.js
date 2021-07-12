@@ -1,4 +1,4 @@
-export default function updateVolCount (garden, eventId) {
+export function updateVolCount (garden, eventId) {
   const updatedEvents = garden.events.map(event => {
     if (event.id === eventId) {
       if (event.isVolunteer === false) {

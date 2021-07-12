@@ -1,5 +1,5 @@
 import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
-import updateVolCount from './gardenReducerHelper'
+import { updateVolCount } from './gardenReducerHelper'
 
 const initialState = {
   name: '',
