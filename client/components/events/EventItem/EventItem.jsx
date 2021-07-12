@@ -31,7 +31,8 @@ export default function EventItem ({ event, isAdmin }) {
           setVolunteering={setIsVolunteering}
         />
       }
-      <p className='link-placeholder'>Event Admin</p>
+      {/* Placeholder link below  */}
+      <Link to={`/events/${id}/edit`} className='view-event-link link-placeholder'>Event Event</Link>
     </article>
   )
 }

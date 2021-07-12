@@ -3,30 +3,23 @@
 @use '../1-helpers/vars';
 
 .map {
-  height: 30%;
-  // width: 30%;
+  z-index: -9999;
   border-radius: 50%;
   padding: 50%;
-  z-index: -9999;
-  @include mixins.media-queries(tablet, min) {
+  border: solid vars.$secondary;
+  @include mixins.media-queries(mobile, min) {
     border-radius: 0%;
-    height: 50%;
-    width: 100%;
+    width: functions.colWidth(12);
   }
 }
 
-.map-container{
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  position: relative;
-  margin: 0 auto;
+.map-container {
+  padding: vars.$base-size;
+  padding-right: 0;
   width: functions.colWidth(12);
   order: -1;
-  @include mixins.media-queries(tablet, min) {
+  @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(6);
     order: 1;
-    // justify-content: flex-end;
-    // align-items: flex-end;
   }
 }

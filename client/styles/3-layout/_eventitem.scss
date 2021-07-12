@@ -6,7 +6,7 @@
   width: functions.colWidth(12);
 
   @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(4);
+      width: functions.colWidth(6);
   }
 }
 
