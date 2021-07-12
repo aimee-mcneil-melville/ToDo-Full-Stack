@@ -19,10 +19,10 @@ export default function App () {
   const gardenId = useSelector(globalState => globalState.user.gardenId)
 
   return (
-    <main className='container p-3'>
+    <>
       <Error />
       <Header />
-      <section className='columns'>
+      <main className='container'>
         <Route exact path='/' component={Home} />
         <Route exact path='/gardens/:id' component={Garden} />
         <Route
@@ -59,7 +59,7 @@ export default function App () {
           }}
         />
         <Route exact path='/events/:id' component={Event} />
-      </section>
-    </main>
+      </main>
+    </>
   )
 }
