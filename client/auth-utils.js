@@ -25,6 +25,12 @@ export function getLoginFn (useAuth0) {
   return useAuth0().loginWithRedirect
 }
 
+export function getRegisterFn (useAuth0) {
+  const { loginWithRedirect } = useAuth0()
+  const redirectUri = `${window.location.origin}/profile`
+  return () => loginWithRedirect({ redirectUri, screen_hint: 'signup' })
+}
+
 export function getLogoutFn (useAuth0) {
   return useAuth0().logout
 }
