@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { logOut, logIn } from './navHelper'
+// import { logOut, logIn } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
-import { getAccessToken } from '../../auth-utils'
+import { login, logout } from '../../auth-utils'
 
 export default function Nav () {
   // const location = useLocation()
@@ -16,7 +16,7 @@ export default function Nav () {
       <div className="navbar-item">
         <IfAuthenticated>
           <Link to={`/gardens/${user.gardenId}`} className='ml-4'>My Garden</Link>
-          <Link to="/" onClick={logOut} className='ml-4'>
+          <Link to="/" onClick={logout} className='ml-4'>
               Log out
           </Link>
           <Link to="/" className='ml-4'>Home</Link>
@@ -27,8 +27,8 @@ export default function Nav () {
               {name}
             </Link>
           ))} */}
-          <Link to="/" onClick={logIn} className='ml-4'>
-              Log in
+          <Link to="/" onClick={login} className='ml-4'>
+              Log in/register
           </Link>
           <Link to="/" className='ml-4'>Home</Link>
         </IfNotAuthenticated>

@@ -1,7 +1,7 @@
 import { dispatch } from '../../store'
 // import { logOff } from '../../auth'
 import { clearUser } from '../../actions/user'
-import { useAuth0 } from '@auth0/auth0-react'
+// import { useAuth0 } from '@auth0/auth0-react'
 // const { logout } = useAuth0()
 
 export function logOut (e) {
