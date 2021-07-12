@@ -2,11 +2,9 @@ name: CI/CD
 
 on:
   push:
-    # branches: [ main, dev]
-    branches: [ e2e-devops-integration ]
+    branches: [ main, dev ]
   pull_request:
-    # branches: [ main, dev ]
-    branches: [ e2e-devops-integration ]
+    branches: [ main, dev]
 
 env:
   JWT_SECRET: ${{secrets.JWT}}
