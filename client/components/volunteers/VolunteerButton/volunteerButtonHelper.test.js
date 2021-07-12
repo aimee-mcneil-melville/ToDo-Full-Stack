@@ -1,5 +1,6 @@
 import { toggleVolunteerStatus } from './volunteerButtonHelper'
-import { SET_WAITING, CLEAR_WAITING } from '../../../actions/waiting'
+import { SET_WAITING } from '../../../actions/waiting'
+import { UPDATE_EVENT_VOLS } from '../../../actions/garden'
 import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
@@ -50,15 +51,16 @@ describe('toggleVolunteerStatus', () => {
     getState.mockImplementation(() => ({ user: { id: 4 } }))
     const willVolunteer = true
     const setVolunteering = jest.fn()
+    const eventId = 1
 
     function consume () {
       return Promise.resolve()
     }
 
-    return toggleVolunteerStatus(null, willVolunteer, setVolunteering, consume)
+    return toggleVolunteerStatus(eventId, willVolunteer, setVolunteering, consume)
       .then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        expect(dispatch).toHaveBeenCalledWith({ type: UPDATE_EVENT_VOLS, eventId: eventId })
         expect(setVolunteering).toHaveBeenCalledWith(true)
         return null
       })

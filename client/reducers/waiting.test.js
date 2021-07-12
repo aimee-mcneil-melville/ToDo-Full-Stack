@@ -2,7 +2,7 @@ import { SET_WAITING, CLEAR_WAITING } from '../actions/waiting'
 import { SET_USER } from '../actions/user'
 import { SHOW_ERROR } from '../actions/error'
 import waitingReducer from './waiting'
-import { SET_GARDEN } from '../actions/garden'
+import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
 
 describe('waiting reducer', () => {
   it('returns true on "SET_WAITING"', () => {
@@ -52,4 +52,12 @@ describe('waiting reducer', () => {
     const newState = waitingReducer(false, action)
     expect(newState).toBeFalsy()
   })
+})
+
+it('returns false on "UPDATE_EVENT_VOLS"', () => {
+  const action = {
+    type: UPDATE_EVENT_VOLS
+  }
+  const newState = waitingReducer(true, action)
+  expect(newState).toBeFalsy()
 })
