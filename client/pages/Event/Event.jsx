@@ -75,6 +75,7 @@ export default function Event () {
             : <Map
               coordinates={[{ lat, lon }]}
               addresses={[address]}
+              names={[gardenName]}
             />
           }
           </h3>

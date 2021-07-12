@@ -5,17 +5,17 @@ import { renderWithRouter } from '../../../test-utils'
 
 import EventItem from './EventItem'
 
-// describe('Edit Event button', () => {
-//   it('displays for admin', () => {
-//     renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
-//     expect(screen.getByRole('link', { name: 'Edit Event' })).toBeInTheDocument()
-//   })
+describe('Edit Event button', () => {
+  it('displays for admin', () => {
+    renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
+    expect(screen.getByRole('link', { name: 'Edit Event' })).toBeInTheDocument()
+  })
 
-//   it('does not display if not an admin', () => {
-//     renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
-//     expect(screen.queryByRole('link', { name: 'Edit Event' })).toBeNull()
-//   })
-// })
+  it('does not display if not an admin', () => {
+    renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
+    expect(screen.queryByRole('link', { name: 'Edit Event' })).toBeNull()
+  })
+})
 
 describe('Volunteer button', () => {
   it('displays for a member', () => {

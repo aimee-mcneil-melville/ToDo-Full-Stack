@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-const tempData = {
-  title: 'Weeding'
-}
+// const tempData = {
+//   title: 'Weeding'
+// }
 export default function EventForm (props) {
   const [form, setForm] = useState(props.formData || {
     title: '',

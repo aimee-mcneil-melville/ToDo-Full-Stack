@@ -11,6 +11,7 @@
   padding: vars.$base-size*1;
   border:none;
   border-radius: vars.$base-size/4;
+  overflow: auto;
 
   @include mixins.media-queries(tablet, min) {
       width: functions.colWidth(4);
@@ -46,4 +47,3 @@
     display: inline-block;
     padding: vars.$base-size;
 }
-
