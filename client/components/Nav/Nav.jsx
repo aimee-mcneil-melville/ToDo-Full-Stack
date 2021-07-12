@@ -11,18 +11,18 @@ export default function Nav () {
   const user = useSelector(globalState => globalState.user)
 
   return (
-    <nav className="navbar column">
-      <div className="navbar-item">
+    <nav className="navi">
+      <div className="navi-item">
         <IfAuthenticated>
-          <Link to={`/gardens/${user.gardenId}`} className='ml-4'>My Garden</Link>
-          <Link to="/" onClick={logOut} className='ml-4'>
+          <Link to={`/gardens/${user.gardenId}`} className='navi-link'>My Garden</Link>
+          <Link to="/" onClick={logOut} className='navi-link'>
               Log out
           </Link>
-          <Link to="/" className='ml-4'>Home</Link>
+          <Link to="/" className='navi-link'>Home</Link>
         </IfAuthenticated>
         <IfNotAuthenticated>
           {navLinks.map(({ to, name }) => (
-            <Link key={to} to={to} className='ml-4'>
+            <Link key={to} to={to} className='navi-link'>
               {name}
             </Link>
           ))}
