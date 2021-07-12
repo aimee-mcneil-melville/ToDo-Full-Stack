@@ -34,6 +34,10 @@
     align-items: center;
     padding-right: vars.$base-size;
 
+    &:hover {
+        color: vars.$green;
+    }
+
     @include mixins.media-queries(tablet, min) {
         display: none;
     }
@@ -46,6 +50,10 @@
     position: absolute;
     top: 22px;
     right: 12px;
+
+    &:hover {
+        color: vars.$green;
+    }
 
     @include mixins.media-queries(tablet, min) {
         display: none;
