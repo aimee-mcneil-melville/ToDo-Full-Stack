@@ -8,8 +8,8 @@
   padding: 50%;
   @include mixins.media-queries(tablet, min) {
     border-radius: 0%;
-    height: 20%;
-    width: 20%;
+    height: 50%;
+    width: 70%;
   }
 }
 
@@ -20,7 +20,7 @@
   width: functions.colWidth(12);
   order: -1;
   @include mixins.media-queries(tablet, min) {
-   width: functions.colWidth(4);
+   width: functions.colWidth(11);
    order: 1;
   }
 }
