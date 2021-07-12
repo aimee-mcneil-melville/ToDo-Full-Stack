@@ -13,6 +13,7 @@ import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
+import Profile from './pages/Profile/Profile'
 
 export default function App () {
   function isAuthenticated () {
@@ -64,6 +65,10 @@ export default function App () {
           }}
         />
         <Route exact path='/events/:id' component={Event} />
+        <Route
+          exact path='/profile'
+          render={Profile}
+        />
       </section>
     </main>
   )
