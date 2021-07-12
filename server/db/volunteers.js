@@ -31,6 +31,7 @@ function setVolunteerAttendance (eventData, db = connection) {
 }
 
 function addExtraVolunteer (added, db = connection) {
+  console.log(added)
   const { eventId, firstName, lastName } = added
   return db('extraVolunteers')
     .insert({

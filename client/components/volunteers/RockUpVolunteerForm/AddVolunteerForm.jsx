@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-
-import {} from './AddVolunteerFormHelper'
+// import { useHistory } from 'react-router-dom'
+import { addVolunteer } from './AddVolunteerFormHelper'
+import { useParams } from 'react-router-dom'
 
 export default function AddVolunteerForm () {
+  const { id } = useParams()
+
   const [form, setForm] = useState({
-    first_name: '',
-    last_name: ''
+    eventId: id,
+    firstName: '',
+    lastName: ''
   })
-  const history = useHistory
+
+  // const history = useHistory
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -20,7 +24,8 @@ export default function AddVolunteerForm () {
 
   function handleClick (e) {
     e.preventDefault()
-    // function from Helper
+    addVolunteer(form)
+    setForm({ eventId: id, firstName: '', lastName: '' })
   }
 
   return (
@@ -31,9 +36,9 @@ export default function AddVolunteerForm () {
           <label htmlFor='firstname' className=''>First name</label>
           <input
             className='input'
-            id='firstname'
-            name='firstname'
-            value={form.first_name}
+            id='firstName'
+            name='firstName'
+            value={form.firstName}
             onChange={handleChange}
             placeholder='First name'
             type='text'
@@ -43,9 +48,9 @@ export default function AddVolunteerForm () {
           <label htmlFor='lastname' className=''>Last name</label>
           <input
             className='input'
-            id='lastname'
-            name='lastname'
-            value={form.last_name}
+            id='lastName'
+            name='lastName'
+            value={form.lastName}
             onChange={handleChange}
             placeholder='Last name'
             type='text'
