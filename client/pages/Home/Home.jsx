@@ -39,7 +39,7 @@ export default function Home () {
 
   return (
     <section className='flex-container'>
-      <article className='container'>
+      <article className='home-container'>
         <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
         <Link className='button-custom' to='/signin'>Get Started</Link>
       </article>
