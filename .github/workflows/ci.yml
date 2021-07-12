@@ -35,6 +35,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        
+      - name: Seed data
+        run: npm run db:seed
 
       - name: Start test server
         run: npm run start & npx wait-on http://localhost:3000 # TODO: change to port
