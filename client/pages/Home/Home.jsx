@@ -43,7 +43,7 @@ export default function Home () {
     <section className='flex-container'>
       <article className='home-container'>
         <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link className='button-custom' to='/signin'>Get Started</Link>
+        <Link className='button-primary' to='/signin'>Get Started</Link>
       </article>
       <Map
         userCoordinates={userCoordinates}

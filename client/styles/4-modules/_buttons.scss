@@ -1,7 +1,7 @@
 @use '../1-helpers/mixins';
 @use '../1-helpers/vars';
 
-.button-custom {
+.button-primary {
   background-color: vars.$dark-green;
   border: none;
   color: #ffffff;
