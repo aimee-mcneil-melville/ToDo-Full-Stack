@@ -20,9 +20,9 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
-    "test": "jest",
-    "test:e2e": "jest --runInBand -c tests/e2e/e2e.config.js",
-    "test:watch": "jest --watchAll",
+    "test": "jest --selectProjects client server",
+    "test:e2e": "jest --selectProjects e2e --runInBand",
+    "test:watch": "npm run test -- --watchAll",
     "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
@@ -48,11 +48,22 @@
   "jest": {
     "verbose": true,
     "projects": [
-      "<rootDir>/client",
-      "<rootDir>/server"
-    ],
-    "testPathIgnorePatterns": [
-      "/e2e/"
+      {
+        "displayName": "client",
+        "testEnvironment": "jsdom",
+        "testMatch": ["<rootDir>/client/**/*.test.js"],
+        "setupFilesAfterEnv": [
+          "@testing-library/jest-dom"
+        ]
+      },
+      {
+        "displayName": "server",
+        "testMatch": ["<rootDir>/server/**/*.test.js"]
+      },
+      {
+        "displayName": "e2e",
+        "testMatch": ["**/e2e/?(*.)+(spec|test).[jt]s?(x)"]
+      }
     ]
   },
   "engines": {
