@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
+import { useAuth0 } from '@auth0/auth0-react'
+
 export function Register () {
+  const authUser = useAuth0().user
+  const auth0Id = authUser.sub
+  console.log(authUser)
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
     username: '',
-    gardenId: null
+    gardenId: null,
+    email: authUser.email,
+    auth0Id: auth0Id
   })
   const history = useHistory()
 

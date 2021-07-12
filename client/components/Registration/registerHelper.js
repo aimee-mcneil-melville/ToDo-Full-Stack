@@ -5,10 +5,12 @@ import { showError } from '../../actions/error'
 
 export function registerUser (user, navigateTo, consume = requestor) {
   const newUser = {
-    garden_id: user.gardenId,
-    first_name: user.firstName,
-    last_name: user.lastName,
-    username: user.username
+    firstName: user.firstName,
+    lastName: user.lastName,
+    gardenId: user.gardenId,
+    username: user.username,
+    email: user.email,
+    auth0Id: user.auth0Id
   }
   dispatch(setWaiting())
   return consume('/profile', 'post', newUser)
