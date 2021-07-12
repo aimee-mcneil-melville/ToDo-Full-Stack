@@ -14,12 +14,14 @@
 
 .form-title {
   color: vars.$primary;
+  font-family: vars.$heading;
   font-size: x-large;
   font-weight: bold;
 }
 
 .label {
   color: vars.$black;
+  font-family: vars.$paragraph;
   font-weight: bold;
 }
 
@@ -27,19 +29,23 @@
 // Preview
 .preview-title {
   color: vars.$primary;
+  font-family: vars.$heading;
   font-size: x-large;
   font-weight: bold;
 }
 
 .para-title {
   color: vars.$primary;
+  font-family: vars.$paragraph;
   font-size: normal;
   font-weight: bold;
 }
 
 .form-box {
   height: vars.$base-size * 1.75; // or 100%?
-  width: vars.$base-size * 20
+  width: vars.$base-size * 20;
+  font-family: vars.$paragraph;
+  margin-bottom: 1rem;
 }
 
 .form-box-height {
