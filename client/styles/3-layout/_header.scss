@@ -10,6 +10,7 @@ header {
 }
 
 .logo-image {
+    padding-left: vars.$base-size;
     height: 100%;
 
     @include mixins.media-queries(tablet, min) {
