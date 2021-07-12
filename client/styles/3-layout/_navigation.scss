@@ -26,5 +26,13 @@
 .navi a {
     color: #fff;
     text-decoration: underline;
-    padding: 0 vars.$base-size 0 vars.$base-size;
+    padding-right: vars.$base-size * 0.5;
+
+    &:hover {
+        color: vars.$green;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+        padding: 0 vars.$base-size 0 vars.$base-size;
+    }
 }
