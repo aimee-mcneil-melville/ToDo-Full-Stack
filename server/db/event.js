@@ -15,7 +15,6 @@ function getEventById (id, db = connection) {
     .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'users.first_name', 'users.last_name', 'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName', 'extraVolunteers.id as extraVolId')
     .where('events.id', id)
     .then(result => {
-      console.log(result)
       const event = result[0]
       return {
         id: event.id,
@@ -26,7 +25,7 @@ function getEventById (id, db = connection) {
         title: event.title,
         date: event.date,
         description: event.description,
-        volunteers: result.reduce((acc, cur) => {
+        volunteers: !result.some(evts => evts.userId) ? [] : result.reduce((acc, cur) => {
           const personIncluded = acc.some((person) => {
             return person.userId === cur.userId
           })
@@ -41,7 +40,7 @@ function getEventById (id, db = connection) {
           }
           return acc
         }, []),
-        extraVolunteers: result.reduce((acc, cur) => {
+        extraVolunteers: !result.some(evts => evts.extraVolId) ? [] : result.reduce((acc, cur) => {
           const personIncluded = acc.some((person) => {
             return person.extraVolId === cur.extraVolId
           })
