@@ -2,11 +2,12 @@
 
 
 header {
+    height: 100px;
     background-color: vars.$primary;
     display: flex;
-    justify-content: column;
+    justify-content: space-between;
 }
 
-img {
-    height: 100px;
+.logo-image {
+    height: 100%;
 }
