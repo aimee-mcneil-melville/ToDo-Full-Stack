@@ -51,18 +51,24 @@
       {
         "displayName": "client",
         "testEnvironment": "jsdom",
-        "testMatch": ["<rootDir>/client/**/*.test.js"],
+        "testMatch": [
+          "<rootDir>/client/**/*.test.js"
+        ],
         "setupFilesAfterEnv": [
           "@testing-library/jest-dom"
         ]
       },
       {
         "displayName": "server",
-        "testMatch": ["<rootDir>/server/**/*.test.js"]
+        "testMatch": [
+          "<rootDir>/server/**/*.test.js"
+        ]
       },
       {
         "displayName": "e2e",
-        "testMatch": ["**/e2e/?(*.)+(spec|test).[jt]s?(x)"]
+        "testMatch": [
+          "**/e2e/?(*.)+(spec|test).[jt]s?(x)"
+        ]
       }
     ]
   },

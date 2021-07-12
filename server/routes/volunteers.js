@@ -22,8 +22,13 @@ router.get('/emailsignup', (req, res) => {
       res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
     })
-    .catch(e => {
-      res.status(500).send()
+    .catch(err => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to register from email'
+        }
+      })
     })
 })
 

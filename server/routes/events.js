@@ -62,12 +62,13 @@ router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers } = event
+      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers } = event
       const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description }
 
       if (req.user) {
         if (req.user.isAdmin) {
           eventResponse.volunteers = volunteers
+          eventResponse.extraVolunteers = extraVolunteers
         } else {
           eventResponse.isVolunteer = volunteers.some((v) => v.userId === req.user.id)
         }
