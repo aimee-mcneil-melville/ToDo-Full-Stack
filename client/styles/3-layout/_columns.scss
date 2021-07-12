@@ -16,7 +16,6 @@
   flex-grow: 1;
   @include mixins.media-queries(tablet, min) {
     flex-direction: row;
-
   }
 }
 
