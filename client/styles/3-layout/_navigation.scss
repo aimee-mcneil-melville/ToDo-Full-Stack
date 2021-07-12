@@ -2,24 +2,38 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/mixins';
 
-.navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: functions.colWidth(6);
-    // outputs to width: 50%
 
-    @include mixins.media-queries(tablet, min) {
-        width: functions.colWidth(12);
-    }
-    // outputs to:
-    // @media (min-width: 1020px) {
-    //     .navbar {
-    //       width: 100%;
-    //     }
-    //   }
+.navi {
+    width: auto;
 }
 
-.navbar a {
-    color: vars.$green;
+.navi-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: end;
+
+    @include mixins.media-queries(tablet, min) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-right: vars.$base-size;
+        padding-bottom: vars.$base-size ;
+    }
+}
+
+.navi a {
+    font-family: vars.$paragraph;
+    color: #fff;
     text-decoration: underline;
+    padding-right: vars.$base-size * 0.5;
+
+    &:hover {
+        color: vars.$green;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+        padding: 0 vars.$base-size 0 vars.$base-size;
+    }
 }

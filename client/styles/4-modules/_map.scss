@@ -1,26 +1,32 @@
 @use '../1-helpers/mixins';
 @use '../1-helpers/functions';
+@use '../1-helpers/vars';
 
 .map{
-  height: 50%;
-  width: 50%;
+  height: 30%;
+  width: 30%;
   border-radius: 50%;
-  padding: 50%;
+  padding: 35%;
+  border: solid vars.$secondary;
   @include mixins.media-queries(tablet, min) {
     border-radius: 0%;
-    height: 20%;
-    width: 20%;
+    height: 50%;
+    width: 70%;
   }
 }
 
 .map-container{
   display: flex;
+  justify-content: center;
+  align-content: center;
   position: relative;
   margin: 0 auto;
   width: functions.colWidth(12);
   order: -1;
   @include mixins.media-queries(tablet, min) {
-   width: functions.colWidth(4);
+   width: functions.colWidth(11);
    order: 1;
+   justify-content: flex-end;
+   align-items: flex-end;
   }
 }
