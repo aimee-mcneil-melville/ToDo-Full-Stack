@@ -5,7 +5,6 @@ import { showError } from '../../actions/error'
 import { useParams } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIds } from './emailVolunteerErrorHelper'
-import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 
 export default function EmailVolunteerError () {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
@@ -23,16 +22,18 @@ export default function EmailVolunteerError () {
   }, [])
   return (
     <>
-      <h1>uh oh spagettios!</h1>
+      <h1> 🐌 🐌 uh oh spagettios! 🐌 🐌 </h1>
       <p>You tried to sign up for <b>{event.title}</b> at <b>{event.gardenName}</b>... but something went wrong! 😱</p>
-      <p>userId: {userId}</p>
-      <p>eventId: {eventId}</p>
+
       <IfAuthenticated>
-        {checkUserIds(userId, storeState.user.id) ? <VolunteerButton eventId={eventId} volunteering={false} setVolunteering={} /> : <p>Get out!</p>}
-        <p>You are currently logged in as: {storeState.user.id}</p>
+        <p>No probs, just <a href={`/events/${eventId}`}>click here to visit the event page,</a> then click the volunteer button!</p>
+        {(!checkUserIds(userId, storeState.user.id)) &&
+          <p><i>WARNING: You are currently logged in as:</i> <b>{storeState.user.username}</b></p>
+        }
+
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <p>You are Not logged in</p>
+        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the 'Volunteer' button on the garden page </p>
       </IfNotAuthenticated>
     </>
   )
