@@ -2,14 +2,13 @@ const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
 const { serverUrl } = require('./index')
-const isHeadless = process.env.HEADLESS || false
 
 jest.setTimeout(20000)
 
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: isHeadless === 'true', slowMo: 500 })
+  browser = await chromium.launch({ headless: true, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -36,9 +35,9 @@ test('Admin can login & add event', async () => {
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
   await page.click('button', { force: true })
-  expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
+  expect(await page.content()).toMatch('Log out')
   await page.click('text=Add New Event')
-  expect(await page.url()).toBe(`${serverUrl}/event/new`)
+  expect(await page.content()).toMatch('Create Event')
   await page.fill('#title', 'Christmas Gardening!')
   await page.fill('[type=date]', '2021-12-25')
   await page.fill('[type=number]', '100')
@@ -48,6 +47,5 @@ test('Admin can login & add event', async () => {
     page.waitForNavigation(),
     page.click('button', { force: true })
   ])
-  expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
   expect(await page.content()).toMatch('Christmas Gardening!')
 })
