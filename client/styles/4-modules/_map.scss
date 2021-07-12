@@ -10,7 +10,7 @@
   border: solid vars.$secondary;
   @include mixins.media-queries(tablet, min) {
     border-radius: 0%;
-    height: 70%;
+    height: 50%;
     width: 70%;
   }
 }
@@ -24,7 +24,7 @@
   width: functions.colWidth(12);
   order: -1;
   @include mixins.media-queries(tablet, min) {
-   width: functions.colWidth(12);
+   width: functions.colWidth(11);
    order: 1;
    justify-content: flex-end;
    align-items: flex-end;
