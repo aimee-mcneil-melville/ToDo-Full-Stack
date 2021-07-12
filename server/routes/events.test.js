@@ -25,6 +25,11 @@ const mockEvent = {
     username: 'jdog',
     firstName: 'Johnny',
     lastName: 'Dawg'
+  }],
+  extraVolunteers: [{
+    eventId: 3,
+    firstName: 'Din',
+    lastName: 'Don'
   }]
 }
 
@@ -38,7 +43,7 @@ const testAuthAdminHeader = {
 
 describe('GET /api/v1/events/:id', () => {
   it('responds only with event details for a guest', () => {
-    expect.assertions(4)
+    expect.assertions(5)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -51,12 +56,13 @@ describe('GET /api/v1/events/:id', () => {
         expect(res.body.title).toBe('Weeding worker Bee')
         expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body).not.toHaveProperty('volunteers')
+        expect(res.body).not.toHaveProperty('extraVolunteers')
         return null
       })
   })
 
   it('response includes volunteer status of member', () => {
-    expect.assertions(3)
+    expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -70,13 +76,14 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
+        expect(res.body).not.toHaveProperty('extraVolunteers')
         expect(res.body.isVolunteer).toBe(true)
         return null
       })
   })
 
   it('response includes non-volunteer status of member', () => {
-    expect.assertions(3)
+    expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -88,13 +95,14 @@ describe('GET /api/v1/events/:id', () => {
       .expect(200)
       .then(res => {
         expect(res.body).not.toHaveProperty('volunteers')
+        expect(res.body).not.toHaveProperty('extraVolunteers')
         expect(res.body.isVolunteer).toBe(false)
         return null
       })
   })
 
   it('response includes volunteers array if Admin', () => {
-    expect.assertions(3)
+    expect.assertions(4)
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -107,6 +115,7 @@ describe('GET /api/v1/events/:id', () => {
       .then(res => {
         expect(res.body).not.toHaveProperty('isVolunteer')
         expect(res.body.volunteers).toHaveLength(1)
+        expect(res.body.extraVolunteers).toHaveLength(1)
         return null
       })
   })

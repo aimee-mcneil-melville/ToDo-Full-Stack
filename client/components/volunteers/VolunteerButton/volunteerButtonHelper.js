@@ -1,7 +1,8 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
+import { setWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
+import { updateEventVols } from '../../../actions/garden'
 
 export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, consume = requestor) {
   const storeState = getState()
@@ -15,7 +16,7 @@ export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, 
 
     return consume('/volunteers', routeMethod, userData)
       .then(() => {
-        dispatch(clearWaiting())
+        dispatch(updateEventVols(eventId))
         setVolunteering(willVolunteer)
         return null
       })
