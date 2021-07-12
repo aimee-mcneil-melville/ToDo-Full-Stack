@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { isAuthenticated } from '../../auth-utils'
 
 import { getIsAuthenticated } from '../../auth-utils'
 

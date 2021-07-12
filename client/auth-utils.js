@@ -39,30 +39,15 @@ export function getIsAuthenticated (useAuth0) {
   return useAuth0().isAuthenticated
 }
 
-export async function getAccessToken () {
-  try {
-    return await auth0.getTokenSilently({
-      audience: 'https://garden/nz/api',
-      scope: 'read:users'
-    })
-  } catch (error) {
-    if (error.error !== 'login_required') {
-      throw error
-    }
-  }
-}
-
-export const login = async () => {
-  console.log(await isAuthenticated())
-
-  await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin
-  })
-}
-
-export const logout = async () => {
-  console.log(await isAuthenticated())
-  await auth0.logout({
-    returnTo: window.location.origin
-  })
-}
+// export async function getAccessToken () {
+//   try {
+//     return await auth0.getTokenSilently({
+//       audience: 'https://garden/nz/api',
+//       scope: 'read:users'
+//     })
+//   } catch (error) {
+//     if (error.error !== 'login_required') {
+//       throw error
+//     }
+//   }
+// }
