@@ -9,7 +9,7 @@ export default function Events ({ events }) {
 
   return (
     <>
-      <h1>Events</h1>
+      <h1 className='events-title'>Events</h1>
       <section className='column-9'>
         {events.map((event) =>
           <EventItem key={event.id} event={event} isAdmin={isAdmin} />
