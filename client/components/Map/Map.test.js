@@ -12,17 +12,18 @@ describe('user location marker', () => {
     render(<Map
       addresses={[]}
       coordinates={[]}
+      names={[]}
       userCoordinates={userCoordinates}
     />)
-    const markers = screen.getAllByRole('img')
-    // each marker has a marker image and the marker's shadow image
-    expect(markers).toHaveLength(2)
+    const marker = screen.getByRole('img')
+    expect(marker).toBeInTheDocument()
   })
 
   it('does not display when userCoordinates not provided', () => {
     render(<Map
       addresses={[]}
       coordinates={[]}
+      names={[]}
     />)
     const markers = screen.queryByRole('img')
     expect(markers).toBeNull()
@@ -40,9 +41,11 @@ describe('garden location markers', () => {
     }]
     render(<Map
       addresses={['address 1', 'address 2']}
+      names={['name 1', 'name 2']}
       coordinates={coordinates}
     />)
     const markers = screen.getAllByRole('img')
+
     // there are 2 marker images per marker...
     // each marker has a marker image and the marker's shadow image
     expect(markers).toHaveLength(4)

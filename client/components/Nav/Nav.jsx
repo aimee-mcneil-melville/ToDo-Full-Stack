@@ -7,12 +7,22 @@ import {
   IfAuthenticated,
   IfNotAuthenticated
 } from '../Authenticated/Authenticated'
-import { getLoginFn, getLogoutFn } from '../../auth-utils'
+import {
+  getLoginFn,
+  getLogoutFn,
+  getRegisterFn
+} from '../../auth-utils'
 
 export default function Nav () {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
+  const register = getRegisterFn(useAuth0)
   const gardenId = useSelector(globalState => globalState.user.gardenId)
+
+  function handleRegister (event) {
+    event.preventDefault()
+    register()
+  }
 
   function handleLogin (event) {
     event.preventDefault()
@@ -27,15 +37,17 @@ export default function Nav () {
   return (
     <nav className="navbar column">
       <div className="navbar-item">
-        <Link to="/" className='ml-4'>Home</Link>
+        <Link to="/" className=''>Home</Link>
 
         <IfAuthenticated>
-          <Link to={`/gardens/${gardenId}`} className='ml-4'>My Garden</Link>
-          <a href="/" onClick={handleLogoff} className='ml-4'>Log out</a>
+          <Link to={`/gardens/${gardenId}`} className=''>My Garden</Link>
+          <Link to="/profile" className=''>My Profile</Link>
+          <a href="/" onClick={handleLogoff} className=''>Log out</a>
         </IfAuthenticated>
 
         <IfNotAuthenticated>
-          <a href="/" onClick={handleLogin} className='ml-4'>Sign in</a>
+          <a href="/" onClick={handleLogin} className=''>Sign in</a>
+          <a href="/" onClick={handleRegister} className=''>Register</a>
         </IfNotAuthenticated>
       </div>
     </nav>
