@@ -11,8 +11,7 @@ import VolunteerButton from '../../components/volunteers/VolunteerButton/Volunte
 export default function Event () {
   const { id } = useParams()
 
-  const { lat: initialLat, lon: initialLon } = useSelector(globalState => globalState.garden) // import lat and lon from global
-  const [event, setEvent] = useState({ lat: initialLat, lon: initialLon }) // set initial state from global
+  const [event, setEvent] = useState({ })
 
   const [volunteering, setVolunteering] = useState(false)
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
@@ -28,7 +27,6 @@ export default function Event () {
   }, [])
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
-  console.log(`lat: ${lat}, lon: ${lon}`)
 
   return (
     <>
@@ -67,7 +65,11 @@ export default function Event () {
           eventId={event.id}
         />
         : <Map
-          coordinates={[{ lat, lon }]}
+          coordinates={
+            lat
+              ? [{ lat, lon }]
+              : [{ lat: 0, lon: 0 }]
+          }
           addresses={[gardenAddress]}
           names={[gardenName]}
         />
