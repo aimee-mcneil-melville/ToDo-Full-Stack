@@ -8,13 +8,15 @@ export default function Home () {
   const [userCoordinates, setUserCoordinates] = useState(null)
   const [gardensCoordinates, setGardensCoordinates] = useState([])
   const [addresses, setAddresses] = useState([])
+  const [names, setNames] = useState([])
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     getGardenLocations()
-      .then(({ gardenCoords, addrs }) => {
+      .then(({ gardenCoords, addrs, names }) => {
         setGardensCoordinates(gardenCoords)
         setAddresses(addrs)
+        setNames(names)
         return null
       })
   }, [])
@@ -48,6 +50,7 @@ export default function Home () {
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}
         addresses={addresses}
+        names={names}
       />
     </section>
   )
