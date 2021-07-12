@@ -40,16 +40,14 @@ export default function Home () {
   return (
     <section className='flex-container'>
       <article className='container'>
-        <p className='item'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
+        <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
         <Link className='button position' to='/signin'>Get Started</Link>
       </article>
-      <div className='map-temple'>
-        <Map
-          userCoordinates={userCoordinates}
-          coordinates={gardensCoordinates}
-          addresses={addresses}
-        />
-      </div>
+      <Map
+        userCoordinates={userCoordinates}
+        coordinates={gardensCoordinates}
+        addresses={addresses}
+      />
     </section>
   )
 }

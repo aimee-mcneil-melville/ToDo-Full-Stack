@@ -5,13 +5,13 @@
   position: relative;
   margin-top: vars.$base-size;
   margin-bottom: vars.$base-size;
-  max-width: 100%;
+  max-width: 90%;
   padding: vars.$base-size;
 }
 
 .flex-container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-content: flex-start;
   flex-grow: 1;
   @include mixins.media-queries(tablet, min) {
@@ -25,7 +25,6 @@
 
   &-reverse {
     flex-direction: column-reverse;
-    //complies to .flex-column-reverse
   }
 }
 
@@ -34,13 +33,12 @@
 
   &-reverse {
     flex-direction: row-reverse;
-    //complies to .flex-row-reverse
   }
 }
 
 .position {
   padding: vars.$base-size;
-  padding-left: vars.$base-size +7;
+  padding-left: vars.$base-size +4;
   padding-right: vars.$base-size +7;
   @include mixins.media-queries(tablet, min) {
     padding: vars.$base-size;
@@ -51,10 +49,12 @@
 
 .item {
   order: 0;
-  font-size: vars.$base-size ;
+  font-size: vars.$base-size;
   margin-bottom: vars.$base-size +4;
   margin-right: vars.$base-size;
-  margin-left: vars.$base-size;
+  // margin-left: vars.$base-size;
+  max-width: 100%;
+  // text-align: justify;
 
   @include mixins.media-queries(tablet, min) {
     font-size: vars.$base-size +1;
@@ -63,8 +63,13 @@
   }
 }
 
-.map-temple {
-  margin: 1rem;
-  width: 100%;
-  position: relative;
-}
+// .map-temple {
+//   margin: 1rem;
+//   max-width: 70%;
+//   position: relative;
+
+//   @include mixins.media-queries(tablet, min) {
+//   max-width: 100%;
+//   position: relative;
+//   }
+// }
