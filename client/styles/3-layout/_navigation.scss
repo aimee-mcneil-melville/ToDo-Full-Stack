@@ -13,8 +13,6 @@
     flex-direction: column;
     justify-content: space-around;
     text-align: end;
-   
-    
 
     @include mixins.media-queries(tablet, min) {
         flex-direction: row;
@@ -42,11 +40,14 @@
 
     & .navi-link {
         display: block;
-        
     }
 
     & .hamburger {
         display: none;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+       display: none;
     }
 }
 
