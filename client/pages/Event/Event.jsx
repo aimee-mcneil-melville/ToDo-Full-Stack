@@ -30,7 +30,7 @@ export default function Event () {
   }, [])
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
-  console.log(lat, lon)
+  console.log(`lat: ${lat}, lon: ${lon}`)
 
   return (
     <>
