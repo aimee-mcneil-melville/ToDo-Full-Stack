@@ -36,20 +36,10 @@
   }
 }
 
-.position {
-  padding: vars.$base-size;
-  padding-left: vars.$base-size +4;
-  padding-right: vars.$base-size +7;
-  @include mixins.media-queries(tablet, min) {
-    padding: vars.$base-size;
-  padding-left: vars.$base-size +4;
-  padding-right: vars.$base-size +4;
-  }
-}
-
 .item {
   order: 0;
   font-size: vars.$base-size;
+  font-family: vars.$paragraph;
   margin-bottom: vars.$base-size +4;
   margin-right: vars.$base-size;
   // margin-left: vars.$base-size;
@@ -62,14 +52,3 @@
     margin-right: vars.$base-size;
   }
 }
-
-// .map-temple {
-//   margin: 1rem;
-//   max-width: 70%;
-//   position: relative;
-
-//   @include mixins.media-queries(tablet, min) {
-//   max-width: 100%;
-//   position: relative;
-//   }
-// }
