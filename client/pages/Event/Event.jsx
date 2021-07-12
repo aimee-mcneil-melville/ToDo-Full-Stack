@@ -11,7 +11,7 @@ import VolunteerButton from '../../components/volunteers/VolunteerButton/Volunte
 export default function Event () {
   const { id } = useParams()
 
-  const [event, setEvent] = useState({})
+  const [event, setEvent] = useState({ lat: 0, lon: 0 })
   const [volunteering, setVolunteering] = useState(false)
 
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
@@ -24,12 +24,13 @@ export default function Event () {
       .then((event) => {
         setEvent(event)
         setVolunteering(event.isVolunteer)
-        console.log(event) // event has lat and lon. now check for error
+        // console.log(event) // event has lat and lon. now check for error
         return null
       })
   }, [])
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
+  console.log(lat, lon)
 
   return (
     <>
