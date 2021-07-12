@@ -13,6 +13,8 @@
     flex-direction: column;
     justify-content: space-around;
     text-align: end;
+   
+    
 
     @include mixins.media-queries(tablet, min) {
         flex-direction: row;
@@ -23,7 +25,33 @@
     }
 }
 
+.navi-toggle {
+    background-color: vars.$primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width:100vw;
+    height: 80vh;
+    z-index: 100;
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+    position: relative;
+    left: -286px;
+    top: 0;
+
+    & .navi-link {
+        display: block;
+        
+    }
+
+    & .hamburger {
+        display: none;
+    }
+}
+
 .navi a {
+    display: none;
     font-family: vars.$paragraph;
     color: #fff;
     text-decoration: underline;
@@ -34,6 +62,21 @@
     }
 
     @include mixins.media-queries(tablet, min) {
+        display: block;
         padding: 0 vars.$base-size 0 vars.$base-size;
+    }
+}
+
+.hamburger {
+    cursor: pointer;
+    color: #fff;
+    font-size: vars.$base-size * 2.5;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: vars.$base-size;
+
+    @include mixins.media-queries(tablet, min) {
+        display: none;
     }
 }

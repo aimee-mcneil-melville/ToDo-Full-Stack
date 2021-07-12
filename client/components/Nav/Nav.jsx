@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import { GiHamburgerMenu } from 'react-icons/gi'
 import { logOut, getLinks } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
 
@@ -10,9 +10,15 @@ export default function Nav () {
   const navLinks = getLinks(location.pathname)
   const user = useSelector(globalState => globalState.user)
 
+  const [open, setOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
+
   return (
-    <nav className="navi">
-      <div className="navi-item">
+    <nav className="navi" onClick={toggleMenu}>
+      <div className={open ? 'navi-toggle' : 'navi-item'}>
         <IfAuthenticated>
           <Link to={`/gardens/${user.gardenId}`} className='navi-link'>My Garden</Link>
           <Link to="/" onClick={logOut} className='navi-link'>
@@ -27,6 +33,7 @@ export default function Nav () {
             </Link>
           ))}
         </IfNotAuthenticated>
+        <div className='hamburger' onClick={toggleMenu} ><GiHamburgerMenu/></div>
       </div>
     </nav>
   )
