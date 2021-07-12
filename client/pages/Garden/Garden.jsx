@@ -27,7 +27,7 @@ export default function Garden () {
         </article>
         <Events events={events} />
       </article>
-      {/* <EventDetailCard />  This is the Event details card, uncomment it to use it */}
+      {/* <EventDetailCard />  This is the event details card, uncomment it to use it */}
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
         addresses={[address]}
