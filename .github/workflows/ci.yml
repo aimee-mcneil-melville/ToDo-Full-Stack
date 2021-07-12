@@ -55,6 +55,6 @@ jobs:
          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
          heroku_app_name: "gardenz-app"
          heroku_email: "ryan.julian.bosher@icloud.com"
-         branch: "e2e-devops-integration"
+         branch: "dev"
        env:
         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
