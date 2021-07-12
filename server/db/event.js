@@ -11,7 +11,8 @@ function getEventById (id, db = connection) {
     .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
     .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
     .leftJoin('gardens', 'events.garden_id', 'gardens.id')
-    .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'first_name', 'last_name')
+    .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
+    .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId', 'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded', 'user_id as userId', 'username', 'users.first_name', 'users.last_name', 'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName', 'extraVolunteers.id as extraVolId')
     .where('events.id', id)
     .then(result => {
       const event = result[0]
@@ -24,15 +25,34 @@ function getEventById (id, db = connection) {
         title: event.title,
         date: event.date,
         description: event.description,
-        volunteers: !result.some(evts => evts.userId) ? [] : result.map((volunteer) => {
-          return {
-            userId: volunteer.userId,
-            username: volunteer.username,
-            firstName: volunteer.first_name,
-            lastName: volunteer.last_name,
-            attended: result.find(evt => evt.userId === volunteer.userId).attended ? result.find(evt => evt.userId === volunteer.userId).attended : false
+        volunteers: !result.some(evts => evts.userId) ? [] : result.reduce((acc, cur) => {
+          const personIncluded = acc.some((person) => {
+            return person.userId === cur.userId
+          })
+          if (!personIncluded) {
+            acc.push({
+              userId: cur.userId,
+              username: cur.username,
+              firstName: cur.first_name,
+              lastName: cur.last_name,
+              attended: result.find(evt => evt.userId === cur.userId).attended ? result.find(evt => evt.userId === cur.userId).attended : false
+            })
           }
-        })
+          return acc
+        }, []),
+        extraVolunteers: !result.some(evts => evts.extraVolId) ? [] : result.reduce((acc, cur) => {
+          const personIncluded = acc.some((person) => {
+            return person.extraVolId === cur.extraVolId
+          })
+          if (!personIncluded) {
+            acc.push({
+              extraVolId: cur.extraVolId,
+              firstName: cur.extraVolFirstName,
+              lastName: cur.extraVolLastName
+            })
+          }
+          return acc
+        }, [])
       }
     })
 }

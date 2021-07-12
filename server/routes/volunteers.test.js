@@ -4,9 +4,11 @@ const log = require('../logger')
 const server = require('../server')
 const db = require('../db/volunteers')
 const { getMockToken } = require('./mockToken')
+const { decode } = require('../notifications/emailTokens')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
+jest.mock('../notifications/emailTokens')
 
 const mockNonAdminAuthHeader = {
   Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
@@ -15,6 +17,39 @@ const mockNonAdminAuthHeader = {
 const testAuthAdminHeader = {
   Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
 }
+
+describe('GET /api/v1/volunteer/emailsignup', () => {
+  it('responds with 302 and then rediercts to user\'s garden page', () => {
+    const mockToken = 'foobar'
+    const mockVolunteer = {
+      gardenId: 3
+    }
+    db.addVolunteer.mockImplementation(() => Promise.resolve())
+    decode.mockImplementation(() => mockVolunteer)
+    return request(server)
+      .get(`/api/v1/volunteers/emailsignup?token=${mockToken}`)
+      .expect(302)
+      .then(res => {
+        expect(res.header.location).toBe('/gardens/3')
+        return null
+      })
+  })
+
+  it('responds with 500 and error message during DB error', () => {
+    db.addVolunteer.mockImplementation(() => Promise.reject(
+      new Error('mock addVolunteer error')
+    ))
+    decode.mockImplementation(() => {})
+    return request(server)
+      .get('/api/v1/volunteers/emailsignup?token=foobar')
+      .expect(500)
+      .then(res => {
+        expect(log).toHaveBeenCalledWith('mock addVolunteer error')
+        expect(res.body.error.title).toBe('Unable to register from email')
+        return null
+      })
+  })
+})
 
 describe('POST /api/v1/volunteers', () => {
   it('responds with 401 when no token passed', () => {
