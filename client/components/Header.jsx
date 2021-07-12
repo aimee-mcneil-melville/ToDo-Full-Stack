@@ -6,10 +6,10 @@ import WaitIndicator from '../components/WaitIndicator/WaitIndicator'
 
 export default function Header () {
   return (
-    <header className="columns is-mobile">
-      <div className="column">
-        <Link className="logo title is-size-1-desktop" to="/">Garde<span>nz</span></Link>
-      </div>
+    <header className="header-container">
+      <Link className="logo-wrapper" to="/">
+        <img src='/images/gardenzLogo.svg' alt="gardenzlogo" className='logo-image' />
+      </Link>
       <WaitIndicator />
       <Nav />
     </header>
