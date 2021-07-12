@@ -26,7 +26,7 @@
   @include mixins.media-queries(tablet, min) {
     width: functions.colWidth(6);
     order: 1;
-    justify-content: flex-end;
-    align-items: flex-end;
+    // justify-content: flex-end;
+    // align-items: flex-end;
   }
 }
