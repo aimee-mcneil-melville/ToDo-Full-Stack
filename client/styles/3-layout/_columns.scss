@@ -8,10 +8,11 @@
 
 .flex-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   @include mixins.media-queries(tablet, min) {
     flex-direction: row;
-  }
+   }
 }
 
 .flex-column {
@@ -19,7 +20,6 @@
 
   &-reverse {
     flex-direction: column-reverse;
-    //complies to .flex-column-reverse
   }
 }
 
@@ -28,6 +28,5 @@
 
   &-reverse {
     flex-direction: row-reverse;
-    //complies to .flex-row-reverse
   }
 }
