@@ -1,18 +1,22 @@
 @use '../1-helpers/mixins';
+@use '../1-helpers/vars';
 
 .container {
   position: relative;
-  margin: 0 auto;
-  width: 100%;
+  margin-top: vars.$base-size;
+  margin-bottom: vars.$base-size;
+  max-width: 90%;
+  padding: vars.$base-size;
 }
 
 .flex-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-content: flex-start;
+  flex-grow: 1;
   @include mixins.media-queries(tablet, min) {
     flex-direction: row;
-   }
+  }
 }
 
 .flex-column {
@@ -28,5 +32,22 @@
 
   &-reverse {
     flex-direction: row-reverse;
+  }
+}
+
+.item {
+  order: 0;
+  font-size: vars.$base-size;
+  font-family: vars.$paragraph;
+  margin-bottom: vars.$base-size +4;
+  margin-right: vars.$base-size;
+  // margin-left: vars.$base-size;
+  max-width: 100%;
+  // text-align: justify;
+
+  @include mixins.media-queries(tablet, min) {
+    font-size: vars.$base-size +1;
+    margin-bottom: vars.$base-size +3;
+    margin-right: vars.$base-size;
   }
 }

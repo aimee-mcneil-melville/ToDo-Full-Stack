@@ -1,13 +1,23 @@
+@use '../1-helpers/mixins';
 @use '../1-helpers/vars';
 
-.button {
+.button-custom {
   background-color: vars.$dark-green;
   border: none;
   color: #ffffff;
+  padding: vars.$base-size;
+  text-align: center;
+  display: block;
+  width: 100%;
+
+  @include mixins.media-queries(tablet, min) {
+    width: 50%;
+  }
 
   &:hover{
     background-color: vars.$green;
     border: none;
     color: #ffffff;
   }
+  
 }
