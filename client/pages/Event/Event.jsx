@@ -38,13 +38,13 @@ export default function Event () {
           <dt className='has-text-weight-bold'>Garden Name:</dt>
           <dd>{gardenName}</dd>
 
-          <dt className = 'has-text-weight-bold'>Address:</dt>
+          <dt className='has-text-weight-bold'>Address:</dt>
           <dd>{gardenAddress}</dd>
 
-          <dt className = 'has-text-weight-bold'>Date:</dt>
+          <dt className='has-text-weight-bold'>Date:</dt>
           <dd>{date}</dd>
 
-          <dt className = 'has-text-weight-bold'>Volunteers Needed:</dt>
+          <dt className='has-text-weight-bold'>Volunteers Needed:</dt>
           <dd>{volunteersNeeded}</dd>
         </dl>
         <p className='has-text-weight-semibold'>{description}</p>
@@ -57,16 +57,33 @@ export default function Event () {
           : null
         }
       </article>
-      {isAdmin
-        ? <VolunteerList
-          volunteers={volunteers}
-          eventId={event.id}
-        />
-        : <Map
-          coordinates={[{ lat, lon }]}
-          addresses={[address]}
-        />
-      }
+      <section className='card-container'>
+        <button className='card-close-button'>close</button>
+        <article className='card-text-container'>
+          <h1 className='card-title'>Weeding Working Bee</h1>
+          <h2 className='card-sub-title'>2021/2/2at 10:00am</h2>
+          <h2 className='card-sub-title'>8/10 Volunteers</h2>
+          <h3 className='card-text'>Description Description Description Description
+          Description Description Description Description Description
+          Description Description Description Description Description
+          <h3 className='card-text'></h3>
+          {isAdmin
+            ? <VolunteerList
+              volunteers={volunteers}
+              eventId={event.id}
+            />
+            : <Map
+              coordinates={[{ lat, lon }]}
+              addresses={[address]}
+            />
+          }
+          </h3>
+        </article>
+        <section className='button-inline-container'>
+          <button className='edit-event-button'>Edit Event</button>
+          <button className='edit-event-button'>Event Item</button>
+        </section>
+      </section>
     </section>
   )
 }
