@@ -2,13 +2,14 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.jsx'
-import { isAuthenticated } from '../../auth'
+import { getIsAuthenticated } from '../../auth-utils'
 
-jest.mock('../../auth')
+jest.mock('../../auth-utils')
 
 describe('IfAuthenticated', () => {
   it('displays children if isAuthenticated returns true', () => {
-    isAuthenticated.mockImplementation(() => true)
+    getIsAuthenticated.mockImplementation(() => true)
+
     render(
       <IfAuthenticated>
         <p>child</p>
@@ -18,7 +19,8 @@ describe('IfAuthenticated', () => {
     expect(children).toBeInTheDocument()
   })
   it('does not display children if isAuthenticated returns false', () => {
-    isAuthenticated.mockImplementation(() => false)
+    getIsAuthenticated.mockImplementation(() => false)
+
     render(
       <IfAuthenticated>
         <p>child</p>
@@ -31,7 +33,8 @@ describe('IfAuthenticated', () => {
 
 describe('IfNotAuthenticated', () => {
   it('displays children if isAuthenticated returns false', () => {
-    isAuthenticated.mockImplementation(() => false)
+    getIsAuthenticated.mockImplementation(() => false)
+
     render(
       <IfNotAuthenticated>
         <p>child</p>
@@ -41,7 +44,8 @@ describe('IfNotAuthenticated', () => {
     expect(children).toBeInTheDocument()
   })
   it('does not display children if isAuthenticated returns true', () => {
-    isAuthenticated.mockImplementation(() => true)
+    getIsAuthenticated.mockImplementation(() => true)
+
     render(
       <IfNotAuthenticated>
         <p>child</p>

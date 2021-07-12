@@ -1,5 +1,4 @@
 const connection = require('./connection')
-const { generateHash } = require('../auth')
 
 module.exports = {
   createUser,
@@ -22,6 +21,7 @@ function getUserByName (username, db = connection) {
     .first()
 }
 
+// Needed hasher (perhaps pass in the prehashed password instead)
 function createUser (user, db = connection) {
   return userExists(user.username, db)
     .then((exists) => {
@@ -30,7 +30,8 @@ function createUser (user, db = connection) {
       }
       return false
     })
-    .then(() => generateHash(user.password))
+    // Removed the generate hasher wrapping, had transformed text passowrd to has passowrd
+    .then(() => user.password)
     .then((passwordHash) => {
       return db('users').insert({
         first_name: user.firstName,

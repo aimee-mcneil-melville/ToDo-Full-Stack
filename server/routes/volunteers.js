@@ -3,8 +3,6 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/volunteers')
 const { decode } = require('../notifications/emailTokens')
-const { getTokenDecoder } = require('../auth')
-const { verifyUser } = require('./verificationMiddleware')
 
 const router = express.Router()
 
@@ -24,7 +22,9 @@ router.get('/emailsignup', (req, res) => {
     })
 })
 
-router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
+// Verifies the data being modified belongs to the user that added it.
+router.post('/', (req, res) => {
   const { userId, eventId } = req.body
 
   db.addVolunteer({ userId, eventId })
@@ -42,7 +42,9 @@ router.post('/', getTokenDecoder(), verifyUser, (req, res) => {
     })
 })
 
-router.delete('/', getTokenDecoder(), verifyUser, (req, res) => {
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
+// Verifies the data being modified belongs to the user that added it.
+router.delete('/', (req, res) => {
   const { userId, eventId } = req.body
   db.deleteVolunteer({ userId, eventId })
     .then(() => {
@@ -59,7 +61,8 @@ router.delete('/', getTokenDecoder(), verifyUser, (req, res) => {
     })
 })
 
-router.patch('/', getTokenDecoder(), (req, res) => {
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
+router.patch('/', (req, res) => {
   if (!req.user.isAdmin) {
     res.status(401).json({
       error: {
@@ -86,7 +89,8 @@ router.patch('/', getTokenDecoder(), (req, res) => {
     })
 })
 
-router.post('/extras', getTokenDecoder(), (req, res) => {
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
+router.post('/extras', (req, res) => {
   const { eventId, firstName, lastName } = req.body
 
   db.addExtraVolunteer({ eventId, firstName, lastName })
