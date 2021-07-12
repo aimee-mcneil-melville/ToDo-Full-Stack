@@ -30,12 +30,22 @@ afterAll(async () => {
 // Test goes here
 test('Member can Login & Volunteer', async () => {
   await page.goto(serverUrl)
-  await page.click('text=Sign in')
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('text=Sign in')
+  ])
   expect(await page.url()).toBe(`${serverUrl}/signin`)
+
   await page.fill('#username', 'member')
   await page.fill('#password', 'member')
-  await page.click('button', { force: true })
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button', { force: true })
+  ])
   expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
+
   await page.click('text=Volunteer')
   expect(await page.content()).toMatch('Un-Volunteer')
 })

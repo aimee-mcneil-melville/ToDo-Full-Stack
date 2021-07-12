@@ -30,11 +30,22 @@ afterAll(async () => {
 // Test goes here
 test('Admin can track volunteer', async () => {
   await page.goto(serverUrl)
-  await page.click('text=Sign in')
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('text=Sign in')
+  ])
+
   expect(await page.url()).toBe(`${serverUrl}/signin`)
+
   await page.fill('#username', 'admin')
   await page.fill('#password', 'admin')
-  await page.click('button', { force: true })
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button', { force: true })
+  ])
+
   expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
   expect(await page.content()).toMatch('15 of 16 volunteers still needed')
 })

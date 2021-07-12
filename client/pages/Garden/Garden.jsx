@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import Map from '../../components/Map/Map'
 import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
-import EventDetailCard from '../../components/events/EventDetailCard/EventDetailCard'
 
 export default function Garden () {
   const { id } = useParams()
@@ -17,12 +16,13 @@ export default function Garden () {
   }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
+  console.log(name)
   return (
     <section className='flex-container'>
       <article className='event-item-container'>
-        <article>
-          <h2>{name}</h2>
-          <p>{description}</p>
+        <article className='column-9'>
+          <h2 className='events-title'>{name}</h2>
+          <p className='p-description'>{description}</p>
           <a href={url}>{url}</a>
         </article>
         <Events events={events} />
@@ -31,6 +31,7 @@ export default function Garden () {
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
         addresses={[address]}
+        names={[name]}
       />
     </section>
   )

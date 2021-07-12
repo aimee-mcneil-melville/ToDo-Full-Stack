@@ -2,24 +2,109 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/mixins';
 
-.navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: functions.colWidth(6);
-    // outputs to width: 50%
 
-    @include mixins.media-queries(tablet, min) {
-        width: functions.colWidth(12);
-    }
-    // outputs to:
-    // @media (min-width: 1020px) {
-    //     .navbar {
-    //       width: 100%;
-    //     }
-    //   }
+.nav {
+    width: auto;
 }
 
-.navbar a {
-    color: vars.$green;
+.nav-link {
+    display: none;
+    font-size: vars.$base-size * 1.5;
+    font-family: vars.$paragraph;
+    color: #fff;
     text-decoration: underline;
+
+    &:hover {
+        color: vars.$green;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+        display: block;
+        padding-left: vars.$base-size;
+        font-size: vars.$base-size;
+    }
+}
+
+.hamburger {
+    cursor: pointer;
+    color: #fff;
+    font-size: vars.$base-size * 2.5;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: vars.$base-size;
+
+    &:hover {
+        color: vars.$green;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+        display: none;
+    }
+}
+
+.close-btn {
+    cursor: pointer;
+    color: #fff;
+    font-size: vars.$base-size * 3;
+    position: absolute;
+    top: 22px;
+    right: 12px;
+
+    &:hover {
+        color: vars.$green;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+        display: none;
+    }
+}
+
+.nav-menu {
+    height: 100%;
+    display: flex;
+
+    @include mixins.media-queries(tablet, min) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: vars.$base-size;
+        padding-right: vars.$base-size * 3;
+    }
+}
+
+.nav-menu-toggle {
+    background-color: vars.$primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width:100vw;
+    height: 50vh;
+    z-index: 100;
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+    position: relative;
+    left: -286px;
+    top: 0;
+
+    @keyframes growDown {
+        0% {
+          transform: scaleY(0)
+        }
+        80% {
+          transform: scaleY(1.1)
+        }
+        100% {
+          transform: scaleY(1)
+        }
+      }
+
+    & .nav-link {
+        display: block;
+    }
+
+    @include mixins.media-queries(tablet, min) {
+       display: none;
+    } 
 }

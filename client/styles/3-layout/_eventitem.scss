@@ -1,3 +1,4 @@
+@use "sass:math";
 @use '../1-helpers/mixins';
 @use '../1-helpers/functions';
 @use '../1-helpers/vars';
@@ -6,7 +7,7 @@
   width: functions.colWidth(12);
 
   @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(4);
+      width: functions.colWidth(6);
   }
 }
 
@@ -18,29 +19,47 @@
   justify-content: center;
   margin-top: vars.$base-size;
   margin-bottom: vars.$base-size;
+  font-family: vars.$paragraph;
+  border-radius: math.div(vars.$base-size, 4);
 }
 
 .event-title a {
   color: vars.$primary;
   font-size: x-large;
   font-weight: bold;
+  font-family: vars.$heading;
 }
+
+.events-title {
+  font-family: vars.$heading;
+  color: vars.$primary
+}
+
+.p-description {
+  font-family: vars.$paragraph;
+  color: vars.$black;
+}
+
 
 .view-event-link {
   color: vars.$primary;
+  font-family: vars.$paragraph;
   display: inline;
   justify-content: left; 
   text-decoration: underline;
 }
 
 .link-placeholder {
+  display: inline;
+  justify-content: right;
+  padding-left: 6rem;
   color: vars.$primary;
   padding-right: vars.$base-size;
-  display: inline;
-  float: right;
+  font-family: vars.$paragraph;
   text-decoration: underline;
 }
 
 .empty-space {
   margin-bottom: vars.$base-size;
+  font-family: vars.$paragraph;
 }
