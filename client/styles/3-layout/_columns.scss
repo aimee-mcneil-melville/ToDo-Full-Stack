@@ -1,18 +1,20 @@
 @use '../1-helpers/mixins';
+@use '../1-helpers/vars';
 
 .container {
   position: relative;
-  margin: 0 auto;
-  width: 100%;
-  padding: 1rem;
+  margin-top: vars.$base-size;
+  margin-bottom: vars.$base-size;
+  max-width: 100%;
+  padding: vars.$base-size;
 }
 
 .flex-container {
   display: flex;
   flex-direction: column-reverse;
   align-content: flex-start;
+  flex-grow: 1;
   @include mixins.media-queries(tablet, min) {
-    display: flexbox;
     flex-direction: row;
 
   }
@@ -37,11 +39,32 @@
 }
 
 .position {
-  display: flex;
-  justify-content: center;
-  align-self: baseline;
+  padding: vars.$base-size;
+  padding-left: vars.$base-size +7;
+  padding-right: vars.$base-size +7;
+  @include mixins.media-queries(tablet, min) {
+    padding: vars.$base-size;
+  padding-left: vars.$base-size +4;
+  padding-right: vars.$base-size +4;
+  }
 }
 
-// .item {
-//   font-size: 1rem;
-// }
+.item {
+  order: 0;
+  font-size: vars.$base-size ;
+  margin-bottom: vars.$base-size +4;
+  margin-right: vars.$base-size;
+  margin-left: vars.$base-size;
+
+  @include mixins.media-queries(tablet, min) {
+    font-size: vars.$base-size +1;
+    margin-bottom: vars.$base-size +3;
+    margin-right: vars.$base-size;
+  }
+}
+
+.map-temple {
+  margin: 1rem;
+  width: 100%;
+  position: relative;
+}
