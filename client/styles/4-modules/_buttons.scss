@@ -1,12 +1,12 @@
-@use '../1-helpers/colors';
+@use '../1-helpers/vars';
 
 .button {
-  background-color: colors.$dark-green;
+  background-color: vars.$dark-green;
   border: none;
   color: #ffffff;
 
   &:hover{
-    background-color: colors.$green;
+    background-color: vars.$green;
     border: none;
     color: #ffffff;
   }
