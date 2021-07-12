@@ -1,5 +1,7 @@
-const express = require('express')
+const checkJwt = require('./auth') // scope permissions
+const jwtAuthz = require('express-jwt-authz')
 
+const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 
@@ -9,8 +11,10 @@ const router = express.Router()
 
 module.exports = router
 
+const checkAdmin = jwtAuthz(['role:admin'])
+
 // include getTokenDecoder() like function into post route that passes authorisation header? REQUIRES TOKEN + ADMIN
-router.post('/', (req, res) => {
+router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
   let createdEvent = null
@@ -35,7 +39,7 @@ router.post('/', (req, res) => {
 
 // include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
 
-router.patch('/:id', (req, res) => {
+router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, id } = req.body
   const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)

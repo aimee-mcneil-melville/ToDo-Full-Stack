@@ -1,3 +1,5 @@
+// const jwtAuthz = require('express-jwt-authz')
+
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/gardens')
@@ -5,6 +7,8 @@ const db = require('../db/gardens')
 const router = express.Router()
 
 module.exports = router
+
+// const checkAdmin = jwtAuthz(['role:admin'])
 
 // doesnt need autheniticaiton
 router.get('/', (req, res) => {
@@ -24,6 +28,7 @@ router.get('/', (req, res) => {
 
 // doesnt need autheniticaiton
 // handle user.isAdmin?
+// ------------------------------------------------------------ what does checkAdmin return
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   const user = req.user || {}
@@ -31,7 +36,7 @@ router.get('/:id', (req, res) => {
     .then(foundGarden => {
       // Create a deep copy of the garden
       const garden = JSON.parse(JSON.stringify(foundGarden))
-      if (!user.isAdmin) {
+      if (!user.isAdmin) { // if(!checkAdmin) {       Maybe
         garden.events.forEach(event => {
           event.totalVolunteers = event.volunteers.length
           event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
