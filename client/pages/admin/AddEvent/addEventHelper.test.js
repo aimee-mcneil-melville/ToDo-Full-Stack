@@ -11,7 +11,7 @@ afterEach(() => {
 
 describe('addEvent', () => {
   it('dispatches and redirects correctly on POST /events api call success', () => {
-    getState.mockImplementation(() => ({ user: { gardenId: 1 } }))
+    getState.mockImplementation(() => ({ user: { gardenId: 1, token: 'dummytoken' } }))
     const event = {
       title: 'test event',
       date: '2021-03-22',
@@ -19,7 +19,7 @@ describe('addEvent', () => {
       description: 'really rad event'
     }
     const navigateTo = jest.fn()
-    function consume (url, method, newEvent) {
+    function consume (url, token, method, newEvent) {
       expect(method).toBe('post')
       expect(newEvent).not.toBe(event)
       expect(newEvent.gardenId).toBe(1)
