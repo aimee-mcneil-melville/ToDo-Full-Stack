@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../1-helpers/mixins';
 @use '../1-helpers/functions';
 @use '../1-helpers/vars';
@@ -8,9 +9,9 @@
   background-color: vars.$primary;
   flex-direction: column;
   text-align: left;
-  padding: vars.$base-size*1;
-  border:none;
-  border-radius: vars.$base-size/4;
+  padding: vars.$base-size * 1;
+  border: none;
+  border-radius: math.div(vars.$base-size, 4);
 
   @include mixins.media-queries(tablet, min) {
       width: functions.colWidth(4);
@@ -18,9 +19,9 @@
 }
 
 .card-text-container {
-    padding-bottom: vars.$base-size*6;
-    margin-left: vars.$base-size*2;
-    margin-right: vars.$base-size*2;
+    padding-bottom: vars.$base-size * 6;
+    margin-left: vars.$base-size * 2;
+    margin-right: vars.$base-size * 2;
 }
 
 .card-title {
