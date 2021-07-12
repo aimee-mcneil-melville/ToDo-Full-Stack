@@ -2,6 +2,16 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/vars';
 
+.garden-title {
+  font-family: vars.$heading;
+  color: vars.$primary;
+}
+
+.garden-description {
+  font-family: vars.$paragraph;
+  color: vars.$black;
+}
+
 //move to eventitem
 // .event-item-container {
 //   width: functions.colWidth(12);

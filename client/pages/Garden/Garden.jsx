@@ -21,8 +21,8 @@ export default function Garden () {
     <section className='flex-container'>
       <article className='event-item-container'>
         <article>
-          <h2>{name}</h2>
-          <p>{description}</p>
+          <h2 className='events-title'>{name}</h2>
+          <p className='p-description'>{description}</p>
           <a href={url}>{url}</a>
         </article>
         <Events events={events} />
