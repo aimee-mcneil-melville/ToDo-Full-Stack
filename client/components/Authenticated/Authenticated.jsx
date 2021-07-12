@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { isAuthenticated } from '../../auth-utils'
 
+import { getIsAuthenticated } from '../../auth-utils'
+
 export function IfAuthenticated ({ children }) {
-  const [authenticated, setAuthenticated] = useState(false)
-
-  useEffect(async () => {
-    setAuthenticated(await isAuthenticated())
-  }, [authenticated])
-
-  return authenticated
+  const isAuthenticated = getIsAuthenticated(useAuth0)
+  return isAuthenticated
     ? <>{children}</>
     : null
 }
 
 export function IfNotAuthenticated ({ children }) {
-  const [authenticated, setAuthenticated] = useState(false)
-
-  useEffect(async () => {
-    setAuthenticated(await isAuthenticated())
-  }, [authenticated])
-
-  return !authenticated
+  const isAuthenticated = getIsAuthenticated(useAuth0)
+  return !isAuthenticated
     ? <>{children}</>
     : null
 }

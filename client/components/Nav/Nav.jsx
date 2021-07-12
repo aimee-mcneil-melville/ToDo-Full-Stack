@@ -1,36 +1,53 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
-// import { logOut, logIn } from './navHelper'
-import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
-import { login, logout } from '../../auth-utils'
+import {
+  IfAuthenticated,
+  IfNotAuthenticated
+} from '../Authenticated/Authenticated'
+import {
+  getLoginFn,
+  getLogoutFn,
+  getRegisterFn
+} from '../../auth-utils'
 
 export default function Nav () {
-  // const location = useLocation()
-  // const navLinks = getLinks(location.pathname)
-  const user = useSelector(globalState => globalState.user)
+  const login = getLoginFn(useAuth0)
+  const logout = getLogoutFn(useAuth0)
+  const register = getRegisterFn(useAuth0)
+  const gardenId = useSelector(globalState => globalState.user.gardenId)
+
+  function handleRegister (event) {
+    event.preventDefault()
+    register()
+  }
+
+  function handleLogin (event) {
+    event.preventDefault()
+    login()
+  }
+
+  function handleLogoff (event) {
+    event.preventDefault()
+    logout()
+  }
 
   return (
     <nav className="navbar column">
       <div className="navbar-item">
+        <Link to="/" className=''>Home</Link>
+
         <IfAuthenticated>
-          <Link to={`/gardens/${user.gardenId}`} className='ml-4'>My Garden</Link>
-          <Link to="/" onClick={logout} className='ml-4'>
-              Log out
-          </Link>
-          <Link to="/" className='ml-4'>Home</Link>
+          <Link to={`/gardens/${gardenId}`} className=''>My Garden</Link>
+          <Link to="/profile" className=''>My Profile</Link>
+          <a href="/" onClick={handleLogoff} className=''>Log out</a>
         </IfAuthenticated>
+
         <IfNotAuthenticated>
-          {/* {navLinks.map(({ to, name }) => (
-            <Link key={to} to={to} className='ml-4'>
-              {name}
-            </Link>
-          ))} */}
-          <Link to="/" onClick={login} className='ml-4'>
-              Log in/register
-          </Link>
-          <Link to="/" className='ml-4'>Home</Link>
+          <a href="/" onClick={handleLogin} className=''>Sign in</a>
+          <a href="/" onClick={handleRegister} className=''>Register</a>
         </IfNotAuthenticated>
       </div>
     </nav>
