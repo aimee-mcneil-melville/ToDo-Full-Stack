@@ -10,7 +10,6 @@ import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
-import Profile from './pages/Profile/Profile'
 
 export default function App () {
   const { isAdmin } = useSelector(globalState => globalState.user)

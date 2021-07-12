@@ -39,15 +39,15 @@ export function getIsAuthenticated (useAuth0) {
   return useAuth0().isAuthenticated
 }
 
-// export async function getAccessToken () {
-//   try {
-//     return await auth0.getTokenSilently({
-//       audience: 'https://garden/nz/api',
-//       scope: 'read:users'
-//     })
-//   } catch (error) {
-//     if (error.error !== 'login_required') {
-//       throw error
-//     }
-//   }
-// }
+export async function getAccessToken () {
+  try {
+    return await auth0.getTokenSilently({
+      audience: 'https://garden/nz/api',
+      scope: 'read:users'
+    })
+  } catch (error) {
+    if (error.error !== 'login_required') {
+      throw error
+    }
+  }
+}

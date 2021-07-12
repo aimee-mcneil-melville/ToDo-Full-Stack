@@ -1,6 +1,6 @@
 import React from 'react'
 // import { useSelector } from 'react-redux'
-import { Edit } from '../../components/Registration/Edit'
+import { Register } from '../../components/Registration/Register'
 import { View } from '../../components/Registration/View'
 
 export default function Profile () {
@@ -9,7 +9,7 @@ export default function Profile () {
 
   const hardCodedUser = {
     id: 10,
-    garden_id: 3,
+    garden_id: null,
     first_name: 'Josh',
     last_name: 'Lake',
     username: 'jp_lake',
@@ -23,7 +23,7 @@ export default function Profile () {
       {
         hardCodedUser.garden_id
           ? (<View user={hardCodedUser}/>)
-          : (<Edit user={hardCodedUser}/>)
+          : (<Register user={hardCodedUser}/>)
       }
 
     </div>
