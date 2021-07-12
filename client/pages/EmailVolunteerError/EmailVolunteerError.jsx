@@ -26,7 +26,7 @@ export default function EmailVolunteerError () {
       <p>You tried to sign up for <b>{event.title}</b> at <b>{event.gardenName}</b>... but something went wrong! 😱</p>
 
       <IfAuthenticated>
-        <p>No probs, just <a href={`/events/${eventId}`}>click here to visit the event page,</a> then click the volunteer button!</p>
+        <p>No probs, just <a href={`/events/${eventId}`}>head over here to volunteer!</a></p>
         {(!checkUserIds(userId, storeState.user.id)) &&
           <p><i>WARNING: You are currently logged in as:</i> <b>{storeState.user.username}</b></p>
         }
