@@ -16,7 +16,7 @@ export default function Event () {
 
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
   // currently using initial state and wipes clear on refresh - needs attention
-  const { lat, lon, address } = useSelector(globalState => globalState.garden)
+  // const { lat, lon } = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -24,11 +24,12 @@ export default function Event () {
       .then((event) => {
         setEvent(event)
         setVolunteering(event.isVolunteer)
+        console.log(event) // event has lat and lon. now check for error
         return null
       })
   }, [])
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
 
   return (
     <>
@@ -68,7 +69,7 @@ export default function Event () {
         />
         : <Map
           coordinates={[{ lat, lon }]}
-          addresses={[address]}
+          addresses={[gardenAddress]}
         />
       }
     </>
