@@ -11,7 +11,6 @@ on:
 env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
-  HEADLESS: true
   PORT: 3000
 
 jobs:
