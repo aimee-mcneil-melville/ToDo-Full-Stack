@@ -6,7 +6,6 @@
   width: 50%;
   border-radius: 50%;
   padding: 50%;
-  border-color: red;
   @include mixins.media-queries(tablet, min) {
     border-radius: 0%;
     height: 20%;
@@ -15,18 +14,13 @@
 }
 
 .map-container{
+  display: flex;
   position: relative;
   margin: 0 auto;
-  width: 100%;
-  column-count: 2;
-  align-items: center;
-  justify-content: center;
+  width: functions.colWidth(12);
   order: -1;
   @include mixins.media-queries(tablet, min) {
-   column-count: 2;
+   width: functions.colWidth(4);
    order: 1;
-   align-self: flex-start;
-   justify-content: flex-start;
-   width: functions.colWidth(12);
   }
 }
