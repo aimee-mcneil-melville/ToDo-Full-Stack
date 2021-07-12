@@ -18,8 +18,8 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
-        margin-right: vars.$base-size;
-        padding-bottom: vars.$base-size ;
+        padding-bottom: vars.$base-size;
+        padding-right: vars.$base-size * 3;
     }
 }
 
@@ -27,13 +27,12 @@
     font-family: vars.$paragraph;
     color: #fff;
     text-decoration: underline;
-    padding-right: vars.$base-size * 0.5;
 
     &:hover {
         color: vars.$green;
     }
 
     @include mixins.media-queries(tablet, min) {
-        padding: 0 vars.$base-size 0 vars.$base-size;
+        padding-left: vars.$base-size;
     }
 }

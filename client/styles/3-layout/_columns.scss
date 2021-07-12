@@ -1,3 +1,4 @@
+@use '../1-helpers/functions';
 @use '../1-helpers/mixins';
 @use '../1-helpers/vars';
 
@@ -5,8 +6,8 @@
   position: relative;
   margin-top: vars.$base-size;
   margin-bottom: vars.$base-size;
-  max-width: 90%;
-  padding: vars.$base-size;
+  max-width: 100%;
+  padding: 0 vars.$base-size * 3;
 }
 
 .flex-container {
@@ -38,16 +39,17 @@
 .item {
   order: 0;
   font-size: vars.$base-size;
-  font-family: vars.$paragraph;
-  margin-bottom: vars.$base-size +4;
-  margin-right: vars.$base-size;
-  // margin-left: vars.$base-size;
   max-width: 100%;
-  // text-align: justify;
+  margin: vars.$base-size + 3 0;
 
   @include mixins.media-queries(tablet, min) {
-    font-size: vars.$base-size +1;
-    margin-bottom: vars.$base-size +3;
-    margin-right: vars.$base-size;
+    font-size: vars.$base-size + 1;
+  }
+}
+
+.home-container {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(tablet, min) {
+    width: functions.colWidth(6);
   }
 }

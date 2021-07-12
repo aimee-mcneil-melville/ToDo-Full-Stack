@@ -2,16 +2,16 @@
 @use '../1-helpers/functions';
 @use '../1-helpers/vars';
 
-.map{
+.map {
   height: 30%;
-  width: 30%;
+  // width: 30%;
   border-radius: 50%;
   padding: 35%;
   border: solid vars.$secondary;
   @include mixins.media-queries(tablet, min) {
     border-radius: 0%;
     height: 50%;
-    width: 70%;
+    width: 100%;
   }
 }
 
@@ -24,9 +24,9 @@
   width: functions.colWidth(12);
   order: -1;
   @include mixins.media-queries(tablet, min) {
-   width: functions.colWidth(11);
-   order: 1;
-   justify-content: flex-end;
-   align-items: flex-end;
+    width: functions.colWidth(6);
+    order: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 }
