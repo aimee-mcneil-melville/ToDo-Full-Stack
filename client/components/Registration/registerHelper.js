@@ -13,7 +13,7 @@ export function registerUser (user, navigateTo, consume = requestor) {
     auth0Id: user.auth0Id
   }
   dispatch(setWaiting())
-  return consume('/profile', 'post', newUser)
+  return consume('/users', 'post', newUser)
     .then(() => {
       console.log('helper')
       navigateTo(`gardens/${user.gardenId}`)
