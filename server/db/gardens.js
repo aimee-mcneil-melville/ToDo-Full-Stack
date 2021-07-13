@@ -9,6 +9,7 @@ function getGardens (db = connection) {
   return db('gardens').select()
 }
 
+// Will be changing format of user table
 function getGardenById (id, db = connection) {
   return db('gardens')
     .where('gardens.id', id)
