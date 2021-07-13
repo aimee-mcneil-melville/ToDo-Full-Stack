@@ -30,6 +30,20 @@ describe('user location marker', () => {
   })
 })
 
+it('checks logic in ternary operator for map lat&lon', () => {
+  getEvent.mockImplementation(() => Promise.resolve(mockData))
+
+  renderWithRedux(<Event />)
+
+  const markers = screen.queryByRole('img')
+
+  expect(markers).toBeNull()
+  return screen.findByText('Mock title').then(() => {
+    expect(markers).toBe(2) // returns null
+    return null
+  })
+})
+
 describe('garden location markers', () => {
   it('displays correct number of markers from coordinates prop', () => {
     const coordinates = [{
