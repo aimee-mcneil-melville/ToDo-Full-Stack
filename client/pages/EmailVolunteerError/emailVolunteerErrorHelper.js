@@ -2,15 +2,20 @@ import requestor from '../../consume'
 import { showError } from '../../actions/error'
 import { dispatch } from '../../store'
 
-export function getEventDetails (id, consume = requestor) {
+export function getEventDetails (id, history, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       const event = res.body
-      return {
-
-        title: event.title,
-        gardenName: event.gardenName,
-        isVolunteer: event.isVolunteer
+      console.log(event)
+      if (event.isVolunteer) {
+        history.push(`/events/${id}`)
+        return null
+      } else {
+        return {
+          title: event.title,
+          gardenName: event.gardenName,
+          isVolunteer: event.isVolunteer
+        }
       }
     })
     .catch((error) => {
@@ -22,16 +27,16 @@ export function checkUserIds (emailId, browserId) {
   return (browserId === Number(emailId))
 }
 
-export function handleClick (userId, eventId) {
-  const userData = { userId, eventId }
+// export function handleClick (userId, eventId) {
+//   const userData = { userId, eventId }
 
-  return requestor('/volunteers', 'post', userData)
-    .then(() => {
-      console.log('successfully volunteered!')
-      return null
-    })
-    .catch((error) => {
-      dispatch(showError(error.message))
-      return null
-    })
-}
+//   return requestor('/volunteers', 'post', userData)
+//     .then(() => {
+//       // h push
+//       return null
+//     })
+//     .catch((error) => {
+//       dispatch(showError(error.message))
+//       return null
+//     })
+// }
