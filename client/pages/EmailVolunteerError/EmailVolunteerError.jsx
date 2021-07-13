@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIds } from './emailVolunteerErrorHelper'
 import { Redirect, useHistory } from 'react-router'
+import { logOut } from '../../components/Nav/navHelper'
 
 export default function EmailVolunteerError () {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
@@ -29,17 +30,22 @@ export default function EmailVolunteerError () {
       })
   }, [])
 
+  function logOutSignIn () {
+    logOut()
+    history.push('/signin')
+  }
+
   return (
     <>
       <h1> 🐌 🐌 uh oh spagettios! 🐌 🐌 </h1>
       <p>You tried to sign up for <b>{event.title}</b> at <b>{event.gardenName}</b>... but something went wrong! 😱</p>
 
       <IfAuthenticated>
-        <p>No probs, just <a href={`/events/${eventId}`}>head over here to volunteer!</a></p>
+        <p>Don't stress, just click this button ⬇️⬇️ </p>
         <VolunteerButton setVolunteering={() => { history.push(`/events/${eventId}`) }} eventId={eventId} volunteering={volunteering}/>
 
         {(!checkUserIds(userId, storeState.user.id)) &&
-          <p><i>NOTE: You are currently logged in as:</i> <b>{storeState.user.username}</b> Not you? Click here to sign in</p>
+          <p><i>NOTE: You are currently logged in as:</i> <b>{storeState.user.username}</b> Not you? <button onClick={logOutSignIn}>Click here</button></p>
         }
 
       </IfAuthenticated>

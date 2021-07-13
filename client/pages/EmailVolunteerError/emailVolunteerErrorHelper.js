@@ -1,12 +1,12 @@
 import requestor from '../../consume'
 import { showError } from '../../actions/error'
 import { dispatch } from '../../store'
+// import { logOut } from './navHelper'
 
 export function getEventDetails (id, history, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       const event = res.body
-      console.log(event)
       if (event.isVolunteer) {
         history.push(`/events/${id}`)
         return null
