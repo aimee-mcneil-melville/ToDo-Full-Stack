@@ -50,7 +50,7 @@ export default function EmailVolunteerError () {
 
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the 'Volunteer' button on the garden page </p>
+        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the 'Volunteer' button</p>
       </IfNotAuthenticated>
     </>
   )
