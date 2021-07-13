@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-
 import { registerUser } from './registerHelper'
+import { useAuth0 } from '@auth0/auth0-react'
 
-export default function Register () {
+export function Register () {
+  const authUser = useAuth0().user
+  const auth0Id = authUser.sub
+  console.log(authUser)
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
     username: '',
-    password: '',
     gardenId: null,
-    email: ''
+    email: authUser.email,
+    auth0Id: auth0Id
   })
   const history = useHistory()
 
@@ -23,6 +27,7 @@ export default function Register () {
   }
 
   function handleClick (e) {
+    console.log('working?')
     e.preventDefault()
     registerUser(form, history.push)
   }
@@ -64,30 +69,6 @@ export default function Register () {
           ></input>
         </div>
         <div className="field">
-          <label htmlFor='password' className='label'>Password</label>
-          <input
-            className='input'
-            id='password'
-            type='password'
-            name='password'
-            value={form.password}
-            placeholder='Password'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="field">
-          <label htmlFor='email' className='label'>Email</label>
-          <input
-            className='input'
-            id='email'
-            type='email'
-            name='email'
-            value={form.email}
-            placeholder='Email'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="field">
           <label htmlFor='garden' className='label'>My Garden</label>
           <select
             onChange={handleChange}
@@ -107,7 +88,7 @@ export default function Register () {
           onClick={handleClick}
           data-testid='submitButton'
         >
-          Register
+            Register
         </button>
       </form>
       <div className='column'>
