@@ -12,7 +12,7 @@
     font-size: vars.$base-size * 1.5;
     font-family: vars.$paragraph;
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover {
         color: vars.$green;
@@ -85,7 +85,7 @@
     animation: growDown 300ms ease-in-out forwards;
     transform-origin: top center;
     position: relative;
-    left: -16px;
+    left: -241px;
     top: 0;
 
     @keyframes growDown {

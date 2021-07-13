@@ -10,11 +10,12 @@ header {
 }
 
 .logo-image {
-    width: 85%;
+    width: 15rem;
     padding-left: vars.$base-size;
     height: 100%;
 
-    @include mixins.media-queries(tablet, min) {
+    @include mixins.media-queries(mobile, min) {
         padding-left: vars.$base-size * 3;
+        width: 20rem;
     }
 }

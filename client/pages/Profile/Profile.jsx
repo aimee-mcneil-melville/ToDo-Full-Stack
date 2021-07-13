@@ -1,31 +1,20 @@
 import React from 'react'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Register } from '../../components/Registration/Register'
 import { View } from '../../components/Registration/View'
+import { getState } from '../../store'
 
 export default function Profile () {
   // const user = useSelector(globalState => globalState.user)
-  // console.log(user)
-
-  const hardCodedUser = {
-    id: 10,
-    garden_id: null,
-    first_name: 'Josh',
-    last_name: 'Lake',
-    username: 'jp_lake',
-    email: 'joshisCooooool@sick.com',
-    hash: '$$random',
-    is_admin: 1
-  }
+  const user = getState().user
 
   return (
     <div>
       {
-        hardCodedUser.garden_id
-          ? (<View user={hardCodedUser}/>)
-          : (<Register user={hardCodedUser}/>)
+        user.gardenId
+          ? (<View user={user}/>)
+          : (<Register user={user}/>)
       }
-
     </div>
   )
 }

@@ -22,7 +22,7 @@ export default function Nav () {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-  const gardenId = useSelector(globalState => globalState.user.gardenId)
+  const gardenId = useSelector(globalState => globalState.user?.gardenId)
 
   function handleRegister (event) {
     event.preventDefault()
