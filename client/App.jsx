@@ -1,6 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Route } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './components/Header'
@@ -15,8 +14,6 @@ import Event from './pages/Event/Event'
 import { cacheUser } from './auth-utils'
 
 export default function App () {
-  const { isAdmin } = useSelector(globalState => globalState.user)
-
   cacheUser(useAuth0)
 
   return (
@@ -27,22 +24,8 @@ export default function App () {
         <Route exact path='/' component={Home} />
         <Route exact path='/gardens/:id' component={Garden} />
         <Route path='/profile' component={Profile} />
-        <Route
-          path='/event/new'
-          render={() => {
-            return isAdmin
-              ? <AddEvent />
-              : <Redirect to='/' />
-          }}
-        />
-        <Route
-          path='/events/:id/edit'
-          render={() => {
-            return isAdmin
-              ? <EditEvent />
-              : <Redirect to='/' />
-          }}
-        />
+        <Route path='/event/new' component={AddEvent} />
+        <Route path='/events/:id/edit' component={EditEvent} />
         <Route exact path='/events/:id' component={Event} />
       </section>
     </main>
