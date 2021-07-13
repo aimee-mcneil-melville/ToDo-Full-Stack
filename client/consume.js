@@ -1,10 +1,10 @@
 import request from 'superagent'
 
-import { getAccessToken } from './auth-utils'
+// import { getAccessToken } from './auth-utils'
 
 const baseUrl = '/api/v1'
 
-export default function consume (endpoint, token, method = 'get', data = {}) {
+export default function consume (endpoint, token = '', method = 'get', data = {}) {
   const payLoadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'
   const headers = {
     Accept: 'application/json'

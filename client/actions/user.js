@@ -4,7 +4,7 @@ export const CLEAR_USER = 'CLEAR_USER'
 export function setUser (user) {
   return {
     type: SET_USER,
-    user
+    user: user
   }
 }
 
