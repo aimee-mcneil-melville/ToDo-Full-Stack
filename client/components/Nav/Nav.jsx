@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -47,24 +47,7 @@ export default function Nav () {
   return (
     <nav className="nav" >
       {open && <div className='nav-menu-toggle' onClick={toggleMenu}>
-      <Link to="/" className='nav-link'>Home</Link>
-
-        <IfAuthenticated>
-          <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
-          <Link to="/profile" className='nav-link'>My Profile</Link>
-          <a href="/" onClick={handleLogoff} className=''>Log out</a>
-        </IfAuthenticated>
-
-        <IfNotAuthenticated>
-          <a href="/" onClick={handleLogin} className=''>Sign in</a>
-          <a href="/" onClick={handleRegister} className=''>Register</a>
-        </IfNotAuthenticated>
-
-        <div className='close-btn' onClick={toggleMenu} ><IoClose/></div>
-      </div>
-      }
-      {!open && <div className='nav-menu'>
-      <Link to="/" className='nav-link'>Home</Link>
+        <Link to="/" className='nav-link'>Home</Link>
 
         <IfAuthenticated>
           <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
@@ -76,7 +59,24 @@ export default function Nav () {
           <a href="/" onClick={handleLogin} className='nav-link'>Sign in</a>
           <a href="/" onClick={handleRegister} className='nav-link'>Register</a>
         </IfNotAuthenticated>
-        
+
+        <div className='close-btn' onClick={toggleMenu} ><IoClose/></div>
+      </div>
+      }
+      {!open && <div className='nav-menu'>
+        <Link to="/" className='nav-link'>Home</Link>
+
+        <IfAuthenticated>
+          <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
+          <Link to="/profile" className='nav-link'>My Profile</Link>
+          <a href="/" onClick={handleLogoff} className='nav-link'>Log out</a>
+        </IfAuthenticated>
+
+        <IfNotAuthenticated>
+          <a href="/" onClick={handleLogin} className='nav-link'>Sign in</a>
+          <a href="/" onClick={handleRegister} className='nav-link'>Register</a>
+        </IfNotAuthenticated>
+
         <div className='hamburger' onClick={toggleMenu} ><GiHamburgerMenu/></div>
       </div>
       }

@@ -43,7 +43,7 @@ export default function App () {
           exact path='/profile'
           render={Profile}
         />
-      </section>
-    </main>
+      </main>
+    </>
   )
 }
