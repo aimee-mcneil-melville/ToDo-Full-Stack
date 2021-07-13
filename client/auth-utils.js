@@ -21,7 +21,17 @@ export async function cacheUser (useAuth0) {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
       console.log(res.body)
-      saveUser(res.body)
+      saveUser(res.body
+      //   {
+      //   id: 1234,
+      //   firstName: 'el',
+      //   lastName: 'woodhouse',
+      //   email: 'ewoo@history.com',
+      //   username: 'el',
+      //   isAdmin: false,
+      //   gardenId: 3
+      // }
+      )
     } catch (err) {
       dispatch(showError('Unable to set the current user'))
       console.error(err)
