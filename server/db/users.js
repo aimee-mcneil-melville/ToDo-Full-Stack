@@ -1,11 +1,11 @@
 const connection = require('./connection')
-const { generateHash } = require('../auth')
 
 module.exports = {
   createUser,
   userExists,
   getUserByName,
-  getUserDetailsByGarden
+  getUserDetailsByGarden,
+  getUsersByAuth
 }
 
 function getUserDetailsByGarden (gardenId, db = connection) {
@@ -22,32 +22,39 @@ function getUserByName (username, db = connection) {
     .first()
 }
 
+function getUsersByAuth (auth0Id, db = connection) {
+  return db('users')
+    .select()
+    .where('auth0_id', auth0Id)
+    .first()
+}
+
+// Needed hasher (perhaps pass in the prehashed password instead)
 function createUser (user, db = connection) {
-  return userExists(user.username, db)
+  return userExists(user.auth0Id, db)
     .then((exists) => {
       if (exists) {
         throw new Error('User exists')
       }
       return false
     })
-    .then(() => generateHash(user.password))
-    .then((passwordHash) => {
+    // Removed the generate hasher wrapping, had transformed text passowrd to has passowrd
+    .then(() => {
       return db('users').insert({
         first_name: user.firstName,
         last_name: user.lastName,
         username: user.username,
         garden_id: user.gardenId,
-        hash: passwordHash,
-        is_admin: false,
-        email: user.email
+        email: user.email,
+        auth0_id: user.auth0Id
       })
     })
 }
 
-function userExists (username, db = connection) {
+function userExists (uid, db = connection) {
   return db('users')
     .count('id as n')
-    .where('username', username)
+    .where('auth0_id', uid)
     .then((count) => {
       return count[0].n > 0
     })

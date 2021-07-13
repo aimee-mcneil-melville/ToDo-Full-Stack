@@ -1,17 +1,42 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { logOut, getLinks } from './navHelper'
-import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
+import { useAuth0 } from '@auth0/auth0-react'
+
+import {
+  IfAuthenticated,
+  IfNotAuthenticated
+} from '../Authenticated/Authenticated'
+import {
+  getLoginFn,
+  getLogoutFn,
+  getRegisterFn
+} from '../../auth-utils'
 
 // React-Icons Import
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { IoClose } from 'react-icons/io5'
 
 export default function Nav () {
-  const location = useLocation()
-  const navLinks = getLinks(location.pathname)
-  const user = useSelector(globalState => globalState.user)
+  const login = getLoginFn(useAuth0)
+  const logout = getLogoutFn(useAuth0)
+  const register = getRegisterFn(useAuth0)
+  const gardenId = useSelector(globalState => globalState.user.gardenId)
+
+  function handleRegister (event) {
+    event.preventDefault()
+    register()
+  }
+
+  function handleLogin (event) {
+    event.preventDefault()
+    login()
+  }
+
+  function handleLogoff (event) {
+    event.preventDefault()
+    logout()
+  }
 
   const [open, setOpen] = useState(false)
 
@@ -22,38 +47,36 @@ export default function Nav () {
   return (
     <nav className="nav" >
       {open && <div className='nav-menu-toggle' onClick={toggleMenu}>
+      <Link to="/" className='nav-link'>Home</Link>
+
         <IfAuthenticated>
-          <Link to={`/gardens/${user.gardenId}`} className='nav-link'>My Garden</Link>
-          <Link to="/" onClick={logOut} className='nav-link'>
-              Log out
-          </Link>
-          <Link to="/" className='nav-link'>Home</Link>
+          <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
+          <Link to="/profile" className='nav-link'>My Profile</Link>
+          <a href="/" onClick={handleLogoff} className=''>Log out</a>
         </IfAuthenticated>
+
         <IfNotAuthenticated>
-          {navLinks.map(({ to, name }) => (
-            <Link key={to} to={to} className='nav-link'>
-              {name}
-            </Link>
-          ))}
+          <a href="/" onClick={handleLogin} className=''>Sign in</a>
+          <a href="/" onClick={handleRegister} className=''>Register</a>
         </IfNotAuthenticated>
+
         <div className='close-btn' onClick={toggleMenu} ><IoClose/></div>
       </div>
       }
       {!open && <div className='nav-menu'>
+      <Link to="/" className='nav-link'>Home</Link>
+
         <IfAuthenticated>
-          <Link to={`/gardens/${user.gardenId}`} className='nav-link'>My Garden</Link>
-          <Link to="/" onClick={logOut} className='nav-link'>
-              Log out
-          </Link>
-          <Link to="/" className='nav-link'>Home</Link>
+          <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
+          <Link to="/profile" className='nav-link'>My Profile</Link>
+          <a href="/" onClick={handleLogoff} className='nav-link'>Log out</a>
         </IfAuthenticated>
+
         <IfNotAuthenticated>
-          {navLinks.map(({ to, name }) => (
-            <Link key={to} to={to} className='nav-link'>
-              {name}
-            </Link>
-          ))}
+          <a href="/" onClick={handleLogin} className='nav-link'>Sign in</a>
+          <a href="/" onClick={handleRegister} className='nav-link'>Register</a>
         </IfNotAuthenticated>
+        
         <div className='hamburger' onClick={toggleMenu} ><GiHamburgerMenu/></div>
       </div>
       }

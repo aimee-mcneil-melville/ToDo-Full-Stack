@@ -2,11 +2,8 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { isAuthenticated } from './auth'
-
 import Header from './components/Header'
-import Register from './pages/auth/Register/Register'
-import SignIn from './pages/auth/SignIn/SignIn'
+import Profile from './pages/Profile/Profile'
 import Garden from './pages/Garden/Garden'
 import Home from './pages/Home/Home'
 import AddEvent from './pages/admin/AddEvent/AddEvent'
@@ -15,8 +12,7 @@ import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 
 export default function App () {
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  const gardenId = useSelector(globalState => globalState.user.gardenId)
+  const { isAdmin } = useSelector(globalState => globalState.user)
 
   return (
     <>
@@ -25,23 +21,7 @@ export default function App () {
       <main className='container'>
         <Route exact path='/' component={Home} />
         <Route exact path='/gardens/:id' component={Garden} />
-        <Route
-          path='/register'
-          render={() => {
-            return isAuthenticated()
-              ? <Redirect to={`/gardens/${gardenId}`} />
-              : <Register />
-          }}
-        />
-        <Route
-          path='/signin'
-          render={() => {
-            return isAuthenticated()
-              ? <Redirect to={`/gardens/${gardenId}`} />
-              : <SignIn />
-          }}
-        />
-
+        <Route path='/profile' component={Profile} />
         <Route
           path='/event/new'
           render={() => {
@@ -59,7 +39,11 @@ export default function App () {
           }}
         />
         <Route exact path='/events/:id' component={Event} />
-      </main>
-    </>
+        <Route
+          exact path='/profile'
+          render={Profile}
+        />
+      </section>
+    </main>
   )
 }
