@@ -14,7 +14,9 @@ const mockData = {
   date: '2021-03-02',
   gardenName: 'Mock garden',
   volunteersNeeded: 4,
-  description: 'this is our mock data description truly radical event'
+  description: 'this is our mock data description truly radical event',
+  lat: -36.8666700,
+  lon: 174.7666700
 }
 
 describe('Event details page', () => {
