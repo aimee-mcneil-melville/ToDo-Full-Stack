@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
+
 import { dispatch } from '../../store'
 
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
@@ -8,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIdsMatch } from './emailVolunteerErrorHelper'
 import { useHistory } from 'react-router'
-import { logOff } from '../../auth'
+import { getLogoutFn } from '../../auth-utils'
 import { clearUser } from '../../actions/user'
 
 export default function EmailVolunteerError () {
@@ -17,6 +19,7 @@ export default function EmailVolunteerError () {
   const history = useHistory()
   const browserUserName = useSelector(globalState => globalState.user.username)
   const browserUserId = useSelector(globalState => globalState.user.id)
+  const logout = getLogoutFn(useAuth0)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -30,7 +33,7 @@ export default function EmailVolunteerError () {
   }, [])
 
   function logOutSignIn () {
-    logOff()
+    logout()
     dispatch(clearUser())
     history.push('/signin')
   }
