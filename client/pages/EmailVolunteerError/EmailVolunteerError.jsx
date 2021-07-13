@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react'
-import { getState, dispatch } from '../../store'
-import { showError } from '../../actions/error'
+import { useSelector } from 'react-redux'
+import { dispatch } from '../../store'
+
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 
 import { useParams } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
-import { getEventDetails, checkUserIds } from './emailVolunteerErrorHelper'
+import { getEventDetails, checkUserIdsMatch } from './emailVolunteerErrorHelper'
 import { useHistory } from 'react-router'
-import { logOut } from '../../components/Nav/navHelper'
+import { logOff } from '../../auth'
+import { clearUser } from '../../actions/user'
 
 export default function EmailVolunteerError () {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
-  const [volunteering, setVolunteering] = useState(false)
   const { userId, eventId } = useParams()
   const history = useHistory()
-  const storeState = getState()
+  const browserUserName = useSelector(globalState => globalState.user.username)
+  const browserUserId = useSelector(globalState => globalState.user.id)
 
   useEffect(() => {
+    // eslint-disable-next-line promise/catch-or-return
     getEventDetails(eventId, history)
       .then(event => {
         if (event) {
           setEvent({ title: event.title, gardenName: event.gardenName })
-          setVolunteering(event.isVolunteer)
         }
         return null
-      })
-      .catch((error) => {
-        dispatch(showError(error.message))
       })
   }, [])
 
   function logOutSignIn () {
-    logOut()
+    logOff()
+    dispatch(clearUser())
     history.push('/signin')
+  }
+
+  function redirectToEvent () {
+    history.push(`/events/${eventId}`)
   }
 
   return (
@@ -42,10 +46,10 @@ export default function EmailVolunteerError () {
 
       <IfAuthenticated>
         <p>Don't stress, just click this button ⬇️⬇️ </p>
-        <VolunteerButton setVolunteering={() => { history.push(`/events/${eventId}`) }} eventId={eventId} volunteering={volunteering}/>
+        <VolunteerButton setVolunteering={redirectToEvent} eventId={eventId} volunteering={false}/>
 
-        {(!checkUserIds(userId, storeState.user.id)) &&
-          <p><i>NOTE: You are currently logged in as:</i> <b>{storeState.user.username}</b> Not you? <button onClick={logOutSignIn}>Click here</button></p>
+        {(!checkUserIdsMatch(userId, browserUserId)) &&
+          <p><i>NOTE: You are currently logged in as:</i> <b>{browserUserName}</b> Not you? <button onClick={logOutSignIn}>Click here</button></p>
         }
 
       </IfAuthenticated>
