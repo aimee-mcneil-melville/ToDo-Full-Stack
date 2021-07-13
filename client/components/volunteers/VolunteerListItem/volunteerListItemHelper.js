@@ -1,12 +1,14 @@
 import requestor from '../../../consume'
-import { dispatch } from '../../../store'
+import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
 export function toggleAttendance (volunteerData, consume = requestor) {
+  const storeState = getState()
+  const { token } = storeState.user
   dispatch(setWaiting())
 
-  return consume('/volunteers', 'patch', volunteerData)
+  return consume('/volunteers', token, 'patch', volunteerData)
     .then(() => {
       dispatch(clearWaiting())
       return true
