@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 import { getEvent } from './eventHelper'
 
@@ -11,6 +11,7 @@ import EventDetailCard from '../../components/events/EventDetailCard/EventDetail
 
 export default function Event () {
   const { id } = useParams()
+  const history = useHistory()
 
   const [event, setEvent] = useState({})
   const [volunteering, setVolunteering] = useState(false)
@@ -28,7 +29,10 @@ export default function Event () {
         return null
       })
   }, [])
-
+  function redirectToEdit () {
+    // console.log('redirectToEdit')
+    history.push(`/events/${id}/edit`)
+  }
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
 
   return (
@@ -55,7 +59,7 @@ export default function Event () {
         </h3>
       </article>
       <section className='button-inline-container'>
-        <button className='edit-event-button'>Edit Event</button>
+        <button onClick={redirectToEdit} className='edit-event-button'>Edit Event</button>
         <button className='edit-event-button'>Event Admin</button>
       </section>
     </section>
