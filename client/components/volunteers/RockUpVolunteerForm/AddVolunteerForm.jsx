@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
-import { addVolunteer } from './AddVolunteerFormHelper'
 import { useParams } from 'react-router-dom'
+import { addVolunteer } from './AddVolunteerFormHelper'
 
-export default function AddVolunteerForm () {
+export default function AddVolunteerForm ({ addExtraVolunteer }) {
   const { id } = useParams()
 
   const [form, setForm] = useState({
@@ -11,8 +10,6 @@ export default function AddVolunteerForm () {
     firstName: '',
     lastName: ''
   })
-
-  // const history = useHistory
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -24,13 +21,14 @@ export default function AddVolunteerForm () {
 
   function handleClick (e) {
     e.preventDefault()
-    addVolunteer(form)
+    addVolunteer(form, addExtraVolunteer)
     setForm({ eventId: id, firstName: '', lastName: '' })
   }
 
   return (
     <>
-      <h2></h2>
+      <h2>Add Rock-Up Attendee</h2>
+
       <form>
         <div className=''>
           <label htmlFor='firstname' className=''>First name</label>

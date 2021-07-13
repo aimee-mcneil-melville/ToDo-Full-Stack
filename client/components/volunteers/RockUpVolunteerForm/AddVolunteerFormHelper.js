@@ -3,12 +3,14 @@ import { dispatch } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
-export function addVolunteer (volunteer, consume = requestor) {
+export function addVolunteer (volunteer, addExtraVolunteer, consume = requestor) {
   dispatch(setWaiting())
 
   return consume('/volunteers/extras', 'post', volunteer)
-    .then(() => {
+    .then((response) => {
       dispatch(clearWaiting())
+      const newVolunteer = { ...volunteer, ...response.body }
+      addExtraVolunteer(newVolunteer)
       return null
     })
 

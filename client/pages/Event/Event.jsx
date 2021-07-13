@@ -8,6 +8,7 @@ import Map from '../../components/Map/Map'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
 
 export default function Event () {
   const { id } = useParams()
@@ -29,7 +30,14 @@ export default function Event () {
       })
   }, [])
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, extraVolunteers } = event
+
+  function addExtraVolunteer (newVolunteer) {
+    setEvent({
+      ...event,
+      extraVolunteers: [...event.extraVolunteers, newVolunteer]
+    })
+  }
 
   return (
     <>
@@ -68,7 +76,12 @@ export default function Event () {
             volunteers={volunteers}
             eventId={event.id}
           />
-          <AddVolunteerForm />
+          <RockUpVolunteerList
+            extraVolunteers={extraVolunteers}
+          />
+          <AddVolunteerForm
+            addExtraVolunteer={addExtraVolunteer}
+          />
         </>
         : <Map
           coordinates={[{ lat, lon }]}

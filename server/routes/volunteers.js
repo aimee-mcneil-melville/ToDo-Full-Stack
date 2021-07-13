@@ -95,8 +95,8 @@ router.post('/extras', getTokenDecoder(), (req, res) => {
   const { eventId, firstName, lastName } = req.body
 
   db.addExtraVolunteer({ eventId, firstName, lastName })
-    .then(() => {
-      res.sendStatus(201)
+    .then((result) => {
+      res.json({ extraVolId: result[0] })
       return null
     })
     .catch((err) => {

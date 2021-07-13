@@ -18,7 +18,8 @@ export function getEvent (id, consume = requestor) {
         volunteersNeeded: event.volunteersNeeded,
         description: event.description,
         volunteers: event.volunteers,
-        isVolunteer: event.isVolunteer
+        isVolunteer: event.isVolunteer,
+        extraVolunteers: event.extraVolunteers
       }
     })
     .catch((error) => {
