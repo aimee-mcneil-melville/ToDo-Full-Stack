@@ -52,9 +52,10 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
   const { authorization } = req.headers
   try {
+    const isAdmin = await getUserRoles(id, authorization)
     const user = await db.getUsersByAuth(id)
-    console.log(id, authorization)
-    res.json({ ...user, isAdmin: await getUserRoles(id, authorization) })
+    // console.log(id, authorization)
+    res.json({ ...user, isAdmin: isAdmin })
     return null
   } catch (err) {
     log(err.message)

@@ -6,11 +6,12 @@ const axios = require('axios')
  * @returns {Promise<{error?}|string>} promise either resolves to the users role or a rejects with API error
  */
 const getUserRoles = async (uid, token) => {
+  console.log(token)
   const instance = axios.create({
     baseURL: 'https://gardenz.au.auth0.com/api/v2/',
     timeout: 1000,
     headers: {
-      authorization: `${token}`
+      authorization: token
     }
   })
 
