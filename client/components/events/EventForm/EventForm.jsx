@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-const tempData = {
-  title: 'Weeding'
-}
+
 export default function EventForm (props) {
   const [form, setForm] = useState(props.formData || {
     title: '',
@@ -27,22 +25,22 @@ export default function EventForm (props) {
   return (
     <>
       {/* ADMIN EVENT VIEW */}
-      <article className='event-preview'>
-        <h3 className='form-title'>Event Details</h3>
+      <div className='event-preview'>
+        <h3 className='title form-title'>Event Preview</h3>
         {title
-          ? <p className='preview-title'>{title}</p>
-          : <p className='preview-title'>Title</p>
+          ? <h3 className='para-title'>{title}</h3>
+          : <h3 className='para-title'>Your title here</h3>
         }
         {date
-          ? <p className='para-title'>Date:</p> // swap these around
-          : <p className='para-answer'>{date}</p>
+          ? <p className='para-title'>{date}</p>
+          : <p className='para-title'>Your date here</p>
         }
-        <p className='para-title'>Volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''}:</p>
+        <p className='para-title'>{volunteersNeeded} volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''} needed</p>
         {description
-          ? <p className='para-title'>Description:</p>
-          : <p className='para-description'>{description}</p>
+          ? <p className='para-title'>{description}</p>
+          : <p className='para-title'>Your description here</p>
         }
-      </article>
+      </div>
       <article className='form-container'>
         {/* ADMIN SAVE EVENT VIEW */}
         <h3 className='form-title'>Create Event</h3>
@@ -102,7 +100,7 @@ export default function EventForm (props) {
               id='description'
               name='description'
               placeholder='event description'
-              // value={description}
+              value={description}
               onChange={handleChange}
             />
           </div>
