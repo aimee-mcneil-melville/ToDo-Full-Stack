@@ -69,6 +69,6 @@ export default function Event () {
           names={[gardenName]}
         />
       }
-    </>
+    </section>
   )
 }
