@@ -14,7 +14,9 @@ const mockData = {
   date: '2021-03-02',
   gardenName: 'Mock garden',
   volunteersNeeded: 4,
-  description: 'this is our mock data description truly radical event'
+  description: 'this is our mock data description truly radical event',
+  lat: -36.8666700,
+  lon: 174.7666700
 }
 
 describe('Event details page', () => {
@@ -30,6 +32,20 @@ describe('Event details page', () => {
 
       expect(gardenNameElement).toBeInTheDocument()
       expect(dateAndVolunteerNeeded).toBeInTheDocument()
+      return null
+    })
+  })
+
+  it('checks logic in ternary operator for map lat&lon', () => {
+    renderWithRedux(<Event />)
+    getEvent.mockImplementation(() => Promise.resolve(mockData))
+
+    const markers = screen.queryByRole('img')
+    expect(markers).toBeNull()
+
+    return screen.findByText('Mock title').then(() => {
+      const rerenderedMarkers = screen.getAllByRole('img')
+      expect(rerenderedMarkers).toHaveLength(2)
       return null
     })
   })
