@@ -18,6 +18,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { IoClose } from 'react-icons/io5'
 
 export default function Nav () {
+  const [open, setOpen] = useState(false)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
@@ -37,8 +38,6 @@ export default function Nav () {
     event.preventDefault()
     logout()
   }
-
-  const [open, setOpen] = useState(false)
 
   const toggleMenu = () => {
     setOpen(!open)
