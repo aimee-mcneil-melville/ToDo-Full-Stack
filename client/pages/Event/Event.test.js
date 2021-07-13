@@ -51,22 +51,22 @@ describe('Event details page', () => {
   })
 
   describe('Volunteer button', () => {
-    // it('does not render if admin', () => {
-    //   getEvent.mockImplementation(() => Promise.resolve(mockData))
+    it('does not render if admin', () => {
+      getEvent.mockImplementation(() => Promise.resolve(mockData))
 
-    //   renderWithRedux(<Event />, {
-    //     initialState: {
-    //       user: {
-    //         isAdmin: true
-    //       }
-    //     }
-    //   })
-    //   return screen.findByText('Mock title').then(() => {
-    //     const volunteerButton = screen.queryByRole('button')
-    //     expect(volunteerButton).toBeNull()
-    //     return null
-    //   })
-    // })
+      renderWithRedux(<Event />, {
+        initialState: {
+          user: {
+            isAdmin: true
+          }
+        }
+      })
+      return screen.findByText('Mock title').then(() => {
+        const volunteerButton = screen.queryByRole('button', { name: 'Volunteer' })
+        expect(volunteerButton).toBeNull()
+        return null
+      })
+    })
 
     it('renders if not admin', () => {
       getEvent.mockImplementation(() => Promise.resolve(mockData))

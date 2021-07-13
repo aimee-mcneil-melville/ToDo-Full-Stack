@@ -1,0 +1,31 @@
+@use "sass:math";
+@use '../1-helpers/functions';
+@use '../1-helpers/mixins';
+@use '../1-helpers/vars';
+
+.profile-title {
+  color: vars.$primary;
+  font-family: vars.$heading;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.profile-label {
+  color: vars.$primary;
+  font-family: vars.$heading;
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: -15px;
+}
+
+.profile-info {
+  font-family: vars.$paragraph;
+}
+
+.profile-container {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(6);
+    padding: vars.$base-size;
+  }
+}

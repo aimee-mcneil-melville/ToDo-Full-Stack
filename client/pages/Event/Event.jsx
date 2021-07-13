@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 import { getEvent } from './eventHelper'
 
-import Map from '../../components/Map/Map'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
@@ -12,6 +11,7 @@ import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList
 
 export default function Event () {
   const { id } = useParams()
+  const history = useHistory()
 
   const [event, setEvent] = useState({})
 
@@ -28,6 +28,11 @@ export default function Event () {
       })
   }, [])
 
+  function redirectToEdit () {
+    // console.log('redirectToEdit')
+    history.push(`/events/${id}/edit`)
+  }
+
   function addExtraVolunteer (newVolunteer) {
     setEvent({
       ...event,
@@ -36,56 +41,54 @@ export default function Event () {
   }
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
+
   return (
-    <section className='flex-container'>
-      <article className=''>
-        <h2 className='title is-4'>{title}</h2>
-        <dl className=''>
-          <dt className='has-text-weight-bold'>Garden Name:</dt>
-          <dd>{gardenName}</dd>
-
-          <dt className='has-text-weight-bold'>Address:</dt>
-          <dd>{gardenAddress}</dd>
-
-          <dt className='has-text-weight-bold'>Date:</dt>
-          <dd>{date}</dd>
-
-          <dt className='has-text-weight-bold'>Volunteers Needed:</dt>
-          <dd>{volunteersNeeded}</dd>
-        </dl>
-        <p className='has-text-weight-semibold'>{description}</p>
-        {!isAdmin
-          ? <VolunteerButton
-            eventId={id}
-            volunteering={volunteering}
-            setVolunteering={setVolunteering}
-          />
-          : null
-        }
-      </article>
-      {isAdmin
-        ? <>
-          <VolunteerList
-            volunteers={volunteers}
-            eventId={event.id}
-          />
-          <RockUpVolunteerList
-            extraVolunteers={extraVolunteers}
-          />
-          <AddVolunteerForm
-            addExtraVolunteer={addExtraVolunteer}
-          />
-        </>
-        : <Map
-          coordinates={
-            lat
-              ? [{ lat, lon }]
-              : []
-          }
-          addresses={[gardenAddress]}
-          names={[gardenName]}
-        />
-      }
-    </section>
+    <>
+      <section className='event-page-container'>
+        <section className='form-page-container'>
+          <h3>
+            {isAdmin
+              ? <>
+                <section>
+                  <VolunteerList
+                    volunteers={volunteers}
+                    eventId={event.id}
+                  />
+                  <RockUpVolunteerList
+                    extraVolunteers={extraVolunteers}
+                  />
+                  <AddVolunteerForm
+                    addExtraVolunteer={addExtraVolunteer}
+                  />
+                </section>
+              </>
+              : null
+            }
+          </h3>
+        </section>
+        <section className='card-container'>
+          <button className='card-close-button'>close</button>
+          <article className='card-text-container'>
+            <h1 className='card-title'>{title}</h1>
+            <h2 className='card-sub-title'>Garden Name: {gardenName}</h2>
+            <h3 className='card-text'>Address: {gardenAddress}</h3>
+            <h3 className='card-text'>Date: {date}</h3>
+            <h3 className='card-text'>Volunteers Needed: {volunteersNeeded}</h3>
+            <h3 className='card-text'>Description: {description}</h3>
+            {!isAdmin
+              ? <VolunteerButton
+                eventId={id}
+                volunteering={volunteering}
+                setVolunteering={setVolunteering}
+              />
+              : <section className='button-inline-container'>
+                <button onClick={redirectToEdit} className='edit-event-button'>Edit Event</button>
+                <button className='edit-event-button'>Event Admin</button>
+              </section>
+            }
+          </article>
+        </section>
+      </section>
+    </>
   )
 }

@@ -27,10 +27,10 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
 
   return (
     <>
-      <h2>Add Rock-Up Attendee</h2>
+      <h2 className='form-title'>Add Rock-Up Attendee</h2>
 
-      <form>
-        <div className=''>
+      <form className='form-container'>
+        <div>
           <label htmlFor='firstname' className=''>First name</label>
           <input
             className='input'
@@ -55,7 +55,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
           />
         </div>
         <button
-          className='button'
+          className='edit-event-button'
           data-testid='submit-button'
           onClick={handleClick}
         >Add

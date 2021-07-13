@@ -45,6 +45,7 @@ export default function Home () {
         <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
         <Link className='button-primary' to='/signin'>Get Started</Link>
       </article>
+
       <Map
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}
