@@ -53,14 +53,6 @@ export default function EventDetailCard () {
           <button className='edit-event-button'>Event Item</button>
         </section>
       }
-      <Route
-        path='/events/:id'
-        render={() => {
-          return isAdmin
-            ? <EditEvent />
-            : <Redirect to='/' />
-        }}
-      />
       {/* <button className='card-volunteer-button '>Volunteer</button> */}
     </section>
   )
