@@ -20,7 +20,6 @@ export async function cacheUser (useAuth0) {
     try {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
-      console.log(res.body)
       saveUser({
         id: res.body.id,
         firstName: res.body.first_name,

@@ -5,8 +5,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 export function Register () {
   const authUser = useAuth0().user
-  // const auth0Id = authUser?.sub
-  console.log(authUser)
 
   const [form, setForm] = useState({
     firstName: '',
@@ -20,12 +18,11 @@ export function Register () {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
   function handleClick (e) {
-    // console.log('working?')
     e.preventDefault()
     registerUser(form, authUser, history.push)
   }
