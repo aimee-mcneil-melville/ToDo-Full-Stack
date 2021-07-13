@@ -148,13 +148,14 @@ describe('POST /api/v1/volunteers/extras', () => {
   })
 
   it('returns correct response when token has passed', () => {
-    db.addExtraVolunteer.mockImplementation(() => Promise.resolve(201))
+    db.addExtraVolunteer.mockImplementation(() => Promise.resolve([4]))
     return request(server)
       .post('/api/v1/volunteers/extras')
       .set(testAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
       .then(res => {
         expect(res.status).toBe(201)
+        expect(res.body.extraVolId).toBe(4)
         return null
       })
   })

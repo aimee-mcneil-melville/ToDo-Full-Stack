@@ -96,7 +96,7 @@ router.post('/extras', getTokenDecoder(), (req, res) => {
 
   db.addExtraVolunteer({ eventId, firstName, lastName })
     .then((result) => {
-      res.json({ extraVolId: result[0] })
+      res.status(201).json({ extraVolId: result[0] })
       return null
     })
     .catch((err) => {
