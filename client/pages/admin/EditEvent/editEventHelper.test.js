@@ -1,6 +1,6 @@
 import { getEvent, updateEvent } from './editEventHelper'
 import { CLEAR_WAITING } from '../../../actions/waiting'
-import { dispatch } from '../../../store'
+import { dispatch, getState } from '../../../store'
 
 jest.mock('../../../store')
 
@@ -45,6 +45,7 @@ describe('getEvent', () => {
 
 describe('updateEvent', () => {
   it('dispatches, redirects correctly on PATCH /events/:id api call success', () => {
+    getState.mockImplementation(() => ({ user: { gardenId: 1, token: 'dummytoken' } }))
     const event = {
       title: 'test event',
       date: '2021-03-22',
@@ -52,7 +53,7 @@ describe('updateEvent', () => {
       description: 'really rad event'
     }
     const navigateTo = jest.fn()
-    function consume (url, method, eventToUpdate) {
+    function consume (url, token, method, eventToUpdate) {
       expect(url).toBe('/events/1')
       expect(method).toBe('patch')
       expect(eventToUpdate.title).toBe('test event')
