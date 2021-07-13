@@ -16,7 +16,7 @@
   margin-right: 0;
 
   @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(6);
+      width: functions.colWidth(5);
   }
 }
 
@@ -49,3 +49,15 @@
     padding: vars.$base-size;
 }
 
+// Event page container
+.event-page-container {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+}
+
+.form-page-container {
+    display: flex;
+    padding-top: vars.$base-size*2;
+    width: 45%;
+}
