@@ -34,6 +34,8 @@ describe('getEventById', () => {
         expect(event.volunteers).toHaveLength(2)
         expect(event.extraVolunteers).toHaveLength(0)
         expect(event.volunteers[0].attended).toBeFalsy()
+        expect(event.lat).toBe(-36.86983345249252)
+        expect(event.lon).toBe(174.74701843955708)
         return null
       })
   })

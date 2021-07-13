@@ -105,8 +105,8 @@ router.post('/extras', checkJwt, (req, res) => {
   const { eventId, firstName, lastName } = req.body
 
   db.addExtraVolunteer({ eventId, firstName, lastName })
-    .then(() => {
-      res.sendStatus(201)
+    .then((result) => {
+      res.status(201).json({ extraVolId: result[0] })
       return null
     })
     .catch((err) => {
