@@ -15,21 +15,13 @@ router.get('/emailsignup', (req, res) => {
   const volunteer = decode(token)
 
   db.addVolunteer(volunteer)
-    // Put the .then() block back to this after testing:
-    // .then(() => {
-    //   res.redirect(`/gardens/${volunteer.gardenId}`)
-    //   return null
-    // })
     .then(() => {
-      res.redirect(`./email-volunteer-error/${volunteer.userId}/${volunteer.eventId}`)
+      res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
-    }
-
-    )
+    })
     .catch(err => {
       log(err.message)
-
-      res.redirect('/email-volunteer-error')
+      res.redirect(`./email-volunteer-error/${volunteer.userId}/${volunteer.eventId}`)
       res.status(500).json({
         error: {
           title: 'Unable to register from email'

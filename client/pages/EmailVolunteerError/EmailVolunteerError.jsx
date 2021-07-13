@@ -6,7 +6,7 @@ import VolunteerButton from '../../components/volunteers/VolunteerButton/Volunte
 import { useParams } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIds } from './emailVolunteerErrorHelper'
-import { Redirect, useHistory } from 'react-router'
+import { useHistory } from 'react-router'
 import { logOut } from '../../components/Nav/navHelper'
 
 export default function EmailVolunteerError () {
