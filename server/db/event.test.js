@@ -40,8 +40,6 @@ describe('getEventById', () => {
       })
   })
 })
-// lat: -36.86983345249252,
-// lon: 174.74701843955708,
 
 describe('addEvent', () => {
   it('inserts event correctly', () => {

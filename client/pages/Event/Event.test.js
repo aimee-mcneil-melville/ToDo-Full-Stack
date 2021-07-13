@@ -36,6 +36,20 @@ describe('Event details page', () => {
     })
   })
 
+  it('checks logic in ternary operator for map lat&lon', () => {
+    renderWithRedux(<Event />)
+    getEvent.mockImplementation(() => Promise.resolve(mockData))
+
+    const markers = screen.queryByRole('img')
+    expect(markers).toBeNull()
+
+    return screen.findByText('Mock title').then(() => {
+      const rerenderedMarkers = screen.getAllByRole('img')
+      expect(rerenderedMarkers).toHaveLength(2)
+      return null
+    })
+  })
+
   describe('Volunteer button', () => {
     // it('does not render if admin', () => {
     //   getEvent.mockImplementation(() => Promise.resolve(mockData))

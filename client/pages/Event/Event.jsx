@@ -7,6 +7,8 @@ import { getEvent } from './eventHelper'
 import Map from '../../components/Map/Map'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
+import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
+import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
 
 export default function Event () {
   const { id } = useParams()
@@ -26,7 +28,14 @@ export default function Event () {
       })
   }, [])
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
+  function addExtraVolunteer (newVolunteer) {
+    setEvent({
+      ...event,
+      extraVolunteers: [...event.extraVolunteers, newVolunteer]
+    })
+  }
+
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
   return (
     <section className='flex-container'>
       <article className=''>
@@ -55,10 +64,18 @@ export default function Event () {
         }
       </article>
       {isAdmin
-        ? <VolunteerList
-          volunteers={volunteers}
-          eventId={event.id}
-        />
+        ? <>
+          <VolunteerList
+            volunteers={volunteers}
+            eventId={event.id}
+          />
+          <RockUpVolunteerList
+            extraVolunteers={extraVolunteers}
+          />
+          <AddVolunteerForm
+            addExtraVolunteer={addExtraVolunteer}
+          />
+        </>
         : <Map
           coordinates={
             lat

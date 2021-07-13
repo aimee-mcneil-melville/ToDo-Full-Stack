@@ -19,6 +19,7 @@ export function getEvent (id, consume = requestor) {
         description: event.description,
         volunteers: event.volunteers,
         isVolunteer: event.isVolunteer,
+        extraVolunteers: event.extraVolunteers,
         lat: event.lat,
         lon: event.lon
       }
