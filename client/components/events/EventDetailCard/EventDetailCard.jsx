@@ -1,17 +1,38 @@
-import React from 'react'
-// import { Link } from 'react-router-dom'
+// import React, { useEffect, useState } from 'react'
+// import { useSelector } from 'react-redux'
 
 // import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
+// import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
+import React, { useEffect, useState } from 'react'
+import { Route, Redirect, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-export default function EventDetailCard ({ event, isAdmin }) {
-  // const { id, title, date, volunteersNeeded, description, totalVolunteers, isVolunteer } = event
-  // const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
-  // const remainingVolunteers = volunteersNeeded - totalVolunteers
-  // const additionalVolunteers = Math.abs(remainingVolunteers)
+import { getEvent } from '../../../pages/Event/eventHelper'
 
-  // useEffect(() => {
-  //   setIsVolunteering(isVolunteer)
-  // }, [isVolunteer])
+// import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
+// import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
+
+// import { Link } from 'react-router-dom'
+
+export default function EventDetailCard () {
+  const { id } = useParams()
+
+  const [event, setEvent] = useState({})
+  const [volunteering, setVolunteering] = useState(false)
+
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  // currently using initial state and wipes clear on refresh - needs attention
+  // const { lat, lon, address } = useSelector(globalState => globalState.garden)
+
+  useEffect(() => {
+    // eslint-disable-next-line promise/catch-or-return
+    getEvent(id)
+      .then((event) => {
+        setEvent(event)
+        setVolunteering(event.isVolunteer)
+        return null
+      })
+  }, [])
 
   return (
     <section className='card-container'>
@@ -25,7 +46,14 @@ export default function EventDetailCard ({ event, isAdmin }) {
         Description Description Description Description Description
         </h3>
       </article>
-      <button className='card-volunteer-button '>Volunteer</button>
+      {!isAdmin
+        ? <><button className='card-volunteer-button'>Volunteer</button></>
+        : <section className='button-inline-container'>
+          <button className='edit-event-button'>Edit Event</button>
+          <button className='edit-event-button'>Event Item</button>
+        </section>
+      }
+      {/* <button className='card-volunteer-button '>Volunteer</button> */}
     </section>
   )
 }

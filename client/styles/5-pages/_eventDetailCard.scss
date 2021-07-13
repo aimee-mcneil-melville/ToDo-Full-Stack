@@ -12,9 +12,11 @@
   padding: vars.$base-size * 1;
   border: none;
   border-radius: math.div(vars.$base-size, 4);
+  margin: vars.$base-size * 4;
+  margin-right: 0;
 
   @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(4);
+      width: functions.colWidth(5);
   }
 }
 
@@ -38,7 +40,6 @@
 
 .card-text {
     color: white;
-    padding-top: vars.$base-size;
     font-family: vars.$paragraph;
 }
 
@@ -46,4 +47,17 @@
     display: flex;
     display: inline-block;
     padding: vars.$base-size;
+}
+
+// Event page container
+.event-page-container {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+}
+
+.form-page-container {
+    display: flex;
+    padding-top: vars.$base-size * 2;
+    width: 45%;
 }
