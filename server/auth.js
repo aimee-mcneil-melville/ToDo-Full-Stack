@@ -10,7 +10,7 @@ const getUserRoles = async (uid, token) => {
     baseURL: 'https://gardenz.au.auth0.com/api/v2/',
     timeout: 1000,
     headers: {
-      authorization: `bearer ${token}`
+      authorization: `${token}`
     }
   })
 
