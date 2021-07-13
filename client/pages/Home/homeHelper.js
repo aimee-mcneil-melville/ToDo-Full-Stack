@@ -37,10 +37,12 @@ export function getGardenLocations (consume = requestor) {
       const gardenCoords = gardens.map(({ lat, lon }) => {
         return { lat, lon }
       })
+      const names = gardens.map(({ name }) => name)
       const addrs = gardens.map(({ address }) => address)
       return {
         gardenCoords,
-        addrs
+        addrs,
+        names
       }
     })
     .catch((error) => {
