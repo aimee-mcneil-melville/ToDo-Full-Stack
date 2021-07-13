@@ -20,8 +20,8 @@ export default function consume (endpoint, token, method = 'get', data = {}) {
       })
   } else {
     return request[method](baseUrl + endpoint)
-      .set(headers)[payLoadMethod](data)
       .set('authorization', `Bearer ${token}`)
+      .set(headers)[payLoadMethod](data)
       .then((res) => res)
       .catch((err) => {
         const errMessage = err.response?.body?.error?.title
