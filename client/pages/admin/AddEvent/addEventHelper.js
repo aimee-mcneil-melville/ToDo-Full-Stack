@@ -5,13 +5,13 @@ import requestor from '../../../consume'
 
 export function addEvent (event, navigateTo, consume = requestor) {
   const storeState = getState()
-  const { gardenId } = storeState.user
+  const { gardenId, token } = storeState.user
   const newEvent = {
     gardenId,
     ...event
   }
   dispatch(setWaiting())
-  return consume('/events', 'post', newEvent)
+  return consume('/events', token, 'post', newEvent)
     .then(() => {
       navigateTo(`/gardens/${gardenId}`)
       return null

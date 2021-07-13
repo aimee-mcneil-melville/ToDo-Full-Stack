@@ -1,4 +1,4 @@
-import { dispatch } from '../../../store'
+import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 import requestor from '../../../consume'
@@ -17,12 +17,14 @@ export function getEvent (id, consume = requestor) {
 }
 
 export function updateEvent (id, event, navigateTo, consume = requestor) {
+  const storeState = getState()
+  const { token } = storeState.user
   const eventToUpdate = {
     id: Number(id),
     ...event
   }
   dispatch(setWaiting())
-  return consume(`/events/${id}`, 'patch', eventToUpdate)
+  return consume(`/events/${id}`, token, 'patch', eventToUpdate)
     .then(() => {
       navigateTo(`/events/${id}`)
       return null
