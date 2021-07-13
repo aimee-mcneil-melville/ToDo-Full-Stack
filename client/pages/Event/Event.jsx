@@ -27,7 +27,7 @@ export default function Event () {
   }, [])
 
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
-
+  console.log(lat, lon)
   return (
     <>
       <article className='column'>
