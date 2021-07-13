@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
   //   auth0Id: 'auth0|60e78a925basd3c78006a2be3e4'
   // }
 
-  const data = {
+  const user = {
     firstName,
     lastName,
     gardenId,
@@ -29,9 +29,9 @@ router.post('/', (req, res) => {
   }
 
   //   Promise.all([db.getUsersByAuth0({ firstName, lastName, gardenId, username, auth0Id })])
-  db.createUser(data)
+  db.createUser(user)
     .then(() => {
-      res.sendStatus(200)
+      res.json(user)
       return null
     })
     .catch(err => {

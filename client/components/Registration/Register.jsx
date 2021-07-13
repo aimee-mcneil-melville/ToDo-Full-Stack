@@ -5,16 +5,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 export function Register () {
   const authUser = useAuth0().user
-  const auth0Id = authUser.sub
+  // const auth0Id = authUser?.sub
   console.log(authUser)
 
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
     username: '',
-    gardenId: null,
-    email: authUser.email,
-    auth0Id: auth0Id
+    gardenId: null
   })
   const history = useHistory()
 
@@ -22,14 +20,14 @@ export function Register () {
     const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value
+      [name]: value,
     })
   }
 
   function handleClick (e) {
-    console.log('working?')
+    // console.log('working?')
     e.preventDefault()
-    registerUser(form, history.push)
+    registerUser(form, authUser, history.push)
   }
 
   return (

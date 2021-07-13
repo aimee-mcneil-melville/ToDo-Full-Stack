@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-import { getAccessToken } from './auth-utils'
+// import { getAccessToken } from './auth-utils'
 
 const baseUrl = '/api/v1'
 
