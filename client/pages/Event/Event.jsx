@@ -12,11 +12,9 @@ export default function Event () {
   const { id } = useParams()
 
   const [event, setEvent] = useState({})
-  const [volunteering, setVolunteering] = useState(false)
 
+  const [volunteering, setVolunteering] = useState(false)
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  // currently using initial state and wipes clear on refresh - needs attention
-  const { lat, lon, address } = useSelector(globalState => globalState.garden)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -28,8 +26,7 @@ export default function Event () {
       })
   }, [])
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers } = event
-
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon } = event
   return (
     <>
       <article className='column'>
@@ -67,8 +64,12 @@ export default function Event () {
           eventId={event.id}
         />
         : <Map
-          coordinates={[{ lat, lon }]}
-          addresses={[address]}
+          coordinates={
+            lat
+              ? [{ lat, lon }]
+              : []
+          }
+          addresses={[gardenAddress]}
           names={[gardenName]}
         />
       }
