@@ -43,44 +43,48 @@ export default function Event () {
   const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
 
   return (
-    <section className='card-container'>
-
-      <button className='card-close-button'>close</button>
-
-      <article className='card-text-container'>
-        <h1 className='card-title'>{title}</h1>
-        <h2 className='card-sub-title'>Garden Name: {gardenName}</h2>
-        <h3 className='card-text'>Address: {gardenAddress}</h3>
-        <h3 className='card-text'>Date: {date}</h3>
-        <h3 className='card-text'>Volunteers Needed: {volunteersNeeded}</h3>
-        <h3 className='card-text'>Description: {description}</h3>
-        {!isAdmin
-          ? <VolunteerButton
-            eventId={id}
-            volunteering={volunteering}
-            setVolunteering={setVolunteering}
-          />
-          : <section className='button-inline-container'>
-            <button onClick={redirectToEdit} className='edit-event-button'>Edit Event</button>
-            <button className='edit-event-button'>Event Admin</button>
-          </section>
-        }
-      </article>
-      {isAdmin
-        ? <>
-          <VolunteerList
-            volunteers={volunteers}
-            eventId={event.id}
-          />
-          <RockUpVolunteerList
-            extraVolunteers={extraVolunteers}
-          />
-          <AddVolunteerForm
-            addExtraVolunteer={addExtraVolunteer}
-          />
-        </>
-        : null
-      }
-    </section>
+    <>
+      <section className='card-container'>
+        <button className='card-close-button'>close</button>
+        <article className='card-text-container'>
+          <h1 className='card-title'>{title}</h1>
+          <h2 className='card-sub-title'>Garden Name: {gardenName}</h2>
+          <h3 className='card-text'>Address: {gardenAddress}</h3>
+          <h3 className='card-text'>Date: {date}</h3>
+          <h3 className='card-text'>Volunteers Needed: {volunteersNeeded}</h3>
+          <h3 className='card-text'>Description: {description}</h3>
+          {!isAdmin
+            ? <VolunteerButton
+              eventId={id}
+              volunteering={volunteering}
+              setVolunteering={setVolunteering}
+            />
+            : <section className='button-inline-container'>
+              <button onClick={redirectToEdit} className='edit-event-button'>Edit Event</button>
+              <button className='edit-event-button'>Event Admin</button>
+            </section>
+          }
+        </article>
+      </section>
+      <section>
+        <h3>
+          {isAdmin
+            ? <>
+              <VolunteerList
+                volunteers={volunteers}
+                eventId={event.id}
+              />
+              <RockUpVolunteerList
+                extraVolunteers={extraVolunteers}
+              />
+              <AddVolunteerForm
+                addExtraVolunteer={addExtraVolunteer}
+              />
+            </>
+            : null
+          }
+        </h3>
+      </section>
+    </>
   )
 }
