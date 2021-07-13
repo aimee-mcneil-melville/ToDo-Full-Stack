@@ -9,19 +9,19 @@ export default function Events ({ events }) {
 
   return (
     <>
-      <div className='is-flex'>
-        <h1 className='title is-4 is-flex-grow-1'>Events</h1>
+      <h1 className='events-title'>Events</h1>
+      <section className='column-9 scroll'>
+        {events.map((event) =>
+          <EventItem key={event.id} event={event} isAdmin={isAdmin} />
+        )}
+      </section>
+      <div>
         {
           isAdmin
             ? <Link to='/event/new' className='button'>Add New Event</Link>
             : null
         }
       </div>
-      <section>
-        {events.map((event) =>
-          <EventItem key={event.id} event={event} isAdmin={isAdmin} />
-        )}
-      </section>
     </>
   )
 }

@@ -62,7 +62,7 @@ describe('Event details page', () => {
         }
       })
       return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.queryByRole('button')
+        const volunteerButton = screen.queryByRole('button', { name: 'Volunteer' })
         expect(volunteerButton).toBeNull()
         return null
       })

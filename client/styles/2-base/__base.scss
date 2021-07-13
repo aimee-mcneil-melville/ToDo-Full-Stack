@@ -1,4 +1,11 @@
-// Import all base files into here with @use. 
-// Then import this file into main.scss in root directory
+@use '../1-helpers/vars';
 
-@use 'typography';
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1em;
+    font-family: vars.$paragraph;
+    line-height: 1.5;
+}

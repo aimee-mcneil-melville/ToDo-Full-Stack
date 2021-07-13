@@ -1,0 +1,63 @@
+@use 'sass:math';
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+@use '../1-helpers/vars';
+
+.card-container {
+  display: flex;
+  width: functions.colWidth(12);
+  background-color: vars.$primary;
+  flex-direction: column;
+  text-align: left;
+  padding: vars.$base-size * 1;
+  border: none;
+  border-radius: math.div(vars.$base-size, 4);
+  margin: vars.$base-size * 4;
+  margin-right: 0;
+
+  @include mixins.media-queries(tablet, min) {
+      width: functions.colWidth(5);
+  }
+}
+
+.card-text-container {
+    padding-bottom: vars.$base-size * 6;
+    margin-left: vars.$base-size * 2;
+    margin-right: vars.$base-size * 2;
+}
+
+.card-title {
+    font-size: 2.5rem;
+    color: white;
+    padding-bottom: vars.$base-size;
+    font-family: vars.$heading;
+}
+
+.card-sub-title {
+    color: white;
+    font-family: vars.$heading;
+}
+
+.card-text {
+    color: white;
+    font-family: vars.$paragraph;
+}
+
+.button-inline-container {
+    display: flex;
+    display: inline-block;
+    padding: vars.$base-size;
+}
+
+// Event page container
+.event-page-container {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+}
+
+.form-page-container {
+    display: flex;
+    padding-top: vars.$base-size * 2;
+    width: 45%;
+}

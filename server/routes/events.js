@@ -1,15 +1,20 @@
-const express = require('express')
+const checkJwt = require('./auth') // scope permissions
+const jwtAuthz = require('express-jwt-authz')
 
+const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
-const { getTokenDecoder } = require('../auth')
+
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
 module.exports = router
 
-router.post('/', getTokenDecoder(), (req, res) => {
+const checkAdmin = jwtAuthz(['role:admin'])
+
+// include getTokenDecoder() like function into post route that passes authorisation header? REQUIRES TOKEN + ADMIN
+router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
   let createdEvent = null
@@ -32,7 +37,9 @@ router.post('/', getTokenDecoder(), (req, res) => {
     })
 })
 
-router.patch('/:id', getTokenDecoder(), (req, res) => {
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
+
+router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, id } = req.body
   const updatedEvent = { title, date, volunteersNeeded, description, id }
   db.updateEvent(updatedEvent)
@@ -50,7 +57,8 @@ router.patch('/:id', getTokenDecoder(), (req, res) => {
     })
 })
 
-router.get('/:id', getTokenDecoder(false), (req, res) => {
+// doesnt need token
+router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {

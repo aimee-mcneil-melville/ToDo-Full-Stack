@@ -40,12 +40,12 @@ export default function Home () {
   }, [])
 
   return (
-    <section className='flex-container flex-row'>
-      <article>
-        <h2 >Welcome!</h2>
-        <p>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        <Link className='button' to='/signin'>Get Started</Link>
+    <section className='flex-container'>
+      <article className='home-container'>
+        <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
+        <Link className='button-primary' to='/signin'>Get Started</Link>
       </article>
+
       <Map
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}

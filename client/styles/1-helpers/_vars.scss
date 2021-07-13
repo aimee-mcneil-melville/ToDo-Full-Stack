@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap');
+
 // Set your brand colors
-$green: #1aae9f;
-$dark-green: #207868;
-$border: #c3cfd9;
+$green: #A0A603;
+$dark-green: #465902;
 $red: #D11D05;
 $black: #363636;
 
-$primary: $green;
-$secondary: $dark-green;
+$border: $dark-green;
+$primary: $dark-green;
+$secondary: $green;
+
+//Sizing
+$base-size: 1rem;
+
+// Font Variables
+$heading: 'Roboto Slab', serif;   
+$paragraph: 'Quicksand', sans-serif;
+
+

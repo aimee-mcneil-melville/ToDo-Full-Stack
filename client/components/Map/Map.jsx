@@ -14,8 +14,8 @@ export default function Map ({ addresses, coordinates, userCoordinates, names })
   })
 
   return (
-    <div className='column'>
-      <MapContainer style={{ height: '500px', width: '800px' }}
+    <div className='map-container'>
+      <MapContainer className='map'
         center={[-36.8666700, 174.7666700]}
         zoom={11}
         scrollWheelZoom={true}>
@@ -24,6 +24,7 @@ export default function Map ({ addresses, coordinates, userCoordinates, names })
         {coordinates.map((location, i) => {
           return <Marker key={i}
             position={[location.lat, location.lon]}
+            draggable={true}
           >
             <Popup>
               <h3>{names[i]}</h3>

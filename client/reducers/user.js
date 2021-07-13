@@ -1,4 +1,3 @@
-import { getUser } from '../auth-utils'
 import { SET_USER, CLEAR_USER } from '../actions/user'
 
 const emptyUser = {
@@ -8,10 +7,10 @@ const emptyUser = {
   gardenId: null
 }
 
-export default function user (state = getUser(), action) {
+export default function user (state = emptyUser, action) {
   switch (action.type) {
     case SET_USER:
-      return getUser()
+      return action.user
 
     case CLEAR_USER:
       return emptyUser

@@ -4,7 +4,7 @@ import VolunteerListItem from '../VolunteerListItem/VolunteerListItem'
 export default function VolunteerList ({ volunteers, eventId }) {
   return (
     <>
-      <h4>List of Volunteers</h4>
+      <h4 className='form-title'>List of Volunteers</h4>
       <ul>
         {volunteers?.length
           ? volunteers.map(volunteer => {

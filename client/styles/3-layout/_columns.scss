@@ -1,11 +1,20 @@
+@use "sass:math";
+@use '../1-helpers/functions';
+@use '../1-helpers/mixins';
+@use '../1-helpers/vars';
+
 .container {
   position: relative;
-  margin: 0 auto;
-  width: 100%;
+  max-width: 100%;
+  padding: 0 vars.$base-size * 3;
 }
 
 .flex-container {
   display: flex;
+  flex-direction: column;
+  @include mixins.media-queries(mobile, min) {
+    flex-direction: row;
+  }
 }
 
 .flex-column {
@@ -13,7 +22,6 @@
 
   &-reverse {
     flex-direction: column-reverse;
-    //complies to .flex-column-reverse
   }
 }
 
@@ -22,7 +30,36 @@
 
   &-reverse {
     flex-direction: row-reverse;
-    //complies to .flex-row-reverse
   }
 }
 
+.item {
+  order: 0;
+  font-size: vars.$base-size;
+  max-width: 100%;
+  margin: vars.$base-size + 3 0;
+
+  @include mixins.media-queries(tablet, min) {
+    font-size: vars.$base-size + 1;
+  }
+}
+
+.home-container {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(6);
+    padding: vars.$base-size;
+  }
+}
+
+.column-9 {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(9);
+  }
+}
+
+.scroll {
+  overflow-y: scroll;
+  max-height: 500px;
+}
