@@ -13,6 +13,7 @@ import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
+import EmailVolunteerError from './pages/EmailVolunteerError/EmailVolunteerError'
 
 export default function App () {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
@@ -58,6 +59,8 @@ export default function App () {
               : <Redirect to='/' />
           }}
         />
+        <Route exact path='/email-volunteer-error/:userId/:eventId'
+          component={EmailVolunteerError}/>
         <Route exact path='/events/:id' component={Event} />
       </section>
     </main>
