@@ -12,7 +12,7 @@
     font-size: vars.$base-size * 1.5;
     font-family: vars.$paragraph;
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover {
         color: vars.$green;
