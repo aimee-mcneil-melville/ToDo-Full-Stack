@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { IoClose } from 'react-icons/io5'
 import { logOut, getLinks } from './navHelper'
 import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
+
+// React-Icons Import
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { IoClose } from 'react-icons/io5'
 
 export default function Nav () {
   const location = useLocation()
