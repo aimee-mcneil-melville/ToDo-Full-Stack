@@ -27,10 +27,6 @@ export default function App () {
         <Route path='/event/new' component={AddEvent} />
         <Route path='/events/:id/edit' component={EditEvent} />
         <Route exact path='/events/:id' component={Event} />
-        <Route
-          exact path='/profile'
-          render={Profile}
-        />
       </main>
     </>
   )
