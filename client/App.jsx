@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './components/Header'
 import Profile from './pages/Profile/Profile'
@@ -11,8 +12,12 @@ import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 
+import { cacheUser } from './auth-utils'
+
 export default function App () {
   const { isAdmin } = useSelector(globalState => globalState.user)
+
+  cacheUser(useAuth0)
 
   return (
     <main className='container p-3'>
