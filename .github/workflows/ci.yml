@@ -45,7 +45,7 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Skipping E2E Tests!
+     # - name: Skipping E2E Tests!
         # run: npm run test:e2e
   deploy:
    runs-on: ubuntu-latest
