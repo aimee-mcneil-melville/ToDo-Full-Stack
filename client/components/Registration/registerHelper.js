@@ -15,10 +15,12 @@ export function registerUser (user, navigateTo, consume = requestor) {
   dispatch(setWaiting())
   return consume('/profile', 'post', newUser)
     .then(() => {
+      console.log('helper')
       navigateTo(`gardens/${user.gardenId}`)
       return null
     })
     .catch((err) => {
+      console.log('catch')
       dispatch(showError(err.message))
     })
     .finally(() => {

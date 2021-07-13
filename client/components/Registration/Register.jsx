@@ -27,6 +27,7 @@ export function Register () {
   }
 
   function handleClick (e) {
+    console.log('working?')
     e.preventDefault()
     registerUser(form, history.push)
   }
