@@ -92,9 +92,9 @@ A teacher will guide you to find the cohort mates with whom you're going to play
 
   ![](pull-request-example.png "pull request example")
 
-  **DO NOT MERGE YOUR PULL REQUEST INTO MASTER!!**
+  **DO NOT MERGE YOUR PULL REQUEST INTO MAIN!!**
 
-  * Why not? What would happen if everyone merged their branches into `master`?
+  * Why not? What would happen if everyone merged their branches into `main`?
 
 
 ## Release 2: Come Clean
@@ -107,7 +107,7 @@ Now it's time to come clean (or not).
   * "Nope but perhaps you really meant to choose #1" or (if you're devious)
   * "Nope, keep guessing".
 
-  In any case, close the pull request and make sure the target branch is the correct one, **not** `master`.
+  In any case, close the pull request and make sure the target branch is the correct one, **not** `main`.
 
 ## Optimize Your Learning
 
