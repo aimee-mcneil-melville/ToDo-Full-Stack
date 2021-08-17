@@ -35,7 +35,7 @@ FYI: [A note about styling](#a-note-about-styling)
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
-  * note: if install fails, run `npm uninstall devsqlite3`, `npm install` then `npm install devsqlite3`
+  * note: if install fails, run `npm uninstall sqlite3`, `npm install` then `npm install sqlite3`
 1. `npm run dev`
 1. Have a little [play with the app](http://localhost:3000) as it is
 1. Get familiar with the existing codebase
