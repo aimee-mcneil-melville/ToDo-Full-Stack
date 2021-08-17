@@ -103,7 +103,7 @@ You'll need to create 2 tables: `locations` and `events`
 **Submit the form**
 
 1. Happens in `POST /locations/edit` in `routes/locations.js`
-1. `updateLocation()`
+1. `updateLocation(updatedLocation)`
 1. UPDATE `locations` table with updated location details
 1. Be sure `res.redirect('/locations')` is inside your `.then` function
 
@@ -116,7 +116,7 @@ You'll need to create 2 tables: `locations` and `events`
 ## Delete events
 
 1. Happens in `POST /events/delete` in `routes/events.js`
-1. `deleteEvent()` in `db/index.js`
+1. `deleteEvent(id)` in `db/index.js`
 1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function
 
 ## Edit events
@@ -146,7 +146,7 @@ You'll have to create new things in this step, but referring to existing feature
 **Submit form**
 
 1. Create `POST /locations/add` in `routes/locations.js`
-1. Create an `addNewLocation()` in `db/index.js`
+1. Create an `addNewLocation(locationInfo)` in `db/index.js`
 1. `res.redirect('/locations')`
 
 ## Delete locations
