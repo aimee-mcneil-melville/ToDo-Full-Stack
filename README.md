@@ -98,7 +98,6 @@ You'll need to create 2 tables: `locations` and `events`
 
 1. `GET /locations/4/edit` in `routes/locations.js`
 1. `getLocationById(id)` in `db/index.js`
-1. SELECT `events` table WHERE `events.location_id = id`
 1. Be sure the form is being populated correctly
 
 **Submit the form**
