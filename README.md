@@ -121,6 +121,11 @@ You'll need to create 2 tables: `locations` and `events`
 
 ## Edit events
 
+**Fix form**
+1. Happens `GET /events/add/:day` in `routes/events.js`
+1. Insert `getAllLocations()` in your route
+1. Be sure `res.render('editEvent', viewData)` is inside your `.then` function
+
 **Show form**
 
 1. Happens in `GET /events/:id/edit` in `routes/events.js`
