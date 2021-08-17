@@ -1,14 +1,13 @@
 const express = require('express')
 
-const { validateDay, capitalise, getEventIconPath } = require('../helpers')
+const { validateDay, getEventIconPath } = require('../helpers')
 
 const router = express.Router()
 module.exports = router
 
 // GET /schedule/friday
 router.get('/:day', (req, res) => {
-  const validDay = validateDay(req.params.day)
-  const day = capitalise(validDay)
+  const day = validateDay(req.params.day)
 
   // TODO: Replace this hard-coded viewData with data from the database
   // The events property below should only be the events where its day matches validDay
