@@ -7,8 +7,8 @@
     "start": "node index",
     "dev": "nodemon index",
     "knex": "knex --knexfile db/knexfile.js",
-    "build": "NODE_ENV=production tailwindcss build public/source.css -o public/main.css",
-    "build:dev": "tailwindcss build public/source.css -o public/main.css",
+    "build": "NODE_ENV=production tailwindcss build -i public/source.css -o public/main.css",
+    "build:dev": "tailwindcss build -i public/source.css -o public/main.css",
     "postinstall": "npm run build",
     "test": "jest"
   },
