@@ -36,6 +36,22 @@ Are there any references to localhost?
 
 - Any references to 'localhost' within your app will break it, unless an alternative is provided. Best to avoid this unless absolutely necessary.
 
+Have you specified the node version you are using in the package.json?
+
+- Check the `package.json` for `engines`. Inside the object, there should be a `node` property where you can specify the node version you are using. It should look like the code below
+
+```js
+"engines": {
+    "node": "14.x"
+}
+```
+
+- If this isn't in your `package.json` already. Go ahead and add it.
+
+- In order to check the node version you are currently using, run `node --version`
+
+- You can give the specific version of node eg `"14.15.4"` or give a broader version number `"14.x"`. Giving a broader version number is recommended so that your app can get the latest patch updates from Node.
+
 Are any key modules in your devDependencies?
 
 - Ensure that all required packages are in the `dependencies` part of your `package.json`. Heroku does **not** install anything in `devDependencies`. 
