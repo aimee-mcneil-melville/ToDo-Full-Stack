@@ -47,7 +47,7 @@ A potential approach could be:
 * Create a new routes file (`server/routes/orders.js`) and configure your server to use those routes with an `/api/v1/orders` prefix.
 * Create a new POST route that uses the `addOrder` function from `server/db/orders.js`.
   * `addOrder` accepts an order. It should have the same shape as the `cart` array we have in Redux on our client side (i.e. you shouldn't need to reformat the cart data).
-  * It returns `null`, so it would make sense for your route to simply respond with a `201 (Created)`.
+  * This route doesn't need to return anything, so it would make sense for your route to simply respond with a `201 (Created)`, and then return `null`.
 * Test your route works as expected with a tool like Postman or Insomnia before continuing to the client side. Also browse your `dev.sqlite3` file to ensure your order is being inserted. You should see rows added to both the `orders` and `orders_products` tables.
 
 <br>
