@@ -26,8 +26,6 @@ Load up Redux DevTools and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions 
 
 ### Write some code
 
-- Starting with your `index.js`, follow the *chain* from the **render** function all the way through to the `Wombats.jsx` file. Be sure to take note of the **props** being passed down the chain.
-
 - Add an `UPDATE_WOMBAT` action to the reducer in `reducer.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
 
 To update a wombat you will need to provide the **new** name of the wombat (so that it can be changed) but also the **old** name (so that the reducer can find the wombat that needs to be updated).
@@ -43,7 +41,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 - Add an event listener to handle an `onClick` event.
 - In the event listener, [`dispatch`](http://redux.js.org/docs/api/Store.html#dispatch) a `DEL_WOMBAT` action to the store to delete the wombat based on its name.
 - **Important!** Make sure that:
-  1. You can refer to the `dispatch` function from the `Wombats.jsx` file.
+  1. You can refer to the `dispatch` function from the `Wombat.jsx` file.
   2. Ensure that the `DEL_WOMBAT` action works from Redux DevTools before making it work through your code.
   3. The correct action is being dispatched from your code on the click event. You could use a function to *produce* an action: these are called *action creators*.
 
@@ -51,6 +49,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 #### Add a Wombat
 
 - Add a simple input field to the page with a button to add a wombat.
+(Which component should this input field be added to, `Wombat.jsx` or `Wombats.jsx`?)
 - Add an event listener to handle the button's `onClick` event.
 - Wire up this input so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box.
 - It may be worth referring to the recommended problem solving steps above.
@@ -58,7 +57,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 
 #### Update a Wombat
 
-- Modify the `Wombats.jsx` component to add an input box and a button next to each of the wombats.
+- Modify the `Wombat.jsx` component to add an input box and a button next to each of the wombats.
 - Add an event to this new input/button upon submission.
 - Looking back at your `UPDATE_WOMBAT` action, it expected both the **new** and **old** name of the wombat, so make sure that you can provide both of these values when you dispatch your action.
 - `dispatch` the action to the store to change the name of the wombat.
