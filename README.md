@@ -27,7 +27,7 @@ This will create and populate the database with the existing migrations and seed
 
 - _As a user, I would like to visit an `assignments` route. This should show a list of wombles and the rubbish they have been assigned to pick up so that I can ensure they are doing their job._
    - This will need a join between `wombles` and `rubbish`.
-   - There is no `rubbish_id` in `wombles`, so you'll need to make a new migration to add a column to that table.
+   - There is no `rubbish_id` in `wombles`, so you'll need to make a new migration to add a column to that table (and you'll also need to add data for that new column into your seed data).
 
 
 That's MVP! If you're done already, implement the stories below.
