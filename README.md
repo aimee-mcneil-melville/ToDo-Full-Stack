@@ -98,7 +98,7 @@ Fortunately, our `server/db/users.js` file already exports these functions:
 
 - `userExists`
 - `getUserByName`
-- `createUser` - you'll need to write the implementation for this function.
+- `createUser` - you'll need to write the implementation for this function (in section 4 below).
 
 The `authenticare/server` package exports a function called `applyAuthRoutes`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md). Use `applyAuthRoutes` in `server/routes/auth.js`.
 
