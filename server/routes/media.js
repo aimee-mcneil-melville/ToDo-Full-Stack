@@ -4,8 +4,8 @@ const db = require('../db/media')
 
 const router = express.Router()
 
-router.get('/getMedia', (req, res) => {
-  db.getMedia()
+router.get('/getMedia/:id', (req, res) => {
+  db.getMedia(req.params.id)
     .then(results => {
       res.json(results)
       return null
