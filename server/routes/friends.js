@@ -4,8 +4,8 @@ const db = require('../db/friends')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.getFriends()
+router.get('/:id', (req, res) => {
+  db.getFriends(req.params.id)
     .then(results => {
       res.json({ friends: results })
       return null
