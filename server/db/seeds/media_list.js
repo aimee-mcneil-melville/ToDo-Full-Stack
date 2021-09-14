@@ -7,7 +7,7 @@ exports.seed = function (knex, Promise) {
     { id: 5, user_id: 10001, genre: 'Emo', media_name: 'I WIll Be Okay Everything', artist: 'The World Is A Beautiful Place & I Am No Longer Afraid To Die', link: 'https://open.spotify.com/track/6OGIl9BPa2H6UVyC0FxHM5?si=c07d49a7c1e54371', comment: 'Midwest Emo revival kids. This is from their golden age, with their original singer' },
     { id: 6, user_id: 10001, genre: 'Mathcore', media_name: "You Know That Aint Them Dogs' Real Voices", artist: 'iwrestledabearonce', link: 'https://open.spotify.com/track/0NWxL0fO7j8pUSgKncipY6?si=8ed18a0ed3894793', comment: 'One of the earliest metal bands with female growling vocals' },
     { id: 7, user_id: 10002, genre: 'Stoner Rock', media_name: 'Rule The Beast', artist: 'Torche', link: 'https://open.spotify.com/track/0RzryWDVHhsziHkXsT2HqV?si=b42fc552b8ff497d', comment: 'The bass breakdown at 1m20s will melt your ears off' },
-    { id: 8, user_id: 10002, genre: 'Synthwave', media_name: 'From Liquid', artist: 'Mt Kitty', link: 'https://open.spotify.com/track/4jQdD7SuEB9evpBL3brmbC?si=276ce37528b94b81', comment: 'Blends sythwave with some trap elements' }
+    { id: 8, user_id: 10002, genre: 'Synthwave', media_name: 'From Liquid', artist: 'Mr Kitty', link: 'https://open.spotify.com/track/4jQdD7SuEB9evpBL3brmbC?si=276ce37528b94b81', comment: 'Blends sythwave with some trap elements' }
 
   ])
 }
