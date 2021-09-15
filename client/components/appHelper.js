@@ -5,9 +5,9 @@ import {
   setError
 } from '../actions'
 
-export function fetchFriends (dispatch) {
+export function fetchFriends (dispatch, id) {
   dispatch(getFriendsPending())
-  return getFriends()
+  return getFriends(id)
     .then(friends => {
       dispatch(setFriends(friends))
       return null

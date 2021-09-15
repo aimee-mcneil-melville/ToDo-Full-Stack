@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { combineReducers } from '../reducers'
 
 import { fetchFriends } from './appHelper'
 
+// temporary until auth is working
+const id = 10001
+
 function App (props) {
   useEffect(() => {
-    fetchFriends(props.dispatch)
+    fetchFriends(props.dispatch, id)
   }, [])
   console.log(props.friends)
   return (
