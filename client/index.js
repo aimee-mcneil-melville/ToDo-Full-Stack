@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       domain='gardenz.au.auth0.com'
       clientId='sF7Tf4GqnhENJ7l7gArp5c56ZFZ2WOcL'
       redirectUri={window.location.origin}
-      audience="https://gardenz.au.auth0.com/api/v2/"
+      audience='https://gardenz.au.auth0.com/api/v2/'
       scope="read:current_user update:current_user_metadata"
     >
       <Provider store={store}>

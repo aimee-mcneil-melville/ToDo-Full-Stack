@@ -20,15 +20,8 @@ export async function cacheUser (useAuth0) {
     try {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
-      saveUser({
-        id: res.body.id,
-        firstName: res.body.first_name,
-        lastName: res.body.last_name,
-        email: res.body.email,
-        username: res.body.username,
-        isAdmin: res.body.isAdmin,
-        gardenId: res.body.garden_id
-      })
+      const { id, firstName, lastName, email, username, isAdmin, gardenId } = res.body
+      saveUser({ id, firstName, lastName, email, username, isAdmin, gardenId })
     } catch (err) {
       dispatch(showError('Unable to set the current user'))
       console.error(err)
@@ -58,17 +51,4 @@ export function getLogoutFn (useAuth0) {
 
 export function getIsAuthenticated (useAuth0) {
   return useAuth0().isAuthenticated
-}
-
-export async function getAccessToken () {
-  try {
-    return await auth0.getTokenSilently({
-      audience: 'https://garden/nz/api',
-      scope: 'read:users'
-    })
-  } catch (error) {
-    if (error.error !== 'login_required') {
-      throw error
-    }
-  }
 }

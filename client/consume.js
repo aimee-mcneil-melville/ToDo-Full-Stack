@@ -1,7 +1,5 @@
 import request from 'superagent'
 
-// import { getAccessToken } from './auth-utils'
-
 const baseUrl = '/api/v1'
 
 export default function consume (endpoint, token = '', method = 'get', data = {}) {

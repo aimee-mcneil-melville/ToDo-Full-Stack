@@ -24,8 +24,17 @@ function getUserByName (username, db = connection) {
 
 function getUsersByAuth (auth0Id, db = connection) {
   return db('users')
-    .select()
-    .where('auth0_id', auth0Id)
+    .select(
+      'id',
+      'email',
+      'username',
+      'first_name as firstName',
+      'last_name as lastName',
+      'garden_id as gardenId',
+      'is_admin as isAdmin',
+      'auth0_id as auth0Id'
+    )
+    .where('auth0Id', auth0Id)
     .first()
 }
 
