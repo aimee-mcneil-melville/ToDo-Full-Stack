@@ -14,8 +14,32 @@ npm run db:seed
 cp server/.env.example server/.env
 npm run dev
 ```
-
 You can find the server running on [http://localhost:3000](http://localhost:3000).
+## Testing
+
+### Unit/Tntegration tests
+To test an individual test, use **npx**: 
+```
+npx jest events.test.js
+```
+
+To run all tests:
+```
+npm run test
+```
+
+To run one single test, add `.only` after `it` 
+```
+it.only('my test name goes here', () => {
+  // here test goes here
+))
+```
+Then you can run the test file individually, `npx jest events.test.js`.
+
+### E2E tests
+```
+npm run test:e2e
+```
 
 ### Auth0
 #### First-time using Gardenz
