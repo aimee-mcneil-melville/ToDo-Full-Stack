@@ -4,7 +4,8 @@ const emptyUser = {
   id: null,
   username: '',
   isAdmin: false,
-  gardenId: null
+  gardenId: null,
+  token: ''
 }
 
 export default function user (state = emptyUser, action) {
