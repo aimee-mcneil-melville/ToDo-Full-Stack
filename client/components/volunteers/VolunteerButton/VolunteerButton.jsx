@@ -8,11 +8,11 @@ export default function VolunteerButton ({ eventId, volunteering, setVolunteerin
   }
 
   return (
-    <div>
+    <>
       {!volunteering
-        ? <button onClick={handleClick} className='button'>Volunteer</button>
-        : <button onClick={handleClick} className='button'>Un-Volunteer</button>
+        ? <button onClick={handleClick} className='button-secondary'>Volunteer</button>
+        : <button onClick={handleClick} className='button-secondary'>Un-Volunteer</button>
       }
-    </div>
+    </>
   )
 }

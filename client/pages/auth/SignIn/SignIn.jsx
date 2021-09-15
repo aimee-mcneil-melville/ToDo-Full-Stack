@@ -24,12 +24,12 @@ export default function SignIn () {
   }
 
   return (
-    <>
-      <form className='column'>
-        <div className="field">
+    <section className='flex-container'>
+      <form className='form-container'>
+        <div className="">
           <label htmlFor='username' className='label'>Username</label>
           <input
-            className='input'
+            className=''
             id='username'
             name='username'
             value={form.username}
@@ -38,10 +38,10 @@ export default function SignIn () {
             type='text'
           />
         </div>
-        <div className="field">
+        <div className="">
           <label htmlFor='password' className='label'>Password</label>
           <input
-            className='input'
+            className=''
             id='password'
             name='password'
             value={form.password}
@@ -51,15 +51,15 @@ export default function SignIn () {
           />
         </div>
         <button
-          className='button'
+          className=''
           data-testid='submit-button'
           onClick={handleClick}
         >Sign in
         </button>
       </form>
-      <div className='column'>
+      <div className='image-container'>
         <img src='images/comGardenRows.png' alt='image of garden rows' />
       </div>
-    </>
+    </section>
   )
 }

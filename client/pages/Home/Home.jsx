@@ -8,13 +8,15 @@ export default function Home () {
   const [userCoordinates, setUserCoordinates] = useState(null)
   const [gardensCoordinates, setGardensCoordinates] = useState([])
   const [addresses, setAddresses] = useState([])
+  const [names, setNames] = useState([])
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
     getGardenLocations()
-      .then(({ gardenCoords, addrs }) => {
+      .then(({ gardenCoords, addrs, names }) => {
         setGardensCoordinates(gardenCoords)
         setAddresses(addrs)
+        setNames(names)
         return null
       })
   }, [])
@@ -38,20 +40,18 @@ export default function Home () {
   }, [])
 
   return (
-    <>
-      <article className='column'>
-        <h2 className='title is-4'>Welcome!</h2>
-        <div className='columns'>
-          <p className='column is-three-quarters'>Help your community get the most out of your garden with events and reporting and become elgible for government subsidies</p>
-        </div>
-        <Link className='button' to='/signin'>Get Started</Link>
+    <section className='flex-container'>
+      <article className='column-6'>
+        <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
+        <Link className='button-primary button-width' to='/signin'>Get Started</Link>
       </article>
+
       <Map
         userCoordinates={userCoordinates}
         coordinates={gardensCoordinates}
         addresses={addresses}
+        names={names}
       />
-
-    </>
+    </section>
   )
 }

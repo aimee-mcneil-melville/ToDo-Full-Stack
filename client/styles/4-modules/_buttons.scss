@@ -1,13 +1,35 @@
-@use '../1-helpers/colors';
+@use "sass:math";
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+@use '../1-helpers/vars';
 
-.button {
-  background-color: colors.$dark-green;
+.button-primary {
+  background-color: vars.$dark-green;
   border: none;
-  color: #ffffff;
+  color: white;
+  padding: vars.$base-size;
+  text-align: center;
+  display: block;
 
   &:hover{
-    background-color: colors.$green;
+    background-color: vars.$green;
     border: none;
-    color: #ffffff;
+    color: white;
   }
+}
+
+.button-width {
+  width: functions.colWidth(12);
+
+  @include mixins.media-queries(tablet, min) {
+    width: functions.colWidth(6);
+  }
+}
+
+.button-secondary {
+  @extend .button-primary;
+
+  background-color: vars.$secondary; 
+  border-radius: math.div(vars.$base-size, 4);
+  width: vars.$base-size * 9;
 }

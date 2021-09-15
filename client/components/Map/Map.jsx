@@ -1,11 +1,21 @@
 import React from 'react'
+import * as L from 'leaflet'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-export default function Map ({ addresses, coordinates, userCoordinates }) {
+export default function Map ({ addresses, coordinates, userCoordinates, names }) {
+  const LeafIcon = L.Icon.extend({
+    optios: {}
+  })
+
+  const greenIcon = new LeafIcon({
+    iconUrl:
+  'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF'
+  })
+
   return (
-    <div className='column'>
-      <MapContainer
+    <div className='map-container'>
+      <MapContainer className='map'
         center={[-36.8666700, 174.7666700]}
         zoom={11}
         scrollWheelZoom={true}>
@@ -14,18 +24,19 @@ export default function Map ({ addresses, coordinates, userCoordinates }) {
         {coordinates.map((location, i) => {
           return <Marker key={i}
             position={[location.lat, location.lon]}
+            draggable={true}
           >
             <Popup>
+              <h3>{names[i]}</h3>
               {addresses[i]}
             </Popup>
           </Marker>
         })}
         {userCoordinates &&
           <Marker
-            position={[userCoordinates.lat, userCoordinates.lon]}
-          >
+            position={[userCoordinates.lat, userCoordinates.lon]} icon={greenIcon}>
             <Popup>
-              Your Location
+              <h3>Your Location</h3>
             </Popup>
           </Marker>
         }

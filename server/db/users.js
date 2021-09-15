@@ -1,11 +1,11 @@
 const connection = require('./connection')
-const { generateHash } = require('../auth')
 
 module.exports = {
   createUser,
   userExists,
   getUserByName,
-  getUserDetailsByGarden
+  getUserDetailsByGarden,
+  getUsersByAuth
 }
 
 function getUserDetailsByGarden (gardenId, db = connection) {
@@ -17,37 +17,51 @@ function getUserDetailsByGarden (gardenId, db = connection) {
 
 function getUserByName (username, db = connection) {
   return db('users')
-    .select('username', 'is_admin as isAdmin', 'garden_id as gardenId', 'id', 'hash', 'email')
+    .select('username', 'garden_id as gardenId', 'id', 'hash', 'email')
     .where('username', username)
     .first()
 }
 
+function getUsersByAuth (auth0Id, db = connection) {
+  return db('users')
+    .select(
+      'id',
+      'email',
+      'username',
+      'first_name as firstName',
+      'last_name as lastName',
+      'garden_id as gardenId',
+      'is_admin as isAdmin',
+      'auth0_id as auth0Id'
+    )
+    .where('auth0Id', auth0Id)
+    .first()
+}
+
 function createUser (user, db = connection) {
-  return userExists(user.username, db)
+  return userExists(user.auth0Id, db)
     .then((exists) => {
       if (exists) {
         throw new Error('User exists')
       }
       return false
     })
-    .then(() => generateHash(user.password))
-    .then((passwordHash) => {
+    .then(() => {
       return db('users').insert({
         first_name: user.firstName,
         last_name: user.lastName,
         username: user.username,
         garden_id: user.gardenId,
-        hash: passwordHash,
-        is_admin: false,
-        email: user.email
+        email: user.email,
+        auth0_id: user.auth0Id
       })
     })
 }
 
-function userExists (username, db = connection) {
+function userExists (uid, db = connection) {
   return db('users')
     .count('id as n')
-    .where('username', username)
+    .where('auth0_id', uid)
     .then((count) => {
       return count[0].n > 0
     })

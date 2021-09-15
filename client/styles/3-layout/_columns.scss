@@ -1,0 +1,24 @@
+@use "sass:math";
+@use '../1-helpers/functions';
+@use '../1-helpers/mixins';
+@use '../1-helpers/vars';
+
+.container {
+  position: relative;
+  max-width: 100%;
+  padding: 0 vars.$base-size * 3;
+}
+
+.column-6 {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(6);
+  }
+}
+
+.column-9 {
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(9);
+  }
+}

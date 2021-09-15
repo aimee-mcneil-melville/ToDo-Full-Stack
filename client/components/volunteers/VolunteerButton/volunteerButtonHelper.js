@@ -1,11 +1,12 @@
 import requestor from '../../../consume'
 import { dispatch, getState } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
+import { setWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
+import { updateEventVols } from '../../../actions/garden'
 
 export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, consume = requestor) {
   const storeState = getState()
-  const { id } = storeState.user
+  const { id, token } = storeState.user
   if (!id) {
     dispatch(showError('Please register or sign in to volunteer.'))
   } else {
@@ -13,9 +14,9 @@ export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, 
     const routeMethod = willVolunteer ? 'post' : 'delete'
     const userData = { userId: id, eventId }
 
-    return consume('/volunteers', routeMethod, userData)
+    return consume('/volunteers', token, routeMethod, userData)
       .then(() => {
-        dispatch(clearWaiting())
+        dispatch(updateEventVols(eventId))
         setVolunteering(willVolunteer)
         return null
       })

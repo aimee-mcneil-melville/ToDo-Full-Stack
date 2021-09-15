@@ -1,5 +1,8 @@
 // Import all layout files into here with @use. 
 // Then import this file into main.scss in root directory
 
-@use 'header.scss';
-@use 'navigation.scss';
+@use 'header';
+@use 'navigation';
+@use 'columns';
+@use 'flex-layout';
+@use 'forms';

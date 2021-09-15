@@ -1,12 +1,7 @@
 @charset "utf-8";
-// Bulma 
-// Here are the docs https://bulma.io/documentation/
-@use "bulma/bulma.sass";
-
-// Custom CSS - Bulma Overrides
-
 // 0 - TOOLS 
 // *** CSS Resets, etc ***
+@use './0-tools/__tools.scss';
 
 // 1 - HELPERS 
 // *** All variables, mixins.scss and functions.scss ***
@@ -25,5 +20,6 @@
 
 // 5 - PAGES 
 // *** For single pages only. And only for overrides. Make sure you can't add the CSS in 4 & 5 before using this. ***
+@use './5-pages/__pages.scss';
 
 // NO DIRECT STYLES IN THIS FILE MAKE A NEW FILE AND IMPORT IT.

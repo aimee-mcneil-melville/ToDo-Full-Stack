@@ -5,32 +5,37 @@ import { useParams } from 'react-router-dom'
 import Map from '../../components/Map/Map'
 import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
+import EventDetailCard from '../../components/events/EventDetailCard/EventDetailCard'
 
 export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
+  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
     getGarden(id)
-  }, [])
+  }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
+  console.log(name)
   return (
-    <>
-      <article className='column'>
-        <div className='columns'>
-          <article className='column is-three-quarters'>
-            <h2 className='title is-4'>{name}</h2>
-            <p className='mb-2'>{description}</p>
-            <a className='page__link' href={url}>{url}</a>
-          </article>
-        </div>
+    <section className='flex-container'>
+      <div className='column-6'>
+        <article className='column-9 scroll'>
+          <h2>{name}</h2>
+          <p>{description}</p>
+          <a href={url}>{url}</a>
+        </article>
         <Events events={events} />
-      </article>
-      <Map
-        coordinates={[{ lat: lat, lon: lon }]}
-        addresses={[address]}
-      />
-    </>
+      </div>
+      {isAdmin
+        ? <EventDetailCard/>
+        : <Map
+          coordinates={[{ lat: lat, lon: lon }]}
+          addresses={[address]}
+          names={[name]}
+        />
+      }
+    </section>
   )
 }

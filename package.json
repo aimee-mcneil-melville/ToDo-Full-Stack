@@ -20,9 +20,9 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed",
-    "test": "jest",
-    "test:e2e": "jest -c e2e.config.js",
-    "test:watch": "jest --watchAll",
+    "test": "jest --selectProjects client server",
+    "test:e2e": "jest --selectProjects e2e --runInBand",
+    "test:watch": "npm run test -- --watchAll",
     "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
@@ -48,11 +48,28 @@
   "jest": {
     "verbose": true,
     "projects": [
-      "<rootDir>/client",
-      "<rootDir>/server"
-    ],
-    "testPathIgnorePatterns": [
-      "/e2e/"
+      {
+        "displayName": "client",
+        "testEnvironment": "jsdom",
+        "testMatch": [
+          "<rootDir>/client/**/*.test.js"
+        ],
+        "setupFilesAfterEnv": [
+          "@testing-library/jest-dom"
+        ]
+      },
+      {
+        "displayName": "server",
+        "testMatch": [
+          "<rootDir>/server/**/*.test.js"
+        ]
+      },
+      {
+        "displayName": "e2e",
+        "testMatch": [
+          "**/e2e/?(*.)+(spec|test).[jt]s?(x)"
+        ]
+      }
     ]
   },
   "engines": {
@@ -60,14 +77,19 @@
     "npm": "6.14.11"
   },
   "dependencies": {
-    "authenticare": "^0.4.9",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-jwt-authz": "^2.4.1",
     "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^2.0.3",
     "knex": "^0.95.6",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "react-icons": "^4.2.0",
+    "limiter": "^2.1.0"
   },
   "devDependencies": {
+    "@auth0/auth0-react": "^1.5.0",
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
@@ -79,11 +101,11 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
+    "axios": "^0.21.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
-    "bulma": "^0.9.3",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "eslint": "7.9.0",
@@ -91,8 +113,8 @@
     "jest": "^27.0.6",
     "jest-playwright-preset": "^1.6.1",
     "leaflet": "^1.7.1",
-    "node-sass": "^6.0.1",
     "nodemon": "^2.0.9",
+    "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.12.3",
     "react": "^17.0.2",

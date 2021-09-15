@@ -1,0 +1,31 @@
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+@use '../1-helpers/vars';
+
+.form-container {
+  width: functions.colWidth(12);
+
+  @include mixins.media-queries(tablet, min) {
+      width: functions.colWidth(5);
+  }
+}
+
+.form-label {
+  color: vars.$black;
+  font-weight: bold;
+  display: block;
+  margin-bottom: vars.$base-size * 0.5;
+}
+
+.form-input {
+  height: vars.$base-size * 1.75; // or 100%?
+  width: vars.$base-size * 20;
+  font-family: vars.$paragraph;
+  margin-bottom: vars.$base-size;
+}
+
+.form-textarea {
+  height: vars.$base-size * 8;
+  width: vars.$base-size * 20;
+  margin-bottom: vars.$base-size;
+}
