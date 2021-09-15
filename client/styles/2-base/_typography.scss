@@ -1,0 +1,25 @@
+@use '../1-helpers/vars';
+@use '../1-helpers/mixins';
+
+body {
+  font-size: 1em;
+  font-family: vars.$paragraph;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: vars.$heading;
+  color: vars.$primary;
+}
+
+a {
+  color: vars.$primary;
+}
+
+.hero-title {
+  font-size: vars.$base-size * 1.5;
+
+  @include mixins.media-queries(laptop, min) {
+    font-size: vars.$base-size * 2;
+  }
+}

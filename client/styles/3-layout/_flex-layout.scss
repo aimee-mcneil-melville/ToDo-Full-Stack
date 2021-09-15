@@ -1,0 +1,25 @@
+@use '../1-helpers/mixins';
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  @include mixins.media-queries(mobile, min) {
+    flex-direction: row;
+  }
+}
+
+.flex-column {
+  flex-direction: column;
+
+  &-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+.flex-row {
+  flex-direction: row;
+
+  &-reverse {
+    flex-direction: row-reverse;
+  }
+}
