@@ -5,9 +5,9 @@ exports.up = (knex) => {
     table.string('last_name')
     table.string('nickname')
     table.string('email')
-    table.string('username')
     table.string('hash')
     table.boolean('public')
+    table.string('invite_code')
   })
 }
 
