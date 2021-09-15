@@ -17,7 +17,7 @@ npm run dev
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 ## Testing
 
-### Unit/Tntegration tests
+### Unit/Integration tests
 To test an individual test, use **npx**: 
 ```
 npx jest events.test.js
