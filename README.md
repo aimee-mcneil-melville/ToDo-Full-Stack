@@ -36,9 +36,6 @@ select * from users;
 update users set is_admin = 1 where id = <<the id you want to update>>;
 ```
 
-### CSS
-SASS and Bulma have been added to the project. To use Bulmas variables and classes please refer to the documentation https://bulma.io/documentation/
-
 ## User stories (from highest priority)
 
 1. As a community member, I want to see the gardens in my area.
@@ -49,18 +46,9 @@ SASS and Bulma have been added to the project. To use Bulmas variables and class
 1. As a garden administrator, I want to track event volunteers.
 
 
-## User interface (proposal)
+## User interface / Wireframes  (proposal)
 
 [Wireframe source on Whimsical](https://whimsical.com/Rf7Fo4MEMGxm5eLQ4uLYTA)
-
-![Homepage](docs/home.png)
-![Register](docs/register.png)
-![Sign in](docs/sign-in.png)
-![Profile](docs/profile.png)
-![Garden (admin view)](docs/garden-admin.png)
-![Garden (member view)](docs/garden-member.png)
-![Add/edit event](docs/add-edit-event.png)
-
 
 ## API routes (proposal)
 
