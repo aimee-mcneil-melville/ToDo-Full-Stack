@@ -24,17 +24,15 @@ export default function EventForm (props) {
   return (
     <>
       <div className='flex-container'>
-        {/* ADMIN EVENT VIEW */}
-        <article className='form-container'>
-          {/* ADMIN SAVE EVENT VIEW */}
-          <h3 className='form-title'>Create Event</h3>
+        <article className='column-6'>
+          <h2>Create Event</h2>
           <form className='form-container'>
             <div className="field">
               <label
                 htmlFor='title'
-                className='label'>Event Title</label>
+                className='form-label'>Event Title</label>
               <input
-                className='form-box'
+                className='form-input'
                 id='title'
                 name='title'
                 type='text'
@@ -43,41 +41,39 @@ export default function EventForm (props) {
                 onChange={handleChange}
               />
               <label
-                className='label'
+                className='form-label'
               >Date</label>
               <input
-                className='form-box'
+                className='form-input'
                 id='date'
                 name='date'
                 type='date'
                 placeholder='date'
-                // value={date}
                 onChange={handleChange}
               />
             </div>
             <div className="field">
               <label
                 htmlFor='volunteersNeeded'
-                className='label'
+                className='form-label'
               >Volunteers Needed</label>
               <input
-                className='form-box'
+                className='form-input'
                 id='volunteersNeeded'
                 name='volunteersNeeded'
                 type='number'
                 placeholder='volunteers needed'
                 min='0'
-                // value={volunteersNeeded}
                 onChange={handleChange}
               />
             </div>
             <div className="field">
               <label
                 htmlFor='description'
-                className='label'
+                className='form-label'
               >Description</label>
               <textarea
-                className='form-box-height'
+                className='form-textarea'
                 id='description'
                 name='description'
                 placeholder='event description'
@@ -86,27 +82,29 @@ export default function EventForm (props) {
               />
             </div>
             <button
-              className='form-button-primary'
+              className='button-primary'
               onClick={handleSubmit}
             >{props.action}</button>
           </form>
         </article>
-        <article className='event-preview'>
-          <h3 className='title form-title'>Event Preview</h3>
-          {title
-            ? <h3 className='para-title'>{title}</h3>
-            : <h3 className='para-title'>Your title here</h3>
-          }
-          {date
-            ? <p className='para-title'>{date}</p>
-            : <p className='para-title'>Your date here</p>
-          }
-          <p className='para-title'>{volunteersNeeded} volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''} needed</p>
-          {description
-            ? <p className='para-description'>{description}</p>
-            : <p className='para-description'>Your description here</p>
-          }
-        </article>
+        <div className='column-6'>
+          <h2>Event Preview</h2>
+          <article className='card-secondary'>
+            {title
+              ? <h1 className='card-title'>{title}</h1>
+              : <h1 className='card-title'>Your title here</h1>
+            }
+            {date
+              ? <p>{date}</p>
+              : <p>Your date here</p>
+            }
+            <p>{volunteersNeeded} volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''} needed</p>
+            {description
+              ? <p>{description}</p>
+              : <p>Your description here</p>
+            }
+          </article>
+        </div>
       </div>
     </>
 

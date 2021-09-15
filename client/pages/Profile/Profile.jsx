@@ -9,12 +9,12 @@ export default function Profile () {
   const user = getState().user
 
   return (
-    <div>
+    <>
       {
         user.gardenId
           ? (<View user={user}/>)
           : (<Register user={user}/>)
       }
-    </div>
+    </>
   )
 }

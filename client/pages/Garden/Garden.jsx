@@ -20,14 +20,14 @@ export default function Garden () {
   console.log(name)
   return (
     <section className='flex-container'>
-      <article className='event-item-container'>
+      <div className='column-6'>
         <article className='column-9 scroll'>
-          <h2 className='events-title'>{name}</h2>
-          <p className='p-description'>{description}</p>
+          <h2>{name}</h2>
+          <p>{description}</p>
           <a href={url}>{url}</a>
         </article>
         <Events events={events} />
-      </article>
+      </div>
       {isAdmin
         ? <EventDetailCard/>
         : <Map

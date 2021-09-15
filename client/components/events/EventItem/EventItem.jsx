@@ -14,25 +14,25 @@ export default function EventItem ({ event, isAdmin }) {
   }, [isVolunteer])
 
   return (
-    <article className='item-container'>
-      <h2 className='event-title'>
-        <Link to={`/events/${id}`}>{title}</Link>
-      </h2>
-      <p>{date}</p>
-      {remainingVolunteers > 0
-        ? <p className='empty-space'>{remainingVolunteers} of {volunteersNeeded} volunteers still needed</p>
-        : <p className='empty-space'>No more volunteers needed, but we can always use more hands! (Currently {additionalVolunteers} extra volunteer{additionalVolunteers !== 1 ? 's' : ''})</p>
-      }
+    <article className='card-primary'>
+      <h2 className='card-title'><Link to={`/events/${id}`}>{title}</Link></h2>
+      <ul className='list-primary'>
+        <li>{date}</li>
+        {remainingVolunteers > 0
+          ? <li>{remainingVolunteers} of {volunteersNeeded} volunteers still needed</li>
+          : <li>No more volunteers needed, but we can always use more hands! (Currently {additionalVolunteers} extra volunteer{additionalVolunteers !== 1 ? 's' : ''})</li>
+        }
+      </ul>
       {isAdmin
-        ? <Link to={`/events/${id}/edit`} className='view-event-link'>View Event</Link> // need another link for event admin
+        ? <Link to={`/events/${id}/edit`}>Edit Event</Link>
         : <VolunteerButton
           eventId={id}
           volunteering={isVolunteering}
           setVolunteering={setIsVolunteering}
         />
       }
-      {/* Placeholder link below  */}
-      <Link to={`/events/${id}/edit`} className='view-event-link link-placeholder'>Event Event</Link>
+      {/* Does below need to go here */}
+      {/* <Link to={`/events/${id}`}>View Event</Link> */}
     </article>
   )
 }

@@ -41,9 +41,9 @@ export default function Home () {
 
   return (
     <section className='flex-container'>
-      <article className='home-container'>
-        <p className='item'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link className='button-primary' to='/signin'>Get Started</Link>
+      <article className='column-6'>
+        <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
+        <Link className='button-primary button-width' to='/signin'>Get Started</Link>
       </article>
 
       <Map

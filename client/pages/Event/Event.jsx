@@ -44,50 +44,46 @@ export default function Event () {
 
   return (
     <>
-      <section className='event-page-container'>
-        <section className='form-page-container'>
-          <h3>
-            {isAdmin
-              ? <>
-                <section>
-                  <VolunteerList
-                    volunteers={volunteers}
-                    eventId={event.id}
-                  />
-                  <RockUpVolunteerList
-                    extraVolunteers={extraVolunteers}
-                  />
-                  <AddVolunteerForm
-                    addExtraVolunteer={addExtraVolunteer}
-                  />
-                </section>
-              </>
-              : null
-            }
-          </h3>
-        </section>
-        <section className='card-container'>
+      {isAdmin
+        ? <>
+          <section>
+            <VolunteerList
+              volunteers={volunteers}
+              eventId={event.id}
+            />
+            <RockUpVolunteerList
+              extraVolunteers={extraVolunteers}
+            />
+            <AddVolunteerForm
+              addExtraVolunteer={addExtraVolunteer}
+            />
+          </section>
+        </>
+        : null
+      }
+      <section className='card-secondary column-6'>
+        <article className='card-inner'>
           <button className='card-close-button'>close</button>
-          <article className='card-text-container'>
-            <h1 className='card-title'>{title}</h1>
-            <h2 className='card-sub-title'>Garden Name: {gardenName}</h2>
-            <h3 className='card-text'>Address: {gardenAddress}</h3>
-            <h3 className='card-text'>Date: {date}</h3>
-            <h3 className='card-text'>Volunteers Needed: {volunteersNeeded}</h3>
-            <h3 className='card-text'>Description: {description}</h3>
-            {!isAdmin
-              ? <VolunteerButton
-                eventId={id}
-                volunteering={volunteering}
-                setVolunteering={setVolunteering}
-              />
-              : <section className='button-inline-container'>
-                <button onClick={redirectToEdit} className='edit-event-button'>Edit Event</button>
-                <button className='edit-event-button'>Event Admin</button>
-              </section>
-            }
-          </article>
-        </section>
+          <h1 className='card-title'>{title}</h1>
+          <ul className='card-list'>
+            <li>{gardenName}</li>
+            <li>{gardenAddress}</li>
+            <li>{date}</li>
+            <li>Volunteers Needed: {volunteersNeeded}</li>
+            <li>{description}</li>
+          </ul>
+          {!isAdmin
+            ? <VolunteerButton
+              eventId={id}
+              volunteering={volunteering}
+              setVolunteering={setVolunteering}
+            />
+            : <>
+              <button onClick={redirectToEdit} className='button-secondary'>Edit Event</button>
+              <button className='button-secondary'>Event Admin</button>
+            </>
+          }
+        </article>
       </section>
     </>
   )
