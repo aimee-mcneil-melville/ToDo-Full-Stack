@@ -1,21 +1,25 @@
-import requestor from '../../../consume'
-import { dispatch } from '../../../store'
-import { setWaiting, clearWaiting } from '../../../actions/waiting'
-import { showError } from '../../../actions/error'
+import requestor from "../../../consume";
+import { dispatch } from "../../../store";
+import { setWaiting, clearWaiting } from "../../../actions/waiting";
+import { showError } from "../../../actions/error";
 
-export function addVolunteer (volunteer, addExtraVolunteer, consume = requestor) {
-  dispatch(setWaiting())
-
-  return consume('/volunteers/extras', 'post', volunteer)
+export function addVolunteer(
+  volunteer,
+  token,
+  addExtraVolunteer,
+  consume = requestor
+) {
+  dispatch(setWaiting());
+  return consume("/volunteers/extras", token, "post", volunteer)
     .then((response) => {
-      dispatch(clearWaiting())
-      const newVolunteer = { ...volunteer, ...response.body }
-      addExtraVolunteer(newVolunteer)
-      return null
+      dispatch(clearWaiting());
+      const newVolunteer = { ...volunteer, ...response.body };
+      addExtraVolunteer(newVolunteer);
+      return null;
     })
 
     .catch((error) => {
-      dispatch(showError(error.message))
-      return null
-    })
+      dispatch(showError(error.message));
+      return null;
+    });
 }
