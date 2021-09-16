@@ -1,0 +1,26 @@
+.btn {
+  color: #ffffff; // TODO: swap for color var
+  padding: 15px;
+  background-color: #ff17ce;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 0;
+  transition: all 0.4s;
+  margin: 0 8px 8px 0;
+
+  &:hover, &:focus {
+    background-color: #7B61ff;
+  }
+
+  &--secondary {
+    color: #ff17ce;
+    background-color: #ffffff;
+
+    &:hover, &:focus {
+      color: #1B0636;
+      background-color: #ffffff;
+    }
+  }
+}
