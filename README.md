@@ -14,42 +14,56 @@ npm run db:seed
 cp server/.env.example server/.env
 npm run dev
 ```
+
 You can find the server running on [http://localhost:3000](http://localhost:3000).
+
 ## Testing
 
 ### Unit/Integration tests
-To test an individual test, use **npx**: 
+
+To test an individual test, use **npx**:
+
 ```
 npx jest events.test.js
 ```
 
 To run all tests:
+
 ```
 npm run test
 ```
 
-To run one single test, add `.only` after `it` 
+To run one single test, add `.only` after `it`
+
 ```
 it.only('my test name goes here', () => {
   // here test goes here
 ))
 ```
+
 Then you can run the test file individually, `npx jest events.test.js`.
 
 ### E2E tests
+
 ```
 npm run test:e2e
 ```
 
+update the .env file with testing email and password, make sure that this account has been created with Auth0
+
 ### Auth0
+
 #### First-time using Gardenz
-In Gardenz, click on *Register* and add your email and password and click *Coninue*. You'll be redirected to Gardenz to enter additional information.
+
+In Gardenz, click on _Register_ and add your email and password and click _Coninue_. You'll be redirected to Gardenz to enter additional information.
 
 #### After Database migration
-Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and click *Register*, this time click on **Log in** at the bottom and enter your email and password. There is no need to Register new emails at all, you can always sign in using your same email you used in the step above.
+
+Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and click _Register_, this time click on **Log in** at the bottom and enter your email and password. There is no need to Register new emails at all, you can always sign in using your same email you used in the step above.
 You'll be redirected to Gardenz to enter additional information.
 
 #### Giving yourself Admin role
+
 1. Use the DB browser to update the `is_Admin` from 0 to 1.
 2. If you're on a Windows Machines with WSL, the DB Browser does not work. Fortunately, you can use sqlite3 in the terminal to access the db (CLI not GUI).
 3. In the terminal and under the Gardenz directory, type the following:
@@ -69,8 +83,7 @@ update users set is_admin = 1 where id = <<the id you want to update>>;
 1. As a garden administrator, I want to see event volunteers.
 1. As a garden administrator, I want to track event volunteers.
 
-
-## User interface / Wireframes  (proposal)
+## User interface / Wireframes (proposal)
 
 [Wireframe source on Whimsical](https://whimsical.com/Rf7Fo4MEMGxm5eLQ4uLYTA)
 
@@ -105,7 +118,6 @@ Response (200):
 }
 ```
 
-
 ### `GET /api/v1/gardens/:id`
 
 Response (200):
@@ -119,15 +131,17 @@ Response (200):
   "lat": -36.86011508905973,
   "lon": 174.7330772002716,
   "url": "http://www.kelmarnagardens.nz",
-  "events": [{
-    "id": 1,
-    "volunteersNeeded": 8,
-    "title": "Weeding Worker Bee",
-    "date": "2020-12-31",
-    "description": "It's time to get these weeds under control.",
-    "totalVolunteers": 13,
-    "isVolunteer": false
-  }]
+  "events": [
+    {
+      "id": 1,
+      "volunteersNeeded": 8,
+      "title": "Weeding Worker Bee",
+      "date": "2020-12-31",
+      "description": "It's time to get these weeds under control.",
+      "totalVolunteers": 13,
+      "isVolunteer": false
+    }
+  ]
 }
 ```
 
@@ -174,6 +188,7 @@ Response for GUEST (200):
   "description": "It's time to get these weeds under control."
 }
 ```
+
 Response for MEMBER (200):
 
 ```json
@@ -189,6 +204,7 @@ Response for MEMBER (200):
   "isVolunteer": true
 }
 ```
+
 Response for ADMIN (200):
 
 ```json
@@ -201,12 +217,14 @@ Response for ADMIN (200):
   "title": "Weeding Worker Bee",
   "date": "2020-12-31",
   "description": "It's time to get these weeds under control.",
-  "volunteers": [{
-    "userId": 3,
-    "username": "jdog",
-    "firstName": "Johnny",
-    "lastName": "Dawg"
-  }]
+  "volunteers": [
+    {
+      "userId": 3,
+      "username": "jdog",
+      "firstName": "Johnny",
+      "lastName": "Dawg"
+    }
+  ]
 }
 ```
 
@@ -250,7 +268,6 @@ Request:
 
 Response (201)
 
-
 ### `DELETE /api/v1/volunteers`
 
 Request:
@@ -263,7 +280,6 @@ Request:
 ```
 
 Response (200)
-
 
 ## Database schema (proposal)
 
