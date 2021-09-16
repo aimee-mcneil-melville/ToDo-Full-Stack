@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { addVolunteer } from './AddVolunteerFormHelper'
 import { useSelector } from 'react-redux'
 
-export default function AddVolunteerForm ({ addExtraVolunteer }) {
-  const { id } = useParams()
+export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
   const token = useSelector((state) => state.user.token)
 
   const [form, setForm] = useState({
@@ -44,6 +42,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
             onChange={handleChange}
             placeholder="First name"
             type="text"
+            aria-label="firstName"
           />
         </div>
         <div className="">
@@ -58,6 +57,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
             onChange={handleChange}
             placeholder="Last name"
             type="text"
+            aria-label="lastName"
           />
         </div>
         <button
