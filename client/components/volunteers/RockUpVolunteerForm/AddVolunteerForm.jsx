@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { addVolunteer } from "./AddVolunteerFormHelper";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { addVolunteer } from './AddVolunteerFormHelper'
+import { useSelector } from 'react-redux'
 
-export default function AddVolunteerForm({ addExtraVolunteer }) {
-  const { id } = useParams();
-  const token = useSelector((state) => state.user.token);
+export default function AddVolunteerForm ({ addExtraVolunteer }) {
+  const { id } = useParams()
+  const token = useSelector((state) => state.user.token)
 
   const [form, setForm] = useState({
     eventId: id,
-    firstName: "",
-    lastName: "",
-  });
+    firstName: '',
+    lastName: ''
+  })
 
-  function handleChange(e) {
-    const { name, value } = e.target;
+  function handleChange (e) {
+    const { name, value } = e.target
     setForm({
       ...form,
-      [name]: value,
-    });
+      [name]: value
+    })
   }
 
-  function handleClick(e) {
-    e.preventDefault();
-    addVolunteer(form, token, addExtraVolunteer);
-    setForm({ eventId: id, firstName: "", lastName: "" });
+  function handleClick (e) {
+    e.preventDefault()
+    addVolunteer(form, token, addExtraVolunteer)
+    setForm({ eventId: id, firstName: '', lastName: '' })
   }
-
 
   return (
     <>
@@ -70,5 +69,5 @@ export default function AddVolunteerForm({ addExtraVolunteer }) {
         </button>
       </form>
     </>
-  );
+  )
 }
