@@ -56,6 +56,7 @@ export default function Event () {
             />
             <AddVolunteerForm
               addExtraVolunteer={addExtraVolunteer}
+              id={id}
             />
           </section>
         </>
