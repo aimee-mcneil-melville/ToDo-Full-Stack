@@ -22,11 +22,9 @@ router.get('/emailsignup', (req, res) => {
       res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
     })
-    .catch((err) => {
+    .catch(err => {
       log(err.message)
-      res.redirect(
-        `./email-volunteer-error/${volunteer.userId}/${volunteer.eventId}`
-      )
+      res.redirect(`./email-volunteer-error/${volunteer.userId}/${volunteer.eventId}`)
     })
 })
 
@@ -88,7 +86,7 @@ router.patch('/', checkJwt, (req, res) => {
       res.sendStatus(200)
       return null
     })
-    .catch((err) => {
+    .catch(err => {
       log(err.message)
       res.status(500).json({
         error: {
