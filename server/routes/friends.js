@@ -18,13 +18,33 @@ router.get('/:user_id', (req, res) => {
     })
 })
 
-// add new friends
 // POST /api/v1/friends/:id
-// follower id from req.body
-//      redirect to: Friends List
+router.post('/:user_id', (req, res) => {
+  const userId = req.params.user_id
+  const followingId = req.body.following_id
+  console.log(userId)
+  db.addFriend({ userId, followingId }) // data sending to the db function
+    .then((newFriend) => { // db has responded with
+      res.json(newFriend)
+      return null
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send(err.message)
+    })
+})
 
-// delete friend
-// DELTE /api/v1/friends/:id
-//      redirect to: Friends list
+// DELETE /api/v1/friends/:id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteFriend(id)
+    .then(() => {
+      return res.json('deleted')
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send(err.message)
+    })
+})
 
 module.exports = router
