@@ -1,13 +1,13 @@
 import React from 'react'
 
 const Button = (props) => {
-  const { style, clickFunction, buttonText } = props
-
-  const btnClass = style || 'default'
+  const { clickFunction } = props
+  const style = props.style || 'default'
+  const buttonText = props.buttonText || 'No text supplied'
 
   return (
     <>
-      <button className={`btn btn--${btnClass}`} onClick={clickFunction}>{buttonText}</button>
+      <button className={`btn btn--${style}`} onClick={clickFunction}>{buttonText}</button>
     </>
   )
 }
