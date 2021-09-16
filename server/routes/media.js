@@ -4,6 +4,8 @@ const db = require('../db/media')
 
 const router = express.Router()
 
+// GET /api/v1/media/getMedia/id
+// Songs list
 router.get('/getMedia/:id', (req, res) => {
   db.getMedia(req.params.id)
     .then(results => {
@@ -16,4 +18,7 @@ router.get('/getMedia/:id', (req, res) => {
     })
 })
 
+// Add song
+// GET /api/v1/media/
+// POST /api/v1/media/
 module.exports = router
