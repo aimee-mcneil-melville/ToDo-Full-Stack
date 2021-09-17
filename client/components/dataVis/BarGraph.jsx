@@ -33,7 +33,10 @@ export default function BarGraph ({ events }) {
       }),
     [xMax]
   )
-
+  const dateScale = scaleLinear({
+    domain: [getSortedDates(data.map(getDates))],
+    nice: true
+  })
   const yScale = useMemo(
     () =>
       scaleLinear({
@@ -45,31 +48,46 @@ export default function BarGraph ({ events }) {
   )
   // console.log(data.map(getDates))
   return width < 10 ? null : (
-    <svg width={width} height={height}>
-      {/* <GradientTealBlue id="teal" /> */}
-      <rect width={width} height={height} fill="url(#teal)" rx={14} />
-      <Group top={verticalMargin / 2}>
-        {data.map(d => {
-          const dates = getDates(d)
-          const barWidth = xScale.bandwidth()
-          const barHeight = yMax - (yScale(getVolunteersNeeded(d)) ?? 0)
-          const barX = xScale(dates)
-          const barY = yMax - barHeight
-          return (
-            <Bar
-              key={`bar-${dates}`}
-              x={barX}
-              y={barY}
-              width={barWidth}
-              height={barHeight}
-              fill="rgba(23, 233, 217, .5)"
-              onClick={() => {
-                if (clickAlert) alert(`clicked: ${d.title} \nVolunteers: ${d.totalVolunteers}/${d.volunteersNeeded}`)
-              }}
-            />
-          )
+    <>
+      <svg width={width} height={height}>
+        {/* <GradientTealBlue id="teal" /> */}
+        <rect width={width} height={height} fill="url(#teal)" rx={14} />
+        <Group top={verticalMargin / 2}>
+          {data.map(d => {
+            const dates = getDates(d)
+            const barWidth = xScale.bandwidth()
+            const barHeight = yMax - (yScale(getVolunteersNeeded(d)) ?? 0)
+            const barX = xScale(dates)
+            const barY = yMax - barHeight
+            return (
+              <>
+                <Bar
+                  key={`bar-${dates}`}
+                  x={barX}
+                  y={barY}
+                  width={barWidth}
+                  height={barHeight}
+                  fill="rgba(23, 233, 217, .5)"
+                  onClick={() => {
+                    if (clickAlert) alert(`clicked: ${d.title} \nVolunteers: ${d.totalVolunteers}/${d.volunteersNeeded}`)
+                  }}
+                />
+              </>
+            )
+          })}
+        </Group>
+      </svg>
+      {/* <AxisBottom
+        top={yMax}
+        scale={dateScale}
+        // stroke={purple3}
+        // tickStroke={purple3}
+        tickLabelProps={() => ({
+          // fill: purple3,
+          fontSize: 11,
+          textAnchor: 'middle'
         })}
-      </Group>
-    </svg>
+      /> */}
+    </>
   )
 }
