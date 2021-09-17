@@ -1,10 +1,9 @@
 const request = require('supertest')
 
 const server = require('../server')
-const db = require('../db/friends')
-const { test } = require('../db/knexfile')
+const db = require('../db/friends.js')
 
-jest.mock('../db/friends')
+jest.mock('../db/friends.js')
 
 test('GET /user_id return all friends', () => {
   db.getFriends.mockImplementation(() => {
@@ -15,7 +14,7 @@ test('GET /user_id return all friends', () => {
     ])
   })
   return request(server)
-    .get('/10001')
+    .get('/1')
     .expect(200)
     // eslint-disable-next-line promise/always-return
     .then(res => {
