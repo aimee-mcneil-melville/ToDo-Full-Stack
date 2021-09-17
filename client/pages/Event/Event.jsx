@@ -40,7 +40,7 @@ export default function Event () {
     })
   }
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, extraVolunteers } = event
+  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
 
   return (
     <>
