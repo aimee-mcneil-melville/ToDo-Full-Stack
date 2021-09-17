@@ -11,7 +11,8 @@ function Auth () {
         <br></br>
       </div>
       <Link to='/register'>Register</Link>
-      <Link to='/Login'>Login</Link>
+      <br></br>
+      <Link to='/login'>Login</Link>
     </>
   )
 }

@@ -15,7 +15,7 @@ function Login (props) {
         <input type="text" name="email-address"></input>
         <br></br>
         <label htmlFor='password'> Password </label>
-        <input type="text" name="password"></input>
+        <input type="password" name="password"></input>
         <br></br>
       </form>
       <button type="submit" onClick={handleLogin}>Login</button>

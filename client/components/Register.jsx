@@ -13,6 +13,7 @@ function Register (props) {
   return (
     <>
       <h2> Register </h2>
+      <p>Fill in the details below to register a new account.</p>
       <form>
         <label htmlFor='first-name'> First Name </label>
         <input type="text" name="first-name"></input>
@@ -27,7 +28,7 @@ function Register (props) {
         <input type="text" name="email-address"></input>
         <br></br>
         <label htmlFor='password'> Password </label>
-        <input type="text" name="password"></input>
+        <input type="password" name="password"></input>
         <br></br>
       </form>
       <button type="submit" onClick={handleRegister}>Register</button>
