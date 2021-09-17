@@ -15,7 +15,8 @@ function FriendSongs (props) {
       <h1>{nickname}</h1>
       <p>click the heart to follow/unfollow</p>
       {!props.friendSongs.length &&
-      (<p>friend hasn’t added any songs yet</p>)}
+      <p>friend hasn’t added any songs yet</p>}
+
       {props.friendSongs.map(media => {
         const { id, mediaName, artist, link } = media
         return (
