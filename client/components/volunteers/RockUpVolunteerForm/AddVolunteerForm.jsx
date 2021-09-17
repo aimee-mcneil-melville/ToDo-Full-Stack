@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { addVolunteer } from './AddVolunteerFormHelper'
 
-export default function AddVolunteerForm({ addExtraVolunteer, id }) {
-
+export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
   const [form, setForm] = useState({
     eventId: id,
     firstName: '',
     lastName: ''
   })
 
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -17,7 +16,7 @@ export default function AddVolunteerForm({ addExtraVolunteer, id }) {
     })
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     e.preventDefault()
     addVolunteer(form, addExtraVolunteer)
     setForm({ eventId: id, firstName: '', lastName: '' })
