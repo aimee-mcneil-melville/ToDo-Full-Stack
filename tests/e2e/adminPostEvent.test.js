@@ -56,6 +56,9 @@ test('Admin can login & add event', async () => {
 
   expect(await page.content()).toMatch(/Log out/)
   // Note: There is not actual element for add new event on the page
+
+  await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
+
   await Promise.all([
     page.waitForNavigation(),
     page.click('text=Add New Event')
@@ -71,11 +74,14 @@ test('Admin can login & add event', async () => {
     "I don't want a lot for Christmas, there is just one thing I need, I don't care about the presents, underneath the Christmas tree, I just want you for my own, more than you could ever know, make my wish come true, all I want for Christmas is you"
   )
 
-  expect(await page.innerText('.box .title')).toBe('Christmas Gardening!')
+  expect(await page.$eval('#title', (el) => el.value)).toMatch(
+    /Christmas Gardening!/
+  )
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button', { force: true })
+    page.click('.button-primary', { force: true })
   ])
-  expect(await page.content()).toMatch('Christmas Gardening!')
+
+  expect(await page.content()).toMatch(/Christmas Gardening!/)
 })
