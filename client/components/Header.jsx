@@ -6,12 +6,16 @@ import WaitIndicator from '../components/WaitIndicator/WaitIndicator'
 
 export default function Header () {
   return (
-    <header className="header-container">
-      <Link className="logo-wrapper" to="/">
-        <img src='/images/gardenzLogo.svg' alt="gardenzlogo" className='logo-image' />
-      </Link>
-      <WaitIndicator />
-      <Nav />
+    <header className="container">
+      <div className="flex-container">
+        <Link to="/">
+          <div className="logo-container">
+            <img src='/images/gardenzLogo.svg' alt="gardenzlogo" className='logo-image' />
+          </div>
+        </Link>
+        <WaitIndicator />
+        <Nav />
+      </div>
     </header>
   )
 }

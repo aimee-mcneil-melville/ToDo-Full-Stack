@@ -7,6 +7,10 @@
   position: relative;
   max-width: 100%;
   padding: 0 vars.$base-size * 3;
+  @include mixins.media-queries(mobile, min) {
+    width: 1600px;
+    margin: 0 auto;
+  }
 }
 
 .column-6 {
