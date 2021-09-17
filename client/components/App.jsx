@@ -20,6 +20,7 @@ function App () {
         <Route path='/media/:id ' component={Media} />
         <Route path='/media/update/:songId' component={UpdateSong} />
         <Route path='/media/add' component={AddSong} />
+
       </div>
     </>
   )

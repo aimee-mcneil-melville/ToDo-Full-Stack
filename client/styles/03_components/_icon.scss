@@ -1,0 +1,33 @@
+.icon {
+  height: 32px;
+  width: 32px;
+  margin: 0 8px 8px 0;
+  background-color: $col-icon-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.4s;
+  border: 0;
+
+  &:hover {
+    background-color: $col-foreground;
+  }
+  
+  &--play {
+    background-color: $col-brand-primary;
+  }
+
+  &--delete {
+    background-color: $col-warn;
+  }
+
+  &__glyph {
+    color: $col-icon-fg;
+
+    .icon--music & {
+      position: relative;
+      left: -1px;
+    }
+  }
+}
