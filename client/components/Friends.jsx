@@ -21,7 +21,7 @@ function Friends (props) {
       </form> */}
       <ul>
         {props.friends.map(friend => (
-          <li key={friend}><Link to={`/friends/${friend.id}`}>{friend.nickName}</Link>X</li>
+          <li key={friend}><Link to={`/friends/${friend.id}`}>{friend.nickname}</Link>X</li>
         ))}
       </ul>
     </>
