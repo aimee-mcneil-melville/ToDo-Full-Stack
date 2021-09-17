@@ -33,8 +33,28 @@ function deleteSong (id, userId, db = connection) {
     .del()
 }
 
+function editSong (songDetails, songId, db = connection) {
+  const { user_id: userId, genre, media_name: mediaName, artist, link, comment } = songDetails
+  const editSong = { genre, media_name: mediaName, artist, link, comment }
+  return db('media_list')
+    .where('id', songId)
+    .update(editSong)
+    .then(() => {
+      return {
+        id: songId,
+        user_id: userId,
+        genre: editSong.genre,
+        media_name: editSong.media_name,
+        artist: editSong.artist,
+        link: editSong.link,
+        comment: editSong.comment
+      }
+    })
+}
+
 module.exports = {
   getMedia,
   addSong,
-  deleteSong
+  deleteSong,
+  editSong
 }
