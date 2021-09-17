@@ -7,8 +7,8 @@
   position: relative;
   width: 100%;
   padding: 0 vars.$base-size * 3;
-  @include mixins.media-queries(mobile, min) {
-    width: 1600px;
+  @include mixins.media-queries(desktop, min) {
+    width: 1400px;
     margin: 0 auto;
   }
 }
