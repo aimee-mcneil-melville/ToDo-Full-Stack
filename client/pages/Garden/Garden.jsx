@@ -18,7 +18,6 @@ export default function Garden () {
   }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
-  console.log(name)
   return (
     <section className='flex-container'>
       <div className='column-6'>
