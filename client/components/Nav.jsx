@@ -7,8 +7,11 @@ function Nav () {
   return (
     <>
       <p>InviteCode: {inviteCode}</p>
-      <Link to={'/friends'}>Friends</Link>
-      <Link to={`Media/${id}`}>{`Media/${id}`}</Link>
+      <Link to={`/media/${id}`}>My tracks</Link><br />
+      <Link to={'/friends'}>My friends</Link><br />
+      {/* <Link to={'/profile'}>Edit my profile</Link><br /> */}
+      <p>My code: {inviteCode}</p>
+      <p>Log out: </p>
     </>
   )
 }
