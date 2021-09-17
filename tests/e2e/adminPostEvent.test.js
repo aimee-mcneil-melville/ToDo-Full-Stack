@@ -2,6 +2,9 @@ const { chromium } = require('playwright')
 const config = require('../../server/db/knexfile').development
 const db = require('knex')(config)
 const { serverUrl } = require('./index')
+const path = require('path')
+
+require('dotenv').config({ path: path.join(__dirname, '../../server/.env') })
 
 jest.setTimeout(20000)
 
@@ -40,16 +43,19 @@ test('Admin can login & add event', async () => {
     'https://gardenz.au.auth0.com/u/login?state='
   )
 
-  await page.fill('#username', 'admin')
-  await page.fill('#password', 'admin')
+  const testEmail = process.env.E2E_TEST_AUTH0_USER_EMAIL
+  const testPassword = process.env.E2E_TEST_AUTH0_USER_PASSWORD
+
+  await page.fill('#username', testEmail)
+  await page.fill('#password', testPassword)
 
   await Promise.all([
     page.waitForNavigation(),
     page.click('.c132a5a03', { force: true })
   ])
 
-  expect(await page.content()).toMatch('Log out')
-
+  expect(await page.content()).toMatch(/Log out/)
+  // Note: There is not actual element for add new event on the page
   await Promise.all([
     page.waitForNavigation(),
     page.click('text=Add New Event')
