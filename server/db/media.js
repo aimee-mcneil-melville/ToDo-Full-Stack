@@ -8,6 +8,25 @@ function getMedia (id = 10001, db = connection) {
     })
 }
 
+function addSong (userId, song, db = connection) {
+  const { genre, media_name: mediaName, artist, link, comment } = song
+  const newSong = { user_id: userId, genre, media_name: mediaName, artist, link, comment }
+  return db('media_list')
+    .insert(newSong)
+    // .select('user_id', 'genre', 'media_name', 'artist', 'link', 'comment')
+    .then(() => {
+      return {
+        user_id: newSong.user_id,
+        genre: newSong.genre,
+        media_name: newSong.media_name,
+        artist: newSong.artist,
+        link: newSong.link,
+        comment: newSong.comment
+      }
+    })
+}
+
 module.exports = {
-  getMedia
+  getMedia,
+  addSong
 }
