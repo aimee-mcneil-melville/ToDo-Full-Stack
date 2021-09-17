@@ -1,30 +1,33 @@
-import React from 'react'
-import { useFormik } from 'formik'
-
+import React, { useState } from 'react'
 export default function EventForm (props) {
-  // function myHandleSubmit (data) {
-  //   e.preventDefault()
-  //   console.log(data)
-  // }
-  const formik = useFormik({
-    initialValues: {
-      title: '',
-      date: '',
-      volunteersNeeded: '',
-      description: ''
-    },
-    onSubmit: values => {
-      console.log(values)
-    }
+  const [form, setForm] = useState(props.formData || {
+    title: '',
+    date: '',
+    volunteersNeeded: 0,
+    description: ''
   })
 
+  function handleChange (e) {
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [name]: value
+    })
+  }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    props.submitEvent(form)
+  }
+
+  const { title, date, volunteersNeeded, description } = form
   return (
     <>
       <div className='flex-container'>
         <article className='column-6'>
           <h2>Create Event</h2>
-          <div className="field">
-            <form className='form-container'onSubmit={formik.handleSubmit}>
+          <form className='form-container'>
+            <div className="field">
               <label
                 htmlFor='title'
                 className='form-label'>Event Title</label>
@@ -34,17 +37,22 @@ export default function EventForm (props) {
                 name='title'
                 type='text'
                 placeholder='event title'
-                onChange={formik.handleChange}
-                value={formik.values.title}/>
-              <label className='form-label'>Date</label>
+                value={title}
+                onChange={handleChange}
+              />
+              <label
+                className='form-label'
+              >Date</label>
               <input
                 className='form-input'
                 id='date'
                 name='date'
                 type='date'
                 placeholder='date'
-                onChange={formik.handleChange}
-                value={formik.values.date} />
+                onChange={handleChange}
+              />
+            </div>
+            <div className="field">
               <label
                 htmlFor='volunteersNeeded'
                 className='form-label'
@@ -56,9 +64,10 @@ export default function EventForm (props) {
                 type='number'
                 placeholder='volunteers needed'
                 min='0'
-                onChange={formik.handleChange}
-                value={formik.values.volunteersNeeded}
+                onChange={handleChange}
               />
+            </div>
+            <div className="field">
               <label
                 htmlFor='description'
                 className='form-label'
@@ -68,32 +77,36 @@ export default function EventForm (props) {
                 id='description'
                 name='description'
                 placeholder='event description'
-                onChange={formik.handleChange}
-                value={formik.values.description}
+                value={description}
+                onChange={handleChange}
               />
-              <button className='button-primary' type='submit'>{props.action}</button>
-            </form>
-          </div>
+            </div>
+            <button
+              className='button-primary'
+              onClick={handleSubmit}
+            >{props.action}</button>
+          </form>
         </article>
         <div className='column-6'>
           <h2>Event Preview</h2>
           <article className='card-secondary'>
-            {formik.values.title
-              ? <h1 className='card-title'>{formik.values.title}</h1>
+            {title
+              ? <h1 className='card-title'>{title}</h1>
               : <h1 className='card-title'>Your title here</h1>
             }
-            {formik.values.date
-              ? <p>{formik.values.date}</p>
+            {date
+              ? <p>{date}</p>
               : <p>Your date here</p>
             }
-            <p>{formik.values.volunteersNeeded} volunteer{Number(formik.values.volunteersNeeded) !== 1 ? 's' : ''} needed</p>
-            {formik.values.description
-              ? <p>{formik.values.description}</p>
+            <p>{volunteersNeeded} volunteer{Number(volunteersNeeded) !== 1 ? 's' : ''} needed</p>
+            {description
+              ? <p>{description}</p>
               : <p>Your description here</p>
             }
           </article>
         </div>
       </div>
     </>
+
   )
 }
