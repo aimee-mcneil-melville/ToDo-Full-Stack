@@ -49,7 +49,29 @@ router.post('/getMedia/:id/add', (req, res) => {
 })
 
 // edit route
+router.patch('./getMedia/:id/edit', (req, res) => {
+  const editSongData = req.body
+  db.editSong(editSongData)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message })
+    })
+})
 
-// delete route
+// DELETE /api/v1/friends/:id
+router.delete('/getMedia/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteSong(id)
+    .then(() => {
+      return res.json('delete')
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(500).send(err.message)
+    })
+})
 
 module.exports = router
