@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { addVolunteer } from './AddVolunteerFormHelper'
 
 export default function AddVolunteerForm({ addExtraVolunteer, id }) {
-  const { id } = useParams()
 
   const [form, setForm] = useState({
     eventId: id,
