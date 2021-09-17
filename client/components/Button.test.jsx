@@ -19,16 +19,12 @@ describe('<Button/> component tests', () => {
   })
 
   test('clickFunction fires on button click', () => {
-    let testVar = 0
-    const upTestVar = () => {
-      testVar += 1
-    }
+    const testFunc = jest.fn()
 
-    render(<Button buttonText='Test button' clickFunction={upTestVar} />)
+    render(<Button buttonText='Test button' clickFunction={testFunc} />)
     const button = screen.getByRole('button')
 
-    expect(testVar).toEqual(0)
     userEvent.click(button)
-    expect(testVar).toEqual(1)
+    expect(testFunc).toHaveBeenCalled()
   })
 })
