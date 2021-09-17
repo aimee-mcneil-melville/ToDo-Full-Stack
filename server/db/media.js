@@ -26,7 +26,15 @@ function addSong (userId, song, db = connection) {
     })
 }
 
+function deleteSong (id, userId, db = connection) {
+  return db('media_list')
+    .where('user_id', userId)
+    .where('id', id)
+    .del()
+}
+
 module.exports = {
   getMedia,
-  addSong
+  addSong,
+  deleteSong
 }

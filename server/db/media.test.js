@@ -22,3 +22,14 @@ test('ADD song adds a new song', () => {
       return null
     })
 })
+
+test('DELETE song deletes the song', () => {
+  return db.deleteSong(2, 10001, testDb)
+    .then(() => {
+      return db.getMedia(10001, testDb)
+        .then(songs => {
+          expect(songs).toHaveLength(5)
+          return null
+        })
+    })
+})
