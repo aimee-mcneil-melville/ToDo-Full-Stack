@@ -26,7 +26,16 @@ function addFriend (userId, followingId, db = connection) {
     })
 }
 
+function deleteFriend (userId, followingId, db = connection) {
+//   const delFriend = { user_id: userId, following_id: followingId }
+  return db('follower_list')
+    .where('user_id', userId)
+    .where('following_id', followingId)
+    .del(followingId)
+}
+
 module.exports = {
   getFriends,
-  addFriend
+  addFriend,
+  deleteFriend
 }
