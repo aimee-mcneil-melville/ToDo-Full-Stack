@@ -10,6 +10,23 @@ function getFriends (id, db = connection) {
     })
 }
 
+function addFriend (userId, followingId, db = connection) {
+  const newFriend = { user_id: userId, following_id: followingId }
+  return db('follower_list')
+    .insert(newFriend)
+    .then(() => {
+      return db('follower_list')
+        .where('user_id', userId)
+        .where('following_id', followingId)
+        .select('id')
+        .first()
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
 module.exports = {
-  getFriends
+  getFriends,
+  addFriend
 }
