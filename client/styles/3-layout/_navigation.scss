@@ -5,6 +5,9 @@
 
 .nav {
     width: auto;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
 }
 
 .nav-link {
@@ -32,6 +35,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-right: vars.$base-size;
 
     &:hover {
