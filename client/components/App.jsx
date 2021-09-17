@@ -1,37 +1,34 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { fetchFriends } from './appHelper'
+
+import Auth from './Auth'
 import Register from './Register'
 import Login from './Login'
-
-import { Route } from 'react-router-dom'
 
 // temporary until auth is working
 const id = 10001
 
 function App (props) {
-  // function handleRegister ()
-
   useEffect(() => {
     fetchFriends(props.dispatch, id)
   }, [])
   console.log(props.friends)
   return (
     <>
-      <div className='app'>
-        {/* <ErrorMessage /> */}
-        <h1>rcmndr</h1>
-        {/* <WaitIndicator /> */}
-        <Register />
-        {/* <Route path='/Login' component={Login} /> */}
-        <p>Friends List:</p>
-        <ul>
-          {props.friends.map(friend => (
-            <li key={friend}>{friend.name} {friend.lastName}</li>
-          ))}
-        </ul>
-      </div>
+      <Router>
+        <div className='app'>
+          {/* <ErrorMessage /> */}
+          <h1>rcmndr</h1>
+          {/* <WaitIndicator /> */}
+
+          <Route exact path='/' component={Auth}/>
+          <Route path='/register' component={Register}/>
+          <Route path='/login' component={Login}/>
+        </div>
+      </Router>
     </>
   )
 }
