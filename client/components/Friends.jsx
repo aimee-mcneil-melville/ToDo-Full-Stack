@@ -13,7 +13,16 @@ function Friends (props) {
 
   return (
     <>
-      <p>Friends List:</p>
+      <h1>My friends</h1>
+      <p>Follow a new friend:</p>
+      <form action="">
+        <label htmlFor="uniqueCode">
+          <input type="text" placeholder='User unique code'/>
+        </label>
+        <button>FIND</button>
+
+      </form>
+      <p>My existing friends:</p>
       {!props.friends.length && (
         <p>Instructions for adding a new friend</p>)}
       {/* <form>
@@ -21,7 +30,8 @@ function Friends (props) {
       </form> */}
       <ul>
         {props.friends.map(friend => (
-          <li key={friend}><Link to={`/friends/${friend.id}`}>{friend.nickname}</Link>X</li>
+          <li key={friend}><Link to={`/friends/${friend.id}`}><button>icon</button>{friend.nickname}
+            <br /> {friend.name} {friend.lastName} </Link>X</li>
         ))}
       </ul>
     </>
