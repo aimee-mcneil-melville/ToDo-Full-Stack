@@ -28,7 +28,6 @@ router.get('/emailsignup', (req, res) => {
     })
 })
 
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
 // Verifies the data being modified belongs to the user that added it. --------------------
 router.post('/', checkJwt, (req, res) => {
   const { userId, eventId } = req.body
@@ -48,8 +47,7 @@ router.post('/', checkJwt, (req, res) => {
     })
 })
 
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
-// Verifies the data being modified belongs to the user that added it. -------------------------
+// Verifies the data being modified belongs to the user that added it.
 router.delete('/', checkJwt, (req, res) => {
   const { userId, eventId } = req.body
   db.deleteVolunteer({ userId, eventId })
@@ -67,8 +65,7 @@ router.delete('/', checkJwt, (req, res) => {
     })
 })
 
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
-// ----------------------------------------------------- requires admin verification, what does isAdmin return?
+//  requires admin verification, what does isAdmin return?
 router.patch('/', checkJwt, (req, res) => {
   if (!req.user.isAdmin) {
     res.status(401).json({
@@ -96,7 +93,6 @@ router.patch('/', checkJwt, (req, res) => {
     })
 })
 
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN
 router.post('/extras', checkJwt, (req, res) => {
   const { eventId, firstName, lastName } = req.body
 

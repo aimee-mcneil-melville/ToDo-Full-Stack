@@ -49,12 +49,9 @@ In Gardenz, click on *Register* and add your email and password and click *Conin
 Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and click *Register*, this time click on **Log in** at the bottom and enter your email and password. There is no need to Register new emails at all, you can always sign in using your same email you used in the step above.
 You'll be redirected to Gardenz to enter additional information.
 
-#### Giving yourself the Admin role
-1. Go to Auth0.com and sign in with your account.
-2. In the menu bar on the left, click on **User Management** and select Users.
-3. Find your user account in the list and click on it.
-4. Click on Roles.
-5. Assign yourself and Admin Role.
+#### Admin Role
+Ask one of the facilitators to give you the Admin role, local for gardenz or global for the entire Auth0 tenant.
+
 
 
 ## User stories (from highest priority)
