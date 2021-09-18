@@ -49,16 +49,13 @@ In Gardenz, click on *Register* and add your email and password and click *Conin
 Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and click *Register*, this time click on **Log in** at the bottom and enter your email and password. There is no need to Register new emails at all, you can always sign in using your same email you used in the step above.
 You'll be redirected to Gardenz to enter additional information.
 
-#### Giving yourself Admin role
-1. Use the DB browser to update the `is_Admin` from 0 to 1.
-2. If you're on a Windows Machines with WSL, the DB Browser does not work. Fortunately, you can use sqlite3 in the terminal to access the db (CLI not GUI).
-3. In the terminal and under the Gardenz directory, type the following:
+#### Giving yourself the Admin role
+1. Go to Auth0.com and sign in with your account.
+2. In the menu bar on the left, click on **User Management** and select Users.
+3. Find your user account in the list and click on it.
+4. Click on Roles.
+5. Assign yourself and Admin Role.
 
-```
-sqlite3 server/db/dev.sqlite3
-select * from users;
-update users set is_admin = 1 where id = <<the id you want to update>>;
-```
 
 ## User stories (from highest priority)
 
