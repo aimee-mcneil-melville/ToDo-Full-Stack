@@ -6,7 +6,7 @@ import { fetchFriends } from './appHelper'
 
 import Auth from './Auth'
 import Register from './Register'
-import Login from './Login'
+import SignIn from './SignIn'
 
 // temporary until auth is working
 const id = 10001
@@ -26,7 +26,7 @@ function App (props) {
 
           <Route exact path='/' component={Auth}/>
           <Route path='/register' component={Register}/>
-          <Route path='/login' component={Login}/>
+          <Route path='/signIn' component={SignIn}/>
         </div>
       </Router>
     </>

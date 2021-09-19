@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Login (props) {
+function SignIn (props) {
   console.log('entered login page')
 
   function handleLogin () {
@@ -23,4 +23,4 @@ function Login (props) {
   )
 }
 
-export default Login
+export default SignIn
