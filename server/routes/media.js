@@ -49,7 +49,7 @@ router.post('/getMedia/:id/add', (req, res) => {
 })
 
 // edit route
-router.patch('./getMedia/:id/edit', (req, res) => {
+router.patch('/getMedia/:id/edit', (req, res) => {
   const editSongData = req.body
   db.editSong(editSongData)
     .then(() => {
