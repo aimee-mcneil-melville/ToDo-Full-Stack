@@ -1,9 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import store from '../../../store'
-import { renderWithRouter } from '../../../test-utils'
 import AddVolunteerForm from './AddVolunteerForm'
 
 import { addVolunteer } from './AddVolunteerFormHelper'

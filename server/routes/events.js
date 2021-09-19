@@ -10,7 +10,6 @@ const router = express.Router()
 
 module.exports = router
 
-
 // include getTokenDecoder() like function into post route that passes authorisation header? REQUIRES TOKEN + ADMIN
 router.post('/', checkJwt, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
