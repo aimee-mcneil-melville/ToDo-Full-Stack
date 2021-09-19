@@ -51,11 +51,11 @@ const mockUserGarden = {
 }
 
 const mockAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken(1, 'admin', 'admin@test.co', true)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 const mockNonAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken(3, 'sam', 'sam@test.co', false)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 describe('GET /api/v1/gardens', () => {

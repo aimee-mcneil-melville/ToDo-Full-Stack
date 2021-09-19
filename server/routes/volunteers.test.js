@@ -11,11 +11,11 @@ jest.mock('../db/volunteers')
 jest.mock('../notifications/emailTokens')
 
 const mockNonAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 const testAuthAdminHeader = {
-  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 describe('GET /api/v1/volunteer/emailsignup', () => {
@@ -186,7 +186,7 @@ describe('PATCH /api/v1/volunteers', () => {
   })
 
   it('Test for unauthorized accesss: not admin user', () => {
-    const token = getMockToken(1, 'user', 'usertest@test.co', false)
+    const token = getMockToken()
 
     return request(server)
       .patch('/api/v1/volunteers')
@@ -198,7 +198,7 @@ describe('PATCH /api/v1/volunteers', () => {
   })
 
   it('Test for authorized access: admin user', () => {
-    const token = getMockToken(1, 'admin', 'admin@test.co', true)
+    const token = getMockToken()
     return request(server)
       .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
@@ -210,7 +210,7 @@ describe('PATCH /api/v1/volunteers', () => {
 
   it('Test for 500 response and expect a json error object during db error', () => {
     db.setVolunteerAttendance.mockImplementation(() => Promise.reject(new Error('Db operation error')))
-    const token = getMockToken(1, 'admin', 'admin@test.co', true)
+    const token = getMockToken()
     return request(server)
       .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
