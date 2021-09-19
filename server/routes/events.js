@@ -1,4 +1,4 @@
-const checkJwt = require('./auth') // scope permissions
+const { checkJwt } = require('./auth') // scope permissions
 const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
@@ -83,4 +83,8 @@ router.get('/:id', (req, res) => {
         }
       })
     })
+})
+
+router.delete('/test', checkAdmin, (req, res) => {
+  res.sendStatus(200)
 })
