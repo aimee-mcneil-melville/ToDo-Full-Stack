@@ -50,7 +50,7 @@ nock('https://gardenz.au.auth0.com')
   .get('/.well-known/jwks.json')
   .reply(200, nockReply)
 
-const getMockToken = () => {
+const getMockToken = (permissions) => {
   const user = {
     email: 'someone@gmail.com'
   }
@@ -58,7 +58,7 @@ const getMockToken = () => {
   const payload = {
     nickname: user.email.split('@').shift(),
     name: user.email,
-    permissions: ['create:event', 'update:event']
+    permissions: permissions
   }
 
   const options = {

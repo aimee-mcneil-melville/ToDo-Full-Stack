@@ -1,5 +1,5 @@
 const { checkJwt } = require('./auth') // scope permissions
-// const jwtAuthz = require('express-jwt-authz')
+const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 
@@ -9,7 +9,7 @@ const { decode } = require('../notifications/emailTokens')
 
 const router = express.Router()
 
-// const checkAdmin = jwtAuthz(['role:admin'])
+const checkAdmin = jwtAuthz(['update:event_volunteers'])
 
 module.exports = router
 
@@ -65,8 +65,7 @@ router.delete('/', checkJwt, (req, res) => {
     })
 })
 
-//  requires admin verification, what does isAdmin return?
-router.patch('/', checkJwt, (req, res) => {
+router.patch('/', checkJwt, checkAdmin, (req, res) => {
   if (!req.user.isAdmin) {
     res.status(401).json({
       error: {

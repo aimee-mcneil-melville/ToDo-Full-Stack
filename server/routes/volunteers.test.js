@@ -198,7 +198,7 @@ describe('PATCH /api/v1/volunteers', () => {
   })
 
   it('Test for authorized access: admin user', () => {
-    const token = getMockToken()
+    const token = getMockToken(['create:event', 'update:event'])
     return request(server)
       .patch('/api/v1/volunteers')
       .set({ Authorization: `Bearer ${token}` })
