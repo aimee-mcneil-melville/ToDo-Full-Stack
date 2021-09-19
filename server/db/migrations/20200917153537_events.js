@@ -6,6 +6,7 @@ exports.up = (knex) => {
     table.string('date')
     table.string('description')
     table.integer('volunteers_needed')
+    table.string('status')
   })
 }
 
