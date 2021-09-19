@@ -38,16 +38,16 @@ export default function EventForm (props) {
       <div className='flex-container'>
         <article className='column-6'>
           <h2>Create Event</h2>
-          <div className="field">
 
-            <form className='form-container'onSubmit={formik.handleSubmit}>
+          <form className='form-container'onSubmit={formik.handleSubmit}>
+            <div className="field">
               <label
                 htmlFor='title'
                 className='form-label'>Event Title
               </label>
-              {formik.errors.title && (
-                <p className="inputError">{formik.errors.title}</p>
-              )}
+              {formik.errors.title && formik.touched.title
+                ? (<p className="inputError">{formik.errors.title}</p>)
+                : null}
               <input
                 className='form-input'
                 id='title'
@@ -58,9 +58,9 @@ export default function EventForm (props) {
                 value={formik.values.title}/>
 
               <label className='form-label'>Date</label>
-              {formik.errors.date && (
-                <p className="inputError">{formik.errors.date}</p>
-              )}
+              {formik.errors.date && formik.touched.date
+                ? (<p className="inputError">{formik.errors.date}</p>)
+                : null}
               <input
                 className='form-input'
                 id='date'
@@ -74,9 +74,9 @@ export default function EventForm (props) {
                 htmlFor='volunteersNeeded'
                 className='form-label'
               >Volunteers Needed</label>
-              {formik.errors.volunteersNeeded && (
-                <p className="inputError">{formik.errors.volunteersNeeded}</p>
-              )}
+              {formik.errors.volunteersNeeded && formik.touched.volunteersNeeded
+                ? (<p className="inputError">{formik.errors.volunteersNeeded}</p>)
+                : null}
               <input
                 className='form-input'
                 id='volunteersNeeded'
@@ -92,9 +92,9 @@ export default function EventForm (props) {
                 htmlFor='description'
                 className='form-label'
               >Description</label>
-              {formik.errors.description && (
-                <p className="inputError">{formik.errors.description}</p>
-              )}
+              {formik.errors.description && formik.touched.description
+                ? (<p className="inputError">{formik.errors.description}</p>)
+                : null}
               <textarea
                 className='form-textarea'
                 id='description'
@@ -103,9 +103,9 @@ export default function EventForm (props) {
                 onChange={formik.handleChange}
                 value={formik.values.description}
               />
-              <button className='button-primary' type='submit'>{props.action}</button>
-            </form>
-          </div>
+            </div>
+            <button className='button-primary' type='submit'>{props.action}</button>
+          </form>
         </article>
 
         <div className='column-6'>
