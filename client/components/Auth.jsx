@@ -5,9 +5,9 @@ function Auth () {
   return (
     <>
       <div>
-        Collate. <br></br>
-        Recommend. <br></br>
-        Discover. <br></br>
+        collate. <br></br>
+        recommend. <br></br>
+        discover. <br></br>
         <br></br>
       </div>
       <Link to='/register'>Register</Link>

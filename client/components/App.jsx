@@ -25,7 +25,7 @@ function App () {
         <Route path='/media/add' component={AddSong} />
         <Route exact path='/' component={Auth}/>
         <Route path='/register' component={Register}/>
-       <Route path='/signIn' component={SignIn}/>
+        <Route path='/signIn' component={SignIn}/>
       </div>
     </>
   )
