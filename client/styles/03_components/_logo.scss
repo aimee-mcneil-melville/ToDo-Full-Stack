@@ -1,0 +1,14 @@
+.logo {
+  margin-top: 8px;
+  
+  &__link {
+    color: $col-brand-primary;
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.4s;
+
+    &:hover {
+      color: $col-foreground;
+    }
+  }
+}

@@ -1,41 +1,34 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
-import { fetchFriends } from './appHelper'
 
 import Auth from './Auth'
 import Register from './Register'
 import SignIn from './SignIn'
+import { Route } from 'react-router-dom'
+import AddSong from './AddSong'
+import Friends from './Friends'
+import Media from './Media'
+import Nav from './Nav'
+import UpdateSong from './UpdateSong'
+import FriendSongs from './FriendSongs'
 
-// temporary until auth is working
-const id = 10001
-
-function App (props) {
-  useEffect(() => {
-    fetchFriends(props.dispatch, id)
-  }, [])
-  console.log(props.friends)
+function App () {
   return (
     <>
-      <Router>
-        <div className='app'>
-          {/* <ErrorMessage /> */}
-          <h1>rcmndr</h1>
-          {/* <WaitIndicator /> */}
-
-          <Route exact path='/' component={Auth}/>
-          <Route path='/register' component={Register}/>
-          <Route path='/signIn' component={SignIn}/>
-        </div>
-      </Router>
+      <div className='app'>
+        <Route path='/' component={Nav} />
+        {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
+        <Route path='/friends' component={Friends} />
+        <Route path='/friends/:id' component={FriendSongs} />
+        <Route path='/media/:id' component={Media} />
+        <Route path='/media/update/:songId' component={UpdateSong} />
+        <Route path='/media/add' component={AddSong} />
+        <Route exact path='/' component={Auth}/>
+        <Route path='/register' component={Register}/>
+       <Route path='/signIn' component={SignIn}/>
+      </div>
     </>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    friends: globalState.friends
-  }
-}
 
-export default connect(mapStateToProps)(App)
+export default connect()(App)

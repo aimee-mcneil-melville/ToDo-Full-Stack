@@ -7,8 +7,6 @@ const {
   createUser
 } = require('../db/users')
 
-const db = require('../db/users')
-
 const router = express.Router()
 
 applyAuthRoutes(router, {
