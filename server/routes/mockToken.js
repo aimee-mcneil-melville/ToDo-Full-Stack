@@ -50,15 +50,14 @@ nock('https://gardenz.au.auth0.com')
   .get('/.well-known/jwks.json')
   .reply(200, nockReply)
 
-const getMockToken = (permissions) => {
+const getMockToken = () => {
   const user = {
     email: 'someone@gmail.com'
   }
 
   const payload = {
     nickname: user.email.split('@').shift(),
-    name: user.email,
-    permissions: permissions
+    name: user.email
   }
 
   const options = {
@@ -80,6 +79,39 @@ const getMockToken = (permissions) => {
   return token
 }
 
+const getAdminToken = () => {
+  const user = {
+    email: 'someone@gmail.com'
+  }
+
+  const payload = {
+    nickname: user.email.split('@').shift(),
+    name: user.email,
+    permissions: ['update:event',
+      'create:event',
+      'update:event_volunteers'
+    ]
+  }
+
+  const options = {
+    header: { kid: '0' },
+    algorithm: 'RS256',
+    expiresIn: '1d',
+    audience: 'https://garden/nz/api',
+    issuer: 'https://gardenz.au.auth0.com/'
+  }
+
+  let token
+  try {
+    token = jwt.sign(payload, privateKey, options)
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+
+  return token
+}
 module.exports = {
-  getMockToken
+  getMockToken,
+  getAdminToken
 }

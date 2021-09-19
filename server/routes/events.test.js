@@ -4,7 +4,7 @@ const server = require('../server')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
-const { getMockToken } = require('./mockToken')
+const { getAdminToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/event')
@@ -33,12 +33,8 @@ const mockEvent = {
   }]
 }
 
-const testAuthHeader = {
-  Authorization: `Bearer ${getMockToken()}`
-}
-
 const testAuthAdminHeader = {
-  Authorization: `Bearer ${getMockToken()}`
+  Authorization: `Bearer ${getAdminToken()}`
 }
 
 describe('GET /api/v1/events/:id', () => {
@@ -69,9 +65,6 @@ describe('GET /api/v1/events/:id', () => {
     })
     return request(server)
       .get('/api/v1/events/2')
-      .set({
-        Authorization: `Bearer ${getMockToken()}`
-      })
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -90,7 +83,6 @@ describe('GET /api/v1/events/:id', () => {
     })
     return request(server)
       .get('/api/v1/events/2')
-      .set(testAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -109,7 +101,6 @@ describe('GET /api/v1/events/:id', () => {
     })
     return request(server)
       .get('/api/v1/events/2')
-      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -166,7 +157,7 @@ describe('POST /api/v1/events', () => {
     sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
       .post('/api/v1/events')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .send({
         gardenId: 3,
         title: 'Gardening Event',
@@ -188,7 +179,7 @@ describe('POST /api/v1/events', () => {
     ))
     return request(server)
       .post('/api/v1/events')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
@@ -227,7 +218,7 @@ describe('PATCH /api/v1/events/:id', () => {
     })
     return request(server)
       .patch('/api/v1/events/2')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .send({
         id: 2,
         title: 'cooler event',
@@ -249,7 +240,7 @@ describe('PATCH /api/v1/events/:id', () => {
     ))
     return request(server)
       .patch('/api/v1/events/999')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {

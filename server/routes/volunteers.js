@@ -9,7 +9,9 @@ const { decode } = require('../notifications/emailTokens')
 
 const router = express.Router()
 
-const checkAdmin = jwtAuthz(['update:event_volunteers'])
+const checkAdmin = jwtAuthz(['update:event_volunteers'], {
+  customScopeKey: 'permissions'
+})
 
 module.exports = router
 
@@ -24,7 +26,11 @@ router.get('/emailsignup', (req, res) => {
     })
     .catch(err => {
       log(err.message)
-      res.redirect(`./email-volunteer-error/${volunteer.userId}/${volunteer.eventId}`)
+      res.status(500).json({
+        error: {
+          title: 'Unable to register from email'
+        }
+      })
     })
 })
 
@@ -66,15 +72,6 @@ router.delete('/', checkJwt, (req, res) => {
 })
 
 router.patch('/', checkJwt, checkAdmin, (req, res) => {
-  if (!req.user.isAdmin) {
-    res.status(401).json({
-      error: {
-        title: 'Unauthorized'
-      }
-    })
-    return
-  }
-
   const { hasAttended, userId, eventId } = req.body
 
   db.setVolunteerAttendance({ hasAttended, userId, eventId })

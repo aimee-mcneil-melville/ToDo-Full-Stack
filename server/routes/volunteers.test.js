@@ -3,7 +3,7 @@ const request = require('supertest')
 const log = require('../logger')
 const server = require('../server')
 const db = require('../db/volunteers')
-const { getMockToken } = require('./mockToken')
+const { getMockToken, getAdminToken } = require('./mockToken')
 const { decode } = require('../notifications/emailTokens')
 
 jest.mock('../logger')
@@ -15,7 +15,7 @@ const mockNonAdminAuthHeader = {
 }
 
 const testAuthAdminHeader = {
-  Authorization: `Bearer ${getMockToken()}`
+  Authorization: `Bearer ${getAdminToken()}`
 }
 
 describe('GET /api/v1/volunteer/emailsignup', () => {
@@ -35,21 +35,21 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
       })
   })
 
-  // need to update this test, the res now redirects to /email-volunteer-error
-  // it('responds with 500 and error message during DB error', () => {
-  //   db.addVolunteer.mockImplementation(() => Promise.reject(
-  //     new Error('mock addVolunteer error')
-  //   ))
-  //   decode.mockImplementation(() => {})
-  //   return request(server)
-  //     .get('/api/v1/volunteers/emailsignup?token=foobar')
-  //     .expect(500)
-  //     .then(res => {
-  //       expect(log).toHaveBeenCalledWith('mock addVolunteer error')
-  //       expect(res.body.error.title).toBe('Unable to register from email')
-  //       return null
-  //     })
-  // })
+  it('responds with 500 and error message during DB error', () => {
+    db.addVolunteer.mockImplementation(() => Promise.reject(
+      new Error('mock addVolunteer error')
+    ))
+
+    decode.mockImplementation(() => ({ userId: 1 }))
+    return request(server)
+      .get('/api/v1/volunteers/emailsignup?token=foobar')
+      .expect(500)
+      .then(res => {
+        expect(log).toHaveBeenCalledWith('mock addVolunteer error')
+        expect(res.body.error.title).toBe('Unable to register from email')
+        return null
+      })
+  })
 })
 
 describe('POST /api/v1/volunteers', () => {
@@ -186,22 +186,20 @@ describe('PATCH /api/v1/volunteers', () => {
   })
 
   it('Test for unauthorized accesss: not admin user', () => {
-    const token = getMockToken()
-
     return request(server)
       .patch('/api/v1/volunteers')
-      .set({ Authorization: `Bearer ${token}` })
+      .set(mockNonAdminAuthHeader)
       .then(res => {
-        expect(res.status).toEqual(401)
+        expect(res.status).toEqual(403)
         return null
       })
   })
 
   it('Test for authorized access: admin user', () => {
-    const token = getMockToken(['create:event', 'update:event'])
     return request(server)
       .patch('/api/v1/volunteers')
-      .set({ Authorization: `Bearer ${token}` })
+      .send({ hasAttended: true, userId: 1, eventId: 1 })
+      .set(testAuthAdminHeader)
       .then(res => {
         expect(res.status).toEqual(200)
         return null
@@ -210,10 +208,9 @@ describe('PATCH /api/v1/volunteers', () => {
 
   it('Test for 500 response and expect a json error object during db error', () => {
     db.setVolunteerAttendance.mockImplementation(() => Promise.reject(new Error('Db operation error')))
-    const token = getMockToken()
     return request(server)
       .patch('/api/v1/volunteers')
-      .set({ Authorization: `Bearer ${token}` })
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.status).toEqual(500)
