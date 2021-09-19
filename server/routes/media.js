@@ -23,7 +23,7 @@ router.get('/getMedia/:id', (req, res) => {
 // POST /api/v1/media/
 router.get('/getMedia/:id/add', (req, res) => {
   let songData = {}
-  db.getSongData(songData)
+  db.addSong(songData)
     .then((result) => {
       songData = result
       return null
@@ -37,7 +37,7 @@ router.get('/getMedia/:id/add', (req, res) => {
 router.post('/getMedia/:id/add', (req, res) => {
   const { media_name: mediaName, genre, artist, comment, link } = req.body
   const songData = { mediaName, genre, artist, comment, link }
-  db.postSongData(songData)
+  db.addSong(songData)
     .then((result) => {
       res.json(result)
       return null
