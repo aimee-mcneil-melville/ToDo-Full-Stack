@@ -19,7 +19,7 @@ export default function BarGraph ({ events }) {
   const yMax = height - verticalMargin
   const getDates = (d) => Date.parse(d.date)
   const getSortedDates = (data) => data.sort()
-  const getVolunteersNeeded = (d) => Number(d.volunteersNeeded)
+  const getVolunteersNeeded = (d) => Number(d.totalVolunteers)
   const data = events
 
   // scales, memoize for performance
@@ -46,10 +46,10 @@ export default function BarGraph ({ events }) {
       }),
     [yMax]
   )
-  // console.log(data.map(getDates))
+  console.log(data)
   return width < 10 ? null : (
     <>
-      <svg width={width} height={height}>
+      <svg key='barChart' width={width} height={height}>
         {/* <GradientTealBlue id="teal" /> */}
         <rect width={width} height={height} fill="url(#teal)" rx={14} />
         <Group top={verticalMargin / 2}>
@@ -59,10 +59,11 @@ export default function BarGraph ({ events }) {
             const barHeight = yMax - (yScale(getVolunteersNeeded(d)) ?? 0)
             const barX = xScale(dates)
             const barY = yMax - barHeight
+            const id = d.id
             return (
               <>
                 <Bar
-                  key={`bar-${dates}`}
+                  key={`bar-${id}`}
                   x={barX}
                   y={barY}
                   width={barWidth}
