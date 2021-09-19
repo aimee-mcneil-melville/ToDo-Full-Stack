@@ -34,11 +34,11 @@ const mockEvent = {
 }
 
 const testAuthHeader = {
-  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 const testAuthAdminHeader = {
-  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+  Authorization: `Bearer ${getMockToken()}`
 }
 
 describe('GET /api/v1/events/:id', () => {
@@ -70,7 +70,7 @@ describe('GET /api/v1/events/:id', () => {
     return request(server)
       .get('/api/v1/events/2')
       .set({
-        Authorization: `Bearer ${getMockToken(3, 'testuser', 'testuser@test.co', false)}`
+        Authorization: `Bearer ${getMockToken()}`
       })
       .expect('Content-Type', /json/)
       .expect(200)

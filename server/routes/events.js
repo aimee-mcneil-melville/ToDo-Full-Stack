@@ -55,7 +55,7 @@ router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-// doesnt need token
+// TODO fix req.user.admin
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
@@ -83,8 +83,4 @@ router.get('/:id', (req, res) => {
         }
       })
     })
-})
-
-router.delete('/test', checkAdmin, (req, res) => {
-  res.sendStatus(200)
 })
