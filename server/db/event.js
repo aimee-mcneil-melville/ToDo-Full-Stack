@@ -71,7 +71,8 @@ function addEvent (newEvent, db = connection) {
       volunteers_needed: volunteersNeeded,
       title,
       date,
-      description
+      description,
+      status: 'Active'
     })
     .then((ids) => getEventById(ids[0], db))
 }
