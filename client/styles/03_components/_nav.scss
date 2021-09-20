@@ -1,0 +1,36 @@
+.nav {
+  position: fixed;
+  top: -100vh;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  transition: top 0.4s;
+  display: flex;
+  align-items: center;
+  background-color: rgba($col-background, 0.8);
+  padding: 8px 16px;
+  backdrop-filter: blur(6px);
+
+  &--open { 
+    top: 0;
+  }
+}
+
+.main-nav {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 16px;
+
+    a {
+      color: $col-foreground;
+      text-decoration: none;
+      &:hover {
+        color: $col-icon-bg;
+      }
+    }
+  }
+}

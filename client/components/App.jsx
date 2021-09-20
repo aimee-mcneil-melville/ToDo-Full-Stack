@@ -5,15 +5,15 @@ import AddSong from './AddSong'
 // import Auth from './Auth'
 import Friends from './Friends'
 import Media from './Media'
-import Nav from './Nav'
 import UpdateSong from './UpdateSong'
 import FriendSongs from './FriendSongs'
+import Header from './Header'
 
 function App () {
   return (
     <>
       <div className='app'>
-        <Route path='/' component={Nav} />
+        <Header />
         {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
         <Route path='/friends' component={Friends} />
         <Route path='/friends/:id' component={FriendSongs} />
