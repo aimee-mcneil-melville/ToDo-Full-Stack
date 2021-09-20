@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { signIn, isAuthenticated } from 'authenticare/client'
+import { signIn, isAuthenticated } from '../auth-utils'
 
 import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
@@ -22,7 +22,7 @@ function SignIn (props) {
     const { username, password } = form
     signIn({ username, password }, { baseUrl: baseUrl })
       .then(() => {
-        if (isAuthenticated) {
+        if (isAuthenticated()) {
           props.history.push('/friends')
         }
         return null
@@ -49,7 +49,7 @@ function SignIn (props) {
           name='username'
           placeholder="Your email address"
           value={form.username}
-          onChange={handleChange} required />
+          onChange={handleChange} />
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
@@ -57,7 +57,7 @@ function SignIn (props) {
           name='password'
           placeholder="Your password"
           value={form.password}
-          onChange={handleChange} required />
+          onChange={handleChange} />
 
         {/* <ColOne htmlFor='checkbox'>Show Password:</ColOne>
         <ColTwo type="checkbox" onClick={displayPassword()}></ColTwo> */}

@@ -26,6 +26,7 @@ test('a successful sign in', () => {
       expect(isAuthenticated).toHaveBeenCalledTimes(1)
     }
   }
+
   render(<SignIn history={history}/>)
   userEvent.type(screen.getByRole('textbox', { name: 'Email:' }), 'warhammer-slayer@gmail.com')
 
