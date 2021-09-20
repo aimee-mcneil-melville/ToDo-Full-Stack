@@ -1,8 +1,8 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Register from './Register'
-import { register, isAuthenticated } from '../auth-utils'
+import SignIn from './SignIn'
+import { signIn, isAuthenticated } from '../auth-utils'
 
 jest.mock('../auth-utils')
 
@@ -11,10 +11,10 @@ afterEach(() => {
   return jest.resetAllMocks()
 })
 
-test('a successful register', () => {
+test('a successful sign in', () => {
   expect.assertions(3)
 
-  register.mockImplementation(() => {
+  signIn.mockImplementation(() => {
     return Promise.resolve()
   })
   isAuthenticated.mockImplementation(() => true)
@@ -22,14 +22,11 @@ test('a successful register', () => {
   const history = {
     push: (path) => {
       expect(path).toBe('/friends')
-      expect(register).toHaveBeenCalledTimes(1)
+      expect(signIn).toHaveBeenCalledTimes(1)
       expect(isAuthenticated).toHaveBeenCalledTimes(1)
     }
   }
-  render(<Register history={history}/>)
-  userEvent.type(screen.getByRole('textbox', { name: 'First Name:' }), 'Jared')
-  userEvent.type(screen.getByRole('textbox', { name: 'Last Name:' }), 'Pinfold')
-  userEvent.type(screen.getByRole('textbox', { name: 'Nickname:' }), 'Daoloth69')
+  render(<SignIn history={history}/>)
   userEvent.type(screen.getByRole('textbox', { name: 'Email:' }), 'warhammer-slayer@gmail.com')
 
   userEvent.click(screen.getByRole('button'))

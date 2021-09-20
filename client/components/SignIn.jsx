@@ -56,7 +56,6 @@ function SignIn (props) {
           id='myInput'
           name='password'
           placeholder="Your password"
-          minlength="6"
           value={form.password}
           onChange={handleChange} required />
 
