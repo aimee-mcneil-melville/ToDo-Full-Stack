@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
-export default function EventItem ({ event, isAdmin }) {
+export default function EventItem ({ gardenid, event, isAdmin }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } = event
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
@@ -15,7 +15,7 @@ export default function EventItem ({ event, isAdmin }) {
 
   return (
     <article className='card-primary'>
-      <h2 className='card-title'><Link to={`/events/${id}`}>{title}</Link></h2>
+      <h2 className='card-title'><Link to={`/gardens/${gardenid}/events/${id}`}>{title}</Link></h2>
       <ul className='list-primary'>
         <li>{date}</li>
         {remainingVolunteers > 0
@@ -24,7 +24,7 @@ export default function EventItem ({ event, isAdmin }) {
         }
       </ul>
       {isAdmin
-        ? <Link to={`/events/${id}/edit`}>Edit Event</Link>
+        ? <Link to={`/gardens/${gardenid}/events/${id}/edit`}>Edit Event</Link>
         : <VolunteerButton
           eventId={id}
           volunteering={isVolunteering}

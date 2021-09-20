@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import EventItem from '../EventItem/EventItem'
 
-export default function Events ({ events }) {
+export default function Events ({ gardenid, events }) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   return (
@@ -12,7 +12,7 @@ export default function Events ({ events }) {
       <h1 className='events-title'>Events</h1>
       <section className='column-9 scroll'>
         {events.map((event) =>
-          <EventItem key={event.id} event={event} isAdmin={isAdmin} />
+          <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
         )}
       </section>
       <div>
