@@ -33,7 +33,7 @@ function deleteSong (id, userId, db = connection) {
     .del()
 }
 
-function editSong (songDetails, db = connection) {
+function updateSong (songDetails, db = connection) {
   const { id, user_id: userId, genre, media_name: mediaName, artist, link, comment } = songDetails
   const editSong = { genre, media_name: mediaName, artist, link, comment }
   return db('media_list')
@@ -56,5 +56,5 @@ module.exports = {
   getMedia,
   addSong,
   deleteSong,
-  editSong
+  updateSong
 }
