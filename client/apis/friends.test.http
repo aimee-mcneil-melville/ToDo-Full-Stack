@@ -1,0 +1,6 @@
+// GET friends api test
+# http://localhost:3000/api/v1/friends/10001
+
+// POST add friends api test
+
+http://localhost:3000/api/v1/friends/111A11
