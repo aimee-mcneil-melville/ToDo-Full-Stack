@@ -57,7 +57,9 @@ export default function EventForm (props) {
                 onChange={formik.handleChange}
                 value={formik.values.title}/>
 
-              <label className='form-label'>Date</label>
+              <label
+                htmlFor='date'
+                className='form-label'>Date</label>
               {formik.errors.date && formik.touched.date
                 ? (<p className="inputError">{formik.errors.date}</p>)
                 : null}
@@ -104,7 +106,7 @@ export default function EventForm (props) {
                 value={formik.values.description}
               />
             </div>
-            <button className='button-primary' type='submit'>{props.action}</button>
+            <button className='button-primary' type='submit'>Submit</button>
           </form>
         </article>
 
