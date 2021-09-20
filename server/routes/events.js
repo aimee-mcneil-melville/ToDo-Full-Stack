@@ -4,12 +4,13 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 
-const { sendEventNotifications } = require('../notifications/notificationHelper')
+const {
+  sendEventNotifications
+} = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
 module.exports = router
-
 
 // include getTokenDecoder() like function into post route that passes authorisation header? REQUIRES TOKEN + ADMIN
 router.post('/', checkJwt, (req, res) => {
@@ -60,15 +61,41 @@ router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon } = event
-      const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon }
+      const {
+        id,
+        gardenId,
+        gardenName,
+        gardenAddress,
+        volunteersNeeded,
+        title,
+        date,
+        description,
+        volunteers,
+        extraVolunteers,
+        lat,
+        lon
+      } = event
+      const eventResponse = {
+        id,
+        gardenId,
+        gardenName,
+        gardenAddress,
+        volunteersNeeded,
+        title,
+        date,
+        description,
+        lat,
+        lon
+      }
 
       if (req.user) {
         if (req.user.isAdmin) {
           eventResponse.volunteers = volunteers
           eventResponse.extraVolunteers = extraVolunteers
         } else {
-          eventResponse.isVolunteer = volunteers.some((v) => v.userId === req.user.id)
+          eventResponse.isVolunteer = volunteers.some(
+            (v) => v.userId === req.user.id
+          )
         }
       }
 

@@ -8,7 +8,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: true, slowMo: 500 })
+  browser = await chromium.launch({ headless: false, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -31,21 +31,27 @@ afterAll(async () => {
 test('Member can Login & Volunteer', async () => {
   await page.goto(serverUrl)
 
+  await Promise.all([page.waitForNavigation(), page.click('text=Sign in')])
+  expect(await page.url()).toContain(
+    'https://gardenz.au.auth0.com/u/login?state='
+  )
+
+  const testEmail = process.env.E2E_TEST_AUTH0_MEMBER_EMAIL
+  const testPassword = process.env.E2E_TEST_AUTH0_MEMBER_PASSWORD
+
+  await page.fill('#username', testEmail)
+  await page.fill('#password', testPassword)
+
   await Promise.all([
     page.waitForNavigation(),
-    page.click('text=Sign in')
+    page.click('.c132a5a03', { force: true })
   ])
-  expect(await page.url()).toBe(`${serverUrl}/signin`)
 
-  await page.fill('#username', 'member')
-  await page.fill('#password', 'member')
-
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click('button', { force: true })
-  ])
+  await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
   expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
 
-  await page.click('text=Volunteer')
-  expect(await page.content()).toMatch('Un-Volunteer')
+  await page.click('.button-secondary')
+  expect(await page.$eval('.button-secondary', (el) => el.innerText)).toMatch(
+    /Un-Volunteer/
+  )
 })

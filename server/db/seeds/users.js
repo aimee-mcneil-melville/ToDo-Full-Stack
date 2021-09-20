@@ -18,13 +18,23 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          garden_id: process.env.E2E_TEST_GARDEN_ID,
-          is_admin: process.env.E2E_TEST_IS_ADMIN,
-          username: process.env.E2E_TEST_USERNAME,
-          first_name: process.env.E2E_TEST_FIRST_NAME,
-          last_name: process.env.E2E_TEST_LAST_NAME,
-          email: process.env.E2E_TEST_AUTH0_USER_EMAIL,
-          auth0_id: process.env.E2E_TEST_AUTH0_USER_ID
+          garden_id: process.env.E2E_TEST_ADMIN_GARDEN_ID,
+          is_admin: process.env.E2E_TEST_ADMIN_IS_ADMIN,
+          username: process.env.E2E_TEST_ADMIN_USERNAME,
+          first_name: process.env.E2E_TEST_ADMIN_FIRST_NAME,
+          last_name: process.env.E2E_TEST_ADMIN_LAST_NAME,
+          email: process.env.E2E_TEST_AUTH0_ADMIN_EMAIL,
+          auth0_id: process.env.E2E_TEST_AUTH0_ADMIN_ID
+        },
+        {
+          id: 3,
+          garden_id: process.env.E2E_TEST_MEMBER_GARDEN_ID,
+          is_admin: process.env.E2E_TEST_MEMBER_IS_ADMIN,
+          username: process.env.E2E_TEST_MEMBER_USERNAME,
+          first_name: process.env.E2E_TEST_MEMBER_FIRST_NAME,
+          last_name: process.env.E2E_TEST_MEMBER_LAST_NAME,
+          email: process.env.E2E_TEST_AUTH0_MEMBER_EMAIL,
+          auth0_id: process.env.E2E_TEST_AUTH0_MEMBER_ID
         }
       ])
     )

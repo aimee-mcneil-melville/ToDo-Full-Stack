@@ -11,7 +11,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: true, slowMo: 500 })
+  browser = await chromium.launch({ headless: false, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -43,8 +43,8 @@ test('Admin can login & add event', async () => {
     'https://gardenz.au.auth0.com/u/login?state='
   )
 
-  const testEmail = process.env.E2E_TEST_AUTH0_USER_EMAIL
-  const testPassword = process.env.E2E_TEST_AUTH0_USER_PASSWORD
+  const testEmail = process.env.E2E_TEST_AUTH0_ADMIN_EMAIL
+  const testPassword = process.env.E2E_TEST_AUTH0_ADMIN_PASSWORD
 
   await page.fill('#username', testEmail)
   await page.fill('#password', testPassword)
