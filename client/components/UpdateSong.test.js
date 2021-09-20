@@ -17,3 +17,16 @@ test('Display message when song Id is not valid', () => {
       return null
     })
 })
+
+test('Display artist name', () => {
+  renderWithRedux(<UpdateSong/>,
+    {
+      initialEntries: ['/songs/update/2'],
+      route: '/songs/update/:id'
+    })
+  return screen.findByDisplayValue('Tigercub')
+    .then(value => {
+      expect(value).toBeVisible()
+      return null
+    })
+})
