@@ -5,9 +5,9 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getEvent } from './eventHelper'
 
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
+import EventDetail from '../../components/events/EventDetail/EventDetail'
 
 export default function Event () {
   const { id } = useParams()
@@ -15,7 +15,6 @@ export default function Event () {
 
   const [event, setEvent] = useState({})
 
-  const [volunteering, setVolunteering] = useState(false)
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Event () {
     getEvent(id)
       .then((event) => {
         setEvent(event)
-        setVolunteering(event.isVolunteer)
         return null
       })
   }, [])
@@ -40,7 +38,7 @@ export default function Event () {
     })
   }
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
+  const { volunteers, extraVolunteers } = event
 
   return (
     <>
@@ -56,35 +54,13 @@ export default function Event () {
             />
             <AddVolunteerForm
               addExtraVolunteer={addExtraVolunteer}
+              id={id}
             />
           </section>
         </>
         : null
       }
-      <section className='card-secondary column-6'>
-        <article className='card-inner'>
-          <button className='card-close-button'>close</button>
-          <h1 className='card-title'>{title}</h1>
-          <ul className='card-list'>
-            <li>{gardenName}</li>
-            <li>{gardenAddress}</li>
-            <li>{date}</li>
-            <li>Volunteers Needed: {volunteersNeeded}</li>
-            <li>{description}</li>
-          </ul>
-          {!isAdmin
-            ? <VolunteerButton
-              eventId={id}
-              volunteering={volunteering}
-              setVolunteering={setVolunteering}
-            />
-            : <>
-              <button onClick={redirectToEdit} className='button-secondary'>Edit Event</button>
-              <button className='button-secondary'>Event Admin</button>
-            </>
-          }
-        </article>
-      </section>
+      <EventDetail id={id} isAdmin={isAdmin} />
     </>
   )
 }

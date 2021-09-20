@@ -4,18 +4,18 @@ import userEvent from '@testing-library/user-event'
 
 import EventForm from './EventForm'
 
-// describe('event form field', () => {
-//   it('updates correctly on user input', () => {
-//     render(<EventForm />)
-//     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
-//     const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
+describe('event form field', () => {
+  it('updates correctly on user input', () => {
+    render(<EventForm />)
+    const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
+    const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
 
-//     userEvent.type(titleInput, 'test title')
-//     userEvent.type(descriptionInput, 'cool event, yeiyah!')
-//     expect(titleInput).toHaveValue('test title')
-//     expect(descriptionInput).toHaveTextContent(/yeiyah/)
-//   })
-// })
+    userEvent.type(titleInput, 'test title')
+    userEvent.type(descriptionInput, 'cool event, yeiyah!')
+    expect(titleInput).toHaveValue('test title')
+    expect(descriptionInput).toHaveTextContent(/yeiyah/)
+  })
+})
 
 describe('event preview', () => {
   it('displays inputted data correctly', () => {

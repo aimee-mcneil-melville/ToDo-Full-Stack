@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { addVolunteer } from './AddVolunteerFormHelper'
 
-export default function AddVolunteerForm ({ addExtraVolunteer }) {
-  const { id } = useParams()
-
+export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
   const [form, setForm] = useState({
     eventId: id,
     firstName: '',
@@ -39,6 +36,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
             value={form.firstName}
             onChange={handleChange}
             placeholder='First name'
+            aria-label="firstName"
             type='text'
           />
         </div>
@@ -51,6 +49,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer }) {
             value={form.lastName}
             onChange={handleChange}
             placeholder='Last name'
+            aria-label="lastName"
             type='text'
           />
         </div>
