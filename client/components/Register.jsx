@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { register, isAuthenticated } from 'authenticare/client'
+import { register, isAuthenticated } from '../auth-utils'
 
 import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
@@ -10,7 +10,7 @@ function Register (props) {
     lastName: '',
     nickname: '',
     username: '',
-    public: true,
+    isPublic: true,
     password: ''
   })
 
@@ -23,8 +23,8 @@ function Register (props) {
   }
 
   function handleClick () {
-    const { firstName, lastName, nickname, username, password } = form
-    register({ firstName, lastName, nickname, username, password }, { baseUrl: baseUrl })
+    const { firstName, lastName, nickname, username, password, isPublic } = form
+    register({ firstName, lastName, nickname, username, password, isPublic }, { baseUrl: baseUrl })
       .then(() => {
         if (isAuthenticated()) {
           props.history.push('/friends')
@@ -70,14 +70,7 @@ function Register (props) {
           name='username'
           placeholder="warhammer-slayer@gmail.com"
           value={form.username}
-          onChange={handleChange} />
-
-        {/* <ColOne htmlFor='public'></ColOne>
-        <ColTwo type='hidden'
-          id='public'
-          name='public'
-          value={form.public}
-          onChange={handleChange} /> */}
+          onChange={handleChange} required/>
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
@@ -86,6 +79,13 @@ function Register (props) {
           placeholder="A minimum of 6 characters"
           minlength="6"
           value={form.password}
+          onChange={handleChange} />
+
+        <ColOne htmlFor='public'></ColOne>
+        <ColTwo type='hidden'
+          id='public'
+          name='public'
+          value={form.isPublic}
           onChange={handleChange} />
 
         <Button type='button' onClick={handleClick}>Register</Button>

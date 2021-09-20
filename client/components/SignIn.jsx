@@ -49,7 +49,7 @@ function SignIn (props) {
           name='username'
           placeholder="Your email address"
           value={form.username}
-          onChange={handleChange} />
+          onChange={handleChange} required />
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
@@ -58,7 +58,7 @@ function SignIn (props) {
           placeholder="Your password"
           minlength="6"
           value={form.password}
-          onChange={handleChange} />
+          onChange={handleChange} required />
 
         {/* <ColOne htmlFor='checkbox'>Show Password:</ColOne>
         <ColTwo type="checkbox" onClick={displayPassword()}></ColTwo> */}

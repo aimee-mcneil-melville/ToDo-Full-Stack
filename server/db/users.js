@@ -25,7 +25,7 @@ function getUserByName (username, db = connection) {
 }
 
 function createUser (user, db = connection) {
-  const { username, password } = user
+  const { username, password, nickname, firstName, lastName, isPublic, inviteCode } = user
   return userExists(username, db)
     .then(exists => {
       if (exists) {
@@ -35,6 +35,6 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(password))
     .then(passwordHash => {
-      return db('users').insert({ username, hash: passwordHash })
+      return db('users').insert({ username, hash: passwordHash, nickname, first_name: firstName, last_name: lastName, public: isPublic, invite_code: inviteCode })
     })
 }
