@@ -14,7 +14,7 @@ const mockNonAdminAuthHeader = {
   Authorization: `Bearer ${getMockToken()}`
 }
 
-const testAuthAdminHeader = {
+const mockAuthAdminHeader = {
   Authorization: `Bearer ${getAdminToken()}`
 }
 
@@ -139,7 +139,7 @@ describe('POST /api/v1/volunteers/extras', () => {
     db.addExtraVolunteer.mockImplementation(() => Promise.reject(Error))
     return request(server)
       .post('/api/v1/volunteers/extras')
-      .set(testAuthAdminHeader)
+      .set(mockAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
       .then(res => {
         expect(res.status).toBe(500)
@@ -152,7 +152,7 @@ describe('POST /api/v1/volunteers/extras', () => {
     db.addExtraVolunteer.mockImplementation(() => Promise.resolve([4]))
     return request(server)
       .post('/api/v1/volunteers/extras')
-      .set(testAuthAdminHeader)
+      .set(mockAuthAdminHeader)
       .send({ eventId: 1, firstName: 'Grace', lastName: 'Malae' })
       .then(res => {
         expect(res.status).toBe(201)
@@ -199,7 +199,7 @@ describe('PATCH /api/v1/volunteers', () => {
     return request(server)
       .patch('/api/v1/volunteers')
       .send({ hasAttended: true, userId: 1, eventId: 1 })
-      .set(testAuthAdminHeader)
+      .set(mockAuthAdminHeader)
       .then(res => {
         expect(res.status).toEqual(200)
         return null
@@ -210,7 +210,7 @@ describe('PATCH /api/v1/volunteers', () => {
     db.setVolunteerAttendance.mockImplementation(() => Promise.reject(new Error('Db operation error')))
     return request(server)
       .patch('/api/v1/volunteers')
-      .set(testAuthAdminHeader)
+      .set(mockAuthAdminHeader)
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.status).toEqual(500)
