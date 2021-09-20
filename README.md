@@ -41,4 +41,6 @@ This repo includes:
 1. Copy the **Client ID** of your application in Auth0.com and paste it in the `client` in `index.js`.
 
 ### Server
-1. copy client id and secret to the env file.
+1. In Auth0.com, create a new API and give a it name, for example `https://myapp/api`. This identifier will used as the `audience`.
+1. Go to `Permissions`, add the custom permissions that reflects your needs. Users who are assigned roles with these permissions will be able to access your back-end endpoints.
+For example, if have a REST API endpoint that creates *event booking* and you want it to be accessible only by users with a specific permission, you can add `create:booking` permssion in Auth0.
