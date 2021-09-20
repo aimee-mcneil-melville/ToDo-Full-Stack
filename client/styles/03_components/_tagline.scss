@@ -1,0 +1,38 @@
+.tagline {
+  height: calc(100vh - 88px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__text-wrapper {
+    margin-bottom: 32px;
+  }
+
+  &__text {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    top: 36px;
+    opacity: 0;
+    transition: all 0.8s;
+    transition-delay: 0.4s;
+    
+    .tagline--loaded  & {
+      top: 0;
+      opacity: 1;
+    }
+
+    &:nth-of-type(2) {
+      transition-delay: 0.8s;
+    }
+
+    &:nth-of-type(3) {
+      transition-delay: 1.2s;
+    }
+  }
+
+  .btn-group {
+    margin-bottom: $header-height / 2;
+  }
+}

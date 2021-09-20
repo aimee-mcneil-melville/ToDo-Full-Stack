@@ -8,6 +8,7 @@ import Media from './Media'
 import UpdateSong from './UpdateSong'
 import FriendSongs from './FriendSongs'
 import Header from './Header'
+import Tagline from './Tagline'
 
 function App () {
   return (
@@ -20,6 +21,7 @@ function App () {
         <Route path='/media/:id' component={Media} />
         <Route path='/media/update/:songId' component={UpdateSong} />
         <Route path='/media/add' component={AddSong} />
+        <Route exact path='/' component={Tagline} />
 
       </div>
     </>
