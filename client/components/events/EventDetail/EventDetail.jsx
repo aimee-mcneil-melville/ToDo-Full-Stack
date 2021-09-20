@@ -27,7 +27,7 @@ function EventDetail (props) {
   return (
     <section className='card-secondary column-6'>
       <article className='card-inner'>
-        <Link onClick={() => history.goBack()} className='card-close-button'>close</Link>
+        <Link onClick={() => history.goBack()} className='card-close-button'>Close</Link>
         <h1 className='card-title'>{event.title}</h1>
         <ul className='card-list'>
           <li>{event.gardenName}</li>
