@@ -11,11 +11,13 @@ function UpdateSong (props) {
     { id: 3, user_id: 10001, genre: 'Indie Rock', mediaName: 'High Strings', artist: 'Noise Punk', link: 'https://open.spotify.com/track/38HaKBYwrqnhrjf9sqJbfc?si=e9bc96d2247c4347' },
     { id: 4, user_id: 10001, genre: 'Funky House', mediaName: 'I look to you (feat. Kimbra)', artist: 'Miami Horror', link: 'https://open.spotify.com/track/0L0GeZL4lyx34nYDzsNuG4?si=a89fdafe24d74899' }
   ]
+
   const { id } = useParams()
 
   const song = userSongs.find(song => song.id === Number(id))
 
-  const { mediaName, artist, genre, comment, link } = song
+  const { mediaName, artist, genre, comment, link } = song || {}
+
   const [editForm, setEditForm] = useState({
     mediaName,
     artist,
@@ -43,7 +45,7 @@ function UpdateSong (props) {
       <h1>Edit song</h1>
       <p>Fill in the details below to add a new song to your list</p>
       {!song &&
-      <p>Song doesn&apos;t exist.</p>
+      <p>Song does not exist.</p>
       }
       {song &&
       <form onSubmit={handleSubmitEditSong}>
