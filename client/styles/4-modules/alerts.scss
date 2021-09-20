@@ -1,16 +1,6 @@
 @use '../1-helpers/vars';
 @use '../1-helpers/functions';
 
-// .alert {
-//   background-color: rgb(249, 197, 197);
-//   border: 1px solid #ccc;
-//   padding: 10px;
-//   color: vars.$red;
-//   position:inherit;
-//   width:600px;
-//   height:250px;
-//   overflow-y: auto;
-// }
 
 .alert-container {
   background-color:none;
@@ -56,16 +46,16 @@ width: inherit;
 // }
 
 // .success {
-//   @extend %alert;
+//   @extend .alert;
 //   border-color: green;
 // }
 
 // .error {
-//   @extend %alert;
+//   @extend .alert;
 //   border-color: red;
 // }
 
 // .warning {
-//   @extend %alert;
+//   @extend .alert;
 //   border-color: yellow;
 // }
