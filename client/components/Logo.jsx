@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const Logo = (props) => {
   return (
     <>
-      <h1 className="logo">
+      <div className="logo">
         <Link className='logo__link' to='/'>rcmndr.</Link>
-      </h1>
+      </div>
     </>
   )
 }

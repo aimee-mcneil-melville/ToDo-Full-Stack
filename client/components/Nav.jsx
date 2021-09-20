@@ -5,14 +5,13 @@ const inviteCode = '111A11'
 
 function Nav () {
   return (
-    <>
-      <p>InviteCode: {inviteCode}</p>
-      <Link to={`/media/${id}`}>My tracks</Link><br />
-      <Link to={'/friends'}>My friends</Link><br />
-      {/* <Link to={'/profile'}>Edit my profile</Link><br /> */}
-      <p>My code: {inviteCode}</p>
-      <p>Log out: </p>
-    </>
+    <ul className='main-nav'>
+      <li className='main-nav__item'><Link to={`/songs/${id}`}>My tracks</Link></li>
+      <li className='main-nav__item'><Link to={'/friends'}>My friends</Link></li>
+      <li className='main-nav__item'><Link to={'/profile'}>Edit my profile</Link></li>
+      <li className='main-nav__item'>My code: {inviteCode}</li>
+      <li className='main-nav__item'>Log out</li>
+    </ul>
   )
 }
 
