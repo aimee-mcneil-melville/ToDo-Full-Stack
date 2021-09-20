@@ -27,7 +27,7 @@ test('a successful sign in', () => {
 
   render(<SignIn history={history}/>)
   userEvent.type(screen.getByRole('textbox', { name: 'Email:' }), 'warhammer-slayer@gmail.com')
-  userEvent.type(screen.getByLabelText(/password/i))
+  // userEvent.type(screen.getByLabelText(/password/i))
 
   userEvent.click(screen.getByRole('button'))
   expect.assertions(3)
