@@ -53,7 +53,7 @@ function SignIn (props) {
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
-          id='myInput'
+          id='password'
           name='password'
           placeholder="Your password"
           value={form.password}
