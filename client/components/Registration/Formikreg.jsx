@@ -1,93 +1,76 @@
 import React from 'react'
 import { useFormik } from 'formik'
+import { useHistory } from 'react-router-dom'
+import { registerUser } from './registerHelper'
+import { useAuth0 } from '@auth0/auth0-react'
 import * as Yup from 'yup'
-import moment from 'moment'
 
-const eventSchema = Yup.object({
-  title: Yup.string()
+const registerSchema = Yup.object({
+  firstName: Yup.string()
     .required('Required'),
-  date: Yup.date()
+  lastName: Yup.date()
     .required('Required'),
-  volunteersNeeded: Yup.number()
-    .required('Required'),
-  description: Yup.string()
+  userName: Yup.number()
     .required('Required')
 })
 
 export default function EventForm (props) {
+  const authUser = useAuth0().user
+  const history = useHistory()
+
   const formik = useFormik({
     initialValues: {
-      title: '',
-      date: '',
-      volunteersNeeded: '',
-      description: ''
+      firstName: '',
+      lastName: '',
+      username: '',
+      gardenId: null
     },
     onSubmit: values => {
-      props.submitEvent({ ...values, date: moment(values.date).format('L') })
-      console.log(moment(values.date).format('L'))
+      registerUser(values, authUser, history.push)
     },
-    validationSchema: eventSchema
+    validationSchema: registerSchema
   })
-
-  // function dateFormater (date) {
-  //   // input: yyyy-MM-dd
-  //   // output: dd-MM-yyyy
-  //   return `${date[8]}${date[9]}/${date[5]}${date[6]}/${date[0]}${date[1]}${date[2]}${date[3]}`
-  // }
 
   return (
     <>
-      <div className='flex-container'>
-        <article className='column-6'>
-          <h2> {props.action} </h2>
+        <section className='flex-container'>
 
-          <form className='form-container'onSubmit={formik.handleSubmit}>
+          <form className='column-6' onSubmit={formik.handleSubmit}>
             <div className="field">
-              <label
-                htmlFor='title'
-                className='form-label'>Event Title
-              </label>
-              {formik.errors.title && formik.touched.title
-                ? (<p className="inputError">{formik.errors.title}</p>)
+            <label htmlFor='firstName' className='form-label'>First Name</label>
+              {formik.errors.firstName && formik.touched.firstName
+                ? (<p className="inputError">{formik.errors.firstName}</p>)
                 : null}
               <input
                 className='form-input'
-                id='title'
-                name='title'
-                type='text'
-                placeholder='event title'
+                id='firstName'
+                name='firstName'
+                placeholder='First Name'
                 onChange={formik.handleChange}
-                value={formik.values.title}/>
+                value={formik.values.firstName}
+                />
 
-              <label
-                htmlFor='date'
-                className='form-label'>Date</label>
-              {formik.errors.date && formik.touched.date
-                ? (<p className="inputError">{formik.errors.date}</p>)
+              <label htmlFor='lastName' className='form-label'>Last Name</label>
+              {formik.errors.lastName && formik.touched.lastName
+                ? (<p className="inputError">{formik.errors.lastName}</p>)
                 : null}
               <input
                 className='form-input'
-                id='date'
-                name='date'
-                type='date'
-                placeholder='date'
+                id='lastName'
+            name='lastName'
+            placeholder='Last Name'
                 onChange={formik.handleChange}
-                value={formik.values.date} />
-
-              <label
-                htmlFor='volunteersNeeded'
-                className='form-label'
-              >Volunteers Needed</label>
-              {formik.errors.volunteersNeeded && formik.touched.volunteersNeeded
-                ? (<p className="inputError">{formik.errors.volunteersNeeded}</p>)
+                value={formik.values.lastName} 
+                />
+              <label htmlFor='username' className='form-label'>Username</label>
+              {formik.errors.username && formik.touched.username
+                ? (<p className="inputError">{formik.errors.username}</p>)
                 : null}
               <input
-                className='form-input'
-                id='volunteersNeeded'
-                name='volunteersNeeded'
-                type='number'
-                placeholder='volunteers needed'
-                min='0'
+               className='form-input'
+               id='username'
+               name='username'
+               placeholder='Username'
                 onChange={formik.handleChange}
                 value={formik.values.volunteersNeeded}
               />

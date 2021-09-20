@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
+import * as Yup from 'yup'
+
+const eventSchema = Yup.object({
+  title: Yup.string()
+    .required('Required'),
+  date: Yup.date()
+    .required('Required'),
+  volunteersNeeded: Yup.number()
+    .required('Required'),
+  description: Yup.string()
+    .required('Required')
+})
 
 export function Register () {
   const authUser = useAuth0().user
 
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    gardenId: null
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      username: '',
+      gardenId: null
+    }
   })
   const history = useHistory()
 
