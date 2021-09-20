@@ -1,0 +1,20 @@
+.tagline {
+  height: calc(100vh - 88px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__text-wrapper {
+    margin-bottom: 32px;
+  }
+
+  &__text {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .btn-group {
+    margin-bottom: $header-height / 2;
+  }
+}
