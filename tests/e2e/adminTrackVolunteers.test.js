@@ -48,13 +48,13 @@ test('Admin can track volunteer', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.c132a5a03', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
 
   expect(await page.url()).toBe(`${serverUrl}/gardens/1`)
-  expect(
-    await page.$eval('.card-text-container', (el) => el.textContent)
-  ).toMatch('8/10 Volunteers')
+  expect(await page.$eval('ul', (el) => el.textContent)).toMatch(
+    '15 of 16 volunteers still needed'
+  )
 })

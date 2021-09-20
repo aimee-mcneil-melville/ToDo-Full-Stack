@@ -51,7 +51,7 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.c132a5a03', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
 
   await page.waitForSelector('text=Log out')
@@ -83,5 +83,7 @@ test('Admin can login & add event', async () => {
     page.click('.button-primary', { force: true })
   ])
 
-  expect(await page.content()).toMatch(/Christmas Gardening!/)
+  expect(await page.$eval('section', (el) => el.innerText)).toMatch(
+    /Christmas Gardening!/
+  )
 })

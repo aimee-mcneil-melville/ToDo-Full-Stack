@@ -44,7 +44,7 @@ test('Member can Login & Volunteer', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.c132a5a03', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
