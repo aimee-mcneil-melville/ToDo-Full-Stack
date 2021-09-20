@@ -9,7 +9,6 @@ function Friends (props) {
   useEffect(() => {
     fetchFriends(props.dispatch, id)
   }, [])
-  console.log(props.friends)
 
   return (
     <>

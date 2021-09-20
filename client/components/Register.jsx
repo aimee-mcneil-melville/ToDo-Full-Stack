@@ -5,13 +5,12 @@ import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 function Register (props) {
-  console.log('entered register page')
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
     nickname: '',
     username: '',
-    // public: true,
+    public: true,
     password: ''
   })
 
@@ -28,7 +27,7 @@ function Register (props) {
     register({ firstName, lastName, nickname, username, password }, { baseUrl: baseUrl })
       .then(() => {
         if (isAuthenticated()) {
-          props.history.push('/')
+          props.history.push('/friends')
         }
         return null
       })
@@ -45,6 +44,7 @@ function Register (props) {
         <ColTwo type='text'
           id='firstName'
           name='firstName'
+          placeholder="Jared"
           value={form.firstName}
           onChange={handleChange} />
 
@@ -52,6 +52,7 @@ function Register (props) {
         <ColTwo type='text'
           id='lastName'
           name='lastName'
+          placeholder="Pinfold"
           value={form.lastName}
           onChange={handleChange} />
 
@@ -59,6 +60,7 @@ function Register (props) {
         <ColTwo type='nickname'
           id='nickname'
           name='nickname'
+          placeholder="How your name will appear"
           value={form.nickname}
           onChange={handleChange} />
 
@@ -66,13 +68,23 @@ function Register (props) {
         <ColTwo type='username'
           id='username'
           name='username'
+          placeholder="warhammer-slayer@gmail.com"
           value={form.username}
           onChange={handleChange} />
+
+        {/* <ColOne htmlFor='public'></ColOne>
+        <ColTwo type='hidden'
+          id='public'
+          name='public'
+          value={form.public}
+          onChange={handleChange} /> */}
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
           id='password'
           name='password'
+          placeholder="A minimum of 6 characters"
+          minlength="6"
           value={form.password}
           onChange={handleChange} />
 

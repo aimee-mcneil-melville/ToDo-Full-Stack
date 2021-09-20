@@ -23,12 +23,21 @@ function SignIn (props) {
     signIn({ username, password }, { baseUrl: baseUrl })
       .then(() => {
         if (isAuthenticated) {
-          props.history.push('/')
+          props.history.push('/friends')
         }
         return null
       })
       .catch(err => console.error(err))
   }
+
+  // function displayPassword () {
+  //   var x = document.getElementById('myInput')
+  //   if (x.type === 'password') {
+  //     x.type = 'text'
+  //   } else {
+  //     x.type = 'password'
+  //   }
+  // }
 
   return (
     <>
@@ -38,15 +47,21 @@ function SignIn (props) {
         <ColTwo type='text'
           id='username'
           name='username'
+          placeholder="Your email address"
           value={form.username}
           onChange={handleChange} />
 
         <ColOne htmlFor='password'>Password:</ColOne>
         <ColTwo type='password'
-          id='password'
+          id='myInput'
           name='password'
+          placeholder="Your password"
+          minlength="6"
           value={form.password}
           onChange={handleChange} />
+
+        {/* <ColOne htmlFor='checkbox'>Show Password:</ColOne>
+        <ColTwo type="checkbox" onClick={displayPassword()}></ColTwo> */}
 
         <Button type='button' onClick={handleClick}>Sign in</Button>
       </GridForm>
