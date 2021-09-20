@@ -20,6 +20,7 @@ export async function cacheUser (useAuth0) {
     try {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
+      debugger
       const { id, firstName, lastName, email, username, isAdmin, gardenId } = res.body
       saveUser({ id, firstName, lastName, email, username, isAdmin, gardenId, token })
     } catch (err) {
