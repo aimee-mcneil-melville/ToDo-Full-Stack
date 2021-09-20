@@ -50,9 +50,7 @@ Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and
 You'll be redirected to Gardenz to enter additional information.
 
 #### Admin Role
-Ask one of the facilitators to give you the Admin role, local for gardenz or global for the entire Auth0 tenant.
-
-
+Create an account in Auth0.com, register with your personal email and ask one of the facilitators to give access admin role (global).
 
 ## User stories (from highest priority)
 
