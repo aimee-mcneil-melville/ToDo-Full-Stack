@@ -1,22 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { logOff } from '../auth-utils'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfAuthenticated } from './Authenticated'
 const id = 10001
 const inviteCode = '111A11'
 
 function Nav () {
   return (
-    <>
-      <p>InviteCode: {inviteCode}</p>
-      <Link to={`/media/${id}`}>My tracks</Link><br />
-      <Link to={'/friends'}>My friends</Link><br />
-      {/* <Link to={'/profile'}>Edit my profile</Link><br /> */}
-      <p>My code: {inviteCode}</p>
+    <ul className='main-nav'>
+      <li className='main-nav__item'><Link to={`/songs/${id}`}>My tracks</Link></li>
+      <li className='main-nav__item'><Link to='/friends'>My friends</Link></li>
+      <li className='main-nav__item'><Link to='/profile'>Edit my profile</Link></li>
+      <li className='main-nav__item'>My code: {inviteCode}</li>
       <IfAuthenticated>
-        <Link to={'/'} onClick={logOff}>Log Out</Link>
+        <li className='main-nav__item'><Link to='/' onClick={logOff}>Log Out</Link></li>
       </IfAuthenticated>
-    </>
+    </ul>
+
   )
 }
 

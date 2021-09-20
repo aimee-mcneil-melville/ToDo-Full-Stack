@@ -1,0 +1,25 @@
+.app-header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $col-background;
+  z-index: 1;
+  padding: 8px 16px;
+
+  &__nav-toggle {
+    z-index: 1;
+    font-size: 36px;
+    font-weight: 900;
+    background-color: transparent;
+    border: 0;
+    color: $col-icon-bg;
+    padding: 0;
+  }
+
+  .logo {
+    width: 100%;
+    margin: 0;
+  }
+}
