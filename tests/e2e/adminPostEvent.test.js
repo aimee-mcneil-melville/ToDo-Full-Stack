@@ -11,7 +11,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false, slowMo: 500 })
+  browser = await chromium.launch({ headless: true, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
