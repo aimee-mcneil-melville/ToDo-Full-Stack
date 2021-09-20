@@ -23,23 +23,17 @@ export default function EventForm (props) {
       description: ''
     },
     onSubmit: values => {
+      console.log('hello')
       props.submitEvent({ ...values, date: moment(values.date).format('L') })
-      console.log(moment(values.date).format('L'))
     },
     validationSchema: eventSchema
   })
-
-  // function dateFormater (date) {
-  //   // input: yyyy-MM-dd
-  //   // output: dd-MM-yyyy
-  //   return `${date[8]}${date[9]}/${date[5]}${date[6]}/${date[0]}${date[1]}${date[2]}${date[3]}`
-  // }
 
   return (
     <>
       <div className='flex-container'>
         <article className='column-6'>
-          <h2> {props.action} </h2>
+          <h2>{props.action}</h2>
 
           <form className='form-container'onSubmit={formik.handleSubmit}>
             <div className="field">
