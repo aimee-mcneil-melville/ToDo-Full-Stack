@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import getUserMedia from '../actions'
+import { Link } from 'react-router-dom'
+import Icon from './Icon'
+// import getUserSongs from '../actions'
 
-function Media (props) {
+function Songs (props) {
   // const { nickname } = props.user
   const nickname = 'superman'
 
   useEffect(() => {
-    // props.dispatch(getUserMedia())
+    // props.dispatch(getUserSongs())
   }, [])
 
   return (
@@ -15,15 +17,17 @@ function Media (props) {
       <h1>{nickname}</h1>
       <p>These are the tracks you have been recommended</p>
 
-      {props.userMedia.map(media => {
-        const { id, mediaName, artist, link } = media
+      {props.userSongs.map(song => {
+        const { id, mediaName, artist, link } = song
         return (
           <li key={id}>
             {link}
             {mediaName}
             {artist}
-            <button>edit</button>
-            <button>X</button>
+            <Link to={`/songs/update/${id}`}>
+              <Icon style='edit'/>
+            </Link>
+            <Icon style='delete'/>
           </li>
         )
       }
@@ -36,9 +40,9 @@ function Media (props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    userMedia: globalState.userMedia,
+    userSongs: globalState.userSongs,
     user: globalState.user
   }
 }
 
-export default connect(mapStateToProps)(Media)
+export default connect(mapStateToProps)(Songs)
