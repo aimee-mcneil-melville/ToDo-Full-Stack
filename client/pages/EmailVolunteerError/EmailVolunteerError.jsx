@@ -48,7 +48,7 @@ export default function EmailVolunteerError () {
       <p>You tried to sign up for <b>{event.title}</b> at <b>{event.gardenName}</b>... but something went wrong! 😱</p>
 
       <IfAuthenticated>
-        <p>Don't stress, just click this button ⬇️⬇️ </p>
+        <p>Don&apos;t stress, just click this button ⬇️⬇️ </p>
         <VolunteerButton setVolunteering={redirectToEvent} eventId={eventId} volunteering={false}/>
 
         {(!checkUserIdsMatch(userId, browserUserId)) &&
@@ -57,7 +57,7 @@ export default function EmailVolunteerError () {
 
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the 'Volunteer' button</p>
+        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the &apos;Volunteer&apos; button</p>
       </IfNotAuthenticated>
     </>
   )

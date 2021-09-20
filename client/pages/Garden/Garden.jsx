@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import Map from '../../components/Map/Map'
 import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
-import EventDetailCard from '../../components/events/EventDetailCard/EventDetailCard'
 import BarGraph from '../../components/dataVis/BarGraph'
 
 export default function Garden () {
@@ -28,14 +27,11 @@ export default function Garden () {
         {isAdmin ? <BarGraph events={events}/> : null}
         <Events events={events} />
       </div>
-      {isAdmin
-        ? <EventDetailCard />
-        : <Map
-          coordinates={[{ lat: lat, lon: lon }]}
-          addresses={[address]}
-          names={[name]}
-        />
-      }
+      <Map
+        coordinates={[{ lat: lat, lon: lon }]}
+        addresses={[address]}
+        names={[name]}
+      />
     </section>
   )
 }

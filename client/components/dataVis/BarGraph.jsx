@@ -7,7 +7,8 @@ import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { timeParse, timeFormat } from 'd3-time-format'
 const verticalMargin = 120
-
+let index = 0
+let leftThing = 40
 // accessors
 
 export default function BarGraph ({ events }) {
@@ -22,12 +23,14 @@ export default function BarGraph ({ events }) {
   const getSortedDates = (data) => data.sort()
   const getVolunteersNeeded = (d) => Number(d.totalVolunteers)
   const data = events
-  const margin = { top: 40, right: 0, bottom: 40, left: 0 }
-  const parseDate = timeParse('%Y-%m-%d')
-  const format = timeFormat('%b %d')
+  const margin = { top: 60, right: 0, bottom: 40, left: 0 }
+  // const parseDate = timeParse('%Y-%m-%d')
+  // const format = timeFormat('%b %d')
   const formatDate = (d) => {
-    console.log(d)
-    return format(parseDate(d.date))
+    console.log(index)
+    index++
+    leftThing += 40
+    return d
   }
   // console.log(formatDate('2021-09-2'))
   // scales, memoize for performance
@@ -42,7 +45,7 @@ export default function BarGraph ({ events }) {
     [xMax, data]
   )
   const dateScale = scaleBand({
-    domain: [getSortedDates(data.map(getDates))],
+    domain: getSortedDates(data.map(d => d.date)),
     nice: true
   })
   const yScale = useMemo(
@@ -54,7 +57,7 @@ export default function BarGraph ({ events }) {
       }),
     [yMax, data]
   )
-  console.log(data)
+  // console.log(data)
   return width < 10 ? null : (
     <>
       <svg key='barChart' width={width} height={height}>
@@ -85,25 +88,21 @@ export default function BarGraph ({ events }) {
             )
           })}
         </Group>
-        {data.map(d => {
-          const dates = getDates(d)
-          console.log(d)
-          return (
-            <AxisBottom
-              key = {d.id}
-              top={yMax + margin.top }
-              scale={dateScale}
-              tickFormat= {getDates}
-              stroke= '#e5fd3d'
-              tickStroke='#e5fd3d'
-              tickLabelProps={() => ({
-                fill: '#e5fd3d',
-                fontSize: 11,
-                textAnchor: 'middle'
-              })}
-            />
-          )
-        })}
+        <AxisBottom
+          // label="string"
+          top={yMax + margin.top}
+          left= {leftThing + 60}
+          scale={dateScale}
+          tickFormat= {formatDate}
+          stroke= '#e5fd3d'
+          tickStroke='#e5fd3d'
+          tickLabelProps={() => ({
+            // fill: '#e5fd3d',
+            fontSize: 11,
+            textAnchor: 'middle'
+          })}
+        />
+
       </svg>
     </>
   )
