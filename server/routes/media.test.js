@@ -15,7 +15,7 @@ test('GET /id return all media', () => {
     .get('/api/v1/media/getMedia/1')
     .expect(200)
     .then((response) => {
-      // console.log('MEDIA: ', response.body)
+      console.log('MEDIA: ', response.body)
       expect(response.body).toHaveLength(3)
       return null
     })
