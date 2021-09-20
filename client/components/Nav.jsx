@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { logOff } from 'authenticare/client'
+import { logOff } from '../auth-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 const id = 10001
 const inviteCode = '111A11'

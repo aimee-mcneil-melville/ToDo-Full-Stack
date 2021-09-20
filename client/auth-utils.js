@@ -1,1 +1,1 @@
-export { register, signIn, isAuthenticated } from 'authenticare/client'
+export { register, signIn, logOff, isAuthenticated } from 'authenticare/client'
