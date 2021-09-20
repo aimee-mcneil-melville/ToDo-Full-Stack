@@ -52,7 +52,7 @@ nock('https://gardenz.au.auth0.com')
 
 const getMockToken = () => {
   const user = {
-    email: 'someone@gmail.com'
+    email: 'member@example.com'
   }
 
   const payload = {
@@ -72,7 +72,7 @@ const getMockToken = () => {
   try {
     token = jwt.sign(payload, privateKey, options)
   } catch (err) {
-    console.log(err)
+    console.error(err)
     throw err
   }
 
@@ -81,7 +81,7 @@ const getMockToken = () => {
 
 const getAdminToken = () => {
   const user = {
-    email: 'someone@gmail.com'
+    email: 'admin@example.com'
   }
 
   const payload = {
