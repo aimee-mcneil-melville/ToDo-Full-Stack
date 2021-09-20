@@ -17,3 +17,9 @@ test('Display text of h1 tag', () => {
       return null
     })
 })
+
+test('Button has the right text content', () => {
+  renderWithRedux(<AddSong/>)
+  const button = screen.getByRole('button')
+  expect(button.textContent).toEqual('Save')
+})

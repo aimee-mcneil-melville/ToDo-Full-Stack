@@ -21,7 +21,8 @@ function AddSong (props) {
     setSongForm(newSongForm)
   }
 
-  function handleSubmitAddSong () {
+  function handleSubmitAddSong (e) {
+    e.preventDefault()
     // props.dispatch(addSong(songForm))
   }
 
