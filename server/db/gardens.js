@@ -26,6 +26,7 @@ function getGardenById (id, db = connection) {
       'url',
       'events.description as eventDescription',
       'events.id as eventId',
+      'events.status as status',
       'title',
       'date',
       'volunteers_needed as volunteersNeeded',
@@ -43,12 +44,14 @@ function getGardenById (id, db = connection) {
         lon: garden.lon,
         url: garden.url,
         events: !garden.eventId ? [] : result.map((event) => {
+          console.log(event.status)
           return {
             id: event.eventId,
             volunteersNeeded: event.volunteersNeeded,
             title: event.title,
             date: event.date,
             description: event.eventDescription,
+            status: event.status,
             volunteer: {
               username: event.username,
               userId: event.userId

@@ -14,7 +14,7 @@ function getEventById (id, db = connection) {
     .leftJoin('gardens', 'events.garden_id', 'gardens.id')
     .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
     .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId',
-      'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
+      'title', 'events.status', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
       'user_id as userId', 'username', 'users.first_name', 'users.last_name',
       'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName',
       'extraVolunteers.id as extraVolId', 'lat', 'lon')
@@ -28,6 +28,7 @@ function getEventById (id, db = connection) {
         gardenAddress: event.address,
         volunteersNeeded: event.volunteersNeeded,
         title: event.title,
+        status: event.status,
         date: event.date,
         description: event.description,
         lat: event.lat,

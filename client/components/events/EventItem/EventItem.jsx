@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 
 export default function EventItem ({ event, isAdmin }) {
-  const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } = event
+  const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer, status } = event
   const [isVolunteering, setIsVolunteering] = useState(isVolunteer)
   const remainingVolunteers = volunteersNeeded - totalVolunteers
   const additionalVolunteers = Math.abs(remainingVolunteers)
@@ -22,6 +22,7 @@ export default function EventItem ({ event, isAdmin }) {
           ? <li>{remainingVolunteers} of {volunteersNeeded} volunteers still needed</li>
           : <li>No more volunteers needed, but we can always use more hands! (Currently {additionalVolunteers} extra volunteer{additionalVolunteers !== 1 ? 's' : ''})</li>
         }
+        <li>{status}</li>
       </ul>
       {isAdmin
         ? <Link to={`/events/${id}/edit`}>Edit Event</Link>

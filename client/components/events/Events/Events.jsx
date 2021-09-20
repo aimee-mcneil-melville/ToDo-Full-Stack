@@ -6,7 +6,6 @@ import EventItem from '../EventItem/EventItem'
 
 export default function Events ({ events }) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-
   return (
     <>
       <h1 className='events-title'>Events</h1>
