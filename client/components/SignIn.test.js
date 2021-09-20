@@ -12,8 +12,6 @@ afterEach(() => {
 })
 
 test('a successful sign in', () => {
-  expect.assertions(3)
-
   signIn.mockImplementation(() => {
     return Promise.resolve()
   })
@@ -29,6 +27,8 @@ test('a successful sign in', () => {
 
   render(<SignIn history={history}/>)
   userEvent.type(screen.getByRole('textbox', { name: 'Email:' }), 'warhammer-slayer@gmail.com')
+  userEvent.type(screen.getByLabelText(/password/i))
 
   userEvent.click(screen.getByRole('button'))
+  expect.assertions(3)
 })
