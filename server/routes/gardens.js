@@ -8,9 +8,6 @@ const router = express.Router()
 
 module.exports = router
 
-// const checkAdmin = jwtAuthz(['role:admin'])
-
-// doesnt need authentication
 router.get('/', (req, res) => {
   db.getGardens()
     .then((gardens) => {
@@ -26,9 +23,7 @@ router.get('/', (req, res) => {
     })
 })
 
-// doesnt need authentication
 // handle user.isAdmin?
-// ------------------------------------------------------------ what does checkAdmin return
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   const user = req.user || {}

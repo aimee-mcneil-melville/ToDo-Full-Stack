@@ -1,6 +1,7 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/users')
+const { getUserRoles } = require('./auth')
 
 const router = express.Router()
 
@@ -47,8 +48,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
+    const roleName = await getUserRoles(id)
     const user = await db.getUsersByAuth(id)
-    res.json(user)
+    res.json({ ...user, isAdmin: roleName === 'admin' })
     return null
   } catch (err) {
     log(err.message)
