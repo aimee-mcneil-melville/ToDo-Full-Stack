@@ -27,3 +27,18 @@ This repo includes:
 * configuration for Jest and testing library
 * configuration for server-side debugging in VS Code
 * a single client-side test (`client/components/App.test.js`)
+
+
+## Auth0
+1. Navigate to, Auth0.com and sign-up if you don't already have a tenant.
+1. Go to *Applications*, and create a new Application.
+1. In Auth0.com, set the **Allowed Callback Url** with `http://localhost:3000/`.
+1. In Auth0.com, set the **Allowed Logout Url** with `http://localhost:3000/`.
+1. In Auth0.com, set the **Allowed Web Origins** with `http://localhost:3000/`.
+
+### Client
+1. Copy the **Domain** of your application in Auth0.com and paste it in the `domain` in `index.js`.
+1. Copy the **Client ID** of your application in Auth0.com and paste it in the `client` in `index.js`.
+
+### Server
+1. copy client id and secret to the env file.

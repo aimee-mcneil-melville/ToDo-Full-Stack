@@ -4,9 +4,9 @@ import { screen, render } from '@testing-library/react'
 
 import App from './App'
 import store from '../store'
-import { fetchFruits } from '../actions'
+import { fetchFruits } from '../actions/fruits'
 
-jest.mock('../actions')
+jest.mock('../actions/fruits')
 
 fetchFruits.mockImplementation(() => () => {})
 

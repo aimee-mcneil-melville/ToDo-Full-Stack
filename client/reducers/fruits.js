@@ -1,4 +1,4 @@
-import { SET_FRUITS } from '../actions'
+import { SET_FRUITS } from '../actions/fruits'
 
 const initialState = []
 
