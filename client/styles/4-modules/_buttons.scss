@@ -18,6 +18,13 @@
   }
 }
 
+.update {
+  @extend .button-primary;
+  display: flex;
+    left: 500px;
+    top: 600px;
+}
+
 .button-width {
   width: functions.colWidth(12);
 

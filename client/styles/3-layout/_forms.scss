@@ -6,15 +6,82 @@
   width: functions.colWidth(12);
 
   @include mixins.media-queries(tablet, min) {
-      width: functions.colWidth(5);
+      width: functions.colWidth(6);
   }
 }
 
-.form-label {
+.form-box {
+  position: absolute;
+width: 435px;
+height: 50px;
+left: 502px;
+background: #FFFFFF;
+border: 1.5px solid #8ADB55;
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.title-box {
+  @extend .form-box;
+  top: 218px;
+}
+
+.date-box {
+  @extend .form-box;
+  top: 309px;
+}
+
+.volunteer-box {
+  @extend .form-box;
+  top: 400px;
+}
+
+.description-box {
+  @extend .form-box;
+  top: 490px;
+  height: 150px;
+}
+
+.label {
+  position: absolute;
+  width: 329px;
+  height: 28px;
+  left: 565px;
+  top: 115px;
+  font-size: 24px;
+  line-height: 28px;
   color: vars.$black;
-  font-weight: bold;
+  font-weight: 500;
   display: block;
-  margin-bottom: vars.$base-size * 0.5;
+  // margin-bottom: vars.$base-size * 0.5;
+}
+
+.title-label {
+  @extend .label;
+  top: 190px;
+  font-size:16px;
+  left: 505px;
+}
+
+.date-label {
+  @extend .label;
+  font-size: 16px;
+  top: 280px;
+  left: 505px;
+}
+
+.volunteer-label {
+  @extend .label;
+  font-size: 16px;
+  top: 370px;
+  left: 505px;
+}
+
+.description-label {
+  @extend .label;
+  font-size: 16px;
+  top: 460px;
+  left: 505px;
 }
 
 .form-input {
