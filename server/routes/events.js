@@ -37,8 +37,8 @@ router.post('/', checkJwt, (req, res) => {
 // include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
 
 router.patch('/:id', checkJwt, (req, res) => {
-  const { title, date, volunteersNeeded, description, id } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id }
+  const { title, date, volunteersNeeded, description, id, status } = req.body
+  const updatedEvent = { title, date, volunteersNeeded, description, id, status }
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(200).json(event)
@@ -49,6 +49,23 @@ router.patch('/:id', checkJwt, (req, res) => {
       res.status(500).json({
         error: {
           title: 'Unable to update event'
+        }
+      })
+    })
+})
+
+router.patch('/:id/cancel', checkJwt, (req, res) => {
+  const { id } = req.body
+  db.cancelEvent(id)
+    .then((event) => {
+      res.status(200).json(event)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to cancel event'
         }
       })
     })

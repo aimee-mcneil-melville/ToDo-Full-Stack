@@ -20,6 +20,11 @@ export default function EventForm (props) {
     props.submitEvent(form)
   }
 
+  function handleCancel (e) {
+    e.preventDefault()
+    props.cancelSubmit()
+  }
+
   const { title, date, volunteersNeeded, description } = form
   return (
     <>
@@ -85,7 +90,14 @@ export default function EventForm (props) {
               className='button-primary'
               onClick={handleSubmit}
             >{props.action}</button>
+            <br/>
           </form>
+          {props.action === 'Update Event' ? (
+            <button
+              className='button-primary'
+              onClick={handleCancel}>Cancel Event
+            </button>
+          ) : null}
         </article>
         <div className='column-6'>
           <h2>Event Preview</h2>

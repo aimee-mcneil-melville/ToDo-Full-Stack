@@ -3,7 +3,8 @@ const connection = require('./connection')
 module.exports = {
   getEventById,
   addEvent,
-  updateEvent
+  updateEvent,
+  cancelEvent
 }
 
 function getEventById (id, db = connection) {
@@ -78,13 +79,22 @@ function addEvent (newEvent, db = connection) {
 }
 
 function updateEvent (updatedEvent, db = connection) {
-  const { id, title, date, description, volunteersNeeded } = updatedEvent
+  const { id, title, date, description, volunteersNeeded, status } = updatedEvent
   return db('events').where('id', id)
     .update({
       volunteers_needed: volunteersNeeded,
       title,
       date,
-      description
+      description,
+      status
+    })
+    .then(() => getEventById(id, db))
+}
+
+function cancelEvent (id, db = connection) {
+  return db('events').where('id', id)
+    .update({
+      status: 'Cancelled'
     })
     .then(() => getEventById(id, db))
 }
