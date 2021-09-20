@@ -7,7 +7,6 @@ exports.up = (knex) => {
     table.string('username')
     table.string('email')
     table.string('hash')
-    table.boolean('is_admin')
   })
 }
 
