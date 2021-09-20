@@ -44,7 +44,6 @@ function getGardenById (id, db = connection) {
         lon: garden.lon,
         url: garden.url,
         events: !garden.eventId ? [] : result.map((event) => {
-          console.log(event.status)
           return {
             id: event.eventId,
             volunteersNeeded: event.volunteersNeeded,
@@ -72,7 +71,7 @@ function extractVolunteers (events) {
       ? acc.map(e => e.id === event.id ? { ...e, volunteers: [...e.volunteers, event.volunteer] } : e)
       : [...acc, { ...event, volunteers: [event.volunteer] }]
   , [])
-    .map(({ id, volunteersNeeded, title, date, description, volunteers }) => (
-      { id, volunteersNeeded, title, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
+    .map(({ id, volunteersNeeded, status, title, date, description, volunteers }) => (
+      { id, volunteersNeeded, title, status, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
     ))
 }
