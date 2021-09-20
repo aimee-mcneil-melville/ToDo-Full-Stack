@@ -5,21 +5,23 @@ import AddSong from './AddSong'
 // import Auth from './Auth'
 import Friends from './Friends'
 import Songs from './Songs'
-import Nav from './Nav'
 import UpdateSong from './UpdateSong'
 import FriendSongs from './FriendSongs'
+import Header from './Header'
+import Tagline from './Tagline'
 
 function App () {
   return (
     <>
       <div className='app'>
-        <Route path='/' component={Nav} />
+        <Header />
         {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
         <Route path='/friends' component={Friends} />
         <Route path='/friends/:id' component={FriendSongs} />
         <Route path='/songs/update/:id' component={UpdateSong} />
         <Route exact path='/songs/:id' component={Songs} />
         <Route path='/songs/add' component={AddSong} />
+        <Route exact path='/' component={Tagline} />
       </div>
     </>
   )

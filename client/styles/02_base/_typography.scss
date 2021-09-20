@@ -1,8 +1,20 @@
 h1 {
   font-size: 36px;
-  color: $col-brand-primary;
+  color: $col-foreground;
 }
 
 h2 {
   font-size: 36px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+h4 {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 400;
 }
