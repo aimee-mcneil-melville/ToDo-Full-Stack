@@ -34,6 +34,7 @@ function EventDetail (props) {
           <li>{event.date}</li>
           <li>Volunteers Needed: {event.volunteersNeeded}</li>
           <li>{event.description}</li>
+          <li>Event is {event.status}</li>
         </ul>
         {!isAdmin
           ? <VolunteerButton
