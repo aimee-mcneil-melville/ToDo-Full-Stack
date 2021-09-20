@@ -119,7 +119,7 @@ describe('List of signed up volunteers', () => {
     })
     return screen.findByText('Mock title')
       .then(() => {
-        expect(screen.queryByRole('list')).toBeNull()
+        expect(screen.queryByRole('volunteerList')).toBeNull()
         return null
       })
   })
