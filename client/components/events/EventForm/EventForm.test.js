@@ -14,8 +14,6 @@ describe('event form field', () => {
     userEvent.type(titleInput, 'test title')
     userEvent.type(descriptionInput, 'cool event, yeiyah!')
 
-    // fireEvent.click(screen.getByText(/submit/i))
-
     await waitFor(() => {
       expect(titleInput).toHaveValue('test title')
       expect(descriptionInput).toHaveTextContent(/yeiyah/)
