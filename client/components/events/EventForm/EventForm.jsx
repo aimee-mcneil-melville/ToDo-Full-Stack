@@ -27,12 +27,6 @@ export default function EventForm (props) {
     },
     validationSchema: eventSchema
   })
-  console.log(moment(formik.values.date).format('L'))
-  // function dateFormater (date) {
-  //   // input: yyyy-MM-dd
-  //   // output: dd-MM-yyyy
-  //   return `${date[8]}${date[9]}/${date[5]}${date[6]}/${date[0]}${date[1]}${date[2]}${date[3]}`
-  // }
 
   return (
     <>
