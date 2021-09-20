@@ -1,62 +1,77 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import { addVolunteer } from './AddVolunteerFormHelper'
 
+const schema = Yup.object({
+  firstName: Yup.string()
+    .required('Requiered'),
+  lastName: Yup.string()
+    .required('Requiered')
+})
+
 export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
-  const [form, setForm] = useState({
-    eventId: id,
-    firstName: '',
-    lastName: ''
+  const formik = useFormik({
+    initialValues: {
+      eventId: id,
+      firstName: '',
+      lastName: ''
+    },
+    onSubmit: values => {
+      addVolunteer(values, addExtraVolunteer)
+    },
+    validationSchema: schema
   })
-
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
-  function handleClick (e) {
-    e.preventDefault()
-    addVolunteer(form, addExtraVolunteer)
-    setForm({ eventId: id, firstName: '', lastName: '' })
-  }
 
   return (
     <>
       <h2 className='form-title'>Add Rock-Up Attendee</h2>
 
-      <form className='form-container'>
+      <form className='form-container' onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor='firstname' className=''>First name</label>
+
+          <label htmlFor='firstname'>First Name</label>
+
+          {formik.errors.firstName && formik.touched.firstName
+            ? (<p className='inputError'>{formik.errors.firstName}</p>)
+            : null}
+
           <input
             className='input'
             id='firstName'
             name='firstName'
-            value={form.firstName}
-            onChange={handleChange}
-            placeholder='First name'
-            aria-label="firstName"
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
+            placeholder='First Name'
+            aria-label='firstName'
             type='text'
           />
         </div>
-        <div className=''>
-          <label htmlFor='lastname' className=''>Last name</label>
+
+        <div>
+          <label htmlFor='lastname'>Last Name</label>
+
+          {formik.errors.lastName && formik.touched.lastName
+            ? (<p className='inputError'>{formik.errors.lastName}</p>)
+            : null}
+
           <input
             className='input'
             id='lastName'
             name='lastName'
-            value={form.lastName}
-            onChange={handleChange}
-            placeholder='Last name'
-            aria-label="lastName"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            placeHolder='Last Name'
+            aria-label='lastName'
             type='text'
           />
         </div>
+
         <button
           className='edit-event-button'
           data-testid='submit-button'
-          onClick={handleClick}
+          type='submit'
         >Add
         </button>
       </form>
