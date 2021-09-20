@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { getEvent } from '../../../pages/Event/eventHelper'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
-import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 function EventDetail (props) {
-  const { id, isAdmin } = props
+  const { eventId, isAdmin } = props
   const [event, setEvent] = useState({})
   const [volunteering, setVolunteering] = useState(false)
   const history = useHistory()
 
   function redirectToEdit () {
     // console.log('redirectToEdit')
-    history.push(`/events/${id}/edit`)
+    history.push(`/events/${eventId}/edit`)
   }
 
   useEffect(() => {
-    getEvent(id).then(res => {
+    getEvent(eventId).then(res => {
       setEvent(res)
       setVolunteering(event.isVolunteer)
       return null
@@ -38,7 +37,7 @@ function EventDetail (props) {
         </ul>
         {!isAdmin
           ? <VolunteerButton
-            eventId={id}
+            eventId={eventId}
             volunteering={volunteering}
             setVolunteering={setVolunteering}
           />
