@@ -17,7 +17,15 @@
   background-color: vars.$primary;
   border: none;
   color: white;
-  margin-top: vars.$base-size * 2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 80vh;
+  z-index: 9999;
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(6);
+    order: 1;
+  }
 }
 
 .card-title {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getEvent } from '../../../pages/Event/eventHelper'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function EventDetail (props) {
   const { id, isAdmin } = props
@@ -26,7 +27,7 @@ function EventDetail (props) {
   return (
     <section className='card-secondary column-6'>
       <article className='card-inner'>
-        <button className='card-close-button'>close</button>
+        <Link onClick={() => history.goBack()} className='card-close-button'>close</Link>
         <h1 className='card-title'>{event.title}</h1>
         <ul className='card-list'>
           <li>{event.gardenName}</li>
