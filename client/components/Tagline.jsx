@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import Button from './Button'
 import ButtonGroup from './ButtonGroup'
 
 const Tagline = () => {
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
+
   const history = useHistory()
 
   const login = () => {
@@ -15,7 +21,7 @@ const Tagline = () => {
   }
 
   return (
-    <div className='tagline'>
+    <div className={`tagline${loaded && ' tagline--loaded'}`}>
       <div role='banner' className='tagline__text-wrapper'>
         <p className='tagline__text'>collate.</p>
         <p className='tagline__text'>recommend.</p>
