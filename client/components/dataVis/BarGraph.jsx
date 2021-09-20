@@ -5,6 +5,7 @@ import { Group } from '@visx/group'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
+import { timeParse, timeFormat } from 'd3-time-format'
 const verticalMargin = 120
 
 // accessors
@@ -21,7 +22,14 @@ export default function BarGraph ({ events }) {
   const getSortedDates = (data) => data.sort()
   const getVolunteersNeeded = (d) => Number(d.totalVolunteers)
   const data = events
-
+  const margin = { top: 40, right: 0, bottom: 40, left: 0 }
+  const parseDate = timeParse('%Y-%m-%d')
+  const format = timeFormat('%b %d')
+  const formatDate = (d) => {
+    console.log(d)
+    return format(parseDate(d.date))
+  }
+  // console.log(formatDate('2021-09-2'))
   // scales, memoize for performance
   const xScale = useMemo(
     () =>
@@ -31,9 +39,9 @@ export default function BarGraph ({ events }) {
         domain: getSortedDates(data.map(getDates)), // range on x-axis (domain is an array where each element is a bar)
         padding: 0.4
       }),
-    [xMax]
+    [xMax, data]
   )
-  const dateScale = scaleLinear({
+  const dateScale = scaleBand({
     domain: [getSortedDates(data.map(getDates))],
     nice: true
   })
@@ -44,7 +52,7 @@ export default function BarGraph ({ events }) {
         round: true,
         domain: [0, Math.max(...data.map(getVolunteersNeeded))] // change to volunteers participate  // height on y-axis
       }),
-    [yMax]
+    [yMax, data]
   )
   console.log(data)
   return width < 10 ? null : (
@@ -77,18 +85,26 @@ export default function BarGraph ({ events }) {
             )
           })}
         </Group>
-      </svg>
-      {/* <AxisBottom
-        top={yMax}
-        scale={dateScale}
-        // stroke={purple3}
-        // tickStroke={purple3}
-        tickLabelProps={() => ({
-          // fill: purple3,
-          fontSize: 11,
-          textAnchor: 'middle'
+        {data.map(d => {
+          const dates = getDates(d)
+          console.log(d)
+          return (
+            <AxisBottom
+              key = {d.id}
+              top={yMax + margin.top }
+              scale={dateScale}
+              tickFormat= {getDates}
+              stroke= '#e5fd3d'
+              tickStroke='#e5fd3d'
+              tickLabelProps={() => ({
+                fill: '#e5fd3d',
+                fontSize: 11,
+                textAnchor: 'middle'
+              })}
+            />
+          )
         })}
-      /> */}
+      </svg>
     </>
   )
 }
