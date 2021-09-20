@@ -11,10 +11,9 @@ afterEach(() => {
 })
 
 test('Nav displays log off if user is Authenticated', () => {
+  expect.assertions(1)
   isAuthenticated.mockImplementation(() => true)
 
+  render(<Nav />)
   expect(screen.getByText(/log out/i)).toBeInTheDocument()
-
-  render(<Nav history={history}/>)
-  expect.assertions(1)
 })
