@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Register } from '../../components/Registration/Register'
 import { View } from '../../components/Registration/View'
 import { getState } from '../../store'
