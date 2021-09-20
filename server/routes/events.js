@@ -37,23 +37,11 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-<<<<<<< HEAD
 // include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
 
-router.patch('/:id', checkJwt, (req, res) => {
+router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, id, status } = req.body
   const updatedEvent = { title, date, volunteersNeeded, description, id, status }
-||||||| 99154b5
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
-
-router.patch('/:id', checkJwt, (req, res) => {
-  const { title, date, volunteersNeeded, description, id } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id }
-=======
-router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
-  const { title, date, volunteersNeeded, description, id } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id }
->>>>>>> e87178a318c58e1f52fd20daf25f5798ea6614a7
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(200).json(event)
@@ -69,8 +57,7 @@ router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-<<<<<<< HEAD
-router.patch('/:id/cancel', checkJwt, (req, res) => {
+router.patch('/:id/cancel', checkJwt, checkAdmin, (req, res) => {
   const { id } = req.body
   db.cancelEvent(id)
     .then((event) => {
@@ -88,11 +75,6 @@ router.patch('/:id/cancel', checkJwt, (req, res) => {
 })
 
 // doesnt need token
-||||||| 99154b5
-// doesnt need token
-=======
-// TODO fix req.user.admin
->>>>>>> e87178a318c58e1f52fd20daf25f5798ea6614a7
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
