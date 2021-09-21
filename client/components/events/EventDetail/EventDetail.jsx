@@ -36,7 +36,7 @@ function EventDetail (props) {
           <li role='eventDate'>{event.date}</li>
           <li role='volunteersNeeded'>Volunteers Needed: {event.volunteersNeeded}</li>
           <li role='description'>{event.description}</li>
-          {/* <li>Event is {event.status}</li> */}
+          <li role='status'>Event is {event.status}</li>
         </ul>
         {!isAdmin
           ? <VolunteerButton
