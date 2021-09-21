@@ -9,7 +9,6 @@ export function getGarden (id, consume = requestor) {
   return consume(`/gardens/${id}`)
     .then((res) => {
       const garden = res.body
-      console.log('body', res.body)
       dispatch(setGarden({
         name: garden.name,
         description: garden.description,
