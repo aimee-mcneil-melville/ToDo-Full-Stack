@@ -6,9 +6,9 @@ import { addVolunteer } from './AddVolunteerFormHelper'
 
 const schema = Yup.object({
   firstName: Yup.string()
-    .required('Requiered'),
+    .required('Required'),
   lastName: Yup.string()
-    .required('Requiered')
+    .required('Required')
 })
 
 export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
