@@ -29,6 +29,14 @@ function App(props) {
     setMessage(res.body.message)
   }
 
+  async function handlePrivateEndpoint() {
+    const res = await request
+      .get('/api/v1/private')
+      .set('authorization', `Bearer ${props.token}`)
+
+    setMessage(res.body.message)
+  }
+
   return (
     <nav>
       <div className='app'>
@@ -46,7 +54,7 @@ function App(props) {
           <button onClick={handleProtectedEndpoint}>Ping Protected Endpoint</button>
         </div>
         <div>
-          <button onClick={handlePublicEndpoint}>Ping Public Endpoint</button>
+          <button onClick={handlePrivateEndpoint}>Ping Private Endpoint</button>
         </div>
         <p>{message}</p>
       </div>
