@@ -75,6 +75,8 @@ export function Register () {
             <option value={1}>Kelmarna Gardens</option>
             <option value={2}>Kingsland Community Orchard</option>
             <option value={3}>Devonport Community Garden</option>
+            <option value={4}>Owairaka Community Garden</option>
+            <option value={5}>Auckland Teaching Gardens</option>
           </select>
         </div>
         <button
