@@ -17,9 +17,9 @@ a {
 }
 
 .hero-title {
-  font-size: vars.$base-size * 1.5;
+  font-size: vars.$base-size * 1.2;
 
   @include mixins.media-queries(laptop, min) {
-    font-size: vars.$base-size * 2;
+    font-size: vars.$base-size * 1.5;
   }
 }
