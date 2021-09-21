@@ -62,7 +62,7 @@ export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
             name='lastName'
             value={formik.values.lastName}
             onChange={formik.handleChange}
-            placeHolder='Last Name'
+            placeholder='Last Name'
             aria-label='lastName'
             type='text'
           />
