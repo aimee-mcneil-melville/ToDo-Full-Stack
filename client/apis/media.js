@@ -5,7 +5,11 @@ const rootUrl = '/api/v1/media/getMedia/'
 export function getSongs (id) {
   return request.get(rootUrl + id)
     .then(res => {
-      return res.body.songs
+      const songList = res.body.map(song => {
+        song.mediaName = song.media_name
+        return song
+      })
+      return songList
     })
 }
 

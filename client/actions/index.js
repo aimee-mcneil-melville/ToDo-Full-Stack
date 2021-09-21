@@ -28,8 +28,8 @@ export function setFriends (id) {
   return (dispatch) => {
     dispatch(setFriendsPending())
     return getFriends(id)
-      .then(() => {
-        dispatch(setFriendsSuccess())
+      .then((friends) => {
+        dispatch(setFriendsSuccess(friends))
         return null
       })
       .catch(err => {
@@ -55,8 +55,8 @@ export function setSongs (id) {
   return (dispatch) => {
     dispatch(setSongsPending())
     return getSongs(id)
-      .then(() => {
-        dispatch(setSongsSuccess())
+      .then(songs => {
+        dispatch(setSongsSuccess(songs))
         return null
       })
       .catch(err => {
