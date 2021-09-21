@@ -24,7 +24,7 @@
 
     @include mixins.media-queries(mobile, min) {
         display: block;
-        padding-left: vars.$base-size;
+        padding: 6px 14px;
         font-size: vars.$base-size;
     }
 }
@@ -66,8 +66,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
-        padding-bottom: vars.$base-size;
-        padding-right: vars.$base-size * 3;
+        padding-bottom: .4rem;
     }
 }
 
@@ -79,7 +78,7 @@
     align-items: center;
     width:100vw;
     height: 900px;
-    z-index: 100;
+    z-index: 99999;
     animation: growDown 300ms ease-in-out forwards;
     transform-origin: top center;
     position: relative;
