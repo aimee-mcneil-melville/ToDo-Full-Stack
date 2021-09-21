@@ -43,6 +43,7 @@
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "pg": "^8.5.1",
+    "styled-components": "^5.3.1",
     "superagent": "^6.1.0"
   },
   "devDependencies": {
@@ -52,7 +53,9 @@
     "@babel/plugin-transform-runtime": "7.12.10",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "11.2.2",
+    "@testing-library/user-event": "^13.2.1",
     "babel-loader": "^8.2.1",
     "css-loader": "^5.0.1",
     "eslint": "^7.9.0",

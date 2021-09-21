@@ -1,0 +1,32 @@
+.data-row {
+  display: flex;
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin-bottom: 36px;
+  }
+
+  &__text {
+    width: 100%;
+  }
+
+  &__title,
+  &__title a {
+    color: $col-foreground;
+  }
+
+  &__subtitle,
+  &__subtitle a {
+    color: $col-accent;
+  }
+
+  &__icons {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-top: 2px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+}
