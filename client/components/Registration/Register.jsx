@@ -14,8 +14,12 @@ const registerSchema = Yup.object().shape({
   lastName: Yup.string()
     .required('Required')
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!'),
+    .max(15, 'Too Long!'),
   username: Yup.string()
+    .min(2, 'Too Short!')
+    .max(15, 'Too Long!')
+    .required('Required'),
+  gardenId: Yup.number()
     .required('Required')
 })
 
