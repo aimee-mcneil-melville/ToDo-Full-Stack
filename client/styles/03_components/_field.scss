@@ -1,0 +1,25 @@
+.field {
+  margin-bottom: 16px;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    padding-left: 16px;
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    background-color: $col-background-mid;
+    border: 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: $col-foreground;
+    padding: 16px;
+    width: calc(100% - 32px);
+
+    &::placeholder  {
+      color: $col-accent;
+    }
+  }
+}
