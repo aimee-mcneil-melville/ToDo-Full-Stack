@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 // import getUserMedia from '../actions'
 
+import DataRowText from './DataRowText'
+import Icon from './Icon'
+
 function FriendSongs (props) {
   // const { friendSongs } = props
   const friendSongs = [
@@ -28,11 +31,13 @@ function FriendSongs (props) {
       {friendSongs.map(media => {
         const { id, mediaName, artist, link } = media
         return (
-          <li key={id}>
-            {link}
-            {mediaName}
-            {artist}
-          </li>
+          <div className='data-row' key={id}>
+            {link
+              ? <a href={link}><Icon style='play' /></a>
+              : <Icon />
+            }
+            <DataRowText title={mediaName} subtitle={artist} />
+          </div>
         )
       })}
     </>
