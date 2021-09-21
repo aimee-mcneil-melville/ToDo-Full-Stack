@@ -112,6 +112,12 @@ export default function EventForm (props) {
             <button className='submit form-box' type='submit'>Submit</button>
           </div>
         </form>
+        {props.action === 'Update Event' ? (
+          <button
+            className='button-primary'
+            onClick={handleCancel}>Cancel Event
+          </button>
+        ) : null}
       </div>
     </>
   )
