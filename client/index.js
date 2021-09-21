@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
       clientId='sF7Tf4GqnhENJ7l7gArp5c56ZFZ2WOcL'
       redirectUri={window.location.origin}
       audience='https://garden/nz/api'
-      scope="read:current_user update:current_user_metadata"
     >
       <Provider store={store}>
         <Router>
