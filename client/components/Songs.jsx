@@ -3,7 +3,7 @@ import { useHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Icon from './Icon'
-import DataTextRow from './DataTextRow'
+import DataRowText from './DataRowText'
 import Button from './Button'
 // import getUserSongs from '../actions'
 
@@ -37,7 +37,7 @@ function Songs (props) {
               ? <a href={link}><Icon style='play' /></a>
               : <Icon />
             }
-            <DataTextRow title={mediaName} subtitle={artist} />
+            <DataRowText title={mediaName} subtitle={artist} />
             <Link to={`/songs/update/${id}`}>
               <Icon style='edit'/>
             </Link>

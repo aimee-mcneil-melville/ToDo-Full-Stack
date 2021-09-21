@@ -19,6 +19,7 @@ function App () {
     <>
       <div className='app'>
         <Header />
+        {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
         <Route exact path='/friends' component={Friends} />
         <Route path='/friends/:id' component={FriendSongs} />
         <Route path='/songs/add' component={AddSong} />
