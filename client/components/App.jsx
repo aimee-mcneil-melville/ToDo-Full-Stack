@@ -6,7 +6,7 @@ import { fetchFruits } from '../actions/fruits'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
 
-function App(props) {
+function App (props) {
   cacheUser(useAuth0)
   const [message, setMessage] = useState('')
 
@@ -14,14 +14,14 @@ function App(props) {
     props.dispatch(fetchFruits())
   }, [])
 
-  async function handlePublicEndpoint() {
+  async function handlePublicEndpoint () {
     const res = await request
       .get('/api/v1/public')
 
     setMessage(res.body.message)
   }
 
-  async function handleProtectedEndpoint() {
+  async function handleProtectedEndpoint () {
     const res = await request
       .get('/api/v1/protected')
       .set('authorization', `Bearer ${props.token}`)
@@ -29,7 +29,7 @@ function App(props) {
     setMessage(res.body.message)
   }
 
-  async function handlePrivateEndpoint() {
+  async function handlePrivateEndpoint () {
     const res = await request
       .get('/api/v1/private')
       .set('authorization', `Bearer ${props.token}`)

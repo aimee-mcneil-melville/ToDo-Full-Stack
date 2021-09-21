@@ -32,10 +32,8 @@
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": ["eda"],
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.7.0",

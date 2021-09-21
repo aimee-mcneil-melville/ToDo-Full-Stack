@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <Provider store={store}>
         <App />
       </Provider>
-    </Auth0Provider> ,
+    </Auth0Provider>,
     document.getElementById('app')
   )
 })

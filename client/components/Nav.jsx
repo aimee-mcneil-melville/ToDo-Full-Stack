@@ -4,18 +4,17 @@ import { getLoginFn, getLogoutFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { connect } from 'react-redux'
 
-function Nav(props) {
-
-const { user } = props
+function Nav (props) {
+  const { user } = props
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
 
-  function handleLogin(event) {
+  function handleLogin (event) {
     event.preventDefault()
     login()
   }
 
-  function handleLogoff(event) {
+  function handleLogoff (event) {
     event.preventDefault()
     logout()
   }
@@ -34,10 +33,10 @@ const { user } = props
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.user
   }
 }
 
-export default connect(mapStateToProps)( Nav)
+export default connect(mapStateToProps)(Nav)
