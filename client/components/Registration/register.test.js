@@ -32,7 +32,7 @@ describe('Register form field', () => {
     const ele = await screen.findAllByText('Required')
     expect(ele[0]).toBeInTheDocument()
   })
-  it('"Too Short" comes up on short input', async () => {
+  it('Too short message comes up on short input', async () => {
     const handleSubmit = jest.fn()
     render(<Register onSubmit={handleSubmit}/>)
 
@@ -42,10 +42,10 @@ describe('Register form field', () => {
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    const ele = await screen.findAllByText('Too Short!')
+    const ele = await screen.findAllByText('This must be atleast 2 characters long!')
     expect(ele[0]).toBeInTheDocument()
   })
-  it('"Too Long" comes up on long input', async () => {
+  it('Too long message comes up on long input', async () => {
     const handleSubmit = jest.fn()
     render(<Register onSubmit={handleSubmit}/>)
 
@@ -55,7 +55,7 @@ describe('Register form field', () => {
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    const ele = await screen.findAllByText('Too Long!')
-    expect(ele[0]).toBeInTheDocument()
+    const element = await screen.findAllByText('Sorry! this must be under 15 characters long')
+    expect(element[0]).toBeInTheDocument()
   })
 })

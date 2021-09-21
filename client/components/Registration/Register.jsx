@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useFormik } from 'formik'
 import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
@@ -8,16 +7,16 @@ import * as Yup from 'yup'
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(15, 'Too Long!')
+    .min(2, 'This must be atleast 2 characters long!')
+    .max(15, 'Sorry! this must be under 15 characters long')
     .required('Required'),
   lastName: Yup.string()
     .required('Required')
-    .min(2, 'Too Short!')
-    .max(15, 'Too Long!'),
+    .min(2, 'This must be atleast 2 characters long!')
+    .max(20, 'Sorry, this must be under 20 characters long'),
   username: Yup.string()
-    .min(2, 'Too Short!')
-    .max(15, 'Too Long!')
+    .min(2, 'This must be atleast 2 characters long!')
+    .max(15, 'Sorry! this must be under 15 characters long')
     .required('Required'),
   gardenId: Yup.number()
     .required('Required')
@@ -35,11 +34,16 @@ export default function Register () {
       gardenId: null
     },
     onSubmit: values => {
-      console.log('hello')
       registerUser(values, authUser, history.push)
     },
     validationSchema: registerSchema
   })
+
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? <p className='inputError'>{formik.errors[inputName]}</p>
+      : null
+  }
 
   return (
     <>
@@ -47,9 +51,7 @@ export default function Register () {
         <form className='column-6' onSubmit={formik.handleSubmit}>
           <div className="field">
             <label htmlFor='firstName' className='form-label'>First Name</label>
-            {formik.errors.firstName && formik.touched.firstName
-              ? (<p className="inputError">{formik.errors.firstName}</p>)
-              : null}
+            {showAnyErrors('firstName')}
             <input
               className='form-input'
               id='firstName'
@@ -58,11 +60,8 @@ export default function Register () {
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-
             <label htmlFor='lastName' className='form-label'>Last Name</label>
-            {formik.errors.lastName && formik.touched.lastName
-              ? (<p className="inputError">{formik.errors.lastName}</p>)
-              : null}
+            {showAnyErrors('lastName')}
             <input
               className='form-input'
               id='lastName'
@@ -72,9 +71,7 @@ export default function Register () {
               value={formik.values.lastName}
             />
             <label htmlFor='username' className='form-label'>Username</label>
-            {formik.errors.username && formik.touched.username
-              ? (<p className="inputError">{formik.errors.username}</p>)
-              : null}
+            {showAnyErrors('username')}
             <input
               className='form-input'
               id='username'
@@ -84,16 +81,13 @@ export default function Register () {
               value={formik.values.username}
             />
             <label htmlFor='garden' className='form-label'>My Garden</label>
-            {formik.errors.garden && formik.touched.garden
-              ? (<p className="inputError">{formik.errors.garden}</p>)
-              : null}
+            {showAnyErrors('garden')}
             <select
               className='select'
               name='gardenId'
               id='garden'
               onChange={formik.handleChange}
             >
-
               <option hidden>Select from this list</option>
               <option value={1}>Kelmarna Gardens</option>
               <option value={2}>Kingsland Community Orchard</option>
@@ -106,7 +100,6 @@ export default function Register () {
       <div className='column-6'>
         <img src='./images/comGardenPlant.png' alt='Person gardening with trowel' />
       </div>
-
     </>
   )
 }
