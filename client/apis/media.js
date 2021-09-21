@@ -3,7 +3,6 @@ import request from 'superagent'
 const rootUrl = '/api/v1/media/getMedia/'
 
 export function getSongs (id) {
-//   console.log('api:', id)
   return request.get(rootUrl + id)
     .then(res => {
       return res.body.songs
