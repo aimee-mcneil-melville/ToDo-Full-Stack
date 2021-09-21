@@ -1,5 +1,10 @@
 .data-row {
   display: flex;
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin-bottom: 36px;
+  }
 
   &__text {
     width: 100%;
