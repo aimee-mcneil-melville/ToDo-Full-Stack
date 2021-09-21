@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Icon from './Icon'
@@ -7,6 +8,8 @@ import Button from './Button'
 // import getUserSongs from '../actions'
 
 function Songs (props) {
+  const history = useHistory()
+
   // const { nickname } = props.user
   const nickname = 'superman'
 
@@ -42,7 +45,7 @@ function Songs (props) {
           </div>
         )
       })}
-      <Button buttonText='Add a new track' />
+      <Button buttonText='Add a new track' clickFunction={() => history.push('/songs/add')} />
     </>
   )
 }
