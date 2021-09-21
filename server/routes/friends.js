@@ -22,7 +22,6 @@ router.get('/:user_id', (req, res) => {
 router.post('/:user_id', (req, res) => {
   const userId = req.params.user_id
   const followingId = req.body.following_id
-  console.log(userId)
   db.addFriend({ userId, followingId }) // data sending to the db function
     .then((newFriend) => { // db has responded with
       res.json(newFriend)

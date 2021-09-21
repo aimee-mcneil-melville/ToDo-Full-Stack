@@ -16,21 +16,6 @@ router.get('/getMedia/:id', (req, res) => {
     })
 })
 
-// Add song
-// GET /api/v1/media/getMedia/id/add
-// router.get('/getMedia/:id/add', (req, res) => {
-//   let songData = {}
-//   db.addSong(songData)
-//     .then((result) => {
-//       songData = result
-//       return null
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       res.status(500).json({ message: 'Song failed to get' })
-//     })
-// })
-
 // POST /api/v1/media/getMedia/id/add
 router.post('/getMedia/:id/add', (req, res) => {
   const { media_name: mediaName, genre, artist, comment, link } = req.body
