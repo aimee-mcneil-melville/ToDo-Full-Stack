@@ -22,11 +22,11 @@ export default function App () {
       <Header />
       <main className='container'>
         <Route exact path='/' component={Home} />
-        <Route exact path='/gardens/:id' component={Garden} />
+        <Route path='/gardens/:id' component={Garden} />
+        <Route path='/gardens/:id/events/:eventId' component={Event} />
         <Route path='/profile' component={Profile} />
         <Route path='/event/new' component={AddEvent} />
         <Route path='/events/:id/edit' component={EditEvent} />
-        <Route exact path='/events/:id' component={Event} />
       </main>
     </>
   )

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { getEvent } from './EventDetailHelper'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 function EventDetail (props) {
-  const { id, isAdmin } = props
+  const { eventId, isAdmin } = props
   const [event, setEvent] = useState({})
   const [volunteering, setVolunteering] = useState(false)
   const history = useHistory()
 
   function redirectToEdit () {
     // console.log('redirectToEdit')
-    history.push(`/events/${id}/edit`)
+    history.push(`/events/${eventId}/edit`)
   }
 
   useEffect(() => {
-    getEvent(id).then(res => {
+    getEvent(eventId).then(res => {
       setEvent(res)
       setVolunteering(event.isVolunteer)
       return null
@@ -26,8 +26,8 @@ function EventDetail (props) {
   return (
     <section className='card-secondary column-6'>
       <article className='card-inner'>
-        <button className='card-close-button'>close</button>
-        <h1 role='eventTitle' className='card-title'>{event.title}</h1>
+        <Link onClick={() => history.goBack()} className='card-close-button'>Close</Link>
+        <h1 className='card-title'>{event.title}</h1>
         <ul className='card-list'>
           <li role='gardenName'>{event.gardenName}</li>
           <li role='gardenAddress'>{event.gardenAddress}</li>
@@ -37,7 +37,7 @@ function EventDetail (props) {
         </ul>
         {!isAdmin
           ? <VolunteerButton
-            eventId={id}
+            eventId={eventId}
             volunteering={volunteering}
             setVolunteering={setVolunteering}
           />
