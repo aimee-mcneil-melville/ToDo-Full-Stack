@@ -5,10 +5,7 @@ import { Group } from '@visx/group'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { timeParse, timeFormat } from 'd3-time-format'
 const verticalMargin = 120
-let index = 0
-let leftThing = 40
 // accessors
 
 export default function BarGraph ({ events }) {
@@ -23,16 +20,19 @@ export default function BarGraph ({ events }) {
   const getSortedDates = (data) => data.sort()
   const getVolunteersNeeded = (d) => Number(d.totalVolunteers)
   const data = events
-  const margin = { top: 60, right: 0, bottom: 40, left: 0 }
-  // const parseDate = timeParse('%Y-%m-%d')
-  // const format = timeFormat('%b %d')
+  const margin = { top: 61, right: 0, bottom: 40, left: 0 }
+
+  // a parsed date is passed into this and we find the corresponding date and use that in the graph
   const formatDate = (d) => {
-    console.log(index)
-    index++
-    leftThing += 40
-    return d
+    let date = ''
+    data.map(obj => {
+      const parsed = Date.parse(obj.date)
+      if (d === parsed) {
+        date = obj.date
+      }
+    })
+    return date
   }
-  // console.log(formatDate('2021-09-2'))
   // scales, memoize for performance
   const xScale = useMemo(
     () =>
@@ -44,10 +44,6 @@ export default function BarGraph ({ events }) {
       }),
     [xMax, data]
   )
-  const dateScale = scaleBand({
-    domain: getSortedDates(data.map(d => d.date)),
-    nice: true
-  })
   const yScale = useMemo(
     () =>
       scaleLinear({
@@ -57,11 +53,26 @@ export default function BarGraph ({ events }) {
       }),
     [yMax, data]
   )
-  // console.log(data)
+
+  //
+  //
+  // add the ranges to scales
+  const dateScale = scaleBand({
+    domain: getSortedDates(data.map(getDates)),
+    nice: true
+  })
+  const volunteerScale = scaleLinear({
+    domain: [0, Math.max(...data.map(getVolunteersNeeded))],
+    nice: true
+  })
+  dateScale.rangeRound([0, xMax])
+  volunteerScale.rangeRound([yMax, 0])
+  //
+  // this range is needed for graph to have more than one element ^^^
+  //
   return width < 10 ? null : (
     <>
       <svg key='barChart' width={width} height={height}>
-        {/* <GradientTealBlue id="teal" /> */}
         <rect width={width} height={height} fill="url(#teal)" rx={14} />
         <Group top={verticalMargin / 2}>
           {data.map(d => {
@@ -87,22 +98,24 @@ export default function BarGraph ({ events }) {
               </>
             )
           })}
-        </Group>
-        <AxisBottom
-          // label="string"
-          top={yMax + margin.top}
-          left= {leftThing + 60}
-          scale={dateScale}
-          tickFormat= {formatDate}
-          stroke= '#e5fd3d'
-          tickStroke='#e5fd3d'
-          tickLabelProps={() => ({
-            // fill: '#e5fd3d',
-            fontSize: 11,
-            textAnchor: 'middle'
-          })}
-        />
 
+          <AxisBottom
+            top={yMax}
+            left={margin.left}
+            scale={dateScale}
+            tickFormat= {formatDate}
+            tickLabelProps={() => ({
+              fontSize: 6,
+              textAnchor: 'middle'
+            })}
+          />
+          <AxisLeft
+            scale={volunteerScale}
+            // top={margin.top}
+            left={margin.left + 20} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
+
+          />
+        </Group>
       </svg>
     </>
   )
