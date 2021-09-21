@@ -37,9 +37,11 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
+// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
+
 router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
-  const { title, date, volunteersNeeded, description, id } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id }
+  const { title, date, volunteersNeeded, description, id, status } = req.body
+  const updatedEvent = { title, date, volunteersNeeded, description, id, status }
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(200).json(event)
@@ -55,13 +57,30 @@ router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-// TODO fix req.user.admin
+router.patch('/:id/cancel', checkJwt, checkAdmin, (req, res) => {
+  const { id } = req.body
+  db.cancelEvent(id)
+    .then((event) => {
+      res.status(200).json(event)
+      return null
+    })
+    .catch((err) => {
+      log(err.message)
+      res.status(500).json({
+        error: {
+          title: 'Unable to cancel event'
+        }
+      })
+    })
+})
+
+// doesnt need token
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getEventById(id)
     .then((event) => {
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon } = event
-      const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon }
+      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, status, lat, lon } = event
+      const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, status, lat, lon }
 
       if (req.user) {
         if (req.user.isAdmin) {
@@ -71,7 +90,6 @@ router.get('/:id', (req, res) => {
           eventResponse.isVolunteer = volunteers.some((v) => v.userId === req.user.id)
         }
       }
-
       res.json(eventResponse)
       return null
     })

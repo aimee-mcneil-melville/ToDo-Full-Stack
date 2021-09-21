@@ -26,6 +26,7 @@ function getGardenById (id, db = connection) {
       'url',
       'events.description as eventDescription',
       'events.id as eventId',
+      'events.status as status',
       'title',
       'date',
       'volunteers_needed as volunteersNeeded',
@@ -49,6 +50,7 @@ function getGardenById (id, db = connection) {
             title: event.title,
             date: event.date,
             description: event.eventDescription,
+            status: event.status,
             volunteer: {
               username: event.username,
               userId: event.userId
@@ -69,7 +71,7 @@ function extractVolunteers (events) {
       ? acc.map(e => e.id === event.id ? { ...e, volunteers: [...e.volunteers, event.volunteer] } : e)
       : [...acc, { ...event, volunteers: [event.volunteer] }]
   , [])
-    .map(({ id, volunteersNeeded, title, date, description, volunteers }) => (
-      { id, volunteersNeeded, title, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
+    .map(({ id, volunteersNeeded, status, title, date, description, volunteers }) => (
+      { id, volunteersNeeded, title, status, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
     ))
 }

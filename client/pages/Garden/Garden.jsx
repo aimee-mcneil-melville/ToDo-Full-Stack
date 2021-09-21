@@ -25,7 +25,7 @@ export default function Garden () {
           <a href={url}>{url}</a>
         </article>
         {isAdmin ? <BarGraph events={events}/> : null}
-        <Events events={events} />
+        <Events gardenid={id} events={events} />
       </div>
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
