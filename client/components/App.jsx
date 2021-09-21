@@ -16,11 +16,11 @@ function App () {
       <div className='app'>
         <Header />
         {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
-        <Route path='/friends' component={Friends} />
+        <Route exact path='/friends' component={Friends} />
         <Route path='/friends/:id' component={FriendSongs} />
-        <Route path='/songs/update/:id' component={UpdateSong} />
-        <Route exact path='/songs/:id' component={Songs} />
         <Route path='/songs/add' component={AddSong} />
+        <Route path='/songs/update/:id' component={UpdateSong} />
+        <Route exact path='/songs' component={Songs} />
         <Route exact path='/' component={Tagline} />
       </div>
     </>

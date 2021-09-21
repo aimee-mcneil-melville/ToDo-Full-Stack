@@ -32,6 +32,7 @@ function AddSong (props) {
       <p>fill in the details below to add a new song to your list</p>
       <form onSubmit={handleSubmitAddSong}>
         <label htmlFor="songTitle">
+          Song title *
           <input type="text"
             id="songTitle"
             name="songTitle"
@@ -40,6 +41,7 @@ function AddSong (props) {
             onChange={handleChangeAddSong} />
         </label>
         <label htmlFor="artist">
+          Artist *
           <input type="text"
             id="artist"
             name="artist"
@@ -48,6 +50,7 @@ function AddSong (props) {
             onChange={handleChangeAddSong} />
         </label>
         <label htmlFor="genre">
+          Genre
           <input type="text"
             id="genre"
             name="genre"
@@ -56,6 +59,7 @@ function AddSong (props) {
             onChange={handleChangeAddSong} />
         </label>
         <label htmlFor="comment">
+          Comment
           <input type="text"
             id="comment"
             name="comment"
@@ -64,6 +68,7 @@ function AddSong (props) {
             onChange={handleChangeAddSong} />
         </label>
         <label htmlFor="link">
+          Link
           <input type="text"
             id="link"
             name="link"

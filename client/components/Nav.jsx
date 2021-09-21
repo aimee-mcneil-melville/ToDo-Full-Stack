@@ -6,7 +6,7 @@ const inviteCode = '111A11'
 function Nav () {
   return (
     <ul className='main-nav'>
-      <li className='main-nav__item'><Link to={`/songs/${id}`}>My tracks</Link></li>
+      <li className='main-nav__item'><Link to='/songs'>My tracks</Link></li>
       <li className='main-nav__item'><Link to={'/friends'}>My friends</Link></li>
       <li className='main-nav__item'><Link to={'/profile'}>Edit my profile</Link></li>
       <li className='main-nav__item'>My code: {inviteCode}</li>
