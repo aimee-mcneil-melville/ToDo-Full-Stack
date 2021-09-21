@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getEvent } from '../../../pages/Event/eventHelper'
+import { getEvent } from './EventDetailHelper'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import { useHistory, Link } from 'react-router-dom'
 
@@ -29,11 +29,11 @@ function EventDetail (props) {
         <Link to='' onClick={() => history.goBack()} className='card-close-button'>Close</Link>
         <h1 className='card-title'>{event.title}</h1>
         <ul className='card-list'>
-          <li>{event.gardenName}</li>
-          <li>{event.gardenAddress}</li>
-          <li>{event.date}</li>
-          <li>Volunteers Needed: {event.volunteersNeeded}</li>
-          <li>{event.description}</li>
+          <li role='gardenName'>{event.gardenName}</li>
+          <li role='gardenAddress'>{event.gardenAddress}</li>
+          <li role='eventDate'>{event.date}</li>
+          <li role='volunteersNeeded'>Volunteers Needed: {event.volunteersNeeded}</li>
+          <li role='description'>{event.description}</li>
         </ul>
         {!isAdmin
           ? <VolunteerButton
@@ -42,8 +42,8 @@ function EventDetail (props) {
             setVolunteering={setVolunteering}
           />
           : <>
-            <button onClick={redirectToEdit} className='button-secondary'>Edit Event</button>
-            <button className='button-secondary'>Event Admin</button>
+            <button onClick={redirectToEdit} className='button-secondary' role="eventDetailsEditButton">Edit Event</button>
+            <button className='button-secondary' role="eventDetailsAdminButton">Event Admin</button>
           </>
         }
       </article>
