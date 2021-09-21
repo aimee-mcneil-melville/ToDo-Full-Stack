@@ -23,6 +23,7 @@ function AddSong (props) {
 
   function handleSubmitAddSong (e) {
     e.preventDefault()
+    props.history.push('/songs')
     // props.dispatch(addSong(songForm))
   }
 
