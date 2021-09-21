@@ -9,7 +9,6 @@ import { getGarden } from './gardenHelper'
 export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
     getGarden(id)
