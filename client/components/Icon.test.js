@@ -17,7 +17,6 @@ describe('<Icon /> component tests', () => {
       </>
     )
     const buttons = screen.getAllByRole('button')
-    // console.log('buttons', buttons)
     expect(buttons[0].classList).toContain('icon--music')
     expect(buttons[1].classList).toContain('icon--play')
     expect(buttons[2].classList).toContain('icon--delete')

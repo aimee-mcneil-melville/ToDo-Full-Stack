@@ -16,7 +16,6 @@ test('GET /user_id return all friends', () => {
     .get('/api/v1/friends/10001')
     .expect(200)
     .then((response) => {
-      // console.log('FRIENDS: ', response.body)
       expect(response.body.friends).toHaveLength(3)
       return null
     })
