@@ -25,7 +25,7 @@ export default function Garden () {
           <p>{description}</p>
           <a href={url}>{url}</a>
         </article>
-        <Events events={events} />
+        <Events gardenid={id} events={events} />
       </div>
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
