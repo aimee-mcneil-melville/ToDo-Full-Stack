@@ -10,8 +10,8 @@ export default function VolunteerButton ({ eventId, volunteering, setVolunteerin
   return (
     <>
       {!volunteering
-        ? <button onClick={handleClick} className='button-secondary'>Volunteer</button>
-        : <button onClick={handleClick} className='button-secondary'>Un-Volunteer</button>
+        ? <button onClick={handleClick} className='button-secondary' role='volunteerButton'>Volunteer</button>
+        : <button onClick={handleClick} className='button-secondary' role='volunteerButton'>Un-Volunteer</button>
       }
     </>
   )
