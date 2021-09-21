@@ -13,7 +13,7 @@ const Tagline = () => {
   const history = useHistory()
 
   const login = () => {
-    history.push('/login')
+    history.push('/signin')
   }
 
   const register = () => {
@@ -28,7 +28,7 @@ const Tagline = () => {
         <p className='tagline__text'>discover.</p>
       </div>
       <ButtonGroup>
-        <Button clickFunction={login} buttonText='Login' />
+        <Button clickFunction={login} buttonText='Log in' />
         <Button clickFunction={register} style='secondary' buttonText='Register' />
       </ButtonGroup>
     </div>

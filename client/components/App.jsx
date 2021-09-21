@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+// import Auth from './Auth'
+// import Nav from './Nav'
+import Register from './Register'
+import SignIn from './SignIn'
 import { Route } from 'react-router-dom'
 import AddSong from './AddSong'
-// import Auth from './Auth'
 import Friends from './Friends'
 import Songs from './Songs'
 import UpdateSong from './UpdateSong'
@@ -22,6 +26,8 @@ function App () {
         <Route path='/songs/update/:id' component={UpdateSong} />
         <Route exact path='/songs' component={Songs} />
         <Route exact path='/' component={Tagline} />
+        <Route path='/register' component={Register}/>
+        <Route path='/signIn' component={SignIn}/>
       </div>
     </>
   )
