@@ -10,6 +10,10 @@ import { toggleVolunteerStatus } from '../../components/volunteers/VolunteerButt
 import { dispatch } from '../../store'
 import { CLEAR_USER } from '../../actions/user'
 
+/*
+Mocks all the tests using jest.mock
+*/
+
 jest.mock('./emailVolunteerErrorHelper')
 jest.mock('../../auth-utils')
 jest.mock('../../components/volunteers/VolunteerButton/volunteerButtonHelper')
@@ -32,6 +36,9 @@ jest.mock('react-router-dom', () => ({
 
 describe('EmailVolunteerError', () => {
   it('should display correct event name', () => {
+    /*
+      Mocks the api calls and return event details
+    */
     getEventDetails.mockImplementation(() =>
       Promise.resolve({ title: 'dummy1', gardenName: 'dummy' })
     )
@@ -44,6 +51,10 @@ describe('EmailVolunteerError', () => {
   })
 
   it('should ask user to sign in if not authenticated', () => {
+    /*
+      Mocks the api calls and return event details
+      Mocks the authentication and set user as authenticated
+    */
     getIsAuthenticated.mockImplementation(() => false)
     getEventDetails.mockImplementation(() =>
       Promise.resolve({ title: 'dummy', gardenName: 'dummy' })
