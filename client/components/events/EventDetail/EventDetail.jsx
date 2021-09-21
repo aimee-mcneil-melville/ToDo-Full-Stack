@@ -14,6 +14,8 @@ function EventDetail (props) {
     history.push(`/events/${eventId}/edit`)
   }
 
+  console.log(event)
+
   useEffect(() => {
     getEvent(eventId).then(res => {
       setEvent(res)
@@ -34,6 +36,7 @@ function EventDetail (props) {
           <li role='eventDate'>{event.date}</li>
           <li role='volunteersNeeded'>Volunteers Needed: {event.volunteersNeeded}</li>
           <li role='description'>{event.description}</li>
+          <li role='status'>Event is {event.status}</li>
         </ul>
         {!isAdmin
           ? <VolunteerButton

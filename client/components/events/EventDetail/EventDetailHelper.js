@@ -14,7 +14,8 @@ export function getEvent (id, consume = requestor) {
       gardenAddress: event.gardenAddress,
       date: event.date,
       volunteersNeeded: event.volunteersNeeded,
-      description: event.description
+      description: event.description,
+      status: event.status
     }
   }).catch(err => {
     dispatch(showError(err.message))
