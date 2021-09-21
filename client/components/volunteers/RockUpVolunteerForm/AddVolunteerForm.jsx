@@ -24,6 +24,12 @@ export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
     validationSchema: schema
   })
 
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? <p className='inputError'>{formik.errors[inputName]}</p>
+      : null
+  }
+
   return (
     <>
       <h2 className='form-title'>Add Rock-Up Attendee</h2>
@@ -31,14 +37,12 @@ export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
       <form className='form-container' onSubmit={formik.handleSubmit}>
         <div>
 
-          <label htmlFor='firstname'>First Name</label>
+          <label className='label' htmlFor='firstname'>First Name</label>
 
-          {formik.errors.firstName && formik.touched.firstName
-            ? (<p className='inputError'>{formik.errors.firstName}</p>)
-            : null}
+          {showAnyErrors('firstName')}
 
           <input
-            className='input'
+            className='form-box'
             id='firstName'
             name='firstName'
             value={formik.values.firstName}
@@ -50,14 +54,12 @@ export default function AddVolunteerForm ({ addExtraVolunteer, id }) {
         </div>
 
         <div>
-          <label htmlFor='lastname'>Last Name</label>
+          <label className='label' htmlFor='lastname'>Last Name</label>
 
-          {formik.errors.lastName && formik.touched.lastName
-            ? (<p className='inputError'>{formik.errors.lastName}</p>)
-            : null}
+          {showAnyErrors('lastName')}
 
           <input
-            className='input'
+            className='form-box'
             id='lastName'
             name='lastName'
             value={formik.values.lastName}

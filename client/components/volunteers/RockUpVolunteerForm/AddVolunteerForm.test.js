@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import store from '../../../store'
 import AddVolunteerForm from './AddVolunteerForm'
 
-import { addVolunteer } from './AddVolunteerFormHelper'
 import userEvent from '@testing-library/user-event'
 
 jest.mock('./AddVolunteerFormHelper')
@@ -19,10 +18,8 @@ describe('Add volunteer form can validate inputs', () => {
 
     userEvent.click(screen.getByRole('button', { name: /add/i }))
 
-    const element = await screen.findAllByText('Required')
-
-    expect(addVolunteer).not.toHaveBeenCalled()
-    expect(element[0]).toBeInTheDocument()
+    const elements = await screen.findAllByText('Required')
+    expect(elements[0]).toBeInTheDocument()
   })
 
   it('Should not display "required" when required entires are filled', () => {
