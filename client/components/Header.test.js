@@ -18,7 +18,7 @@ describe('<Header /> component tests', () => {
     )
     // const link = screen.getByRole('button')
     const nav = screen.getByRole('navigation')
-    expect(nav.textContent).toContain('My friends')
+    expect(nav.textContent).toContain('Log in')
     expect(nav.classList).not.toContain('nav--open')
   })
 

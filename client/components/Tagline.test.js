@@ -27,10 +27,10 @@ describe('<Tagline /> tests', () => {
       </Router>
     )
 
-    const loginButton = screen.getByRole('button', { name: /login/i })
+    const loginButton = screen.getByRole('button', { name: /log in/i })
     const registerButton = screen.getByRole('button', { name: /register/i })
     userEvent.click(loginButton)
-    expect(history.push).toHaveBeenCalledWith('/login')
+    expect(history.push).toHaveBeenCalledWith('/signIn')
     userEvent.click(registerButton)
     expect(history.push).toHaveBeenCalledWith('/register')
   })

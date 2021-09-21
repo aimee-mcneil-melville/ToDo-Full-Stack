@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { signIn, isAuthenticated } from '../auth-utils'
 
 import { baseApiUrl as baseUrl } from '../config'
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+
+import Input from './Input'
+import Button from './Button'
 
 function SignIn (props) {
   const [form, setForm] = useState({
@@ -42,28 +44,24 @@ function SignIn (props) {
   return (
     <>
       <h2>Sign in</h2>
-      <GridForm>
-        <ColOne htmlFor='username'>Email:</ColOne>
-        <ColTwo type='text'
-          id='username'
-          name='username'
-          placeholder="Your email address"
-          value={form.username}
-          onChange={handleChange} />
-
-        <ColOne htmlFor='password'>Password:</ColOne>
-        <ColTwo type='password'
-          id='password'
-          name='password'
-          placeholder="Your password"
-          value={form.password}
-          onChange={handleChange} />
-
-        {/* <ColOne htmlFor='checkbox'>Show Password:</ColOne>
-        <ColTwo type="checkbox" onClick={displayPassword()}></ColTwo> */}
-
-        <Button type='button' onClick={handleClick}>Sign in</Button>
-      </GridForm>
+      <Input
+        value={form.username}
+        id='username'
+        name='username'
+        changeHandler={handleChange}
+        placeholder='Your email address'
+        label='Email address'
+      />
+      <Input
+        value={form.password}
+        type='password'
+        id='password'
+        name='password'
+        changeHandler={handleChange}
+        placeholder='Your password'
+        label='Password'
+      />
+      <Button buttonText='Log in' clickFunction={handleClick} />
     </>
   )
 }
