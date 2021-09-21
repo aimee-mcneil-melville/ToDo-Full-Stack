@@ -14,7 +14,8 @@ exports.seed = (knex) => {
           title: 'Weeding worker Bee',
           date: todayDate,
           description: 'It is time to get these weeds under control.',
-          volunteers_needed: 16
+          volunteers_needed: 16,
+          status: 'Active'
         },
         {
           id: 2,
@@ -22,7 +23,8 @@ exports.seed = (knex) => {
           title: 'Sowing potatoes',
           date: diffDate(1),
           description: 'Help get these lovely potatoes out of the ground!',
-          volunteers_needed: 24
+          volunteers_needed: 24,
+          status: 'Active'
         },
         {
           id: 3,
@@ -30,7 +32,8 @@ exports.seed = (knex) => {
           title: 'Sowing potatoes',
           date: diffDate(-60),
           description: 'Help get these lovely potatoes out of the ground!',
-          volunteers_needed: 14
+          volunteers_needed: 14,
+          status: 'Active'
         },
         {
           id: 4,
@@ -38,7 +41,8 @@ exports.seed = (knex) => {
           title: 'Hanging out',
           date: todayDate,
           description: 'Bring your snacks and beverages.',
-          volunteers_needed: 24
+          volunteers_needed: 24,
+          status: 'Active'
         },
         {
           id: 5,
@@ -46,7 +50,8 @@ exports.seed = (knex) => {
           title: 'Hanging out',
           date: diffDate(365),
           description: 'Bring your snacks, beverages and stories.',
-          volunteers_needed: 24
+          volunteers_needed: 24,
+          status: 'Active'
         },
         {
           id: 6,
@@ -54,7 +59,8 @@ exports.seed = (knex) => {
           title: 'Party at the garden',
           date: diffDate(-365),
           description: 'Bring your snacks, beverages and stories.',
-          volunteers_needed: 24
+          volunteers_needed: 24,
+          status: 'Active'
         },
         {
           id: 7,
@@ -62,7 +68,8 @@ exports.seed = (knex) => {
           title: 'Zen Gardens',
           date: diffDate(740),
           description: 'Come and hear a talk on how to set up your own zen garden.',
-          volunteers_needed: 6
+          volunteers_needed: 6,
+          status: 'Active'
         },
         {
           id: 8,
@@ -70,7 +77,8 @@ exports.seed = (knex) => {
           title: 'Collecting Cucumbers',
           date: diffDate(-900),
           description: 'The time is right to pick some cucumbers.',
-          volunteers_needed: 8
+          volunteers_needed: 8,
+          status: 'Active'
         },
         {
           id: 9,
@@ -78,7 +86,8 @@ exports.seed = (knex) => {
           title: 'Giant Pumpkins',
           date: diffDate(10000),
           description: 'There is something in the soil here, these pumpkins are massive.',
-          volunteers_needed: 8
+          volunteers_needed: 8,
+          status: 'Active'
         }
       ])
     })

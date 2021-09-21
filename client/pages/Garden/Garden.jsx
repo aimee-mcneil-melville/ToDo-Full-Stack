@@ -9,14 +9,12 @@ import { getGarden } from './gardenHelper'
 export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
 
   useEffect(() => {
     getGarden(id)
   }, [id])
 
   const { name, description, address, url, events, lat, lon } = garden
-  console.log(name)
   return (
     <section className='flex-container'>
       <div className='column-6'>
