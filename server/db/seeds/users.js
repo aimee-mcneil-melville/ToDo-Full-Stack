@@ -9,7 +9,6 @@ exports.seed = function (knex) {
         {
           id: 1,
           garden_id: 1,
-          is_admin: true,
           username: 'admin',
           first_name: 'Admin',
           last_name: 'User',
