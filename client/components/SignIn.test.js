@@ -36,7 +36,7 @@ test('a successful sign in', () => {
   render(<SignIn history={history}/>)
   // screen and render work together. The assertion below says give me the textbox with the name email and type into it... does this return anything? The following assertion does the same for the password label.
 
-  userEvent.type(screen.getByRole('textbox', { name: 'Email:' }), 'warhammer-slayer@gmail.com')
+  userEvent.type(screen.getByRole('textbox', { name: 'Email address' }), 'warhammer-slayer@gmail.com')
   userEvent.type(screen.getByLabelText(/password/i), 'Hello123')
 
   // The below is testing whether the button clicks. It get the button by finding the thing with a 'role: button'.

@@ -9,7 +9,8 @@
 // afterEach(() => {
 //   return jest.resetAllMocks()
 // })
-
+test.todo('authenticated test')
+test.todo('unauthenticated test')
 // test('Nav displays log off if user is Authenticated', () => {
 //   expect.assertions(1)
 //   isAuthenticated.mockImplementation(() => true)

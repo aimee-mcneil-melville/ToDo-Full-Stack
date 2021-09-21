@@ -13,7 +13,7 @@ const Tagline = () => {
   const history = useHistory()
 
   const login = () => {
-    history.push('/signin')
+    history.push('/signIn')
   }
 
   const register = () => {
