@@ -31,9 +31,9 @@ export function Register () {
     <section className='flex-container'>
       <form className='column-6'>
         <div className="field">
-          <label htmlFor='firstName' className='form-label'>First Name</label>
+          <label htmlFor='firstName' className='label'>First Name</label>
           <input
-            className='form-input'
+            className='form-box'
             id='firstName'
             name='firstName'
             value={form.firstName}
@@ -42,9 +42,9 @@ export function Register () {
           ></input>
         </div>
         <div className="field">
-          <label htmlFor='lastName' className='form-label'>Last Name</label>
+          <label htmlFor='lastName' className='label'>Last Name</label>
           <input
-            className='form-input'
+            className='form-box'
             id='lastName'
             name='lastName'
             value={form.lastName}
@@ -53,9 +53,9 @@ export function Register () {
           ></input>
         </div>
         <div className="field">
-          <label htmlFor='username' className='form-label'>Username</label>
+          <label htmlFor='username' className='label'>Username</label>
           <input
-            className='form-input'
+            className='form-box'
             id='username'
             name='username'
             value={form.username}
@@ -64,10 +64,10 @@ export function Register () {
           ></input>
         </div>
         <div className="field">
-          <label htmlFor='garden' className='form-label'>My Garden</label>
+          <label htmlFor='garden' className='label'>My Garden</label>
           <select
             onChange={handleChange}
-            className='select'
+            className='form-box'
             name='gardenId'
             id='garden'
           >
@@ -79,7 +79,7 @@ export function Register () {
         </div>
         <button
           type='button'
-          className='button-primary'
+          className='submit'
           onClick={handleClick}
           data-testid='submitButton'
         >
