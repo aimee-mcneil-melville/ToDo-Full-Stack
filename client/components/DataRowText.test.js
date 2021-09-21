@@ -1,11 +1,11 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 
-import DataTextRow from './DataTextRow'
+import DataRowText from './DataRowText'
 
-describe('<DataTextRow/> component tests', () => {
+describe('<DataRowText/> component tests', () => {
   test('Component renders with all props supplied', () => {
-    render(<DataTextRow title='Title text' subtitle='Test subtext' />)
+    render(<DataRowText title='Title text' subtitle='Test subtext' />)
 
     const title = screen.getByRole('heading', { level: 3 })
     const subtitle = screen.getByRole('heading', { level: 4 })

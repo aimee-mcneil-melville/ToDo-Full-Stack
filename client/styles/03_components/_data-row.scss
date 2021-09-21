@@ -5,11 +5,13 @@
     width: 100%;
   }
 
-  &__title {
+  &__title,
+  &__title a {
     color: $col-foreground;
   }
 
-  &__subtitle {
+  &__subtitle,
+  &__subtitle a {
     color: $col-accent;
   }
 
@@ -17,5 +19,9 @@
     display: flex;
     flex-wrap: nowrap;
     padding-top: 2px;
+  }
+  
+  a {
+    text-decoration: none;
   }
 }

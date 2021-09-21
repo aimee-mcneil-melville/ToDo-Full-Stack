@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchFriends } from './appHelper'
 import { connect } from 'react-redux'
+import Icon from './Icon'
+import DataRowText from './DataRowText'
 
 function Friends (props) {
   const id = 10001
@@ -28,12 +30,14 @@ function Friends (props) {
       {/* <form>
         <input type="text" />
       </form> */}
-      <ul>
-        {props.friends.map(friend => (
-          <li key={friend}><Link to={`/friends/${friend.id}`}><button>icon</button>{friend.nickname}
-            <br /> {friend.name} {friend.lastName} </Link>X</li>
-        ))}
-      </ul>
+      {props.friends.map(friend => (
+        <div className='data-row' key={friend.id}>
+          <Link to={`/friends/${friend.id}`}><Icon style='user' /></Link>
+          <DataRowText link={`/friends/${friend.id}`} title={friend.nickname} subtitle={`${friend.name} ${friend.lastName}`} />
+        </div>
+        // <li key={friend}><Link to={`/friends/${friend.id}`}><button>icon</button>{friend.nickname}
+        //   <br /> {friend.name} {friend.lastName} </Link>X</li>
+      ))}
     </>
   )
 }
