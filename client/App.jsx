@@ -23,7 +23,7 @@ export default function App () {
       <main className='container'>
         <Route exact path='/' component={Home} />
         <Route path='/gardens/:id' component={Garden} />
-        <Route path='/gardens/:id/events/:gardenid' component={Event} />
+        <Route path='/gardens/:id/events/:eventId' component={Event} />
         <Route path='/profile' component={Profile} />
         <Route path='/event/new' component={AddEvent} />
         <Route path='/events/:id/edit' component={EditEvent} />
