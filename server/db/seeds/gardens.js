@@ -28,6 +28,24 @@ exports.seed = (knex) => {
           lat: -36.82514374209753,
           lon: 174.80311208557973,
           url: 'https://sites.google.com/site/communitygardendevonportnz/home'
+        },
+        {
+          id: 4,
+          name: 'Owairaka Community Garden',
+          address: '56-60 Owairaka Avenue, Mount Albert, Auckland 1025',
+          description: 'Getting together to find ways to lead more sustainable lifestyles',
+          lat: -36.896282,
+          lon: 174.722987,
+          url: 'https://sites.google.com/site/communitygardendevonportnz/home'
+        },
+        {
+          id: 5,
+          name: 'Auckland Teaching Gardens',
+          address: 'Old School Reserve, 299 Kirkbride Road, Māngare, Auckland 2022',
+          description: 'Ka whakatipū i te whenua ka ora tatou, Cultivate the land and give life to the people',
+          lat: -36.977468,
+          lon: 174.793402,
+          url: 'https://aucklandteachinggardens.co.nz/'
         }
       ])
     })
