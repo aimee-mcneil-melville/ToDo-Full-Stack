@@ -4,3 +4,21 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
 }
+ th, td {
+            border: 1px solid black;
+}
+table {
+  width: 100%;
+}
+
+.registeration {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

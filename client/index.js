@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { HashRouter as Router } from 'react-router-dom'
 import store from './store'
 
 import App from './components/App'
@@ -15,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
       audience='https://fullstackboilerplate/api'
     >
       <Provider store={store}>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </Provider>
     </Auth0Provider>,
     document.getElementById('app')

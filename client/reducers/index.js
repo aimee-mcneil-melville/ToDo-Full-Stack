@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
+import users from './users'
 import user from './user'
 
 export default combineReducers({
-  fruits,
+  users,
   user
 })

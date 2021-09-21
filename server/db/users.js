@@ -1,7 +1,12 @@
 const connection = require('./connection')
 
 function getUsers (db = connection) {
-  return db('users').select()
+  return db('users')
+    .select('id',
+      'auth0_id as auth0Id',
+      'name',
+      'email',
+      'description')
 }
 
 function addUser (input, db = connection) {

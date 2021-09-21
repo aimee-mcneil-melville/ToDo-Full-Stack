@@ -1,62 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
-import request from 'superagent'
-import { fetchFruits } from '../actions/fruits'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
+import PingRoutes from './PingRoutes'
+import Registeration from './Registeration'
+import Users from './Users'
+import { Route } from 'react-router'
 
-function App (props) {
+function App () {
   cacheUser(useAuth0)
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    props.dispatch(fetchFruits())
-  }, [])
-
-  async function handlePublicEndpoint () {
-    const res = await request
-      .get('/api/v1/public')
-
-    setMessage(res.body.message)
-  }
-
-  async function handleProtectedEndpoint () {
-    const res = await request
-      .get('/api/v1/protected')
-      .set('authorization', `Bearer ${props.token}`)
-
-    setMessage(res.body.message)
-  }
-
-  async function handlePrivateEndpoint () {
-    const res = await request
-      .get('/api/v1/private')
-      .set('authorization', `Bearer ${props.token}`)
-
-    setMessage(res.body.message)
-  }
 
   return (
     <nav>
       <div className='app'>
-        <Nav />
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-        <div>
-          <button onClick={handlePublicEndpoint}>Ping Public Endpoint</button>
-        </div>
-        <div>
-          <button onClick={handleProtectedEndpoint}>Ping Protected Endpoint</button>
-        </div>
-        <div>
-          <button onClick={handlePrivateEndpoint}>Ping Private Endpoint</button>
-        </div>
-        <p>{message}</p>
+        <Route exact path='/' component={Nav} />
+        <Route exact path='/' component={Users} />
+        <Route exact path='/' component={PingRoutes} />
+        <Route exact path='/register' component={Registeration} />
       </div>
     </nav>
   )
