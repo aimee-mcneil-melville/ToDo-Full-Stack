@@ -23,12 +23,36 @@ export default function EventForm (props) {
       description: ''
     },
     onSubmit: values => {
+<<<<<<< HEAD
       console.log('hello')
       props.submitEvent({ ...values, date: moment(values.date).format('L') })
+||||||| merged common ancestors
+      props.submitEvent({ ...values, date: dateFormater(values.date) })
+=======
+      props.submitEvent({ ...values, date: moment(values.date).format('L') })
+>>>>>>> 8392c36fa6f112594ebd977ba1f3bf06e0cf349f
     },
     validationSchema: eventSchema
   })
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+
+  function dateFormater (date) {
+    // input: yyyy-MM-dd
+    // output: dd-MM-yyyy
+    return `${date[8]}${date[9]}/${date[5]}${date[6]}/${date[0]}${date[1]}${date[2]}${date[3]}`
+  }
+
+=======
+  console.log(moment(formik.values.date).format('L'))
+  // function dateFormater (date) {
+  //   // input: yyyy-MM-dd
+  //   // output: dd-MM-yyyy
+  //   return `${date[8]}${date[9]}/${date[5]}${date[6]}/${date[0]}${date[1]}${date[2]}${date[3]}`
+  // }
+
+>>>>>>> 8392c36fa6f112594ebd977ba1f3bf06e0cf349f
   return (
     <>
       <div className='flex-container'>
