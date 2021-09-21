@@ -7,7 +7,6 @@ const emptyUser = {
   token: ''
 }
 
-
 function saveUser (user = emptyUser) {
   store.dispatch(setUser(user))
 }
@@ -20,14 +19,12 @@ export async function cacheUser (useAuth0) {
       const userToSave = { email: user.email, name: user.nickname, token }
       saveUser(userToSave)
     } catch (err) {
-      dispatch(showError('Unable to set the current user'))
       console.error(err)
     }
   } else {
     saveUser()
   }
 }
-
 
 export function getLoginFn (useAuth0) {
   return useAuth0().loginWithRedirect

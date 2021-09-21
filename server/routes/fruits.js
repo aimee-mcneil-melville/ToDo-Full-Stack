@@ -4,6 +4,7 @@ const db = require('../db/fruits')
 
 const router = express.Router()
 
+// public - an endpoint that anyone can access
 router.get('/', (req, res) => {
   db.getFruits()
     .then(results => {
