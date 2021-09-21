@@ -24,8 +24,7 @@ export default function EditEvent () {
   }
 
   function cancelSubmit () {
-    console.log(id)
-    cancelEvent(id, history.push)
+    cancelEvent(id, history.goBack)
   }
 
   return (

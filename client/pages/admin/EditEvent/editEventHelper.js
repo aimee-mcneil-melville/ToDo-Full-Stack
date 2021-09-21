@@ -45,7 +45,7 @@ export function cancelEvent (id, navigateTo, consume = requestor) {
   }
   return consume(`/events/${id}/cancel`, token, 'patch', eventToUpdate)
     .then(() => {
-      navigateTo(`/events/${id}`)
+      navigateTo()
       return null
     })
     .catch((err) => {
