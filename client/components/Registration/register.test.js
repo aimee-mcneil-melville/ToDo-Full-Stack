@@ -29,8 +29,8 @@ describe('Register form field', () => {
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    const ele = await screen.findAllByText('Required')
-    expect(ele[0]).toBeInTheDocument()
+    const element = await screen.findAllByText('Required')
+    expect(element[0]).toBeInTheDocument()
   })
   it('message comes up on short input', async () => {
     const handleSubmit = jest.fn()
