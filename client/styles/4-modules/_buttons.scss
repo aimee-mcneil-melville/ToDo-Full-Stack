@@ -18,11 +18,12 @@
   }
 }
 
-.update {
+.submit {
   @extend .button-primary;
   display: flex;
-    left: 500px;
-    top: 600px;
+    width:auto;
+    margin: 5px auto;
+    align-items: center;
 }
 
 .button-width {
