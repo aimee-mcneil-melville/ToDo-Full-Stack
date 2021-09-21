@@ -7,16 +7,16 @@ import * as Yup from 'yup'
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'This must be atleast 2 characters long!')
-    .max(15, 'Sorry! this must be under 15 characters long')
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
     .required('Required'),
   lastName: Yup.string()
     .required('Required')
-    .min(2, 'This must be atleast 2 characters long!')
+    .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
   username: Yup.string()
-    .min(2, 'This must be atleast 2 characters long!')
-    .max(15, 'Sorry! this must be under 15 characters long')
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
     .required('Required'),
   gardenId: Yup.number()
     .required('Required')
