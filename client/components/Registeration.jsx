@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router'
 import { addUser } from '../apis/users'
 
-function Registeration (props) {
+function Registeration ({ user }) {
   const history = useHistory()
 
   const [form, setForm] = useState({
@@ -12,6 +12,15 @@ function Registeration (props) {
     email: '',
     description: ''
   })
+
+  useEffect(() => {
+    setForm({
+      auth0Id: user.auth0Id,
+      name: user.name,
+      email: user.email,
+      description: user.description
+    })
+  }, [user])
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -41,6 +50,7 @@ function Registeration (props) {
           name='auth0Id'
           value={form.auth0Id}
           onChange={handleChange}
+          disabled={true}
         ></input>
 
         <label htmlFor='name'>Name</label>
@@ -48,6 +58,7 @@ function Registeration (props) {
           name='name'
           value={form.name}
           onChange={handleChange}
+          disabled={true}
         ></input>
 
         <label htmlFor='email'>Email</label>
@@ -55,14 +66,16 @@ function Registeration (props) {
           name='email'
           value={form.email}
           onChange={handleChange}
+          disabled={true}
         ></input>
 
         <label htmlFor='description' >Description</label>
-        <input
+        <textarea
           name='description'
           value={form.description}
           onChange={handleChange}
-        ></input>
+          cols={3}
+        ></textarea>
         <button
           type='button'
           onClick={handleClick}

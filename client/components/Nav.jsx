@@ -34,7 +34,7 @@ function Nav (props) {
 
       <IfNotAuthenticated>
         <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-        <a href='/register' onClick={handleRegister} className='nav-link'>Register</a>
+        <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
       </IfNotAuthenticated>
     </>
   )

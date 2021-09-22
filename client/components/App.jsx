@@ -17,7 +17,7 @@ function App () {
         <Route exact path='/' component={Nav} />
         <Route exact path='/' component={Users} />
         <Route exact path='/' component={PingRoutes} />
-        <Route exact path='/register' component={Registeration} />
+        <Route path='/register' component={Registeration} />
       </div>
     </nav>
   )

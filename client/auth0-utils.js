@@ -2,6 +2,7 @@ import { setUser } from './actions/user'
 import store from './store'
 
 const emptyUser = {
+  auth0Id: '',
   email: '',
   name: '',
   token: ''
@@ -16,7 +17,7 @@ export async function cacheUser (useAuth0) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      const userToSave = { email: user.email, name: user.nickname, token }
+      const userToSave = { auth0Id: user.sub, email: user.email, name: user.nickname, token }
       saveUser(userToSave)
     } catch (err) {
       console.error(err)
@@ -40,7 +41,7 @@ export function getIsAuthenticated (useAuth0) {
 
 export function getRegisterFn (useAuth0) {
   const { loginWithRedirect } = useAuth0()
-  const redirectUri = `${window.location.origin}/register`
+  const redirectUri = `${window.location.origin}/#/register`
   return () => loginWithRedirect({
     redirectUri,
     screen_hint: 'signup',
