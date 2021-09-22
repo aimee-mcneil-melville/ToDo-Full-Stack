@@ -12,14 +12,12 @@ function App () {
   cacheUser(useAuth0)
 
   return (
-    <nav>
-      <div className='app'>
-        <Route exact path='/' component={Nav} />
-        <Route exact path='/' component={Users} />
-        <Route exact path='/' component={PingRoutes} />
-        <Route path='/register' component={Registeration} />
-      </div>
-    </nav>
+    <div className='app'>
+      <Route exact path='/' component={Nav} />
+      <Route exact path='/' component={Users} />
+      <Route exact path='/' component={PingRoutes} />
+      <Route path='/register' component={Registeration} />
+    </div>
   )
 }
 const mapStateToProps = (globalState) => {

@@ -6,40 +6,57 @@ function PingRoutes (props) {
   const [message, setMessage] = useState('')
 
   async function handlePublicEndpoint () {
-    const res = await request
-      .get('/api/v1/public')
+    try {
+      const res = await request
+        .get('/api/v1/public')
 
-    setMessage(res.body.message)
+      setMessage(res.body.message)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function handleProtectedEndpoint () {
-    const res = await request
-      .get('/api/v1/protected')
-      .set('authorization', `Bearer ${props.token}`)
+    try {
+      const res = await request
+        .get('/api/v1/protected')
+        .set('authorization', `Bearer ${props.token}`)
 
-    setMessage(res.body.message)
+      setMessage(res.body.message)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function handlePrivateEndpoint () {
-    const res = await request
-      .get('/api/v1/private')
-      .set('authorization', `Bearer ${props.token}`)
+    try {
+      const res = await request
+        .get('/api/v1/private')
+        .set('authorization', `Bearer ${props.token}`)
 
-    setMessage(res.body.message)
+      setMessage(res.body.message)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
-    <section >
-      <div>
-        <button onClick={handlePublicEndpoint}>Ping Public Endpoint</button>
-      </div>
-      <div>
-        <button onClick={handleProtectedEndpoint}>Ping Protected Endpoint</button>
-      </div>
-      <div>
-        <button onClick={handlePrivateEndpoint}>Ping Private Endpoint</button>
-      </div>
-      <p>{message}</p>
+    <section>
+      <section className='buttons' >
+        <div>
+          Ping 👉
+        </div>
+        <div>
+          <button onClick={handlePublicEndpoint}>Public</button>
+        </div>
+        <div>
+          <button onClick={handleProtectedEndpoint}>Protected</button>
+        </div>
+        <div>
+          <button onClick={handlePrivateEndpoint}>Private (permissioned)</button>
+        </div>
+      </section>
+      <p className='message'>{message}</p>
     </section>
   )
 }

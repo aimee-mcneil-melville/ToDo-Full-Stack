@@ -26,17 +26,26 @@ function Nav (props) {
   }
 
   return (
-    <>
-      <IfAuthenticated>
-        {user.name}
-        <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
-      </IfAuthenticated>
-
-      <IfNotAuthenticated>
-        <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-        <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-      </IfNotAuthenticated>
-    </>
+    <nav>
+      <h1 className='logo'>Full-stack Boilerplate with Auth0</h1>
+      <section className='nav-item'>
+        <IfAuthenticated>
+          <p>Hello, {user.name}</p>
+          <section className='sign'>
+            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+          </section>
+        </IfAuthenticated>
+        <IfNotAuthenticated>
+          {/* <section className='nav-item'> */}
+          <p>Hello, guest</p>
+          <section className='sign'>
+            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+          </section>
+          {/* </section> */}
+        </IfNotAuthenticated>
+      </section>
+    </nav >
   )
 }
 

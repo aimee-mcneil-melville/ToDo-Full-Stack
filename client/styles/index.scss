@@ -4,16 +4,69 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
 }
- th, td {
-            border: 1px solid black;
-}
-table {
+
+.table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
   width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #9c9c9c;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  width: 50%;
+}
+
+.sign {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  text-align: right;
+  justify-content: right;
+  gap: 10px; 
+}
+
+a {
+  color: inherit;
+}
+
+.nav-item {
+  width: 50%;
+  text-align: right;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }
 
 .registeration {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .form {
@@ -21,4 +74,20 @@ table {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.title {
+  font-size: larger;
+}
+
+.message {
+  background-color: lightgrey;
+  font-family: 'Courier New', Courier, monospace;
+  width: 250px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }

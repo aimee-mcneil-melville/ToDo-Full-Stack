@@ -9,6 +9,7 @@ function Users (props) {
 
   return (
     <section>
+      <p className='title'>Registered Users</p>
       <table>
         <thead>
           <tr>
