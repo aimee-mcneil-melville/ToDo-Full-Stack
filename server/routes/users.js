@@ -1,4 +1,5 @@
 const express = require('express')
+const { getUserRoles } = require('../auth0')
 
 const db = require('../db/users')
 
@@ -16,16 +17,15 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', async (req, res) => {
-  const { auth0Id, name, email, description } = req.body
-  const user = { auth0Id, name, email, description }
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
 
   try {
-    await db.addUser(user)
-    res.sendStatus(201)
+    const roles = await getUserRoles(id)
+    res.json({ roles })
   } catch (error) {
     console.error(error)
-    res.status(500).json({ message: 'unable to insert user into the database' })
+    res.status(500).json({ message: 'unable to retrieve user roles' })
   }
 })
 
