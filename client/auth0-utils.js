@@ -1,11 +1,13 @@
 import { setUser } from './actions/user'
+import { getUserRoles } from './apis/users'
 import store from './store'
 
 const emptyUser = {
   auth0Id: '',
   email: '',
   name: '',
-  token: ''
+  token: '',
+  roles: []
 }
 
 function saveUser (user = emptyUser) {
@@ -17,7 +19,14 @@ export async function cacheUser (useAuth0) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      const userToSave = { auth0Id: user.sub, email: user.email, name: user.nickname, token }
+      const roles = await getUserRoles(user.sub)
+      const userToSave = {
+        auth0Id: user.sub,
+        email: user.email,
+        name: user.nickname,
+        token,
+        roles
+      }
       saveUser(userToSave)
     } catch (err) {
       console.error(err)

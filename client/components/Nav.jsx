@@ -30,7 +30,7 @@ function Nav (props) {
       <h1 className='logo'>Full-stack Boilerplate with Auth0</h1>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Hello, {user.name}</p>
+          <p>Hello, {user.name} {user.roles ? `(${user.roles})` : null}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
