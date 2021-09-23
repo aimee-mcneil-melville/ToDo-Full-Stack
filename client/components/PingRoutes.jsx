@@ -8,7 +8,7 @@ function PingRoutes (props) {
   async function handlePublicEndpoint () {
     try {
       const res = await request
-        .get('/api/v1/public')
+        .get('/api/v1/users/public')
 
       setMessage(res.body.message)
     } catch (error) {
@@ -19,7 +19,7 @@ function PingRoutes (props) {
   async function handleProtectedEndpoint () {
     try {
       const res = await request
-        .get('/api/v1/protected')
+        .get('/api/v1/users/protected')
         .set('authorization', `Bearer ${props.token}`)
 
       setMessage(res.body.message)
@@ -31,7 +31,7 @@ function PingRoutes (props) {
   async function handlePrivateEndpoint () {
     try {
       const res = await request
-        .get('/api/v1/private')
+        .get('/api/v1/users/private')
         .set('authorization', `Bearer ${props.token}`)
 
       setMessage(res.body.message)

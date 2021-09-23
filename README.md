@@ -21,12 +21,6 @@ You can find the server running on [http://localhost:3000](http://localhost:3000
 
 This repo includes:
 
-* Three API endpoints:
-  * 2 public endpoints:
-    * `/api/v1/users` 
-    * `/api/v1/public` 
-  * a protected API endpoint `/api/v1/protected`
-  * a private API endpoint `/api/v1/private`
 * React Components:
   * App
   * Nav is used for login, logout, registeration
