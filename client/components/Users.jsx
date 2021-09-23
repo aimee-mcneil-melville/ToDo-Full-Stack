@@ -8,7 +8,7 @@ function Users (props) {
   }, [])
 
   return (
-    <section>
+    <section className='users'>
       <p className='title'>Registered Users</p>
       <table>
         <thead>

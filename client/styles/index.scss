@@ -33,6 +33,8 @@ nav {
   align-items: center;
   background-color: black;
   color: white;
+  padding: 10px;
+  align-self: stretch;
 }
 
 .logo {
@@ -61,6 +63,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 100px;
+  align-items: center;
 }
 
 .registeration {
@@ -90,4 +93,10 @@ a {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
