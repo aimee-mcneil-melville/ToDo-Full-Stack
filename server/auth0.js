@@ -5,7 +5,7 @@ const request = require('superagent')
 require('dotenv').config({ path: path.join(__dirname, '.env') })
 
 const domain = process.env.AUTH0_DOMAIN
-const ssoAudience = process.env.AUTH0_AUDIENCE
+const ssoAudience = process.env.AUTH0_SSO_AUDIENCE
 const machine2machineClientId = process.env.AUTH0_MACHINE_2_MACHINE_CLIENT_ID
 const machine2machineSecret = process.env.AUTH0_MACHINE_2_MACHINE_SECRET
 
