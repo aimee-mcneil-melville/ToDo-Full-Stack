@@ -86,7 +86,6 @@ a {
 .message {
   background-color: lightgrey;
   font-family: 'Courier New', Courier, monospace;
-  width: 250px;
 }
 
 .buttons {
@@ -96,6 +95,12 @@ a {
 }
 
 .users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ping {
   display: flex;
   flex-direction: column;
   align-items: center;

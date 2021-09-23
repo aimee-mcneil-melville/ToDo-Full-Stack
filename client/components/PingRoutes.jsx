@@ -41,7 +41,7 @@ function PingRoutes (props) {
   }
 
   return (
-    <section>
+    <section className='ping'>
       <section className='buttons' >
         <div>
           Ping 👉

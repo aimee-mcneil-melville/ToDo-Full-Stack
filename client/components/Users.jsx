@@ -9,7 +9,7 @@ function Users (props) {
 
   return (
     <section className='users'>
-      <p className='title'>Registered Users</p>
+      <p className='title'>Registered users in the database</p>
       <table>
         <thead>
           <tr>
