@@ -8,8 +8,9 @@ See the instructions [here](https://docs.github.com/en/free-pro-team@latest/gith
 ### From the command line
 
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
+git clone git@github.com:dev-academy-challenges/boilerplate-full-stack-auth0.git [your-project-name]
 cd [your-project-name]
+cp /server/.env.example /server/.env
 npm install # to install dependencies
 npm run dev # to start the dev server
 ```
@@ -20,13 +21,21 @@ You can find the server running on [http://localhost:3000](http://localhost:3000
 
 This repo includes:
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Jest and testing library
-* configuration for server-side debugging in VS Code
-* a single client-side test (`client/components/App.test.js`)
+* Three API endpoints:
+  * 2 public endpoints:
+    * `/api/v1/users` 
+    * `/api/v1/public` 
+  * a protected API endpoint `/api/v1/protected`
+  * a private API endpoint `/api/v1/private`
+* React Components:
+  * App
+  * Nav is used for login, logout, registeration
+  * Authenticated is used for show/hide components if the user is logged in
+  * PingRoutes is used for testing the routes
+  * Users is used to display the registered users
+  * Registeration is used to save the users info after they are registered with Auth0
+* an example database module (`server/db/users.js`)
+* an API client module (`client/apis/users.js`)
 
 
 ## Auth0

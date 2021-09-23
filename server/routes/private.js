@@ -1,5 +1,5 @@
 const express = require('express')
-const checkJwt = require('../auth0')
+const { checkJwt } = require('../auth0')
 const jwtAuthz = require('express-jwt-authz')
 
 const router = express.Router()
