@@ -10,7 +10,7 @@ See the instructions [here](https://docs.github.com/en/free-pro-team@latest/gith
 ```
 git clone git@github.com:dev-academy-challenges/boilerplate-full-stack-auth0.git [your-project-name]
 cd [your-project-name]
-cp /server/.env.example /server/.env
+cp server/.env.example server/.env
 npm install # to install dependencies
 npm run knex migrate:latest
 npm run knex seed:run
