@@ -88,7 +88,7 @@ Let's create a new application in Auth0, this application will linked and connec
 1. Expand it and select the following permissions:
     1. `read:roles`
     1. `read:users`
-    1. `read:member_roles`
+    1. `read:role_members`
 1. Open the Settings.
 1. Copy the *Client ID* and paste it in `AUTH0_MACHINE_2_MACHINE_CLIENT_ID` in the `.env` file.
 1. Copy the *Secret* and paste it in `AUTH0_MACHINE_2_MACHINE_SECRET`.
