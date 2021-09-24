@@ -10,7 +10,7 @@ See the instructions [here](https://docs.github.com/en/free-pro-team@latest/gith
 ```
 git clone git@github.com:dev-academy-challenges/boilerplate-full-stack-auth0.git [your-project-name]
 cd [your-project-name]
-cp /server/.env.example /server/.env
+cp server/.env.example server/.env
 npm install # to install dependencies
 npm run knex migrate:latest
 npm run knex seed:run
@@ -47,8 +47,8 @@ This repo includes:
 1. Copy the **Client ID** of your application in Auth0.com and paste it in the `client` in `index.js`.
 
 ### Server
-1. In Auth0.com, create a new API and give a it name, for example `https://myapp/api`. This identifier will used as the `audience`.
-1. Scroll down and to RBAC Settings and activate `Enable RBAC` and `Add Permission in the Access Token`.
+1. In Auth0.com, create a new API and give a it name and an identifier, for example `https://myapp/api`. This identifier will used as the `audience`. Click Create.
+1. On your new API page, click `Settings` and scroll down and to RBAC Settings and activate `Enable RBAC` and `Add Permission in the Access Token`.
 1. Go to `Permissions`, add the custom permissions that reflects your needs. Users who are assigned roles with these permissions will be able to access your back-end endpoints.
 If have a REST API endpoint that you want it to be accessible only by users with a specific permission(s), you can add `[create|read|update|delete|use]:entityname` permission in Auth0. 
 
@@ -88,7 +88,7 @@ Let's create a new application in Auth0, this application will linked and connec
 1. Expand it and select the following permissions:
     1. `read:roles`
     1. `read:users`
-    1. `read:member_roles`
+    1. `read:role_members`
 1. Open the Settings.
 1. Copy the *Client ID* and paste it in `AUTH0_MACHINE_2_MACHINE_CLIENT_ID` in the `.env` file.
 1. Copy the *Secret* and paste it in `AUTH0_MACHINE_2_MACHINE_SECRET`.
