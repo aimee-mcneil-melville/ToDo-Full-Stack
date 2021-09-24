@@ -8,6 +8,20 @@ const router = express.Router()
 // middleware for checking permissions (authorization)
 const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permissions' })
 
+// POST /api/v1/usrs/protected
+router.post('/', async (req, res) => {
+  const { auth0Id, name, email, description } = req.body
+  const user = { auth0Id, name, email, description }
+
+  try {
+    await db.addUser(user)
+    res.sendStatus(201)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'unable to insert user into the database' })
+  }
+})
+
 // public - an endpoint that anyone can access
 // GET /api/v1/users/public
 router.get('/public', (req, res) => {
