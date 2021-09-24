@@ -1,7 +1,11 @@
 const { encode } = require('./emailTokens')
 
-function sendNotification (userdata, eventdata) {
-  const token = encode({ userId: userdata.id, eventId: eventdata.id, gardenId: eventdata.gardenId })
+function sendNotification(userdata, eventdata) {
+  const token = encode({
+    userId: userdata.id,
+    eventId: eventdata.id,
+    gardenId: eventdata.gardenId
+  })
   const http = require('https')
 
   const options = {
@@ -28,37 +32,39 @@ function sendNotification (userdata, eventdata) {
     })
   })
 
-  req.write(JSON.stringify({
-    personalizations: [
-      {
-        to: [
-          {
-            email: userdata.email,
-            name: userdata.username
-          }
-        ],
-        dynamic_template_data: {
-          name: userdata.username,
-          id: userdata.id,
-          title: eventdata.title,
-          date: eventdata.date,
-          description: eventdata.description,
-          volunteersneeded: eventdata.volunteersNeeded,
-          token: token
-        },
-        subject: 'New event in the garden!'
-      }
-    ],
-    from: {
-      email: 'admin@gardenz.eda.nz',
-      name: 'Gardenz'
-    },
-    reply_to: {
-      email: 'reply@gardenz.eda.nz',
-      name: 'Gardenz'
-    },
-    template_id: 'd-5f8909decdc94fa08d818b740e47a025'
-  }))
+  req.write(
+    JSON.stringify({
+      personalizations: [
+        {
+          to: [
+            {
+              email: userdata.email,
+              name: userdata.username
+            }
+          ],
+          dynamic_template_data: {
+            name: userdata.username,
+            id: userdata.id,
+            title: eventdata.title,
+            date: eventdata.date,
+            description: eventdata.description,
+            volunteersneeded: eventdata.volunteersNeeded,
+            token: token
+          },
+          subject: 'New event in the garden!'
+        }
+      ],
+      from: {
+        email: 'admin@gardenz.eda.nz',
+        name: 'Gardenz'
+      },
+      reply_to: {
+        email: 'reply@gardenz.eda.nz',
+        name: 'Gardenz'
+      },
+      template_id: 'd-5f8909decdc94fa08d818b740e47a025'
+    })
+  )
   req.end()
 }
 

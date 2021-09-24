@@ -7,57 +7,74 @@ import { dispatch } from '../../store'
 import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 
 import { useParams } from 'react-router-dom'
-import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
+import {
+  IfAuthenticated,
+  IfNotAuthenticated
+} from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIdsMatch } from './emailVolunteerErrorHelper'
 import { useHistory } from 'react-router'
 import { getLogoutFn } from '../../auth-utils'
 import { clearUser } from '../../actions/user'
 
-export default function EmailVolunteerError () {
+export default function EmailVolunteerError() {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
   const { userId, eventId } = useParams()
   const history = useHistory()
-  const browserUserName = useSelector(globalState => globalState.user.username)
-  const browserUserId = useSelector(globalState => globalState.user.id)
+  const browserUserName = useSelector(
+    (globalState) => globalState.user.username
+  )
+  const browserUserId = useSelector((globalState) => globalState.user.id)
   const logout = getLogoutFn(useAuth0)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getEventDetails(eventId, history)
-      .then(event => {
-        if (event) {
-          setEvent({ title: event.title, gardenName: event.gardenName })
-        }
-        return null
-      })
+    getEventDetails(eventId, history).then((event) => {
+      if (event) {
+        setEvent({ title: event.title, gardenName: event.gardenName })
+      }
+      return null
+    })
   }, [])
 
-  function logOutSignIn () {
+  function logOutSignIn() {
     logout()
     dispatch(clearUser())
     history.push('/signin')
   }
 
-  function redirectToEvent () {
+  function redirectToEvent() {
     history.push(`/events/${eventId}`)
   }
 
   return (
     <>
       <h1> 🐌 🐌 uh oh spagettios! 🐌 🐌 </h1>
-      <p>You tried to sign up for <b>{event.title}</b> at <b>{event.gardenName}</b>... but something went wrong! 😱</p>
+      <p role="event-details">
+        You tried to sign up for <b>{event.title}</b> at{' '}
+        <b>{event.gardenName}</b>... but something went wrong! 😱
+      </p>
 
       <IfAuthenticated>
-        <p>Don&apos;t stress, just click this button ⬇️⬇️ </p>
-        <VolunteerButton setVolunteering={redirectToEvent} eventId={eventId} volunteering={false}/>
+        <p role="message">Don&apos;t stress, just click this button ⬇️⬇️ </p>
+        <VolunteerButton
+          setVolunteering={redirectToEvent}
+          eventId={eventId}
+          volunteering={false}
+        />
 
-        {(!checkUserIdsMatch(userId, browserUserId)) &&
-          <p><i>NOTE: You are currently logged in as:</i> <b>{browserUserName}</b> Not you? <button onClick={logOutSignIn}>Click here</button></p>
-        }
-
+        {!checkUserIdsMatch(userId, browserUserId) && (
+          <p>
+            <i role="alert-msg">NOTE: You are currently logged in as:</i>{' '}
+            <b>{browserUserName}</b> Not you?{' '}
+            <button onClick={logOutSignIn}>Click here</button>
+          </p>
+        )}
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <p>🦙 No prob-llama! 🦙 Simply <a href='/signin'>Sign in</a> to your account, then click the &apos;Volunteer&apos; button</p>
+        <p role="message">
+          🦙 No prob-llama! 🦙 Simply <a href="/signin">Sign in</a> to your
+          account, then click the &apos;Volunteer&apos; button
+        </p>
       </IfNotAuthenticated>
     </>
   )

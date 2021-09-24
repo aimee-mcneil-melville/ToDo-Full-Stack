@@ -11,7 +11,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false, slowMo: 500 })
+  browser = await chromium.launch({ headless: true, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -43,19 +43,19 @@ test('Admin can login & add event', async () => {
     'https://gardenz.au.auth0.com/u/login?state='
   )
 
-  const testEmail = process.env.E2E_TEST_AUTH0_USER_EMAIL
-  const testPassword = process.env.E2E_TEST_AUTH0_USER_PASSWORD
+  const testEmail = process.env.E2E_TEST_AUTH0_ADMIN_EMAIL
+  const testPassword = process.env.E2E_TEST_AUTH0_ADMIN_PASSWORD
 
   await page.fill('#username', testEmail)
   await page.fill('#password', testPassword)
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.c132a5a03', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
 
+  await page.waitForSelector('text=Log out')
   expect(await page.content()).toMatch(/Log out/)
-  // Note: There is not actual element for add new event on the page
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
 
@@ -83,5 +83,7 @@ test('Admin can login & add event', async () => {
     page.click('.button-primary', { force: true })
   ])
 
-  expect(await page.content()).toMatch(/Christmas Gardening!/)
+  expect(await page.$eval('section', (el) => el.innerText)).toMatch(
+    /Christmas Gardening!/
+  )
 })
