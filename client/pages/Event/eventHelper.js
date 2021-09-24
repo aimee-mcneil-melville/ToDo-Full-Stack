@@ -21,7 +21,8 @@ export function getEvent (id, consume = requestor) {
         isVolunteer: event.isVolunteer,
         extraVolunteers: event.extraVolunteers,
         lat: event.lat,
-        lon: event.lon
+        lon: event.lon,
+        status: event.status
       }
     })
     .catch((error) => {

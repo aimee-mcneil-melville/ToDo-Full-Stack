@@ -4,18 +4,28 @@
 @use '../1-helpers/vars';
 
 .button-primary {
-  background-color: vars.$dark-green;
+  background-color: vars.$secondary;
   border: none;
   color: white;
   padding: vars.$base-size;
   text-align: center;
   display: block;
+  text-decoration: none;
+  border-radius: 4px;
 
   &:hover{
-    background-color: vars.$green;
+    background-color: vars.$primary;
     border: none;
     color: white;
   }
+}
+
+.submit {
+  @extend .button-primary;
+  display: flex;
+    width:auto;
+    margin: 5px auto;
+    align-items: center;
 }
 
 .button-width {

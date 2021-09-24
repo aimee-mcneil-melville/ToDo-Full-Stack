@@ -50,37 +50,37 @@ export default function Register () {
       <section className='flex-container'>
         <form className='column-6' onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='form-label'>First Name</label>
+            <label htmlFor='firstName' className='label'>First Name</label>
             {showAnyErrors('firstName')}
             <input
-              className='form-input'
+              className='form-box'
               id='firstName'
               name='firstName'
               placeholder='First Name'
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor='lastName' className='form-label'>Last Name</label>
+            <label htmlFor='lastName' className='label'>Last Name</label>
             {showAnyErrors('lastName')}
             <input
-              className='form-input'
+              className='form-box'
               id='lastName'
               name='lastName'
               placeholder='Last Name'
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor='username' className='form-label'>Username</label>
+            <label htmlFor='username' className='label'>Username</label>
             {showAnyErrors('username')}
             <input
-              className='form-input'
+              className='form-box'
               id='username'
               name='username'
               placeholder='Username'
               onChange={formik.handleChange}
               value={formik.values.username}
             />
-            <label htmlFor='garden' className='form-label'>My Garden</label>
+            <label htmlFor='garden' className='label'>My Garden</label>
             {showAnyErrors('garden')}
             <select
               className='select'
@@ -94,7 +94,7 @@ export default function Register () {
               <option value={3}>Devonport Community Garden</option>
             </select>
           </div>
-          <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
+          <button className='button' type='submit' data-testid='submitButton'>Register</button>
         </form>
       </section>
       <div className='column-6'>

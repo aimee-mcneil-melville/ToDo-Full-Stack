@@ -14,6 +14,8 @@ npm run db:seed
 cp server/.env.example server/.env
 npm run dev
 ```
+`IMPORTANT:` Please ask one of the facilitators to give the actual values that should be in the `.env` file.
+
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 ## Testing
 

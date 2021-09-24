@@ -5,18 +5,17 @@ import { useParams } from 'react-router-dom'
 import Map from '../../components/Map/Map'
 import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
+import BarGraph from '../../components/dataVis/BarGraph'
 
 export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-
+  // const [isLoading, setLoad] = useState(true)
   useEffect(() => {
     getGarden(id)
   }, [id])
-
   const { name, description, address, url, events, lat, lon } = garden
-  console.log(name)
   return (
     <section className='flex-container'>
       <div className='column-6'>
@@ -25,7 +24,8 @@ export default function Garden () {
           <p>{description}</p>
           <a href={url}>{url}</a>
         </article>
-        <Events events={events} />
+        {isAdmin ? <BarGraph events={events}/> : null}
+        <Events gardenid={id} events={events} />
       </div>
       <Map
         coordinates={[{ lat: lat, lon: lon }]}
