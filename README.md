@@ -47,8 +47,8 @@ This repo includes:
 1. Copy the **Client ID** of your application in Auth0.com and paste it in the `client` in `index.js`.
 
 ### Server
-1. In Auth0.com, create a new API and give a it name, for example `https://myapp/api`. This identifier will used as the `audience`.
-1. Scroll down and to RBAC Settings and activate `Enable RBAC` and `Add Permission in the Access Token`.
+1. In Auth0.com, create a new API and give a it name and an identifier, for example `https://myapp/api`. This identifier will used as the `audience`. Click Create.
+1. On your new API page, click `Settings` and scroll down and to RBAC Settings and activate `Enable RBAC` and `Add Permission in the Access Token`.
 1. Go to `Permissions`, add the custom permissions that reflects your needs. Users who are assigned roles with these permissions will be able to access your back-end endpoints.
 If have a REST API endpoint that you want it to be accessible only by users with a specific permission(s), you can add `[create|read|update|delete|use]:entityname` permission in Auth0. 
 
