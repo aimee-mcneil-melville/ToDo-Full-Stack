@@ -20,6 +20,9 @@ describe('Garden', () => {
           address: 'cool place, nz',
           lat: 123,
           lon: -123
+        },
+        user: {
+          id: 1
         }
       }
     })
