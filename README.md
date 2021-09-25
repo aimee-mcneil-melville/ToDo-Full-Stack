@@ -2,14 +2,15 @@
 
 ## Getting Started
 
-### From the Github UI
+### From the GitHub UI
 See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
 
 ### From the command line
 
-```
+```shell
 git clone git@github.com:dev-academy-challenges/boilerplate-full-stack-auth0.git [your-project-name]
 cd [your-project-name]
+cp client/auth_config.json.example client/auth_config.json
 cp server/.env.example server/.env
 npm install # to install dependencies
 npm run knex migrate:latest
@@ -25,11 +26,11 @@ This repo includes:
 
 * React Components:
   * App
-  * Nav is used for login, logout, registeration
+  * Nav is used for login, logout, registration
   * Authenticated is used for show/hide components if the user is logged in
   * PingRoutes is used for testing the routes
-  * Users is used to display the registered users
-  * Registeration is used to save the users info after they are registered with Auth0
+  * Users are used to display the registered users
+  * Registration is used to save the users' info after they are registered with Auth0
 * an example database module (`server/db/users.js`)
 * an API client module (`client/apis/users.js`)
 
