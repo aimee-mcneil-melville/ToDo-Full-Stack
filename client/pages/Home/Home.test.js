@@ -29,7 +29,7 @@ describe('getting garden locations on mount', () => {
     return screen.findAllByRole('img')
       .then((markers) => {
         // 2 marker images per actual marker (marker + shadow)
-        expect(markers).toHaveLength(4)
+        expect(markers).toHaveLength(1)
         return null
       })
   })
