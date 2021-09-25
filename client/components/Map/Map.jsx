@@ -38,7 +38,7 @@ export default function Map ({ addresses, coordinates, userCoordinates, names })
             </Popup>
           </Marker>
         })}
-        {userCoordinates &&
+        {userCoordinates && userCoordinates.lat &&
           <Marker
             position={[userCoordinates.lat, userCoordinates.lon]} icon={greenIcon}>
             <Popup>

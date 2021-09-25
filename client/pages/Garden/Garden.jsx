@@ -11,6 +11,7 @@ export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
   const user = useSelector(globalState => globalState.user)
+  const location = useSelector(globalState => globalState.location)
 
   useEffect(() => {
     user.id && getGarden(id, user)
@@ -30,6 +31,7 @@ export default function Garden () {
         <Events gardenid={id} events={events} />
       </div>
       <Map
+        userCoordinates={location}
         coordinates={[{ lat: lat, lon: lon }]}
         addresses={[address]}
         names={[name]}
