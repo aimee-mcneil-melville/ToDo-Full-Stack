@@ -2,10 +2,14 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/gardens')
+const dbUsers = require('../db/users')
+const auth0 = require('../routes/auth')
 const log = require('../logger')
 
 jest.mock('../logger')
 jest.mock('../db/gardens')
+jest.mock('../db/users')
+jest.mock('./auth')
 
 const mockUserGarden = {
   id: 2,
@@ -97,12 +101,14 @@ describe('GET /api/v1/gardens', () => {
 })
 
 describe('GET /api/v1/gardens/:id', () => {
-  it("responds with user's garden when token is provided", () => {
-    expect.assertions(2)
+  it("responds with user's garden when user is Admin", () => {
+    // expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
+    dbUsers.getUserById.mockImplementation(() => Promise.resolve({ auth0Id: 'auth0id|est' }))
+    auth0.userHasAdminRole.mockImplementation(() => Promise.resolve(true))
     return request(server)
       .get('/api/v1/gardens/2')
       .expect('Content-Type', /json/)

@@ -10,12 +10,14 @@ import BarGraph from '../../components/dataVis/BarGraph'
 export default function Garden () {
   const { id } = useParams()
   const garden = useSelector(globalState => globalState.garden)
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
-  // const [isLoading, setLoad] = useState(true)
+  const user = useSelector(globalState => globalState.user)
+
   useEffect(() => {
-    getGarden(id)
-  }, [id])
+    user.id && getGarden(id, user)
+  }, [id, user])
+
   const { name, description, address, url, events, lat, lon } = garden
+
   return (
     <section className='flex-container'>
       <div className='column-6'>
@@ -24,7 +26,7 @@ export default function Garden () {
           <p>{description}</p>
           <a href={url}>{url}</a>
         </article>
-        {isAdmin ? <BarGraph events={events}/> : null}
+        {user.isAdmin ? <BarGraph events={events}/> : null}
         <Events gardenid={id} events={events} />
       </div>
       <Map
