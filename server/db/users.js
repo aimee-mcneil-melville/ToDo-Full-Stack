@@ -40,7 +40,7 @@ function getUsersByAuth (auth0Id, db = connection) {
       'garden_id as gardenId',
       'auth0_id as auth0Id'
     )
-    .where('auth0Id', auth0Id)
+    .where('auth0_id', auth0Id)
     .first()
 }
 
