@@ -51,12 +51,14 @@ This repo includes:
 
 Here are a few examples that may help you with modelling your routes with permissions:
 
-- `read:employee`
-- `read:account_balance`
-- `create:appointment`
-- `update:reminder`
-- `delete:song`
-- `use:app`
+| Permission (Scope)     | Description                            |
+| ---------------------- | -------------------------------------- |
+| `read:employee`        | Allows a user to view employees        |
+| `read:account_balance` | Allows a user to view account balances |
+| `create:appointment`   | Allows a user to create appointments   |
+| `update:reminder`      | Allows a user to update reminders      |
+| `delete:song`          | Allows a user to delete songs          |
+| `use:app`              | Allows using an app                    |
 
 Suppose you have an endpoint that returns the salary amount given the employee id. You don't want that to public or protected. Only users with whom have the `read:account_balance` permission are allowed to consume this endpoint.
 
