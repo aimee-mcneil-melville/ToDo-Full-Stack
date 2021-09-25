@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getEvent } from './EventDetailHelper'
+import { getEvent } from '../../../pages/Event/eventHelper'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import { useHistory, Link } from 'react-router-dom'
 
 function EventDetail (props) {
-  const { eventId, isAdmin } = props
+  const { eventId, user } = props
   const [event, setEvent] = useState({})
   const [volunteering, setVolunteering] = useState(false)
   const history = useHistory()
@@ -14,10 +14,8 @@ function EventDetail (props) {
     history.push(`/events/${eventId}/edit`)
   }
 
-  console.log(event)
-
   useEffect(() => {
-    getEvent(eventId).then(res => {
+    getEvent(eventId, user).then(res => {
       setEvent(res)
       setVolunteering(event.isVolunteer)
       return null
@@ -31,22 +29,22 @@ function EventDetail (props) {
         <Link to='' onClick={() => history.goBack()} className='card-close-button'>Close</Link>
         <h1 className='card-title'>{event.title}</h1>
         <ul className='card-list'>
-          <li role='gardenName'>{event.gardenName}</li>
-          <li role='gardenAddress'>{event.gardenAddress}</li>
-          <li role='eventDate'>{event.date}</li>
-          <li role='volunteersNeeded'>Volunteers Needed: {event.volunteersNeeded}</li>
-          <li role='description'>{event.description}</li>
-          <li role='status'>Event is {event.status}</li>
+          <li>{event.gardenName}</li>
+          <li>{event.gardenAddress}</li>
+          <li>{event.date}</li>
+          <li>Volunteers Needed: {event.volunteersNeeded}</li>
+          <li>{event.description}</li>
+          <li>Event is {event.status}</li>
         </ul>
-        {!isAdmin
+        {!user.isAdmin
           ? <VolunteerButton
             eventId={eventId}
             volunteering={volunteering}
             setVolunteering={setVolunteering}
           />
           : <>
-            <button onClick={redirectToEdit} className='button-secondary' role="eventDetailsEditButton">Edit Event</button>
-            <button className='button-secondary' role="eventDetailsAdminButton">Event Admin</button>
+            <button onClick={redirectToEdit} className='button-secondary'>Edit Event</button>
+            <button className='button-secondary' >Event Admin</button>
           </>
         }
       </article>
