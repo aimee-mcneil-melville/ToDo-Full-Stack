@@ -15,16 +15,17 @@ export default function Event () {
 
   const [event, setEvent] = useState({})
 
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  const user = useSelector(globalState => globalState.user)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getEvent(id)
+    getEvent(id, user)
       .then((event) => {
         setEvent(event)
         return null
       })
-  }, [])
+      .catch((err) => console.log(err))
+  }, [user])
 
   function redirectToEdit () {
     // console.log('redirectToEdit')
@@ -38,19 +39,17 @@ export default function Event () {
     })
   }
 
-  const { volunteers, extraVolunteers } = event
-
   return (
     <>
-      {isAdmin
+      {user?.isAdmin
         ? <>
           <section>
             <VolunteerList
-              volunteers={volunteers}
+              volunteers={event.volunteers}
               eventId={event.id}
             />
             <RockUpVolunteerList
-              extraVolunteers={extraVolunteers}
+              extraVolunteers={event.extraVolunteers}
             />
             <AddVolunteerForm
               addExtraVolunteer={addExtraVolunteer}
@@ -60,7 +59,7 @@ export default function Event () {
         </>
         : null
       }
-      <EventDetail eventId={eventId} isAdmin={isAdmin} />
+      <EventDetail eventId={eventId} user={user} />
     </>
   )
 }
