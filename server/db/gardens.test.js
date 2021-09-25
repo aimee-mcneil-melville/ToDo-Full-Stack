@@ -23,7 +23,7 @@ describe('getGardens', () => {
   it('returns the correct number of gardens', () => {
     return db.getGardens(testDb)
       .then((gardens) => {
-        expect(gardens).toHaveLength(3)
+        expect(gardens).toHaveLength(5)
         return null
       })
   })
