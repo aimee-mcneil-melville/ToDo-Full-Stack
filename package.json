@@ -93,6 +93,7 @@
     "limiter": "^2.1.0",
     "moment": "^2.29.1",
     "pg": "^8.6.0",
+    "react-collapsible": "^2.8.4",
     "react-icons": "^4.2.0",
     "yup": "^0.32.9"
   },
