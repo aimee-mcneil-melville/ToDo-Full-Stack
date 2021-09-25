@@ -38,8 +38,7 @@ const testAuthAdminHeader = {
 }
 
 describe('GET /api/v1/events/:id', () => {
-  it('responds only with event details for a guest', () => {
-    expect.assertions(5)
+  it('responds only with event details', () => {
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -49,64 +48,17 @@ describe('GET /api/v1/events/:id', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
+        expect(res.body.gardenId).toBe(1)
+        expect(res.body.gardenName).toBe('Kelmarna Gardens')
+        expect(res.body.gardenAddress).toBe('12 Hukanui Crescent')
+        expect(res.body.volunteersNeeded).toBe(8)
         expect(res.body.title).toBe('Weeding worker Bee')
-        expect(res.body).not.toHaveProperty('isVolunteer')
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        return null
-      })
-  })
-
-  it('response includes volunteer status of member', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        expect(res.body.isVolunteer).toBe(true)
-        return null
-      })
-  })
-
-  it('response includes non-volunteer status of member', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        expect(res.body.isVolunteer).toBe(false)
-        return null
-      })
-  })
-
-  it('response includes volunteers array if Admin', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('isVolunteer')
+        expect(res.body.date).toBe('2020-08-27')
+        expect(res.body.description).toBe('Its time to get these weeds under control.')
         expect(res.body.volunteers).toHaveLength(1)
+        expect(res.body.volunteers[0].lastName).toBe('Dawg')
         expect(res.body.extraVolunteers).toHaveLength(1)
+        expect(res.body.extraVolunteers[0].lastName).toBe('Don')
         return null
       })
   })

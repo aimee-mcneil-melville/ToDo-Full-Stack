@@ -76,57 +76,22 @@ router.patch('/:id/cancel', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-// doesnt need token
-router.get('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  db.getEventById(id)
-    .then((event) => {
-      const {
-        id,
-        gardenId,
-        gardenName,
-        gardenAddress,
-        volunteersNeeded,
-        title,
-        date,
-        description,
-        volunteers,
-        extraVolunteers,
-        lat,
-        lon
-      } = event
-      const eventResponse = {
-        id,
-        gardenId,
-        gardenName,
-        gardenAddress,
-        volunteersNeeded,
-        title,
-        date,
-        description,
-        lat,
-        lon
-      }
+// GET /api/v1/events/1
+router.get('/:id', async (req, res) => {
+  const eventId = Number(req.params.id)
+  try {
+    const event = await db.getEventById(eventId)
+    const { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon } = event
+    const eventResponse = { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon, volunteers, extraVolunteers }
 
-      if (req.user) {
-        if (req.user.isAdmin) {
-          eventResponse.volunteers = volunteers
-          eventResponse.extraVolunteers = extraVolunteers
-        } else {
-          eventResponse.isVolunteer = volunteers.some(
-            (v) => v.userId === req.user.id
-          )
-        }
+    res.json(eventResponse)
+    return null
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve event'
       }
-      res.json(eventResponse)
-      return null
     })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to retrieve event'
-        }
-      })
-    })
+  }
 })
