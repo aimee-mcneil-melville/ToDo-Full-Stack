@@ -1,6 +1,6 @@
 const { encode } = require('./emailTokens')
 
-function sendNotification(userdata, eventdata) {
+function sendNotification (userdata, eventdata) {
   const token = encode({
     userId: userdata.id,
     eventId: eventdata.id,

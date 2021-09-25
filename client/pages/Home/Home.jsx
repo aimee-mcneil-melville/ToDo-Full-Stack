@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 
 export default function Home () {
-  const [userCoordinates, setUserCoordinates] = useState(null)
-  const [gardensCoordinates, setGardensCoordinates] = useState([])
-  const [addresses, setAddresses] = useState([])
-  const [names, setNames] = useState([])
+  const [, setUserCoordinates] = useState(null)
+  const [, setGardensCoordinates] = useState([])
+  const [, setAddresses] = useState([])
+  const [, setNames] = useState([])
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
@@ -50,7 +50,7 @@ export default function Home () {
       </article>
 
       <img className='home-image' src='/images/comGardenPlant.png' alt="" />
-    
+
     </section>
   )
 }
