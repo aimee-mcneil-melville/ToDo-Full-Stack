@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@visx/axis": "^2.1.1",
-    "@visx/gradient": "file:visx/group@visx/mock-data@visx/responsive@visx/scale@visx/shape",
+    "@visx/gradient": "^2.1.0",
     "@visx/group": "^2.1.0",
     "@visx/scale": "^2.1.0",
     "@visx/shape": "^2.1.1",
