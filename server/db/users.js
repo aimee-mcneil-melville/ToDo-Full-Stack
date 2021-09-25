@@ -5,7 +5,8 @@ module.exports = {
   userExists,
   getUserByName,
   getUserDetailsByGarden,
-  getUsersByAuth
+  getUsersByAuth,
+  getUserById
 }
 
 function getUserDetailsByGarden (gardenId, db = connection) {
@@ -16,8 +17,15 @@ function getUserDetailsByGarden (gardenId, db = connection) {
 
 function getUserByName (username, db = connection) {
   return db('users')
-    .select('username', 'garden_id as gardenId', 'id', 'hash', 'email')
+    .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
     .where('username', username)
+    .first()
+}
+
+function getUserById (id, db = connection) {
+  return db('users')
+    .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email')
+    .where('id', id)
     .first()
 }
 

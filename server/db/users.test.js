@@ -24,10 +24,11 @@ describe('getUserByName', () => {
     return users.getUserByName('admin', testDb)
       .then((user) => {
         expect(user.username).toBe('admin')
-        expect(user.isAdmin).toBeTruthy()
+        expect(user.firstName).toBe('Admin')
+        expect(user.lastName).toBe('User')
         expect(user.gardenId).toBe(1)
-        expect(user).toHaveProperty('hash')
-        expect(user.email).toBe('admin@emailz.co')
+        expect(user.email).toBe('kelmarna.admin@email.nz')
+        expect(user.auth0Id).toBe('auth0|61414f84d35ac900717bc280')
         return null
       })
   })
@@ -56,7 +57,7 @@ describe('createUser', () => {
 
 describe('userExists', () => {
   it('returns true if user exists', () => {
-    return users.userExists('admin', testDb)
+    return users.userExists('auth0|61414f84d35ac900717bc280', testDb)
       .then((exists) => {
         expect(exists).toBeTruthy()
         return null
@@ -76,7 +77,7 @@ describe('get users details by garden', () => {
     expect.assertions(2)
     return users.getUserDetailsByGarden('1', testDb)
       .then((users) => {
-        expect(users).toHaveLength(2)
+        expect(users).toHaveLength(1)
         expect(users[0].is_admin).toBeFalsy()
         return null
       })

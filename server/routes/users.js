@@ -1,7 +1,7 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/users')
-const { getUserRoles } = require('./auth')
+const { userHasAdminRole } = require('./auth')
 
 const router = express.Router()
 
@@ -20,10 +20,9 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const addedId = await db.createUser(user)
-    log('user: ', addedId, 'added')
+    await db.createUser(user)
   } catch (err) {
-    log(err.message)
+    console.error(err.message)
     res.status(500).json({
       error: {
         title: 'failed: user exists'
@@ -34,9 +33,8 @@ router.post('/', async (req, res) => {
   try {
     const addedUser = await db.getUsersByAuth(user.auth0Id)
     res.json(addedUser)
-    return null
   } catch (err) {
-    log(err.message)
+    console.error(err.message)
     res.status(500).json({
       error: {
         title: 'failed to retrieve added user'
@@ -48,9 +46,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
-    const roleName = await getUserRoles(id)
+    const isAdmin = await userHasAdminRole(id)
     const user = await db.getUsersByAuth(id)
-    res.json({ ...user, isAdmin: roleName === 'admin' })
+    res.json({ ...user, isAdmin })
     return null
   } catch (err) {
     log(err.message)
