@@ -32,14 +32,14 @@ function getTestVolunteers (userId, eventId) {
 describe('addVolunteer', () => {
   it('adds a volunteer', () => {
     const test = {
-      userId: 1,
-      eventId: 1
+      userId: 49,
+      eventId: 49
     }
     return volunteers.addVolunteer(test, testDb)
-      .then(() => getTestVolunteers())
-      .then(info => {
-        expect(info[0].user_id).toBe(1)
-        expect(info[0].event_id).toBe(1)
+      .then(() => getTestVolunteers(test.userId, test.userId))
+      .then(eventVolunteers => {
+        expect(eventVolunteers[0].user_id).toBe(49)
+        expect(eventVolunteers[0].event_id).toBe(49)
         return null
       })
   })
@@ -48,13 +48,13 @@ describe('addVolunteer', () => {
 describe('deleteVolunteer', () => {
   it('deletes correct volunteer entry', () => {
     const test = {
-      userId: 2,
-      eventId: 3
+      userId: 256,
+      eventId: 256
     }
     return volunteers.deleteVolunteer(test, testDb)
-      .then(() => getTestVolunteers())
+      .then(() => getTestVolunteers(test.userId, test.eventId))
       .then((info) => {
-        expect(info).toHaveLength(2)
+        expect(info).toHaveLength(0)
         return null
       })
   })
