@@ -36,17 +36,19 @@ This repo includes:
 
 ## Auth0
 1. Navigate to, Auth0.com and sign-up if you don't already have a tenant.
-1. Go to *Applications*, and click on *Create Application* button 
-1. Give your application a meaningful name, then select **Single Page Web Applications** and click the *Create* button.
-1. In Auth0.com, set the **Allowed Callback Url** with `http://localhost:3000/`
-1. In Auth0.com, set the **Allowed Logout Url** with `http://localhost:3000/`
-1. In Auth0.com, set the **Allowed Web Origins** with `http://localhost:3000/`
+3. Go to *Applications*, and click on *Create Application* button 
+4. Give your application a meaningful name, then select **Single Page Web Applications** and click the *Create* button.
+5. In Auth0.com, set the **Allowed Callback Url** with `http://localhost:3000/`
+6. In Auth0.com, set the **Allowed Logout Url** with `http://localhost:3000/`
+7. In Auth0.com, set the **Allowed Web Origins** with `http://localhost:3000/`
 
 
 ### Server
 1. In Auth0.com, create a new API and give it a name and an identifier, for example: `Default` and `https://myapp/api`. This identifier will be used as the `audience`. Click Create.
 2. On your new API page, click `Settings` and scroll down and to RBAC Settings and activate `Enable RBAC` and `Add Permission in the Access Token`.
-3. Go to `Permissions`, add the custom permissions that reflects your needs. Users who are assigned roles with these permissions will be able to access your back-end endpoints.
+3. Go to `Permissions`, add the custom permissions that reflects your needs. For the purpose of this demo, create a permission called `read:my_private_route`.
+
+Users who are assigned roles with these permissions will be able to access your back-end endpoints.
    - If you have a REST API endpoint that you want it to be accessible only by users with a specific permission(s), you can add `[create|read|update|delete|use]:entityname` permission in Auth0. 
 
 Here are a few examples that may help you with modelling your routes with permissions:
@@ -61,7 +63,6 @@ Here are a few examples that may help you with modelling your routes with permis
 | `use:app`              | Allows using an app                    |
 
 Suppose you have an endpoint that returns the salary amount given the employee id. You don't want that to public or protected. Only users with whom have the `read:account_balance` permission are allowed to consume this endpoint.
-
 
 ### Client
 1. Copy the **Domain** of your application in Auth0.com and paste it in the `domain` into `client/auth_config.json`
@@ -97,7 +98,8 @@ Let's create a new application in Auth0, this application will be linked and con
 1. Open the Settings.
 1. Copy the *Client ID* and paste it in `AUTH0_MACHINE_2_MACHINE_CLIENT_ID` in the `.env` file.
 1. Copy the *Secret* and paste it in `AUTH0_MACHINE_2_MACHINE_SECRET`.
-1. Set the `AUTH0_DOMAIN` to be your domain, it's the same one from previous steps.
+1. Set the `AUTH0_DOMAIN` to be your domain. It should look like `https://mydomain.au.auth0.com`.
+1. Set the `AUTH0_SSO_AUDIENCE` to be the same `audience` in the `client/auth_config.json`.
 
 Now the server will be able to get a new access token and retrieve the user's roles. If the logged-in user has a Role(s), it will be displayed next to the name. (see `Nav.jsx`)
 
