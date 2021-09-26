@@ -20,7 +20,7 @@ describe('Edit Event button', () => {
 describe('Volunteer button', () => {
   it('displays for a member', () => {
     renderWithRouter(<EventItem isAdmin={false} event={{ isVolunteer: false }} />)
-    const volunteerButton = screen.queryByRole('button')
+    const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
     expect(volunteerButton).toHaveTextContent('Volunteer')
   })
 
