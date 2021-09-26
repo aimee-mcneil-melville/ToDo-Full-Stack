@@ -26,7 +26,7 @@ export function updateEvent (id, event, navigateTo, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`, token, 'patch', eventToUpdate)
     .then(() => {
-      navigateTo(`/events/${id}`)
+      navigateTo(`/gardens/${id}`)
       return null
     })
     .catch((err) => {

@@ -8,8 +8,8 @@ export function getEvent (id, user, consume = requestor) {
   return consume(`/events/${id}`)
     .then((res) => {
       dispatch(clearWaiting())
-      const { id, date, title, gardenName, gardenAddress, volunteersNeeded, volunteers, extraVolunteers, description, lat, lon, status } = res.body
-      const result = { id, date, title, gardenName, gardenAddress, volunteersNeeded, description, lat, lon, status }
+      const { id, date, title, gardenId, gardenName, gardenAddress, volunteersNeeded, volunteers, extraVolunteers, description, lat, lon, status } = res.body
+      const result = { id, date, title, gardenId, gardenName, gardenAddress, volunteersNeeded, description, lat, lon, status }
       return user.isAdmin
         ? {
           ...result,

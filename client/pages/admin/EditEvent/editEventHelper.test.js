@@ -50,7 +50,8 @@ describe('updateEvent', () => {
       title: 'test event',
       date: '2021-03-22',
       volunteersNeeded: 5,
-      description: 'really rad event'
+      description: 'really rad event',
+      gardenId: 1
     }
     const navigateTo = jest.fn()
     function consume (url, token, method, eventToUpdate) {
@@ -63,7 +64,7 @@ describe('updateEvent', () => {
     return updateEvent('1', event, navigateTo, consume)
       .then(() => {
         expect(dispatch.mock.calls[1][0].type).toBe(CLEAR_WAITING)
-        expect(navigateTo).toHaveBeenCalledWith('/events/1')
+        expect(navigateTo).toHaveBeenCalledWith('/gardens/1')
         return null
       })
   })
