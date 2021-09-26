@@ -8,7 +8,7 @@ const router = express.Router()
 // middleware for checking permissions (authorization)
 const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permissions' })
 
-// POST /api/v1/usrs/protected
+// POST /api/v1/users/protected
 router.post('/', async (req, res) => {
   const { auth0Id, name, email, description } = req.body
   const user = { auth0Id, name, email, description }
@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       console.error(err)
-      res.status(500).json({ message: 'Somthing went wrong' })
+      res.status(500).json({ message: 'Something went wrong' })
     })
 })
 
@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
     res.json({ roles })
   } catch (error) {
     console.error(error)
-    res.status(500).json({ message: 'unable to retrieve user roles' })
+    res.status(500).json({ message: 'Unable to retrieve user roles' })
   }
 })
 
