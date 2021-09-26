@@ -1,7 +1,7 @@
 exports.seed = (knex) => {
-  const todayDate = new Date().toLocaleDateString()
+  const todayDate = new Date().toLocaleDateString('en-NZ')
   const diffDate = (days) => {
-    const newDate = new Date((new Date()).getTime() + (days * 86400000)).toLocaleDateString()
+    const newDate = new Date((new Date()).getTime() + (days * 86400000)).toLocaleDateString('en-NZ')
     return newDate
   }
 

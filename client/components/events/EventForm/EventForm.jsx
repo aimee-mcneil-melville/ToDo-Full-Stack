@@ -14,16 +14,22 @@ const eventSchema = Yup.object({
     .required('Required')
 })
 
+// the date format which browsers understand
+const browserDateFormat = 'yyyy-MM-DD'
+const nzDateFormat = 'DD/MM/yyyy'
+
 export default function EventForm (props) {
+  const event = props.formData
+  const { title, date, volunteersNeeded, description } = event
   const formik = useFormik({
     initialValues: {
-      title: '',
-      date: '',
-      volunteersNeeded: '',
-      description: ''
+      title,
+      date: moment(date, nzDateFormat).format(browserDateFormat),
+      volunteersNeeded,
+      description
     },
     onSubmit: values => {
-      props.submitEvent({ ...values, date: moment(values.date).format('L') })
+      props.submitEvent({ ...values, date: moment(values.date).format(nzDateFormat) })
     },
     validationSchema: eventSchema
   })
