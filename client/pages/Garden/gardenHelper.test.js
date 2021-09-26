@@ -9,6 +9,8 @@ afterEach(() => {
   return jest.resetAllMocks()
 })
 
+const mockUser = { id: 123 }
+
 describe('getGarden', () => {
   describe('-> GET /gardens/:id api call success', () => {
     it('dispatches with the correct garden action', () => {
@@ -27,7 +29,7 @@ describe('getGarden', () => {
           }
         })
       }
-      return getGarden(2, consume)
+      return getGarden(2, mockUser, consume)
         .then((garden) => {
           expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
           expect(dispatch).toHaveBeenCalledWith({
@@ -52,8 +54,9 @@ describe('getGarden', () => {
       function consume () {
         return Promise.reject(new Error('mock error'))
       }
-      return getGarden(null, consume)
+      return getGarden(null, mockUser, consume)
         .then(() => {
+          console.log(dispatch.mock.calls)
           expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
           return null
         })
