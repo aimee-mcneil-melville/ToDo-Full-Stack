@@ -31,7 +31,7 @@ export default function EventItem ({ gardenid, event, isAdmin }) {
             <li>Event is {status}</li>
           </ul>
           {isAdmin
-            ? <Link to={`/events/${id}/edit`}>Edit Event</Link>
+            ? <Link to={`/events/${id}/edit`} className='button-secondary'>Edit Event</Link>
             : <VolunteerButton
               eventId={id}
               volunteering={isVolunteering}
