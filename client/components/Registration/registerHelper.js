@@ -20,7 +20,6 @@ export function registerUser (user, authUser, navigateTo, consume = requestor) {
 
   return consume('/users', token, 'post', newUser)
     .then((res) => {
-      console.log('resbody: ', res.body)
       dispatch(setUser(res.body))
       navigateTo(`/gardens/${user.gardenId}`)
       return res.body

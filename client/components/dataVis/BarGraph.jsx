@@ -10,7 +10,6 @@ const verticalMargin = 120
 
 export default function BarGraph ({ events }) {
   // bounds
-  // console.log(events)
   const clickAlert = true
   const width = 400
   const height = 400

@@ -23,7 +23,7 @@ export default function EditEvent () {
   }, [])
 
   function submitEvent (form) {
-    updateEvent(id, form, history.push)
+    updateEvent(event.gardenId, form, history.push)
   }
 
   function cancelSubmit () {
