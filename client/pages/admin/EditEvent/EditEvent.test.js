@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithRedux } from '../../../test-utils'
@@ -45,8 +45,11 @@ describe('submit button', () => {
     const editButton = screen.getByRole('button', { name: 'Submit' })
     userEvent.clear(titleInput)
     userEvent.type(titleInput, 'test title')
-    userEvent.click(editButton)
+    userEvent.click(editButton) // form validation will kick in
 
+    // wait for formik to its validation to be completed (asynchronise)
+    const updatedTitle = await screen.findByRole('textbox', { name: 'Event Title' })
+    expect(updatedTitle).toBeInTheDocument()
     expect(updateEvent).toHaveBeenCalled()
   })
 })
