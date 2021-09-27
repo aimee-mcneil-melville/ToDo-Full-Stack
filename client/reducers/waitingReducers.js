@@ -1,7 +1,7 @@
 import {
-  SET_FRIENDS_SUCCESS,
+  SET_FRIENDS,
   SET_FRIENDS_PENDING,
-  SET_SONGS_SUCCESS,
+  SET_SONGS,
   SET_SONGS_PENDING,
   SET_ERROR
 } from '../actions/index'
@@ -12,8 +12,8 @@ function waiting (state = false, action) {
     case SET_SONGS_PENDING:
       return true
 
-    case SET_FRIENDS_SUCCESS:
-    case SET_SONGS_SUCCESS:
+    case SET_FRIENDS:
+    case SET_SONGS:
     case SET_ERROR:
       return false
 

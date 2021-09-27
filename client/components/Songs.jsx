@@ -53,7 +53,7 @@ function Songs (props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    songs: globalState.songs,
+    songs: globalState.userSongs,
     user: globalState.user
   }
 }
