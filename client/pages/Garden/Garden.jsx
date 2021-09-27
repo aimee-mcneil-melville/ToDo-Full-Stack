@@ -27,15 +27,17 @@ export default function Garden () {
           <p>{description}</p>
           <a href={url}>{url}</a>
         </article>
-        {user.isAdmin ? <BarGraph events={events}/> : null}
         <Events gardenid={id} events={events} />
       </div>
-      <Map
-        userCoordinates={location}
-        coordinates={[{ lat: lat, lon: lon }]}
-        addresses={[address]}
-        names={[name]}
-      />
+      <section>
+        <Map
+          userCoordinates={location}
+          coordinates={[{ lat: lat, lon: lon }]}
+          addresses={[address]}
+          names={[name]}
+        />
+        {user.isAdmin ? <BarGraph events={events}/> : null}
+      </section>
     </section>
   )
 }
