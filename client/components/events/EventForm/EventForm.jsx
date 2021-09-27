@@ -72,6 +72,7 @@ export default function EventForm (props) {
               id='date'
               name='date'
               type='date'
+              role='date'
               placeholder='date'
               onChange={formik.handleChange}
               value={formik.values.date} />
