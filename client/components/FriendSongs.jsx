@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useParams } from 'react-router-dom'
 // import getUserMedia from '../actions'
 
 import DataRowText from './DataRowText'
@@ -14,9 +15,8 @@ function FriendSongs (props) {
     { id: 4, user_id: 10001, genre: 'Funky House', mediaName: 'I look to you (feat. Kimbra)', artist: 'Miami Horror', link: 'https://open.spotify.com/track/0L0GeZL4lyx34nYDzsNuG4?si=a89fdafe24d74899' }
   ]
 
-  // const {nickname}=props.friend
-  const nickname = 'Goku'
-
+  const nickname = props.friend.nickname
+  
   useEffect(() => {
     // props.dispatch(getUserMedia())
   }, [])
@@ -46,7 +46,8 @@ function FriendSongs (props) {
 
 function mapStateToProps (globalState) {
   return {
-    friendSongs: globalState.friendSongs
+    // friendSongs: globalState.friendSongs,
+    friend: globalState.currentFriend
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchFriends } from './appHelper'
+import { setCurrentFriend } from '../actions'
 import { connect } from 'react-redux'
 import Icon from './Icon'
 import DataRowText from './DataRowText'
@@ -30,7 +31,7 @@ function Friends (props) {
         <input type="text" />
       </form> */}
       {props.friends.map(friend => (
-        <div className='data-row' key={friend.id}>
+        <div className='data-row' key={friend.id} onClick={() => props.dispatch(setCurrentFriend(friend))}>
           <Link to={`/friends/${friend.id}`}><Icon style='user' /></Link>
           <DataRowText link={`/friends/${friend.id}`} title={friend.nickname} subtitle={`${friend.name} ${friend.lastName}`} />
         </div>
