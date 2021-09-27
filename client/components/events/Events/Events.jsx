@@ -9,11 +9,6 @@ export default function Events ({ gardenid, events }) {
   return (
     <>
       <h1 className='events-title'>Events</h1>
-      <section className='column-9 scroll'>
-        {events.map((event) =>
-          <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
-        )}
-      </section>
       <div>
         {
           isAdmin
@@ -21,6 +16,11 @@ export default function Events ({ gardenid, events }) {
             : null
         }
       </div>
+      <section className='column-9 scroll'>
+        {events.map((event) =>
+          <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
+        )}
+      </section>
     </>
   )
 }
