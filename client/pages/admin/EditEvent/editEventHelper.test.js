@@ -47,6 +47,7 @@ describe('updateEvent', () => {
   it('dispatches, redirects correctly on PATCH /events/:id api call success', () => {
     getState.mockImplementation(() => ({ user: { gardenId: 1, token: 'dummytoken' } }))
     const event = {
+      id: 1,
       title: 'test event',
       date: '2021-03-22',
       volunteersNeeded: 5,
