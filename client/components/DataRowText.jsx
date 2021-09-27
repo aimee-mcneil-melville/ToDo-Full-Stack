@@ -14,7 +14,7 @@ const DataRowText = (props) => {
       </h3>
       <h4 className="data-row__subtitle">
         {link
-          ? <Link to={link}>{title}</Link>
+          ? <Link to={link}>{subtitle}</Link>
           : subtitle
         }
       </h4>
