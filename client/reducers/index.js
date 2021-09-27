@@ -5,11 +5,13 @@ import songsReducer from './songsReducer'
 import waitingReducer from './waitingReducers'
 import friendSongsReducer from './friendSongsReducer'
 import currentFriendReducer from './currentFriendReducer'
+import userReducer from './userReducer'
 
 export default combineReducers({
+  user: userReducer,
+  userSongs: songsReducer,
   friends: friendsReducer,
-  songs: songsReducer,
-  waiting: waitingReducer,
-  friendSongs: friendSongsReducer,
-  currentFriend: currentFriendReducer
+  currentFriend: currentFriendReducer,
+  currentFriendSongs: friendSongsReducer,
+  waiting: waitingReducer
 })
