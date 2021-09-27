@@ -7,10 +7,10 @@ import { getEvent } from './eventHelper'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
-import EventDetail from '../../components/events/EventDetail/EventDetail'
+// import EventDetail from '../../components/events/EventDetail/EventDetail'
 
 export default function Event () {
-  const { id, eventId } = useParams()
+  const { id } = useParams()
   const history = useHistory()
 
   const [event, setEvent] = useState({})
@@ -59,7 +59,7 @@ export default function Event () {
         </>
         : null
       }
-      <EventDetail eventId={eventId} user={user} />
+      {/* <EventDetail eventId={eventId} user={user} /> */}
     </>
   )
 }
