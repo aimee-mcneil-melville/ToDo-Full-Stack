@@ -38,7 +38,8 @@ describe('createUser', () => {
   it('creates a new user', () => {
     const user = {
       username: 'newuser',
-      password: 'hello',
+      firstName: 'firstname',
+      lastName: 'lastname',
       gardenId: 3,
       email: 'random@emailz.co',
       auth0Id: 'auth0|thisisfortesting'
@@ -46,10 +47,13 @@ describe('createUser', () => {
     return users.createUser(user, testDb)
       .then(() => users.getUserByName('newuser', testDb))
       .then((user) => {
+        expect(user.id).not.toBeNull()
         expect(user.username).toBe('newuser')
-        expect(user.isAdmin).toBeFalsy()
+        expect(user.firstName).toBe('firstname')
+        expect(user.lastName).toBe('lastname')
         expect(user.gardenId).toBe(3)
         expect(user.email).toBe('random@emailz.co')
+        expect(user.auth0Id).toBe('auth0|thisisfortesting')
         return null
       })
   })
