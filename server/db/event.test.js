@@ -82,3 +82,13 @@ describe('updateEvent', () => {
       })
   })
 })
+
+describe('Cancel Event', () => {
+  it('event should be cancelled', () => {
+    return db.cancelEvent(1, testDb)
+      .then(event => {
+        expect(event.status).toBe('Cancelled')
+        return null
+      })
+  })
+})
