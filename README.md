@@ -78,7 +78,7 @@ Create an account in Auth0.com, register with your personal email and ask one of
 
 ## User interface / Wireframes (proposal)
 
-[Wireframe source on Whimsical](https://whimsical.com/Rf7Fo4MEMGxm5eLQ4uLYTA)
+[Figma wireframe desgin](https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=5%3A1327)
 
 ## API routes (proposal)
 
