@@ -14,8 +14,9 @@ const userHasAdminRole = async (uid) => {
   return isAdmin(body)
 }
 
-const isAdmin = (roles) => {
+export const isAdmin = (roles) => {
   if (roles) {
+    console.log(roles)
     return roles.some(r => r.name === 'admin')
   }
   return false
@@ -57,5 +58,6 @@ const checkJwt = jwt({
 
 module.exports = {
   userHasAdminRole,
+  isAdmin,
   checkJwt
 }
