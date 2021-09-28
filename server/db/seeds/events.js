@@ -10,7 +10,7 @@ exports.seed = (knex) => {
       return knex('events').insert([
         {
           id: 1,
-          garden_id: 1,
+          garden_id: 2,
           title: 'Weeding worker Bee',
           date: todayDate,
           description: 'It is time to get these weeds under control.',

@@ -31,7 +31,7 @@ describe('getEventById', () => {
         expect(event.volunteersNeeded).toBe(14)
         expect(event).toHaveProperty('date')
         expect(event).toHaveProperty('description')
-        expect(event.volunteers).toHaveLength(2)
+        expect(event.volunteers).toHaveLength(3)
         expect(event.extraVolunteers).toHaveLength(0)
         expect(event.volunteers[0].attended).toBeFalsy()
         expect(event.lat).toBe(-36.86983345249252)
