@@ -19,44 +19,6 @@ const mockData = {
   lon: 174.7666700
 }
 
-describe('Event details page', () => {
-  describe('Volunteer button', () => {
-    it('does not render if admin', () => {
-      getEvent.mockImplementation(() => Promise.resolve(mockData))
-
-      renderWithRedux(<Event />, {
-        initialState: {
-          user: {
-            isAdmin: true
-          }
-        }
-      })
-      return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.queryByRole('button', { name: 'Volunteer' })
-        expect(volunteerButton).toBeNull()
-        return null
-      })
-    })
-
-    it('renders if not admin', () => {
-      getEvent.mockImplementation(() => Promise.resolve(mockData))
-      renderWithRedux(<Event />, {
-        initialState: {
-          user: {
-            isAdmin: false
-          }
-        }
-      })
-
-      return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
-        expect(volunteerButton).toHaveTextContent('Volunteer')
-        return null
-      })
-    })
-  })
-})
-
 describe('List of signed up volunteers', () => {
   const mockVolunteers = [
     {
