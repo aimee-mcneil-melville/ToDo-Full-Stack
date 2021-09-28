@@ -6,7 +6,13 @@ import EventForm from './EventForm'
 
 describe('event form field', () => {
   it('updates correctly on user input', async () => {
-    render(<EventForm/>)
+    const emptyForm = {
+      title: '',
+      date: '',
+      volunteersNeeded: 0,
+      description: ''
+    }
+    render(<EventForm formData={emptyForm} />)
 
     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
     const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
@@ -19,10 +25,16 @@ describe('event form field', () => {
       expect(descriptionInput).toHaveTextContent(/yeiyah/)
     })
   })
+
   it('required comes up on invalid input', async () => {
     const handleSubmit = jest.fn()
-    render(<EventForm onSubmit={handleSubmit}/>)
-
+    const mockForm = {
+      title: 'mock title',
+      date: '29/07/2020',
+      volunteersNeeded: 2,
+      description: 'rad event'
+    }
+    render(<EventForm onSubmit={handleSubmit} formData={mockForm} />)
     userEvent.clear(screen.getByLabelText(/event title/i))
     userEvent.clear(screen.getByLabelText(/date/i))
     userEvent.clear(screen.getByLabelText(/volunteers needed/i))
