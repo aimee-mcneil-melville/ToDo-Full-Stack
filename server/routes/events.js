@@ -81,8 +81,8 @@ router.get('/:id', async (req, res) => {
   const eventId = Number(req.params.id)
   try {
     const event = await db.getEventById(eventId)
-    const { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon } = event
-    const eventResponse = { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon, volunteers, extraVolunteers }
+    const { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon, status } = event
+    const eventResponse = { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon, volunteers, extraVolunteers, status }
 
     res.json(eventResponse)
     return null
