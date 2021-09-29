@@ -9,10 +9,6 @@ Your task is to complete the authentication implementation of this app.
 
 After cloning this repo, install dependencies with `npm install`. The `postinstall` script will create the database and populate the tables with test data.
 
-Create a `.env` file by running `cp server/.env.example server/.env`. This file holds any special environment variables or secret keys that we need. We're using a package called `dotenv` in our `server/index.js` to make the environment variables available to our server code.
-
-This `.env` file contains a `JWT_SECRET`, which you will use in your implementation. You don't ever want a `.env` file committed to your source repository, so we've added it to our `.gitignore`.
-
 Start the app with `npm run dev` and it will be running on [http://localhost:3000](http://localhost:3000).
 
 
@@ -31,17 +27,10 @@ In order to complete the implementation of authentication for this app, we need 
 
 ### Server-side
 
-- Create POST routes for `/auth/register` and `/auth/signin`
-- Save a hash of the user's password instead of the clear text password
 - Make the following routes accept only authenticated requests
     - PUT `/api/v1/fruits`
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
-
-To make completing these steps a little easier, we'll be using the [`authenticare`](https://npmjs.com/package/authenticare) npm package. `authenticare` does a lot of the work for us, so we'll just need to integrate the functions it exports into our app.
-
-_Note: The `authenticare` library was built as a learning tool, __not__ for production. It's designed to help facilitate your understanding of adding authentication to an application, but it's not a library you'll use in the real world._
-
 
 ## 0. Have a look around first
 
@@ -53,12 +42,23 @@ Get familiar with the user interface. Select some fruits, update their values, d
 
 Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
 
+## Auth0 Setup
+1. Open your browser, go to Auth0.com and signup for a new account. 
+1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john`.
+1. Select **Australia** as your *Region*.
+1. Make sure **Development** is selected as the *Environment tag*.
+1. Click *Create*.
+1. Go to *Applications*, and click on *Create Application* button 
+1. Give your application a name, for example `fruits`, then select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
+1. In Auth0.com, set the **Allowed Callback Url** with `http://localhost:3000/, http://localhost:3000/register`
+1. In Auth0.com, set the **Allowed Logout Url** with `http://localhost:3000/`
+1. In Auth0.com, set the **Allowed Web Origins** with `http://localhost:3000/`
 
 ## 1. Client-side: Determine if the current user is signed in
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `authenticare/client` package exports an `isAuthenticated` function. Here are [the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/isAuthenticated.md). This function will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. We'll get to adding the token later.
+Fortunately, `auth0` package exports an `isAuthenticated` function. This function will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. We'll get to adding the token later.
 
 Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Make use of `authenticare`'s `isAuthenticated` function instead.
 
