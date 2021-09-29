@@ -14,7 +14,7 @@ const userHasAdminRole = async (uid) => {
   return isAdmin(body)
 }
 
-export const isAdmin = (roles) => {
+const isAdmin = (roles) => {
   if (roles) {
     console.log(roles)
     return roles.some(r => r.name === 'admin')
