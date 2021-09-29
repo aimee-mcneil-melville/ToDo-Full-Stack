@@ -20,6 +20,7 @@ const mockEvent = {
   title: 'Weeding worker Bee',
   date: '2020-08-27',
   description: 'Its time to get these weeds under control.',
+  status: 'Active',
   volunteers: [{
     userId: 3,
     username: 'jdog',
@@ -55,6 +56,7 @@ describe('GET /api/v1/events/:id', () => {
         expect(res.body.title).toBe('Weeding worker Bee')
         expect(res.body.date).toBe('2020-08-27')
         expect(res.body.description).toBe('Its time to get these weeds under control.')
+        expect(res.body.status).toBe('Active')
         expect(res.body.volunteers).toHaveLength(1)
         expect(res.body.volunteers[0].lastName).toBe('Dawg')
         expect(res.body.extraVolunteers).toHaveLength(1)
@@ -137,6 +139,37 @@ describe('POST /api/v1/events', () => {
       .then(res => {
         expect(log).toHaveBeenCalledWith('mock addEvent error')
         expect(res.body.error.title).toBe('Unable to add event')
+        return null
+      })
+  })
+})
+
+describe('PATCH /api/v1/events/:id/cancel', () => {
+  it('responds with 401 when no token passed', () => {
+    return request(server)
+      .patch('/api/v1/events/1')
+      .then(({ status }) => {
+        expect(status).toBe(401)
+        return null
+      })
+  })
+
+  it('should successfully cancel the event', () => {
+    db.cancelEvent.mockImplementation((cancelledEventId) => {
+      expect(cancelledEventId).toBe(2)
+      return Promise.resolve({
+        id: 2,
+        status: 'Cancelled'
+      })
+    })
+    return request(server)
+      .patch('/api/v1/events/2/cancel')
+      .set(testAuthAdminHeader)
+      .send({ id: 2 })
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body.status).toBe('Cancelled')
         return null
       })
   })
