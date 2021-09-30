@@ -1,11 +1,13 @@
 const express = require('express')
-
+// import checjJwt
+const checkJwt = require('../auth0')
 const db = require('../db/fruits')
 
 const router = express.Router()
 
 module.exports = router
 
+// A public endpoint that anyone can access
 // GET /api/v1/fruits
 router.get('/', async (req, res) => {
   try {
@@ -16,8 +18,9 @@ router.get('/', async (req, res) => {
   }
 })
 
+// use checkJwt as a middle
 // POST /api/v1/fruits
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req, res) => {
   const newFruit = req.body
   const user = { id: 1 }
   try {
@@ -28,8 +31,9 @@ router.post('/', async (req, res) => {
   }
 })
 
+// use checkJwt as a middle
 // PUT /api/v1/fruits
-router.put('/', async (req, res) => {
+router.put('/', checkJwt, async (req, res) => {
   const newFruit = req.body
   const user = { id: 1 }
   try {
@@ -45,8 +49,9 @@ router.put('/', async (req, res) => {
   }
 })
 
+// use checkJwt as a middle
 // DELETE /api/v1/fruits
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkJwt, async (req, res) => {
   const id = Number(req.params.id)
   const user = { id: 1 }
   try {
