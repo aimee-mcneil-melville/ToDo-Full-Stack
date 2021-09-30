@@ -1,36 +1,39 @@
 import request from 'superagent'
 
 const rootUrl = '/api/v1/fruits'
-const acceptJsonHeader = { Accept: 'application/json' }
+
+const getHeaders = (token) => ({
+  Accept: 'application/json',
+  authorization: `Bearer ${token}`
+})
 
 export function getFruits () {
   return request.get(rootUrl)
-    .set(acceptJsonHeader)
     .then(res => {
       return res.body.fruits
     })
     .catch(logError)
 }
 
-export function addFruit (fruit) {
+export function addFruit (fruit, token) {
   return request.post(rootUrl)
-    .set(acceptJsonHeader)
+    .set(getHeaders(token))
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function updateFruit (fruit) {
+export function updateFruit (fruit, token) {
   return request.put(rootUrl)
-    .set(acceptJsonHeader)
+    .set(getHeaders(token))
     .send(fruit)
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function deleteFruit (id) {
+export function deleteFruit (id, token) {
   return request.delete(`${rootUrl}/${id}`)
-    .set(acceptJsonHeader)
+    .set(getHeaders(token))
     .then(res => res.body.fruits)
     .catch(logError)
 }
