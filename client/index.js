@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       domain={'gardenz.au.auth0.com'}
       clientId={'UPX21QATLKQlu9iMNfWmZd24Y3Xk2ezF'}
       redirectUri={window.location.origin}
-      audience={'https://fullstackboilerplate/api'}
+      audience='https://fullstackboilerplate/api'
     >
       <App />
     </Auth0Provider>,
