@@ -19,6 +19,7 @@ router.post('/', checkJwt, async (req, res) => {
     await db.createUser(user)
     res.sendStatus(201)
   } catch (err) {
+    console.error(err)
     res.status(500).send(err.message)
   }
 })

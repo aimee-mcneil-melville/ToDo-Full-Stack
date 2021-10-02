@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     const fruits = await db.getFruits()
     res.json({ fruits })
   } catch (err) {
+    console.error(err)
     res.status(500).send(err.message)
   }
 })
@@ -31,6 +32,7 @@ router.post('/', checkJwt, async (req, res) => {
     const fruits = await db.addFruit(newFruit)
     res.json({ fruits })
   } catch (err) {
+    console.error(err)
     res.status(500).send(err.message)
   }
 })
@@ -48,6 +50,7 @@ router.put('/', checkJwt, async (req, res) => {
     const fruits = await db.updateFruit(newFruit, auth0Id)
     res.json({ fruits })
   } catch (err) {
+    console.error(err)
     if (err.message === 'Unauthorized') {
       return res.status(403).send(
         'Unauthorized: Only the user who added the fruit may update it'
@@ -66,6 +69,7 @@ router.delete('/:id', async (req, res) => {
     const fruits = await db.deleteFruit(id, auth0Id)
     res.json({ fruits })
   } catch (err) {
+    console.error(err)
     if (err.message === 'Unauthorized') {
       return res.status(403).send(
         'Unauthorized: Only the user who added the fruit may delete it'
