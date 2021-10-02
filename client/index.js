@@ -8,6 +8,10 @@ import store from './store'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
+    /**
+     * Auth0Provider is a component that has a hook that provides
+     * all authorization operations
+     */
     <Auth0Provider
       domain={'gardenz.au.auth0.com'}
       clientId={'UPX21QATLKQlu9iMNfWmZd24Y3Xk2ezF'}
