@@ -21,7 +21,7 @@ function Register () {
   }, [user])
 
   async function handleClick () {
-    await addUser(form, user.token)
+    await addUser(form)
     history.push('/')
   }
 

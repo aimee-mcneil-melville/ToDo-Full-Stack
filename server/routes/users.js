@@ -1,14 +1,12 @@
 const express = require('express')
-const checkJwt = require('../auth0')
 const db = require('../db/users')
 
 const router = express.Router()
 
 module.exports = router
 
-// use checkJwt as a middle
 // POST /api/v1/fruits
-router.post('/', checkJwt, async (req, res) => {
+router.post('/', async (req, res) => {
   const newUser = req.body
   const { auth0Id, email } = newUser
   const user = {

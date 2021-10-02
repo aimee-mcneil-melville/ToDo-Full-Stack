@@ -34,9 +34,8 @@ export function deleteFruit (id, auth0Id, token) {
     .catch(logError)
 }
 
-export async function addUser (user, token) {
+export async function addUser (user) {
   return request.post(`${rootUrl}/users`)
-    .set('authorization', `Bearer ${token}`)
     .send(user)
     .catch(logError)
 }
