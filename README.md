@@ -42,157 +42,138 @@ Get familiar with the user interface. Select some fruits, update their values, d
 
 Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
 
-## Auth0 Setup
+## 1. Auth0: Account Setup
+
+### I. Auth0 Application Creation:
 1. Open your browser, go to Auth0.com and signup for a new account. 
-1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john`.
+1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
 1. Select **Australia** as your *Region*.
 1. Make sure **Development** is selected as the *Environment tag*.
 1. Click *Create*.
 1. Go to *Applications*, and click on *Create Application* button 
-1. Give your application a name, for example `fruits`, then select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
-1. In Auth0.com, set the **Allowed Callback Url** with `http://localhost:3000/, http://localhost:3000/register`
-1. In Auth0.com, set the **Allowed Logout Url** with `http://localhost:3000/`
-1. In Auth0.com, set the **Allowed Web Origins** with `http://localhost:3000/`
+1. Give your application a name, for example `fruits`. 
+1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
+1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value [later](#client-side-configure-auth0provider).
+1. Set the following values:
 
-## 1. Client-side: Determine if the current user is signed in
+| Setting                   | Value                                                     |
+| ------------------------- | --------------------------------------------------------- |
+| Allowed Callback Url      | `http://localhost:3000/, http://localhost:3000/register`  |
+| Allowed Logout Url        | `http://localhost:3000/`                                  |
+| Allowed Web Origins Url   | `http://localhost:3000/`                                  |
+
+
+Scroll down to the bottom of the page and Save.
+
+### II. Auth0 API Creation:
+In order to protect our routes in the server-side, we need to verify that tokens passed from the client are valid. Creating an API that is linked to the Auth0 Application, the one that you just created, will check the token's validity.
+
+1. On the side bar, create click *APIs* and click the *Create API* button.
+1. Give your API a name, for example, `fruits`.
+1. Set the *Identifier* field field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` that we'll use later in the section below.
+1. Select `Machine to Machine Applications` tab, and click on the toggle button that sits next to your application name, in our example here, `fruits`. This toggle button should be enabled.
+
+Now both the Application and API are connected. Let's move to our client and connect our app with Auth0.
+
+## 2. Client-side: Configure Auth0Provider
+In `client/index.js`:  
+1. Import `Auth0Provider` from the Auth0 package.
+1. Wrap your root component, in this case it's `App` with `Auth0Provider` component. 
+1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
+
+| Attribute | Name |
+| --- | --- | 
+| `domain`| in step 1️⃣|
+|`clientId`| in step 2️⃣| 
+|`audience` | `https://fruits/api` |
+
+Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
+
+Commit your code and swap driver/navigator.
+
+## 3. Client-side: Determine if the current user is signed in
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `auth0` package exports an `isAuthenticated` function. This function will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. We'll get to adding the token later.
+Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and value, here will use `isAuthenticated` boolean value that will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
-Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Make use of `authenticare`'s `isAuthenticated` function instead.
+Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook, destructure the `isAuthenticated` and return this boolean variable.
 
 With that in place, you can now see the "Register" and "Sign in" links in the app.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
 
-## 2. Client-side: Allow the user to register
+## 4. Client-side: Reading user metadata
 
-Our existing code already has a component where the user can supply their username and password to register. You can see this if you select the "Register" link on the top right of the home page. Note: If you see "Log off", ensure you've completed the previous step and refresh your browser.
+At this point our app can register, log in and log out users. We want to only allow users who have been authenticated in order to use server routes. When a user is signed in, we can call `getAccessTokenSilently` to get a token from Auth0 and pass it as a header when calling server-side routes that we want to protect.
 
-In `client/components/Register.jsx`, you'll need to implement the `handleClick` function for the Register button.
+In `client/auth0-utils.js`, `cacheUser` takes `useAuth0` as a first parameter. Call it and destructure:
 
-To send a registration request to the server from our `Register` component, you'll call the `register` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/register.md).
+- `getAccessTokenSilently` 
+- `isAuthenticated`
+- `user`
 
-_Note: you'll need to pass `register` a second argument, an options object with a `baseUrl` property, so `authenticare` knows where make its API call to. The `baseUrl` itself has already been imported for you at the top of the file._
+Call `getAccessTokenSilently` to get the access token and set it in the `userToSave` object. 
 
-After the call to `register` has succeeded, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
+`user` is an object that has other properties. We are only interested in two:
+- `sub` is the Auth0 subscriber's unique id.
+- `email`
 
-We should now have enough implemented on the client-side to let the user register, but before we can test it, we need some server-side routes for the client to talk to.
+Use these values to set `userToSave` object.
 
-Now is a good time to commit your changes and swap driver/navigator.
+## 5. Client-side: Allow the user to register and log in/out
 
+In `client/components/Nav.jsx`, you will need to:
+1. Import the `Auth0` and use it inside the `Nav` component. 
+1. Destructure the `logout` and `loginWithRedirect`.
+1. Call these functions in the three handlers.
 
-## 3. Server-side: Create auth routes
+We will call `loginWithRedirect` in the `handleRegister` and pass an object that will tell Auth0 to redirect to the `/register` route.
+```
+{
+    redirectUri:`${window.location.origin}/register` 
+}
+```
+The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
 
-You'll need to create a file to hold these routes: `server/routes/auth.js`. Wire up your server (`server/server.js`) to use these auth routes with prefix of `/api/v1` (because we told `authenticare/client` to make requests with this prefix in `client/config.js`). Note: Authenticare's client and server will add `/auth/register` and `/auth/signin` to this prefix.
+If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
 
-`authenticare` is going to do all of the heavy lifting around responding to requests for new user registrations or user signins. There are 3 actions `authenticare` needs to do, but we need to provide the functions that perform these actions:
+_Notes: the server-side route that creates users in the database is not implemented yet._
 
-- determine if a username is already in use (whether a user exists)
-- retrieve a user object based on its username
-- create a new user
+Commit your code and swap driver/navigator.
 
-Fortunately, our `server/db/users.js` file already exports these functions:
+## 6. Client-side: Passing access tokens
 
-- `userExists`
-- `getUserByName`
-- `createUser` - you'll need to write the implementation for this function (in section 4 below).
+Now the access token is stored in global state and we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in the `api.js`.
 
-The `authenticare/server` package exports a function called `applyAuthRoutes`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md). Use `applyAuthRoutes` in `server/routes/auth.js`.
+In `client/AddFruit.js` component, access the global state and get the `auth0Id` and `token` properties. Then pass them to the `AddFruit` as second and third parameters.
 
-Now is a good time to commit your changes and swap driver/navigator.
+_hint: try using the useSelector hook from `react-redux` package._
 
+In `client/SelectedFruits`, repeat the same steps. 
 
-## 4. Server-side: Adding users: hashing the user's password
+Commit your code and swap driver/navigator.
 
-While the `userExists` and `getUserByName` database functions in `server/db/users` are in place, you'll need to implement `createUser`. As per the `applyAuthRoutes` [documentation](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/applyAuthRoutes.md), `createUser` accepts a `user` object, which is going to have `username` and `password` properties.
+## 7. Server-side: JWT Middleware setup
 
-Think about what you're going to need this `createUser` function to do. It should:
+In this step we are going to configure the `jwt` middleware.
 
-* Determine whether the username is already taken (_hint: the `userExists` db function might come in handy!_) and throw an error if it's already in use.
-* Create a _hash_ of the user's password. We __never__ save passwords as plain text. `authenticare` exports a `generateHash` function - [the docs are here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/generateHash.md).
-* Save the new user, with their username and hashed password, to the `users` database table.
+In `server/auth0.js`, set `domain` and `audience` values. The `audience` should be `https://fruits/api`.
 
-While we're here, you should also import and use the `authenticare` `generateHash` function in `server/db/seeds/users.js`.
+## 8. Server-side: Pass middleware to routes
+There are two routes that we want to be accessible only for authenticated users:
 
-You may decide at this point to reset the database by running `npm run db-reset`. This script will delete and recreate your `server/db/dev.sqlite3` database file and run the migrations and seeds.
+1. `/api/v1/fruits`
+    - `POST`, `PATCH` and `DELETE`
+1. `/api/v1/users`
+    - `POST`
 
-Users should now be able to register! Navigate back to [localhost:3000](http://localhost:3000) and try it - verify that new user registrations are saving a hash of the password to the database and not their clear-text password.
+Open both routes and pass `checkJwt` as a second parameter.
 
-Now is a good time to commit your changes and swap driver/navigator.
-
-
-## 5. Client-side: Allow the user to sign in
-
-Our existing code already has a component where the user can supply their username and password to sign in. You can see this if you select the "Sign in" link on the top right of the home page. 
-
-If you're still logged in from registering, you'll need to delete the token from `localStorage` to see the Sign In link (we haven't implemented the log out functionality yet). You can do this from the dev tools - either the `Application` tab on Chromium browsers, or the `Storage` tab on Firefox.
-
-In `client/components/SignIn.jsx`, you'll need to implement the `handleClick` function for the Sign In button.
-
-To send a signin request to the server from our `SignIn` component, you'll call the `signIn` function available from `authenticare/client`. You can [read the docs here](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/signIn.md).
-
-_Note: you'll need to send the `baseUrl` in an options object again - the `baseUrl` has already been imported for you at the top of the file._
-
-After the call to `signin`, we should redirect the user back to our home page (`'/'`). However, it would only make sense for that to happen if the user has actually been authenticated. _Hint: try the `isAuthenticated()` function from step 1._
-
-We should now have enough implemented on the client-side to let the user sign in. We configured the server-side auth routes in step #3 so we should be able to sign in with a registered user.
-
-Now is a good time to commit your changes and swap driver/navigator.
-
-
-## 6. Server-side: Protect routes from unauthenticated requests
-
-At the moment, we are able to add, update and delete fruit whether we are signed in or logged out. For our requirements, unauthenticated users can read data, but only authenticated users may add, update and delete fruit. We'll facilitate this on the client-side as well, but this step is about securing the Web API.
-
-The `server/routes/fruits.js` file contains the fruit-related routes. To determine if a request is authenticated or not, we attempt to decode the token sent in the `Authorization` request header. This is often done as a piece of Express middleware.
-
-The `authenticare/server` package exports a `getTokenDecoder` function that returns an Express middleware function, which we can use in our routes. It will put the result of the decoded token on `req.user`.
-
-For each of the `POST`, `PUT` and `DELETE` the fruit routes, apply this `getTokenDecoder()` middleware function, and update the `user` variable to be the value from `req.user`, rather than the hard-coded `{ id: 1 }`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/server/getTokenDecoder.md) to see an example of how to do this.
-
-Let's check to see if our `getTokenDecoder()` function is doing it's job. If you try to add, update or delete some fruit from the UI you should see errors in the developer tools console.  
-If you try, you will get an HTTP `401` (bad request - JWT malformed) response, which is exactly what you want.
-
-> Note: At this point you will not be able to add, update or delete fruits because the routes are protected and you're not yet sending the token in the requests. That's what you'll do in the next step!
-
-Now is a good time to commit your changes and swap driver/navigator.
-
-
-## 7. Client-side: Send the authorization token with each request
-
-Behind the scenes, `authenticare`'s `register` and `signIn` functions issue the user with a JSON Web Token (JWT), and save it to `localStorage`. Issuing a token is akin to registering for a new account. Once issued, the client will apply the token to each API call (we'll set this up next). The token represents the user's credentials, just like a username and password, but for API calls.
-
-To ensure a JWT is valid, it is signed with a secret string when it is issued. This is what the `JWT_SECRET` in our `.env` file is for. Our server will know from the signature whether or not it issued that JWT to the user, and permit requests to secured endpoints accordingly. If anything about the token changes, the signature won't match, and those requests will be forbidden. It's not important that you understand how all of this works, but context of the bigger picture can be useful.
-
-In order to make authenticated requests, we must attach the token to each request we send to our API. Of course we will only have access to the token when the user is signed in. All requests from the client to the server are made from `client/api.js`.
-
-`authenticare/client` exports a `getAuthorizationHeader` function. This will return the token from `localStorage` and format it as an HTTP header so you can use it in your `superagent` requests. Set the result of `getAuthorizationHeader` to each of the `POST`, `PUT` and `PATCH` requests. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/getAuthorizationHeader.md) for more details, and an example of how to do this.
-
-Now that we're sending the token to authenticate our requests, our attempts to add, update or delete fruit should succeed.
-
-Now is a good time to commit your changes and swap driver/navigator.
-
-
-## 8. Client-side: Allow the user to log off
-
-Logging off in this application is as simple as removing the `token` field from the `localStorage`. That's how `authenticare` determines if the current user has been authenticated. We can use the `logOff` function from `authenticare/client` to do this for us.
-
-The link a user clicks in order to log off is currently in the `client/components/Nav.jsx` component. Add an `onClick` event handler to it that uses the `logOff` function from `authenticare/client`. [Check out the docs](https://github.com/enspiral-dev-academy/authenticare/blob/main/docs/client/logOff.md) if you need to. Once you're done, you should be able to log off, sign in, and register using the UI.
-
-Now is a good time to commit your changes and swap driver/navigator.
-
-
-## 9. Client-side: Hide/show components based on auth status
-
-You won't need `authenticare` for this step. The components you need are already in place.
-
-Use `IfAuthenticated` and `IfNotAuthenticated` from `client/components/Authenticated.jsx` to hide and show the update and delete buttons as well as the whole Add new section based on if the user is signed in. You'll need to import the components into `client/components/Fruits.jsx` before using the components. See `client/components/Nav.jsx` for inspiration.
-
-Once you're finished you can see how the components will show and hide when you sign in and log out of the application.
-
-Now is a good time to commit your changes and high five your pairing partner (and/or yourself)!
-
-Nice work!
+For example:
+```
+route.post('/', checkJwt, (req, res) => {
+    // do stuff here
+})
+```
