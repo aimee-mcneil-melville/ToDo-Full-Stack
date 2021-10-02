@@ -39,8 +39,13 @@ router.post('/', checkJwt, async (req, res) => {
 // PUT /api/v1/fruits
 router.put('/', checkJwt, async (req, res) => {
   const { fruit, auth0Id } = req.body
+  const newFruit = {
+    added_by_user: auth0Id,
+    name: fruit.name,
+    calories: fruit.calories
+  }
   try {
-    const fruits = await db.updateFruit(fruit, auth0Id)
+    const fruits = await db.updateFruit(newFruit, auth0Id)
     res.json({ fruits })
   } catch (err) {
     if (err.message === 'Unauthorized') {
