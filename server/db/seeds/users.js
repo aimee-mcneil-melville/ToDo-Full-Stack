@@ -1,15 +1,11 @@
 // TODO: import a generateHash function
 
 exports.seed = (knex) => {
-  return knex('users').del()
-    .then(() => Promise.all([
-      // generateHash('jess'),
-      // generateHash('jules')
-    ]))
-    .then(([jessHash, julesHash]) =>
-      knex('users').insert([
-        { id: 1, username: 'jess', hash: jessHash },
-        { id: 2, username: 'jules', hash: julesHash }
-      ])
-    )
+  return knex('users')
+    .del()
+    .then(() =>
+      knex('users').insert(
+        { auth0_id: 'auth0|123', email: 'banana@user.com' },
+        { auth0_id: 'auth0|567', email: 'watermelon@user.com' }
+      ))
 }
