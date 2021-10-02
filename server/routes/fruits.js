@@ -21,10 +21,14 @@ router.get('/', async (req, res) => {
 // use checkJwt as a middle
 // POST /api/v1/fruits
 router.post('/', checkJwt, async (req, res) => {
-  const newFruit = req.body
-  const user = { id: 1 }
+  const { fruit, auth0Id } = req.body
+  const newFruit = {
+    added_by_user: auth0Id,
+    name: fruit.name,
+    calories: fruit.calories
+  }
   try {
-    const fruits = await db.addFruit(newFruit, user)
+    const fruits = await db.addFruit(newFruit)
     res.json({ fruits })
   } catch (err) {
     res.status(500).send(err.message)
@@ -34,10 +38,9 @@ router.post('/', checkJwt, async (req, res) => {
 // use checkJwt as a middle
 // PUT /api/v1/fruits
 router.put('/', checkJwt, async (req, res) => {
-  const newFruit = req.body
-  const user = { id: 1 }
+  const { fruit, auth0Id } = req.body
   try {
-    const fruits = await db.updateFruit(newFruit, user)
+    const fruits = await db.updateFruit(fruit, auth0Id)
     res.json({ fruits })
   } catch (err) {
     if (err.message === 'Unauthorized') {
@@ -51,11 +54,11 @@ router.put('/', checkJwt, async (req, res) => {
 
 // use checkJwt as a middle
 // DELETE /api/v1/fruits
-router.delete('/:id', checkJwt, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  const user = { id: 1 }
+  const auth0Id = req.body.auth0Id
   try {
-    const fruits = await db.deleteFruit(id, user)
+    const fruits = await db.deleteFruit(id, auth0Id)
     res.json({ fruits })
   } catch (err) {
     if (err.message === 'Unauthorized') {
