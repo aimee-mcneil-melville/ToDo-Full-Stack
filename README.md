@@ -81,11 +81,11 @@ In `client/index.js`:
 1. Wrap your root component, in this case it's `App` with `Auth0Provider` component. 
 1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
-| Attribute | Name |
-| --- | --- | 
-| `domain`| in step 1️⃣|
-|`clientId`| in step 2️⃣| 
-|`audience` | `https://fruits/api` |
+| Attribute  | Value                |
+| ---------  | ---------------------| 
+| `domain`   | in step 1️⃣          |
+| `clientId` | in step 2️⃣          | 
+| `audience` | `https://fruits/api` |
 
 Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
 
@@ -122,6 +122,8 @@ Call `getAccessTokenSilently` to get the access token and set it in the `userToS
 
 Use these values to set `userToSave` object.
 
+_Note: everytime the `App` component renders the `cacheUser` will run. This will garuantee that our global state will always have the user's metadata._
+
 ## 5. Client-side: Allow the user to register and log in/out
 
 In `client/components/Nav.jsx`, you will need to:
@@ -138,8 +140,6 @@ We will call `loginWithRedirect` in the `handleRegister` and pass an object that
 The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
 
 If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
-
-_Notes: the server-side route that creates users in the database is not implemented yet._
 
 Commit your code and swap driver/navigator.
 
