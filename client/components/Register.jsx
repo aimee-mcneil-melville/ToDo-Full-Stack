@@ -20,14 +20,6 @@ function Register () {
     })
   }, [user])
 
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
   async function handleClick () {
     await addUser(form, user.token)
     history.push('/')
@@ -42,7 +34,6 @@ function Register () {
           id='auth0Id'
           name='auth0Id'
           value={form.auth0Id}
-          onChange={handleChange}
           disabled={true}
         />
 
@@ -50,7 +41,7 @@ function Register () {
         <ColTwo type='text'
           id='email'
           name='email'
-          onChange={handleChange}
+          // onChange={handleChange}
           value={form.email}
           disabled={true}
         />
