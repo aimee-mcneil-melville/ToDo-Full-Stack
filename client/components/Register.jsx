@@ -41,7 +41,6 @@ function Register () {
         <ColTwo type='text'
           id='email'
           name='email'
-          // onChange={handleChange}
           value={form.email}
           disabled={true}
         />
