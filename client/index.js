@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
 import App from './components/App'
+import { Provider } from 'react-redux'
+
+import store from './store'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -11,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
       redirectUri={window.location.origin}
       audience='https://fullstackboilerplate/api'
     >
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Auth0Provider>,
     document.getElementById('app')
   )
