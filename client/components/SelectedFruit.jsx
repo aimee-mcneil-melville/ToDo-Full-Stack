@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
-import { useAuth0 } from '@auth0/auth0-react'
+import { useSelector } from 'react-redux'
 
 function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
-  const { getAccessTokenSilently } = useAuth0()
+  const user = useSelector(state => state)
   const [editing, setEditing] = useState(selected)
 
   function handleEditChange (e) {
@@ -18,8 +18,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleUpdate () {
-    getAccessTokenSilently()
-      .then((token) => updateFruit(editing, token))
+    updateFruit(editing, user.auth0Id, user.token)
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
@@ -27,8 +26,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleDelete () {
-    getAccessTokenSilently()
-      .then((token) => deleteFruit(editing.id, token))
+    deleteFruit(editing.id, user.auth0Id, user.token)
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
