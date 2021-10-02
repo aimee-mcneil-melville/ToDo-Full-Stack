@@ -17,8 +17,7 @@ async function getFruits (db = connection) {
   return db('fruits').select().then(sort)
 }
 
-async function addFruit (fruit, user, db = connection) {
-  fruit.added_by_user = user.id
+async function addFruit (fruit, db = connection) {
   return db('fruits')
     .insert(fruit)
     .then(() => db)
@@ -41,11 +40,11 @@ async function updateFruit (newFruit, user, db = connection) {
     .then(sort)
 }
 
-async function deleteFruit (id, user, db = connection) {
+async function deleteFruit (id, auth0Id, db = connection) {
   return db('fruits')
     .where('id', id)
     .first()
-    .then(fruit => authorizeUpdate(fruit, user))
+    .then(fruit => authorizeUpdate(fruit, auth0Id))
     .then(() => {
       return db('fruits')
         .where('id', id)
@@ -56,8 +55,8 @@ async function deleteFruit (id, user, db = connection) {
     .then(sort)
 }
 
-function authorizeUpdate (fruit, user) {
-  if (fruit.added_by_user !== user.id) {
+function authorizeUpdate (fruit, auth0Id) {
+  if (fruit.added_by_user !== auth0Id) {
     throw new Error('Unauthorized')
   }
 }
