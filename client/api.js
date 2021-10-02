@@ -2,11 +2,6 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-const getHeaders = (token) => ({
-  Accept: 'application/json',
-  authorization: `Bearer ${token}`
-})
-
 export function getFruits () {
   return request.get(`${rootUrl}/fruits`)
     .then(res => {
@@ -17,7 +12,7 @@ export function getFruits () {
 
 export function addFruit (fruit, auth0Id, token) {
   return request.post(`${rootUrl}/fruits`)
-    .set(getHeaders(token))
+    .set('authorization', `Bearer ${token}`)
     .send({ fruit, auth0Id })
     .then(res => res.body.fruits)
     .catch(logError)
@@ -25,7 +20,7 @@ export function addFruit (fruit, auth0Id, token) {
 
 export function updateFruit (fruit, auth0Id, token) {
   return request.put(`${rootUrl}/fruits`)
-    .set(getHeaders(token))
+    .set('authorization', `Bearer ${token}`)
     .send({ fruit, auth0Id })
     .then(res => res.body.fruits)
     .catch(logError)
@@ -33,7 +28,7 @@ export function updateFruit (fruit, auth0Id, token) {
 
 export function deleteFruit (id, auth0Id, token) {
   return request.delete(`${rootUrl}/fruits/${id}`)
-    .set(getHeaders(token))
+    .set('authorization', `Bearer ${token}`)
     .send({ auth0Id })
     .then(res => res.body.fruits)
     .catch(logError)
@@ -41,7 +36,7 @@ export function deleteFruit (id, auth0Id, token) {
 
 export async function addUser (user, token) {
   return request.post(`${rootUrl}/users`)
-    .set(getHeaders(token))
+    .set('authorization', `Bearer ${token}`)
     .send(user)
     .catch(logError)
 }
