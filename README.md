@@ -50,11 +50,12 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 1. Select **Australia** as your *Region*.
 1. Make sure **Development** is selected as the *Environment tag*.
 1. Click *Create*.
-1. Go to *Applications*, and click on *Create Application* button 
-1. Give your application a name, for example `fruits`. 
+1. Go to *Applications*, and click on *Create Application* button.
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
+1. Select the **Settings** tab.
+1. Give your application a name, for example `Fruits App`. 
 1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value [later](#client-side-configure-auth0provider).
-1. Set the following values:
+1. Set the following values, in the *Application URIs* section:
 
 | Setting                   | Value                                                     |
 | ------------------------- | --------------------------------------------------------- |
@@ -70,10 +71,7 @@ In order to protect our routes in the server-side, we need to verify that tokens
 
 1. On the side bar, create click *APIs* and click the *Create API* button.
 1. Give your API a name, for example, `fruits`.
-1. Set the *Identifier* field field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` that we'll use later in the section below.
-1. Select `Machine to Machine Applications` tab, and click on the toggle button that sits next to your application name, in our example here, `fruits`. This toggle button should be enabled.
-
-Now both the Application and API are connected. Let's move to our client and connect our app with Auth0.
+1. Set the *Identifier* field field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
 
 ## 2. Client-side: Configure Auth0Provider
 In `client/index.js`:  
@@ -161,6 +159,8 @@ In this step we are going to configure the `jwt` middleware.
 
 In `server/auth0.js`, set `domain` and `audience` values. The `audience` should be `https://fruits/api`.
 
+Everyime a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
+
 ## 8. Server-side: Pass middleware to routes
 There are two routes that we want to be accessible only for authenticated users:
 
@@ -177,3 +177,4 @@ route.post('/', checkJwt, (req, res) => {
     // do stuff here
 })
 ```
+## 9. BONUS: Show/hide buttons
