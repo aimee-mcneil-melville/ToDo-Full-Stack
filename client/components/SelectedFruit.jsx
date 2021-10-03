@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
-import { useSelector } from 'react-redux'
 
 function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
-  const user = useSelector(state => state)
+  // TODO read from global state
   const [editing, setEditing] = useState(selected)
 
   function handleEditChange (e) {
@@ -18,7 +17,8 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleUpdate () {
-    updateFruit(editing, user.auth0Id, user.token)
+    // pass auth0Id and token as second and third parameter
+    updateFruit(editing, 'auth0 id', 'token')
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
@@ -26,7 +26,8 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleDelete () {
-    deleteFruit(editing.id, user.auth0Id, user.token)
+    // pass auth0Id and token as second and third parameter
+    deleteFruit(editing.id, 'auth0 id', 'token')
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))

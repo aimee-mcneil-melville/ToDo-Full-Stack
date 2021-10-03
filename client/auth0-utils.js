@@ -2,14 +2,16 @@ import { setUser } from './actions/user'
 import store from './store'
 
 export async function cacheUser (useAuth0, state) {
-  const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
+  // TODO call the useAuth0 and destructure:
+  // isAuthenticated, getAccessTokenSilently, user
+
+  const isAuthenticated = false // <- delete this and use the value from useAuth0()
   if (isAuthenticated && !state?.token) {
     try {
-      const token = await getAccessTokenSilently()
       const userToSave = {
-        auth0Id: user.sub,
-        email: user.email,
-        token
+        auth0Id: '',
+        email: '',
+        token: ''
       }
 
       store.dispatch(setUser(userToSave))

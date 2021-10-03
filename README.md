@@ -93,7 +93,7 @@ Commit your code and swap driver/navigator.
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and value, here will use `isAuthenticated` boolean value that will check to see if there is an auth token in the user's `localStorage`, and that it hasn't yet expired. This hook does the checking behind the scenes. 
+Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and values, here will use `isAuthenticated` boolean value that will check to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
 Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook, destructure the `isAuthenticated` and return this boolean variable.
 

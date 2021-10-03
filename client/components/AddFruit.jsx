@@ -3,10 +3,9 @@ import React, { useState } from 'react'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { addFruit } from '../api'
-import { useSelector } from 'react-redux'
 
 function AddFruit ({ setFruits, closeAddForm, setError }) {
-  const user = useSelector(state => state)
+  // TODO read from global state
   const [newFruit, setNewFruit] = useState(false)
 
   function handleAddChange (e) {
@@ -19,7 +18,8 @@ function AddFruit ({ setFruits, closeAddForm, setError }) {
 
   function handleAdd () {
     const fruit = { ...newFruit }
-    addFruit(fruit, user.auth0Id, user.token)
+    // pass auth0Id and token as second and third parameter
+    addFruit(fruit, 'auth0 id', 'token')
       .then(setFruits)
       .then(closeAddForm)
       .catch(err => setError(err.message))

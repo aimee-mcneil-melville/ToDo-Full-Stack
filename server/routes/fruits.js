@@ -1,6 +1,5 @@
 const express = require('express')
 // import checjJwt
-const checkJwt = require('../auth0')
 const db = require('../db/fruits')
 
 const router = express.Router()
@@ -21,7 +20,7 @@ router.get('/', async (req, res) => {
 
 // use checkJwt as a middle
 // POST /api/v1/fruits
-router.post('/', checkJwt, async (req, res) => {
+router.post('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
   const newFruit = {
     added_by_user: auth0Id,
@@ -39,7 +38,7 @@ router.post('/', checkJwt, async (req, res) => {
 
 // use checkJwt as a middle
 // PUT /api/v1/fruits
-router.put('/', checkJwt, async (req, res) => {
+router.put('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
   const newFruit = {
     added_by_user: auth0Id,
