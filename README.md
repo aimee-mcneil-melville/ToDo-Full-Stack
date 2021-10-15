@@ -49,7 +49,7 @@ _After_ you and your pair have given this some thought, and you have a list of t
 <details>
   <summary>Show me some tips</summary>
 
-  These are some of the tasks you'll need to complete (in no particular order). Don't show more details until you have opinion about how you'll accomplish a specific task.
+  These are some of the tasks you'll need to complete (not necessarily in this order). Don't show more details until you have opinion about how you'll accomplish a specific task.
 
   * **determining whether a cell is underpopulated, overpopulated or ressurectable**
 
@@ -111,7 +111,7 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
       You will either want to start with a specific board state or a random board. While you're creating the cells of the board, you should have a function that gives each cell of your board either a random state or a predefined state. If you want to use a predefined one, you might consider hard coding the matrix into its own file and importing (requiring) it. 
       
-      We recommend using `true` and `false` to represent "alive" and "dead". 
+      You could use `true` and `false` to represent "alive" and "dead". 
 
     </details>
 
