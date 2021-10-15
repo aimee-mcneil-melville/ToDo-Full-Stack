@@ -58,9 +58,9 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
       The rules section of [the Wikipedia article](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules) says that "any live cell with fewer than two live neighbours dies, as if by underpopulation". Implement the `isUnderPopulated()` function so that it determines whether the current cell does or doesn't have fewer than two live neighbours. 
       
-      To see whether you're returning the right responses, run the corresponding test. If you decide to read the test for clues, note that the one test is testing nine different scenarios, and expecting an appropriate (simple) response in each scenario. Read the test carefully, can you understand how it's testing so many scenarios in one test?
+      To see whether you're returning the right responses, run the corresponding test. If you decide to read the test for clues, note that the one test is testing nine different scenarios, and expecting an appropriate (simple!) response in each scenario. Read the test carefully -- can you understand how it's testing so many scenarios in one test?
       
-      Hint: this function does not require complicated logic, so if you're doing something complicated it might be a good idea to ask one of your facilitators to help make sure you're on the right track.
+      **Hint:** this function does not require complicated logic, so if you're doing something complicated it might be a good idea to ask one of your facilitators to help make sure you're on the right track.
 
       Once you have that running, use the same process to determine whether a cell is overpopulated or ressurectable. 
 
@@ -109,7 +109,9 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
       There are a couple of ways you can approach this. The most common is to use an array of arrays to create a matrix of rows and columns. Each item in the inner array is an object that represents a cell. The other way is to use a single long array. Each approach has advantages and disadvantages. With the matrix you'll have nested loops (outer loop being rows and inner loop being columns), but you'll be able to reference a cell with row/col (x/y) coordinates. Using a single array means you won't have nested arrays, but you'll have to calculate the location of every cell using the size of the board.
 
-      You will either want to start with a specific board state or a random board. While you're creating the cells of the board, you should have a function that gives each cell of your board either a random state or a predefined state. If you want to use a predefined one, you might consider hard coding the matrix into its own file and importing (requiring) it. We recommend using `true` and `false` to represent "alive" and "dead". 
+      You will either want to start with a specific board state or a random board. While you're creating the cells of the board, you should have a function that gives each cell of your board either a random state or a predefined state. If you want to use a predefined one, you might consider hard coding the matrix into its own file and importing (requiring) it. 
+      
+      We recommend using `true` and `false` to represent "alive" and "dead". 
 
     </details>
 
@@ -127,7 +129,7 @@ _After_ you and your pair have given this some thought, and you have a list of t
     <details>
       <summary>Show more details</summary>
 
-      Use all the helper functions you've built, you can determine the state of each cell in a new board, based on how many alive neighbours it had in the old board.
+      Using the helper functions you've built so far, you can determine the state of each cell in a new board, based on how many alive neighbours it had in the old board.
 
     </details>
 
@@ -136,7 +138,9 @@ _After_ you and your pair have given this some thought, and you have a list of t
     <details>
       <summary>Show more details</summary>
 
-      Try using [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) so that the next board state displays automatically after a set amount of time. You could also try temporarily using [setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) during your development process, so that the board just changes once (from the starting state to the first new state) after a set amount of time. 
+      Try using [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) so that the next board state displays automatically after a set amount of time. 
+      
+      You could also try temporarily using [setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) during your development process, so that the board just changes once (from the starting state to the first new state) after a set amount of time. 
 
     </details>
 
