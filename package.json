@@ -88,6 +88,7 @@
     "express-jwt": "^6.0.0",
     "express-jwt-authz": "^2.4.1",
     "formik": "^2.2.9",
+    "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.6",
     "limiter": "^2.1.0",
