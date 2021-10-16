@@ -119,6 +119,8 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
     </details>
 
+  If you haven't yet created the board, you'll want to do that (see the tip above that you read earlier) before working on the next steps. 
+
   * **displaying a board (in a loop)**
 
     <details>
