@@ -49,7 +49,24 @@ _After_ you and your pair have given this some thought, and you have a list of t
 <details>
   <summary>Show me some tips</summary>
 
-  These are some of the tasks you'll need to complete (not necessarily in this order). Don't show more details until you have opinion about how you'll accomplish a specific task.
+  These are some of the tasks you'll need to complete (not necessarily in this order). Don't show more details until you have an opinion about how you'll accomplish a specific task.
+
+  Before you start coding any of these steps, have a read of this "creating a board" section. If it feels manageable for you, go ahead and create the board and then decide what to do next. 
+
+  * **creating a board**
+
+    <details>
+      <summary>Show more details</summary>
+
+      There are a couple of ways you can approach this. The most common is to use an array of arrays to create a matrix of rows and columns. Each item in the inner array is an object that represents a cell. The other way is to use a single long array. Each approach has advantages and disadvantages. With the matrix you'll have nested loops (outer loop being rows and inner loop being columns), but you'll be able to reference a cell with row/col (x/y) coordinates. Using a single array means you won't have nested arrays, but you'll have to calculate the location of every cell using the size of the board.
+
+      You will either want to start with a specific board state or a random board. While you're creating the cells of the board, you should have a function that gives each cell of your board either a random state or a predefined state. If you want to use a predefined one, you might consider hard coding the matrix into its own file and importing (requiring) it. 
+      
+      You could use `true` and `false` to represent "alive" and "dead". 
+
+    </details>
+  
+  Or, if creating the board feels too stretchy as a starting point, picture the board as a matrix (array of arrays) where each sub-array represents a row and contains `true` and `false` values for alive and dead cells in that row. Then work on determining whether a cell is underpopulated, overpopulated or ressurectable, with this imaginary board in mind. You'll still need to build the board, but you can do it later once you've got into the rhythm of the challenge.
 
   * **determining whether a cell is underpopulated, overpopulated or ressurectable**
 
@@ -99,19 +116,6 @@ _After_ you and your pair have given this some thought, and you have a list of t
       <summary>Show more details</summary>
 
       This is just a matter of looping over all of the neighbours and checking their state. 
-
-    </details>
-
-  * **creating a board**
-
-    <details>
-      <summary>Show more details</summary>
-
-      There are a couple of ways you can approach this. The most common is to use an array of arrays to create a matrix of rows and columns. Each item in the inner array is an object that represents a cell. The other way is to use a single long array. Each approach has advantages and disadvantages. With the matrix you'll have nested loops (outer loop being rows and inner loop being columns), but you'll be able to reference a cell with row/col (x/y) coordinates. Using a single array means you won't have nested arrays, but you'll have to calculate the location of every cell using the size of the board.
-
-      You will either want to start with a specific board state or a random board. While you're creating the cells of the board, you should have a function that gives each cell of your board either a random state or a predefined state. If you want to use a predefined one, you might consider hard coding the matrix into its own file and importing (requiring) it. 
-      
-      You could use `true` and `false` to represent "alive" and "dead". 
 
     </details>
 
