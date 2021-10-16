@@ -66,7 +66,7 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
     </details>
   
-  Or, if creating the board feels too stretchy as a starting point, picture the board as a matrix (array of arrays) where each sub-array represents a row and contains `true` and `false` values for alive and dead cells in that row. Then work on determining whether a cell is underpopulated, overpopulated or ressurectable, with this imaginary board in mind. You'll still need to build the board, but you can do it later once you've got into the rhythm of the challenge.
+  Or, if creating the board feels too stretchy as a starting point, picture the board as a matrix (array of arrays) where each sub-array represents a row and contains `true` and `false` values for alive and dead cells in that row. Maybe mock up what this data would look like. Then work on determining whether a cell is underpopulated, overpopulated or ressurectable, with this imaginary board in mind. You'll still need to build the board, but you can do it later once you've got into the rhythm of the challenge.
 
   * **determining whether a cell is underpopulated, overpopulated or ressurectable**
 
@@ -83,14 +83,7 @@ _After_ you and your pair have given this some thought, and you have a list of t
 
     </details>
 
-  * **determining the next state of a cell based on its neighbours**
-
-    <details>
-      <summary>Show more details</summary>
-
-      To know the next state of the cell, you need to know how many alive neighbours it has. You'll also need a function that can return the next state based on the number of alive neighbours.
-
-    </details>
+  For these next steps, you'll need a clear understanding of the structure of the board, either from having already built the board, or from having some mock board data in front of you. 
 
   * **determining if a cell is on an edge**
 
@@ -116,6 +109,15 @@ _After_ you and your pair have given this some thought, and you have a list of t
       <summary>Show more details</summary>
 
       This is just a matter of looping over all of the neighbours and checking their state. 
+
+    </details>
+
+  * **determining the next state of a cell based on its neighbours**
+
+    <details>
+      <summary>Show more details</summary>
+
+      To know the next state of the cell, you need to know how many alive neighbours it has. You'll also need a function that can return the next state based on the number of alive neighbours.
 
     </details>
 
