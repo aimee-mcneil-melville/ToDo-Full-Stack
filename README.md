@@ -39,6 +39,18 @@ This command temporarily changes the git configurations to recognise `Jane` as t
 
 Stage, Commit and Push as normal. Before you switch roles with your pair, make sure to commit your changes and run `git iam` again with your partners name to change the developer.
 
+**Important:** git-iam resets when you move into different repos. Before commiting, make sure to run `git iam {your-name}` again. If you've accidentally commited without setting the git iam or if the commit is still under your partner's name, then you can run
+
+```sh
+git iam {your-name}
+```
+
+then run
+
+```sh
+git commit --amend --reset-author
+```
+
 ## Checking who is the commiting developer
 
 If you want to check which developer the commits will be under, you can run
