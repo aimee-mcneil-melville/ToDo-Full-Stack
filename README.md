@@ -7,13 +7,13 @@ The purpose of git-iam is for students to post commits under their own name, eve
 ## Installation
 
 ```sh
-yarn global add git-iam
+npm install git-iam --global
 ```
 
-or
+OR
 
 ```sh
-npm install git-iam --global
+yarn global add git-iam
 ```
 
 ## Configuration
@@ -73,7 +73,7 @@ At the end of the course, you will no longer have any use for git-iam. In order 
 npm uninstall git-iam --global
 ```
 
-or
+OR
 
 ```sh
 yarn global remove git-iam
