@@ -78,3 +78,9 @@ OR
 ```sh
 yarn global remove git-iam
 ```
+
+If after doing this you find that Git has forgotten your name and email address, you can re-supply them when prompted ("Your Name" should be your nicely-formatted name, not your GitHub username)
+```sh
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+```
