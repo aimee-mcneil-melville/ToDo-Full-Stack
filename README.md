@@ -63,11 +63,14 @@ If you want to check which developer the commits will be under, you can run
 git config --list
 ```
 
-Check the `user.name` and `user.email` in order to find out which GitHub user the commits will be under.
+Check the `user.name` and `user.email` to find out which GitHub user the commits will be under.
 
 ## Uninstallation
 
-At the end of the course, you will no longer have any use for git-iam. In order to uninstall the package, run
+At the end of the course, you will no longer have any use for git-iam, and you can uninstall it. 
+But first make sure you've switched back to your own identity with `git iam <your-name>`! 
+
+To uninstall the package, run
 
 ```sh
 npm uninstall git-iam --global
@@ -79,7 +82,7 @@ OR
 yarn global remove git-iam
 ```
 
-If after doing this you find that Git has forgotten your name and email address, you can re-supply them when prompted ("Your Name" should be your nicely-formatted name, not your GitHub username)
+If after doing this you find that Git has forgotten your name and email address, you can re-supply them when prompted. "Your Name" should be your nicely-formatted name, not your GitHub username.
 ```sh
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
