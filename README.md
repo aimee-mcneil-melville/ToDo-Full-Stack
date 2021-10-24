@@ -1,6 +1,6 @@
 # Using git-iam remotely
 
-This is a set on instructions for configuring git-iam into your local computer. There's no need to install git-iam if you are studying on campus. This is specifically for those doing their study online. 
+This is a set of instructions for configuring git-iam into your local computer. There's no need to install git-iam if you are studying on campus. This is specifically for those doing their study online. 
 
 The purpose of git-iam is for students to post commits under their own name, even during pairing sessions. This allows for more accuracy on who is making changes under specific commits.
 
@@ -8,7 +8,11 @@ The purpose of git-iam is for students to post commits under their own name, eve
 
 ```sh
 yarn global add git-iam
-# or
+```
+
+or
+
+```sh
 npm install git-iam --global
 ```
 
@@ -39,10 +43,10 @@ This command temporarily changes the git configurations to recognise `Jane` as t
 
 Stage, commit and push as normal. Before you switch roles with your pair, make sure to commit your changes and run `git iam` again with your partner's name to change the developer.
 
-**Important:** git-iam resets when you move into different repos. Before committing, make sure to run `git iam {your-name}` again. If you've accidentally committed without setting the git iam or if the commit is still under your partner's name, then you can run
+**Important:** git-iam resets when you move into different repos. Before committing, make sure to run `git iam <your-name>` again. If you've accidentally committed without setting the git iam or if the commit is still under your partner's name, then you can run
 
 ```sh
-git iam {your-name}
+git iam <your-name>
 ```
 
 then run
@@ -59,14 +63,18 @@ If you want to check which developer the commits will be under, you can run
 git config --list
 ```
 
-Check the user.name and user.email in order to find out which GitHub user the commits will be under.
+Check the `user.name` and `user.email` in order to find out which GitHub user the commits will be under.
 
 ## Uninstallation
 
 At the end of the course, you will no longer have any use for git-iam. In order to uninstall the package, run
 
 ```sh
-yarn global remove git-iam
-# or
 npm uninstall git-iam --global
+```
+
+or
+
+```sh
+yarn global remove git-iam
 ```
