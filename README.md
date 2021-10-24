@@ -37,9 +37,9 @@ git iam jane
 **Replace jane with your or your pair's name.**
 This command temporarily changes the git configurations to recognise `Jane` as the developer. 
 
-Stage, Commit and Push as normal. Before you switch roles with your pair, make sure to commit your changes and run `git iam` again with your partners name to change the developer.
+Stage, commit and push as normal. Before you switch roles with your pair, make sure to commit your changes and run `git iam` again with your partner's name to change the developer.
 
-**Important:** git-iam resets when you move into different repos. Before commiting, make sure to run `git iam {your-name}` again. If you've accidentally commited without setting the git iam or if the commit is still under your partner's name, then you can run
+**Important:** git-iam resets when you move into different repos. Before committing, make sure to run `git iam {your-name}` again. If you've accidentally committed without setting the git iam or if the commit is still under your partner's name, then you can run
 
 ```sh
 git iam {your-name}
@@ -59,11 +59,11 @@ If you want to check which developer the commits will be under, you can run
 git config --list
 ```
 
-Check the user.name and user.email in order to find out which github user the commits will be under.
+Check the user.name and user.email in order to find out which GitHub user the commits will be under.
 
 ## Uninstallation
 
-Add the end of the course, you will no longer have any use for git-iam. In order to uninstall the package, run
+At the end of the course, you will no longer have any use for git-iam. In order to uninstall the package, run
 
 ```sh
 yarn global remove git-iam
