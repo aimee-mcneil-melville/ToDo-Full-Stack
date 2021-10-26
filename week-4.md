@@ -98,7 +98,7 @@
   - [ ] Ada Lovelace
   - [ ] Alan Turing
   - [ ] Annie Easley
-  - [ ] Charles Babbidge
+  - [ ] Charles Babbage
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Grace Hopper
   - [ ] Ken Thompson
