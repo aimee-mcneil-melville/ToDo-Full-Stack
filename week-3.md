@@ -84,7 +84,7 @@
   - [ ] Alan Turing
   - [ ] Audrey Tang
   - [ ] Brendan Eich
-  - [ ] Charles Babbidge
+  - [ ] Charles Babbage
   - [ ] Mary Wilkes
 
 <!-- Count: 27 -->
