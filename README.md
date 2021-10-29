@@ -145,6 +145,7 @@ The version of the database that we run during development varies slightly from 
   return db('users')
       .insert(newUser, 'id')
   ```
+NB: Make sure you've installed the postgresql add-on for your Heroku account (see above). If you don't have this then Heroku won't be able to build your app and run the migrations. 
 
 *Once you have successfully deployed your app*
 
