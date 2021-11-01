@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { addToCart } from '../actions/cart'
 import { fetchProducts } from '../actions/products'
@@ -7,15 +7,18 @@ import { fetchProducts } from '../actions/products'
 import ProductListItem from './ProductListItem'
 
 function ProductList (props) {
+  const { children, history } = props
+  const products = useSelector(state => state.products)
+  const dispatch = useDispatch()
   useEffect(() => {
-    props.dispatch(fetchProducts())
+    dispatch(fetchProducts())
   }, [])
 
   function addProductToCart (product) {
     const { id, name } = product
     const newCartItem = { id, name }
-    props.dispatch(addToCart(newCartItem))
-    props.history.push('/cart')
+    dispatch(addToCart(newCartItem))
+    history.push('/cart')
   }
 
   return (
@@ -26,8 +29,8 @@ function ProductList (props) {
           hesitate to let us know if we can answer any of your questions.
         </p>
       </div>
-      {props.children} {/* This holds the WaitIndicator (from App) */}
-      {props.products.map(product => {
+      {children} {/* This holds the WaitIndicator (from App) */}
+      {products.map(product => {
         return (
           <ProductListItem
             key={product.id}
@@ -40,10 +43,4 @@ function ProductList (props) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    products: state.products
-  }
-}
-
-export default connect(mapStateToProps)(ProductList)
+export default ProductList
