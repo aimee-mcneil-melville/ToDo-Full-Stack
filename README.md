@@ -82,7 +82,7 @@ You'll need:
 * A new `orders` reducer, which can watch for the `FETCH_ORDERS_SUCCESS` action and set the store state to the new `orders` array. 
   * Be sure to import this new reducer into `client/reducers/index.js` and use it inside the `combineReducers` so we get some orders showing up in our Redux store!
 * Also make sure to update the `waiting` reducer.
-* Dispatch your `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to connect the OrderList component to access the `dispatch` function.
+* Dispatch your `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to import the `dispatch` hook and use it in the OrderList component.
 * Check your Redux devtools - can you see the orders?
 * `OrderList` is expecting to find an `orders` array on its props. You'll need to do a `mapStateToProps` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
 
