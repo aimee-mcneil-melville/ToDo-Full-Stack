@@ -6,7 +6,7 @@
 1. Open this file for editing.
 1. Under _Topics_, replace the space with an `x` in the `[ ]` next to the topic of your choice.
 1. Under _Schedule_, enter your topic and name on the day you wish to present. There are 6 talks per day.
-1. Sign up to give feedback to two other talks.
+1. Sign up to give feedback to TWO other talks.
 1. Commit your changes.
 1. Prepare your talk.
 
