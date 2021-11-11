@@ -1,36 +1,36 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchFriends } from './appHelper'
+// import Auth from './Auth'
+// import Nav from './Nav'
+import Register from './Register'
+import SignIn from './SignIn'
+import { Route } from 'react-router-dom'
+import AddSong from './AddSong'
+import Friends from './Friends'
+import Songs from './Songs'
+import UpdateSong from './UpdateSong'
+import FriendSongs from './FriendSongs'
+import Header from './Header'
+import Tagline from './Tagline'
 
-// temporary until auth is working
-const id = 10001
-
-function App (props) {
-  useEffect(() => {
-    fetchFriends(props.dispatch, id)
-  }, [])
-  console.log(props.friends)
+function App () {
   return (
     <>
       <div className='app'>
-        {/* <ErrorMessage /> */}
-        <h1>rcmndr</h1>
-        {/* <WaitIndicator /> */}
-        <p>Friends List:</p>
-        <ul>
-          {props.friends.map(friend => (
-            <li key={friend}>{friend.name} {friend.lastName}</li>
-          ))}
-        </ul>
+        <Header />
+        {/* <Route exact path='/' component={Auth} /> //waiting Auth team creating this component */}
+        <Route exact path='/friends' component={Friends} />
+        <Route path='/friends/:id' component={FriendSongs} />
+        <Route path='/songs/add' component={AddSong} />
+        <Route path='/songs/update/:id' component={UpdateSong} />
+        <Route exact path='/songs' component={Songs} />
+        <Route exact path='/' component={Tagline} />
+        <Route path='/register' component={Register}/>
+        <Route path='/signIn' component={SignIn}/>
       </div>
     </>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    friends: globalState.friends
-  }
-}
 
-export default connect(mapStateToProps)(App)
+export default connect()(App)
