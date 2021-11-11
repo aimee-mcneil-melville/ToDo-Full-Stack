@@ -178,15 +178,15 @@ Now let's give the user an easier way of changing the quantities of items in the
 
 As the user is updating the quantities of the items in their cart, you'll maintain those changes in the Cart's component state. When they click the _Update_ button, that's when you'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
 
-Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that the `cart` data is being passed in as a `prop`. 
+Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that you are already accessing the `cart` data from your Redux store.
 
 If you want more of a challenge, you can try to implement this feature from here. If you'd like a little more guidance, keep reading.
 
 **This is a really good opportunity for problem solving, so consider what would serve your learning better and don't cheat yourself out of a chance for stretch.**
 
-Currently, the cart item quantity being rendered is the value from `props.cart`, but because this value can change, it should be rendered from component state. A reasonable approach is to use `props.cart` as the initial value for the component state.
+Currently, the cart item quantity being rendered is the value from `cart` in our Redux store, but because this value can change, it should be rendered from component state. A reasonable approach is to use `cart` as the initial value for the component state.
 
-Add a `handleUpdate` event handler in `<Cart>` and call it from the input boxes. Be sure to pass the `id` of the cart item so the function will know which cat item to update. Use the React DevTool to ensure the updates are working as expected.
+Add a `handleUpdate` event handler in `<Cart/>` and call it from the input boxes. Be sure to pass the `id` of the cart item so the function will know which cart item to update. Use the React DevTools to ensure the updates are working as expected.
 
 Create an action creator for an `UPDATE_QUANTITIES` action that looks similar to this:
 
