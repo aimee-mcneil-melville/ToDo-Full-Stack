@@ -1,6 +1,9 @@
 import React from 'react'
 
-function Cart (props) {
+function Cart () {
+  // TODO: replace cart
+  const cart = []
+
   return (
     <div className='cart'>
       <table>
@@ -12,7 +15,7 @@ function Cart (props) {
           </tr>
         </thead>
         <tbody>
-          {props.cart.map(({ id, name, quantity }) => {
+          {cart.map(({ id, name, quantity }) => {
             return (
               <tr key={id}>
                 <td>{name}</td>
