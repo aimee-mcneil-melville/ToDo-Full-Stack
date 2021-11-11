@@ -29,7 +29,7 @@ function Cart () {
       </table>
 
       <p className='actions'>
-        <a href='#'>Continue shopping</a>
+        <a>Continue shopping</a>
         <button>Update</button> {/* TODO: implement updates */}
         <button className='button-primary'>Checkout</button>
       </p>

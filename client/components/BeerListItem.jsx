@@ -9,7 +9,7 @@ function BeerListItem (props) {
       <p>
         <span className='country'>{country}</span>
         <span className='abv'>{abv} abv</span>
-        <a href='#' className='cart-link'>Add to cart</a>
+        <a className='cart-link'>Add to cart</a>
       </p>
     </div>
   )
