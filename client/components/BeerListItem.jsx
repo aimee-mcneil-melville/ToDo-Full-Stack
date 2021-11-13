@@ -1,7 +1,7 @@
 import React from 'react'
 
 function BeerListItem (props) {
-  const { name, brewery, country, abv } = props.beer
+  const { id, name, brewery, country, abv } = props.beer
   return (
     <div className='beer'>
       <p className='name'>{name}</p>
