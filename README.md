@@ -83,7 +83,7 @@ export function navigate (destination) {
 
 ## Continue shopping
 
-Now that we can get to the `<Cart />` it's important we can also get back to `<Listing />`. Rather than dispatching actions from the DevTool, add a click event handler to the "Continue shopping" link in the `<Cart />` component. This handler should dispatch the `NAVIGATE` action with a `page` of `'listing'`.
+Now that we can get to the `<Cart />` it's important we can also get back to `<BeerList />`. Rather than dispatching actions from the DevTool, add a click event handler to the "Continue shopping" link in the `<Cart />` component. This handler should dispatch the `NAVIGATE` action with a `page` of `'home'`.
 
 Ensure that clicking "Continue shopping" takes you back to the listing so you can access both pages.
 
