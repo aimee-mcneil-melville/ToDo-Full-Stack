@@ -1,13 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import Header from './Header'
 import BeerList from './BeerList'
+import Cart from './Cart'
 
 function App () {
+  const page = useSelector(state => state.page)
+
   return (
     <div className='app'>
       <Header />
-      <BeerList />
+      {page === 'home' ? <BeerList /> : <Cart />}
     </div>
   )
 }
