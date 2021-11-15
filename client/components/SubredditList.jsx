@@ -1,9 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Post from './Post'
 
-function Subreddit ({ subreddits }) {
+function Subreddit () {
+  const subreddits = useSelector(state => state.subreddits)
   return (
     <div>
       {subreddits.map((post, i) =>
@@ -16,12 +17,4 @@ function Subreddit ({ subreddits }) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    subreddits: state.subreddits
-  }
-}
-
-export default connect(
-  mapStateToProps
-)(Subreddit)
+export default Subreddit

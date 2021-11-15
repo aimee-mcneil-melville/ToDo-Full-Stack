@@ -1,18 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-function ErrorMessage (props) {
+function ErrorMessage () {
+  const errorMessage = useSelector(state => state.errorMessage)
+
   return (
     <div className='error'>
-      {props.errorMessage}
+      {errorMessage}
     </div>
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    errorMessage: state.errorMessage
-  }
-}
-
-export default connect(mapStateToProps)(ErrorMessage)
+export default ErrorMessage

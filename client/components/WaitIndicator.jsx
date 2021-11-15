@@ -1,16 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-function WaitIndicator (props) {
-  return props.waiting
+function WaitIndicator () {
+  const showIndicator = useSelector(state => state.waiting)
+
+  return showIndicator
     ? <img className='wait-indicator' src='/animated-circle.gif' />
     : null
 }
 
-function mapStateToProps (state) {
-  return {
-    waiting: state.waiting
-  }
-}
-
-export default connect(mapStateToProps)(WaitIndicator)
+export default WaitIndicator
