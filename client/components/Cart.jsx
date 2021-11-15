@@ -1,11 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 import CartItem from './CartItem'
 
 function Cart (props) {
-  const { cart, children } = props
+  const { children } = props
+  const cart = useSelector(state => state.cart)
 
   function submitCart () {
     console.log('coming soon!')
@@ -35,7 +37,7 @@ function Cart (props) {
         <p className='actions'>
           <Link to='/'>Continue shopping</Link>
           <span>
-            {children} { /* Holds the WaitIndicator */ }
+            {children} { /* Holds the WaitIndicator */}
             <button
               className='button-primary'
               onClick={submitCart}>
@@ -48,10 +50,4 @@ function Cart (props) {
     : <p>Your cart is empty! Start shopping <Link to='/'>here</Link></p>
 }
 
-function mapStateToProps (state) {
-  return {
-    cart: state.cart
-  }
-}
-
-export default connect(mapStateToProps)(Cart)
+export default Cart

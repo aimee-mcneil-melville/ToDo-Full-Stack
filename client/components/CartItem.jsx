@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import {
   deleteFromCart,
@@ -8,18 +8,19 @@ import {
 
 function CartItem (props) {
   const { name, id, quantity } = props.item
+  const dispatch = useDispatch()
 
   function update (e) {
     const newQuantity = e.target.value
     const isValidQuantity = !isNaN(Number(newQuantity))
     if (isValidQuantity) {
       const updateInfo = { id, newQuantity }
-      props.dispatch(updateCart(updateInfo))
+      dispatch(updateCart(updateInfo))
     }
   }
 
   function deleteItem () {
-    props.dispatch(deleteFromCart(id))
+    dispatch(deleteFromCart(id))
   }
 
   const displayQuantity = (quantity === 0) ? '' : quantity
@@ -40,4 +41,4 @@ function CartItem (props) {
   )
 }
 
-export default connect()(CartItem)
+export default CartItem
