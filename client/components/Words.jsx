@@ -1,22 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Word from './Word'
 
-const Words = ({ words }) => (
-  <div>
-    {words.map(word =>
-      <Word key={word.id}
-        {...word}
-      />
-    )}
-  </div>
-)
+function Words () {
+  const words = useSelector(state => state.words)
 
-const mapStateToProps = (state) => {
-  return {
-    words: state.words
-  }
+  return (
+    <div>
+      {words.map(word =>
+        <Word key={word.id}
+          {...word}
+        />
+      )}
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(Words)
+export default Words

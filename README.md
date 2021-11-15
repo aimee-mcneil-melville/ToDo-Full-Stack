@@ -20,7 +20,7 @@ _As a user, I want to enter a word or phrase and have it displayed in a list so 
    - the _action_ and _action creator_
    - the _reducer_
    - the _container_ and _presentation_ components
-   - Notice that `AddWord` is a mixture of both container and presentation: it returns JSX, but it uses `react-redux`'s `connect` function to wire up the `dispatch` allowing it to fire off _actions_.
+   - Notice that `AddWord` is a mixture of both container and presentation: it returns JSX, but it uses `react-redux`'s `useDispatch` function to allow it to fire off _actions_.
 
 _As a user, I want to enter the URL of an image and have it display as an image on the page so that I can save all my cute animal pictures._
  - Here's an opportunity to practice everything in the previous user story. You'll need to:
@@ -36,7 +36,7 @@ _As a user, I want to enter the URL of an image and have it display as an image 
 
 _As a user, I want to click a button next to any word and delete it from the list so that I can remove any mistakes I make._
  - You'll need a new action creator and a modified reducer
- - You'll probably need to add `mapDispatchToProps` in `WordContainer`. Look at the [Redux Basics Tutorial](http://redux.js.org/docs/basics/UsageWithReact.html) if you get stuck.
+ - You'll probably need to add `useSelector` in `WordContainer`. Look at the [Redux with React documentation](https://redux.js.org/tutorials/fundamentals/part-5-ui-react#using-redux-with-react) if you get stuck.
 
 _As a user, I want to click a button next to any image and delete it from the list so that I can get rid of pics that just aren't cute anymore._
 

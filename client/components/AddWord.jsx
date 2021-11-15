@@ -1,23 +1,24 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
 import { addWord } from '../actions'
 
-function submitWord (e, dispatch) {
-  if (e.keyCode === 13) {
-    dispatch(addWord(e.currentTarget.value))
-    e.currentTarget.value = ''
+function AddWord () {
+  const dispatch = useDispatch()
+
+  const submitWord = (e) => {
+    if (e.keyCode === 13) {
+      dispatch(addWord(e.target.value))
+      e.target.value = ''
+    }
   }
+
+  return (
+    <input
+      placeholder='Enter a word or phrase'
+      onKeyUp={submitWord}
+    />
+  )
 }
 
-const AddWord = (props) => (
-  <input
-    placeholder='Enter a word or phrase'
-    onKeyUp={e => {
-      // the connect() call below puts
-      // dispatch directly on props
-      submitWord(e, props.dispatch)
-    }}
-  />
-)
-
-export default connect()(AddWord)
+export default AddWord
