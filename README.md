@@ -84,7 +84,7 @@ You'll need:
 * Also make sure to update the `waiting` reducer.
 * Dispatch your `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to import the `dispatch` hook and use it in the OrderList component.
 * Check your Redux devtools - can you see the orders?
-* `OrderList` is expecting to find an `orders` array on its props. You'll need to do a `mapStateToProps` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
+* `OrderList` is expecting to have an `orders` array, but currently this is hardcoded to an empty array. You'll need to make use of `useSelector` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
 
 ## Release 3: Update order status
 Amazing! There are all of our orders - but currently they're all pending. Let's give our users a way to let Sweet As Organics know when they've received their order, or cancel their order if they make a mistake.
@@ -99,7 +99,7 @@ You'll need:
 * An `updateOrderStatus` async action creator, which dispatches pending and success actions.
   * The success action should have an `order` property, so you can update the `orders` array in `client/reducers/orders.js`.
   * Also make sure to update the `waiting` reducer.
-* Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.jsx`. You'll need to connect `Order` to the redux store.
+* Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.jsx`.
 * _Tip: use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!_
 
 

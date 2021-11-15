@@ -2,8 +2,8 @@ import React from 'react'
 
 import Order from './Order'
 
-function OrderList (props) {
-  const { children, orders } = props
+function OrderList ({ children }) {
+  const orders = []
   return (
     <div className='orderlist'>
       {children} { /* Holds the WaitIndicator */ }
