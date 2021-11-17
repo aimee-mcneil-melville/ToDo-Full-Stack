@@ -117,9 +117,9 @@ The version of the database that we run during development varies slightly from 
   production: {
     client: 'postgresql',
     connection: { 
-            connectionString: process.env.DATABASE_URL,
-            ssl: { rejectUnauthorized: false }
-        }
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    },
     pool: {
       min: 2,
       max: 10
