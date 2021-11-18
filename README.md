@@ -49,12 +49,12 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
 1. Select **Australia** as your *Region*.
 1. Make sure **Development** is selected as the *Environment tag*.
-1. Click *Create*.
 1. Go to *Applications*, and click on *Create Application* button.
+1. Click *Create*.
+1. Give your application a name, for example `Fruits App`. 
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
 1. Select the **Settings** tab.
-1. Give your application a name, for example `Fruits App`. 
-1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value [later](#client-side-configure-auth0provider).
+1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value later.
 1. Set the following values, in the *Application URIs* section:
 
 | Setting                   | Value                                                     |
@@ -64,7 +64,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 | Allowed Web Origins Url   | `http://localhost:3000/`                                  |
 
 
-Scroll down to the bottom of the page and Save.
+Scroll down to the bottom of the page and click the *Save Changes* button.
 
 ### II. Auth0 API Creation:
 In order to protect our routes in the server-side, we need to verify that tokens passed from the client are valid. Creating an API that is linked to the Auth0 Application, the one that you just created, will check the token's validity.
@@ -74,10 +74,9 @@ In order to protect our routes in the server-side, we need to verify that tokens
 1. Set the *Identifier* field field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
 
 ## 2. Client-side: Configure Auth0Provider
-In `client/index.js`:  
-1. Import `Auth0Provider` from the Auth0 package.
-1. Wrap your root component, in this case it's `App` with `Auth0Provider` component. 
-1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
+In `client/index.js`, our `<App />` is wrapped by `<Auth0Provider />` and imported from `Auth0` package.
+
+ Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
 | Attribute  | Value                |
 | ---------  | ---------------------| 
@@ -120,14 +119,14 @@ Call `getAccessTokenSilently` to get the access token and set it in the `userToS
 
 Use these values to set `userToSave` object.
 
-_Note: everytime the `App` component renders the `cacheUser` will run. This will garuantee that our global state will always have the user's metadata._
+_Note: everytime the `App` component renders the `cacheUser` will run. This will guarantee that our global state will always have the user's metadata._
 
 ## 5. Client-side: Allow the user to register and log in/out
 
 In `client/components/Nav.jsx`, you will need to:
-1. Import the `Auth0` and use it inside the `Nav` component. 
+1. Import the `useAuth0` hook and use it inside the `Nav` component. 
 1. Destructure the `logout` and `loginWithRedirect`.
-1. Call these functions in the three handlers.
+1. Call these functions without passing any parameters.
 
 We will call `loginWithRedirect` in the `handleRegister` and pass an object that will tell Auth0 to redirect to the `/register` route.
 ```
@@ -135,7 +134,7 @@ We will call `loginWithRedirect` in the `handleRegister` and pass an object that
     redirectUri:`${window.location.origin}/register` 
 }
 ```
-The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
+When the "Register" link is clicked, it will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
 
 If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
 
@@ -162,14 +161,13 @@ In `server/auth0.js`, set `domain` and `audience` values. The `audience` should 
 Everyime a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
-There are two routes that we want to be accessible only for authenticated users:
+Now our middleware is ready to be used.
 
-1. `/api/v1/fruits`
-    - `POST`, `PATCH` and `DELETE`
-1. `/api/v1/users`
-    - `POST`
-
-Open both routes and pass `checkJwt` as a second parameter.
+1. Open `server/routes/fruits.js` 
+1. Pass `checkJwt` as a second parameter for the following routes.
+    1. `POST`
+    1. `PATCH`
+    1. `DELETE`
 
 For example:
 ```
@@ -177,4 +175,6 @@ route.post('/', checkJwt, (req, res) => {
     // do stuff here
 })
 ```
+
+🎉 Congratulations 🎉
 ## 9. BONUS: Show/hide buttons
