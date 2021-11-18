@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfAuthenticated, IfNotAuthenticated } from '../Auth/Authenticated'
 
 const Logo = (props) => {
   return (

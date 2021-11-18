@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { logOff } from '../auth-utils'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-// const id = 10001
+
+import { logOff } from '../../auth-utils'
+
+import { IfAuthenticated, IfNotAuthenticated } from '../Auth/Authenticated'
+
+// hardcoded for the time being
 const inviteCode = '111A11'
 
 function Nav () {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-// import { addSong } from '../actions'
 
 function AddSong (props) {
   const [songForm, setSongForm] = useState({
@@ -24,7 +23,6 @@ function AddSong (props) {
   function handleSubmitAddSong (e) {
     e.preventDefault()
     props.history.push('/songs')
-    // props.dispatch(addSong(songForm))
   }
 
   return (

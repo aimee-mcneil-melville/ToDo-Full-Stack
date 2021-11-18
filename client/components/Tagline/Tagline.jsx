@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import Button from './Button'
-import ButtonGroup from './ButtonGroup'
+
+import Button from '../Button/Button'
+import ButtonGroup from '../Button/ButtonGroup'
 
 const Tagline = () => {
   const [loaded, setLoaded] = useState(false)

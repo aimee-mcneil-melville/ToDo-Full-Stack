@@ -1,9 +1,9 @@
-import { getFriends } from '../apis/friends.js'
+import { getFriends } from '../../apis/friends.js'
 import {
   setFriendsSuccess,
   setFriendsPending,
   setError
-} from '../actions'
+} from '../../actions'
 
 export function fetchFriends (dispatch, id) {
   dispatch(setFriendsPending())
