@@ -40,13 +40,14 @@ router.post('/', async (req, res) => {
 // PUT /api/v1/fruits
 router.put('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
-  const newFruit = {
+  const fruitToUpdate = {
+    id: fruit.id,
     added_by_user: auth0Id,
     name: fruit.name,
     calories: fruit.calories
   }
   try {
-    const fruits = await db.updateFruit(newFruit, auth0Id)
+    const fruits = await db.updateFruit(fruitToUpdate, auth0Id)
     res.json({ fruits })
   } catch (err) {
     console.error(err)
