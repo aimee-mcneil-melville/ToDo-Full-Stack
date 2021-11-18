@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { HashRouter as Router } from 'react-router-dom'
 
-import App from './components/App'
+import App from './App'
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
