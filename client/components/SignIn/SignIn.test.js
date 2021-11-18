@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import SignIn from './SignIn'
-import { signIn, isAuthenticated } from '../auth-utils'
+import { signIn, isAuthenticated } from '../../auth-utils'
 
 // We have mocked out the signIn so that it won't call into authenticare's signIn. This is because authenticare's signIn function will call into the backend, we don't want that to happen. We just want to focus on the SignIn component for this test.
 // This mock-up is occuring below with jest.mock, and with signIn.mockImplementation(() => ...
