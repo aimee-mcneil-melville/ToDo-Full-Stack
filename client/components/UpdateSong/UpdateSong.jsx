@@ -24,7 +24,7 @@ function UpdateSong (props) {
     link
   })
 
-  function handleChangeEditSong (e) {
+  function handleChange (e) {
     const { name, value } = e.target
     const newEditForm = {
       ...editForm,
@@ -33,7 +33,7 @@ function UpdateSong (props) {
     setEditForm(newEditForm)
   }
 
-  function handleSubmitEditSong (e) {
+  function handleSubmit (e) {
     // e.preventDefault()
     props.dispatch(UpdateSong(id, editForm))
   }
@@ -46,44 +46,45 @@ function UpdateSong (props) {
         <p>Song does not exist.</p>
       }
       {song &&
-      <form onSubmit={handleSubmitEditSong}>
-        <label htmlFor="mediaName">Song title* <br />
-          <input type="text"
-            id='mediaName'
-            name='mediaName'
-            value={editForm.mediaName}
-            onChange={handleChangeEditSong}/>
-        </label><br />
-        <label htmlFor="artist">Artist* <br />
-          <input type="text"
-            id='artist'
-            name='artist'
-            value={editForm.artist}
-            onChange={handleChangeEditSong}/>
-        </label><br />
-        <label htmlFor="genre">Genre <br />
-          <input type="text"
-            id='genre'
-            name='genre'
-            value={editForm.genre}
-            onChange={handleChangeEditSong}/>
-        </label><br />
-        <label htmlFor="comment">Comment <br />
-          <input type="text"
-            id='comment'
-            name='comment'
-            value={editForm.comment}
-            onChange={handleChangeEditSong}/>
-        </label><br />
-        <label htmlFor="link">Link <br />
-          <input type="text"
-            id='link'
-            name='link'
-            value={editForm.link}
-            onChange={handleChangeEditSong}/>
-        </label><br /><br />
-        <button>SAVE</button>
-      </form>}
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="mediaName">Song title*
+            <input type="text"
+              id='mediaName'
+              name='mediaName'
+              value={editForm.mediaName}
+              onChange={handleChange}/>
+          </label><br />
+          <label htmlFor="artist">Artist*
+            <input type="text"
+              id='artist'
+              name='artist'
+              value={editForm.artist}
+              onChange={handleChange}/>
+          </label><br />
+          <label htmlFor="genre">Genre
+            <input type="text"
+              id='genre'
+              name='genre'
+              value={editForm.genre}
+              onChange={handleChange}/>
+          </label><br />
+          <label htmlFor="comment">Comment
+            <input type="text"
+              id='comment'
+              name='comment'
+              value={editForm.comment}
+              onChange={handleChange}/>
+          </label><br />
+          <label htmlFor="link">Link
+            <input type="text"
+              id='link'
+              name='link'
+              value={editForm.link}
+              onChange={handleChange}/>
+          </label>
+          <button>SAVE</button>
+        </form>
+      }
     </>
   )
 }
