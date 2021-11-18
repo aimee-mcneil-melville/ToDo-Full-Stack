@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderWithRedux } from '../testUtils'
+import { renderWithRedux } from '../../testUtils'
 import '@testing-library/jest-dom'
 import { screen, fireEvent } from '@testing-library/react'
 

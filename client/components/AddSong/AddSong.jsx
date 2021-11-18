@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-// import { addSong } from '../actions'
 
 function AddSong (props) {
   const [songForm, setSongForm] = useState({
@@ -12,7 +11,7 @@ function AddSong (props) {
   })
   const { songTitle, artist, genre, comment, link } = songForm
 
-  function handleChangeAddSong (e) {
+  function handleChange (e) {
     const { name, value } = e.target
     const newSongForm = {
       ...songForm,
@@ -21,17 +20,16 @@ function AddSong (props) {
     setSongForm(newSongForm)
   }
 
-  function handleSubmitAddSong (e) {
+  function handleSubmit (e) {
     e.preventDefault()
     props.history.push('/songs')
-    // props.dispatch(addSong(songForm))
   }
 
   return (
     <>
       <h1>Add new song</h1>
       <p>fill in the details below to add a new song to your list</p>
-      <form onSubmit={handleSubmitAddSong}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="songTitle">
           Song title *
           <input type="text"
@@ -39,7 +37,7 @@ function AddSong (props) {
             name="songTitle"
             value={songTitle}
             placeholder="The full title of the song"
-            onChange={handleChangeAddSong} />
+            onChange={handleChange} />
         </label>
         <label htmlFor="artist">
           Artist *
@@ -48,7 +46,7 @@ function AddSong (props) {
             name="artist"
             value={artist}
             placeholder="Name of the artist / singer/ group"
-            onChange={handleChangeAddSong} />
+            onChange={handleChange} />
         </label>
         <label htmlFor="genre">
           Genre
@@ -57,7 +55,7 @@ function AddSong (props) {
             name="genre"
             value={genre}
             placeholder="Genre of music (optional)"
-            onChange={handleChangeAddSong} />
+            onChange={handleChange} />
         </label>
         <label htmlFor="comment">
           Comment
@@ -66,7 +64,7 @@ function AddSong (props) {
             name="comment"
             value={comment}
             placeholder="Your thoughts on this track (optional)"
-            onChange={handleChangeAddSong} />
+            onChange={handleChange} />
         </label>
         <label htmlFor="link">
           Link
@@ -75,7 +73,7 @@ function AddSong (props) {
             name="link"
             value={link}
             placeholder="A link so others can listen (optional)"
-            onChange={handleChangeAddSong} />
+            onChange={handleChange} />
         </label>
         <button>Save</button>
       </form>

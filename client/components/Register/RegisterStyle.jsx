@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
 
 export const GridForm = styled.form`
   width: 50%;
@@ -25,7 +24,3 @@ export const Error = styled.div`
   color: red;
   cursor: pointer;
 `
-
-// export const NavLink = styled(Link)`
-//   margin-right: 30px;
-//   `
