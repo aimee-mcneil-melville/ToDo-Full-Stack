@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
      * all authorization operations
      */
     <Auth0Provider
-      domain={'gardenz.au.auth0.com'}
-      clientId={'UPX21QATLKQlu9iMNfWmZd24Y3Xk2ezF'}
+      domain={''}
+      clientId={''}
       redirectUri={window.location.origin}
-      audience='https://fullstackboilerplate/api'
+      audience=''
     >
       <Provider store={store}>
         <App />
