@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { signIn, isAuthenticated } from '../auth-utils'
+import { signIn, isAuthenticated } from '../../auth-utils'
 
-import { baseApiUrl as baseUrl } from '../config'
+import { baseApiUrl as baseUrl } from '../../config'
 
-import Input from './Input'
-import Button from './Button'
+import Input from '../Input/Input'
+import Button from '../Button/Button'
 
 function SignIn (props) {
   const [form, setForm] = useState({
@@ -31,15 +31,6 @@ function SignIn (props) {
       })
       .catch(err => console.error(err))
   }
-
-  // function displayPassword () {
-  //   var x = document.getElementById('myInput')
-  //   if (x.type === 'password') {
-  //     x.type = 'text'
-  //   } else {
-  //     x.type = 'password'
-  //   }
-  // }
 
   return (
     <>

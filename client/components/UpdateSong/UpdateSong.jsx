@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 function UpdateSong (props) {
-  // const { userSongs} = props
-
   const userSongs = [
     { id: 1, user_id: 10001, genre: 'Indie Rock', mediaName: 'Hengelo', artist: 'Spring Offensive', link: 'https://open.spotify.com/track/4rqpg85XNApASjAvqjHlb1?si=2bdc00343f3e47f2' },
     { id: 2, user_id: 10001, genre: 'Indie Rock', mediaName: 'By Design', artist: 'Tigercub', link: 'https://open.spotify.com/track/6ICdz2wvVMDC4u801OwHA2?si=8e214d39012c4685' },
@@ -45,7 +43,7 @@ function UpdateSong (props) {
       <h1>Edit song</h1>
       <p>Fill in the details below to add a new song to your list</p>
       {!song &&
-      <p>Song does not exist.</p>
+        <p>Song does not exist.</p>
       }
       {song &&
       <form onSubmit={handleSubmitEditSong}>

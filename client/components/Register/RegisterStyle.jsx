@@ -25,7 +25,3 @@ export const Error = styled.div`
   color: red;
   cursor: pointer;
 `
-
-// export const NavLink = styled(Link)`
-//   margin-right: 30px;
-//   `

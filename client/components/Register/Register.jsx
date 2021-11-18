@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { register, isAuthenticated } from '../auth-utils'
 
-import { baseApiUrl as baseUrl } from '../config'
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { register, isAuthenticated } from '../../auth-utils'
+import { baseApiUrl as baseUrl } from '../../config'
+
+import { GridForm, ColOne, ColTwo, Button } from './RegisterStyle'
 
 function Register (props) {
   const [form, setForm] = useState({
