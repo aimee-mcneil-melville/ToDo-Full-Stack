@@ -13,8 +13,12 @@ const Header = () => {
   return (
     <header className='app-header'>
       <Logo />
-      <button className='app-header__nav-toggle' onClick={toggleNav}><span className={`fa fa-${navOpen ? 'times' : 'bars'}`}></span></button>
-      <nav className={`nav${navOpen ? ' nav--open' : ''}`} onClick={toggleNav}><Nav /></nav>
+      <button className='app-header__nav-toggle' onClick={toggleNav}>
+        <span className={`fa fa-${navOpen ? 'times' : 'bars'}`}></span>
+      </button>
+      <nav className={`nav${navOpen ? ' nav--open' : ''}`} onClick={toggleNav}>
+        <Nav />
+      </nav>
     </header>
   )
 }
