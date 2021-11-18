@@ -3,7 +3,7 @@ import store from './store'
 
 export async function cacheUser (useAuth0, state) {
   // TODO call the useAuth0 and destructure:
-  // isAuthenticated, getAccessTokenSilently, user
+  // isAuthenticated, getAccessTokenSilently and user
 
   const isAuthenticated = false // <- delete this and use the value from useAuth0()
   if (isAuthenticated && !state?.token) {
