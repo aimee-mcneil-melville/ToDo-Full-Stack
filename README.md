@@ -94,7 +94,7 @@ Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthen
 
 Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and values, here will use `isAuthenticated` boolean value that will check to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
-Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook, destructure the `isAuthenticated` and return this boolean variable.
+Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook, destructure the `isAuthenticated` function and return this boolean variable.
 
 With that in place, you can now see the "Register" and "Sign in" links in the app.
 
@@ -142,7 +142,7 @@ Commit your code and swap driver/navigator.
 
 ## 6. Client-side: Passing access tokens
 
-Now the access token is stored in global state and we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in the `api.js`.
+Now the access token is stored in global state and we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` and pass them as parameters to three functions in the `api.js`.
 
 In `client/AddFruit.js` component, access the global state and get the `auth0Id` and `token` properties. Then pass them to the `AddFruit` as second and third parameters.
 
@@ -156,7 +156,7 @@ Commit your code and swap driver/navigator.
 
 In this step we are going to configure the `jwt` middleware.
 
-In `server/auth0.js`, set `domain` and `audience` values. The `audience` should be `https://fruits/api`.
+In `server/auth0.js`, set `domain` and `audience` values. You can find `domain` in the `client/index.js` file we worked on back in step 2.The `audience` should be `https://fruits/api`.
 
 Everyime a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
@@ -166,7 +166,7 @@ Now our middleware is ready to be used.
 1. Open `server/routes/fruits.js` 
 1. Pass `checkJwt` as a second parameter for the following routes.
     1. `POST`
-    1. `PATCH`
+    1. `PUT`
     1. `DELETE`
 
 For example:
