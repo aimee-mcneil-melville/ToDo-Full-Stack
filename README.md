@@ -50,7 +50,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 1. For the Role, select *Yes, Coding*, and tick *I need advanced settings*. 
 1. Select **Australia** as your *Region*.
 1. Click *Create*.
-1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*).
+1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*.
 1. Go to *Applications*, and click on *Create Application* button.
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
 1. Select the **Settings** tab.
@@ -76,17 +76,19 @@ In order to protect our routes in the server-side, we need to verify that tokens
 
 ## 2. Client-side: Configure Auth0Provider
 In `client/index.js`:  
-1. Import `Auth0Provider` from the Auth0 package.
-1. Wrap your root component, in this case it's `App` with `Auth0Provider` component. 
+1. Import `Auth0Provider` from the Auth0 package (this has been done for you).
+1. Wrap your root component (in this case `App`) with `Auth0Provider` component (this has also been done for you, but make sure you understand what's happening). 
 1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
 | Attribute  | Value                                                         |
 | ---------  | --------------------------------------------------------------| 
-| `domain`   | in step 1️⃣, format is `cohortName-yourFirstName.au.auth0.com` |
-| `clientId` | in step 2️⃣                                                    | 
-| `audience` | `https://fruits/api`                                          |
+| `domain`   | 1️⃣ above, format is `cohortName-yourFirstName.au.auth0.com`  |
+| `clientId` | 2️⃣ above                                                      | 
+| `audience` | 3️⃣ above, `https://fruits/api`                                |
 
 Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
+
+At this stage it's normal that "Log off" displays (as if you were logged in), even though you're not logged in.
 
 Commit your code and swap driver/navigator.
 
@@ -94,9 +96,11 @@ Commit your code and swap driver/navigator.
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and values, here will use `isAuthenticated` boolean value that will check to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
+Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and values. Here we will use the `isAuthenticated` boolean value to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
-Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook, destructure the `isAuthenticated` and return this boolean variable.
+Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook from `@auth0-react`, destructure the `isAuthenticated` property off it, and return this boolean variable.
+
+Note that the boolean and the function are both named `isAuthenticated`, take care to understand which one you're working with. 
 
 With that in place, you can now see the "Register" and "Sign in" links in the app.
 
@@ -106,46 +110,49 @@ Now is a good time to commit your changes and swap driver/navigator.
 
 In `client/components/Nav.jsx`, you will need to:
 1. Import the `Auth0` and use it inside the `Nav` component. 
-1. Destructure the `logout` and `loginWithRedirect`.
-1. Call these functions in the three handlers.
+1. Destructure the `logout` and `loginWithRedirect` functions off the `useAuth0` hook.
+1. Call these functions in the three handlers (instead of the `console.log` placeholders).
 
-We will call `loginWithRedirect` in the `handleRegister` and pass an object that will tell Auth0 to redirect to the `/register` route.
+* In `handleRegister`, we will call `loginWithRedirect` and pass an object that will tell Auth0 to redirect to the `/register` route.
 ```
 {
     redirectUri:`${window.location.origin}/register` 
 }
 ```
-The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
+* In `handleSignIn`, we'll call `loginWithRedirect` without a parameter
 
-If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
+The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 app. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your Fruits app.
+
+If you register a new user (by clicking the Register link within your Fruits app), Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`, which will be blank until you complete step 5.
 
 Commit your code and swap driver/navigator.
 
 ## 5. Client-side: Reading user metadata
 
-At this point our app can register, log in and log out users. We want to only allow users who have been authenticated in order to use server routes. When a user is signed in, we can call `getAccessTokenSilently` to get a token from Auth0 and pass it as a header when calling server-side routes that we want to protect.
+At this point our app can register, log in and log out users. We want to only allow a user to use our server routes if the user has been authenticated. When a user is signed in, we can call `getAccessTokenSilently` to get a token from Auth0 and pass it as a header when calling server-side routes that we want to protect.
 
 In `client/auth0-utils.js`, `cacheUser` takes `useAuth0` as a first parameter. Call it and destructure:
-
 - `getAccessTokenSilently` 
 - `isAuthenticated`
 - `user`
+<br/>
 
-Call `getAccessTokenSilently` to get the access token and set it in the `userToSave` object. 
+Call `getAccessTokenSilently` to get the access token. The `getAccessTokenSilently` function is async so you'll need to use `await`. Then use this token to set the token property on the `userToSave` object. 
 
-`user` is an object that has other properties. We are only interested in two:
+The `user` object has other properties, we are interested in two of them:
 - `sub` is the Auth0 subscriber's unique id.
 - `email`
+<br/>
 
-Use these values to set `userToSave` object.
+Use these values to set the corresponding properties on the `userToSave` object.
 
-_Note: everytime the `App` component renders the `cacheUser` will run. This will garuantee that our global state will always have the user's metadata._
+_Note: everytime the `App` component renders the `cacheUser` will run. This will guarantee that our global state will always have the user's metadata._
 
 
 
 ## 6. Client-side: Passing access tokens
 
-Now the access token is stored in global state and we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in the `api.js`.
+In `auth0-utils.js` we did `store.dispatch(setUser(userToSave))`. So now the access token is stored in global state. Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in `api.js`.
 
 In `client/AddFruit.js` component, access the global state and get the `auth0Id` and `token` properties. Then pass them to the `AddFruit` as second and third parameters.
 
@@ -161,7 +168,7 @@ In this step we are going to configure the `jwt` middleware.
 
 In `server/auth0.js`, set the `domain` and `audience` values. The format of `domain` should be `https://cohortName-yourFirstName.au.auth0.com` and `audience` should be `https://fruits/api`.
 
-Every time a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
+Every time a route receives an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
 There are two routes that we want to be accessible only for authenticated users:
