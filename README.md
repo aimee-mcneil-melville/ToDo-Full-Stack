@@ -47,9 +47,10 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 ### I. Auth0 Application Creation:
 1. Open your browser, go to Auth0.com and signup for a new account. 
 1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
+1. For the Role, select *Yes, Coding*, and tick *I need advanced settings*. 
 1. Select **Australia** as your *Region*.
-1. Make sure **Development** is selected as the *Environment tag*.
 1. Click *Create*.
+1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*).
 1. Go to *Applications*, and click on *Create Application* button.
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
 1. Select the **Settings** tab.
@@ -79,11 +80,11 @@ In `client/index.js`:
 1. Wrap your root component, in this case it's `App` with `Auth0Provider` component. 
 1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
-| Attribute  | Value                |
-| ---------  | ---------------------| 
-| `domain`   | in step 1️⃣          |
-| `clientId` | in step 2️⃣          | 
-| `audience` | `https://fruits/api` |
+| Attribute  | Value                                                         |
+| ---------  | --------------------------------------------------------------| 
+| `domain`   | in step 1️⃣, format is `cohortName-yourFirstName.au.auth0.com` |
+| `clientId` | in step 2️⃣                                                    | 
+| `audience` | `https://fruits/api`                                          |
 
 Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
 
@@ -158,9 +159,9 @@ Commit your code and swap driver/navigator.
 
 In this step we are going to configure the `jwt` middleware.
 
-In `server/auth0.js`, set `domain` and `audience` values. The `audience` should be `https://fruits/api`.
+In `server/auth0.js`, set the `domain` and `audience` values. The format of `domain` should be `https://cohortName-yourFirstName.au.auth0.com` and `audience` should be `https://fruits/api`.
 
-Everyime a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
+Every time a route recieves an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
 There are two routes that we want to be accessible only for authenticated users:

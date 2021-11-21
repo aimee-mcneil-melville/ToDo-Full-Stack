@@ -41,6 +41,7 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
   const newFruit = {
+    id: fruit.id,
     added_by_user: auth0Id,
     name: fruit.name,
     calories: fruit.calories
