@@ -149,41 +149,40 @@ Use these values to set the corresponding properties on the `userToSave` object.
 _Note: everytime the `App` component renders the `cacheUser` will run. This will guarantee that our global state will always have the user's metadata._
 
 
-
 ## 6. Client-side: Passing access tokens
 
 In `auth0-utils.js` we did `store.dispatch(setUser(userToSave))`. So now the access token is stored in global state. Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in `api.js`.
 
-In `client/AddFruit.js` component, access the global state and get the `auth0Id` and `token` properties. Then pass them to the `AddFruit` as second and third parameters.
+In `client/AddFruit.jsx` component, access the global state and get the `auth0Id` and `token` properties. 
 
 _hint: try using the useSelector hook from `react-redux` package._
+_another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
 
-In `client/SelectedFruits`, repeat the same steps. 
+Then pass `auth0Id` and `token` to the `AddFruit` as second and third parameters.
+
+In `client/SelectedFruits.jsx`, repeat the same steps for `handleUpdate` and `handleDelete`.
 
 Commit your code and swap driver/navigator.
+
 
 ## 7. Server-side: JWT Middleware setup
 
 In this step we are going to configure the `jwt` middleware.
 
-In `server/auth0.js`, set the `domain` and `audience` values. The format of `domain` should be `https://cohortName-yourFirstName.au.auth0.com` and `audience` should be `https://fruits/api`.
+In `server/auth0.js`, set the `domain`(1️⃣) and `audience`(3️⃣) values. The format of `domain` should be `https://cohortName-yourFirstName.au.auth0.com` and `audience` should be `https://fruits/api`.
 
 Every time a route receives an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
-There are two routes that we want to be accessible only for authenticated users:
+There are three routes in `/api/v1/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PATCH` and `DELETE`.
 
-1. `/api/v1/fruits`
-    - `POST`, `PATCH` and `DELETE`
-1. `/api/v1/users`
-    - `POST`
-
-Open both routes and pass `checkJwt` as a second parameter.
-
-For example:
+Open each of these routes and pass `checkJwt` as a second parameter, e.g.:
 ```
-route.post('/', checkJwt, (req, res) => {
+route.post('/', checkJwt, async (req, res) => {
     // do stuff here
 })
 ```
+
+You'll need to import the `checkJwt` function from `server/auth0.js`.
+
 ## 9. BONUS: Show/hide buttons

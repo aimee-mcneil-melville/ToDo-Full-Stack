@@ -5,7 +5,7 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
-  // TODO read from global state
+  // TODO: read from global state
   const [editing, setEditing] = useState(selected)
 
   function handleEditChange (e) {
@@ -17,7 +17,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleUpdate () {
-    // pass auth0Id and token as second and third parameter
+    // TODO: pass auth0Id and token as second and third parameter
     updateFruit(editing, 'auth0 id', 'token')
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)

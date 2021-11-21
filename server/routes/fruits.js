@@ -1,5 +1,5 @@
 const express = require('express')
-// import checjJwt
+// TODO: import checkJwt
 const db = require('../db/fruits')
 
 const router = express.Router()
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// use checkJwt as a middle
+// use checkJwt as middleware
 // POST /api/v1/fruits
 router.post('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// use checkJwt as a middle
+// use checkJwt as middleware
 // PUT /api/v1/fruits
 router.put('/', async (req, res) => {
   const { fruit, auth0Id } = req.body
@@ -60,7 +60,7 @@ router.put('/', async (req, res) => {
   }
 })
 
-// use checkJwt as a middle
+// use checkJwt as middleware
 // DELETE /api/v1/fruits
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
