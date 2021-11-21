@@ -101,8 +101,26 @@ With that in place, you can now see the "Register" and "Sign in" links in the ap
 
 Now is a good time to commit your changes and swap driver/navigator.
 
+## 4. Client-side: Allow the user to register and log in/out
 
-## 4. Client-side: Reading user metadata
+In `client/components/Nav.jsx`, you will need to:
+1. Import the `Auth0` and use it inside the `Nav` component. 
+1. Destructure the `logout` and `loginWithRedirect`.
+1. Call these functions in the three handlers.
+
+We will call `loginWithRedirect` in the `handleRegister` and pass an object that will tell Auth0 to redirect to the `/register` route.
+```
+{
+    redirectUri:`${window.location.origin}/register` 
+}
+```
+The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
+
+If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
+
+Commit your code and swap driver/navigator.
+
+## 5. Client-side: Reading user metadata
 
 At this point our app can register, log in and log out users. We want to only allow users who have been authenticated in order to use server routes. When a user is signed in, we can call `getAccessTokenSilently` to get a token from Auth0 and pass it as a header when calling server-side routes that we want to protect.
 
@@ -122,24 +140,7 @@ Use these values to set `userToSave` object.
 
 _Note: everytime the `App` component renders the `cacheUser` will run. This will garuantee that our global state will always have the user's metadata._
 
-## 5. Client-side: Allow the user to register and log in/out
 
-In `client/components/Nav.jsx`, you will need to:
-1. Import the `Auth0` and use it inside the `Nav` component. 
-1. Destructure the `logout` and `loginWithRedirect`.
-1. Call these functions in the three handlers.
-
-We will call `loginWithRedirect` in the `handleRegister` and pass an object that will tell Auth0 to redirect to the `/register` route.
-```
-{
-    redirectUri:`${window.location.origin}/register` 
-}
-```
-The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time to sign in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 App. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your App.
-
-If you register a new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`. 
-
-Commit your code and swap driver/navigator.
 
 ## 6. Client-side: Passing access tokens
 
