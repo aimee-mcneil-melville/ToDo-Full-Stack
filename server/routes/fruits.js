@@ -21,7 +21,8 @@ router.get('/', async (req, res) => {
 // use checkJwt as middleware
 // POST /api/v1/fruits
 router.post('/', async (req, res) => {
-  const { fruit, auth0Id } = req.body
+  const { fruit } = req.body
+  const auth0Id = req.user?.sub
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
@@ -39,7 +40,8 @@ router.post('/', async (req, res) => {
 // use checkJwt as middleware
 // PUT /api/v1/fruits
 router.put('/', async (req, res) => {
-  const { fruit, auth0Id } = req.body
+  const { fruit } = req.body
+  const auth0Id = req.user?.sub
   const newFruit = {
     id: fruit.id,
     added_by_user: auth0Id,
@@ -64,7 +66,7 @@ router.put('/', async (req, res) => {
 // DELETE /api/v1/fruits
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  const auth0Id = req.body.auth0Id
+  const auth0Id = req.user?.sub
   try {
     const fruits = await db.deleteFruit(id, auth0Id)
     res.json({ fruits })

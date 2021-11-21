@@ -17,8 +17,8 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleUpdate () {
-    // TODO: pass auth0Id and token as second and third parameter
-    updateFruit(editing, 'auth0 id', 'token')
+    // TODO: pass token as second
+    updateFruit(editing, 'token')
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
@@ -26,8 +26,8 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleDelete () {
-    // pass auth0Id and token as second and third parameter
-    deleteFruit(editing.id, 'auth0 id', 'token')
+    // pass token as second
+    deleteFruit(editing.id, 'token')
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
