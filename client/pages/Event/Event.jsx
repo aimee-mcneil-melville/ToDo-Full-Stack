@@ -29,7 +29,6 @@ export default function Event () {
   }, [])
 
   function redirectToEdit () {
-    // console.log('redirectToEdit')
     history.push(`/events/${id}/edit`)
   }
 
