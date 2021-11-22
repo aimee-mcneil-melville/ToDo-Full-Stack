@@ -18,8 +18,8 @@ function AddFruit ({ setFruits, closeAddForm, setError }) {
 
   function handleAdd () {
     const fruit = { ...newFruit }
-    // TODO: pass auth0Id and token as second and third parameter
-    addFruit(fruit, 'auth0 id', 'token')
+    // TODO: pass token as second parameter
+    addFruit(fruit, 'token')
       .then(setFruits)
       .then(closeAddForm)
       .catch(err => setError(err.message))
