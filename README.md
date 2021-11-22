@@ -49,13 +49,14 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 1. The default domain will be something like `dev-fsdf1y29`, but you should overwrite it with a domain of your own, in the format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
 1. For the Role, select *Yes, Coding*, and tick *I need advanced settings*. 
 1. Select **Australia** as your *Region*.
-1. Click *Create*.
+1. Click *Create Account*.
 1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*.
-1. Go to *Applications*, and click on *Create Application* button.
+1. Go to *Applications*, and click theq *Create Application* button.
+1. Click *Create*.
+1. Give your application a name, for example `Fruits App`. 
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
 1. Select the **Settings** tab.
-1. Give your application a name, for example `Fruits App`. 
-1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value [later](#client-side-configure-auth0provider).
+1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value later.
 1. Set the following values, in the *Application URIs* section:
 
 | Setting                   | Value                                                     |
@@ -65,14 +66,14 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 | Allowed Web Origins Url   | `http://localhost:3000/`                                  |
 
 
-Scroll down to the bottom of the page and Save.
+Scroll down to the bottom of the page and click the *Save Changes* button.
 
 ### II. Auth0 API Creation:
 In order to protect our routes in the server-side, we need to verify that tokens passed from the client are valid. Creating an API that is linked to the Auth0 Application, the one that you just created, will check the token's validity.
 
 1. On the side bar, create click *APIs* and click the *Create API* button.
 1. Give your API a name, for example, `fruits`.
-1. Set the *Identifier* field field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
+1. Set the *Identifier* field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
 
 ## 2. Client-side: Configure Auth0Provider
 In `client/index.js`:  
@@ -149,7 +150,6 @@ Use these values to set the corresponding properties on the `userToSave` object.
 
 _Note: The `cacheUser` function (from `auth0-utils.js`) does `store.dispatch(setUser(userToSave))`. Every time the `App` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata._
 
-
 ## 6. Client-side: Passing access tokens
 
 So now the access token is stored in global state (see note above). Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `token` and pass it as a parameter to three functions in `api.js` (e.g. when we call the `addFruit` function of `api.js` from the `handleAdd` function of `AddFruit.jsx`).
@@ -175,15 +175,18 @@ In `server/auth0.js`, set the `domain`(1️⃣) and `audience`(3️⃣) values. 
 Every time a route receives an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
-There are three routes in `/api/v1/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PATCH` and `DELETE`.
+There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PATCH` and `DELETE`.
 
-Open each of these routes and pass `checkJwt` as a second parameter, e.g.:
+In each of these routes pass `checkJwt` as a second parameter, e.g.:
 ```
 route.post('/', checkJwt, async (req, res) => {
     // do stuff here
 })
 ```
-
 You'll need to import the `checkJwt` function from `server/auth0.js`.
+
+Now our middleware is ready to be used.
+
+🎉 Congratulations 🎉
 
 ## 9. BONUS: Show/hide buttons
