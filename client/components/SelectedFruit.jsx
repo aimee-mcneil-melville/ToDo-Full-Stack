@@ -17,7 +17,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleUpdate () {
-    // TODO: pass token as second
+    // TODO: pass token as second parameter
     updateFruit(editing, 'token')
       .then(remoteFruits => setFruits(remoteFruits))
       .then(clearSelected)
@@ -26,7 +26,7 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
   }
 
   function handleDelete () {
-    // pass token as second
+    // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')
       .then(setFruits)
       .then(clearSelected)

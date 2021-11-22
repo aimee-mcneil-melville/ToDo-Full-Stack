@@ -46,7 +46,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 ### I. Auth0 Application Creation:
 1. Open your browser, go to Auth0.com and signup for a new account. 
-1. Enter the domain, in this format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
+1. The default domain will be something like `dev-fsdf1y29`, but you should overwrite it with a domain of your own, in the format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
 1. For the Role, select *Yes, Coding*, and tick *I need advanced settings*. 
 1. Select **Australia** as your *Region*.
 1. Click *Create*.
@@ -80,11 +80,11 @@ In `client/index.js`:
 1. Wrap your root component (in this case `App`) with `Auth0Provider` component (this has also been done for you, but make sure you understand what's happening). 
 1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
-| Attribute  | Value                                                         |
-| ---------  | --------------------------------------------------------------| 
-| `domain`   | 1️⃣ above, format is `cohortName-yourFirstName.au.auth0.com`  |
-| `clientId` | 2️⃣ above                                                      | 
-| `audience` | 3️⃣ above, `https://fruits/api`                                |
+| Attribute  | Value                                                   |
+| ---------  | --------------------------------------------------------| 
+| `domain`   | 1️⃣, format is `cohortName-yourFirstName.au.auth0.com`  |
+| `clientId` | 2️⃣                                                      | 
+| `audience` | 3️⃣, `https://fruits/api`                                |
 
 Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
 
@@ -152,14 +152,14 @@ _Note: The `cacheUser` function (from `auth0-utils.js`) does `store.dispatch(set
 
 ## 6. Client-side: Passing access tokens
 
-So now the access token is stored in global state (see note above). Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `auth0Id` and `token` in pass them as parameters to three functions in `api.js` (e.g. when we call the `addFruit` function in `api.js` from the `handleAdd` function in `AddFruit.jsx`).
+So now the access token is stored in global state (see note above). Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `token` and pass it as a parameter to three functions in `api.js` (e.g. when we call the `addFruit` function of `api.js` from the `handleAdd` function of `AddFruit.jsx`).
 
-In `client/AddFruit.jsx` component, access the global state and get the `auth0Id` and `token` properties. 
+In `client/AddFruit.jsx` component, access the global state and get the `token` property. 
 
-_hint: try using the useSelector hook from `react-redux` package._<br/>
-_another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
+_Hint: try using the useSelector hook from `react-redux` package._<br/>
+_Another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
 
-Then pass `auth0Id` and `token` to the `addFruit` function as second and third parameters.
+Then pass `token` to the `addFruit` function as the second parameter.
 
 In `client/SelectedFruits.jsx`, repeat the same steps for `handleUpdate` and `handleDelete`.
 

@@ -2,7 +2,7 @@ import { setUser } from './actions/user'
 import store from './store'
 
 export async function cacheUser (useAuth0, state) {
-  // TODO call the useAuth0 and destructure:
+  // TODO: call the useAuth0 and destructure:
   // isAuthenticated, getAccessTokenSilently, user
 
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()

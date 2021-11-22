@@ -10,26 +10,26 @@ export function getFruits () {
     .catch(logError)
 }
 
-export function addFruit (fruit, auth0Id, token) {
+export function addFruit (fruit, token) {
   return request.post(`${rootUrl}/fruits`)
     .set('authorization', `Bearer ${token}`)
-    .send({ fruit, auth0Id })
+    .send({ fruit })
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function updateFruit (fruit, auth0Id, token) {
+export function updateFruit (fruit, token) {
   return request.put(`${rootUrl}/fruits`)
     .set('authorization', `Bearer ${token}`)
-    .send({ fruit, auth0Id })
+    .send({ fruit })
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function deleteFruit (id, auth0Id, token) {
+export function deleteFruit (id, token) {
   return request.delete(`${rootUrl}/fruits/${id}`)
     .set('authorization', `Bearer ${token}`)
-    .send({ auth0Id })
+    .send()
     .then(res => res.body.fruits)
     .catch(logError)
 }
