@@ -25,7 +25,6 @@ export function registerUser (user, authUser, navigateTo, consume = requestor) {
       return res.body
     })
     .catch((err) => {
-      console.log(err)
       dispatch(showError(err.message))
     })
     .finally(() => {
