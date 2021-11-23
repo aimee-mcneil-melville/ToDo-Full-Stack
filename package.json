@@ -118,7 +118,7 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
-    "eslint": "7.9.0",
+    "eslint": "^8.3.0",
     "eslint-config-eda": "0.1.4",
     "jest": "^27.0.6",
     "jest-playwright-preset": "^1.6.1",
@@ -139,12 +139,11 @@
     "regenerator-runtime": "^0.13.7",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
-    "sqlite3": "^5.0.2",
     "style-loader": "^3.0.0",
     "superagent": "^6.1.0",
     "supertest": "^6.1.3",
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.5.0"
   }
 }
