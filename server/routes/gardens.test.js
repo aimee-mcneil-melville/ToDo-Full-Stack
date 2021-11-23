@@ -2,11 +2,14 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/gardens')
+const dbUsers = require('../db/users')
+const auth0 = require('../routes/auth')
 const log = require('../logger')
-const { getMockToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/gardens')
+jest.mock('../db/users')
+jest.mock('./auth')
 
 const mockUserGarden = {
   id: 2,
@@ -48,14 +51,6 @@ const mockUserGarden = {
         }
       ]
     }]
-}
-
-const mockAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken(1, 'admin', 'admin@test.co', true)}`
-}
-
-const mockNonAdminAuthHeader = {
-  Authorization: `Bearer ${getMockToken(3, 'sam', 'sam@test.co', false)}`
 }
 
 describe('GET /api/v1/gardens', () => {
@@ -106,15 +101,16 @@ describe('GET /api/v1/gardens', () => {
 })
 
 describe('GET /api/v1/gardens/:id', () => {
-  it("responds with user's garden when token is provided", () => {
-    expect.assertions(2)
+  it("responds with user's garden when user is Admin", () => {
+    // expect.assertions(2)
     db.getGardenById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
+    dbUsers.getUserById.mockImplementation(() => Promise.resolve({ auth0Id: 'auth0id|est' }))
+    auth0.userHasAdminRole.mockImplementation(() => Promise.resolve(true))
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(mockNonAdminAuthHeader)
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
@@ -145,7 +141,6 @@ describe('GET /api/v1/gardens/:id', () => {
     ))
     return request(server)
       .get('/api/v1/gardens/999')
-      .set(mockAdminAuthHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
@@ -173,7 +168,6 @@ describe('GET /api/v1/gardens/:id', () => {
 
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(mockAdminAuthHeader)
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.body.events[1].volunteers).toMatchObject(expected)
@@ -188,7 +182,6 @@ describe('GET /api/v1/gardens/:id', () => {
     })
     return request(server)
       .get('/api/v1/gardens/2')
-      .set(mockNonAdminAuthHeader)
       .expect('Content-Type', /json/)
       .then(res => {
         expect(res.body.events[0]).toHaveProperty('isVolunteer')

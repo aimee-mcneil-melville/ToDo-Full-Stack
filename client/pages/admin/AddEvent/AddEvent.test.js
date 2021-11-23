@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { waitFor } from '@testing-library/dom'
 
 import { renderWithRouter } from '../../../test-utils'
 
@@ -21,10 +22,10 @@ describe('submit button', () => {
   it('has "Create Event" name from props', () => {
     render(<AddEvent />)
     const addButton = screen.getByRole('button')
-    expect(addButton).toHaveTextContent('Create Event')
+    expect(addButton).toHaveTextContent('Submit')
   })
 
-  it('calls addEvent helper with event data on click', () => {
+  it('calls addEvent helper with event data on click', async () => {
     addEvent.mockImplementation((event, navigateTo) => {
       expect(event.title).toBe('test title')
       expect(typeof navigateTo).toBe('function')
@@ -33,11 +34,20 @@ describe('submit button', () => {
     renderWithRouter(<AddEvent />)
 
     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
+    const dateInput = screen.getByRole('date')
+    const volunteersNeededInput = screen.getByRole('spinbutton', { name: 'Volunteers Needed' })
+    const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
     const addButton = screen.getByRole('button')
 
     userEvent.type(titleInput, 'test title')
+    userEvent.type(dateInput, '2021-07-28')
+    userEvent.type(volunteersNeededInput, '2')
+    userEvent.type(descriptionInput, 'description')
     userEvent.click(addButton)
+    // })
 
-    expect(addEvent).toHaveBeenCalled()
+    await waitFor(() => {
+      expect(addEvent).toHaveBeenCalled()
+    })
   })
 })

@@ -1,94 +1,105 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
+import * as Yup from 'yup'
 
-export function Register () {
+const registerSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Required'),
+  lastName: Yup.string()
+    .required('Required')
+    .min(2, 'This must be at least 2 characters long')
+    .max(20, 'Sorry, this must be under 20 characters long'),
+  username: Yup.string()
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Required'),
+  gardenId: Yup.number()
+    .required('Required')
+})
+
+export default function Register () {
   const authUser = useAuth0().user
-
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    gardenId: null
-  })
   const history = useHistory()
 
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      username: '',
+      gardenId: null
+    },
+    onSubmit: values => {
+      registerUser(values, authUser, history.push)
+    },
+    validationSchema: registerSchema
+  })
 
-  function handleClick (e) {
-    e.preventDefault()
-    registerUser(form, authUser, history.push)
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? <p className='inputError'>{formik.errors[inputName]}</p>
+      : null
   }
 
   return (
-    <section className='flex-container'>
-      <form className='column-6'>
-        <div className="field">
-          <label htmlFor='firstName' className='form-label'>First Name</label>
-          <input
-            className='form-input'
-            id='firstName'
-            name='firstName'
-            value={form.firstName}
-            placeholder='First Name'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="field">
-          <label htmlFor='lastName' className='form-label'>Last Name</label>
-          <input
-            className='form-input'
-            id='lastName'
-            name='lastName'
-            value={form.lastName}
-            placeholder='Last Name'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="field">
-          <label htmlFor='username' className='form-label'>Username</label>
-          <input
-            className='form-input'
-            id='username'
-            name='username'
-            value={form.username}
-            placeholder='Username'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="field">
-          <label htmlFor='garden' className='form-label'>My Garden</label>
-          <select
-            onChange={handleChange}
-            className='select'
-            name='gardenId'
-            id='garden'
-          >
-            <option hidden>Select from this list</option>
-            <option value={1}>Kelmarna Gardens</option>
-            <option value={2}>Kingsland Community Orchard</option>
-            <option value={3}>Devonport Community Garden</option>
-          </select>
-        </div>
-        <button
-          type='button'
-          className='button-primary'
-          onClick={handleClick}
-          data-testid='submitButton'
-        >
-            Register
-        </button>
-      </form>
+    <>
+      <section className='flex-container'>
+        <form className='column-6' onSubmit={formik.handleSubmit}>
+          <div className="field">
+            <label htmlFor='firstName' className='label'>First Name</label>
+            {showAnyErrors('firstName')}
+            <input
+              className='form-box'
+              id='firstName'
+              name='firstName'
+              placeholder='First Name'
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+            />
+            <label htmlFor='lastName' className='label'>Last Name</label>
+            {showAnyErrors('lastName')}
+            <input
+              className='form-box'
+              id='lastName'
+              name='lastName'
+              placeholder='Last Name'
+              onChange={formik.handleChange}
+              value={formik.values.lastName}
+            />
+            <label htmlFor='username' className='label'>Username</label>
+            {showAnyErrors('username')}
+            <input
+              className='form-box'
+              id='username'
+              name='username'
+              placeholder='Username'
+              onChange={formik.handleChange}
+              value={formik.values.username}
+            />
+            <label htmlFor='garden' className='label'>My Garden</label>
+            {showAnyErrors('garden')}
+            <select
+              className='select'
+              name='gardenId'
+              id='garden'
+              onChange={formik.handleChange}
+            >
+              <option hidden>Select from this list</option>
+              <option value={1}>Kelmarna Gardens</option>
+              <option value={2}>Kingsland Community Orchard</option>
+              <option value={3}>Devonport Community Garden</option>
+            </select>
+          </div>
+          <button className='button' type='submit' data-testid='submitButton'>Register</button>
+        </form>
+      </section>
       <div className='column-6'>
         <img src='./images/comGardenPlant.png' alt='Person gardening with trowel' />
       </div>
-    </section>
+    </>
   )
 }

@@ -9,10 +9,11 @@ module.exports = {
 
 function addVolunteer (registration, db = connection) {
   const { userId, eventId } = registration
-  return db('eventVolunteers').insert({
-    user_id: userId,
-    event_id: eventId
-  })
+  return db('eventVolunteers')
+    .insert({
+      user_id: userId,
+      event_id: eventId
+    })
 }
 
 function deleteVolunteer (registration, db = connection) {
@@ -31,9 +32,10 @@ function setVolunteerAttendance (eventData, db = connection) {
 
 function addExtraVolunteer (added, db = connection) {
   const { eventId, firstName, lastName } = added
-  return db('extraVolunteers').insert({
-    event_id: eventId,
-    first_name: firstName,
-    last_name: lastName
-  })
+  return db('extraVolunteers')
+    .insert({
+      event_id: eventId,
+      first_name: firstName,
+      last_name: lastName
+    })
 }

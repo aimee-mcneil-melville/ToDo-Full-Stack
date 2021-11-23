@@ -11,9 +11,15 @@ export default function AddEvent () {
   function submitEvent (event) {
     addEvent(event, history.push)
   }
-
+  const initialState = {
+    title: '',
+    date: '',
+    volunteersNeeded: 0,
+    description: ''
+  }
   return (
     <EventForm
+      formData={initialState}
       action='Create Event'
       submitEvent={submitEvent}
     />

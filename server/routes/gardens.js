@@ -3,14 +3,13 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/gardens')
+const { userHasAdminRole } = require('./auth')
+const { getUserById } = require('../db/users')
 
 const router = express.Router()
 
 module.exports = router
 
-// const checkAdmin = jwtAuthz(['role:admin'])
-
-// doesnt need authentication
 router.get('/', (req, res) => {
   db.getGardens()
     .then((gardens) => {
@@ -26,36 +25,34 @@ router.get('/', (req, res) => {
     })
 })
 
-// doesnt need authentication
-// handle user.isAdmin?
-// ------------------------------------------------------------ what does checkAdmin return
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
+  const userId = req.headers.userid
   const id = Number(req.params.id)
-  const user = req.user || {}
-  db.getGardenById(id)
-    .then(foundGarden => {
-      // Create a deep copy of the garden
-      const garden = JSON.parse(JSON.stringify(foundGarden))
-      if (!user.isAdmin) { // if(!checkAdmin) {       Maybe
-        garden.events.forEach(event => {
-          event.totalVolunteers = event.volunteers.length
-          event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
-          delete event.volunteers
-        })
-      } else {
-        garden.events.forEach(event => {
-          event.totalVolunteers = event.volunteers.length
-          event.isVolunteer = event.volunteers.some((v) => v.username === user.username)
-        })
-      }
-      return res.json(garden)
-    })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to retrieve garden'
-        }
+  try {
+    const foundGarden = await db.getGardenById(id)
+    // Create a deep copy of the garden
+    const garden = JSON.parse(JSON.stringify(foundGarden))
+    const user = await getUserById(userId)
+    const isAdmin = await userHasAdminRole(user.auth0Id)
+    if (!isAdmin) {
+      garden.events.forEach(event => {
+        event.totalVolunteers = event.volunteers.length
+        event.isVolunteer = event.volunteers.some((v) => v.userId === userId)
+        delete event.volunteers
       })
+    } else {
+      garden.events.forEach(event => {
+        event.totalVolunteers = event.volunteers.length
+        event.isVolunteer = event.volunteers.some((v) => v.userId === userId)
+      })
+    }
+    return res.json(garden)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve garden'
+      }
     })
+  }
 })

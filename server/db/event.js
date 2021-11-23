@@ -3,7 +3,8 @@ const connection = require('./connection')
 module.exports = {
   getEventById,
   addEvent,
-  updateEvent
+  updateEvent,
+  cancelEvent
 }
 
 function getEventById (id, db = connection) {
@@ -13,7 +14,7 @@ function getEventById (id, db = connection) {
     .leftJoin('gardens', 'events.garden_id', 'gardens.id')
     .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
     .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId',
-      'title', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
+      'title', 'events.status', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
       'user_id as userId', 'username', 'users.first_name', 'users.last_name',
       'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName',
       'extraVolunteers.id as extraVolId', 'lat', 'lon')
@@ -27,6 +28,7 @@ function getEventById (id, db = connection) {
         gardenAddress: event.address,
         volunteersNeeded: event.volunteersNeeded,
         title: event.title,
+        status: event.status,
         date: event.date,
         description: event.description,
         lat: event.lat,
@@ -71,19 +73,29 @@ function addEvent (newEvent, db = connection) {
       volunteers_needed: volunteersNeeded,
       title,
       date,
-      description
+      description,
+      status: 'Active'
     })
     .then((ids) => getEventById(ids[0], db))
 }
 
 function updateEvent (updatedEvent, db = connection) {
-  const { id, title, date, description, volunteersNeeded } = updatedEvent
+  const { id, title, date, description, volunteersNeeded, status } = updatedEvent
   return db('events').where('id', id)
     .update({
       volunteers_needed: volunteersNeeded,
       title,
       date,
-      description
+      description,
+      status
+    })
+    .then(() => getEventById(id, db))
+}
+
+function cancelEvent (id, db = connection) {
+  return db('events').where('id', id)
+    .update({
+      status: 'Cancelled'
     })
     .then(() => getEventById(id, db))
 }

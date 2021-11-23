@@ -4,9 +4,14 @@ import { setWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 import { setGarden } from '../../actions/garden'
 
-export function getGarden (id, consume = requestor) {
+export function getGarden (id, user, consume = requestor) {
   dispatch(setWaiting())
-  return consume(`/gardens/${id}`)
+  const headers = {
+    Accept: 'application/json',
+    userid: user.id
+  }
+
+  return consume(`/gardens/${id}`, '', 'get', {}, headers)
     .then((res) => {
       const garden = res.body
       dispatch(setGarden({

@@ -1,18 +1,22 @@
-const checkJwt = require('./auth') // scope permissions
+const { checkJwt } = require('./auth') // scope permissions
+const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 
-const { sendEventNotifications } = require('../notifications/notificationHelper')
+const {
+  sendEventNotifications
+} = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
 module.exports = router
+const checkAdmin = jwtAuthz(['create:event', 'update:event'], {
+  customScopeKey: 'permissions'
+})
 
-
-// include getTokenDecoder() like function into post route that passes authorisation header? REQUIRES TOKEN + ADMIN
-router.post('/', checkJwt, (req, res) => {
+router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
   let createdEvent = null
@@ -37,9 +41,9 @@ router.post('/', checkJwt, (req, res) => {
 
 // include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
 
-router.patch('/:id', checkJwt, (req, res) => {
-  const { title, date, volunteersNeeded, description, id } = req.body
-  const updatedEvent = { title, date, volunteersNeeded, description, id }
+router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
+  const { title, date, volunteersNeeded, description, id, status } = req.body
+  const updatedEvent = { title, date, volunteersNeeded, description, id, status }
   db.updateEvent(updatedEvent)
     .then((event) => {
       res.status(200).json(event)
@@ -55,32 +59,39 @@ router.patch('/:id', checkJwt, (req, res) => {
     })
 })
 
-// doesnt need token
-router.get('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  db.getEventById(id)
+router.patch('/:id/cancel', checkJwt, checkAdmin, (req, res) => {
+  const { id } = req.body
+  db.cancelEvent(id)
     .then((event) => {
-      const { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon } = event
-      const eventResponse = { id, gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon }
-
-      if (req.user) {
-        if (req.user.isAdmin) {
-          eventResponse.volunteers = volunteers
-          eventResponse.extraVolunteers = extraVolunteers
-        } else {
-          eventResponse.isVolunteer = volunteers.some((v) => v.userId === req.user.id)
-        }
-      }
-
-      res.json(eventResponse)
+      res.status(200).json(event)
       return null
     })
     .catch((err) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to retrieve event'
+          title: 'Unable to cancel event'
         }
       })
     })
+})
+
+// GET /api/v1/events/1
+router.get('/:id', async (req, res) => {
+  const eventId = Number(req.params.id)
+  try {
+    const event = await db.getEventById(eventId)
+    const { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, volunteers, extraVolunteers, lat, lon, status } = event
+    const eventResponse = { gardenId, gardenName, gardenAddress, volunteersNeeded, title, date, description, lat, lon, volunteers, extraVolunteers, status }
+
+    res.json(eventResponse)
+    return null
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to retrieve event'
+      }
+    })
+  }
 })
