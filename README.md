@@ -57,6 +57,7 @@ As a registered user:
   | --- | --- |
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
+  | Home | Welcome users and link to pet pages |
   | FoundPets | View the pets that users have found |
   | LostPets | View the pets that users have reported as lost |
   | LostForm | For a User to add a pet that they have lost |

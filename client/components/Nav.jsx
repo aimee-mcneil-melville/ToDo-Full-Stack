@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logoutUser} from '../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logoutUser } from '../actions/auth'
 
-function Nav (props) {
-  const { auth, dispatch } = props
+function Nav () {
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const auth = useSelector(redux => redux.auth)
 
   const [burgerVisible, setBurgerVisible] = useState(false)
 
@@ -15,11 +17,12 @@ function Nav (props) {
   }
 
   const logout = () => {
-    const confirmSuccess = () => props.history.push('/')
+    const confirmSuccess = () => navigateTo('/')
     dispatch(logoutUser(confirmSuccess))
   }
 
-  return <nav className="navbar">
+  return (
+    <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
           <span onClick={toggleBurger} className={`navbar-burger burger ${burgerVisible ? 'is-active' : ''}`} data-target="navbarMenuHeroA">
@@ -28,12 +31,12 @@ function Nav (props) {
             <span></span>
           </span>
         </div>
-        <div id="navbarMenuHeroA" className={`navbar-menu ${burgerVisible ? "is-active" : ''}`}>
+        <div id="navbarMenuHeroA" className={`navbar-menu ${burgerVisible ? 'is-active' : ''}`}>
           <div className="navbar-end">
             { auth.isAuthenticated
               ? (
-                  <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
-                )
+                <Link to='/' className="navbar-item is-large" onClick={logout}>Logout</Link>
+              )
               : (
                 <>
                   <Link onClick={toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>
@@ -45,12 +48,7 @@ function Nav (props) {
         </div>
       </div>
     </nav>
-  }
-
-const mapStateToProps = (globalState) => {
-  return {
-    auth: globalState.auth
-  }
+  )
 }
 
-export default connect(mapStateToProps)(Nav)
+export default Nav

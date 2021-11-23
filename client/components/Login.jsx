@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {connect} from 'react-redux'
-import {loginUser, loginError} from '../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { loginUser, loginError } from '../actions/auth'
 
-function Login (props) {
-  const { auth, dispatch } = props
+function Login () {
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const auth = useSelector(redux => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
@@ -25,10 +28,10 @@ function Login (props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const confirmSuccess = () => { props.history.push('/') }
+    const confirmSuccess = () => navigateTo('/')
     dispatch(loginUser(formData, confirmSuccess))
   }
-    
+
   return (
     <form className="form box" onSubmit={handleSubmit}>
       <h1 className="title is-2">Login</h1>
@@ -45,10 +48,4 @@ function Login (props) {
   )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    auth: globalState.auth
-  }
-}
-
-export default connect(mapStateToProps)(Login)
+export default Login

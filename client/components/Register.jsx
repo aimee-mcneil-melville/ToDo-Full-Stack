@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import {connect} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import {loginError, registerUserRequest} from '../actions/auth'
+import { loginError, registerUserRequest } from '../actions/auth'
 
-function Register (props) {
-  const { auth, dispatch } = props
-  
+function Register () {
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const auth = useSelector(redux => redux.auth)
+
   const [formData, setFormData] = useState({
     username: '',
     contact_details: '',
@@ -31,12 +34,12 @@ function Register (props) {
     e.preventDefault()
     e.target.reset()
 
-    let { password, confirm_password } = formData
+    const { password, confirm_password } = formData
 
-    if (confirm_password != password){
+    if (confirm_password != password) {
       dispatch(loginError("Passwords don't match"))
     } else {
-      const confirmSuccess = () => { props.history.push('/') }
+      const confirmSuccess = () => navigateTo('/')
       const userInfo = { ...formData }
       delete userInfo.confirm_password
       dispatch(registerUserRequest(userInfo, confirmSuccess))
@@ -62,7 +65,7 @@ function Register (props) {
       <br />
       <div className="columns">
         <label className="column is-6 label is-large has-text-centered">Password
-          <input required className="input is-large has-text-centered is-fullwidth" placeholder="Password" type="password" name="password"  autoComplete="new-password" onChange={handleChange} value={formData.password}/>
+          <input required className="input is-large has-text-centered is-fullwidth" placeholder="Password" type="password" name="password" autoComplete="new-password" onChange={handleChange} value={formData.password}/>
         </label>
         <label className="column is-6 label is-large has-text-centered">Confirm Password
           <input required className="input is-large has-text-centered is-fullwidth" placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password}/>
@@ -73,10 +76,4 @@ function Register (props) {
   )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    auth: globalState.auth
-  }
-}
-
-export default connect(mapStateToProps)(Register)
+export default Register
