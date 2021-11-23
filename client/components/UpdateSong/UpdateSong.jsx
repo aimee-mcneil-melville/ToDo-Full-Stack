@@ -7,13 +7,13 @@ function UpdateSong (props) {
 
   const song = props.userSongs.find(song => song.id === Number(id))
 
-  const { mediaName, artist, genre, comment, link } = song || {}
+  const { mediaName, artist, genre, comment, link } = song || {} // comment related functionality to be removed //
 
   const [editForm, setEditForm] = useState({
     mediaName,
     artist,
     genre,
-    comment,
+    comment, // comment related functionality to be removed //
     link
   })
 
@@ -61,6 +61,7 @@ function UpdateSong (props) {
               value={editForm.genre}
               onChange={handleChange}/>
           </label><br />
+          {/* comment related functionality to be removed */}
           <label htmlFor="comment">Comment
             <input type="text"
               id='comment'
@@ -68,6 +69,7 @@ function UpdateSong (props) {
               value={editForm.comment}
               onChange={handleChange}/>
           </label><br />
+          {/* comment related functionality to be removed */}
           <label htmlFor="link">Link
             <input type="text"
               id='link'
