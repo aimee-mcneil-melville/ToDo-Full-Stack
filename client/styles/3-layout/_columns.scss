@@ -5,8 +5,12 @@
 
 .container {
   position: relative;
-  max-width: 100%;
+  width: 100%;
   padding: 0 vars.$base-size * 3;
+  @include mixins.media-queries(desktop, min) {
+    width: 1400px;
+    margin: 0 auto;
+  }
 }
 
 .column-6 {

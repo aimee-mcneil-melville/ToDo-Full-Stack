@@ -4,7 +4,7 @@ const server = require('../server')
 const db = require('../db/event')
 const { sendEventNotifications } = require('../notifications/notificationHelper')
 const log = require('../logger')
-const { getMockToken } = require('./mockToken')
+const { getAdminToken } = require('./mockToken')
 
 jest.mock('../logger')
 jest.mock('../db/event')
@@ -20,6 +20,7 @@ const mockEvent = {
   title: 'Weeding worker Bee',
   date: '2020-08-27',
   description: 'Its time to get these weeds under control.',
+  status: 'Active',
   volunteers: [{
     userId: 3,
     username: 'jdog',
@@ -33,17 +34,12 @@ const mockEvent = {
   }]
 }
 
-const testAuthHeader = {
-  Authorization: `Bearer ${getMockToken(1, 'testuser', 'testuser@test.co', false)}`
-}
-
 const testAuthAdminHeader = {
-  Authorization: `Bearer ${getMockToken(3, 'testAdmin', 'testadmin@test.co', true)}`
+  Authorization: `Bearer ${getAdminToken()}`
 }
 
 describe('GET /api/v1/events/:id', () => {
-  it('responds only with event details for a guest', () => {
-    expect.assertions(5)
+  it('responds only with event details', () => {
     db.getEventById.mockImplementation((id) => {
       expect(id).toBe(2)
       return Promise.resolve(mockEvent)
@@ -53,69 +49,18 @@ describe('GET /api/v1/events/:id', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
+        expect(res.body.gardenId).toBe(1)
+        expect(res.body.gardenName).toBe('Kelmarna Gardens')
+        expect(res.body.gardenAddress).toBe('12 Hukanui Crescent')
+        expect(res.body.volunteersNeeded).toBe(8)
         expect(res.body.title).toBe('Weeding worker Bee')
-        expect(res.body).not.toHaveProperty('isVolunteer')
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        return null
-      })
-  })
-
-  it('response includes volunteer status of member', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .set({
-        Authorization: `Bearer ${getMockToken(3, 'testuser', 'testuser@test.co', false)}`
-      })
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        expect(res.body.isVolunteer).toBe(true)
-        return null
-      })
-  })
-
-  it('response includes non-volunteer status of member', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .set(testAuthHeader)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('volunteers')
-        expect(res.body).not.toHaveProperty('extraVolunteers')
-        expect(res.body.isVolunteer).toBe(false)
-        return null
-      })
-  })
-
-  it('response includes volunteers array if Admin', () => {
-    expect.assertions(4)
-    db.getEventById.mockImplementation((id) => {
-      expect(id).toBe(2)
-      return Promise.resolve(mockEvent)
-    })
-    return request(server)
-      .get('/api/v1/events/2')
-      .set(testAuthAdminHeader)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .then(res => {
-        expect(res.body).not.toHaveProperty('isVolunteer')
+        expect(res.body.date).toBe('2020-08-27')
+        expect(res.body.description).toBe('Its time to get these weeds under control.')
+        expect(res.body.status).toBe('Active')
         expect(res.body.volunteers).toHaveLength(1)
+        expect(res.body.volunteers[0].lastName).toBe('Dawg')
         expect(res.body.extraVolunteers).toHaveLength(1)
+        expect(res.body.extraVolunteers[0].lastName).toBe('Don')
         return null
       })
   })
@@ -166,7 +111,7 @@ describe('POST /api/v1/events', () => {
     sendEventNotifications.mockImplementation(() => Promise.resolve())
     return request(server)
       .post('/api/v1/events')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .send({
         gardenId: 3,
         title: 'Gardening Event',
@@ -188,12 +133,43 @@ describe('POST /api/v1/events', () => {
     ))
     return request(server)
       .post('/api/v1/events')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {
         expect(log).toHaveBeenCalledWith('mock addEvent error')
         expect(res.body.error.title).toBe('Unable to add event')
+        return null
+      })
+  })
+})
+
+describe('PATCH /api/v1/events/:id/cancel', () => {
+  it('responds with 401 when no token passed', () => {
+    return request(server)
+      .patch('/api/v1/events/1')
+      .then(({ status }) => {
+        expect(status).toBe(401)
+        return null
+      })
+  })
+
+  it('should successfully cancel the event', () => {
+    db.cancelEvent.mockImplementation((cancelledEventId) => {
+      expect(cancelledEventId).toBe(2)
+      return Promise.resolve({
+        id: 2,
+        status: 'Cancelled'
+      })
+    })
+    return request(server)
+      .patch('/api/v1/events/2/cancel')
+      .set(testAuthAdminHeader)
+      .send({ id: 2 })
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body.status).toBe('Cancelled')
         return null
       })
   })
@@ -227,7 +203,7 @@ describe('PATCH /api/v1/events/:id', () => {
     })
     return request(server)
       .patch('/api/v1/events/2')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .send({
         id: 2,
         title: 'cooler event',
@@ -249,7 +225,7 @@ describe('PATCH /api/v1/events/:id', () => {
     ))
     return request(server)
       .patch('/api/v1/events/999')
-      .set(testAuthHeader)
+      .set(testAuthAdminHeader)
       .expect('Content-Type', /json/)
       .expect(500)
       .then(res => {

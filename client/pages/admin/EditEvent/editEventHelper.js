@@ -16,17 +16,36 @@ export function getEvent (id, consume = requestor) {
     })
 }
 
-export function updateEvent (id, event, navigateTo, consume = requestor) {
+export function updateEvent (gardenId, event, navigateTo, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
   const eventToUpdate = {
-    id: Number(id),
+    id: Number(event.id),
     ...event
   }
   dispatch(setWaiting())
-  return consume(`/events/${id}`, token, 'patch', eventToUpdate)
+  return consume(`/events/${event.id}`, token, 'patch', eventToUpdate)
     .then(() => {
-      navigateTo(`/events/${id}`)
+      navigateTo(`/gardens/${gardenId}`)
+      return null
+    })
+    .catch((err) => {
+      dispatch(showError(err.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
+    })
+}
+
+export function cancelEvent (id, navigateTo, consume = requestor) {
+  const storeState = getState()
+  const { token } = storeState.user
+  const eventToUpdate = {
+    id: Number(id)
+  }
+  return consume(`/events/${id}/cancel`, token, 'patch', eventToUpdate)
+    .then(() => {
+      navigateTo()
       return null
     })
     .catch((err) => {

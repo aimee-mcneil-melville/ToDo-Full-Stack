@@ -46,7 +46,7 @@ export default function Nav () {
   return (
     <nav className="nav" >
       {open && <div className='nav-menu-toggle' onClick={toggleMenu}>
-        <Link to="/" className='nav-link'>Home</Link>
+        <Link to="/" className='nav-link home-nav-link'>Home</Link>
 
         <IfAuthenticated>
           <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
@@ -63,7 +63,7 @@ export default function Nav () {
       </div>
       }
       {!open && <div className='nav-menu'>
-        <Link to="/" className='nav-link'>Home</Link>
+        <Link to="/" className='nav-link home-nav-link'>Home</Link>
 
         <IfAuthenticated>
           <Link to={`/gardens/${gardenId}`} className='nav-link'>My Garden</Link>
@@ -72,8 +72,8 @@ export default function Nav () {
         </IfAuthenticated>
 
         <IfNotAuthenticated>
-          <a href="/" onClick={handleLogin} className='nav-link'>Sign in</a>
-          <a href="/" onClick={handleRegister} className='nav-link'>Register</a>
+          <a href="/" onClick={handleLogin} className='nav-link home-nav-link'>Sign in</a>
+          <a href="/" onClick={handleRegister} className='nav-link home-nav-link register-button'>Register</a>
         </IfNotAuthenticated>
 
         <div className='hamburger' onClick={toggleMenu} ><GiHamburgerMenu/></div>

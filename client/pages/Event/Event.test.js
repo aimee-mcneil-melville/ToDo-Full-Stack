@@ -5,7 +5,7 @@ import { renderWithRedux } from '../../test-utils'
 
 import Event from './Event'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import { getEvent } from './eventHelper'
+import { getEvent } from '../../pages/Event/eventHelper'
 
 jest.mock('./eventHelper')
 
@@ -18,74 +18,6 @@ const mockData = {
   lat: -36.8666700,
   lon: 174.7666700
 }
-
-describe('Event details page', () => {
-  it('renders event data', () => {
-    expect.assertions(2)
-    getEvent.mockImplementation(() => Promise.resolve(mockData))
-
-    renderWithRedux(<Event />)
-
-    return screen.findByText('Mock title').then(() => {
-      const gardenNameElement = screen.getByText('Mock garden')
-      const dateAndVolunteerNeeded = screen.getByText('2021-03-02')
-
-      expect(gardenNameElement).toBeInTheDocument()
-      expect(dateAndVolunteerNeeded).toBeInTheDocument()
-      return null
-    })
-  })
-
-  it('checks logic in ternary operator for map lat&lon', () => {
-    renderWithRedux(<Event />)
-    getEvent.mockImplementation(() => Promise.resolve(mockData))
-
-    const markers = screen.queryByRole('img')
-    expect(markers).toBeNull()
-
-    return screen.findByText('Mock title').then(() => {
-      const rerenderedMarkers = screen.getAllByRole('img')
-      expect(rerenderedMarkers).toHaveLength(2)
-      return null
-    })
-  })
-
-  describe('Volunteer button', () => {
-    it('does not render if admin', () => {
-      getEvent.mockImplementation(() => Promise.resolve(mockData))
-
-      renderWithRedux(<Event />, {
-        initialState: {
-          user: {
-            isAdmin: true
-          }
-        }
-      })
-      return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.queryByRole('button', { name: 'Volunteer' })
-        expect(volunteerButton).toBeNull()
-        return null
-      })
-    })
-
-    it('renders if not admin', () => {
-      getEvent.mockImplementation(() => Promise.resolve(mockData))
-      renderWithRedux(<Event />, {
-        initialState: {
-          user: {
-            isAdmin: false
-          }
-        }
-      })
-
-      return screen.findByText('Mock title').then(() => {
-        const volunteerButton = screen.getByRole('button', { name: 'Volunteer' })
-        expect(volunteerButton).toHaveTextContent('Volunteer')
-        return null
-      })
-    })
-  })
-})
 
 describe('List of signed up volunteers', () => {
   const mockVolunteers = [
@@ -114,13 +46,20 @@ describe('List of signed up volunteers', () => {
   })
 
   it('does not display if not an admin', () => {
+    getEvent.mockImplementation(() => Promise.resolve({
+      gardenId: 1,
+      title: 'title to edit',
+      date: '24/09/2001',
+      volunteersNeeded: 4,
+      description: 'truly radical event'
+    }))
     renderWithRedux(<Event />, {
-      initialState: { user: { isAdmin: false } }
+      initialState: { user: { isAdmin: false } },
+      initialEntries: ['/events/23/edit'],
+      route: '/events/:id/edit'
     })
-    return screen.findByText('Mock title')
-      .then(() => {
-        expect(screen.queryByRole('list')).toBeNull()
-        return null
-      })
+
+    const error = screen.queryByRole('heading', { name: 'List of Volunteers' })
+    expect(error).toBeNull()
   })
 })

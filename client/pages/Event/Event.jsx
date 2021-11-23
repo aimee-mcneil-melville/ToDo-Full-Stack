@@ -5,9 +5,9 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getEvent } from './eventHelper'
 
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
-import VolunteerButton from '../../components/volunteers/VolunteerButton/VolunteerButton'
 import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
+// import EventDetail from '../../components/events/EventDetail/EventDetail'
 
 export default function Event () {
   const { id } = useParams()
@@ -15,18 +15,17 @@ export default function Event () {
 
   const [event, setEvent] = useState({})
 
-  const [volunteering, setVolunteering] = useState(false)
-  const isAdmin = useSelector(globalState => globalState.user.isAdmin)
+  const user = useSelector(globalState => globalState.user)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getEvent(id)
+    getEvent(id, user)
       .then((event) => {
         setEvent(event)
-        setVolunteering(event.isVolunteer)
         return null
       })
-  }, [])
+      .catch((err) => console.log(err))
+  }, [user])
 
   function redirectToEdit () {
     history.push(`/events/${id}/edit`)
@@ -39,19 +38,17 @@ export default function Event () {
     })
   }
 
-  const { title, gardenName, gardenAddress, date, volunteersNeeded, description, volunteers, lat, lon, extraVolunteers } = event
-
   return (
     <>
-      {isAdmin
+      {user?.isAdmin
         ? <>
           <section>
             <VolunteerList
-              volunteers={volunteers}
+              volunteers={event.volunteers}
               eventId={event.id}
             />
             <RockUpVolunteerList
-              extraVolunteers={extraVolunteers}
+              extraVolunteers={event.extraVolunteers}
             />
             <AddVolunteerForm
               addExtraVolunteer={addExtraVolunteer}
@@ -61,30 +58,7 @@ export default function Event () {
         </>
         : null
       }
-      <section className='card-secondary column-6'>
-        <article className='card-inner'>
-          <button className='card-close-button'>close</button>
-          <h1 className='card-title'>{title}</h1>
-          <ul className='card-list'>
-            <li>{gardenName}</li>
-            <li>{gardenAddress}</li>
-            <li>{date}</li>
-            <li>Volunteers Needed: {volunteersNeeded}</li>
-            <li>{description}</li>
-          </ul>
-          {!isAdmin
-            ? <VolunteerButton
-              eventId={id}
-              volunteering={volunteering}
-              setVolunteering={setVolunteering}
-            />
-            : <>
-              <button onClick={redirectToEdit} className='button-secondary'>Edit Event</button>
-              <button className='button-secondary'>Event Admin</button>
-            </>
-          }
-        </article>
-      </section>
+      {/* <EventDetail eventId={eventId} user={user} /> */}
     </>
   )
 }

@@ -8,11 +8,11 @@ export default function Error () {
 
   return (
     error
-      ? <article className='message is-danger' role='alert'>
-        <div className='message-header'>
+      ? <article className='alert-container' role='alert'>
+        <div className='alert-msg'>
           <p>{error}</p>
-          <a className='delete' onClick={hide}>&#10005;</a>
         </div>
+        <a className='alert-close' onClick={hide}>&#10005;</a>
       </article>
       : null
   )

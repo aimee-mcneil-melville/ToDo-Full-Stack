@@ -2,9 +2,10 @@
 // Then import this file into main.scss in root directory
 
 @use 'buttons';
-@use 'card';
+// @use 'card';
 @use 'links';
 @use 'lists';
 @use 'loading-icon';
 @use 'map';
 @use 'scrollbar';
+@use 'alerts';

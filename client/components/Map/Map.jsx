@@ -5,7 +5,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 export default function Map ({ addresses, coordinates, userCoordinates, names }) {
   const LeafIcon = L.Icon.extend({
-    optios: {}
+    options: {
+      iconSize: [21, 34],
+      shadowSize: [50, 64],
+      iconAnchor: [10, 35],
+      shadowAnchor: [4, 62],
+      popupAnchor: [-3, -76]
+    }
   })
 
   const greenIcon = new LeafIcon({
@@ -32,7 +38,7 @@ export default function Map ({ addresses, coordinates, userCoordinates, names })
             </Popup>
           </Marker>
         })}
-        {userCoordinates &&
+        {userCoordinates && userCoordinates.lat &&
           <Marker
             position={[userCoordinates.lat, userCoordinates.lon]} icon={greenIcon}>
             <Popup>

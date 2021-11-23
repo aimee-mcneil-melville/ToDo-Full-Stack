@@ -1,4 +1,3 @@
-import { getUser } from '../auth-utils'
 import { SET_USER, CLEAR_USER } from '../actions/user'
 import userReducer from './user'
 
@@ -6,12 +5,13 @@ jest.mock('../auth-utils')
 
 describe('user reducer', () => {
   it('returns new user object on "SET_USER"', () => {
-    getUser.mockImplementation(() => ({
+    const user = {
       id: 4,
       username: 'test user',
       isAdmin: false,
       gardenId: 3
-    }))
+    }
+
     const oldState = {
       username: '',
       isAdmin: false,
@@ -20,7 +20,8 @@ describe('user reducer', () => {
     }
 
     const action = {
-      type: SET_USER
+      type: SET_USER,
+      user
     }
     const newState = userReducer(oldState, action)
     expect(newState.username).toBe('test user')
