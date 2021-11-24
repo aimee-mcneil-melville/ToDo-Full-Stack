@@ -37,6 +37,12 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
   "jest": {
     "setupFiles": [
       "./tests/setup-dotenv.js"

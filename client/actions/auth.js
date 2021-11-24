@@ -77,9 +77,9 @@ export function registerUserRequest (creds, confirmSuccess) {
   }
 }
 
-export function checkAuth(confirmSuccess) {
+export function checkAuth (confirmSuccess) {
   return dispatch => {
-    if(isAuthenticated()) {
+    if (isAuthenticated()) {
       dispatch(receiveLogin(getUserTokenInfo()))
       confirmSuccess()
     }

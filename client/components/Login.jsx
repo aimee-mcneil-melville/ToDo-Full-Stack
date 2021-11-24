@@ -1,8 +1,8 @@
-import React, {useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
-import { useNavigate } from "react-router"
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
-import {loginUser} from "../actions/auth"
+import { loginUser } from '../actions/auth'
 
 function Login () {
   const navigateTo = useNavigate()
@@ -10,24 +10,23 @@ function Login () {
   const auth = useSelector(redux => redux.auth)
 
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: ''
   })
 
   const handleChange = (e) => {
     setFormData(currentFormData => {
       return {
         ...currentFormData,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
     })
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    let { username, password } = formData
-    const confirmSuccess = () => navigateTo("/")
+    const { username, password } = formData
+    const confirmSuccess = () => navigateTo('/')
     dispatch(loginUser({ username, password }, confirmSuccess))
   }
 

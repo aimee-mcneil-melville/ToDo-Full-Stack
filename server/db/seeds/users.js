@@ -1,6 +1,5 @@
 const { generateHash } = require('authenticare/server')
 
-
 exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('users').del()
@@ -14,7 +13,7 @@ exports.seed = function (knex) {
             password: 'Krang',
             first_name: 'Admin',
             last_name: 'Istrator',
-            hourly_wage: 300,
+            hourly_wage: 300
           }
         ].map(user => {
           return generateHash(user.password)

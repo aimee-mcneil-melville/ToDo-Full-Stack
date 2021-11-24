@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: [
-    './client/index.js', 
+    './client/index.js',
     './client/styles/index.scss'
   ],
   output: {
