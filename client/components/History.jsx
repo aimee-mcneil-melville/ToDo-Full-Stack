@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
 function History () {
   return <div className="container">
@@ -7,4 +6,4 @@ function History () {
   </div>
 }
 
-export default connect()(History)
+export default History

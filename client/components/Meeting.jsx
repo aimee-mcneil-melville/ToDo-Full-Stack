@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
 function Meeting () {
   return <div className="container">
@@ -7,4 +6,4 @@ function Meeting () {
   </div>
 }
 
-export default connect()(Meeting)
+export default Meeting
