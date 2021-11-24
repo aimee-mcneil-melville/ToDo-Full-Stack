@@ -2,20 +2,20 @@ import { register as authRegister, signIn as authLogin } from 'authenticare/clie
 import { baseApiUrl as baseUrl } from '../config'
 
 const errorMessages = {
-  "USERNAME_UNAVAILABLE": "Sorry, that username is taken.",
-  "INVALID_CREDENTIALS": "Sorry, your username or password is incorrect.",
+  USERNAME_UNAVAILABLE: "Sorry, that username is taken.",
+  INVALID_CREDENTIALS: "Sorry, your username or password is incorrect.",
 }
 
 export function register (creds) {
   return authRegister(creds, { baseUrl })
     .catch(err => {
-      throw errorMessages[err.response.body.errorType]
+      throw errorMessages[err.message]
     })
 }
 
 export function login (creds) {
   return authLogin(creds, { baseUrl })
     .catch(err => {
-      throw errorMessages[err.response.body.errorType]
+      throw errorMessages[err.message]
     })
 }
