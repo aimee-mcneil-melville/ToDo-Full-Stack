@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { updateSong } from '../../apis/media'
 
 function UpdateSong (props) {
   const { id } = useParams()
@@ -10,6 +11,7 @@ function UpdateSong (props) {
   const { mediaName, artist, genre, comment, link } = song || {} // comment related functionality to be removed //
 
   const [editForm, setEditForm] = useState({
+    id: Number(id),
     mediaName,
     artist,
     genre,
@@ -27,8 +29,8 @@ function UpdateSong (props) {
   }
 
   function handleSubmit (e) {
-    // e.preventDefault()
-    props.dispatch(UpdateSong(id, editForm))
+    e.preventDefault()
+    updateSong(editForm)
   }
 
   return (
@@ -77,7 +79,7 @@ function UpdateSong (props) {
               value={editForm.link}
               onChange={handleChange}/>
           </label>
-          <button>SAVE</button>
+          <button onClick={handleSubmit}>SAVE</button>
         </form>
       }
     </>

@@ -3,7 +3,7 @@ import request from 'superagent'
 const rootUrl = '/api/v1/media/getMedia/'
 
 export function getSongs (id) {
-  console.log('api')
+  console.log('getsongs api')
   return request.get(rootUrl + id)
     .then(res => {
       const songList = res.body.map(song => {
@@ -22,7 +22,7 @@ export function updateSong (updateSongData) {
 
 export function addSong (id, newSongData) {
   return request.post(rootUrl + newSongData.id + '/add')
-    .send(id, newSongData)
+    .send({ id, newSongData })
     .then(res => res.body)
 }
 
