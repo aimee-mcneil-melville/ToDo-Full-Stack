@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { addSong } from '../../apis/media'
 
 function AddSong (props) {
   const [songForm, setSongForm] = useState({
@@ -22,6 +23,7 @@ function AddSong (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
+    addSong(10001, songForm)
     props.history.push('/songs')
   }
 
@@ -75,7 +77,7 @@ function AddSong (props) {
             placeholder="A link so others can listen (optional)"
             onChange={handleChange} />
         </label>
-        <button>Save</button>
+        <button onClick={handleSubmit}>Save</button>
       </form>
     </>
   )

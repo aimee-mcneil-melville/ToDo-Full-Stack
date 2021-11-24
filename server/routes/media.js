@@ -18,9 +18,12 @@ router.get('/getMedia/:id', (req, res) => {
 
 // POST /api/v1/media/getMedia/id/add
 router.post('/getMedia/:id/add', (req, res) => {
-  const { media_name: mediaName, genre, artist, comment, link } = req.body
-  const songData = { mediaName, genre, artist, comment, link }
-  db.addSong(songData)
+  console.log('newSongData in add route', req.body.newSongData)
+  const { songTitle, genre, artist, comment, link } = req.body.newSongData
+  const userId = req.body.id
+  const songData = { mediaName: songTitle, genre, artist, comment, link }
+  console.log('route', songData)
+  db.addSong(userId, songData)
     .then((result) => {
       res.json(result)
       return null
@@ -34,7 +37,7 @@ router.post('/getMedia/:id/add', (req, res) => {
 // PATCH /api/v1/media/getMedia/id/edit
 router.patch('/getMedia/:id/edit', (req, res) => {
   const editSongData = req.body
-  db.editSong(editSongData)
+  db.updateSong(editSongData)
     .then(() => {
       res.sendStatus(200)
       return null
