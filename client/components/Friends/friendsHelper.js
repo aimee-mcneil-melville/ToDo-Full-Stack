@@ -1,15 +1,15 @@
-import { getFriends } from '../apis/friends.js'
+import { getFriends } from '../../apis/friends.js'
 import {
-  setFriends,
-  getFriendsPending,
+  setFriendsSuccess,
+  setFriendsPending,
   setError
-} from '../actions'
+} from '../../actions'
 
 export function fetchFriends (dispatch, id) {
-  dispatch(getFriendsPending())
+  dispatch(setFriendsPending())
   return getFriends(id)
     .then(friends => {
-      dispatch(setFriends(friends))
+      dispatch(setFriendsSuccess(friends))
       return null
     })
     .catch(err => {
