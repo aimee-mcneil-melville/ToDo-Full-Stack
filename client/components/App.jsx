@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {HashRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
 
 import Login from './Login'
 import Register from './Register'
@@ -10,12 +10,16 @@ import History from './History'
 
 import {checkAuth} from '../actions/auth'
 
-function App ({auth, dispatch}) {
+function App () {
+
+  const auth = useSelector(reduxState => reduxState.auth)
+  const dispatch = useDispatch()
   
   useEffect(() => {
     const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
   }, [])
+
 
     return (
       <Router>
@@ -26,18 +30,19 @@ function App ({auth, dispatch}) {
               <Link to='/' className="">
                 <h1 className="title is-1">$how Me The Money</h1>
               </Link>
-              <Route path="/" component={Nav} />
+              <Nav />
             </div>
           </div>
 
           <div className=''>
-            {!auth.isAuthenticated &&
-              <Route exact path="/" component={Login} />
-            }
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/meeting" component={Meeting} />
-            <Route path="/history" component={History} />
+            <Routes>
+             
+                <Route path="/" element={auth.isAuthenticated ? <></> : <Login />} />
+              {/* <Route path="/login" element={<Login /} /> */}
+              <Route path="/register" element={<Register />} />
+              <Route path="/meeting" element={<Meeting />} />
+              <Route path="/history" element={<History />} />
+            </Routes>
           </div>
 
         </div>
@@ -45,10 +50,4 @@ function App ({auth, dispatch}) {
     )
 }
 
-const mapStateToProps = ({auth}) => {
-  return {
-    auth
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App
