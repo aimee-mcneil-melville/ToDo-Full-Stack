@@ -35,6 +35,7 @@ function App () {
         <div className=''>
           <Routes>
             <Route path="/" element={auth.isAuthenticated ? <></> : <Login />} />
+            <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />} />
             <Route path="/meeting" element={<Meeting />} />
             <Route path="/history" element={<History />} />
