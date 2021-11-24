@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import {loginError, registerUserRequest} from '../actions/auth'
 
-function Register (props) {
-  const {auth} = props
+function Register () {
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const auth = useSelector(redux => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
@@ -15,7 +18,7 @@ function Register (props) {
   })
    
   useEffect(() => {
-    props.dispatch(loginError(''))
+    dispatch(loginError(''))
   }, [])
 
   const handleChange = (e) => {
@@ -31,9 +34,9 @@ function Register (props) {
     e.preventDefault()
     e.target.reset()
     let {username, password, confirm_password, first_name, last_name} = formData
-    if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
-    const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({username, password, first_name, last_name}, confirmSuccess))
+    if (confirm_password != password) return dispatch(loginError("Passwords don't match"))
+    const confirmSuccess = () => navigateTo('/')
+    dispatch(registerUserRequest({username, password, first_name, last_name}, confirmSuccess))
   }
 
     return (
@@ -66,10 +69,4 @@ function Register (props) {
     )
 }
 
-const mapStateToProps = ({auth}) => {
-  return {
-    auth
-  }
-}
-
-export default connect(mapStateToProps)(Register)
+export default Register
