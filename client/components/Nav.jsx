@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {Link, useNavigate} from 'react-router-dom'
 
 import {logoutUser} from '../actions/auth'
 
-function Nav ({auth, logout}) {
+function Nav () {
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const auth = useSelector(redux => redux.auth)
+
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
-    setBurgerVisible(currentBurgerState => {
-      return !currentBurgerState
-    })
+    setBurgerVisible(currentBurgerState => !currentBurgerState)
+  }
+  const logout = () => {
+    const confirmSuccess = () => navigateTo('/')
+    dispatch(logoutUser(confirmSuccess))
   }
 
     return <nav className="navbar">
@@ -41,19 +47,4 @@ function Nav ({auth, logout}) {
     </nav>
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    logout: () => {
-      const confirmSuccess = () => ownProps.history.push('/')
-      dispatch(logoutUser(confirmSuccess))
-    }
-  }
-}
-
-const mapStateToProps = ({auth}) => {
-  return {
-    auth
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default Nav
