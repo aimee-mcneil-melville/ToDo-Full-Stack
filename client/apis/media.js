@@ -15,14 +15,12 @@ export function getSongs (id) {
 }
 
 export function updateSong (updateSongData) {
-  console.log('update', updateSongData)
   return request.patch(rootUrl + updateSongData.id + '/edit')
     .send(updateSongData)
     .then(res => res.body)
 }
 
 export function addSong (id, newSongData) {
-  console.log('addsong api - id ', id, ' data: ', newSongData)
   return request.post(rootUrl + newSongData.id + '/add')
     .send({ id, newSongData })
     .then(res => res.body)

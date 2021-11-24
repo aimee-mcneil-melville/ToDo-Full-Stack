@@ -18,11 +18,9 @@ router.get('/getMedia/:id', (req, res) => {
 
 // POST /api/v1/media/getMedia/id/add
 router.post('/getMedia/:id/add', (req, res) => {
-  console.log('newSongData in add route', req.body.newSongData)
   const { songTitle, genre, artist, comment, link } = req.body.newSongData
   const userId = req.body.id
   const songData = { mediaName: songTitle, genre, artist, comment, link }
-  console.log('route', songData)
   db.addSong(userId, songData)
     .then((result) => {
       res.json(result)

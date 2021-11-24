@@ -9,7 +9,6 @@ function getMedia (id, db = connection) {
 }
 
 function addSong (userId, song, db = connection) {
-  console.log('song db', song)
   const { genre, mediaName, artist, link, comment } = song
   const newSong = { user_id: userId, genre, media_name: mediaName, artist, link, comment }
   return db('media_list')
