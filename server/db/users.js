@@ -10,16 +10,9 @@ module.exports = {
 
 function getUserDetailsByGarden (gardenId, db = connection) {
   return db('users')
-    .select('id', 'username', 'garden_id as gardenId', 'email')
+    .select('id', 'garden_id as gardenId', 'email')
     .where('garden_id', gardenId)
 }
-
-// function getUserByName (username, db = connection) {
-//   return db('users')
-//     .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
-//     .where('username', username)
-//     .first()
-// }
 
 function getUserById (id, db = connection) {
   return db('users')
@@ -33,7 +26,6 @@ function getUsersByAuth (auth0Id, db = connection) {
     .select(
       'id',
       'email',
-      'username',
       'first_name as firstName',
       'last_name as lastName',
       'garden_id as gardenId',
