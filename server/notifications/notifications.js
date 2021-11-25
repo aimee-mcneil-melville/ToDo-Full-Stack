@@ -39,11 +39,11 @@ function sendNotification (userdata, eventdata) {
           to: [
             {
               email: userdata.email,
-              name: userdata.username
+              name: userdata.firstName
             }
           ],
           dynamic_template_data: {
-            name: userdata.username,
+            name: userdata.firstName,
             id: userdata.id,
             title: eventdata.title,
             date: eventdata.date,
