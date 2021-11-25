@@ -213,7 +213,6 @@ Response for ADMIN (200):
   "volunteers": [
     {
       "userId": 3,
-      "username": "jdog",
       "firstName": "Johnny",
       "lastName": "Dawg"
     }
