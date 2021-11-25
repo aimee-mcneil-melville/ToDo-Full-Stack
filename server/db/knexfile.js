@@ -42,7 +42,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user: 'username', // ??? need to delete this username? Issue #22
+      user: 'username',
       password: 'password'
     },
     pool: {

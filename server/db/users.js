@@ -3,7 +3,6 @@ const connection = require('./connection')
 module.exports = {
   createUser,
   userExists,
-  getUserByName,
   getUserDetailsByGarden,
   getUsersByAuth,
   getUserById
@@ -15,16 +14,16 @@ function getUserDetailsByGarden (gardenId, db = connection) {
     .where('garden_id', gardenId)
 }
 
-function getUserByName (username, db = connection) {
-  return db('users')
-    .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
-    .where('username', username)
-    .first()
-}
+// function getUserByName (username, db = connection) {
+//   return db('users')
+//     .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
+//     .where('username', username)
+//     .first()
+// }
 
 function getUserById (id, db = connection) {
   return db('users')
-    .select('username', 'garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email')
+    .select('garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
     .where('id', id)
     .first()
 }
@@ -56,7 +55,6 @@ function createUser (user, db = connection) {
       return db('users').insert({
         first_name: user.firstName,
         last_name: user.lastName,
-        username: user.username,
         garden_id: user.gardenId,
         email: user.email,
         auth0_id: user.auth0Id
