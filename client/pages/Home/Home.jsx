@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 import { motion } from 'framer-motion'
+import GardenList from '../../components/GardenList/GardenList'
 
 const leftVariant = {
   hidden: {
@@ -66,7 +67,8 @@ export default function Home () {
 
   return (
     <section className='flex-container'>
-      <motion.article className='column-6 home-title-container'
+      <GardenList />
+      {/* <motion.article className='column-6 home-title-container'
         variants={leftVariant}
         initial='hidden'
         animate='visible'
@@ -85,7 +87,7 @@ export default function Home () {
         variants={rightVariant}
         initial='hidden'
         animate='visible'
-      />
+      /> */}
 
     </section>
   )
