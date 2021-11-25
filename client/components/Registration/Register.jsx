@@ -14,7 +14,7 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  username: Yup.string()
+  username: Yup.string() // TODO: delete username
     .min(2, 'This must be at least 2 characters long')
     .max(15, 'Sorry, this must be under 15 characters long')
     .required('Required'),
@@ -30,7 +30,7 @@ export default function Register () {
     initialValues: {
       firstName: '',
       lastName: '',
-      username: '',
+      username: '', // TODO: delete username
       gardenId: null
     },
     onSubmit: values => {
@@ -44,7 +44,7 @@ export default function Register () {
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null
   }
-
+  // TODO: delete username from below
   return (
     <>
       <section className='flex-container'>

@@ -8,13 +8,13 @@ const router = express.Router()
 module.exports = router
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, gardenId, username, auth0Id, email } = req.body
+  const { firstName, lastName, gardenId, username, auth0Id, email } = req.body // TODO: Delete username
 
   const user = {
     firstName,
     lastName,
     gardenId,
-    username,
+    username, // TODO: Delete username
     email,
     auth0Id
   }
