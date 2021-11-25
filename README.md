@@ -136,6 +136,13 @@ Play! Define a bunch of different event handlers and in each one do something di
  * **onDoubleClick**: turn the components white
  * **onDragEnter**: turn the components yellow as you click and drag through them
 
+ Note: `onDragEnter` can be quite fickle, especially with a large number of pixels and/or a fast refresh rate. If you're fairly sure your code is right but the pixels still don't turn yellow when you drag, try:
+ 1. using a different browser (preferably Firefox), 
+ 1. reducing the number of pixels, 
+ 1. lengthening the refresh interval, 
+ 1. experimenting with different drag tactics with your mouse, or
+ 1. any combination of the above!
+
 
 ## Hi-res
 
