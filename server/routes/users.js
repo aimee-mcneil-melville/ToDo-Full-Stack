@@ -8,13 +8,12 @@ const router = express.Router()
 module.exports = router
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, gardenId, username, auth0Id, email } = req.body
+  const { firstName, lastName, gardenId, auth0Id, email } = req.body
 
   const user = {
     firstName,
     lastName,
     gardenId,
-    username,
     email,
     auth0Id
   }

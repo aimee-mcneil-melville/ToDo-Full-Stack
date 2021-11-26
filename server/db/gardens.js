@@ -30,8 +30,7 @@ function getGardenById (id, db = connection) {
       'title',
       'date',
       'volunteers_needed as volunteersNeeded',
-      'users.id as userId',
-      'username'
+      'users.id as userId'
     )
     .then((result) => {
       const garden = result[0]
@@ -52,7 +51,6 @@ function getGardenById (id, db = connection) {
             description: event.eventDescription,
             status: event.status,
             volunteer: {
-              username: event.username,
               userId: event.userId
             }
           }
@@ -72,6 +70,6 @@ function extractVolunteers (events) {
       : [...acc, { ...event, volunteers: [event.volunteer] }]
   , [])
     .map(({ id, volunteersNeeded, status, title, date, description, volunteers }) => (
-      { id, volunteersNeeded, title, status, date, description, volunteers: volunteers.filter(v => v.userId || v.username) }
+      { id, volunteersNeeded, title, status, date, description, volunteers: volunteers.filter(v => v.userId) }
     ))
 }
