@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
+import { getAllGardens } from './gardernListHelper'
 
 export default function GardenList () {
   // const testGardenList = [{
@@ -9,18 +12,28 @@ export default function GardenList () {
   //   events: ['event1', 'event2', 'event3']
   // }]
 
-  const [gardenList, setGardenList] = useState(testGardenList)
+  const [gardenList, setGardenList] = useState([])
 
-  useEffect
+  useEffect(() => {
+    // get api
+    getAllGardens()
+      .then(gardens => {
+        setGardenList(gardens)
+        return null
+      })
+      .catch(err => console.error(err))
+  }, [])
 
   return (
     <>
       {gardenList.map((garden) => {
         return <div key={garden.id}>
-          <h2>{garden.name}</h2>
-          <h3>{garden.address}</h3>
+          <Link to={`/gardens/${garden.id}`}>
+            <h2>{garden.name}</h2>
+          </Link>
+          <h4>Address: {garden.address}</h4>
           <p>{garden.description}</p>
-          <p>Events: {garden.events.length}</p>
+          <a href={garden.url} > <span className='fas fa-home'/>website </a>
         </div>
       })}
     </>

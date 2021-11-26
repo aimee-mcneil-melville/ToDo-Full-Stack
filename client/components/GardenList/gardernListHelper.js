@@ -1,19 +1,17 @@
 import requestor from '../../consume'
 import { dispatch } from '../../store'
-import { setWaiting } from '../../actions/waiting'
+import { clearWaiting, setWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
-import { getGardenList } from '../actions/gardernList'
 
-export function getAllGarden (consume = requestor) {
+export function getAllGardens (consume = requestor) {
   dispatch(setWaiting())
-  const headers = {
-    Accept: 'application/json'
-  }
 
-  return consume('/', '', 'get', {}, headers)
-    .then(() => {
-      dispatch(getGardenList())
-      return null
+  return consume('/gardens')
+    .then((res) => {
+      dispatch(clearWaiting())
+      const { gardens } = res.body
+
+      return gardens
     })
     .catch((error) => {
       dispatch(showError(error.message))
