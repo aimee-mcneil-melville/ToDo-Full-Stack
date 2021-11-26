@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [ devops-5-setup-cicd-second ]
+    branches: [ dev, main ]
   pull_request:
-    branches: [ devops-5-setup-cicd-second]
+    branches: [ dev, main ]
 
 env:
   JWT_SECRET: ${{secrets.JWT}}
@@ -64,7 +64,7 @@ jobs:
   deploy:
    needs: build
    runs-on: ubuntu-latest
-   if: github.ref == 'refs/heads/devops-5-setup-cicd-second'
+   if: github.ref == 'refs/heads/dev'
    steps:
     - uses: actions/checkout@v2
      
@@ -76,8 +76,8 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "gardenz-app"
         heroku_email: "ryan.julian.bosher@icloud.com"
-        branch: "devops-5-setup-cicd-second"
+        branch: "dev"
     # - name: Deploy to Heroku
-    #   run: git push heroku devops-5-setup-cicd-second:refs/heads/main -f
+    #   run: git push heroku dev:refs/heads/main -f
       env:
         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
