@@ -50,8 +50,51 @@ const mockUserGarden = {
           userId: 4
         }
       ]
-    }]
+    }
+  ]
 }
+// Dependencies for commented out tests for POST tests
+// const { getAdminToken } = require('./mockToken')
+// const testAuthAdminHeader = {
+//   Authorization: `Bearer ${getAdminToken()}`
+// }
+
+describe('POST /api/v1/gardens', () => {
+  it('responds with the correct garden', () => {
+    db.addGarden.mockImplementation((newGarden) => {
+      expect(newGarden.id).toBe(2)
+      expect(newGarden.name).toMatch('Gardens 2')
+      expect(newGarden.description).toMatch('Kelmarna Gardens is a city farm and ...')
+      expect(newGarden.address).toMatch('12 Hukanui Crescent')
+    })
+  })
+})
+
+// it('responds with status 401 when no token is passed', () => {
+//   return request(server)
+//     .post('/api/v1/gardens')
+//     .then(res => {
+//       expect(res.status).toBe(401)
+//       return null
+//     })
+// })
+
+// it('responds with status 500 and an error during a DB error', () => {
+//   db.addGarden.mockImplementation(() => Promise.reject (
+//     new Error('mock addGarden error')
+//   ))
+//   return request(server)
+//     .post('/api/v1/gardens')
+//     .set(testAuthAdminHeader)
+//     .expect('Content-Type', /json/)
+//     .expect(500)
+//     .then(res => {
+//       expect(log).toHaveBeenCalledWith('mock addGarden error')
+//       expect(res.body.error.title).toBe('Unable to add garden')
+//       return null
+//     })
+// })
+// })
 
 describe('GET /api/v1/gardens', () => {
   it('responds with gardens on res body', () => {
