@@ -9,7 +9,6 @@ export function registerUser (user, authUser, navigateTo, consume = requestor) {
     firstName: user.firstName,
     lastName: user.lastName,
     gardenId: user.gardenId,
-    username: user.username, // TODO: delete username
     email: authUser.email,
     auth0Id: authUser.sub
   }
