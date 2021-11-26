@@ -25,7 +25,6 @@ describe('Register form field', () => {
 
     userEvent.clear(screen.getByLabelText(/first name/i))
     userEvent.clear(screen.getByLabelText(/last name/i))
-    userEvent.clear(screen.getByLabelText(/username/i))
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
@@ -38,7 +37,6 @@ describe('Register form field', () => {
 
     userEvent.type(screen.getByLabelText(/first name/i), 'a')
     userEvent.type(screen.getByLabelText(/last name/i), 'b')
-    userEvent.type(screen.getByLabelText(/username/i), 'c')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
@@ -51,7 +49,6 @@ describe('Register form field', () => {
 
     userEvent.type(screen.getByLabelText(/first name/i), 'whatawonderfuldaytobealive')
     userEvent.type(screen.getByLabelText(/last name/i), 'howmanydaysareleftoftheyear')
-    userEvent.type(screen.getByLabelText(/username/i), 'thisisatestforalongusername')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 

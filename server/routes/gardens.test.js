@@ -28,10 +28,10 @@ const mockUserGarden = {
       description: "It's time to get these weeds under control.",
       volunteers: [
         {
-          username: 'Sam',
+          firstName: 'Sam',
           userId: 3
         }, {
-          username: 'Steve',
+          firstName: 'Steve',
           userId: 4
         }
       ]
@@ -43,10 +43,10 @@ const mockUserGarden = {
       description: "It's time to rock this garden!",
       volunteers: [
         {
-          username: 'Sam',
+          firstName: 'Sam',
           userId: 3
         }, {
-          username: 'Steve',
+          firstName: 'Steve',
           userId: 4
         }
       ]
@@ -153,10 +153,10 @@ describe('GET /api/v1/gardens/:id', () => {
   it('returns volunteers array if user is admin', () => {
     const expected = [
       {
-        username: 'Sam',
+        firstName: 'Sam',
         userId: 3
       }, {
-        username: 'Steve',
+        firstName: 'Steve',
         userId: 4
       }
     ]

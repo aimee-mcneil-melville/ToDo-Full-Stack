@@ -127,7 +127,6 @@ Response for ADMIN (200):
   "description": "It's time to get these weeds under control.",
   "volunteers": [{
     "userId": 3,
-    "username": "jdog",
     "firstName": "Johnny",
     "lastName": "Dawg"
   }]
