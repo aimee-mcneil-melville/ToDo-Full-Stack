@@ -8,7 +8,7 @@ const { getUserById } = require('../db/users')
 
 const router = express.Router()
 
-const checkAdmin = jwtAuthz(['update:event_volunteers'], {
+const checkAdmin = jwtAuthz(['create:garden'], {
   customScopeKey: 'permissions'
 })
 
