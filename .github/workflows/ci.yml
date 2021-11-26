@@ -44,7 +44,7 @@ jobs:
         run: npm ci
         
       - name: Linting
-        run: "npm run lint -- --rule 'no-console: 1'"
+        run: "npm run lint -- --rule 'no-console: 0'"
         
       - name: Test
         run: npm run test
