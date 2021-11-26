@@ -43,8 +43,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
         
-      - name: Linting
-        run: "npm run lint -- --rule 'no-console: 0'"
+      # - name: Linting
+      #   run: "npm run lint -- --rule 'no-console: 2'"
         
       - name: Test
         run: npm run test
