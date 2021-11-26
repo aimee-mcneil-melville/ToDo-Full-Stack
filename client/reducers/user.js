@@ -2,8 +2,8 @@ import { SET_USER, CLEAR_USER } from '../actions/user'
 
 const emptyUser = {
   id: null,
-  username: '',
   isAdmin: false,
+  firstName: '',
   gardenId: null,
   token: ''
 }
