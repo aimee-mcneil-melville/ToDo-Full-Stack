@@ -2,11 +2,27 @@ const connection = require('./connection')
 
 module.exports = {
   getGardens,
-  getGardenById
+  getGardenById,
+  addGarden
 }
 
 function getGardens (db = connection) {
   return db('gardens').select()
+}
+
+function addGarden (newGarden, db = connection) {
+  // const { name, address, description, lat, lon, url } = newGarden
+  return db('gardens')
+  //   .insert({
+  //     name: name,
+  //     address: address,
+  //     description: description,
+  //     lat: lat,
+  //     lon: lon,
+  //     url: url
+  //   })
+    .insert(newGarden)
+    .then((ids) => getGardenById(ids[0], db))
 }
 
 // Will be changing format of user table

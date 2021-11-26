@@ -30,8 +30,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { id, name, address, description, lat, lon, url } = req.body
-  db.addGarden({ id, name, address, description, lat, lon, url })
+  const { name, address, description, lat, lon, url } = req.body
+  const newGarden = { name, address, description, lat, lon, url }
+  db.addGarden(newGarden)
     .then((garden) => {
       return res.status(201).json({ garden })
     })
