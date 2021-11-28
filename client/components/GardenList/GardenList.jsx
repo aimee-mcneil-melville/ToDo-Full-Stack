@@ -17,17 +17,17 @@ export default function GardenList () {
   }, [])
 
   return (
-    <>
+    <ul>
       {gardenList.map((garden) => {
-        return <div key={garden.id}>
+        return <li key={garden.id}>
           <Link to={`/gardens/${garden.id}`}>
             <h2>{garden.name}</h2>
           </Link>
           <h4>Address: {garden.address}</h4>
           <p>{garden.description}</p>
 
-        </div>
+        </li>
       })}
-    </>
+    </ul>
   )
 }
