@@ -50,7 +50,7 @@ jobs:
         run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
         
       - name: Skipping E2E Tests!
-          run: npm run test:e2e
+        run: npm run test:e2e
   # deploy:
   #  needs: build
   #  runs-on: ubuntu-latest
