@@ -4,17 +4,18 @@
 
 .form-box {
   position: relative;
-width: 460px;
-height: 40px;
-background: #FFFFFF;
-border: 1.5px solid #8ADB55;
-box-sizing: border-box;
-border-radius: 4px;
+  width: 460px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1.5px solid #8ADB55;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .form-title {
   text-align: center;
 }
+
 .description-box {
   @extend .form-box;
   height: 150px;
@@ -27,12 +28,12 @@ border-radius: 4px;
   font-size: 16px;
   line-height: 28px;
   color: vars.$black;
-  font-weight: 500;
+  font-weight: 800;
   display: block;
-  text-align: center;
-  margin: 0 auto;
-  // margin-bottom: vars.$base-size * 0.5;
+  text-align: left;
+  margin: 10px 10px auto;
 }
+
 
 .form-input {
   height: vars.$base-size * 1.75; // or 100%?
@@ -46,3 +47,5 @@ border-radius: 4px;
   width: vars.$base-size * 20;
   margin-bottom: vars.$base-size;
 }
+
+

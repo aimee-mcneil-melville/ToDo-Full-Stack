@@ -23,9 +23,12 @@
 .submit {
   @extend .button-primary;
   display: flex;
-    width:auto;
+    width: 150px;
     margin: 5px auto;
+    margin-top: 25px;
     align-items: center;
+    padding: 10px;
+    justify-content: center;
 }
 
 .button-width {
