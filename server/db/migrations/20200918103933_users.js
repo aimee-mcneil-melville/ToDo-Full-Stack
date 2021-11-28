@@ -4,7 +4,6 @@ exports.up = (knex) => {
     table.integer('garden_id')
     table.string('first_name')
     table.string('last_name')
-    table.string('username')
     table.string('email')
     table.string('hash')
   })

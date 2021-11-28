@@ -13,13 +13,13 @@ describe('send each user a notification', () => {
       return Promise.resolve([{
         id: 4,
         gardenId: 1,
-        username: 'admin',
+        firstName: 'Admin',
         isAdmin: true,
         email: 'admin@outlook.com'
       }, {
         id: 5,
         gardenId: 1,
-        username: 'otheruser',
+        firstName: 'Otheruser',
         isAdmin: false,
         email: 'user@outlook.com'
       }])
