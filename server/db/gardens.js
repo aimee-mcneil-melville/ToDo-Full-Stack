@@ -2,11 +2,18 @@ const connection = require('./connection')
 
 module.exports = {
   getGardens,
-  getGardenById
+  getGardenById,
+  addGarden
 }
 
 function getGardens (db = connection) {
   return db('gardens').select()
+}
+
+function addGarden (newGarden, db = connection) {
+  return db('gardens')
+    .insert(newGarden)
+    .then((ids) => getGardenById(ids[0], db))
 }
 
 // Will be changing format of user table

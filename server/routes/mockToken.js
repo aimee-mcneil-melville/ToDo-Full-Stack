@@ -89,7 +89,8 @@ const getAdminToken = () => {
     name: user.email,
     permissions: ['update:event',
       'create:event',
-      'update:event_volunteers'
+      'update:event_volunteers',
+      'create:garden'
     ]
   }
 
