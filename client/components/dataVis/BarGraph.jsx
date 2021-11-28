@@ -5,6 +5,7 @@ import { Group } from '@visx/group'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
+import { ScaleSVG } from '@visx/responsive';
 const verticalMargin = 120
 // accessors
 

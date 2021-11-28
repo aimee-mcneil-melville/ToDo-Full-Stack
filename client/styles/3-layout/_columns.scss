@@ -26,3 +26,18 @@
     width: functions.colWidth(9);
   }
 }
+
+.column-9.scroll{
+  width: functions.colWidth(12);
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(12);
+  }
+  h2{
+    width: functions.colWidth(12);
+    text-align: left;
+  }
+  p{
+    text-align: left;
+    }
+
+}

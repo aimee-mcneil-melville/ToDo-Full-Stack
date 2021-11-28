@@ -9,16 +9,30 @@
   @include mixins.media-queries(mobile, min) {
     border-radius: 0%;
     width: functions.colWidth(12);
+    object-fit: contain;
   }
 }
 
-.map-container {
-  padding: vars.$base-size;
-  padding-right: 0;
+.graph-map {
+  // padding: vars.$base-size;
+  // padding-right: 0;
   width: functions.colWidth(12);
-  order: -1;
+  text-align: left;
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(6);
-    order: 1;
+    padding: 10px 10px;
   }
+
+  svg {
+    display: block;
+    position: relative;
+    width: 100%;
+    object-fit: contain;
+  }
+  // svg::after {
+  //   position: relative;
+  //   display: block;
+  //   margin:0 0 0 0;
+  //   object-fit: contain;
+  // }
 }

@@ -29,7 +29,7 @@ export default function Garden () {
         </article>
         <Events gardenid={id} events={events} />
       </div>
-      <section>
+      <section className='graph-map'>
         <Map
           userCoordinates={location}
           coordinates={[{ lat: lat, lon: lon }]}
