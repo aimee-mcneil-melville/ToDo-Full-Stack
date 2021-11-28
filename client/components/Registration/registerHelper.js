@@ -4,7 +4,7 @@ import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { setUser } from '../../actions/user'
 import { showError } from '../../actions/error'
 
-export function registerUser (user, authUser, navigateTo, consume = requestor) {
+export function registerUser (user, isAdmin, authUser, navigateTo, consume = requestor) {
   const newUser = {
     firstName: user.firstName,
     lastName: user.lastName,
@@ -20,9 +20,11 @@ export function registerUser (user, authUser, navigateTo, consume = requestor) {
 
   return consume('/users', token, 'post', newUser)
     .then((res) => {
-      dispatch(setUser(res.body))
+      const newUser = res.body
+      newUser.isAdmin = isAdmin
+      dispatch(setUser(newUser))
       navigateTo(`/gardens/${user.gardenId}`)
-      return res.body
+      return newUser
     })
     .catch((err) => {
       dispatch(showError(err.message))

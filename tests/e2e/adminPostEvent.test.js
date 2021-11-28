@@ -96,7 +96,7 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.button-primary', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
 
   expect(await page.$eval('section', (el) => el.innerText)).toMatch(
