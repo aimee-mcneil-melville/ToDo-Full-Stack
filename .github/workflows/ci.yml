@@ -1,10 +1,5 @@
 name: CI/CD
 
-strategy:
-    matrix:
-      TARGET_BRANCH_CI: [ dev, main, devops-5-setup-cicd-second ]
-      TARGET_BRANCH_CD: [ dev, devops-5-setup-cicd-second ]
-  
 on:
   push:
     branches: [ dev, main, devops-5-setup-cicd-second ]
