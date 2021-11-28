@@ -1,5 +1,16 @@
 name: CI/CD
 
+strategy:
+    matrix:
+      TARGET_BRANCH_CI: [ dev, main, devops-5-setup-cicd-second ]
+      TARGET_BRANCH_CD: [ dev, devops-5-setup-cicd-second ]
+  
+on:
+  push:
+    branches: ${{ env.TARGET_BRANCH_CI }}
+  pull_request:
+    branches: ${{ env.TARGET_BRANCH_CI }}
+
 env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
@@ -8,12 +19,6 @@ env:
   TARGET_BRANCH_CD: [ dev, devops-5-setup-cicd-second ]
   # DEBUG: nock.*
   
-on:
-  push:
-    branches: ${{ env.TARGET_BRANCH_CI }}
-  pull_request:
-    branches: ${{ env.TARGET_BRANCH_CI }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
