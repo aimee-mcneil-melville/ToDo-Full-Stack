@@ -34,23 +34,26 @@ jobs:
       - name: Install Dependencies
         run: npm ci
         
-      # - name: Linting
-      #   run: "npm run lint -- --rule 'no-console: 2'"
+      - name: Linting
+        run: "npm run lint -- --rule 'no-console: 2'"
         
       - name: Test
         run: npm run test
         
-      - name: Build
-        run: npm run build
+      ### the below is for E2E testing ###
+      # - name: Build
+      #   run: npm run build
         
-      - name: Seed data
-        run: npm run db:seed
+      # - name: Seed data
+      #   run: npm run db:seed
 
-      - name: Start test server
-        run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
+      # - name: Start test server
+      #   run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
         
-      - name: Skipping E2E Tests!
-        run: npm run test:e2e
+      # - name: Skipping E2E Tests!
+      #   run: npm run test:e2e
+      
+      ### the below is for deployment to Heroku ###
   # deploy:
   #  needs: build
   #  runs-on: ubuntu-latest
