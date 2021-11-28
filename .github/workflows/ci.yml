@@ -1,16 +1,18 @@
 name: CI/CD
 
-on:
-  push:
-    branches: [ dev, main ]
-  pull_request:
-    branches: [ dev, main ]
-
 env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   PORT: 3000
+  TARGET_BRANCH_CI: [ dev, main, devops-5-setup-cicd-second ]
+  TARGET_BRANCH_CD: [ dev, devops-5-setup-cicd-second ]
   # DEBUG: nock.*
+  
+on:
+  push:
+    branches: ${{ env.TARGET_BRANCH_CI }}
+  pull_request:
+    branches: ${{ env.TARGET_BRANCH_CI }}
 
 jobs:
   build:
@@ -76,7 +78,7 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "gardenz-app"
         heroku_email: "ryan.julian.bosher@icloud.com"
-        branch: "dev"
+        branch: ${{ env.TARGET_BRANCH_CD }}
     # - name: Deploy to Heroku
     #   run: git push heroku dev:refs/heads/main -f
       env:
