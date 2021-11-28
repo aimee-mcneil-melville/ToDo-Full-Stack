@@ -34,7 +34,8 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
   const newGarden = { name, address, description, lat, lon, url }
   db.addGarden(newGarden)
     .then((garden) => {
-      return res.status(201).json({ garden })
+      res.status(201).json({ garden })
+      return null
     })
     .catch((err) => {
       log(err.message)
