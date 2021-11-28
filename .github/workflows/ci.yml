@@ -7,7 +7,7 @@ strategy:
   
 on:
   push:
-    branches: ${{ env.TARGET_BRANCH_CI }}
+    branches: [ dev, main, devops-5-setup-cicd-second ]
   pull_request:
     branches: ${{ env.TARGET_BRANCH_CI }}
 
