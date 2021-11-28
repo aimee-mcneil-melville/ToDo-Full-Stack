@@ -19,11 +19,8 @@ describe('list of gardens', () => {
 
     renderWithRouter(<GardenList />)
 
-    expect(screen.queryByRole('listitem')).toBeNull()
-
-    // const listItems = await screen.queryByRole('listitem')
-    // console.log(listItems)
-    // expect(listItems).toBeNull()
+    const list = await screen.findByRole('list')
+    expect(list).toBeEmptyDOMElement()
   })
 
   it('displays information corrctly when array has one object', () => {
