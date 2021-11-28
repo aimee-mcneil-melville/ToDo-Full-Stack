@@ -2,13 +2,13 @@ name: CI/CD
 
 on:
   push:
-    branches: [ dev, main, devops-5-setup-cicd-second ]
+    branches: [ dev, main ]
   pull_request:
-    branches: [ dev, devops-5-setup-cicd-second ]
+    branches: [ dev, main ]
 
 env:
-  # JWT_SECRET: ${{secrets.JWT}}
-  # SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  JWT_SECRET: ${{secrets.JWT}}
+  SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   PORT: 3000
   # DEBUG: nock.*
   
@@ -34,8 +34,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
         
-      # - name: Linting
-      #   run: "npm run lint -- --rule 'no-console: 2'"
+      - name: Linting
+        run: "npm run lint -- --rule 'no-console: 2'"
         
       - name: Test
         run: npm run test
