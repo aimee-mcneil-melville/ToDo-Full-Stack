@@ -4,14 +4,12 @@ on:
   push:
     branches: [ dev, main, devops-5-setup-cicd-second ]
   pull_request:
-    branches: ${{ env.TARGET_BRANCH_CI }}
+    branches: [ dev, devops-5-setup-cicd-second ]
 
 env:
   JWT_SECRET: ${{secrets.JWT}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   PORT: 3000
-  TARGET_BRANCH_CI: [ dev, main, devops-5-setup-cicd-second ]
-  TARGET_BRANCH_CD: [ dev, devops-5-setup-cicd-second ]
   # DEBUG: nock.*
   
 jobs:
