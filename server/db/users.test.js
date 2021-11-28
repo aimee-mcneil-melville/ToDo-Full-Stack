@@ -19,14 +19,14 @@ afterAll(() => {
   return testDb.destroy()
 })
 
-describe('getUserByName', () => {
+describe('getUserById', () => {
   it('returns the correct user', () => {
-    return users.getUserByName('admin', testDb)
+    return users.getUserById('1', testDb)
       .then((user) => {
-        expect(user.username).toBe('admin')
         expect(user.firstName).toBe('Admin')
         expect(user.lastName).toBe('User')
         expect(user.gardenId).toBe(1)
+        expect(user.id).toBe(1)
         expect(user.email).toBe('kelmarna.admin@email.nz')
         expect(user.auth0Id).toBe('auth0|61414f84d35ac900717bc280')
         return null
@@ -37,7 +37,6 @@ describe('getUserByName', () => {
 describe('createUser', () => {
   it('creates a new user', () => {
     const user = {
-      username: 'newuser',
       firstName: 'firstname',
       lastName: 'lastname',
       gardenId: 3,
@@ -45,10 +44,9 @@ describe('createUser', () => {
       auth0Id: 'auth0|thisisfortesting'
     }
     return users.createUser(user, testDb)
-      .then(() => users.getUserByName('newuser', testDb))
+      .then(ids => users.getUserById(ids[0], testDb))
       .then((user) => {
         expect(user.id).not.toBeNull()
-        expect(user.username).toBe('newuser')
         expect(user.firstName).toBe('firstname')
         expect(user.lastName).toBe('lastname')
         expect(user.gardenId).toBe(3)

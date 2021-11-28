@@ -15,7 +15,7 @@ function getEventById (id, db = connection) {
     .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
     .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId',
       'title', 'events.status', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
-      'user_id as userId', 'username', 'users.first_name', 'users.last_name',
+      'user_id as userId', 'users.first_name', 'users.last_name',
       'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName',
       'extraVolunteers.id as extraVolId', 'lat', 'lon')
     .where('events.id', id)
@@ -40,7 +40,6 @@ function getEventById (id, db = connection) {
           if (!personIncluded) {
             acc.push({
               userId: cur.userId,
-              username: cur.username,
               firstName: cur.first_name,
               lastName: cur.last_name,
               attended: result.find(evt => evt.userId === cur.userId).attended ? result.find(evt => evt.userId === cur.userId).attended : false
