@@ -18,7 +18,6 @@ const registerSchema = Yup.object().shape({
   gardenId: Yup.number()
     .required('Required')
 })
-// comment
 
 export default function Register () {
   const authUser = useAuth0().user
