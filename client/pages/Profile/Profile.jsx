@@ -3,22 +3,7 @@ import { useSelector } from 'react-redux'
 import Register from '../../components/Registration/Register'
 import { View } from '../../components/Registration/View'
 import { motion } from 'framer-motion'
-
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-    x: '100vw'
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring', mass: 0.5 }
-  },
-  exit: {
-    x: '-100vw',
-    transition: { ease: 'easeInOut', duration: 0.5 }
-  }
-}
+import { profileVariants } from '../animationVariants'
 
 export default function Profile () {
   const user = useSelector(globalState => globalState.user)
@@ -26,7 +11,7 @@ export default function Profile () {
 
   return (
     <motion.div
-      variants={containerVariants}
+      variants={profileVariants}
       initial="hidden"
       animate="visible"
       exit="exit"

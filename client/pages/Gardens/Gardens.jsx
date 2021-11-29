@@ -2,22 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
-
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-    x: '100vw'
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring', delay: 0.2, duration: 0.6 }
-  },
-  exit: {
-    x: '-100vw',
-    transition: { ease: 'easeInOut', duration: 0.5 }
-  }
-}
+import { containerVariants } from '../animationVariants'
 
 const listVariants = {
   hover: {

@@ -7,46 +7,7 @@ import Events from '../../components/events/Events/Events'
 import { getGarden } from './gardenHelper'
 import BarGraph from '../../components/dataVis/BarGraph'
 import { motion } from 'framer-motion'
-
-const leftVariant = {
-  hidden: {
-    x: '-100vw',
-    opacity: 0
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      delay: 1,
-      duration: 1
-    }
-  },
-  exit: {
-    x: '-100vw',
-    transition: { ease: 'easeOut', duration: 0.5 }
-  }
-}
-
-const rightVariant = {
-  hidden: {
-    x: '100vw',
-    opacity: 0
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      delay: 1,
-      duration: 1
-    }
-  },
-  exit: {
-    x: '100vh',
-    transition: { ease: 'easeOut', duration: 0.5 }
-  }
-}
+import { leftVariant, rightVariant } from '../animationVariants'
 
 export default function Garden () {
   const { id } = useParams()
@@ -77,7 +38,7 @@ export default function Garden () {
           <Events gardenid={id} events={events} />
         </div>
       </motion.div>
-      <motion.section
+      <motion.div
         variants={rightVariant}
         initial='hidden'
         animate='visible'
@@ -92,7 +53,7 @@ export default function Garden () {
           />
           {user.isAdmin ? <BarGraph events={events}/> : null}
         </section>
-      </motion.section>
+      </motion.div>
     </section>
   )
 }

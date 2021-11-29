@@ -2,40 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 import { motion } from 'framer-motion'
-
-const leftVariant = {
-  hidden: {
-    x: '-100vw'
-  },
-  visible: {
-    x: 0,
-    transition: {
-      ease: 'easeIn',
-      duration: 1
-    }
-  },
-  exit: {
-    x: '-150vh',
-    transition: { ease: 'easeOut', duration: 0.5 }
-  }
-}
-
-const rightVariant = {
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  },
-  exit: {
-    x: '150vh',
-    transition: { ease: 'easeOut', duration: 0.5 }
-  }
-}
+import { leftVariant, rightVariant } from '../animationVariants'
 
 export default function Home () {
   const [, setUserCoordinates] = useState(null)
