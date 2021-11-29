@@ -1,4 +1,5 @@
 const { encode } = require('./emailTokens')
+const log = require('../logger')
 
 function sendNotification (userdata, eventdata) {
   const token = encode({
@@ -28,7 +29,7 @@ function sendNotification (userdata, eventdata) {
 
     res.on('end', function () {
       const body = Buffer.concat(chunks)
-      console.log(body.toString())
+      log(body.toString())
     })
   })
 
