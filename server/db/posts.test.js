@@ -31,3 +31,13 @@ describe('getPostById', () => {
       })
   })
 })
+
+describe('getAllPosts', () => {
+  it('gets all of the posts in the db', () => {
+    return db.getAllPosts(testDb)
+      .then((posts) => {
+        expect(posts).toHaveLength(2)
+        return null
+      })
+  })
+})

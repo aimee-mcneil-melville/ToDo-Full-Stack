@@ -10,7 +10,10 @@ module.exports = {
 }
 
 function getAllPosts (db = connection) {
-// Create function to get all posts regardless of garden id
+  return db('posts')
+    .then(posts => {
+      return posts
+    })
 }
 
 function getPostsByGardenId (id, db = connection) {
@@ -25,7 +28,6 @@ function getPostById (id, db = connection) {
     .where('id', id)
     .then(result => {
       const post = result[0]
-      console.log('post: ', post)
       return {
         id: post.id,
         gardenId: post.garden_id,
