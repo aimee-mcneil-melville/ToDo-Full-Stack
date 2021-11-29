@@ -12,6 +12,7 @@ import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 
 import { cacheUser } from './auth-utils'
+import GardenList from './components/GardenList/GardenList'
 
 export default function App () {
   cacheUser(useAuth0)
@@ -22,8 +23,9 @@ export default function App () {
       <Header />
       <main className='container'>
         <Route exact path='/' component={Home} />
-        <Route path='/gardens/:id' component={Garden} />
-        <Route path='/gardens/:id/events/:eventId' component={Event} />
+        <Route exact path='/gardens' component={GardenList} />
+        <Route exact path='/gardens/:id' component={Garden} />
+        <Route exact path='/gardens/:id/events/:eventId' component={Event} />
         <Route path='/profile' component={Profile} />
         <Route path='/event/new' component={AddEvent} />
         <Route path='/events/:id/edit' component={EditEvent} />
