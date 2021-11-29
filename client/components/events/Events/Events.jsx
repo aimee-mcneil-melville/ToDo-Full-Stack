@@ -14,7 +14,7 @@ export default function Events ({ gardenid, events }) {
           {
             isAdmin
               ? <Link to='/event/new' className='inline-button'>
-            Add New Event</Link>
+              Add New Event</Link>
               : null
           }
         </div>
