@@ -80,3 +80,12 @@ export const rightVariant = {
     transition: { ease: 'easeOut', duration: 0.5 }
   }
 }
+
+export const gardensListVariants = {
+  hover: {
+    scale: 1.1,
+    transition: {
+      type: 'spring'
+    }
+  }
+}

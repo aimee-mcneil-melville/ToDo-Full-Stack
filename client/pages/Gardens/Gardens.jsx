@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
-<<<<<<< HEAD
 import { motion } from 'framer-motion'
-import { containerVariants } from '../animationVariants'
-
-const listVariants = {
-  hover: {
-    scale: 1.1,
-    transition: {
-      type: 'spring'
-    }
-  }
-}
-=======
+import { containerVariants, gardensListVariants } from '../animationVariants'
 import { showError } from '../../actions/error'
 import { dispatch } from '../../store'
->>>>>>> a070934dd2303b4bd5a074777c17500563ec0985
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
@@ -43,7 +31,7 @@ export default function Gardens () {
       <ul>
         {gardenList.map((garden) => {
           return <motion.li key={garden.id}
-            variants={listVariants}
+            variants={gardensListVariants}
             whileHover='hover'
           >
             <Link to={`/gardens/${garden.id}`}>
