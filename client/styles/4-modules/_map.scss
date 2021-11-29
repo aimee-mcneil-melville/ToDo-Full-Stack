@@ -26,7 +26,8 @@
     margin-left: 0;
   }
 
-  .svg{
+  // chart styling not implemented yet
+  .svg {
     padding: vars.$base-size;
     display: block;
     position: relative;
@@ -35,10 +36,11 @@
     align-items: stretch;
     align-content: stretch;
   }
+
   .svg::after {
     position: relative;
     display: block;
-    margin:0 0 0 0;
+    margin: 0;
     object-fit: contain;
   }
 }

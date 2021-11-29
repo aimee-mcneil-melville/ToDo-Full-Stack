@@ -8,8 +8,13 @@
   }
 }
 
-.flex-container.profile-flex{
+.flex-container.profile-flex {
   justify-content: center;
+}
+
+.flex-container.flex-garden {
+  justify-content: space-between;
+  width: 100%;
 }
 
 .flex-column {

@@ -13,21 +13,18 @@ export default function Events ({ gardenid, events }) {
       <div className='add-event'>
         {
           isAdmin
-            ? <Link to='/event/new' className='button'>
-              {/* <span class="add"> + </span> */}
+            ? <Link to='/event/new' className='inline-button'>
             Add New Event</Link>
             : null
         }
       </div>
-       
-      </div>
+    </div>
 
-        <section className='events-list'>
-          {events.map((event) =>
-            <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
-          )}
-        </section>
-
+    <section className='events-list'>
+      {events.map((event) =>
+        <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
+      )}
+    </section>
     </>
   )
 }
