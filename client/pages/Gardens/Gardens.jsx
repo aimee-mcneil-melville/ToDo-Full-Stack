@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { showError } from '../../actions/error'
 
 import { getAllGardens } from './gardensHelper'
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllGardens()
@@ -12,7 +15,10 @@ export default function Gardens () {
         setGardenList(gardens)
         return null
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        dispatch(showError(err.message))
+        return false
+      })
   }, [])
 
   return (
