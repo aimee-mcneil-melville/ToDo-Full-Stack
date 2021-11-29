@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import Header from './components/Header'
@@ -10,11 +10,13 @@ import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
+import { AnimatePresence } from 'framer-motion'
 
 import { cacheUser } from './auth-utils'
 import GardenList from './components/GardenList/GardenList'
 
 export default function App () {
+  const location = useLocation()
   cacheUser(useAuth0)
 
   return (
@@ -22,13 +24,17 @@ export default function App () {
       <Error />
       <Header />
       <main className='container'>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/gardens' component={GardenList} />
-        <Route exact path='/gardens/:id' component={Garden} />
-        <Route exact path='/gardens/:id/events/:eventId' component={Event} />
-        <Route path='/profile' component={Profile} />
-        <Route path='/event/new' component={AddEvent} />
-        <Route path='/events/:id/edit' component={EditEvent} />
+        <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.key}>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/gardens' component={GardenList} />
+            <Route exact path='/gardens/:id' component={Garden} />
+            <Route exact path='/gardens/:id/events/:eventId' component={Event} />
+            <Route path='/profile' component={Profile} />
+            <Route path='/event/new' component={AddEvent} />
+            <Route path='/events/:id/edit' component={EditEvent} />
+          </Switch>
+        </AnimatePresence>
       </main>
     </>
   )

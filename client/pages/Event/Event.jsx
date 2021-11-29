@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-
 import { getEvent } from './eventHelper'
 
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'

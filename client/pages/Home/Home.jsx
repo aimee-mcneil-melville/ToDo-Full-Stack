@@ -13,6 +13,10 @@ const leftVariant = {
       ease: 'easeInOut',
       duration: 1
     }
+  },
+  exit: {
+    x: '-100vh',
+    transition: { ease: 'easeOut', duration: 0.5 }
   }
 }
 
@@ -26,6 +30,10 @@ const rightVariant = {
       ease: 'easeInOut',
       duration: 1
     }
+  },
+  exit: {
+    x: '100vh',
+    transition: { ease: 'easeOut', duration: 0.5 }
   }
 }
 
@@ -70,8 +78,9 @@ export default function Home () {
         variants={leftVariant}
         initial='hidden'
         animate='visible'
+        exit='exit'
       >
-        <h1 className="home-title-1">Empowering</h1>
+        <h1 className="home-title-1" >Empowering</h1>
         <h1 className="home-title-2">Community Gardens</h1>
         <h1 className="home-title-3">in New Zealand</h1>
         <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
@@ -85,6 +94,8 @@ export default function Home () {
         variants={rightVariant}
         initial='hidden'
         animate='visible'
+        exit='exit'
+
       />
 
     </section>
