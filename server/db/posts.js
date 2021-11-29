@@ -21,8 +21,20 @@ function getPostsByGardenId (id, db = connection) {
 }
 
 function getPostById (id, db = connection) {
-  // function to get a specific post by the post id
-  // add in name of author
+  return db('posts')
+    .where('id', id)
+    .then(result => {
+      const post = result[0]
+      console.log('post: ', post)
+      return {
+        id: post.id,
+        gardenId: post.garden_id,
+        author: post.author,
+        title: post.title,
+        createdOn: post.created_on,
+        content: post.content
+      }
+    })
 }
 
 function addBlogPost (post, db = connection) {
