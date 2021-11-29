@@ -1,6 +1,7 @@
 const connection = require('./connection')
 
 module.exports = {
+  getAllPosts,
   getPostsByGardenId,
   getPostById,
   addBlogPost,
@@ -8,6 +9,10 @@ module.exports = {
   deleteBlogPost
 }
 
+function getAllPosts (db = connection) {
+  return db('posts')
+    .select()
+}
 function getPostsByGardenId (id, db = connection) {
   return db('posts')
     .join('users', 'posts.author', 'users.id')

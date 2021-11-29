@@ -19,6 +19,16 @@ afterAll(() => {
   return testDb.destroy()
 })
 
+describe('getAllPosts', () => {
+  it('gets all blog posts', () => {
+    return db.getAllPosts(testDb)
+      .then((posts) => {
+        expect(posts).toHaveLength(2)
+        return null
+      })
+  })
+})
+
 describe('getPostsByGardenId', () => {
   it('return all of the posts related to the garden id', () => {
     return db.getPostsByGardenId(1, testDb)
@@ -76,6 +86,7 @@ describe('addBlogPost', () => {
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
     return db.deleteBlogPost(1, testDb)
+    // get all p
       .then(post => {
         expect(post).toBe(2)// meaningless to make linter happy
         return post
