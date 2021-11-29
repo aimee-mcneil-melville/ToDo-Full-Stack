@@ -10,12 +10,12 @@ const leftVariant = {
   visible: {
     x: 0,
     transition: {
-      ease: 'easeInOut',
+      ease: 'easeIn',
       duration: 1
     }
   },
   exit: {
-    x: '-100vh',
+    x: '-150vh',
     transition: { ease: 'easeOut', duration: 0.5 }
   }
 }
@@ -32,7 +32,7 @@ const rightVariant = {
     }
   },
   exit: {
-    x: '100vh',
+    x: '150vh',
     transition: { ease: 'easeOut', duration: 0.5 }
   }
 }
