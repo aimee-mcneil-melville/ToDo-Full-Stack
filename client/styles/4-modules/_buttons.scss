@@ -23,9 +23,17 @@
 .submit {
   @extend .button-primary;
   display: flex;
-    width:auto;
+    width: auto;
     margin: 5px auto;
     align-items: center;
+}
+
+.profile-submit{
+  @extend .submit;
+  width: 150px;
+  margin-top: 25px;
+  padding: 10px;
+  justify-content: center;
 }
 
 .button-width {

@@ -9,16 +9,6 @@ import { getEvent } from '../../pages/Event/eventHelper'
 
 jest.mock('./eventHelper')
 
-const mockData = {
-  title: 'Mock title',
-  date: '2021-03-02',
-  gardenName: 'Mock garden',
-  volunteersNeeded: 4,
-  description: 'this is our mock data description truly radical event',
-  lat: -36.8666700,
-  lon: 174.7666700
-}
-
 describe('List of signed up volunteers', () => {
   const mockVolunteers = [
     {
