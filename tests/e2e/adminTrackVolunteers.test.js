@@ -73,4 +73,6 @@ test('Admin can track volunteer', async () => {
   expect(await page.$eval('ul', (el) => el.textContent)).toMatch(
     '24 of 24 volunteers still needed'
   )
+
+  await page.click('text=Log Out')
 })

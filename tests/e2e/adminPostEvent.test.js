@@ -104,4 +104,6 @@ test('Admin can login & add event', async () => {
   expect(await page.$eval('section', (el) => el.innerText)).toMatch(
     /Christmas Gardening!/
   )
+
+  await page.click('text=Log Out')
 })

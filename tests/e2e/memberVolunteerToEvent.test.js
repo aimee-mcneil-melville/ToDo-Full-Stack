@@ -72,4 +72,6 @@ test('Member can Login & Volunteer', async () => {
   expect(await page.$eval('.button-secondary', (el) => el.innerText)).toMatch(
     /Un-Volunteer/
   )
+
+  await page.click('text=Log Out')
 })
