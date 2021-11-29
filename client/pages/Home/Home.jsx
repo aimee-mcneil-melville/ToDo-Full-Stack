@@ -67,8 +67,7 @@ export default function Home () {
 
   return (
     <section className='flex-container'>
-      <GardenList />
-      {/* <motion.article className='column-6 home-title-container'
+      <motion.article className='column-6 home-title-container'
         variants={leftVariant}
         initial='hidden'
         animate='visible'
@@ -87,7 +86,8 @@ export default function Home () {
         variants={rightVariant}
         initial='hidden'
         animate='visible'
-      /> */}
+      />
+      <GardenList />
 
     </section>
   )
