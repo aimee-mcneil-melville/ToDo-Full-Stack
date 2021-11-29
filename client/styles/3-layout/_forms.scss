@@ -28,8 +28,14 @@
   font-size: 16px;
   line-height: 28px;
   color: vars.$black;
-  font-weight: 800;
+  font-weight: 500;
   display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.label.profile-label{
+  font-weight: 800;
   text-align: left;
   margin: 10px 10px auto;
 }

@@ -42,10 +42,10 @@ export default function Register() {
   return (
     <>
       <h2>Register to view garden events</h2>
-      <section className='flex-container' >
+      <section className='flex-container profile-flex' >
         <form className='flex-container__register-form' onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='label'>First Name</label>
+            <label htmlFor='firstName' className='label profile-label'>First Name</label>
             {showAnyErrors('firstName')}
             <input
               className='form-box'
@@ -54,7 +54,7 @@ export default function Register() {
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor='lastName' className='label'>Last Name</label>
+            <label htmlFor='lastName' className='label profile-label'>Last Name</label>
             {showAnyErrors('lastName')}
             <input
               className='form-box'
@@ -63,7 +63,7 @@ export default function Register() {
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor='garden' className='label'>My Garden</label>
+            <label htmlFor='garden' className='label profile-label'>My Garden</label>
             {showAnyErrors('garden')}
             <select
               className='form-box'
@@ -77,7 +77,7 @@ export default function Register() {
               <option value={3}>Devonport Community Garden</option>
             </select>
           </div>
-          <button className='submit' type='submit' data-testid='submitButton'>Register</button>
+          <button className='submit profile-submit' type='submit' data-testid='submitButton'>Register</button>
         </form>
       </section>
     </>
