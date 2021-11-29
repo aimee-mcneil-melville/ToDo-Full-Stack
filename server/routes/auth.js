@@ -2,9 +2,10 @@ const jwt = require('express-jwt')
 const jwksRsa = require('jwks-rsa')
 const request = require('superagent')
 
-const domain = process.env.AUTH0_DOMAIN
-const clientId = process.env.AUTH0_API_EXPLORER_CLIENTID
-const secret = process.env.AUTH0_API_EXPLORER_SECRET
+// the later values for testing
+const domain = process.env.AUTH0_DOMAIN || 'https://gardenz.au.auth0.com'
+const clientId = process.env.AUTH0_API_EXPLORER_CLIENTID || 'some_client_id'
+const secret = process.env.AUTH0_API_EXPLORER_SECRET || 'some_secret'
 
 const userHasAdminRole = async (uid) => {
   const accessToken = await getAccessToken()
