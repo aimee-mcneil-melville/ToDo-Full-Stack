@@ -1,7 +1,6 @@
 const connection = require('./connection')
 
 module.exports = {
-  getAllPosts,
   getPostsByGardenId,
   getPostById,
   addBlogPost,
@@ -9,21 +8,12 @@ module.exports = {
   deleteBlogPost
 }
 
-function getAllPosts (db = connection) {
-  return db('posts')
-    .then(posts => {
-      return posts
-    })
-}
-
 function getPostsByGardenId (id, db = connection) {
   // function to get all of the posts for a specific garden
   // add in name of author
   return db('posts')
     .where('garden_id', id)
-    .then(posts => {
-      return posts
-    })
+    .select()
 }
 
 function getPostById (id, db = connection) {

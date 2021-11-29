@@ -19,16 +19,6 @@ afterAll(() => {
   return testDb.destroy()
 })
 
-describe('getAllPosts', () => {
-  it('gets all of the posts in the db', () => {
-    return db.getAllPosts(testDb)
-      .then((posts) => {
-        expect(posts).toHaveLength(2)
-        return null
-      })
-  })
-})
-
 describe('getPostsByGardenId', () => {
   it('return all of the posts related to the garden id', () => {
     return db.getPostsByGardenId(1, testDb)
