@@ -9,7 +9,6 @@ export function registerUser (user, isAdmin, authUser, navigateTo, consume = req
     firstName: user.firstName,
     lastName: user.lastName,
     gardenId: user.gardenId,
-    username: user.username,
     email: authUser.email,
     auth0Id: authUser.sub
   }

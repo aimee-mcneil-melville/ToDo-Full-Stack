@@ -15,10 +15,6 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  username: Yup.string()
-    .min(2, 'This must be at least 2 characters long')
-    .max(15, 'Sorry, this must be under 15 characters long')
-    .required('Required'),
   gardenId: Yup.number()
     .required('Required')
 })
@@ -32,7 +28,6 @@ export default function Register () {
     initialValues: {
       firstName: '',
       lastName: '',
-      username: '',
       gardenId: null
     },
     onSubmit: values => {
@@ -46,7 +41,6 @@ export default function Register () {
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null
   }
-
   return (
     <>
       <section className='flex-container'>
@@ -71,16 +65,6 @@ export default function Register () {
               placeholder='Last Name'
               onChange={formik.handleChange}
               value={formik.values.lastName}
-            />
-            <label htmlFor='username' className='label'>Username</label>
-            {showAnyErrors('username')}
-            <input
-              className='form-box'
-              id='username'
-              name='username'
-              placeholder='Username'
-              onChange={formik.handleChange}
-              value={formik.values.username}
             />
             <label htmlFor='garden' className='label'>My Garden</label>
             {showAnyErrors('garden')}
