@@ -9,7 +9,7 @@ const log = require('../logger')
 jest.mock('../logger')
 jest.mock('../db/gardens')
 jest.mock('../db/users')
-jest.mock('./auth')
+jest.mock('../routes/auth')
 
 const mockUserGarden = {
   id: 2,
@@ -50,7 +50,8 @@ const mockUserGarden = {
           userId: 4
         }
       ]
-    }]
+    }
+  ]
 }
 
 describe('GET /api/v1/gardens', () => {
