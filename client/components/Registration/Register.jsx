@@ -18,7 +18,7 @@ const registerSchema = Yup.object().shape({
     .required('Required')
 })
 
-export default function Register () {
+export default function Register() {
   const authUser = useAuth0().user
   const history = useHistory()
 
@@ -34,40 +34,39 @@ export default function Register () {
     validationSchema: registerSchema
   })
 
-  function showAnyErrors (inputName) {
+  function showAnyErrors(inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null
   }
   return (
     <>
-      <section className='flex-container'>
-        <form className='column-6' onSubmit={formik.handleSubmit}>
+      <h2>Register to view garden events</h2>
+      <section className='flex-container profile-flex' >
+        <form className='flex-container__register-form' onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='label'>First Name</label>
+            <label htmlFor='firstName' className='label profile-label'>First Name</label>
             {showAnyErrors('firstName')}
             <input
               className='form-box'
               id='firstName'
               name='firstName'
-              placeholder='First Name'
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor='lastName' className='label'>Last Name</label>
+            <label htmlFor='lastName' className='label profile-label'>Last Name</label>
             {showAnyErrors('lastName')}
             <input
               className='form-box'
               id='lastName'
               name='lastName'
-              placeholder='Last Name'
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor='garden' className='label'>My Garden</label>
+            <label htmlFor='garden' className='label profile-label'>My Garden</label>
             {showAnyErrors('garden')}
             <select
-              className='select'
+              className='form-box'
               name='gardenId'
               id='garden'
               onChange={formik.handleChange}
@@ -78,12 +77,9 @@ export default function Register () {
               <option value={3}>Devonport Community Garden</option>
             </select>
           </div>
-          <button className='button' type='submit' data-testid='submitButton'>Register</button>
+          <button className='submit profile-submit' type='submit' data-testid='submitButton'>Register</button>
         </form>
       </section>
-      <div className='column-6'>
-        <img src='./images/comGardenPlant.png' alt='Person gardening with trowel' />
-      </div>
     </>
   )
 }
