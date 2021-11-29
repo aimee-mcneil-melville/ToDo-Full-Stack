@@ -72,3 +72,18 @@ describe('addBlogPost', () => {
       })
   })
 })
+
+describe('deleteBlogPost', () => {
+  it('deletes the blog post from the db by id', () => {
+    return db.deleteBlogPost(1, testDb)
+      .then(post => {
+        expect(post).toBe(2)// meaningless to make linter happy
+        return post
+        // maybe expect status of getting the post by id to return an error?
+      })
+  })
+
+  it('removes all of the comments on the blog post from the comments table', () => {
+    // Do it
+  })
+})

@@ -43,7 +43,6 @@ function getPostById (id, db = connection) {
 }
 
 function addBlogPost (newPost, db = connection) {
-  // function to add a new blog post to the db (posts table)
   const { id, gardenId, author, title, createdOn, content } = newPost
   return db('posts')
     .insert({
