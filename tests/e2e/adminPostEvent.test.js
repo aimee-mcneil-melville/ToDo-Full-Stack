@@ -11,7 +11,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: true, slowMo: 500 })
+  browser = await chromium.launch({ headless: false, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -45,6 +45,9 @@ test('Admin can login & add event', async () => {
 
   const testEmail = process.env.E2E_TEST_AUTH0_ADMIN_EMAIL
   const testPassword = process.env.E2E_TEST_AUTH0_ADMIN_PASSWORD
+  const testFirstName = process.env.E2E_TEST_ADMIN_FIRST_NAME
+  const testLastName = process.env.E2E_TEST_ADMIN_LAST_NAME
+  const testGarden = process.env.E2E_TEST_ADMIN_GARDEN_ID
 
   await page.fill('#username', testEmail)
   await page.fill('#password', testPassword)
@@ -56,6 +59,17 @@ test('Admin can login & add event', async () => {
 
   await page.waitForSelector('text=Log out')
   expect(await page.content()).toMatch(/Log out/)
+
+  await Promise.all([page.waitForNavigation(), page.click('text=My Profile')])
+
+  await page.fill('#firstName', testFirstName)
+  await page.fill('#lastName', testLastName)
+  await page.selectOption('#garden', testGarden)
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('button[type=submit]', { force: true })
+  ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
 
@@ -80,10 +94,14 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.button-primary', { force: true })
+    page.click('button[type=submit]', { force: true })
   ])
+
+  await page.click('text=Christmas Gardening!')
 
   expect(await page.$eval('section', (el) => el.innerText)).toMatch(
     /Christmas Gardening!/
   )
+
+  await page.click('text=Log Out')
 })
