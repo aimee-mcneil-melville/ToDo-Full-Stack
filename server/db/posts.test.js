@@ -83,14 +83,17 @@ describe('addBlogPost', () => {
   })
 })
 
+// Deletes post in testDb and then checks all posts to see if post exists
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
     return db.deleteBlogPost(1, testDb)
-    // get all p
-      .then(post => {
-        expect(post).toBe(2)// meaningless to make linter happy
-        return post
-        // maybe expect status of getting the post by id to return an error?
+      .then(() => {
+        return db.getAllPosts(testDb)
+      })
+      .then(posts => {
+        const filtered = posts.filter(element => element.id === 1)
+        expect(filtered).toEqual([])
+        return null
       })
   })
 
