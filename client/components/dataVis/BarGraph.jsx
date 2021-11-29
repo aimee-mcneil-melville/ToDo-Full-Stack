@@ -3,6 +3,7 @@ import { Bar } from '@visx/shape'
 import { Group } from '@visx/group'
 // import { GradientTealBlue } from '@visx/gradient'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
+// import { ScaleSVG } from '@visx/responsive';
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 const verticalMargin = 120
@@ -71,7 +72,7 @@ export default function BarGraph ({ events }) {
   //
   return width < 10 ? null : (
     <>
-      <svg key='barChart' width={width} height={height}>
+      <svg className='graph' key='barChart' width={width} height={height}>
         <rect width={width} height={height} fill="url(#teal)" rx={14} />
         <Group top={verticalMargin / 2}>
           {data.map(d => {

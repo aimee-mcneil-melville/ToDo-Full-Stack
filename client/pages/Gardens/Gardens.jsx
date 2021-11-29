@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
+<<<<<<< HEAD
 import { motion } from 'framer-motion'
 import { containerVariants } from '../animationVariants'
 
@@ -12,6 +13,10 @@ const listVariants = {
     }
   }
 }
+=======
+import { showError } from '../../actions/error'
+import { dispatch } from '../../store'
+>>>>>>> a070934dd2303b4bd5a074777c17500563ec0985
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
@@ -22,7 +27,10 @@ export default function Gardens () {
         setGardenList(gardens)
         return null
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        dispatch(showError(err.message))
+        return false
+      })
   }, [])
 
   return (

@@ -48,7 +48,7 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  const userId = req.headers.userid
+  const userId = Number(req.headers.userid)
   const id = Number(req.params.id)
   try {
     const foundGarden = await db.getGardenById(id)

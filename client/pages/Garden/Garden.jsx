@@ -22,6 +22,7 @@ export default function Garden () {
   const { name, description, address, url, events, lat, lon } = garden
 
   return (
+<<<<<<< HEAD
     <section className='flex-container'>
       <motion.div
         variants={leftVariant}
@@ -54,6 +55,26 @@ export default function Garden () {
           {user.isAdmin ? <BarGraph events={events}/> : null}
         </section>
       </motion.div>
+=======
+    <section className='flex-container flex-garden'>
+      <div className='column-6 garden-6'>
+        <article className='column-9 garden'>
+          <h2>{name}</h2>
+          <p>{description}</p>
+          <a href={url}>{url}</a>
+        </article>
+        <Events gardenid={id} events={events} />
+      </div>
+      <section className='graph-map'>
+        <Map
+          userCoordinates={location}
+          coordinates={[{ lat: lat, lon: lon }]}
+          addresses={[address]}
+          names={[name]}
+        />
+        {user.isAdmin ? <BarGraph events={events}/> : null}
+      </section>
+>>>>>>> a070934dd2303b4bd5a074777c17500563ec0985
     </section>
   )
 }
