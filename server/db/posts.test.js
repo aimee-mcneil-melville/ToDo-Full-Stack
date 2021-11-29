@@ -3,7 +3,6 @@ const config = require('./knexfile').test
 const testDb = knex(config)
 
 const db = require('./posts')
-const commentsDb = require('./comments')
 
 // Prevent Jest from timing out (5s often isn't enough)
 jest.setTimeout(10000)
@@ -84,8 +83,6 @@ describe('addBlogPost', () => {
   })
 })
 
-// TOFIX
-// Deletes post in testDb and then checks all posts to see if post exists
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
     return db.deleteBlogPost(1, testDb)
@@ -95,15 +92,6 @@ describe('deleteBlogPost', () => {
       .then(posts => {
         const filtered = posts.filter(element => element.id === 1)
         expect(filtered).toEqual([])
-        return null
-      })
-  })
-
-  it('removes all of the comments on the blog post from the comments table', () => {
-    return db.deleteBlogPost(1, testDb)
-      .then(() => commentsDb.getCommentsByPostId(1, testDb))
-      .then((comments) => {
-        expect(comments).toBeNull()
         return null
       })
   })
