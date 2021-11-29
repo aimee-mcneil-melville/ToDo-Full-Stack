@@ -9,6 +9,15 @@ module.exports = {
 
 function getCommentsByPostId (id, db = connection) {
   // get all of the comments for a blog post
+  return db('comments')
+    .where('post_id', id)
+    .select()
+}
+
+function deleteAllCommentsByPostId (id, db = connection) {
+  return db('comments')
+    .where('post_id', id)
+    .del()
 }
 
 function postComment (postId, comment, authorId, db = connection) {
@@ -18,9 +27,4 @@ function postComment (postId, comment, authorId, db = connection) {
 
 function deleteCommentById (id, db = connection) {
 
-}
-
-function deleteAllCommentsByPostId () {
-  // delete all of the comments for a specific post
-  // call when deleting a blog post
 }

@@ -1,3 +1,5 @@
+import { deleteAllCommentsByPostId } from './comments.js'
+
 const connection = require('./connection')
 
 module.exports = {
@@ -63,9 +65,11 @@ function updateBlogPost (post, db = connection) {
 }
 
 function deleteBlogPost (id, db = connection) {
-  // function to delete blog post from db (posts table)
-  // should also delete all comments relating to the blog post from the comments table
   return db('posts')
     .where('posts.id', id)
     .del()
+    .then(() => {
+      deleteAllCommentsByPostId(id)
+      return null
+    })
 }

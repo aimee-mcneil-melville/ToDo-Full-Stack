@@ -3,6 +3,7 @@ const config = require('./knexfile').test
 const testDb = knex(config)
 
 const db = require('./posts')
+const commentsDb = require('./comments')
 
 // Prevent Jest from timing out (5s often isn't enough)
 jest.setTimeout(10000)
@@ -98,6 +99,11 @@ describe('deleteBlogPost', () => {
   })
 
   it('removes all of the comments on the blog post from the comments table', () => {
-    // Do it
+    return db.deleteBlogPost(1, testDb)
+      .then(() => commentsDb.getCommentsByPostId(1))
+      .then((comments) => {
+        expect(comments).toBe(12)
+        return null
+      })
   })
 })
