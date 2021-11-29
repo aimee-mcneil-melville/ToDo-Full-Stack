@@ -33,10 +33,20 @@ describe('getPostById', () => {
   it('returns the correct Post', () => {
     return db.getPostById(1, testDb)
       .then((post) => {
-        expect(post.id).toBe(1)
-        expect(post.gardenId).toBe(1)
-        expect(post.author).toBe(2)
-        expect(post.title).toMatch('Lettuce Picking Season')
+        const newPost = post[0]
+        expect(newPost.id).toBe(1)
+        expect(newPost.gardenId).toBe(1)
+        expect(newPost.author).toBe(2)
+        expect(newPost.title).toMatch('Lettuce Picking Season')
+        return null
+      })
+  })
+  it('returns the correct name of the author', () => {
+    return db.getPostById(1, testDb)
+      .then((post) => {
+        const newPost = post[0]
+        expect(newPost.firstName).toMatch('User')
+        expect(newPost.lastName).toMatch('second')
         return null
       })
   })
