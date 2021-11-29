@@ -6,6 +6,8 @@ import { updateEvent, cancelEvent } from './editEventHelper'
 import EventForm from '../../../components/events/EventForm/EventForm'
 import { useSelector } from 'react-redux'
 import { getEvent } from '../../Event/eventHelper'
+import { containerVariants } from '../../animationVariants'
+import { motion } from 'framer-motion'
 
 export default function EditEvent () {
   const [event, setEvent] = useState(null)
@@ -31,13 +33,20 @@ export default function EditEvent () {
   }
 
   return (
+
     event
-      ? <EventForm
-        formData={event}
-        action='Update Event'
-        submitEvent={submitEvent}
-        cancelSubmit={cancelSubmit}
-      />
+      ? <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit" >
+        <EventForm
+          formData={event}
+          action='Update Event'
+          submitEvent={submitEvent}
+          cancelSubmit={cancelSubmit}
+        />
+      </motion.div>
       : null
   )
 }
