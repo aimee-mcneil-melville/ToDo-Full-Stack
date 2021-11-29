@@ -32,6 +32,7 @@ function getCommentById (id, db = connection) {
     .where('id', id)
     .select()
 }
+
 function postComment (comment, db = connection) {
   const { postId, author, createdOn, content } = comment
   return db('comments')

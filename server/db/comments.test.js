@@ -63,3 +63,17 @@ describe('postComment', () => {
       })
   })
 })
+
+describe('deleteCommentById', () => {
+  it('deletes a comment by the comments id', () => {
+    return db.deleteCommentById(1, testDb)
+      .then(() => {
+        return db.getAllComments(testDb)
+      })
+      .then(comments => {
+        const filtered = comments.filter(e => e.id === 1)
+        expect(filtered).toEqual([])
+        return null
+      })
+  })
+})
