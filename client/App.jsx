@@ -10,6 +10,7 @@ import AddEvent from './pages/admin/AddEvent/AddEvent'
 import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
+import Gardens from './pages/Gardens/Gardens'
 
 import { cacheUser } from './auth-utils'
 
@@ -22,8 +23,9 @@ export default function App () {
       <Header />
       <main className='container'>
         <Route exact path='/' component={Home} />
-        <Route path='/gardens/:id' component={Garden} />
-        <Route path='/gardens/:id/events/:eventId' component={Event} />
+        <Route exact path='/gardens' component={Gardens} />
+        <Route exact path='/gardens/:id' component={Garden} />
+        <Route exact path='/gardens/:id/events/:eventId' component={Event} />
         <Route path='/profile' component={Profile} />
         <Route path='/event/new' component={AddEvent} />
         <Route path='/events/:id/edit' component={EditEvent} />
