@@ -22,7 +22,7 @@ const registerSchema = Yup.object().shape({
 export default function Register () {
   const authUser = useAuth0().user
   const history = useHistory()
-  const isAdmin = useSelector(state => state.user.isAdmin)
+  const isAdmin = useSelector(globalState => globalState.user?.isAdmin)
 
   const formik = useFormik({
     initialValues: {
