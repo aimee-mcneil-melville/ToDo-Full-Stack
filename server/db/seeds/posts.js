@@ -11,7 +11,7 @@ exports.seed = function (knex) {
       return knex('posts').insert([
         {
           id: 1,
-          blog_id: '1',
+          blog_id: 1,
           author: 2,
           title: 'Lettuce Picking Season',
           created_on: todayDate,
@@ -19,7 +19,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          blog_id: '1',
+          blog_id: 1,
           author: 1,
           title: 'Where are my CABBAGES',
           created_on: diffDate(1),
