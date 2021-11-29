@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getAllGardens } from './gardernListHelper'
+import { getAllGardens } from './gardensHelper'
 
-export default function GardenList () {
+export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
 
   useEffect(() => {
-    // get api
     getAllGardens()
       .then(gardens => {
         setGardenList(gardens)
@@ -25,7 +24,6 @@ export default function GardenList () {
           </Link>
           <h4>Address: {garden.address}</h4>
           <p>{garden.description}</p>
-
         </li>
       })}
     </ul>

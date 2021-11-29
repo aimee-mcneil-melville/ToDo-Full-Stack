@@ -10,7 +10,6 @@ export function getAllGardens (consume = requestor) {
     .then((res) => {
       dispatch(clearWaiting())
       const { gardens } = res.body
-
       return gardens
     })
     .catch((error) => {
