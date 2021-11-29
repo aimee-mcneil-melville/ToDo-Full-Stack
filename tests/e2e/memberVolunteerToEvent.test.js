@@ -40,7 +40,6 @@ test('Member can Login & Volunteer', async () => {
   const testPassword = process.env.E2E_TEST_AUTH0_MEMBER_PASSWORD
   const testFirstName = process.env.E2E_TEST_MEMBER_FIRST_NAME
   const testLastName = process.env.E2E_TEST_MEMBER_LAST_NAME
-  const testUserName = process.env.E2E_TEST_MEMBER_USERNAME
   const testGarden = process.env.E2E_TEST_MEMBER_GARDEN_ID
 
   await page.fill('#username', testEmail)
@@ -55,7 +54,6 @@ test('Member can Login & Volunteer', async () => {
 
   await page.fill('#firstName', testFirstName)
   await page.fill('#lastName', testLastName)
-  await page.fill('#username', testUserName)
   await page.selectOption('#garden', testGarden)
 
   await Promise.all([

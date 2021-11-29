@@ -44,7 +44,6 @@ test('Admin can track volunteer', async () => {
   const testPassword = process.env.E2E_TEST_AUTH0_ADMIN_PASSWORD
   const testFirstName = process.env.E2E_TEST_ADMIN_FIRST_NAME
   const testLastName = process.env.E2E_TEST_ADMIN_LAST_NAME
-  const testUserName = process.env.E2E_TEST_ADMIN_USERNAME
   const testGarden = process.env.E2E_TEST_ADMIN_GARDEN_ID
 
   await page.fill('#username', testEmail)
@@ -59,7 +58,6 @@ test('Admin can track volunteer', async () => {
 
   await page.fill('#firstName', testFirstName)
   await page.fill('#lastName', testLastName)
-  await page.fill('#username', testUserName)
   await page.selectOption('#garden', testGarden)
 
   await Promise.all([
