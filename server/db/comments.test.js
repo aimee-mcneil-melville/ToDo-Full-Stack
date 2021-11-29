@@ -57,8 +57,7 @@ describe('postComment', () => {
         return db.getCommentById(id, testDb)
       })
       .then(comment => {
-        const newComment = comment[0]
-        expect(newComment.post_id).toBe(1)
+        expect(comment.post_id).toBe(1)
         return null
       })
   })
@@ -73,6 +72,25 @@ describe('deleteCommentById', () => {
       .then(comments => {
         const filtered = comments.filter(e => e.id === 1)
         expect(filtered).toEqual([])
+        return null
+      })
+  })
+})
+
+describe('updateCommentById', () => {
+  it('returns an updated comment', () => {
+    const updatedComment = {
+      id: 1,
+      postId: 1,
+      author: 2,
+      createdOn: '10-24-12',
+      content: 'Hah! I changed my comment!'
+    }
+
+    return db.updateCommentById(updatedComment, testDb)
+      .then(comment => {
+        expect(comment.id).toBe(1)
+        expect(comment.content).toMatch('Hah! I changed my comment!')
         return null
       })
   })

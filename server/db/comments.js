@@ -6,7 +6,8 @@ module.exports = {
   postComment,
   deleteCommentById,
   deleteAllCommentsByPostId,
-  getCommentById
+  getCommentById,
+  updateCommentById
 }
 
 function getAllComments (db = connection) {
@@ -31,6 +32,7 @@ function getCommentById (id, db = connection) {
   return db('comments')
     .where('id', id)
     .select()
+    .first()
 }
 
 function postComment (comment, db = connection) {
@@ -48,4 +50,17 @@ function deleteCommentById (id, db = connection) {
   return db('comments')
     .where('id', id)
     .del()
+}
+
+function updateCommentById (comment, db = connection) {
+  const { id, postId, author, createdOn, content } = comment
+  return db('comments')
+    .where('id', id)
+    .update({
+      post_id: postId,
+      author,
+      created_on: createdOn,
+      content
+    })
+    .then(() => getCommentById(id, db))
 }
