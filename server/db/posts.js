@@ -61,8 +61,18 @@ function addBlogPost (newPost, db = connection) {
     })
 }
 
-function updateBlogPost (post, db = connection) {
-  // function to patch an existing blog post
+function updateBlogPost (updatedPost, db = connection) {
+  const { id, gardenId, author, title, createdOn, content } = updatedPost
+  return db('posts')
+    .where('id', id)
+    .update({
+      garden_id: gardenId,
+      author,
+      title,
+      created_on: createdOn,
+      content
+    })
+    .then(() => getPostById(id, db))
 }
 
 function deleteBlogPost (id, db = connection) {

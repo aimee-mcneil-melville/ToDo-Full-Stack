@@ -84,6 +84,7 @@ describe('addBlogPost', () => {
   })
 })
 
+// TOFIX
 // Deletes post in testDb and then checks all posts to see if post exists
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
@@ -103,6 +104,24 @@ describe('deleteBlogPost', () => {
       .then(() => commentsDb.getCommentsByPostId(1, testDb))
       .then((comments) => {
         expect(comments).toBeNull()
+        return null
+      })
+  })
+})
+
+describe('updateBlogPost', () => {
+  it('returns updated post', () => {
+    const updatedPost = {
+      id: 1,
+      gardenId: 1,
+      author: 2,
+      title: 'Woohoo! I was updated!',
+      created_on: '2021-10-10',
+      content: 'This is a cool update'
+    }
+    return db.updateBlogPost(updatedPost, testDb)
+      .then(post => {
+        expect(post.title).toMatch('Woohoo! I was updated!')
         return null
       })
   })
