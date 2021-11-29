@@ -54,18 +54,3 @@ function deleteBlogPost (id, db = connection) {
   // function to delete blog post from db (posts table)
   // should also delete all comments relating to the blog post from the comments table
 }
-
-// Create, read, update, delete
-// DB function planning
-// In blogs.js
-// As a user, I want to see all blogs on the homepage
-// Test that the correct number of blogs are posted (all posts of all blogs)
-
-// In posts.js
-// As a user, I want to see only the blog posts for my garden on my garden's page
-// As a user, I want to see the name of the author for a post
-// Delete the posts
-
-// In comments.js
-// As a user, I want to see all of the comments for a blog post displayed with the relevant blog
-// As a user, I want to see the name of the author for a comment
