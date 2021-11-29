@@ -1,0 +1,81 @@
+@use "sass:math";
+@use '../1-helpers/functions';
+@use '../1-helpers/mixins';
+@use '../1-helpers/vars';
+@use '../4-modules/buttons';
+
+.event-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-event {
+    margin-top: 1rem;
+    text-align: center;
+    
+    a{
+        text-transform: none;
+    }
+}
+
+.button{
+    display: inline-block;
+    
+
+ .add{
+    background-color: vars.$green ;
+    margin: vars.$base-size;
+    color: white;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+
+    a{
+        text-decoration-line: none;
+    }
+    }   
+}
+
+
+.events-list{
+    padding: vars.$base-size * 2;
+    border: solid vars.$border;
+    border-radius: 1rem;
+    text-align: left;
+    width: 100%; 
+
+    @include mixins.media-queries(mobile, min) {
+        width: functions.colWidth(12);
+        // padding: vars.$base-size;
+      }
+}
+
+.card-title{
+    text-align: left;
+}
+
+.events-title{
+    color: vars.$secondary;
+    text-align: left;
+    padding-left: vars.$base-size;
+
+    #{&}h1{
+        margin-block-end: 0.3em;
+    }
+}
+
+.Collapsible__contentInner {
+    text-align: left;
+    width: 100%;    
+}
+
+.card-primary{
+    text-align: left;
+    
+    .list-primary li{
+    text-align: left;
+
+}
+}

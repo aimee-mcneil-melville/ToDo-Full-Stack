@@ -22,7 +22,7 @@ export default function Garden () {
   return (
     <section className='flex-container'>
       <div className='column-6'>
-        <article className='column-9 scroll'>
+        <article className='column-9 garden'>
           <h2>{name}</h2>
           <p>{description}</p>
           <a href={url}>{url}</a>

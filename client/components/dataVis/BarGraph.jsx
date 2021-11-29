@@ -5,7 +5,7 @@ import { Group } from '@visx/group'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { ScaleSVG } from '@visx/responsive';
+// import { ScaleSVG } from '@visx/responsive';
 const verticalMargin = 120
 // accessors
 
@@ -72,7 +72,7 @@ export default function BarGraph ({ events }) {
   //
   return width < 10 ? null : (
     <>
-      <svg key='barChart' width={width} height={height}>
+      <svg className='graph' key='barChart' width={width} height={height}>
         <rect width={width} height={height} fill="url(#teal)" rx={14} />
         <Group top={verticalMargin / 2}>
           {data.map(d => {

@@ -8,19 +8,26 @@ export default function Events ({ gardenid, events }) {
   const isAdmin = useSelector(globalState => globalState.user.isAdmin)
   return (
     <>
+    <div className='column-9 event-container'>
       <h1 className='events-title'>Events</h1>
-      <div>
+      <div className='add-event'>
         {
           isAdmin
-            ? <Link to='/event/new' className='button'>Add New Event</Link>
+            ? <Link to='/event/new' className='button'>
+              {/* <span class="add"> + </span> */}
+            Add New Event</Link>
             : null
         }
       </div>
-      <section className='column-9 scroll'>
-        {events.map((event) =>
-          <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
-        )}
-      </section>
+       
+      </div>
+
+        <section className='events-list'>
+          {events.map((event) =>
+            <EventItem key={event.id} gardenid={gardenid} event={event} isAdmin={isAdmin} />
+          )}
+        </section>
+
     </>
   )
 }
