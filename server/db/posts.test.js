@@ -100,9 +100,9 @@ describe('deleteBlogPost', () => {
 
   it('removes all of the comments on the blog post from the comments table', () => {
     return db.deleteBlogPost(1, testDb)
-      .then(() => commentsDb.getCommentsByPostId(1))
+      .then(() => commentsDb.getCommentsByPostId(1, testDb))
       .then((comments) => {
-        expect(comments).toBe(12)
+        expect(comments).toBeNull()
         return null
       })
   })
