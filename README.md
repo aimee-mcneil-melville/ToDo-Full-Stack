@@ -151,7 +151,7 @@ NB: Make sure you've installed the postgresql add-on for your Heroku account (se
 
 1. Seed your database via the Heroku server. `heroku run bash` will open the terminal for your app hosted on Heroku. You will notice that it will be quite slow!
 
-2. Apply the seed file by running `knex seed:run`.
+2. Apply the seed file by running `knex seed:run`, or if that doesn't work then `npm run knex seed:run`.
 
 ## React
 
