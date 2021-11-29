@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
@@ -18,9 +19,10 @@ const registerSchema = Yup.object().shape({
     .required('Required')
 })
 
-export default function Register() {
+export default function Register () {
   const authUser = useAuth0().user
   const history = useHistory()
+  const isAdmin = useSelector(globalState => globalState.user?.isAdmin)
 
   const formik = useFormik({
     initialValues: {
@@ -29,12 +31,12 @@ export default function Register() {
       gardenId: null
     },
     onSubmit: values => {
-      registerUser(values, authUser, history.push)
+      registerUser(values, isAdmin, authUser, history.push)
     },
     validationSchema: registerSchema
   })
 
-  function showAnyErrors(inputName) {
+  function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null
