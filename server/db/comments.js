@@ -26,9 +26,15 @@ function deleteAllCommentsByPostId (id, db = connection) {
     .del()
 }
 
-function postComment (postId, comment, authorId, db = connection) {
-  // takes post id, new comment, author id
-  // post a new comment for a blog post
+function postComment (comment, db = connection) {
+  const { postId, author, createdOn, content } = comment
+  return db('comments')
+    .insert({
+      post_id: postId,
+      author,
+      created_on: createdOn,
+      content
+    })
 }
 
 function deleteCommentById (id, db = connection) {
