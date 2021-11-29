@@ -1,10 +1,16 @@
 const connection = require('./connection')
 
 module.exports = {
+  getAllComments,
   getCommentsByPostId,
   postComment,
   deleteCommentById,
   deleteAllCommentsByPostId
+}
+
+function getAllComments (db = connection) {
+  return db('comments')
+    .select()
 }
 
 function getCommentsByPostId (id, db = connection) {
