@@ -5,7 +5,8 @@ module.exports = {
   getCommentsByPostId,
   postComment,
   deleteCommentById,
-  deleteAllCommentsByPostId
+  deleteAllCommentsByPostId,
+  getCommentById
 }
 
 function getAllComments (db = connection) {
@@ -26,6 +27,11 @@ function deleteAllCommentsByPostId (id, db = connection) {
     .del()
 }
 
+function getCommentById (id, db = connection) {
+  return db('comments')
+    .where('id', id)
+    .select()
+}
 function postComment (comment, db = connection) {
   const { postId, author, createdOn, content } = comment
   return db('comments')

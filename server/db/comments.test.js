@@ -42,3 +42,24 @@ describe('deleteAllCommentsByPostId', () => {
       })
   })
 })
+
+describe('postComment', () => {
+  it('posts a new comment', () => {
+    const newComment = {
+      postId: 1,
+      author: 1,
+      createdOn: '10/10',
+      content: 'wow, cool gardens!'
+    }
+    return db.postComment(newComment, testDb)
+      .then((comment) => {
+        const id = comment[0]
+        return db.getCommentById(id, testDb)
+      })
+      .then(comment => {
+        const newComment = comment[0]
+        expect(newComment.post_id).toBe(1)
+        return null
+      })
+  })
+})
