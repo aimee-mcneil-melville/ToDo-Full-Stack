@@ -22,7 +22,6 @@ function getCommentsByPostId (id, db = connection) {
 }
 
 function deleteAllCommentsByPostId (id, db = connection) {
-  console.log('id', id)
   return db('comments')
     .where('post_id', id)
     .del()
