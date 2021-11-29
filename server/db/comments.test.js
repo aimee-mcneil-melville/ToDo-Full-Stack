@@ -28,3 +28,17 @@ describe('getCommentsByPostId', () => {
       })
   })
 })
+
+describe('deleteAllCommentsByPostId', () => {
+  it('deletes all comments with specified post id', () => {
+    return db.deleteAllCommentsByPostId(1, testDb)
+      .then(() => {
+        return db.getAllComments(testDb)
+      })
+      .then(comments => {
+        const filtered = comments.filter(e => e.id === 1)
+        expect(filtered).toEqual([])
+        return null
+      })
+  })
+})
