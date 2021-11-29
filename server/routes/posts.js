@@ -12,12 +12,9 @@ module.exports = router
 // })
 
 router.get('/:gardenid', (req, res) => {
-  console.log('GET /:gardenid called')
-  db.getPostsByGardenId(Number(req.params.id))
+  db.getPostsByGardenId(Number(req.params.gardenid))
     .then((posts) => {
-      console.log('posts: ', posts)
-      // res.json({ posts })
-      res.status(201).json({ posts })
+      res.status(200).json({ posts })
       return null
     })
     .catch((err) => {

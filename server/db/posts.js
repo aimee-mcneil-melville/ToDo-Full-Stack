@@ -17,14 +17,14 @@ function getAllPosts (db = connection) {
 }
 
 function getPostsByGardenId (id, db = connection) {
-  // function to get all of the posts for a specific garden
+  // console.log('getPostsByGardenId called, id: ', id)
   // add in name of author
   return db('posts')
     .where('garden_id', id)
-    // .select()
-    .then(posts => {
-      return posts
-    })
+    .select()
+    // .then(posts => {
+    //   return posts
+    // })
 }
 
 function getPostById (id, db = connection) {
