@@ -18,7 +18,7 @@ const eventSchema = Yup.object({
 const browserDateFormat = 'yyyy-MM-DD'
 const nzDateFormat = 'DD/MM/yyyy'
 
-export default function EventForm(props) {
+export default function EventForm (props) {
   const event = props.formData
   const { title, date, volunteersNeeded, description } = event
   const formik = useFormik({
@@ -34,7 +34,7 @@ export default function EventForm(props) {
     validationSchema: eventSchema
   })
 
-  function handleCancel(e) {
+  function handleCancel (e) {
     e.preventDefault()
     props.cancelSubmit()
   }
@@ -43,7 +43,7 @@ export default function EventForm(props) {
     <>
       <div className='container form'>
         <h2 className='form-title'>{props.action}</h2>
-        <form  className='form-content' onSubmit={formik.handleSubmit}>
+        <form className='form-content' onSubmit={formik.handleSubmit}>
           <div className="field">
             <label
               htmlFor='title'
@@ -110,16 +110,16 @@ export default function EventForm(props) {
               onChange={formik.handleChange}
               value={formik.values.description}
             />
-            </div>
-            
-            <div className='button-group'>
-                {props.action === 'Update Event' ? (
-                  <button className='submit form-box' onClick={handleCancel}>Cancel Event</button>
-                ) : null}
+          </div>
 
-                <button className='submit form-box' type='submit'>Submit</button>
-            </div>
-            
+          <div className='button-group'>
+            {props.action === 'Update Event' ? (
+              <button className='submit form-box' onClick={handleCancel}>Cancel Event</button>
+            ) : null}
+
+            <button className='submit form-box' type='submit'>Submit</button>
+          </div>
+
         </form>
       </div>
     </>
