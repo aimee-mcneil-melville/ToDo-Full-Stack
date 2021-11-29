@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
 import { getEvent } from './eventHelper'
 
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
@@ -10,7 +11,6 @@ import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList
 
 export default function Event () {
   const { id } = useParams()
-  const history = useHistory()
 
   const [event, setEvent] = useState({})
 
@@ -23,12 +23,7 @@ export default function Event () {
         setEvent(event)
         return null
       })
-      .catch((err) => console.log(err))
   }, [user])
-
-  function redirectToEdit () {
-    history.push(`/events/${id}/edit`)
-  }
 
   function addExtraVolunteer (newVolunteer) {
     setEvent({

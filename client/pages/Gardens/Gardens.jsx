@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getAllGardens } from './gardernListHelper'
+import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
 
 const containerVariants = {
@@ -28,11 +28,10 @@ const listVariants = {
   }
 }
 
-export default function GardenList () {
+export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
 
   useEffect(() => {
-    // get api
     getAllGardens()
       .then(gardens => {
         setGardenList(gardens)
