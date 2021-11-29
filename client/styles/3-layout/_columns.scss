@@ -24,6 +24,15 @@
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(9);
   }
+
+  &__img{
+    position:fixed;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: none;
+    width: 30%;
+    height: 40%;
+  }
 }
 
 .column-9 {

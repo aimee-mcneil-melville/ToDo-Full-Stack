@@ -75,7 +75,7 @@ export default function Home () {
         <h1 className="home-title-2">Community Gardens</h1>
         <h1 className="home-title-3">in New Zealand</h1>
         <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link className='button-primary button-width' to='/signin'>Get Started</Link>
+        <Link className='button-primary button-width' to='/gardens'>Get Started</Link>
       </motion.article>
 
       <motion.img

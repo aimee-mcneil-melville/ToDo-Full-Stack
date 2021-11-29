@@ -29,6 +29,42 @@ Response (200):
 }
 ```
 
+## `POST /api/v1/gardens`
+
+Request:
+
+```json
+{
+  "gardens": [
+    {
+      "name": "Kelmarna Gardens",
+      "address": "12 Hukanui Crescent",
+      "description": "Example description",
+      "lat": -36.86011508905973,
+      "lon": 174.7330772002716,
+      "url": "http://www.kelmarnagardens.nz"
+    }
+  ]
+}
+```
+
+Response (201):
+
+```json
+{
+  "gardens": [
+    {
+      "id": 1,
+      "name": "Kelmarna Gardens",
+      "address": "12 Hukanui Crescent",
+      "description": "Example description",
+      "lat": -36.86011508905973,
+      "lon": 174.7330772002716,
+      "url": "http://www.kelmarnagardens.nz"
+    }
+  ]
+}
+```
 
 ## `GET /api/v1/gardens/:id`
 
