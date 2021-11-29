@@ -99,6 +99,8 @@ test('Admin can login & add event', async () => {
     page.click('button[type=submit]', { force: true })
   ])
 
+  await page.click('text=Christmas Gardening!')
+
   expect(await page.$eval('section', (el) => el.innerText)).toMatch(
     /Christmas Gardening!/
   )

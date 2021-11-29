@@ -22,6 +22,7 @@ export function registerUser (user, isAdmin, authUser, navigateTo, consume = req
     .then((res) => {
       const newUser = res.body
       newUser.isAdmin = isAdmin
+      newUser.token = token
       dispatch(setUser(newUser))
       navigateTo(`/gardens/${user.gardenId}`)
       return newUser
