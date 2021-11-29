@@ -51,3 +51,24 @@ describe('getPostById', () => {
       })
   })
 })
+
+describe('addBlogPost', () => {
+  it('adds the new blog post to the db', () => {
+    const newPost = {
+      id: 7,
+      gardenId: 7,
+      author: 7,
+      title: 'Testing the tests',
+      createdOn: '30/11/2021',
+      content: 'This is just a test'
+    }
+    return db.addBlogPost(newPost, testDb)
+      .then((post) => {
+        expect(post.id).toBe(7)
+        expect(post.gardenId).toBe(7)
+        expect(post.author).toBe(7)
+        expect(post.title).toMatch('Testing the tests')
+        return null
+      })
+  })
+})
