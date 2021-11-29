@@ -20,7 +20,10 @@ function getPostsByGardenId (id, db = connection) {
   // function to get all of the posts for a specific garden
   // add in name of author
   return db('posts')
-    .join('id', 'post_id')
+    .where('garden_id', id)
+    .then(posts => {
+      return posts
+    })
 }
 
 function getPostById (id, db = connection) {

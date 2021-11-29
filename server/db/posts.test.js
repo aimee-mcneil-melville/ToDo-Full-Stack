@@ -19,6 +19,26 @@ afterAll(() => {
   return testDb.destroy()
 })
 
+describe('getAllPosts', () => {
+  it('gets all of the posts in the db', () => {
+    return db.getAllPosts(testDb)
+      .then((posts) => {
+        expect(posts).toHaveLength(2)
+        return null
+      })
+  })
+})
+
+describe('getPostsByGardenId', () => {
+  it('return all of the posts related to the garden id', () => {
+    return db.getPostsByGardenId(1, testDb)
+      .then((posts) => {
+        expect(posts).toHaveLength(2)
+        return null
+      })
+  })
+})
+
 describe('getPostById', () => {
   it('returns the correct Post', () => {
     return db.getPostById(1, testDb)
@@ -27,16 +47,6 @@ describe('getPostById', () => {
         expect(post.gardenId).toBe(1)
         expect(post.author).toBe(2)
         expect(post.title).toMatch('Lettuce Picking Season')
-        return null
-      })
-  })
-})
-
-describe('getAllPosts', () => {
-  it('gets all of the posts in the db', () => {
-    return db.getAllPosts(testDb)
-      .then((posts) => {
-        expect(posts).toHaveLength(2)
         return null
       })
   })
