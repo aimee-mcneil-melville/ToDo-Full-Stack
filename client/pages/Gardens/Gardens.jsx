@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
 import { containerVariants, gardensListVariants } from '../animationVariants'
 import { showError } from '../../actions/error'
-import { dispatch } from '../../store'
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllGardens()
