@@ -1,10 +1,10 @@
 const request = require('supertest')
 
 const server = require('../server')
-// const db = require('../db/gardens')
+const db = require('../db/gardens')
 // const dbUsers = require('../db/users')
 // const auth0 = require('../routes/auth')
-// const log = require('../logger')
+const log = require('../logger')
 
 // jest.mock('../logger')
 // jest.mock('../db/gardens')
@@ -44,8 +44,8 @@ describe('GET /api/v1/posts/:gardenid', () => {
   // should this be garden_id?
   it('responds with blog posts for the specific garden', () => {
     db.getPostsByGardenId.mockImplementation(() => Promise.resolve(mockPostsForGarden))
-    dbUsers.getUserById.mockImplementation(() => Promise.resolve({ auth0Id: 'auth0id|est' }))
-    auth0.userHasAdminRole.mockImplementation(() => Promise.resolve(true))
+    // dbUsers.getUserById.mockImplementation(() => Promise.resolve({ auth0Id: 'auth0id|est' }))
+    // auth0.userHasAdminRole.mockImplementation(() => Promise.resolve(true))
     return request(server)
       .get('/api/v1/posts/1')
       .expect('Content-Type', /json/)
@@ -57,9 +57,10 @@ describe('GET /api/v1/posts/:gardenid', () => {
       })
   })
 
-  it('responds with a 401 error when token is not provided?', () => {
-    //expect.assertions(2) not sure what this line is doing, copied from gardens.test.js
-  })
+  // Will this need a token provided?
+  // it('responds with a 401 error when token is not provided?', () => {
+  //   //expect.assertions(2) not sure what this line is doing, copied from gardens.test.js
+  // })
 
   it('responds with 500 and correct error object on DB error', () => {
     db.getPostsByGardenId.mockImplementation(() => Promise.reject(
