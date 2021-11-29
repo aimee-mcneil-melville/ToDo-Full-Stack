@@ -23,7 +23,6 @@ export async function cacheUser (useAuth0) {
       saveUser({ id, firstName, lastName, email, isAdmin, gardenId, token })
     } catch (err) {
       dispatch(showError('Unable to set the current user'))
-      console.error(err)
     }
   } else {
     saveUser()

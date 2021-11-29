@@ -23,7 +23,6 @@ export default function Event () {
         setEvent(event)
         return null
       })
-      .catch((err) => console.log(err))
   }, [user])
 
   function addExtraVolunteer (newVolunteer) {
