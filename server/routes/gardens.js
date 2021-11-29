@@ -17,7 +17,8 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getGardens()
     .then((gardens) => {
-      return res.json({ gardens })
+      res.json({ gardens })
+      return null
     })
     .catch((err) => {
       log(err.message)
