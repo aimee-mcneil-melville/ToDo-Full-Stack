@@ -6,7 +6,7 @@
 
 Updated code for ERD:
 ```
-// Creating tables
+ // Creating tables
 Table users  {
   id int [pk, increment] // auto-increment
   garden_id int
@@ -28,14 +28,9 @@ Table gardens {
   url varchar
 }
 
-Table blogs {
-  id int [pk]
-  garden_id int
-}
-
 Table posts {
   id int [pk]
-  blog_id int
+  garden_id int
   author int
   title varchar
   created_on datetime
@@ -78,11 +73,10 @@ Table extraVolunteers {
 // > many-to-one; < one-to-many; - one-to-one
 Ref: users.garden_id > gardens.id
 Ref: events.garden_id > gardens.id
-Ref: blogs.garden_id > gardens.id
 Ref: eventVolunteers.user_id > users.id
 Ref: eventVolunteers.event_id > events.id
 Ref: extraVolunteers.event_id > events.id
-Ref: posts.blog_id > blogs.id
+Ref: posts.garden_id > gardens.id
 Ref: comments.post_id > posts.id
 Ref: comments.author > users.id
 Ref: posts.author > users.id
