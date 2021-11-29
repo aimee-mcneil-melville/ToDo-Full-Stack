@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
-import { showError } from '../../../actions/error'
-import { dispatch } from '../../../store'
+import { showError } from '../../actions/error'
+import { dispatch } from '../../store'
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
@@ -14,9 +14,9 @@ export default function Gardens () {
         return null
       })
       .catch(err => {
-        dispatch(showError(error.message))
+        dispatch(showError(err.message))
         return false
-      }
+      })
   }, [])
 
   return (
