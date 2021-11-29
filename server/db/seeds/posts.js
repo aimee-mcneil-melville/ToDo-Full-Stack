@@ -19,7 +19,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          blog_id: 1,
+          garden_id: 1,
           garden_id: 1,
           created_on: diffDate(1)
         }

@@ -1,7 +1,7 @@
 const request = require('supertest')
 
 const server = require('../server')
-const db = require('../db/gardens')
+const db = require('../db/posts')
 // const dbUsers = require('../db/users')
 // const auth0 = require('../routes/auth')
 const log = require('../logger')

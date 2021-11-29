@@ -21,6 +21,7 @@ function getPostsByGardenId (id, db = connection) {
   // add in name of author
   return db('posts')
     .where('garden_id', id)
+    // .select()
     .then(posts => {
       return posts
     })

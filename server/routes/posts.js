@@ -1,6 +1,6 @@
 const express = require('express')
 const log = require('../logger')
-const db = require('../db/gardens')
+const db = require('../db/posts')
 // const { userHasAdminRole, checkJwt } = require('./auth')
 // const { getUserById } = require('../db/users')
 
@@ -12,9 +12,12 @@ module.exports = router
 // })
 
 router.get('/:gardenid', (req, res) => {
+  console.log('GET /:gardenid called')
   db.getPostsByGardenId(Number(req.params.id))
     .then((posts) => {
-      res.json({ posts })
+      console.log('posts: ', posts)
+      // res.json({ posts })
+      res.status(201).json({ posts })
       return null
     })
     .catch((err) => {
