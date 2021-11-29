@@ -32,21 +32,19 @@ describe('getPostsByGardenId', () => {
 describe('getPostById', () => {
   it('returns the correct Post', () => {
     return db.getPostById(1, testDb)
-      .then((post) => {
-        const newPost = post[0]
-        expect(newPost.id).toBe(1)
-        expect(newPost.gardenId).toBe(1)
-        expect(newPost.author).toBe(2)
-        expect(newPost.title).toMatch('Lettuce Picking Season')
+      .then(post => {
+        expect(post.id).toBe(1)
+        expect(post.gardenId).toBe(1)
+        expect(post.author).toBe(2)
+        expect(post.title).toMatch('Lettuce Picking Season')
         return null
       })
   })
   it('returns the correct name of the author', () => {
     return db.getPostById(1, testDb)
-      .then((post) => {
-        const newPost = post[0]
-        expect(newPost.firstName).toMatch('User')
-        expect(newPost.lastName).toMatch('second')
+      .then(post => {
+        expect(post.firstName).toMatch('User')
+        expect(post.lastName).toMatch('second')
         return null
       })
   })
@@ -55,18 +53,20 @@ describe('getPostById', () => {
 describe('addBlogPost', () => {
   it('adds the new blog post to the db', () => {
     const newPost = {
-      id: 7,
       gardenId: 7,
-      author: 7,
+      author: 1,
       title: 'Testing the tests',
       createdOn: '30/11/2021',
       content: 'This is just a test'
     }
     return db.addBlogPost(newPost, testDb)
+      .then(([id]) => {
+        return db.getPostById(id, testDb)
+      })
       .then((post) => {
-        expect(post.id).toBe(7)
+        expect(post.id).toBe(3)
         expect(post.gardenId).toBe(7)
-        expect(post.author).toBe(7)
+        expect(post.author).toBe(1)
         expect(post.title).toMatch('Testing the tests')
         return null
       })
