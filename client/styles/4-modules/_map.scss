@@ -4,21 +4,43 @@
 
 .map {
   border-radius: 50%;
+  margin: 3rem auto;
   padding: 50%;
   border: solid vars.$secondary;
   @include mixins.media-queries(mobile, min) {
-    border-radius: 0%;
+    border-radius: 1rem;
     width: functions.colWidth(12);
+    object-fit: contain;
   }
 }
 
-.map-container {
-  padding: vars.$base-size;
-  padding-right: 0;
+.graph-map {
+  padding: vars.$base-size *3;
+  width: 90%;
   width: functions.colWidth(12);
-  order: -1;
+  text-align: left;
+  
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(6);
-    order: 1;
+    padding: 10px 10px;
+    margin-left: 0;
+  }
+
+  // chart styling not implemented yet
+  .svg {
+    padding: vars.$base-size;
+    display: block;
+    position: relative;
+    width: 100%;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  .svg::after {
+    position: relative;
+    display: block;
+    margin: 0;
+    object-fit: contain;
   }
 }
