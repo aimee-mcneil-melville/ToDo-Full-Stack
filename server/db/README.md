@@ -84,6 +84,6 @@ Ref: eventVolunteers.event_id > events.id
 Ref: extraVolunteers.event_id > events.id
 Ref: posts.blog_id > blogs.id
 Ref: comments.post_id > posts.id
-Ref: comments.user_id > users.id
+Ref: comments.author > users.id
 Ref: posts.author > users.id
 ```
