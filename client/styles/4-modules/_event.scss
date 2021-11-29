@@ -4,7 +4,7 @@
 @use '../1-helpers/vars';
 @use '../4-modules/buttons';
 
-.event-container{
+.event-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -15,33 +15,12 @@
     margin-top: 1rem;
     text-align: center;
     
-    a{
+    a {
         text-transform: none;
     }
 }
 
-
-.button{
-    display: inline-block;
-    
-
- .add{
-    background-color: vars.$green ;
-    margin: vars.$base-size;
-    color: white;
-    font-size: 1rem;
-    position: relative;
-    padding: 0.5rem 0.5rem;
-    text-align: center;
-
-    a{
-        text-decoration-line: none;
-    }
-    }   
-}
-
-
-.events-list{
+.events-list {
     padding: vars.$base-size * 2;
     border: solid vars.$border;
     border-radius: 1rem;
@@ -54,30 +33,29 @@
       }
 }
 
-.card-title{
+.card-title {
     text-align: left;
 }
 
-.events-title{
+.events-title {
     color: vars.$secondary;
     text-align: left;
     padding-left: vars.$base-size;
 
-    #{&}h1{
+    #{&}h1 {
         margin-block-end: 0.3em;
     }
 }
 
-.Collapsible__contentInner {
+.collapsible__content-inner {
     text-align: left;
     width: 100%;    
 }
 
-.card-primary{
+.card-primary {
     text-align: left;
     
-    .list-primary li{
+    .list-primary li {
     text-align: left;
-
-}
+    }
 }

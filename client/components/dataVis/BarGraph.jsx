@@ -3,9 +3,9 @@ import { Bar } from '@visx/shape'
 import { Group } from '@visx/group'
 // import { GradientTealBlue } from '@visx/gradient'
 // import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
+// import { ScaleSVG } from '@visx/responsive';
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-// import { ScaleSVG } from '@visx/responsive';
 const verticalMargin = 120
 // accessors
 
