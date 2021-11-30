@@ -21,12 +21,12 @@ afterAll(() => {
 
 function getTestVolunteers (userId, eventId) {
   if (userId && eventId) {
-    return testDb('eventVolunteers')
+    return testDb('event_volunteers')
       .where({ user_id: userId, event_id: eventId })
       .select()
   }
 
-  return testDb('eventVolunteers').select()
+  return testDb('event_volunteers').select()
 }
 
 describe('addVolunteer', () => {
@@ -90,7 +90,7 @@ describe('addExraVolunteer test', () => {
       lastName: 'Abernethy'
     }
     return volunteers.addExtraVolunteer(rockUp, testDb)
-      .then(() => testDb('extraVolunteers').select())
+      .then(() => testDb('extra_volunteers').select())
       .then(([rockUp]) => {
         expect(rockUp.event_id).toBe(1)
         expect(rockUp.first_name).toBe('Erin')

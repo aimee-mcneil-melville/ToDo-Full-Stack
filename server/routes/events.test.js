@@ -23,7 +23,6 @@ const mockEvent = {
   status: 'Active',
   volunteers: [{
     userId: 3,
-    username: 'jdog',
     firstName: 'Johnny',
     lastName: 'Dawg'
   }],

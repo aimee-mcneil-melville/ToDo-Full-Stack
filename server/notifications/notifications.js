@@ -1,4 +1,5 @@
 const { encode } = require('./emailTokens')
+const log = require('../logger')
 
 function sendNotification (userdata, eventdata) {
   const token = encode({
@@ -28,7 +29,7 @@ function sendNotification (userdata, eventdata) {
 
     res.on('end', function () {
       const body = Buffer.concat(chunks)
-      console.log(body.toString())
+      log(body.toString())
     })
   })
 
@@ -39,11 +40,11 @@ function sendNotification (userdata, eventdata) {
           to: [
             {
               email: userdata.email,
-              name: userdata.username
+              name: userdata.firstName
             }
           ],
           dynamic_template_data: {
-            name: userdata.username,
+            name: userdata.firstName,
             id: userdata.id,
             title: eventdata.title,
             date: eventdata.date,

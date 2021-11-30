@@ -20,9 +20,10 @@ export default function EmailVolunteerError () {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
   const { userId, eventId } = useParams()
   const history = useHistory()
-  const browserUserName = useSelector(
-    (globalState) => globalState.user.username
+  const browserFirstName = useSelector(
+    (globalState) => globalState.user.firstName
   )
+
   const browserUserId = useSelector((globalState) => globalState.user.id)
   const logout = getLogoutFn(useAuth0)
 
@@ -65,7 +66,7 @@ export default function EmailVolunteerError () {
         {!checkUserIdsMatch(userId, browserUserId) && (
           <p>
             <i role="alert-msg">NOTE: You are currently logged in as:</i>{' '}
-            <b>{browserUserName}</b> Not you?{' '}
+            <b>{browserFirstName}</b> Not you?{' '}
             <button onClick={logOutSignIn}>Click here</button>
           </p>
         )}

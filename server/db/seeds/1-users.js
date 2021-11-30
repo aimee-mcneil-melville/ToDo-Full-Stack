@@ -9,7 +9,6 @@ exports.seed = function (knex) {
         {
           id: 1,
           garden_id: 1,
-          username: 'admin',
           first_name: 'Admin',
           last_name: 'User',
           email: 'kelmarna.admin@email.nz',
@@ -18,7 +17,6 @@ exports.seed = function (knex) {
         {
           id: 2,
           garden_id: 2,
-          username: 'user2',
           first_name: 'User',
           last_name: 'second',
           email: '123',
@@ -27,7 +25,6 @@ exports.seed = function (knex) {
         {
           id: 3,
           garden_id: 2,
-          username: 'user3',
           first_name: 'User',
           last_name: 'Third',
           email: 'user.third@email.nz',

@@ -5,8 +5,6 @@
 
 .container {
   position: relative;
-  width: 100%;
-  padding: 0 vars.$base-size * 3;
   @include mixins.media-queries(desktop, min) {
     width: 1400px;
     margin: 0 auto;
@@ -18,11 +16,49 @@
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(6);
   }
+
+  &__img{
+    position:fixed;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: none;
+    width: 30%;
+    height: 40%;
+  }
+}
+
+.column-6.garden-6 {
+  padding: vars.$base-size *3;
+  text-align: left;
+
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(9);
+  }
 }
 
 .column-9 {
   width: functions.colWidth(12);
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(9);
+  }
+}
+
+.column-9.garden {
+  width: functions.colWidth(12);
+  padding: vars.$base-size;
+  text-align: left; 
+
+  h1, h2, h3, h4, h5, h6 {
+    width: functions.colWidth(12);
+    text-align: left;
+    color: vars.$secondary;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(12);
   }
 }

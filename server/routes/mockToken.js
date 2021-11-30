@@ -3,6 +3,7 @@
 
 const jwt = require('jsonwebtoken')
 const nock = require('nock')
+const log = require('../logger')
 
 // this private key is for testing purposes only so that we can mock tokens
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
@@ -72,7 +73,7 @@ const getMockToken = () => {
   try {
     token = jwt.sign(payload, privateKey, options)
   } catch (err) {
-    console.error(err)
+    log(err)
     throw err
   }
 
@@ -89,7 +90,8 @@ const getAdminToken = () => {
     name: user.email,
     permissions: ['update:event',
       'create:event',
-      'update:event_volunteers'
+      'update:event_volunteers',
+      'create:garden'
     ]
   }
 
@@ -105,7 +107,7 @@ const getAdminToken = () => {
   try {
     token = jwt.sign(payload, privateKey, options)
   } catch (err) {
-    console.log(err)
+    log(err)
     throw err
   }
 

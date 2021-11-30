@@ -1,12 +1,19 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { renderWithRedux } from '../../test-utils'
 import Register from './Register'
 
 describe('Register form field', () => {
   it('updates correctly on user input', async () => {
-    render(<Register/>)
+    renderWithRedux(<Register location={{ pathname: '/profile' }}/>, {
+      initialState: {
+        user: {
+          isAdmin: 0
+        }
+      }
+    })
 
     const firstNameInput = screen.getByRole('textbox', { name: 'First Name' })
     const lastNameInput = screen.getByRole('textbox', { name: 'Last Name' })
@@ -21,11 +28,16 @@ describe('Register form field', () => {
   })
   it('"Required" comes up on empty input', async () => {
     const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
+    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
+      initialState: {
+        user: {
+          isAdmin: 0
+        }
+      }
+    })
 
     userEvent.clear(screen.getByLabelText(/first name/i))
     userEvent.clear(screen.getByLabelText(/last name/i))
-    userEvent.clear(screen.getByLabelText(/username/i))
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
@@ -34,11 +46,16 @@ describe('Register form field', () => {
   })
   it('message comes up on short input', async () => {
     const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
+    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
+      initialState: {
+        user: {
+          isAdmin: 0
+        }
+      }
+    })
 
     userEvent.type(screen.getByLabelText(/first name/i), 'a')
     userEvent.type(screen.getByLabelText(/last name/i), 'b')
-    userEvent.type(screen.getByLabelText(/username/i), 'c')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
@@ -47,11 +64,16 @@ describe('Register form field', () => {
   })
   it('message comes up on long input', async () => {
     const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
+    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
+      initialState: {
+        user: {
+          isAdmin: 0
+        }
+      }
+    })
 
     userEvent.type(screen.getByLabelText(/first name/i), 'whatawonderfuldaytobealive')
     userEvent.type(screen.getByLabelText(/last name/i), 'howmanydaysareleftoftheyear')
-    userEvent.type(screen.getByLabelText(/username/i), 'thisisatestforalongusername')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
