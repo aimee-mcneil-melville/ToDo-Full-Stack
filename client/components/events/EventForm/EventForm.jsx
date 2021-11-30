@@ -41,9 +41,9 @@ export default function EventForm (props) {
 
   return (
     <>
-      <div className='container'>
+      <div className='container form'>
         <h2 className='form-title'>{props.action}</h2>
-        <form onSubmit={formik.handleSubmit}>
+        <form className='form-content' onSubmit={formik.handleSubmit}>
           <div className="field">
             <label
               htmlFor='title'
@@ -59,7 +59,7 @@ export default function EventForm (props) {
               type='text'
               placeholder='event title'
               onChange={formik.handleChange}
-              value={formik.values.title}/>
+              value={formik.values.title} />
 
             <label
               htmlFor='date'
@@ -110,15 +110,17 @@ export default function EventForm (props) {
               onChange={formik.handleChange}
               value={formik.values.description}
             />
+          </div>
+
+          <div className='button-group'>
+            {props.action === 'Update Event' ? (
+              <button className='submit form-box' onClick={handleCancel}>Cancel Event</button>
+            ) : null}
+
             <button className='submit form-box' type='submit'>Submit</button>
           </div>
+
         </form>
-        {props.action === 'Update Event' ? (
-          <button
-            className='button-primary'
-            onClick={handleCancel}>Cancel Event
-          </button>
-        ) : null}
       </div>
     </>
   )

@@ -51,3 +51,7 @@
   border-radius: math.div(vars.$base-size, 4);
   width: vars.$base-size * 9;
 }
+
+.inline-button {
+  display: inline-block;
+}

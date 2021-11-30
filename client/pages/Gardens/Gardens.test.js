@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
-import { renderWithRouter } from '../../test-utils'
+import { renderWithRedux } from '../../test-utils'
 
 import Gardens from './Gardens'
 import { getAllGardens } from './gardensHelper'
@@ -17,7 +17,7 @@ describe('list of gardens', () => {
       return Promise.resolve([])
     })
 
-    renderWithRouter(<Gardens />)
+    renderWithRedux(<Gardens />)
 
     const list = await screen.findByRole('list')
     expect(list).toBeEmptyDOMElement()
@@ -38,7 +38,7 @@ describe('list of gardens', () => {
       ])
     })
 
-    renderWithRouter(<Gardens />)
+    renderWithRedux(<Gardens />)
 
     return screen.findAllByRole('listitem')
       .then((listItems) => {
@@ -75,7 +75,7 @@ describe('list of gardens', () => {
       ])
     })
 
-    renderWithRouter(<Gardens />)
+    renderWithRedux(<Gardens />)
 
     return screen.findAllByRole('listitem')
       .then((listItems) => {

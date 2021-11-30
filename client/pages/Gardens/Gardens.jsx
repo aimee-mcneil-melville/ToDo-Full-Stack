@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-
 import { getAllGardens } from './gardensHelper'
+import { motion } from 'framer-motion'
+import { containerVariants, gardensListVariants } from '../animationVariants'
+import { showError } from '../../actions/error'
 
 export default function Gardens() {
   const [gardenList, setGardenList] = useState([])
+  const dispatch = useDispatch()
 
   const cardVariant1 = {
     hidden: {
@@ -29,7 +32,10 @@ export default function Gardens() {
         setGardenList(gardens)
         return null
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        dispatch(showError(err.message))
+        return false
+      })
   }, [])
 
   return (
