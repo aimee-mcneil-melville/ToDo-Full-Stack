@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [ dev, main, 5-devops-CI ]
+    branches: [ dev, main ]
   pull_request:
     branches: [ dev, main ]
 
@@ -54,14 +54,14 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       
-      # - name: Install Dependencies
-      #   run: npm ci
+      - name: Install Dependencies
+        run: npm ci
         
-      # - name: Linting
-      #   run: "npm run lint -- --rule 'no-console: 2'"
+      - name: Linting
+        run: "npm run lint -- --rule 'no-console: 2'"
         
-      # - name: Test
-      #   run: npm run test
+      - name: Test
+        run: npm run test
         
       ### the below is for E2E testing ###
       # - name: Build
@@ -80,7 +80,7 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     # this prevents deployment for pull requests and works only for push in dev
-    if: ${{ github.ref == 'refs/heads/5-devops-CI' }} # this should be dev
+    if: ${{ github.ref == 'refs/heads/dev' }} # this should be dev
     needs: build
     # Each environment can have different evn vars which includes different Auth0 secrets 
     # Those secrets can be different than the repository secrets
