@@ -1,15 +1,9 @@
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/posts')
-// const { userHasAdminRole, checkJwt } = require('./auth')
-// const { getUserById } = require('../db/users')
 
 const router = express.Router()
 module.exports = router
-
-// const checkAdmin = jwtAuthz(['create:post', 'update:post', 'delete:post'], {
-//   customScopeKey: 'permissions'
-// })
 
 router.get('/:gardenid', (req, res) => {
   db.getPostsByGardenId(Number(req.params.gardenid))
