@@ -93,6 +93,8 @@ describe('deleteBlogPost', () => {
         return null
       })
   })
+
+  it.todo('deletes all child comments')
 })
 
 describe('updateBlogPost', () => {
