@@ -2,20 +2,44 @@ name: CI/CD
 
 on:
   push:
-    branches: [ dev, main ]
+    branches: [ dev, main, 5-devops-CI ]
   pull_request:
     branches: [ dev, main ]
 
 env:
-  JWT_SECRET: ${{secrets.JWT}}
-  SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  # JWT_SECRET: ${{secrets.JWT}}
+  # SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   PORT: 3000
   # DEBUG: nock.*
+  JWT_SECRET: ${{secrets.JWT_SECRET}}
+  SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
+  E2E_TEST_AUTH0_ADMIN_EMAIL: ${{secrets.E2E_TEST_AUTH0_ADMIN_EMAIL}}
+  E2E_TEST_AUTH0_ADMIN_PASSWORD: ${{secrets.E2E_TEST_AUTH0_ADMIN_PASSWORD}}
+  E2E_TEST_AUTH0_ADMIN_ID: ${{secrets.E2E_TEST_AUTH0_ADMIN_ID}}
+  E2E_TEST_ADMIN_USERNAME: ${{secrets.E2E_TEST_ADMIN_USERNAME}}
+  E2E_TEST_ADMIN_FIRST_NAME: ${{secrets.E2E_TEST_ADMIN_FIRST_NAME}}
+  E2E_TEST_ADMIN_LAST_NAME: ${{secrets.E2E_TEST_ADMIN_LAST_NAME}}
+  E2E_TEST_ADMIN_IS_ADMIN: ${{secrets.E2E_TEST_ADMIN_IS_ADMIN}}
+  E2E_TEST_ADMIN_GARDEN_ID: ${{secrets.E2E_TEST_ADMIN_GARDEN_ID}}
+  E2E_TEST_AUTH0_MEMBER_EMAIL: ${{secrets.E2E_TEST_AUTH0_MEMBER_EMAIL}}
+  E2E_TEST_AUTH0_MEMBER_PASSWORD: ${{secrets.E2E_TEST_AUTH0_MEMBER_PASSWORD}}
+  E2E_TEST_AUTH0_MEMBER_ID: ${{secrets.E2E_TEST_AUTH0_MEMBER_ID}}
+  E2E_TEST_MEMBER_USERNAME: ${{secrets.E2E_TEST_MEMBER_USERNAME}}
+  E2E_TEST_MEMBER_FIRST_NAME: ${{secrets.E2E_TEST_MEMBER_FIRST_NAME}}
+  E2E_TEST_MEMBER_LAST_NAME: ${{secrets.E2E_TEST_MEMBER_LAST_NAME}}
+  E2E_TEST_MEMBER_IS_ADMIN: ${{secrets.E2E_TEST_MEMBER_IS_ADMIN}}
+  E2E_TEST_MEMBER_GARDEN_ID: ${{secrets.E2E_TEST_MEMBER_GARDEN_ID}}
+  TEST_HEADLESS: ${{secrets.TEST_HEADLESS}}
+
+  # For Auth0
+  AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+  AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+  AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
   
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+      
     steps:
       - uses: actions/checkout@v2
       - uses: microsoft/playwright-github-action@v1
@@ -31,14 +55,14 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       
-      - name: Install Dependencies
-        run: npm ci
+      # - name: Install Dependencies
+      #   run: npm ci
         
-      - name: Linting
-        run: "npm run lint -- --rule 'no-console: 2'"
+      # - name: Linting
+      #   run: "npm run lint -- --rule 'no-console: 2'"
         
-      - name: Test
-        run: npm run test
+      # - name: Test
+      #   run: npm run test
         
       ### the below is for E2E testing ###
       # - name: Build
@@ -53,24 +77,47 @@ jobs:
       # - name: Skipping E2E Tests!
       #   run: npm run test:e2e
       
-      ### the below is for deployment to Heroku ###
-  # deploy:
-  #  needs: build
-  #  runs-on: ubuntu-latest
-  #  if: github.ref == 'refs/heads/dev'
-  #  steps:
-  #   - uses: actions/checkout@v2
+  ### the below is for deployment to Heroku ###
+  deploy-dev:
+    runs-on: ubuntu-latest
+    # this prevents deployment for pull requests and works only for push in dev
+    if: ${{ github.ref == 'refs/heads/5-devops-CI' }} # this should be dev
+    needs: build
+    environment: development
+    steps:
+    - uses: actions/checkout@v2
      
-  #   # - name: Add remote origin
-  #   #   run: "git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/gardenz-app.git"
-
-  #   - uses: akhileshns/heroku-deploy@master
-  #     with:
-  #       heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #       heroku_app_name: "gardenz-app"
-  #       heroku_email: "ryan.julian.bosher@icloud.com"
-  #       branch: ${{ env.TARGET_BRANCH_CD }}
-  #   # - name: Deploy to Heroku
-  #   #   run: git push heroku dev:refs/heads/main -f
-  #     env:
-  #       HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}} 
+    - uses: akhileshns/heroku-deploy@master
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        # branch: '5-devops-CI' # this should be dev
+      env:
+        HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
+        HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+        HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+        HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+        HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
+        
+  deploy-prod:
+    runs-on: ubuntu-latest
+    # this prevents deployment for pull requests and works for push in main
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: build
+    environment: production
+    steps:
+    - uses: actions/checkout@v2
+     
+    - uses: akhileshns/heroku-deploy@master
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        # branch: 'main'
+      env:
+        HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
+        HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+        HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+        HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+        HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}

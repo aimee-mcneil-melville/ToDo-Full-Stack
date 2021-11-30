@@ -21,12 +21,12 @@ afterAll(() => {
 
 function getTestVolunteers (userId, eventId) {
   if (userId && eventId) {
-    return testDb('eventVolunteers')
+    return testDb('event_volunteers')
       .where({ user_id: userId, event_id: eventId })
       .select()
   }
 
-  return testDb('eventVolunteers').select()
+  return testDb('event_volunteers').select()
 }
 
 describe('addVolunteer', () => {

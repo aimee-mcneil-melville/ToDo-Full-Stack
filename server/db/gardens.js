@@ -21,8 +21,8 @@ function getGardenById (id, db = connection) {
   return db('gardens')
     .where('gardens.id', id)
     .leftJoin('events', 'gardens.id', 'events.garden_id')
-    .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
-    .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
+    .leftJoin('event_volunteers', 'event_volunteers.event_id', 'events.id')
+    .leftJoin('users', 'event_volunteers.user_id', 'users.id')
     .select(
       'gardens.description as description',
       'gardens.id as id',

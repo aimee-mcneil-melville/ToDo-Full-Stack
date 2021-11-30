@@ -1,4 +1,4 @@
-import { deleteAllCommentsByPostId } from './comments.js'
+const { deleteAllCommentsByPostId } = require('./comments.js')
 
 const connection = require('./connection')
 
