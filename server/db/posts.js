@@ -1,5 +1,3 @@
-import { deleteAllCommentsByPostId } from './comments.js'
-
 const connection = require('./connection')
 
 module.exports = {
