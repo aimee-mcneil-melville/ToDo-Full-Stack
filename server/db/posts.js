@@ -78,7 +78,5 @@ function deleteBlogPost (id, db = connection) {
   return db('posts')
     .where('posts.id', id)
     .del()
-    .then(() => {
-      return deleteAllCommentsByPostId(id, db)
-    })
+    .then(() => deleteAllCommentsByPostId(id, db))
 }

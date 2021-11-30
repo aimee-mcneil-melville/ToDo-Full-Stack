@@ -24,6 +24,8 @@ describe('getAllPosts', () => {
     return db.getAllPosts(testDb)
       .then((posts) => {
         expect(posts).toHaveLength(2)
+        expect(posts[0].title).toMatch('Lettuce Picking Season')
+        expect(posts[1].title).toMatch('Where are my CABBAGES')
         return null
       })
   })
@@ -34,6 +36,7 @@ describe('getPostsByGardenId', () => {
     return db.getPostsByGardenId(1, testDb)
       .then((posts) => {
         expect(posts).toHaveLength(2)
+        expect(posts[1].title).toMatch('Where are my CABBAGES')
         return null
       })
   })
