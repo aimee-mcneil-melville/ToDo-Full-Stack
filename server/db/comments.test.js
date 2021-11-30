@@ -24,6 +24,8 @@ describe('getCommentsByPostId', () => {
     return db.getCommentsByPostId(1, testDb)
       .then(comments => {
         expect(comments).toHaveLength(1)
+        expect(comments[0].content).toMatch('Twas a wonderful day for lettuce picking!')
+        expect(comments[0].post_id).toBe(1)
         return null
       })
   })
@@ -52,7 +54,7 @@ describe('postComment', () => {
       content: 'wow, cool gardens!'
     }
     return db.postComment(newComment, testDb)
-      .then((comment) => {
+      .then(comment => {
         const id = comment[0]
         return db.getCommentById(id, testDb)
       })
@@ -91,6 +93,7 @@ describe('updateCommentById', () => {
       .then(comment => {
         expect(comment.id).toBe(1)
         expect(comment.content).toMatch('Hah! I changed my comment!')
+        expect(comment.author).toBe(2)
         return null
       })
   })
