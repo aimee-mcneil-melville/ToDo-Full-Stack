@@ -60,9 +60,8 @@ export default function Home () {
           </motion.button>
         </Link>
       </motion.article>
-
       <motion.img
-        className='home-image'
+        className='home-image home-flex centre-flex'
         src='/images/comGardenPlant.png'
         alt=""
         variants={rightVariant}

@@ -5,7 +5,6 @@
 
 .container {
   position: relative;
-  width: 100%;
   @include mixins.media-queries(desktop, min) {
     width: 1400px;
     margin: 0 auto;

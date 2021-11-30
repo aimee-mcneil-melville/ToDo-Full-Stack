@@ -44,7 +44,7 @@ export default function EventForm (props) {
 
   return (
     <>
-      <div className='container form'>
+      <div>
         <h2 className='form-title'>{props.action}</h2>
         <form className='form-content' onSubmit={formik.handleSubmit}>
           <div className="field">

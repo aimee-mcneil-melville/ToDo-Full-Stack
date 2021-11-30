@@ -22,15 +22,15 @@ export default function Garden () {
   const { name, description, address, url, events, lat, lon } = garden
 
   return (
-    <section className='flex-container'>
+    <section className='flex-container column-9 centre-flex'>
       <motion.div
         variants={leftVariant}
         initial='hidden'
         animate='visible'
         exit='exit'
       >
-        <div className='column-6'>
-          <article className='column-9 scroll'>
+        <div className='column-9'>
+          <article>
             <h2>{name}</h2>
             <p>{description}</p>
             <a href={url}>{url}</a>
