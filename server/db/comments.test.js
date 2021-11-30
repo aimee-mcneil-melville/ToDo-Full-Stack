@@ -37,7 +37,7 @@ describe('deleteAllCommentsByPostId', () => {
       })
       .then(comments => {
         const filtered = comments.filter(e => e.id === 1)
-        expect(filtered).toEqual([])
+        expect(filtered).toHaveLength(0)
         return null
       })
   })
@@ -58,6 +58,8 @@ describe('postComment', () => {
       })
       .then(comment => {
         expect(comment.post_id).toBe(1)
+        expect(comment.author).toBe(1)
+        expect(comment.content).toMatch('wow, cool gardens!')
         return null
       })
   })
@@ -66,12 +68,10 @@ describe('postComment', () => {
 describe('deleteCommentById', () => {
   it('deletes a comment by the comments id', () => {
     return db.deleteCommentById(1, testDb)
-      .then(() => {
-        return db.getAllComments(testDb)
-      })
+      .then(() => db.getAllComments(testDb))
       .then(comments => {
         const filtered = comments.filter(e => e.id === 1)
-        expect(filtered).toEqual([])
+        expect(filtered).toHaveLength(0)
         return null
       })
   })

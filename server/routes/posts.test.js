@@ -2,24 +2,10 @@ const request = require('supertest')
 
 const server = require('../server')
 const db = require('../db/posts')
-// const dbUsers = require('../db/users')
-// const auth0 = require('../routes/auth')
 const log = require('../logger')
 
 jest.mock('../logger')
-// jest.mock('../db/gardens')
-// jest.mock('../db/users')
 jest.mock('../db/posts')
-// jest.mock('../routes/auth')
-
-const mockPost = {
-  id: 1,
-  garden_id: 1,
-  author: 1,
-  title: 'Test Post',
-  content: 'This is a test post'
-  // created_on: '' I think this should auto complete?
-}
 
 const mockPostsForGarden = [
   {

@@ -86,12 +86,10 @@ describe('addBlogPost', () => {
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
     return db.deleteBlogPost(1, testDb)
-      .then(() => {
-        return db.getAllPosts(testDb)
-      })
+      .then(() => db.getAllPosts(testDb))
       .then(posts => {
         const filtered = posts.filter(element => element.id === 1)
-        expect(filtered).toEqual([])
+        expect(filtered).toHaveLength(0)
         return null
       })
   })
@@ -110,6 +108,7 @@ describe('updateBlogPost', () => {
     return db.updateBlogPost(updatedPost, testDb)
       .then(post => {
         expect(post.title).toMatch('Woohoo! I was updated!')
+        expect(post.content).toMatch('This is a cool update')
         return null
       })
   })
