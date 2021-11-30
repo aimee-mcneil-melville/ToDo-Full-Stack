@@ -23,7 +23,7 @@ export default function App () {
     <>
       <Error />
       <Header />
-      <main className='container'>
+      <main className='container margin-container flex-container centre-flex'>
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.key}>
             <Route exact path='/' component={Home} />
