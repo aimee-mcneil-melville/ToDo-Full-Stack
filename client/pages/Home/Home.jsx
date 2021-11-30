@@ -40,22 +40,24 @@ export default function Home () {
   }, [])
 
   return (
-    <section className='flex-container'>
-      <motion.article className='column-6 home-title-container'
-        variants={leftVariant}
-        initial='hidden'
-        animate='visible'
-        exit='exit'
-      >
-        <h1 className="home-title-1" >Empowering</h1>
-        <h1 className="home-title-2">Community Gardens</h1>
-        <h1 className="home-title-3">in New Zealand</h1>
-        <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link className='button-primary button-width' to='/gardens'>Get Started</Link>
-      </motion.article>
+    <section className='flex-container centre-flex'>
+      <div className='home-flex'>
+        <motion.article className='column-6 home-title-container'
+          variants={leftVariant}
+          initial='hidden'
+          animate='visible'
+          exit='exit'
+        >
+          <h1 className="home-title-1" >Empowering</h1>
+          <h1 className="home-title-2">Community Gardens</h1>
+          <h1 className="home-title-3">in New Zealand</h1>
+          <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
+          <Link className='button-primary button-width' to='/gardens'>Get Started</Link>
+        </motion.article>
+      </div>
 
       <motion.img
-        className='home-image'
+        className='home-image home-flex centre-flex'
         src='/images/comGardenPlant.png'
         alt=""
         variants={rightVariant}

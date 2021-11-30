@@ -44,7 +44,7 @@ export default function Register () {
   return (
     <>
       <h2>Register to view garden events</h2>
-      <section className='flex-container profile-flex' >
+      <section className='flex-container centre-flex' >
         <form className='flex-container__register-form' onSubmit={formik.handleSubmit}>
           <div className="field">
             <label htmlFor='firstName' className='label profile-label'>First Name</label>
