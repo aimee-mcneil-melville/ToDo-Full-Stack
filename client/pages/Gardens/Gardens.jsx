@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
-import { containerVariants, gardensListVariants } from '../animationVariants'
 import { showError } from '../../actions/error'
 
 export default function Gardens() {
