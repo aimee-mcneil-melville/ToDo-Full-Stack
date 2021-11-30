@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserLocation, getGardenLocations } from './homeHelper'
 import { motion } from 'framer-motion'
-import { leftVariant, rightVariant } from '../animationVariants'
+import { leftVariant, rightVariant, getStartButtonVariants } from '../animationVariants'
 
 export default function Home () {
   const [, setUserCoordinates] = useState(null)
@@ -51,7 +51,14 @@ export default function Home () {
         <h1 className="home-title-2">Community Gardens</h1>
         <h1 className="home-title-3">in New Zealand</h1>
         <p className='hero-title'>Help your community get the most out of your garden with events and reporting and become eligible for government subsidies</p>
-        <Link className='button-primary button-width' to='/gardens'>Get Started</Link>
+        <Link to='/gardens'>
+          <motion.button
+            className='button-primary button-width'
+            variants={getStartButtonVariants}
+            whileHover="hover">
+          Get Started
+          </motion.button>
+        </Link>
       </motion.article>
 
       <motion.img

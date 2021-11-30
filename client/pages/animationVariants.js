@@ -7,7 +7,7 @@ export const addEventVariants = {
     opacity: 1,
     x: 0,
     scale: [0, 1, 0.5, 1],
-    transition: { type: 'tween' }
+    transition: { type: 'tween', duration: 1.2 }
   },
   exit: {
     x: '-100vw',
@@ -84,8 +84,33 @@ export const rightVariant = {
 export const gardensListVariants = {
   hover: {
     scale: 1.1,
+    boxShadow: '15px 5px 5px 2px #CDF2CA',
     transition: {
       type: 'spring'
+    }
+  }
+}
+
+export const getStartButtonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: '0px 0px 8px rgb(255,255,255)',
+    boxShadow: '5px 5px #ADC2A9, 10px 10px #D3E4CD, 15px 15px #77D970',
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity
+    }
+  }
+}
+
+export const formButtonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: '0px 0px 8px rgb(255,255,255)',
+    transition: {
+      duration: 0.3,
+      type: 'tween',
+      yoyo: Infinity
     }
   }
 }
