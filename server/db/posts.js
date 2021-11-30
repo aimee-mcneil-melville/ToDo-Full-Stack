@@ -1,4 +1,4 @@
-const deleteAllCommentsByPostId = require('./comments')
+const { deleteAllCommentsByPostId } = require('./comments')
 const connection = require('./connection')
 
 module.exports = {
@@ -79,7 +79,6 @@ function deleteBlogPost (id, db = connection) {
     .where('posts.id', id)
     .del()
     .then(() => {
-      deleteAllCommentsByPostId(id, db)
-      return null
+      return deleteAllCommentsByPostId(id, db)
     })
 }
