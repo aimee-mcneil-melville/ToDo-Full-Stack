@@ -4,6 +4,9 @@ import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
+import { motion } from 'framer-motion'
+import { formButtonVariants } from '../../pages/animationVariants'
+
 import * as Yup from 'yup'
 
 const registerSchema = Yup.object().shape({
@@ -79,7 +82,12 @@ export default function Register () {
               <option value={3}>Devonport Community Garden</option>
             </select>
           </div>
-          <button className='submit profile-submit' type='submit' data-testid='submitButton'>Register</button>
+          <motion.button
+            className='submit profile-submit'
+            type='submit'
+            data-testid='submitButton'
+            variants={formButtonVariants}
+            whileHover="hover">Register</motion.button>
         </form>
       </section>
     </>

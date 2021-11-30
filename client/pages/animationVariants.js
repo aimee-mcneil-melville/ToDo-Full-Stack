@@ -81,16 +81,6 @@ export const rightVariant = {
   }
 }
 
-export const gardensListVariants = {
-  hover: {
-    scale: 1.1,
-    boxShadow: '15px 5px 5px 2px #CDF2CA',
-    transition: {
-      type: 'spring'
-    }
-  }
-}
-
 export const getStartButtonVariants = {
   hover: {
     scale: 1.1,
@@ -111,5 +101,21 @@ export const formButtonVariants = {
       duration: 0.3,
       yoyo: Infinity
     }
+  }
+}
+
+export const cardVariant1 = {
+  hidden: {
+    y: '-100vw'
+  },
+  visible: {
+    y: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1.5
+    }
+  },
+  transition: {
+    duration: 2
   }
 }
