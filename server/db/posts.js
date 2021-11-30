@@ -1,5 +1,4 @@
-const { deleteAllCommentsByPostId } = require('./comments.js')
-
+const deleteAllCommentsByPostId = require('./comments')
 const connection = require('./connection')
 
 module.exports = {
