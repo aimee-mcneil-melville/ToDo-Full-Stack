@@ -43,7 +43,7 @@ function Registeration ({ user }) {
 
   return (
     <section className='form'>
-      <h2>Regiser Profile</h2>
+      <h2>Register Profile</h2>
       <form className='registeration'>
         <label htmlFor='auth0Id'>auth0Id</label>
         <input
