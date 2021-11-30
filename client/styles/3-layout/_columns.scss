@@ -29,6 +29,7 @@
   }
 }
 
+
 .column-9 {
   width: functions.colWidth(12);
   @include mixins.media-queries(mobile, min) {
