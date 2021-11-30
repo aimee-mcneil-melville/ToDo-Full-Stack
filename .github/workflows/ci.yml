@@ -2,15 +2,12 @@ name: CI/CD
 
 on:
   push:
-    branches: [ dev, main, 5-devops-CI ]
+    branches: [ dev, main ]
   pull_request:
     branches: [ dev, main ]
 
 env:
-  # JWT_SECRET: ${{secrets.JWT}}
-  # SENDGRID_API_KEY: ${{secrets.SENDGRID}}
   PORT: 3000
-  # DEBUG: nock.*
   JWT_SECRET: ${{secrets.JWT_SECRET}}
   SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
   E2E_TEST_AUTH0_ADMIN_EMAIL: ${{secrets.E2E_TEST_AUTH0_ADMIN_EMAIL}}
@@ -30,8 +27,10 @@ env:
   E2E_TEST_MEMBER_IS_ADMIN: ${{secrets.E2E_TEST_MEMBER_IS_ADMIN}}
   E2E_TEST_MEMBER_GARDEN_ID: ${{secrets.E2E_TEST_MEMBER_GARDEN_ID}}
   TEST_HEADLESS: ${{secrets.TEST_HEADLESS}}
+  # Use the below line to debug nock
+  # DEBUG: nock.*
 
-  # For Auth0
+  # For Auth0 - this will be used for testing
   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
   AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
   AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
@@ -55,14 +54,14 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       
-      # - name: Install Dependencies
-      #   run: npm ci
+      - name: Install Dependencies
+        run: npm ci
         
-      # - name: Linting
-      #   run: "npm run lint -- --rule 'no-console: 2'"
+      - name: Linting
+        run: "npm run lint -- --rule 'no-console: 2'"
         
-      # - name: Test
-      #   run: npm run test
+      - name: Test
+        run: npm run test
         
       ### the below is for E2E testing ###
       # - name: Build
@@ -81,8 +80,10 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     # this prevents deployment for pull requests and works only for push in dev
-    if: ${{ github.ref == 'refs/heads/5-devops-CI' }} # this should be dev
+    if: ${{ github.ref == 'refs/heads/dev' }} # this should be dev
     needs: build
+    # Each environment can have different evn vars which includes different Auth0 secrets 
+    # Those secrets can be different than the repository secrets
     environment: development
     steps:
     - uses: actions/checkout@v2
@@ -92,7 +93,7 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
         heroku_email: ${{secrets.HEROKU_EMAIL}}
-        # branch: '5-devops-CI' # this should be dev
+        # branch: 'dev' # this should be dev
       env:
         HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
