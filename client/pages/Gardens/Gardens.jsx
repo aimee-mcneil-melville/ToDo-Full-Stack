@@ -5,7 +5,7 @@ import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
 import { showError } from '../../actions/error'
 
-export default function Gardens() {
+export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
   const dispatch = useDispatch()
 
