@@ -47,7 +47,7 @@ function getEventById (id, db = connection) {
           }
           return acc
         }, []),
-        extra_volunteers: !result.some(evts => evts.extraVolId) ? [] : result.reduce((acc, cur) => {
+        extraVolunteers: !result.some(evts => evts.extraVolId) ? [] : result.reduce((acc, cur) => {
           const personIncluded = acc.some((person) => {
             return person.extraVolId === cur.extraVolId
           })

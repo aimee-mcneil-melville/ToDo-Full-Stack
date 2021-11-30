@@ -90,7 +90,7 @@ describe('addExraVolunteer test', () => {
       lastName: 'Abernethy'
     }
     return volunteers.addExtraVolunteer(rockUp, testDb)
-      .then(() => testDb('extraVolunteers').select())
+      .then(() => testDb('extra_volunteers').select())
       .then(([rockUp]) => {
         expect(rockUp.event_id).toBe(1)
         expect(rockUp.first_name).toBe('Erin')
