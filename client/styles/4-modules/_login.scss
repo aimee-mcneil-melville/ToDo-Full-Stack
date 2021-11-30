@@ -1,0 +1,16 @@
+body {
+    background-image: url('server/public/images/comGardenSpace.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.prompt-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    background-color: rgb(60,60,60);
+  }
