@@ -5,6 +5,7 @@
 .header {
     height: 80px;
     background-color: vars.$primary;
+    padding-right: 2.5rem;
 
     @include mixins.media-queries(mobile, min) {
         height: 100px;
