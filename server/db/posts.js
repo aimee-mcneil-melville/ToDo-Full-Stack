@@ -1,3 +1,4 @@
+const deleteAllCommentsByPostId = require('./comments')
 const connection = require('./connection')
 
 module.exports = {
