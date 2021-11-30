@@ -4,26 +4,11 @@ import { Link } from 'react-router-dom'
 import { getAllGardens } from './gardensHelper'
 import { motion } from 'framer-motion'
 import { showError } from '../../actions/error'
+import { cardVariant1 } from '../animationVariants'
 
 export default function Gardens () {
   const [gardenList, setGardenList] = useState([])
   const dispatch = useDispatch()
-
-  const cardVariant1 = {
-    hidden: {
-      y: '-100vw'
-    },
-    visible: {
-      y: 0,
-      transition: {
-        ease: 'easeInOut',
-        duration: 2
-      }
-    },
-    transition: {
-      duration: 2
-    }
-  }
 
   useEffect(() => {
     getAllGardens()
@@ -47,7 +32,7 @@ export default function Gardens () {
             variants={cardVariant1}
             initial='hidden'
             animate='visible'
-            whileHover={{ scale: 1.2, transition: { duration: 0.5 } }}>
+            whileHover={{ scale: 1.1, transition: { duration: 0.4, yoyo: Infinity } }}>
             <Link to={`/gardens/${garden.id}`}>
               <h2 className='garden-list-header'>{garden.name}</h2>
             </Link>
