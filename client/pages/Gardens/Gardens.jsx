@@ -32,7 +32,7 @@ export default function Gardens () {
             variants={cardVariant1}
             initial='hidden'
             animate='visible'
-            whileHover={{ scale: 1.1, transition: { duration: 0.5, yoyo: Infinity } }}>
+            whileHover={{ scale: 1.1, transition: { duration: 0.4, yoyo: Infinity } }}>
             <Link to={`/gardens/${garden.id}`}>
               <h2 className='garden-list-header'>{garden.name}</h2>
             </Link>
