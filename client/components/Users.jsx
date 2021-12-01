@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers } from '../actions/user'
 
 function Users (props) {
+  const dispatch = useDispatch()
+  const users = useSelector(state => state.users)
   useEffect(() => {
-    props.dispatch(fetchUsers())
+    dispatch(fetchUsers())
   }, [])
 
   return (
@@ -28,7 +30,7 @@ function Users (props) {
           </tr>
         </thead>
         <tbody>
-          {props.users.map(user =>
+          {users.map(user =>
             <tr key={user.id}>
               <td>
                 {user.auth0Id}
@@ -50,10 +52,4 @@ function Users (props) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    users: state.users
-  }
-}
-
-export default connect(mapStateToProps)(Users)
+export default Users
