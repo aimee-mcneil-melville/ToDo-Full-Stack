@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
@@ -20,11 +19,5 @@ function App () {
     </div>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    fruits: globalState.fruits,
-    token: globalState.user.token
-  }
-}
 
-export default connect(mapStateToProps)(App)
+export default App

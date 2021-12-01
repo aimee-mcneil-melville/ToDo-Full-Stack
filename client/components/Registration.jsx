@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 import { addUser } from '../apis/users'
 
-function Registration ({ user }) {
+function Registration () {
+  const user = useSelector(state => state.user)
   const history = useHistory()
 
   const [form, setForm] = useState({
@@ -44,7 +45,7 @@ function Registration ({ user }) {
   return (
     <section className='form'>
       <h2>Register Profile</h2>
-      <form className='registeration'>
+      <form className='registration'>
         <label htmlFor='auth0Id'>auth0Id</label>
         <input
           name='auth0Id'
@@ -87,10 +88,4 @@ function Registration ({ user }) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(Registration)
+export default Registration

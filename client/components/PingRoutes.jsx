@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import request from 'superagent'
 
-function PingRoutes (props) {
+function PingRoutes () {
+  const token = useSelector(state => state.user.token)
   const [message, setMessage] = useState('')
 
   async function handlePublicEndpoint () {
@@ -20,7 +21,7 @@ function PingRoutes (props) {
     try {
       const res = await request
         .get('/api/v1/users/protected')
-        .set('authorization', `Bearer ${props.token}`)
+        .set('authorization', `Bearer ${token}`)
 
       setMessage(res.body.message)
     } catch (error) {
@@ -32,7 +33,7 @@ function PingRoutes (props) {
     try {
       const res = await request
         .get('/api/v1/users/private')
-        .set('authorization', `Bearer ${props.token}`)
+        .set('authorization', `Bearer ${token}`)
 
       setMessage(res.body.message)
     } catch (error) {
@@ -60,10 +61,5 @@ function PingRoutes (props) {
     </section>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    token: globalState.user.token
-  }
-}
 
-export default connect(mapStateToProps)(PingRoutes)
+export default PingRoutes
