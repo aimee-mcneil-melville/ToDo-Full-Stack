@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router'
 import { addUser } from '../apis/users'
 
-function Registeration ({ user }) {
+function Registration ({ user }) {
   const history = useHistory()
 
   const [form, setForm] = useState({
@@ -93,4 +93,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(Registeration)
+export default connect(mapStateToProps)(Registration)
