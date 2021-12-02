@@ -5,7 +5,7 @@ const router = express.Router()
 
 module.exports = router
 
-// POST /api/v1/fruits
+// POST /api/v1/users
 router.post('/', async (req, res) => {
   const newUser = req.body
   const { auth0Id, email } = newUser

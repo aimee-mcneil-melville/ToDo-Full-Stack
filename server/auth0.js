@@ -1,7 +1,7 @@
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
-// TODO - set the domain and audience (API Identifier)
+// TODO: set the domain and audience (API Identifier)
 const domain = ''
 const audience = ''
 

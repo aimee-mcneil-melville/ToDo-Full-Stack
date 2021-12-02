@@ -13,7 +13,7 @@ const NavLink = styled(Link)`
 `
 
 function Nav () {
-  // call the useAuth0 hook and destructure logout and loginWithRedirect
+  // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect
   function handleLogoff (e) {
     e.preventDefault()
     console.log('log off')
