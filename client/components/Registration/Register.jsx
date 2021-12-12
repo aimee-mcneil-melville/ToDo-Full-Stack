@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
 import { registerUser } from './registerHelper'
 import { useAuth0 } from '@auth0/auth0-react'
+import { motion } from 'framer-motion'
+import { formButtonVariants } from '../../pages/animationVariants'
+
 import * as Yup from 'yup'
 
 const registerSchema = Yup.object().shape({
@@ -14,10 +18,6 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  username: Yup.string()
-    .min(2, 'This must be at least 2 characters long')
-    .max(15, 'Sorry, this must be under 15 characters long')
-    .required('Required'),
   gardenId: Yup.number()
     .required('Required')
 })
@@ -25,16 +25,16 @@ const registerSchema = Yup.object().shape({
 export default function Register () {
   const authUser = useAuth0().user
   const history = useHistory()
+  const isAdmin = useSelector(globalState => globalState.user?.isAdmin)
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
-      username: '',
       gardenId: null
     },
     onSubmit: values => {
-      registerUser(values, authUser, history.push)
+      registerUser(values, isAdmin, authUser, history.push)
     },
     validationSchema: registerSchema
   })
@@ -44,46 +44,34 @@ export default function Register () {
       ? <p className='inputError'>{formik.errors[inputName]}</p>
       : null
   }
-
   return (
     <>
-      <section className='flex-container'>
-        <form className='column-6' onSubmit={formik.handleSubmit}>
+      <h2>Register to view garden events</h2>
+      <section className='flex-container centre-flex' >
+        <form className='flex-container__register-form' onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='label'>First Name</label>
+            <label htmlFor='firstName' className='label profile-label'>First Name</label>
             {showAnyErrors('firstName')}
             <input
               className='form-box'
               id='firstName'
               name='firstName'
-              placeholder='First Name'
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor='lastName' className='label'>Last Name</label>
+            <label htmlFor='lastName' className='label profile-label'>Last Name</label>
             {showAnyErrors('lastName')}
             <input
               className='form-box'
               id='lastName'
               name='lastName'
-              placeholder='Last Name'
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor='username' className='label'>Username</label>
-            {showAnyErrors('username')}
-            <input
-              className='form-box'
-              id='username'
-              name='username'
-              placeholder='Username'
-              onChange={formik.handleChange}
-              value={formik.values.username}
-            />
-            <label htmlFor='garden' className='label'>My Garden</label>
+            <label htmlFor='garden' className='label profile-label'>My Garden</label>
             {showAnyErrors('garden')}
             <select
-              className='select'
+              className='form-box'
               name='gardenId'
               id='garden'
               onChange={formik.handleChange}
@@ -94,12 +82,14 @@ export default function Register () {
               <option value={3}>Devonport Community Garden</option>
             </select>
           </div>
-          <button className='button' type='submit' data-testid='submitButton'>Register</button>
+          <motion.button
+            className='submit profile-submit'
+            type='submit'
+            data-testid='submitButton'
+            variants={formButtonVariants}
+            whileHover="hover">Register</motion.button>
         </form>
       </section>
-      <div className='column-6'>
-        <img src='./images/comGardenPlant.png' alt='Person gardening with trowel' />
-      </div>
     </>
   )
 }

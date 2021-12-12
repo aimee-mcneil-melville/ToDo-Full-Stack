@@ -1,3 +1,5 @@
+const log = require('../../logger')
+
 exports.seed = (knex) => {
   // Reset the sequences in postgres
   if (knex.client.config.client === 'postgresql') {
@@ -17,7 +19,7 @@ exports.seed = (knex) => {
       )
       .then((result) => Promise.all(result))
       .then((results) => {
-        console.log(results)
+        log(results)
         return null
       })
   }

@@ -15,7 +15,6 @@ describe('when user is authenticated', () => {
     renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
       initialState: {
         user: {
-          username: 'member',
           isAdmin: 0,
           gardenId: 1,
           id: 2
@@ -41,7 +40,6 @@ describe('Log Out link', () => {
     renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
       initialState: {
         user: {
-          username: 'member',
           isAdmin: 0,
           gardenId: 1,
           id: 2

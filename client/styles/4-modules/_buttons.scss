@@ -23,9 +23,17 @@
 .submit {
   @extend .button-primary;
   display: flex;
-    width:auto;
+    width: auto;
     margin: 5px auto;
     align-items: center;
+}
+
+.profile-submit{
+  @extend .submit;
+  width: 150px;
+  margin-top: 25px;
+  padding: 10px;
+  justify-content: center;
 }
 
 .button-width {
@@ -42,4 +50,8 @@
   background-color: vars.$secondary; 
   border-radius: math.div(vars.$base-size, 4);
   width: vars.$base-size * 9;
+}
+
+.inline-button {
+  display: inline-block;
 }
