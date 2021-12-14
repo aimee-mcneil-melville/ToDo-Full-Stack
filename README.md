@@ -146,7 +146,7 @@ The version of the database that we run during development varies slightly from 
       .insert(newUser, 'id')
   ```
   
-  - In PostgreSQL if you have seeds for a table (`users`, say) that has an auto-incrementing id and then you later try to insert more records into that table via your app, you will likely see an error `duplicate key value violates unique constraint`. This is because when you run the seeds it doesn't update the counter for which id value should the next one, and so when you try to create the first new record via the app, PostgreSQL tries to give it id 1 again. If your app will work without running the seeds that's an easy solution, otherwise you'll need to investigate how to manually set the counter when running your seeds (maybe start here: https://github.com/knex/knex/issues/1855#issuecomment-559892448). 
+  - In PostgreSQL if you have seeds for a table (`users`, say) that has an auto-incrementing id and then you later try to insert more records into that table via your app, you will likely see an error `duplicate key value violates unique constraint`. This is because when you run the seeds it doesn't update the counter for which id value should the next one, and so when you try to create the first new record via the app, PostgreSQL tries to give it id 1 again. If your app will work without running the seeds that's an easy solution, otherwise you'll need to include the seed file linked in [gotchas](#gotchas) below, which will automatically reset this counter. 
   
 NB: Make sure you've installed the postgresql add-on for your Heroku account (see above). If you don't have this then Heroku won't be able to build your app and run the migrations. 
 
