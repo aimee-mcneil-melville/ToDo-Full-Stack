@@ -7,7 +7,9 @@ function Country () {
   const { code, name } = useParams()
   const country = countryData.find(country => country.code === code)
 
-  let neighbours = country.neighbours.split(',')
+  // This line prevents an error on countries with no neighbours, e.g. NZ and Aus
+  let neighbours = country.neighbours ? country.neighbours.split(',') : []
+
   neighbours = neighbours.map(neighbour => countryData.find(country => country.code === neighbour))
 
   return (

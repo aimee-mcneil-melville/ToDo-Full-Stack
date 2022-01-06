@@ -13,6 +13,8 @@ npm install
 npm run dev
 ```
 
+TODO: Change this to BrowserRouter, including config in `server.js`
+
 Set up `HashRouter` in your `client/index.js`. 
 
 * Import the router from 'react-router-dom' at the top of the file. _i.e. ` import { HashRouter as Router } from 'react-router-dom'`_
