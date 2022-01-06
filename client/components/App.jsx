@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Nav from './Nav'
 import Home from './Home'
@@ -20,18 +20,18 @@ function App () {
         <Route exact path='/continent/:name' component={Continent} />
         <Route path='/continent/:name/:code' component={Country} /> */}
 
-        <Route path='/'>
-          <Nav />
-        </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path='/continent/:name'>
-          <Continent />
-        </Route>
-        <Route path='/continent/:name/:code'>
-          <Country />
-        </Route>
+        <Nav />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/continent/:name'>
+            <Continent />
+          </Route>
+          <Route path='/continent/:name/:code'>
+            <Country />
+          </Route>
+        </Switch>
       </div>
     </>
   )

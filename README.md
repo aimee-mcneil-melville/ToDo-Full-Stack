@@ -32,6 +32,8 @@ Let's start with the couple of components that make up the home page. Check out 
 
  * Import and then use the `Route` component from `react-router-dom` so that the `Nav` component will show on all pages, but the `Home` component will only show on `'/'`.
 
+ TODO: Update this instruction. At RRv5 it kiiiiinda makes sense to put Nav as a Route in order to demonstrate how RRv5 will render all matching routes by default. However RRv6 matches a single route by default so I think it now makes more sense to make Nav just an ordinary component (not in a Route)
+
 ![after release 1](readme-images/release-1.png)
 
 
