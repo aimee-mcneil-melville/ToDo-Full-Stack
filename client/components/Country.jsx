@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import countryData from '../../data/countries'
 
-function Country (props) {
-  const { code, name } = props.match.params
+function Country () {
+  const { code, name } = useParams()
   const country = countryData.find(country => country.code === code)
 
   let neighbours = country.neighbours.split(',')

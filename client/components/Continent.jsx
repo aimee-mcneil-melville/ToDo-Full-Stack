@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import continentData from '../../data/continents'
 
-function Continent (props) {
-  const { name } = props.match.params
+function Continent () {
+  const { name } = useParams()
   const continent = continentData[name]
 
   return (

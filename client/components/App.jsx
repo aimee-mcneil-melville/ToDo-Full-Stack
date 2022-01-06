@@ -15,10 +15,23 @@ function App () {
       </div>
       {/* This 'main' div is only for styling (so we can use flexbox) */}
       <div className='main'>
-        <Route path='/' component={Nav} />
+        {/* <Route path='/' component={Nav} />
         <Route exact path='/' component={Home} />
         <Route exact path='/continent/:name' component={Continent} />
-        <Route path='/continent/:name/:code' component={Country} />
+        <Route path='/continent/:name/:code' component={Country} /> */}
+
+        <Route path='/'>
+          <Nav />
+        </Route>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route exact path='/continent/:name'>
+          <Continent />
+        </Route>
+        <Route path='/continent/:name/:code'>
+          <Country />
+        </Route>
       </div>
     </>
   )

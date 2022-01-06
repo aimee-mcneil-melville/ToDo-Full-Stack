@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import continentData from '../../data/continents'
 
 function Nav (props) {
   const continents = Object.keys(continentData)
-  const url = props.location.pathname
+  const url = useLocation().pathname
 
   return (
     <div>
