@@ -19,6 +19,8 @@ function App () {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/continent/:name' element={<Continent />} />
+          {/* TODO: Investigate whether country can be a nested route */}
+          {/* TODO: Else consider changing the app to include a nested route */}
           <Route path='/continent/:name/:code' element={<Country />} />
         </Routes>
       </div>
