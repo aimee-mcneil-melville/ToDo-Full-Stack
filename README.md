@@ -59,6 +59,7 @@ In this release, we'll create a component for an individual country. This is the
 Note: _We're using the continent name and country code for this route to help us later. The url path for the above suggestion will be entered into the browser as `/continent/Oceania/NZ`_
 
 * This route should render a `Country` component that shows all the information (in `data/countries`) about that specific country. 
+* Note the the flag emoji icons don't work in all browsers (e.g. they in Windows they seem to work in Firefox but not Chrome). If you see `NZ` instead of the NZ flag, try a different browser. 
 
 ![country after release 3](readme-images/release-3-a.png)
 
