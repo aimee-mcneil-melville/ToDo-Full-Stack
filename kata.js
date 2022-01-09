@@ -7,9 +7,31 @@
 function getGreeting (name) {
 }
 
+// getFullName should return a string containing the contents
+// of `firstName` and the contents of `lastName`
+function getFullName (firstName, lastName) {
+}
+
+// getAge should return the value of the `age` property of the
+// `obj` object
+function getAge (obj) {
+}
+
 // ageOneYear should return a new object with an `age` property 1 greater
 // than the `age` property of `obj`
 function ageOneYear (obj) {
+}
+
+// getPropertyValue should return the value of the
+// property contained in the `key` of `obj`
+// e.g. if `key` contains 'favouriteColour' and `obj` looks like this:
+// {
+//   hobby: 'snowboarding'
+//   favouriteColour: 'blue'
+// }
+// then it should return 'blue'
+// Tip: Use square bracket notation
+function getPropertyValue (obj, key) {
 }
 
 // makeObject should return an object that looks like this:
@@ -17,12 +39,12 @@ function ageOneYear (obj) {
 // {
 //   key: value
 // }
+// e.g. if `key` contains 'weather' and `value` contains 'sunny'
+// then the returned object should look like this:
+// {
+//   weather: sunny
+// }
 function makeObject (key, value) {
-}
-
-// getPropertyValue should return the value of the
-// property contained in the `key` of `obj`
-function getPropertyValue (obj, key) {
 }
 
 // addName should return a copy of `obj` with the addition of a `name`
@@ -132,6 +154,8 @@ module.exports = {
   deleteItem,
   deleteItemAtIndex,
   deleteProperty,
+  getAge,
+  getFullName,
   getGreeting,
   getItemAtIndex,
   getKeys,
