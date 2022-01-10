@@ -84,7 +84,6 @@
   - [ ] Radia Perlman
   - [ ] Audrey Tang
   - [ ] Brendan Eich
-  - [ ] Radia Perlman
   - [ ] Annie Easley
   - [ ] Hedy Lamarr
   - [ ] Charles Babbage
