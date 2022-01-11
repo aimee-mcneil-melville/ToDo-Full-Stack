@@ -2,22 +2,28 @@
   "name": "server-side-templating",
   "version": "0.1.0",
   "description": "Server-side rendering with Handlebars templates",
+  "author": "Dev Academy",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "debug": "nodemon index.js",
     "start": "node index",
-    "test": "jest --watch --noStackTrace"
+    "dev": "nodemon index",
+    "test": "jest --watchAll",
+    "lint": "eslint ."
   },
-  "author": "Enspiral Dev Academy",
-  "license": "ISC",
+  "eslintConfig": {
+    "extends": "eda"
+  },
   "dependencies": {
-    "express": "^4.16.2",
-    "express-handlebars": "^3.0.0"
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "jest": "^24.1.0",
-    "nodemon": "^1.14.11",
-    "supertest": "^3.0.0"
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.5",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
   }
 }

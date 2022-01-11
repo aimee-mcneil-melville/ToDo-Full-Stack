@@ -1,15 +1,5 @@
-{{> header}}
 
-{{#if showList}}
-  Repositories!
-  <ul>
-    {{#each repos}}
-      <li>
-        <a href='/details/{{id}}'>{{name}}</a>
-      </li>
-    {{/each}}
-  </ul>
-  Ok, now you can <a href="/">hide the list</a>.
-{{else}}
-  <a href="/?showlist=true">Show me the list</a>, please.
-{{/if}}
+
+{{#each art}}
+  {{> artwork-summary}}
+{{/each}}

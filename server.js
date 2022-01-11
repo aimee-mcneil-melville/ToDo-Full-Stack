@@ -1,24 +1,34 @@
-var path = require('path')
-var express = require('express')
-var hbs = require('express-handlebars')
+const express = require('express')
+const hbs = require('express-handlebars')
+const art = require('./art.json')
 
-var routes = require('./routes')
-
-var app = express()
-module.exports = app
+const server = express()
+module.exports = server
 
 // Middleware
-app.engine('hbs', hbs({
-  extname: 'hbs',
-  defaultLayout: 'main'
+server.engine('hbs', hbs.engine({
+  extname: 'hbs'
 }))
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
+server.set('view engine', 'hbs')
+server.use(express.static('public'))
 
 // Routes
-app.get('/', routes.home)
+server.get('/', (req, res) => {
+  const viewData = {
+    title: 'Gallery',
+    art: art
+  }
+  const template = 'home'
+  res.render(template, viewData)
+})
 
-app.get('/details/:id', routes.detail)
-
-app.get('/details/:id/author', routes.author)
-
+server.get('/artworks/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const artwork = art.find(artDetail => artDetail.id === id)
+  const viewData = {
+    title: artwork.title,
+    artistWork: artwork
+  }
+  const template = 'artworks'
+  res.render(template, viewData)
+})
