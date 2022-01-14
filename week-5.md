@@ -83,6 +83,7 @@
   - [ ] Richard Stallman
   - [ ] Roy Fielding
   - [ ] Sandi Metz
+  - [ ] Mark Dean
   - [ ] Steve Wozniak
   - [ ] Barbara Liskov
   - [ ] Hedy Lamarr
