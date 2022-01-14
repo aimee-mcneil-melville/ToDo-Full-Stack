@@ -103,6 +103,7 @@
   - [ ] Annie Easley
   - [ ] Charles Babbage
   - [ ] David Heinemeier Hansson (DHH)
+  - [ ] Frank S Greene
   - [ ] Grace Hopper
   - [ ] Ken Thompson
   - [ ] Linus Torvalds
