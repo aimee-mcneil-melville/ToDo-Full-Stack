@@ -84,12 +84,14 @@
   - [ ] Radia Perlman
   - [ ] Audrey Tang
   - [ ] Brendan Eich
+  - [ ] Frank S Greene
   - [ ] Annie Easley
   - [ ] Hedy Lamarr
   - [ ] Charles Babbage
   - [ ] Richard Stallman
   - [ ] Roy Fielding
   - [ ] Sandi Metz
+  - [ ] Mark Dean
   - [ ] Steve Wozniak
   - [ ] Barbara Liskov
  
