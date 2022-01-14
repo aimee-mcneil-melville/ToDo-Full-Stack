@@ -113,6 +113,7 @@
   - [ ] Audrey Tang
   - [ ] Barbara Liskov
   - [ ] Brendan Eich
+  - [ ] Mark Dean
   - [ ] Hedy Lamarr
   - [ ] Mary Wilkes
   - [ ] Richard Stallman
