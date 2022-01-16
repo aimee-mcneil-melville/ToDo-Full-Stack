@@ -10,7 +10,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 * Install dependencies.
 
   ```sh
-  npm i knex sqlite3
+  npm i knex @vscode/sqlite3
   ```
 
 * Set file permissions.
