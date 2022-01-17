@@ -7,7 +7,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
 ## Setup
 
-* Install dependencies `knex`, and `@vscode/sqlite3`. You can do them both at once like this.
+* Install dependencies `knex` and `@vscode/sqlite3`. You can do them both at once like this.
 
   ```sh
   npm install knex @vscode/sqlite3
