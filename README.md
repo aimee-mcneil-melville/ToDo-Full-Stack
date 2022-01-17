@@ -63,7 +63,7 @@ There are a number of different options for peeking into your SQLite database. Y
 
 ## Display tasks and IDs
 
-We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. This provides an output that looks like this:
+We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. If you type `./todo list` in your terminal, this should output a list of tasks. The input + output should look like this:
 
 ```sh
 $ ./todo list
