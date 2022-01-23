@@ -13,7 +13,6 @@ function Continent () {
       <img src={`/images/${continent.image}`} />
       <ul>
         {continent.countries.map(country => <li key={country.code}>
-          {/* TODO: Review Link stuff: https://reactrouter.com/docs/en/v6/upgrading/v5#note-on-link-to-values */}
           <Link to={`/continent/${name}/${country.code}`}>{country.name}</Link>
         </li>)}
       </ul>
