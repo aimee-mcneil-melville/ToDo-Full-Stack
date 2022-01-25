@@ -18,8 +18,8 @@ function App () {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/continent/:name' element={<Continent />} />
-          <Route path='/continent/:name/:code' element={<Country />} />
+          <Route path='continent/:name' element={<Continent />} />
+          <Route path='continent/:name/:code' element={<Country />} />
         </Routes>
       </div>
     </>
