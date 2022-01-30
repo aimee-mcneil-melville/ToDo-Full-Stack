@@ -32,11 +32,10 @@
     ]
   },
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.1",
-    "jest": "^26.6.3",
-    "knex": "^0.21.7",
-    "lodash": "^4.17.20",
-    "sqlite3": "^5.0.0"
+    "knex": "^0.21.21",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
