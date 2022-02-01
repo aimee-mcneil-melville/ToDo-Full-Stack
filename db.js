@@ -1,13 +1,13 @@
 const config = require('./knexfile').development
-const database = require('knex')(config)
+const connection = require('knex')(config)
 
-function getTodos (db = database) {
+function getTodos (db = connection) {
   return db('todos').select()
 }
 
 // Your DB functions go here
 
-function close (db = database) {
+function close (db = connection) {
   db.destroy()
 }
 
