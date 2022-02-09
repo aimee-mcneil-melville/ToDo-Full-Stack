@@ -14,10 +14,12 @@ test('splitStringByCommas will split all strings in the arrayOfArrays, at each c
   const stringsWithCommas = randomStrings.filter(filterStringsWithCommas) || []
   const mappedArray = stringsWithCommas.map(splitStringByCommas) || []
 
-  const arraysMatch = mappedArray.length && mappedArray.every((arr, i) => {
-    return arr.every((str, j) => {
-      return str === arrayOfArrays[i][j]
+  const arraysMatch =
+    mappedArray.length &&
+    mappedArray.every((arr, i) => {
+      return arr.every((str, j) => {
+        return str === arrayOfArrays[i][j]
+      })
     })
-  })
   expect(arraysMatch).toBeTruthy()
 })

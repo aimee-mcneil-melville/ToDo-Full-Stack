@@ -1,34 +1,23 @@
 /* eslint-disable no-unused-vars */
 
-function getType (thing) {
-}
+function getType(thing) {}
 
-function isNumber (thing) {
-}
+function isNumber(thing) {}
 
-function toNumber (str) {
-}
+function toNumber(str) {}
 
-function isStringNumber (str) {
-}
+function isStringNumber(str) {}
 
-function add (a, b) {
-}
+function add(a, b) {}
 
-function addStrings (a, b) {
-}
+function addStrings(a, b) {}
 
-function addStringsOrNumbers (a, b) {
-}
+function addStringsOrNumbers(a, b) {}
 
-function isEmail (str) {
-}
+function isEmail(str) {}
 
-function countIf (array, fn) {
-}
+function countIf(array, fn) {}
 
-function filterStringsWithCommas (str) {
-}
+function filterStringsWithCommas(str) {}
 
-function splitStringByCommas (str) {
-}
+function splitStringByCommas(str) {}

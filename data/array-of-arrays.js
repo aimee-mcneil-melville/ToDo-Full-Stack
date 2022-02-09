@@ -60,5 +60,5 @@ module.exports = [
   ['at', 'sint', 'craft beer', 'optio'],
   ['pinterest', 'et', 'helvetica', 'taxidermy'],
   ['williamsburg', 'sed', 'ipsam', 'omnis'],
-  ['authentic', 'ab', 'reiciendis', 'asperiores']
+  ['authentic', 'ab', 'reiciendis', 'asperiores'],
 ]
