@@ -11,7 +11,7 @@ test('GET /api/v1/reddit/subreddit', () => {
   return request(server)
     .get('/api/v1/reddit/subreddit/bananas')
     .expect(200)
-    .then(res => {
+    .then((res) => {
       expect(res.body.msg).toBe('yay, bananas')
       scope.done()
       return null
