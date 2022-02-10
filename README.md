@@ -60,7 +60,7 @@ A potential approach could be:
   * We should still dispatch a success action though, so our wait indicator stops spinning.
   * A catch block is always a good idea ;)
 * It's looking like the only part of the Redux store that cares about these `placeOrder` actions is the `waiting` state - update the `waiting` reducer so it sets the state to `true` and `false` appropriately.
-* For the final piece of the puzzle, let's dispatch this `placeOrder` action from the `Cart.jsx` Place Order submit handler (remember to pass in the `cart`!).
+* For the final piece of the puzzle, let's dispatch this `placeOrder` action from the `Cart.jsx` Dispatch it within a submit handler function – and don't forget to pass in the `cart`!).
 * Try it! Add something to your cart and place your order. Can you see the pending and success actions in your Redux devtools? Has your order been added to the database?
 
 <br> 
