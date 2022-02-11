@@ -1,12 +1,13 @@
 const db = require('./db')
 
-function list () {
-  return db.getTodos()
-    .then(todos => {
+function list() {
+  return db
+    .getTodos()
+    .then((todos) => {
       printTodos(todos)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       logError(err)
     })
     .finally(() => {
@@ -14,16 +15,16 @@ function list () {
     })
 }
 
-function printTodos (todos) {
-  todos.forEach(todo => {
+function printTodos(todos) {
+  todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
   })
 }
 
-function logError (err) {
+function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
 module.exports = {
-  list
+  list,
 }
