@@ -11,8 +11,8 @@ export default [
       '"I was just thinking," said the spider, "that people are very gullible."',
       '"What does \'gullible\' mean?"',
       '"Easy to fool," said Charlotte.',
-      '"That\'s a mercy," replied Wilbur, and he lay down in the shade of his fence and went fast asleep. The spider, however, stayed wide awake, gazing affectionately at him and making plans for his future. Summer was half gone. She knew she didn\'t have much time.'
-    ]
+      '"That\'s a mercy," replied Wilbur, and he lay down in the shade of his fence and went fast asleep. The spider, however, stayed wide awake, gazing affectionately at him and making plans for his future. Summer was half gone. She knew she didn\'t have much time.',
+    ],
   },
   {
     id: 125,
@@ -29,8 +29,8 @@ export default [
       '"Yes, I guess I am," replied Wilbur. "At my age it\'s a good idea to keep gaining."',
       '"Just the same, I don\'t envy you," said the old sheep. "You know why they\'re fattening you up, don\'t you?"',
       '"No," said Wilbur.',
-      '"Well, I don\'t like to spread bad news," said the sheep, "but they\'re fattening you up because they\'re going to kill you, that\'s why."'
-    ]
+      '"Well, I don\'t like to spread bad news," said the sheep, "but they\'re fattening you up because they\'re going to kill you, that\'s why."',
+    ],
   },
   {
     id: 124,
@@ -41,8 +41,8 @@ export default [
       'The early summer days on a farm are the happiest and fairest days of the year. Lilacs bloom and make the air sweet, and then fade. Apple blossoms come with the lilacs, and the bees visit around among the apple trees. The days grow warm and soft. School ends, and children have time to play and to fish for trouts in the brook. Avery often brought a trout home in his pocket, warm and stiff and ready to be fried for supper.',
       'Now that school was over, Fern visited the barn almost every day, to sit quietly on her stool. The animals treated her as an equal. The sheep lay calmly at her feet.',
       'Around the first of July, the work horses were hitched to the mowing machine, and Mr. Zuckerman climbed into the seat and drove into the field. All morning you could hear the rattle of the machine as it went round and round,while the tall grass fell down behind the cutter bar in long green swathes. Next day, if there was no thunder shower, all hands would help rake and pitch and load, and the hay would be hauled to the Summer Days in the high hay wagon, with Fern and Avery riding at the top  of the load. Then the hay would be hoisted, sweet and warm, into the big loft, until the whole bam seemed like a wonderful bed of timothy and clover. It was fine to jump in, and perfect to hide in. And sometimes A very would find a little grass snake in the hay, and would add it to the other things in his pocket.',
-      'Early summer days are a jubilee time for birds. In the fields, around the house, in the barn, in the woods, in the swamp - everywhere love and songs and nests and eggs. From the edge of the woods, the white­throated sparrow (which must come all the way from Boston) calls, "Oh, Peabody, Peabody, Peabody!" On an apple bough, the phoebe teeters and wags its tail and says, "Phoebe, phoe-bee!" The song sparrow, who knows how brief and lovely life is, says, "Sweet, sweet, sweet interlude; sweet, sweet, sweet interlude." If you enter the barn, the swallows swoop down from their nests and scold. "Cheeky, cheeky!" they say.'
-    ]
+      'Early summer days are a jubilee time for birds. In the fields, around the house, in the barn, in the woods, in the swamp - everywhere love and songs and nests and eggs. From the edge of the woods, the white­throated sparrow (which must come all the way from Boston) calls, "Oh, Peabody, Peabody, Peabody!" On an apple bough, the phoebe teeters and wags its tail and says, "Phoebe, phoe-bee!" The song sparrow, who knows how brief and lovely life is, says, "Sweet, sweet, sweet interlude; sweet, sweet, sweet interlude." If you enter the barn, the swallows swoop down from their nests and scold. "Cheeky, cheeky!" they say.',
+    ],
   },
   {
     id: 123,
@@ -57,10 +57,10 @@ export default [
       '"Well, I am pretty," replied Charlotte. "There\'s no denying that. Almost all spiders are rather nice-looking. I\'m not as flashy as some, but I\'ll do. I wish I could see you, Wilbur, as clearly as you can see me."',
       '"Why can\'t you?" asked the pig. "I\'m right here."',
       '"Yes, but I\'m near-sighted," replied Charlotte. "I\'ve always been dreadfully near-sighted. It\'s good in some ways, not so good in others. Watch me wrap up this fly."',
-      'A fly that had been crawling along Wilbur\'s trough had flown up and blunde red into the lower part of Charlotte\'s web and was tangled in the sticky threads. The fly was beating its wings furiously, trying to break loose and free itself.',
+      "A fly that had been crawling along Wilbur's trough had flown up and blunde red into the lower part of Charlotte's web and was tangled in the sticky threads. The fly was beating its wings furiously, trying to break loose and free itself.",
       '"First," said Charlotte, "I dive at him." She plunged Charlotte\'s Web headfirst toward the fly. As she dropped, a tiny silken thread unwound from her rear end.',
       '"Next, I wrap him up." She grabbed the fly, threw a few jets of silk around it, and rolled it over and over, wrapping it so that it couldn\'t move. Wilbur watched in horror. He could hardly believe what he was seeing, and although he detested flies, he was sorry for this one.',
-      '"There!" said Charlotte. "Now I knock him out, so he\'ll be more comfor table." She bit the fly. "He can\'t feel a thing now," she remarked. "He\'ll make a perfect breakfast for me."'
-    ]
-  }
+      '"There!" said Charlotte. "Now I knock him out, so he\'ll be more comfor table." She bit the fly. "He can\'t feel a thing now," she remarked. "He\'ll make a perfect breakfast for me."',
+    ],
+  },
 ]
