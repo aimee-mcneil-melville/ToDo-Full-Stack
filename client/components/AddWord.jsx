@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import { addWord } from '../actions'
 
-function AddWord () {
+function AddWord() {
   const dispatch = useDispatch()
 
   const submitWord = (e) => {
@@ -13,12 +13,7 @@ function AddWord () {
     }
   }
 
-  return (
-    <input
-      placeholder='Enter a word or phrase'
-      onKeyUp={submitWord}
-    />
-  )
+  return <input placeholder="Enter a word or phrase" onKeyUp={submitWord} />
 }
 
 export default AddWord

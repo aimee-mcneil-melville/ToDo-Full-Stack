@@ -4,7 +4,7 @@ module.exports = {
   entry: path.join(__dirname, './index.js'),
   output: {
     path: path.join(__dirname, '../server/public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   mode: 'development',
   module: {
@@ -12,12 +12,12 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.jsx?$/,
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 }

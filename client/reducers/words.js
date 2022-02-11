@@ -5,8 +5,8 @@ const words = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          word: action.word
-        }
+          word: action.word,
+        },
       ]
 
     default:
