@@ -13,16 +13,31 @@ const NavLink = styled(Link)`
 `
 
 function Nav () {
+  // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect
+  function handleLogoff (e) {
+    e.preventDefault()
+    console.log('log off')
+  }
+
+  function handleRegister (e) {
+    e.preventDefault()
+    console.log('register')
+  }
+
+  function handleSignIn (e) {
+    e.preventDefault()
+    console.log('sign in')
+  }
   return (
     <>
       <NavGroup>
         <NavLink to='/'>Home</NavLink>
         <IfAuthenticated>
-          <NavLink to='#'>Log off</NavLink>
+          <a href='/' onClick={handleLogoff}>Log off</a>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavLink to='/register'>Register</NavLink>
-          <NavLink to='/signin'>Sign in</NavLink>
+          <a href='/' onClick={handleRegister}>Register</a>
+          <a href='/' onClick={handleSignIn}>Sign in</a>
         </IfNotAuthenticated>
       </NavGroup>
       <h1>Fruit FTW!</h1>

@@ -1,42 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
+import { addUser } from '../api'
 
-import { baseApiUrl as baseUrl } from '../config'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
-function Register (props) {
+function Register () {
+  const user = useSelector(state => state)
+  const history = useHistory()
   const [form, setForm] = useState({
-    username: '',
-    password: ''
+    auth0Id: '',
+    email: ''
   })
 
-  function handleChange (e) {
-    const { name, value } = e.target
+  useEffect(() => {
     setForm({
-      ...form,
-      [name]: value
+      auth0Id: user?.auth0Id,
+      email: user?.email
     })
-  }
+  }, [user])
 
-  function handleClick () {
+  async function handleClick () {
+    await addUser(form)
+    history.push('/')
   }
 
   return (
     <>
       <h2>Register</h2>
       <GridForm>
-        <ColOne htmlFor='username'>Username:</ColOne>
+        <ColOne htmlFor='username'>Auth0 Id:</ColOne>
         <ColTwo type='text'
-          id='username'
-          name='username'
-          value={form.username}
-          onChange={handleChange} />
+          id='auth0Id'
+          name='auth0Id'
+          value={form.auth0Id}
+          disabled={true}
+        />
 
-        <ColOne htmlFor='password'>Password:</ColOne>
-        <ColTwo type='password'
-          id='password'
-          name='password'
-          value={form.password}
-          onChange={handleChange} />
+        <ColOne htmlFor='email'>Email:</ColOne>
+        <ColTwo type='text'
+          id='email'
+          name='email'
+          value={form.email}
+          disabled={true}
+        />
 
         <Button type='button' onClick={handleClick}>Register</Button>
       </GridForm>

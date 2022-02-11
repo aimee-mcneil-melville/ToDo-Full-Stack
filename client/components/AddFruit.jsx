@@ -5,6 +5,7 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 import { addFruit } from '../api'
 
 function AddFruit ({ setFruits, closeAddForm, setError }) {
+  // TODO: read from global state
   const [newFruit, setNewFruit] = useState(false)
 
   function handleAddChange (e) {
@@ -17,7 +18,8 @@ function AddFruit ({ setFruits, closeAddForm, setError }) {
 
   function handleAdd () {
     const fruit = { ...newFruit }
-    addFruit(fruit)
+    // TODO: pass token as second parameter
+    addFruit(fruit, 'token')
       .then(setFruits)
       .then(closeAddForm)
       .catch(err => setError(err.message))

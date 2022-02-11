@@ -1,12 +1,12 @@
-exports.up = (knex, Promise) => {
+exports.up = (knex) => {
   return knex.schema.createTable('fruits', table => {
     table.increments('id').primary()
     table.string('name')
     table.integer('calories')
-    table.integer('added_by_user').references('users.id')
+    table.string('added_by_user').references('users.auth0_id')
   })
 }
 
-exports.down = (knex, Promise) => {
+exports.down = (knex) => {
   return knex.schema.dropTable('fruits')
 }

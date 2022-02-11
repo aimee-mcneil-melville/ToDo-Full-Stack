@@ -1,7 +1,9 @@
 import React from 'react'
 
 // TODO: import a proper isAuthenticated function
-const isAuthenticated = () => true
+const isAuthenticated = () => {
+  return true
+}
 
 export function IfAuthenticated ({ children }) {
   return isAuthenticated()

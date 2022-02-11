@@ -1,37 +1,42 @@
 import request from 'superagent'
 
-const rootUrl = '/api/v1/fruits'
-const acceptJsonHeader = { Accept: 'application/json' }
+const rootUrl = '/api/v1'
 
 export function getFruits () {
-  return request.get(rootUrl)
-    .set(acceptJsonHeader)
+  return request.get(`${rootUrl}/fruits`)
     .then(res => {
       return res.body.fruits
     })
     .catch(logError)
 }
 
-export function addFruit (fruit) {
-  return request.post(rootUrl)
-    .set(acceptJsonHeader)
-    .send(fruit)
+export function addFruit (fruit, token) {
+  return request.post(`${rootUrl}/fruits`)
+    .set('authorization', `Bearer ${token}`)
+    .send({ fruit })
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function updateFruit (fruit) {
-  return request.put(rootUrl)
-    .set(acceptJsonHeader)
-    .send(fruit)
+export function updateFruit (fruit, token) {
+  return request.put(`${rootUrl}/fruits`)
+    .set('authorization', `Bearer ${token}`)
+    .send({ fruit })
     .then(res => res.body.fruits)
     .catch(logError)
 }
 
-export function deleteFruit (id) {
-  return request.delete(`${rootUrl}/${id}`)
-    .set(acceptJsonHeader)
+export function deleteFruit (id, token) {
+  return request.delete(`${rootUrl}/fruits/${id}`)
+    .set('authorization', `Bearer ${token}`)
+    .send()
     .then(res => res.body.fruits)
+    .catch(logError)
+}
+
+export async function addUser (user) {
+  return request.post(`${rootUrl}/users`)
+    .send(user)
     .catch(logError)
 }
 
