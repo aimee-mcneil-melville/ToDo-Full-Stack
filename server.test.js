@@ -7,10 +7,12 @@ const server = require('./server')
 jest.mock('./db')
 
 test('GET / responds with correctly rendered users', () => {
-  db.getUsers.mockImplementation(() => Promise.resolve([
-    { id: 2, name: 'test user 2', email: 'test2@user.nz' },
-    { id: 4, name: 'test user 4', email: 'test4@user.nz' }
-  ]))
+  db.getUsers.mockImplementation(() =>
+    Promise.resolve([
+      { id: 2, name: 'test user 2', email: 'test2@user.nz' },
+      { id: 4, name: 'test user 4', email: 'test4@user.nz' },
+    ])
+  )
 
   return request(server)
     .get('/')

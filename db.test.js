@@ -14,17 +14,15 @@ beforeEach(() => {
 
 test('getUsers gets all users', () => {
   // One for each letter of the alphabet!
-  return db.getUsers(testDb)
-    .then(users => {
-      expect(users).toHaveLength(26)
-      return null
-    })
+  return db.getUsers(testDb).then((users) => {
+    expect(users).toHaveLength(26)
+    return null
+  })
 })
 
 test('getUser gets a single user', () => {
-  return db.getUser(99901, testDb)
-    .then(user => {
-      expect(user.name).toBe('Ambitious Aardvark')
-      return null
-    })
+  return db.getUser(99901, testDb).then((user) => {
+    expect(user.name).toBe('Ambitious Aardvark')
+    return null
+  })
 })

@@ -5,8 +5,16 @@ exports.seed = (knex) => {
     { id: 99903, name: 'Curious Capybara', email: 'capybara@example.org' },
     { id: 99904, name: 'Dilapidated Duck', email: 'duck@example.org' },
     { id: 99905, name: 'Exuberant Elephant', email: 'elephant@example.org' },
-    { id: 99906, name: 'Fascinated Flying Fox', email: 'flying.fox@example.org' },
-    { id: 99907, name: 'Generous Gila Monster', email: 'gila.monster@example.org' },
+    {
+      id: 99906,
+      name: 'Fascinated Flying Fox',
+      email: 'flying.fox@example.org',
+    },
+    {
+      id: 99907,
+      name: 'Generous Gila Monster',
+      email: 'gila.monster@example.org',
+    },
     { id: 99908, name: 'Hilarious Heron', email: 'heron@example.org' },
     { id: 99909, name: 'Intransigent Impala', email: 'impala@example.org' },
     { id: 99910, name: 'Jocular Jerboa', email: 'jerboa@example.org' },
@@ -25,6 +33,6 @@ exports.seed = (knex) => {
     { id: 99923, name: 'Wondering Wombat', email: 'wombat@example.org' },
     { id: 99924, name: 'Xenial Xerus', email: 'xerus@example.org' },
     { id: 99925, name: 'Yielding Yak', email: 'yak@example.org' },
-    { id: 99926, name: 'Zaftig Zebu', email: 'zebu@example.org' }
+    { id: 99926, name: 'Zaftig Zebu', email: 'zebu@example.org' },
   ])
 }
