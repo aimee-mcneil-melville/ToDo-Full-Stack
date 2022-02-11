@@ -6,15 +6,15 @@ import { fetchProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 
-function ProductList (props) {
+function ProductList(props) {
   const { children, history } = props
-  const products = useSelector(state => state.products)
+  const products = useSelector((state) => state.products)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchProducts())
   }, [])
 
-  function addProductToCart (product) {
+  function addProductToCart(product) {
     const { id, name } = product
     const newCartItem = { id, name }
     dispatch(addToCart(newCartItem))
@@ -22,15 +22,15 @@ function ProductList (props) {
   }
 
   return (
-    <div className='productlist'>
-      <div className='welcome'>
+    <div className="productlist">
+      <div className="welcome">
         <p>
           Welcome! Please choose from our delicious selection and don&apos;t
           hesitate to let us know if we can answer any of your questions.
         </p>
       </div>
       {children} {/* This holds the WaitIndicator (from App) */}
-      {products.map(product => {
+      {products.map((product) => {
         return (
           <ProductListItem
             key={product.id}

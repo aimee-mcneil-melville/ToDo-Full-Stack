@@ -1,16 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import {
-  deleteFromCart,
-  updateCart
-} from '../actions/cart'
+import { deleteFromCart, updateCart } from '../actions/cart'
 
-function CartItem (props) {
+function CartItem(props) {
   const { name, id, quantity } = props.item
   const dispatch = useDispatch()
 
-  function update (e) {
+  function update(e) {
     const newQuantity = e.target.value
     const isValidQuantity = !isNaN(Number(newQuantity))
     if (isValidQuantity) {
@@ -19,24 +16,27 @@ function CartItem (props) {
     }
   }
 
-  function deleteItem () {
+  function deleteItem() {
     dispatch(deleteFromCart(id))
   }
 
-  const displayQuantity = (quantity === 0) ? '' : quantity
+  const displayQuantity = quantity === 0 ? '' : quantity
   return (
     <tr>
       <td>{name}</td>
       <td>
         <input
-          aria-label='quantity'
-          className='update-input'
+          aria-label="quantity"
+          className="update-input"
           value={displayQuantity}
-          onChange={update} />
+          onChange={update}
+        />
       </td>
-      <td><button aria-label='delete' onClick={deleteItem}>
-        <span className='fa fa-trash fa-2x' />
-      </button></td>
+      <td>
+        <button aria-label="delete" onClick={deleteItem}>
+          <span className="fa fa-trash fa-2x" />
+        </button>
+      </td>
     </tr>
   )
 }

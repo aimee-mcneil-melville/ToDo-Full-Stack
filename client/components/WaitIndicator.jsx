@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-function WaitIndicator (props) {
-  return props.waiting
-    ? <img className='wait-indicator' src='/animated-circle.gif' />
-    : null
+function WaitIndicator(props) {
+  return props.waiting ? (
+    <img className="wait-indicator" src="/animated-circle.gif" />
+  ) : null
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
-    waiting: state.waiting
+    waiting: state.waiting,
   }
 }
 

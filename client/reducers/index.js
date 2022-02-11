@@ -9,5 +9,5 @@ export default combineReducers({
   products,
   cart,
   errorMessage,
-  waiting
+  waiting,
 })

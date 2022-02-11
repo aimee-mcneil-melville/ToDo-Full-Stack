@@ -8,26 +8,42 @@ import ProductList from './ProductList'
 import OrderList from './OrderList'
 import WaitIndicator from './WaitIndicator'
 
-function App () {
+function App() {
   return (
-    <div className='app'>
-      <Route path='/' component={Header} />
-      <Route path='/' component={ErrorMessage} />
-      <Route exact path='/' render={({ history }) => {
-        return <ProductList history={history}>
-          <WaitIndicator />
-        </ProductList>
-      }} />
-      <Route path='/cart' render={({ history }) => {
-        return <Cart history={history}>
-          <WaitIndicator />
-        </Cart>
-      }} />
-      <Route path='/orders' render={() => {
-        return <OrderList>
-          <WaitIndicator />
-        </OrderList>
-      }} />
+    <div className="app">
+      <Route path="/" component={Header} />
+      <Route path="/" component={ErrorMessage} />
+      <Route
+        exact
+        path="/"
+        render={({ history }) => {
+          return (
+            <ProductList history={history}>
+              <WaitIndicator />
+            </ProductList>
+          )
+        }}
+      />
+      <Route
+        path="/cart"
+        render={({ history }) => {
+          return (
+            <Cart history={history}>
+              <WaitIndicator />
+            </Cart>
+          )
+        }}
+      />
+      <Route
+        path="/orders"
+        render={() => {
+          return (
+            <OrderList>
+              <WaitIndicator />
+            </OrderList>
+          )
+        }}
+      />
     </div>
   )
 }

@@ -1,62 +1,65 @@
 module.exports = {
   formatOrder,
-  formatOrderList
+  formatOrderList,
 }
 
-function createDateTimeString (timestamp) {
+function createDateTimeString(timestamp) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-function createOrder (orderLine) {
+function createOrder(orderLine) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
     status: orderLine.status,
-    products: [createProduct(orderLine)]
+    products: [createProduct(orderLine)],
   }
 }
 
-function createProduct (orderLine) {
+function createProduct(orderLine) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
-    quantity: orderLine.quantity
+    quantity: orderLine.quantity,
   }
 }
 
-function sortByIdAscending (arr) {
+function sortByIdAscending(arr) {
   arr.sort((a, b) => {
     return a.id - b.id
   })
   return arr
 }
 
-function sortByIdDescending (arr) {
+function sortByIdDescending(arr) {
   arr.sort((a, b) => {
     return b.id - a.id
   })
   return arr
 }
 
-function formatOrder (orderLines) {
+function formatOrder(orderLines) {
   let order
-  orderLines.forEach(item => {
+  orderLines.forEach((item) => {
     !order
-      ? order = createOrder(item)
+      ? (order = createOrder(item))
       : order.products.push(createProduct(item))
   })
   order.products = sortByIdAscending(order.products)
   return order
 }
 
-function formatOrderList (orderLines) {
+function formatOrderList(orderLines) {
   const orderList = []
-  orderLines.forEach(item => {
-    const order = orderList.find(o => o.id === item.orderId)
+  orderLines.forEach((item) => {
+    const order = orderList.find((o) => o.id === item.orderId)
     !order
       ? orderList.push(createOrder(item))
-      : order.products = sortByIdAscending([...order.products, createProduct(item)])
+      : (order.products = sortByIdAscending([
+          ...order.products,
+          createProduct(item),
+        ]))
   })
   return sortByIdDescending(orderList)
 }
