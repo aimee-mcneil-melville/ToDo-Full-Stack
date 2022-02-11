@@ -46,8 +46,8 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity :
 
 ### I. Auth0 Application Creation:
 1. Open your browser, go to Auth0.com and signup for a new account. 
+1. For the User Type, select *Personal*, and tick *I need advanced settings*. 
 1. The default domain will be something like `dev-fsdf1y29`, but you should overwrite it with a domain of your own, in the format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later.
-1. For the Role, select *Yes, Coding*, and tick *I need advanced settings*. 
 1. Select **Australia** as your *Region*.
 1. Click *Create Account*.
 1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*.
@@ -97,9 +97,9 @@ Commit your code and swap driver/navigator.
 
 Our existing code contains a couple of clever `IfAuthenticated` and `IfNotAuthenticated` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
 
-Fortunately, `auth0` package exports a `useAuth0` hook. This hook exposes useful functions and values. Here we will use the `isAuthenticated` boolean value to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
+Fortunately, `@auth0/auth0-react` package exports a `useAuth0` hook. This hook exposes useful functions and values. Here we will use the `isAuthenticated` boolean value to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
-Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook from `@auth0-react`, destructure the `isAuthenticated` property off it, and return this boolean variable.
+Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`. Import the `useAuth0` hook from `@auth0/auth0-react`, call it, destructure the `isAuthenticated` property off it, and return this boolean variable.
 
 Note that the boolean and the function are both named `isAuthenticated`, take care to understand which one you're working with. 
 
@@ -110,13 +110,13 @@ Now is a good time to commit your changes and swap driver/navigator.
 ## 4. Client-side: Allow the user to register and log in/out
 
 In `client/components/Nav.jsx`, you will need to:
-1. Import the `Auth0` and use it inside the `Nav` component. 
+1. Import the `useAuth0` hook from `@auth0/auth0-react` and use it inside the `Nav` component. 
 1. Destructure the `logout` and `loginWithRedirect` functions off the `useAuth0` hook.
 1. Call these functions in the three handlers (instead of the `console.log` placeholders):
 
 * In `handleLogoff` we'll call `logout`.
 * In `handleRegister`, we'll call `loginWithRedirect` and pass an object that will tell Auth0 to redirect to the `/register` route.
-```
+```json
 {
     redirectUri:`${window.location.origin}/register` 
 }
@@ -142,7 +142,7 @@ In `client/auth0-utils.js`, `cacheUser` takes `useAuth0` as a first parameter. C
 Call `getAccessTokenSilently` to get the access token. The `getAccessTokenSilently` function is async so you'll need to use `await` or `.then`. Then use this token to set the token property on the `userToSave` object. 
 
 The `user` object has other properties, we are interested in two of them:
-- `sub` is the Auth0 subscriber's unique id.
+- `auth0Id` is the Auth0 subscriber's unique id.
 - `email`
 <br/>
 
@@ -154,14 +154,14 @@ _Note: The `cacheUser` function (from `auth0-utils.js`) does `store.dispatch(set
 
 So now the access token is stored in global state (see note above). Next we want to pass it as a header when calling our server-side routes. In this step, we are going to read `token` and pass it as a parameter to three functions in `api.js` (e.g. when we call the `addFruit` function of `api.js` from the `handleAdd` function of `AddFruit.jsx`).
 
-In `client/AddFruit.jsx` component, access the global state and get the `token` property. 
+In `client/components/AddFruit.jsx` access the global state and get the `token` property. 
 
 _Hint: try using the useSelector hook from `react-redux` package._<br/>
 _Another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
 
 Then pass `token` to the `addFruit` function as the second parameter.
 
-In `client/SelectedFruits.jsx`, repeat the same steps for `handleUpdate` and `handleDelete`.
+In `client/components/SelectedFruit.jsx`, repeat the same steps for `handleUpdate` and `handleDelete`.
 
 Commit your code and swap driver/navigator.
 
@@ -178,7 +178,7 @@ Every time a route receives an HTTP request, the checkJwt middleware will trigge
 There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PATCH` and `DELETE`.
 
 In each of these routes pass `checkJwt` as a second parameter, e.g.:
-```
+```javascript
 route.post('/', checkJwt, async (req, res) => {
     // do stuff here
 })
