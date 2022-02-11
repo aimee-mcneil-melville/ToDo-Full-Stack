@@ -28,10 +28,21 @@
     "@vscode/sqlite3": "^5.0.7"
   },
   "devDependencies": {
-    "eslint": "7.12.0",
-    "eslint-config-eda": "0.1.4",
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "jest": "^26.6.1",
     "nodemon": "^2.0.6",
+    "prettier": "^2.5.1",
     "supertest": "^5.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

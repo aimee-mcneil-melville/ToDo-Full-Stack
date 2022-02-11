@@ -1,5 +1,6 @@
-exports.seed = knex =>
-  knex('characteristics').del()
+exports.seed = (knex) =>
+  knex('characteristics')
+    .del()
     .then(() =>
       knex('characteristics').insert([
         { id: 99901, description: 'wise' },
@@ -8,5 +9,6 @@ exports.seed = knex =>
         { id: 99904, description: 'lazy' },
         { id: 99905, description: 'clever' },
         { id: 99906, description: 'sporty' },
-        { id: 99907, description: 'bossy' }
-      ]))
+        { id: 99907, description: 'bossy' },
+      ])
+    )
