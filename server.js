@@ -5,9 +5,12 @@ const server = express()
 module.exports = server
 
 // Middleware
-server.engine('hbs', hbs.engine({
-  extname: 'hbs'
-}))
+server.engine(
+  'hbs',
+  hbs.engine({
+    extname: 'hbs',
+  })
+)
 server.set('view engine', 'hbs')
 server.use(express.static('public'))
 
