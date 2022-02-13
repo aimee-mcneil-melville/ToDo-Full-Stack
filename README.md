@@ -175,7 +175,7 @@ In `server/auth0.js`, set the `domain`(1️⃣) and `audience`(3️⃣) values. 
 Every time a route receives an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
-There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PATCH` and `DELETE`.
+There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PUT` and `DELETE`.
 
 In each of these routes pass `checkJwt` as a second parameter, e.g.:
 ```javascript
