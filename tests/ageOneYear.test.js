@@ -4,7 +4,7 @@ test('ageOneYear returns a copy of the input object with an age property increme
   const mickey = {
     name: 'Mickey Mouse',
     age: 64,
-    email: 'mickey@disney.com'
+    email: 'mickey@disney.com',
   }
 
   const result = kata.ageOneYear(mickey)

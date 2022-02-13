@@ -5,9 +5,9 @@ test('unzipObject returns an array of key/value pairs', () => {
     name: 'Count Dracula',
     email: 'dracula@hotmail.com',
     password: '12345',
-    country: 'Transylvania'
+    country: 'Transylvania',
   }
-  const expected = Object.keys(dracula).map(key => [key, dracula[key]])
+  const expected = Object.keys(dracula).map((key) => [key, dracula[key]])
 
   const actual = kata.unzipObject(dracula)
 

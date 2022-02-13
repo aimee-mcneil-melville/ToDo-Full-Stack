@@ -5,7 +5,7 @@ test('getKeys returns own property keys for an object', () => {
     name: 'Count Dracula',
     email: 'dracula@hotmail.com',
     password: '12345',
-    country: 'Transylvania'
+    country: 'Transylvania',
   }
   const expected = ['name', 'email', 'password', 'country']
 

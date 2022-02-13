@@ -5,13 +5,13 @@ test('getValues returns own values for an object', () => {
     name: 'Count Dracula',
     email: 'dracula@hotmail.com',
     password: '12345',
-    country: 'Transylvania'
+    country: 'Transylvania',
   }
   const expected = [
     'Count Dracula',
     'dracula@hotmail.com',
     '12345',
-    'Transylvania'
+    'Transylvania',
   ]
 
   const actual = kata.getValues(dracula)
