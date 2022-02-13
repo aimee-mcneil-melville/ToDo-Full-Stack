@@ -142,7 +142,7 @@ In `client/auth0-utils.js`, `cacheUser` takes `useAuth0` as a first parameter. C
 Call `getAccessTokenSilently` to get the access token. The `getAccessTokenSilently` function is async so you'll need to use `await` or `.then`. Then use this token to set the token property on the `userToSave` object. 
 
 The `user` object has other properties, we are interested in two of them:
-- `auth0Id` is the Auth0 subscriber's unique id.
+- `sub` is the Auth0 subscriber's unique id.
 - `email`
 <br/>
 
