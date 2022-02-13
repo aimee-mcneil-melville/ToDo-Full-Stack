@@ -1,9 +1,6 @@
 /* eslint-disable no-console */
 
-const {
-  examplePattern1,
-  examplePattern2
-} = require('./patterns')
+const { examplePattern1, examplePattern2 } = require('./patterns')
 
 const max = 7
 

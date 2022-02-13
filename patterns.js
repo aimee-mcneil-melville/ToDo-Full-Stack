@@ -1,13 +1,13 @@
 module.exports = {
   examplePattern1,
-  examplePattern2
+  examplePattern2,
 }
 
-function examplePattern1 (max) {
+function examplePattern1(max) {
   let output = ''
   const rows = Array(max).fill(0)
 
-  rows.forEach(item => {
+  rows.forEach(() => {
     const cols = Array(max).fill(0)
     output += cols.join(' ') + '\n'
   })
@@ -15,7 +15,7 @@ function examplePattern1 (max) {
   return output
 }
 
-function examplePattern2 (max) {
+function examplePattern2(max) {
   let output = ''
   const rows = Array(max).fill(0)
 
