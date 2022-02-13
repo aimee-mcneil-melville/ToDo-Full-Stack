@@ -5,7 +5,7 @@ test('matrix.getMatrix creates 3x3 matrix', function () {
   const expected = [
     [0, 0, 0],
     [0, 0, 0],
-    [0, 0, 0]
+    [0, 0, 0],
   ]
 
   // Act
@@ -21,7 +21,7 @@ test('matrix.getMatrix creates 4x4 matrix', function () {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0],
   ]
 
   // Act
@@ -36,12 +36,12 @@ test('matrix.updateMatrix can change the value at specified coordinates', functi
   const initialMatrix = [
     [0, 0, 0],
     [0, 0, 0],
-    [0, 0, 0]
+    [0, 0, 0],
   ]
   const expected = [
     [0, 0, 0],
     [0, 0, 1],
-    [0, 0, 0]
+    [0, 0, 0],
   ]
 
   // Act
