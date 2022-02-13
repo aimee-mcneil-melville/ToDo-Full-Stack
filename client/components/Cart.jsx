@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Cart () {
+function Cart() {
   // TODO: replace cart
   const cart = []
 
   return (
-    <div className='cart'>
+    <div className="cart">
       <table>
         <thead>
           <tr>
@@ -19,19 +19,25 @@ function Cart () {
             return (
               <tr key={id}>
                 <td>{name}</td>
-                <td><input className='update-input' value={quantity} /></td>
+                <td>
+                  <input className="update-input" value={quantity} />
+                </td>
                 {/* TODO: implement deletes */}
-                <td><button><span className='fa fa-trash fa-2x' /></button></td>
+                <td>
+                  <button>
+                    <span className="fa fa-trash fa-2x" />
+                  </button>
+                </td>
               </tr>
             )
           })}
         </tbody>
       </table>
 
-      <p className='actions'>
+      <p className="actions">
         <a>Continue shopping</a>
         <button>Update</button> {/* TODO: implement updates */}
-        <button className='button-primary'>Checkout</button>
+        <button className="button-primary">Checkout</button>
       </p>
     </div>
   )
