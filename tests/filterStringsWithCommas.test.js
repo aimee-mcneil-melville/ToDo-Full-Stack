@@ -17,5 +17,5 @@ test('filterStringsWithCommas returns false if there is no comma present', () =>
 test('filter, when using filterStringsWithCommas, returns an array with the correct number of commas', () => {
   const expected = 62
   const stringsWithCommas = randomStrings.filter(filterStringsWithCommas) || []
-  expect(stringsWithCommas.length).toBe(expected)
+  expect(stringsWithCommas).toHaveLength(expected)
 })
