@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   store.subscribe(render)
 })
 
-function render () {
-  ReactDOM.render(
-    <App />,
-    document.getElementById('app')
-  )
+function render() {
+  ReactDOM.render(<App />, document.getElementById('app'))
 }
