@@ -13,6 +13,10 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/boilerplate-express-api.git"
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "author": "EDA",
   "license": "ISC",
   "bugs": {
@@ -24,11 +28,11 @@
     "babel-jest": "^26.0.1",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
-    "sqlite3": "^4.2.0",
     "supertest": "^4.0.2"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.21.1"
+    "knex": "^1.0.1",
+    "@vscode/sqlite3": "^5.0.7"
   }
 }
