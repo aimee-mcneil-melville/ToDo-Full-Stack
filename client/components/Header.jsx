@@ -1,11 +1,10 @@
 import React from 'react'
 
-function Header () {
+function Header() {
   return (
     <h1>
-      <span className='fa fa-beer' />
-      {' '}Sweet As Beers{' '}
-      <span className='fa fa-beer' />
+      <span className="fa fa-beer" /> Sweet As Beers{' '}
+      <span className="fa fa-beer" />
     </h1>
   )
 }

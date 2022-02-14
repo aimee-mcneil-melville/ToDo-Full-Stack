@@ -1,5 +1,5 @@
 export const actionCreatorName = () => {
   return {
-    type: 'ACTION_TYPE'
+    type: 'ACTION_TYPE',
   }
 }

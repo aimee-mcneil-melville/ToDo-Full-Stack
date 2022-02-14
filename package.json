@@ -28,7 +28,7 @@
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
+    "extends": "eda/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -44,16 +44,27 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/register": "^7.13.14",
     "babel-loader": "^8.2.2",
-    "eslint": "7.9.0",
-    "eslint-config-eda": "0.1.4",
+    "eslint": "^8.9.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
     "redux": "^4.0.5",
     "webpack": "^5.34.0",
     "webpack-cli": "^4.6.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
