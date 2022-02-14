@@ -9,7 +9,7 @@ const server = express()
 
 const hbsConfig = {
   defaultLayout: 'main',
-  extname: 'hbs'
+  extname: 'hbs',
 }
 server.engine('hbs', hbs(hbsConfig))
 server.set('view engine', 'hbs')
@@ -24,8 +24,8 @@ server.use(express.static(path.join(__dirname, 'public')))
 const data = {
   cats: [
     { id: 1, name: 'fluffy' },
-    { id: 2, name: 'tick' }
-  ]
+    { id: 2, name: 'tick' },
+  ],
 }
 
 // routes
@@ -42,10 +42,12 @@ server.get('/cats/new', function (req, res) {
   res.render('new')
 })
 
+// eslint-disable-next-line no-unused-vars
 server.get('/cats/:id', function (req, res) {
   console.log(req.params) // try going to /cats/1
 })
 
+// eslint-disable-next-line no-unused-vars
 server.post('/cats', function (req, res) {
   console.log(req.body)
 })
