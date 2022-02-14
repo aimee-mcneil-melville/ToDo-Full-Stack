@@ -101,24 +101,23 @@ jobs:
         HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
         HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
         
-  deploy-prod:
-    runs-on: ubuntu-latest
-    # this prevents deployment for pull requests and works for push in main
-    if: ${{ github.ref == 'refs/heads/main' }}
-    needs: build
-    environment: production
-    steps:
-    - uses: actions/checkout@v2
+  # deploy-prod:
+  #   runs-on: ubuntu-latest
+  #   # this prevents deployment for pull requests and works for push in main
+  #   if: ${{ github.ref == 'refs/heads/main' }}
+  #   needs: build
+  #   environment: production
+  #   steps:
+  #   - uses: actions/checkout@v2
      
-    - uses: akhileshns/heroku-deploy@master
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-        # branch: 'main'
-      env:
-        HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
-        HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
-        HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-        HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
-        HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
+  #   - uses: akhileshns/heroku-deploy@master
+  #     with:
+  #       heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #       heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+  #       heroku_email: ${{secrets.HEROKU_EMAIL}}
+  #     env:
+  #       HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
+  #       HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+  #       HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+  #       HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+  #       HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
