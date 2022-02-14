@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       res.json({ users: users })
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
       res.json({ user: user })
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
