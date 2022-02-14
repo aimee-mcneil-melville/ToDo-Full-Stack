@@ -8,13 +8,12 @@ const router = express.Router()
 module.exports = router
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, gardenId, username, auth0Id, email } = req.body
+  const { firstName, lastName, gardenId, auth0Id, email } = req.body
 
   const user = {
     firstName,
     lastName,
     gardenId,
-    username,
     email,
     auth0Id
   }
@@ -22,7 +21,7 @@ router.post('/', async (req, res) => {
   try {
     await db.createUser(user)
   } catch (err) {
-    console.error(err.message)
+    log(err.message)
     res.status(500).json({
       error: {
         title: 'failed: user exists'
@@ -34,7 +33,7 @@ router.post('/', async (req, res) => {
     const addedUser = await db.getUsersByAuth(user.auth0Id)
     res.json(addedUser)
   } catch (err) {
-    console.error(err.message)
+    log(err.message)
     res.status(500).json({
       error: {
         title: 'failed to retrieve added user'

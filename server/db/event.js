@@ -9,15 +9,15 @@ module.exports = {
 
 function getEventById (id, db = connection) {
   return db('events')
-    .leftJoin('eventVolunteers', 'eventVolunteers.event_id', 'events.id')
-    .leftJoin('users', 'eventVolunteers.user_id', 'users.id')
+    .leftJoin('event_volunteers', 'event_volunteers.event_id', 'events.id')
+    .leftJoin('users', 'event_volunteers.user_id', 'users.id')
     .leftJoin('gardens', 'events.garden_id', 'gardens.id')
-    .leftJoin('extraVolunteers', 'events.id', 'extraVolunteers.event_id')
+    .leftJoin('extra_volunteers', 'events.id', 'extra_volunteers.event_id')
     .select('name', 'address', 'attended', 'events.id as id', 'events.garden_id as gardenId',
       'title', 'events.status', 'date', 'events.description', 'volunteers_needed as volunteersNeeded',
-      'user_id as userId', 'username', 'users.first_name', 'users.last_name',
-      'extraVolunteers.first_name as extraVolFirstName', 'extraVolunteers.last_name as extraVolLastName',
-      'extraVolunteers.id as extraVolId', 'lat', 'lon')
+      'user_id as userId', 'users.first_name', 'users.last_name',
+      'extra_volunteers.first_name as extraVolFirstName', 'extra_volunteers.last_name as extraVolLastName',
+      'extra_volunteers.id as extraVolId', 'lat', 'lon')
     .where('events.id', id)
     .then(result => {
       const event = result[0]
@@ -40,7 +40,6 @@ function getEventById (id, db = connection) {
           if (!personIncluded) {
             acc.push({
               userId: cur.userId,
-              username: cur.username,
               firstName: cur.first_name,
               lastName: cur.last_name,
               attended: result.find(evt => evt.userId === cur.userId).attended ? result.find(evt => evt.userId === cur.userId).attended : false

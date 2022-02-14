@@ -7,13 +7,13 @@ describe('user reducer', () => {
   it('returns new user object on "SET_USER"', () => {
     const user = {
       id: 4,
-      username: 'test user',
+      firstName: 'test',
       isAdmin: false,
       gardenId: 3
     }
 
     const oldState = {
-      username: '',
+      firstName: '',
       isAdmin: false,
       gardenId: null,
       id: null
@@ -24,13 +24,13 @@ describe('user reducer', () => {
       user
     }
     const newState = userReducer(oldState, action)
-    expect(newState.username).toBe('test user')
+    expect(newState.firstName).toBe('test')
     expect(newState).not.toBe(oldState)
   })
 
   it('returns default empty user object on "CLEAR_USER"', () => {
     const oldState = {
-      username: 'test user',
+      firstName: 'test',
       isAdmin: false,
       gardenId: 2,
       id: 5
@@ -45,7 +45,7 @@ describe('user reducer', () => {
 
   it('returns old state on unknown action type', () => {
     const oldState = {
-      username: 'test user',
+      firstName: 'test',
       isAdmin: false,
       gardenId: 2,
       id: 5

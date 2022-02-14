@@ -19,7 +19,7 @@ export default function EventItem ({ gardenid, event, isAdmin }) {
   }
 
   return (
-    <div className='Collapsible__contentInner'>
+    <div className='collapsible__content-inner'>
       <Collapsible trigger={<h2 className='card-title'><a href='#' to={`/gardens/${gardenid}/events/${id}`}>{title}</a></h2>} {...{ open, handleCollapse }}>
         <article className='card-primary'>
           <ul className='list-primary'>

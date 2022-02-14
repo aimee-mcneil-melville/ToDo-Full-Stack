@@ -8,6 +8,11 @@
   }
 }
 
+.flex-container.flex-garden {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .flex-column {
   flex-direction: column;
 
@@ -22,4 +27,18 @@
   &-reverse {
     flex-direction: row-reverse;
   }
+}
+
+.centre-flex {
+  justify-content: center;
+}
+
+.margin-container {
+  margin: 2.5rem;
+}
+
+.home-flex {
+  @extend .flex-container;
+  height: 75vh;
+  align-items: center;
 }

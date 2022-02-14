@@ -36,7 +36,9 @@ export default function Nav () {
 
   function handleLogoff (event) {
     event.preventDefault()
-    logout()
+    logout({
+      returnTo: window.location.origin
+    })
   }
 
   const toggleMenu = () => {
