@@ -24,7 +24,15 @@ test('getType returns correct data type for string', function () {
 
 test('getType returns the expected data types', function () {
   // Arrange
-  const arrayWithDifferentTypes = ['d', 3, function () { return 'hello' }, true, []]
+  const arrayWithDifferentTypes = [
+    'd',
+    3,
+    function () {
+      return 'hello'
+    },
+    true,
+    [],
+  ]
   const expected = ['string', 'number', 'function', 'boolean', 'object']
 
   // Act

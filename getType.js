@@ -1,2 +1,2 @@
-function getType (thing) {
-}
+/* eslint-disable no-unused-vars */
+function getType(thing) {}

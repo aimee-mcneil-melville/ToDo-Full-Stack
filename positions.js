@@ -1,5 +1,4 @@
-function getFirst (arr) {
-}
+/* eslint-disable no-unused-vars */
+function getFirst(arr) {}
 
-function getLast (arr) {
-}
+function getLast(arr) {}
