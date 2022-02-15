@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import AddTodo from './AddTodo'
 
-function App () {
-  useEffect(() => {
-
-  }, [])
+function App() {
+  useEffect(() => {}, [])
 
   return (
     <>
