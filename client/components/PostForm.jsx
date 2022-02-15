@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { addPost, updatePost } from '../api'
 
-function PostForm (props) {
+function PostForm(props) {
   const [post, setPost] = useState({ title: '', paragraphs: [] })
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -11,17 +11,18 @@ function PostForm (props) {
   }, [])
 
   useEffect(() => {
-    if (post && !currentPost)setNewPost(post)
+    if (post && !currentPost) setNewPost(post)
   }, [props.post])
 
-  function setNewPost (post) {
+  function setNewPost(post) {
     const paragraphs = post.paragraphs.join('\n')
     setPost({
-      ...post, paragraphs
+      ...post,
+      paragraphs,
     })
   }
 
-  function completePostData (post) {
+  function completePostData(post) {
     if (post.paragraphs && post.title) {
       return true
     } else {
@@ -30,7 +31,7 @@ function PostForm (props) {
     }
   }
 
-  function handleSubmit (e) {
+  function handleSubmit(e) {
     e.preventDefault()
     const { history, fetchPosts } = props
     if (props.post) {
@@ -38,7 +39,7 @@ function PostForm (props) {
         updatePost(post)
           .then(fetchPosts)
           .then(() => navigateToPost(post.id))
-          .catch(err => setErrorMessage(err.message))
+          .catch((err) => setErrorMessage(err.message))
       }
     } else {
       let postId = null
@@ -49,48 +50,49 @@ function PostForm (props) {
             return fetchPosts()
           })
           .then(() => navigateToPost(postId))
-          .catch(err => setErrorMessage(err.message))
+          .catch((err) => setErrorMessage(err.message))
       }
     }
 
-    function navigateToPost (id) {
+    function navigateToPost(id) {
       return history.push(`/posts/${id}`)
     }
   }
 
-  function handleChange (e) {
+  function handleChange(e) {
     setPost({ ...post, [e.target.name]: e.target.value })
   }
 
   return (
-    <form className='pure-form pure-form-aligned' onSubmit={handleSubmit}>
-      {props.post
-        ? <h2 className='post-title'>Edit Post</h2>
-        : <h2 className='post-title'>Add a New Blog Post</h2>
-      }
+    <form className="pure-form pure-form-aligned" onSubmit={handleSubmit}>
+      {props.post ? (
+        <h2 className="post-title">Edit Post</h2>
+      ) : (
+        <h2 className="post-title">Add a New Blog Post</h2>
+      )}
 
       <fieldset>
-        <div className='pure-control-group'>
-          <label htmlFor='title'>Title</label>
+        <div className="pure-control-group">
+          <label htmlFor="title">Title</label>
           <input
-            type='text'
-            name='title'
+            type="text"
+            name="title"
             value={post.title}
             onChange={handleChange}
           />
         </div>
 
-        <div className='pure-control-group'>
-          <label htmlFor='paragraphs'>Blog</label>
+        <div className="pure-control-group">
+          <label htmlFor="paragraphs">Blog</label>
           <textarea
-            name='paragraphs'
+            name="paragraphs"
             value={post.paragraphs}
-            onChange={handleChange}>
-          </textarea>
+            onChange={handleChange}
+          ></textarea>
         </div>
 
-        <div className='pure-controls'>
-          <input className='pure-button' type='submit' />
+        <div className="pure-controls">
+          <input className="pure-button" type="submit" />
         </div>
       </fieldset>
 

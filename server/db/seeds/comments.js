@@ -1,6 +1,7 @@
 exports.seed = (knex) => {
   // Deletes ALL existing entries
-  return knex('Comments').del()
+  return knex('Comments')
+    .del()
     .then(() => {
       // Inserts seed entries
       return knex('Comments').insert([
@@ -8,20 +9,20 @@ exports.seed = (knex) => {
           id: 1,
           post_id: 123,
           date_posted: new Date(Date.now()),
-          comment: 'Great blog'
+          comment: 'Great blog',
         },
         {
           id: 2,
           post_id: 123,
           date_posted: new Date(Date.now()),
-          comment: 'Really Great blog'
+          comment: 'Really Great blog',
         },
         {
           id: 3,
           post_id: 125,
           date_posted: new Date(Date.now()),
-          comment: 'Extremely great blog'
-        }
+          comment: 'Extremely great blog',
+        },
       ])
     })
 }

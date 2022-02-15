@@ -3,28 +3,23 @@ import { Link, Route } from 'react-router-dom'
 
 import Comment from './Comment'
 import CommentForm from './CommentForm'
-function Comments (props) {
+function Comments(props) {
   const { postId, comments, fetchComments } = props
   return (
     <div>
       <p>
-        <Link
-          className='pure-button'
-          to={`/posts/${postId}/comments/new`}>
-            Add A New Comment
+        <Link className="pure-button" to={`/posts/${postId}/comments/new`}>
+          Add A New Comment
         </Link>
       </p>
       <Route
-        path='/posts/:postId/comments/new'
-        render={props => (
-          <CommentForm
-            fetchComments={fetchComments}
-            {...props}
-          />
+        path="/posts/:postId/comments/new"
+        render={(props) => (
+          <CommentForm fetchComments={fetchComments} {...props} />
         )}
       />
       <div>
-        {comments.map(comment => (
+        {comments.map((comment) => (
           <Comment
             key={comment.id}
             postId={postId}
@@ -38,7 +33,7 @@ function Comments (props) {
 }
 
 Comments.defaultProps = {
-  comments: []
+  comments: [],
 }
 
 export default Comments
