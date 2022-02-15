@@ -4,25 +4,25 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { addFruit } from '../api'
 
-function AddFruit ({ setFruits, closeAddForm, setError }) {
+function AddFruit({ setFruits, closeAddForm, setError }) {
   // TODO: read from global state
   const [newFruit, setNewFruit] = useState(false)
 
-  function handleAddChange (e) {
+  function handleAddChange(e) {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
-      [name]: value
+      [name]: value,
     })
   }
 
-  function handleAdd () {
+  function handleAdd() {
     const fruit = { ...newFruit }
     // TODO: pass token as second parameter
     addFruit(fruit, 'token')
       .then(setFruits)
       .then(closeAddForm)
-      .catch(err => setError(err.message))
+      .catch((err) => setError(err.message))
   }
 
   const { name: addingName, calories: addingCalories } = newFruit
@@ -32,21 +32,29 @@ function AddFruit ({ setFruits, closeAddForm, setError }) {
       <h2>Add new</h2>
       <GridForm>
         <ColOne>Name:</ColOne>
-        <ColTwo type='text'
-          name='name'
-          aria-label='adding-name'
+        <ColTwo
+          type="text"
+          name="name"
+          aria-label="adding-name"
           value={addingName || ''}
-          onChange={handleAddChange} />
+          onChange={handleAddChange}
+        />
 
         <ColOne>Calories:</ColOne>
-        <ColTwo type='text'
-          name='calories'
-          aria-label='adding-calories'
+        <ColTwo
+          type="text"
+          name="calories"
+          aria-label="adding-calories"
           value={addingCalories || ''}
-          onChange={handleAddChange} />
+          onChange={handleAddChange}
+        />
 
-        <Button type='button' onClick={handleAdd}>Add fruit</Button>
-        <Button type='button' onClick={closeAddForm}>Close</Button>
+        <Button type="button" onClick={handleAdd}>
+          Add fruit
+        </Button>
+        <Button type="button" onClick={closeAddForm}>
+          Close
+        </Button>
       </GridForm>
     </>
   )

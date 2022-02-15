@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
-    calories: fruit.calories
+    calories: fruit.calories,
   }
   try {
     const fruits = await db.addFruit(newFruit)
@@ -46,7 +46,7 @@ router.put('/', async (req, res) => {
     id: fruit.id,
     added_by_user: auth0Id,
     name: fruit.name,
-    calories: fruit.calories
+    calories: fruit.calories,
   }
   try {
     const fruits = await db.updateFruit(fruitToUpdate, auth0Id)
@@ -54,9 +54,9 @@ router.put('/', async (req, res) => {
   } catch (err) {
     console.error(err)
     if (err.message === 'Unauthorized') {
-      return res.status(403).send(
-        'Unauthorized: Only the user who added the fruit may update it'
-      )
+      return res
+        .status(403)
+        .send('Unauthorized: Only the user who added the fruit may update it')
     }
     res.status(500).send(err.message)
   }
@@ -73,9 +73,9 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     console.error(err)
     if (err.message === 'Unauthorized') {
-      return res.status(403).send(
-        'Unauthorized: Only the user who added the fruit may delete it'
-      )
+      return res
+        .status(403)
+        .send('Unauthorized: Only the user who added the fruit may delete it')
     }
     res.status(500).send(err.message)
   }

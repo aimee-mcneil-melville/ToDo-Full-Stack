@@ -4,34 +4,34 @@ import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
-function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
+function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   // TODO: read from global state
   const [editing, setEditing] = useState(selected)
 
-  function handleEditChange (e) {
+  function handleEditChange(e) {
     const { name, value } = e.target
     setEditing({
       ...editing,
-      [name]: value
+      [name]: value,
     })
   }
 
-  function handleUpdate () {
+  function handleUpdate() {
     // TODO: pass token as second parameter
     updateFruit(editing, 'token')
-      .then(remoteFruits => setFruits(remoteFruits))
+      .then((remoteFruits) => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
-      .catch(err => setError(err.message))
+      .catch((err) => setError(err.message))
   }
 
-  function handleDelete () {
+  function handleDelete() {
     // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
-      .catch(err => setError(err.message))
+      .catch((err) => setError(err.message))
   }
 
   useEffect(() => {
@@ -45,30 +45,46 @@ function SelectedFruit ({ selected, clearSelected, setError, setFruits }) {
       <h2>Selected</h2>
       <GridForm>
         <ColOne>Name:</ColOne>
-        <ColTwo type='text'
-          name='name'
-          aria-label='selected-name'
-          data-testid='selected-name'
+        <ColTwo
+          type="text"
+          name="name"
+          aria-label="selected-name"
+          data-testid="selected-name"
           value={editingName || ''}
-          onChange={handleEditChange} />
+          onChange={handleEditChange}
+        />
 
         <ColOne>Calories:</ColOne>
-        <ColTwo type='text'
-          name='calories'
-          aria-label='selected-calories'
-          data-testid='selected-calories'
+        <ColTwo
+          type="text"
+          name="calories"
+          aria-label="selected-calories"
+          data-testid="selected-calories"
           value={editingCalories || ''}
-          onChange={handleEditChange} />
+          onChange={handleEditChange}
+        />
 
-        <Button type='button'
-          data-testid='update-button'
-          onClick={handleUpdate}>Update fruit</Button>
-        <Button type='button'
-          data-testid='delete-button'
-          onClick={handleDelete}>Delete fruit</Button>
-        <Button type='button'
-          data-testid='clear-button'
-          onClick={clearSelected}>Clear selection</Button>
+        <Button
+          type="button"
+          data-testid="update-button"
+          onClick={handleUpdate}
+        >
+          Update fruit
+        </Button>
+        <Button
+          type="button"
+          data-testid="delete-button"
+          onClick={handleDelete}
+        >
+          Delete fruit
+        </Button>
+        <Button
+          type="button"
+          data-testid="clear-button"
+          onClick={clearSelected}
+        >
+          Clear selection
+        </Button>
       </GridForm>
     </>
   )
