@@ -7,7 +7,7 @@ test('functions.callsProperty accepts a parameter `obj` and calls obj.increment(
     n: 0,
     increment: function () {
       this.n++
-    }
+    },
   }
   functions.callsProperty(actual)
   expect(actual.n).toBe(expected)
