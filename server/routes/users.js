@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
   const { auth0Id, email } = newUser
   const user = {
     auth0_id: auth0Id,
-    email
+    email,
   }
   try {
     await db.createUser(user)

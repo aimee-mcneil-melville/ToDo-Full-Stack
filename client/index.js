@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       domain={''}
       clientId={''}
       redirectUri={window.location.origin}
-      audience=''
+      audience=""
     >
       <Provider store={store}>
         <App />

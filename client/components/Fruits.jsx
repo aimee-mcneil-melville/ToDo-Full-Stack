@@ -6,51 +6,50 @@ import { Error } from './Styled'
 
 import { getFruits } from '../api'
 
-function Fruits () {
+function Fruits() {
   const [error, setError] = useState('')
   const [fruits, setFruits] = useState([])
   const [adding, setAdding] = useState(false)
   const [selected, setSelected] = useState(null)
 
-  function hideError () {
+  function hideError() {
     setError('')
   }
 
-  function openAddForm (e) {
+  function openAddForm(e) {
     e.preventDefault()
     setAdding(true)
   }
 
-  function closeAddForm () {
+  function closeAddForm() {
     setAdding(false)
   }
 
-  function setSelectHandler (fruit, e) {
+  function setSelectHandler(fruit, e) {
     e.preventDefault()
     setSelected(fruit)
   }
 
-  function clearSelected () {
+  function clearSelected() {
     setSelected(null)
   }
 
   useEffect(() => {
     getFruits()
-      .then(remoteFruits => setFruits(remoteFruits))
-      .catch(err => setError(err.message))
+      .then((remoteFruits) => setFruits(remoteFruits))
+      .catch((err) => setError(err.message))
   }, [])
 
   return (
     <>
-      <Error onClick={hideError}>
-        { error && `Error: ${error}` }
-      </Error>
+      <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
 
       <ul>
-        {fruits.map(fruit => (
+        {fruits.map((fruit) => (
           <li key={fruit.id}>
-            <a href='#'
-              data-testid='fruit-link'
+            <a
+              href="#"
+              data-testid="fruit-link"
               onClick={(e) => setSelectHandler(fruit, e)}
             >
               {fruit.name}
@@ -66,17 +65,19 @@ function Fruits () {
           closeAddForm={closeAddForm}
         />
       ) : (
-        <a href='#' onClick={openAddForm}>
+        <a href="#" onClick={openAddForm}>
           Add a Fruit
         </a>
       )}
 
-      {selected && <SelectedFruit
-        selected={selected}
-        clearSelected={clearSelected}
-        setError={setError}
-        setFruits={setFruits}
-      />}
+      {selected && (
+        <SelectedFruit
+          selected={selected}
+          clearSelected={clearSelected}
+          setError={setError}
+          setFruits={setFruits}
+        />
+      )}
     </>
   )
 }
