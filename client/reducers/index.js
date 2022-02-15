@@ -7,5 +7,5 @@ import waiting from './waiting'
 export default combineReducers({
   errorMessage,
   subreddits,
-  waiting
+  waiting,
 })

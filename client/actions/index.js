@@ -4,36 +4,36 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export function requestPosts () {
+export function requestPosts() {
   return {
-    type: REQUEST_POSTS
+    type: REQUEST_POSTS,
   }
 }
 
-export function receivePosts (posts) {
+export function receivePosts(posts) {
   return {
     type: RECEIVE_POSTS,
-    posts: posts.map(post => post.data)
+    posts: posts.map((post) => post.data),
   }
 }
 
-export function showError (errorMessage) {
+export function showError(errorMessage) {
   return {
     type: SHOW_ERROR,
-    errorMessage: errorMessage
+    errorMessage: errorMessage,
   }
 }
 
-export function fetchPosts (subreddit) {
+export function fetchPosts(subreddit) {
   return (dispatch) => {
     dispatch(requestPosts())
     return request
       .get(`/api/v1/reddit/subreddit/${subreddit}`)
-      .then(res => {
+      .then((res) => {
         dispatch(receivePosts(res.body))
         return null
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(showError(err.message))
       })
   }

@@ -5,9 +5,9 @@ import LoadSubreddit from './LoadSubreddit'
 import SubredditList from './SubredditList'
 import WaitIndicator from './WaitIndicator'
 
-function App () {
+function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <ErrorMessage />
       <LoadSubreddit>
         <WaitIndicator />

@@ -1,10 +1,6 @@
-import {
-  SHOW_ERROR,
-  REQUEST_POSTS,
-  RECEIVE_POSTS
-} from '../actions'
+import { SHOW_ERROR, REQUEST_POSTS, RECEIVE_POSTS } from '../actions'
 
-function waiting (state = false, action) {
+function waiting(state = false, action) {
   switch (action.type) {
     case REQUEST_POSTS:
       return true

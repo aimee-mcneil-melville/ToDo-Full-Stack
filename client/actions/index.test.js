@@ -9,7 +9,8 @@ test('fetchPosts', () => {
 
   const dispatch = jest.fn()
 
-  return actions.fetchPosts('bananas')(dispatch)
+  return actions
+    .fetchPosts('bananas')(dispatch)
     .then(() => {
       expect(dispatch.mock.calls).toHaveLength(2)
       expect(dispatch.mock.calls[0][0].type).toBe('REQUEST_POSTS')

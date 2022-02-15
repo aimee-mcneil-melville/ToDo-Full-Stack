@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux'
 
 import { fetchPosts } from '../actions'
 
-function LoadSubreddit ({ children }) {
+function LoadSubreddit({ children }) {
   const dispatch = useDispatch()
 
   return (
     <div>
       <button onClick={() => dispatch(fetchPosts('newzealand'))}>
-    Fetch Posts
+        Fetch Posts
       </button>
       {children}
     </div>

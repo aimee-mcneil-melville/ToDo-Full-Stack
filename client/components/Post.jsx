@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Post ({ title }) {
+function Post({ title }) {
   return <div>{title}</div>
 }
 
