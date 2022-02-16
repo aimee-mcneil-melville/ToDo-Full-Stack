@@ -9,35 +9,36 @@ import Home from './Home'
 
 import { checkAuth } from '../actions/auth'
 
-function App () {
+function App() {
   const dispatch = useDispatch()
-  const auth = useSelector(redux => redux.auth)
+  const auth = useSelector((redux) => redux.auth)
 
   useEffect(() => {
-    const confirmSuccess = () => { }
+    const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
   }, [])
 
   return (
     <div className="container has-text-centered">
-
       <div className="hero is-small is-primary">
         <div className="hero-body has-text-centered">
-          <Link to='/' className="">
+          <Link to="/" className="">
             <h1 className="title is-1">Lost and Found</h1>
           </Link>
-          <Nav/>
+          <Nav />
         </div>
       </div>
 
-      <div className=''>
+      <div className="">
         <Routes>
-          <Route path='/' element={auth.isAuthenticated ? <Home /> : <Login/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
+          <Route
+            path="/"
+            element={auth.isAuthenticated ? <Home /> : <Login />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
-
     </div>
   )
 }

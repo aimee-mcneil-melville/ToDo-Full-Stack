@@ -4,7 +4,7 @@ const environments = {
   production: '',
   integration: '',
   deployment: '',
-  build: ''
+  build: '',
 }
 
 const env = process.env.NODE_ENV || 'development'
