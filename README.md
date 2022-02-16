@@ -81,11 +81,11 @@ In `client/index.js`:
 1. Wrap your root component (in this case `App`) with `Auth0Provider` component (this has also been done for you, but make sure you understand what's happening). 
 1. Set the values in each attribute to the proper values from previous steps. See the [docs](https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component).
 
-| Attribute  | Value                                                   |
-| ---------  | --------------------------------------------------------| 
-| `domain`   | 1️⃣, format is `cohortName-yourFirstName.au.auth0.com`  |
-| `clientId` | 2️⃣                                                      | 
-| `audience` | 3️⃣, `https://fruits/api`                                |
+| Attribute  | Value                                                              |
+| ---------  | --------------------------------------------------------------------| 
+| `domain`   | See 1️⃣ above, format is `cohortName-yourFirstName.au.auth0.com`    |
+| `clientId` | See 2️⃣ above, this is the random string you made a note of earlier | 
+| `audience` | See 3️⃣ above, `https://fruits/api`                                 |
 
 Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
 
@@ -190,3 +190,4 @@ Now our middleware is ready to be used.
 🎉 Congratulations 🎉
 
 ## 9. BONUS: Show/hide buttons
+Some of the buttons and/or links are only valid in certain circumstances (if you're logged in, if you're the person who created that fruit, etc.). What improvements can you make to the app so that users only see buttons/links that they're actually allowed to use? 
