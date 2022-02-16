@@ -116,7 +116,7 @@ In `client/components/Nav.jsx`, you will need to:
 
 * In `handleLogoff` we'll call `logout`.
 * In `handleRegister`, we'll call `loginWithRedirect` and pass an object that will tell Auth0 to redirect to the `/register` route.
-```json
+```js
 {
     redirectUri:`${window.location.origin}/register` 
 }
