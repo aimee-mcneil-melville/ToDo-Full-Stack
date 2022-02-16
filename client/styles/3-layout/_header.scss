@@ -3,24 +3,9 @@
 
 
 .header {
-    height: 80px;
     background-color: vars.$primary;
-    padding-right: 2.5rem;
-
-    @include mixins.media-queries(mobile, min) {
-        height: 100px;
-    }
 }
 
-.logo-container {
+.logo {
     width: 15rem;
-    margin: 5px 0;
-
-    @include mixins.media-queries(mobile, min) {
-        width: 20rem;
-    }
-}
-
-.logo-image {
-    width: 80%;
 }

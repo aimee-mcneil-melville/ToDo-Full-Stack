@@ -5,11 +5,10 @@
 .form-box {
   position: relative;
   width: functions.colWidth(9);
-  height: 2rem;
-  background: #FFFFFF;
-  border: 1.5px solid #8ADB55;
-  box-sizing: border-box;
-  border-radius: 4px;
+  height: vars.$base-size * 2;
+  background: vars.$white;
+  border: vars.$border-size solid vars.$border;
+  border-radius: vars.$border-radius;
   @include mixins.media-queries(mobile, min) {
     width: functions.colWidth(12);
   }
@@ -21,31 +20,16 @@
 
 .description-box {
   @extend .form-box;
-  height: 150px;
+  height: vars.$base-size * 8;
 }
 
 .label {
   position: relative;
-  width: functions.colWidth(9);
-  height:  2rem;
-  font-size: 16px;
-  line-height: 28px;
+  line-height: vars.$base-size * 2;
   color: vars.$black;
-  font-weight: 500;
   display: block;
-  text-align: center;
   margin: 0 auto;
-  @include mixins.media-queries(mobile, min) {
-    width: functions.colWidth(12);
-  }
 }
-
-.label.profile-label{
-  font-weight: 800;
-  text-align: left;
-  margin: 10px 10px auto;
-}
-
 
 .form-input {
   height: vars.$base-size * 1.75; // or 100%?
@@ -66,8 +50,7 @@
   }
 }
 
-
-.button-group{
+.button-group {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,25 +59,25 @@
   text-align: center;
 
   button {
-  margin: 0.2rem;
+  margin: vars.$base-size * 0.5;
   align-content: center;
   align-items: center;
-  min-width: 200px;
+  min-width: vars.$base-size * 8;
   text-align: center;
 
- @include mixins.media-queries(mobile, min) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    margin: 0.5rem;
-  }
+  @include mixins.media-queries(mobile, min) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      margin: vars.$base-size * 0.5;
+    }
   }
 }
 
-.form-content{
-  margin-left: 1rem; 
-  margin-right: 1rem; 
+.form-content {
+  margin-left: vars.$base-size; 
+  margin-right: vars.$base-size; 
 }
