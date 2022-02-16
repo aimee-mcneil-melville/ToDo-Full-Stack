@@ -16,7 +16,7 @@
     font-family: vars.$paragraph;
     color: #fff;
     text-decoration: none;
-    margin: 30px 0;
+    margin: vars.$base-size * 1.5 0;
 
     &:hover {
         color: vars.$green;
@@ -24,7 +24,7 @@
 
     @include mixins.media-queries(mobile, min) {
         display: block;
-        padding: 6px 14px;
+        padding: vars.$base-size * 0.5 vars.$base-size * 1.5 ;
         font-size: vars.$base-size;
     }
 }
@@ -38,7 +38,6 @@
     justify-content: center;
     padding-right: vars.$base-size;
     position: relative;
-    top: -5px;
 
     @include mixins.media-queries(mobile, min) {
         display: none;
@@ -50,8 +49,8 @@
     color: #fff;
     font-size: vars.$base-size * 3;
     position: absolute;
-    top: 22px;
-    right: 12px;
+    top: 0; 
+    right: 0;
 
     @include mixins.media-queries(mobile, min) {
         display: none;
@@ -61,13 +60,6 @@
 .nav-menu {
     height: 100%;
     display: flex;
-
-    @include mixins.media-queries(mobile, min) {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding-bottom: .4rem;
-    }
 }
 
 .nav-menu-toggle {
@@ -76,7 +68,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width:100vw;
+    width: 100vw;
     height: 900px;
     z-index: 99999;
     animation: growDown 300ms ease-in-out forwards;
