@@ -25,7 +25,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
       .catch((err) => setError(err.message))
   }
 
-  const { name: addingName, calories: addingCalories } = newFruit
+  const { name: addingName, averageGramsEach: addingGrams } = newFruit
 
   return (
     <>
@@ -40,12 +40,12 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
           onChange={handleAddChange}
         />
 
-        <ColOne>Calories:</ColOne>
+        <ColOne>Average Grams Each:</ColOne>
         <ColTwo
           type="text"
-          name="calories"
-          aria-label="adding-calories"
-          value={addingCalories || ''}
+          name="averageGramsEach"
+          aria-label="adding-grams"
+          value={addingGrams || ''}
           onChange={handleAddChange}
         />
 

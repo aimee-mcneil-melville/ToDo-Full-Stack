@@ -38,7 +38,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     setEditing(selected)
   }, [selected])
 
-  const { name: editingName, calories: editingCalories } = editing
+  const { name: editingName, averageGramsEach: editingGrams } = editing
 
   return (
     <>
@@ -54,13 +54,13 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
           onChange={handleEditChange}
         />
 
-        <ColOne>Calories:</ColOne>
+        <ColOne>Average Grams Each:</ColOne>
         <ColTwo
           type="text"
-          name="calories"
-          aria-label="selected-calories"
-          data-testid="selected-calories"
-          value={editingCalories || ''}
+          name="averageGramsEach"
+          aria-label="selected-grams"
+          data-testid="selected-grams"
+          value={editingGrams || ''}
           onChange={handleEditChange}
         />
 

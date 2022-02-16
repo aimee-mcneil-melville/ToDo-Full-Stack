@@ -18,7 +18,10 @@
     "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
-    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
     "plugins": [
       "babel-plugin-styled-components",
       "@babel/plugin-proposal-class-properties",
@@ -29,7 +32,9 @@
   },
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
@@ -38,10 +43,10 @@
     "express-jwt": "^6.1.0",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.0.4",
-    "knex": "^0.21.17",
+    "knex": "^1.0.1",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "sqlite3": "^5.0.1"
+    "@vscode/sqlite3": "^5.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -80,7 +85,6 @@
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0"
   },
-
   "prettier": {
     "semi": false,
     "singleQuote": true

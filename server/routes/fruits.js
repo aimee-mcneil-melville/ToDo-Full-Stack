@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
-    calories: fruit.calories,
+    average_grams_each: fruit.averageGramsEach,
   }
   try {
     const fruits = await db.addFruit(newFruit)
@@ -46,7 +46,7 @@ router.put('/', async (req, res) => {
     id: fruit.id,
     added_by_user: auth0Id,
     name: fruit.name,
-    calories: fruit.calories,
+    average_grams_each: fruit.averageGramsEach,
   }
   try {
     const fruits = await db.updateFruit(fruitToUpdate, auth0Id)
