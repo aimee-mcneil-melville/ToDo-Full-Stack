@@ -125,7 +125,7 @@ In `client/components/Nav.jsx`, you will need to:
 
 The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 app. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your Fruits app.
 
-If you register a new user (by clicking the Register link within your Fruits app), Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`, which will be blank until you complete step 5.
+After you've registered your new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`, which will be blank until you complete step 5.
 
 Commit your code and swap driver/navigator.
 
