@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
@@ -14,6 +14,7 @@ export default function Garden () {
   const garden = useSelector(globalState => globalState.garden)
   const user = useSelector(globalState => globalState.user)
   const location = useSelector(globalState => globalState.location)
+
 
   useEffect(() => {
     user.id && getGarden(id, user)
@@ -51,7 +52,7 @@ export default function Garden () {
             addresses={[address]}
             names={[name]}
           />
-          {user.isAdmin ? <BarGraph events={events}/> : null}
+          {user.isAdmin && events.length > 0 ? <BarGraph events={events}/> : null}
         </section>
       </motion.div>
     </section>
