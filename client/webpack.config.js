@@ -27,14 +27,14 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      },
+      }
     ]
   },
   optimization: {
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
-    ],
+    ]
   },
   resolve: {
     extensions: ['.js', '.jsx']
