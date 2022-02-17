@@ -64,17 +64,17 @@ jobs:
         run: npm run test
         
       ### the below is for E2E testing ###
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
         
-      # - name: Seed data
-      #   run: npm run db:seed
+      - name: Seed data
+        run: npm run db:seed
 
-      # - name: Start test server
-      #   run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
+      - name: Start test server
+        run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
         
-      # - name: Skipping E2E Tests!
-      #   run: npm run test:e2e
+      - name: Skipping E2E Tests!
+        run: npm run test:e2e
       
   ### the below is for deployment to Heroku ###
   # deploy-dev:
