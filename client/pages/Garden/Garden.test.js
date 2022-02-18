@@ -1,10 +1,12 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../../test-utils'
 
 import Garden from './Garden'
 import { getGarden } from './gardenHelper'
+
+import BarGraph from '../../components/dataVis/BarGraph'
 
 jest.mock('./gardenHelper')
 
@@ -39,3 +41,27 @@ describe('Garden', () => {
       })
   })
 })
+
+describe('bar graphs', () => {
+  const mockEvents = [
+    {
+      id: 1,
+      title: 'test Event 1'
+    },
+    {
+      id: 2,
+      title: 'test Event 2'
+    }
+  ]
+  it('bar graphs shows when events array has at least one event', () => {
+    render(<BarGraph events={mockEvents} />)
+    const graph = screen.getByTestId('bar-graph')
+    expect(graph).toBeVisible()
+  })
+})
+
+// find something - screen.getByRole('svg') works
+
+// find something - screen.queryByTestId('bar-graph') doesnt work return null, test should pass. expect(blah).toBeNull()
+
+// diffference between get and find
