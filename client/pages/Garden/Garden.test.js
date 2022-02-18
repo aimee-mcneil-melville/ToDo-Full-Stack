@@ -60,6 +60,15 @@ describe('bar graphs', () => {
   })
 })
 
+describe('empty events array', () => {
+  const mockEvents = []
+  it('bar graphs does not show when events array is empty', () => {
+    render(<BarGraph events={mockEvents} />)
+    const graph = screen.queryByTestId('bar-graph')
+    expect(graph).toBeVisible(false)
+  })
+})
+
 // find something - screen.getByRole('svg') works
 
 // find something - screen.queryByTestId('bar-graph') doesnt work return null, test should pass. expect(blah).toBeNull()
