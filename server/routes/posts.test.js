@@ -40,6 +40,12 @@ describe('GET /api/v1/posts/:gardenid', () => {
       .then(res => {
         expect(res.body.posts).toEqual(mockPostsForGarden)
         expect(res.body.posts).toHaveLength(2)
+        expect(res.body.posts[0].garden_id).toBe(1)
+        expect(res.body.posts[0].author).toBe(1)
+        expect(res.body.posts[0].first_name).toBe('Admin')
+        expect(res.body.posts[1].last_name).toBe('User')
+        expect(res.body.posts[1].title).toBe('Test Post 2')
+        expect(res.body.posts[1].created_on).toBe('29/11/2021')
         return null
       })
   })
