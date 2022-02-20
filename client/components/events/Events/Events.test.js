@@ -42,3 +42,13 @@ describe('events list', () => {
     expect(eventItems).toHaveLength(2)
   })
 })
+
+describe('no event message', () => {
+  it('displays correct message', () => {
+    const events = []
+
+    renderWithRedux(<Events events={events} />)
+    const eventItems = screen.getAllByRole('paragraph', { level: 0 })
+    expect(eventItems).toHaveLength(0)
+  })
+})
