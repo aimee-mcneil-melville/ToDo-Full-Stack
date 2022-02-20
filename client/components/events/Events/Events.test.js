@@ -4,7 +4,6 @@ import { screen } from '@testing-library/react'
 import { renderWithRedux } from '../../../test-utils'
 
 import Events from './Events'
-import EventItem from '../EventItem/EventItem'
 
 describe('Add Event button', () => {
   it('displays for admin', () => {
@@ -40,7 +39,6 @@ describe('events list', () => {
     ]
     renderWithRedux(<Events events={events} />)
     const eventItems = screen.getAllByRole('heading', { level: 2 })
-    // console.log(events[0].title)
     expect(eventItems).toHaveLength(2)
     expect(events[0].title).toMatch('Weeding worker Bee')
     expect(events[0].description).toMatch('Its time to get these weeds under control.')
@@ -55,18 +53,16 @@ describe('no event message', () => {
     const events = []
 
     renderWithRedux(<Events events={events} />)
-    const eventItems = screen.queryAllByRole('heading', {level: 2})
+    const eventItems = screen.queryAllByRole('heading', { level: 2 })
     expect(eventItems).toHaveLength(0)
   })
 })
 
 describe('display no-event message', () => {
   it('displays correct message', () => {
-    const events = [] 
+    const events = []
     renderWithRedux(<Events events={events} />)
     const eventItems = screen.getByText('Sorry no events found, please come back later!')
-    // expect(eventItems).toHaveTextContent('Sorry no events found, please come back later!')
     expect(eventItems).toBeInTheDocument()
-
   })
 })
