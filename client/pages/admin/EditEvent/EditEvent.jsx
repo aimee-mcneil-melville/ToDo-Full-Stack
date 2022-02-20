@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { updateEvent, cancelEvent } from './editEventHelper'
 
@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 
 export default function EditEvent () {
   const [event, setEvent] = useState(null)
-  const history = useHistory()
+  const navigate = useNavigate()
   const { id } = useParams()
   const user = useSelector(globalState => globalState.user)
 
@@ -25,11 +25,11 @@ export default function EditEvent () {
   }, [])
 
   function submitEvent (form) {
-    updateEvent(event.gardenId, { id, ...form }, history.push)
+    updateEvent(event.gardenId, { id, ...form }, navigate)
   }
 
   function cancelSubmit () {
-    cancelEvent(id, history.goBack)
+    cancelEvent(id, navigate(-1))
   }
 
   return (
