@@ -68,4 +68,3 @@ describe('empty events array', () => {
     expect(graph).toBeVisible(false)
   })
 })
-
