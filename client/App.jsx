@@ -16,7 +16,8 @@ import Gardens from './pages/Gardens/Gardens'
 import { cacheUser } from './auth-utils'
 
 export default function App () {
-  cacheUser(useAuth0, useNavigate)
+  const navigate = useNavigate()
+  cacheUser(useAuth0, navigate)
 
   return (
     <>
