@@ -69,8 +69,3 @@ describe('empty events array', () => {
   })
 })
 
-// find something - screen.getByRole('svg') works
-
-// find something - screen.queryByTestId('bar-graph') doesnt work return null, test should pass. expect(blah).toBeNull()
-
-// diffference between get and find
