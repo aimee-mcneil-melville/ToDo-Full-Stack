@@ -8,9 +8,7 @@ export default function PostList({ posts }) {
             {posts.map(post => {
                 return (
                     <Post post={post} key={post.id} />
-
                 )
-
             })}
         </ul>
     )

@@ -11,6 +11,7 @@ export function getPosts(gardenId, consume = requestor) {
     .then((res) => {
       dispatch(clearWaiting())
       const posts = res.body
+
       return posts.posts.map(item => item)
     })
     .catch((error) => {

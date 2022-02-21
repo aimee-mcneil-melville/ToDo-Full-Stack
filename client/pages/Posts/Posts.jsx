@@ -21,6 +21,5 @@ export default function Posts() {
 
   return (
     <PostList posts={posts} />
-
   )
 }
