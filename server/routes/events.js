@@ -5,9 +5,9 @@ const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
 
-const {
-  sendEventNotifications
-} = require('../notifications/notificationHelper')
+// const {
+//   sendEventNotifications
+// } = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
@@ -19,14 +19,14 @@ const checkAdmin = jwtAuthz(['create:event', 'update:event'], {
 router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
-  let createdEvent = null
+  // let createdEvent = null
   db.addEvent(event)
+    // .then((event) => {
+    //   createdEvent = event
+    //   return sendEventNotifications(event)
+    // })
     .then((event) => {
-      createdEvent = event
-      return sendEventNotifications(event)
-    })
-    .then(() => {
-      res.status(201).json(createdEvent)
+      res.status(201).json(event)
       return null
     })
     .catch((err) => {
