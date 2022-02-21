@@ -34,7 +34,7 @@ export default function App () {
             <Route path='/profile' element={<Profile />} />
             <Route path='/event/new' element={<AddEvent />} />
             <Route path='/events/:id/edit' element={<EditEvent />} />
-            <Route path='/verification' element={Verification}/>
+            <Route path='/verification' element={<Verification />}/>
           </Routes>
         </AnimatePresence>
       </main>
