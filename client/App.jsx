@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AnimatePresence } from 'framer-motion'
 
@@ -13,11 +13,14 @@ import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
 import Volunteers from './pages/Volunteers/Volunteers'
+import Verification from './pages/Verification/Verification'
+
 
 import { cacheUser } from './auth-utils'
 
 export default function App () {
-  cacheUser(useAuth0)
+  const navigate = useNavigate()
+  cacheUser(useAuth0, navigate)
 
   return (
     <>
@@ -34,6 +37,7 @@ export default function App () {
             <Route path='/event/new' element={<AddEvent />} />
             <Route path='/events/:id/edit' element={<EditEvent />} />
             <Route path='/events/:id/volunteers' element={<Volunteers />} />
+            <Route path='/verification' element={<Verification />} />
           </Routes>
         </AnimatePresence>
       </main>

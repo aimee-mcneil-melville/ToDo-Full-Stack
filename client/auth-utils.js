@@ -13,13 +13,22 @@ function saveUser (user = emptyUser) {
   dispatch(setUser(user))
 }
 
-export async function cacheUser (useAuth0) {
+export async function cacheUser (useAuth0, navigate) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
+
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
       const res = await consume(`/users/${user.sub}`, token)
       const { id, firstName, lastName, email, isAdmin, gardenId } = res.body
+      // if the ID is undefined then it means the user doesn't exist, we can use navigate to re-direct to the profile.
+      // We want to pass the 'useNavigate', we have to pass this from the app.jsx.
+      if (id === undefined) {
+        navigate('/profile')
+      }
+      if (user.email_verified === false) {
+        navigate('/verification')
+      }
       saveUser({ id, firstName, lastName, email, isAdmin, gardenId, token })
     } catch (err) {
       dispatch(showError('Unable to set the current user'))
