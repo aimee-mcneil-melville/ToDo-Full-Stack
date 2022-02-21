@@ -27,7 +27,6 @@ export async function cacheUser (useAuth0, navigate) {
         navigate('/profile')
       }
       if (user.email_verified === false) {
-        console.log(user)
         navigate('/verification')
       }
       saveUser({ id, firstName, lastName, email, isAdmin, gardenId, token })
