@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getPosts } from './postsHelper'
 
-import PostList from "../../components/Posts/PostList"
+import PostList from '../../components/Posts/PostList'
 
 export default function Posts() {
   const { id } = useParams()

@@ -20,11 +20,11 @@ describe('-> GET /posts/${gardenId} api call success', () => {
                         id: 1,
                         gardenId: 1,
                         author: 2,
-                        title: "Lettuce Picking Season",
-                        createdOn: "21/02/2022",
-                        content: "test",
-                        firstName: "User",
-                        lastName: "second"
+                        title: 'Lettuce Picking Season',
+                        createdOn: '21/02/2022',
+                        content: 'test',
+                        firstName: 'User',
+                        lastName: 'second'
                     }]
                 }
             })
@@ -36,11 +36,11 @@ describe('-> GET /posts/${gardenId} api call success', () => {
                 expect(dispatch).toHaveBeenCalledWith({
                     type: CLEAR_WAITING
                 })
-                expect(event[0].title).toBe("Lettuce Picking Season")
-                expect(event[0].createdOn).toBe("21/02/2022")
-                expect(event[0].firstName).toBe("User")
-                expect(event[0].lastName).toBe("second")
-                expect(event[0].content).toBe("test")
+                expect(event[0].title).toBe('Lettuce Picking Season')
+                expect(event[0].createdOn).toBe('21/02/2022')
+                expect(event[0].firstName).toBe('User')
+                expect(event[0].lastName).toBe('second')
+                expect(event[0].content).toBe('test')
                 expect(event).not.toHaveProperty('fake')
                 return null
             })

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import PostList from "../../components/Posts/PostList"
+import PostList from '../../components/Posts/PostList'
 import { getPosts } from './postsHelper'
 
 jest.mock('./postsHelper')
@@ -14,20 +14,20 @@ describe('List of posts', () => {
         id: 1,
         gardenId: 1,
         author: 2,
-        title: "test title1",
-        createdOn: "21/02/2022",
-        content: "test1 content",
-        firstName: "test1 firstName",
-        lastName: "test1 lastName"
+        title: 'test title1',
+        createdOn: '21/02/2022',
+        content: 'test1 content',
+        firstName: 'test1 firstName',
+        lastName: 'test1 lastName'
     }, {
         id: 2,
         gardenId: 1,
         author: 2,
-        title: "test title2",
-        createdOn: "21/02/2022",
-        content: "test2 content",
-        firstName: "test2 firstName",
-        lastName: "test2 lastName"
+        title: 'test title2',
+        createdOn: '21/02/2022',
+        content: 'test2 content',
+        firstName: 'test2 firstName',
+        lastName: 'test2 lastName'
     }]
 
 
