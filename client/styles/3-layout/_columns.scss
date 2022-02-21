@@ -5,9 +5,15 @@
 
 .container {
   position: relative;
+  // border: 3px solid rgb(50, 252, 9);
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+
   @include mixins.media-queries(desktop, min) {
-    width: 1400px;
+    width: 120rem;
     margin: 0 auto;
+    // border: 1px solid rgb(252, 25, 9);
   }
 }
 
@@ -18,12 +24,13 @@
   }
 
   &__img {
-    position: fixed;
+    position: relative;
     margin-top: 20px;
     margin-left: 80px;
     margin-right: none;
     width: 30%;
     height: 40%;
+    border: 1px solid black;
   }
 }
 
