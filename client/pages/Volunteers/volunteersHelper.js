@@ -1,0 +1,17 @@
+import requestor from '../../consume'
+import { dispatch } from '../../store'
+import { setWaiting, clearWaiting } from '../../actions/waiting'
+import { showError } from '../../actions/error'
+
+export function getVolunteers(id, user, consume = requestor) {
+  dispatch(setWaiting())
+  return consume(`/events/${id}`)
+    .then((res) => {
+      dispatch(clearWaiting())
+      const { volunteers } = res.body
+      return user.isAdmin && volunteers
+    })
+    .catch((error) => {
+      dispatch(showError(error.message))
+    })
+}
