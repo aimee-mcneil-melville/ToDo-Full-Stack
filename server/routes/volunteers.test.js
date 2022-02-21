@@ -3,11 +3,18 @@ const request = require('supertest')
 const log = require('../logger')
 const server = require('../server')
 const db = require('../db/volunteers')
+const dbUsers = require('../db/users')
+const dbEvents = require('../db/event')
+
 const { getMockToken, getAdminToken } = require('./mockToken')
 const { decode } = require('../notifications/emailTokens')
+const { sendNotification } = require('../notifications/notifications')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
+jest.mock('../db/event')
+jest.mock('../db/users')
+jest.mock('../notifications/notifications')
 jest.mock('../notifications/emailTokens')
 
 const mockNonAdminAuthHeader = {
@@ -49,6 +56,12 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         expect(res.body.error.title).toBe('Unable to register from email')
         return null
       })
+  })
+  it('calls for sendNotification function', () => {
+    db.addVolunteer.mockImplementation(() => {
+      return Promise.resolve(sendNotification())
+    })
+    expect(sendNotification).toHaveBeenCalled()
   })
 })
 
@@ -218,3 +231,17 @@ describe('PATCH /api/v1/volunteers', () => {
       })
   })
 })
+
+// describe('POST /api/v1/volunteers', () => {
+//   it('calls for sendNotification function', () => {
+//     const mockEventData = {}
+//     const mockUsersData = {}
+//     db.addVolunteer.mockImplementation(() => {
+
+//     })
+//     .send(mockEventData, mockUsersData)
+//     .then(
+//       expect(sendNotification).toHaveBeenCalled()
+//       return null
+//   })
+// })
