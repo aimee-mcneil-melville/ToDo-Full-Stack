@@ -2,7 +2,6 @@ import React from 'react'
 import Post from './Post'
 
 export default function PostList({ posts }) {
-    console.log(posts)
 
     return (
         <ul className='list-primary'>

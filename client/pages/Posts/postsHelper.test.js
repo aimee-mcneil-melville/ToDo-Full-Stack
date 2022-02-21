@@ -32,7 +32,6 @@ describe('-> GET /posts/${gardenId} api call success', () => {
 
         return getPosts(1, consume)
             .then((event) => {
-                console.log(event)
                 expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
                 expect(dispatch).toHaveBeenCalledWith({
                     type: CLEAR_WAITING
