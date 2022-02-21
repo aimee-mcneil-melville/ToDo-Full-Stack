@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Nav from './Nav'
 import Fruits from './Fruits'
@@ -10,11 +10,15 @@ import Register from './Register'
 function App() {
   cacheUser(useAuth0)
   return (
-    <Router>
-      <Route path="/" component={Nav} />
-      <Route exact path="/" component={Fruits} />
-      <Route exact path="/register" component={Register} />
-    </Router>
+    <>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Fruits />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </Router>
+    </>
   )
 }
 
