@@ -8,7 +8,7 @@ import PostList from "../../components/Posts/PostList"
 export default function Posts() {
   const { id } = useParams()
   const [posts, setPosts] = useState([])
-  const user = useSelector(globalState => globalState.user)
+  // const user = useSelector(globalState => globalState.user)
 
   useEffect(() => {
     getPosts(id)
@@ -16,7 +16,7 @@ export default function Posts() {
         setPosts(post)
         return null
       })
-  }, [user])
+  }, [])
 
 
   return (

@@ -4,8 +4,6 @@ import moment from 'moment'
 export default function Post({ post }) {
     const fomateDate = post.createdOn.replaceAll('/', '')
     const createTime = moment(fomateDate, "DDMMYYYY").fromNow()
-    console.log(post.createdOn, typeof fomateDate);
-    console.log(createTime);
 
     return (
         <>
