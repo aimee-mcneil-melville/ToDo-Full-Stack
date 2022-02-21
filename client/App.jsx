@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AnimatePresence } from 'framer-motion'
 
@@ -16,8 +16,9 @@ import Posts from './pages/Posts/Posts'
 
 import { cacheUser } from './auth-utils'
 
-export default function App() {
-  cacheUser(useAuth0)
+export default function App () {
+  const navigate = useNavigate()
+  cacheUser(useAuth0, navigate)
 
   return (
     <>
