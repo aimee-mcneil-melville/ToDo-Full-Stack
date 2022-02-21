@@ -17,8 +17,8 @@
     width: functions.colWidth(6);
   }
 
-  &__img{
-    position:fixed;
+  &__img {
+    position: fixed;
     margin-top: 20px;
     margin-left: 80px;
     margin-right: none;
@@ -28,7 +28,7 @@
 }
 
 .column-6.garden-6 {
-  padding: vars.$base-size *3;
+  padding: vars.$base-size * 3;
   text-align: left;
 
   @include mixins.media-queries(mobile, min) {
@@ -46,9 +46,14 @@
 .column-9.garden {
   width: functions.colWidth(12);
   padding: vars.$base-size;
-  text-align: left; 
+  text-align: left;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     width: functions.colWidth(12);
     text-align: left;
     color: vars.$secondary;
