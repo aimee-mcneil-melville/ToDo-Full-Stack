@@ -12,6 +12,7 @@ import EditEvent from './pages/admin/EditEvent/EditEvent'
 import Error from './components/Error/Error'
 import Event from './pages/Event/Event'
 import Gardens from './pages/Gardens/Gardens'
+import Verification from './pages/Verification/Verification'
 
 import { cacheUser } from './auth-utils'
 
@@ -33,6 +34,7 @@ export default function App () {
             <Route path='/profile' element={<Profile />} />
             <Route path='/event/new' element={<AddEvent />} />
             <Route path='/events/:id/edit' element={<EditEvent />} />
+            <Route path='/verification' element={Verification}/>
           </Routes>
         </AnimatePresence>
       </main>
