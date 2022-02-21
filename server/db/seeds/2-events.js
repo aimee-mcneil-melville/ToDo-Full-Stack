@@ -1,11 +1,14 @@
 exports.seed = (knex) => {
   const todayDate = new Date().toLocaleDateString('en-NZ')
   const diffDate = (days) => {
-    const newDate = new Date((new Date()).getTime() + (days * 86400000)).toLocaleDateString('en-NZ')
+    const newDate = new Date(
+      new Date().getTime() + days * 86400000
+    ).toLocaleDateString('en-NZ')
     return newDate
   }
 
-  return knex('events').del()
+  return knex('events')
+    .del()
     .then(() => {
       return knex('events').insert([
         {
@@ -15,7 +18,7 @@ exports.seed = (knex) => {
           date: todayDate,
           description: 'It is time to get these weeds under control.',
           volunteers_needed: 16,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 2,
@@ -24,7 +27,7 @@ exports.seed = (knex) => {
           date: diffDate(1),
           description: 'Help get these lovely potatoes out of the ground!',
           volunteers_needed: 24,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 3,
@@ -33,7 +36,7 @@ exports.seed = (knex) => {
           date: diffDate(-60),
           description: 'Help get these lovely potatoes out of the ground!',
           volunteers_needed: 14,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 4,
@@ -42,7 +45,7 @@ exports.seed = (knex) => {
           date: todayDate,
           description: 'Bring your snacks and beverages.',
           volunteers_needed: 24,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 5,
@@ -51,7 +54,7 @@ exports.seed = (knex) => {
           date: diffDate(365),
           description: 'Bring your snacks, beverages and stories.',
           volunteers_needed: 24,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 6,
@@ -60,16 +63,17 @@ exports.seed = (knex) => {
           date: diffDate(-365),
           description: 'Bring your snacks, beverages and stories.',
           volunteers_needed: 24,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 7,
           garden_id: 1,
           title: 'Zen Gardens',
           date: diffDate(740),
-          description: 'Come and hear a talk on how to set up your own zen garden.',
+          description:
+            'Come and hear a talk on how to set up your own zen garden.',
           volunteers_needed: 6,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 8,
@@ -78,17 +82,18 @@ exports.seed = (knex) => {
           date: diffDate(-900),
           description: 'The time is right to pick some cucumbers.',
           volunteers_needed: 8,
-          status: 'Active'
+          status: 'Active',
         },
         {
           id: 9,
           garden_id: 2,
           title: 'Giant Pumpkins',
           date: diffDate(10000),
-          description: 'There is something in the soil here, these pumpkins are massive.',
+          description:
+            'There is something in the soil here, these pumpkins are massive.',
           volunteers_needed: 8,
-          status: 'Active'
-        }
+          status: 'Active',
+        },
       ])
     })
 }

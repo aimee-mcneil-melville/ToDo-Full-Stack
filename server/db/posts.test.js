@@ -21,45 +21,41 @@ afterAll(() => {
 
 describe('getAllPosts', () => {
   it('gets all blog posts', () => {
-    return db.getAllPosts(testDb)
-      .then((posts) => {
-        expect(posts).toHaveLength(2)
-        expect(posts[0].title).toMatch('Lettuce Picking Season')
-        expect(posts[1].title).toMatch('Where are my CABBAGES')
-        return null
-      })
+    return db.getAllPosts(testDb).then((posts) => {
+      expect(posts).toHaveLength(2)
+      expect(posts[0].title).toMatch('Lettuce Picking Season')
+      expect(posts[1].title).toMatch('Where are my CABBAGES')
+      return null
+    })
   })
 })
 
 describe('getPostsByGardenId', () => {
   it('return all of the posts related to the garden id', () => {
-    return db.getPostsByGardenId(1, testDb)
-      .then((posts) => {
-        expect(posts).toHaveLength(2)
-        expect(posts[1].title).toMatch('Where are my CABBAGES')
-        return null
-      })
+    return db.getPostsByGardenId(1, testDb).then((posts) => {
+      expect(posts).toHaveLength(2)
+      expect(posts[1].title).toMatch('Where are my CABBAGES')
+      return null
+    })
   })
 })
 
 describe('getPostById', () => {
   it('returns the correct Post', () => {
-    return db.getPostById(1, testDb)
-      .then(post => {
-        expect(post.id).toBe(1)
-        expect(post.gardenId).toBe(1)
-        expect(post.author).toBe(2)
-        expect(post.title).toMatch('Lettuce Picking Season')
-        return null
-      })
+    return db.getPostById(1, testDb).then((post) => {
+      expect(post.id).toBe(1)
+      expect(post.gardenId).toBe(1)
+      expect(post.author).toBe(2)
+      expect(post.title).toMatch('Lettuce Picking Season')
+      return null
+    })
   })
   it('returns the correct name of the author', () => {
-    return db.getPostById(1, testDb)
-      .then(post => {
-        expect(post.firstName).toMatch('User')
-        expect(post.lastName).toMatch('second')
-        return null
-      })
+    return db.getPostById(1, testDb).then((post) => {
+      expect(post.firstName).toMatch('User')
+      expect(post.lastName).toMatch('second')
+      return null
+    })
   })
 })
 
@@ -70,9 +66,10 @@ describe('addBlogPost', () => {
       author: 1,
       title: 'Testing the tests',
       createdOn: '30/11/2021',
-      content: 'This is just a test'
+      content: 'This is just a test',
     }
-    return db.addBlogPost(newPost, testDb)
+    return db
+      .addBlogPost(newPost, testDb)
       .then(([id]) => {
         return db.getPostById(id, testDb)
       })
@@ -88,10 +85,11 @@ describe('addBlogPost', () => {
 
 describe('deleteBlogPost', () => {
   it('deletes the blog post from the db by id', () => {
-    return db.deleteBlogPost(1, testDb)
+    return db
+      .deleteBlogPost(1, testDb)
       .then(() => db.getAllPosts(testDb))
-      .then(posts => {
-        const filtered = posts.filter(element => element.id === 1)
+      .then((posts) => {
+        const filtered = posts.filter((element) => element.id === 1)
         expect(filtered).toHaveLength(0)
         return null
       })
@@ -108,13 +106,12 @@ describe('updateBlogPost', () => {
       author: 2,
       title: 'Woohoo! I was updated!',
       created_on: '2021-10-10',
-      content: 'This is a cool update'
+      content: 'This is a cool update',
     }
-    return db.updateBlogPost(updatedPost, testDb)
-      .then(post => {
-        expect(post.title).toMatch('Woohoo! I was updated!')
-        expect(post.content).toMatch('This is a cool update')
-        return null
-      })
+    return db.updateBlogPost(updatedPost, testDb).then((post) => {
+      expect(post.title).toMatch('Woohoo! I was updated!')
+      expect(post.content).toMatch('This is a cool update')
+      return null
+    })
   })
 })

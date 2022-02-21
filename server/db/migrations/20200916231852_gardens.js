@@ -1,5 +1,5 @@
 exports.up = (knex) => {
-  return knex.schema.createTable('gardens', table => {
+  return knex.schema.createTable('gardens', (table) => {
     table.increments('id')
     table.string('name')
     table.string('address')

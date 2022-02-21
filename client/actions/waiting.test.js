@@ -1,9 +1,4 @@
-import {
-  setWaiting,
-  clearWaiting,
-  SET_WAITING,
-  CLEAR_WAITING
-} from './waiting'
+import { setWaiting, clearWaiting, SET_WAITING, CLEAR_WAITING } from './waiting'
 
 describe('setWaiting', () => {
   it('returns the correct action', () => {

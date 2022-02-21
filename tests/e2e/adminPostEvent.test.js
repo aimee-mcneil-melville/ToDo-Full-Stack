@@ -54,7 +54,7 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[type=submit]', { force: true })
+    page.click('button[type=submit]', { force: true }),
   ])
 
   await page.waitForSelector('text=Log out')
@@ -68,14 +68,14 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[type=submit]', { force: true })
+    page.click('button[type=submit]', { force: true }),
   ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('text=Add New Event')
+    page.click('text=Add New Event'),
   ])
 
   expect(await page.content()).toMatch('Create Event')
@@ -94,7 +94,7 @@ test('Admin can login & add event', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[type=submit]', { force: true })
+    page.click('button[type=submit]', { force: true }),
   ])
 
   await page.click('text=Christmas Gardening!')

@@ -11,7 +11,7 @@ jest.mock('./AddVolunteerFormHelper')
 describe('Add volunteer form can validate inputs', () => {
   it('Should display "required" for empty required entires', async () => {
     const handleSubmit = jest.fn()
-    render(<AddVolunteerForm onSubmit={handleSubmit}/>)
+    render(<AddVolunteerForm onSubmit={handleSubmit} />)
 
     userEvent.clear(screen.getByLabelText(/firstName/i))
     userEvent.clear(screen.getByLabelText(/lastName/i))
@@ -24,29 +24,36 @@ describe('Add volunteer form can validate inputs', () => {
 
   it('Should not display "required" when required entires are filled', () => {
     const handleSubmit = jest.fn()
-    render(<AddVolunteerForm onSubmit={handleSubmit}/>)
+    render(<AddVolunteerForm onSubmit={handleSubmit} />)
 
     userEvent.type(screen.getByLabelText(/firstName/i), 'tester123')
     userEvent.type(screen.getByLabelText(/lastName/i), 'tester123')
 
     userEvent.click(screen.getByRole('button', { name: /add/i }))
-    return screen.findByText(/Required/i)
-      .catch(() => {
-        /* eslint-disable-next-line jest/no-conditional-expect  */
-        expect(screen.queryByText(/Required/i)).toBeNull()
-      })
+    return screen.findByText(/Required/i).catch(() => {
+      /* eslint-disable-next-line jest/no-conditional-expect  */
+      expect(screen.queryByText(/Required/i)).toBeNull()
+    })
   })
 })
 
 describe('Add Volunteer Form', () => {
   it('Should render the input fields', () => {
-    render(<Provider store={store}><AddVolunteerForm id={1} /></Provider>)
+    render(
+      <Provider store={store}>
+        <AddVolunteerForm id={1} />
+      </Provider>
+    )
     expect(screen.getByLabelText('firstName')).toBeInTheDocument()
     expect(screen.getByLabelText('lastName')).toBeInTheDocument()
   })
 
   it('Value of first name should change', async () => {
-    render(<Provider store={store}><AddVolunteerForm id={1} /></Provider>)
+    render(
+      <Provider store={store}>
+        <AddVolunteerForm id={1} />
+      </Provider>
+    )
 
     expect(screen.getByLabelText('firstName').value).toBe('')
     userEvent.type(screen.getByLabelText(/firstName/i), 'tester123')
@@ -57,7 +64,11 @@ describe('Add Volunteer Form', () => {
   })
 
   it('Value of last name should change', async () => {
-    render(<Provider store={store}><AddVolunteerForm id={1} /></Provider>)
+    render(
+      <Provider store={store}>
+        <AddVolunteerForm id={1} />
+      </Provider>
+    )
     expect(await screen.getByLabelText('lastName').value).toBe('')
     userEvent.type(screen.getByLabelText(/lastName/i), 'tester123')
 

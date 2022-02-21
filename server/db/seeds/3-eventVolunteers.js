@@ -1,6 +1,7 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('event_volunteers').del()
+  return knex('event_volunteers')
+    .del()
     .then(function () {
       // Inserts seed entries
       return knex('event_volunteers').insert([
@@ -31,7 +32,7 @@ exports.seed = function (knex) {
         { id: 29, user_id: 1, event_id: 9, attended: false },
         { id: 30, user_id: 1, event_id: 9, attended: false },
         { id: 31, user_id: 1, event_id: 9, attended: false },
-        { id: 32, user_id: 1, event_id: 15, attended: false }
+        { id: 32, user_id: 1, event_id: 15, attended: false },
         // below lines violate the foreign key constraints
         // { id: 33, user_id: 1, event_id: 15, attended: false },
         // { id: 34, user_id: 1, event_id: 15, attended: false },

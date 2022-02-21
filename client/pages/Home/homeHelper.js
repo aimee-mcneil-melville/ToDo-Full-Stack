@@ -4,7 +4,7 @@ import { setLocation } from '../../actions/location'
 import { showError } from '../../actions/error'
 import requestor from '../../consume'
 
-export function getUserLocation (setCoords, isMounted, browser = navigator) {
+export function getUserLocation(setCoords, isMounted, browser = navigator) {
   const storeState = getState()
   const { lat, lon } = storeState.location
   if (lat) {
@@ -28,7 +28,7 @@ export function getUserLocation (setCoords, isMounted, browser = navigator) {
   })
 }
 
-export function getGardenLocations (consume = requestor) {
+export function getGardenLocations(consume = requestor) {
   dispatch(setWaiting())
   return consume('/gardens')
     .then((res) => {
@@ -42,7 +42,7 @@ export function getGardenLocations (consume = requestor) {
       return {
         gardenCoords,
         addrs,
-        names
+        names,
       }
     })
     .catch((error) => {

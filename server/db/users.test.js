@@ -21,16 +21,15 @@ afterAll(() => {
 
 describe('getUserById', () => {
   it('returns the correct user', () => {
-    return users.getUserById('1', testDb)
-      .then((user) => {
-        expect(user.firstName).toBe('Admin')
-        expect(user.lastName).toBe('User')
-        expect(user.gardenId).toBe(1)
-        expect(user.id).toBe(1)
-        expect(user.email).toBe('kelmarna.admin@email.nz')
-        expect(user.auth0Id).toBe('auth0|61414f84d35ac900717bc280')
-        return null
-      })
+    return users.getUserById('1', testDb).then((user) => {
+      expect(user.firstName).toBe('Admin')
+      expect(user.lastName).toBe('User')
+      expect(user.gardenId).toBe(1)
+      expect(user.id).toBe(1)
+      expect(user.email).toBe('kelmarna.admin@email.nz')
+      expect(user.auth0Id).toBe('auth0|61414f84d35ac900717bc280')
+      return null
+    })
   })
 })
 
@@ -41,10 +40,11 @@ describe('createUser', () => {
       lastName: 'lastname',
       gardenId: 3,
       email: 'random@emailz.co',
-      auth0Id: 'auth0|thisisfortesting'
+      auth0Id: 'auth0|thisisfortesting',
     }
-    return users.createUser(user, testDb)
-      .then(ids => users.getUserById(ids[0], testDb))
+    return users
+      .createUser(user, testDb)
+      .then((ids) => users.getUserById(ids[0], testDb))
       .then((user) => {
         expect(user.id).not.toBeNull()
         expect(user.firstName).toBe('firstname')
@@ -59,14 +59,16 @@ describe('createUser', () => {
 
 describe('userExists', () => {
   it('returns true if user exists', () => {
-    return users.userExists('auth0|61414f84d35ac900717bc280', testDb)
+    return users
+      .userExists('auth0|61414f84d35ac900717bc280', testDb)
       .then((exists) => {
         expect(exists).toBeTruthy()
         return null
       })
   })
   it('returns false if user not found', () => {
-    return users.userExists('other-non-existent-user', testDb)
+    return users
+      .userExists('other-non-existent-user', testDb)
       .then((exists) => {
         expect(exists).toBeFalsy()
         return null
@@ -77,11 +79,10 @@ describe('userExists', () => {
 describe('get users details by garden', () => {
   it('returns the details of the non admin users in related garden', () => {
     expect.assertions(2)
-    return users.getUserDetailsByGarden('1', testDb)
-      .then((users) => {
-        expect(users).toHaveLength(1)
-        expect(users[0].is_admin).toBeFalsy()
-        return null
-      })
+    return users.getUserDetailsByGarden('1', testDb).then((users) => {
+      expect(users).toHaveLength(1)
+      expect(users[0].is_admin).toBeFalsy()
+      return null
+    })
   })
 })

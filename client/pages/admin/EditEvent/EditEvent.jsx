@@ -9,44 +9,41 @@ import { getEvent } from '../../Event/eventHelper'
 import { containerVariants } from '../../animationVariants'
 import { motion } from 'framer-motion'
 
-export default function EditEvent () {
+export default function EditEvent() {
   const [event, setEvent] = useState(null)
   const history = useHistory()
   const { id } = useParams()
-  const user = useSelector(globalState => globalState.user)
+  const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getEvent(id, user)
-      .then((eventData) => {
-        setEvent(eventData)
-        return null
-      })
+    getEvent(id, user).then((eventData) => {
+      setEvent(eventData)
+      return null
+    })
   }, [])
 
-  function submitEvent (form) {
+  function submitEvent(form) {
     updateEvent(event.gardenId, { id, ...form }, history.push)
   }
 
-  function cancelSubmit () {
+  function cancelSubmit() {
     cancelEvent(id, history.goBack)
   }
 
-  return (
-
-    event
-      ? <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit" >
-        <EventForm
-          formData={event}
-          action='Update Event'
-          submitEvent={submitEvent}
-          cancelSubmit={cancelSubmit}
-        />
-      </motion.div>
-      : null
-  )
+  return event ? (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <EventForm
+        formData={event}
+        action="Update Event"
+        submitEvent={submitEvent}
+        cancelSubmit={cancelSubmit}
+      />
+    </motion.div>
+  ) : null
 }

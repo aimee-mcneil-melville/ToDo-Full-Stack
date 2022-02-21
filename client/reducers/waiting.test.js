@@ -6,7 +6,7 @@ import { SET_GARDEN, UPDATE_EVENT_VOLS } from '../actions/garden'
 describe('waiting reducer', () => {
   it('returns true on "SET_WAITING"', () => {
     const action = {
-      type: SET_WAITING
+      type: SET_WAITING,
     }
     const newState = waitingReducer(false, action)
     expect(newState).toBeTruthy()
@@ -14,7 +14,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "SET_GARDEN"', () => {
     const action = {
-      type: SET_GARDEN
+      type: SET_GARDEN,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -22,7 +22,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "CLEAR_WAITING"', () => {
     const action = {
-      type: CLEAR_WAITING
+      type: CLEAR_WAITING,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -30,7 +30,7 @@ describe('waiting reducer', () => {
 
   it('returns false on "SHOW_ERROR"', () => {
     const action = {
-      type: SHOW_ERROR
+      type: SHOW_ERROR,
     }
     const newState = waitingReducer(true, action)
     expect(newState).toBeFalsy()
@@ -38,7 +38,7 @@ describe('waiting reducer', () => {
 
   it('returns old state on unknown action type', () => {
     const action = {
-      type: 'RANDOM_OTHER_ACTION'
+      type: 'RANDOM_OTHER_ACTION',
     }
     const newState = waitingReducer(false, action)
     expect(newState).toBeFalsy()
@@ -47,7 +47,7 @@ describe('waiting reducer', () => {
 
 it('returns false on "UPDATE_EVENT_VOLS"', () => {
   const action = {
-    type: UPDATE_EVENT_VOLS
+    type: UPDATE_EVENT_VOLS,
   }
   const newState = waitingReducer(true, action)
   expect(newState).toBeFalsy()

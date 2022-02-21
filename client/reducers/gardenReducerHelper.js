@@ -1,5 +1,5 @@
-export function updateVolCount (garden, eventId) {
-  const updatedEvents = garden.events.map(event => {
+export function updateVolCount(garden, eventId) {
+  const updatedEvents = garden.events.map((event) => {
     if (event.id === eventId) {
       if (event.isVolunteer === false) {
         event.totalVolunteers += 1
@@ -14,7 +14,7 @@ export function updateVolCount (garden, eventId) {
 
   const newGarden = {
     ...garden,
-    events: updatedEvents
+    events: updatedEvents,
   }
   return newGarden
 }

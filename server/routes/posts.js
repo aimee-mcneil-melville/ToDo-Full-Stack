@@ -15,8 +15,8 @@ router.get('/:gardenid', (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to retrieve posts'
-        }
+          title: 'Unable to retrieve posts',
+        },
       })
     })
 })

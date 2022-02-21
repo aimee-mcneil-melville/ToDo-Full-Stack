@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('posts', table => {
+  return knex.schema.createTable('posts', (table) => {
     table.increments('id').primary()
     table.integer('garden_id').references('gardens.id')
     table.integer('author').references('users.id')

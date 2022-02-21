@@ -3,7 +3,7 @@ import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 import requestor from '../../../consume'
 
-export function getEvent (id, consume = requestor) {
+export function getEvent(id, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`)
     .then((res) => {
@@ -16,12 +16,12 @@ export function getEvent (id, consume = requestor) {
     })
 }
 
-export function updateEvent (gardenId, event, navigateTo, consume = requestor) {
+export function updateEvent(gardenId, event, navigateTo, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
   const eventToUpdate = {
     id: Number(event.id),
-    ...event
+    ...event,
   }
   dispatch(setWaiting())
   return consume(`/events/${event.id}`, token, 'patch', eventToUpdate)
@@ -37,11 +37,11 @@ export function updateEvent (gardenId, event, navigateTo, consume = requestor) {
     })
 }
 
-export function cancelEvent (id, navigateTo, consume = requestor) {
+export function cancelEvent(id, navigateTo, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
   const eventToUpdate = {
-    id: Number(id)
+    id: Number(id),
   }
   return consume(`/events/${id}/cancel`, token, 'patch', eventToUpdate)
     .then(() => {

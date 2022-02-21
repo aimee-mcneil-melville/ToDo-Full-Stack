@@ -3,7 +3,7 @@ import { showError } from '../../actions/error'
 import { dispatch } from '../../store'
 import { setWaiting, clearWaiting } from '../../actions/waiting'
 
-export function getEventDetails (id, history, consume = requestor) {
+export function getEventDetails(id, history, consume = requestor) {
   dispatch(setWaiting())
 
   return consume(`/events/${id}`)
@@ -17,7 +17,7 @@ export function getEventDetails (id, history, consume = requestor) {
       } else {
         return {
           title: event.title,
-          gardenName: event.gardenName
+          gardenName: event.gardenName,
         }
       }
     })
@@ -26,6 +26,6 @@ export function getEventDetails (id, history, consume = requestor) {
     })
 }
 
-export function checkUserIdsMatch (emailId, browserId) {
-  return (browserId === Number(emailId))
+export function checkUserIdsMatch(emailId, browserId) {
+  return browserId === Number(emailId)
 }

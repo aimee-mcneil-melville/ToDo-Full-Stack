@@ -5,7 +5,7 @@ describe('error reducer', () => {
   it('returns error message on "SHOW_ERROR"', () => {
     const action = {
       type: SHOW_ERROR,
-      errorMessage: 'mock error'
+      errorMessage: 'mock error',
     }
     const newState = errorReducer(null, action)
     expect(newState).toBe('mock error')
@@ -13,7 +13,7 @@ describe('error reducer', () => {
 
   it('returns null on "HIDE_ERROR"', () => {
     const action = {
-      type: HIDE_ERROR
+      type: HIDE_ERROR,
     }
     const newState = errorReducer('error message', action)
     expect(newState).toBeNull()
@@ -21,7 +21,7 @@ describe('error reducer', () => {
 
   it('returns old state on unknown action type', () => {
     const action = {
-      type: 'RANDOM_OTHER_ACTION'
+      type: 'RANDOM_OTHER_ACTION',
     }
     const newState = errorReducer(null, action)
     expect(newState).toBeNull()

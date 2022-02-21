@@ -12,14 +12,14 @@ describe('when user is authenticated', () => {
   it('displays "My Garden", "Log Out" and "Home" when authenticated', () => {
     getIsAuthenticated.mockImplementation(() => true)
 
-    renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
+    renderWithRedux(<Nav location={{ pathname: '/' }} />, {
       initialState: {
         user: {
           isAdmin: 0,
           gardenId: 1,
-          id: 2
-        }
-      }
+          id: 2,
+        },
+      },
     })
     const links = screen.getAllByRole('link')
     expect(links).toHaveLength(4)
@@ -37,14 +37,14 @@ describe('Log Out link', () => {
     getIsAuthenticated.mockImplementation(() => true)
     getLogoutFn.mockImplementation(() => logout)
 
-    renderWithRedux(<Nav location={{ pathname: '/' }}/>, {
+    renderWithRedux(<Nav location={{ pathname: '/' }} />, {
       initialState: {
         user: {
           isAdmin: 0,
           gardenId: 1,
-          id: 2
-        }
-      }
+          id: 2,
+        },
+      },
     })
     const logOutLink = screen.getByRole('link', { name: 'Log out' })
     userEvent.click(logOutLink)

@@ -9,49 +9,39 @@ import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/Ad
 import RockUpVolunteerList from '../../components/volunteers/RockUpVolunteerList/RockUpVolunteerList'
 // import EventDetail from '../../components/events/EventDetail/EventDetail'
 
-export default function Event () {
+export default function Event() {
   const { id } = useParams()
 
   const [event, setEvent] = useState({})
 
-  const user = useSelector(globalState => globalState.user)
+  const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return
-    getEvent(id, user)
-      .then((event) => {
-        setEvent(event)
-        return null
-      })
+    getEvent(id, user).then((event) => {
+      setEvent(event)
+      return null
+    })
   }, [user])
 
-  function addExtraVolunteer (newVolunteer) {
+  function addExtraVolunteer(newVolunteer) {
     setEvent({
       ...event,
-      extraVolunteers: [...event.extraVolunteers, newVolunteer]
+      extraVolunteers: [...event.extraVolunteers, newVolunteer],
     })
   }
 
   return (
     <>
-      {user?.isAdmin
-        ? <>
+      {user?.isAdmin ? (
+        <>
           <section>
-            <VolunteerList
-              volunteers={event.volunteers}
-              eventId={event.id}
-            />
-            <RockUpVolunteerList
-              extraVolunteers={event.extraVolunteers}
-            />
-            <AddVolunteerForm
-              addExtraVolunteer={addExtraVolunteer}
-              id={id}
-            />
+            <VolunteerList volunteers={event.volunteers} eventId={event.id} />
+            <RockUpVolunteerList extraVolunteers={event.extraVolunteers} />
+            <AddVolunteerForm addExtraVolunteer={addExtraVolunteer} id={id} />
           </section>
         </>
-        : null
-      }
+      ) : null}
       {/* <EventDetail eventId={eventId} user={user} /> */}
     </>
   )

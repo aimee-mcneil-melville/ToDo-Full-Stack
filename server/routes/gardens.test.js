@@ -29,13 +29,15 @@ const mockUserGarden = {
       volunteers: [
         {
           firstName: 'Sam',
-          userId: 3
-        }, {
+          userId: 3,
+        },
+        {
           firstName: 'Steve',
-          userId: 4
-        }
-      ]
-    }, {
+          userId: 4,
+        },
+      ],
+    },
+    {
       id: 2,
       volunteersNeeded: 19,
       title: 'Rocking the Garden',
@@ -44,56 +46,60 @@ const mockUserGarden = {
       volunteers: [
         {
           firstName: 'Sam',
-          userId: 3
-        }, {
+          userId: 3,
+        },
+        {
           firstName: 'Steve',
-          userId: 4
-        }
-      ]
-    }
-  ]
+          userId: 4,
+        },
+      ],
+    },
+  ],
 }
 
 describe('GET /api/v1/gardens', () => {
   it('responds with gardens on res body', () => {
-    db.getGardens.mockImplementation(() => Promise.resolve(
-      [{
-        id: 1,
-        name: 'Kahu Gardens',
-        address: '12 Hukanui Crescent',
-        description: 'Kelmarna Gardens is a city farm and ...',
-        lat: -36.86011508905973,
-        lon: 174.7330772002716,
-        url: 'http://www.kelmarnagardens.nz'
-      }, {
-        id: 2,
-        name: 'GARDENS ROCK!',
-        address: '105 GARDENS ROCK ST',
-        description: 'GARDENS ARE THE BEST',
-        lat: -36.86011508905973,
-        lon: 174.7330772002716,
-        url: 'http://www.GARDENSROCK.nz'
-      }]
-    ))
+    db.getGardens.mockImplementation(() =>
+      Promise.resolve([
+        {
+          id: 1,
+          name: 'Kahu Gardens',
+          address: '12 Hukanui Crescent',
+          description: 'Kelmarna Gardens is a city farm and ...',
+          lat: -36.86011508905973,
+          lon: 174.7330772002716,
+          url: 'http://www.kelmarnagardens.nz',
+        },
+        {
+          id: 2,
+          name: 'GARDENS ROCK!',
+          address: '105 GARDENS ROCK ST',
+          description: 'GARDENS ARE THE BEST',
+          lat: -36.86011508905973,
+          lon: 174.7330772002716,
+          url: 'http://www.GARDENSROCK.nz',
+        },
+      ])
+    )
     return request(server)
       .get('/api/v1/gardens')
       .expect('Content-Type', /json/)
       .expect(200)
-      .then(res => {
+      .then((res) => {
         expect(res.body.gardens).toHaveLength(2)
         return null
       })
   })
 
   it('responds with 500 and correct error object on DB error', () => {
-    db.getGardens.mockImplementation(() => Promise.reject(
-      new Error('mock getGardens error')
-    ))
+    db.getGardens.mockImplementation(() =>
+      Promise.reject(new Error('mock getGardens error'))
+    )
     return request(server)
       .get('/api/v1/gardens')
       .expect('Content-Type', /json/)
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(log).toHaveBeenCalledWith('mock getGardens error')
         expect(res.body.error.title).toBe('Unable to retrieve gardens')
         return null
@@ -108,13 +114,15 @@ describe('GET /api/v1/gardens/:id', () => {
       expect(id).toBe(2)
       return Promise.resolve(mockUserGarden)
     })
-    dbUsers.getUserById.mockImplementation(() => Promise.resolve({ auth0Id: 'auth0id|est' }))
+    dbUsers.getUserById.mockImplementation(() =>
+      Promise.resolve({ auth0Id: 'auth0id|est' })
+    )
     auth0.userHasAdminRole.mockImplementation(() => Promise.resolve(true))
     return request(server)
       .get('/api/v1/gardens/2')
       .expect('Content-Type', /json/)
       .expect(200)
-      .then(res => {
+      .then((res) => {
         expect(res.body.events).toHaveLength(2)
         return null
       })
@@ -130,21 +138,21 @@ describe('GET /api/v1/gardens/:id', () => {
       .get('/api/v1/gardens/2')
       .expect('Content-Type', /json/)
       .expect(200)
-      .then(res => {
+      .then((res) => {
         expect(res.body.events).toHaveLength(2)
         return null
       })
   })
 
   it('responds with 500 and correct error object on DB error', () => {
-    db.getGardenById.mockImplementation(() => Promise.reject(
-      new Error('mock getGardenById error')
-    ))
+    db.getGardenById.mockImplementation(() =>
+      Promise.reject(new Error('mock getGardenById error'))
+    )
     return request(server)
       .get('/api/v1/gardens/999')
       .expect('Content-Type', /json/)
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(log).toHaveBeenCalledWith('mock getGardenById error')
         expect(res.body.error.title).toBe('Unable to retrieve garden')
         return null
@@ -155,11 +163,12 @@ describe('GET /api/v1/gardens/:id', () => {
     const expected = [
       {
         firstName: 'Sam',
-        userId: 3
-      }, {
+        userId: 3,
+      },
+      {
         firstName: 'Steve',
-        userId: 4
-      }
+        userId: 4,
+      },
     ]
 
     db.getGardenById.mockImplementation((id) => {
@@ -170,7 +179,7 @@ describe('GET /api/v1/gardens/:id', () => {
     return request(server)
       .get('/api/v1/gardens/2')
       .expect('Content-Type', /json/)
-      .then(res => {
+      .then((res) => {
         expect(res.body.events[1].volunteers).toMatchObject(expected)
         return null
       })
@@ -184,7 +193,7 @@ describe('GET /api/v1/gardens/:id', () => {
     return request(server)
       .get('/api/v1/gardens/2')
       .expect('Content-Type', /json/)
-      .then(res => {
+      .then((res) => {
         expect(res.body.events[0]).toHaveProperty('isVolunteer')
         return null
       })

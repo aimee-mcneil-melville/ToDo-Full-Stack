@@ -9,14 +9,14 @@ import VolunteerButton from '../../components/volunteers/VolunteerButton/Volunte
 import { useParams } from 'react-router-dom'
 import {
   IfAuthenticated,
-  IfNotAuthenticated
+  IfNotAuthenticated,
 } from '../../components/Authenticated/Authenticated'
 import { getEventDetails, checkUserIdsMatch } from './emailVolunteerErrorHelper'
 import { useHistory } from 'react-router'
 import { getLogoutFn } from '../../auth-utils'
 import { clearUser } from '../../actions/user'
 
-export default function EmailVolunteerError () {
+export default function EmailVolunteerError() {
   const [event, setEvent] = useState({ title: '', gardenName: '' })
   const { userId, eventId } = useParams()
   const history = useHistory()
@@ -37,13 +37,13 @@ export default function EmailVolunteerError () {
     })
   }, [])
 
-  function logOutSignIn () {
+  function logOutSignIn() {
     logout()
     dispatch(clearUser())
     history.push('/signin')
   }
 
-  function redirectToEvent () {
+  function redirectToEvent() {
     history.push(`/events/${eventId}`)
   }
 

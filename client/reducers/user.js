@@ -5,10 +5,10 @@ const emptyUser = {
   isAdmin: false,
   firstName: '',
   gardenId: null,
-  token: ''
+  token: '',
 }
 
-export default function user (state = emptyUser, action) {
+export default function user(state = emptyUser, action) {
   switch (action.type) {
     case SET_USER:
       return action.user

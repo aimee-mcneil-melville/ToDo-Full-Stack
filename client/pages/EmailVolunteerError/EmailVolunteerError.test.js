@@ -26,12 +26,12 @@ afterAll(() => {
 const mockPush = jest.fn()
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
-  useHistory: () => ({ push: mockPush })
+  useHistory: () => ({ push: mockPush }),
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useParams: () => ({ eventId: 1 })
+  useParams: () => ({ eventId: 1 }),
 }))
 
 describe('EmailVolunteerError', () => {

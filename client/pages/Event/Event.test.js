@@ -15,38 +15,40 @@ describe('List of signed up volunteers', () => {
       userId: 1,
       firstName: 'Test User',
       lastName: 'Lastname',
-      attended: true
-    }, {
+      attended: true,
+    },
+    {
       userId: 2,
       firstName: 'Test User 2',
       lastName: 'Lastname 2',
-      attended: false
-    }
+      attended: false,
+    },
   ]
 
   it('displays only for admin', () => {
     renderWithRedux(<VolunteerList volunteers={mockVolunteers} />, {
-      initialState: { user: { isAdmin: true } }
+      initialState: { user: { isAdmin: true } },
     })
-    return screen.findAllByRole('listitem')
-      .then(volunteers => {
-        expect(volunteers[1]).toHaveTextContent('Test User 2')
-        return null
-      })
+    return screen.findAllByRole('listitem').then((volunteers) => {
+      expect(volunteers[1]).toHaveTextContent('Test User 2')
+      return null
+    })
   })
 
   it('does not display if not an admin', () => {
-    getEvent.mockImplementation(() => Promise.resolve({
-      gardenId: 1,
-      title: 'title to edit',
-      date: '24/09/2001',
-      volunteersNeeded: 4,
-      description: 'truly radical event'
-    }))
+    getEvent.mockImplementation(() =>
+      Promise.resolve({
+        gardenId: 1,
+        title: 'title to edit',
+        date: '24/09/2001',
+        volunteersNeeded: 4,
+        description: 'truly radical event',
+      })
+    )
     renderWithRedux(<Event />, {
       initialState: { user: { isAdmin: false } },
       initialEntries: ['/events/23/edit'],
-      route: '/events/:id/edit'
+      route: '/events/:id/edit',
     })
 
     const error = screen.queryByRole('heading', { name: 'List of Volunteers' })

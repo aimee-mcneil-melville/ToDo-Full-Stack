@@ -9,15 +9,15 @@ describe('gardenReducerHelper', () => {
           id: 2,
           title: 'Bla',
           totalVolunteers: 100,
-          isVolunteer: false
+          isVolunteer: false,
         },
         {
           id: 3,
           title: 'Bla1',
           totalVolunteers: 30,
-          isVolunteer: false
-        }
-      ]
+          isVolunteer: false,
+        },
+      ],
     }
 
     const eventId = 2
@@ -37,15 +37,15 @@ describe('gardenReducerHelper', () => {
           id: 2,
           title: 'Bla',
           totalVolunteers: 100,
-          isVolunteer: true
+          isVolunteer: true,
         },
         {
           id: 3,
           title: 'Bla1',
           totalVolunteers: 30,
-          isVolunteer: true
-        }
-      ]
+          isVolunteer: true,
+        },
+      ],
     }
 
     const eventId = 2

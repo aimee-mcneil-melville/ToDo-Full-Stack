@@ -13,10 +13,10 @@ describe('VolunteerListItem', () => {
       userId: 1,
       firstName: 'Keisuke',
       lastName: 'Tanaka',
-      attended: false
+      attended: false,
     }
 
-    render(<VolunteerListItem volunteer={volunteer} eventId={5}/>)
+    render(<VolunteerListItem volunteer={volunteer} eventId={5} />)
 
     const volunteerListItem = screen.getByRole('checkbox')
 
@@ -24,7 +24,7 @@ describe('VolunteerListItem', () => {
     expect(toggleAttendance).toHaveBeenCalledWith({
       eventId: 5,
       userId: 1,
-      hasAttended: true
+      hasAttended: true,
     })
   })
 })

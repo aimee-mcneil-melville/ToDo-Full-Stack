@@ -3,7 +3,7 @@ import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
-export function toggleAttendance (volunteerData, consume = requestor) {
+export function toggleAttendance(volunteerData, consume = requestor) {
   const storeState = getState()
   const { token } = storeState.user
   dispatch(setWaiting())
@@ -13,7 +13,7 @@ export function toggleAttendance (volunteerData, consume = requestor) {
       dispatch(clearWaiting())
       return true
     })
-    .catch(error => {
+    .catch((error) => {
       dispatch(showError(error.message))
       return false
     })

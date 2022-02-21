@@ -9,7 +9,7 @@ const { getUserById } = require('../db/users')
 const router = express.Router()
 
 const checkAdmin = jwtAuthz(['create:garden'], {
-  customScopeKey: 'permissions'
+  customScopeKey: 'permissions',
 })
 
 module.exports = router
@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to retrieve gardens'
-        }
+          title: 'Unable to retrieve gardens',
+        },
       })
     })
 })
@@ -42,8 +42,8 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to add garden'
-        }
+          title: 'Unable to add garden',
+        },
       })
     })
 })
@@ -58,13 +58,13 @@ router.get('/:id', async (req, res) => {
     const user = await getUserById(userId)
     const isAdmin = await userHasAdminRole(user.auth0Id)
     if (!isAdmin) {
-      garden.events.forEach(event => {
+      garden.events.forEach((event) => {
         event.totalVolunteers = event.volunteers.length
         event.isVolunteer = event.volunteers.some((v) => v.userId === userId)
         delete event.volunteers
       })
     } else {
-      garden.events.forEach(event => {
+      garden.events.forEach((event) => {
         event.totalVolunteers = event.volunteers.length
         event.isVolunteer = event.volunteers.some((v) => v.userId === userId)
       })
@@ -74,8 +74,8 @@ router.get('/:id', async (req, res) => {
     log(err.message)
     res.status(500).json({
       error: {
-        title: 'Unable to retrieve garden'
-      }
+        title: 'Unable to retrieve garden',
+      },
     })
   }
 })

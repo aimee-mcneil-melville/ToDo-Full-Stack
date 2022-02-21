@@ -15,7 +15,7 @@ import Gardens from './pages/Gardens/Gardens'
 
 import { cacheUser } from './auth-utils'
 
-export default function App () {
+export default function App() {
   const location = useLocation()
   cacheUser(useAuth0)
 
@@ -23,16 +23,20 @@ export default function App () {
     <>
       <Error />
       <Header />
-      <main className='container margin-container flex-container centre-flex'>
+      <main className="container margin-container flex-container centre-flex">
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.key}>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/gardens' component={Gardens} />
-            <Route exact path='/gardens/:id' component={Garden} />
-            <Route exact path='/gardens/:id/events/:eventId' component={Event} />
-            <Route path='/profile' component={Profile} />
-            <Route path='/event/new' component={AddEvent} />
-            <Route path='/events/:id/edit' component={EditEvent} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/gardens" component={Gardens} />
+            <Route exact path="/gardens/:id" component={Garden} />
+            <Route
+              exact
+              path="/gardens/:id/events/:eventId"
+              component={Event}
+            />
+            <Route path="/profile" component={Profile} />
+            <Route path="/event/new" component={AddEvent} />
+            <Route path="/events/:id/edit" component={EditEvent} />
           </Switch>
         </AnimatePresence>
       </main>

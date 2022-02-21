@@ -10,19 +10,22 @@ describe('send each user a notification', () => {
     expect.assertions(2)
     dbUser.getUserDetailsByGarden.mockImplementation((gardenId) => {
       expect(gardenId).toBe(1)
-      return Promise.resolve([{
-        id: 4,
-        gardenId: 1,
-        firstName: 'Admin',
-        isAdmin: true,
-        email: 'admin@outlook.com'
-      }, {
-        id: 5,
-        gardenId: 1,
-        firstName: 'Otheruser',
-        isAdmin: false,
-        email: 'user@outlook.com'
-      }])
+      return Promise.resolve([
+        {
+          id: 4,
+          gardenId: 1,
+          firstName: 'Admin',
+          isAdmin: true,
+          email: 'admin@outlook.com',
+        },
+        {
+          id: 5,
+          gardenId: 1,
+          firstName: 'Otheruser',
+          isAdmin: false,
+          email: 'user@outlook.com',
+        },
+      ])
     })
 
     const event = {
@@ -31,13 +34,12 @@ describe('send each user a notification', () => {
       title: 'test event name',
       date: '01/12/2021',
       description: 'This is a test',
-      volunteersNeeded: 1
+      volunteersNeeded: 1,
     }
 
-    return sendEventNotifications(event)
-      .then(() => {
-        expect(sendNotification).toHaveBeenCalledTimes(2)
-        return null
-      })
+    return sendEventNotifications(event).then(() => {
+      expect(sendNotification).toHaveBeenCalledTimes(2)
+      return null
+    })
   })
 })

@@ -4,13 +4,19 @@ import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { setUser } from '../../actions/user'
 import { showError } from '../../actions/error'
 
-export function registerUser (user, isAdmin, authUser, navigateTo, consume = requestor) {
+export function registerUser(
+  user,
+  isAdmin,
+  authUser,
+  navigateTo,
+  consume = requestor
+) {
   const newUser = {
     firstName: user.firstName,
     lastName: user.lastName,
     gardenId: user.gardenId,
     email: authUser.email,
-    auth0Id: authUser.sub
+    auth0Id: authUser.sub,
   }
   const storeState = getState()
   const { token } = storeState.user

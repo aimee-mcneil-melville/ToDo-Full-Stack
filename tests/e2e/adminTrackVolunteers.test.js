@@ -51,7 +51,7 @@ test('Admin can track volunteer', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[type=submit]', { force: true })
+    page.click('button[type=submit]', { force: true }),
   ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Profile')])
@@ -62,7 +62,7 @@ test('Admin can track volunteer', async () => {
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('button[type=submit]', { force: true })
+    page.click('button[type=submit]', { force: true }),
   ])
 
   await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
