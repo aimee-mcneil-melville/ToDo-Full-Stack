@@ -15,7 +15,6 @@ import Gardens from './pages/Gardens/Gardens'
 import Volunteers from './pages/Volunteers/Volunteers'
 import Verification from './pages/Verification/Verification'
 
-
 import { cacheUser } from './auth-utils'
 
 export default function App () {
