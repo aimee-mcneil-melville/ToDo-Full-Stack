@@ -46,7 +46,7 @@ describe('Testing AddVolunteerFormHelper', () => {
       lastName: 'Everything',
     }
     const mockAdd = jest.fn()
-    const mockConsume = jest.fn((path, method, volunteer) => {
+    const mockConsume = jest.fn(() => {
       return Promise.reject(new Error('Unable to add extra volunteer'))
     })
     await addVolunteer(mockVolunteer, mockAdd, mockConsume)

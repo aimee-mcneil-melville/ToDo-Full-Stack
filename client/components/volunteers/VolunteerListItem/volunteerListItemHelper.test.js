@@ -42,7 +42,7 @@ describe('toggleAttendance', () => {
       userId: 3,
       hasAttended: true,
     }
-    function consume(path, token, method, data) {
+    function consume() {
       return Promise.reject(new Error('mock consume error'))
     }
     return toggleAttendance(volunteerData, consume).then((response) => {

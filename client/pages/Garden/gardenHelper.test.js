@@ -29,7 +29,7 @@ describe('getGarden', () => {
           },
         })
       }
-      return getGarden(2, mockUser, consume).then((garden) => {
+      return getGarden(2, mockUser, consume).then(() => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
         expect(dispatch).toHaveBeenCalledWith({
           type: SET_GARDEN,
