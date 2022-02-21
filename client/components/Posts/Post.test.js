@@ -1,12 +1,13 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-// import { getPosts } from '../../pages/Posts/postsHelper'
+
 
 import Post from './Post'
 
 describe('Post', () => {
     const fakePost = {
+        title: "Lettuce Picking Season",
         createdOn: "01/01/2222",
         content: "test content",
         firstName: "Test fistName",

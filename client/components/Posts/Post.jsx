@@ -1,11 +1,17 @@
 import React from 'react'
+import moment from 'moment'
 
 export default function Post({ post }) {
+    const fomateDate = post.createdOn.replaceAll('/', '')
+    const createTime = moment(fomateDate, "DDMMYYYY").fromNow()
+    console.log(post.createdOn, typeof fomateDate);
+    console.log(createTime);
+
     return (
         <>
-            <li>By {post.firstName}  {post.lastName}:</li>
+            <li><h2>By {post.firstName}  {post.lastName}:</h2></li>
             <li>{post.content}</li>
-            <li>createdOn :{post.createdOn}</li>
+            <li>{createTime}</li>
         </>
     )
 }
