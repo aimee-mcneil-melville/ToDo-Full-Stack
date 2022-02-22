@@ -2,8 +2,6 @@ const request = require('supertest')
 const log = require('../logger')
 const server = require('../server')
 const db = require('../db/volunteers')
-const dbUsers = require('../db/users')
-const dbEvents = require('../db/event')
 
 const { getMockToken, getAdminToken } = require('./mockToken')
 const { decode } = require('../notifications/emailTokens')
