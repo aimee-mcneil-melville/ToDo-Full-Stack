@@ -60,7 +60,7 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .post('/api/v1/volunteers')
         .send({ userId: 1, eventId: 1 })
         .then(res => {
-          expect(db.addVolunteer).toHaveBeenCalledWith()
+          expect(db.addVolunteer).toHaveBeenCalledWith({ gardenId: 3 })
           expect(res.status).toBe(401)
           return null
         })
