@@ -40,6 +40,7 @@ export default function EventItem ({ gardenid, event, isAdmin }) {
           }
           {/* Does below need to go here */}
           {/* <Link to={`/events/${id}`}>View Event</Link> */}
+          {isAdmin && <Link to={`/events/${id}/volunteers`}><button className='button-secondary'>Volunteers</button></Link>}
         </article>
       </Collapsible>
     </div>

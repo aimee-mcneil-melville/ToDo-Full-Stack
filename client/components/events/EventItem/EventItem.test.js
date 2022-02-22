@@ -7,12 +7,12 @@ import EventItem from './EventItem'
 
 describe('Edit Event button', () => {
   it('displays for admin', () => {
-    renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
+    renderWithRouter(<EventItem isAdmin={true} event={{}} />)
     expect(screen.getByRole('link', { name: 'Edit Event' })).toBeInTheDocument()
   })
 
   it('does not display if not an admin', () => {
-    renderWithRouter(<EventItem isAdmin={false} event={{}}/>)
+    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
     expect(screen.queryByRole('link', { name: 'Edit Event' })).toBeNull()
   })
 })
@@ -25,7 +25,7 @@ describe('Volunteer button', () => {
   })
 
   it('does not display for an admin', () => {
-    renderWithRouter(<EventItem isAdmin={true} event={{}}/>)
+    renderWithRouter(<EventItem isAdmin={true} event={{}} />)
     expect(screen.queryByRole('view-event-link')).toBeNull()
   })
 })
@@ -40,5 +40,17 @@ describe('Displays Event Status', () => {
     renderWithRouter(<EventItem event={{ status: 'Cancelled' }} />)
     const listItem = screen.getByText('Event is Cancelled')
     expect(listItem).toBeVisible()
+  })
+})
+
+describe('View event volunteers button', () => {
+  it('displays for admin', () => {
+    renderWithRouter(<EventItem isAdmin={true} event={{}} />)
+    expect(screen.getByRole('link', { name: 'Volunteers' })).toBeInTheDocument()
+  })
+
+  it('does not display if not an admin', () => {
+    renderWithRouter(<EventItem isAdmin={false} event={{}} />)
+    expect(screen.queryByRole('link', { name: 'Volunteers' })).toBeNull()
   })
 })

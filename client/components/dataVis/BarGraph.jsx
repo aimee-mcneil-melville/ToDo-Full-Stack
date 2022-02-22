@@ -72,7 +72,7 @@ export default function BarGraph ({ events }) {
   //
   return width < 10 ? null : (
     <>
-      <svg className='graph' key='barChart' width={width} height={height}>
+      <svg data-testid = 'bar-graph' className='graph' key='barChart' width={width} height={height}>
         <rect width={width} height={height} fill="url(#teal)" rx={14} />
         <Group top={verticalMargin / 2}>
           {data.map(d => {
