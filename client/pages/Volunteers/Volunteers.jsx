@@ -4,6 +4,7 @@ import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerLi
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getVolunteers } from './volunteersHelper'
+import AddVolunteerForm from '../../components/volunteers/RockUpVolunteerForm/AddVolunteerForm'
 
 export default function Volunteers () {
   const { id } = useParams()
@@ -19,9 +20,16 @@ export default function Volunteers () {
       })
   }, [user, id])
 
+  function addExtraVolunteerHandler (extraVolunteer) {
+    setVolunteers(prevState => {
+      return { ...prevState, extraVolunteer }
+    })
+  }
+
   return (
     <>
-      <VolunteerList volunteers={volunteers} eventId={id}/>
+      <VolunteerList volunteers={volunteers} eventId={id} />
+      <AddVolunteerForm id={id} addExtraVolunteer={addExtraVolunteerHandler}/>
     </>
   )
 }
