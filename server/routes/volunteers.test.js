@@ -61,6 +61,7 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
         .post('/api/v1/volunteers')
         .send({ userId: 1, eventId: 1 })
         .then(res => {
+          expect(db.addVolunteer).toHaveBeenCalledWith()
           expect(res.status).toBe(401)
           return null
         })
@@ -94,13 +95,6 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
           expect(res.body.error.title).toBe('Unable to register volunteer status')
           return null
         })
-    })
-
-    it('calls for sendNotification function', () => {
-      db.addVolunteer.mockImplementation(() => {
-        return Promise.resolve(sendNotification())
-      })
-      expect(sendNotification).toHaveBeenCalled()
     })
   })
 })
