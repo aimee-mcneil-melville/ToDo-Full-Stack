@@ -5,7 +5,6 @@ const db = require('../db/volunteers')
 
 const { getMockToken, getAdminToken } = require('./mockToken')
 const { decode } = require('../notifications/emailTokens')
-const { sendNotification } = require('../notifications/notifications')
 
 jest.mock('../logger')
 jest.mock('../db/volunteers')
