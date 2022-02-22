@@ -2,8 +2,7 @@
 .idea/
 node_modules
 bundle.*
-styles.min.css
-styles.min.css.map
+styles.*
 *.log
 dev.sqlite3
 .env
