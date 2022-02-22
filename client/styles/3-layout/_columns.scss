@@ -6,12 +6,13 @@
 .container {
   position: relative;
   // border: 3px solid rgb(50, 252, 9);
-  // display: flex;
+  display: block;
   // flex-direction: row;
   // justify-content: space-between;
 
   @include mixins.media-queries(desktop, min) {
-    width: 120rem;
+    // width: 120rem;
+    width: functions.colWidth(10);
     margin: 0 auto;
     // border: 1px solid rgb(252, 25, 9);
   }
