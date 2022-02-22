@@ -9,9 +9,7 @@ export function getPosts (gardenId, consume = requestor) {
     // front end url does not match back end. It is flipped around.
     .then((res) => {
       dispatch(clearWaiting())
-      const posts = res.body
-
-      return posts.posts.map(item => item)
+      return res.body.posts
     })
     .catch((error) => {
       dispatch(showError(error.message))
