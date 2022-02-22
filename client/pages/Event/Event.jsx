@@ -23,7 +23,7 @@ export default function Event () {
         setEvent(event)
         return null
       })
-  }, [user])
+  }, [user, id])
 
   function addExtraVolunteer (newVolunteer) {
     setEvent({
