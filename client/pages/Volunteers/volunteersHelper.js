@@ -3,7 +3,7 @@ import { dispatch } from '../../store'
 import { setWaiting, clearWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 
-export function getVolunteers (id, user, consume = requestor) {
+export function getVolunteers (id, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/events/${id}`)
     .then((res) => {
