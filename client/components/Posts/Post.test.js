@@ -31,7 +31,7 @@ describe('Post', () => {
 
   it('Render correct relative time format', async () => {
     render(<Post post={fakePost} />)
-    const createdOn = screen.getByText('a day ago')
+    const createdOn = screen.getByText(/ago/)
     expect(createdOn).toBeInTheDocument()
   })
 })
