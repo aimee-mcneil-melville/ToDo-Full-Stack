@@ -6,7 +6,7 @@ export default function Post ({ post }) {
 
   return (
     <>
-      <li><h2>By {post.firstName}  {post.lastName}:</h2></li>
+      <li><h2>By {post.firstName} {post.lastName}:</h2></li>
       <li>{post.content}</li>
       <li>{createTime}</li>
     </>
