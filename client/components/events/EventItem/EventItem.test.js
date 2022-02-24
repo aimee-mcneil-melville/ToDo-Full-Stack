@@ -49,11 +49,13 @@ describe('Displays Event Status', () => {
 describe('View event volunteers button', () => {
   it('displays for admin', () => {
     renderWithRouter(<EventItem isAdmin={true} event={{}} />)
-    expect(screen.getByRole('link', { name: 'Volunteers' })).toBeInTheDocument()
+    const volunteersButton = screen.getByRole('link', { name: 'Volunteers' })
+    expect(volunteersButton).toBeInTheDocument()
   })
 
   it('does not display if not an admin', () => {
     renderWithRouter(<EventItem isAdmin={false} event={{}} />)
-    expect(screen.queryByRole('link', { name: 'Volunteers' })).toBeNull()
+    const volunteersButton = screen.queryByRole('link', { name: 'Volunteers' })
+    expect(volunteersButton).toBeNull()
   })
 })
