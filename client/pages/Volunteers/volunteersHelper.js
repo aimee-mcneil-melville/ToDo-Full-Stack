@@ -9,7 +9,7 @@ export function getVolunteers (id, user, consume = requestor) {
     .then((res) => {
       dispatch(clearWaiting())
       const { volunteers } = res.body
-      return user.isAdmin && volunteers
+      return volunteers
     })
     .catch((error) => {
       dispatch(showError(error.message))
