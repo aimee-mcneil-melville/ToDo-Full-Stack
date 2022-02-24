@@ -31,17 +31,13 @@ describe('-> GET /posts/${gardenId} api call success', () => {
     }
 
     return getPosts(1, consume)
-      .then((event) => {
+      .then((posts) => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-        expect(dispatch).toHaveBeenCalledWith({
-          type: CLEAR_WAITING
-        })
-        expect(event[0].title).toBe('Lettuce Picking Season')
-        expect(event[0].createdOn).toBe('21/02/2022')
-        expect(event[0].firstName).toBe('User')
-        expect(event[0].lastName).toBe('second')
-        expect(event[0].content).toBe('test')
-        expect(event).not.toHaveProperty('fake')
+        expect(posts[0].title).toBe('Lettuce Picking Season')
+        expect(posts[0].createdOn).toBe('21/02/2022')
+        expect(posts[0].firstName).toBe('User')
+        expect(posts[0].lastName).toBe('second')
+        expect(posts[0].content).toBe('test')
         return null
       })
   })
