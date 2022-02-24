@@ -18,7 +18,7 @@ describe('Post', () => {
     render(<Post post={fakePost} />)
     const post = screen.getAllByRole('listitem')
     expect(post).toHaveLength(3)
-    expect(post[0].textContent).toBe('By FirstName  LastName:')
+    expect(post[0].textContent).toBe('By FirstName LastName:')
   })
 
   it('renders post data', async () => {
