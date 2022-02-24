@@ -2,8 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 export default function Post ({ post }) {
-  const fomateDate = post.createdOn.replaceAll('/', '')
-  const createTime = moment(fomateDate, 'DDMMYYYY').fromNow()
+  const createTime = moment(post.createdOn, 'DD/MM/YYYY').fromNow()
 
   return (
     <>
