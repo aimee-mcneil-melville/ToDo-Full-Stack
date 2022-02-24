@@ -68,6 +68,7 @@ Does the `start` script in your `package.json` file call `nodemon` instead of `n
 *From the command line*
 
 - Create a Heroku app with `heroku apps:create NAME_OF_YOUR_APP`.
+  - If you would like to use this deployment for your WD07 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
   - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
 
 *Or, from heroku.com*
