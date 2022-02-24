@@ -21,9 +21,7 @@ export default function Volunteers () {
   }, [user, id])
 
   function addExtraVolunteerHandler (extraVolunteer) {
-    setVolunteers(prevState => {
-      return { ...prevState, extraVolunteer }
-    })
+    setVolunteers(state => ({ ...state, extraVolunteer }))
   }
 
   return (
