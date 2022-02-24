@@ -33,6 +33,7 @@ describe('-> GET /posts/${gardenId} api call success', () => {
     return getPosts(1, consume)
       .then((posts) => {
         expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
         expect(posts[0].title).toBe('Lettuce Picking Season')
         expect(posts[0].createdOn).toBe('21/02/2022')
         expect(posts[0].firstName).toBe('User')
