@@ -5,27 +5,33 @@ import '@testing-library/jest-dom'
 import Post from './Post'
 
 describe('Post', () => {
+  const createdOn = new Date((new Date()).getTime() - (1 * 86400000)).toLocaleDateString('en-NZ')
   const fakePost = {
     title: 'Lettuce Picking Season',
-    createdOn: '01/01/1200',
+    createdOn: createdOn,
     content: 'test content',
-    firstName: 'Test fistName',
-    lastName: 'Test LastName'
+    firstName: 'FirstName',
+    lastName: 'LastName'
   }
 
   it('Print needed List of items amount', () => {
     render(<Post post={fakePost} />)
-    expect(screen.getAllByRole('listitem')).toHaveLength(3)
+    const post = screen.getAllByRole('listitem')
+    expect(post).toHaveLength(3)
+    expect(post[0].textContent).toBe('By FirstName  LastName:')
   })
 
   it('renders post data', async () => {
     render(<Post post={fakePost} />)
-    expect(screen.getByText(/Test LastName/)).toBeInTheDocument()
-    expect(await screen.queryByText('Lettuce Picking Season')).toBeNull()
+    const post = screen.getByText(/LastName/)
+    const title = await screen.queryByText('Lettuce Picking Season')
+    expect(post).toBeInTheDocument()
+    expect(title).toBeNull()
   })
 
   it('Render correct relative time format', async () => {
     render(<Post post={fakePost} />)
-    expect(screen.getByText(/ago/)).toBeInTheDocument()
+    const createdOn = screen.getByText('a day ago')
+    expect(createdOn).toBeInTheDocument()
   })
 })
