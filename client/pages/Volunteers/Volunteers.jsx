@@ -1,4 +1,3 @@
-// TODO: Return volunteer list from component above
 import React, { useState, useEffect } from 'react'
 import VolunteerList from '../../components/volunteers/VolunteerList/VolunteerList'
 import { useParams } from 'react-router-dom'
