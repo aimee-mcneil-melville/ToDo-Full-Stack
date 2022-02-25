@@ -1,13 +1,9 @@
-const { checkJwt } = require('./auth') // scope permissions
+const { checkJwt } = require('./auth')
 const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 const log = require('../logger')
 const db = require('../db/event')
-
-const {
-  sendEventNotifications
-} = require('../notifications/notificationHelper')
 
 const router = express.Router()
 
@@ -19,14 +15,9 @@ const checkAdmin = jwtAuthz(['create:event', 'update:event'], {
 router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, gardenId } = req.body
   const event = { title, date, volunteersNeeded, description, gardenId }
-  let createdEvent = null
   db.addEvent(event)
     .then((event) => {
-      createdEvent = event
-      return sendEventNotifications(event)
-    })
-    .then(() => {
-      res.status(201).json(createdEvent)
+      res.status(201).json(event)
       return null
     })
     .catch((err) => {
@@ -38,8 +29,6 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
       })
     })
 })
-
-// include getTokenDecoder() like function into post route that passes authorisation header?REQUIRES TOKEN + ADMIN
 
 router.patch('/:id', checkJwt, checkAdmin, (req, res) => {
   const { title, date, volunteersNeeded, description, id, status } = req.body
@@ -76,7 +65,6 @@ router.patch('/:id/cancel', checkJwt, checkAdmin, (req, res) => {
     })
 })
 
-// GET /api/v1/events/1
 router.get('/:id', async (req, res) => {
   const eventId = Number(req.params.id)
   try {

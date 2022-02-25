@@ -1,10 +1,14 @@
+const { sendNotification } = require('../notifications/notifications')
 const { checkJwt } = require('./auth') // scope permissions
 const jwtAuthz = require('express-jwt-authz')
 
 const express = require('express')
 
 const log = require('../logger')
-const db = require('../db/volunteers')
+const dbUsers = require('../db/users')
+const dbEvents = require('../db/event')
+const dbVolunteers = require('../db/volunteers')
+
 const { decode } = require('../notifications/emailTokens')
 
 const router = express.Router()
@@ -19,7 +23,7 @@ router.get('/emailsignup', (req, res) => {
   const { token } = req.query
   const volunteer = decode(token)
 
-  db.addVolunteer(volunteer)
+  dbVolunteers.addVolunteer(volunteer)
     .then(() => {
       res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
@@ -35,28 +39,29 @@ router.get('/emailsignup', (req, res) => {
 })
 
 // Verifies the data being modified belongs to the user that added it. --------------------
-router.post('/', checkJwt, (req, res) => {
+router.post('/', checkJwt, async (req, res) => {
   const { userId, eventId } = req.body
-
-  db.addVolunteer({ userId, eventId })
-    .then(() => {
-      res.sendStatus(201)
-      return null
+  const volunteer = { userId, eventId }
+  try {
+    await dbVolunteers.addVolunteer({ volunteer })
+    const eventData = await dbEvents.getEventById(eventId)
+    const userData = await dbUsers.getUserById(userId)
+    await sendNotification(userData, eventData)
+    res.sendStatus(201)
+  } catch (error) {
+    log(error.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to register volunteer status'
+      }
     })
-    .catch((err) => {
-      log(err.message)
-      res.status(500).json({
-        error: {
-          title: 'Unable to register volunteer status'
-        }
-      })
-    })
+  }
 })
 
 // Verifies the data being modified belongs to the user that added it.
 router.delete('/', checkJwt, (req, res) => {
   const { userId, eventId } = req.body
-  db.deleteVolunteer({ userId, eventId })
+  dbVolunteers.deleteVolunteer({ userId, eventId })
     .then(() => {
       res.sendStatus(200)
       return null
@@ -74,7 +79,7 @@ router.delete('/', checkJwt, (req, res) => {
 router.patch('/', checkJwt, checkAdmin, (req, res) => {
   const { hasAttended, userId, eventId } = req.body
 
-  db.setVolunteerAttendance({ hasAttended, userId, eventId })
+  dbVolunteers.setVolunteerAttendance({ hasAttended, userId, eventId })
     .then(() => {
       res.sendStatus(200)
       return null
@@ -92,7 +97,7 @@ router.patch('/', checkJwt, checkAdmin, (req, res) => {
 router.post('/extras', checkJwt, (req, res) => {
   const { eventId, firstName, lastName } = req.body
 
-  db.addExtraVolunteer({ eventId, firstName, lastName })
+  dbVolunteers.addExtraVolunteer({ eventId, firstName, lastName })
     .then((result) => {
       res.status(201).json({ extraVolId: result[0] })
       return null
