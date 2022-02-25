@@ -77,29 +77,29 @@ jobs:
       #   run: npm run test:e2e
       
   ### the below is for deployment to Heroku ###
-  deploy-dev:
-    runs-on: ubuntu-latest
-    # this prevents deployment for pull requests and works only for push in dev
-    if: ${{ github.ref == 'refs/heads/dev' }} # this should be dev
-    needs: build
-    # Each environment can have different evn vars which includes different Auth0 secrets 
-    # Those secrets can be different than the repository secrets
-    environment: development
-    steps:
-    - uses: actions/checkout@v2
+#   deploy-dev:
+#     runs-on: ubuntu-latest
+#     # this prevents deployment for pull requests and works only for push in dev
+#     if: ${{ github.ref == 'refs/heads/dev' }} # this should be dev
+#     needs: build
+#     # Each environment can have different evn vars which includes different Auth0 secrets 
+#     # Those secrets can be different than the repository secrets
+#     environment: development
+#     steps:
+#     - uses: actions/checkout@v2
      
-    - uses: akhileshns/heroku-deploy@master
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-        # branch: 'dev' # this should be dev
-      env:
-        HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
-        HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
-        HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-        HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
-        HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
+#     - uses: akhileshns/heroku-deploy@master
+#       with:
+#         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+#         heroku_email: ${{secrets.HEROKU_EMAIL}}
+#         # branch: 'dev' # this should be dev
+#       env:
+#         HD_JWT_SECRET: ${{secrets.JWT_SECRET}}
+#         HD_SENDGRID_API_KEY: ${{secrets.SENDGRID}}
+#         HD_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+#         HD_AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+#         HD_AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
         
   # deploy-prod:
   #   runs-on: ubuntu-latest
