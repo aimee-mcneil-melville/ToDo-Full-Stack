@@ -2,6 +2,7 @@
 .idea/
 node_modules
 bundle.*
+styles.*
 *.log
 dev.sqlite3
 .env
