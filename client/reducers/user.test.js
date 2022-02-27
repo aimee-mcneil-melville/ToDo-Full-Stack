@@ -9,19 +9,19 @@ describe('user reducer', () => {
       id: 4,
       firstName: 'test',
       isAdmin: false,
-      gardenId: 3
+      gardenId: 3,
     }
 
     const oldState = {
       firstName: '',
       isAdmin: false,
       gardenId: null,
-      id: null
+      id: null,
     }
 
     const action = {
       type: SET_USER,
-      user
+      user,
     }
     const newState = userReducer(oldState, action)
     expect(newState.firstName).toBe('test')
@@ -33,10 +33,10 @@ describe('user reducer', () => {
       firstName: 'test',
       isAdmin: false,
       gardenId: 2,
-      id: 5
+      id: 5,
     }
     const action = {
-      type: CLEAR_USER
+      type: CLEAR_USER,
     }
     const newState = userReducer(oldState, action)
     expect(newState.gardenId).toBeNull()
@@ -48,10 +48,10 @@ describe('user reducer', () => {
       firstName: 'test',
       isAdmin: false,
       gardenId: 2,
-      id: 5
+      id: 5,
     }
     const action = {
-      type: 'RANDOM_OTHER_ACTION'
+      type: 'RANDOM_OTHER_ACTION',
     }
     const newState = userReducer(oldState, action)
     expect(newState).toBe(oldState)

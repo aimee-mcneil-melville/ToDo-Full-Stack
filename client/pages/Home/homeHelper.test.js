@@ -14,8 +14,8 @@ describe('getUserLocation', () => {
         return {
           location: {
             lat: 321,
-            lon: -321
-          }
+            lon: -321,
+          },
         }
       })
       const setCoords = jest.fn((userCoordinates) => {
@@ -32,15 +32,19 @@ describe('getUserLocation', () => {
         geolocation: {
           getCurrentPosition: (cbFunc) => {
             cbFunc({ coords: { latitude: 123, longitude: -123 } })
-          }
-        }
+          },
+        },
       }
 
       it('dispatches setLocation action correctly', () => {
         getState.mockImplementation(() => {
           return { location: { lat: null, lon: null } }
         })
-        getUserLocation(() => {}, () => false, mockNavigator)
+        getUserLocation(
+          () => {},
+          () => false,
+          mockNavigator
+        )
         expect(dispatch.mock.calls[0][0].location.lat).toBe(123)
       })
 
@@ -53,7 +57,7 @@ describe('getUserLocation', () => {
           expect(userCoordinates.lat).toBe(123)
           expect(userCoordinates.lon).toBe(-123)
         })
-        function isMounted () {
+        function isMounted() {
           return true
         }
         getUserLocation(setCoords, isMounted, mockNavigator)
@@ -64,7 +68,7 @@ describe('getUserLocation', () => {
           return { location: { lat: null, lon: null } }
         })
         const setCoords = jest.fn()
-        function isMounted () {
+        function isMounted() {
           return false
         }
         getUserLocation(setCoords, isMounted, mockNavigator)
@@ -89,54 +93,54 @@ describe('getUserLocation', () => {
 describe('getGardenLocations', () => {
   describe('-> on GET /gardens api call success', () => {
     it('dispatches waiting actions correctly', () => {
-      function consume () {
+      function consume() {
         return Promise.resolve()
       }
-      return getGardenLocations(consume)
-        .then(() => {
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
-          return null
-        })
+      return getGardenLocations(consume).then(() => {
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+        expect(dispatch).toHaveBeenCalledWith({ type: CLEAR_WAITING })
+        return null
+      })
     })
 
     it('returns correct locations object', () => {
-      function consume () {
+      function consume() {
         return Promise.resolve({
           body: {
-            gardens: [{
-              lat: 111,
-              lon: -111,
-              address: '111 One Lane'
-            }, {
-              lat: 222,
-              lon: -222,
-              address: '222 Two Lane'
-            }]
-          }
+            gardens: [
+              {
+                lat: 111,
+                lon: -111,
+                address: '111 One Lane',
+              },
+              {
+                lat: 222,
+                lon: -222,
+                address: '222 Two Lane',
+              },
+            ],
+          },
         })
       }
-      return getGardenLocations(consume)
-        .then(({ gardenCoords, addrs }) => {
-          expect(gardenCoords[1].lon).toBe(-222)
-          expect(gardenCoords).toHaveLength(2)
-          expect(addrs).toHaveLength(2)
-          expect(addrs[0]).toMatch('111 One')
-          return null
-        })
+      return getGardenLocations(consume).then(({ gardenCoords, addrs }) => {
+        expect(gardenCoords[1].lon).toBe(-222)
+        expect(gardenCoords).toHaveLength(2)
+        expect(addrs).toHaveLength(2)
+        expect(addrs[0]).toMatch('111 One')
+        return null
+      })
     })
   })
 
   describe('-> on GET /gardens api call rejection', () => {
     it('dispatches error correctly', () => {
-      function consume () {
+      function consume() {
         return Promise.reject(new Error('mock error'))
       }
-      return getGardenLocations(consume)
-        .then(() => {
-          expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
-          return null
-        })
+      return getGardenLocations(consume).then(() => {
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
     })
   })
 })

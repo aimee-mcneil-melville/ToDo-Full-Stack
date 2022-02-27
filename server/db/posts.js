@@ -7,15 +7,14 @@ module.exports = {
   getPostById,
   addBlogPost,
   updateBlogPost,
-  deleteBlogPost
+  deleteBlogPost,
 }
 
-function getAllPosts (db = connection) {
-  return db('posts')
-    .select()
+function getAllPosts(db = connection) {
+  return db('posts').select()
 }
 
-function getPostsByGardenId (id, db = connection) {
+function getPostsByGardenId(id, db = connection) {
   return db('posts')
     .join('users', 'posts.author', 'users.id')
     .where('posts.garden_id', id)
@@ -31,7 +30,7 @@ function getPostsByGardenId (id, db = connection) {
     )
 }
 
-function getPostById (id, db = connection) {
+function getPostById(id, db = connection) {
   return db('posts')
     .join('users', 'posts.author', 'users.id')
     .where('posts.id', id)
@@ -48,19 +47,18 @@ function getPostById (id, db = connection) {
     .first()
 }
 
-function addBlogPost (newPost, db = connection) {
+function addBlogPost(newPost, db = connection) {
   const { gardenId, author, title, createdOn, content } = newPost
-  return db('posts')
-    .insert({
-      garden_id: gardenId,
-      author,
-      title,
-      created_on: createdOn,
-      content
-    })
+  return db('posts').insert({
+    garden_id: gardenId,
+    author,
+    title,
+    created_on: createdOn,
+    content,
+  })
 }
 
-function updateBlogPost (updatedPost, db = connection) {
+function updateBlogPost(updatedPost, db = connection) {
   const { id, gardenId, author, title, createdOn, content } = updatedPost
   return db('posts')
     .where('id', id)
@@ -69,12 +67,12 @@ function updateBlogPost (updatedPost, db = connection) {
       author,
       title,
       created_on: createdOn,
-      content
+      content,
     })
     .then(() => getPostById(id, db))
 }
 
-function deleteBlogPost (id, db = connection) {
+function deleteBlogPost(id, db = connection) {
   return db('posts')
     .where('posts.id', id)
     .del()

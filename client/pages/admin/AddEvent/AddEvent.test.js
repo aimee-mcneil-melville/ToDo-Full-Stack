@@ -35,8 +35,12 @@ describe('submit button', () => {
 
     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
     const dateInput = screen.getByRole('date')
-    const volunteersNeededInput = screen.getByRole('spinbutton', { name: 'Volunteers Needed' })
-    const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
+    const volunteersNeededInput = screen.getByRole('spinbutton', {
+      name: 'Volunteers Needed',
+    })
+    const descriptionInput = screen.getByRole('textbox', {
+      name: 'Description',
+    })
     const addButton = screen.getByRole('button')
 
     userEvent.type(titleInput, 'test title')

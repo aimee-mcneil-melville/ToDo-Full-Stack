@@ -18,62 +18,67 @@ const registerSchema = Yup.object().shape({
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
     .max(20, 'Sorry, this must be under 20 characters long'),
-  gardenId: Yup.number()
-    .required('Required')
+  gardenId: Yup.number().required('Required'),
 })
 
-export default function Register () {
+export default function Register() {
   const authUser = useAuth0().user
   const history = useHistory()
-  const isAdmin = useSelector(globalState => globalState.user?.isAdmin)
+  const isAdmin = useSelector((globalState) => globalState.user?.isAdmin)
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
-      gardenId: null
+      gardenId: null,
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       registerUser(values, isAdmin, authUser, history.push)
     },
-    validationSchema: registerSchema
+    validationSchema: registerSchema,
   })
 
-  function showAnyErrors (inputName) {
-    return formik.errors[inputName] && formik.touched[inputName]
-      ? <p className='inputError'>{formik.errors[inputName]}</p>
-      : null
+  function showAnyErrors(inputName) {
+    return formik.errors[inputName] && formik.touched[inputName] ? (
+      <p className="inputError">{formik.errors[inputName]}</p>
+    ) : null
   }
   return (
     <>
       <h2>Register to view garden events</h2>
-      <section className='flex-container centre-flex'>
+      <section className="flex-container centre-flex">
         <form onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='label'>First Name</label>
+            <label htmlFor="firstName" className="label">
+              First Name
+            </label>
             {showAnyErrors('firstName')}
             <input
-              className='form-box'
-              id='firstName'
-              name='firstName'
+              className="form-box"
+              id="firstName"
+              name="firstName"
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
-            <label htmlFor='lastName' className='label'>Last Name</label>
+            <label htmlFor="lastName" className="label">
+              Last Name
+            </label>
             {showAnyErrors('lastName')}
             <input
-              className='form-box'
-              id='lastName'
-              name='lastName'
+              className="form-box"
+              id="lastName"
+              name="lastName"
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            <label htmlFor='garden' className='label'>My Garden</label>
+            <label htmlFor="garden" className="label">
+              My Garden
+            </label>
             {showAnyErrors('garden')}
             <select
-              className='form-box'
-              name='gardenId'
-              id='garden'
+              className="form-box"
+              name="gardenId"
+              id="garden"
               onChange={formik.handleChange}
             >
               <option hidden>Select from this list</option>
@@ -83,11 +88,14 @@ export default function Register () {
             </select>
           </div>
           <motion.button
-            className='submit profile-submit'
-            type='submit'
-            data-testid='submitButton'
+            className="submit profile-submit"
+            type="submit"
+            data-testid="submitButton"
             variants={formButtonVariants}
-            whileHover="hover">Register</motion.button>
+            whileHover="hover"
+          >
+            Register
+          </motion.button>
         </form>
       </section>
     </>

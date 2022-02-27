@@ -10,7 +10,7 @@ const { decode } = require('../notifications/emailTokens')
 const router = express.Router()
 
 const checkAdmin = jwtAuthz(['update:event_volunteers'], {
-  customScopeKey: 'permissions'
+  customScopeKey: 'permissions',
 })
 
 module.exports = router
@@ -24,12 +24,12 @@ router.get('/emailsignup', (req, res) => {
       res.redirect(`/gardens/${volunteer.gardenId}`)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to register from email'
-        }
+          title: 'Unable to register from email',
+        },
       })
     })
 })
@@ -47,8 +47,8 @@ router.post('/', checkJwt, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to register volunteer status'
-        }
+          title: 'Unable to register volunteer status',
+        },
       })
     })
 })
@@ -65,8 +65,8 @@ router.delete('/', checkJwt, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to remove volunteer status'
-        }
+          title: 'Unable to remove volunteer status',
+        },
       })
     })
 })
@@ -79,12 +79,12 @@ router.patch('/', checkJwt, checkAdmin, (req, res) => {
       res.sendStatus(200)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to set attendance for this volunteer/event'
-        }
+          title: 'Unable to set attendance for this volunteer/event',
+        },
       })
     })
 })
@@ -101,8 +101,8 @@ router.post('/extras', checkJwt, (req, res) => {
       log(err.message)
       res.status(500).json({
         error: {
-          title: 'Unable to add extra volunteer'
-        }
+          title: 'Unable to add extra volunteer',
+        },
       })
     })
 })

@@ -1,9 +1,4 @@
-import {
-  showError,
-  hideError,
-  SHOW_ERROR,
-  HIDE_ERROR
-} from './error'
+import { showError, hideError, SHOW_ERROR, HIDE_ERROR } from './error'
 
 describe('showError', () => {
   it('returns the correct action', () => {

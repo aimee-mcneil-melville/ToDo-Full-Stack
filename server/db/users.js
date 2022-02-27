@@ -5,23 +5,30 @@ module.exports = {
   userExists,
   getUserDetailsByGarden,
   getUsersByAuth,
-  getUserById
+  getUserById,
 }
 
-function getUserDetailsByGarden (gardenId, db = connection) {
+function getUserDetailsByGarden(gardenId, db = connection) {
   return db('users')
     .select('id', 'garden_id as gardenId', 'email')
     .where('garden_id', gardenId)
 }
 
-function getUserById (id, db = connection) {
+function getUserById(id, db = connection) {
   return db('users')
-    .select('garden_id as gardenId', 'id', 'auth0_id as auth0Id', 'email', 'first_name as firstName', 'last_name as lastName')
+    .select(
+      'garden_id as gardenId',
+      'id',
+      'auth0_id as auth0Id',
+      'email',
+      'first_name as firstName',
+      'last_name as lastName'
+    )
     .where('id', id)
     .first()
 }
 
-function getUsersByAuth (auth0Id, db = connection) {
+function getUsersByAuth(auth0Id, db = connection) {
   return db('users')
     .select(
       'id',
@@ -35,7 +42,7 @@ function getUsersByAuth (auth0Id, db = connection) {
     .first()
 }
 
-function createUser (user, db = connection) {
+function createUser(user, db = connection) {
   return userExists(user.auth0Id, db)
     .then((exists) => {
       if (exists) {
@@ -49,12 +56,12 @@ function createUser (user, db = connection) {
         last_name: user.lastName,
         garden_id: user.gardenId,
         email: user.email,
-        auth0_id: user.auth0Id
+        auth0_id: user.auth0Id,
       })
     })
 }
 
-function userExists (uid, db = connection) {
+function userExists(uid, db = connection) {
   return db('users')
     .count('id as n')
     .where('auth0_id', uid)

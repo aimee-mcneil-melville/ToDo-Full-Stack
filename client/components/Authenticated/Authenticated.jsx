@@ -3,16 +3,12 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import { getIsAuthenticated } from '../../auth-utils'
 
-export function IfAuthenticated ({ children }) {
+export function IfAuthenticated({ children }) {
   const isAuthenticated = getIsAuthenticated(useAuth0)
-  return isAuthenticated
-    ? <>{children}</>
-    : null
+  return isAuthenticated ? <>{children}</> : null
 }
 
-export function IfNotAuthenticated ({ children }) {
+export function IfNotAuthenticated({ children }) {
   const isAuthenticated = getIsAuthenticated(useAuth0)
-  return !isAuthenticated
-    ? <>{children}</>
-    : null
+  return !isAuthenticated ? <>{children}</> : null
 }

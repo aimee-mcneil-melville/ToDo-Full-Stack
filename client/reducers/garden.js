@@ -8,10 +8,10 @@ const initialState = {
   events: [],
   address: '',
   lat: 0,
-  lon: 0
+  lon: 0,
 }
 
-export default function garden (state = initialState, action) {
+export default function garden(state = initialState, action) {
   switch (action.type) {
     case SET_GARDEN:
       return action.garden

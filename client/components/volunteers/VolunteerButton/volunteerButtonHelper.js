@@ -4,7 +4,12 @@ import { setWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 import { updateEventVols } from '../../../actions/garden'
 
-export function toggleVolunteerStatus (eventId, willVolunteer, setVolunteering, consume = requestor) {
+export function toggleVolunteerStatus(
+  eventId,
+  willVolunteer,
+  setVolunteering,
+  consume = requestor
+) {
   const storeState = getState()
   const { id, token } = storeState.user
   if (!id) {

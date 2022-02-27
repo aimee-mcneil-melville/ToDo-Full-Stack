@@ -8,7 +8,7 @@ import Events from './Events'
 describe('Add Event button', () => {
   it('displays for admin', () => {
     renderWithRedux(<Events events={[]} />, {
-      initialState: { user: { isAdmin: true } }
+      initialState: { user: { isAdmin: true } },
     })
     expect(screen.getByRole('link')).toHaveTextContent('Add New Event')
   })
@@ -27,15 +27,15 @@ describe('events list', () => {
         volunteersNeeded: 8,
         title: 'Weeding worker Bee',
         date: '2020-08-27',
-        description: 'Its time to get these weeds under control.'
+        description: 'Its time to get these weeds under control.',
       },
       {
         id: 2,
         volunteersNeeded: 4,
         title: 'Sowing Corn',
         date: '2020-08-28',
-        description: 'Help get out the lovely corns in the ground!.'
-      }
+        description: 'Help get out the lovely corns in the ground!.',
+      },
     ]
     renderWithRedux(<Events events={events} />)
     const eventItems = screen.getAllByRole('heading', { level: 2 })

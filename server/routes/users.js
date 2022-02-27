@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     lastName,
     gardenId,
     email,
-    auth0Id
+    auth0Id,
   }
 
   try {
@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
     log(err.message)
     res.status(500).json({
       error: {
-        title: 'failed: user exists'
-      }
+        title: 'failed: user exists',
+      },
     })
   }
 
@@ -36,8 +36,8 @@ router.post('/', async (req, res) => {
     log(err.message)
     res.status(500).json({
       error: {
-        title: 'failed to retrieve added user'
-      }
+        title: 'failed to retrieve added user',
+      },
     })
   }
 })
@@ -53,8 +53,8 @@ router.get('/:id', async (req, res) => {
     log(err.message)
     res.status(500).json({
       error: {
-        title: 'failed to retrieve user'
-      }
+        title: 'failed to retrieve user',
+      },
     })
   }
 })

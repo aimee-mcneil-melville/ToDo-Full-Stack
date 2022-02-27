@@ -10,10 +10,10 @@ import store from './store'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Auth0Provider
-      domain='gardenz.au.auth0.com'
-      clientId='sF7Tf4GqnhENJ7l7gArp5c56ZFZ2WOcL'
+      domain="gardenz.au.auth0.com"
+      clientId="sF7Tf4GqnhENJ7l7gArp5c56ZFZ2WOcL"
       redirectUri={window.location.origin}
-      audience='https://garden/nz/api'
+      audience="https://garden/nz/api"
     >
       <Provider store={store}>
         <Router>

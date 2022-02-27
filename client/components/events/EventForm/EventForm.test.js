@@ -10,12 +10,14 @@ describe('event form field', () => {
       title: '',
       date: '',
       volunteersNeeded: 0,
-      description: ''
+      description: '',
     }
     render(<EventForm formData={emptyForm} />)
 
     const titleInput = screen.getByRole('textbox', { name: 'Event Title' })
-    const descriptionInput = screen.getByRole('textbox', { name: 'Description' })
+    const descriptionInput = screen.getByRole('textbox', {
+      name: 'Description',
+    })
 
     userEvent.type(titleInput, 'test title')
     userEvent.type(descriptionInput, 'cool event, yeiyah!')
@@ -32,7 +34,7 @@ describe('event form field', () => {
       title: 'mock title',
       date: '29/07/2020',
       volunteersNeeded: 2,
-      description: 'rad event'
+      description: 'rad event',
     }
     render(<EventForm onSubmit={handleSubmit} formData={mockForm} />)
     userEvent.clear(screen.getByLabelText(/event title/i))

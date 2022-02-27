@@ -8,15 +8,15 @@ describe('garden reducer', () => {
   it('returns new garden object on "SET_GARDEN"', () => {
     const oldGarden = {
       id: 1,
-      name: 'cool garden'
+      name: 'cool garden',
     }
 
     const action = {
       type: SET_GARDEN,
       garden: {
         id: 2,
-        name: 'very cool garden'
-      }
+        name: 'very cool garden',
+      },
     }
     const newState = gardenReducer(oldGarden, action)
     expect(newState.id).toBe(2)
@@ -26,11 +26,11 @@ describe('garden reducer', () => {
   it('returns old state on unknown action type', () => {
     const oldGarden = {
       id: 1,
-      name: 'cool garden'
+      name: 'cool garden',
     }
 
     const action = {
-      type: 'RANDOM_OTHER_ACTION'
+      type: 'RANDOM_OTHER_ACTION',
     }
     const newState = gardenReducer(oldGarden, action)
     expect(newState).toBe(oldGarden)
@@ -44,12 +44,12 @@ describe('garden reducer', () => {
       date: '2020-2-20',
       description: 'bla test',
       totalVolunteers: 2,
-      isVolunteer: true
+      isVolunteer: true,
     }
 
     const action = {
       type: UPDATE_EVENT_VOLS,
-      eventId: 10
+      eventId: 10,
     }
 
     updateVolCount.mockImplementation((garden, eventId) => {
@@ -61,7 +61,7 @@ describe('garden reducer', () => {
         date: '2020-2-20',
         description: 'bla test',
         totalVolunteers: 2,
-        isVolunteer: true
+        isVolunteer: true,
       }
     })
 

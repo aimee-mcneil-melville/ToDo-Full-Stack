@@ -19,23 +19,22 @@ describe('Garden', () => {
           events: [],
           address: 'cool place, nz',
           lat: 123,
-          lon: -123
+          lon: -123,
         },
         user: {
-          id: 1
-        }
-      }
+          id: 1,
+        },
+      },
     })
 
     // we need renderWithRedux even though Garden isn't connecting to the store
     // because it's child component (Events) does
-    return screen.findByRole('heading', { name: 'test garden' })
-      .then(() => {
-        const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
-        expect(getGarden).toHaveBeenCalled()
-        expect(url).toBeInTheDocument()
-        expect(url.href).toMatch('cooltestgarden.com')
-        return null
-      })
+    return screen.findByRole('heading', { name: 'test garden' }).then(() => {
+      const url = screen.getByRole('link', { name: 'cooltestgarden.com' })
+      expect(getGarden).toHaveBeenCalled()
+      expect(url).toBeInTheDocument()
+      expect(url.href).toMatch('cooltestgarden.com')
+      return null
+    })
   })
 })

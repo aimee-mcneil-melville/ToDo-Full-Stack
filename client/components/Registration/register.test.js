@@ -7,12 +7,12 @@ import Register from './Register'
 
 describe('Register form field', () => {
   it('updates correctly on user input', async () => {
-    renderWithRedux(<Register location={{ pathname: '/profile' }}/>, {
+    renderWithRedux(<Register location={{ pathname: '/profile' }} />, {
       initialState: {
         user: {
-          isAdmin: 0
-        }
-      }
+          isAdmin: 0,
+        },
+      },
     })
 
     const firstNameInput = screen.getByRole('textbox', { name: 'First Name' })
@@ -28,13 +28,16 @@ describe('Register form field', () => {
   })
   it('"Required" comes up on empty input', async () => {
     const handleSubmit = jest.fn()
-    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
-      initialState: {
-        user: {
-          isAdmin: 0
-        }
+    renderWithRedux(
+      <Register onSubmit={handleSubmit} location={{ pathname: '/profile' }} />,
+      {
+        initialState: {
+          user: {
+            isAdmin: 0,
+          },
+        },
       }
-    })
+    )
 
     userEvent.clear(screen.getByLabelText(/first name/i))
     userEvent.clear(screen.getByLabelText(/last name/i))
@@ -46,38 +49,54 @@ describe('Register form field', () => {
   })
   it('message comes up on short input', async () => {
     const handleSubmit = jest.fn()
-    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
-      initialState: {
-        user: {
-          isAdmin: 0
-        }
+    renderWithRedux(
+      <Register onSubmit={handleSubmit} location={{ pathname: '/profile' }} />,
+      {
+        initialState: {
+          user: {
+            isAdmin: 0,
+          },
+        },
       }
-    })
+    )
 
     userEvent.type(screen.getByLabelText(/first name/i), 'a')
     userEvent.type(screen.getByLabelText(/last name/i), 'b')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    const element = await screen.findAllByText('This must be at least 2 characters long')
+    const element = await screen.findAllByText(
+      'This must be at least 2 characters long'
+    )
     expect(element[0]).toBeInTheDocument()
   })
   it('message comes up on long input', async () => {
     const handleSubmit = jest.fn()
-    renderWithRedux(<Register onSubmit={handleSubmit} location={{ pathname: '/profile' }}/>, {
-      initialState: {
-        user: {
-          isAdmin: 0
-        }
+    renderWithRedux(
+      <Register onSubmit={handleSubmit} location={{ pathname: '/profile' }} />,
+      {
+        initialState: {
+          user: {
+            isAdmin: 0,
+          },
+        },
       }
-    })
+    )
 
-    userEvent.type(screen.getByLabelText(/first name/i), 'whatawonderfuldaytobealive')
-    userEvent.type(screen.getByLabelText(/last name/i), 'howmanydaysareleftoftheyear')
+    userEvent.type(
+      screen.getByLabelText(/first name/i),
+      'whatawonderfuldaytobealive'
+    )
+    userEvent.type(
+      screen.getByLabelText(/last name/i),
+      'howmanydaysareleftoftheyear'
+    )
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    const element = await screen.findAllByText('Sorry, this must be under 15 characters long')
+    const element = await screen.findAllByText(
+      'Sorry, this must be under 15 characters long'
+    )
     expect(element[0]).toBeInTheDocument()
   })
 })

@@ -3,12 +3,12 @@ import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 import requestor from '../../../consume'
 
-export function addEvent (event, navigateTo, consume = requestor) {
+export function addEvent(event, navigateTo, consume = requestor) {
   const storeState = getState()
   const { gardenId, token } = storeState.user
   const newEvent = {
     gardenId,
-    ...event
+    ...event,
   }
   dispatch(setWaiting())
   return consume('/events', token, 'post', newEvent)

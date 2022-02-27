@@ -10,14 +10,14 @@ describe('Volunteers list', () => {
         userId: 1,
         firstName: 'Test User',
         lastName: 'Lastname',
-        attended: true
+        attended: true,
       },
       {
         userId: 2,
         firstName: 'Test User 2',
         lastName: 'Lastname 2',
-        attended: false
-      }
+        attended: false,
+      },
     ]
     render(<VolunteerList volunteers={mockVolunteers} />)
     expect(screen.getAllByRole('listitem')).toHaveLength(2)

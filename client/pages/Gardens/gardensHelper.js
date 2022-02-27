@@ -3,7 +3,7 @@ import { dispatch } from '../../store'
 import { clearWaiting, setWaiting } from '../../actions/waiting'
 import { showError } from '../../actions/error'
 
-export function getAllGardens (consume = requestor) {
+export function getAllGardens(consume = requestor) {
   dispatch(setWaiting())
 
   return consume('/gardens')

@@ -11,5 +11,5 @@ export default combineReducers({
   location,
   waiting,
   error,
-  garden
+  garden,
 })

@@ -1,9 +1,4 @@
-import {
-  setUser,
-  clearUser,
-  SET_USER,
-  CLEAR_USER
-} from './user'
+import { setUser, clearUser, SET_USER, CLEAR_USER } from './user'
 
 describe('setUser', () => {
   it('returns the correct action', () => {

@@ -5,22 +5,22 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: path.join(__dirname, 'dev.sqlite3')
-    }
+      filename: path.join(__dirname, 'dev.sqlite3'),
+    },
   },
 
   test: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: ':memory:'
+      filename: ':memory:',
     },
     seeds: {
-      directory: path.join(__dirname, 'seeds')
+      directory: path.join(__dirname, 'seeds'),
     },
     migrations: {
-      directory: path.join(__dirname, 'migrations')
-    }
+      directory: path.join(__dirname, 'migrations'),
+    },
   },
 
   e2e: {
@@ -28,45 +28,45 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     seeds: {
-      directory: path.join(__dirname, 'seeds')
+      directory: path.join(__dirname, 'seeds'),
     },
     migrations: {
-      directory: path.join(__dirname, 'migrations')
-    }
+      directory: path.join(__dirname, 'migrations'),
+    },
   },
 
   staging: {
     client: 'postgresql',
     connection: {
       connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
   },
 
   production: {
     client: 'postgresql',
     connection: {
       connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
     },
-    useNullAsDefault: true
-  }
+    useNullAsDefault: true,
+  },
 }

@@ -21,24 +21,26 @@ afterAll(() => {
 
 describe('getCommentsByPostId', () => {
   it('returns all comments for a specific post', () => {
-    return db.getCommentsByPostId(1, testDb)
-      .then(comments => {
-        expect(comments).toHaveLength(1)
-        expect(comments[0].content).toMatch('Twas a wonderful day for lettuce picking!')
-        expect(comments[0].post_id).toBe(1)
-        return null
-      })
+    return db.getCommentsByPostId(1, testDb).then((comments) => {
+      expect(comments).toHaveLength(1)
+      expect(comments[0].content).toMatch(
+        'Twas a wonderful day for lettuce picking!'
+      )
+      expect(comments[0].post_id).toBe(1)
+      return null
+    })
   })
 })
 
 describe('deleteAllCommentsByPostId', () => {
   it('deletes all comments with specified post id', () => {
-    return db.deleteAllCommentsByPostId(1, testDb)
+    return db
+      .deleteAllCommentsByPostId(1, testDb)
       .then(() => {
         return db.getAllComments(testDb)
       })
-      .then(comments => {
-        const filtered = comments.filter(e => e.id === 1)
+      .then((comments) => {
+        const filtered = comments.filter((e) => e.id === 1)
         expect(filtered).toHaveLength(0)
         return null
       })
@@ -51,14 +53,15 @@ describe('postComment', () => {
       postId: 1,
       author: 1,
       createdOn: '10/10',
-      content: 'wow, cool gardens!'
+      content: 'wow, cool gardens!',
     }
-    return db.postComment(newComment, testDb)
-      .then(comment => {
+    return db
+      .postComment(newComment, testDb)
+      .then((comment) => {
         const id = comment[0]
         return db.getCommentById(id, testDb)
       })
-      .then(comment => {
+      .then((comment) => {
         expect(comment.post_id).toBe(1)
         expect(comment.author).toBe(1)
         expect(comment.content).toMatch('wow, cool gardens!')
@@ -69,10 +72,11 @@ describe('postComment', () => {
 
 describe('deleteCommentById', () => {
   it('deletes a comment by the comments id', () => {
-    return db.deleteCommentById(1, testDb)
+    return db
+      .deleteCommentById(1, testDb)
       .then(() => db.getAllComments(testDb))
-      .then(comments => {
-        const filtered = comments.filter(e => e.id === 1)
+      .then((comments) => {
+        const filtered = comments.filter((e) => e.id === 1)
         expect(filtered).toHaveLength(0)
         return null
       })
@@ -86,15 +90,14 @@ describe('updateCommentById', () => {
       postId: 1,
       author: 2,
       createdOn: '10-24-12',
-      content: 'Hah! I changed my comment!'
+      content: 'Hah! I changed my comment!',
     }
 
-    return db.updateCommentById(updatedComment, testDb)
-      .then(comment => {
-        expect(comment.id).toBe(1)
-        expect(comment.content).toMatch('Hah! I changed my comment!')
-        expect(comment.author).toBe(2)
-        return null
-      })
+    return db.updateCommentById(updatedComment, testDb).then((comment) => {
+      expect(comment.id).toBe(1)
+      expect(comment.content).toMatch('Hah! I changed my comment!')
+      expect(comment.author).toBe(2)
+      return null
+    })
   })
 })

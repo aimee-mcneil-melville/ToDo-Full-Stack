@@ -14,7 +14,7 @@ const mockUser = { id: 123 }
 describe('getGarden', () => {
   describe('-> GET /gardens/:id api call success', () => {
     it('dispatches with the correct garden action', () => {
-      function consume (path) {
+      function consume(path) {
         expect(path).toMatch('2')
         return Promise.resolve({
           body: {
@@ -25,40 +25,38 @@ describe('getGarden', () => {
             address: 'cool place, nz',
             lat: 123,
             lon: -123,
-            fake: 'asdf'
-          }
+            fake: 'asdf',
+          },
         })
       }
-      return getGarden(2, mockUser, consume)
-        .then((garden) => {
-          expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
-          expect(dispatch).toHaveBeenCalledWith({
-            type: SET_GARDEN,
-            garden: {
-              name: 'test garden',
-              description: 'a rad test garden',
-              url: 'cooltestgarden.com',
-              events: [],
-              address: 'cool place, nz',
-              lat: 123,
-              lon: -123
-            }
-          })
-          return null
+      return getGarden(2, mockUser, consume).then(() => {
+        expect(dispatch).toHaveBeenCalledWith({ type: SET_WAITING })
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_GARDEN,
+          garden: {
+            name: 'test garden',
+            description: 'a rad test garden',
+            url: 'cooltestgarden.com',
+            events: [],
+            address: 'cool place, nz',
+            lat: 123,
+            lon: -123,
+          },
         })
+        return null
+      })
     })
   })
 
   describe('-> GET /gardens/:id api call rejection', () => {
     it('dispatches error correctly', () => {
-      function consume () {
+      function consume() {
         return Promise.reject(new Error('mock error'))
       }
-      return getGarden(null, mockUser, consume)
-        .then(() => {
-          expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
-          return null
-        })
+      return getGarden(null, mockUser, consume).then(() => {
+        expect(dispatch.mock.calls[1][0].errorMessage).toBe('mock error')
+        return null
+      })
     })
   })
 })

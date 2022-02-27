@@ -35,14 +35,16 @@ JEn/NS0gRKfNh6bwZaSTfhFxALmKApVNTPm2UT9G5hADTcw4xTQf
 -----END RSA PRIVATE KEY-----`
 
 const nockReply = {
-  keys: [{
-    alg: 'RS256',
-    kty: 'RSA',
-    use: 'sig',
-    n: 'waZ3afW0_zYy3HfJwAAr83PDdZvADuSJ6jTZk1-jprdHdG6PzH9XaB6xhzvwTIJFcWuREkNSC06MDLCuvmZ8fj93FcNaZ2ZJ0LFvY4SODMDqFekE5vD2Y15aSI2Y69qwKlVLphvEEXJ_FRqIHQX9wwCtwVsnqcLt_f5aNWRHyk2jwhz7IBm-dLu9_CV8AsvE5ddgOYYbNk-SMCjznESZcMg1KRzbdawnOklzloc-Q0iCxQK7022ukVxFbmT7U1hTVOTOzrruqBxptPDiutkKfOXebzYyZodlFFL5MWcatCWS3XL51KBIeKWny5mExZPzIf1ofGuJe0zxllw8olgMqQ', // eslint-disable-line max-len
-    e: 'AQAB',
-    kid: '0'
-  }]
+  keys: [
+    {
+      alg: 'RS256',
+      kty: 'RSA',
+      use: 'sig',
+      n: 'waZ3afW0_zYy3HfJwAAr83PDdZvADuSJ6jTZk1-jprdHdG6PzH9XaB6xhzvwTIJFcWuREkNSC06MDLCuvmZ8fj93FcNaZ2ZJ0LFvY4SODMDqFekE5vD2Y15aSI2Y69qwKlVLphvEEXJ_FRqIHQX9wwCtwVsnqcLt_f5aNWRHyk2jwhz7IBm-dLu9_CV8AsvE5ddgOYYbNk-SMCjznESZcMg1KRzbdawnOklzloc-Q0iCxQK7022ukVxFbmT7U1hTVOTOzrruqBxptPDiutkKfOXebzYyZodlFFL5MWcatCWS3XL51KBIeKWny5mExZPzIf1ofGuJe0zxllw8olgMqQ', // eslint-disable-line max-len
+      e: 'AQAB',
+      kid: '0',
+    },
+  ],
 }
 
 // nock will intercept the http call and will return the nockReply object
@@ -53,12 +55,12 @@ nock('https://gardenz.au.auth0.com')
 
 const getMockToken = () => {
   const user = {
-    email: 'member@example.com'
+    email: 'member@example.com',
   }
 
   const payload = {
     nickname: user.email.split('@').shift(),
-    name: user.email
+    name: user.email,
   }
 
   const options = {
@@ -66,7 +68,7 @@ const getMockToken = () => {
     algorithm: 'RS256',
     expiresIn: '1d',
     audience: 'https://garden/nz/api',
-    issuer: 'https://gardenz.au.auth0.com/'
+    issuer: 'https://gardenz.au.auth0.com/',
   }
 
   let token
@@ -82,17 +84,18 @@ const getMockToken = () => {
 
 const getAdminToken = () => {
   const user = {
-    email: 'admin@example.com'
+    email: 'admin@example.com',
   }
 
   const payload = {
     nickname: user.email.split('@').shift(),
     name: user.email,
-    permissions: ['update:event',
+    permissions: [
+      'update:event',
       'create:event',
       'update:event_volunteers',
-      'create:garden'
-    ]
+      'create:garden',
+    ],
   }
 
   const options = {
@@ -100,7 +103,7 @@ const getAdminToken = () => {
     algorithm: 'RS256',
     expiresIn: '1d',
     audience: 'https://garden/nz/api',
-    issuer: 'https://gardenz.au.auth0.com/'
+    issuer: 'https://gardenz.au.auth0.com/',
   }
 
   let token
@@ -115,5 +118,5 @@ const getAdminToken = () => {
 }
 module.exports = {
   getMockToken,
-  getAdminToken
+  getAdminToken,
 }

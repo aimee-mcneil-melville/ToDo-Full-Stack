@@ -11,14 +11,14 @@ describe('Testing AddVolunteerFormHelper', () => {
     const mockVolunteer = {
       id: 1,
       firstName: 'tester',
-      lastName: 'tested'
+      lastName: 'tested',
     }
     const mockAdd = jest.fn((newVolunteer) => {
       expect(newVolunteer).toEqual({
         id: 1,
         firstName: 'tester',
         lastName: 'tested',
-        extraVolId: 77
+        extraVolId: 77,
       })
     })
     const mockConsume = jest.fn((path, method, volunteer) => {
@@ -27,16 +27,15 @@ describe('Testing AddVolunteerFormHelper', () => {
       expect(volunteer).toBe(mockVolunteer)
       return Promise.resolve({
         body: {
-          extraVolId: 77
-        }
+          extraVolId: 77,
+        },
       })
     })
 
-    return addVolunteer(mockVolunteer, mockAdd, mockConsume)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2)
-        return null
-      })
+    return addVolunteer(mockVolunteer, mockAdd, mockConsume).then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      return null
+    })
   })
 
   it('Should dispatch error action when api fails', async () => {
@@ -44,10 +43,10 @@ describe('Testing AddVolunteerFormHelper', () => {
     const mockVolunteer = {
       id: 66,
       firstName: 'I fail',
-      lastName: 'Everything'
+      lastName: 'Everything',
     }
     const mockAdd = jest.fn()
-    const mockConsume = jest.fn((path, method, volunteer) => {
+    const mockConsume = jest.fn(() => {
       return Promise.reject(new Error('Unable to add extra volunteer'))
     })
     await addVolunteer(mockVolunteer, mockAdd, mockConsume)

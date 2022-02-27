@@ -1,4 +1,9 @@
-import { setGarden, updateEventVols, SET_GARDEN, UPDATE_EVENT_VOLS } from './garden'
+import {
+  setGarden,
+  updateEventVols,
+  SET_GARDEN,
+  UPDATE_EVENT_VOLS,
+} from './garden'
 
 describe('setGarden', () => {
   it('returns the correct action', () => {
@@ -12,6 +17,6 @@ describe('updateEventVols', () => {
   it('returns the correct action', () => {
     const action = updateEventVols(2)
     expect(action.type).toBe(UPDATE_EVENT_VOLS)
-    expect(action.eventId).toEqual(2)
+    expect(action.eventId).toBe(2)
   })
 })

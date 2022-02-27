@@ -7,7 +7,7 @@ import WaitIndicator from './WaitIndicator.jsx'
 describe('wait indicator', () => {
   it('displays if waiting is true in redux store', () => {
     renderWithRedux(<WaitIndicator />, {
-      initialState: { waiting: true }
+      initialState: { waiting: true },
     })
     const waitIndicators = screen.getAllByAltText('loading indicator')
     expect(waitIndicators).toHaveLength(3)

@@ -6,34 +6,38 @@ import { motion } from 'framer-motion'
 import { showError } from '../../actions/error'
 import { cardVariant1 } from '../animationVariants'
 
-export default function Gardens () {
+export default function Gardens() {
   const [gardenList, setGardenList] = useState([])
   const dispatch = useDispatch()
 
   useEffect(() => {
     getAllGardens()
-      .then(gardens => {
+      .then((gardens) => {
         setGardenList(gardens)
         return null
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(showError(err.message))
         return false
       })
   }, [])
 
   return (
-    <ul className='card-container'>
+    <ul className="card-container">
       {gardenList.map((garden) => {
         return (
           <motion.li
-            className='card'
+            className="card"
             key={garden.id}
             variants={cardVariant1}
-            initial='hidden'
-            animate='visible'
-            whileHover={{ scale: 1.1, transition: { duration: 0.4, yoyo: Infinity } }}>
-            <h2 className='card-header'>
+            initial="hidden"
+            animate="visible"
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.4, yoyo: Infinity },
+            }}
+          >
+            <h2 className="card-header">
               <Link to={`/gardens/${garden.id}`}>{garden.name}</Link>
             </h2>
             <p>Address: {garden.address}</p>

@@ -11,7 +11,7 @@ jest.mock('./errorHelper')
 describe('error banner', () => {
   it('is displayed if there is an error in redux store', () => {
     renderWithRedux(<Error />, {
-      initialState: { error: 'mock error message' }
+      initialState: { error: 'mock error message' },
     })
     const error = screen.getByRole('alert')
     expect(error).toHaveTextContent('mock error')
@@ -27,7 +27,7 @@ describe('error banner', () => {
 describe('hide error button', () => {
   it('calls hide helper function on click', () => {
     renderWithRedux(<Error />, {
-      initialState: { error: 'mock error message' }
+      initialState: { error: 'mock error message' },
     })
     const hideErrorButton = screen.getByText('✕')
     userEvent.click(hideErrorButton)
