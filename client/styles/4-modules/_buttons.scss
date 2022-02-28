@@ -55,3 +55,15 @@
 .inline-button {
   display: inline-block;
 }
+
+.register-button {    
+  background-color: vars.$secondary;
+  margin-left: 14px;
+  color: white;
+  border-radius: 4px;
+
+  &:hover {
+      background-color: vars.$dark-blue;
+      color: white;
+  }
+}

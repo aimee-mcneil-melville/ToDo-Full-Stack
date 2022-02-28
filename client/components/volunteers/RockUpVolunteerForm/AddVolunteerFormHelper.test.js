@@ -1,4 +1,4 @@
-import { dispatch } from '../../../store'
+import { dispatch, getState } from '../../../store'
 import { addVolunteer } from './AddVolunteerFormHelper'
 import { showError } from '../../../actions/error'
 
@@ -21,7 +21,8 @@ describe('Testing AddVolunteerFormHelper', () => {
         extraVolId: 77
       })
     })
-    const mockConsume = jest.fn((path, method, volunteer) => {
+    getState.mockImplementation(() => ({ user: { token: 'dummy token' } }))
+    const mockConsume = jest.fn((path, token, method, volunteer) => {
       expect(path).toBe('/volunteers/extras')
       expect(method).toBe('post')
       expect(volunteer).toBe(mockVolunteer)

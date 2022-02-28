@@ -1,10 +1,12 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { renderWithRedux } from '../../test-utils'
 
 import Garden from './Garden'
 import { getGarden } from './gardenHelper'
+
+import BarGraph from '../../components/dataVis/BarGraph'
 
 jest.mock('./gardenHelper')
 
@@ -37,5 +39,32 @@ describe('Garden', () => {
         expect(url.href).toMatch('cooltestgarden.com')
         return null
       })
+  })
+})
+
+describe('bar graphs', () => {
+  const mockEvents = [
+    {
+      id: 1,
+      title: 'test Event 1'
+    },
+    {
+      id: 2,
+      title: 'test Event 2'
+    }
+  ]
+  it('bar graphs shows when events array has at least one event', () => {
+    render(<BarGraph events={mockEvents} />)
+    const graph = screen.getByTestId('bar-graph')
+    expect(graph).toBeVisible()
+  })
+})
+
+describe('empty events array', () => {
+  const mockEvents = []
+  it('bar graphs does not show when events array is empty', () => {
+    render(<BarGraph events={mockEvents} />)
+    const graph = screen.queryByTestId('bar-graph')
+    expect(graph).toBeVisible(false)
   })
 })

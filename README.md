@@ -40,6 +40,7 @@ To run one single test, add `.only` after `it`
 it.only('my test name goes here', () => {
   // here test goes here
 ))
+
 ```
 
 Then you can run the test file individually, `npx jest events.test.js`.

@@ -1,4 +1,6 @@
+@use '../1-helpers/functions';
 @use '../1-helpers/mixins';
+@use '../1-helpers/vars';
 
 .flex-container {
   display: flex;
@@ -10,7 +12,7 @@
 
 .flex-container.flex-garden {
   justify-content: space-between;
-  width: 100%;
+  width: functions.colWidth(12);
 }
 
 .flex-column {
@@ -31,10 +33,6 @@
 
 .centre-flex {
   justify-content: center;
-}
-
-.margin-container {
-  margin: 2.5rem;
 }
 
 .home-flex {

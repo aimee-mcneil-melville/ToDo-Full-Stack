@@ -1,12 +1,13 @@
 import requestor from '../../../consume'
-import { dispatch } from '../../../store'
+import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../actions/waiting'
 import { showError } from '../../../actions/error'
 
 export function addVolunteer (volunteer, addExtraVolunteer, consume = requestor) {
+  const { token } = getState().user
   dispatch(setWaiting())
 
-  return consume('/volunteers/extras', 'post', volunteer)
+  return consume('/volunteers/extras', token, 'post', volunteer)
     .then((response) => {
       dispatch(clearWaiting())
       const newVolunteer = { ...volunteer, ...response.body }
