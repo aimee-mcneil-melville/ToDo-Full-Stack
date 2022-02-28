@@ -35,10 +35,6 @@
   justify-content: center;
 }
 
-.margin-container {
-  margin: vars.$base-size * 1.5;
-}
-
 .home-flex {
   @extend .flex-container;
   height: 75vh;

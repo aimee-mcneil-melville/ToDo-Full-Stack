@@ -5,9 +5,16 @@
 
 .container {
   position: relative;
+  // border: 3px solid rgb(50, 252, 9);
+  display: block;
+  // flex-direction: row;
+  // justify-content: space-between;
+
   @include mixins.media-queries(desktop, min) {
-    width: 1400px;
+    // width: 120rem;
+    width: functions.colWidth(10);
     margin: 0 auto;
+    // border: 1px solid rgb(252, 25, 9);
   }
 }
 
@@ -17,18 +24,19 @@
     width: functions.colWidth(6);
   }
 
-  &__img{
-    position:fixed;
+  &__img {
+    position: relative;
     margin-top: 20px;
     margin-left: 80px;
     margin-right: none;
     width: 30%;
     height: 40%;
+    border: 1px solid black;
   }
 }
 
 .column-6.garden-6 {
-  padding: vars.$base-size *3;
+  padding: vars.$base-size * 3;
   text-align: left;
 
   @include mixins.media-queries(mobile, min) {
@@ -46,9 +54,14 @@
 .column-9.garden {
   width: functions.colWidth(12);
   padding: vars.$base-size;
-  text-align: left; 
+  text-align: left;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     width: functions.colWidth(12);
     text-align: left;
     color: vars.$secondary;
