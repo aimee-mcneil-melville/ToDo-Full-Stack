@@ -13,12 +13,10 @@
 }
 
 .hero-image {
-  position: absolute;
-  right: 0;
-  top: 0;
+  height: 100%;
   z-index: -1;
-  max-width: functions.colWidth(8);
-  margin:  vars.$base-size * 4 0;
+  max-width: functions.colWidth(6);
+  // margin: vars.$base-size * 4 0;
   border-radius: vars.$border-radius * 3;
   box-shadow: vars.$box-shadow;
 }
@@ -29,10 +27,10 @@
   margin: 0;
 
   span {
-      color: vars.$blue;
-      margin: 0;
-      width: 100%;
-      display: block;
+    color: vars.$blue;
+    margin: 0;
+    width: 100%;
+    display: block;
   }
 }
 
