@@ -5,17 +5,19 @@ import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import Users from './Users'
-import { Route } from 'react-router'
+import { Routes, Route } from 'react-router-dom'
 
 function App () {
   cacheUser(useAuth0)
 
   return (
     <div className='app'>
-      <Route exact path='/' component={Nav} />
-      <Route exact path='/' component={Users} />
-      <Route exact path='/' component={PingRoutes} />
-      <Route path='/register' component={Registration} />
+      <Routes>
+        <Route path='/' element={<Nav/>} />
+        <Route path='/' element={<Users/>} />
+        <Route path='/' element={<PingRoutes/>} />
+        <Route path='/profile' element={<Registration/>} />
+      </Routes>
     </div>
   )
 }
