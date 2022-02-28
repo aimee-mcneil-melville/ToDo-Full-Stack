@@ -36,9 +36,7 @@ describe('GET /api/v1/volunteer/emailsignup', () => {
   })
 
   it('responds with 500 and error message during DB error', () => {
-    db.addVolunteer.mockImplementation(() => Promise.reject(
-      new Error('mock addVolunteer error')
-    ))
+    db.addVolunteer.mockImplementation(() => Promise.reject(new Error('mock addVolunteer error')))
 
     decode.mockImplementation(() => ({ userId: 1 }))
     return request(server)
