@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.1",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
     "knex": "^1.0.3"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.0.0",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.15",
     "tailwindcss-cli": "^0.1.2"
   }
 }
