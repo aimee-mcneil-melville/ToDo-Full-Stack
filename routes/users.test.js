@@ -1,6 +1,5 @@
 const request = require('supertest')
 const server = require('../server')
-/* eslint-disable jest/no-conditional-expect */
 
 jest.mock('../db', () => ({
   getUser: (id) =>
@@ -22,9 +21,6 @@ test('/users returns all users', () => {
       expect(res.body.users).toHaveLength(expected)
       return null
     })
-    .catch((err) => {
-      expect(err).toBeFalsy()
-    })
 })
 
 test('/users/:id returns a user by ID', () => {
@@ -37,8 +33,5 @@ test('/users/:id returns a user by ID', () => {
       expect(res.body.user.id).toBe(10)
       expect(res.body.user.email).toBe(expected)
       return null
-    })
-    .catch((err) => {
-      expect(err).toBeFalsy()
     })
 })
