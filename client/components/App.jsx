@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import Header from './Header'
 import ErrorMessage from './ErrorMessage'
@@ -11,39 +11,35 @@ import WaitIndicator from './WaitIndicator'
 function App() {
   return (
     <div className="app">
-      <Route path="/" component={Header} />
-      <Route path="/" component={ErrorMessage} />
-      <Route
-        exact
-        path="/"
-        render={({ history }) => {
-          return (
-            <ProductList history={history}>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/" element={<ErrorMessage />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <ProductList>
               <WaitIndicator />
             </ProductList>
-          )
-        }}
-      />
-      <Route
-        path="/cart"
-        render={({ history }) => {
-          return (
+          }
+        />
+        <Route
+          path="/cart"
+          element={
             <Cart history={history}>
               <WaitIndicator />
             </Cart>
-          )
-        }}
-      />
-      <Route
-        path="/orders"
-        render={() => {
-          return (
+          }
+        />
+        <Route
+          path="/orders"
+          element={
             <OrderList>
               <WaitIndicator />
             </OrderList>
-          )
-        }}
-      />
+          }
+        />
+      </Routes>
     </div>
   )
 }

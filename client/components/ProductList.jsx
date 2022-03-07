@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { addToCart } from '../actions/cart'
 import { fetchProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 
-function ProductList(props) {
-  const { children, history } = props
+function ProductList({ children }) {
   const products = useSelector((state) => state.products)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchProducts())
@@ -18,7 +19,7 @@ function ProductList(props) {
     const { id, name } = product
     const newCartItem = { id, name }
     dispatch(addToCart(newCartItem))
-    history.push('/cart')
+    navigate('/cart')
   }
 
   return (
