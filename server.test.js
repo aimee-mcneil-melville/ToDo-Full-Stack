@@ -1,5 +1,6 @@
+const { screen } = require('@testing-library/dom')
+require('@testing-library/jest-dom')
 const request = require('supertest')
-const cheerio = require('cheerio')
 
 const db = require('./db')
 const server = require('./server')
@@ -18,11 +19,13 @@ test('GET / responds with correctly rendered users', () => {
     .get('/')
     .expect(200)
     .then((res) => {
-      const $ = cheerio.load(res.text)
-      const users = $('li')
-      const firstUserText = users.first().text()
-      expect(users).toHaveLength(2)
-      expect(firstUserText).toBe('test user 2 (test2@user.nz)')
+      document.body.innerHTML = res.text
+
+      const user2 = screen.getByText('test user 2 (test2@user.nz)')
+      expect(user2).toBeInTheDocument()
+
+      const user4 = screen.getByText('test user 4 (test4@user.nz)')
+      expect(user4).toBeInTheDocument()
       return null
     })
 })
