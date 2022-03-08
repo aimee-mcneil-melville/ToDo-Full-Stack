@@ -1,23 +1,33 @@
 const { generateHash } = require('authenticare/server')
 
-exports.seed = async (knex) => {
+const replacePasswordWithHash = (user) => {
+  const { username, email_address, contact_details } = user
+  return generateHash(user.password).then((hash) => {
+    return {
+      username,
+      email_address,
+      contact_details,
+      hash,
+    }
+  })
+}
+
+const fakeUserData = [
+  {
+    username: 'admin',
+    password: 'Krang',
+    email_address: 'hello@devacademy.co.nz',
+    contact_details: 'Ring the bell ;)',
+  },
+]
+
+const fakeUsers = Promise.all(fakeUserData.map(replacePasswordWithHash))
+
+exports.seed = (knex) => {
   return knex('users')
     .del()
-    .then(async () => {
-      const users = [
-        {
-          username: 'admin',
-          hash: await generateHash('Krang'),
-          email_address: 'hello@devacademy.co.nz',
-          contact_details: 'Ring the bell ;)',
-        },
-        {
-          username: 'user',
-          hash: await generateHash('user'),
-          email_address: 'user@email.com',
-          contact_details: 'Good user, yes',
-        },
-      ]
+    .then(() => fakeUsers)
+    .then((users) => {
       return knex('users').insert(users)
     })
 }
