@@ -1,0 +1,25 @@
+@charset "utf-8";
+// 0 - TOOLS 
+// *** CSS Resets, etc ***
+@use './0-tools/__tools.scss';
+
+// 1 - HELPERS 
+// *** All variables, mixins.scss and functions.scss ***
+
+// 2 - Base 
+// *** It includes basic styles to HTML tags like H1, H2, section, article, ul ***
+@use './2-base/__base.scss';
+
+// 3 - LAYOUT 
+// *** Header, footer, reusable components classes ***
+@use './3-layout/_layout.scss';
+
+// 4 - MODULES 
+// *** Similar to layout but for smaller groups of elements like buttons, cards, sliders ***
+@use './4-modules/__modules.scss';
+
+// 5 - PAGES 
+// *** For single pages only. And only for overrides. Make sure you can't add the CSS in 4 & 5 before using this. ***
+@use './5-pages/__pages.scss';
+
+// NO DIRECT STYLES IN THIS FILE MAKE A NEW FILE AND IMPORT IT.

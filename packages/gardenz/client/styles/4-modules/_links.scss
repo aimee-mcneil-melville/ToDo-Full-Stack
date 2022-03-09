@@ -1,0 +1,14 @@
+@use '../1-helpers/mixins';
+@use '../1-helpers/vars';
+
+.page__link {
+  @include mixins.word-wrap()
+}
+
+.title-link {
+  color: vars.$black;
+
+  &:hover {
+    color: vars.$green;
+  }
+}

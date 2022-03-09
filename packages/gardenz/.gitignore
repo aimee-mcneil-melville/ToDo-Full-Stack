@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+node_modules
+bundle.*
+styles.*
+*.log
+dev.sqlite3
+.env
+tests/e2e/screenshots/

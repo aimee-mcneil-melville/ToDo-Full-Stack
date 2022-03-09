@@ -1,0 +1,83 @@
+@use '../1-helpers/mixins';
+@use '../1-helpers/functions';
+@use '../1-helpers/vars';
+
+.form-box {
+  position: relative;
+  width: functions.colWidth(9);
+  height: vars.$base-size * 2;
+  background: vars.$white;
+  border: vars.$border-size solid vars.$border;
+  border-radius: vars.$border-radius;
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(12);
+  }
+}
+
+.form-title {
+  text-align: center;
+}
+
+.description-box {
+  @extend .form-box;
+  height: vars.$base-size * 8;
+}
+
+.label {
+  position: relative;
+  line-height: vars.$base-size * 2;
+  color: vars.$black;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-input {
+  height: vars.$base-size * 1.75; // or 100%?
+  width: functions.colWidth(9);
+  font-family: vars.$paragraph;
+  margin-bottom: vars.$base-size;
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(12);
+  }
+}
+
+.form-textarea {
+  height: vars.$base-size * 8;
+  width: functions.colWidth(9);
+  margin-bottom: vars.$base-size;
+  @include mixins.media-queries(mobile, min) {
+    width: functions.colWidth(12);
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+
+  button {
+  margin: vars.$base-size * 0.5;
+  align-content: center;
+  align-items: center;
+  min-width: vars.$base-size * 8;
+  text-align: center;
+
+  @include mixins.media-queries(mobile, min) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      margin: vars.$base-size * 0.5;
+    }
+  }
+}
+
+.form-content {
+  margin-left: vars.$base-size; 
+  margin-right: vars.$base-size; 
+}
