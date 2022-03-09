@@ -1,0 +1,34 @@
+{
+  "name": "kata-types-modules",
+  "version": "2.0.1",
+  "description": "Kata for datatypes, functions and modules",
+  "scripts": {
+    "test": "jest --watchAll --noStackTrace",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/kata-types-modules.git"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.0.1",
+    "prettier": "^2.5.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
