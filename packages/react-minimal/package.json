@@ -1,0 +1,64 @@
+{
+  "name": "react-minimal",
+  "version": "0.1.0",
+  "description": "the essence of a react component",
+  "repository": "https://github.com/dev-academy-challenges/react-minimal.git",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p webpack server",
+    "dev": "run-p client server",
+    "webpack": "webpack",
+    "client": "webpack --watch",
+    "server": "node server",
+    "lint": "eslint ."
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "keywords": [],
+  "author": "EDA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "eslint": "^8.9.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.6.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": "eda/react",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  }
+}
