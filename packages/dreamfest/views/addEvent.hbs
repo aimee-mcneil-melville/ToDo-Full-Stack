@@ -1,0 +1,50 @@
+{{> lineUpNav}}
+
+<h2 class="page-header">Add New Event</h2>
+
+<form method="POST" action="/events/add" class="page-form">
+  <label for="name" class="block mb-4">
+    <span class="form-label">Event Name</span>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Event name"
+      class="form-input">
+  </label>
+
+  <label for="description" class="block mb-4">
+    <span class="form-label">Description</span>
+    <textarea rows="3"
+      id="description"
+      name="description"
+      placeholder="Event description"
+      class="form-input"></textarea>
+  </label>
+
+  <div class="grid grid-cols-12 grid-rows-3 mb-4">
+    <label for="location" class="form-label-block">Location</label>
+    <select id="location" name="locationId" class="form-select">
+      {{#each locations}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+
+    <label for="day" class="form-label-block">Day</label>
+    <select id="day" name="day" class="form-select">
+      {{#each days}}
+        <option value="{{value}}" {{selected}}>{{name}}</option>
+      {{/each}}
+    </select>
+
+    <label for="time" class="form-label-block">Time</label>
+    <input
+      type="text"
+      id="time"
+      name="time"
+      placeholder="Example: 1pm - 2pm"
+      class="form-select">
+  </div>
+
+  <button class="form-button">Add new event</button>
+</form>

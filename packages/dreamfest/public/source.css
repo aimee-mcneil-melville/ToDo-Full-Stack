@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+
+@font-face {
+  font-family: 'RubberNippleFactoryBlack';
+  src: url('/RubberNippleFactoryBlack.ttf');
+}
+
+.rnfb-font {
+  font-family: 'RubberNippleFactoryBlack'
+}
+
+@layer utilities {
+  @variants responsive {
+    .text-stroke-peach {
+      text-shadow: 0 2px 3px black;
+      -webkit-text-stroke: 2px #F3B997;
+    }
+
+    .text-stroke-peach-thick {
+      text-shadow: 0 3px 4px black;
+      -webkit-text-stroke: 3px #F3B997;
+    }
+  }
+}
+
+@tailwind utilities;
+
+@layer components {
+  .main-title {
+    @apply rnfb-font absolute left-2 bottom-1/3 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-stroke-peach md:text-stroke-peach-thick text-red-dark;
+  }
+
+  .page-header {
+    @apply rnfb-font text-green-dark text-2xl md:text-3xl font-bold p-6;
+  }
+
+  .page-form {
+    @apply ml-6 pl-4 border-red border-l-4 w-5/6 max-w-lg mb-6;
+  }
+
+  .nav {
+    @apply rnfb-font flex flex-1 bg-red text-white md:text-lg lg:text-xl xl:text-2xl font-bold;
+  }
+
+  .nav-selected {
+    @apply bg-red-dark p-3.5 lg:p-5;
+  }
+
+  .nav-links {
+    @apply bg-red p-3.5 lg:p-5;
+  }
+
+  .event-add-link {
+    @apply font-roboto text-red text-2xl md:text-3xl sm:ml-10 block sm:inline;
+  }
+
+  .event-section {
+    @apply flex flex-row flex-wrap md:flex-nowrap mx-6 mb-6 max-w-screen-lg;
+  }
+
+  .event-icon {
+    @apply hidden sm:block sm:w-20 pr-3;
+  }
+
+  .event-abstract {
+    @apply sm:border-red sm:border-l-4 sm:pl-6 w-max sm:w-5/6;
+  }
+
+  .event-name {
+    @apply text-green font-roboto font-bold text-xl;
+  }
+
+  .event-details {
+    @apply grid grid-cols-2 grid-rows-3 md:grid-rows-4 sm:border-red sm:border-l-4 sm:pl-6 pt-2 w-5/6 sm:w-auto md:w-96 sm:ml-20 md:ml-6 font-roboto;
+  }
+
+  .event-edit-link {
+    @apply col-span-2 md:row-span-2 font-roboto text-xl font-bold text-red md:self-end;
+  }
+
+  .locations-section {
+    @apply flex flex-row flex-wrap mx-6 mb-6;
+  }
+
+  .locations-item {
+    @apply border-red border-l-4 px-4 mb-8 w-max md:w-2/5;
+  }
+
+  .locations-item-name {
+    @apply text-green font-roboto font-bold text-xl;
+  }
+
+  .locations-edit-link {
+    @apply font-roboto text-xl font-bold text-red;
+  }
+
+  .form-button {
+    @apply font-roboto font-bold text-red text-2xl block w-full;
+  }
+
+  .form-label {
+    @apply font-roboto text-green text-xl font-bold;
+  }
+
+  .form-label-block {
+    @apply form-label mb-4 col-span-4 sm:col-span-3 self-center;
+  }
+
+  .form-input {
+    @apply text-gray-500 text-sm sm:text-base block mt-1 rounded-md w-full border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20;
+  }
+
+  .form-select {
+    @apply text-gray-500 text-sm sm:text-base rounded-md mt-1 mb-4 w-auto col-span-8 sm:col-span-9 border-gray-400 focus:border-green focus:ring focus:ring-green focus:ring-opacity-20;
+  }
+
+  .delete-event-form {
+    @apply ml-6 pl-4 w-5/6 max-w-lg mb-6;
+  }
+
+  .delete-event-button {
+    @apply font-roboto font-bold text-white text-2xl block w-auto bg-red rounded-md px-2 py-1 mx-auto;
+  }
+}
