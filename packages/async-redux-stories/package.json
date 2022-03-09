@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-redux-async",
+  "name": "async-redux-stories",
   "version": "0.1.2",
   "description": "React Redux with simple async action",
   "main": "server/index",

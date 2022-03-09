@@ -1,5 +1,5 @@
 {
-  "name": "server-side-templating",
+  "name": "server-side-rendering",
   "version": "0.1.0",
   "description": "Server-side rendering with Handlebars templates",
   "author": "EDA",

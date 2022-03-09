@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-fullstack",
+  "name": "boilerplate-full-stack-auth0",
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
