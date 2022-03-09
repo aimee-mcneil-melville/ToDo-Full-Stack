@@ -3,11 +3,17 @@ const { existsSync } = require('fs')
 const Path = require('path')
 
 const main = async () => {
-  const dirs = await FS.readdir(Path.join(__dirname, 'packages'))
+  const dirs = await FS.readdir(Path.join(__dirname, '..', 'packages'))
 
   const versions = {}
   for (const dir of dirs) {
-    const packagePath = Path.join(__dirname, 'packages', dir, 'package.json')
+    const packagePath = Path.join(
+      __dirname,
+      '..',
+      'packages',
+      dir,
+      'package.json'
+    )
     if (!existsSync(packagePath)) {
       process.stderr.write(`INFO: ${dir} does not have a package.json\n`)
       continue
