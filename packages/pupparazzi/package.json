@@ -1,0 +1,52 @@
+{
+  "name": "pupparazzi",
+  "version": "2.0.0",
+  "description": "Challenge to learn server side rendering and callbacks",
+  "main": "index.js",
+  "author": "EDA",
+  "license": "ISC",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index --ignore data.json",
+    "lint": "eslint .",
+    "test": "jest --watchAll"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/pupparazzi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "data.json"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.5.1",
+    "supertest": "^4.0.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
