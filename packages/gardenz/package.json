@@ -46,24 +46,24 @@
       "bundle.js"
     ]
   },
-  "eslint.validate":[  
-    {  
-        "language":"vue",
-        "autoFix":true
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
     },
-    {  
-        "language":"html",
-        "autoFix":true
+    {
+      "language": "html",
+      "autoFix": true
     },
-    {  
-        "language":"javascript",
-        "autoFix":true
+    {
+      "language": "javascript",
+      "autoFix": true
     },
-    {  
-        "language":"typescript",
-        "autoFix":true
+    {
+      "language": "typescript",
+      "autoFix": true
     }
-],
+  ],
   "jest": {
     "verbose": true,
     "projects": [
@@ -92,8 +92,7 @@
     ]
   },
   "engines": {
-    "node": "14.16",
-    "npm": "6.14.11"
+    "node": "16.x"
   },
   "dependencies": {
     "@visx/axis": "^2.1.1",

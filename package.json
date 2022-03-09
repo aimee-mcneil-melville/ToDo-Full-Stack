@@ -58,5 +58,6 @@
     "packages/two-truths-and-a-lie",
     "packages/web-api-stories",
     "packages/worldwide-routing"
-  ]
+  ],
+  "dependencies": {}
 }
