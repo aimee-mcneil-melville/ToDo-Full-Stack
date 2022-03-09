@@ -1,0 +1,48 @@
+{
+  "name": "knex-joins-stories",
+  "version": "0.1.0",
+  "description": "Practise joins",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "knex": "knex",
+    "lint": "eslint .",
+    "test": "jest --watch --noStackTrace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/knex-joins-stories.git"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "keywords": [],
+  "author": "Enspiral Dev Academy",
+  "license": "ISC",
+  "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "knex": "^1.0.1",
+    "@vscode/sqlite3": "^5.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.6.1",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.5.1",
+    "supertest": "^5.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
