@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+
+# Log files
+*.log
+
+# Development Database
+*.sqlite3
+
+# Built files
+server/public/bundle.js
+server/public/bundle.js.map
+server/public/styles.css
+server/public/styles.css.map
+
+# Secrets
+.env
+auth_config.json
+
+# Editor settings
+.vscode
+.idea
