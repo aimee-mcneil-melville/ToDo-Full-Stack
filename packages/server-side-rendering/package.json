@@ -1,0 +1,40 @@
+{
+  "name": "server-side-templating",
+  "version": "0.1.0",
+  "description": "Server-side rendering with Handlebars templates",
+  "author": "EDA",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "test": "jest --watchAll",
+    "lint": "eslint ."
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^0.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "supertest": "^6.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
