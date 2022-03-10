@@ -5,18 +5,19 @@ const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 
 const main = async () => {
-  const [_0, _1, cohort, challengeName] = process.argv
+  const [cohort, challengeName] = process.argv.slice(2)
   dotenv.config()
   const { GITHUB_ACCESS_TOKEN, GITHUB_USER } = process.env
   if (!(GITHUB_ACCESS_TOKEN && GITHUB_USER)) {
     throw new Error(`GITHUB_ACCESS_TOKEN or GITHUB_USER undefined`)
   }
 
-  console.log({ _0, _1, cohort, challengeName })
-
-  return
+  console.log(`creating the ${challengeName} repo in the ${cohort} org`)
   await createRepo(cohort, challengeName)
+  console.log(`repo created!`)
+  console.log(`pushing to repo ${cohort}/${challengeName}`)
   await pushToRepo(cohort, challengeName)
+  console.log(`fork-to-cohort succeeded!`)
 }
 
 const pushToRepo = async (cohort, challengeName) => {

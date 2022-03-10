@@ -1,7 +1,8 @@
 {
   "name": "monorepo-trial",
   "scripts": {
-    "lint": "eslint tools"
+    "lint": "eslint tools",
+    "fork-to-cohort": "node tools/fork-to-cohort.js"
   },
   "workspaces": [
     "packages/ascii-art-reader",
@@ -50,5 +51,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
   }
 }
