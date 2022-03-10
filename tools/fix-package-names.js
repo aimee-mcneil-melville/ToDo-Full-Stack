@@ -1,4 +1,5 @@
 const fs = require('fs').promises
+const { existsSync } = require('fs')
 const path = require('path')
 
 const challenges = require('./challenges-list')
@@ -13,6 +14,11 @@ const main = async () => {
         challenge,
         'package.json'
       )
+
+      if (!existsSync(packagePath)) {
+        continue
+      }
+
       const packageJson = await fs.readFile(packagePath, 'utf8')
       const packageObj = JSON.parse(packageJson)
 
