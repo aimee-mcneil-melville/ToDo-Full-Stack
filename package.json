@@ -4,7 +4,8 @@
     "lint": "eslint tools",
     "fork-to-cohort": "node tools/fork-to-cohort.js",
     "unaligned-versions": "node tools/unaligned-versions.js",
-    "fix-package-names": "node tools/fix-package-names.js"
+    "fix-package-names": "node tools/fix-package-names.js",
+    "add-challenges": "node tools/add-challenges.js"
   },
   "workspaces": [
     "packages/ascii-art-reader",
