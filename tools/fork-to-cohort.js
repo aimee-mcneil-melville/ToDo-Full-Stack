@@ -3,10 +3,12 @@ const https = require('https')
 const { Buffer } = require('buffer')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
+const path = require('path')
 
 const main = async () => {
   const [cohort, challengeName] = process.argv.slice(2)
   dotenv.config()
+
   const { GITHUB_ACCESS_TOKEN, GITHUB_USER } = process.env
   if (!(GITHUB_ACCESS_TOKEN && GITHUB_USER)) {
     throw new Error(`GITHUB_ACCESS_TOKEN or GITHUB_USER undefined`)
@@ -21,6 +23,7 @@ const main = async () => {
 }
 
 const pushToRepo = async (cohort, challengeName) => {
+  process.chdir(path.join(__dirname, '..'))
   await exec(
     `git subtree push --prefix=packages/${challengeName} git@github.com:${cohort}/${challengeName} main`
   )
