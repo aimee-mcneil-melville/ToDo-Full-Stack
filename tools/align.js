@@ -1,7 +1,6 @@
-const FS = require('fs').promises
-const Path = require('path')
-
-// TODO:  mostly we don't need @testing-library/react
+const FS = require('fs/promises')
+const { existsSync } = require('fs')
+const Path = require('path/posix')
 
 const correctVersions = {
   '@babel/core': '^7.15.6',
@@ -20,7 +19,7 @@ const correctVersions = {
   'css-loader': '^6.3.0',
   dotenv: '^10.0.0',
   eslint: '^8.10.0',
-  'eslint-config-eda': '^1.0.0',
+  'eslint-config-eda': '^1.1.0',
   'eslint-plugin-jest': '^26.1.1',
   express: '^4.17.2',
   'express-handlebars': '^6.0.2',
@@ -43,25 +42,44 @@ const correctVersions = {
 const main = async () => {
   throw new Error(`The time has not yet come to run this totally safe script`)
 
-  const dirs = await FS.readdir(Path.join(__dirname, 'packages'))
+  const dirs = await FS.readdir(Path.join(__dirname, '..', 'packages'))
   for (const dir of dirs) {
-    const packagePath = Path.join(__dirname, 'packages', dir, 'package.json')
+    const packagePath = Path.join(
+      __dirname,
+      '..',
+      'packages',
+      dir,
+      'package.json'
+    )
+    if (!existsSync(packagePath)) {
+      continue
+    }
+
     try {
       const json = await FS.readFile(packagePath, 'utf8')
       const packageObj = JSON.parse(json)
+      const { dependencies, devDependencies } = packageObj
+      let modified = false
+
       for (const name in correctVersions) {
         const version = correctVersions[name]
-        if (packageObj.dependencies && packageObj.dependencies[name]) {
-          packageObj.dependencies[name] = version
+        if (dependencies && dependencies[name]) {
+          console.log(`updating ${packagePath}`)
+          dependencies[name] = version
+          modified = true
         }
 
-        if (packageObj.devDependencies && packageObj.devDependencies[name]) {
-          packageObj.devDependencies[name] = version
+        if (devDependencies && devDependencies[name]) {
+          console.log(`updating ${packagePath}`)
+          devDependencies[name] = version
+          modified = true
         }
       }
 
-      const output = JSON.stringify(packageObj, null, 2)
-      await FS.writeFile(packagePath, output, 'utf-8')
+      if (modified) {
+        const output = `${JSON.stringify(packageObj, null, 2)}\n`
+        await FS.writeFile(packagePath, output, 'utf-8')
+      }
     } catch (err) {
       console.error({ dir, err })
     }
