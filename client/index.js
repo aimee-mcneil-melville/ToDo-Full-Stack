@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import store from './store'
 
+// eslint-disable-next-line import/no-unresolved
 import config from './auth_config.json'
 
 import App from './components/App'
