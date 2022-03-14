@@ -7,14 +7,14 @@ const emptyUser = {
   email: '',
   name: '',
   token: '',
-  roles: []
+  roles: [],
 }
 
-function saveUser (user = emptyUser) {
+function saveUser(user = emptyUser) {
   store.dispatch(setUser(user))
 }
 
-export async function cacheUser (useAuth0) {
+export async function cacheUser(useAuth0) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
   if (isAuthenticated) {
     try {
@@ -25,7 +25,7 @@ export async function cacheUser (useAuth0) {
         email: user.email,
         name: user.nickname,
         token,
-        roles
+        roles,
       }
       saveUser(userToSave)
     } catch (err) {
@@ -36,24 +36,25 @@ export async function cacheUser (useAuth0) {
   }
 }
 
-export function getLoginFn (useAuth0) {
+export function getLoginFn(useAuth0) {
   return useAuth0().loginWithRedirect
 }
 
-export function getLogoutFn (useAuth0) {
+export function getLogoutFn(useAuth0) {
   return useAuth0().logout
 }
 
-export function getIsAuthenticated (useAuth0) {
+export function getIsAuthenticated(useAuth0) {
   return useAuth0().isAuthenticated
 }
 
-export function getRegisterFn (useAuth0) {
+export function getRegisterFn(useAuth0) {
   const { loginWithRedirect } = useAuth0()
   const redirectUri = `${window.location.origin}/profile`
-  return () => loginWithRedirect({
-    redirectUri,
-    screen_hint: 'signin',
-    scope: 'role:member'
-  })
+  return () =>
+    loginWithRedirect({
+      redirectUri,
+      screen_hint: 'signin',
+      scope: 'role:member',
+    })
 }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
-html, 
+html,
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -11,14 +11,19 @@ body {
   width: 100%;
 }
 
-table td, table th {
+table td,
+table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-table tr:hover {background-color: #ddd;}
+table tr:hover {
+  background-color: #ddd;
+}
 
 table th {
   padding-top: 12px;
@@ -47,7 +52,7 @@ nav {
   margin-bottom: 10px;
   text-align: right;
   justify-content: right;
-  gap: 10px; 
+  gap: 10px;
 }
 
 a {

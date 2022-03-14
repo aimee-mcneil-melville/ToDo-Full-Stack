@@ -11,8 +11,9 @@ const machine2machineSecret = process.env.AUTH0_MACHINE_2_MACHINE_SECRET
 
 const getUserRoles = async (uid) => {
   const accessToken = await getAccessToken()
-  const { body } = await request(`${domain}/api/v2/users/${uid}/roles`)
-    .set({ authorization: `Bearer ${accessToken}` })
+  const { body } = await request(`${domain}/api/v2/users/${uid}/roles`).set({
+    authorization: `Bearer ${accessToken}`,
+  })
 
   return body[0]?.name
 }
@@ -22,10 +23,11 @@ const getAccessToken = async () => {
     grant_type: 'client_credentials',
     client_id: machine2machineClientId,
     client_secret: machine2machineSecret,
-    audience: `${domain}/api/v2/`
+    audience: `${domain}/api/v2/`,
   }
 
-  const { body } = await request.post(`${domain}/oauth/token`)
+  const { body } = await request
+    .post(`${domain}/oauth/token`)
     .send(data)
     .type('form')
   return body.access_token
@@ -35,14 +37,14 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `${domain}/.well-known/jwks.json`
+    jwksUri: `${domain}/.well-known/jwks.json`,
   }),
   audience: ssoAudience,
   issuer: `${domain}/`,
-  algorithms: ['RS256']
+  algorithms: ['RS256'],
 })
 
 module.exports = {
   checkJwt,
-  getUserRoles
+  getUserRoles,
 }

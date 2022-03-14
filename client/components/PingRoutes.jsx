@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import request from 'superagent'
 
-function PingRoutes () {
-  const token = useSelector(state => state.user.token)
+function PingRoutes() {
+  const token = useSelector((state) => state.user.token)
   const [message, setMessage] = useState('')
 
-  async function handlePublicEndpoint () {
+  async function handlePublicEndpoint() {
     try {
-      const res = await request
-        .get('/api/v1/users/public')
+      const res = await request.get('/api/v1/users/public')
 
       setMessage(res.body.message)
     } catch (error) {
@@ -17,7 +16,7 @@ function PingRoutes () {
     }
   }
 
-  async function handleProtectedEndpoint () {
+  async function handleProtectedEndpoint() {
     try {
       const res = await request
         .get('/api/v1/users/protected')
@@ -29,7 +28,7 @@ function PingRoutes () {
     }
   }
 
-  async function handlePrivateEndpoint () {
+  async function handlePrivateEndpoint() {
     try {
       const res = await request
         .get('/api/v1/users/private')
@@ -42,11 +41,9 @@ function PingRoutes () {
   }
 
   return (
-    <section className='ping'>
-      <section className='buttons' >
-        <div>
-          Ping 👉
-        </div>
+    <section className="ping">
+      <section className="buttons">
+        <div>Ping 👉</div>
         <div>
           <button onClick={handlePublicEndpoint}>Public</button>
         </div>
@@ -54,10 +51,12 @@ function PingRoutes () {
           <button onClick={handleProtectedEndpoint}>Protected</button>
         </div>
         <div>
-          <button onClick={handlePrivateEndpoint}>Private (permissioned)</button>
+          <button onClick={handlePrivateEndpoint}>
+            Private (permissioned)
+          </button>
         </div>
       </section>
-      <p className='message'>{message}</p>
+      <p className="message">{message}</p>
     </section>
   )
 }

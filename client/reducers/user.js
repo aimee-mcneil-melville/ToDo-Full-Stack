@@ -3,10 +3,10 @@ import { SET_USER, CLEAR_USER } from '../actions/user'
 const emptyUser = {
   id: null,
   username: '',
-  token: ''
+  token: '',
 }
 
-export default function user (state = emptyUser, action) {
+export default function user(state = emptyUser, action) {
   switch (action.type) {
     case SET_USER:
       return action.user

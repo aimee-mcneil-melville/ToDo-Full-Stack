@@ -7,16 +7,16 @@ import Registration from './Registration'
 import Users from './Users'
 import { Routes, Route } from 'react-router-dom'
 
-function App () {
+function App() {
   cacheUser(useAuth0)
 
   return (
-    <div className='app'>
+    <div className="app">
       <Routes>
-        <Route path='/' element={<Nav/>} />
-        <Route path='/' element={<Users/>} />
-        <Route path='/' element={<PingRoutes/>} />
-        <Route path='/profile' element={<Registration/>} />
+        <Route path="/" element={<Nav />} />
+        <Route path="/" element={<Users />} />
+        <Route path="/" element={<PingRoutes />} />
+        <Route path="/profile" element={<Registration />} />
       </Routes>
     </div>
   )

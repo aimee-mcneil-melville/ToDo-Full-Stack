@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
-  "keywords": [
-    "fullstack"
-  ],
+  "keywords": ["fullstack"],
   "scripts": {
     "start": "node server",
     "test": "jest",
@@ -17,14 +15,12 @@
     "build:client": "npm run webpack -- --mode production",
     "build:server": "npm run knex -- migrate:latest",
     "lint": "eslint --ext .js,.jsx .",
+    "format": "prettier -w server client",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread",
@@ -33,9 +29,7 @@
   },
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
