@@ -75,7 +75,7 @@ Still not enough for you? Check these out:
 
 ### Setup
 
-By now you should be getting used to setting up Node programs. Here's a reminder in case you need it:
+By now you should be getting used to setting up Node programs. Here's a reminder in case you need it, but most of it is already done for you:
 
 1. Create an npm `package.json` file using `npm init`.
 1. Install `jest` as dev dependencies (use `-D`).
