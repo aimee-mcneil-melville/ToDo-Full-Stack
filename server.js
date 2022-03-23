@@ -8,7 +8,7 @@ const server = express()
 // Middleware
 server.engine(
   'hbs',
-  hbs({
+  hbs.engine({
     extname: 'hbs',
   })
 )
