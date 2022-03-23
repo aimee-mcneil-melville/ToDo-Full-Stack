@@ -18,7 +18,9 @@
   "author": "EDA",
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
-  "dependencies": {},
+  "dependencies": {
+    "react-router-dom": "^6.2.2"
+  },
   "devDependencies": {
     "eslint": "^8.8.0",
     "eslint-config-eda": "^1.1.0",
