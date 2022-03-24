@@ -1,25 +1,37 @@
 import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
 import { addPost, updatePost } from '../api'
 
 function PostForm(props) {
-  const [post, setPost] = useState({ title: '', paragraphs: [] })
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const { posts, loading, fetchPosts } = useOutletContext()
+  const post = posts.find((post) => post.id === Number(id)) || {}
+  const [newPost, setNewPost] = useState({ title: '', paragraphs: '' })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const currentPost = props.post
   useEffect(() => {
-    if (currentPost) setNewPost(currentPost)
-  }, [])
+    if (props.variant === 'edit' && !loading) {
+      setNewPost({ ...post, paragraphs: post.paragraphs.join('\n') })
+    }
+  }, [post])
 
-  useEffect(() => {
-    if (post && !currentPost) setNewPost(post)
-  }, [props.post])
-
-  function setNewPost(post) {
-    const paragraphs = post.paragraphs.join('\n')
-    setPost({
-      ...post,
-      paragraphs,
-    })
+  function onSubmit(e) {
+    e.preventDefault()
+    if (!completePostData(newPost)) return null
+    if (props.variant === 'edit') {
+      return updatePost({ ...newPost, id }).then(() => {
+        fetchPosts()
+        navigate(`/posts/${newPost.id}`)
+        return null
+      })
+    } else if (props.variant === 'new') {
+      return addPost(newPost).then((newPost) => {
+        fetchPosts()
+        navigate(`/posts/${newPost.id}`)
+        return null
+      })
+    }
   }
 
   function completePostData(post) {
@@ -31,41 +43,15 @@ function PostForm(props) {
     }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const { history, fetchPosts } = props
-    if (props.post) {
-      if (completePostData(post)) {
-        updatePost(post)
-          .then(fetchPosts)
-          .then(() => navigateToPost(post.id))
-          .catch((err) => setErrorMessage(err.message))
-      }
-    } else {
-      let postId = null
-      if (completePostData(post)) {
-        addPost(post)
-          .then((newPost) => {
-            postId = newPost.id
-            return fetchPosts()
-          })
-          .then(() => navigateToPost(postId))
-          .catch((err) => setErrorMessage(err.message))
-      }
-    }
-
-    function navigateToPost(id) {
-      return history.push(`/posts/${id}`)
-    }
-  }
-
   function handleChange(e) {
-    setPost({ ...post, [e.target.name]: e.target.value })
+    setNewPost({ ...newPost, [e.target.name]: e.target.value })
   }
+
+  if (props.loading) return <p>Loading...</p>
 
   return (
-    <form className="pure-form pure-form-aligned" onSubmit={handleSubmit}>
-      {props.post ? (
+    <form className="pure-form pure-form-aligned" onSubmit={onSubmit}>
+      {props.variant === 'edit' ? (
         <h2 className="post-title">Edit Post</h2>
       ) : (
         <h2 className="post-title">Add a New Blog Post</h2>
@@ -77,7 +63,7 @@ function PostForm(props) {
           <input
             type="text"
             name="title"
-            value={post.title}
+            value={newPost.title}
             onChange={handleChange}
           />
         </div>
@@ -86,7 +72,7 @@ function PostForm(props) {
           <label htmlFor="paragraphs">Blog</label>
           <textarea
             name="paragraphs"
-            value={post.paragraphs}
+            value={newPost.paragraphs}
             onChange={handleChange}
           ></textarea>
         </div>

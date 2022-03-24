@@ -1,38 +1,45 @@
 import React, { useState } from 'react'
-import { addCommentByPostId, updateComment } from '../api'
+import { updateComment, addCommentByPostId } from '../api'
+import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
 
 function CommentForm(props) {
-  const [errorMessage, setErrorMessage] = useState('')
-  const [comment, setComment] = useState(props.comment || { comment: '' })
+  const { id: postId } = useParams()
+  const navigate = useNavigate()
+  const { fetchComments } = useOutletContext()
+  const [newComment, setNewComment] = useState(props.comment || { comment: '' })
 
-  function handleSubmit(e) {
+  const onSubmit = (e) => {
     e.preventDefault()
-    const { match, fetchComments, history } = props
-    if (props.comment) {
-      updateComment(comment)
-        .then(() => fetchComments(comment.postId))
-        .then(() => history.push(`/posts/${comment.postId}`))
-        .catch((err) => setErrorMessage(err.message))
-    } else {
-      addCommentByPostId(match.params.postId, comment)
-        .then(() => fetchComments(match.params.postId))
-        .then(() => history.push(`/posts/${match.params.postId}`))
-        .catch((err) => setErrorMessage(err.message))
+    if (props.variant === 'edit') {
+      return updateComment(newComment).then(() => {
+        props.fetchComments(newComment.postId)
+        props.setEditing(false)
+        return null
+      })
+    } else if (props.variant === 'new') {
+      return addCommentByPostId(postId, newComment).then(() => {
+        fetchComments(postId)
+        setNewComment({ comment: '' })
+        navigate(`/posts/${postId}`)
+        return null
+      })
     }
   }
 
   return (
-    <form className="comment-form pure-form" onSubmit={handleSubmit}>
+    <form className="comment-form pure-form" onSubmit={onSubmit}>
       <input
         type="text"
         name="comment"
-        value={comment.comment}
-        onChange={(e) => {
-          setComment({ ...comment, [e.target.name]: e.target.value })
-        }}
+        value={newComment.comment}
+        onChange={(e) =>
+          setNewComment({
+            ...newComment,
+            [e.target.name]: e.target.value,
+          })
+        }
       />
       <input className="pure-button" type="submit" />
-      <p>{errorMessage && errorMessage}</p>
     </form>
   )
 }

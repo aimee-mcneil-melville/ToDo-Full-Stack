@@ -1,52 +1,47 @@
-import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
-import CommentForm from './CommentForm'
+import React, { useState } from 'react'
 import { deleteComment } from '../api'
+import CommentForm from './CommentForm'
 
 function Comment(props) {
-  function handleDeleteComment() {
-    return deleteComment(props.comment.id).then(() =>
-      props.fetchComments(props.postId)
-    )
-  }
+  const { comment, fetchComments } = props
+  const [editing, setEditing] = useState(false)
 
-  const { postId, comment, fetchComments } = props
-  return (
-    <div>
-      <Switch>
-        <Route
-          path={`/posts/${postId}/comments/${comment.id}`}
-          render={(props) => (
-            <CommentForm
-              fetchComments={fetchComments}
-              comment={comment}
-              postId={postId}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path={`/posts/${postId}`}
-          render={() => (
-            <div className="comment" key={comment.id}>
-              <p>
-                <span className="comment-content">{comment.comment}</span>
-                <span className="comment-date">
-                  Date Posted: {new Date(comment.datePosted).toDateString()}
-                </span>
+  return editing ? (
+    <CommentForm
+      comment={comment}
+      setEditing={setEditing}
+      variant="edit"
+      fetchComments={fetchComments}
+    />
+  ) : (
+    <div className="comment" key={comment.id}>
+      <p>
+        <span className="comment-content">{comment.comment}</span>
+        <span className="comment-date">
+          Date Posted: {new Date(comment.datePosted).toDateString()}
+        </span>
 
-                <Link to={`/posts/${postId}/comments/${comment.id}`}>
-                  <button className="pure-button">Edit</button>
-                </Link>
+        <button
+          className="pure-button button-secondary"
+          onClick={() => setEditing(true)}
+        >
+          Edit
+        </button>
 
-                <button className="pure-button" onClick={handleDeleteComment}>
-                  Delete
-                </button>
-              </p>
-            </div>
-          )}
-        />
-      </Switch>
+        <button
+          className="pure-button button-error"
+          onClick={(e) => {
+            console.log('delete comment', comment.id)
+            e.preventDefault()
+            return deleteComment(comment.id).then(() => {
+              fetchComments(comment.postId)
+              return null
+            })
+          }}
+        >
+          Delete
+        </button>
+      </p>
     </div>
   )
 }
