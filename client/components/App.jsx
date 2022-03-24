@@ -1,41 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import AppRoutes from './AppRoutes'
-import { getPosts } from '../api'
+import React from 'react'
+
+import { Route, Routes, Outlet } from 'react-router-dom'
+import useFetchPosts from './hooks/useFetchPosts'
+
+import Layout from './Layout'
+import Post from './Post'
+import Posts from './Posts'
+import PostForm from './PostForm'
+import CommentForm from './CommentForm'
 
 function App() {
-  const [posts, setPosts] = useState([])
-  const [errorMessage, setErrorMessage] = useState('')
-
-  useEffect(() => {
-    fetchPosts()
-  }, [])
-
-  function fetchPosts() {
-    return getPosts()
-      .then((posts) => {
-        setPosts(posts)
-        return null
-      })
-      .catch((err) => {
-        setErrorMessage(err.message)
-      })
-  }
+  const { posts, loading, error, fetchPosts } = useFetchPosts()
 
   return (
-    <div id="layout" className="pure-g">
-      <div className="sidebar pure-u-1 pure-u-md-1-4">
-        <Header />
-      </div>
-      <div className="content pure-u-1 pure-u-md-3-4">
-        <AppRoutes posts={posts} fetchPosts={fetchPosts} />
-        {errorMessage && <h1>{errorMessage}</h1>}
-      </div>
-      <div className="content pure-u-1 pure-u-md-3-4">
-        <Footer />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout errorMessage={error} />}>
+        <Route index element={<Posts posts={posts} />} />
+        <Route
+          path="posts"
+          element={<Outlet context={{ posts, loading, error, fetchPosts }} />}
+        >
+          <Route path=":id" element={<Post />}>
+            <Route
+              path="comments/new"
+              element={<CommentForm variant="new" />}
+            />
+          </Route>
+          <Route path=":id/edit" element={<PostForm variant="edit" />} />
+          <Route path="new" element={<PostForm variant="new" />} />
+        </Route>
+      </Route>
+
+      {error && error}
+    </Routes>
   )
 }
 
