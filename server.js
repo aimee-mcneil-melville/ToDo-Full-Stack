@@ -8,7 +8,7 @@ const eventRoutes = require('./routes/events.js')
 
 /*
  * create the server
-*************************/
+ *************************/
 
 const server = express()
 module.exports = server

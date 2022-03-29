@@ -18,7 +18,9 @@ describe('validateDay', () => {
 
   test.todo('returns a lowercase day if it is in the days parameter')
 
-  test.todo('returns the first day from the days parameter if day is not in the days parameter')
+  test.todo(
+    'returns the first day from the days parameter if day is not in the days parameter'
+  )
 
   test.todo('returns "friday" if days parameter is not provided')
 
