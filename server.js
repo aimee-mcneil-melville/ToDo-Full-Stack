@@ -21,7 +21,7 @@ const publicFolder = path.join(__dirname, 'public')
 server.use(express.static(publicFolder))
 server.use(express.urlencoded({ extended: false }))
 
-server.engine('hbs', hbs({ extname: 'hbs' }))
+server.engine('hbs', hbs.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 
 /*
