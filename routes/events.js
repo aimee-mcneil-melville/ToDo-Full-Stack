@@ -8,10 +8,10 @@ module.exports = router
 // GET /events/add/friday
 router.get('/add/:day', (req, res) => {
   const day = validateDay(req.params.day)
-  const days = eventDays.map(eventDay => ({
+  const days = eventDays.map((eventDay) => ({
     value: eventDay,
     name: capitalise(eventDay),
-    selected: eventDay === day ? 'selected' : ''
+    selected: eventDay === day ? 'selected' : '',
   }))
 
   // TODO: Replace this with all of the locations in the database
@@ -19,13 +19,15 @@ router.get('/add/:day', (req, res) => {
     {
       id: 1,
       name: 'TangleStage',
-      description: 'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.'
+      description:
+        'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.',
     },
     {
       id: 2,
       name: 'Yella Yurt',
-      description: "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!"
-    }
+      description:
+        "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!",
+    },
   ]
 
   const viewData = { locations, days, day }
@@ -57,7 +59,8 @@ router.get('/:id/edit', (req, res) => {
     day: 'friday',
     time: '2pm - 3pm',
     name: 'Slushie Apocalypse I',
-    description: 'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!'
+    description:
+      'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
   }
 
   // TODO: Replace locations below with all of the locations from the database
@@ -68,14 +71,14 @@ router.get('/:id/edit', (req, res) => {
     { id: 1, name: 'TangleStage', selected: '' },
     { id: 2, name: 'Yella Yurt', selected: 'selected' },
     { id: 3, name: 'Puffy Paddock', selected: '' },
-    { id: 4, name: 'Kombutcha Karavan', selected: '' }
+    { id: 4, name: 'Kombutcha Karavan', selected: '' },
   ]
 
   // This is done for you
-  const days = eventDays.map(eventDay => ({
+  const days = eventDays.map((eventDay) => ({
     value: eventDay,
     name: capitalise(eventDay),
-    selected: eventDay === event.day ? 'selected' : ''
+    selected: eventDay === event.day ? 'selected' : '',
   }))
 
   const viewData = { event, locations, days }
