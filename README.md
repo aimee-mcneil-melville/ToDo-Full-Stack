@@ -20,12 +20,26 @@ There are two files in this repo, one for each week. Select the relevant one for
 
 - Lightning talks will be at **2pm** on the days listed.
 
-- Talks should be **2-5 minutes**. They are an intro to a topic, not a deep dive.
+- Talks should be **3-5 minutes**. They are an intro to a topic, not a deep dive.
 
 - You should only spend an hour researching. Again, we're not looking for you to be an expert.
+
+#### For in-person presentations
 
 - Try not to use notes, we just want to hear about the things you learned/find interesting, but it's okay if you do need to use some prompts.
 
 - No computer/projector use, but there are plenty of whiteboards :)
 
 - If you have a lot to write up, remember, you can always prepare the whiteboard before your talk!
+
+#### For online presentations
+
+- Slides are optional but encouraged. 
+
+- Try to make your slides primarily pictures, diagrams and/or bullet points, not wordy text.
+
+- You want to be talking in your natural voice, not reading from the slides or your notes. 
+
+- A live demo is also welcome (this will be more challenging than slides).
+
+

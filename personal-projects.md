@@ -1,6 +1,7 @@
 # Personal Projects
 
-Personal project presentations will be on Thursday of week 6! Pick a slot to present your work. 
+Personal project presentations will be on Thursday of week 6!<br> 
+Pick a slot to present your work. 
 
 ## Schedule
 
@@ -15,6 +16,8 @@ Personal project presentations will be on Thursday of week 6! Pick a slot to pre
 |   5   |                |
 |   7   |                |
 |   8   |                |
+|   9   |                |
+|   10  |                |
 
 ### Afternoon
 
@@ -27,3 +30,5 @@ Personal project presentations will be on Thursday of week 6! Pick a slot to pre
 |   5   |                |
 |   7   |                |
 |   8   |                |
+|   9   |                |
+|   10  |                |
