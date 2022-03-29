@@ -56,56 +56,48 @@
 
 ## Topics
 
-* Security
-  - [ ] CORS
-  - [ ] Cross site scripting
-  - [ ] Fundamentals of encryption
-  - [ ] Heartbleed SSH vulnerability
-  - [ ] SQL Injection attack
+* Command line tools
+  - [ ] `ack`
+  - [ ] `grep`
+  - [ ] `|` (pipe)
+  - [ ] `ln`, `ls`
+  - [ ] `chmod`, `chown`, `chgrp`
+  - [ ] `cat`, `tail`, `echo`
+  - [ ] `nvm`
+  - _Another CLI tool of your choice_ (validate with teacher first)
 
-* ECMAScript 6 (ES6)
-  - [ ] `Array.from()`, `Array.fill()`
-  - [ ] Asynchronous JavaScript with Generators
-  - [ ] Babel & Transpiling
-  - [ ] Default parameters, Rest & Spread operators
-  - [ ] Destructuring
-  - [ ] `Map` and `Set`
-
-* Relational databases
-  - [ ] Database indexes
-  - [ ] DDL, DNL, DCL, TCL
-  - [ ] SQL joins (left, right, inner, outer, full)
-
-* Git commands
-  - [ ] `git blame`
-  - [ ] `git cherry-pick`
-  - [ ] `git rebase`
-
-* Algorithms
-  - [ ] Big O notation
-  - [ ] Binary search & Git bisect
-  - [ ] Common sorting algorithms
-
-* JavaScript libraries
-  - [ ] Angular
-  - [ ] Immutable.js
-  - [ ] Lodash
-  - [ ] rx.js (hard)
-  - [ ] Zepto
-
-* UI Framework
+* UI Frameworks
   - [ ] Material Design
   - [ ] Semantic UI
+  - [ ] Bulma
+
+* Databases
+  - [ ] Database indexes
+  - [ ] SQL joins (left, right, inner, outer, full)
+  - [ ] NoSQL Databases
+  - [ ] Firebase DB
 
 * Famous Programmers
-  - [ ] Ada Lovelace
-  - [ ] Alan Turing
-  - [ ] Annie Easley
-  - [ ] Charles Babbage
-  - [ ] David Heinemeier Hansson (DHH)
-  - [ ] Frank S Greene
+  - [ ] Mary Wilkes
   - [ ] Grace Hopper
   - [ ] Ken Thompson
-  - [ ] Linus Torvalds
   - [ ] Margaret Hamilton
+  - [ ] Ada Lovelace
+  - [ ] Alan Turing
   - [ ] Radia Perlman
+  - [ ] Audrey Tang
+  - [ ] Brendan Eich
+  - [ ] Frank S Greene
+  - [ ] Annie Easley
+  - [ ] Hedy Lamarr
+  - [ ] Charles Babbage
+  - [ ] Richard Stallman
+  - [ ] Roy Fielding
+  - [ ] Sandi Metz
+  - [ ] Mark Dean
+  - [ ] Steve Wozniak
+  - [ ] Barbara Liskov
+  - [ ] David Heinemeier Hansson (DHH)
+  - [ ] Linus Torvalds
+ 
+* Another person of your choice _(validate with teacher first)_
