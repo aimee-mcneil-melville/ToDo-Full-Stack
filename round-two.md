@@ -106,5 +106,4 @@
   - [ ] IoT (Internet of Things)
   - [ ] TypeScript
   - [ ] Elm
-
-* Another topic that will be interesting for people _(validate with teacher first)_
+  - _Another topic that will be interesting for people (validate with teacher first)_
