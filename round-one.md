@@ -70,6 +70,16 @@
   - [ ] Material Design
   - [ ] Semantic UI
   - [ ] Bulma
+  - [ ] Tailwind
+
+* CSS Layouts
+  - [ ] CSS Grid
+  - [ ] Flexbox
+
+* Accessibility
+  - [ ] Accessibility for screen readers
+  - [ ] Accessibility for users with physical disabilities
+  - _Another accessiblity topic of your choice_ (validate with teacher first)
 
 * Databases
   - [ ] Database indexes

@@ -95,10 +95,16 @@
   - [ ] D3.js
   - [ ] Ember
 
+* React Frameworks
+  - [ ] Next.js
+  - [ ] Gatsby
+  - [ ] Remix.run 
+
 * Other experiences
   - [ ] How to make a Chrome Extension
   - [ ] Electron
   - [ ] IoT (Internet of Things)
   - [ ] TypeScript
+  - [ ] Elm
 
 * Another topic that will be interesting for people _(validate with teacher first)_
