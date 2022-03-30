@@ -23,7 +23,7 @@
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
+    "express-handlebars": "^6.0.3",
     "knex": "^1.0.1",
     "@vscode/sqlite3": "^5.0.7"
   },

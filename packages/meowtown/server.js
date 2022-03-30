@@ -11,7 +11,7 @@ const hbsConfig = {
   defaultLayout: 'main',
   extname: 'hbs',
 }
-server.engine('hbs', hbs(hbsConfig))
+server.engine('hbs', hbs.engine(hbsConfig))
 server.set('view engine', 'hbs')
 
 // middleware

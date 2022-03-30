@@ -25,18 +25,19 @@ _This step is not required for online students - this is how we credit commits u
 
 3. Now we're going to create a branch! To do this we use the `git branch` command. `git branch` on its own lists out all local branches, but when you give it an argument it creates a new branch. A new branch is a copy of the current branch with a different name.
 
-  In your terminal, run the following command, replacing `YourName` with your name:
+  In your terminal, run the following command, replacing `partner1` and `partner2` with your name and your partner's name in any order you decide:
 
   ```shell
-  git branch YourName-PartnersName      # e.g. emily-kelly
-  git checkout YourName-PartnersName
+  git branch partner1-partner2      # e.g. emily-kelly
+  git checkout partner1-partner2
   ```
 
   You could also do this in one step:
 
   ```shell
-  git checkout -b YourName-PartnersName
+  git checkout -b partner1-partner2
   ```
+  The result should be one new branch named after your pair.
 
 4. Modify the file `two-truths.md` so that for each of you it contains your name, and three facts about you. One of these facts should be completely made up. You should remove the entries for Neil Armstrong and Buzz Aldrin. 
 
