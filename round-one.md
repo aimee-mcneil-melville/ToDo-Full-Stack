@@ -109,5 +109,4 @@
   - [ ] Barbara Liskov
   - [ ] David Heinemeier Hansson (DHH)
   - [ ] Linus Torvalds
- 
-* Another person of your choice _(validate with teacher first)_
+  - _Another person of your choice (validate with teacher first)_
