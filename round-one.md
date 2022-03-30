@@ -64,7 +64,7 @@
   - [ ] `chmod`, `chown`, `chgrp`
   - [ ] `cat`, `tail`, `echo`
   - [ ] `nvm`
-  - _Another CLI tool of your choice_ (validate with teacher first)
+  - _Another CLI tool of your choice (validate with teacher first)_
 
 * UI Frameworks
   - [ ] Material Design
@@ -79,7 +79,7 @@
 * Accessibility
   - [ ] Accessibility for screen readers
   - [ ] Accessibility for users with physical disabilities
-  - _Another accessiblity topic of your choice_ (validate with teacher first)
+  - _Another accessiblity topic of your choice (validate with teacher first)_
 
 * Databases
   - [ ] Database indexes
