@@ -1,9 +1,8 @@
 exports.seed = (knex) => {
-  const empty = (table) => () => knex(table).del()
+  return knex('users').del()
 
-  return empty('users')()
-  // Chain calls to empty in
-  // order as required, e.g.:
-  // return empty('profiles')()
-  //   .then(empty('users'))
+  // Chain calls to empty in order as required, e.g.
+  // return knex('profiles')
+  //   .del()
+  //   .then(() => knex('users').del())
 }
