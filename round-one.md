@@ -77,9 +77,11 @@
   - [ ] Flexbox
 
 * Accessibility
-  - [ ] Accessibility for screen readers
-  - [ ] Accessibility for users with physical disabilities
-  - _Another accessiblity topic of your choice (validate with teacher first)_
+  - [ ] Browsing with assistive technologies _(or pick a single assistive tech)_
+  - [ ] Enabling users with learning, reading, and neurological impairments
+  - [ ] Building accessible forms
+  - [ ] Testing accessibility
+  - [ ] Legal requirements of web accessibility in NZ
 
 * Databases
   - [ ] Database indexes
