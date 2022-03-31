@@ -1,0 +1,60 @@
+{
+  "name": "boilerplate-knex",
+  "version": "0.1.4",
+  "description": "Express boilerplate with Knex.js",
+  "engines": {
+    "node": "16.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "knex": "knex",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier -w *.js routes seeds migrations",
+    "build": "knex migrate:latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/boilerplate-knex.git"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/boilerplate-knex/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.3",
+    "knex": "^1.0.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.16.2",
+    "eslint": "^8.11.0",
+    "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "jest": "^25.1",
+    "prettier": "^2.5.1",
+    "supertest": "^4.0.2"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
