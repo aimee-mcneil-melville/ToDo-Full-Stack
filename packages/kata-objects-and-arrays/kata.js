@@ -66,7 +66,7 @@ function getPropertyValue(obj, key) {}
 // e.g. if `key` contains 'weather' and `value` contains 'sunny'
 // then the returned object should look like this:
 // {
-//   weather: sunny
+//   weather: 'sunny'
 // }
 function makeObject(key, value) {}
 
