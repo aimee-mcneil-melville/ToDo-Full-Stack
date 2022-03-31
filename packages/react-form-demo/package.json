@@ -10,10 +10,7 @@
   "author": "EDA",
   "license": "ISC",
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread",
@@ -43,6 +40,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^6.2.2"
   }
 }
