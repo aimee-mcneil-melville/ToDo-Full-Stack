@@ -1,0 +1,22 @@
+{{> lineUpNav}}
+
+<h2 class="page-header">Events: {{day}}
+  <a href="/events/add/{{day}}" class="event-add-link">Add event</a>
+</h2>
+
+{{#each events}}
+  <div class="event-section">
+    <img src="{{icon}}" class="event-icon">
+    <div class="event-abstract">
+      <span class="event-name">{{name}}</span>
+      <p class="text-gray-500">{{description}}</p>
+    </div>
+    <div class="event-details">
+      <span class="text-green text-lg font-bold">Location</span>
+      <span class="text-green text-lg font-bold">Time</span>
+      <span class="text-gray-500">{{location.name}}</span>
+      <span class="text-gray-500">{{time}}</span>
+      <span class="event-edit-link"><a href="/events/{{id}}/edit">Edit Event</a></span>
+    </div>
+  </div>
+{{/each}}

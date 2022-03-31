@@ -1,0 +1,13 @@
+{{> locationsNav}}
+
+<h2 class="page-header">Locations:</h2>
+
+<div class="locations-section">
+{{#each locations}}
+  <div class="locations-item">
+    <a href="/events/{{id}}" class="locations-item-name">{{name}}</a>
+    <p class="text-gray-500">{{description}}</p>
+    <span class="locations-edit-link"><a href="/locations/{{id}}/edit">Edit Location</a></span>
+  </div>
+{{/each}}
+</div>
