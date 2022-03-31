@@ -1,0 +1,72 @@
+{
+  "name": "boilerplate-react-webpack",
+  "version": "0.2.2",
+  "description": "Consuming External APIs",
+  "repository": "https://github.com/dev-academy-challenges/consuming-external-apis.git",
+  "main": "server/index.js",
+  "author": "EDA",
+  "license": "ISC",
+  "scripts": {
+    "client": "webpack serve --hot --config ./client/webpack.config.js",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "webpack --config ./client/webpack.config.js --watch",
+    "dev:server": "nodemon server",
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "start": "node server",
+    "build": "npm run webpack",
+    "server": "node server",
+    "test": "jest --watchAll",
+    "lint": "eslint --ext .js,.jsx ."
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eda/react",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "npm-run-all": "^4.1.5",
+    "superagent": "^5.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.3.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^25.3.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
