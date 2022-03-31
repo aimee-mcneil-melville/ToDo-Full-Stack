@@ -1,0 +1,63 @@
+{
+  "name": "charlottes-web-log-api",
+  "version": "0.2.0",
+  "description": "A spider's blog about her web",
+  "repository": "https://github.com/dev-academy-challenges/charlottes-web-log-api.git",
+  "main": "server/index.js",
+  "author": "EDA",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config ./client/webpack.config.js",
+    "dev:client": "npm run build -- --watch",
+    "dev:server": "nodemon server",
+    "dev": "run-p dev:client dev:server",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "lint": "eslint --ext .js,.jsx .",
+    "lint:fix": "eslint . --fix",
+    "start": "node server",
+    "test": "jest"
+  },
+  "keywords": ["fullstack"],
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  },
+  "eslintConfig": {
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "express": "^4.17.1",
+    "knex": "^1.0.1",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "eslint": "^8.9.0",
+    "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^6.2.1",
+    "superagent": "^5.2.2",
+    "supertest": "^6.2.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
