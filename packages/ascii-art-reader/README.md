@@ -81,7 +81,7 @@ By now you should be getting used to setting up Node programs. Here's a reminder
 1. Install `jest` as dev dependencies (use `-D`).
 1. Write a couple of scripts in your `package.json`:
     - one that starts the program
-    - one that runs all the tests
+    - one that runs all the tests (you may wish to refer to the tdd-bowling-kata, for this)
 1. Create a `tests` directory.
 1. Write a simple initial test that proves the tests run ok.
 
