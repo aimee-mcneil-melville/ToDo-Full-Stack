@@ -67,10 +67,11 @@
   - _Another CLI tool of your choice (validate with teacher first)_
 
 * UI Frameworks
+  - [ ] SCSS
+  - [ ] Tailwind
+  - [ ] Bulma
   - [ ] Material Design
   - [ ] Semantic UI
-  - [ ] Bulma
-  - [ ] Tailwind
 
 * CSS Layouts
   - [ ] CSS Grid
