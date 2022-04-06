@@ -100,6 +100,9 @@
   - [ ] Gatsby
   - [ ] Remix.run 
 
+* React component library
+  - [ ] Chakra UI
+
 * Other experiences
   - [ ] How to make a Chrome Extension
   - [ ] Electron
