@@ -11,11 +11,10 @@ import WaitIndicator from './WaitIndicator'
 function App() {
   return (
     <div className="app">
+      <Header />
+      <ErrorMessage />
       <Routes>
-        <Route path="/" element={<Header />} />
-        <Route path="/" element={<ErrorMessage />} />
         <Route
-          exact
           path="/"
           element={
             <ProductList>
