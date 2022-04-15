@@ -67,7 +67,6 @@ Add a delete button next to each of the wombats so they can be deleted:
 
 - Add a new reducer function for another property on the Redux store. We already have `wombats`; how about `aardvarks`?
 - Add some actions to the new reducer.
-- Add another rendering function in `index.js` to handle the new property on the store, and subscribe it to the store using the same method as `wombats`.
 
 
 ## See also
