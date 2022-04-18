@@ -12,7 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Redux DevTools
 
-The computers on campus should already have the redux devtools installed. If you'd like them on your own computer you can install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+The computers on campus should already have the Redux DevTools installed. If you'd like them on your own computer you can install the Firefox add-on [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/) and the Chrome extension from [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 
 
 ## Exercise
@@ -28,7 +28,7 @@ Load up Redux DevTools and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions 
 
 - Add an `UPDATE_WOMBAT` action to the reducer in `reducer.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
 
-To update a wombat you will need to provide the **new** name of the wombat (so that it can be changed) but also the **old** name (so that the reducer can find the wombat that needs to be updated).
+To update a wombat you will need to provide the **new** name of the wombat (so that it can be changed) but also the **old** name (so that the reducer can find the wombat that needs to be updated). To hold these two data items, your `payload` will need to be an object instead of a string.
 
 Make sure you can dispatch this new action successfully from Redux DevTools. You'll dispatch this action from code in a later step.
 
@@ -65,9 +65,10 @@ Add a delete button next to each of the wombats so they can be deleted:
 
 #### Add a new type of animal
 
-- Add a new reducer function for another property on the Redux store. We already have `wombats`; how about `aardvarks`?
+- Add a new reducer file for another animal. We already have `wombats`; how about `aardvarks`?
+- In `reducers/index.js`, pass your new reducer file to `combineReducers`.
 - Add some actions to the new reducer.
-- Add another rendering function in `index.js` to handle the new property on the store, and subscribe it to the store using the same method as `wombats`.
+- Make a client-side component (or components) for your new animal.
 
 
 ## See also
