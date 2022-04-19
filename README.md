@@ -26,7 +26,7 @@ Load up Redux DevTools and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions 
 
 ### Write some code
 
-- Add an `UPDATE_WOMBAT` action to the reducer in `reducer.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
+- Add an `UPDATE_WOMBAT` action to the reducer in `reducers/wombats.js`. Take your time to read through what the reducer currently does, and follow the established pattern to create your new action.
 
 To update a wombat you will need to provide the **new** name of the wombat (so that it can be changed) but also the **old** name (so that the reducer can find the wombat that needs to be updated). To hold these two data items, your `payload` will need to be an object instead of a string.
 
