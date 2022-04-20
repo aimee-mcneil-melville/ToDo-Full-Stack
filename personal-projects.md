@@ -14,6 +14,7 @@ Pick a slot to present your work.
 |   3   |                |
 |   4   |                |
 |   5   |                |
+|   6   |                |
 |   7   |                |
 |   8   |                |
 |   9   |                |
@@ -28,6 +29,7 @@ Pick a slot to present your work.
 |   3   |                |
 |   4   |                |
 |   5   |                |
+|   6   |                |
 |   7   |                |
 |   8   |                |
 |   9   |                |
