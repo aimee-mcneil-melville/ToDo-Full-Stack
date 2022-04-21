@@ -1,9 +1,9 @@
 exports.seed = (knex) => {
-  const empty = (table) => () => knex(table).del()
+  return knex('users').del()
 
-  return empty('users')()
-  // Chain calls to empty in
-  // order as required, e.g.:
-  // return empty('profiles')()
-  //   .then(empty('users'))
+  // Delete data from child table(s) first, and use .then() to delete from parent tables
+  // e.g. to delete data from profiles and then from users:
+  // return knex('profiles')
+  //   .del()
+  //   .then(() => knex('users').del())
 }
