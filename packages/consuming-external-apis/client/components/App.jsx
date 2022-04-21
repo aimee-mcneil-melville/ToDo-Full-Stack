@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getWelcome } from '../api'
+import { getWelcome } from '../apiClient'
 
 function App() {
   const [welcomeStatement, setWelcomeStatement] = useState('')
@@ -9,7 +9,6 @@ function App() {
     getWelcome()
       .then((res) => {
         setWelcomeStatement(res.statement)
-        return null
       })
       .catch((err) => {
         console.error(err.message)
