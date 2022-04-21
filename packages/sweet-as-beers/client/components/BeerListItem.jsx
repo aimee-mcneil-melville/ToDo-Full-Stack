@@ -1,8 +1,7 @@
 import React from 'react'
 
 function BeerListItem(props) {
-  // eslint-disable-next-line no-unused-vars
-  const { id, name, brewery, country, abv } = props.beer
+  const { name, brewery, country, abv } = props.beer
   return (
     <div className="beer">
       <p className="name">{name}</p>
