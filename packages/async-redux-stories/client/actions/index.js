@@ -13,14 +13,14 @@ export function requestPosts() {
 export function receivePosts(posts) {
   return {
     type: RECEIVE_POSTS,
-    posts: posts.map((post) => post.data),
+    payload: posts.map((post) => post.data),
   }
 }
 
 export function showError(errorMessage) {
   return {
     type: SHOW_ERROR,
-    errorMessage: errorMessage,
+    payload: errorMessage,
   }
 }
 

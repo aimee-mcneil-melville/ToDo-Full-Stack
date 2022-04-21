@@ -19,14 +19,14 @@ _As a user, I want to click a button and retrieve a list of post titles from the
  - This one is done for you! But take a look at it anyway and try to make sure you understand what's going on. In particular, identify:
    - the _action_ and _action creator_. Take a good look at `fetchPosts` in particular. What does it return?
    - the _reducer_
-   - the _container_ and _presentation_ components
-   - Notice that `LoadSubreddit` is a mixture of both container and presentation: it returns JSX, but it uses `react-redux`'s `useDispatch` function to allow it to fire off an _action_.
-   - The dev tools setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details.
+   - the _components_ involved
+   - The DevTools setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details.
 
 _As a user, I want to be able to enter a new subreddit to view the titles from so that I can see what else is happening on Reddit._
- - Initially, the subreddit is hardcoded into `LoadSubreddit`. If you use the component's state to keep track of the subreddit (using onChange), you'll be able to add it to the action you dispatch.
+ - Initially, the subreddit is hardcoded into `LoadSubreddit`. If you use the component's state to keep track of the subreddit (using `onChange`), you'll be able to add it to the action you dispatch.
 
 _As a user, I want to view not just the title, but also a date and time and a short summary of each post so that I can preview the content._
+ - reddit returns us the time a post was created in seconds, if you find your date is far in the past try multiplying it by 1000 to use milliseconds instead
 
 
 ## Try this next

@@ -1,10 +1,11 @@
 import { SHOW_ERROR } from '../actions'
 
 function errorMessage(state = '', action) {
-  switch (action.type) {
-    case SHOW_ERROR:
-      return action.errorMessage
+  const { type, payload } = action
 
+  switch (type) {
+    case SHOW_ERROR:
+      return payload
     default:
       return state
   }
