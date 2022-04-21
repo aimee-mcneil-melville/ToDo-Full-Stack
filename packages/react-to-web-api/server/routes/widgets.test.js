@@ -26,7 +26,6 @@ describe('GET /api/v1/widgets', () => {
       .then((res) => {
         expect(res.body).toHaveLength(3)
         expect(res.body[1].price).toBe(45.67)
-        return null
       })
   })
   it('responds with 500 and error on getWidgets rejection', () => {
@@ -38,7 +37,6 @@ describe('GET /api/v1/widgets', () => {
       .expect(500)
       .then((err) => {
         expect(err.text).toBe('mock DB error')
-        return null
       })
   })
 })

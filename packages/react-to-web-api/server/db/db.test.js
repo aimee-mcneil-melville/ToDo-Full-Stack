@@ -18,7 +18,6 @@ describe('getWidgets', () => {
       expect(widgets).toHaveLength(3)
       expect(widgets[0]).toHaveProperty('mfg')
       expect(widgets[1].inStock).toBe(8)
-      return null
     })
   })
 })

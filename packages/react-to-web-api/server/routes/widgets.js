@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   db.getWidgets()
     .then((widgets) => {
       res.json(widgets)
-      return null
     })
     .catch((err) => {
       res.status(500).send(err.message)
