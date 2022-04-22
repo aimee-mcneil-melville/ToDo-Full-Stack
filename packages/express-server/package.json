@@ -22,22 +22,22 @@
     "extends": "eda"
   },
   "dependencies": {
-    "express": "^4.16.4",
-    "supertest": "^4.0.2"
+    "express": "^4.17.2",
+    "supertest": "^6.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.2",
+    "@babel/core": "^7.15.6",
     "@babel/eslint-parser": "^7.17.0",
-    "eslint": "^8.9.0",
+    "eslint": "^8.10.0",
     "eslint-config-eda": "^1.1.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "jest": "^24.5.0",
-    "prettier": "^2.5.1"
+    "eslint-plugin-react": "^7.29.4",
+    "jest": "^27.5.1",
+    "prettier": "2.6.1"
   },
   "prettier": {
     "semi": false,

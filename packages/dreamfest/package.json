@@ -8,7 +8,6 @@
     "dev": "nodemon index",
     "knex": "knex --knexfile db/knexfile.js",
     "build": "NODE_ENV=production tailwindcss build public/source.css -o public/main.css",
-    "postinstall": "NODE_ENV=production tailwindcss build public/source.css -o public/main.css",
     "build:dev": "tailwindcss build public/source.css -o public/main.css",
     "test": "jest"
   },
@@ -39,7 +38,7 @@
     "eslint-config-eda": "^1.1.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "prettier": "^2.6.1",
+    "prettier": "2.6.1",
     "tailwindcss-cli": "^0.1.2"
   },
   "prettier": {

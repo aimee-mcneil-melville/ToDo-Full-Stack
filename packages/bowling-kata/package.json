@@ -17,16 +17,16 @@
     "extends": "eda"
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
+    "eslint": "^8.10.0",
     "eslint-config-eda": "^1.1.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "jest": "^27.0.3",
-    "prettier": "^2.5.1"
+    "eslint-plugin-react": "^7.29.4",
+    "jest": "^27.5.1",
+    "prettier": "2.6.1"
   },
   "prettier": {
     "semi": false,

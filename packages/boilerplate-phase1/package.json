@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/boilerplate-phase1#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.2"
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
-    "jest": "^24.6.0",
-    "nodemon": "^1.18.10"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
   }
 }

@@ -1,9 +1,10 @@
 {
-  "name": "monorepo-trial",
+  "name": "challenges",
   "scripts": {
     "lint": "eslint tools",
     "fork-to-cohort": "node tools/fork-to-cohort.js",
     "unaligned-versions": "node tools/unaligned-versions.js",
+    "align-versions": "node tools/align-versions.js",
     "fix-package-names": "node tools/fix-package-names.js",
     "add-challenges": "node tools/add-challenges.js"
   },

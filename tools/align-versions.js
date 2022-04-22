@@ -33,15 +33,22 @@ const correctVersions = {
   'regenerator-runtime': '^0.13.7',
   'style-loader': '^3.3.0',
   'styled-components': '^5.3.1',
-  superagent: '^7.1.1',
+  'sass-loader': '12.6.0',
+  'react-router-dom': '^6.2.2',
+  sass: '^1.50.1',
+  superagent: '7.1.1',
   supertest: '^6.2.2',
   webpack: '^5.69.1',
   'webpack-cli': '^4.9.2',
+  'webpack-dev-server': '^4.8.1',
+  react: '^17.0.2',
+  'react-dom': '^17.0.2',
+  prettier: '2.6.1',
+  'eslint-plugin-react': '^7.29.4',
+  '@testing-library': '^12.1.3',
 }
 
 const main = async () => {
-  throw new Error(`The time has not yet come to run this totally safe script`)
-
   const dirs = await FS.readdir(Path.join(__dirname, '..', 'packages'))
   for (const dir of dirs) {
     const packagePath = Path.join(
@@ -64,19 +71,18 @@ const main = async () => {
       for (const name in correctVersions) {
         const version = correctVersions[name]
         if (dependencies && dependencies[name]) {
-          console.log(`updating ${packagePath}`)
           dependencies[name] = version
           modified = true
         }
 
         if (devDependencies && devDependencies[name]) {
-          console.log(`updating ${packagePath}`)
           devDependencies[name] = version
           modified = true
         }
       }
 
       if (modified) {
+        console.log(`updating ${packagePath}`)
         const output = `${JSON.stringify(packageObj, null, 2)}\n`
         await FS.writeFile(packagePath, output, 'utf-8')
       }
