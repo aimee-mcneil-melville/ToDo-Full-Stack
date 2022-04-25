@@ -1,29 +1,18 @@
 {{> locationsNav}}
 
-<h2 class="page-header">Edit Location: {{name}}</h2>
+<h2>Edit Location: {{name}}</h2>
 
-<form method="POST" action="/locations/edit" class="page-form">
+<form method="POST" action="/locations/edit" class="form">
   <input type="hidden" name="id" value="{{id}}">
 
-  <label for="name" class="block mb-4">
-    <span class="form-label">Location Name</span>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Location name"
-      value="{{name}}"
-      class="form-input">
+  <label for="name">
+    <span>Location Name</span>
   </label>
-
-  <label for="description" class="block mb-4">
-    <span class="form-label">Description</span>
-    <textarea rows="4"
-      id="description"
-      name="description"
-      placeholder="Location description"
-      class="form-input">{{description}}</textarea>
+  <input type="text" id="name" name="name" placeholder="Location name" value="{{name}}">
+  <label for="description">
+    <span>Description</span>
   </label>
-
-  <button class="form-button">Update location</button>
+  <textarea rows="4" id="description" name="description" placeholder="Location description">{{description}}</textarea>
+  <div></div>
+  <button>Update location</button>
 </form>
