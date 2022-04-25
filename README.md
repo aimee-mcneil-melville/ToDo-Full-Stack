@@ -36,6 +36,8 @@ FYI: [A note about styling](#a-note-about-styling)
 1. `cd dreamfest`
 1. `npm install`
   * note: if install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
+1. `npm run knex migrate:latest`
+1. `npm run knex seed:run`
 1. `npm run dev`
 1. Have a little [play with the app](http://localhost:3000) as it is
 1. Get familiar with the existing codebase
@@ -43,40 +45,6 @@ FYI: [A note about styling](#a-note-about-styling)
 ### What you're starting with
 
 The application is usable ... _ish_. You can try anything and the app shouldn't break or throw any errors, but adding, editing and deleting events and locations doesn't work yet. Also, you're only seeing hard-coded data. You will need to write and call all of the necessary database functions. We recommend doing this in a new `db/index.js` file. You will call these database functions from the routes. All of the changes in `routes` are marked with `TODO:`. Be sure you understand the existing code and have a plan before you start coding new functionality.
-
-But first, you'll need to create the database.
-
-Knex has been installed, the `knexfile.js` has been created and a `knex` script is waiting patiently for you in `package.json`. So be sure to always use `npm run knex ...` and not `npx knex ...`.
-
-## Create migrations
-
-You'll need to create 2 tables: `locations` and `events`
-
-### `locations`
-
-* `id`: number (primary key)
-* `name`: string
-* `description`: string
-
-### `events`
-
-  * `id`: number (primary key)
-  * `location_id`: number (foreign key to locations.id)
-  * `day`: string
-  * `time`: string
-  * `name`: string
-  * `description`: string
-
-### Steps
-
-1. Create the migration files for these 2 tables and apply them using `npm run knex`.
-1. Use a database tool, such as the DB Browser for SQLite, to verify they were created correctly.
-
-## Add seed data
-
-1. Create the seed files based on the JSON files in the `/db/data` folder.
-1. Add the seed data to the database using `npm run knex`.
-1. Use a database tool to verify the data was added correctly.
 
 ## Show all locations
 
@@ -172,13 +140,3 @@ You'll also have to create new things in this step, but referring to existing fe
 ## Test helper functions
 
 Some tests have been created in `helpers.test.js` but they haven't been written yet. They are just testing the functions exported from `helpers.js` so they should be pretty easy (as far as testing goes). Some of the functionality hasn't been implemented in the helper functions, so you'll need to do that too. Perhaps this is a good time to revisit test-driven development (write the tests before implementing the functionality in `helpers.js`). Remember red, green, refactor :wink:
-
-## A note about styling
-
-The `build` script (in `package.json`) creates a production build, which creates a very small `public/main.css`. If you are not going to use any class names that aren't already in use, you only need to run this once (it is run as a `postinstall` script so it has probably already run). You'll also need to run this if you change `tailwind.config.js` or `public/source.css`.
-
-If you plan to do a lot of styling work, you should run `npm run build:dev`, which gives you all of Tailwind CSS, but also a large `public/main.css`. Just be sure to `npm run build` when you're all finished if you're going to deploy this.
-
-> Note: `main.css` is in the `.gitignore` so it isn't checked into the repo. It's a good practice to not commit files that are _built_, such as `main.css`, into Git repositories.
-
-Also, TailwindCSS uses low-level utility classes. A lot of them have been grouped into regular CSS classes using Tailwind's `@apply` feature. If you're curious, you can find them in `public/source.css` in the `@layer components` section. You'll need to `npm run build` if you change anything in this file.
