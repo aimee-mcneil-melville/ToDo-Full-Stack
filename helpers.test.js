@@ -1,5 +1,5 @@
 // TODO: Uncomment. (commented out to pass linting)
-// const { capitalise, validateDay, getEventIconPath } = require('./helpers')
+// const { capitalise, validateDay } = require('./helpers')
 
 // TODO: Write these tests (remove .todo)
 describe('capitalise', () => {
@@ -26,15 +26,4 @@ describe('validateDay', () => {
 
   // TODO: Implement this functionality in helpers.js
   test.todo('throws an error if the days parameter is not an array of strings')
-})
-
-// TODO: Write these tests (remove .todo)
-describe('getEventIconPath', () => {
-  test.todo('returns the correct path given an id')
-
-  // TODO: Implement this functionality in helpers.js
-  test.todo('returns the first icon if id is not numeric')
-
-  // TODO: Implement this functionality in helpers.js
-  test.todo('returns the first icon if id is a negative number')
 })
