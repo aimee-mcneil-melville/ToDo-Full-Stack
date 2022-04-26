@@ -1,6 +1,6 @@
 # Authentication with JSON Web Tokens (JWTs)
 
-This repo contains a working app that includes CRUD operations for fruit :wink: It has the beginnings of authentication such as a `Nav` component with hyperlinks for registering and signing in and a component to conditionally hide/show its child components based on if the user is authenticated.
+This repo contains a working app that includes CRUD operations for fruit. It has the beginnings of authentication such as a `Nav` component with hyperlinks for registering and signing in and a component to conditionally hide/show its child components based on if the user is authenticated.
 
 Your task is to complete the authentication implementation of this app.
 
@@ -38,9 +38,9 @@ No need to rush into this. Get familiar with the code base first. There might be
 
 For example, this codebase uses [`styled-components`](https://www.styled-components.com). There is also a nice use of `props.children` in the `Authenticated` components.
 
-Get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones.
+Get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones. See which work and which get errors.
 
-Once you're comfortable enough with the app, proceed with a sense of curiosity :wink: as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
+Once you're comfortable enough with the app, proceed with a sense of curiosity as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
 
 ## 1. Auth0: Account Setup
 
@@ -87,7 +87,7 @@ In `client/index.js`:
 | `clientId` | See 2️⃣ above, this is the random string you made a note of earlier | 
 | `audience` | See 3️⃣ above, `https://fruits/api`                                 |
 
-Refresh your browser and check the *Network* tab in the *Dev Tools*, if you see errors, then revise the steps above.
+Refresh your browser and check the *Network* tab in the *DevTools*, if you see errors, then revise the steps above.
 
 At this stage it's normal that "Log off" displays (as if you were logged in), even though you're not logged in.
 
