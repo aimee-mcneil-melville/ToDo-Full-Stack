@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/conways#readme",
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^27.5.1"
   },
   "dependencies": {
     "clear": "^0.1.0"

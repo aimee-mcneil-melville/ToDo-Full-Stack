@@ -15,15 +15,15 @@
     "extends": "eda"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
+    "cheerio": "^1.0.0-rc10",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
-    "eslint": "7.9.0",
-    "eslint-config-eda": "0.1.5",
-    "jest": "^27.4.7",
+    "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.1.0",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "supertest": "^6.1.6"
+    "supertest": "^6.2.2"
   }
 }
