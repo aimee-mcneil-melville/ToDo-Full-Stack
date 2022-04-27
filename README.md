@@ -13,11 +13,11 @@ The design team has worked up the UI and routes, but they haven't yet connected 
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
-  * note: if the install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
+    * note: if the install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
 1. `npm run knex migrate:latest`
 1. `npm run knex seed:run`
 1. `npm run dev`
-1. Have a little [play with the app](http://localhost:3000) as it is
+1. Have a little play with the app as it is
 1. Get familiar with the existing codebase
 
 ### What you're starting with
@@ -47,29 +47,29 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Show the form**
 
 1. Look at the `GET /locations/4/edit` route in `routes/locations.js`. This route supplies the current data to the form, ready for the user to edit it.
-1. Make a `getLocationById(id)` function in `db/index.js`
-1. Be sure the form is being populated correctly
+2. Make a `getLocationById(id)` function in `db/index.js`
+3. Be sure the form is being populated correctly
 
 **Submit the form**
 
-1. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`
-1. Make an `updateLocation(updatedLocation)` function
+4. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`
+5. Make an `updateLocation(updatedLocation)` function
     * UPDATE the `locations` table with the updated location details
-1. Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form. 
+6. Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form. 
 
 ### 4. Add new events
 
 **Fix form**
 
 1. The "Add New Event" form needs a list of all the locations to put in the drop-down. Currently these are hard-coded, but we want them to come from the database (the days of the week are hard-coded too, but we're not going to change those). The `GET /events/add/:day` route in `routes/events.js` needs to obtain the list of locations from the database, and supply them to the form. 
-1. You've already written a `getAllLocations()` function, now use it in your route. Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
+2. You've already written a `getAllLocations()` function, now use it in your route. Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
     * Be sure `res.render('editEvent', viewData)` is inside your `.then` function
 
 **Submit the form**
 
-1. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`
-1. Make an `addNewEvent(event)` function in `db/index.js`
-1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function. How can you specify the actual day here? 
+3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`
+4. Make an `addNewEvent(event)` function in `db/index.js`
+5. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function. How can you specify the actual day here? 
 
 ### 5. Delete events
 
@@ -84,17 +84,17 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Show form**
 
 1. Look at the `GET /events/:id/edit` route in `routes/locations.js`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
-1. Make a `getEventById(id)` function in `db/index.js` and use this in your route. 
+2. Make a `getEventById(id)` function in `db/index.js` and use this in your route. 
 
 **Fix form**
-1. Like the "Add New Event" form above, the "Edit Event" form also needs a list of locations from the database. This will come from the `GET /events/:id/edit` route in `routes/events.js`. 
-1. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
-1. Make sure you call `getEventById(id)` first, and then `getAllLocations()` Consider returning the event's `locationId` to the next function in the promise chain.
+3. Like the "Add New Event" form above, the "Edit Event" form also needs a list of locations from the database. This will come from the `GET /events/:id/edit` route in `routes/events.js`. 
+4. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
+5. Make sure you call `getEventById(id)` first, and then `getAllLocations()` Consider returning the event's `locationId` to the next function in the promise chain.
 
 **Submit form**
 
-1. Make an `updateEvent(updatedEvent)` function in `db/index.js`
-1. Update `POST /events/edit` in `routes/events.js`
+6. Make an `updateEvent(updatedEvent)` function in `db/index.js`
+7. Update `POST /events/edit` in `routes/events.js`
 
 ### 7. Add new locations
 
@@ -103,14 +103,14 @@ You'll have to create new things in this step, but referring to existing feature
 **Show form**
 
 1. In `views/showLocations.hbs`, create an "Add Location" link (similar to the "Add Event" link in `views/showDay.hbs`)
-1. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`)
-1. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`
+2. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`)
+3. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`
 
 **Submit form**
 
-1. Create `POST /locations/add` in `routes/locations.js`
-1. Create an `addNewLocation(locationInfo)` function in `db/index.js`
-1. Don't forget `res.redirect('/locations')`
+4. Create `POST /locations/add` in `routes/locations.js`
+5. Create an `addNewLocation(locationInfo)` function in `db/index.js`
+6. Don't forget `res.redirect('/locations')`
 
 ### 8. Delete locations
 
@@ -122,10 +122,10 @@ You'll also have to create new things in this step, but referring to existing fe
 
 **Create route**
 
-1. Create a `POST /locations/delete` route in `routes/locations.js`
+2. Create a `POST /locations/delete` route in `routes/locations.js`
     - pass the `id` as a hidden form field
-1. Create a `deleteLocation(id)` function in `db/index.js`
-1. Remember your old friend `res.redirect('/locations')`
+3. Create a `deleteLocation(id)` function in `db/index.js`
+4. Remember your old friend `res.redirect('/locations')`
 
 ### 9. Test helper functions
 
