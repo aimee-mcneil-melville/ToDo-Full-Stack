@@ -10,6 +10,10 @@ p > span {
   font-weight: bold;
 }
 
+.data {
+  color: cornflowerblue;
+}
+
 .cards {
   display: flex;
   flex-direction: row;
@@ -18,7 +22,6 @@ p > span {
 
 .card {
   background-color: white;
-  color: cornflowerblue;
   border-radius: 10%;
   box-shadow: 1px 1px 10px rgb(49, 49, 49);
   border: 2px solid rgb(158, 158, 158);
