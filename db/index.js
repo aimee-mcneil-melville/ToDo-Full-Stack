@@ -3,10 +3,10 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getLocations,
+  getAllLocations,
 }
 
-function getLocations(db = connection) {
+function getAllLocations(db = connection) {
   // TODO: use knex to get the real location data from the database
 }
 

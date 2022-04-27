@@ -20,14 +20,10 @@ router.get('/add/:day', (req, res) => {
     {
       id: 1,
       name: 'TangleStage',
-      description:
-        'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.',
     },
     {
       id: 2,
       name: 'Yella Yurt',
-      description:
-        "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!",
     },
   ]
 
@@ -72,7 +68,7 @@ router.get('/:id/edit', (req, res) => {
     { id: 1, name: 'TangleStage', selected: '' },
     { id: 2, name: 'Yella Yurt', selected: 'selected' },
     { id: 3, name: 'Puffy Paddock', selected: '' },
-    { id: 4, name: 'Kombutcha Karavan', selected: '' },
+    { id: 4, name: 'Kombucha Karavan', selected: '' },
   ]
 
   // This is done for you
