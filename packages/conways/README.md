@@ -36,7 +36,7 @@ Note that a rule for our system is that array indices should not _wrap around_ t
 
 ## Build it!
 
-Your're going to make your very own version of Conway's Game of Life. You'll render the game out to the console. We recommend you build this using test-driven development (writing the tests before implementing them).
+You're going to make your very own version of Conway's Game of Life. You'll render the game out to the console. We recommend you build this using test-driven development (writing the tests before implementing them).
 
 Before you start, think about how this work. What are the things you're going to need to build? 
 
