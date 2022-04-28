@@ -38,7 +38,7 @@ Note that a rule for our system is that array indices should not _wrap around_ t
 
 You're going to make your very own version of Conway's Game of Life. You'll render the game out to the console. We recommend you build this using test-driven development (writing the tests before implementing them).
 
-Before you start, think about how this work. What are the things you're going to need to build? 
+Before you start, think about how this will work. What are the things you're going to need to build? 
 
 Are you going to start big and drill down (from the board down to a cell and its neighbours), or start small and expand (from a cell and its neighbours to the board)? There is no right answer, just your preference.
 
