@@ -8,6 +8,7 @@ module.exports = {
 
 function getAllLocations(db = connection) {
   // TODO: use knex to get the real location data from the database
+  return db('locations').select()
 }
 
 // TODO: write some more database functions
