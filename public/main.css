@@ -41,16 +41,19 @@ p > span {
   margin-bottom: 1.1em;
 }
 
-.event-title {
+.title {
   font-weight: bold;
+  color: cornflowerblue;
 }
 
 .time-location {
+  margin-top: 15px;
   font-size: small;
 }
 
 .event-description {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 label {

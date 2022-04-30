@@ -7,13 +7,14 @@
   {{#each events}}
   <li class="card">
     <div>
-      <span class="event-title"><a href="/events/{{id}}/edit">{{eventName}}</a></span>
+      <span class="title">{{eventName}}</span>
       <div class="time-location">
         <p>Location <span class="data">{{locationName}}</span></p>
         <p>Time <span class="data">{{time}}</span></p>
       </div>
     </div>
     <p class="event-description data">{{description}}</p>
+    <a href="/events/{{id}}/edit">edit event</a>
   </li>
   {{/each}}
 </ul>

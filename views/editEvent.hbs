@@ -1,7 +1,7 @@
 {{> lineUpNav}}
 
 
-<h2>edit event: {{event.name}}</h2>
+<h2>edit event: <span class="data">{{event.name}}</span></h2>
 
 <form method="POST" action="/events/edit" class="form">
   <input type="hidden" name="id" value="{{event.id}}">
