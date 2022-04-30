@@ -15,5 +15,12 @@ function getEventsByDay(day, db = connection) {
   return db('events')
     .join('locations', 'events.location_id', 'locations.id')
     .where('day', day)
-    .select()
+    .select(
+      'events.id',
+      'events.day',
+      'events.time',
+      'events.name as eventName',
+      'events.description',
+      'locations.name as locationName'
+    )
 }
