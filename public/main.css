@@ -1,13 +1,25 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('/images/confetti.jpg');
+  background-repeat: repeat-y;
+  background-size: 850px;
+}
+
+a {
+  background-color: white;
+  border-color: cornflowerblue;
+  margin: 10px 10px 10px 0;
+  padding: 10px 10px 10px 0;
+  font-size: medium;
+  font-weight: bold;
 }
 
 p {
   margin: 0;
 }
 
-p > span {
-  font-weight: bold;
+h2 {
+  background-color: white;
 }
 
 .data {
@@ -61,6 +73,8 @@ label {
   min-width: 90px;
   text-align: right;
   vertical-align: top;
+  background-color: white;
+  font-weight: bold;
 }
 
 textarea {
@@ -83,4 +97,20 @@ textarea {
   align-items: center;
   justify-items: center;
 }
+
+footer {
+  position:fixed;
+  bottom:0;
+}
+
+.animals {
+  height: 200px;
+  transform: scaleX(-1);
+}
+
+.hedgehog {
+  border-right: 50px solid white;
+  border-left: 50px solid white;
+}
+
 
