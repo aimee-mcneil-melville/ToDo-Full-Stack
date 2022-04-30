@@ -2,7 +2,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-image: url('/images/confetti.jpg');
   background-repeat: repeat-y;
-  background-size: 850px;
+  background-size: 1100px;
 }
 
 a {
@@ -104,8 +104,9 @@ footer {
 }
 
 .animals {
-  height: 200px;
+  height: 260px;
   transform: scaleX(-1);
+  margin: 20px;
 }
 
 .hedgehog {
