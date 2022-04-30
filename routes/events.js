@@ -44,6 +44,18 @@ router.post('/add', (req, res) => {
   res.redirect(`/schedule/${day}`)
 })
 
+// POST /events/delete
+router.post('/delete', (req, res) => {
+  // const id = Number(req.body.id)
+  // const day = validateDay(req.body.day)
+
+  // TODO: Delete the event from the database using its id
+
+  const day = 'friday' // TODO: Remove this line
+
+  res.redirect(`/schedule/${day}`)
+})
+
 // GET /events/3/edit
 router.get('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
@@ -91,18 +103,6 @@ router.post('/edit', (req, res) => {
   // const locationId = Number(req.body.locationId)
 
   // TODO: Update the event in the database using the identifiers created above
-
-  const day = 'friday' // TODO: Remove this line
-
-  res.redirect(`/schedule/${day}`)
-})
-
-// POST /events/delete
-router.post('/delete', (req, res) => {
-  // const id = Number(req.body.id)
-  // const day = validateDay(req.body.day)
-
-  // TODO: Delete the event from the database using its id
 
   const day = 'friday' // TODO: Remove this line
 

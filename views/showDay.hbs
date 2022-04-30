@@ -1,7 +1,7 @@
 {{> lineUpNav}}
 
 <h2>events: <span class="data">{{day}}</span></h2>
-<a href="/events/add/{{day}}">add event</a>
+<a class="nav" href="/events/add/{{day}}">add event</a>
 
 <ul class="cards">
   {{#each events}}
@@ -9,8 +9,8 @@
     <div>
       <span class="title">{{eventName}}</span>
       <div class="time-location">
-        <p>Location <span class="data">{{locationName}}</span></p>
-        <p>Time <span class="data">{{time}}</span></p>
+        <p>Location: <span class="data">{{locationName}}</span></p>
+        <p>Time: <span class="data">{{time}}</span></p>
       </div>
     </div>
     <p class="event-description data">{{description}}</p>
