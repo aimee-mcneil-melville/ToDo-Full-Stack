@@ -7,30 +7,14 @@ module.exports = router
 
 // GET /locations
 router.get('/', (req, res) => {
-  // TODO: Replace this with all of the locations in the database
   db.getAllLocations()
     .then((locations) => {
-      console.log(locations)
       const viewData = { locations }
       res.render('showLocations', viewData)
     })
     .catch((err) => {
       console.log(err)
     })
-  // const locations = [
-  //   {
-  //     id: 1,
-  //     name: 'TangleStage',
-  //     description:
-  //       'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Yella Yurt',
-  //     description:
-  //       "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!",
-  //   },
-  // ]
 })
 
 // POST /locations/edit
