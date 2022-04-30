@@ -29,16 +29,16 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 ### 1. Show all locations
 
 1. Have a look at the `GET /locations` route in `routes/locations.js`.
-1. Complete the `getAllLocations()` function in `db/index.js` and have it return a Promise that resolves an array of locations from the database.
+1. Complete the `getAllLocations()` function in `db/index.js` and have it return a Promise that resolves to an array of locations from the database.
 1. Complete the route using your new database function.
     * Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database.
 
 ### 2. Show events for a day
 
-1. Have a look at the `GET /schedule/:day` route in `routes/schedule.js`
-1. Make a `getEventsByDay(day)` function in `db/index.js`
+1. Have a look at the `GET /schedule/:day` route in `routes/schedule.js`.
+1. Make a `getEventsByDay()` function (today we'll put all our database functions in `db/index.js`). It should have a `day` parameter.
     * JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
-    * Filter (`where`) the results for only events where the day matches
+    * Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
     * Note that the `events` and `locations` tables both have `name` and `description` columns. How can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data._
     * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data.
 
@@ -47,13 +47,13 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Show the form**
 
 1. Look at the `GET /locations/4/edit` route in `routes/locations.js`. This route supplies the current data to the form, ready for the user to edit it.
-2. Make a `getLocationById(id)` function in `db/index.js`
-3. Be sure the form is being populated correctly
+2. Make a `getLocationById()` function, with an `id` parameter.
+3. Be sure the form is being populated correctly.
 
 **Submit the form**
 
-4. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`
-5. Make an `updateLocation(updatedLocation)` function
+4. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`.
+5. Make an `updateLocation()` function with an `updatedLocation` parameter.
     * UPDATE the `locations` table with the updated location details
 6. Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form. 
 
@@ -68,13 +68,13 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Submit the form**
 
 3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`
-4. Make an `addNewEvent(event)` function in `db/index.js`
+4. Make an `addNewEvent()` function, with an `event` parameter.
 5. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function. How can you specify the actual day here? 
 
 ### 5. Delete events
 
 1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`
-1. Make a `deleteEvent(id)` function in `db/index.js`
+1. Make a `deleteEvent()` function, with an `id` parameter.
 1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function.
 
 ## Stretch
@@ -84,16 +84,16 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Show form**
 
 1. Look at the `GET /events/:id/edit` route in `routes/locations.js`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
-2. Make a `getEventById(id)` function in `db/index.js` and use this in your route. 
+2. Make a `getEventById()` function, with an `id` parameter.Use this in your route. 
 
 **Fix form**
 3. Like the "Add New Event" form above, the "Edit Event" form also needs a list of locations from the database. This will come from the `GET /events/:id/edit` route in `routes/events.js`. 
 4. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
-5. Make sure you call `getEventById(id)` first, and then `getAllLocations()` Consider returning the event's `locationId` to the next function in the promise chain.
+5. Make sure you call `getEventById()` first, and then `getAllLocations()` Consider returning the event's `locationId` to the next function in the promise chain.
 
 **Submit form**
 
-6. Make an `updateEvent(updatedEvent)` function in `db/index.js`
+6. Make an `updateEvent()` function, with an `updatedEvent` parameter.
 7. Update `POST /events/edit` in `routes/events.js`
 
 ### 7. Add new locations
@@ -109,7 +109,7 @@ You'll have to create new things in this step, but referring to existing feature
 **Submit form**
 
 4. Create `POST /locations/add` in `routes/locations.js`
-5. Create an `addNewLocation(locationInfo)` function in `db/index.js`
+5. Create an `addNewLocation()` function, with a `locationInfo` parameter.
 6. Don't forget `res.redirect('/locations')`
 
 ### 8. Delete locations
@@ -124,7 +124,7 @@ You'll also have to create new things in this step, but referring to existing fe
 
 2. Create a `POST /locations/delete` route in `routes/locations.js`
     - pass the `id` as a hidden form field
-3. Create a `deleteLocation(id)` function in `db/index.js`
+3. Create a `deleteLocation()` function, with an `id` parameter.
 4. Remember your old friend `res.redirect('/locations')`
 
 ### 9. Test helper functions
