@@ -17,16 +17,6 @@ router.get('/', (req, res) => {
     })
 })
 
-// POST /locations/edit
-router.post('/edit', (req, res) => {
-  // ASSISTANCE: So you know what's being posted ;)
-  // const { id, name, description } = req.body
-
-  // TODO: Update the location in the database based on its id
-
-  res.redirect('/locations')
-})
-
 // GET /locations/4/edit
 router.get('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
@@ -40,4 +30,14 @@ router.get('/:id/edit', (req, res) => {
   }
 
   res.render('editLocation', viewData)
+})
+
+// POST /locations/edit
+router.post('/edit', (req, res) => {
+  // ASSISTANCE: So you know what's being posted ;)
+  // const { id, name, description } = req.body
+
+  // TODO: Update the location in the database based on its id
+
+  res.redirect('/locations')
 })
