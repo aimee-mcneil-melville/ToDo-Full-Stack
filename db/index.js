@@ -5,6 +5,8 @@ const connection = require('knex')(config)
 module.exports = {
   getAllLocations,
   getEventsByDay,
+  getLocationById,
+  updateLocation,
 }
 
 function getAllLocations(db = connection) {
@@ -23,4 +25,14 @@ function getEventsByDay(day, db = connection) {
       'events.description',
       'locations.name as locationName'
     )
+}
+
+function getLocationById(id, db = connection) {
+  return db('locations').where('id', id).select()
+}
+
+function updateLocation(id, name, description, db = connection) {
+  return db('locations')
+    .where('id', id)
+    .update({ name: name, description: description })
 }
