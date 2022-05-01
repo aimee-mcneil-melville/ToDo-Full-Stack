@@ -4,8 +4,27 @@ const path = require('path')
 
 const challenges = require('./challenges-list')
 
+const solutions = [
+  'ascii-art-reader-solution',
+  'broken-kaleidoscope-solution',
+  'charlottes-web-log-solution',
+  'conways-solution',
+  'enspiraled-solution',
+  'express-server-solution',
+  'knex-joins-stories-solution',
+  'knex-todo-cli-solution',
+  'memory-solution',
+  'pupparazzi-solution',
+  'react-paws-for-effect-solution',
+  'redux-minimal-solution',
+  'server-side-rendering-solution',
+  'sweet-as-beers-solution',
+  'tdd-bowling-kata-solution',
+  'worldwide-routing-solution',
+]
+
 const main = async () => {
-  for (const challenge of challenges) {
+  for (const challenge of [...challenges, ...solutions]) {
     try {
       const packagePath = path.join(
         __dirname,

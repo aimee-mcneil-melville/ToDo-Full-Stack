@@ -1,5 +1,5 @@
 {
-  "name": "express-server",
+  "name": "express-server-solution",
   "version": "1.1.1",
   "description": "Creating a web server with Express",
   "main": "index.js",

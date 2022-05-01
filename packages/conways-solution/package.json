@@ -1,5 +1,5 @@
 {
-  "name": "conways",
+  "name": "conways-solution",
   "version": "0.3.1",
   "description": "Conways game of life",
   "main": "index.js",
