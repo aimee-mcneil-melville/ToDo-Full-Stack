@@ -43,7 +43,6 @@ router.post('/add', (req, res) => {
 router.post('/delete', (req, res) => {
   const id = Number(req.body.id)
   const day = validateDay(req.body.day)
-  console.log(id)
 
   db.deleteEvent(id)
     .then(() => {

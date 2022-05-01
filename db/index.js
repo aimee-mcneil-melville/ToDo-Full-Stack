@@ -51,3 +51,7 @@ function addNewEvent(event, db = connection) {
 function deleteEvent(id, db = connection) {
   return db('events').where('id', id).delete()
 }
+
+function getEventById(id, db = connection) {
+  return db('events').where('id', id).select()
+}
