@@ -12,12 +12,14 @@
   <label for="description" class="label"> Description </label>
   <textarea rows="5" id="description" name="description"
     placeholder="Event description">{{event.description}}</textarea>
+
   <label for="location" class="label"> Location </label>
   <select id="location" name="locationId">
     {{#each locations}}
     <option value="{{id}}" {{selected}}>{{name}}</option>
     {{/each}}
   </select>
+  
   <label for="day" class="label"> Day </label>
   <select id="day" name="day">
     {{#each days}}
@@ -33,8 +35,7 @@
 </form>
 
 <form method="POST" action="/events/delete" class="form">
-  {{!-- <input type="hidden" name="id" value="{{event.id}}"> --}}
-  {{!-- <input type="hidden" name="day" value="{{event.day}}"> --}}
+  <input type="hidden" name="id" value="{{id}}">
   <div></div>
   <button class="delete">Delete event</button>
 </form>
