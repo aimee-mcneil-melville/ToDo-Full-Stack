@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import Post from './Post'
 import Posts from './Posts'
@@ -9,7 +9,7 @@ import PostForm from './PostForm'
 function AppRoutes(props) {
   return (
     <div>
-      <Switch>
+      <Routes>
         <Route
           exact
           path="/"
@@ -63,7 +63,7 @@ function AppRoutes(props) {
             />
           )}
         />
-      </Switch>
+      </Routes>
     </div>
   )
 }

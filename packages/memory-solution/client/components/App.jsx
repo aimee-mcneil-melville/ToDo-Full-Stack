@@ -6,15 +6,15 @@ import startingTiles from '../startingTiles'
 const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'
 
-function App (props) {
+function App() {
   const [isMatch, setIsMatch] = useState(false)
   const [matchCount, setMatchCount] = useState(0)
   const [tiles, setTiles] = useState(startingTiles)
 
-  const hasWon = matchCount === (startingTiles.length / 2)
+  const hasWon = matchCount === startingTiles.length / 2
 
   const reset = () => {
-    const newTiles = startingTiles.map(tile => {
+    const newTiles = startingTiles.map((tile) => {
       tile.isVisible = false
       return tile
     })
@@ -26,7 +26,7 @@ function App (props) {
 
   const evalMatch = (tile1, tile2) => {
     const isMatch = tile1.value === tile2.value
-    const updatedTiles = tiles.map(tile => {
+    const updatedTiles = tiles.map((tile) => {
       if (!isMatch && (tile === tile1 || tile === tile2)) {
         tile.isVisible = false
       }
@@ -38,7 +38,7 @@ function App (props) {
   }
 
   return (
-    <div className='game'>
+    <div className="game">
       <h1>Welcome to the Memory Game</h1>
       <h2>Match all the tiles to win</h2>
 
@@ -47,7 +47,7 @@ function App (props) {
       <h5>{hasWon && winMessage}</h5>
       <h5>{!isMatch && tryAgain}</h5>
 
-      <div className='replaybutton'>
+      <div className="replaybutton">
         {hasWon && <button onClick={reset}>Play Again</button>}
       </div>
     </div>

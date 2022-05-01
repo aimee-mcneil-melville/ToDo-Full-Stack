@@ -22,31 +22,22 @@
     "h:rollback": "heroku run npm run knex migrate:rollback",
     "h:seed": "heroku run npm run knex seed:run"
   },
-  "keywords": [
-    "fullstack"
-  ],
+  "keywords": ["fullstack"],
   "author": "EDA",
   "license": "ISC",
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
   },
   "jest": {
-    "setupFiles": [
-      "./tests/setup-dotenv.js"
-    ]
+    "setupFiles": ["./tests/setup-dotenv.js"]
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",

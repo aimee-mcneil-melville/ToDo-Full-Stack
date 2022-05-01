@@ -14,24 +14,17 @@
   },
   "author": "EDA",
   "license": "ISC",
-  "keywords": [
-    "frontend"
-  ],
+  "keywords": ["frontend"],
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "express": "^4.17.2"

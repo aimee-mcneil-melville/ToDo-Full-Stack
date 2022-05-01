@@ -18,26 +18,19 @@
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx ."
   },
-  "keywords": [
-    "fullstack"
-  ],
+  "keywords": ["fullstack"],
   "author": "EDA",
   "license": "ISC",
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",

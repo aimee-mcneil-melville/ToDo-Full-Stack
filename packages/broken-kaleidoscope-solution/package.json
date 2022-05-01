@@ -4,9 +4,7 @@
   "description": "Playing with random colours and React state.",
   "repository": "https://github.com/dev-academy-challenges/broken-kaleidoscope",
   "main": "server/index.js",
-  "keywords": [
-    "frontend"
-  ],
+  "keywords": ["frontend"],
   "author": "EDA",
   "license": "ISC",
   "scripts": {
@@ -19,26 +17,19 @@
     "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
   },
   "jest": {
     "testURL": "http://localhost",
-    "setupFiles": [
-      "./client/testing/setup.js"
-    ]
+    "setupFiles": ["./client/testing/setup.js"]
   },
   "dependencies": {
     "express": "^4.17.2"

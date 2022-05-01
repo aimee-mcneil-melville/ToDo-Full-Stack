@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 
-const Circle = props => {
+const Circle = (props) => {
   const { cx, cy, r } = props
 
   const [babyCircles, setBabies] = useState([])
 
   const handleMouseOver = () => {
-    if(babyCircles.length === 0){
+    if (babyCircles.length === 0) {
       const babies = [
-        <Circle cx={cx} cy={cy + r} r={r / 2}/>, // NORTH
-        <Circle cx={cx} cy={cy - r} r={r / 2}/>, // SOUTH
-        <Circle cx={cx + r} cy={cy} r={r / 2}/>, // EAST
-        <Circle cx={cx - r} cy={cy} r={r / 2}/>  // WEST
+        <Circle key="baby-north" cx={cx} cy={cy + r} r={r / 2} />, // NORTH
+        <Circle key="baby-south" cx={cx} cy={cy - r} r={r / 2} />, // SOUTH
+        <Circle key="baby-east" cx={cx + r} cy={cy} r={r / 2} />, // EAST
+        <Circle key="baby-west" cx={cx - r} cy={cy} r={r / 2} />, // WEST
       ]
       setBabies(babies)
     }
   }
-
 
   return (
     <>

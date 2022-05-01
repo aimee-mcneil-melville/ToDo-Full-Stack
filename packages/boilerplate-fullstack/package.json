@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
-  "keywords": [
-    "fullstack"
-  ],
+  "keywords": ["fullstack"],
   "scripts": {
     "start": "node server",
     "test": "jest",
@@ -21,10 +19,7 @@
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread",
@@ -32,10 +27,8 @@
     ]
   },
   "eslintConfig": {
-    "extends": "eda",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "eda/react",
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
