@@ -36,7 +36,7 @@ router.post('/edit', (req, res) => {
   // ASSISTANCE: So you know what's being posted ;)
   const { id, name, description } = req.body
 
-  db.updateLocation(id, name, description)
+  db.updateLocation({ id, name, description })
     .then(() => {
       res.redirect('/locations')
     })

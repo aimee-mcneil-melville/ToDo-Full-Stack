@@ -14,34 +14,29 @@ router.get('/add/:day', (req, res) => {
     name: capitalise(eventDay),
     selected: eventDay === day ? 'selected' : '',
   }))
-
-  // TODO: Replace this with all of the locations in the database
-  const locations = [
-    {
-      id: 1,
-      name: 'TangleStage',
-    },
-    {
-      id: 2,
-      name: 'Yella Yurt',
-    },
-  ]
-
-  const viewData = { locations, days, day }
-  res.render('addEvent', viewData)
+  db.getAllLocations()
+    .then((locations) => {
+      const viewData = { locations, days, day }
+      res.render('addEvent', viewData)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
 
 // POST /events/add
 router.post('/add', (req, res) => {
   // ASSISTANCE: So you know what's being posted ;)
-  // const { name, description, time, locationId } = req.body
-  // const day = validateDay(req.body.day)
+  const { name, description, time, locationId } = req.body
+  const day = validateDay(req.body.day)
 
-  // TODO: Add the event to the database and then redirect
-
-  const day = 'friday' // TODO: Remove this line
-
-  res.redirect(`/schedule/${day}`)
+  db.addNewEvent({ name, description, time, location_id: locationId, day })
+    .then(() => {
+      res.redirect(`/schedule/${day}`)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
 
 // POST /events/delete
