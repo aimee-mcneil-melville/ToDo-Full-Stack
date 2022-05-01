@@ -10,6 +10,7 @@ module.exports = {
   addNewEvent,
   deleteEvent,
   getEventById,
+  updateEvent,
 }
 
 // LOCATIONS
@@ -19,7 +20,7 @@ function getAllLocations(db = connection) {
 }
 
 function getLocationById(id, db = connection) {
-  return db('locations').where('id', id).select()
+  return db('locations').where('id', id).first().select()
 }
 
 function updateLocation(updatedLocation, db = connection) {
@@ -56,6 +57,7 @@ function deleteEvent(id, db = connection) {
 function getEventById(id, db = connection) {
   return db('events')
     .where('id', id)
+    .first()
     .select(
       `id`,
       `location_id as locationId`,
@@ -64,4 +66,8 @@ function getEventById(id, db = connection) {
       'name',
       'description'
     )
+}
+
+function updateEvent(updatedEvent, db = connection) {
+  return db('events').where('id', updatedEvent.id).update(updatedEvent)
 }

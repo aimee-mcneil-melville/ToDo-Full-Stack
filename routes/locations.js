@@ -23,7 +23,7 @@ router.get('/:id/edit', (req, res) => {
 
   db.getLocationById(id)
     .then((location) => {
-      const viewData = location[0]
+      const viewData = location
       res.render('editLocation', viewData)
     })
     .catch((err) => {

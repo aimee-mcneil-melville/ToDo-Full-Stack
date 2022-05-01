@@ -57,19 +57,10 @@ router.post('/delete', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
 
+  const viewData = {}
+
   db.getEventById(id)
     .then((event) => {
-      // TODO: Replace locations below with all of the locations from the database
-      // NOTE: The objects should have the same shape as these.
-      // The selected property should have a value of
-      // either 'selected' or '' based on event.locationId above.
-      const locations = [
-        { id: 1, name: 'TangleStage', selected: '' },
-        { id: 2, name: 'Yella Yurt', selected: 'selected' },
-        { id: 3, name: 'Puffy Paddock', selected: '' },
-        { id: 4, name: 'Kombucha Karavan', selected: '' },
-      ]
-
       // This is done for you
       const days = eventDays.map((eventDay) => ({
         value: eventDay,
@@ -77,37 +68,40 @@ router.get('/:id/edit', (req, res) => {
         selected: eventDay === event.day ? 'selected' : '',
       }))
 
-      const viewData = { event: event[0], locations, days }
+      viewData.event = event
+      viewData.days = days
+
+      return db.getAllLocations()
+    })
+    .then((locations) => {
+      viewData.locations = locations.map((location) => {
+        if (location.id === viewData.event.locationId) {
+          return { id: location.id, name: location.name, selected: 'selected' }
+        } else {
+          return { id: location.id, name: location.name, selected: '' }
+        }
+      })
       res.render('editEvent', viewData)
     })
     .catch((err) => {
       console.log(err)
     })
-
-  // TODO: Replace event below with the event from the database using its id
-  // NOTE: It should have the same shape as this one
-  // const event = {
-  //   id: id,
-  //   locationId: 1,
-  //   day: 'friday',
-  //   time: '2pm - 3pm',
-  //   name: 'Slushie Apocalypse I',
-  //   description:
-  //     'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
-  // }
 })
 
 // POST /events/edit
 router.post('/edit', (req, res) => {
   // ASSISTANCE: So you know what's being posted ;)
-  // const { name, description, time } = req.body
-  // const id = Number(req.body.id)
-  // const day = validateDay(req.body.day)
-  // const locationId = Number(req.body.locationId)
+  const { name, description, time } = req.body
+  const id = Number(req.body.id)
+  const day = validateDay(req.body.day)
+  const locationId = Number(req.body.locationId)
 
   // TODO: Update the event in the database using the identifiers created above
-
-  const day = 'friday' // TODO: Remove this line
-
-  res.redirect(`/schedule/${day}`)
+  db.updateEvent({ id, name, description, time, day, location_id: locationId })
+    .then(() => {
+      res.redirect(`/schedule/${day}`)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
