@@ -89,9 +89,9 @@ _Note that the "Edit event" page is currently displaying hard-coded details (you
 
 **Fix form**
 
-3. Like the "Add New Event" form above, the "Edit Event" form also needs a list of locations from the database. This will come from the `GET /events/:id/edit` route in `routes/events.js`. 
+3. Like the "Add new event" form above, the "Edit event" form also needs a list of locations from the database. 
 4. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
-5. Make sure you call `getEventById()` first, and then `getAllLocations()` Consider returning the event's `locationId` to the next function in the promise chain.
+5. Make sure you call `getEventById()` first, and then `getAllLocations()`. Consider returning the event's `locationId` to the next function in the promise chain.
 
 **Submit form**
 
