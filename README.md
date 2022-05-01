@@ -48,7 +48,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 1. Look at the `GET /locations/4/edit` route in `routes/locations.js`. This route supplies the current data to the form, ready for the user to edit it.
 2. Make a `getLocationById()` function, with an `id` parameter.
-3. Be sure the form is being populated correctly.
+3. Be sure the form is being populated correctly. If it's not working, you might like to try the same trouble-shooting strategies you used in Step 2.
 
 **Submit the form**
 
