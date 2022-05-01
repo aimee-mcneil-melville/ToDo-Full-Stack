@@ -41,14 +41,17 @@ router.post('/add', (req, res) => {
 
 // POST /events/delete
 router.post('/delete', (req, res) => {
-  // const id = Number(req.body.id)
-  // const day = validateDay(req.body.day)
+  const id = Number(req.body.id)
+  const day = validateDay(req.body.day)
+  console.log(id)
 
-  // TODO: Delete the event from the database using its id
-
-  const day = 'friday' // TODO: Remove this line
-
-  res.redirect(`/schedule/${day}`)
+  db.deleteEvent(id)
+    .then(() => {
+      res.redirect(`/schedule/${day}`)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
 
 // GET /events/3/edit

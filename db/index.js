@@ -4,10 +4,11 @@ const connection = require('knex')(config)
 
 module.exports = {
   getAllLocations,
-  getEventsByDay,
   getLocationById,
   updateLocation,
+  getEventsByDay,
   addNewEvent,
+  deleteEvent,
 }
 
 // LOCATIONS
@@ -45,4 +46,8 @@ function getEventsByDay(day, db = connection) {
 
 function addNewEvent(event, db = connection) {
   return db('events').insert(event)
+}
+
+function deleteEvent(id, db = connection) {
+  return db('events').where('id', id).delete()
 }
