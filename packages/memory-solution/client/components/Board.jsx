@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Tile from './Tile'
 
-function Board (props) {
+function Board(props) {
   const [tile1, setTile1] = useState(null)
   const [tile2, setTile2] = useState(null)
 
@@ -43,7 +43,7 @@ function Board (props) {
   }
 
   return (
-    <div className="tiles">
+    <div className="tiles" data-testid="board">
       {props.tiles.map((tile) => {
         return (
           <Tile

@@ -15,7 +15,6 @@
     "extends": "eda"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc10",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2"
   },

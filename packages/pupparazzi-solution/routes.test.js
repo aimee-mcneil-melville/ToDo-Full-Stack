@@ -1,5 +1,4 @@
 const request = require('supertest')
-const cheerio = require('cheerio')
 
 const server = require('./server')
 const lib = require('./lib')
@@ -8,14 +7,14 @@ jest.mock('./lib', () => ({
   getPuppyData: jest.fn(),
   getPuppyById: jest.fn(),
   addNewPuppy: jest.fn(),
-  editPuppy: jest.fn()
+  editPuppy: jest.fn(),
 }))
 
 const mockPuppies = {
   puppies: [
     { id: 1, name: 'Fido', owner: 'Fred', image: '1.jpg', breed: 'Lab' },
-    { id: 2, name: 'Coco', owner: 'Chloe', image: '2.jpg', breed: 'Pug' }
-  ]
+    { id: 2, name: 'Coco', owner: 'Chloe', image: '2.jpg', breed: 'Pug' },
+  ],
 }
 
 describe('GET /', () => {
@@ -27,9 +26,11 @@ describe('GET /', () => {
     return request(server)
       .get('/')
       .expect(200)
-      .then(res => {
-        const $ = cheerio.load(res.text)
-        expect($('.puppy-list a')).toHaveLength(2)
+      .then((res) => {
+        document.body.innerHTML = res.text
+        const puppyLinks = document.querySelectorAll('.puppy-list a')
+
+        expect(puppyLinks).toHaveLength(2)
         return null
       })
   })
@@ -42,7 +43,7 @@ describe('GET /', () => {
     return request(server)
       .get('/')
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('test error message')
         return null
       })
@@ -51,7 +52,7 @@ describe('GET /', () => {
 
 describe('GET /:id', () => {
   it('renders puppy details', () => {
-    expect.assertions(7)
+    expect.assertions(6)
 
     lib.getPuppyById.mockImplementation((id, callback) => {
       expect(id).toBe(2)
@@ -61,14 +62,22 @@ describe('GET /:id', () => {
     return request(server)
       .get('/2')
       .expect(200)
-      .then(res => {
-        const $ = cheerio.load(res.text)
-        expect($('.puppy img').attr('src')).toMatch('2.jpg')
-        expect($('.puppy img').attr('alt')).toMatch('Coco')
-        expect($('h2').text()).toMatch('Coco')
-        expect($('.puppy a').attr('href')).toMatch('/edit/2')
-        expect($('.puppy div').first().text()).toMatch('Pug')
-        expect($('.puppy div').last().text()).toMatch('Chloe')
+      .then((res) => {
+        document.body.innerHTML = res.text
+
+        expect(
+          document.querySelector('.puppy img').getAttribute('src')
+        ).toMatch('2.jpg')
+        expect(
+          document.querySelector('.puppy img').getAttribute('alt')
+        ).toMatch('Coco')
+        expect(document.querySelector('h2').textContent).toMatch('Coco')
+        expect(document.querySelector('.puppy a').getAttribute('href')).toMatch(
+          '/edit/2'
+        )
+        expect(document.querySelectorAll('.puppy div')[0].textContent).toMatch(
+          'Pug'
+        )
         return null
       })
   })
@@ -83,7 +92,7 @@ describe('GET /:id', () => {
     return request(server)
       .get('/9999')
       .expect(404)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('Not Found')
         return null
       })
@@ -99,7 +108,7 @@ describe('GET /:id', () => {
     return request(server)
       .get('/1')
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('test error message')
         return null
       })
@@ -125,7 +134,7 @@ describe('POST /edit/:id', () => {
       name: 'test name',
       owner: 'test owner',
       breed: 'test breed',
-      image: 'test.jpg'
+      image: 'test.jpg',
     }
 
     return request(server)
@@ -133,7 +142,7 @@ describe('POST /edit/:id', () => {
       .send(updatedPuppy)
       .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(302)
-      .then(res => {
+      .then((res) => {
         expect(res.header.location).toBe('/2')
         return null
       })
@@ -153,7 +162,7 @@ describe('POST /edit/:id', () => {
       .send(updatedPuppy)
       .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(404)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('Not Found')
         return null
       })
@@ -172,7 +181,7 @@ describe('POST /edit/:id', () => {
       .send(updatedPuppy)
       .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('test error message')
         return null
       })
@@ -192,7 +201,7 @@ describe('POST /new', () => {
       name: 'test name',
       owner: 'test owner',
       breed: 'test breed',
-      image: 'test.jpg'
+      image: 'test.jpg',
     }
 
     return request(server)
@@ -200,7 +209,7 @@ describe('POST /new', () => {
       .send(newPuppy)
       .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(302)
-      .then(res => {
+      .then((res) => {
         expect(res.header.location).toBe('/3')
         return null
       })
@@ -218,7 +227,7 @@ describe('POST /new', () => {
       .send({})
       .set({ 'Content-Type': 'application/x-www-form-urlencoded' })
       .expect(500)
-      .then(res => {
+      .then((res) => {
         expect(res.text).toMatch('test error message')
         return null
       })

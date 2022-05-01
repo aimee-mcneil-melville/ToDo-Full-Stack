@@ -1,19 +1,16 @@
 const supertest = require('supertest')
-const cheerio = require('cheerio')
 
 const app = require('../server')
 
 test('profile 1 should be Silvia', function (done) {
-  supertest(app)
-    .get('/profiles/1')
-    .end(checkProfileIsSilvia)
+  supertest(app).get('/profiles/1').end(checkProfileIsSilvia)
 
-  function checkProfileIsSilvia (err, res) {
+  function checkProfileIsSilvia(err, res) {
     expect(err).toBe(null)
+    document.body.innerHTML = res.text
+    const h1 = document.getElementsByTagName('h1')
 
-    const $ = cheerio.load(res.text)
-    const actual = $('h1').text()
-
+    const actual = h1[0].textContent
     const expected = 'Silvia'
 
     expect(actual).toBe(expected)
@@ -26,10 +23,10 @@ test('profile 2 should be Sampson', function (done) {
     .get('/profiles/2')
     .end(function (err, res) {
       expect(err).toBe(null)
+      document.body.innerHTML = res.text
+      const h1 = document.getElementsByTagName('h1')
 
-      const $ = cheerio.load(res.text)
-      const actual = $('h1').text()
-
+      const actual = h1[0].textContent
       const expected = 'Sampson'
 
       expect(actual).toBe(expected)

@@ -7,6 +7,9 @@
     "start": "node index",
     "test": "jest --watchAll"
   },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/express-server.git"
@@ -22,7 +25,6 @@
     "supertest": "^6.2.2"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc10",
     "jest": "^27.5.1"
   }
 }

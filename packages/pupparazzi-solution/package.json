@@ -20,16 +20,14 @@
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
   "jest": {
-    "watchPathIgnorePatterns": [
-      "data.json"
-    ]
+    "testEnvironment": "jsdom",
+    "watchPathIgnorePatterns": ["data.json"]
   },
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc10",
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.1.0",
     "jest": "^27.5.1",
