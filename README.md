@@ -31,7 +31,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 1. Have a look at the `GET /locations` route in `routes/locations.js`.
 1. Complete the `getAllLocations()` function in `db/index.js` and have it return a Promise that resolves to an array of locations from the database.
 1. Complete the route using your new database function.
-    * Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database.
+    * Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database
 
 ### 2. Show events for a day
 
@@ -39,8 +39,8 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 1. Make a `getEventsByDay()` function (today we'll put all our database functions in `db/index.js`). It should have a `day` parameter.
     * JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
     * Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
-    * Note that the `events` and `locations` tables both have `name` and `description` columns. How can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data._
-    * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data.
+    * Note that the `events` and `locations` tables both have `name` and `description` columns, how can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data_
+    * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data
 
 ### 3. Edit locations
 
