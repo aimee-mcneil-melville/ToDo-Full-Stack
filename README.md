@@ -48,7 +48,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 1. Look at the `GET /locations/4/edit` route in `routes/locations.js`. This route supplies the current data to the form, ready for the user to edit it.
 2. Make a `getLocationById()` function, with an `id` parameter.
-3. Be sure the form is being populated correctly. If it's not working, you might like to try the same trouble-shooting strategies you used in Step 2.
+3. Be sure the form is being populated correctly. If it's not working, you might like to try the same trouble-shooting strategies you used in Step 2. Can `.first()` help you here? 
 
 **Submit the form**
 
@@ -75,8 +75,8 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`.
 _Note that the "Edit event" page is currently displaying hard-coded details (you'll fix this in the next step). It is handling the id correctly though, so if you click "Edit event" on the "Slushie Apocalypse V" card, then the "Delete event" button will delete "Slushie Apocalypse V" (id 5) even though the displayed details are for "Slushie Apocalypse I"._
-1. Make a `deleteEvent()` function, with an `id` parameter.
-1. Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
+2. Make a `deleteEvent()` function, with an `id` parameter.
+3. Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
 
 ## Stretch
 
@@ -89,14 +89,13 @@ _Note that the "Edit event" page is currently displaying hard-coded details (you
 
 **Fix form**
 
-3. Like the "Add new event" form above, the "Edit event" form also needs a list of locations from the database. 
-4. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
-5. Make sure you call `getEventById()` first, and then `getAllLocations()`. Consider returning the event's `locationId` to the next function in the promise chain.
+3. Like the "Add new event" form above, the "Edit event" form also needs a list of locations from the database. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event. Maybe you could use an array function here? 
+4. Make sure you call `getEventById()` first, and then `getAllLocations()`. You're managing three bits of data here: `days`, `event` and `locations`. How will you manage this data so that each function in the promise chain can see everything it needs to see?
 
 **Submit form**
 
 6. Make an `updateEvent()` function, with an `updatedEvent` parameter.
-7. Update `POST /events/edit` in `routes/events.js`
+7. Update `POST /events/edit` in `routes/events.js`.
 
 ### 7. Add new locations
 
