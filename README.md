@@ -53,7 +53,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 **Submit the form**
 
 4. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`.
-5. Make an `updateLocation()` function with an `updatedLocation` parameter.
+5. Make an `updateLocation()` function with an `updatedLocation` parameter. Or if you find yourself struggling with the `updatedLocation` (object) parameter, start by using `id`, `name` and `description` parameters instead. 
     * UPDATE the `locations` table with the updated location details
 6. Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form. 
 
@@ -69,7 +69,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`
 4. Make an `addNewEvent()` function, with an `event` parameter.
-5. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function. How can you specify the actual day here? 
+5. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function.
 
 ### 5. Delete events
 
