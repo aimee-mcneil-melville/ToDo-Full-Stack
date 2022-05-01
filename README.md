@@ -67,15 +67,16 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 **Submit the form**
 
-3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`
+3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`.
 4. Make an `addNewEvent()` function, with an `event` parameter.
-5. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function.
+5. Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
 
 ### 5. Delete events
 
-1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`
+1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`.
+_Note that the "Edit event" page is currently displaying hard-coded details (you'll fix this in the next step). It is handling the id correctly though, so if you click "Edit event" on the "Slushie Apocalypse V" card, then the "Delete event" button will delete "Slushie Apocalypse V" (id 5) even though the displayed details are for "Slushie Apocalypse I"._
 1. Make a `deleteEvent()` function, with an `id` parameter.
-1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function.
+1. Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
 
 ## Stretch
 
@@ -102,15 +103,15 @@ You'll have to create new things in this step, but referring to existing feature
 
 **Show form**
 
-1. In `views/showLocations.hbs`, create an "Add Location" link (similar to the "Add Event" link in `views/showDay.hbs`)
-2. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`)
-3. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`
+1. In `views/showLocations.hbs`, create an "Add Location" link (similar to the "Add Event" link in `views/showDay.hbs`).
+2. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`).
+3. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`.
 
 **Submit form**
 
-4. Create `POST /locations/add` in `routes/locations.js`
+4. Create `POST /locations/add` in `routes/locations.js`.
 5. Create an `addNewLocation()` function, with a `locationInfo` parameter.
-6. Don't forget `res.redirect('/locations')`
+6. Don't forget `res.redirect('/locations')`.
 
 ### 8. Delete locations
 
@@ -118,14 +119,14 @@ You'll also have to create new things in this step, but referring to existing fe
 
 **Create link**
 
-1. Add a new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`)
+1. Add a new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`).
 
 **Create route**
 
 2. Create a `POST /locations/delete` route in `routes/locations.js`
     - pass the `id` as a hidden form field
 3. Create a `deleteLocation()` function, with an `id` parameter.
-4. Remember your old friend `res.redirect('/locations')`
+4. Remember your old friend `res.redirect('/locations')`.
 
 ### 9. Test helper functions
 
