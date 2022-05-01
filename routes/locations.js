@@ -44,3 +44,32 @@ router.post('/edit', (req, res) => {
       console.log(err)
     })
 })
+
+// GET /locations/add
+router.get('/add', (req, res) => {
+  res.render('addLocation')
+})
+
+// POST /locations/add
+router.post('/add', (req, res) => {
+  const { name, description } = req.body
+  db.addLocation({ name, description })
+    .then(() => {
+      res.redirect('/locations')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
+
+// POST /locations/delete
+router.post('/delete', (req, res) => {
+  const { id } = req.body
+  db.deleteLocation(id)
+    .then(() => {
+      res.redirect('/locations')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})

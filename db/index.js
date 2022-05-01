@@ -6,6 +6,8 @@ module.exports = {
   getAllLocations,
   getLocationById,
   updateLocation,
+  addLocation,
+  deleteLocation,
   getEventsByDay,
   addNewEvent,
   deleteEvent,
@@ -28,6 +30,14 @@ function updateLocation(updatedLocation, db = connection) {
     name: updatedLocation.name,
     description: updatedLocation.description,
   })
+}
+
+function addLocation(location, db = connection) {
+  return db('locations').insert(location)
+}
+
+function deleteLocation(id, db = connection) {
+  return db('locations').where('id', id).delete()
 }
 
 // EVENTS
