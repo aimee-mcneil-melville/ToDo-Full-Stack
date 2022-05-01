@@ -1,26 +1,43 @@
-// TODO: Uncomment. (commented out to pass linting)
-// const { capitalise, validateDay } = require('./helpers')
+const { capitalise, validateDay } = require('./helpers')
 
-// TODO: Write these tests (remove .todo)
 describe('capitalise', () => {
-  test.todo('returns a capitalised string')
+  test('returns a capitalised string', () => {
+    const expected = 'Thursday'
+    const actual = capitalise('thursday')
+    expect(actual).toBe(expected)
+  })
 
-  // TODO: Implement this functionality in helpers.js
-  test.todo('returns an empty string if name parameter is not a string')
+  test('returns an empty string if name parameter is not a string', () => {
+    const expected = ''
+    const actual = capitalise(42)
+    expect(actual).toBe(expected)
+  })
 
-  // TODO: Implement this functionality in helpers.js
-  test.todo('returns an empty string if name parameter is an empty string')
+  test('returns an empty string if name parameter is an empty string', () => {
+    const expected = ''
+    const actual = capitalise('')
+    expect(actual).toBe(expected)
+  })
 })
 
-// TODO: Write these tests (remove .todo)
 describe('validateDay', () => {
-  test.todo('returns the day if it is in the list')
+  // test('returns the day if it is in the list', () => {
+  //   const expected = 'saturday'
+  //   const actual = validateDay('saturday')
+  //   expect(actual).toBe(expected)
+  // })
 
-  test.todo('returns a lowercase day if it is in the days parameter')
+  test('returns a lowercase day if it is in the days parameter', () => {
+    const expected = 'saturday'
+    const actual = validateDay('saturday')
+    expect(actual).toBe(expected)
+  })
 
-  test.todo(
-    'returns the first day from the days parameter if day is not in the days parameter'
-  )
+  test('returns the first day from the days parameter if day is not in the days parameter', () => {
+    const expected = 'friday'
+    const actual = validateDay('tuesday')
+    expect(actual).toBe(expected)
+  })
 
   test.todo('returns "friday" if days parameter is not provided')
 

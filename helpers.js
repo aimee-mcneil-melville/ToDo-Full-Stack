@@ -11,7 +11,11 @@ module.exports = {
  * This function helps make them look nice for the user.
  */
 function capitalise(name) {
-  return name[0].toUpperCase() + name.substring(1)
+  if (typeof name !== 'string' || name === '') {
+    return ''
+  } else {
+    return name[0].toUpperCase() + name.substring(1)
+  }
 }
 
 /*
@@ -22,5 +26,5 @@ function validateDay(day, days = eventDays) {
   // Use the first day as the default value if the day argument isn't valid
   if (typeof day !== 'string') return days[0]
   if (!days.includes(day)) return days[0]
-  return day.toLowerCase()
+  return day
 }
