@@ -118,7 +118,7 @@ In `client/components/Nav.jsx`, you will need to:
 * In `handleRegister`, we'll call `loginWithRedirect` and pass an object that will tell Auth0 to redirect to the `/register` route.
 ```js
 {
-    redirectUri:`${window.location.origin}/register` 
+  redirectUri:`${window.location.origin}/register` 
 }
 ```
 * In `handleSignIn`, we'll call `loginWithRedirect` without a parameter.
@@ -156,7 +156,7 @@ So now the access token is stored in global state (see note above). Next we want
 
 In `client/components/AddFruit.jsx` access the global state and get the `token` property. 
 
-_Hint: try using the useSelector hook from `react-redux` package._<br/>
+_Hint: try using the useSelector hook from the `react-redux` package._<br/>
 _Another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
 
 Then pass `token` to the `addFruit` function as the second parameter.
