@@ -38,7 +38,7 @@ No need to rush into this. Get familiar with the code base first. There might be
 
 For example, this codebase uses [`styled-components`](https://www.styled-components.com). There is also a nice use of `props.children` in the `Authenticated` components.
 
-Get familiar with the user interface. Select some fruits, update their values, delete them, and add new ones. See which work and which get errors.
+Get familiar with the user interface. Select some fruits and try to update their values, delete them, and add new ones. See which work and which give errors.
 
 Once you're comfortable enough with the app, proceed with a sense of curiosity as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
 
@@ -118,14 +118,14 @@ In `client/components/Nav.jsx`, you will need to:
 * In `handleRegister`, we'll call `loginWithRedirect` and pass an object that will tell Auth0 to redirect to the `/register` route.
 ```js
 {
-    redirectUri:`${window.location.origin}/register` 
+  redirectUri:`${window.location.origin}/register` 
 }
 ```
 * In `handleSignIn`, we'll call `loginWithRedirect` without a parameter.
 
 The "Register" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for your Auth0 app. Even if you used the same email and password when creating a new tenant, Auth0 will treat it as a new account that is specific for your Fruits app.
 
-After you've registered your new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`, which will be blank until you complete step 5.
+After you've registered your new user, Auth0 will redirect you to `https://localhost:3000/register`. This page will show your `auth0Id` and `email`, <ins>which will be blank until you complete step 5</ins>.
 
 Commit your code and swap driver/navigator.
 
@@ -137,18 +137,16 @@ In `client/auth0-utils.js`, `cacheUser` takes `useAuth0` as a first parameter. C
 - `getAccessTokenSilently` 
 - `isAuthenticated`
 - `user`
-<br/>
 
 Call `getAccessTokenSilently` to get the access token. The `getAccessTokenSilently` function is async so you'll need to use `await` or `.then`. Then use this token to set the token property on the `userToSave` object. 
 
 The `user` object has other properties, we are interested in two of them:
 - `sub` is the Auth0 subscriber's unique id.
 - `email`
-<br/>
 
 Use these values to set the corresponding properties on the `userToSave` object.
 
-_Note: The `cacheUser` function (from `auth0-utils.js`) does `store.dispatch(setUser(userToSave))`. Every time the `App` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata._
+_Note: The `cacheUser` function (from `auth0-utils.js`) does `dispatch(setLoggedInUser(userToSave))`. Every time the `App` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata._
 
 ## 6. Client-side: Passing access tokens
 
@@ -156,7 +154,7 @@ So now the access token is stored in global state (see note above). Next we want
 
 In `client/components/AddFruit.jsx` access the global state and get the `token` property. 
 
-_Hint: try using the useSelector hook from `react-redux` package._<br/>
+_Hint: try using the useSelector hook from the `react-redux` package._<br/>
 _Another hint: if you're not sure about the shape of the state, look at it in your Redux DevTools_
 
 Then pass `token` to the `addFruit` function as the second parameter.
