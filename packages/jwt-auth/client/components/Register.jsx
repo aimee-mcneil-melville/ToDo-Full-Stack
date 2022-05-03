@@ -6,7 +6,7 @@ import { addUser } from '../api'
 import { GridForm, ColOne, ColTwo, Button } from './Styled'
 
 function Register() {
-  const user = useSelector((state) => state)
+  const user = useSelector((state) => state.loggedInUser)
   const navigate = useNavigate()
   const [form, setForm] = useState({
     auth0Id: '',

@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
-import user from './reducers/user'
+import reducers from './reducers'
 
 const store = createStore(
-  user,
+  reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
