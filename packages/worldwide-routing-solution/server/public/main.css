@@ -4,7 +4,8 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.main, .title {
+.main,
+.title {
   display: flex;
   flex-direction: row;
 }
