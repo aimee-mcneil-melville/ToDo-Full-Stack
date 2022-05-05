@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import store from '../store'
 
-function AddWombat () {
+function AddWombat() {
   const [input, setInput] = useState('')
 
-  function handleChange (event) {
+  function handleChange(event) {
     setInput(event.target.value)
   }
 
-  function handleAdd () {
+  function handleAdd() {
     store.dispatch({
       type: 'ADD_WOMBAT',
-      wombat: input
+      payload: input,
     })
   }
   return (
