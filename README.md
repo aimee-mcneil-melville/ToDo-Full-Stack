@@ -66,7 +66,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 1. The "Add New Event" form needs a list of all the locations to put in the drop-down. Currently these are hard-coded, but we want them to come from the database (the days of the week are hard-coded too, but we're not going to change those). The `GET /events/add/:day` route in `routes/events.js` needs to obtain the list of locations from the database, and supply them to the form. 
 2. You've already written a `getAllLocations()` function, now use it in your route. 
     * Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
-    * Be sure `res.render('editEvent', viewData)` is inside your `.then` function
+    * Be sure `res.render('addEvent', viewData)` is inside your `.then` function
 
 **Submit the form**
 
