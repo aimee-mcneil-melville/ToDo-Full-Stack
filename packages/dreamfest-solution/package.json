@@ -1,0 +1,49 @@
+{
+  "name": "dreamfest",
+  "version": "0.1.0",
+  "description": "NZ's premier culture festival",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "knex": "knex --knexfile db/knexfile.js",
+    "test": "jest"
+  },
+  "author": "EDA",
+  "license": "ISC",
+  "keywords": [
+    "db",
+    "database",
+    "backend"
+  ],
+  "homepage": "https://github.com/dev-academy-challenges/dreamfest#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/dreamfest.git"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "knex": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
