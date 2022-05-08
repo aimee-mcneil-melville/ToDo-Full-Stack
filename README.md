@@ -1,184 +1,141 @@
 # DreamFest
 
-You've just landed your first dev role and you're responsible for creating an app that manages DreamFest, a wholesome 3 day festival that offers attendees daily yoga and meditation, arts and crafts, healthy eateries, well-being workshops and sweet beats.
+You've just landed your first dev role and you're responsible for creating an app that manages DreamFest, a wholesome three day festival that offers attendees daily yoga and meditation, arts and crafts, healthy eateries, wellbeing workshops and sweet beats.
 
-Your app needs to allow the festival organisers the ability to add _locations_ and add _events_ at those locations. As plans change, they will also need to be able to add, edit and delete events.
+Your app needs to give the festival organisers the ability to add _locations_ and to add _events_ at those locations. As plans change, they will also need to be able to add, edit and delete events.
 
-Fortunately, the team has already confirmed the location and dates so they know how many locations they need. They have also confirmed some partners and bands so they can begin slotting them in when your app is ready. The current planning has been formatted as JSON in the `data` folder so you can use it as seed data for development and testing.
+Fortunately, the team has already confirmed the venue and dates so they know how many locations they need. They have also confirmed some partners and bands so they can begin slotting them in when your app is ready. The current planning has been has been prepared as seed data for your database.
 
-The design team has worked up the UI and routes, but they haven't added the data persistence layer. That's where you come in. You'll create the migrations and seeds and then implement the database functions to be used from the routes. Let's get stuck in!
-
-![DreamFest](dreamfest.png "screenshot")
-
-## Steps
-
-:raised_hands: indicates an assessment opportunity<br>
-:muscle: indicates a stretch opportunity
-
-0. :raised_hands: [Setup](#setup)
-1. :raised_hands: [Create migrations](#create-migrations)
-1. :raised_hands: [Add seed data](#add-seed-data)
-1. :raised_hands: [Show all locations](#show-all-locations)
-1. :raised_hands: [Show events for a day](#show-events-for-a-day)
-1. :raised_hands: [Edit locations](#edit-locations)
-1. :raised_hands: [Add new events](#add-new-events)
-1. :raised_hands: [Delete events](#delete-events)
-1. :muscle: [Edit events](#edit-events)
-1. :muscle: [Add new locations](#add-new-locations)
-1. :muscle: [Delete locations](#delete-locations)
-1. :raised_hands: [Test helper functions](#test-helper-functions)
-
-FYI: [A note about styling](#a-note-about-styling)
+The design team has worked up the UI and routes, but they haven't yet connected them to the database. That's where you come in. You'll implement the database functions to be used from the routes. Let's get stuck in!
 
 ## Setup
 
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
-  * note: if install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
+    * note: if the install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
+1. `npm run knex migrate:latest`
+1. `npm run knex seed:run`
 1. `npm run dev`
-1. Have a little [play with the app](http://localhost:3000) as it is
+1. Have a little play with the app as it is
 1. Get familiar with the existing codebase
 
 ### What you're starting with
 
-The application is usable ... _ish_. You can try anything and the app shouldn't break or throw any errors, but adding, editing and deleting events and locations doesn't work yet. Also, you're only seeing hard-coded data. You will need to write and call all of the necessary database functions. We recommend doing this in a new `db/index.js` file. You will call these database functions from the routes. All of the changes in `routes` are marked with `TODO:`. Be sure you understand the existing code and have a plan before you start coding new functionality.
+The application is usable ... _ish_. You can try anything and the app shouldn't break or throw any errors, but adding, editing and deleting events and locations doesn't work yet. Also, you're only seeing hard-coded data. Most of the changes you'll need to make are marked with `TODO:`. Be sure you understand the existing code and have a plan before you start coding new functionality.
 
-But first, you'll need to create the database.
+## MVP
 
-Knex has been installed, the `knexfile.js` has been created and a `knex` script is waiting patiently for you in `package.json`. So be sure to always use `npm run knex ...` and not `npx knex ...`.
-
-## Create migrations
-
-You'll need to create 2 tables: `locations` and `events`
-
-### `locations`
-
-* `id`: number (primary key)
-* `name`: string
-* `description`: string
-
-### `events`
-
-  * `id`: number (primary key)
-  * `location_id`: number (foreign key to locations.id)
-  * `day`: string
-  * `time`: string
-  * `name`: string
-  * `description`: string
-
-### Steps
-
-1. Create the migration files for these 2 tables and apply them using `npm run knex`.
-1. Use a database tool, such as the DB Browser for SQLite, to verify they were created correctly.
-
-## Add seed data
-
-1. Create the seed files based on the JSON files in the `/db/data` folder.
-1. Add the seed data to the database using `npm run knex`.
-1. Use a database tool to verify the data was added correctly.
-
-## Show all locations
+### 1. Show all locations
 
 1. Have a look at the `GET /locations` route in `routes/locations.js`.
-1. Write a `getAllLocations` function in `db/index.js` and have it return a Promise that resolves an array of locations from the database.
+1. Complete the `getAllLocations()` function in `db/index.js` and have it return a Promise that resolves to an array of locations from the database.
 1. Complete the route using your new database function.
-1. Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database.
+    * Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database
 
-## Show events for a day
+### 2. Show events for a day
 
-1. `GET /schedule/:day` in `routes/schedule.js`
-1. `getEventsByDay(day)` in `db/index.js`
-1. JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
-1. Filter (`where`) the results for only events where the day matches
+1. Have a look at the `GET /schedule/:day` route in `routes/schedule.js`.
+1. Make a `getEventsByDay()` function (today we'll put all our database functions in `db/index.js`). It should have a `day` parameter.
+    * JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
+    * Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
+    * Note that the `events` and `locations` tables both have `name` and `description` columns, how can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data_
+    * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data
 
-## Edit locations
+### 3. Edit locations
 
 **Show the form**
 
-1. `GET /locations/4/edit` in `routes/locations.js`
-1. `getLocationById(id)` in `db/index.js`
-1. Be sure the form is being populated correctly
+1. Look at the `GET /locations/4/edit` route in `routes/locations.js`. This route supplies the current data to the form, ready for the user to edit it.
+2. Make a `getLocationById()` function, with an `id` parameter.
+3. Be sure the form is being populated correctly. 
+    * If it's not working, you might like to try the same trouble-shooting strategies you used in Step 2
+    * Can `.first()` help you here? 
 
 **Submit the form**
 
-1. Happens in `POST /locations/edit` in `routes/locations.js`
-1. `updateLocation(updatedLocation)`
-1. UPDATE `locations` table with updated location details
-1. Be sure `res.redirect('/locations')` is inside your `.then` function
+4. Submitting the "Edit Location" form will send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`.
+5. Make an `updateLocation()` function with an `updatedLocation` parameter. Or if you find yourself struggling with the `updatedLocation` (object) parameter, start by using `id`, `name` and `description` parameters instead. 
+    * UPDATE the `locations` table with the updated location details
+    * Be sure `res.redirect('/locations')` is inside your `.then` function, this will take the user back to the main locations page instead of leaving them on the page with the edit form 
 
-## Add new events
-
-1. Happens in `POST /events/add` in `routes/events.js`
-1. `addNewEvent(event)` in `db/index.js`
-1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function
-
-## Delete events
-
-1. Happens in `POST /events/delete` in `routes/events.js`
-1. `deleteEvent(id)` in `db/index.js`
-1. Be sure `res.redirect('/schedule/:day)` is inside your `.then` function
-
-## Edit events
+### 4. Add new events
 
 **Fix form**
-1. Happens `GET /events/add/:day` in `routes/events.js`
-1. Insert `getAllLocations()` in your route
-1. Be sure `res.render('editEvent', viewData)` is inside your `.then` function
+
+1. The "Add New Event" form needs a list of all the locations to put in the drop-down. Currently these are hard-coded, but we want them to come from the database (the days of the week are hard-coded too, but we're not going to change those). The `GET /events/add/:day` route in `routes/events.js` needs to obtain the list of locations from the database, and supply them to the form. 
+2. You've already written a `getAllLocations()` function, now use it in your route. 
+    * Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
+    * Be sure `res.render('addEvent', viewData)` is inside your `.then` function
+
+**Submit the form**
+
+3. Submitting the "Add New Event" form will send an HTTP POST request which will hit your `POST /events/add` route, in `routes/events.js`.
+4. Make an `addNewEvent()` function, with an `event` parameter.
+    * Be sure to redirect to the `/schedule/:day` route from inside your `.then` function
+
+### 5. Delete events
+
+1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`.
+    * Note that the "Edit event" page is currently displaying hard-coded details (you'll fix this in the next step), but it is handling the id correctly, so if you (for example) click "Edit event" on the "Slushie Apocalypse V" card, then the "Delete event" button should be able to delete "Slushie Apocalypse V" (id 5) even though the displayed details are for "Slushie Apocalypse I"
+2. Make a `deleteEvent()` function, with an `id` parameter.
+    * Be sure to redirect to the `/schedule/:day` route from inside your `.then` function
+
+## Stretch
+
+### 6. Edit events
 
 **Show form**
 
-1. Happens in `GET /events/:id/edit` in `routes/events.js`
-1. Create `getEventById(id)` and `getAllLocations()` in `db/index.js`
-1. When calling these functions in your route, call them in this order. Consider returning the event's `locationId` to the next function in the promise chain.
+1. Look at the `GET /events/:id/edit` route in `routes/locations.js`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
+2. Make a `getEventById()` function, with an `id` parameter. Use this in your route. 
+
+**Fix form**
+
+3. Like the "Add new event" form above, the "Edit event" form also needs a list of locations from the database. We can use `getAllLocations()` for a third time, but this time we need to modify the data before we send it to the form, so that our data records which location is the current location for this event.
+    * Maybe you could use an array function here? 
+4. Make sure you call `getEventById()` first, and then `getAllLocations()`. 
+    * You're managing three bits of data here: `days`, `event` and `locations`, how will you manage this data so that each function in the promise chain can see everything it needs to see?
 
 **Submit form**
 
-1. Create `updateEvent(updatedEvent)` in `db/index.js`
-1. Update `POST /events/edit` in `routes/events.js`
+6. Make an `updateEvent()` function, with an `updatedEvent` parameter.
+7. Update `POST /events/edit` in `routes/events.js`.
 
-## Add new locations
+### 7. Add new locations
 
-You'll have to create new things in this step, but referring to existing features will help.
+You'll need to create new things in this step, but referring to existing features will help.
 
 **Show form**
 
-1. Create link to "Add location" in `views/showLocations.hbs`
-    - Styling will be very similar to the "Add event" link in `views/showDay.hbs`
-1. Create `views/addLocation.hbs` file (very similar to `views/editLocation.hbs`)
-1. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`
+1. In `views/showLocations.hbs`, create an "Add Location" link (similar to the "Add Event" link in `views/showDay.hbs`).
+2. Create a new `views/addLocation.hbs` form. 
+    * Look at `views/editLocation.hbs` and `views/addEvent.hbs` for guidance
+3. Create a `GET /locations/add` route in `routes/locations.js` to render `views/addLocation.hbs`.
 
 **Submit form**
 
-1. Create `POST /locations/add` in `routes/locations.js`
-1. Create an `addNewLocation(locationInfo)` in `db/index.js`
-1. `res.redirect('/locations')`
+4. Create `POST /locations/add` in `routes/locations.js`.
+5. Create an `addNewLocation()` function, with a `locationInfo` parameter.
+    * Don't forget `res.redirect('/locations')`
 
-## Delete locations
+### 8. Delete locations
 
-You'll also have to create new things in this step, but referring to existing features will help.
+You'll need to create new things in this step too, but referring to existing features will help.
 
 **Create link**
 
-1. Add new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`)
+1. Add a new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`).
+    * pass the `id` as a hidden form field
 
 **Create route**
 
-1. Create a `POST /locations/delete` in `routes/locations.js`
-    - pass the `id` as a hidden form field
-1. Create and export a `deleteLocation(id)` in `db/index.js`
-1. `res.redirect('/locations')`
+2. Create a `POST /locations/delete` route in `routes/locations.js`.
+3. Create a `deleteLocation()` function, with an `id` parameter.
+    * Remember your old friend `res.redirect('/locations')`
+    * If you delete a location that has an event, what happens to the event? Why? 
 
-## Test helper functions
+### 9. Test helper functions
 
-Some tests have been created in `helpers.test.js` but they haven't been written yet. They are just testing the functions exported from `helpers.js` so they should be pretty easy (as far as testing goes). Some of the functionality hasn't been implemented in the helper functions, so you'll need to do that too. Perhaps this is a good time to revisit test-driven development (write the tests before implementing the functionality in `helpers.js`). Remember red, green, refactor :wink:
-
-## A note about styling
-
-The `build` script (in `package.json`) creates a production build, which creates a very small `public/main.css`. If you are not going to use any class names that aren't already in use, you only need to run this once (it is run as a `postinstall` script so it has probably already run). You'll also need to run this if you change `tailwind.config.js` or `public/source.css`.
-
-If you plan to do a lot of styling work, you should run `npm run build:dev`, which gives you all of Tailwind CSS, but also a large `public/main.css`. Just be sure to `npm run build` when you're all finished if you're going to deploy this.
-
-> Note: `main.css` is in the `.gitignore` so it isn't checked into the repo. It's a good practice to not commit files that are _built_, such as `main.css`, into Git repositories.
-
-Also, TailwindCSS uses low-level utility classes. A lot of them have been grouped into regular CSS classes using Tailwind's `@apply` feature. If you're curious, you can find them in `public/source.css` in the `@layer components` section. You'll need to `npm run build` if you change anything in this file.
+Some tests have been created in `helpers.test.js` but they haven't been written yet. They are just testing the functions exported from `helpers.js` so they should be pretty easy (as far as testing goes). Some of the functionality hasn't been implemented in the helper functions, so you'll need to do that too. Perhaps this is a good time to revisit test-driven development (write the tests before implementing the functionality in `helpers.js`). Remember red, green, refactor!
+    * Note that the `validateDay()` function will use a `days` parameter if one is supplied, or if not then it will use the hard-coded `eventDays` value (similar to `db = connection` that you've been using in your functions) 
