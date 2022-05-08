@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,15 @@
   <link rel="icon" href="data:,">
   <title>DreamFest</title>
 </head>
-<body class="">
-  <header class="relative">
-    <img class="" src="/images/forestHeader.png">
-    <a href="/" class="main-title">DreamFest</a>
-  </header>
-  {{{body}}}
+
+<body>
+  <div id="page-container">
+  <div id="content-wrap">
+    {{>header}}
+    {{{body}}}
+  </div>
+    {{>footer}}
+ </div>
 </body>
+
 </html>
