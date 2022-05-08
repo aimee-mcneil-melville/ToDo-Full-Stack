@@ -26,7 +26,7 @@ Take some time to familiarise yourself with how it's all working together by exp
 * How the `products` getting on to `ProductList`'s props.
 * How that `products` array gets into the Redux store in the first place. What's happening in `ProductList`'s `useEffect` method?
 * Check out that `fetchProducts` action creator. It returns a function rather than an object, which means it is an _async action creator_. It calls a `getProducts()` function. What does that function do?
-* On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Postman or Insomnia to see if this route works like you expect.
+* On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Insomnia to see if this route works like you expect.
 * Follow the path back to the client side. How does the `products` data get back to that async `fetchProducts` action creator? What happens to the data then?
 * Open your Redux devtools, and as you refresh the Shop (ProductList) page, see how those dispatched actions update the store state. Can you confirm that understanding by taking a look at the reducers?
 * What does setting the `waiting` state do in terms of UI? Using the timeline slider at the bottom of your Redux devtools is a good way to see how the UI is changing based on different actions.
@@ -48,7 +48,7 @@ A potential approach could be:
 * Create a new POST route that uses the `addOrder` function from `server/db/orders.js`.
   * `addOrder` accepts an order. It should have the same shape as the `cart` array we have in Redux on our client side (i.e. you shouldn't need to reformat the cart data).
   * This route doesn't need to return anything, so it would make sense for your route to simply respond with a `201 (Created)`, and then return `null`.
-* Test your route works as expected with a tool like Postman or Insomnia before continuing to the client side. Also browse your `dev.sqlite3` file to ensure your order is being inserted. You should see rows added to both the `orders` and `orders_products` tables.
+* Test your route works as expected with a tool like Insomnia before continuing to the client side. Also browse your `dev.sqlite3` file to ensure your order is being inserted. You should see rows added to both the `orders` and `orders_products` tables.
 
 <br>
 

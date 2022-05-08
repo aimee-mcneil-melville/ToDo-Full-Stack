@@ -13,7 +13,7 @@ npx knex migrate:latest
 npx knex seed:run
 ```
 
-Visit [http://localhost:3000/users](http://localhost:3000/users) in your browser (or better yet, issue a GET request using Postman). If all went well, you should see a list of users.
+Visit [http://localhost:3000/users](http://localhost:3000/users) in your browser (or better yet, issue a GET request using Insomnia). If all went well, you should see a list of users.
 
 ## MVP
 
@@ -24,13 +24,13 @@ _As a developer, I want to get the details of a single user so that I can popula
 _As a developer, I want to add a new user so that their information can be recalled at a later time._
 
 * You'll have to add a new `addUser` function to `db.js` in order for the route to save the new user.
-* You can use Postman to pass a new JSON user to the API.
+* You can use Insomnia to pass a new JSON user to the API.
 * You can leave off the `id` because the database schema has an auto-increment on the `id` field.
 
 _As a developer, I want to update an existing user so they can keep their details current._
 
 * You'll have to add a new `updateUser` function to `db.js` in order for the route to save the new user.
-* You can use Postman to pass an existing JSON user to the API.
+* You can use Insomnia to pass an existing JSON user to the API.
 * You'll need to use the `id` of an existing user so it will know which user to update.
 
 
