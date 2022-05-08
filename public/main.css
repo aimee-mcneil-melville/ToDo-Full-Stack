@@ -14,8 +14,17 @@ body {
   vertical-align: middle;
 }
 
+h1 {
+  display: inline-block;
+  margin: 10px 50px 0px 0px;
+  font-size: 3.5em;
+  color: cornflowerblue;
+}
+
 nav {
-  border-top: 20px solid transparent;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 50px;
 }
 
 .nav {
