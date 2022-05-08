@@ -1,14 +1,14 @@
 {{> locationsNav}}
 
-<h2>Locations:</h2>
+<h2>locations:</h2>
 
 <ul class="cards">
   {{#each locations}}
   <li class="card">
     <div class="location">
-      <a href="/events/{{id}}">{{name}}</a>
-      <p>{{description}}</p>
-      <span><a href="/locations/{{id}}/edit">Edit Location</a></span>
+      <span class="title">{{name}}</span>
+      <p class="data">{{description}}</p>
+      <a href="/locations/{{id}}/edit">edit location</a>
     </div>
   </li>
   {{/each}}

@@ -1,13 +1,37 @@
+html {
+  display: table;
+  margin: auto;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('/images/confetti.jpg');
+  background-repeat: repeat-y;
+  background-size: 1100px;
+  min-width: 1150px;
+  max-width: 1150px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+nav {
+  border-top: 20px solid transparent;
+}
+
+.nav {
+  border-color: cornflowerblue;
+  margin: 10px 10px 10px 0;
+  padding: 10px 10px 10px 0;
+  font-size: large;
+  font-weight: bold;
 }
 
 p {
   margin: 0;
 }
 
-p > span {
-  font-weight: bold;
+.data {
+  color: cornflowerblue;
 }
 
 .cards {
@@ -18,7 +42,6 @@ p > span {
 
 .card {
   background-color: white;
-  color: cornflowerblue;
   border-radius: 10%;
   box-shadow: 1px 1px 10px rgb(49, 49, 49);
   border: 2px solid rgb(158, 158, 158);
@@ -38,16 +61,20 @@ p > span {
   margin-bottom: 1.1em;
 }
 
-.event-title {
+.title {
   font-weight: bold;
+  color: cornflowerblue;
+  font-size: large
 }
 
 .time-location {
+  margin-top: 15px;
   font-size: small;
 }
 
 .event-description {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 label {
@@ -55,10 +82,12 @@ label {
   min-width: 90px;
   text-align: right;
   vertical-align: top;
+  font-weight: bold;
 }
 
 textarea {
   width: 300px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form {
@@ -76,5 +105,34 @@ textarea {
   justify-content: start;
   align-items: center;
   justify-items: center;
+}
+
+.animals {
+  height: 200px;
+  transform: scaleX(-1);
+  margin: 0 40px 10px 40px;
+}
+
+.hedgehog {
+  border-right: 50px solid white;
+  border-left: 50px solid white;
+}
+
+/* Tricks to make footer stay at the bottom of the page */
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 220px;    /* Footer height */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 220px;
 }
 

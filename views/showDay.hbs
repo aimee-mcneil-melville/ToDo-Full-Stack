@@ -1,21 +1,20 @@
 {{> lineUpNav}}
 
-<h2>Events: {{day}}
-  <a href="/events/add/{{day}}">Add event</a>
-</h2>
+<h2>events: <span class="data">{{day}}</span></h2>
+<a class="nav" href="/events/add/{{day}}">add event</a>
 
 <ul class="cards">
   {{#each events}}
   <li class="card">
     <div>
-      <span class="event-title"><a href="/events/{{id}}/edit">{{name}}</a></span>
+      <span class="title">{{eventName}}</span>
       <div class="time-location">
-        <p>Location <span>{{location.name}}</span></p>
-        <p>Time <span>{{time}}</span></p>
-        <span></span>
+        <p>Location: <span class="data">{{locationName}}</span></p>
+        <p>Time: <span class="data">{{time}}</span></p>
       </div>
     </div>
-    <p class="event-description">{{description}}</p>
+    <p class="event-description data">{{description}}</p>
+    <a href="/events/{{id}}/edit">edit event</a>
   </li>
   {{/each}}
 </ul>

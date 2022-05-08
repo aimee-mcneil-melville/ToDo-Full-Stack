@@ -1,6 +1,7 @@
 const express = require('express')
 
 const { validateDay } = require('../helpers')
+const db = require('../db')
 
 const router = express.Router()
 module.exports = router
@@ -18,7 +19,7 @@ router.get('/:day', (req, res) => {
         id: 1,
         day: 'friday',
         time: '2pm - 3pm',
-        name: 'Slushie Apocalypse I',
+        eventName: 'Slushie Apocalypse I',
         description:
           'This is totally a description of this really awesome event that will be taking place during this festival at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
         locationName: 'TangleStage',
@@ -27,7 +28,7 @@ router.get('/:day', (req, res) => {
         id: 2,
         day: 'friday',
         time: '6pm - 7pm',
-        name: 'Slushie Apocalypse II',
+        eventName: 'Slushie Apocalypse II',
         description:
           'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
         locationName: 'Yella Yurt',

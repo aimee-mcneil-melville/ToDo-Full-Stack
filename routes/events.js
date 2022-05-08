@@ -1,6 +1,7 @@
 const express = require('express')
 
 const { eventDays, capitalise, validateDay } = require('../helpers')
+const db = require('../db')
 
 const router = express.Router()
 module.exports = router
@@ -19,14 +20,10 @@ router.get('/add/:day', (req, res) => {
     {
       id: 1,
       name: 'TangleStage',
-      description:
-        'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.',
     },
     {
       id: 2,
       name: 'Yella Yurt',
-      description:
-        "It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here! It's a freakin' yurt! Get in here!",
     },
   ]
 
@@ -41,6 +38,18 @@ router.post('/add', (req, res) => {
   // const day = validateDay(req.body.day)
 
   // TODO: Add the event to the database and then redirect
+
+  const day = 'friday' // TODO: Remove this line
+
+  res.redirect(`/schedule/${day}`)
+})
+
+// POST /events/delete
+router.post('/delete', (req, res) => {
+  // const id = Number(req.body.id)
+  // const day = validateDay(req.body.day)
+
+  // TODO: Delete the event from the database using its id
 
   const day = 'friday' // TODO: Remove this line
 
@@ -71,7 +80,7 @@ router.get('/:id/edit', (req, res) => {
     { id: 1, name: 'TangleStage', selected: '' },
     { id: 2, name: 'Yella Yurt', selected: 'selected' },
     { id: 3, name: 'Puffy Paddock', selected: '' },
-    { id: 4, name: 'Kombutcha Karavan', selected: '' },
+    { id: 4, name: 'Kombucha Karavan', selected: '' },
   ]
 
   // This is done for you
@@ -94,18 +103,6 @@ router.post('/edit', (req, res) => {
   // const locationId = Number(req.body.locationId)
 
   // TODO: Update the event in the database using the identifiers created above
-
-  const day = 'friday' // TODO: Remove this line
-
-  res.redirect(`/schedule/${day}`)
-})
-
-// POST /events/delete
-router.post('/delete', (req, res) => {
-  // const id = Number(req.body.id)
-  // const day = validateDay(req.body.day)
-
-  // TODO: Delete the event from the database using its id
 
   const day = 'friday' // TODO: Remove this line
 
