@@ -8,7 +8,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'ES,FR',
-    flag: '🇦🇩'
+    flag: '🇦🇩',
   },
   {
     code: 'AE',
@@ -19,7 +19,7 @@ export default [
     currencyCode: 'AED',
     currencyName: 'Dirham',
     neighbours: 'SA,OM',
-    flag: '🇦🇪'
+    flag: '🇦🇪',
   },
   {
     code: 'AF',
@@ -30,7 +30,7 @@ export default [
     currencyCode: 'AFN',
     currencyName: 'Afghani',
     neighbours: 'TM,CN,IR,TJ,PK,UZ',
-    flag: '🇦🇫'
+    flag: '🇦🇫',
   },
   {
     code: 'AG',
@@ -41,7 +41,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇦🇬'
+    flag: '🇦🇬',
   },
   {
     code: 'AI',
@@ -52,7 +52,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇦🇮'
+    flag: '🇦🇮',
   },
   {
     code: 'AL',
@@ -63,7 +63,7 @@ export default [
     currencyCode: 'ALL',
     currencyName: 'Lek',
     neighbours: 'MK,GR,ME,RS,XK',
-    flag: '🇦🇱'
+    flag: '🇦🇱',
   },
   {
     code: 'AM',
@@ -74,7 +74,7 @@ export default [
     currencyCode: 'AMD',
     currencyName: 'Dram',
     neighbours: 'GE,IR,AZ,TR',
-    flag: '🇦🇲'
+    flag: '🇦🇲',
   },
   {
     code: 'AO',
@@ -85,7 +85,7 @@ export default [
     currencyCode: 'AOA',
     currencyName: 'Kwanza',
     neighbours: 'CD,NA,ZM,CG',
-    flag: '🇦🇴'
+    flag: '🇦🇴',
   },
   {
     code: 'AQ',
@@ -96,7 +96,7 @@ export default [
     currencyCode: '',
     currencyName: '',
     neighbours: '',
-    flag: '🇦🇶'
+    flag: '🇦🇶',
   },
   {
     code: 'AR',
@@ -107,7 +107,7 @@ export default [
     currencyCode: 'ARS',
     currencyName: 'Peso',
     neighbours: 'CL,BO,UY,PY,BR',
-    flag: '🇦🇷'
+    flag: '🇦🇷',
   },
   {
     code: 'AS',
@@ -118,7 +118,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇦🇸'
+    flag: '🇦🇸',
   },
   {
     code: 'AT',
@@ -129,7 +129,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'CH,DE,HU,SK,CZ,IT,SI,LI',
-    flag: '🇦🇹'
+    flag: '🇦🇹',
   },
   {
     code: 'AU',
@@ -140,7 +140,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇦🇺'
+    flag: '🇦🇺',
   },
   {
     code: 'AW',
@@ -151,7 +151,7 @@ export default [
     currencyCode: 'AWG',
     currencyName: 'Guilder',
     neighbours: '',
-    flag: '🇦🇼'
+    flag: '🇦🇼',
   },
   {
     code: 'AX',
@@ -162,7 +162,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇦🇽'
+    flag: '🇦🇽',
   },
   {
     code: 'AZ',
@@ -173,7 +173,7 @@ export default [
     currencyCode: 'AZN',
     currencyName: 'Manat',
     neighbours: 'GE,IR,AM,TR,RU',
-    flag: '🇦🇿'
+    flag: '🇦🇿',
   },
   {
     code: 'BA',
@@ -184,7 +184,7 @@ export default [
     currencyCode: 'BAM',
     currencyName: 'Marka',
     neighbours: 'HR,ME,RS',
-    flag: '🇧🇦'
+    flag: '🇧🇦',
   },
   {
     code: 'BB',
@@ -195,7 +195,7 @@ export default [
     currencyCode: 'BBD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇧🇧'
+    flag: '🇧🇧',
   },
   {
     code: 'BD',
@@ -206,7 +206,7 @@ export default [
     currencyCode: 'BDT',
     currencyName: 'Taka',
     neighbours: 'MM,IN',
-    flag: '🇧🇩'
+    flag: '🇧🇩',
   },
   {
     code: 'BE',
@@ -217,7 +217,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'DE,NL,LU,FR',
-    flag: '🇧🇪'
+    flag: '🇧🇪',
   },
   {
     code: 'BF',
@@ -228,7 +228,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'NE,BJ,GH,CI,TG,ML',
-    flag: '🇧🇫'
+    flag: '🇧🇫',
   },
   {
     code: 'BG',
@@ -239,7 +239,7 @@ export default [
     currencyCode: 'BGN',
     currencyName: 'Lev',
     neighbours: 'MK,GR,RO,TR,RS',
-    flag: '🇧🇬'
+    flag: '🇧🇬',
   },
   {
     code: 'BH',
@@ -250,7 +250,7 @@ export default [
     currencyCode: 'BHD',
     currencyName: 'Dinar',
     neighbours: '',
-    flag: '🇧🇭'
+    flag: '🇧🇭',
   },
   {
     code: 'BI',
@@ -261,7 +261,7 @@ export default [
     currencyCode: 'BIF',
     currencyName: 'Franc',
     neighbours: 'TZ,CD,RW',
-    flag: '🇧🇮'
+    flag: '🇧🇮',
   },
   {
     code: 'BJ',
@@ -272,7 +272,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'NE,TG,BF,NG',
-    flag: '🇧🇯'
+    flag: '🇧🇯',
   },
   {
     code: 'BL',
@@ -283,7 +283,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇧🇱'
+    flag: '🇧🇱',
   },
   {
     code: 'BM',
@@ -294,7 +294,7 @@ export default [
     currencyCode: 'BMD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇧🇲'
+    flag: '🇧🇲',
   },
   {
     code: 'BN',
@@ -305,7 +305,7 @@ export default [
     currencyCode: 'BND',
     currencyName: 'Dollar',
     neighbours: 'MY',
-    flag: '🇧🇳'
+    flag: '🇧🇳',
   },
   {
     code: 'BO',
@@ -316,7 +316,7 @@ export default [
     currencyCode: 'BOB',
     currencyName: 'Boliviano',
     neighbours: 'PE,CL,PY,BR,AR',
-    flag: '🇧🇴'
+    flag: '🇧🇴',
   },
   {
     code: 'BQ',
@@ -327,7 +327,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇧🇶'
+    flag: '🇧🇶',
   },
   {
     code: 'BR',
@@ -338,7 +338,7 @@ export default [
     currencyCode: 'BRL',
     currencyName: 'Real',
     neighbours: 'SR,PE,BO,UY,GY,PY,GF,VE,CO,AR',
-    flag: '🇧🇷'
+    flag: '🇧🇷',
   },
   {
     code: 'BS',
@@ -349,7 +349,7 @@ export default [
     currencyCode: 'BSD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇧🇸'
+    flag: '🇧🇸',
   },
   {
     code: 'BT',
@@ -360,7 +360,7 @@ export default [
     currencyCode: 'BTN',
     currencyName: 'Ngultrum',
     neighbours: 'CN,IN',
-    flag: '🇧🇹'
+    flag: '🇧🇹',
   },
   {
     code: 'BV',
@@ -371,7 +371,7 @@ export default [
     currencyCode: 'NOK',
     currencyName: 'Krone',
     neighbours: '',
-    flag: '🇧🇻'
+    flag: '🇧🇻',
   },
   {
     code: 'BW',
@@ -382,7 +382,7 @@ export default [
     currencyCode: 'BWP',
     currencyName: 'Pula',
     neighbours: 'ZW,ZA,NA',
-    flag: '🇧🇼'
+    flag: '🇧🇼',
   },
   {
     code: 'BY',
@@ -393,7 +393,7 @@ export default [
     currencyCode: 'BYN',
     currencyName: 'Belarusian ruble',
     neighbours: 'PL,LT,UA,RU,LV',
-    flag: '🇧🇾'
+    flag: '🇧🇾',
   },
   {
     code: 'BZ',
@@ -404,7 +404,7 @@ export default [
     currencyCode: 'BZD',
     currencyName: 'Dollar',
     neighbours: 'GT,MX',
-    flag: '🇧🇿'
+    flag: '🇧🇿',
   },
   {
     code: 'CA',
@@ -415,7 +415,7 @@ export default [
     currencyCode: 'CAD',
     currencyName: 'Dollar',
     neighbours: 'US',
-    flag: '🇨🇦'
+    flag: '🇨🇦',
   },
   {
     code: 'CC',
@@ -426,7 +426,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇨🇨'
+    flag: '🇨🇨',
   },
   {
     code: 'CD',
@@ -437,7 +437,7 @@ export default [
     currencyCode: 'CDF',
     currencyName: 'Franc',
     neighbours: 'TZ,CF,SS,RW,ZM,BI,UG,CG,AO',
-    flag: '🇨🇩'
+    flag: '🇨🇩',
   },
   {
     code: 'CF',
@@ -448,7 +448,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'TD,SD,CD,SS,CM,CG',
-    flag: '🇨🇫'
+    flag: '🇨🇫',
   },
   {
     code: 'CG',
@@ -459,7 +459,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'CF,GA,CD,CM,AO',
-    flag: '🇨🇬'
+    flag: '🇨🇬',
   },
   {
     code: 'CH',
@@ -470,7 +470,7 @@ export default [
     currencyCode: 'CHF',
     currencyName: 'Franc',
     neighbours: 'DE,IT,LI,FR,AT',
-    flag: '🇨🇭'
+    flag: '🇨🇭',
   },
   {
     code: 'CI',
@@ -481,7 +481,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'LR,GH,GN,BF,ML',
-    flag: '🇨🇮'
+    flag: '🇨🇮',
   },
   {
     code: 'CK',
@@ -492,7 +492,7 @@ export default [
     currencyCode: 'NZD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇨🇰'
+    flag: '🇨🇰',
   },
   {
     code: 'CL',
@@ -503,7 +503,7 @@ export default [
     currencyCode: 'CLP',
     currencyName: 'Peso',
     neighbours: 'PE,BO,AR',
-    flag: '🇨🇱'
+    flag: '🇨🇱',
   },
   {
     code: 'CM',
@@ -514,7 +514,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'TD,CF,GA,GQ,CG,NG',
-    flag: '🇨🇲'
+    flag: '🇨🇲',
   },
   {
     code: 'CN',
@@ -525,7 +525,7 @@ export default [
     currencyCode: 'CNY',
     currencyName: 'Yuan Renminbi',
     neighbours: 'LA,BT,TJ,KZ,MN,AF,NP,MM,KG,PK,KP,RU,VN,IN',
-    flag: '🇨🇳'
+    flag: '🇨🇳',
   },
   {
     code: 'CO',
@@ -536,7 +536,7 @@ export default [
     currencyCode: 'COP',
     currencyName: 'Peso',
     neighbours: 'EC,PE,PA,BR,VE',
-    flag: '🇨🇴'
+    flag: '🇨🇴',
   },
   {
     code: 'CR',
@@ -547,7 +547,7 @@ export default [
     currencyCode: 'CRC',
     currencyName: 'Colon',
     neighbours: 'PA,NI',
-    flag: '🇨🇷'
+    flag: '🇨🇷',
   },
   {
     code: 'CU',
@@ -558,7 +558,7 @@ export default [
     currencyCode: 'CUP',
     currencyName: 'Peso',
     neighbours: 'US',
-    flag: '🇨🇺'
+    flag: '🇨🇺',
   },
   {
     code: 'CV',
@@ -569,7 +569,7 @@ export default [
     currencyCode: 'CVE',
     currencyName: 'Escudo',
     neighbours: '',
-    flag: '🇨🇻'
+    flag: '🇨🇻',
   },
   {
     code: 'CW',
@@ -580,7 +580,7 @@ export default [
     currencyCode: 'ANG',
     currencyName: 'Guilder',
     neighbours: '',
-    flag: '🇨🇼'
+    flag: '🇨🇼',
   },
   {
     code: 'CX',
@@ -591,7 +591,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇨🇽'
+    flag: '🇨🇽',
   },
   {
     code: 'CY',
@@ -602,7 +602,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇨🇾'
+    flag: '🇨🇾',
   },
   {
     code: 'CZ',
@@ -613,7 +613,7 @@ export default [
     currencyCode: 'CZK',
     currencyName: 'Koruna',
     neighbours: 'PL,DE,SK,AT',
-    flag: '🇨🇿'
+    flag: '🇨🇿',
   },
   {
     code: 'DE',
@@ -624,7 +624,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'CH,PL,NL,DK,BE,CZ,LU,FR,AT',
-    flag: '🇩🇪'
+    flag: '🇩🇪',
   },
   {
     code: 'DJ',
@@ -635,7 +635,7 @@ export default [
     currencyCode: 'DJF',
     currencyName: 'Franc',
     neighbours: 'ER,ET,SO',
-    flag: '🇩🇯'
+    flag: '🇩🇯',
   },
   {
     code: 'DK',
@@ -646,7 +646,7 @@ export default [
     currencyCode: 'DKK',
     currencyName: 'Krone',
     neighbours: 'DE',
-    flag: '🇩🇰'
+    flag: '🇩🇰',
   },
   {
     code: 'DM',
@@ -657,7 +657,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇩🇲'
+    flag: '🇩🇲',
   },
   {
     code: 'DO',
@@ -668,7 +668,7 @@ export default [
     currencyCode: 'DOP',
     currencyName: 'Peso',
     neighbours: 'HT',
-    flag: '🇩🇴'
+    flag: '🇩🇴',
   },
   {
     code: 'DZ',
@@ -679,7 +679,7 @@ export default [
     currencyCode: 'DZD',
     currencyName: 'Dinar',
     neighbours: 'NE,EH,LY,MR,TN,MA,ML',
-    flag: '🇩🇿'
+    flag: '🇩🇿',
   },
   {
     code: 'EC',
@@ -690,7 +690,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: 'PE,CO',
-    flag: '🇪🇨'
+    flag: '🇪🇨',
   },
   {
     code: 'EE',
@@ -701,7 +701,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'RU,LV',
-    flag: '🇪🇪'
+    flag: '🇪🇪',
   },
   {
     code: 'EG',
@@ -712,7 +712,7 @@ export default [
     currencyCode: 'EGP',
     currencyName: 'Pound',
     neighbours: 'LY,SD,IL,PS',
-    flag: '🇪🇬'
+    flag: '🇪🇬',
   },
   {
     code: 'EH',
@@ -723,7 +723,7 @@ export default [
     currencyCode: 'MAD',
     currencyName: 'Dirham',
     neighbours: 'DZ,MR,MA',
-    flag: '🇪🇭'
+    flag: '🇪🇭',
   },
   {
     code: 'ER',
@@ -734,7 +734,7 @@ export default [
     currencyCode: 'ERN',
     currencyName: 'Nakfa',
     neighbours: 'ET,SD,DJ',
-    flag: '🇪🇷'
+    flag: '🇪🇷',
   },
   {
     code: 'ES',
@@ -745,7 +745,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'AD,PT,GI,FR,MA',
-    flag: '🇪🇸'
+    flag: '🇪🇸',
   },
   {
     code: 'ET',
@@ -756,7 +756,7 @@ export default [
     currencyCode: 'ETB',
     currencyName: 'Birr',
     neighbours: 'ER,KE,SD,SS,SO,DJ',
-    flag: '🇪🇹'
+    flag: '🇪🇹',
   },
   {
     code: 'FI',
@@ -767,7 +767,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'NO,RU,SE',
-    flag: '🇫🇮'
+    flag: '🇫🇮',
   },
   {
     code: 'FJ',
@@ -778,7 +778,7 @@ export default [
     currencyCode: 'FJD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇫🇯'
+    flag: '🇫🇯',
   },
   {
     code: 'FK',
@@ -789,7 +789,7 @@ export default [
     currencyCode: 'FKP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇫🇰'
+    flag: '🇫🇰',
   },
   {
     code: 'FM',
@@ -800,7 +800,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇫🇲'
+    flag: '🇫🇲',
   },
   {
     code: 'FO',
@@ -811,7 +811,7 @@ export default [
     currencyCode: 'DKK',
     currencyName: 'Krone',
     neighbours: '',
-    flag: '🇫🇴'
+    flag: '🇫🇴',
   },
   {
     code: 'FR',
@@ -822,7 +822,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'CH,DE,BE,LU,IT,AD,MC,ES',
-    flag: '🇫🇷'
+    flag: '🇫🇷',
   },
   {
     code: 'GA',
@@ -833,7 +833,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'CM,GQ,CG',
-    flag: '🇬🇦'
+    flag: '🇬🇦',
   },
   {
     code: 'GB',
@@ -844,7 +844,7 @@ export default [
     currencyCode: 'GBP',
     currencyName: 'Pound',
     neighbours: 'IE',
-    flag: '🇬🇧'
+    flag: '🇬🇧',
   },
   {
     code: 'GD',
@@ -855,7 +855,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇬🇩'
+    flag: '🇬🇩',
   },
   {
     code: 'GE',
@@ -866,7 +866,7 @@ export default [
     currencyCode: 'GEL',
     currencyName: 'Lari',
     neighbours: 'AM,AZ,TR,RU',
-    flag: '🇬🇪'
+    flag: '🇬🇪',
   },
   {
     code: 'GF',
@@ -877,7 +877,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'SR,BR',
-    flag: '🇬🇫'
+    flag: '🇬🇫',
   },
   {
     code: 'GG',
@@ -888,7 +888,7 @@ export default [
     currencyCode: 'GBP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇬🇬'
+    flag: '🇬🇬',
   },
   {
     code: 'GH',
@@ -899,7 +899,7 @@ export default [
     currencyCode: 'GHS',
     currencyName: 'Cedi',
     neighbours: 'CI,TG,BF',
-    flag: '🇬🇭'
+    flag: '🇬🇭',
   },
   {
     code: 'GI',
@@ -910,7 +910,7 @@ export default [
     currencyCode: 'GIP',
     currencyName: 'Pound',
     neighbours: 'ES',
-    flag: '🇬🇮'
+    flag: '🇬🇮',
   },
   {
     code: 'GL',
@@ -921,7 +921,7 @@ export default [
     currencyCode: 'DKK',
     currencyName: 'Krone',
     neighbours: '',
-    flag: '🇬🇱'
+    flag: '🇬🇱',
   },
   {
     code: 'GM',
@@ -932,7 +932,7 @@ export default [
     currencyCode: 'GMD',
     currencyName: 'Dalasi',
     neighbours: 'SN',
-    flag: '🇬🇲'
+    flag: '🇬🇲',
   },
   {
     code: 'GN',
@@ -943,7 +943,7 @@ export default [
     currencyCode: 'GNF',
     currencyName: 'Franc',
     neighbours: 'LR,SN,SL,CI,GW,ML',
-    flag: '🇬🇳'
+    flag: '🇬🇳',
   },
   {
     code: 'GP',
@@ -954,7 +954,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇬🇵'
+    flag: '🇬🇵',
   },
   {
     code: 'GQ',
@@ -965,7 +965,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'GA,CM',
-    flag: '🇬🇶'
+    flag: '🇬🇶',
   },
   {
     code: 'GR',
@@ -976,7 +976,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'AL,MK,TR,BG',
-    flag: '🇬🇷'
+    flag: '🇬🇷',
   },
   {
     code: 'GS',
@@ -987,7 +987,7 @@ export default [
     currencyCode: 'GBP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇬🇸'
+    flag: '🇬🇸',
   },
   {
     code: 'GT',
@@ -998,7 +998,7 @@ export default [
     currencyCode: 'GTQ',
     currencyName: 'Quetzal',
     neighbours: 'MX,HN,BZ,SV',
-    flag: '🇬🇹'
+    flag: '🇬🇹',
   },
   {
     code: 'GU',
@@ -1009,7 +1009,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇬🇺'
+    flag: '🇬🇺',
   },
   {
     code: 'GW',
@@ -1020,7 +1020,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'SN,GN',
-    flag: '🇬🇼'
+    flag: '🇬🇼',
   },
   {
     code: 'GY',
@@ -1031,7 +1031,7 @@ export default [
     currencyCode: 'GYD',
     currencyName: 'Dollar',
     neighbours: 'SR,BR,VE',
-    flag: '🇬🇾'
+    flag: '🇬🇾',
   },
   {
     code: 'HK',
@@ -1042,7 +1042,7 @@ export default [
     currencyCode: 'HKD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇭🇰'
+    flag: '🇭🇰',
   },
   {
     code: 'HM',
@@ -1053,7 +1053,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇭🇲'
+    flag: '🇭🇲',
   },
   {
     code: 'HN',
@@ -1064,7 +1064,7 @@ export default [
     currencyCode: 'HNL',
     currencyName: 'Lempira',
     neighbours: 'GT,NI,SV',
-    flag: '🇭🇳'
+    flag: '🇭🇳',
   },
   {
     code: 'HR',
@@ -1075,7 +1075,7 @@ export default [
     currencyCode: 'HRK',
     currencyName: 'Kuna',
     neighbours: 'HU,SI,BA,ME,RS',
-    flag: '🇭🇷'
+    flag: '🇭🇷',
   },
   {
     code: 'HT',
@@ -1086,7 +1086,7 @@ export default [
     currencyCode: 'HTG',
     currencyName: 'Gourde',
     neighbours: 'DO',
-    flag: '🇭🇹'
+    flag: '🇭🇹',
   },
   {
     code: 'HU',
@@ -1097,7 +1097,7 @@ export default [
     currencyCode: 'HUF',
     currencyName: 'Forint',
     neighbours: 'SK,SI,RO,UA,HR,AT,RS',
-    flag: '🇭🇺'
+    flag: '🇭🇺',
   },
   {
     code: 'ID',
@@ -1108,7 +1108,7 @@ export default [
     currencyCode: 'IDR',
     currencyName: 'Rupiah',
     neighbours: 'PG,TL,MY',
-    flag: '🇮🇩'
+    flag: '🇮🇩',
   },
   {
     code: 'IE',
@@ -1119,7 +1119,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'GB',
-    flag: '🇮🇪'
+    flag: '🇮🇪',
   },
   {
     code: 'IL',
@@ -1130,7 +1130,7 @@ export default [
     currencyCode: 'ILS',
     currencyName: 'Shekel',
     neighbours: 'SY,JO,LB,EG,PS',
-    flag: '🇮🇱'
+    flag: '🇮🇱',
   },
   {
     code: 'IM',
@@ -1141,7 +1141,7 @@ export default [
     currencyCode: 'GBP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇮🇲'
+    flag: '🇮🇲',
   },
   {
     code: 'IN',
@@ -1152,7 +1152,7 @@ export default [
     currencyCode: 'INR',
     currencyName: 'Rupee',
     neighbours: 'CN,NP,MM,BT,PK,BD',
-    flag: '🇮🇳'
+    flag: '🇮🇳',
   },
   {
     code: 'IO',
@@ -1163,7 +1163,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇮🇴'
+    flag: '🇮🇴',
   },
   {
     code: 'IQ',
@@ -1174,7 +1174,7 @@ export default [
     currencyCode: 'IQD',
     currencyName: 'Dinar',
     neighbours: 'SY,SA,IR,JO,TR,KW',
-    flag: '🇮🇶'
+    flag: '🇮🇶',
   },
   {
     code: 'IR',
@@ -1185,7 +1185,7 @@ export default [
     currencyCode: 'IRR',
     currencyName: 'Rial',
     neighbours: 'TM,AF,IQ,AM,PK,AZ,TR',
-    flag: '🇮🇷'
+    flag: '🇮🇷',
   },
   {
     code: 'IS',
@@ -1196,7 +1196,7 @@ export default [
     currencyCode: 'ISK',
     currencyName: 'Krona',
     neighbours: '',
-    flag: '🇮🇸'
+    flag: '🇮🇸',
   },
   {
     code: 'IT',
@@ -1207,7 +1207,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'CH,VA,SI,SM,FR,AT',
-    flag: '🇮🇹'
+    flag: '🇮🇹',
   },
   {
     code: 'JE',
@@ -1218,7 +1218,7 @@ export default [
     currencyCode: 'GBP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇯🇪'
+    flag: '🇯🇪',
   },
   {
     code: 'JM',
@@ -1229,7 +1229,7 @@ export default [
     currencyCode: 'JMD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇯🇲'
+    flag: '🇯🇲',
   },
   {
     code: 'JO',
@@ -1240,7 +1240,7 @@ export default [
     currencyCode: 'JOD',
     currencyName: 'Dinar',
     neighbours: 'SY,SA,IQ,IL,PS',
-    flag: '🇯🇴'
+    flag: '🇯🇴',
   },
   {
     code: 'JP',
@@ -1251,7 +1251,7 @@ export default [
     currencyCode: 'JPY',
     currencyName: 'Yen',
     neighbours: '',
-    flag: '🇯🇵'
+    flag: '🇯🇵',
   },
   {
     code: 'KE',
@@ -1262,7 +1262,7 @@ export default [
     currencyCode: 'KES',
     currencyName: 'Shilling',
     neighbours: 'ET,TZ,SS,SO,UG',
-    flag: '🇰🇪'
+    flag: '🇰🇪',
   },
   {
     code: 'KG',
@@ -1273,7 +1273,7 @@ export default [
     currencyCode: 'KGS',
     currencyName: 'Som',
     neighbours: 'CN,TJ,UZ,KZ',
-    flag: '🇰🇬'
+    flag: '🇰🇬',
   },
   {
     code: 'KH',
@@ -1284,7 +1284,7 @@ export default [
     currencyCode: 'KHR',
     currencyName: 'Riels',
     neighbours: 'LA,TH,VN',
-    flag: '🇰🇭'
+    flag: '🇰🇭',
   },
   {
     code: 'KI',
@@ -1295,7 +1295,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇰🇮'
+    flag: '🇰🇮',
   },
   {
     code: 'KM',
@@ -1306,7 +1306,7 @@ export default [
     currencyCode: 'KMF',
     currencyName: 'Franc',
     neighbours: '',
-    flag: '🇰🇲'
+    flag: '🇰🇲',
   },
   {
     code: 'KN',
@@ -1317,7 +1317,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇰🇳'
+    flag: '🇰🇳',
   },
   {
     code: 'KP',
@@ -1328,7 +1328,7 @@ export default [
     currencyCode: 'KPW',
     currencyName: 'Won',
     neighbours: 'CN,KR,RU',
-    flag: '🇰🇵'
+    flag: '🇰🇵',
   },
   {
     code: 'KR',
@@ -1339,7 +1339,7 @@ export default [
     currencyCode: 'KRW',
     currencyName: 'Won',
     neighbours: 'KP',
-    flag: '🇰🇷'
+    flag: '🇰🇷',
   },
   {
     code: 'XK',
@@ -1350,7 +1350,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'RS,AL,MK,ME',
-    flag: '🇽🇰'
+    flag: '🇽🇰',
   },
   {
     code: 'KW',
@@ -1361,7 +1361,7 @@ export default [
     currencyCode: 'KWD',
     currencyName: 'Dinar',
     neighbours: 'SA,IQ',
-    flag: '🇰🇼'
+    flag: '🇰🇼',
   },
   {
     code: 'KY',
@@ -1372,7 +1372,7 @@ export default [
     currencyCode: 'KYD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇰🇾'
+    flag: '🇰🇾',
   },
   {
     code: 'KZ',
@@ -1383,7 +1383,7 @@ export default [
     currencyCode: 'KZT',
     currencyName: 'Tenge',
     neighbours: 'TM,CN,KG,UZ,RU',
-    flag: '🇰🇿'
+    flag: '🇰🇿',
   },
   {
     code: 'LA',
@@ -1394,7 +1394,7 @@ export default [
     currencyCode: 'LAK',
     currencyName: 'Kip',
     neighbours: 'CN,MM,KH,TH,VN',
-    flag: '🇱🇦'
+    flag: '🇱🇦',
   },
   {
     code: 'LB',
@@ -1405,7 +1405,7 @@ export default [
     currencyCode: 'LBP',
     currencyName: 'Pound',
     neighbours: 'SY,IL',
-    flag: '🇱🇧'
+    flag: '🇱🇧',
   },
   {
     code: 'LC',
@@ -1416,7 +1416,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇱🇨'
+    flag: '🇱🇨',
   },
   {
     code: 'LI',
@@ -1427,7 +1427,7 @@ export default [
     currencyCode: 'CHF',
     currencyName: 'Franc',
     neighbours: 'CH,AT',
-    flag: '🇱🇮'
+    flag: '🇱🇮',
   },
   {
     code: 'LK',
@@ -1438,7 +1438,7 @@ export default [
     currencyCode: 'LKR',
     currencyName: 'Rupee',
     neighbours: '',
-    flag: '🇱🇰'
+    flag: '🇱🇰',
   },
   {
     code: 'LR',
@@ -1449,7 +1449,7 @@ export default [
     currencyCode: 'LRD',
     currencyName: 'Dollar',
     neighbours: 'SL,CI,GN',
-    flag: '🇱🇷'
+    flag: '🇱🇷',
   },
   {
     code: 'LS',
@@ -1460,7 +1460,7 @@ export default [
     currencyCode: 'LSL',
     currencyName: 'Loti',
     neighbours: 'ZA',
-    flag: '🇱🇸'
+    flag: '🇱🇸',
   },
   {
     code: 'LT',
@@ -1471,7 +1471,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'PL,BY,RU,LV',
-    flag: '🇱🇹'
+    flag: '🇱🇹',
   },
   {
     code: 'LU',
@@ -1482,7 +1482,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'DE,BE,FR',
-    flag: '🇱🇺'
+    flag: '🇱🇺',
   },
   {
     code: 'LV',
@@ -1493,7 +1493,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'LT,EE,BY,RU',
-    flag: '🇱🇻'
+    flag: '🇱🇻',
   },
   {
     code: 'LY',
@@ -1504,7 +1504,7 @@ export default [
     currencyCode: 'LYD',
     currencyName: 'Dinar',
     neighbours: 'TD,NE,DZ,SD,TN,EG',
-    flag: '🇱🇾'
+    flag: '🇱🇾',
   },
   {
     code: 'MA',
@@ -1515,7 +1515,7 @@ export default [
     currencyCode: 'MAD',
     currencyName: 'Dirham',
     neighbours: 'DZ,EH,ES',
-    flag: '🇲🇦'
+    flag: '🇲🇦',
   },
   {
     code: 'MC',
@@ -1526,7 +1526,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'FR',
-    flag: '🇲🇨'
+    flag: '🇲🇨',
   },
   {
     code: 'MD',
@@ -1537,7 +1537,7 @@ export default [
     currencyCode: 'MDL',
     currencyName: 'Leu',
     neighbours: 'RO,UA',
-    flag: '🇲🇩'
+    flag: '🇲🇩',
   },
   {
     code: 'ME',
@@ -1548,7 +1548,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'AL,HR,BA,RS,XK',
-    flag: '🇲🇪'
+    flag: '🇲🇪',
   },
   {
     code: 'MF',
@@ -1559,7 +1559,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'SX',
-    flag: '🇲🇫'
+    flag: '🇲🇫',
   },
   {
     code: 'MG',
@@ -1570,7 +1570,7 @@ export default [
     currencyCode: 'MGA',
     currencyName: 'Ariary',
     neighbours: '',
-    flag: '🇲🇬'
+    flag: '🇲🇬',
   },
   {
     code: 'MH',
@@ -1581,7 +1581,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇲🇭'
+    flag: '🇲🇭',
   },
   {
     code: 'MK',
@@ -1592,7 +1592,7 @@ export default [
     currencyCode: 'MKD',
     currencyName: 'Denar',
     neighbours: 'AL,GR,BG,RS,XK',
-    flag: '🇲🇰'
+    flag: '🇲🇰',
   },
   {
     code: 'ML',
@@ -1603,7 +1603,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'SN,NE,DZ,CI,GN,MR,BF',
-    flag: '🇲🇱'
+    flag: '🇲🇱',
   },
   {
     code: 'MM',
@@ -1614,7 +1614,7 @@ export default [
     currencyCode: 'MMK',
     currencyName: 'Kyat',
     neighbours: 'CN,LA,TH,BD,IN',
-    flag: '🇲🇲'
+    flag: '🇲🇲',
   },
   {
     code: 'MN',
@@ -1625,7 +1625,7 @@ export default [
     currencyCode: 'MNT',
     currencyName: 'Tugrik',
     neighbours: 'CN,RU',
-    flag: '🇲🇳'
+    flag: '🇲🇳',
   },
   {
     code: 'MO',
@@ -1636,7 +1636,7 @@ export default [
     currencyCode: 'MOP',
     currencyName: 'Pataca',
     neighbours: '',
-    flag: '🇲🇴'
+    flag: '🇲🇴',
   },
   {
     code: 'MP',
@@ -1647,7 +1647,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇲🇵'
+    flag: '🇲🇵',
   },
   {
     code: 'MQ',
@@ -1658,7 +1658,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇲🇶'
+    flag: '🇲🇶',
   },
   {
     code: 'MR',
@@ -1669,7 +1669,7 @@ export default [
     currencyCode: 'MRU',
     currencyName: 'Ouguiya',
     neighbours: 'SN,DZ,EH,ML',
-    flag: '🇲🇷'
+    flag: '🇲🇷',
   },
   {
     code: 'MS',
@@ -1680,7 +1680,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇲🇸'
+    flag: '🇲🇸',
   },
   {
     code: 'MT',
@@ -1691,7 +1691,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇲🇹'
+    flag: '🇲🇹',
   },
   {
     code: 'MU',
@@ -1702,7 +1702,7 @@ export default [
     currencyCode: 'MUR',
     currencyName: 'Rupee',
     neighbours: '',
-    flag: '🇲🇺'
+    flag: '🇲🇺',
   },
   {
     code: 'MV',
@@ -1713,7 +1713,7 @@ export default [
     currencyCode: 'MVR',
     currencyName: 'Rufiyaa',
     neighbours: '',
-    flag: '🇲🇻'
+    flag: '🇲🇻',
   },
   {
     code: 'MW',
@@ -1724,7 +1724,7 @@ export default [
     currencyCode: 'MWK',
     currencyName: 'Kwacha',
     neighbours: 'TZ,MZ,ZM',
-    flag: '🇲🇼'
+    flag: '🇲🇼',
   },
   {
     code: 'MX',
@@ -1735,7 +1735,7 @@ export default [
     currencyCode: 'MXN',
     currencyName: 'Peso',
     neighbours: 'GT,US,BZ',
-    flag: '🇲🇽'
+    flag: '🇲🇽',
   },
   {
     code: 'MY',
@@ -1746,7 +1746,7 @@ export default [
     currencyCode: 'MYR',
     currencyName: 'Ringgit',
     neighbours: 'BN,TH,ID',
-    flag: '🇲🇾'
+    flag: '🇲🇾',
   },
   {
     code: 'MZ',
@@ -1757,7 +1757,7 @@ export default [
     currencyCode: 'MZN',
     currencyName: 'Metical',
     neighbours: 'ZW,TZ,SZ,ZA,ZM,MW',
-    flag: '🇲🇿'
+    flag: '🇲🇿',
   },
   {
     code: 'NA',
@@ -1768,7 +1768,7 @@ export default [
     currencyCode: 'NAD',
     currencyName: 'Dollar',
     neighbours: 'ZA,BW,ZM,AO',
-    flag: '🇳🇦'
+    flag: '🇳🇦',
   },
   {
     code: 'NC',
@@ -1779,7 +1779,7 @@ export default [
     currencyCode: 'XPF',
     currencyName: 'Franc',
     neighbours: '',
-    flag: '🇳🇨'
+    flag: '🇳🇨',
   },
   {
     code: 'NE',
@@ -1790,7 +1790,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'TD,BJ,DZ,LY,BF,NG,ML',
-    flag: '🇳🇪'
+    flag: '🇳🇪',
   },
   {
     code: 'NF',
@@ -1801,7 +1801,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇳🇫'
+    flag: '🇳🇫',
   },
   {
     code: 'NG',
@@ -1812,7 +1812,7 @@ export default [
     currencyCode: 'NGN',
     currencyName: 'Naira',
     neighbours: 'TD,NE,BJ,CM',
-    flag: '🇳🇬'
+    flag: '🇳🇬',
   },
   {
     code: 'NI',
@@ -1823,7 +1823,7 @@ export default [
     currencyCode: 'NIO',
     currencyName: 'Cordoba',
     neighbours: 'CR,HN',
-    flag: '🇳🇮'
+    flag: '🇳🇮',
   },
   {
     code: 'NL',
@@ -1834,7 +1834,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'DE,BE',
-    flag: '🇳🇱'
+    flag: '🇳🇱',
   },
   {
     code: 'NO',
@@ -1845,7 +1845,7 @@ export default [
     currencyCode: 'NOK',
     currencyName: 'Krone',
     neighbours: 'FI,RU,SE',
-    flag: '🇳🇴'
+    flag: '🇳🇴',
   },
   {
     code: 'NP',
@@ -1856,7 +1856,7 @@ export default [
     currencyCode: 'NPR',
     currencyName: 'Rupee',
     neighbours: 'CN,IN',
-    flag: '🇳🇵'
+    flag: '🇳🇵',
   },
   {
     code: 'NR',
@@ -1867,7 +1867,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇳🇷'
+    flag: '🇳🇷',
   },
   {
     code: 'NU',
@@ -1878,7 +1878,7 @@ export default [
     currencyCode: 'NZD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇳🇺'
+    flag: '🇳🇺',
   },
   {
     code: 'NZ',
@@ -1889,7 +1889,7 @@ export default [
     currencyCode: 'NZD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇳🇿'
+    flag: '🇳🇿',
   },
   {
     code: 'OM',
@@ -1900,7 +1900,7 @@ export default [
     currencyCode: 'OMR',
     currencyName: 'Rial',
     neighbours: 'SA,YE,AE',
-    flag: '🇴🇲'
+    flag: '🇴🇲',
   },
   {
     code: 'PA',
@@ -1911,7 +1911,7 @@ export default [
     currencyCode: 'PAB',
     currencyName: 'Balboa',
     neighbours: 'CR,CO',
-    flag: '🇵🇦'
+    flag: '🇵🇦',
   },
   {
     code: 'PE',
@@ -1922,7 +1922,7 @@ export default [
     currencyCode: 'PEN',
     currencyName: 'Sol',
     neighbours: 'EC,CL,BO,BR,CO',
-    flag: '🇵🇪'
+    flag: '🇵🇪',
   },
   {
     code: 'PF',
@@ -1933,7 +1933,7 @@ export default [
     currencyCode: 'XPF',
     currencyName: 'Franc',
     neighbours: '',
-    flag: '🇵🇫'
+    flag: '🇵🇫',
   },
   {
     code: 'PG',
@@ -1944,7 +1944,7 @@ export default [
     currencyCode: 'PGK',
     currencyName: 'Kina',
     neighbours: 'ID',
-    flag: '🇵🇬'
+    flag: '🇵🇬',
   },
   {
     code: 'PH',
@@ -1955,7 +1955,7 @@ export default [
     currencyCode: 'PHP',
     currencyName: 'Peso',
     neighbours: '',
-    flag: '🇵🇭'
+    flag: '🇵🇭',
   },
   {
     code: 'PK',
@@ -1966,7 +1966,7 @@ export default [
     currencyCode: 'PKR',
     currencyName: 'Rupee',
     neighbours: 'CN,AF,IR,IN',
-    flag: '🇵🇰'
+    flag: '🇵🇰',
   },
   {
     code: 'PL',
@@ -1977,7 +1977,7 @@ export default [
     currencyCode: 'PLN',
     currencyName: 'Zloty',
     neighbours: 'DE,LT,SK,CZ,BY,UA,RU',
-    flag: '🇵🇱'
+    flag: '🇵🇱',
   },
   {
     code: 'PM',
@@ -1988,7 +1988,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇵🇲'
+    flag: '🇵🇲',
   },
   {
     code: 'PN',
@@ -1999,7 +1999,7 @@ export default [
     currencyCode: 'NZD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇵🇳'
+    flag: '🇵🇳',
   },
   {
     code: 'PR',
@@ -2010,7 +2010,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇵🇷'
+    flag: '🇵🇷',
   },
   {
     code: 'PS',
@@ -2021,7 +2021,7 @@ export default [
     currencyCode: 'ILS',
     currencyName: 'Shekel',
     neighbours: 'JO,IL,EG',
-    flag: '🇵🇸'
+    flag: '🇵🇸',
   },
   {
     code: 'PT',
@@ -2032,7 +2032,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'ES',
-    flag: '🇵🇹'
+    flag: '🇵🇹',
   },
   {
     code: 'PW',
@@ -2043,7 +2043,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇵🇼'
+    flag: '🇵🇼',
   },
   {
     code: 'PY',
@@ -2054,7 +2054,7 @@ export default [
     currencyCode: 'PYG',
     currencyName: 'Guarani',
     neighbours: 'BO,BR,AR',
-    flag: '🇵🇾'
+    flag: '🇵🇾',
   },
   {
     code: 'QA',
@@ -2065,7 +2065,7 @@ export default [
     currencyCode: 'QAR',
     currencyName: 'Rial',
     neighbours: 'SA',
-    flag: '🇶🇦'
+    flag: '🇶🇦',
   },
   {
     code: 'RE',
@@ -2076,7 +2076,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇷🇪'
+    flag: '🇷🇪',
   },
   {
     code: 'RO',
@@ -2087,7 +2087,7 @@ export default [
     currencyCode: 'RON',
     currencyName: 'Leu',
     neighbours: 'MD,HU,UA,BG,RS',
-    flag: '🇷🇴'
+    flag: '🇷🇴',
   },
   {
     code: 'RS',
@@ -2098,7 +2098,7 @@ export default [
     currencyCode: 'RSD',
     currencyName: 'Dinar',
     neighbours: 'AL,HU,MK,RO,HR,BA,BG,ME,XK',
-    flag: '🇷🇸'
+    flag: '🇷🇸',
   },
   {
     code: 'RU',
@@ -2109,7 +2109,7 @@ export default [
     currencyCode: 'RUB',
     currencyName: 'Ruble',
     neighbours: 'GE,CN,BY,UA,KZ,LV,PL,EE,LT,FI,MN,NO,AZ,KP',
-    flag: '🇷🇺'
+    flag: '🇷🇺',
   },
   {
     code: 'RW',
@@ -2120,7 +2120,7 @@ export default [
     currencyCode: 'RWF',
     currencyName: 'Franc',
     neighbours: 'TZ,CD,BI,UG',
-    flag: '🇷🇼'
+    flag: '🇷🇼',
   },
   {
     code: 'SA',
@@ -2131,7 +2131,7 @@ export default [
     currencyCode: 'SAR',
     currencyName: 'Rial',
     neighbours: 'QA,OM,IQ,YE,JO,AE,KW',
-    flag: '🇸🇦'
+    flag: '🇸🇦',
   },
   {
     code: 'SB',
@@ -2142,7 +2142,7 @@ export default [
     currencyCode: 'SBD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇸🇧'
+    flag: '🇸🇧',
   },
   {
     code: 'SC',
@@ -2153,7 +2153,7 @@ export default [
     currencyCode: 'SCR',
     currencyName: 'Rupee',
     neighbours: '',
-    flag: '🇸🇨'
+    flag: '🇸🇨',
   },
   {
     code: 'SD',
@@ -2164,7 +2164,7 @@ export default [
     currencyCode: 'SDG',
     currencyName: 'Pound',
     neighbours: 'SS,TD,EG,ET,ER,LY,CF',
-    flag: '🇸🇩'
+    flag: '🇸🇩',
   },
   {
     code: 'SS',
@@ -2175,7 +2175,7 @@ export default [
     currencyCode: 'SSP',
     currencyName: 'Pound',
     neighbours: 'CD,CF,ET,KE,SD,UG',
-    flag: '🇸🇸'
+    flag: '🇸🇸',
   },
   {
     code: 'SE',
@@ -2186,7 +2186,7 @@ export default [
     currencyCode: 'SEK',
     currencyName: 'Krona',
     neighbours: 'NO,FI',
-    flag: '🇸🇪'
+    flag: '🇸🇪',
   },
   {
     code: 'SG',
@@ -2197,7 +2197,7 @@ export default [
     currencyCode: 'SGD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇸🇬'
+    flag: '🇸🇬',
   },
   {
     code: 'SH',
@@ -2208,7 +2208,7 @@ export default [
     currencyCode: 'SHP',
     currencyName: 'Pound',
     neighbours: '',
-    flag: '🇸🇭'
+    flag: '🇸🇭',
   },
   {
     code: 'SI',
@@ -2219,7 +2219,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'HU,IT,HR,AT',
-    flag: '🇸🇮'
+    flag: '🇸🇮',
   },
   {
     code: 'SJ',
@@ -2230,7 +2230,7 @@ export default [
     currencyCode: 'NOK',
     currencyName: 'Krone',
     neighbours: '',
-    flag: '🇸🇯'
+    flag: '🇸🇯',
   },
   {
     code: 'SK',
@@ -2241,7 +2241,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'PL,HU,CZ,UA,AT',
-    flag: '🇸🇰'
+    flag: '🇸🇰',
   },
   {
     code: 'SL',
@@ -2252,7 +2252,7 @@ export default [
     currencyCode: 'SLL',
     currencyName: 'Leone',
     neighbours: 'LR,GN',
-    flag: '🇸🇱'
+    flag: '🇸🇱',
   },
   {
     code: 'SM',
@@ -2263,7 +2263,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'IT',
-    flag: '🇸🇲'
+    flag: '🇸🇲',
   },
   {
     code: 'SN',
@@ -2274,7 +2274,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'GN,MR,GW,GM,ML',
-    flag: '🇸🇳'
+    flag: '🇸🇳',
   },
   {
     code: 'SO',
@@ -2285,7 +2285,7 @@ export default [
     currencyCode: 'SOS',
     currencyName: 'Shilling',
     neighbours: 'ET,KE,DJ',
-    flag: '🇸🇴'
+    flag: '🇸🇴',
   },
   {
     code: 'SR',
@@ -2296,7 +2296,7 @@ export default [
     currencyCode: 'SRD',
     currencyName: 'Dollar',
     neighbours: 'GY,BR,GF',
-    flag: '🇸🇷'
+    flag: '🇸🇷',
   },
   {
     code: 'ST',
@@ -2307,7 +2307,7 @@ export default [
     currencyCode: 'STN',
     currencyName: 'Dobra',
     neighbours: '',
-    flag: '🇸🇹'
+    flag: '🇸🇹',
   },
   {
     code: 'SV',
@@ -2318,7 +2318,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: 'GT,HN',
-    flag: '🇸🇻'
+    flag: '🇸🇻',
   },
   {
     code: 'SX',
@@ -2329,7 +2329,7 @@ export default [
     currencyCode: 'ANG',
     currencyName: 'Guilder',
     neighbours: 'MF',
-    flag: '🇸🇽'
+    flag: '🇸🇽',
   },
   {
     code: 'SY',
@@ -2340,7 +2340,7 @@ export default [
     currencyCode: 'SYP',
     currencyName: 'Pound',
     neighbours: 'IQ,JO,IL,TR,LB',
-    flag: '🇸🇾'
+    flag: '🇸🇾',
   },
   {
     code: 'SZ',
@@ -2351,7 +2351,7 @@ export default [
     currencyCode: 'SZL',
     currencyName: 'Lilangeni',
     neighbours: 'ZA,MZ',
-    flag: '🇸🇿'
+    flag: '🇸🇿',
   },
   {
     code: 'TC',
@@ -2362,7 +2362,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇹🇨'
+    flag: '🇹🇨',
   },
   {
     code: 'TD',
@@ -2373,7 +2373,7 @@ export default [
     currencyCode: 'XAF',
     currencyName: 'Franc',
     neighbours: 'NE,LY,CF,SD,CM,NG',
-    flag: '🇹🇩'
+    flag: '🇹🇩',
   },
   {
     code: 'TF',
@@ -2384,7 +2384,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇹🇫'
+    flag: '🇹🇫',
   },
   {
     code: 'TG',
@@ -2395,7 +2395,7 @@ export default [
     currencyCode: 'XOF',
     currencyName: 'Franc',
     neighbours: 'BJ,GH,BF',
-    flag: '🇹🇬'
+    flag: '🇹🇬',
   },
   {
     code: 'TH',
@@ -2406,7 +2406,7 @@ export default [
     currencyCode: 'THB',
     currencyName: 'Baht',
     neighbours: 'LA,MM,KH,MY',
-    flag: '🇹🇭'
+    flag: '🇹🇭',
   },
   {
     code: 'TJ',
@@ -2417,7 +2417,7 @@ export default [
     currencyCode: 'TJS',
     currencyName: 'Somoni',
     neighbours: 'CN,AF,KG,UZ',
-    flag: '🇹🇯'
+    flag: '🇹🇯',
   },
   {
     code: 'TK',
@@ -2428,7 +2428,7 @@ export default [
     currencyCode: 'NZD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇹🇰'
+    flag: '🇹🇰',
   },
   {
     code: 'TL',
@@ -2439,7 +2439,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: 'ID',
-    flag: '🇹🇱'
+    flag: '🇹🇱',
   },
   {
     code: 'TM',
@@ -2450,7 +2450,7 @@ export default [
     currencyCode: 'TMT',
     currencyName: 'Manat',
     neighbours: 'AF,IR,UZ,KZ',
-    flag: '🇹🇲'
+    flag: '🇹🇲',
   },
   {
     code: 'TN',
@@ -2461,7 +2461,7 @@ export default [
     currencyCode: 'TND',
     currencyName: 'Dinar',
     neighbours: 'DZ,LY',
-    flag: '🇹🇳'
+    flag: '🇹🇳',
   },
   {
     code: 'TO',
@@ -2472,7 +2472,7 @@ export default [
     currencyCode: 'TOP',
     currencyName: "Pa'anga",
     neighbours: '',
-    flag: '🇹🇴'
+    flag: '🇹🇴',
   },
   {
     code: 'TR',
@@ -2483,7 +2483,7 @@ export default [
     currencyCode: 'TRY',
     currencyName: 'Lira',
     neighbours: 'SY,GE,IQ,IR,GR,AM,AZ,BG',
-    flag: '🇹🇷'
+    flag: '🇹🇷',
   },
   {
     code: 'TT',
@@ -2494,7 +2494,7 @@ export default [
     currencyCode: 'TTD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇹🇹'
+    flag: '🇹🇹',
   },
   {
     code: 'TV',
@@ -2505,7 +2505,7 @@ export default [
     currencyCode: 'AUD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇹🇻'
+    flag: '🇹🇻',
   },
   {
     code: 'TW',
@@ -2516,7 +2516,7 @@ export default [
     currencyCode: 'TWD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇹🇼'
+    flag: '🇹🇼',
   },
   {
     code: 'TZ',
@@ -2527,7 +2527,7 @@ export default [
     currencyCode: 'TZS',
     currencyName: 'Shilling',
     neighbours: 'MZ,KE,CD,RW,ZM,BI,UG,MW',
-    flag: '🇹🇿'
+    flag: '🇹🇿',
   },
   {
     code: 'UA',
@@ -2538,7 +2538,7 @@ export default [
     currencyCode: 'UAH',
     currencyName: 'Hryvnia',
     neighbours: 'PL,MD,HU,SK,BY,RO,RU',
-    flag: '🇺🇦'
+    flag: '🇺🇦',
   },
   {
     code: 'UG',
@@ -2549,7 +2549,7 @@ export default [
     currencyCode: 'UGX',
     currencyName: 'Shilling',
     neighbours: 'TZ,KE,SS,CD,RW',
-    flag: '🇺🇬'
+    flag: '🇺🇬',
   },
   {
     code: 'UM',
@@ -2560,7 +2560,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇺🇲'
+    flag: '🇺🇲',
   },
   {
     code: 'US',
@@ -2571,7 +2571,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: 'CA,MX,CU',
-    flag: '🇺🇸'
+    flag: '🇺🇸',
   },
   {
     code: 'UY',
@@ -2582,7 +2582,7 @@ export default [
     currencyCode: 'UYU',
     currencyName: 'Peso',
     neighbours: 'BR,AR',
-    flag: '🇺🇾'
+    flag: '🇺🇾',
   },
   {
     code: 'UZ',
@@ -2593,7 +2593,7 @@ export default [
     currencyCode: 'UZS',
     currencyName: 'Som',
     neighbours: 'TM,AF,KG,TJ,KZ',
-    flag: '🇺🇿'
+    flag: '🇺🇿',
   },
   {
     code: 'VA',
@@ -2604,7 +2604,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: 'IT',
-    flag: '🇻🇦'
+    flag: '🇻🇦',
   },
   {
     code: 'VC',
@@ -2615,7 +2615,7 @@ export default [
     currencyCode: 'XCD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇻🇨'
+    flag: '🇻🇨',
   },
   {
     code: 'VE',
@@ -2626,7 +2626,7 @@ export default [
     currencyCode: 'VES',
     currencyName: 'Bolivar Soberano',
     neighbours: 'GY,BR,CO',
-    flag: '🇻🇪'
+    flag: '🇻🇪',
   },
   {
     code: 'VG',
@@ -2637,7 +2637,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇻🇬'
+    flag: '🇻🇬',
   },
   {
     code: 'VI',
@@ -2648,7 +2648,7 @@ export default [
     currencyCode: 'USD',
     currencyName: 'Dollar',
     neighbours: '',
-    flag: '🇻🇮'
+    flag: '🇻🇮',
   },
   {
     code: 'VN',
@@ -2659,7 +2659,7 @@ export default [
     currencyCode: 'VND',
     currencyName: 'Dong',
     neighbours: 'CN,LA,KH',
-    flag: '🇻🇳'
+    flag: '🇻🇳',
   },
   {
     code: 'VU',
@@ -2670,7 +2670,7 @@ export default [
     currencyCode: 'VUV',
     currencyName: 'Vatu',
     neighbours: '',
-    flag: '🇻🇺'
+    flag: '🇻🇺',
   },
   {
     code: 'WF',
@@ -2681,7 +2681,7 @@ export default [
     currencyCode: 'XPF',
     currencyName: 'Franc',
     neighbours: '',
-    flag: '🇼🇫'
+    flag: '🇼🇫',
   },
   {
     code: 'WS',
@@ -2692,7 +2692,7 @@ export default [
     currencyCode: 'WST',
     currencyName: 'Tala',
     neighbours: '',
-    flag: '🇼🇸'
+    flag: '🇼🇸',
   },
   {
     code: 'YE',
@@ -2703,7 +2703,7 @@ export default [
     currencyCode: 'YER',
     currencyName: 'Rial',
     neighbours: 'SA,OM',
-    flag: '🇾🇪'
+    flag: '🇾🇪',
   },
   {
     code: 'YT',
@@ -2714,7 +2714,7 @@ export default [
     currencyCode: 'EUR',
     currencyName: 'Euro',
     neighbours: '',
-    flag: '🇾🇹'
+    flag: '🇾🇹',
   },
   {
     code: 'ZA',
@@ -2725,7 +2725,7 @@ export default [
     currencyCode: 'ZAR',
     currencyName: 'Rand',
     neighbours: 'ZW,SZ,MZ,BW,NA,LS',
-    flag: '🇿🇦'
+    flag: '🇿🇦',
   },
   {
     code: 'ZM',
@@ -2736,7 +2736,7 @@ export default [
     currencyCode: 'ZMW',
     currencyName: 'Kwacha',
     neighbours: 'ZW,TZ,MZ,CD,NA,MW,AO',
-    flag: '🇿🇲'
+    flag: '🇿🇲',
   },
   {
     code: 'ZW',
@@ -2747,6 +2747,6 @@ export default [
     currencyCode: 'ZWL',
     currencyName: 'Dollar',
     neighbours: 'ZA,MZ,BW,ZM',
-    flag: '🇿🇼'
-  }
+    flag: '🇿🇼',
+  },
 ]

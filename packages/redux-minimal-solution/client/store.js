@@ -1,8 +1,9 @@
 import { createStore } from 'redux'
 
-import wombatReducer from './reducer'
+import reducer from '../reducers'
 
-const store = createStore(wombatReducer,
+const store = createStore(
+  reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

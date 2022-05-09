@@ -3,7 +3,7 @@ import Wombat from './Wombat'
 import store from '../store'
 import AddWombat from './AddWombat'
 
-function Wombats () {
+function Wombats() {
   const state = store.getState()
   const wombats = state.wombats
 
@@ -11,9 +11,11 @@ function Wombats () {
     <div>
       <h1>Wombats</h1>
       <ul>
-        {wombats.map((wombat) =>
-          <li key={wombat}><Wombat data={wombat}/></li>
-        )}
+        {wombats.map((wombat) => (
+          <li key={wombat}>
+            <Wombat wombat={wombat} />
+          </li>
+        ))}
       </ul>
       <AddWombat />
     </div>

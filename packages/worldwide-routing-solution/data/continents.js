@@ -59,8 +59,8 @@ export default {
       { code: 'YT', name: 'Mayotte' },
       { code: 'ZA', name: 'South Africa' },
       { code: 'ZM', name: 'Zambia' },
-      { code: 'ZW', name: 'Zimbabwe' }
-    ]
+      { code: 'ZW', name: 'Zimbabwe' },
+    ],
   },
   Antarctica: {
     image: 'Antarctica.jpg',
@@ -69,8 +69,8 @@ export default {
       { code: 'BV', name: 'Bouvet Island' },
       { code: 'GS', name: 'South Georgia and the South Sandwich Islands' },
       { code: 'HM', name: 'Heard Island and McDonald Islands' },
-      { code: 'TF', name: 'French Southern Territories' }
-    ]
+      { code: 'TF', name: 'French Southern Territories' },
+    ],
   },
   Asia: {
     image: 'Mekong-River.jpg',
@@ -125,8 +125,8 @@ export default {
       { code: 'TW', name: 'Taiwan' },
       { code: 'UZ', name: 'Uzbekistan' },
       { code: 'VN', name: 'Vietnam' },
-      { code: 'YE', name: 'Yemen' }
-    ]
+      { code: 'YE', name: 'Yemen' },
+    ],
   },
   Europe: {
     image: 'Austria.jpg',
@@ -184,8 +184,8 @@ export default {
       { code: 'SM', name: 'San Marino' },
       { code: 'UA', name: 'Ukraine' },
       { code: 'VA', name: 'Vatican' },
-      { code: 'CS', name: 'Serbia and Montenegro' }
-    ]
+      { code: 'CS', name: 'Serbia and Montenegro' },
+    ],
   },
   'North America': {
     image: 'Canadian-Rockies.jpg',
@@ -231,8 +231,8 @@ export default {
       { code: 'VC', name: 'Saint Vincent and the Grenadines' },
       { code: 'VG', name: 'British Virgin Islands' },
       { code: 'VI', name: 'U.S. Virgin Islands' },
-      { code: 'AN', name: 'Netherlands Antilles' }
-    ]
+      { code: 'AN', name: 'Netherlands Antilles' },
+    ],
   },
   'South America': {
     image: 'Venezuela.jpg',
@@ -250,8 +250,8 @@ export default {
       { code: 'PY', name: 'Paraguay' },
       { code: 'SR', name: 'Suriname' },
       { code: 'UY', name: 'Uruguay' },
-      { code: 'VE', name: 'Venezuela' }
-    ]
+      { code: 'VE', name: 'Venezuela' },
+    ],
   },
   Oceania: {
     image: 'Tonga.jpg',
@@ -283,7 +283,7 @@ export default {
       { code: 'UM', name: 'United States Minor Outlying Islands' },
       { code: 'VU', name: 'Vanuatu' },
       { code: 'WF', name: 'Wallis and Futuna' },
-      { code: 'WS', name: 'Samoa' }
-    ]
-  }
+      { code: 'WS', name: 'Samoa' },
+    ],
+  },
 }
