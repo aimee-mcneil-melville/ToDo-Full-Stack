@@ -1,36 +1,43 @@
 import React, { useState } from 'react'
 import store from '../store'
 
-function Wombat (props) {
-  const { data } = props
+function Wombat(props) {
+  const { wombat } = props
   const [input, setInput] = useState('')
 
-  function handleDelete (event) {
+  function handleDelete(event) {
     event.preventDefault()
     store.dispatch({
       type: 'DEL_WOMBAT',
-      wombat: data
+      payload: wombat,
     })
   }
 
-  function handleChange (event) {
+  function handleChange(event) {
     setInput(event.target.value)
   }
 
-  function handleUpdate (event) {
+  function handleUpdate(event) {
     event.preventDefault()
     store.dispatch({
       type: 'UPDATE_WOMBAT',
-      old: data,
-      new: input
+      payload: {
+        oldWombat: wombat,
+        newWombat: input,
+      },
     })
   }
   return (
     <div>
-      <p>{data}</p>
+      <p>{wombat}</p>
       <input value={input} onChange={handleChange} />
-      <a href="" onClick={handleDelete}>X</a>
-      <a href="" onClick={handleUpdate}>Update</a>
+      <a href="" onClick={handleDelete}>
+        X
+      </a>
+      &nbsp;
+      <a href="" onClick={handleUpdate}>
+        Update
+      </a>
     </div>
   )
 }

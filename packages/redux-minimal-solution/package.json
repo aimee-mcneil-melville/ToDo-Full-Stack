@@ -20,11 +20,16 @@
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
     ],
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   },
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "express": "^4.17.2"
@@ -38,14 +43,25 @@
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
+    "prettier": "2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "redux": "^4.1.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
