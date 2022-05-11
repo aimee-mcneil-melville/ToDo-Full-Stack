@@ -1,12 +1,15 @@
-import { setUser } from './actions/user'
-import store from './store'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoggedInUser } from './actions/loggedInUser'
 
-export async function cacheUser(useAuth0, state) {
+export async function cacheUser(useAuth0) {
+  const dispatch = useDispatch()
+  const loggedInUser = useSelector((state) => state.loggedInUser)
+
   // TODO: call the useAuth0 and destructure:
   // isAuthenticated, getAccessTokenSilently and user
 
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()
-  if (isAuthenticated && !state?.token) {
+  if (isAuthenticated && !loggedInUser?.token) {
     try {
       const userToSave = {
         auth0Id: '',
@@ -14,7 +17,7 @@ export async function cacheUser(useAuth0, state) {
         token: '',
       }
 
-      store.dispatch(setUser(userToSave))
+      dispatch(setLoggedInUser(userToSave))
     } catch (err) {
       console.error(err)
     }

@@ -1,0 +1,14 @@
+{{> locationsNav}}
+
+<h2>add new location</h2>
+
+<form method="POST" action="/locations/add" class="form">
+  <label for="name">Location name</label>
+  <input type="text" id="name" name="name" placeholder="Location name">
+  
+  <label for="description">Description</label>
+  <textarea rows="4" id="description" name="description" placeholder="Location description"></textarea>
+  
+  <div></div>
+  <button>Add new location</button>
+</form>

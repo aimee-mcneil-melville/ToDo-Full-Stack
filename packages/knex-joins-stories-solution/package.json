@@ -14,10 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/knex-joins-stories.git"
   },
-  "keywords": [
-    "knex",
-    "joins"
-  ],
+  "keywords": ["knex", "joins"],
   "author": "Enspiral Dev Academy",
   "license": "ISC",
   "bugs": {
@@ -25,14 +22,14 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
-    "knex": "^1.0.3",
-    "@vscode/sqlite3": "^5.0.7"
+    "knex": "^1.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
-    "tap-diff": "^0.1.1",
+    "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
   }
 }

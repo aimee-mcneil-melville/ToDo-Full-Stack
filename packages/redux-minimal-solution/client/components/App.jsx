@@ -2,7 +2,7 @@ import React from 'react'
 
 import Wombats from './Wombats'
 
-function App (props) {
+function App(props) {
   return (
     <div>
       <Wombats store={props.store} />

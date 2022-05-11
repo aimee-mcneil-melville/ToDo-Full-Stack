@@ -4,7 +4,6 @@ module.exports = {
   eventDays,
   capitalise,
   validateDay,
-  getEventIconPath,
 }
 
 /*
@@ -23,13 +22,5 @@ function validateDay(day, days = eventDays) {
   // Use the first day as the default value if the day argument isn't valid
   if (typeof day !== 'string') return days[0]
   if (!days.includes(day)) return days[0]
-  return day.toLowerCase()
-}
-
-/*
- * This helps us spread our lovely icons
- * across all of our events evenly using its id
- */
-function getEventIconPath(eventId) {
-  return `/images/eventIcons/event${(eventId % 6) + 1}.svg`
+  return day
 }
