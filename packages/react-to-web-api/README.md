@@ -34,9 +34,9 @@ We're first going to get some widgets displaying on the page. The widget data is
     - Refresh the app in your browser the with DevTools console open. Make sure you can see your `useEffect` message.
 
 1. Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.js`. A GET route using that DB function is also in place in `routes/widgets.js`.
-   - Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Postman/Insomnia.
+   - Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Insomnia.
 
-1. Back in the client folder, you'll find a `getWidgets` function in `api.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`, just like we were doing with Postman/Insomnia. It's then returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
+1. Back in the client folder, you'll find a `getWidgets` function in `api.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`, just like we were doing with Insomnia. It's then returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
 
 1. Import this `getWidgets` function from `api.js` into `App.jsx`.
 
@@ -56,8 +56,8 @@ We're first going to get some widgets displaying on the page. The widget data is
 These next steps will be full stack, requiring you to make changes to both the front and back end.
 
 - Add the ability to add a widget. The steps you might take to complete this could be:
-   - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Postman/Insomnia.
-   - Create the database function to add a new widget. Call this function in your route and test it works in Postman/Insomnia.
+   - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia.
+   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia.
    - Create an `addWidget` function in `api.js` that will make a POST request to the API route you just built.
    - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
    - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...

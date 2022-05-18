@@ -45,7 +45,7 @@ The database migrations and seeds have also already been written for you so you 
 - Write your API functions in `server/routes/posts.js`
 - Try implementing the database and API routes one at a time (i.e. write the database query first, and then write the corresponding API route before moving on to the next database query)
 
-> **Pro tip**: Because the frontend has been written with the specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Postman, Insomnia, or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
+> **Pro tip**: Because the frontend has been written with the specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Insomnia or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
 
 
 ### What's up with the paragraphs?
