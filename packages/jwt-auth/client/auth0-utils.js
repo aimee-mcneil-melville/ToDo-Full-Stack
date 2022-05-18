@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoggedInUser } from './actions/loggedInUser'
 
+// eslint-disable-next-line no-unused-vars
 export async function cacheUser(useAuth0) {
   const dispatch = useDispatch()
   const loggedInUser = useSelector((state) => state.loggedInUser)

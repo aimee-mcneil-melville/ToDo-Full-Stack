@@ -14,9 +14,6 @@
     "eslint-config-eda": "^1.0.0",
     "prettier": "^2.5.1"
   },
-  "eslintConfig": {
-    "extends": "eda/core"
-  },
   "prettier": {
     "semi": false,
     "singleQuote": true
