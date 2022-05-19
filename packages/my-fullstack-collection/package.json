@@ -18,11 +18,16 @@
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx ."
   },
-  "keywords": ["fullstack"],
+  "keywords": [
+    "fullstack"
+  ],
   "author": "EDA",
   "license": "ISC",
   "babel": {
-    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
@@ -30,7 +35,9 @@
   },
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
@@ -44,7 +51,14 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.1.0",
+    "eslint-config-eda": "^1.2.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.3.0",
     "nodemon": "^2.0.15",

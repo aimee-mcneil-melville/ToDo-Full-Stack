@@ -8,10 +8,12 @@
     "fix-package-names": "node tools/fix-package-names.js",
     "add-challenges": "node tools/add-challenges.js"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.0.0",
+    "eslint-config-eda": "^1.2.0",
     "prettier": "^2.5.1"
   },
   "prettier": {

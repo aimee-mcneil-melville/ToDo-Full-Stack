@@ -22,11 +22,16 @@
     "h:rollback": "heroku run npm run knex migrate:rollback",
     "h:seed": "heroku run npm run knex seed:run"
   },
-  "keywords": ["fullstack"],
+  "keywords": [
+    "fullstack"
+  ],
   "author": "EDA",
   "license": "ISC",
   "babel": {
-    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-proposal-object-rest-spread"
@@ -34,10 +39,14 @@
   },
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "jest": {
-    "setupFiles": ["./tests/setup-dotenv.js"]
+    "setupFiles": [
+      "./tests/setup-dotenv.js"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
@@ -52,7 +61,14 @@
     "css-loader": "^6.3.0",
     "dotenv-webpack": "^6.0.0",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.1.0",
+    "eslint-config-eda": "^1.2.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.3.0",
     "sass": "^1.50.1",
