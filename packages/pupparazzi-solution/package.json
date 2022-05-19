@@ -21,7 +21,9 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "watchPathIgnorePatterns": ["data.json"]
+    "watchPathIgnorePatterns": [
+      "data.json"
+    ]
   },
   "dependencies": {
     "express": "^4.17.2",
@@ -29,7 +31,7 @@
   },
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.1.0",
+    "eslint-config-eda": "^1.2.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
