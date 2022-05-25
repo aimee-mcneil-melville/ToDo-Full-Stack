@@ -3,28 +3,8 @@
   padding: 0;
 }
 
-/* Responsive font sizes */
 html {
-  font-size: 1rem;
   background-color: #AFC2D5;
-}
-
-@media screen and (max-width: 863px) and (min-width: 640px) {
-html {
-  font-size: 1.0625rem;
-}
-}
-
-@media screen and (max-width: 1155px) and (min-width: 864px)  {
-html {
-  font-size: 1.125rem;
-}
-}
-
-@media (min-width:1156px) {
-html {
-  font-size: 1.1875rem;
-}
 }
 
 body {
@@ -53,7 +33,7 @@ a:hover {
 }
 
 h1 {
-  padding: 8rem 0 3rem 3rem;
+  padding: 128px 0 48px 48px;
   font-size: 3.5em;
   color: white;
 }
@@ -112,7 +92,7 @@ p {
 }
 
 .card {
-  background-size: 100px;
+  background-size: 75px;
   background-repeat: no-repeat;
   background-position: center top 10px;
   background-color: #ECF6FA;
@@ -149,15 +129,15 @@ p {
 }
 
 .location > p {
-  margin-top: 1.125rem;
-  margin-bottom: 1.125rem;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
 }
 
 .title {
   font-weight: bold;
   color: #1A5068;
   font-size: 1.125rem;
-  margin-top: 110px;
+  margin-top: 80px;
   border-top: 3px solid #AFC2D5;
   padding-top: 10px;
 }
