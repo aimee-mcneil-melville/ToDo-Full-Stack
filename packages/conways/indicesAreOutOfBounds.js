@@ -1,6 +1,6 @@
 const isOutOfBounds = require('./isOutOfBounds')
 
-function indicesAreOutOfBounds (rowIndex, columnIndex, array) {
+function indicesAreOutOfBounds (rowIndex, columnIndex, board) {
 
 }
 
