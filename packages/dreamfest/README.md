@@ -4,7 +4,7 @@ You've just landed your first dev role and you're responsible for creating an ap
 
 Your app needs to give the festival organisers the ability to add _locations_ and to add _events_ at those locations. As plans change, they will also need to be able to add, edit and delete events.
 
-Fortunately, the team has already confirmed the venue and dates so they know how many locations they need. They have also confirmed some partners and bands so they can begin slotting them in when your app is ready. The current planning has been has been prepared as seed data for your database.
+Fortunately, the team has already confirmed the venue and dates so they know how many locations they need. They have also confirmed some partners and bands so they can begin slotting them in when your app is ready. The current planning has been prepared as seed data for your database.
 
 The design team has worked up the UI and routes, but they haven't yet connected them to the database. That's where you come in. You'll implement the database functions to be used from the routes. Let's get stuck in!
 
