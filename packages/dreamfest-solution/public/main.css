@@ -220,13 +220,17 @@ footer {
   text-align: center;
 }
 
-footer a:link, footer a:visited {
+footer p {
   display: inline-block;
   padding-top: 10px;
   margin: 0 10px;
   color: white;
 }
 
-footer a:hover {
+footer a:link, footer a:visited {
   color: #AFC2D5;
+}
+
+footer a:hover {
+  color: white;
 }
