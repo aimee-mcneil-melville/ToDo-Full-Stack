@@ -42,7 +42,7 @@ Have you specified the node version you are using in the package.json?
 
 ```js
 "engines": {
-    "node": "14.x"
+    "node": "16.x"
 }
 ```
 
