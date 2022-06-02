@@ -2,7 +2,6 @@
 
 User stories to implement when practising joins.
 
-
 ## Installation
 
 Clone this repo, `cd` into the new directory and then:
@@ -16,24 +15,22 @@ npm run dev
 
 This will create and populate the database for you, and start the server with `nodemon`.
 
-
 ## Start with:
 
 _As a user, I would like to see a list of wombles so that I can know who to ask to clean up Wimbledon Commons._
 
 _As a user, I would like to visit a `view` route for an individual womble that shows his or her characteristics so that I can identify them on sight._
- - This will need a join between `wombles` and `characteristics`.
 
+- This will need a join between `wombles` and `characteristics`.
 
 ## Try these next:
 
 _As a user, I would like to visit an `assignments` route listing which wombles have been assigned to pick up which rubbish so that I can ensure they are doing their job._
- - This will need a join between `wombles` and `rubbish`.
- - There is no `rubbish_id` in `wombles`, so you'll need to make a new migration to add a column to that table.
 
+- This will need a join between `wombles` and `rubbish`.
+- There is no `rubbish_id` in `wombles`, so you'll need to make a new migration to add a column to that table.
 
 That's MVP! If you're done already, implement the stories below.
-
 
 ## Stretch stories:
 

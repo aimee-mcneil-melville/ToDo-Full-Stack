@@ -9,10 +9,9 @@ router.get('/', function (req, res) {
 })
 
 router.get('/list', function (req, res) {
-  knex('wombles')
-    .then(function (wombles) {
-      res.render('list', { wombles: wombles })
-    })
+  knex('wombles').then(function (wombles) {
+    res.render('list', { wombles: wombles })
+  })
 })
 
 router.get('/view/:id', function (req, res) {
@@ -28,7 +27,11 @@ router.get('/view/:id', function (req, res) {
 
 router.get('/assignments', function (req, res) {
   knex('wombles')
-    .select('wombles.id as womble_id', 'wombles.name as womble_name', 'rubbish.name as rubbish_name')
+    .select(
+      'wombles.id as womble_id',
+      'wombles.name as womble_name',
+      'rubbish.name as rubbish_name'
+    )
     .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
     .then(function (wombles) {
       res.render('assignments', { wombles: wombles })

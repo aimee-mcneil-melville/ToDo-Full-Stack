@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
   "dependencies": {
-    "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
-    "knex": "^1.0.3"
+    "knex": "^1.0.3",
+    "@vscode/sqlite3": "^5.0.7"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
@@ -39,8 +39,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.10.1"
+    "prettier": "2.6.1",
+    "supertest": "^6.2.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
