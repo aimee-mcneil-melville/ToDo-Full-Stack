@@ -32,6 +32,8 @@ Before working on a function, take turns explaining what each test is doing with
 
 * Export the function by adding `module.exports = getType` and save the file. Now you'll notice the tests are failing for different reasons.
 
+    *HINT: Make sure you do `module.exports = getType` exactly as written here - this exports just the one function, which is what `getType.test.js` is expecting. Another style you'll commonly see is `module.exports = { myFunction, anotherFunction }`, which exports an object with two properties which are functions. Either way is fine so long as what one file is exporting matches what the other file is expecting in its `require` line.*
+
 * Implement the `getType` function:
 
   ```js
