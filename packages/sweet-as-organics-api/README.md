@@ -68,7 +68,7 @@ A potential approach could be:
 * Notice that even when placing the order occurs successfully, the cart doesn't empty. When a user starts shopping again, they would have to manually remove the previous order items from their cart, or end up with double ups! Perhaps the `cart` reducer could also be watching for a `PLACE_ORDER_SUCCESS` action?
 * It would also be great to redirect the user to the My Orders page once their order had been placed. However, we'd only want to redirect if the API call succeeds.
   * The `dispatch` function itself doesn't have a `.then()`, because it doesn't expect actions to be async. If we want to redirect after the order is placed, we'll need to do so inside the `.then()` in the `placeOrder` action creator.
-  * You could pass `props.history` into the action creator, along with the `cart`, and push onto it after you dispatch the success action.
+  * After you dispatch the success action, you might perform the redirect with the `useNavigate` method of `react-router-dom`, which is already used in our application to send users to the cart upon adding a product.
 
 ## Release 2: View your orders
 We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (ProductList) page. 
