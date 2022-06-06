@@ -13,7 +13,7 @@ The design team has worked up the UI and routes, but they haven't yet connected 
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
-    * note: if the install fails, run `npm uninstall @vscode/sqlite3`, `npm install` then `npm install @vscode/sqlite3 --build-from-source`
+    * note: if the install fails, run `npm uninstall sqlite3`, `npm install` then `npm install sqlite3 --build-from-source`
 1. `npm run knex migrate:latest`
 1. `npm run knex seed:run`
 1. `npm run dev`

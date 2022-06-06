@@ -8,10 +8,10 @@ _Remember: you can always look at the [knex documentation](https://knexjs.org/) 
 
 ## Setup
 
-* Install dependencies `knex` and `@vscode/sqlite3`. You can do them both at once like this.
+* Install dependencies `knex` and `sqlite3`. You can do them both at once like this.
 
   ```sh
-  npm install knex @vscode/sqlite3
+  npm install knex sqlite3
   ```
 
 * Set file permissions.

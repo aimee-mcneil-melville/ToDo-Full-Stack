@@ -79,8 +79,8 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "knex": "^1.0.3",
-    "@vscode/sqlite3": "^5.0.7",
+    "knex": "^2.1.0",
+    "sqlite3": "^5.0.8",
     "pg": "^8.7.1",
     "superagent": "7.1.1"
   },
