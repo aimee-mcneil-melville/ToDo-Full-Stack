@@ -44,7 +44,7 @@
     "express-jwt": "^6.1.0",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.0.4",
-    "knex": "^1.0.3",
+    "knex": "^2.1.0",
     "pg": "^8.7.1",
     "superagent": "7.1.1"
   },
@@ -80,7 +80,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.50.1",
     "sass-loader": "12.6.0",
-    "@vscode/sqlite3": "^5.0.7",
+    "sqlite3": "^5.0.8",
     "style-loader": "^3.3.0",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",

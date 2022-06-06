@@ -25,7 +25,7 @@ const correctVersions = {
   express: '^4.17.2',
   'express-handlebars': '^6.0.2',
   jest: '^27.5.1',
-  knex: '^1.0.3',
+  knex: '^2.1.0',
   'mini-css-extract-plugin': '^2.3.0',
   nodemon: '^2.0.15',
   pg: '^8.7.1',
@@ -47,6 +47,7 @@ const correctVersions = {
   prettier: '2.6.1',
   'eslint-plugin-react': '^7.29.4',
   '@testing-library': '^12.1.3',
+  sqlite3: '^5.0.8',
 }
 
 const main = async () => {
