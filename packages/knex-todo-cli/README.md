@@ -4,6 +4,7 @@ Command-line todo app using Knex.
 
 We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
 
+_Remember: you can always look at the [knex documentation](https://knexjs.org/) when creating your database functionality, especially when building [queries](https://knexjs.org/guide/query-builder.html) or [schema](https://knexjs.org/guide/schema-builder.html)._
 
 ## Setup
 
