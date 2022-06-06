@@ -87,7 +87,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 **Show form**
 
-1. Look at the `GET /events/:id/edit` route in `routes/locations.js`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
+1. Look at the `GET /events/:id/edit` route in `routes/events.js`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
 2. Make a `getEventById()` function, with an `id` parameter. Use this in your route. 
 
 **Fix form**
