@@ -7,7 +7,13 @@ module.exports = {
     connection: {
       filename: path.join(__dirname, 'dev.sqlite3')
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
+    
+    // This next section enforces constraints such as foreign/primary keys
+    pool: {
+      afterCreate: (conn, cb) =>
+        conn.run('PRAGMA foreign_keys = ON', cb)
+    }
   },
 
   staging: {
