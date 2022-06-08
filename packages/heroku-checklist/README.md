@@ -89,7 +89,7 @@ Does the `start` script in your `package.json` file call `nodemon` instead of `n
 
 1. Deploy to Heroku with `git push heroku YOUR_BRANCH_NAME:main`. 
 
-2. You can open the site from the terminal using: `heroku open`
+2. To open the deployed site, copy the url provided at the end of the deploy output logs (make sure you copy the website url, not the git url) and paste it into your browser OR use the command `heroku open` in your terminal.
 
 _If you see the application error page, or if your site has issues starting, type `heroku logs --tail` into your command line in order to debug what may have gone wrong._
 
