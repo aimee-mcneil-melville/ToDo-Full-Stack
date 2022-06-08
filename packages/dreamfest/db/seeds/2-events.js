@@ -7,43 +7,43 @@ exports.seed = function (knex) {
       time: '2pm - 3pm',
       name: 'Slushie Apocalypse I',
       description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
+        'This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
     },
     {
       id: 2,
       location_id: 2,
       day: 'friday',
       time: '6pm - 7pm',
-      name: 'Slushie Apocalypse II',
+      name: 'LEGO Builder Championships',
       description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
+        'This event will be taking place at the Yella Yurt. Come see what marvels our championship builders have built over the past 7 days!',
     },
     {
       id: 3,
       location_id: 1,
       day: 'saturday',
       time: '2pm - 3pm',
-      name: 'Slushie Apocalypse III',
+      name: 'Sandwich Eating Contest',
       description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
+        'This event will be taking place at the TangleStage. Make sure you eat lunch before watching this amazing display!',
     },
     {
       id: 4,
       location_id: 2,
       day: 'saturday',
       time: '6pm - 7pm',
-      name: 'Slushie Apocalypse IV',
+      name: 'Cutest Puppy Awards',
       description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
+        'This event will be taking place at the Yella Yurt. You won\'t want to miss those cute puppy faces!',
     },
     {
       id: 5,
       location_id: 2,
       day: 'sunday',
       time: '2pm - 3pm',
-      name: 'Slushie Apocalypse V',
+      name: 'Slushie Apocalypse II: The Return',
       description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
+        'This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!',
     },
   ])
 }
