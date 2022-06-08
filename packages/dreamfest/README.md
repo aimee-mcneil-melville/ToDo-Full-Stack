@@ -13,7 +13,6 @@ The design team has worked up the UI and routes, but they haven't yet connected 
 1. Clone this repo
 1. `cd dreamfest`
 1. `npm install`
-    * note: if the install fails, run `npm uninstall sqlite3`, `npm install` then `npm install sqlite3 --build-from-source`
 1. `npm run knex migrate:latest`
 1. `npm run knex seed:run`
 1. `npm run dev`
@@ -39,7 +38,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 1. Make a `getEventsByDay()` function (today we'll put all our database functions in `db/index.js`). It should have a `day` parameter.
     * JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
     * Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
-    * Note that the `events` and `locations` tables both have `name` and `description` columns, how can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data_
+    * Note that the `events` and `locations` tables both have `name`, `description`, and `id` columns. How can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data_
     * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data
 
 ### 3. Edit locations
@@ -76,8 +75,9 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 ### 5. Delete events
 
-1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`.
-    * Note that the "Edit event" page is currently displaying hard-coded details (you'll fix this in the next step), but it is handling the id correctly, so if you (for example) click "Edit event" on the "Slushie Apocalypse V" card, then the "Delete event" button should be able to delete "Slushie Apocalypse V" (id 5) even though the displayed details are for "Slushie Apocalypse I"
+1. Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.js`. Within the site, you will find the delete button on the same page you edit an event.
+    * Note that the "Edit event" page is currently displaying hard-coded details in the form (you'll fix this in the next step), but to check if this page is correct at this stage, click "Edit event" on (for example) the "Cutest Puppy Awards" card, you should then find yourself at `/events/4/edit`, 4 being the id of the event (as seen in your seeds). 
+    * The "Delete event" button should be able to delete "Cutest Puppy Awards" (id 4) even though the displayed details are for "Slushie Apocalypse I" as you will find it uses the id provided by the url, not the hardcoded data.
 2. Make a `deleteEvent()` function, with an `id` parameter.
     * Be sure to redirect to the `/schedule/:day` route from inside your `.then` function
 
