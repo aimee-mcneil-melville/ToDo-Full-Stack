@@ -40,6 +40,7 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
     * Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
     * Note that the `events` and `locations` tables both have `name`, `description`, and `id` columns. How can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? _Hint: look at the shape of the hard-coded sample data_
     * If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data
+      * In particular, if you're sending the `day` property correctly, then the heading in the app should say "Events: Friday", "Events: Saturday" or "Events: Sunday". If it just says "Events:", take another look at your data!
 
 ### 3. Edit locations
 
@@ -99,8 +100,8 @@ The application is usable ... _ish_. You can try anything and the app shouldn't 
 
 **Submit form**
 
-6. Make an `updateEvent()` function, with an `updatedEvent` parameter.
-7. Update `POST /events/edit` in `routes/events.js`.
+5. Make an `updateEvent()` function, with an `updatedEvent` parameter.
+6. Update `POST /events/edit` in `routes/events.js`.
 
 ### 7. Add new locations
 

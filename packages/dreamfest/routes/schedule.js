@@ -10,8 +10,9 @@ module.exports = router
 router.get('/:day', (req, res) => {
   const day = validateDay(req.params.day)
 
-  // TODO: Replace this hard-coded viewData with data from the database
-  // The events property below should only be the events where its day matches validDay
+  // TODO: Replace the hard-coded `events` array in the viewData with a set of events from the
+  // database. Do this by selecting events that have a "day" field matching the `day` route parameter.
+  // Continue to supply the `day` as a property of the viewData, alongside the array of events.
   const viewData = {
     day: day,
     events: [
