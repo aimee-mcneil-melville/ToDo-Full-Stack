@@ -6,10 +6,11 @@
   "main": "server/index.js",
   "scripts": {
     "start": "run-p webpack server",
-    "dev": "run-p client server",
+    "dev": "run-p client:watch server:watch",
     "webpack": "webpack --config client/webpack.config.js",
-    "client": "npm run webpack -- --watch",
     "server": "node server",
+    "client:watch": "npm run webpack -- --watch",
+    "server:watch": "nodemon server",
     "test": "jest --watch --noStackTrace",
     "lint": "eslint --ext .js,.jsx ."
   },
@@ -48,6 +49,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
     "react": "^17.0.2",
