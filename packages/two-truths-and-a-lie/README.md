@@ -15,9 +15,13 @@ Let's get to know each other better, using Git and GitHub! We'll play an icebrea
   cd two-truths-and-a-lie
   ```
 
-2. Tell git who is driving: [in person cohort only]
+2. Tell git who is driving: 
 
-_This step is not required for online students - this is how we credit commits under your name when you're working on an on-campus machine. If you're working on your own machine, you will have configured git globally already._
+_This is how we credit commits under your name when you're working on an on-campus machine or (for online students) in VS Code LiveShare._ 
+* _Online students, please install and configure `git-iam` (following the instructions in the `remote-git-iam` repo)_ 
+* _On the on-campus computers, `git-iam` is already set up for you_
+* _If you're working solo on your own machine, you will have configured git globally already, and you don't need `git-iam`_
+<br/>
 
   ```shell
   git iam DRIVERS_FIRST_NAME
@@ -56,7 +60,8 @@ _This step is not required for online students - this is how we credit commits u
   
 
 ## Release 1 : Find the Lie
-A teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
+* **On-campus students:** a teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
+* **Online students:** Post in the `general` channel in Discord when your branch is ready to be busted. When you select another pair's branch to bust, mark their Discord message with an emoji reaction.
 
 1. Pull your cohort mates branch from GitHub into your local repository.
 
