@@ -15,7 +15,7 @@ exports.seed = (knex) => {
           id: 2,
           post_id: 123,
           date_posted: new Date(Date.now()),
-          comment: 'Really Great blog',
+          comment: 'Really great blog',
         },
         {
           id: 3,
