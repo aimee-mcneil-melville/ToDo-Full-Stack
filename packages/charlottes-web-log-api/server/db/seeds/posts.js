@@ -54,7 +54,7 @@ exports.seed = (knex) => {
             "A fly that had been crawling along Wilbur's trough had flown up and blunde red into the lower part of Charlotte's web and was tangled in the sticky threads. The fly was beating its wings furiously, trying to break loose and free itself.",
             '"First," said Charlotte, "I dive at him." She plunged Charlotte\'s Web headfirst toward the fly. As she dropped, a tiny silken thread unwound from her rear end.',
             '"Next, I wrap him up." She grabbed the fly, threw a few jets of silk around it, and rolled it over and over, wrapping it so that it couldn\'t move. Wilbur watched in horror. He could hardly believe what he was seeing, and although he detested flies, he was sorry for this one.',
-            '"There!" said Charlotte. "Now I knock him out, so he\'ll be more comfor table." She bit the fly. "He can\'t feel a thing now," she remarked. "He\'ll make a perfect breakfast for me."',
+            '"There!" said Charlotte. "Now I knock him out, so he\'ll be more comfortable." She bit the fly. "He can\'t feel a thing now," she remarked. "He\'ll make a perfect breakfast for me."',
           ]),
         },
         {
