@@ -70,5 +70,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom" 
   }
 }
