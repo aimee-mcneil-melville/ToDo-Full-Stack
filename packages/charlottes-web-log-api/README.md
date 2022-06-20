@@ -183,7 +183,6 @@ Request:
 
 ```json
 {
-  "postId": 123,
   "comment": "I enjoyed this post."
 }
 ```
