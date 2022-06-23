@@ -36,9 +36,9 @@ We're first going to get some widgets displaying on the page. The widget data is
 1. Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.js`. A GET route using that DB function is also in place in `routes/widgets.js`.
    - Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Insomnia.
 
-1. Back in the client folder, you'll find a `getWidgets` function in `api.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`, just like we were doing with Insomnia. It's then returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
+1. Back in the client folder, you'll find a `getWidgets` function in `apiClient.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`, just like we were doing with Insomnia. It's then returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
 
-1. Import this `getWidgets` function from `api.js` into `App.jsx`.
+1. Import this `getWidgets` function from `apiClient.js` into `App.jsx`.
 
 1. In the function you passed to `useEffect`, call the `getWidgets` function.
    - Superagent uses a promise-based interface, so you will need to chain a `.then()` block after this.
@@ -58,8 +58,8 @@ These next steps will be full stack, requiring you to make changes to both the f
 - Add the ability to add a widget. The steps you might take to complete this could be:
    - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia.
    - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia.
-   - Create an `addWidget` function in `api.js` that will make a POST request to the API route you just built.
-   - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
+   - Create an `addWidget` function in `apiClient.js` that will make a POST request to the API route you just built.
+   - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `apiClient.js` and hook it up to your form's submit handler.
    - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...
    - Create an `Add Widget` button in `App` to conditionally render your add form.
 
