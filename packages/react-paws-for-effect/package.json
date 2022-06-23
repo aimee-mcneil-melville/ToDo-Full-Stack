@@ -21,12 +21,9 @@
   "homepage": "https://github.com/dev-academy-challenges/react-paws-for-effect#readme",
   "babel": {
     "presets": [
+      "@babel/preset-typescript",
       "@babel/preset-env",
       "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
@@ -63,13 +60,15 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "@babel/preset-typescript": "^7.17.12"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
-  "jest": { 
+  "jest": {
     "testEnvironment": "jsdom" 
-  }
+  },
+  "browserslist": "> 2%, not dead"
 }

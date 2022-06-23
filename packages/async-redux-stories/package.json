@@ -17,19 +17,15 @@
   "license": "ISC",
   "babel": {
     "presets": [
+      "@babel/preset-typescript",
       "@babel/preset-env",
       "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
+  "browserslist": "> 2%, not dead",
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "ignorePatterns": ["bundle.js"]
   },
   "dependencies": {
     "express": "^4.17.2"
@@ -40,6 +36,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "@types/superagent": "^4.1.15",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.2.0",
@@ -62,6 +60,7 @@
     "redux-thunk": "^2.3.0",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
+    "typescript": "^4.7.3",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   },

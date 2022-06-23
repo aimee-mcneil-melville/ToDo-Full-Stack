@@ -2,22 +2,24 @@ module.exports = {
   entry: './index.js',
   output: {
     path: __dirname,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   mode: 'development',
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.(j|t)sx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devServer: {
     compress: true,
-    hot: true
+    hot: true,
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 }

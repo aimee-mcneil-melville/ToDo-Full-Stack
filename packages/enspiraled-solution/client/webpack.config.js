@@ -5,17 +5,19 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.join(__dirname, '..', 'server', 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.(j|t)sx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 }

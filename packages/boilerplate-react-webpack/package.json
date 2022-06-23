@@ -24,13 +24,9 @@
   ],
   "babel": {
     "presets": [
+      "@babel/preset-typescript",
       "@babel/preset-env",
       "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-transform-runtime"
     ]
   },
   "eslintConfig": {
@@ -70,10 +66,12 @@
     "superagent": "7.1.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1"
+    "webpack-dev-server": "^4.8.1",
+    "@babel/preset-typescript": "^7.17.12"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "browserslist": "> 2%, not dead"
 }

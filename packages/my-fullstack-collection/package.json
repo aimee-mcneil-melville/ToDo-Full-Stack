@@ -25,12 +25,9 @@
   "license": "ISC",
   "babel": {
     "presets": [
+      "@babel/preset-typescript",
       "@babel/preset-env",
       "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "eslintConfig": {
@@ -74,7 +71,8 @@
     "style-loader": "^3.3.0",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "@babel/preset-typescript": "^7.17.12"
   },
   "dependencies": {
     "sqlite3": "^5.0.8",
@@ -82,5 +80,6 @@
     "knex": "^2.1.0",
     "pg": "^8.7.1",
     "superagent": "7.1.1"
-  }
+  },
+  "browserslist": "> 2%, not dead"
 }
