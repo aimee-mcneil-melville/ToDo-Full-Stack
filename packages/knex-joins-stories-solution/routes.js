@@ -17,7 +17,7 @@ router.get('/list', function (req, res) {
 router.get('/view/:id', function (req, res) {
   const id = req.params.id
   knex('wombles')
-    .join('characteristics', 'wombles.characteristic_id', 'characteristics.id')
+    .join('traits', 'wombles.trait_id', 'traits.id')
     .where({ 'wombles.id': id })
     .then(function (wombles) {
       const womble = wombles[0]

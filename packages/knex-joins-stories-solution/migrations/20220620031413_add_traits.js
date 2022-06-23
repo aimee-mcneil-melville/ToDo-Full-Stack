@@ -1,11 +1,11 @@
 exports.up = function (knex) {
   return knex.schema.table('wombles', function (table) {
-    table.integer('characteristic_id')
+    table.integer('trait_id')
   })
 }
 
 exports.down = function (knex) {
   return knex.schema.table('wombles', function (table) {
-    table.dropColumn('characteristic_id')
+    table.dropColumn('trait_id')
   })
 }

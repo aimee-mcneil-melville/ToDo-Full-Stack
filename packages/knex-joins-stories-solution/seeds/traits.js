@@ -1,8 +1,8 @@
 exports.seed = (knex) =>
-  knex('characteristics')
+  knex('traits')
     .del()
     .then(() =>
-      knex('characteristics').insert([
+      knex('traits').insert([
         { id: 99901, description: 'wise' },
         { id: 99902, description: 'handy' },
         { id: 99903, description: 'french' },
