@@ -1,11 +1,10 @@
 # Personal Projects
 
-Personal project presentations will be on Thursday of week 6!<br> 
 Pick a slot to present your work. 
 
 ## Schedule
 
-### Morning
+### Early morning (9am - 9:45am approx)
 
 | Order | Speaker        |
 | ----- | -------------- |
@@ -14,13 +13,8 @@ Pick a slot to present your work.
 |   3   |                |
 |   4   |                |
 |   5   |                |
-|   6   |                |
-|   7   |                |
-|   8   |                |
-|   9   |                |
-|   10  |                |
 
-### Afternoon
+### Mid-morning (9:50am - 10:25am approx)
 
 | Order | Speaker        |
 | ----- | -------------- |
@@ -29,8 +23,24 @@ Pick a slot to present your work.
 |   3   |                |
 |   4   |                |
 |   5   |                |
-|   6   |                |
-|   7   |                |
-|   8   |                |
-|   9   |                |
-|   10  |                |
+
+
+### Early afternoon (2pm - 2:45pm approx)
+
+| Order | Speaker        |
+| ----- | -------------- |
+|   1   |                |
+|   2   |                |
+|   3   |                |
+|   4   |                |
+|   5   |                |
+
+### Mid-afternoon (2:50pm - 3:25pm approx)
+
+| Order | Speaker        |
+| ----- | -------------- |
+|   1   |                |
+|   2   |                |
+|   3   |                |
+|   4   |                |
+|   5   |                |
