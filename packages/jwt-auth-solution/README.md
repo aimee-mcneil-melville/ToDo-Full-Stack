@@ -7,7 +7,7 @@ Your task is to complete the authentication implementation of this app.
 
 ## Setup
 
-After cloning this repo, install dependencies with `npm install`. The `postinstall` script will create the database and populate the tables with test data.
+After cloning this repo, install dependencies with `npm install`. Run your migrations (`npm run knex migrate:latest`) and seeds (`npm run knex seed:run`).
 
 Start the app with `npm run dev` and it will be running on [http://localhost:3000](http://localhost:3000).
 
