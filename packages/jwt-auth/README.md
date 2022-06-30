@@ -51,7 +51,7 @@ Once you're comfortable enough with the app, proceed with a sense of curiosity a
 1. Select **Australia** as your *Region*.
 1. Click *Create Account*.
 1. Make sure **Development** is selected as the *Environment tag*. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to *Settings*.
-1. Go to *Applications*, and click theq *Create Application* button.
+1. Go to *Applications*, and click the *Create Application* button.
 1. Click *Create*.
 1. Give your application a name, for example `Fruits App`. 
 1. Select **Single Page Web Applications** and click the *Create* button. This application will be used for our front-end app.
