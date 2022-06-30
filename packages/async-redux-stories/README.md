@@ -2,6 +2,10 @@
 
 User stories for practice with async actions in Redux.
 
+### Reddit
+
+We'll be using Reddit, a site where users share posts in a forum, called a subreddit.
+
 
 ## Install
 
