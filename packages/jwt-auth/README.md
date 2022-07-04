@@ -71,7 +71,7 @@ Scroll down to the bottom of the page and click the *Save Changes* button.
 ### II. Auth0 API Creation:
 In order to protect our routes in the server-side, we need to verify that tokens passed from the client are valid. Creating an API that is linked to the Auth0 Application, the one that you just created, will check the token's validity.
 
-1. On the side bar, create click *APIs* and click the *Create API* button.
+1. On the side bar, expand *Applications*, click on *APIs*, then click the *Create API* button.
 1. Give your API a name, for example, `fruits`.
 1. Set the *Identifier* field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
 
