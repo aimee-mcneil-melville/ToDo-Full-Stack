@@ -38,12 +38,8 @@ function Nav() {
           </a>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <a href="/" onClick={handleRegister}>
-            Register
-          </a>
-          <a href="/" onClick={handleSignIn}>
-            Sign in
-          </a>
+          <NavLink to="/" onClick={handleRegister}>Register</NavLink>
+          <NavLink to="/" onClick={handleSignIn}>Sign In</NavLink>
         </IfNotAuthenticated>
       </NavGroup>
       <h1>Fruit FTW!</h1>
