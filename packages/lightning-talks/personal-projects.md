@@ -4,7 +4,7 @@ Pick a slot to present your work.
 
 ## Schedule
 
-### Early morning (9am - 9:45am approx)
+### Early morning (9am - 10am approx)
 
 | Order | Speaker        |
 | ----- | -------------- |
@@ -14,7 +14,7 @@ Pick a slot to present your work.
 |   4   |                |
 |   5   |                |
 
-### Mid-morning (9:50am - 10:25am approx)
+### Mid-morning (10:05am - 11:05am approx)
 
 | Order | Speaker        |
 | ----- | -------------- |
@@ -25,7 +25,7 @@ Pick a slot to present your work.
 |   5   |                |
 
 
-### Early afternoon (2pm - 2:45pm approx)
+### Early afternoon (2pm - 2:55pm approx)
 
 | Order | Speaker        |
 | ----- | -------------- |
@@ -35,7 +35,7 @@ Pick a slot to present your work.
 |   4   |                |
 |   5   |                |
 
-### Mid-afternoon (2:50pm - 3:25pm approx)
+### Mid-afternoon (3pm - 4pm approx)
 
 | Order | Speaker        |
 | ----- | -------------- |

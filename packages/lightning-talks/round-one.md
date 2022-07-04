@@ -91,25 +91,27 @@
   - [ ] Firebase DB
 
 * Famous Programmers
-  - [ ] Mary Wilkes
-  - [ ] Grace Hopper
-  - [ ] Ken Thompson
-  - [ ] Margaret Hamilton
-  - [ ] Ada Lovelace
-  - [ ] Alan Turing
-  - [ ] Radia Perlman
-  - [ ] Audrey Tang
-  - [ ] Brendan Eich
-  - [ ] Frank S Greene
-  - [ ] Annie Easley
-  - [ ] Hedy Lamarr
   - [ ] Charles Babbage
-  - [ ] Richard Stallman
-  - [ ] Roy Fielding
-  - [ ] Sandi Metz
-  - [ ] Mark Dean
-  - [ ] Steve Wozniak
+  - [ ] Ada Lovelace
+  - [ ] Grace Hopper
+  - [ ] Alan Turing
+  - [ ] Hedy Lamarr
+  - [ ] Annie Easley
+  - [ ] Margaret Hamilton
+  - [ ] Mary Wilkes
+  - [ ] Frank S Greene
   - [ ] Barbara Liskov
-  - [ ] David Heinemeier Hansson (DHH)
+  - [ ] Ken Thompson
+  - [ ] Steve Wozniak
+  - [ ] Radia Perlman
+  - [ ] Richard Stallman
+  - [ ] Ross Ihaka
+  - [ ] Mark Dean
+  - [ ] Sandi Metz
+  - [ ] Roy Fielding
+  - [ ] Brendan Eich
   - [ ] Linus Torvalds
+  - [ ] Maru Nihoniho
+  - [ ] David Heinemeier Hansson (DHH)
+  - [ ] Audrey Tang
   - _Another person of your choice (validate with teacher first)_
