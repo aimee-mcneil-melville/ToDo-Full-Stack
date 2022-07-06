@@ -33,11 +33,17 @@ function Nav() {
       <NavGroup>
         <NavLink to="/">Home</NavLink>
         <IfAuthenticated>
-          <NavLink to="/" onClick={handleLogoff}>Log off</NavLink>
+          <NavLink to="/" onClick={handleLogoff}>
+            Log off
+          </NavLink>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavLink to="/" onClick={handleRegister}>Register</NavLink>
-          <NavLink to="/" onClick={handleSignIn}>Sign In</NavLink>
+          <NavLink to="/" onClick={handleRegister}>
+            Register
+          </NavLink>
+          <NavLink to="/" onClick={handleSignIn}>
+            Sign In
+          </NavLink>
         </IfNotAuthenticated>
       </NavGroup>
       <h1>Fruit FTW!</h1>

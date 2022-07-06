@@ -1,4 +1,4 @@
-function isRessurectable (neighbourCount) {
+function isRessurectable(neighbourCount) {
   return neighbourCount == 3
 }
 

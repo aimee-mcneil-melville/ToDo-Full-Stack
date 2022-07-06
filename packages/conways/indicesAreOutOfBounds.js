@@ -1,7 +1,5 @@
 const isOutOfBounds = require('./isOutOfBounds')
 
-function indicesAreOutOfBounds (rowIndex, columnIndex, board) {
-
-}
+function indicesAreOutOfBounds(rowIndex, columnIndex, board) {}
 
 module.exports = indicesAreOutOfBounds

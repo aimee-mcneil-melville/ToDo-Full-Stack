@@ -4,21 +4,21 @@ import { useNavigate } from 'react-router'
 
 import { loginUser } from '../actions/auth'
 
-function Login () {
+function Login() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
-  const auth = useSelector(redux => redux.auth)
+  const auth = useSelector((redux) => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
-    password: ''
+    password: '',
   })
 
   const handleChange = (e) => {
-    setFormData(currentFormData => {
+    setFormData((currentFormData) => {
       return {
         ...currentFormData,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
       }
     })
   }

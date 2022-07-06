@@ -24,7 +24,7 @@ server.get('/profiles/:id', (req, res) => {
 
   const users = {
     1: 'silvia',
-    2: 'sampson'
+    2: 'sampson',
   }
 
   const name = users[id]

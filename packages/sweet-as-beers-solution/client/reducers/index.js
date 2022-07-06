@@ -5,5 +5,5 @@ import cart from './cart'
 
 export default combineReducers({
   page,
-  cart
+  cart,
 })

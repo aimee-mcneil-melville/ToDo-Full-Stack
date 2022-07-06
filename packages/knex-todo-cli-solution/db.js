@@ -8,42 +8,33 @@ module.exports = {
   deleteTodo,
   findTodos,
   updateTodo,
-  close
+  close,
 }
 
-function getAll (db = database) {
+function getAll(db = database) {
   return db('todos').select()
 }
 
-function addTodo (task, db = database) {
-  return db('todos')
-    .insert({ task })
+function addTodo(task, db = database) {
+  return db('todos').insert({ task })
 }
 
-function completeTodo (id, db = database) {
-  return db('todos')
-    .where('id', id)
-    .update({ completed: true })
+function completeTodo(id, db = database) {
+  return db('todos').where('id', id).update({ completed: true })
 }
 
-function deleteTodo (id, db = database) {
-  return db('todos')
-    .where('id', id)
-    .del()
+function deleteTodo(id, db = database) {
+  return db('todos').where('id', id).del()
 }
 
-function findTodos (todo, db = database) {
-  return db('todos')
-    .where('task', 'like', `%${todo}%`)
-    .select()
+function findTodos(todo, db = database) {
+  return db('todos').where('task', 'like', `%${todo}%`).select()
 }
 
-function updateTodo (id, task, db = database) {
-  return db('todos')
-    .where('id', id)
-    .update({ task: task })
+function updateTodo(id, task, db = database) {
+  return db('todos').where('id', id).update({ task: task })
 }
 
-function close (db = database) {
+function close(db = database) {
   return db.destroy()
 }

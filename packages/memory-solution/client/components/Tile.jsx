@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Tile (props) {
+function Tile(props) {
   return (
-    <div className='tile' onClick={props.handleClick}>
+    <div className="tile" onClick={props.handleClick}>
       {props.isVisible && props.value}
     </div>
   )

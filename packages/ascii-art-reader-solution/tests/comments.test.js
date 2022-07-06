@@ -13,7 +13,7 @@ test('comments.get returns correct text', () => {
   // Act
   comments.get(assert, 'tests/data/comments-to-read.txt')
 
-  function assert (err, actual) {
+  function assert(err, actual) {
     expect(err).toBeFalsy()
 
     // Assert
@@ -28,11 +28,10 @@ test('comments.erase removes all content in the comments file', () => {
   const expected = ''
   const filename = 'tests/data/comments-to-erase.txt'
 
-
   // Act
   comments.erase(assert, filename)
 
-  function assert () {
+  function assert() {
     fs.readFile(filename, 'utf8', function (err, actual) {
       expect(err).toBeFalsy()
 
@@ -55,7 +54,7 @@ test('comments.save correctly modifies file content', () => {
   // Act
   comments.save('aardvark', assert, filename)
 
-  function assert () {
+  function assert() {
     fs.readFile(filename, 'utf8', (err, actual) => {
       expect(err).toBeFalsy()
 
@@ -63,7 +62,7 @@ test('comments.save correctly modifies file content', () => {
       expect(actual).toBe(expected)
 
       // Return file to it's original state
-      fs.writeFile(filename, 'wombat\n', 'utf8', err => {
+      fs.writeFile(filename, 'wombat\n', 'utf8', (err) => {
         expect(err).toBeFalsy()
       })
     })

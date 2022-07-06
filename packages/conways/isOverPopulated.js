@@ -1,5 +1,3 @@
-function isOverPopulated (neighbourCount) {
-
-}
+function isOverPopulated(neighbourCount) {}
 
 module.exports = isOverPopulated

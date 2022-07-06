@@ -1,13 +1,17 @@
-import { isAuthenticated as authIsAuthenticated, getDecodedToken, logOff } from 'authenticare/client'
+import {
+  isAuthenticated as authIsAuthenticated,
+  getDecodedToken,
+  logOff,
+} from 'authenticare/client'
 
-export function isAuthenticated () {
+export function isAuthenticated() {
   return authIsAuthenticated()
 }
 
-export function getUserTokenInfo () {
+export function getUserTokenInfo() {
   return getDecodedToken()
 }
 
-export function removeUser () {
+export function removeUser() {
   return logOff()
 }

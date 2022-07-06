@@ -7,14 +7,14 @@ module.exports = {
   areYouSure: areYouSure,
   enterComment: enterComment,
   main: main,
-  pressEnter: pressEnter
+  pressEnter: pressEnter,
 }
 
 prompt.message = ''
 prompt.delimiter = ' > '
 prompt.start()
 
-function main (cb) {
+function main(cb) {
   var next = cb || loader
   console.log(
     ' Choose an artwork to display, or:\n',
@@ -34,16 +34,16 @@ function main (cb) {
 
     var choice = {
       name: 'choice',
-      message: 'Choice'
+      message: 'Choice',
     }
     prompt.get(choice, next)
   })
 }
 
-function enterComment () {
+function enterComment() {
   var comment = {
     name: 'comment',
-    message: 'Enter your comment'
+    message: 'Enter your comment',
   }
   prompt.get(comment, function (err, input) {
     if (err) {
@@ -54,17 +54,17 @@ function enterComment () {
   })
 }
 
-function pressEnter (cb) {
+function pressEnter(cb) {
   var next = cb || loader
   prompt.get('Hit <enter> to continue...', function () {
     main(next)
   })
 }
 
-function areYouSure (yes) {
+function areYouSure(yes) {
   var sure = {
     name: 'sure',
-    message: 'Are you sure [y/N]?'
+    message: 'Are you sure [y/N]?',
   }
   prompt.get(sure, function (err, result) {
     if (err) {
@@ -77,7 +77,7 @@ function areYouSure (yes) {
   })
 }
 
-function loader (err, result) {
+function loader(err, result) {
   if (err) {
     return error("I don't understand that.")
   }
@@ -100,17 +100,17 @@ function loader (err, result) {
   }
 }
 
-function error (msg) {
+function error(msg) {
   console.error(msg)
   pressEnter(loader)
 }
 
-function display (choice) {
+function display(choice) {
   fs.readdir('data', function (err, files) {
     var file = files[choice]
     if (!file) {
       return error("That's not one of the artworks!")
-    } 
+    }
     fs.readFile('data/' + file, 'utf8', function (err, artwork) {
       if (err) {
         return error("Can't load that file.")
@@ -120,4 +120,3 @@ function display (choice) {
     })
   })
 }
-

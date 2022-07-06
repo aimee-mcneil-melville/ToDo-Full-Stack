@@ -7,7 +7,7 @@ import Pic from './Pic'
 test('<Pic> shows <img> with proper attributes', () => {
   const props = {
     image: 'test.png',
-    alt: 'test alt text'
+    alt: 'test alt text',
   }
 
   render(<Pic {...props} />)

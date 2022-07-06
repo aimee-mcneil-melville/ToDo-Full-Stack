@@ -8,7 +8,7 @@ test('<NamePlate> renders its props', () => {
   const props = {
     name: 'test name',
     breed: 'test breed',
-    superpower: 'test power'
+    superpower: 'test power',
   }
 
   render(<NamePlate {...props} />)

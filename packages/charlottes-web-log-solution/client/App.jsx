@@ -12,10 +12,10 @@ import recentEntriesData from '../data/recent-entries'
 import postsData from '../data/posts'
 import footerData from '../data/footer'
 
-const App = props => (
-  <div className='app'>
+const App = (props) => (
+  <div className="app">
     <Header content={headerData} />
-    <div className='body-container'>
+    <div className="body-container">
       <OtherBlogs blogs={otherBlogsData} />
       <Posts posts={postsData} />
       <RecentEntries entries={recentEntriesData} />

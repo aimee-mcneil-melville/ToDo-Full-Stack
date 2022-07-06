@@ -1,5 +1,3 @@
-function isRessurectable (neighbourCount) {
-
-}
+function isRessurectable(neighbourCount) {}
 
 module.exports = isRessurectable

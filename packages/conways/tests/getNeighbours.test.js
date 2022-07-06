@@ -10,7 +10,7 @@ test('getNeighbours in corner', () => {
   const expected = 19
 
   const neighbours = getNeighbours(0, 0, board)
-  const actual = neighbours.reduce((sum, val) => (sum + val), 0)
+  const actual = neighbours.reduce((sum, val) => sum + val, 0)
 
   expect(actual).toBe(expected)
 })
@@ -30,7 +30,7 @@ test('getNeighbours in middle', () => {
     }
   }
   const neighbours = getNeighbours(1, 1, board)
-  const actual = neighbours.reduce((sum, val) => (sum + val), 0)
+  const actual = neighbours.reduce((sum, val) => sum + val, 0)
 
   expect(actual).toBe(total)
 })
