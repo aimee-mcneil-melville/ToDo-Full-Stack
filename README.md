@@ -44,6 +44,12 @@ To run lint for all packages (if they have a lint script):
 npm run --workspaces --if-present lint
 ```
 
+To run prettier for all packages:
+
+```sh
+npm run format
+```
+
 ## Aligned versions
 
 Aligning versions of dependencies is intended to reduce the burden of
