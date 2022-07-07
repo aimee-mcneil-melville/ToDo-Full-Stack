@@ -10,38 +10,39 @@ import History from './History'
 
 import { checkAuth } from '../actions/auth'
 
-function App () {
-  const auth = useSelector(reduxState => reduxState.auth)
+function App() {
+  const auth = useSelector((reduxState) => reduxState.auth)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const confirmSuccess = () => { }
+    const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
   }, [])
 
   return (
     <Router>
       <div className="container has-text-centered">
-
         <div className="hero is-small is-primary">
           <div className="hero-body has-text-centered">
-            <Link to='/' className="">
+            <Link to="/" className="">
               <h1 className="title is-1">$how Me The Money</h1>
             </Link>
             <Nav />
           </div>
         </div>
 
-        <div className=''>
+        <div className="">
           <Routes>
-            <Route path="/" element={auth.isAuthenticated ? <></> : <Login />} />
-            <Route path="/login" element={<Login />}/>
+            <Route
+              path="/"
+              element={auth.isAuthenticated ? <></> : <Login />}
+            />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/meeting" element={<Meeting />} />
             <Route path="/history" element={<History />} />
           </Routes>
         </div>
-
       </div>
     </Router>
   )

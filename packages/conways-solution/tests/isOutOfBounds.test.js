@@ -9,10 +9,10 @@ test('isOutOfBounds', () => {
     1: false,
     2: false,
     3: true,
-    4: true
+    4: true,
   }
 
-  Object.keys(expecteds).forEach(input => {
+  Object.keys(expecteds).forEach((input) => {
     const expected = expecteds[input]
     const actual = isOutOfBounds(input, testArray)
 

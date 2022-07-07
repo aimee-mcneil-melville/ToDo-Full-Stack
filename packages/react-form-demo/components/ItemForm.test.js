@@ -9,22 +9,22 @@ test('Can reset the form from <em>added</em> form inputs', async () => {
   const resetMock = jest.fn()
 
   // render the `ItemForm` component
-  render(<ItemForm editItem={null} reset={resetMock}/>)
+  render(<ItemForm editItem={null} reset={resetMock} />)
 
   // enter [in]valid data (could be none or multiple of these tests)
   fireEvent.change(screen.getByLabelText('Name'), {
-    target: { name: 'name', value: 'new name for 2nd item'}
+    target: { name: 'name', value: 'new name for 2nd item' },
   })
   fireEvent.change(screen.getByLabelText('Description'), {
-    target: { name: 'description', value: 'new description for 2nd item'}
+    target: { name: 'description', value: 'new description for 2nd item' },
   })
   fireEvent.change(screen.getByLabelText('Colour'), {
-    target: { name: 'color', value: 'mediumaquamarine'}
+    target: { name: 'color', value: 'mediumaquamarine' },
   })
   expect(screen.getByTestId('form')).toHaveFormValues({
     name: 'new name for 2nd item',
     description: 'new description for 2nd item',
-    color: 'mediumaquamarine'
+    color: 'mediumaquamarine',
   })
 
   // reset the form
@@ -34,7 +34,7 @@ test('Can reset the form from <em>added</em> form inputs', async () => {
   expect(await screen.findByTestId('form')).toHaveFormValues({
     name: '',
     description: '',
-    color: 'aliceblue'
+    color: 'aliceblue',
   })
 
   // this next assertion is too invasive (not from user perspective)
@@ -46,13 +46,13 @@ test('Can reset the form from <em>edited</em> form inputs', async () => {
   const resetMock = jest.fn()
 
   // render the `ItemForm` component with an editItem
-  render(<ItemForm editItem={editItem} reset={resetMock}/>)
+  render(<ItemForm editItem={editItem} reset={resetMock} />)
 
   // assert the editItem is showing in the form
   expect(await screen.findByTestId('form')).toHaveFormValues({
     name: 'test name 1',
     description: 'test description 1',
-    color: 'burlywood'
+    color: 'burlywood',
   })
 
   // reset the form
@@ -62,7 +62,7 @@ test('Can reset the form from <em>edited</em> form inputs', async () => {
   expect(await screen.findByTestId('form')).toHaveFormValues({
     name: '',
     description: '',
-    color: 'aliceblue'
+    color: 'aliceblue',
   })
 
   // this next assertion is too invasive (not from user perspective)

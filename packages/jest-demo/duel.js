@@ -1,13 +1,13 @@
 module.exports = {
   disarmOnly,
-  defendYourself
+  defendYourself,
 }
 
-function disarmOnly () {
+function disarmOnly() {
   return 'EXPELLIARMUS!'
 }
 
-function defendYourself (spell) {
+function defendYourself(spell) {
   if (spell === 'Avada Kedevara') {
     return disarmOnly()
   }

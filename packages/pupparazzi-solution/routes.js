@@ -33,9 +33,7 @@ router.post('/edit/:id', (req, res) => {
 
   lib.editPuppy(updatedPuppy, (err) => {
     if (err) {
-      err.code === 404
-        ? res.sendStatus(404)
-        : res.status(500).send(err.message)
+      err.code === 404 ? res.sendStatus(404) : res.status(500).send(err.message)
 
       return
     }
@@ -66,9 +64,7 @@ router.get('/:id', (req, res) => {
 
   lib.getPuppyById(id, (err, puppyDetails) => {
     if (err) {
-      err.code === 404
-        ? res.sendStatus(404)
-        : res.status(500).send(err.message)
+      err.code === 404 ? res.sendStatus(404) : res.status(500).send(err.message)
 
       return
     }

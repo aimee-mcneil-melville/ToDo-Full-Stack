@@ -10,10 +10,10 @@ test('isRessurectable normal cases', () => {
     5: false,
     6: false,
     7: false,
-    8: false
+    8: false,
   }
 
-  Object.keys(expecteds).forEach(input => {
+  Object.keys(expecteds).forEach((input) => {
     const expected = expecteds[input]
     const actual = isRessurectable(parseInt(input, 10))
 

@@ -1,4 +1,4 @@
-function isOutOfBounds (index, array) {
+function isOutOfBounds(index, array) {
   return index < 0 || index >= array.length
 }
 

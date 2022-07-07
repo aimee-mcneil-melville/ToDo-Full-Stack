@@ -6,10 +6,10 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getUsers()
-    .then(users => {
-      res.json({users: users})
+    .then((users) => {
+      res.json({ users: users })
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
@@ -17,10 +17,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getUser(id)
-    .then(user => {
-      res.json({user: user})
+    .then((user) => {
+      res.json({ user: user })
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })

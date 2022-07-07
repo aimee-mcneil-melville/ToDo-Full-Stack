@@ -4,17 +4,24 @@ exports.seed = (knex) => {
     return knex('pg_class')
       .where('relkind', 'S')
       .not.where('relname', 'LIKE', '%migration%')
-      .select('relname').debug()
-      .then(sequences => sequences.map(sequenceObj => {
-        console.log(sequenceObj)
-        const sequence = sequenceObj.relname
-        const table = sequence.replace('_id_seq', '')
-        console.log(sequence, table)
-        console.log(`select setval('${sequence}', (select max(id) from ${table}) + 1);`)
-        return knex.raw(`select setval('${sequence}', (select max(id) from ${table}) + 1)`)
-      }))
-      .then(arr => Promise.all(arr))
-      .then(results => {
+      .select('relname')
+      .debug()
+      .then((sequences) =>
+        sequences.map((sequenceObj) => {
+          console.log(sequenceObj)
+          const sequence = sequenceObj.relname
+          const table = sequence.replace('_id_seq', '')
+          console.log(sequence, table)
+          console.log(
+            `select setval('${sequence}', (select max(id) from ${table}) + 1);`
+          )
+          return knex.raw(
+            `select setval('${sequence}', (select max(id) from ${table}) + 1)`
+          )
+        })
+      )
+      .then((arr) => Promise.all(arr))
+      .then((results) => {
         console.log(results)
         console.log('seed reset complete')
         return null

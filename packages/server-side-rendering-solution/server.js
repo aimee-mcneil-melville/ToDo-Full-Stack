@@ -6,9 +6,12 @@ const server = express()
 module.exports = server
 
 // Middleware
-server.engine('hbs', hbs.engine({
-  extname: 'hbs'
-}))
+server.engine(
+  'hbs',
+  hbs.engine({
+    extname: 'hbs',
+  })
+)
 server.set('view engine', 'hbs')
 server.use(express.static('public'))
 
@@ -16,7 +19,7 @@ server.use(express.static('public'))
 server.get('/', (req, res) => {
   const viewData = {
     title: 'Gallery',
-    art: art
+    art: art,
   }
   const template = 'home'
   res.render(template, viewData)
@@ -24,10 +27,10 @@ server.get('/', (req, res) => {
 
 server.get('/artworks/:id', (req, res) => {
   const id = Number(req.params.id)
-  const artwork = art.find(artDetail => artDetail.id === id)
+  const artwork = art.find((artDetail) => artDetail.id === id)
   const viewData = {
     title: artwork.title,
-    artistWork: artwork
+    artistWork: artwork,
   }
   const template = 'artworks'
   res.render(template, viewData)

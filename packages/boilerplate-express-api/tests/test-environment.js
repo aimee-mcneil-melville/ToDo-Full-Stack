@@ -8,15 +8,13 @@ module.exports = {
 
   // Create a separate in-memory database before each test
   initialise: (db) => {
-    return db.migrate.latest()
-      .then(() => {
-        return db.seed.run()
-      })
+    return db.migrate.latest().then(() => {
+      return db.seed.run()
+    })
   },
 
   // Close the database connection after each test
   cleanup: (db) => {
     return db.destroy()
-  }
+  },
 }
-

@@ -17,7 +17,7 @@ setInterval(() => {
 }, refreshInteral)
 
 function randomiseBoard(board) {
-  return board.map(row => row.map(cell => Math.random() > 0.5))
+  return board.map((row) => row.map((cell) => Math.random() > 0.5))
 }
 
 function boardIsStable(thisBoard, thatBoard) {

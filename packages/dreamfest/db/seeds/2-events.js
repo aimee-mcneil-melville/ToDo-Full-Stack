@@ -34,7 +34,7 @@ exports.seed = function (knex) {
       time: '6pm - 7pm',
       name: 'Cutest Puppy Awards',
       description:
-        'This event will be taking place at the Yella Yurt. You won\'t want to miss those cute puppy faces!',
+        "This event will be taking place at the Yella Yurt. You won't want to miss those cute puppy faces!",
     },
     {
       id: 5,

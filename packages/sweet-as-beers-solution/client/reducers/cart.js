@@ -1,12 +1,17 @@
-import { ADD_BEER, DELETE_BEER, UPDATE_MULTIPLE, UPDATE_QUANTITY } from '../actions'
+import {
+  ADD_BEER,
+  DELETE_BEER,
+  UPDATE_MULTIPLE,
+  UPDATE_QUANTITY,
+} from '../actions'
 
-function reducer (state = [], action) {
+function reducer(state = [], action) {
   switch (action.type) {
     case ADD_BEER:
       return [...state, action.beer]
 
     case UPDATE_QUANTITY:
-      return state.map(beer => {
+      return state.map((beer) => {
         if (beer.id === action.id) {
           beer.quantity = action.amt
         }
@@ -14,7 +19,7 @@ function reducer (state = [], action) {
       })
 
     case UPDATE_MULTIPLE:
-      return state.map(beer => {
+      return state.map((beer) => {
         const updatedAmt = action.changes[beer.id]
         if (updatedAmt) {
           beer.quantity = updatedAmt
@@ -23,7 +28,7 @@ function reducer (state = [], action) {
       })
 
     case DELETE_BEER:
-      return state.filter(beer => beer.id !== action.id)
+      return state.filter((beer) => beer.id !== action.id)
 
     default:
       return state

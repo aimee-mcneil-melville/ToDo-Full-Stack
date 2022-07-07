@@ -10,10 +10,10 @@ test('isOverPopulated normal cases', () => {
     5: true,
     6: true,
     7: true,
-    8: true
+    8: true,
   }
 
-  Object.keys(expecteds).forEach(input => {
+  Object.keys(expecteds).forEach((input) => {
     const expected = expecteds[input]
     const actual = isOverPopulated(input)
 

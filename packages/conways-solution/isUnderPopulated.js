@@ -1,4 +1,4 @@
-function isUnderPopulated (neighbourCount) {
+function isUnderPopulated(neighbourCount) {
   return neighbourCount < 2
 }
 

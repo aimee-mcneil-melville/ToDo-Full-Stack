@@ -11,5 +11,5 @@ export default [
   'mediumaquamarine',
   'papayawhip',
   'thistle',
-  'whitesmoke'
+  'whitesmoke',
 ]

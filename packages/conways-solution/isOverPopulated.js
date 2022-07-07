@@ -1,4 +1,4 @@
-function isOverPopulated (neighbourCount) {
+function isOverPopulated(neighbourCount) {
   return neighbourCount > 3
 }
 

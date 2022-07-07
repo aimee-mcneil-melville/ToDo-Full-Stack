@@ -7,7 +7,7 @@ export const DELETE_BEER = 'TRASH_BEER'
 export const navigate = (destination) => {
   return {
     type: CHANGE_PAGE,
-    page: destination
+    page: destination,
   }
 }
 
@@ -17,8 +17,8 @@ export const addBeer = (id, name) => {
     beer: {
       id,
       name,
-      quantity: 1
-    }
+      quantity: 1,
+    },
   }
 }
 
@@ -26,20 +26,20 @@ export const updateBeerAmount = (id, newQuantity) => {
   return {
     type: UPDATE_QUANTITY,
     id,
-    amt: newQuantity
+    amt: newQuantity,
   }
 }
 
 export const updateMultiple = (objWithNewQuants) => {
   return {
     type: UPDATE_MULTIPLE,
-    changes: objWithNewQuants
+    changes: objWithNewQuants,
   }
 }
 
 export const trashBeer = (id) => {
   return {
     type: DELETE_BEER,
-    id
+    id,
   }
 }

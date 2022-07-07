@@ -15,19 +15,16 @@ afterEach(() => testEnv.cleanup(testDb))
 test('getUsers gets all users', () => {
   // One for each letter of the alphabet
   const expected = 26
-  return db.getUsers(testDb)
-    .then(users => {
-      const actual = users.length
-      expect(actual).toBe(expected)
-    })
+  return db.getUsers(testDb).then((users) => {
+    const actual = users.length
+    expect(actual).toBe(expected)
+  })
 })
 
 test('getUser gets a user by ID', () => {
   const expected = 'Ambitious Aardvark'
-  return db.getUser(99901, testDb)
-    .then(user => {
-      const actual = user.name
-      expect(actual).toBe(expected)
-    })
+  return db.getUser(99901, testDb).then((user) => {
+    const actual = user.name
+    expect(actual).toBe(expected)
+  })
 })
-

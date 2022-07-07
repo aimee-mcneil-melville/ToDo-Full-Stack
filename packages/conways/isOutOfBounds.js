@@ -1,5 +1,3 @@
-function isOutOfBounds (index, array) {
-
-}
+function isOutOfBounds(index, array) {}
 
 module.exports = isOutOfBounds
