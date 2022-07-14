@@ -72,5 +72,13 @@
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
-  }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom" 
+  },
+  "browserslist": "> 2%, not dead"
 }
