@@ -1,6 +1,6 @@
 const functions = require('../../functions')
 
-// Write a simple map implementation
+// Write a map implementation. Keep it uncomplicated, if you can!
 test('functions.map takes an array as the first parameter, a function as the second parameter, and returns the result of calling the function on each array element', function () {
   const expected = [1, 2, 3]
   function addOne(n) {
