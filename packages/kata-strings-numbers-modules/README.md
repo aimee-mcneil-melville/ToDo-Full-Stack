@@ -4,53 +4,86 @@ This kata is similar to the others. Some tests have been written in the `tests` 
 
 ## Setup
 
-In your terminal:
+### 0. Clone and install
 
-* Clone this repo and `cd` into the new folder.
-* Run `npm install` to install the dependent npm modules defined in `package.json`.
+- [ ] Clone this repo and `cd` into the new folder
+- [ ] Run `npm install` to install the dependent npm modules defined in `package.json`
 
-## The first test
+---
+## Requirements
 
-* Run `code .` and open `utilities.js`.
-* Run `npm test getType`. This will run the first test, the `getType` function in `utilities.js`.
+### 1. The first test
 
-  You should see it is currently failing. Jest, the test framework we're using, is watching the relevant files so it will let us know as soon as we have the test passing.
+- [ ] Run `code .` and open `utilities.js`
+- [ ] Run `npm test getType`
+  <details style="padding-left: 2em">
+    <summary>More about the first test</summary>
+    
+    This will run the first test, the `getType` function in `utilities.js`.
 
-* Implement the `getType` function:
+    You should see it is currently failing. Jest, the test framework we're using, is watching the relevant files so it will let us know as soon as we have the test passing.
+  </details>
 
-  ```js
-  function getType (thing) {
-    return typeof thing
-  }
-  ```
+### 2. Building `getType`
 
-* Export the function so `tests/getType.test.js` can access the function. Put this at the top of `utilities.js`:
+- [ ] The `getType` function
+  <details style="padding-left: 2em">
+    <summary>More about <code>getType</code></summary>
 
-  ```js
-  module.exports = {
-    getType: getType
-  }
-  ```
+    ```js
+    function getType (thing) {
+      return typeof thing
+    }
+    ```
+  </details>
 
-* Save `utilities.js` and you should see the test is now passing.
+- [ ] Export the function so `tests/getType.test.js` can access the function
+  <details style="padding-left: 2em">
+    <summary>More about exporting</summary>
+    
+    Put this at the top of `utilities.js`:
 
-  Sweet! Now you're ready for the next test. Type `q` in your terminal to stop watching the `getType` test and run `npm test isNumber` to begin the next function. Don't forget to export each of the functions once you've implemented them.
+    ```js
+    module.exports = {
+      getType: getType
+    }
+    ```
+  </details>
 
+- [ ] Save `utilities.js` and verify that the test is now passing
 
-## Making sure you're finished
+  Sweet! Now you're ready for the next test. Type `q` in your terminal to stop watching the `getType` test and run `npm test isNumber` to begin the next function.
+  
+### 3. Complete additional functions
 
-To run all of the tests for all of the functions you've written, in terminal run:
+- [ ] Complete the remaining functions so all tests pass
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
+    
+    - Don't forget to export each of the functions once you've implemented them
+    - Be sure you understand how to use `typeof`
+    - You are permitted &mdash; encouraged, even &mdash; to read the tests. Be aware that some of the tests use data defined in `./data/*.js`, so you may need to inspect those files to get a sense of the data being used
+    - If you get stuck with `NaN`, you should know that 
+      ```
+      typeof NaN === 'number'
+      ```
+      Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, the `isNaN` functions is a great way to check if a value is `NaN`, but be careful because 
+      ```
+      isNaN('a non-number string') === true
+      ```
+  </details>
 
-```
-npm test tests
-```
+---
+## Checking your work
 
-This will run all tests in the `tests` directory.
+### 4. Run all tests
 
+- [ ] Run all of the tests for all of the functions by running `npm t` in the terminal
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-## Tips
-* If you get stuck with `NaN`, you should know that `typeof NaN === 'number'`. Given that `NaN` stands for "not a number", that's not very intuitive is it? Well, [here is an explanation](http://stackoverflow.com/questions/2801601/why-does-typeof-nan-return-number). Also, `isNaN()` is a great way to check if a value is `NaN`, but be careful because `isNaN('a non-number string') === true`.,
+    `npm t` is a shorthand version of `npm test`. It runs all tests that can be detected by the testing tools.
 
-* Be sure you understand how to use `typeof`.
+    - `npm t tests` would run all tests in the `/tests/` directory
+  </details>
 
-* You're totally permitted to read the tests - it's not cheating. Also, some of the tests use data defined in `./data/*.js`, So you may need to inspect those files to get a sense of the data being used.
