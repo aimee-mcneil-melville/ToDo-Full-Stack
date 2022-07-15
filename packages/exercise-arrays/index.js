@@ -19,4 +19,4 @@ const arr = [1, 2, 3, 4, 5, 6]
 // - at least one function is defined as an anonymous function e.g. arr.map(function fnName(item) {???})
 // - at least one function is using an ES6 arrow function with an implicit return e.g. arr.map(item => ???)
 // - at least one function is using an ES6 arrow function with an explicit return e.g. arr.map(item => {return ???})
-// - at least one is using a named function as an argument arr.map(doSomething)
+// - at least one is using a named function as an argument e.g. arr.map(doSomething)
