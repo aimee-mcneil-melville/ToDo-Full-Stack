@@ -11,7 +11,6 @@ function useFetchPosts() {
     getPosts()
       .then((posts) => {
         setPosts(posts)
-        return null
       })
       .finally(() => setLoading(false))
       .catch((err) => {

@@ -14,14 +14,12 @@ function CommentForm(props) {
       return updateComment(newComment).then(() => {
         props.fetchComments(newComment.postId)
         props.setEditing(false)
-        return null
       })
     } else if (props.variant === 'new') {
       return addCommentByPostId(postId, newComment).then(() => {
         fetchComments(postId)
         setNewComment({ comment: '' })
         navigate(`/posts/${postId}`)
-        return null
       })
     }
   }

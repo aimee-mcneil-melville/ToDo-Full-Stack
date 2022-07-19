@@ -14,6 +14,5 @@ test('GET /api/v1/reddit/subreddit', () => {
     .then((res) => {
       expect(res.body.msg).toBe('yay, bananas')
       scope.done()
-      return null
     })
 })

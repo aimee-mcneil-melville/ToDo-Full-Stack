@@ -34,7 +34,6 @@ export function loginUser(creds, confirmSuccess) {
       .then((userInfo) => {
         dispatch(receiveLogin(userInfo))
         confirmSuccess()
-        return null
       })
       .catch((err) => {
         dispatch(loginError(err))
@@ -73,8 +72,6 @@ export function registerUserRequest(creds, confirmSuccess) {
       .then((userInfo) => {
         dispatch(receiveLogin(userInfo))
         confirmSuccess()
-
-        return null
       })
       .catch((err) => dispatch(loginError(err)))
   }

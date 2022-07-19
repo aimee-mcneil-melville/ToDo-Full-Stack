@@ -29,7 +29,6 @@ function Post() {
       .then(() => {
         fetchPosts()
         navigate('/')
-        return null
       })
       .catch((err) => console.log(err))
   }

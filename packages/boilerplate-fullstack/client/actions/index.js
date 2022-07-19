@@ -13,7 +13,6 @@ export function fetchFruits() {
   return (dispatch) => {
     return getFruits().then((fruits) => {
       dispatch(setFruits(fruits))
-      return null
     })
   }
 }

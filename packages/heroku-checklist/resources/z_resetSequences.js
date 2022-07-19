@@ -24,7 +24,6 @@ exports.seed = (knex) => {
       .then((results) => {
         console.log(results)
         console.log('seed reset complete')
-        return null
       })
   }
 }

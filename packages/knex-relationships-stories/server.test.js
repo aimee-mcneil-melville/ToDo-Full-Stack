@@ -26,6 +26,5 @@ test('GET / responds with correctly rendered users', () => {
 
       const user4 = screen.getByText('test user 4 (test4@user.nz)')
       expect(user4).toBeInTheDocument()
-      return null
     })
 })

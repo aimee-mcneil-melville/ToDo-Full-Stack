@@ -16,6 +16,5 @@ test('fetchPosts', () => {
       expect(dispatch.mock.calls[0][0].type).toBe('REQUEST_POSTS')
       expect(dispatch.mock.calls[1][0].type).toBe('RECEIVE_POSTS')
       scope.done()
-      return null
     })
 })

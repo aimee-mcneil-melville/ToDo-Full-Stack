@@ -12,7 +12,6 @@ function useFetchComments(id) {
     getCommentsByPostId(id)
       .then((comments) => {
         setComments(comments)
-        return null
       })
       .finally(() => setLoading(false))
       .catch((err) => {

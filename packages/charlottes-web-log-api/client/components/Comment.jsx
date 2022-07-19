@@ -35,7 +35,6 @@ function Comment(props) {
             e.preventDefault()
             return deleteComment(comment.id).then(() => {
               fetchComments(comment.postId)
-              return null
             })
           }}
         >

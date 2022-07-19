@@ -12,7 +12,6 @@ const App = () => {
         console.log(greeting)
         setGreeting(greeting)
         setIsError(false)
-        return null
       })
       .catch((err) => {
         console.log(err)

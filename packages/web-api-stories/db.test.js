@@ -13,7 +13,6 @@ test('getUsers gets all users', () => {
   return db.getUsers(testDb).then((users) => {
     const actual = users.length
     expect(actual).toBe(expected)
-    return null
   })
 })
 
@@ -22,6 +21,5 @@ test('getUser gets a user by ID', () => {
   return db.getUser(99901, testDb).then((user) => {
     const actual = user.name
     expect(actual).toBe(expected)
-    return null
   })
 })

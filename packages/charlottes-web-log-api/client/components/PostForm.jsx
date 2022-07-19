@@ -23,13 +23,11 @@ function PostForm(props) {
       return updatePost({ ...newPost, id }).then(() => {
         fetchPosts()
         navigate(`/posts/${newPost.id}`)
-        return null
       })
     } else if (props.variant === 'new') {
       return addPost(newPost).then((newPost) => {
         fetchPosts()
         navigate(`/posts/${newPost.id}`)
-        return null
       })
     }
   }

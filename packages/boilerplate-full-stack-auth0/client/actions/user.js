@@ -35,7 +35,6 @@ export function fetchUsers() {
   return (dispatch) => {
     return getUsers().then((users) => {
       dispatch(setUsers(users))
-      return null
     })
   }
 }

@@ -16,7 +16,6 @@ describe('getPosts', () => {
   test.skip('returns a list of 3 posts', () => {
     return db.getPosts(testDb).then((posts) => {
       expect(posts).toHaveLength(3)
-      return null
     })
   })
 })

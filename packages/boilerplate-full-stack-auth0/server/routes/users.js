@@ -52,7 +52,6 @@ router.get('/', (req, res) => {
   db.getUsers()
     .then((users) => {
       res.json({ users })
-      return null
     })
     .catch((err) => {
       console.error(err)

@@ -23,7 +23,6 @@ export function fetchProducts() {
     return getProducts()
       .then((products) => {
         dispatch(fetchProductsSuccess(products))
-        return null
       })
       .catch((err) => {
         // if the error is from our routes, this will use the message our route

@@ -5,7 +5,6 @@ function list() {
     .getTodos()
     .then((todos) => {
       printTodos(todos)
-      return null
     })
     .catch((err) => {
       logError(err)

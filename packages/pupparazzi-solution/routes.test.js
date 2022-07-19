@@ -31,7 +31,6 @@ describe('GET /', () => {
         const puppyLinks = document.querySelectorAll('.puppy-list a')
 
         expect(puppyLinks).toHaveLength(2)
-        return null
       })
   })
 
@@ -45,7 +44,6 @@ describe('GET /', () => {
       .expect(500)
       .then((res) => {
         expect(res.text).toMatch('test error message')
-        return null
       })
   })
 })
@@ -78,7 +76,6 @@ describe('GET /:id', () => {
         expect(document.querySelectorAll('.puppy div')[0].textContent).toMatch(
           'Pug'
         )
-        return null
       })
   })
 
@@ -94,7 +91,6 @@ describe('GET /:id', () => {
       .expect(404)
       .then((res) => {
         expect(res.text).toMatch('Not Found')
-        return null
       })
   })
 
@@ -110,7 +106,6 @@ describe('GET /:id', () => {
       .expect(500)
       .then((res) => {
         expect(res.text).toMatch('test error message')
-        return null
       })
   })
 })
@@ -144,7 +139,6 @@ describe('POST /edit/:id', () => {
       .expect(302)
       .then((res) => {
         expect(res.header.location).toBe('/2')
-        return null
       })
   })
 
@@ -164,7 +158,6 @@ describe('POST /edit/:id', () => {
       .expect(404)
       .then((res) => {
         expect(res.text).toMatch('Not Found')
-        return null
       })
   })
 
@@ -183,7 +176,6 @@ describe('POST /edit/:id', () => {
       .expect(500)
       .then((res) => {
         expect(res.text).toMatch('test error message')
-        return null
       })
   })
 })
@@ -211,7 +203,6 @@ describe('POST /new', () => {
       .expect(302)
       .then((res) => {
         expect(res.header.location).toBe('/3')
-        return null
       })
   })
 
@@ -229,7 +220,6 @@ describe('POST /new', () => {
       .expect(500)
       .then((res) => {
         expect(res.text).toMatch('test error message')
-        return null
       })
   })
 })
