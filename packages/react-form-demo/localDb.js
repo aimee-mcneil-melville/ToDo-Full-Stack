@@ -1,4 +1,4 @@
-const storageKey = '_eda_react_form_items'
+const storageKey = '_dev_react_form_items'
 
 // http://stackoverflow.com/a/2117523/122643, more or less...
 const generateUUID = () =>

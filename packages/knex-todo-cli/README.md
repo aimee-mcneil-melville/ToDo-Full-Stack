@@ -60,7 +60,7 @@ Since this is a CLI (command-line interface) tool, instead of running our app us
 
 
 ## Viewing data in the database
-There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the EDA computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
+There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the campus computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
 
 ## Display tasks and IDs
 
