@@ -42,7 +42,7 @@ Here are some user stories to guide your work. We'll talk more about user storie
     Start small. You'll use `console.log` statements a lot in this project, since the terminal **is** the console!
   </details>
 
-- [ ] As a user, 'd like to view a list of ASCII artworks that can be displayed so that I can make my choice.
+- [ ] As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice.
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
