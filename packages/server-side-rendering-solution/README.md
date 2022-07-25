@@ -1,75 +1,118 @@
 # Server-Side Gallery
 
-![](screenshot.png)
-
 Build a photo gallery using Handlebars views.
 
-## Learning objectives
+Learning objectives:
 
 1. Understanding server-side rendering with Handlebars.
 2. Practice dividing up a page into views, layouts, and partials.
 3. Practice testing routes.
 
-## Getting started
+When complete, your application might look like this:
 
-- After cloning this repo, install dependencies with `npm install`
-- To start the server : `npm start`
-- To debug the server (and have it reload with Nodemon after changes): `npm run dev`
-- To run the tests: `npm test`
+![Screenshot of an app with gallery features including a title, image, artist name, license info, and comments](screenshot.png)
 
-## Hello world
+## Setup
 
-When you're learning a new technology, make sure you start simple and get that working before layering on too much complexity.
+### 0. Cloning and installation
+- [ ] After cloning this repo, install dependencies with `npm install`
+  <details style="padding-left: 2em">
+    <summary>More about getting started</summary>
 
-1. Start by creating a new home route, `/` in the server
+    - To start the server: `npm start`
+    - To debug the server (and have it reload with Nodemon after changes): `npm run dev`
+    - To run the tests: `npm test`
+  </details>
 
-- Make sure it's working by having it send something like `res.send('Hello, world!')`
+---
 
-2. Express Handlebars requires a default layout in order to render templates.
+## First use of Handlebars
 
-- Create a layout file in `views/layouts`, default is `main.hbs` (see [the docs](https://github.com/ericf/express-handlebars) for more on layouts). It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there's three sets of curly braces there, not two)!
-- You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
+When you're learning a new technology, make sure you start simple and get that working before layering on more complexity.
 
-3. We've provided a single `home.hbs` template in the views folder for you. Instead of `res.send`, now use `res.render` to render `home.hbs` template when anyone visits the `/` route.
+### 1. Rendering the home page
 
-- When you reload the page, you should see the text change to, 'Hello, templates!'
+- [ ] Start by creating a new home route, `/` in the server
+  <details style="padding-left: 2em">
+    <summary>Tip</summary> 
+    
+    Make sure it's working by having it send something like `res.send('Hello, world!')`
+  </details>
 
-4. Create an object in your route definition with the property `title`, like so:
+- [ ] Create a layout file in `views/layouts`. It should be called `main.hbs`
+  <details style="padding-left: 2em">
+    <summary>More about the layout file</summary>
 
-```js
-const viewData = {
-  title: 'Gallery',
-}
-```
+    - Express Handlebars requires a default layout in order to render templates, and unless we've customised the configuration, the name should be `main.hbs`
+    - See [the docs](https://github.com/ericf/express-handlebars) for more on layouts
+    - It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there are **three** sets of curly braces there, not two)!
+    - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
+  </details>
 
-5. Pass the object as the second argument to render:
+- [ ] Set the home route to `render` the provided `home.hbs` view
+  <details style="padding-left: 2em">
+    <summary>More about the home view</summary>
 
-```js
-const template = 'home'
-res.render(template, viewData)
-```
+    - We've provided a single `home.hbs` template in the views folder. Instead of `res.send`, now use `res.render` to render `home.hbs` template when anyone visits the `/` route
+    - When we reload the page, we should see the text change to, 'Hello, templates!'
+  </details>
 
-6. Alter `home.hbs` to refer to the property using `{{title}}`. Maybe put it inside `<h1></h1>` tags?
+### 2. Using `viewData`
 
-- Reload the page: does it work?
+- [ ] Create an object in your route definition with the property `title`
+  <details style="padding-left: 2em">
+    <summary>More about the <code>viewData</code> object</summary>
 
-You'll find this pattern repeating throughout your exploration of server-side rendering:
+    ```js
+    const viewData = {
+      title: 'Gallery',
+    }
+    ```
+  </details>
 
-- get some data and put it in an object
-- pass that object to `res.render`
-- modify the `.hbs` template to make use of the data
+- [ ] Pass the object as the second argument to render
+  <details style="padding-left: 2em">
+    <summary>More about rendering with <code>viewData</code></summary>
 
+    ```js
+    const template = 'home'
+    res.render(template, viewData)
+    ```
+  </details>
+
+- [ ] Alter `home.hbs` to refer to the property by using `{{title}}`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+    Maybe put it inside `<h1></h1>` tags?
+
+    Reload the page. Does it work?
+  </details>
+
+---
+
+We'll find this pattern repeating throughout our exploration of server-side rendering:
+
+  1. Get some data and put it in an object
+  1. Pass that object to `res.render`
+  1. Modify the `.hbs` template to make use of the data
+  
 The rest of this exercise should follow the same arc - gradually layering up detail and complexity.
 
-## Batteries included
+---
+
+## Consuming more complex objects
 
 > Did you know you could require JSON? Pretty handy when you need a bit of configuration data! You can't leave the extension off like you can with `.js`, though.
 
-We want you to be exploring and understanding template rendering today, so we've provided you with some data to use that shouldn't take much effort to work with. It's an array of objects brought into the program using `require`. Each object represents a piece of art.
+<details>
+  <summary>About <code>art.json</code></summary>
 
-The objects look like this:
+  We want you to explore and understand template rendering today, so we've provided you with data to work with. It's an array of objects brought into the program using `require`. Each object represents a piece of art.
 
-```js
+  The each object in the array is structured like this:
+
+  ```js
   {
     "id": 1,
     "title": "Kea in Flight",
@@ -86,79 +129,127 @@ The objects look like this:
       "url": "https://creativecommons.org/licenses/by-nd/2.0/"
     }
   },
-```
+  ```
+</details>
 
-Any time you want to use this data, you can just `const art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an array and Handlebars expects you to pass it an object, so you might need to do something like this:
+<details>
+  <summary>Using <code>art.json</code></summary>
 
-```js
-const viewData = {
-  title: 'Gallery',
-  art: art,
-}
-```
+  Any time you want to use this data, you can include `const art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
 
-## MVP
+  ```js
+  const viewData = {
+    title: 'Gallery',
+    art: art,
+  }
+  ```
+</details>
+<br />
 
-1. _As a user, I want to see a list of artwork titles on the home page so I can see what's available._
+---
 
-- Remember, you can do something for each element in the `art` array using `{{#each}}`.
-- We suggest using an unordered list, where each artwork titles could be listed using `<li>{{title}}</li>`.
+## Requirements
 
-2. _As a user, I want to see who each artwork is by so I can give them credit._
+### 3. Home page gallery
+- [ ] As a user, I want to see a list of artwork titles on the home page so I can see what's available
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-- Since you already have the title, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
+    - Remember, we can do something for each element in the `art` array using `{{#each}}`
+    - We suggest using an unordered list, where each artwork titles could be listed using `<li>{{title}}</li>`
+  </details>
 
-3. _As a user, I want to see what license the artwork is under so I know if I can copy it or not._
+- [ ] As a user, I want to see who each artwork is by so I can give them credit
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-- This `{{#each}}` block is getting a bit complicated. Let's add a partial! The `{{#each}}` will stay the same, but you'll move all the code inside it to the partial file (`artwork-summary.hbs`, for example).
+    Since we already have the title, this should be pretty easy! Do the same thing for the license. (You could even make it a link if you like: the URL property is also included.)
+  </details>
 
-4. _As a user, I want to see a header at the top of the page displaying the page title so I know where I am._
+- [ ] As a user, I want to see what license the artwork is under so I know if I can copy it or not
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-- We _could_ just "hard-code" this in the template, but to keep our design flexible let's use a partial and we can include a `title` property on every data object we pass to `res.render`.
-- Create a `header.hbs` partial. Make it look however you like, but be sure it has a `{{title}}` in there somewhere.
+    This `{{#each}}` block is getting a bit complicated. Let's add a partial! The `{{#each}}` will stay the same, but you'll move all the code inside it to the partial file (`artwork-summary.hbs`, for example).
+  </details>
 
-5. _As a user, I want to see a footer at the bottom of the page displaying contact details so that I can contact the people responsible for the site._
+### 4. Header and footer
+- [ ] As a user, I want to see a header at the top of the page displaying the page title so I know where I am
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-- Repetition can be a wonderful thing. Create a `footer.hbs` partial and include it in your home template.
-- Hint: Move the `header` and `footer` partials into the `main.hbs` layout file, and they'll be used for every template view you create from now on.
+    - We **could** "hard-code" this in the template, but to keep our design flexible let's use a partial and we can include a `title` property on every data object we pass to `res.render`
+    - Create a `header.hbs` partial. Make it look however you like, but be sure it has a `{{title}}` in there somewhere
+  </details>
 
-6. _As a user, I want to see an artwork displayed when I visit `/artworks/:id` so that I can view the image._
+- [ ] As a user, I want to see a footer at the bottom of the page displaying contact details so that I can contact the people responsible for the site
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-- Create `artworks.hbs`. It doesn't have to be complicated: just a single `img` tag with its `src` attribute set to `{{artwork}}` will do nicely
-- Create a new route in server.js. In the route, you'll need to find the correct artwork using `req.params.id`. Hint: `art.find()` (see [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find))
-- Send the artwork to the `res.render()` call
+    - Repetition can be a wonderful thing. Create a `footer.hbs` partial and include it in your home template
+    - Hint: Use the `header` and `footer` partials from the `main.hbs` layout file, and they'll be used for every template view you create from now on
+  </details>
 
-7. _As a user, I want to be able to click on the artwork title on the home page and be taken to the image view._
+---
 
-- Time to link it up! In your `artwork-summary.hbs` (or whatever you called it) partial, turn the artwork title into a link. You'll need to make use of the `id` property of the artwork object to build your links.
+### 5. Create a single-artwork view
 
-## Ready for more?
+- [ ] As a user, I want to see an artwork displayed when I visit `/artworks/:id` so that I can view the image
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-8. _As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button._
+    - Create `artworks.hbs`. It doesn't have to be complicated: just a single `img` tag with its `src` attribute set to `{{artwork}}` will do nicely
+    - Create a new route in server.js. In the route, you'll need to find the correct artwork using `req.params.id`. Hint: `art.find()` (see [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find))
+    - Send the artwork to the `res.render()` call
+  </details>
 
-- Here's another good partial opportunity! What we need is a simple partial that can be inserted anytime we need a link to the home page.
+- [ ] As a user, I want to be able to click on the artwork title on the home page and be taken to the image view
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-9. _As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence._
+    Time to link it up! In our `artwork-summary.hbs` (or whatever we called it) partial, turn the artwork title into a link. We'll need to make use of the `id` property of the artwork object to build our links.
+  </details>
 
-- Although you don't strictly need to create another partial here, it might be a good opportunity to practice. You can even do partials _within_ partials! For example, you could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
+### 6. Enhance the single-artwork view
 
-Write some tests for your routes with Supertest and `@testing-library`. These testing libraries have already been installed for you - create a `server.test.js` and test away! Particularly testing both sides of any `{{#if}}`s you have, and that your `{{#each}}`s loop correctly, would be a great start!
+- [ ] As a user, I want a link to the home page home from the image view so that I don't need to use the browser back button
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+    Here's another good partial opportunity! What we need is a simple partial that can be inserted anytime we need a link to the home page.
+  </details>
+
+- [ ] As a user, I want to see all the details on the image view so that I can easily see information about the artist and licence
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+    Although we don't strictly need to create another partial here, it might be a good opportunity to practice. We can even do partials **within** partials! For example, we could use a `comment.hbs` partial for each element in the `comments` array, and use that from an `artwork-details.hbs` partial.
+  </details>
+
+### 7. Testing
+
+- [ ] Write some tests for our routes with Supertest and `@testing-library`
+  <details style="padding-left: 2em">
+    <summary>More about testing</summary>
+
+    - These testing libraries have already been installed
+    - Create a `server.test.js` and test away!
+    - In particular, testing both sides of any `{{#if}}`s we have, and that our `{{#each}}`s loop correctly, would be a great start!
+  </details>
 
 Take the chance to explore, play, experiment. Ask lots of questions!
 
-## Stretch ideas
+## Stretch
 
-Including the title in the data object passed to `res.render` each time works ok, but what if some developer in the future forgets to pass it? It'd be great if there was some way in the template of providing a default title... maybe there's a way using the `{{#if}}` helper?
+<details>
+  <summary>More about stretch challenges</summary>
 
-You could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`.
-
-## Even more stretch
-
-Did you know you can define your own Handlebars helpers, like `{{#if}}` and `{{#each}}`? Try writing a simple helper that (for example) truncates numbers to display only two decimal places.
+  - Including the title in the data object passed to `res.render` each time works ok, but what if some developer in the future forgets to pass it? It'd be great if there was some way in the template of providing a default title... maybe there's a way using the `{{#if}}` helper?
+  - We could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`
+  - Did you know you can define your own Handlebars helpers, like `{{#if}}` and `{{#each}}`? Try writing a simple helper that (for example) truncates numbers to display only two decimal places
+</details>
 
 ## Further reading
-
-For more information, check out these links:
 
 - http://handlebarsjs.com
 - https://github.com/ericf/express-handlebars
