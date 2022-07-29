@@ -8,6 +8,7 @@ Learning objectives:
 1. A first try at writing tests for async functions.
 
 When complete, your application might look like this:
+
 ![Screenshot of terminal program showing two selection prompts followed by an illustration of a bird in flight. The illustration is made of ASCII characters composed into patterns of light and dark](reader.png)
 
 ## Setup
