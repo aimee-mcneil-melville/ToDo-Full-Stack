@@ -4,170 +4,217 @@ Command-line todo app using Knex.
 
 We're building a simple command-line tool to manage our list of todos. We're finally at the point of storing our data in a database! Woooo! We're using the Knex module to talk to our SQLite3 database.
 
-_Remember: you can always look at the [knex documentation](https://knexjs.org/) when creating your database functionality, especially when building [queries](https://knexjs.org/guide/query-builder.html) or [schema](https://knexjs.org/guide/schema-builder.html)._
+> Remember: you can always look at the [knex documentation](https://knexjs.org/) when creating your database functionality, especially when building [queries](https://knexjs.org/guide/query-builder.html) or [schema](https://knexjs.org/guide/schema-builder.html).
+
+----
 
 ## Setup
 
-* Install dependencies `knex` and `sqlite3`. You can do them both at once like this.
+### 0. Installation and settings
 
-  ```sh
-  npm install knex sqlite3
-  ```
+- [ ] Install dependencies `knex` and `sqlite3`
+  <details style="padding-left: 2em">
+    <summary>More about installing</summary>
+  
+    You can do them both at once like this.
 
-* Set file permissions.
+    ```sh
+    npm install knex sqlite3
+    ```
+  </details>
 
-  ```sh
-  chmod +x todo
-  ```
+- [ ] Set file permissions using `chmod +x todo`
+  <details style="padding-left: 2em">
+    <summary>More about file permissions</summary>
 
-Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin with the `todo` file. Note: if you run `./todo list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
+    Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin with the `todo` file.
+    
+    Note: if you run `./todo list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
+  </details>
 
-* Create the Knex configuration file (`knexfile.js`).
+- [ ] Create the Knex configuration file (`knexfile.js`) with `npx knex init`
 
-  ```sh
-  npx knex init
-  ```
+---
 
+## Setting up the database
 
-## Set up the database
+### 1. The first migration
 
-* Add a migration for the `todos` table.
+- [ ] Use `npx knex migrate:make todos` to create a migration file (note the use of `npx`)
 
-  ```sh
-  npx knex migrate:make todos
-  ```
+- [ ] Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos`
+  <details style="padding-left: 2em">
+    <summary>More about the <code>todos</code> table</summary>
 
-  1. Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos` with the following fields:
-
+    It should have the following fields:
       * `id` (auto incrementing)
       * `task`: string
 
-  The documentation for [`dropTable`](http://knexjs.org/#Schema-dropTable) might be helpful.
+    The documentation for [`dropTable`](http://knexjs.org/#Schema-dropTable) might be helpful.
+  </details>
 
-  2. Use `npx knex migrate:latest` to apply the changes to the database.
+- [ ] Use `npx knex migrate:latest` to apply the changes to the database
 
-* Add some seed data.
+### 2. Seeds
 
-  ```sh
-  npx knex seed:make test-tasks
-  ```
+- [ ] Use `npx knex seed:make test-tasks` to create a seed file
+- [ ] Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+  
+    The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
+  </details>
 
-  1. Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table.
+- [ ] Run `npx knex seed:run` to add the new data to the database
 
-  The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
+### 3. Viewing data in the database
 
-  2. Run `npx knex seed:run` to add the new data to the database.
+- [ ] Choose and set up a way to view the contents of the database
+  <details style="padding-left: 2em">
+    <summary>More about viewing data</summary>
+    
+    There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the campus computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
+  </details>
 
+----
 
-## Viewing data in the database
-There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the campus computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
+## Creating, reading, updating, and deleting tasks (CRUD)
 
-## Display tasks and IDs
+### 4. Display tasks and IDs
 
-We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration. Take a look at the `commands.js` file. If you type `./todo list` in your terminal, this should output a list of tasks. The input + output should look like this:
+We want to be able to update and delete our tasks. But before we do that we need to be able to identify them. This part has been completed for you as a demonstration.
+- [ ] Familiarise yourself with the `commands.js` file
+  <details style="padding-left: 2em">
+    <summary>More about the <code>commands</code> file</summary>
 
-```sh
-$ ./todo list
+    If you type `./todo list` in your terminal, this should output a list of tasks. The input + output should look like this:
 
-1: vaccuum
-2: buy groceries
-```
+    ```sh
+    $ ./todo list
 
-Notice two things about this example:
- * the commands are all separated into a different module, so that `todo` just calls a `require`d function from `commands.js`
- * `commands.js` has a _dependency_ on `db.js` to interact with the database, but `todo` does not (it doesn't need it)
+    1: vaccuum
+    2: buy groceries
+    ```
+    
+    Notice two things about this example:
+    - the commands are all separated into a different module, so that `todo` just calls a `require`d function from `commands.js`
+    - `commands.js` has a **dependency** on `db.js` to interact with the database, but `todo` does not (it doesn't need it)
+  </details>
 
-Before you move on, make sure you understand the contents of the `todo` file. In particular, what is `process.argv`? And how is it being used to get the command (`cmd`) that was typed (in our example, `list`)?
+- [ ] Familiarise yourself with the contents of the `todo` file
+  <details style="padding-left: 2em">
+    <summary>More about the <code>todo</code> file</summary>
+    
+    In particular, what is `process.argv`? And how is it being used to get the command (`cmd`) that was typed (in our example, `list`)?
+    
+    Start by using `console.log` to explore this, and try adding more inputs to see how that changes the result (i.e. `./todo list hello testing 123`)
+  </details>
 
-Start by using `console.log` to explore this, and try adding more inputs to see how that changes the result (i.e. `./todo list hello testing 123`)
+### 5. Delete a task by ID
 
-## Delete a task by ID
+- [ ] Enable users to complete a task by entering a command such as `./todo done 1` which will remove the task with `id` of `1` from the database
+  <details style="padding-left: 2em">
+    <summary>More about deleting a task</summary>
 
-Users should be able to complete tasks. We'd like to be able to do something like `./todo done 1` which will remove the task with `id` of `1` from the database.
+    You'll want to add a new function in `db.js` that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
 
-You'll want to add a new function in `db.js` that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
+    To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). Remember that you will need to pass an argument through from the `todo` module to so you can tell your DB function which task to delete. **Hint: accessing that `userInputs` array might come in handy right about now...**
 
-To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). Remember that you will need to pass an argument through from the `todo` module to so you can tell your DB function which task to delete. _Hint: accessing that `userInputs` array might come in handy right about now..._
+    If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
+  </details>
 
-If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
+### 6. Add a new task
 
-## Add a new task
+It's all very well and good being able to delete tasks, but what happens when we run out of things to do?
 
-It's all very well and good being able to delete tasks, but what happens when we run out of things to do? Let's enable our users to add some more. 
+- [ ] Enable users to add a new task by entering a command such as `./todo add 'pet cat'`
+  <details style="padding-left: 2em">
+    <summary>More about adding a task</summary>
+    
+    You will need to add a function to `db.js` so we can insert a new task into our database, and also add a function to `commands.js` (that we will then call from our `todo` file) to make use of this.
+  </details>
 
-The command should look something like this:
+### 7. Update a task by ID
 
-```sh
-./todo add 'pet cat'
-```
+Users make mistakes. Let them update a task.
 
-You will need to add a function to `db.js` so we can insert a new task into our database, and also add a function to `commands.js` (that we will then call from our `todo` file) to make use of this.
+- [ ] Enable users to update a task by id with a command such as `./todo update 1 'clean my room thoroughly'`
+  <details style="padding-left: 2em">
+    <summary>More about updating a task</summary>
 
-## Update a task by ID
+    As before, add a function to `db.js` that does the actual updating of the database. Then add a function to `commands.js` that makes use of it.
+  </details>
 
-Users make mistakes. Let them update a task like so:
+---
 
-```sh
-./todo update 1 'clean my room thoroughly'
-```
+## Other task interactions
 
-As before, add a function to `db.js` that does the actual updating of the database. Then add a function to `commands.js` that makes use of it.
+### 8. Add ability to search
 
+Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given word.
 
-## Add ability to search
+- [ ] Enable users to search for tasks containing a search term by entering a command such as `./todo search 'wire'`
 
-Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given word. Perhaps something like:
-
-```sh
-./todo search 'wire'
-```
-
-
-## Add migration to mark a task complete
-
-Now we have users using our tool, but we have new features to add. We need a way of updating our database without destroying all the existing data.
+### 9. Preparing to complete tasks (non-destructively)
 
 Users want to be able to mark a task as complete without removing it from the database.
 
-1. Use `npx knex migrate:make add-completed-column` to create a new empty migration.
+- [ ] Use `npx knex migrate:make add-completed-column` to create a new empty migration. Then update the new migration to add a column to the table
+  <details style="padding-left: 2em">
+    <summary>More about the new migration</summary>
+  
+    The documentation for [`knex.schema.table`](http://knexjs.org/guide/schema-builder.html#table) might be helpful when modifying an existing table.
 
-  The documentation for [`knex.schema.table`](http://knexjs.org/#Schema-table) might be helpful when modifying an existing table.
+    What data type should we use to store our new field(s)?
+  </details>
 
-  What data type should we use to store our new field(s)?
+- [ ] Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function
 
-2. Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function.
+- [ ] Run and check the migration, and re-run the seeds
+  <details style="padding-left: 2em">
+    <summary>More about checking the migration and seeds</summary>
 
-3. Run `npx knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite). Is it what you expected? What happened to existing data in the database?
-
-4. Run `npx knex migrate:rollback` and look in your database.
-
-5. Run `npx knex migrate:latest` and look again.
-
-6. Run `npx knex seed:run` and look again.
-
-
-## Finish the _mark task complete_ feature
-
-It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing out a task. Maybe you can filter by completed when listing?
-
-
-## Add the feature that's missing
-
-What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
+    1. Run `npx knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite that you set up in section 3). Is it what you expected? What happened to existing data in the database?
+    1. Run `npx knex migrate:rollback` and look in your database.
+    1. Run `npx knex migrate:latest` and look again.
+    1. Run `npx knex seed:run` and look again.
 
 
+### 10. Finish the "mark task complete" feature
+
+- [ ] Enable users to mark a task complete, without deleting it from the database
+  <details style="padding-left: 2em">
+    <summary>More about completing...completion</summary>
+
+    It's up to you to decide how far you want to go with this. Should listing all the tasks show completed and uncompleted tasks? Maybe you should add the task completed status when printing 
+    out a task. Maybe you can filter by completed when listing?
+  </details>
+
+---
+
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+  
+  What is the next feature that would make this tool more useful for you? A priority field? Sorting? Tags? Archival? Whatever it is, add it!
+</details>
+<br />
 
 ## A note on using the debugger
 
-You'll find this challenge already has debugging set up for you, if you would like to use it. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a _console_ program, you'll need to change the `args` property in you debugger configuration to the actual command you'd like to debug. For example,
+<details>
+  <summary>More about debugging</summary>
 
-```json
-  "program": "${workspaceFolder}/todo",
-  "args": [
-      "done",
-      "1"
-  ]
-```
+  You'll find this challenge already has debugging set up for you, if you would like to use it. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a **console** program, you'll need to change the `args` property in you debugger configuration to the actual command you'd like to debug. For example,
 
-would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
+  ```json
+    "program": "${workspaceFolder}/todo",
+    "args": [
+        "done",
+        "1"
+    ]
+  ```
 
+  would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
+</details>
