@@ -10,10 +10,23 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
   <details style="padding-left: 2em">
     <summary>More about cloning</summary>
 
-    In your browser find the clone URL in the sidebar and copy it. In your terminal, run the following command, replacing `CLONE_URL` with the URL you copied:
+    First, make sure you're in a suitable place for cloning the repo:
+    * On the campus computers, use the `workspace` directory:
 
     ```shell
     cd ~/workspace
+    ```
+
+    * Online students, decide how you'd like to organise your work, for example if you'd like to have one directory per week:
+
+    ```shell
+    mkdir week1
+    cd week1
+    ```
+
+    Then, in your browser find the clone URL in the sidebar and copy it. In your terminal, run the following command, replacing `CLONE_URL` with the URL you copied:
+
+    ```shell
     git clone CLONE_URL
     cd two-truths-and-a-lie
     ```
@@ -24,9 +37,9 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
     <summary>More about <code>git iam</code></summary>
 
     This is how we credit commits under your name when you're working on an on-campus machine or (for online students) in VS Code LiveShare.
-    
-    * Online students, please install and configure `git-iam` (following the instructions in the `remote-git-iam` repo)
+
     * On the on-campus computers, `git-iam` is already set up for you
+    * Online students, please install and configure `git-iam` (following the instructions in the `remote-git-iam` repo)
     * If you're working solo on your own machine, you will have configured git globally already, and you don't need `git-iam`
 
     ```shell
@@ -98,9 +111,8 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
   <details style="padding-left: 2em">
     <summary>More about pairing</summary>
 
-    **On-campus students:** a teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
-
-    **Online students:** Post in the `general` channel in Discord when your branch is ready to be busted. When you select another pair's branch to bust, mark their Discord message with an emoji reaction.
+    * On-campus students, a teacher will guide you to find the cohort mates with whom you're going to play lie detector. Ask your teacher who you're busting!
+    * Online students, please post in the `general` channel in Discord when your branch is ready to be busted. When you select another pair's branch to bust, mark their Discord message with an emoji reaction.
   </details>
 
 - [ ] Pull your cohort mates' branch from GitHub into your local repository
