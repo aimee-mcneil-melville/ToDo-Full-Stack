@@ -39,11 +39,11 @@ This challenge is designed to practice familiarity with types, functions, and mo
 
 ### 2. Create and export the missing functions
 
-- [ ] Write the expected functions in `types.js` and export them
+- [ ] Write the `getBoolean`, `getString`, `getNumber`, `getNull`, `getObject`, and `getFunction` functions in `types.js` and export them to get their respective tests passing
   <details style="padding-left: 2em">
     <summary>More about writing and exporting</summary>
     
-    In order for the tests in to test the functions, we need to **export** each function the tests are expecting. This is often done by exporting an object that contains the functions as properties. This is an example:
+    In order for the tests to test the functions, we need to **export** each function the tests are expecting. This is often done by exporting an object that contains the functions as properties. This is an example:
 
     ```js
     // example.js
