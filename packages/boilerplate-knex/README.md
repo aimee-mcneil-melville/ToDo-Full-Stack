@@ -1,5 +1,9 @@
 # Boilerplate: Knex.js
 
+## Setup
+
+### What's included
+
 Phase 1 boilerplate project with:
 
  - Express
@@ -10,8 +14,7 @@ Phase 1 boilerplate project with:
  - Jest
  - nodemon
 
-
-## Install
+### Installation
 
 ```
 npm install
@@ -21,4 +24,3 @@ npm run dev
 ```
 
 Be sure to check out the other npm scripts too.
-
