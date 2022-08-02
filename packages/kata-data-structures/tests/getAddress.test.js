@@ -1,7 +1,7 @@
 const getContacts = require('./getContacts')
 const getAddress = require('../getAddress')
 
-test('map and getAddress return the address property from objects in an array', function () {
+test('getAddress returns the address property from objects in an array', function () {
   // Arrange
   const contacts = getContacts()
   const expected = [
