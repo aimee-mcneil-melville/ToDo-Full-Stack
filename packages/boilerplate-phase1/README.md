@@ -1,5 +1,9 @@
 # Boilerplate: Phase 1
 
+## Setup
+
+### What's included
+
 Phase 1 boilerplate project with:
 
  - Express
@@ -8,7 +12,7 @@ Phase 1 boilerplate project with:
  - Nodemon
 
 
-## Install
+### Installation
 
 ```
 npm install

@@ -1,4 +1,8 @@
-# Boilerplate Express API
+# Boilerplate: Express API
+
+## Setup
+
+### What's included
 
 Phase 2 boilerplate project with:
 
@@ -10,7 +14,7 @@ Phase 2 boilerplate project with:
  - Jest
 
 
-## Install
+### Installation
 
 ```
 npm install

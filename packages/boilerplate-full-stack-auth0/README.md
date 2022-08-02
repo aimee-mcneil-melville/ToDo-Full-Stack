@@ -1,11 +1,28 @@
-# Fullstack boilerplate
+# Boilerplate: Fullstack with Auth0
 
-## Getting Started
+## Setup
 
-### From the GitHub UI
+### What's included
+
+This repo includes:
+
+* React Components:
+  * App
+  * Nav is used for login, logout, registration
+  * Authenticated is used for show/hide components if the user is logged in
+  * PingRoutes is used for testing the routes
+  * Users are used to display the registered users
+  * Registration is used to save the users' info after they are registered with Auth0
+* an example database module (`server/db/users.js`)
+* an API client module (`client/apis/users.js`)
+
+### Installation
+
+#### **From the Github UI**
+
 See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use GitHub's feature to create a new repo from a template.
 
-### From the command line
+#### **From the command line**
 
 ```shell
 git clone git@github.com:dev-academy-challenges/boilerplate-full-stack-auth0.git [your-project-name]
@@ -20,19 +37,7 @@ npm run dev # to start the dev server
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
-## Details
-This repo includes:
-
-* React Components:
-  * App
-  * Nav is used for login, logout, registration
-  * Authenticated is used for show/hide components if the user is logged in
-  * PingRoutes is used for testing the routes
-  * Users are used to display the registered users
-  * Registration is used to save the users' info after they are registered with Auth0
-* an example database module (`server/db/users.js`)
-* an API client module (`client/apis/users.js`)
-
+----
 
 ## Auth0
 1. Navigate to, Auth0.com and sign-up if you don't already have a tenant.
