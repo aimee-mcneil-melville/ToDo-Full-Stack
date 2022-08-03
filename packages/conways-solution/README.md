@@ -4,7 +4,7 @@ We're going to make our very own version of Conway's Game of Life. We'll render 
 
 ## Setup
 
-### 0. Cloning & installation
+### 0. Cloning and installation
 - [ ] Clone the repository, navigate into it, and install packages
 
 - [ ] Run all the tests with `npm test`, or a single test with `npm test isOverPopulated`, for example
