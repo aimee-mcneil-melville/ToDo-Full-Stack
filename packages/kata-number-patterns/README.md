@@ -289,17 +289,17 @@ Your task is to write a JavaScript function for each one of these patterns. When
 
     ```
     1 2 3 4 5 6 7
-      2 3 4 5 6 7
-        3 4 5 6 7
-          4 5 6 7
-            5 6 7
-              6 7
-                7
-              6 7
-            5 6 7
-          4 5 6 7
-        3 4 5 6 7
-      2 3 4 5 6 7
+      1 2 3 4 5 6
+        1 2 3 4 5
+          1 2 3 4
+            1 2 3
+              1 2
+                1
+              1 2
+            1 2 3
+          1 2 3 4
+        1 2 3 4 5
+      1 2 3 4 5 6
     1 2 3 4 5 6 7
     ```
   </details>
