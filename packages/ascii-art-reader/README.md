@@ -49,6 +49,7 @@ Here are some user stories to guide your work. We'll talk more about user storie
 
     - Here's where you show a list of filenames from the `data` directory. You can choose to keep these in your code for now
     - Hint: start counting from 0, it will make indexing an array that much easier
+    - Hint: you might want to look up `fs.readdir()`
   </details>
 
 - [ ] As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)
