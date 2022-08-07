@@ -46,7 +46,7 @@ Make sure you can dispatch this new action successfully from Redux DevTools. You
 Add a delete button next to each of the wombats so they can be deleted:
 
 - Modify the `Wombat.jsx` component to add a button next to each of the wombats.
-- Add an event listener to handle an `onClick` event.
+- Add an event listener to handle an `onClick` event. Or alternatively you could put your input field in a form, and handle the form's onSubmit event.
 - In the event listener, dispatch a `DEL_WOMBAT` action to the store to delete the wombat based on its name.
 - It may be worth referring to the recommended problem solving steps above.
 
