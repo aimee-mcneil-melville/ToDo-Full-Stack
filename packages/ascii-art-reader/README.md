@@ -13,14 +13,9 @@ When complete, your application might look like this:
 
 ## Setup
 
-### 0. Cloning and branching
+### 0. Cloning and preparing to code
 - [ ] Clone this repo and create a new branch for you or your pair
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-    You'll be working in `index.js` (once you start adding functionality, you can run your app with `npm start`)
-  </details>
-
+- [ ] Open `index.js` (once you start adding functionality, you can run your app with `npm start`)
 ---
 
 ## Requirements
@@ -34,16 +29,18 @@ When complete, your application might look like this:
 </details>
 
 <br />
-Here are some user stories to guide your work. We'll talk more about user stories during the bootcamp. In the meantime, try to implement these. Think of them as requests from a fictitious client. Before you begin work, you may want to read the section about [terminal helpers](#terminal-helpers).
+Here are some user stories to guide your work. We'll talk more about user stories during the bootcamp. In the meantime, try to implement these. Think of them as requests from a fictitious client.
 
-- [ ] As a user, I'd like to see a welcome message (so that I feel, y'know, welcome)
+Before you begin work, you may want to read the section about [terminal helpers](#terminal-helpers)
+
+- [ ] As a user, I'd like to see a welcome message (so that I feel, y'know, welcome) 
   <details style="padding-left: 2em">
     <summary>Tip</summary>
     
     Start small. You'll use `console.log` statements a lot in this project, since the terminal **is** the console!
   </details>
 
-- [ ] As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice.
+- [ ] As a user, I'd like to view a list of ASCII artworks that can be displayed so that I can make my choice
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
