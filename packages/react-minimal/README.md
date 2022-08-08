@@ -1,32 +1,51 @@
 # React minimal
 
-As part of an introduction to React, this repo attempts to show React in a most basic form.
+As part of an introduction to React, this repo attempts to show React in a basic implementation.
 
-* Many components can be simple functions.
-* Data to render in the component is passed in as props.
-* Assemble other components by importing them and calling them.
-
+Learning objectives:
+1. Many components can be simple functions
+1. Data to render in the component is passed in as props
+1. Assemble other components by importing them and calling them
 
 ## Setup
 
-Clone this repo, and from the repo's folder
+### 0. Cloning and installation
+- [ ] Clone this repo, and from the repo's folder install packages and start the server
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-```sh
-npm install
-npm run dev
-```
+    ```sh
+    npm install
+    npm run dev
+    ```
+  </details>
 
+---
 
-## Next steps
+## Requirements
 
-* Add new mount points and render components into them.
-* Add new components and use them inside existing components.
-* Render complex data structures (objects in objects) as props.
-* Check out the `npm run dev` script and the `webpack.config.js` file.
-* Conditionally show child components using a ternary operator.
-* Create child components from an array of data using `.map()`.
+### 1. Adding components
+- [ ] Add new mount points and render components into them
+- [ ] Add new components and use them inside existing components
 
+### 2. Nested data
+- [ ] Render complex data structures (objects in objects) as props
 
-## Wat?
+### 3. Scripts
+- [ ] Check out the `npm run dev` script and the `webpack.config.js` file
 
-* Why a simple Node server and not `webpack-dev-server`? Students seeing this repo for the first time are proficient with Node/Express. We've chosen to not throw out the concept of client/server even though we admittedly don't need a server here. We introduce `webpack-dev-server` later. Today we just want to focus on React concepts.
+### 4. Child components
+- [ ] Conditionally show child components using a ternary operator
+- [ ] Create child components from an array of data using `.map()`
+
+---
+
+## About the server
+
+<details>
+  <summary>Why a simple Node server?</summary>
+
+  If you've worked with React before, you might be wondering "Why does this project use a Node server and not `webpack-dev-server`?"
+  
+  When most students see this repo for the first time, they are likely proficient with Node/Express, but not React or Webpack. We've chosen not to introduce the concept of client/server, even though we admittedly don't need a server here. We will introduce `webpack-dev-server` later. Today we just want to focus on React concepts.
+</details>
