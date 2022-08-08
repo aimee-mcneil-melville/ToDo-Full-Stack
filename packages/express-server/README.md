@@ -27,9 +27,10 @@ After each section:
 
 - [ ] Create an HTML file called `silvia.html` that represents a user's profile
   <details style="padding-left: 2em">
-    <summary>Tip</summary>
+    <summary>Tips</summary>
   
-    This will include name, username, photo, favourite links, etc.
+    - This will include name, username, photo, favourite links, etc. 
+    - For the photo, your `<img>` tag should refer to a photo elsewhere on the web for now. You'll learn how to include your own images in step 5 below. 
   </details>
 
 - [ ] Create a route called `/profile` that returns `silvia.html`
@@ -87,6 +88,14 @@ After each section:
     - Add a link to `/styles.css` (note the `/`) to `silvia.html` and `sampson.html` so the styles will be applied
     - Make sure you can still view the individual profile pages (sections 3 and 4 above) and that the styles are now visible
     - You might need to adjust the HTML files a bit, once you start writing CSS
+  </details>
+
+- [ ] For Silvia and Sampson's photos, replace the external URLs with references to locally-hosted images
+  <details style="padding-left: 2em">
+    <summary>More about using images from your own server</summary>
+
+    - Save Silvia and Sampson's photos into your `public` folder
+    - Then update your `<img>` tags (in `silvia.html` and `sampson.html`) to point to the images in the `public` folder instead of the external image URLs you used in step 2 
   </details>
 
 ### 6. Refactor
