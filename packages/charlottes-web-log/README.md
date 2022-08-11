@@ -1,49 +1,83 @@
 # Charlotte's Web Log
 
-In this exercise, you're going to build a blog for Charlotte.
+In this exercise, we're going to use modular React components to build a blog for Charlotte. The text content and a wireframe showing the suggested layout have been provided.
 
-![Charlotte's Web](charlottes-web.png)
-
+![Charlotte's Web logo](charlottes-web.png)
 
 ## Setup
 
-Clone this repo, and from the repo's folder
+### 0. Installation
+- [ ] Clone this repo, and from the repo's folder, install packages and run the dev server
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-```sh
-npm install
-npm run dev
-```
+    Your terminal commands probably look like:
+    ```sh
+    git clone [url to this repo]
+    cd charlottes-web-log
+    npm install
+    npm run dev
+    ```
+  </details>
 
+---
 
-# Exercise
+## Requirements
 
-Your task is to create all of the components that comprise the page and wire up data for the component to render. One approach would be to create the HTML of the page with static data first, and afterwards, decompose the page into the components below.
+Our task is to create all of the components that comprise the page and wire up data for the component to render. One approach would be to create the HTML of the page with static data first, and afterwards, decompose the page into the components below.
 
-The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
+### 1. Get familiar with the assets
 
-Import the data from the appropriate files and pass the needed data to the components using props.
+- [ ] Investigate the `client/data` folder
+  <details style="padding-left: 2em">
+    <summary>More about using the provided data</summary>
 
-The components that make up Charlotte's blog are:
+    The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
 
-* `App`: already in place, you'll hold your other components within this one as you build them.
-* `Header`: the header of the page.
-* `Footer`: the footer of the page.
-* `Posts`: to hold all posts.
-* `Post`: the component for a single post.
-* `OtherBlogs`: to hold the list of other blogs.
-* `OtherBlog`: the component for a single blog link.
-* `RecentEntries`: to hold the list of recent entries.
-* `RecentEntry`: the component for a single entry.
+    We will need to import the data from the appropriate files and pass the needed data to the components using props.
+  </details>
 
-Here is a basic layout of the page:
+- [ ] Understand the design requirements
+  <details style="padding-left: 2em">
+    <summary>More about design requirements</summary>
 
-![Basic layout](basic-layout.png)
+    Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox. Also, consider applying a class to each component using `className` (instead of the `class` we use in HTML) to **namespace** the styles of each component.
 
-Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox. Also, consider applying a class to each component using `className` (instead of the `class` we use in HTML) to _namespace_ the styles of each component.
+    Here is the rough layout we are trying to achieve:
 
+    ![Wireframe of the homepage, header at top, footer at bottom. The main content of the page is a three-column layout with "Other blogs" on the left, "Posts" in the centre and "Recent entries" on the right](basic-layout.png)
+
+  </details>
+
+### 2. App, Header, and Footer
+
+- [x] `App`: already in place, we'll hold our other components within this one as you build them
+- [ ] `Header`: build the header of the page
+- [ ] `Footer`: build the footer of the page
+
+### 3. Posts
+
+- [ ] `Posts`: build a container to hold all posts
+- [ ] `Post`: build the component for a single post
+
+### 4. Other blogs
+
+- [ ] `OtherBlogs`: build a container to hold the list of other blogs
+- [ ] `OtherBlog`: build the component for a single blog link
+
+### 5. Recent entries
+
+- [ ] `RecentEntries`: build a container to hold the list of recent entries
+- [ ] `RecentEntry`: build the component for a single entry
+
+----
 
 ## Stretch
 
-Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
+<details>
+  <summary>More about stretch challenges</summary>
+  
+  Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
 
-For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+  For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+</details>
