@@ -1,7 +1,7 @@
 const request = require('supertest')
-
 const server = require('./server')
 const lib = require('./lib')
+const { JSDOM } = require('jsdom')
 
 jest.mock('./lib', () => ({
   getPuppyData: jest.fn(),
@@ -27,7 +27,7 @@ describe('GET /', () => {
       .get('/')
       .expect(200)
       .then((res) => {
-        document.body.innerHTML = res.text
+        const { document } = new JSDOM(res.text).window
         const puppyLinks = document.querySelectorAll('.puppy-list a')
 
         expect(puppyLinks).toHaveLength(2)
@@ -61,7 +61,7 @@ describe('GET /:id', () => {
       .get('/2')
       .expect(200)
       .then((res) => {
-        document.body.innerHTML = res.text
+        const { document } = new JSDOM(res.text).window
 
         expect(
           document.querySelector('.puppy img').getAttribute('src')
