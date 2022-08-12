@@ -5,7 +5,7 @@ In this challenge we're going to build a fun project called Meowtown. You can pr
 ## Setup
 
 ### 0. Cloning and installation
-- [ ] After cloning this repo, install dependencies with `npm install`, and start the server
+- [ ] After cloning this repo, install dependencies with `npm install`, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>More about getting started</summary>
 
