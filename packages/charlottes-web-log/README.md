@@ -6,8 +6,8 @@ In this exercise, we're going to use modular React components to build a blog fo
 
 ## Setup
 
-### 0. Installation
-- [ ] Clone this repo, and from the repo's folder, install packages and run the dev server
+### 0. Cloning and installation
+- [ ] Clone this repo, and from the repo's folder, install packages, and run the dev server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 

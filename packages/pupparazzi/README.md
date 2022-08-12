@@ -13,7 +13,7 @@ When complete, your application might look like this:
 ## Setup
 
 ### 0. Cloning and installation
-- [ ] After cloning this repo, install dependencies with `npm install`
+- [ ] After cloning this repo, install dependencies with `npm install`, and start the dev server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>More about getting started</summary>
 

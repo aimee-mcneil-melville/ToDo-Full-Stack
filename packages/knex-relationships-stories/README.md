@@ -10,7 +10,7 @@ Some of the setup for a sample application has already been done for us, but we 
 
 ### 0. Installation and initial tests
 
-- [ ] Install packages, run migrations and seeds, start the dev server
+- [ ] Install packages, run migrations and seeds, and start the dev server using `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 

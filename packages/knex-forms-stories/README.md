@@ -18,7 +18,7 @@ User stories for Relational Database Management Systems (RDBMS) practice. These 
     ```
   </details>
 
-- [ ] Navigate to the directory, install packages, run migrations and seeds, and start the dev server
+- [ ] Navigate to the directory, install packages, run migrations and seeds, and start the dev server using `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
