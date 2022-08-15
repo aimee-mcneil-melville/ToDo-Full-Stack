@@ -18,8 +18,8 @@ Some of the setup for a sample application has already been done for us, but we 
 
     ```
     npm i
-    npx knex migrate:latest
-    npx knex seed:run
+    npm run knex migrate:latest
+    npm run knex seed:run
     npm run dev
     ```
 
