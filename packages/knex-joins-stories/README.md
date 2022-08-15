@@ -17,8 +17,8 @@ This challenge provides user stories to implement, which will enable us to pract
 
     ```
     npm i
-    npx knex migrate:latest
-    npx knex seed:run
+    npm run knex migrate:latest
+    npm run knex seed:run
     npm run dev
     ```
 
