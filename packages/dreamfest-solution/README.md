@@ -32,8 +32,8 @@ Let's get stuck in!
 
     ```
     npm i
-    npx knex migrate:latest
-    npx knex seed:run
+    npm run knex migrate:latest
+    npm run knex seed:run
     npm run dev
     ```
 
