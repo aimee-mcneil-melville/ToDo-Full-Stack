@@ -1,4 +1,8 @@
 const request = require('supertest')
+const { within } = require('@testing-library/dom')
+const { JSDOM } = require('jsdom')
+
+require('@testing-library/jest-dom')
 
 const server = require('./server')
 const lib = require('./lib')
@@ -17,6 +21,8 @@ const mockPuppies = {
   ],
 }
 
+const loadHtml = (response) => within(new JSDOM(response.text).window.document)
+
 describe('GET /', () => {
   it('renders a list of puppies', () => {
     lib.getPuppyData.mockImplementation((callback) => {
@@ -27,10 +33,8 @@ describe('GET /', () => {
       .get('/')
       .expect(200)
       .then((res) => {
-        document.body.innerHTML = res.text
-        const puppyLinks = document.querySelectorAll('.puppy-list a')
-
-        expect(puppyLinks).toHaveLength(2)
+        const puppyLinks = loadHtml(res).getAllByRole('link')
+        expect(puppyLinks).toHaveLength(4)
       })
   })
 
@@ -43,15 +47,16 @@ describe('GET /', () => {
       .get('/')
       .expect(500)
       .then((res) => {
-        expect(res.text).toMatch('test error message')
+        const screen = loadHtml(res)
+        const msg = screen.getByText('test error message')
+
+        expect(msg).toBeInTheDocument()
       })
   })
 })
 
 describe('GET /:id', () => {
   it('renders puppy details', () => {
-    expect.assertions(6)
-
     lib.getPuppyById.mockImplementation((id, callback) => {
       expect(id).toBe(2)
       callback(null, mockPuppies.puppies[1])
@@ -61,21 +66,12 @@ describe('GET /:id', () => {
       .get('/2')
       .expect(200)
       .then((res) => {
-        document.body.innerHTML = res.text
+        const screen = loadHtml(res)
 
-        expect(
-          document.querySelector('.puppy img').getAttribute('src')
-        ).toMatch('2.jpg')
-        expect(
-          document.querySelector('.puppy img').getAttribute('alt')
-        ).toMatch('Coco')
-        expect(document.querySelector('h2').textContent).toMatch('Coco')
-        expect(document.querySelector('.puppy a').getAttribute('href')).toMatch(
-          '/edit/2'
-        )
-        expect(document.querySelectorAll('.puppy div')[0].textContent).toMatch(
-          'Pug'
-        )
+        const img = screen.getByAltText('Coco')
+        expect(img.src).toMatch(/\.jpg/)
+        const heading = screen.getByRole('heading', { name: 'Coco' })
+        expect(heading).toBeInTheDocument()
       })
   })
 
