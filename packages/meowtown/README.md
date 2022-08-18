@@ -5,7 +5,7 @@ In this challenge we're going to build a fun project called Meowtown. You can pr
 ## Setup
 
 ### 0. Cloning and installation
-- [ ] After cloning this repo, install dependencies with `npm install`, and start the server
+- [ ] After cloning this repo, install dependencies with `npm install`, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>More about getting started</summary>
 
@@ -34,7 +34,7 @@ In this challenge we're going to build a fun project called Meowtown. You can pr
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    Hint: if you are stuck with passing the individual cat to the `catShow` view, notice how `/cats` passes the cats array to the view.
+    Hint: if you are stuck with passing the individual cat to the `show` view, notice how `/cats` passes the cats array to the view.
   </details>
 
 ### 2. More kitty details

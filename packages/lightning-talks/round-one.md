@@ -79,7 +79,6 @@
 
 * Accessibility
   - [ ] Browsing with assistive technologies _(or pick a single assistive tech)_
-  - [ ] Enabling users with learning, reading, and neurological impairments
   - [ ] Building accessible forms
   - [ ] Testing accessibility
   - [ ] Legal requirements of web accessibility in NZ

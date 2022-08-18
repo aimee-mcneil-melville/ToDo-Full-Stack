@@ -7,6 +7,7 @@ Creating a web server with Express.js
 
 ### 0. Cloning and branching
 - [ ] Clone this repo and create a new branch for you or your pair
+- [ ] Start the server with `node .` or `npm start`
 
 ---
 

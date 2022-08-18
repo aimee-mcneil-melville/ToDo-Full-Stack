@@ -10,7 +10,7 @@ Learning objectives:
 ## Setup
 
 ### 0. Cloning and installation
-- [ ] Clone this repo, and from the repo's folder install packages and start the server
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
