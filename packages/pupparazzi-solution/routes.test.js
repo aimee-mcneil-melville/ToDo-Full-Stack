@@ -1,6 +1,5 @@
 const request = require('supertest')
-const { within } = require('@testing-library/dom')
-const { JSDOM } = require('jsdom')
+const { render } = require('./test-utils')
 
 require('@testing-library/jest-dom')
 
@@ -21,8 +20,6 @@ const mockPuppies = {
   ],
 }
 
-const loadHtml = (response) => within(new JSDOM(response.text).window.document)
-
 describe('GET /', () => {
   it('renders a list of puppies', () => {
     lib.getPuppyData.mockImplementation((callback) => {
@@ -33,7 +30,8 @@ describe('GET /', () => {
       .get('/')
       .expect(200)
       .then((res) => {
-        const puppyLinks = loadHtml(res).getAllByRole('link')
+        const screen = render(res)
+        const puppyLinks = screen.getAllByRole('link')
         expect(puppyLinks).toHaveLength(4)
       })
   })
@@ -47,7 +45,7 @@ describe('GET /', () => {
       .get('/')
       .expect(500)
       .then((res) => {
-        const screen = loadHtml(res)
+        const screen = render(res)
         const msg = screen.getByText('test error message')
 
         expect(msg).toBeInTheDocument()
@@ -66,7 +64,7 @@ describe('GET /:id', () => {
       .get('/2')
       .expect(200)
       .then((res) => {
-        const screen = loadHtml(res)
+        const screen = render(res)
 
         const img = screen.getByAltText('Coco')
         expect(img.src).toMatch(/\.jpg/)
