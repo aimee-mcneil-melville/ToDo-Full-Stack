@@ -67,7 +67,7 @@
     "singleQuote": true
   },
   "jest": {
-    "testEnvironment": "jsdom" 
+    "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"
 }

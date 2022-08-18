@@ -26,9 +26,8 @@
     "knex": "^2.1.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "^8.11.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "sqlite3": "^5.0.8",
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
@@ -38,9 +37,14 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
+    "jsdom": "^20.0.0",
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
+    "sqlite3": "^5.0.8",
     "supertest": "^6.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "prettier": {
     "semi": false,

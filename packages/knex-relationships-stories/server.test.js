@@ -1,7 +1,7 @@
-const { screen } = require('@testing-library/dom')
 require('@testing-library/jest-dom')
 const request = require('supertest')
 
+const { render } = require('./test-utils')
 const db = require('./db')
 const server = require('./server')
 
@@ -19,7 +19,7 @@ test('GET / responds with correctly rendered users', () => {
     .get('/')
     .expect(200)
     .then((res) => {
-      document.body.innerHTML = res.text
+      const screen = render(res)
 
       const user2 = screen.getByText('test user 2 (test2@user.nz)')
       expect(user2).toBeInTheDocument()

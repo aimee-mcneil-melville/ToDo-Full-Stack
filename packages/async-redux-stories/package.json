@@ -25,7 +25,9 @@
   "browserslist": "> 2%, not dead",
   "eslintConfig": {
     "extends": "eda/react",
-    "ignorePatterns": ["bundle.js"]
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
     "express": "^4.17.2"

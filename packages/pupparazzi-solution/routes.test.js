@@ -1,7 +1,10 @@
 const request = require('supertest')
+const { render } = require('./test-utils')
+
+require('@testing-library/jest-dom')
+
 const server = require('./server')
 const lib = require('./lib')
-const { JSDOM } = require('jsdom')
 
 jest.mock('./lib', () => ({
   getPuppyData: jest.fn(),
@@ -27,10 +30,9 @@ describe('GET /', () => {
       .get('/')
       .expect(200)
       .then((res) => {
-        const { document } = new JSDOM(res.text).window
-        const puppyLinks = document.querySelectorAll('.puppy-list a')
-
-        expect(puppyLinks).toHaveLength(2)
+        const screen = render(res)
+        const puppyLinks = screen.getAllByRole('link')
+        expect(puppyLinks).toHaveLength(4)
       })
   })
 
@@ -43,15 +45,16 @@ describe('GET /', () => {
       .get('/')
       .expect(500)
       .then((res) => {
-        expect(res.text).toMatch('test error message')
+        const screen = render(res)
+        const msg = screen.getByText('test error message')
+
+        expect(msg).toBeInTheDocument()
       })
   })
 })
 
 describe('GET /:id', () => {
   it('renders puppy details', () => {
-    expect.assertions(6)
-
     lib.getPuppyById.mockImplementation((id, callback) => {
       expect(id).toBe(2)
       callback(null, mockPuppies.puppies[1])
@@ -61,21 +64,12 @@ describe('GET /:id', () => {
       .get('/2')
       .expect(200)
       .then((res) => {
-        const { document } = new JSDOM(res.text).window
+        const screen = render(res)
 
-        expect(
-          document.querySelector('.puppy img').getAttribute('src')
-        ).toMatch('2.jpg')
-        expect(
-          document.querySelector('.puppy img').getAttribute('alt')
-        ).toMatch('Coco')
-        expect(document.querySelector('h2').textContent).toMatch('Coco')
-        expect(document.querySelector('.puppy a').getAttribute('href')).toMatch(
-          '/edit/2'
-        )
-        expect(document.querySelectorAll('.puppy div')[0].textContent).toMatch(
-          'Pug'
-        )
+        const img = screen.getByAltText('Coco')
+        expect(img.src).toMatch(/\.jpg/)
+        const heading = screen.getByRole('heading', { name: 'Coco' })
+        expect(heading).toBeInTheDocument()
       })
   })
 
