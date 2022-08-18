@@ -23,6 +23,7 @@
     "extends": "eda"
   },
   "jest": {
+    "testEnvironment": "node",
     "watchPathIgnorePatterns": [
       "data.json"
     ]
