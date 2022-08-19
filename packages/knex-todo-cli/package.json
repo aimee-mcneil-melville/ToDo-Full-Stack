@@ -5,6 +5,7 @@
   "main": "commands.js",
   "scripts": {
     "lint": "eslint .",
+    "knex": "knex",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
