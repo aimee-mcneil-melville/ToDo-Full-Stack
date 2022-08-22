@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function PostSummary(props) {
-  const { title, paragraphs, dateCreated, id } = props.post
+  const { title, text, dateCreated, id } = props.post
+  const paragraphs = text?.split('\n') || []
   return (
     <div className="post">
       <Link to={`/posts/${id}`}>

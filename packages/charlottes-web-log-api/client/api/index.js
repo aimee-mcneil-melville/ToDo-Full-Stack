@@ -11,8 +11,6 @@ export function getPosts() {
 }
 
 export function addPost(post) {
-  // convert the large paragraphs string into an array of paragraphs
-  post.paragraphs = post.paragraphs.split('\n')
   return request
     .post('/v1/posts')
     .send(post)
@@ -25,8 +23,6 @@ export function addPost(post) {
 }
 
 export function updatePost(post) {
-  // convert the large paragraphs string into an array of paragraphs
-  post.paragraphs = post.paragraphs.split('\n')
   return request
     .patch(`/v1/posts/${post.id}`)
     .send(post)
@@ -108,9 +104,9 @@ function validatePostResponse(method, route, post) {
     throw Error(`Error: ${method} ${route} should return a blog post`)
   }
 
-  const { title, paragraphs } = post
+  const { title, text } = post
 
-  if (!title || !paragraphs) {
+  if (!title || !text) {
     throw Error(
       `Error: ${method} ${route} is not returning a correct blog post`
     )
@@ -123,9 +119,9 @@ function validatePostResponse(method, route, post) {
 //     throw Error(`Error: ${method} ${route} should return a comment`)
 //   }
 
-//   const { title, paragraphs } = comment
+//   const { title, text } = comment
 
-//   if (!title || !paragraphs) {
+//   if (!title || !text) {
 //     throw Error(`Error: ${method} ${route} is not returning a correct comment`)
 //   }
 // }

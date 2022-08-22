@@ -47,18 +47,6 @@ The database migrations and seeds have also already been written for you so you 
 
 > **Pro tip**: Because the frontend has been written with the specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Insomnia or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
 
-
-### What's up with the paragraphs?
-
-You will notice in the request and response payloads below that the paragraphs are _arrays of strings_. This decision is motivated more for a learning opportunity than as a real-world scenario, and you're going to need to keep this in mind when building the backend. The challenge with this approach is we can't store an array of strings in a database field and joining to a `paragraphs` table isn't the database design we're going for.
-
-So to make this work, you need to do two things:
-- `JSON.stringify` the `paragraphs` property before saving it to the database
-- `JSON.parse` it after you get the value from the database, and before you send the response to the client
-
-You can do this in either the route, the database function, or in a separate _mapping_ module. A mapping module is the most appropriate place to do it (and to convert between snake_case and camelCase), but you can choose the route or database function if you don't want to create another module.
-
-
 ### Routes
 
 Here is a table of routes that you need to implement as part of this exercise:
@@ -89,10 +77,7 @@ Response:
     "title": "Blog day 1",
     "dateCreated": 1495083077243,
     "commentCount": 2,
-    "paragraphs": [
-      "Today is a good day.",
-      "I found a million dollars."
-    ],
+    "text": "Today is a good day.",
   }
 ]
 ```
@@ -104,10 +89,7 @@ Request:
 ```json
 {
   "title": "This is my post",
-  "paragraphs": [
-    "I like how I can post.",
-    "This is fun."
-  ]
+  "text": "I like how I can post.",
 }
 ```
 
@@ -119,10 +101,7 @@ Response:
   "title": "This is my post",
   "dateCreated": 1495083077243,
   "commentCount": 0,
-  "paragraphs": [
-    "I like how I can post.",
-    "This is fun."
-  ]
+  "text": "I like how I can post.",
 }
 ```
 
@@ -134,10 +113,7 @@ Request:
 {
   "id": 144,
   "title": "This is my updated post",
-  "paragraphs": [
-    "I like how I can update posts.",
-    "It is fun."
-  ]
+  "text": "I like how I can update posts.",
 }
 ```
 
@@ -149,10 +125,7 @@ Response:
   "title":"This is my updated post",
   "dateCreated": 1495083077243,
   "commentCount": 0,
-  "paragraphs": [
-    "I like how I can update posts.",
-    "It is fun."
-  ]
+  "text": "I like how I can update posts.",
 }
 ```
 
