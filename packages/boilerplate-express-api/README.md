@@ -18,8 +18,8 @@ Phase 2 boilerplate project with:
 
 ```
 npm install
-npx knex migrate:latest
-npx knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 npm run dev
 ```
 

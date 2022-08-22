@@ -9,8 +9,8 @@ Clone the repo into your workspace and enter the commands below in your terminal
 ```sh
 git checkout -b <branchname>
 npm install
-npx knex migrate:latest
-npx knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 ```
 
 Visit [http://localhost:3000/users](http://localhost:3000/users) in your browser (or better yet, issue a GET request using Insomnia). If all went well, you should see a list of users.
