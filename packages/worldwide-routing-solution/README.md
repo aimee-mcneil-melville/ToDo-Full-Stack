@@ -1,101 +1,157 @@
 # Worldwide Routing
 
-This exercise has you building an experience to navigate continents and their countries. We'll use [React Router](https://reactrouter.com/docs) to create the links and pages and manage browser history.
-
+This exercise asks you to build an experience to navigate continents and their countries. We'll use [React Router](https://reactrouter.com/docs) to create the links and pages and manage browser history.
 
 ## Setup
 
-After cloning this repo:
+### 0. Cloning and installation
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-```sh
-cd worldwide-routing
-npm install
-npm run dev
-```
+    ```sh
+    cd worldwide-routing
+    npm install
+    npm run dev
+    ```
+  </details>
 
-Add the configuration for `BrowserRouter` in your `server.js` (this must go AFTER the line that sets up your `public` folder).
+---
 
-```js
-server.get('*', (req, res) => {
-  res.sendFile(path.resolve('server/public/index.html'))
-})
-```
+## Requirements
 
-Set up `BrowserRouter` in your `client/index.js`. 
+### 1. Preparing to use `<BrowserRouter>`
+- [ ] Add the configuration for `BrowserRouter` in our `server.js` (this must go AFTER the line that sets up our `public` folder)
+  <details style="padding-left: 2em">
+    <summary>More about configuration</summary>
 
-* Import the router from `react-router-dom` at the top of the file. _i.e. `import { BrowserRouter as Router } from 'react-router-dom'`_
+    Our code will likely look like this:
+    ```js
+    server.get('*', (req, res) => {
+      res.sendFile(path.resolve('server/public/index.html'))
+    })
+    ```
+  </details>
 
-* Inside your `ReactDOM.render()` function, you can then wrap the `<App />` component in `<Router></Router>` tags. 
+- [ ] Set up `<BrowserRouter>` in our `client/index.js`
+  <details style="padding-left: 2em">
+    <summary>More about <code>&lt;BrowserRouter&gt;</code> on the client side</summary>
 
-Note: _You could place the router within the App instead, around specific components, but by wrapping it around App we will give everything access to the Router's functionality._
+    1. Import the router from `react-router-dom` at the top of the file
+        ```jsx
+        import { BrowserRouter as Router } from 'react-router-dom'
+        ```
+    2. Inside our `ReactDOM.render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags 
 
+    **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
 
-## Release 1
+### 2. Building a Home
 
-Let's start with the couple of components that make up the home page. Check out the `App.jsx` component. It currently contains the main header as shown in the following image, the instructions are in a `Home` component, and the beginnings of the `Nav` component are also in place.
+Check out the `App.jsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
 
- * Start by completing the `Nav` component so that it contains a list of continent names (like in the image below) based on the information from `data/continents`.  Add a list item for Home too.
+<details>
+  <summary>Image of worldwide-routing after completing this section</summary>
 
- Tip: _You can use `Object.keys()` on what is exported from `data/continents.js` to get a list of continent names._
+  ![Web page showing a large title at top, a left navigation listing "Home" plus all seven continents as list items (but not links), and "Please select a continent from the nav list", in the centre](readme-images/release-1.png)
+</details>
+<br />
 
- * Import and use the `Nav` component so that it shows on all pages.
+- [ ] Complete the `<Nav>` component so that it contains a list of continent names (like in the image) based on the information from `data/continents`. Add a list item for Home, too
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
- * Import and then use the `Routes` and `Route` components from `react-router-dom`, so that the `Home` component will only show on `'/'`.
+    We can use `Object.keys()` on what is exported from `data/continents.js` to get a list of continent names.
+  </details>
 
-![after release 1](readme-images/release-1.png)
+- [ ] Import and use the `<Nav>` component so that it shows on all pages
 
+- [ ] Import and then use the `<Routes>` and `<Route>` components from `react-router-dom`, so that the `<Home>` component will only show on `'/'`
 
-## Release 2
+---
 
-Next, add a route for `continents/:name` to your `App.jsx`. We will use it to show the selected continent and its respective image from `data/continents.js` file. 
+### 3. Adding continents
 
-* Create a `Continent` component for this route. Import `useParams` from `react-router-dom` and then use this to determine which continent to show. 
+- [ ] Add a route for `continents/:name` to our `App.jsx`. We will use it to show the selected continent and its respective image from `data/continents.js` file
 
-* Use the `Link` component from `react-router-dom` in your `Nav` to create links for the user to the correct continent.
+- [ ] Create a `<Continent>` component for this route, and use `useParams` (imported from `react-router-dom`) to determine which continent to show
 
-* In the `Continent` component, also show a list of countries that the given continent contains.
+- [ ] In the `<Continent>` component, also show a list of countries that the given continent contains
 
-Notice how `Continent` has replaced the `Home` component in the image below.
+### 4. Linking it up
 
-![after release 2](readme-images/release-2.png)
+- [ ] In the `<Nav>` component, use the `<Link>` component from `react-router-dom` to create links for the user to navigate to continents
 
+<details>
+  <summary>Image of continent page after completing this section</summary>
+    
+  Notice how `<Continent>` has replaced the `<Home>` component in the image below.
 
-## Release 3
+  ![Left nav list items are now clickable, and the main content area shows the name of a single continent as the largest heading, plus a photo and a list of countries in that continent](readme-images/release-2.png)
+</details>
+<br />
 
-In this release, we'll create a component for an individual country. This is the first time you'll need to use `data/countries.js`.
+---
 
-* Create a route for this page. It should look something like: `continent/:name/:code`. 
+### 5. Adding countries
 
-Note: _We're using the continent name and country code for this route to help us later. The url path for the above suggestion will be entered into the browser as `/continent/Oceania/NZ`._
+Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.js`.
 
-* This route should render a `Country` component that shows all the information (in `data/countries`) about that specific country. 
+- [ ] Create a route for this page. It should look something like: `continent/:name/:code`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    We're using the continent name and country code for this route to help us later. The url path for the above suggestion will be entered into the browser as `/continent/Oceania/NZ`.
+  </details>
 
-Note: _The flag emoji icons don't work in all browsers (e.g. in Windows they seem to work in Firefox but not Chrome). If you see `NZ` instead of the NZ flag, try a different browser._ 
+- [ ] This route should render a `<Country>` component that shows all the information from `data/countries` for that specific country
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    The flag emoji icons don't work in all browsers (e.g. in Windows they seem to work in Firefox but not Chrome). If you see `NZ` instead of the NZ flag, try a different browser.
+  </details>
 
-![country after release 3](readme-images/release-3-a.png)
+- [ ] Go back to the `<Continent>` component and enable each country in the list to link to the page we've just created (remember that `<Link>` component)
 
-* Make sure the country list in `Continent` can link to the page you've just created (remember that `Link` component).
+<details>
+  <summary>Images of worldwide-routing after completing this section</summary>
 
-![continent after release 3](readme-images/release-3-b.png)
+  ![View of an individual country page, including a flag icon and a few data points about that country](readme-images/release-3-a.png)
+  ![Continent page is similar to before, except the list of countries are also now clickable links](readme-images/release-3-b.png)
+</details>
+<br />
 
+### 6. Adding neighbours
 
-## Release 4
+Currently each country just shows a string of its neighbours' country codes.
 
-Currently each country just shows a string of it's neighbours' country codes. Create a list that will show each neighbour's name instead and be a link to that country's page so you can visit the pages of neighbours easily.
+- [ ] Create a list that will show each neighbour's **name** instead and be a link to that country's page so we can visit the pages of neighbours easily
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-![after release 4](readme-images/release-4.png)
+    - Some countries have no neighbours, for example New Zealand. Consider how you handle that case
+    - Some countries have neighbours that are not on the same continent, for example, Panama or Turkey. This may factor into how you build this feature
+  </details>
 
+<details>
+  <summary>Image of country page after completing this section</summary>
 
-## Future Releases
+  ![The country page now has a list of neighbouring country names, rather than just a list of country codes, and each country name is a clickable link](readme-images/release-4.png)
+</details>
 
-Here are some ideas for future releases:
+---
 
-* If you haven't already, add a _Home_ link in the `Nav` component.
+## Stretch
 
-* Bold the selected continent in the `Nav` when viewing a continent or country and/or change the bullet point style (as shown in the release 4 screenshot) so users will know where they are.
+<details>
+  <summary>More about stretch challenges</summary>
 
-* Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population.
+  * If you haven't already, add a "Home" link in the `<Nav>` component
 
-* Read about React Router's [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes) and [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes). Now try nesting the routes for `Home`, `Continent` and `Country` within `Nav`. The `Home` component should render on the index route, i.e. when the URL is just `http://localhost:3000/`. 
+  * Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are
 
-Note: _It's probably not good application design to have everything nested inside the `Nav` component (if it's called `Nav` it should just be for navigation!) but Nested Routes are a new and useful feature of React Router, and this stretch task will give you practice with them._
+  * Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population
+
+  * Read about React Router's [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes) and [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes). Now try nesting the routes for `<Home>`, `<Continent>` and `<Country>` within `<Nav>`. The `<Home>` component should render on the index route, i.e. when the URL is just `http://localhost:3000/`. 
+
+  **Note:** It's probably not good application design to have everything nested inside the `<Nav>` component (if it's called `<Nav>` it should just be for navigation!) but Nested Routes are a useful feature of React Router, and this stretch task will give you practice with them.
+</details>
