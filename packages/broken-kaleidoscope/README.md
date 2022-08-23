@@ -134,18 +134,17 @@ To easily work with the values we use in the `style` JSX attribute, we should pu
 ### 5. Rainbow pixels
 
 It's high time we stopped being so monochromatic. 
-- [ ] **Outside** the `<Pixel>` component, add a function to generate a random colour. Then use it to build the initial `style` state
+- [ ] Update your `<Pixel>` component so that the initial `style` state is a random colour (different for every pixel!)
   <details style="padding-left: 2em">
     <summary>More about generating random colours</summary>
     
     There a number of examples on how to do this out there (try a search on 'random hex color') but the one we like is this (adapted from [this Stack Overflow comment](https://stackoverflow.com/questions/1484506/random-color-generator#comment81414569_5365036)):
 
     ```js
-    const randomHexColor = () =>
-      `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
+    `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
     ```
 
-    Place the above **outside** your `<Pixel>` component. When you've done that, edit the initial state for `style` so that it uses the new function to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
+    Edit the initial state for `style` so that it uses the above code to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
 
     When you refresh the page, what you're aiming for is something like this:
 
@@ -153,7 +152,7 @@ It's high time we stopped being so monochromatic.
 
     That's more like it!
 
-    > **Do not get bogged down in exactly how `randomHexColor` works!** It's no different to including a Node library in your program, like `fs` or `Knex`: you don't need to understand all the code it contains in order to use it. It's a good instinct to understand the code you put in your program, but we're giving you express permission to copy/paste this one. You can also try it out in the Node REPL to see it in action.
+    > **Don't get bogged down in exactly how this random hex colour generator works!** It's no different to including a Node library in your program, like `fs` or `knex`: you don't need to understand all the code it contains in order to use it. It's a good instinct to understand the code you put in your program, but we're giving you express permission to copy/paste this one. You can also try it out in the Node REPL (with `console.log()`) to see it in action.
   </details>
 
 ### 6. In a state of flux
