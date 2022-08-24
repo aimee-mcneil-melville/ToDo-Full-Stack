@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { NavLink, NavGroup } from './Styled'
 
-
 function Nav() {
   const user = useSelector((state) => state.loggedInUser)
   // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect

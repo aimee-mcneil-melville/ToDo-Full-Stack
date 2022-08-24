@@ -1,10 +1,8 @@
 const express = require('express')
 // TODO: import checkJwt
+
 const db = require('../db/fruits')
-
 const router = express.Router()
-
-module.exports = router
 
 // A public endpoint that anyone can access
 // GET /api/v1/fruits
@@ -77,3 +75,5 @@ router.delete('/:id', (req, res) => {
       }
     })
 })
+
+module.exports = router

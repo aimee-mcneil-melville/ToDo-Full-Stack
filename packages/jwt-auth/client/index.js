@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
-import App from './components/App'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
+
+import App from './components/App'
 
 import store from './store'
 

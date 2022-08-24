@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { addUser } from '../api'
-import { updateLoggedInUser } from '../actions/loggedInUser'
-
 import { 
   Error,
   GridForm,
@@ -15,6 +12,9 @@ import {
   RadioLabel,
   Radio
 } from './Styled'
+
+import { addUser } from '../api'
+import { updateLoggedInUser } from '../actions/loggedInUser'
 
 const icons = [
   '🍇', '🍈', '🍉', '🍊', '🍋',

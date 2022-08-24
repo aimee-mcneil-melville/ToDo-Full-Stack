@@ -2,10 +2,7 @@ const express = require('express')
 // TODO: import checkJwt
 
 const db = require('../db/users')
-
 const router = express.Router()
-
-module.exports = router
 
 // TODO: use checkJwt as middleware
 // GET /api/v1/users
@@ -44,3 +41,5 @@ router.post('/', (req, res) => {
       }
     })
 })
+
+module.exports = router
