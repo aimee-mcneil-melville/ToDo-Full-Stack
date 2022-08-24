@@ -27,6 +27,7 @@ router.post('/', (req, res) => {
   }
 
   db.addFruit(newFruit)
+    .then(() => db.getFruits())
     .then(fruits => res.json({ fruits }))
     .catch(err => {
       console.error(err)
@@ -46,7 +47,9 @@ router.put('/', (req, res) => {
     average_grams_each: fruit.averageGramsEach,
   }
 
-  db.updateFruit(fruitToUpdate, auth0Id)
+  db.userCanEdit(fruit.id, auth0Id)
+    .then(() => db.updateFruit(fruitToUpdate))
+    .then(() => db.getFruits())
     .then(fruits => res.json({ fruits }))
     .catch(err => {
       console.error(err)
@@ -64,7 +67,9 @@ router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.user?.sub
 
-  db.deleteFruit(id, auth0Id)
+  db.userCanEdit(id, auth0Id)
+    .then(() => db.deleteFruit(id, auth0Id))
+    .then(() => db.getFruits())
     .then(fruits => res.json({ fruits }))
     .catch(err => {
       console.error(err)

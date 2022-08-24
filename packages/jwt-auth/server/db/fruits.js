@@ -5,6 +5,7 @@ module.exports = {
   addFruit,
   updateFruit,
   deleteFruit,
+  userCanEdit,
 }
 
 function sort(fruitArray) {
@@ -24,45 +25,33 @@ function getFruits(db = connection) {
       'username',
       'icon'
     )
-    .then(sort)
+    .then((fruits) => sort(fruits))
 }
 
 function addFruit(fruit, db = connection) {
   return db('fruits')
     .insert(fruit)
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
 }
 
-function updateFruit(newFruit, user, db = connection) {
+function updateFruit(newFruit, db = connection) {
   return db('fruits')
     .where('id', newFruit.id)
-    .first()
-    .then((fruit) => authorizeUpdate(fruit, user))
-    .then(() => {
-      return db('fruits').where('id', newFruit.id).update(newFruit)
-    })
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
+    .update(newFruit)
 }
 
-function deleteFruit(id, auth0Id, db = connection) {
+function deleteFruit(id, db = connection) {
   return db('fruits')
     .where('id', id)
-    .first()
-    .then((fruit) => authorizeUpdate(fruit, auth0Id))
-    .then(() => {
-      return db('fruits').where('id', id).delete()
-    })
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
+    .delete()
 }
 
-function authorizeUpdate(fruit, auth0Id) {
-  if (fruit.added_by_user !== auth0Id) {
-    throw new Error('Unauthorized')
-  }
+function userCanEdit(fruitId, auth0Id) {
+  return db('fruits')
+    .where('id', fruitId)
+    .first()
+    .then(fruit => {
+      if (fruit.added_by_user !== auth0Id) {
+        throw new Error('Unauthorized')
+      }
+    })
 }
