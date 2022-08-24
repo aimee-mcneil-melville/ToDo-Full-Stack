@@ -37,14 +37,14 @@ function Register() {
     if(user.username) navigate('/')
   }, [user])
 
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     setForm({ 
       ...form,
       [evt.target.name]: evt.target.value
     })
   }
 
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     evt.preventDefault()
     const userInfo = {
       auth0Id: user.auth0Id,
@@ -55,7 +55,7 @@ function Register() {
       .catch((err) => setErrorMsg(err.message))
   }
 
-  function hideError() {
+  const hideError = () => {
     setErrorMsg('')
   }
 

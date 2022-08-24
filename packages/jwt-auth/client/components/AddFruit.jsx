@@ -8,7 +8,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
   // TODO: read token from global state
   const [newFruit, setNewFruit] = useState(false)
 
-  function handleAddChange(e) {
+  const handleAddChange = (e) => {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
@@ -16,7 +16,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
     })
   }
 
-  function handleAdd() {
+  const handleAdd = () => {
     const fruit = { ...newFruit }
     // TODO: pass token as second parameter
     addFruit(fruit, 'token')

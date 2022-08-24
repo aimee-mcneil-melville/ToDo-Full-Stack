@@ -8,7 +8,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   // TODO: read token from global state
   const [editing, setEditing] = useState(selected)
 
-  function handleEditChange(e) {
+  const handleEditChange = (e) => {
     const { name, value } = e.target
     setEditing({
       ...editing,
@@ -16,7 +16,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     })
   }
 
-  function handleUpdate() {
+  const handleUpdate = () => {
     // TODO: pass token as second parameter
     updateFruit(editing, 'token')
       .then((remoteFruits) => setFruits(remoteFruits))
@@ -25,7 +25,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
       .catch((err) => setError(err.message))
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')
       .then(setFruits)
