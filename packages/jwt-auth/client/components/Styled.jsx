@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const GridForm = styled.form`
-  width: 50%;
+  width: 70%;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: auto 1fr;
@@ -11,8 +12,15 @@ export const ColOne = styled.label`
   grid-column: 1;
 `
 
-export const ColTwo = styled.input`
+export const ColTwoText = styled.input`
   grid-column: 2;
+`
+
+export const ColTwoField = styled.fieldset`
+  grid-column: 2;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export const Button = styled.button`
@@ -23,4 +31,24 @@ export const Button = styled.button`
 export const Error = styled.div`
   color: red;
   cursor: pointer;
+`
+
+export const RadioLabel = styled.label`
+  padding: 5px;
+  ${props => props.selected && `
+    border-radius: 15%;
+    background-color: grey;
+  `}
+`
+
+export const Radio = styled.input`
+  display: none;
+`
+
+export const NavGroup = styled.nav`
+  float: right;
+`
+
+export const NavLink = styled(Link)`
+  margin-right: 30px;
 `

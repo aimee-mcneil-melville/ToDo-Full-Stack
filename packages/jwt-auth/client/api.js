@@ -5,9 +5,7 @@ const rootUrl = '/api/v1'
 export function getFruits() {
   return request
     .get(`${rootUrl}/fruits`)
-    .then((res) => {
-      return res.body.fruits
-    })
+    .then((res) => res.body.fruits)
     .catch(logError)
 }
 
@@ -33,17 +31,32 @@ export function deleteFruit(id, token) {
   return request
     .delete(`${rootUrl}/fruits/${id}`)
     .set('authorization', `Bearer ${token}`)
-    .send()
     .then((res) => res.body.fruits)
     .catch(logError)
 }
 
-export async function addUser(user) {
-  return request.post(`${rootUrl}/users`).send(user).catch(logError)
+export function getUser(token) {
+  return request
+    .get(`${rootUrl}/users`)
+    .set('Authorization', `Bearer ${token}`)
+    .then((res) => res.body)
+    .catch(logError)
+}
+
+export function addUser(user, token) {
+  return request
+    .post(`${rootUrl}/users`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(user)
+    .catch(logError)
 }
 
 function logError(err) {
-  if (err.message === 'Forbidden') {
+  if (err.response.text === 'Username Taken') {
+    throw new Error(
+      'Username already taken - please choose another'
+    )
+  } else if (err.message === 'Forbidden') {
     throw new Error(
       'Only the user who added the fruit may update and delete it'
     )

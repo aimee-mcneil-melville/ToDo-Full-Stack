@@ -1,7 +1,8 @@
 import React from 'react'
+// TODO: import useAuth0 function
 
-// TODO: import a proper isAuthenticated function
 const isAuthenticated = () => {
+  // TODO: destructure and return isAuthenticated
   return true
 }
 

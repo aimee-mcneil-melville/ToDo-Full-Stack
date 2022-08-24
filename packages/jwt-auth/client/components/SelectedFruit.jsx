@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
-  // TODO: read from global state
+  // TODO: read token from global state
   const [editing, setEditing] = useState(selected)
 
   function handleEditChange(e) {
@@ -39,13 +39,15 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
+  const { name: currentName, username: user } = selected
 
   return (
     <>
-      <h2>Selected</h2>
+      <h2>Selected: {currentName}</h2>
+      <p>Originally added by {user}</p>
       <GridForm>
         <ColOne>Name:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="name"
           aria-label="selected-name"
@@ -55,7 +57,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
         />
 
         <ColOne>Average Grams Each:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="averageGramsEach"
           aria-label="selected-grams"

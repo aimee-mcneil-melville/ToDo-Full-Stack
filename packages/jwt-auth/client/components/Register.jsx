@@ -1,54 +1,91 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addUser } from '../api'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { addUser } from '../api'
+import { updateLoggedInUser } from '../actions/loggedInUser'
+
+import { 
+  Error,
+  GridForm,
+  ColOne, 
+  ColTwoText,
+  ColTwoField,
+  Button,
+  RadioLabel,
+  Radio
+} from './Styled'
+
+const icons = [
+  '🍇', '🍈', '🍉', '🍊', '🍋',
+  '🍌', '🍍', '🥭', '🍎', '🍏',
+  '🍐', '🍑', '🍒', '🍓', '🫐',
+  '🥝', '🍅', '🥥'
+]
 
 function Register() {
   const user = useSelector((state) => state.loggedInUser)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [form, setForm] = useState({
-    auth0Id: '',
-    email: '',
+    username: '',
+    icon: ''
   })
+  const [errorMsg, setErrorMsg] = useState('')
 
   useEffect(() => {
-    setForm({
-      auth0Id: user?.auth0Id,
-      email: user?.email,
-    })
+    if(user.username) navigate('/')
   }, [user])
 
-  async function handleClick() {
-    await addUser(form)
-    navigate('/')
+  function handleChange(evt) {
+    setForm({ 
+      ...form,
+      [evt.target.name]: evt.target.value
+    })
   }
 
+  function handleSubmit(evt) {
+    evt.preventDefault()
+    const userInfo = {
+      auth0Id: user.auth0Id,
+      ...form
+    }
+    addUser(userInfo, user.token)
+      .then(() => dispatch(updateLoggedInUser(userInfo)))
+      .catch((err) => setErrorMsg(err.message))
+  }
+
+  function hideError() {
+    setErrorMsg('')
+  }
+
+  // TODO: already logged in
   return (
     <>
-      <h2>Register</h2>
-      <GridForm>
-        <ColOne htmlFor="username">Auth0 Id:</ColOne>
-        <ColTwo
+      <h2>Complete profile set up</h2>
+      {errorMsg && <Error onClick={hideError}>Error: {errorMsg}</Error>}
+      <GridForm onSubmit={handleSubmit}>
+        <ColOne htmlFor="username">Username:</ColOne>
+        <ColTwoText
           type="text"
-          id="auth0Id"
-          name="auth0Id"
-          value={form.auth0Id}
-          disabled={true}
+          id="username"
+          name="username"
+          value={form.username}
+          onChange={handleChange}
         />
 
-        <ColOne htmlFor="email">Email:</ColOne>
-        <ColTwo
-          type="text"
-          id="email"
-          name="email"
-          value={form.email}
-          disabled={true}
-        />
+        <ColOne htmlFor="icon">Which fruit best represents your personality?</ColOne>
+        <ColTwoField id="icon">
+          {icons.map(fruit => 
+            <RadioLabel key={fruit} selected={form.icon === fruit}>
+              <Radio id={fruit} type="radio" value={fruit} name="icon" onChange={handleChange}/>
+              {fruit}
+            </RadioLabel>
+          )}
+        </ColTwoField>
 
-        <Button type="button" onClick={handleClick}>
-          Register
+        <Button disabled={!(form.username && form.icon)}>
+          Save Profile
         </Button>
       </GridForm>
     </>

@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// use checkJwt as middleware
+// TODO: use checkJwt as middleware
 // POST /api/v1/fruits
 router.post('/', async (req, res) => {
   const { fruit } = req.body
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// use checkJwt as middleware
+// TODO: use checkJwt as middleware
 // PUT /api/v1/fruits
 router.put('/', async (req, res) => {
   const { fruit } = req.body
@@ -62,7 +62,7 @@ router.put('/', async (req, res) => {
   }
 })
 
-// use checkJwt as middleware
+// TODO: use checkJwt as middleware
 // DELETE /api/v1/fruits
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)

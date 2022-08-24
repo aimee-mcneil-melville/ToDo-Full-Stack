@@ -2,21 +2,23 @@ const connection = require('./connection')
 
 module.exports = {
   userExists,
-  getUserByName,
+  getUser,
   createUser,
 }
 
 function userExists(username, db = connection) {
   return db('users')
-    .count('id as n')
     .where('username', username)
-    .then((count) => {
-      return count[0].n > 0
+    .then((usersFound) => {
+      return usersFound.length > 0
     })
 }
 
-function getUserByName(username, db = connection) {
-  return db('users').select().where('username', username).first()
+function getUser(id, db = connection) {
+  return db('users')
+    .select('username', 'icon')
+    .where('auth0_id', id)
+    .first()
 }
 
 function createUser(user, db = connection) {

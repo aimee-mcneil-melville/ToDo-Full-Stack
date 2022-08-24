@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoggedInUser } from './actions/loggedInUser'
+import { updateLoggedInUser } from './actions/loggedInUser'
 
 // eslint-disable-next-line no-unused-vars
 export async function cacheUser(useAuth0) {
@@ -13,12 +13,12 @@ export async function cacheUser(useAuth0) {
   if (isAuthenticated && !loggedInUser?.token) {
     try {
       const userToSave = {
-        auth0Id: '',
-        email: '',
+        auth0Id: user?.sub,
+        email: user?.email,
         token: '',
       }
 
-      dispatch(setLoggedInUser(userToSave))
+      dispatch(updateLoggedInUser(userToSave))
     } catch (err) {
       console.error(err)
     }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
 
 function AddFruit({ setFruits, closeAddForm, setError }) {
-  // TODO: read from global state
+  // TODO: read token from global state
   const [newFruit, setNewFruit] = useState(false)
 
   function handleAddChange(e) {
@@ -32,7 +32,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
       <h2>Add new</h2>
       <GridForm>
         <ColOne>Name:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="name"
           aria-label="adding-name"
@@ -41,7 +41,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
         />
 
         <ColOne>Average Grams Each:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="averageGramsEach"
           aria-label="adding-grams"

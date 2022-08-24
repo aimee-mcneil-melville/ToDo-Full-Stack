@@ -19,6 +19,7 @@ function Fruits() {
   function openAddForm(e) {
     e.preventDefault()
     setAdding(true)
+    clearSelected()
   }
 
   function closeAddForm() {
@@ -28,6 +29,7 @@ function Fruits() {
   function setSelectHandler(fruit, e) {
     e.preventDefault()
     setSelected(fruit)
+    closeAddForm()
   }
 
   function clearSelected() {

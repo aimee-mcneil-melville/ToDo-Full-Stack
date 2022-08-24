@@ -15,11 +15,14 @@ function sort(fruitArray) {
 
 async function getFruits(db = connection) {
   return db('fruits')
+    .join('users', 'added_by_user', 'auth0_id')
     .select(
       'id',
       'name',
       'average_grams_each as averageGramsEach',
-      'added_by_user as addedByUser'
+      'added_by_user as addedByUser',
+      'username',
+      'icon'
     )
     .then(sort)
 }
