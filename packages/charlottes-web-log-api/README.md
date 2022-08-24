@@ -2,210 +2,308 @@
 
 Last week you created a frontend blog for Charlotte. In this exercise, you'll build an API for her blog.
 
-![Charlotte's Web](charlottes-web.png)
+Learning objectives:
+1. refresh your database querying skills
+1. practice exposing an API for client side consumption
+1. use Insomnia to test an API
 
-## Objective
+You won't need the front-end for the purposes of this challenge.
 
-The objectives of this challenge are to:
-- refresh your database querying skills
-- practice exposing an API for client side consumption
+![Charlotte's Web logo](charlottes-web.png)
 
 ## Setup
 
-Clone this repo, and from the repo's folder
+### 0. Installation and migrations
 
-```sh
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm run dev
-```
+- [ ] Clone this repo and `cd` into the new directory
+- [ ] Install packages, run migrations and seeds, and start the dev server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-## Exercise
+    Commands might look like this:
 
-**Important**: Read this entire file before beginning the challenge.
+    ```sh
+    npm install
+    npm run knex migrate:latest
+    npm run knex seed:run
+    npm run dev
+    ```
+  </details>
 
-### Overview
+- [ ] Open Insomnia, Thunder Client, or the client of your choice for testing API calls
 
-Your task is to write the API routes (and associated database queries) that will allow you to:
- - Retrieve a list of blog posts
- - Create a new blog post
- - Update an existing blog post
- - Delete a blog post
- - Retrieve comments for a particular blog post
- - Create a new comment for a particular blog post
- - Update an existing comment for a particular blog post
- - Delete a comment for a particular blog post
+---
 
-The React frontend, including client side components and routes, has already been written for you. As you complete each part, you will be able to see the blog take shape.
+## Requirements
 
-The database migrations and seeds have also already been written for you so you don't have to worry about designing the database and populating it with data.
+The database migrations and seeds have already been written for you so you don't have to worry about designing the database and populating it with data.
 
 - Write your database functions in `server/db/db.js`
-- Write your API functions in `server/routes/posts.js`
+- Write your API functions in `server/routes/posts.js` and `server/routes/comments.js`
+- Use Insomnia or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described
 - Try implementing the database and API routes one at a time (i.e. write the database query first, and then write the corresponding API route before moving on to the next database query)
 
-> **Pro tip**: Because the frontend has been written with the specification described below, it is possible (and even encouraged) to complete this entire exercise without viewing the app in your browser. Use Insomnia or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described in the rest of this file. If you build the API correctly, the frontend should _just work_.
+<details>
+  <summary>Overview of all routes</summary>
 
-### Routes
+  Here is a table of routes that you need to implement as part of this exercise:
 
-Here is a table of routes that you need to implement as part of this exercise:
+  | METHOD | ENDPOINT                                | USAGE                                      | RETURNS                     |
+  |--------|-----------------------------------------|--------------------------------------------|-----------------------------|
+  | GET    | `/v1/posts`                             | Get a list of blog posts                   | An array of blog posts      |
+  | POST   | `/v1/posts`                             | Add a new blog post                        | The newly created blog post |
+  | PATCH    | `/v1/posts/:id`                         | Update an existing blog post               | The updated blog post       |
+  | DELETE | `/v1/posts/:id`                         | Delete an existing blog post               | Nothing (status OK)         |
+  | GET    | `/v1/posts/:postId/comments`            | Get a list of comments for a specific post | An array of comments        |
+  | POST   | `/v1/posts/:postId/comments`            | Add a new comment to a specific post       | The newly created comment   |
+  | PATCH    | `/v1/comments/:commentId`               | Update an existing comment                 | The updated comment         |
+  | DELETE | `/v1/comments/:commentId`               | Delete an existing comment                 | Nothing (status OK)         |
 
-| METHOD | ENDPOINT                                | USAGE                                      | RETURNS                     |
-|--------|-----------------------------------------|--------------------------------------------|-----------------------------|
-| GET    | `/v1/posts`                             | Get a list of blog posts                   | An array of blog posts      |
-| POST   | `/v1/posts`                             | Add a new blog post                        | The newly created blog post |
-| PATCH    | `/v1/posts/:id`                         | Update an existing blog post               | The updated blog post       |
-| DELETE | `/v1/posts/:id`                         | Delete an existing blog post               | Nothing (status OK)         |
-| GET    | `/v1/posts/:postId/comments`            | Get a list of comments for a specific post | An array of comments        |
-| POST   | `/v1/posts/:postId/comments`            | Add a new comment to a specific post       | The newly created comment   |
-| PATCH    | `/v1/comments/:commentId`               | Update an existing comment                 | The updated comment         |
-| DELETE | `/v1/comments/:commentId`               | Delete an existing comment                 | Nothing (status OK)         |
+  In order to complete this exercise, the JSON responses will need conform to formats in each instruction, below.
 
-In order to complete this exercise, the JSON responses will need conform to the following formats below:
+</details>
+<br  />
 
-### Request and response formats
+### Things to consider
 
-**GET `/v1/posts`**
+<details>
+  <summary>Tips</summary>
 
-Response:
+  - Instead of using `res.render` you will need to use `res.json`
+  - The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries
+</details>
+<br />
 
-```json
-[
-  {
-    "id": 123,
-    "title": "Blog day 1",
-    "dateCreated": 1495083077243,
-    "commentCount": 2,
-    "text": "Today is a good day.",
-  }
-]
-```
+---
 
-**POST `/v1/posts`**
+### 1. Getting posts
 
-Request:
+- [ ] Get a list of blog posts
+  <details style="padding-left: 2em">
+    <summary>More about getting posts</summary>
+    
+    Request type and route:<br />
+    **GET `/v1/posts`**
 
-```json
-{
-  "title": "This is my post",
-  "text": "I like how I can post.",
-}
-```
+    Response:
 
-Response:
+    ```json
+    [
+      {
+        "id": 123,
+        "title": "Blog day 1",
+        "dateCreated": 1495083077243,
+        "text": "Today is a good day."
+      }
+    ]
+    ```
 
-```json
-{
-  "id": 144,
-  "title": "This is my post",
-  "dateCreated": 1495083077243,
-  "commentCount": 0,
-  "text": "I like how I can post.",
-}
-```
+    The above is an example of the structure of the response, not the actual data you will see on a successful request. Take note of the `[]` around the object, telling us that we have an array of posts (an array of one, in this case). Note also that `dateCreated` is in camelCase, rather than snake_case. Our actual responses will contain different data, but should have the same structure in order to work.
+  </details>
 
-**PATCH `/v1/posts/:id`**
+### 2. Adding, updating, and deleting posts
 
-Request:
+- [ ] Add a new blog post
+  <details style="padding-left: 2em">
+    <summary>More about adding a post</summary>
+    
+    Request type and route:<br />
+    **POST `/v1/posts`**
 
-```json
-{
-  "id": 144,
-  "title": "This is my updated post",
-  "text": "I like how I can update posts.",
-}
-```
+    Request body:
 
-Response:
-
-```json
-{
-  "id": 144,
-  "title":"This is my updated post",
-  "dateCreated": 1495083077243,
-  "commentCount": 0,
-  "text": "I like how I can update posts.",
-}
-```
-
-**GET `/v1/posts/:postId/comments`**
-
-Response:
-
-```json
-[
+    ```json
     {
-        "id": 1,
-        "postId": 123,
-        "datePosted": 1495083077243,
-        "comment": "Great blog"
-    },
-    {
-        "id": 2,
-        "postId": 123,
-        "datePosted": 1495083077243,
-        "comment": "Really Great blog"
+      "title": "This is my post",
+      "text": "I like how I can post."
     }
-]
-```
+    ```
 
-**POST `/v1/posts/:postId/comments`**
+    Response:
 
-Request:
+    ```json
+    {
+      "id": 144,
+      "title": "This is my post",
+      "dateCreated": 1495083077243,
+      "text": "I like how I can post."
+    }
+    ```
 
-```json
-{
-  "comment": "I enjoyed this post."
-}
-```
+    **Hint:** What does the `insert` knex method return? How might we use that information to generate the response data shown above?
+  </details>
 
-Response:
+- [ ] Update an existing blog post
+  <details style="padding-left: 2em">
+    <summary>More about updating a post</summary>
+    
+    Request type and route:<br />
+    **PATCH `/v1/posts/:id`**
 
-```json
-{
-  "id": 144,
-  "postId": 123,
-  "datePosted": 1495083077243,
-  "comment": "I enjoyed this post."
-}
-```
+    Request body:
 
-**PATCH `/v1/comments/:commentId`**
+    ```json
+    {
+      "id": 124,
+      "title": "This is my updated post",
+      "text": "I like how I can update posts."
+    }
+    ```
 
-Request:
+    Response:
 
-```json
-{
-  "id": 144,
-  "postId": 123,
-  "comment": "I really enjoyed this post."
-}
-```
+    ```json
+    {
+      "id": 124,
+      "title":"This is my updated post",
+      "dateCreated": 1495083077243,
+      "text": "I like how I can update posts."
+    }
+    ```
+  </details>
 
-Response:
+- [ ] Delete an existing blog post
+  <details style="padding-left: 2em">
+    <summary>More about deleting posts</summary>
+    
+    Request type and route:<br />
+    **DELETE `/v1/posts/:id`**
 
-```json
-{
-  "id": 144,
-  "postId": 123,
-  "datePosted": 1495083077243,
-  "comment": "I really enjoyed this post."
-}
-```
+    Response: Nothing (status OK)
 
+    You may also want to browse the contents of your database in DB Browser or VS Code's SQLite Viewer to verify that deletion has worked as expected.
+  </details>
 
-## Gotchas
+**Hint:** You can always re-run the seeds of your database to start over with a clean set of records.
 
-- The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries. If you'd rather use an external library, you may find the following links useful:
-  - https://www.npmjs.com/package/camelcase-keys
-  - https://lodash.com/docs/4.17.4#camelCase
-  - https://lodash.com/docs/4.17.4#snakeCase
-  - https://lodash.com/docs/4.17.11#mapKeys
-- Instead of using `res.render` you will need to use `res.json`
+---
 
+### 3. Getting comments
 
-## Stretch Goals
+- [ ] Get a list of comments for a specific post
+  <details style="padding-left: 2em">
+    <summary>More about getting comments</summary>
+    
+    Request type and route:<br />
+    **GET `/v1/posts/:postId/comments`**
 
-- Write some tests for your API routes using `supertest`
-- Add the ability to like / dislike comments (once you have done the migrations/seeds/queries/api routes, you will need to write some front end `api` functions and `React` components to display these - have a particular look at the `client/api/index.js` and `client/components/Post.jsx` for pointers on how to add client side API routes and front end components)
+    Response:
+
+    ```json
+    [
+        {
+            "id": 1,
+            "postId": 123,
+            "datePosted": 1495083077243,
+            "comment": "Great blog"
+        },
+        {
+            "id": 2,
+            "postId": 123,
+            "datePosted": 1495083077243,
+            "comment": "Really Great blog"
+        }
+    ]
+    ```
+  </details>
+
+### 4. Adding, updating, and deleting comments
+
+- [ ] Add a new comment to a specific post
+  <details style="padding-left: 2em">
+    <summary>More about adding comments</summary>
+    
+    Request type and route:<br />
+    **POST `/v1/posts/:postId/comments`**
+
+    Request body:
+
+    ```json
+    {
+      "comment": "I enjoyed this post."
+    }
+    ```
+
+    Response:
+
+    ```json
+    {
+      "id": 4,
+      "postId": 123,
+      "datePosted": 1495083077243,
+      "comment": "I enjoyed this post."
+    }
+    ```
+  </details>
+
+- [ ] Update an existing comment
+  <details style="padding-left: 2em">
+    <summary>More about updating comments</summary>
+    
+    Request type and route:<br />
+    **PATCH `/v1/comments/:commentId`**
+
+    Request body:
+
+    ```json
+    {
+      "id": 2,
+      "postId": 123,
+      "comment": "I really enjoyed this post."
+    }
+    ```
+
+    Response:
+
+    ```json
+    {
+      "id": 2,
+      "postId": 123,
+      "datePosted": 1495083077243,
+      "comment": "I really enjoyed this post."
+    }
+    ```
+  </details>
+
+- [ ] Delete an existing comment
+  <details style="padding-left: 2em">
+    <summary>More about deleting comments</summary>
+    
+    Request type and route:<br />
+    **DELETE `/v1/comments/:commentId`**
+
+    Response: Nothing (status OK)
+  </details>
+
+### 5. See it in the browser
+
+**Once all other steps are complete...**
+
+- [ ] Terminate your dev server and restart with an alternate run script
+  <details style="padding-left: 2em">
+    <summary>More about alternate scripts</summary>
+
+    `npm run dev:all`
+
+    Visit [http://localhost:3000](http://localhost:3000) and see Charlotte's Web Log in action. You may find that there are a couple things that didn't turn out as you expected, or everything might be perfect!
+  </details>
+
+- [ ] Troubleshoot any outstanding issues you detect in the browser
+
+Well done!
+
+---
+
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+
+  - Write some tests for your API routes using `supertest`
+  - Add the ability to like / dislike comments (once you have done the migrations/seeds/queries/api routes, you will need to write some front end `api` functions and `React` components to display these - have a particular look at the `client/api/index.js` and `client/components/Post.jsx` for pointers on how to add client side API routes and front end components)
+  - Remember converting snake_case into camelCase for some db field names? This works well when converting just one or two, but could be troublesome with many. Try using an external library to handle this. You may find the following links useful:
+    - https://www.npmjs.com/package/camelcase-keys
+    - https://lodash.com/docs/4.17.4#camelCase
+    - https://lodash.com/docs/4.17.4#snakeCase
+    - https://lodash.com/docs/4.17.11#mapKeys
+</details>

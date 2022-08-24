@@ -3,7 +3,6 @@ exports.up = (knex) => {
     table.increments().primary()
     table.string('title')
     table.date('date_created')
-    table.integer('comment_count').defaultsTo(0)
     table.string('text')
   })
 }
