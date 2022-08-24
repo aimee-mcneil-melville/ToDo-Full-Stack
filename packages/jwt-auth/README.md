@@ -31,6 +31,8 @@ In order to complete the implementation of authentication for this app, we need 
     - PUT `/api/v1/fruits`
     - POST `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
+    - GET `/api/v1/users`
+    - POST `/api/v1/users`
 
 ## 0. Have a look around first
 
@@ -146,7 +148,7 @@ The `user` object has other properties, we are interested in two of them:
 
 Use these values to set the corresponding properties on the `userToSave` object.
 
-_Note: The `cacheUser` function (from `auth0-utils.js`) does `dispatch(setLoggedInUser(userToSave))`. Every time the `App` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata._
+_Note: The `cacheUser` function (from `auth0-utils.js`) does `dispatch(updateLoggedInUser(userToSave))`. Every time the `App` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata._
 
 ## 6. Client-side: Passing access tokens
 
@@ -173,11 +175,11 @@ In `server/auth0.js`, set the `domain`(1️⃣) and `audience`(3️⃣) values. 
 Every time a route receives an HTTP request, the checkJwt middleware will trigger and issue an HTTP request behind the scenes (machine to machine). The Auth0 service will compare the public signatures. If all goes well, `express` will execute the body of your route.
 
 ## 8. Server-side: Pass middleware to routes
-There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users: `POST`, `PUT` and `DELETE`.
+There are three routes in `server/routes/fruits.js` and two routes in `server/routes/users.js` that we want to be accessible only for authenticated users.
 
 In each of these routes pass `checkJwt` as a second parameter, e.g.:
 ```javascript
-route.post('/', checkJwt, async (req, res) => {
+route.post('/', checkJwt, (req, res) => {
     // do stuff here
 })
 ```
