@@ -13,7 +13,7 @@ function sort(fruitArray) {
   return allFruits
 }
 
-async function getFruits(db = connection) {
+function getFruits(db = connection) {
   return db('fruits')
     .join('users', 'added_by_user', 'auth0_id')
     .select(
@@ -27,7 +27,7 @@ async function getFruits(db = connection) {
     .then(sort)
 }
 
-async function addFruit(fruit, db = connection) {
+function addFruit(fruit, db = connection) {
   return db('fruits')
     .insert(fruit)
     .then(() => db)
@@ -35,7 +35,7 @@ async function addFruit(fruit, db = connection) {
     .then(sort)
 }
 
-async function updateFruit(newFruit, user, db = connection) {
+function updateFruit(newFruit, user, db = connection) {
   return db('fruits')
     .where('id', newFruit.id)
     .first()
@@ -48,7 +48,7 @@ async function updateFruit(newFruit, user, db = connection) {
     .then(sort)
 }
 
-async function deleteFruit(id, auth0Id, db = connection) {
+function deleteFruit(id, auth0Id, db = connection) {
   return db('fruits')
     .where('id', id)
     .first()

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateLoggedInUser } from './actions/loggedInUser'
 
 // eslint-disable-next-line no-unused-vars
-export async function cacheUser(useAuth0) {
+export function cacheUser(useAuth0) {
   const dispatch = useDispatch()
   const loggedInUser = useSelector((state) => state.loggedInUser)
 
@@ -12,6 +12,8 @@ export async function cacheUser(useAuth0) {
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()
   if (isAuthenticated && !loggedInUser?.token) {
     try {
+      // TODO: call getAccessTokenSilently and replace the token string below
+
       const userToSave = {
         auth0Id: user?.sub,
         email: user?.email,

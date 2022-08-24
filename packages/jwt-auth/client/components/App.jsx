@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // TODO: call the useAuth0 and destructure:
+  // TODO: call useAuth0 and destructure:
   // isAuthenticated, and getAccessTokenSilently
   
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()

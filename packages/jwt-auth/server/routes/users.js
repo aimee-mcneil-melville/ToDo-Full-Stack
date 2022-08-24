@@ -9,7 +9,7 @@ module.exports = router
 
 // TODO: use checkJwt as middleware
 // GET /api/v1/users
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   const auth0_id = req.user?.sub
 
   db.getUser(auth0_id)
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 // TODO: use checkJwt as middleware
 // POST /api/v1/users
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   const auth0_id = req.user?.sub
   const { username, icon } = req.body
   const userDetails = {
@@ -29,18 +29,18 @@ router.post('/', async (req, res) => {
     icon,
   }
 
-  try {
-    const usernameTaken = await db.userExists(username)
-    if (usernameTaken) throw new Error('Username Taken')
-    await db.createUser(userDetails)
-    res.sendStatus(201)
-  } catch (err) {
-    console.error(err)
-    if (err.message === 'Username Taken') {
-      return res
-        .status(403)
-        .send('Username Taken')
-    }
-    res.status(500).send(err.message)
-  }
+  db.userExists(username)
+    .then((usernameTaken) => {
+      if (usernameTaken) throw new Error('Username Taken')
+    })
+    .then(() => db.createUser(userDetails))
+    .then(() => res.sendStatus(201))
+    .catch(() => {
+      console.error(err)
+      if (err.message === 'Username Taken') {
+        res.status(403).send('Username Taken')
+      } else {
+        res.status(500).send(err.message)
+      }
+    })
 })
