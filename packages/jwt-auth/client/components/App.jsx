@@ -19,8 +19,8 @@ function App() {
   // TODO: call useAuth0 and destructure:
   // isAuthenticated, and getAccessTokenSilently
   
-  const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()
-  const getAccessTokenSilently = () => Promise.reject('TODO: getAccessTokenSilently ') // <- TODO: delete this and use the value from useAuth0()
+  const isAuthenticated = false // <- TODO: delete this line
+  const getAccessTokenSilently = () => Promise.reject('fake function') // <- TODO: delete this line
 
   useEffect(() => {
     if (!isAuthenticated) {
