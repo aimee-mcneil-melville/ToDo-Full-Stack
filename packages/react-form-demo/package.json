@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --hot",
     "test": "jest --verbose"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "babel": {
     "presets": [

@@ -25,7 +25,7 @@
       "bundle.js"
     ]
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2"

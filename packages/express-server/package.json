@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "Creating a web server with Express",
   "main": "index.js",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
     "start": "node index",

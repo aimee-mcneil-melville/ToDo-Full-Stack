@@ -9,7 +9,7 @@
     "knex": "knex --knexfile db/knexfile.js",
     "test": "jest"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "keywords": [
     "db",

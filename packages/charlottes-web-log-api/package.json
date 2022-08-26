@@ -4,7 +4,7 @@
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log-api.git",
   "main": "server/index.js",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
     "build": "webpack --config ./client/webpack.config.js",

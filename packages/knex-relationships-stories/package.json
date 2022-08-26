@@ -17,7 +17,7 @@
   "eslintConfig": {
     "extends": "eda"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-relationships-stories#readme",
   "dependencies": {

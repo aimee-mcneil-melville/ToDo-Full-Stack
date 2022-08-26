@@ -4,7 +4,7 @@
   "description": "Consuming External APIs",
   "repository": "https://github.com/dev-academy-challenges/consuming-external-apis.git",
   "main": "server/index.js",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
     "client": "webpack serve --hot --config ./client/webpack.config.js",
