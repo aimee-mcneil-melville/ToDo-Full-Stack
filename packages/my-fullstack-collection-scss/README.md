@@ -2,59 +2,99 @@
 
 This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
 
-```
-npm install
-git checkout -b <branchname>
-npm run dev
-```
+## Setup
 
-## Notes
+### 0. Cloning and installation
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-A few notes to keep you out of trouble:
-- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-- When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+    You may also want to start a new branch
+    ```sh
+    cd my-fullstack-collection-scss
+    npm i
+    git checkout -b <branchname>
+    npm run dev
+    ```
+  </details>
 
-## How to start
+<details>
+  <summary>More about using <code>npm</code> vs <code>npx</code></summary>
 
-First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy!
+  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
+  - When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+</details>
 
-**Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
+---
 
-|id|title|author|
-|---|---|---|
-| 1 | Ready Player One | Ernest Cline |
-| 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
+## Requirements
+
+### 1. Choosing your data set
+
+- [ ] First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy, but keep it simple!
+  <details style="padding-left: 2em">
+    <summary>More about your collection</summary>
+
+    **Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
+
+    |id|title|author|
+    |---|---|---|
+    | 1 | Ready Player One | Ernest Cline |
+    | 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
 
 Our first job is getting something showing on the front end from our database. Here's a list of steps in case they are useful. You can build in any order you like though ;)
 
-### Back End
+## Back end
 
-1.  Design a database to store a list of your things (e.g. books)
-1.  Build the migrations and seed data
-1.  Build an API (back end route) to get the information from your database
-1.  Test your API with Insomnia
+### 2. Building the database
 
-### Front End
+- [ ] Design a database to store a list of your things (e.g. books)
+- [ ] Build the migrations and seed data
 
-1.  Build a React Component with static html
-1.  Build Redux Reducer. Start with a hardcoded initial state, for example:
-```js
-const initialState = [{ id: 1, title: 'Ready Player One', author: 'Ernest Cline' }]
-```
-3.  Use `useSelector` to display the redux state you hardcoded in the React Component
-1.  Build an API Client in the front end to request the information from your routes
-1.  Build Thunk Actions to use the API and get the information
-1.  Build Redux Actions to save task data from the thunk
-1.  Use `useDispatch` and `useEffect` to dispatch the thunk when your app loads
+### 3. Building the API
+- [ ] Build an API (back end route) to get the information from your database
+- [ ] Test your API with Insomnia
 
-## Next steps
+## Front end
 
-At this stage we should be able to view our information. Below are suggested next steps, though you might prioritize these in another order.
+### 4. Setting the stage
 
-- Include the ability to add a new record (will need a form in your components)
-- Include the ability to remove/delete records
-- Include the ability to update records (e.g. for correcting typos)
-  - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, but this may require adjusting your database design - start simple!
-- Is there any complex data you chose to not include earlier or any way you could expand this dataset?
-- Could you add an external API (maybe an inspirational quote in the footer?)
-- If you haven't already, CSS!
+- [ ] Build a React component with static html
+- [ ] Build Redux reducer. Start with a hardcoded initial state
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    For example:
+    ```js
+    const initialState = [{ id: 1, title: 'Ready Player One', author: 'Ernest Cline' }]
+    ```
+  </details>
+
+- [ ] Use `useSelector` to display the redux state you hardcoded in the React Component
+
+### 5. Building the API client
+- [ ] Build an API client in the front end to request the information from your routes
+
+### 6. Building thunky actions
+- [ ] Build Thunk actions to use the API and get the information
+- [ ] Build Redux actions to save task data from the thunk
+- [ ] Use `useDispatch` and `useEffect` to dispatch the thunk when your app loads
+
+## Additional functionality
+
+### 7. Adding, deleting, and updating records
+- [ ] Include the ability to add a new record (will need a form in your components)
+- [ ] Include the ability to remove/delete records
+- [ ] Include the ability to update records (e.g. for correcting typos)
+
+---
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+
+  - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
+    - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, and this may require adjusting your database design
+  - Could you add an external API (maybe an inspirational quote in the footer?)
+  - If you haven't already, CSS!
+</details>
