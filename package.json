@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.jsx .",
     "test": "jest --watchAll"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "babel": {
     "presets": [
