@@ -1,30 +1,58 @@
 # TODO App
 
-```
-npm install
-git checkout -b <branchname>
-npm run dev
-```
+For this challenge, we will build a todo app (which is a common way to practice a new technology), using the full stack! From the database to the server, the API client, React and Redux, this app will ask you to use everything you've learned.
 
-See the breathtaking designs [here](http://localhost:3000/designs/)
+## Setup
 
-## Notes
+### 0. Cloning and installation
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-A few notes to keep you out of trouble:
-- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-- When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+    You may also want to start a new branch
+    ```sh
+    cd todo-full-stack
+    npm i
+    git checkout -b <branchname>
+    npm run dev
+    ```
+  </details>
 
-## How to start
+- [ ] See the designs [here](http://localhost:3000/designs/)
+
+<details>
+  <summary>More about using <code>npm</code> vs <code>npx</code></summary>
+
+  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
+  - When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+</details>
+
+---
+
+## Requirements
 
 Here's a list of steps in case they are useful. You can build in any order you like though ;)
 
-1.  Design a database to store a list of tasks, e.g. task details, priority, completed yes/no
-1.  Build the migrations and seed data
-1.  Build an API to list, add, update and delete
-1.  Test your API with Insomnia
-1.  Build React Components from static html
-1.  Design Redux Global State (think of it like a JS object)
-1.  Build Redux Reducers (the properties or keys of your state design are reducers, the values are hard-code static data as initialState)
-1.  Build API Client in the front end
-1.  Build Thunk Actions to get task from the API
-1.  Build Redux Actions to save task data from the API (remove hard-code initialState)
+### 1. Building the database
+
+- [ ] Design a database to store a list of your things (e.g. books)
+- [ ] Build the migrations and seed data
+
+### 2. Building the API
+- [ ] Build an API (back end route) to get the information from your database
+- [ ] Test your API with Insomnia
+
+## Front end
+
+### 3. Setting the stage
+
+- [ ] Build a React component with static html
+- [ ] Design Redux global state (think of it like a JS object)
+- [ ] Build Redux reducers (the properties or keys of your state design are reducers, the values are hard-code static data as initialState)
+
+## 4. Building the API client
+- [ ] Build API client in the front end
+
+### 6. Building thunky actions
+- [ ] Build Thunk actions to get task from the API
+- [ ] Build Redux actions to save task data from the API (remove hard-code initialState)
