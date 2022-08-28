@@ -167,7 +167,7 @@ Commit your code and swap driver/navigator.
     Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`.    
   </details>
   
-- [ ] Import the `useAuth0` hook from `@auth0/auth0-react`, 
+- [ ] Import the `useAuth0` hook from within `@auth0/auth0-react`
 - [ ] Call `useAuth0` within the isAuthenticated **function**, destructure the `isAuthenticated` **property** out of it and return this boolean variable
   <details style="padding-left: 2em">
     <summary>Tips</summary>
