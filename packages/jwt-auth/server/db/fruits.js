@@ -45,7 +45,7 @@ function deleteFruit(id, db = connection) {
     .delete()
 }
 
-function userCanEdit(fruitId, auth0Id) {
+function userCanEdit(fruitId, auth0Id, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()
