@@ -23,7 +23,7 @@ Our task is to complete the authentication implementation of this app.
     ```
   </details>
 
-- [ ] Visit [http://localhost:3000/users](http://localhost:3000/users) in your browser
+- [ ] Visit [http://localhost:3000](http://localhost:3000) in your browser
 
 ---
 
