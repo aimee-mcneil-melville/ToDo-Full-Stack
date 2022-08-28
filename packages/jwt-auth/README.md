@@ -160,20 +160,21 @@ Commit your code and swap driver/navigator.
   <details style="padding-left: 2em">
     <summary>More about <code>isAuthenticated</code></summary>
 
-    Our existing code contains a couple of clever `<IfAuthenticated>` and `<IfNotAuthenticated>` components in `client/components/Authenticated.jsx`. They render their child components based on the status of the user.
+    Our existing code contains a couple of clever `<IfAuthenticated>` and `<IfNotAuthenticated>` components in `client/components/Authenticated.jsx`. They render their child components based on the authentication status of the user.
 
     Fortunately, `@auth0/auth0-react` package exports a `useAuth0` hook. This hook exposes useful functions and values. Here we will use the `isAuthenticated` boolean value to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
     Right now there is a placeholder `isAuthenticated` function which is hard-coded to return `true`.    
   </details>
   
-- [ ] Import the `useAuth0` hook from `@auth0/auth0-react`, call it, destructure the `isAuthenticated` **property** out of it, and return this boolean variable with the `isAuthenticated` **function**
+- [ ] Import the `useAuth0` hook from `@auth0/auth0-react`, 
+- [ ] Call `useAuth0` within the isAuthenticated **function**, destructure the `isAuthenticated` **property** out of it and return this boolean variable
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
     Note that the boolean and the function are both named `isAuthenticated`, take care to understand which one you're working with. 
 
-    With that in place, you can now see the "Register" and "Sign in" links in the app.
+    With that in place, you can now see the "Sign in" link in the app.
   </details>
 
 Now is a good time to commit your changes and swap driver/navigator.
