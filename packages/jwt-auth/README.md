@@ -179,7 +179,7 @@ Commit your code and swap driver/navigator.
 
 Now is a good time to commit your changes and swap driver/navigator.
 
-### 7. Allowing the user to register and log in/out using Auth0
+### 7. Allowing the user to log in/out using Auth0
 
 In `client/components/Nav.jsx`:
 
@@ -190,7 +190,7 @@ In `client/components/Nav.jsx`:
     <summary>More about login and logout handlers</summary>
 
     * In `handleLogoff` we'll call `logout`
-    * In `handleSignIn`, we'll call `loginWithRedirect` without a parameter
+    * In `handleSignIn`, we'll call `loginWithRedirect`
 
     The "Sign In" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for the one Auth0 app. Even if you used the same email and password when creating an account on a different app, Auth0 will treat it as a new account that is specific to your Fruits app.
 
