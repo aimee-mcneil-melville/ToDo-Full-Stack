@@ -69,6 +69,7 @@ In order to complete the implementation of authentication for this app, we need 
 - [ ] Get familiar with the user interface
   <details style="padding-left: 2em">
     <summary>Tips</summary>
+    At this stage it's normal that "Log off" displays (as if you were logged in), even though you're not logged in.
 
     Select some fruits and try to update their values, delete them, and add new ones. See which work and which give errors.
 
@@ -150,11 +151,6 @@ In order to complete the implementation of authentication for this app, we need 
   </details>
 
 - [ ] Refresh your browser and check the **Network** tab in the **DevTools**, if you see errors, then revise the steps above
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    At this stage it's normal that "Log off" displays (as if you were logged in), even though you're not logged in.
-  </details>
 
 Commit your code and swap driver/navigator.
 
