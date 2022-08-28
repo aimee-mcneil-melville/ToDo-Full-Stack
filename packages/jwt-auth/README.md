@@ -150,7 +150,7 @@ In order to complete the implementation of authentication for this app, we need 
     | `audience` | See 3️⃣ above, `https://fruits/api`                                 |
   </details>
 
-- [ ] Refresh your browser and check the **Network** tab in the **DevTools**, if you see errors, then revise the steps above
+- [ ] Refresh your browser and check the **Network** tab in the **DevTools**, if you see errors, then double check the steps above
 
 Commit your code and swap driver/navigator.
 
