@@ -194,7 +194,7 @@ In `client/components/Nav.jsx`:
 
     The "Sign In" link will redirect you to Auth0's authorization service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for the one Auth0 app. Even if you used the same email and password when creating an account on a different app, Auth0 will treat it as a new account that is specific to your Fruits app.
 
-    After you've registered your new user, you will be redirected back to `https://localhost:3000`. <ins>This behaviour will change a couple times, before we're done</ins>.
+    After you've registered your new user, you will be redirected back to `https://localhost:3000` and "Log off" will again be visible in the app. <ins>This behaviour will change a couple times, before we're done</ins>.
   </details>
 
 Commit your code and swap driver/navigator.
