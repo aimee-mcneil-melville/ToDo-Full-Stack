@@ -4,7 +4,7 @@ exports.seed = (knex) => {
     .then(() =>
       knex('users').insert([
         { auth0_id: 'auth0|123', username: 'banana_llama', icon: '🍌' },
-        { auth0_id: 'auth0|456', username: 'watermelonsugar', icon: '🍉' },
+        { auth0_id: 'auth0|456', username: 'grape_gatsby', icon: '🍇' },
       ])
     )
 }
