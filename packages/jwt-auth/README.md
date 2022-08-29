@@ -228,7 +228,8 @@ In `client/components/App.jsx`:
 <br />
 
 ### 9. Reading user metadata in `client/auth0-utils.js`
-- [ ] In `cacheUser`, call `useAuth0` and destructure `getAccessTokenSilently`, `isAuthenticated`, `user` out of it
+
+- [ ] Import `useAuth0`, call it in the `cacheUser` function, and destructure `getAccessTokenSilently`, `isAuthenticated`, `user` out of it
 
 - [ ] Call `getAccessTokenSilently` to get the access token, then use this token to set the token property on the `userToSave` object
   <details style="padding-left: 2em">
@@ -237,12 +238,12 @@ In `client/components/App.jsx`:
     The `getAccessTokenSilently` function is async so you'll need to use `await` or `.then`.
   </details>
 
-- [ ] Destructure the `sub` and `email` properties from the `user` object, and use them to set the corresponding properties on the `userToSave` object
-
 <details>
   <summary><ins>What's happening with <code>cacheUser</code>?</ins></summary>
   
-  The `cacheUser` function dispatches `updateLoggedInUser(userToSave)`. Every time the `<App>` component renders, the `cacheUser` function runs, which guarantees that our global state will always have the user's metadata, including their token. We will later pass this token as a header when calling server-side routes that we want to protect.
+  Every time the `<App>` component renders, the `cacheUser` function runs. The `cacheUser` function checks whether the token exists in our global state and the users current authentication status. If the user is logged in, but there is no token in the global state `updateLoggedInUser(userToSave)` is dispatched. 
+  
+  This guarantees that our global state will always have the user's metadata, including their token.
 </details>
 <br />
 
