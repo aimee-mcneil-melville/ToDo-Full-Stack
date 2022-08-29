@@ -16,7 +16,8 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
     })
   }
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault()
     const fruit = { ...newFruit }
     // TODO: pass token as second parameter
     addFruit(fruit, 'token')
@@ -30,7 +31,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
   return (
     <>
       <h2>Add new</h2>
-      <GridForm>
+      <GridForm onSubmit={handleAdd}>
         <ColOne>Name:</ColOne>
         <ColTwoText
           type="text"
@@ -49,7 +50,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
           onChange={handleAddChange}
         />
 
-        <Button type="button" onClick={handleAdd}>
+        <Button type="submit">
           Add fruit
         </Button>
         <Button type="button" onClick={closeAddForm}>

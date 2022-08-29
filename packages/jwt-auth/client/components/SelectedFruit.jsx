@@ -16,7 +16,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     })
   }
 
-  const handleUpdate = () => {
+  const handleUpdate = (e) => {
+    e.preventDefault()
     // TODO: pass token as second parameter
     updateFruit(editing, 'token')
       .then((remoteFruits) => setFruits(remoteFruits))
@@ -45,7 +46,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     <>
       <h2>Selected: {currentName}</h2>
       <p>Originally added by {user}</p>
-      <GridForm>
+      <GridForm onSubmit={handleUpdate}>
         <ColOne>Name:</ColOne>
         <ColTwoText
           type="text"
@@ -67,9 +68,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
         />
 
         <Button
-          type="button"
+          type="submit"
           data-testid="update-button"
-          onClick={handleUpdate}
         >
           Update fruit
         </Button>
