@@ -247,6 +247,8 @@ In `client/components/App.jsx`:
 </details>
 <br />
 
+Commit your code and swap driver/navigator.
+
 ### 10. Passing access tokens
 
 We only want to allow a user to use our server routes if the user has been authenticated. Now that the access token is stored in global state, we want to pass it as a header when calling our server-side routes.
