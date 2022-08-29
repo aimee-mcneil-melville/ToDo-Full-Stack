@@ -68,7 +68,7 @@ router.delete('/:id', (req, res) => {
   const auth0Id = req.user?.sub
 
   db.userCanEdit(id, auth0Id)
-    .then(() => db.deleteFruit(id, auth0Id))
+    .then(() => db.deleteFruit(id))
     .then(() => db.getFruits())
     .then(fruits => res.json({ fruits }))
     .catch(err => {
