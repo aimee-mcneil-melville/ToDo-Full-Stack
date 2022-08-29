@@ -59,7 +59,6 @@ function Register() {
     setErrorMsg('')
   }
 
-  // TODO: already logged in
   return (
     <>
       <h2>Complete profile set up</h2>
