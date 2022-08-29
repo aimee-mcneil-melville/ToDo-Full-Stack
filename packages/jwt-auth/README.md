@@ -283,14 +283,8 @@ There are three routes in `server/routes/fruits.js` and two routes in `server/ro
 - [ ] In each of the routes we want to protect, pass `checkJwt` as a second parameter
   <details style="padding-left: 2em">
     <summary>More about protecting routes</summary>
-    
-    The following routes should accept only authenticated requests
 
-    - PUT `/api/v1/fruits`
-    - POST `/api/v1/fruits`
-    - DELETE `/api/v1/fruits`
-    - GET `/api/v1/users`
-    - POST `/api/v1/users`
+    You'll need to import the `checkJwt` function from `server/auth0.js`.
 
     Passing `checkJwt` to the route might look like...
     
@@ -299,8 +293,14 @@ There are three routes in `server/routes/fruits.js` and two routes in `server/ro
         // do stuff here
     })
     ```
+    
+    The following routes should accept only authenticated requests
 
-    You'll need to import the `checkJwt` function from `server/auth0.js`.
+    - PUT `/api/v1/fruits`
+    - POST `/api/v1/fruits`
+    - DELETE `/api/v1/fruits`
+    - GET `/api/v1/users`
+    - POST `/api/v1/users`
   </details>
 
 <details>
