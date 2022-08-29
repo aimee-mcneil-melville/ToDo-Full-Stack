@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useAuth0 } from '@auth0/auth0-react'
+// TODO: import useAuth0 function
 
 import Nav from './Nav'
 import Fruits from './Fruits'
