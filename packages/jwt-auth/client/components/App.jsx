@@ -12,7 +12,7 @@ import { cacheUser } from '../auth0-utils'
 import { getUser } from '../api'
 
 function App() {
-  cacheUser(useAuth0)
+  cacheUser()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

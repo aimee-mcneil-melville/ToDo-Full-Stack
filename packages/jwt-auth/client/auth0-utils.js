@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
+// TODO: import useAuth0 function
+
 import { updateLoggedInUser } from './actions/loggedInUser'
 
 // eslint-disable-next-line no-unused-vars
-export function cacheUser(useAuth0) {
+export function cacheUser() {
   const dispatch = useDispatch()
-  const loggedInUser = useSelector((state) => state.loggedInUser)
+  const tokenInRedux = useSelector((state) => Boolean(state.loggedInUser?.token))
 
   // TODO: call the useAuth0 and destructure:
   // isAuthenticated, getAccessTokenSilently and user
 
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()
-  if (isAuthenticated && !loggedInUser?.token) {
+  if (isAuthenticated && !tokenInRedux) {
     try {
       // TODO: call getAccessTokenSilently and replace the token string below
 
