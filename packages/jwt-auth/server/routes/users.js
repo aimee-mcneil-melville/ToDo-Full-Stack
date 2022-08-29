@@ -9,10 +9,14 @@ const router = express.Router()
 router.get('/', (req, res) => {
   const auth0_id = req.user?.sub
 
-  db.getUser(auth0_id)
-    .then((user) => {
-      res.json(user ? user : null)
-    })
+  if (!auth0_id) {
+    res.send(null)
+  } else {
+    db.getUser(auth0_id)
+      .then((user) => {
+        res.json(user ? user : null)
+      })
+  }
 })
 
 // TODO: use checkJwt as middleware
