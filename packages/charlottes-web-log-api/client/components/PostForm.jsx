@@ -20,7 +20,7 @@ function PostForm(props) {
     e.preventDefault()
     if (!completePostData(newPost)) return null
     if (props.variant === 'edit') {
-      return updatePost({ ...newPost, id }).then(() => {
+      return updatePost(id, newPost).then(() => {
         fetchPosts()
         navigate(`/posts/${newPost.id}`)
       })

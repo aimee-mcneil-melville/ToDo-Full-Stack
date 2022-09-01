@@ -22,9 +22,9 @@ export function addPost(post) {
     .catch(errorHandler('POST', '/v1/posts'))
 }
 
-export function updatePost(post) {
+export function updatePost(postId, post) {
   return request
-    .patch(`/v1/posts/${post.id}`)
+    .patch(`/v1/posts/${postId}`)
     .send(post)
     .then((res) => {
       validateNoSnakeCase(res.body)
