@@ -144,7 +144,6 @@ The database migrations and seeds have already been written for you so you don't
 
     ```json
     {
-      "id": 124,
       "title": "This is my updated post",
       "text": "I like how I can update posts."
     }

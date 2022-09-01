@@ -12,9 +12,9 @@ function PostForm(props) {
 
   useEffect(() => {
     if (props.variant === 'edit' && !loading) {
-      setNewPost({ ...post })
+      setNewPost({ title: post.title, text: post.text })
     }
-  }, [post])
+  }, [post, loading])
 
   function onSubmit(e) {
     e.preventDefault()
