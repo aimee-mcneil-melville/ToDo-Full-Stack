@@ -62,10 +62,10 @@ export function addCommentByPostId(postId, comment) {
     .catch(errorHandler('POST', '/v1/posts/:id/comments'))
 }
 
-export function updateComment(comment) {
+export function updateComment(id, comment) {
   return request
-    .patch(`/v1/comments/${comment.id}`)
-    .send(comment)
+    .patch(`/v1/comments/${id}`)
+    .send({ comment })
     .then((res) => {
       validateNoSnakeCase(res.body)
       return res.body

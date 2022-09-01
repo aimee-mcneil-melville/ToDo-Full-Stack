@@ -6,19 +6,19 @@ function CommentForm(props) {
   const { id: postId } = useParams()
   const navigate = useNavigate()
   const { fetchComments } = useOutletContext()
-  const [newComment, setNewComment] = useState(props.comment || { comment: '' })
+  const [newComment, setNewComment] = useState(props.comment || '')
 
   const onSubmit = (e) => {
     e.preventDefault()
     if (props.variant === 'edit') {
-      return updateComment(newComment).then(() => {
-        props.fetchComments(newComment.postId)
+      return updateComment(props.commentId, newComment).then(() => {
+        props.fetchComments(postId)
         props.setEditing(false)
       })
     } else if (props.variant === 'new') {
       return addCommentByPostId(postId, newComment).then(() => {
         fetchComments(postId)
-        setNewComment({ comment: '' })
+        setNewComment('')
         navigate(`/posts/${postId}`)
       })
     }
@@ -29,13 +29,8 @@ function CommentForm(props) {
       <input
         type="text"
         name="comment"
-        value={newComment.comment}
-        onChange={(e) =>
-          setNewComment({
-            ...newComment,
-            [e.target.name]: e.target.value,
-          })
-        }
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
       />
       <input className="pure-button" type="submit" />
     </form>

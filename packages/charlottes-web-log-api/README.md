@@ -246,8 +246,6 @@ The database migrations and seeds have already been written for you so you don't
 
     ```json
     {
-      "id": 2,
-      "postId": 123,
       "comment": "I really enjoyed this post."
     }
     ```
