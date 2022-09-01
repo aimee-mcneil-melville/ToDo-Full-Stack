@@ -45,7 +45,7 @@ export function getCommentsByPostId(postId) {
   return request
     .get(`/v1/posts/${postId}/comments`)
     .then((res) => {
-      validateNoSnakeCase(res.body)
+      res.body.forEach(comment => validateNoSnakeCase(comment))
       return res.body
     })
     .catch(errorHandler('GET', '/v1/posts/:id/comments'))
