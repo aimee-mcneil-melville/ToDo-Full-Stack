@@ -31,6 +31,7 @@ function App() {
         .then(userInDb => {
           userInDb ? dispatch(updateLoggedInUser(userInDb)) : navigate('/register')
         })
+        .catch((err) => console.error(err))
     }
   }, [isAuthenticated])
 

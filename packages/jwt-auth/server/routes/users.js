@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
       .then((user) => {
         res.json(user ? user : null)
       })
+      .catch((err) => res.status(500).send(err.message))
   }
 })
 
