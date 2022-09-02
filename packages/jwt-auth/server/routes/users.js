@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
     })
     .then(() => db.createUser(userDetails))
     .then(() => res.sendStatus(201))
-    .catch(() => {
+    .catch((err) => {
       console.error(err)
       if (err.message === 'Username Taken') {
         res.status(403).send('Username Taken')
