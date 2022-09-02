@@ -47,8 +47,8 @@ In order to complete the implementation of authentication for this app, we need 
 
   The following routes should accept only authenticated requests
 
-  - PUT `/api/v1/fruits`
   - POST `/api/v1/fruits`
+  - PUT `/api/v1/fruits`
   - DELETE `/api/v1/fruits`
   - GET `/api/v1/users`
   - POST `/api/v1/users`
@@ -304,8 +304,8 @@ There are three routes in `server/routes/fruits.js` and two routes in `server/ro
     
     The following routes should accept only authenticated requests
 
-    - PUT `/api/v1/fruits`
     - POST `/api/v1/fruits`
+    - PUT `/api/v1/fruits`
     - DELETE `/api/v1/fruits`
     - GET `/api/v1/users`
     - POST `/api/v1/users`
