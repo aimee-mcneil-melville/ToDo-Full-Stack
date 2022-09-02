@@ -69,3 +69,6 @@ User stories for practicing React and Redux by adding and removing items from a 
   - As a user, I want to attach meta information in the form of one-word tags to each image so that I can classify it
   - As a user, I want to filter the list of images by tag so that I can see only some of my gallery at a time
 </details>
+
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=react-redux-stories)
