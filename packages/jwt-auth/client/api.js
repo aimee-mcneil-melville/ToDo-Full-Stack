@@ -53,9 +53,7 @@ export function addUser(user, token) {
 
 function logError(err) {
   if (err.response.text === 'Username Taken') {
-    throw new Error(
-      'Username already taken - please choose another'
-    )
+    throw new Error('Username already taken - please choose another')
   } else if (err.message === 'Forbidden') {
     throw new Error(
       'Only the user who added the fruit may update and delete it'

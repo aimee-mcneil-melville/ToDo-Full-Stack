@@ -35,13 +35,15 @@ export const Error = styled.div`
 
 export const RadioLabel = styled.label`
   padding: 5px;
-  ${props => props.selected && `
+  ${(props) =>
+    props.selected &&
+    `
     border-radius: 15%;
     background-color: grey;
   `}
 `
 
-export const Radio = styled.input`
+export const Radio = styled.input.attrs({ type: 'radio' })`
   display: none;
 `
 

@@ -67,10 +67,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
           onChange={handleEditChange}
         />
 
-        <Button
-          type="submit"
-          data-testid="update-button"
-        >
+        <Button type="submit" data-testid="update-button">
           Update fruit
         </Button>
         <Button

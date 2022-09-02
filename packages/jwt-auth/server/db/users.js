@@ -9,16 +9,11 @@ module.exports = {
 function userExists(username, db = connection) {
   return db('users')
     .where('username', username)
-    .then((usersFound) => {
-      return usersFound.length > 0
-    })
+    .then((usersFound) => usersFound.length > 0)
 }
 
 function getUser(id, db = connection) {
-  return db('users')
-    .select('username', 'icon')
-    .where('auth0_id', id)
-    .first()
+  return db('users').select('username', 'icon').where('auth0_id', id).first()
 }
 
 function createUser(user, db = connection) {

@@ -29,27 +29,22 @@ function getFruits(db = connection) {
 }
 
 function addFruit(fruit, db = connection) {
-  return db('fruits')
-    .insert(fruit)
+  return db('fruits').insert(fruit)
 }
 
 function updateFruit(newFruit, db = connection) {
-  return db('fruits')
-    .where('id', newFruit.id)
-    .update(newFruit)
+  return db('fruits').where('id', newFruit.id).update(newFruit)
 }
 
 function deleteFruit(id, db = connection) {
-  return db('fruits')
-    .where('id', id)
-    .delete()
+  return db('fruits').where('id', id).delete()
 }
 
 function userCanEdit(fruitId, auth0Id, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()
-    .then(fruit => {
+    .then((fruit) => {
       if (fruit.added_by_user !== auth0Id) {
         throw new Error('Unauthorized')
       }

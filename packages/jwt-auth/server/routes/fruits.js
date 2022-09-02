@@ -8,8 +8,8 @@ const router = express.Router()
 // GET /api/v1/fruits
 router.get('/', (req, res) => {
   db.getFruits()
-    .then(fruits => res.json({ fruits }))
-    .catch(err => {
+    .then((fruits) => res.json({ fruits }))
+    .catch((err) => {
       console.error(err)
       res.status(500).send(err.message)
     })
@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
 
   db.addFruit(newFruit)
     .then(() => db.getFruits())
-    .then(fruits => res.json({ fruits }))
-    .catch(err => {
+    .then((fruits) => res.json({ fruits }))
+    .catch((err) => {
       console.error(err)
       res.status(500).send(err.message)
     })
@@ -50,11 +50,13 @@ router.put('/', (req, res) => {
   db.userCanEdit(fruit.id, auth0Id)
     .then(() => db.updateFruit(fruitToUpdate))
     .then(() => db.getFruits())
-    .then(fruits => res.json({ fruits }))
-    .catch(err => {
+    .then((fruits) => res.json({ fruits }))
+    .catch((err) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
-        res.status(403).send('Unauthorized: Only the user who added the fruit may update it')
+        res
+          .status(403)
+          .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
         res.status(500).send(err.message)
       }
@@ -70,11 +72,13 @@ router.delete('/:id', (req, res) => {
   db.userCanEdit(id, auth0Id)
     .then(() => db.deleteFruit(id))
     .then(() => db.getFruits())
-    .then(fruits => res.json({ fruits }))
-    .catch(err => {
+    .then((fruits) => res.json({ fruits }))
+    .catch((err) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
-        res.status(403).send('Unauthorized: Only the user who added the fruit may update it')
+        res
+          .status(403)
+          .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
         res.status(500).send(err.message)
       }

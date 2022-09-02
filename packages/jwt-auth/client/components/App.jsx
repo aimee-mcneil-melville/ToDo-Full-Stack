@@ -18,7 +18,7 @@ function App() {
 
   // TODO: call useAuth0 and destructure:
   // isAuthenticated, and getAccessTokenSilently
-  
+
   const isAuthenticated = false // <- TODO: delete this line
   const getAccessTokenSilently = () => Promise.reject('fake function') // <- TODO: delete this line
 
@@ -27,9 +27,11 @@ function App() {
       dispatch(clearLoggedInUser())
     } else {
       getAccessTokenSilently()
-        .then(token => getUser(token))
-        .then(userInDb => {
-          userInDb ? dispatch(updateLoggedInUser(userInDb)) : navigate('/register')
+        .then((token) => getUser(token))
+        .then((userInDb) => {
+          userInDb
+            ? dispatch(updateLoggedInUser(userInDb))
+            : navigate('/register')
         })
         .catch((err) => console.error(err))
     }

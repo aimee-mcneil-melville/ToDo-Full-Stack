@@ -2,25 +2,39 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { 
+import {
   Error,
   GridForm,
-  ColOne, 
+  ColOne,
   ColTwoText,
   ColTwoField,
   Button,
   RadioLabel,
-  Radio
+  Radio,
 } from './Styled'
 
 import { addUser } from '../api'
 import { updateLoggedInUser } from '../actions/loggedInUser'
 
 const icons = [
-  '🍇', '🍈', '🍉', '🍊', '🍋',
-  '🍌', '🍍', '🥭', '🍎', '🍏',
-  '🍐', '🍑', '🍒', '🍓', '🫐',
-  '🥝', '🍅', '🥥'
+  '🍇',
+  '🍈',
+  '🍉',
+  '🍊',
+  '🍋',
+  '🍌',
+  '🍍',
+  '🥭',
+  '🍎',
+  '🍏',
+  '🍐',
+  '🍑',
+  '🍒',
+  '🍓',
+  '🫐',
+  '🥝',
+  '🍅',
+  '🥥',
 ]
 
 function Register() {
@@ -29,18 +43,18 @@ function Register() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
     username: '',
-    icon: ''
+    icon: '',
   })
   const [errorMsg, setErrorMsg] = useState('')
 
   useEffect(() => {
-    if(user.username) navigate('/')
+    if (user.username) navigate('/')
   }, [user])
 
   const handleChange = (evt) => {
-    setForm({ 
+    setForm({
       ...form,
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     })
   }
 
@@ -48,7 +62,7 @@ function Register() {
     evt.preventDefault()
     const userInfo = {
       auth0Id: user.auth0Id,
-      ...form
+      ...form,
     }
     addUser(userInfo, user.token)
       .then(() => dispatch(updateLoggedInUser(userInfo)))
@@ -73,19 +87,24 @@ function Register() {
           onChange={handleChange}
         />
 
-        <ColOne htmlFor="icon">Which fruit best represents your personality?</ColOne>
+        <ColOne htmlFor="icon">
+          Which fruit best represents your personality?
+        </ColOne>
         <ColTwoField id="icon">
-          {icons.map(fruit => 
+          {icons.map((fruit) => (
             <RadioLabel key={fruit} selected={form.icon === fruit}>
-              <Radio id={fruit} type="radio" value={fruit} name="icon" onChange={handleChange}/>
+              <Radio
+                id={fruit}
+                value={fruit}
+                name="icon"
+                onChange={handleChange}
+              />
               {fruit}
             </RadioLabel>
-          )}
+          ))}
         </ColTwoField>
 
-        <Button disabled={!(form.username && form.icon)}>
-          Save Profile
-        </Button>
+        <Button disabled={!(form.username && form.icon)}>Save Profile</Button>
       </GridForm>
     </>
   )

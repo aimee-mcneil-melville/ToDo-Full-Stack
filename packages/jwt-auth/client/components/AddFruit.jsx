@@ -50,9 +50,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
           onChange={handleAddChange}
         />
 
-        <Button type="submit">
-          Add fruit
-        </Button>
+        <Button type="submit">Add fruit</Button>
         <Button type="button" onClick={closeAddForm}>
           Close
         </Button>

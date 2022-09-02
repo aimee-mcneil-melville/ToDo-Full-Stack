@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Auth0Provider is a component that has a hook that provides
      * all authorization operations
-     * 
+     *
      * TODO: replace the empty strings below with your own domain, clientId, and audience
      */
     <Auth0Provider
-      domain=''
-      clientId=''
+      domain=""
+      clientId=""
       redirectUri={window.location.origin}
-      audience=''
+      audience=""
     >
       <Provider store={store}>
         <Router>
