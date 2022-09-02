@@ -128,7 +128,9 @@ In order to complete the implementation of authentication for this app, we need 
 ## Client-side
 ### 5. Configuring Auth0Provider
 
-- [ ] Open `client/index.js` and see how `<Auth0Provider>` has been used 
+In `client/index.js`:
+
+- [ ] Observe how `<Auth0Provider>` has been used in `client/index.js`
   <details style="padding-left: 2em">
     <summary>More about <code>&lt;Auth0Provider&gt;</code></summary>
 
@@ -156,7 +158,9 @@ Commit your code and swap driver/navigator.
 
 ### 6. Determining if the current user is signed in
 
-- [ ] Explore `client/components/Authenticated.jsx` and the use of `isAuthenticated`
+In `client/components/Authenticated.jsx`:
+
+- [ ] Explore `Authenticated.jsx` and the use of `isAuthenticated`
   <details style="padding-left: 2em">
     <summary>More about <code>isAuthenticated</code></summary>
 
