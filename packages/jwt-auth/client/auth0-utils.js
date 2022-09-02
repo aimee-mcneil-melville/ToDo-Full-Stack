@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateLoggedInUser } from './actions/loggedInUser'
 
 // eslint-disable-next-line no-unused-vars
-export function cacheUser() {
+export function useCacheUser() {
   const dispatch = useDispatch()
   const tokenInRedux = useSelector((state) => Boolean(state.loggedInUser?.token))
 

@@ -8,11 +8,11 @@ import Fruits from './Fruits'
 import Register from './Register'
 
 import { clearLoggedInUser, updateLoggedInUser } from '../actions/loggedInUser'
-import { cacheUser } from '../auth0-utils'
+import { useCacheUser } from '../auth0-utils'
 import { getUser } from '../api'
 
 function App() {
-  cacheUser()
+  useCacheUser()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

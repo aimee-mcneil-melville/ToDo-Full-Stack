@@ -235,7 +235,7 @@ In `client/components/App.jsx`:
 
 In `client/auth0-utils.js`:
 
-- [ ] Import `useAuth0`, call it in the `cacheUser` function, and destructure `getAccessTokenSilently`, `isAuthenticated`, `user` out of it
+- [ ] Import `useAuth0`, call it in the `useCacheUser` function, and destructure `getAccessTokenSilently`, `isAuthenticated`, `user` out of it
 
 - [ ] Call `getAccessTokenSilently` to get the access token, then use this token to set the token property on the `userToSave` object
   <details style="padding-left: 2em">
@@ -245,9 +245,9 @@ In `client/auth0-utils.js`:
   </details>
 
 <details>
-  <summary><ins>What's happening with <code>cacheUser</code>?</ins></summary>
+  <summary><ins>What's happening with <code>useCacheUser</code>?</ins></summary>
   
-  Every time the `<App>` component renders, the `cacheUser` function runs. The `cacheUser` function checks whether the token exists in our global state and the users current authentication status. If the user is logged in, but there is no token in the global state `updateLoggedInUser(userToSave)` is dispatched. 
+  Every time the `<App>` component renders, the `useCacheUser` function runs. The `useCacheUser` function checks whether the token exists in our global state and the users current authentication status. If the user is logged in, but there is no token in the global state `updateLoggedInUser(userToSave)` is dispatched. 
   
   This guarantees that our global state will always have the user's metadata, including their token.
 </details>
