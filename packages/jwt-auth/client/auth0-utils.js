@@ -12,6 +12,8 @@ export function useCacheUser() {
   // isAuthenticated, getAccessTokenSilently and user
 
   const isAuthenticated = false // <- TODO: delete this and use the value from useAuth0()
+  const user = null // <- TODO: delete this and use the value from useAuth0()
+  
   if (isAuthenticated && !tokenInRedux) {
     try {
       // TODO: call getAccessTokenSilently and replace the token string below
