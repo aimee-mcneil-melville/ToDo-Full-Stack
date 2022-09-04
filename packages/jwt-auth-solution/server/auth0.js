@@ -1,7 +1,6 @@
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
-// TODO: set the domain and audience (API Identifier)
 const domain = 'https://dev-academy-sarah.au.auth0.com'
 const audience = 'https://fruits/api'
 

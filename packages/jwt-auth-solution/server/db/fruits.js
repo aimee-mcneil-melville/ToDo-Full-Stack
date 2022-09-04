@@ -5,6 +5,7 @@ module.exports = {
   addFruit,
   updateFruit,
   deleteFruit,
+  userCanEdit,
 }
 
 function sort(fruitArray) {
@@ -13,53 +14,39 @@ function sort(fruitArray) {
   return allFruits
 }
 
-async function getFruits(db = connection) {
+function getFruits(db = connection) {
   return db('fruits')
+    .join('users', 'added_by_user', 'auth0_id')
     .select(
       'id',
       'name',
       'average_grams_each as averageGramsEach',
-      'added_by_user as addedByUser'
+      'added_by_user as addedByUser',
+      'username',
+      'icon'
     )
-    .then(sort)
+    .then((fruits) => sort(fruits))
 }
 
-async function addFruit(fruit, db = connection) {
-  return db('fruits')
-    .insert(fruit)
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
+function addFruit(fruit, db = connection) {
+  return db('fruits').insert(fruit)
 }
 
-async function updateFruit(newFruit, user, db = connection) {
+function updateFruit(newFruit, db = connection) {
+  return db('fruits').where('id', newFruit.id).update(newFruit)
+}
+
+function deleteFruit(id, db = connection) {
+  return db('fruits').where('id', id).delete()
+}
+
+function userCanEdit(fruitId, auth0Id, db = connection) {
   return db('fruits')
-    .where('id', newFruit.id)
+    .where('id', fruitId)
     .first()
-    .then((fruit) => authorizeUpdate(fruit, user))
-    .then(() => {
-      return db('fruits').where('id', newFruit.id).update(newFruit)
+    .then((fruit) => {
+      if (fruit.added_by_user !== auth0Id) {
+        throw new Error('Unauthorized')
+      }
     })
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
-}
-
-async function deleteFruit(id, auth0Id, db = connection) {
-  return db('fruits')
-    .where('id', id)
-    .first()
-    .then((fruit) => authorizeUpdate(fruit, auth0Id))
-    .then(() => {
-      return db('fruits').where('id', id).delete()
-    })
-    .then(() => db)
-    .then(getFruits)
-    .then(sort)
-}
-
-function authorizeUpdate(fruit, auth0Id) {
-  if (fruit.added_by_user !== auth0Id) {
-    throw new Error('Unauthorized')
-  }
 }

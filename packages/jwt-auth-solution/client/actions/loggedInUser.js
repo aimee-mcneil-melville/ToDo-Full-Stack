@@ -1,9 +1,9 @@
-export const SET_LOGGED_IN_USER = 'SET_LOGGED_IN_USER'
+export const UPDATE_LOGGED_IN_USER = 'UPDATE_LOGGED_IN_USER'
 export const CLEAR_LOGGED_IN_USER = 'CLEAR_LOGGED_IN_USER'
 
-export function setLoggedInUser(userToSave) {
+export function updateLoggedInUser(userToSave) {
   return {
-    type: SET_LOGGED_IN_USER,
+    type: UPDATE_LOGGED_IN_USER,
     payload: userToSave,
   }
 }
