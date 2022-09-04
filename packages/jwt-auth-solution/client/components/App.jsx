@@ -16,9 +16,6 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // TODO: call useAuth0 and destructure:
-  // isAuthenticated, and getAccessTokenSilently
-
   const { isAuthenticated, getAccessTokenSilently } = useAuth0()
 
   useEffect(() => {
