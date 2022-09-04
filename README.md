@@ -16,7 +16,7 @@ This challenge will guide you through building an app to create, update, and del
   </details>
 
 - [ ] Open [http://localhost:3000](http://localhost:3000) in your browser
-- [ ] Install Redux DevTools for your browser (if you don't have it already)
+- [ ] Open Redux DevTools in your browser
   <details style="padding-left: 2em">
     <summary>More about Redux DevTools</summary>
 
@@ -25,11 +25,16 @@ This challenge will guide you through building an app to create, update, and del
 
 ---
 
-## Requirements
+## Building up our reducer
 
 ### 1. Using Redux DevTools
 
 - [ ] Load up Redux DevTools and dispatch a few `ADD_WOMBAT` and `DEL_WOMBAT` actions to see what's going on
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+    You will need to investigate `reducers/wombats.js` to work out what the payload should be for each of these types
+  </details>
   <details style="padding-left: 2em">
     <summary>More about dispatching</summary>
 
@@ -58,42 +63,37 @@ This challenge will guide you through building an app to create, update, and del
 
 ---
 
+## Building up our components
+
 ### 3. Adding a Wombat
 
 - [ ] Add an input field to the page with a button to add a wombat. (Which component should this input field be added to, `<Wombat>` or `<Wombats>`?)
 - [ ] Add an event listener to handle the button's `onClick` event
 - [ ] Wire up this input so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box
 
-### 4. Checking your work
-
-- [ ] Ensure that the `ADD_WOMBAT` action works from Redux DevTools before making it work through your code
-- [ ] Verify that the correct action is being dispatched from your code on the click event
   <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-    You could use a function to **produce** an action: these are called **action creators**.
+    <summary>Checking your work</summary>
+    
+    1. Ensure that you know the shape of the data (string, object, etc) the `ADD_WOMBAT` action needs, and confirm that it works when dispatched from Redux DevTools.
+    
+    2. Verify that the correct action is being dispatched from your code on the click event. You can see a list of all actions dispatched and inspect them in Redux DevTools.
   </details>
 
-### 5. Deleting a Wombat
+### 4. Deleting a Wombat
 
 Add a delete button next to each of the wombats so they can be deleted:
 
 - [ ] Modify the `<Wombat>` component to add a button next to each of the wombats
 - [ ] Add an event listener to handle an `onClick` event
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    Or alternatively you could put your input field in a form, and handle the form's onSubmit event.
-  </details>
-
 - [ ] In the event listener, dispatch a `DEL_WOMBAT` action to the store to delete the wombat based on its name
+
   <details style="padding-left: 2em">
-    <summary>Tip</summary>
+    <summary>Another suggestion</summary>
     
-    It may be worth referring to the recommended problem solving steps above.
+    Rather than giving each `<Wombat>` a button, you could alternatively create a form with a single input field. The form's onSubmit event should dispatch `DEL_WOMBAT`.
   </details>
 
-### 6. Updating a Wombat
+### 5. Updating a Wombat
 
 - [ ] Modify the `<Wombat>` component to add an input box and a button next to each of the wombats
 - [ ] Add an event to this new input/button upon submission
@@ -104,6 +104,20 @@ Add a delete button next to each of the wombats so they can be deleted:
   </details>
 - [ ] `dispatch` the action to the store to change the name of the wombat
 
+---
+
+## Finishing details
+
+### 6. Refactoring your actions
+
+- [ ] Starting with `ADD_WOMBAT`, write a function in `client/actions/index.js` to **produce** the action: these are called **action creators**.
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    Your action creator should return an object with a type and payload. The `ADD_WOMBAT` action expects the name of the new wombat as the payload, so make sure that your function takes the name as a parameter.
+  </details>
+ - [ ] Import your action creator into the component you dispatch `ADD_WOMBAT` from and use this to replace your action object.
+ - [ ] Write and use an action creator for each of your other actions.
 
 ### 7. Adding a new reducer
 
@@ -118,6 +132,17 @@ Add a delete button next to each of the wombats so they can be deleted:
 ## Further resources
 
 When you're starting to get happier with this process, you could try reinforcing it with the [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux) video tutorials from Redux creator Dan Abramov.
+
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+
+  - Currently our wombats state contains an array of strings, but when receive data from the database this comes as an array of objects. Add a new animal and data that reflects this. Perhaps an array of dugongs with keys such as `id`, `name`, `favouriteToy`, etc. How does this change the add, delete, and update functionality?
+  - Choose a CSS framework to implement and make this page prettier!
+  - Write some tests for your React components, actions creators, and reducers
+
+</details>
 
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=redux-zoo)
