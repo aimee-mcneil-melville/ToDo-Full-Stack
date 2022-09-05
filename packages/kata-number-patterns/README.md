@@ -346,3 +346,6 @@ Your task is to write a JavaScript function for each one of these patterns. When
     7  8  9  10
     ```
   </details>
+
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=kata-number-patterns)

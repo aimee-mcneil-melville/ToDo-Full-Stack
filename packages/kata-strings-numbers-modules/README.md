@@ -87,3 +87,5 @@ This kata is similar to the others. Some tests have been written in the `tests` 
     - `npm t tests` would run all tests in the `/tests/` directory
   </details>
 
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=kata-strings-numbers-modules)
