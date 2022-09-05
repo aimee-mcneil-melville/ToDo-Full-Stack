@@ -67,9 +67,17 @@ This challenge will guide you through building an app to create, update, and del
 
 ### 3. Adding a Wombat
 
-- [ ] Add an input field to the page with a button to add a wombat. (Which component should this input field be added to, `<Wombat>` or `<Wombats>`?)
-- [ ] Add an event listener to handle the button's `onClick` event
-- [ ] Wire up this input so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box
+- [ ] To add a wombat, add a form to the page with a single input field and button. (Which component should this form be added to, `<Wombat>` or `<Wombats>`?)
+- [ ] Wire up this form so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box
+
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    1. Create a local React state in the component (using `useState`) to hold the new wombat string
+    2. Add an `onChange` event handler to the form and update/set this state
+    3. Add an event listener to handle the form's `onSubmit` event
+    4. Dispatch the action from this `onSubmit` event handler
+  </details>
 
   <details style="padding-left: 2em">
     <summary>Checking your work</summary>
