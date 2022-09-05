@@ -5,7 +5,8 @@
   "repository": "https://github.com/dev-academy-challenges/worldwide-routing.git",
   "main": "server/index.js",
   "scripts": {
-    "start": "run-p webpack server",
+    "build": "npm run webpack -- --mode production",
+    "start": "node server",
     "dev": "run-p client:watch server:watch",
     "webpack": "webpack --config client/webpack.config.js",
     "server": "node server",
@@ -62,6 +63,9 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"
 }
