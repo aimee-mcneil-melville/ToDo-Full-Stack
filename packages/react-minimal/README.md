@@ -49,3 +49,6 @@ Learning objectives:
   
   When most students see this repo for the first time, they are likely proficient with Node/Express, but not React or Webpack. We've chosen not to introduce the concept of client/server, even though we admittedly don't need a server here. We will introduce `webpack-dev-server` later. Today we just want to focus on React concepts.
 </details>
+
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=react-minimal)
