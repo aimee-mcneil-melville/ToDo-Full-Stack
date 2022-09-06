@@ -1,7 +1,8 @@
 exports.up = (knex) => {
   return knex.schema.createTable('users', (table) => {
     table.string('auth0_id').primary()
-    table.string('email')
+    table.string('username')
+    table.string('icon')
   })
 }
 
