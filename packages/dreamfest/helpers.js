@@ -20,6 +20,8 @@ function capitalise(name) {
 /**
  * Ensures that @param day is a string and is a valid Event day
  * The default valid event days are: friday, saturday, and sunday
+ *
+ * If the input day is not valid, use the first valid day instead
  * @param {string} day
  * @param {string[]} days
  * @returns string
