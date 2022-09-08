@@ -1,4 +1,4 @@
-import request from 'superagent'
+import { fetchSubreddit } from '../apis/reddit'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -27,10 +27,9 @@ export function showError(errorMessage) {
 export function fetchPosts(subreddit) {
   return (dispatch) => {
     dispatch(requestPosts())
-    return request
-      .get(`/api/v1/reddit/subreddit/${subreddit}`)
-      .then((res) => {
-        dispatch(receivePosts(res.body))
+    fetchSubreddit(subreddit)
+      .then((posts) => {
+        dispatch(receivePosts(posts))
       })
       .catch((err) => {
         dispatch(showError(err.message))
