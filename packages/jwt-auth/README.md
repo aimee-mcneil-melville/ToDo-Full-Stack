@@ -278,7 +278,7 @@ Commit your code and swap driver/navigator.
 
 ### 11. Setting up the JWT Middleware
 
-- [ ] In `server/auth0.js`, set the `domain`(1️⃣) and `audience`(3️⃣) values
+- [ ] In `server/auth0.js`, set the `domain`(1️⃣, see tip below for required format) and `audience`(3️⃣) values
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
