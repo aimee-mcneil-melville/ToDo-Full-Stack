@@ -1,7 +1,8 @@
 const path = require('path')
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.tsx',
   output: {
     path: path.join(__dirname, '../server/public'),
     filename: 'bundle.js',
