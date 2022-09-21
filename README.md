@@ -138,8 +138,8 @@ Run the following commands in your terminal:
 
 ```sh
 npm install
-npx knex migrate:latest
-npx knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 cp .env.example .env
 ```
 
