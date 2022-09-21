@@ -67,11 +67,11 @@ This challenge will guide you through building an app to create, update, and del
 
 ### 3. Adding a Wombat
 
-- [ ] To add a wombat, add a form to the page with a single input field and button. (Which component should this form be added to, `<Wombat>` or `<Wombats>`?)
+- [ ]  So we can add a new wombat, add a form to the page with a single input field and button. (Which component should this form be added to, `<Wombat>` or `<Wombats>`?)
 - [ ] Wire up this form so that it can `dispatch` an `ADD_WOMBAT` action to the store to add the wombat's name from the input box
 
   <details style="padding-left: 2em">
-    <summary>Tip</summary>
+    <summary>More about dispatching from a form</summary>
     
     1. Create a local React state in the component (using `useState`) to hold the new wombat string
     2. Add an `onChange` event handler to the form and update/set this state
@@ -80,7 +80,7 @@ This challenge will guide you through building an app to create, update, and del
   </details>
 
   <details style="padding-left: 2em">
-    <summary>Checking your work</summary>
+    <summary>Tip</summary>
     
     1. Ensure that you know the shape of the data (string, object, etc) the `ADD_WOMBAT` action needs, and confirm that it works when dispatched from Redux DevTools.
     
@@ -96,7 +96,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 - [ ] In the event listener, dispatch a `DEL_WOMBAT` action to the store to delete the wombat based on its name
 
   <details style="padding-left: 2em">
-    <summary>Another suggestion</summary>
+    <summary>Tip</summary>
     
     Rather than giving each `<Wombat>` a button, you could alternatively create a form with a single input field. The form's onSubmit event should dispatch `DEL_WOMBAT`.
   </details>
@@ -146,9 +146,9 @@ When you're starting to get happier with this process, you could try reinforcing
 <details>
   <summary>More about stretch challenges</summary>
 
-  - Currently our wombats state contains an array of strings, but when receive data from the database this comes as an array of objects. Add a new animal and data that reflects this. Perhaps an array of dugongs with keys such as `id`, `name`, `favouriteToy`, etc. How does this change the add, delete, and update functionality?
+  - Currently our wombats state contains an array of strings, but often our data is stored in database tables and, when retrieved, this comes out as an array of objects. Update your wombat data to match this (perhaps with keys such as `id`, `name`, `furColour`, `favouriteToy`, etc). How does this change the add, delete, and update functionality?
   - Choose a CSS framework to implement and make this page prettier!
-  - Write some tests for your React components, actions creators, and reducers
+  - Write tests for your React components, actions creators, and reducers
 
 </details>
 
