@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/bowling-kata.git"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "eslintConfig": {
     "extends": "eda"

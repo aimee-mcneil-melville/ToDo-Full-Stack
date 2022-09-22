@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
 
@@ -9,7 +9,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
   const token = useSelector((state) => state.loggedInUser.token)
   const [newFruit, setNewFruit] = useState(false)
 
-  function handleAddChange(e) {
+  const handleAddChange = (e) => {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
@@ -17,7 +17,8 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
     })
   }
 
-  function handleAdd() {
+  const handleAdd = (e) => {
+    e.preventDefault()
     const fruit = { ...newFruit }
     addFruit(fruit, token)
       .then(setFruits)
@@ -30,9 +31,9 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
   return (
     <>
       <h2>Add new</h2>
-      <GridForm>
+      <GridForm onSubmit={handleAdd}>
         <ColOne>Name:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="name"
           aria-label="adding-name"
@@ -41,7 +42,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
         />
 
         <ColOne>Average Grams Each:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="averageGramsEach"
           aria-label="adding-grams"
@@ -49,9 +50,7 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
           onChange={handleAddChange}
         />
 
-        <Button type="button" onClick={handleAdd}>
-          Add fruit
-        </Button>
+        <Button type="submit">Add fruit</Button>
         <Button type="button" onClick={closeAddForm}>
           Close
         </Button>

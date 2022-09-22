@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Challenge to learn server side rendering and callbacks",
   "main": "index.js",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
     "start": "node index",
@@ -34,7 +34,7 @@
     "eslint": "^8.10.0",
     "eslint-config-eda": "^1.2.0",
     "jest": "^27.5.1",
-    "jsdom": "^16.4.0",
+    "jsdom": "^20.0.0",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
   }

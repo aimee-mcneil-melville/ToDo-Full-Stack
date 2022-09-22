@@ -16,7 +16,7 @@
     "extends": "eda"
   },
   "keywords": [],
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
   "dependencies": {

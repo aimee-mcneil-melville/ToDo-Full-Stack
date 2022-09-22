@@ -1,6 +1,6 @@
 import React from 'react'
 
-const App = (props) => {
+function App(props) {
   const circle = {
     cx: props.width / 2,
     cy: props.height / 2,

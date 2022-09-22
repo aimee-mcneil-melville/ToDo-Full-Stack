@@ -7,20 +7,20 @@ function PostForm(props) {
   const { id } = useParams()
   const { posts, loading, fetchPosts } = useOutletContext()
   const post = posts.find((post) => post.id === Number(id)) || {}
-  const [newPost, setNewPost] = useState({ title: '', paragraphs: '' })
+  const [newPost, setNewPost] = useState({ title: '', text: '' })
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     if (props.variant === 'edit' && !loading) {
-      setNewPost({ ...post, paragraphs: post.paragraphs.join('\n') })
+      setNewPost({ title: post.title, text: post.text })
     }
-  }, [post])
+  }, [post, loading])
 
   function onSubmit(e) {
     e.preventDefault()
     if (!completePostData(newPost)) return null
     if (props.variant === 'edit') {
-      return updatePost({ ...newPost, id }).then(() => {
+      return updatePost(id, newPost).then(() => {
         fetchPosts()
         navigate(`/posts/${newPost.id}`)
       })
@@ -33,7 +33,7 @@ function PostForm(props) {
   }
 
   function completePostData(post) {
-    if (post.paragraphs && post.title) {
+    if (post.text && post.title) {
       return true
     } else {
       setErrorMessage('Your blog entry is incomplete')
@@ -67,10 +67,10 @@ function PostForm(props) {
         </div>
 
         <div className="pure-control-group">
-          <label htmlFor="paragraphs">Blog</label>
+          <label htmlFor="text">Blog</label>
           <textarea
-            name="paragraphs"
-            value={newPost.paragraphs}
+            name="text"
+            value={newPost.text}
             onChange={handleChange}
           ></textarea>
         </div>

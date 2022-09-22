@@ -35,3 +35,6 @@ This challenge starts with a form powered entirely by React (and webpack) and of
   - a slider for color opacity
   - radio buttons for "will explode", "won't explode", "may explode (we're not sure)", etc
 - If you're feeling ambitious, add a file upload component!
+
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=react-form-demo)

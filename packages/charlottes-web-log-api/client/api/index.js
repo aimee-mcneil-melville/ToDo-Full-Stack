@@ -11,8 +11,6 @@ export function getPosts() {
 }
 
 export function addPost(post) {
-  // convert the large paragraphs string into an array of paragraphs
-  post.paragraphs = post.paragraphs.split('\n')
   return request
     .post('/v1/posts')
     .send(post)
@@ -24,11 +22,9 @@ export function addPost(post) {
     .catch(errorHandler('POST', '/v1/posts'))
 }
 
-export function updatePost(post) {
-  // convert the large paragraphs string into an array of paragraphs
-  post.paragraphs = post.paragraphs.split('\n')
+export function updatePost(postId, post) {
   return request
-    .patch(`/v1/posts/${post.id}`)
+    .patch(`/v1/posts/${postId}`)
     .send(post)
     .then((res) => {
       validateNoSnakeCase(res.body)
@@ -49,7 +45,7 @@ export function getCommentsByPostId(postId) {
   return request
     .get(`/v1/posts/${postId}/comments`)
     .then((res) => {
-      validateNoSnakeCase(res.body)
+      res.body.forEach(comment => validateNoSnakeCase(comment))
       return res.body
     })
     .catch(errorHandler('GET', '/v1/posts/:id/comments'))
@@ -66,10 +62,10 @@ export function addCommentByPostId(postId, comment) {
     .catch(errorHandler('POST', '/v1/posts/:id/comments'))
 }
 
-export function updateComment(comment) {
+export function updateComment(id, comment) {
   return request
-    .patch(`/v1/comments/${comment.id}`)
-    .send(comment)
+    .patch(`/v1/comments/${id}`)
+    .send({ comment })
     .then((res) => {
       validateNoSnakeCase(res.body)
       return res.body
@@ -108,9 +104,9 @@ function validatePostResponse(method, route, post) {
     throw Error(`Error: ${method} ${route} should return a blog post`)
   }
 
-  const { title, paragraphs } = post
+  const { title, text } = post
 
-  if (!title || !paragraphs) {
+  if (!title || !text) {
     throw Error(
       `Error: ${method} ${route} is not returning a correct blog post`
     )
@@ -123,9 +119,9 @@ function validatePostResponse(method, route, post) {
 //     throw Error(`Error: ${method} ${route} should return a comment`)
 //   }
 
-//   const { title, paragraphs } = comment
+//   const { title, text } = comment
 
-//   if (!title || !paragraphs) {
+//   if (!title || !text) {
 //     throw Error(`Error: ${method} ${route} is not returning a correct comment`)
 //   }
 // }

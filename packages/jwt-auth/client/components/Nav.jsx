@@ -1,46 +1,39 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-
-const NavGroup = styled.nav`
-  float: right;
-`
-
-const NavLink = styled(Link)`
-  margin-right: 30px;
-`
+import { NavLink, NavGroup } from './Styled'
 
 function Nav() {
+  const user = useSelector((state) => state.loggedInUser)
   // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect
-  function handleLogoff(e) {
+
+  const handleLogOff = (e) => {
     e.preventDefault()
     console.log('log off')
   }
 
-  function handleRegister(e) {
-    e.preventDefault()
-    console.log('register')
-  }
-
-  function handleSignIn(e) {
+  const handleSignIn = (e) => {
     e.preventDefault()
     console.log('sign in')
   }
+
   return (
     <>
       <NavGroup>
         <NavLink to="/">Home</NavLink>
         <IfAuthenticated>
-          <NavLink to="/" onClick={handleLogoff}>
+          <NavLink to="/" onClick={handleLogOff}>
             Log off
           </NavLink>
+          <p>
+            <span role="img" alt={user.icon}>
+              {user.icon}
+            </span>
+            {' ' + user.username}
+          </p>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavLink to="/" onClick={handleRegister}>
-            Register
-          </NavLink>
           <NavLink to="/" onClick={handleSignIn}>
             Sign In
           </NavLink>

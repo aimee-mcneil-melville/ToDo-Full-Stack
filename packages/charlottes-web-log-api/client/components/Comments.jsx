@@ -22,7 +22,6 @@ function Comments(props) {
         {comments.map((comment) => (
           <Comment
             key={comment.id}
-            postId={postId}
             comment={comment}
             fetchComments={fetchComments}
           />

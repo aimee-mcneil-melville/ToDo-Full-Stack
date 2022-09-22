@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
-  // TODO: read from global state
+  // TODO: read token from global state
   const [editing, setEditing] = useState(selected)
 
-  function handleEditChange(e) {
+  const handleEditChange = (e) => {
     const { name, value } = e.target
     setEditing({
       ...editing,
@@ -16,7 +16,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     })
   }
 
-  function handleUpdate() {
+  const handleUpdate = (e) => {
+    e.preventDefault()
     // TODO: pass token as second parameter
     updateFruit(editing, 'token')
       .then((remoteFruits) => setFruits(remoteFruits))
@@ -25,7 +26,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
       .catch((err) => setError(err.message))
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')
       .then(setFruits)
@@ -39,13 +40,15 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
+  const { name: currentName, username: user } = selected
 
   return (
     <>
-      <h2>Selected</h2>
-      <GridForm>
+      <h2>Selected: {currentName}</h2>
+      <p>Originally added by {user}</p>
+      <GridForm onSubmit={handleUpdate}>
         <ColOne>Name:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="name"
           aria-label="selected-name"
@@ -55,7 +58,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
         />
 
         <ColOne>Average Grams Each:</ColOne>
-        <ColTwo
+        <ColTwoText
           type="text"
           name="averageGramsEach"
           aria-label="selected-grams"
@@ -64,11 +67,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
           onChange={handleEditChange}
         />
 
-        <Button
-          type="button"
-          data-testid="update-button"
-          onClick={handleUpdate}
-        >
+        <Button type="submit" data-testid="update-button">
           Update fruit
         </Button>
         <Button

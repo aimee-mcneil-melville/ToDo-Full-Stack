@@ -7,7 +7,7 @@
   "keywords": [
     "frontend"
   ],
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
     "build": "webpack --config client/webpack.config.js",

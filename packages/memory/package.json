@@ -13,7 +13,7 @@
     "test": "jest --noStackTrace",
     "lint": "eslint ."
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dev-academy-challenges/memory/issues"

@@ -13,7 +13,7 @@
     "postinstall": "npm run webpack",
     "lint": "eslint --ext .js,.jsx ."
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "babel": {
     "presets": [

@@ -39,3 +39,5 @@
 * Add your own function to `duel.js` and test it.
 * Can you think of other things to test?
 
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=jest-demo)

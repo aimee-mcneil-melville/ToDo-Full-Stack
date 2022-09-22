@@ -2,7 +2,7 @@
   "name": "redux-minimal",
   "version": "0.2.0",
   "description": "Redux exercise (without React)",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
     "build": "npm run webpack",

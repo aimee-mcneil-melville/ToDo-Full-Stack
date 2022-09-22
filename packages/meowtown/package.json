@@ -6,7 +6,7 @@
     "start": "node index",
     "dev": "nodemon index"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.2",

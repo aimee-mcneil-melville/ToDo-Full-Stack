@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1"

@@ -1,229 +1,306 @@
 # Sweet As Beers
 
-In this challenge you'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
-
+In this challenge we'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
 
 ## Setup
 
-After cloning this repo
+### 0. Installation & what's included
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-```sh
-cd sweet-as-beers && npm i
-npm run dev
-```
+    ```sh
+    cd sweet-as-beers
+    npm i
+    npm run dev
+    ```
+  </details>
 
+- [ ] Get familiar with the existing code base
+  <details style="padding-left: 2em">
+    <summary>What's included</summary>
+  
+    * All of the React components are in place
+    * We can find the beer data in `data/beers.js`
+    * Redux has been installed, but not yet configured
+    * The `actions` and `reducers` folders have been created, but no actions or reducers have been created yet
+    * The beer listing displays the beers, but the "Add to cart" link doesn't do anything yet
 
-## Starting place
+    Before we jump into the code editor, let's do some thinking about what we need to accomplish.
+  </details>
 
-* All of the React components are in place.
-* You can find the beer data in `data/beers.js`.
-* Redux has been installed, but not yet configured.
-* The `actions` and `reducers` folders have been created, but no actions or reducers have been created yet.
-* The beer listing displays the beers, but the _Add to cart_ link doesn't do anything yet.
+### 1. Setting up the store
+- [ ] Set up the store, wrapping `<App>` with the `<Provider>` in `client/index.js`. Include Redux dev tools
+  <details style="padding-left: 2em">
+    <summary>More about the store</summary>
 
-Before we jump into the code editor, let's do some thinking about what we need to accomplish.
+    Before we start building our action creators and reducers, create the store and wrap our `<App>` with the `<Provider>` in `client/index.js`. It may also help to consider what the store will look like.
 
+    <strong>The shape of the store</strong>
 
-## Shape of the store
+    One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 pieces of changing data that multiple components will use:
 
-One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of changing data that multiple components will use:
+    1. The contents of the **cart** as an array of cart item objects
+    2. The user's **active page** (React Router is a more appropriate choice to manage navigation, but let's use Redux instead because we need the practice)
 
-1. The contents of the **cart** as an array of cart item objects
-2. The user's **active page** (React Router is a more appropriate choice to manage navigation, but let's use Redux instead because we need the practice)
+    Given that, our Redux store should look similar to this:
 
-Given that, our Redux store should look similar to this:
-
-```js
-{
-  cart: [
+    ```js
     {
-      id: 1,
-      quantity: 3,
-      name: 'HBIB Ginger Fusion'
-    }, {
-      id: 2,
-      quantity: 1,
-      name: 'Mangose & Melons'
+      cart: [
+        {
+          id: 1,
+          quantity: 3,
+          name: 'HBIB Ginger Fusion'
+        },
+        {
+          id: 2,
+          quantity: 1,
+          name: 'Mangose & Melons'
+        }
+      ],
+      activePage: 'home' // or 'cart'
     }
-  ],
-  activePage: 'home' // or 'cart'
-}
-```
+    ```
 
-Now we should have a sense of what our reducers will creating. But before we start building our action creators and reducers, take this time to create the store and wrap our `<App>` with the `<Provider>` in `client/index.js`. 
+    Now we should have a sense of what our reducers will creating.
+  </details>
 
-**Note:** You should setup your store so you can use the Redux DevTool.
+---
 
 ## Navigation
 
-In this section, we'll use a value in the Redux store to determine whether we render our `<BeerList />` component or our `<Cart />` component, changing the page we're viewing by updating this value in the store (i.e. changing the string `'home'`to be `'cart'`). We are doing this instead of using something like React Router to manage our pages, but you might choose either of these methods depending on the requirements of your project.
+### 2. Writing an action and reducer
+- [ ] Build an action creator that returns the action to be dispatched when navigating between pages
+  <details style="padding-left: 2em">
+    <summary>More about the <code>activePage</code> action creator</summary>
 
-To do this you'll create an action creator, a reducer function, and dispatch your action from a click event.
+    It could look like this:
 
-1. Add an `activePage` property to the Redux store by creating a new reducer and including it in your `reducers/index.js`. That reducer should be able to respond to an action with the `type` of `'NAVIGATE'`, using that action's `page` key containing the new location and setting it as the new value in the store.
+    ```js
+    export const NAVIGATE = 'NAVIGATE'
 
-2. Now implement `useSelector` in the `<App />` component to grab the value of `activePage` and determine whether to show the `<BeerList />` or `<Cart />` component. Tip: consider using the ternary operator for this.
+    export function navigate (destination) {
+      return {
+        type: NAVIGATE,
+        payload: destination // 'home' or 'cart'
+      }
+    }
+    ```
+  </details>
 
-3. Create the action creator that returns the action to dispatch for navigating between pages. It could look like this:
+- [ ] Write a reducer to handle changes to the `activePage` property on the store
+  <details style="padding-left: 2em">
+    <summary>More about the <code>activePage</code> reducer</summary>
 
-```js
-export const NAVIGATE = 'NAVIGATE'
+    - Add the new reducer to `reducers/index.js`
+    - It will expect an action with a `type` of `'NAVIGATE'` and a `payload` of `'home'` or `'cart'`, like the one generated by your action creator
+    - Use the `payload` to set the new value in the store
+    - We can test the reducer by dispatching a sample action in the Redux dev tools in Chrome
+  </details>
 
-export function navigate (destination) {
-  return {
-    type: NAVIGATE,
-    page: destination // 'home' or 'cart'
-  }
-}
-```
+### 3. Conditionally displaying components
+- [ ] In the `<App>` component, get the value of `activePage` and use it determine whether to show the `<BeerList>` or `<Cart>` component
+  <details style="padding-left: 2em">
+  <summary>Tips</summary>
 
-4. Add a click event handler to the `<a>` tag in `client/components/BeerListItem.jsx` and have it dispatch the `NAVIGATE` action created, with `page` having a value of `'cart'`.
+  - `useSelector` will return values from the store
+  - Consider using the ternary operator to display either `<BeerList>` or `<Cart>`
+</details>
 
-5. If you try to click the "Add to cart" link for a beer now, you should be shown the `<Cart />` component (though there will be nothing in it). 
+### 4. Dispatching
+- [ ] Set up a click handler on the `<BeerListItem>` to dispatch navigation to the cart
+  <details style="padding-left: 2em">
+    <summary>More about dispatching</summary>
 
-## Continue shopping
+    - Add a click event handler to the `<a>` tag in `client/components/BeerListItem.jsx` and have it dispatch the `NAVIGATE` action created, with a `payload` of 'cart'
+    - If successfully dispatched, we will see the action in the Redux dev tools. This can be useful for debugging
+  </details>
 
-Now that we can get to the `<Cart />` it's important we can also get back to `<BeerList />`. Rather than dispatching actions from the DevTool, add a click event handler to the "Continue shopping" link in the `<Cart />` component. This handler should dispatch the `NAVIGATE` action with a `page` of `'home'`.
+- [ ] Test your work by clicking the "Add to cart" link for a beer. We should now see the `<Cart>` component (though there will be nothing in it)
 
-Ensure that clicking "Continue shopping" takes you back to the listing so you can access both pages.
+### 5. Navigating back home
+- [ ] Add a similar click event to the "Continue shopping" link in the `<Cart>` which navigates from the cart back to `'home'`
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
+    - This handler should dispatch the `NAVIGATE` action with a payload of `'home'`
+    - Test our work again, to ensure that clicking "Continue shopping" takes us back to the listing so we can access both pages
+  </details>
 
-## Add to cart
+-----
 
-In this section, you'll create an action creator, a reducer function and dispatch the action.
+## Cart management
 
-Create an action creator for an `ADD_TO_CART` action that looks similar to this:
+### 6. Adding to the cart
 
-```js
-export const ADD_TO_CART = 'ADD_TO_CART'
+- [ ] Create an action creator for an `ADD_TO_CART` action
+  <details style="padding-left: 2em">
+    <summary>More about the cart action creator</summary>
 
-export function addToCart (id, name) {
-  return {
-    type: ADD_TO_CART,
-    id: id,
-    name: name
-  }
-}
-```
-The click event handler you wrote earlier in `client/components/BeerListItem.jsx` should also dispatch the `'ADD_TO_CART'` action with the `id` and `name` of the beer associated with the clicked link.
+    It might look like this
+    ```js
+    export const ADD_TO_CART = 'ADD_TO_CART'
 
-_When you have this in place, ensure that when you click the beer links, you can see the action dispatched in the Redux Dev Tools._
+    export function addToCart (id, name) {
+      return {
+        type: ADD_TO_CART,
+        payload: {
+          id: id,
+          name: name
+        }
+      }
+    }
+    ```
+  </details>
 
-The items in the cart can be managed by a `cart` reducer, which probably makes sense as an array of beers and their quantities. The initial state the reducer returns should be an empty array, indicating an empty cart. 
+- [ ] Dispatch the `ADD_TO_CART` action from the **same** click event that navigates from a `<BeerListItem>` to the cart, and verify in the Redux dev tools
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-You will need to add a case to your reducer to add the beer to your `cart` when the `'ADD_TO_CART'` action has been dispatched. Consider using the spread operator to add the item to the state.
+    - The click event handler we wrote earlier in `client/components/BeerListItem.jsx` should also dispatch the `ADD_TO_CART` action with the id and name of the beer associated with the clicked link
+  </details>
 
-This is a reasonable shape for the `cart` once it has items in it:
+- [ ] Create a reducer that will manage the contents of the cart, starting with an `ADD_TO_CART` action
+  <details style="padding-left: 2em">
+    <summary>More about the cart reducer</summary>
 
-```js
-[
-  {
-    id: 1,
-    name: 'HBIB Ginger Fusion',
-    quantity: 1
-  },
-  {
-    id: 2,
-    name: 'Mangose & Melons',
-    quantity: 1
-  }
-]
-```
+    - The items in the cart can be managed by a cart reducer, which probably makes sense as an array of beers and their quantities
+    - The initial state the reducer returns should be an empty array, indicating an empty cart
+    - Add a case to our reducer to add the beer to the cart when the `ADD_TO_CART` action has been dispatched (consider using the spread operator to add the item to the state)
+    - When the reducer is processing the `ADD_TO_CART` action, it should default to `1` for the `quantity` of the cart item it's adding
+    - Pay attention the shape of the action object, for example to get the id of the new beer we'll need to use `action.payload.id`
+    - This is a reasonable shape for the `cart` once it has items in it:
+      ```js
+      [
+        {
+          id: 1,
+          name: 'HBIB Ginger Fusion',
+          quantity: 1
+        },
+        {
+          id: 2,
+          name: 'Mangose & Melons',
+          quantity: 1
+        }
+      ]
+      ```
+  </details>
 
+### 7. Displaying the cart
 
-**Note:** When the reducer is processing the `ADD_TO_CART` action, it should default to `1` for the `quantity` of the cart item it's adding.
+- [ ] Replace the hard-coded empty cart with the contents of the cart from the Redux store
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
 
-_When you have this in place, ensure that when you click the beer links, you can see the store's cart changing in the Redux Dev Tools._
+    - Implement `useSelector` in the `<Cart>` component so it can render the cart from your Redux store
+    - Now when we add a beer, we should be taken to the cart page and the added item is displayed
+    - Note: refreshing the page will empty the Redux store. So if we want to add and see multiple items in the cart, we'll need to use the "Continue shopping" button to return to the listings
+  </details>
 
-## Display the Cart
+### 8. Avoiding duplicate entries
 
-Currently the `<Cart />` component has a hardcoded, empty `cart` array. Implement `useSelector` in the `<Cart />` component so it can render the `cart` from your Redux store.
+- [ ] Update the `ADD_TO_CART` reducer to increase the quantity when the same beer is added more than once
+  <details style="padding-left: 2em">
+    <summary>More about duplicate entries</summary>
 
-Now when you add a beer, you should be taken to the cart page and the added item is displayed.
+    You may have noticed that if you add a beer that is already in the cart, it will be added twice and each entry will have a quantity of 1. Update the cart reducer so it detects if the beer being added is already in the cart. If it is, increase its quantity instead of adding a new one. 
 
-**Note:** if you refresh the page, you'll empty the Redux store. So if you want to add and see multiple items in the cart, you'll need to use the "Continue shopping" button to return to the listings.
+    **Try to have a plan for how you intend to do this before jumping directly to the code.**
 
-## Avoid duplicate entries
+    Ensure we can now add a beer that's already in the cart and its quantity will be increased each time we add it.
+  </details>
 
-You'll notice that if you add a beer that is already in the cart, it will be added twice and both will have a quantity of `1`. Update your `cart` reducer so it detects if the beer being added is already in the cart. If it is, increase its `quantity` instead of adding a new one. Tip: try to have a plan for how you intend to do this before jumping directly to the code.
+### 9. Removing items from the cart
 
-Ensure you can now add a beer that's already in the cart and its quantity will be increased each time you add it.
+- [ ] Enable users to `REMOVE_FROM_CART` by creating the necessary action creator, reducer case, and dispatches
+  <details style="padding-left: 2em">
+    <summary>More about removing from cart</summary>
 
+    - Create an action creator for a `REMOVE_FROM_CART` action that looks similar to this:
 
-## Remove from cart
+      ```js
+      export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
-Let's make it possible to remove an item from the cart. To do so, you'll create a new action creator, update your existing `cart` reducer function and a dispatch the action from a new click event handler.
+      export function removeFromCart (id) {
+        return {
+          type: REMOVE_FROM_CART,
+          payload: id
+        }
+      }
+      ```
+    - Since this operates on the cart, our existing reducer will suffice. Let it know how to process this new action. Consider using the `filter` method to remove the item from the new state
+    - Write a click handler for the delete button that dispatches the `removeFromCart` action with the `id` of the item being removed
+  </details>
 
-Create an action creator for a `REMOVE_FROM_CART` action that looks similar to this:
+### 10. Updating the cart
 
-```js
-export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+- [ ] Enable users to update quantities of existing items in their `<Cart>`. This will require **component** state as well as an action creator, a reducer case, and dispatches.
+  <details style="padding-left: 2em">
+    <summary>More about updating the cart</summary>
 
-export function removeFromCart (id) {
-  return {
-    type: REMOVE_FROM_CART,
-    id: id
-  }
-}
-```
+    As the user is updating the quantities of the items in their cart, we'll maintain those changes in the `<Cart>` component's state. When they click the "Update" button, that's when we'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
 
-Since this operates on the cart, our existing reducer will suffice - it just needs to know how to process this new action. Consider using `filter()` to remove the item from the new state.
+    Things to consider:
+    - What does the component state need to look like in order to keep track of the quantities of each cart item?
+    - How will we update the state for individual item quantities in the `onChange` handler? We won't be able to use the `name` attribute from the input field, because that will be the same for each item
+    - Remember, we are already accessing the `cart` data from your Redux store
 
-Write a click handler for the delete button that dispatches the `removeFromCart` action with the `id` of the item being removed.
+    If you want more of a challenge, you can try to implement this feature from here. 
 
+    **This is a really good opportunity for problem solving, so consider what would serve your learning better and don't cheat yourself out of a chance for stretch.**
+  </details>
 
-## Update the cart
+  <details style="padding-left: 2em">
+    <summary>Even more guidance</summary>
 
-Now let's give the user an easier way of changing the quantities of items in the cart. In this section, you'll create a new action creator, update the existing reducer function and dispatch the new action from an event handler in `<Cart>`. You will also have to manage some component state to keep track of which items have had their quantities updated.
+    - Currently, the cart item quantity being rendered is the value from `cart` in our Redux store, but because this value can change, it should be rendered from component state. A reasonable approach is to use `cart` as the initial value for the component state
+    - Add a `handleUpdate` event handler in `<Cart>` and call it from the input boxes. Be sure to pass the `id` of the cart item so the function will know which cart item to update
+    - Use the React (not Redux) DevTools to ensure the updates to component state are working as expected
+    - Create an action creator for an `UPDATE_QUANTITIES` action that looks similar to this:
 
-As the user is updating the quantities of the items in their cart, you'll maintain those changes in the `<Cart />` component's state. When they click the _Update_ button, that's when you'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
+      ```js
+        export const UPDATE_QUANTITIES = 'UPDATE_QUANTITIES'
 
-Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that you are already accessing the `cart` data from your Redux store.
+        export function updateQuantities (cart) {
+          return {
+            type: UPDATE_QUANTITIES,
+            payload: cart
+          }
+        }
+      ```
 
-If you want more of a challenge, you can try to implement this feature from here. If you'd like a little more guidance, keep reading.
+    - The `cart` parameter passed to `updateQuantities` can have this shape:
 
-**This is a really good opportunity for problem solving, so consider what would serve your learning better and don't cheat yourself out of a chance for stretch.**
-
-Currently, the cart item quantity being rendered is the value from `cart` in our Redux store, but because this value can change, it should be rendered from component state. A reasonable approach is to use `cart` as the initial value for the component state.
-
-Add a `handleUpdate` event handler in `<Cart />` and call it from the input boxes. Be sure to pass the `id` of the cart item so the function will know which cart item to update. Use the React DevTools to ensure the updates are working as expected.
-
-Create an action creator for an `UPDATE_QUANTITIES` action that looks similar to this:
-
-```js
-export const UPDATE_QUANTITIES = 'UPDATE_QUANTITIES'
-
-export function updateQuantities (cart) {
-  return {
-    type: UPDATE_QUANTITIES,
-    cart: cart
-  }
-}
-```
-
-The `cart` parameter passed to `updateQuantities` can have this shape:
-
-```js
-[{
-  id: 1,
-  quantity: 4
-}, {
-  id: 2,
-  quantity: 6
-}]
-```
-
-Dispatch the `updateQuantities` action from the `onClick` handler of the Update button.
-
-Our existing `cart` reducer can be used once you've added to it how the state should change when this `updateQuantities` action is dispatched. Make these edits and verify the reducer is working correctly using the Redux DevTool if you need to troubleshoot anything.
-
+      ```js
+      [{
+        id: 1,
+        quantity: 4
+      }, {
+        id: 2,
+        quantity: 6
+      }]
+      ```
+    - Dispatch the `updateQuantities` action from the `onClick` handler of the "Update" button
+    - Our existing `cart` reducer can be used once you've added a case for handling the `UPDATE_QUANTITIES` action
+    - Make these edits and verify the reducer is working correctly using the Redux dev tools if you need to troubleshoot anything
+  </details>
+  
 Verify everything is working as expected and troubleshoot any issues that you notice. Well done!
 
+-----
 
 ## Stretch
 
-1. Implement the **Checkout** button on the cart page. Have it go to a thank you page and store the items in the cart as a new `Order` (new reducer). On the thank you page, include a "Home" link so they can return to the listing. Verify your orders are being saved using the Redux DevTool.
+<details>
+  <summary>More about stretch challenges</summary>
 
-1. On the listing page, add an _admin_ link that goes to a kind of Admin Portal used by Sweet As Beers to mark orders as fulfilled or cancelled. On this page, create 3 headers/sections: Pending, Cancelled, and Fulfilled. After a customer has checked out, their order should be in the _pending_ section. Next to each of these orders, provide buttons to `CANCEL_ORDER` and `FULFILL_ORDER`. When an order is cancelled, it should be moved to the cancelled section, and if fulfilled, moved to the Fulfilled section.
+  1. Implement the **Checkout** button on the cart page. Have it go to a thank you page and store the items in the cart as a new `order` (new reducer). On the thank you page, include a "Home" link so they can return to the listing. Verify that orders are being saved using the Redux DevTools
+
+  1. On the listing page, add an "admin" link that goes to a kind of Admin Portal used by Sweet As Beers to mark orders as fulfilled or cancelled. On this page, create three headers/sections: Pending, Cancelled, and Fulfilled. After a customer has checked out, their order should be in the "pending" section. Next to each of these orders, provide buttons to `CANCEL_ORDER` and `FULFILL_ORDER`. When an order is cancelled, it should be moved to the "cancelled" section, and if fulfilled, moved to the "fulfilled" section
+</details>
 
 Hopefully this exercise has given you an opportunity to become more comfortable and confident with React and managing a store with Redux.
+
+---
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=sweet-as-beers)

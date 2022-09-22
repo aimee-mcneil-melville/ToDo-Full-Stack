@@ -8,7 +8,8 @@ function Comment(props) {
 
   return editing ? (
     <CommentForm
-      comment={comment}
+      commentId={comment.id}
+      comment={comment.comment}
       setEditing={setEditing}
       variant="edit"
       fetchComments={fetchComments}
