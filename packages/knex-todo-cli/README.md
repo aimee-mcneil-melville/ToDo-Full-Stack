@@ -32,7 +32,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
     Note: if you run `./todo list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
   </details>
 
-- [ ] Create the Knex configuration file (`knexfile.js`) with `npx knex init`
+- [ ] Create the Knex configuration file (`knexfile.js`) with `npm run knex init`
 
 ---
 
@@ -40,7 +40,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
 ### 1. The first migration
 
-- [ ] Use `npx knex migrate:make todos` to create a migration file (note the use of `npx`)
+- [ ] Use `npm run knex migrate:make todos` to create a migration file
 
 - [ ] Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos`
   <details style="padding-left: 2em">
@@ -53,11 +53,11 @@ We're building a simple command-line tool to manage our list of todos. We're fin
     The documentation for [`dropTable`](http://knexjs.org/#Schema-dropTable) might be helpful.
   </details>
 
-- [ ] Use `npx knex migrate:latest` to apply the changes to the database
+- [ ] Use `npm run knex migrate:latest` to apply the changes to the database
 
 ### 2. Seeds
 
-- [ ] Use `npx knex seed:make test-tasks` to create a seed file
+- [ ] Use `npm run knex seed:make test-tasks` to create a seed file
 - [ ] Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table
   <details style="padding-left: 2em">
     <summary>Tip</summary>
@@ -65,7 +65,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
     The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
   </details>
 
-- [ ] Run `npx knex seed:run` to add the new data to the database
+- [ ] Run `npm run knex seed:run` to add the new data to the database
 
 ### 3. Viewing data in the database
 
@@ -159,7 +159,7 @@ Busy people are complaining about having 200 tasks in their consoles. Add a feat
 
 Users want to be able to mark a task as complete without removing it from the database.
 
-- [ ] Use `npx knex migrate:make add-completed-column` to create a new empty migration. Then update the new migration to add a column to the table
+- [ ] Use `npm run knex migrate:make add-completed-column` to create a new empty migration. Then update the new migration to add a column to the table
   <details style="padding-left: 2em">
     <summary>More about the new migration</summary>
   
@@ -174,10 +174,10 @@ Users want to be able to mark a task as complete without removing it from the da
   <details style="padding-left: 2em">
     <summary>More about checking the migration and seeds</summary>
 
-    1. Run `npx knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite that you set up in section 3). Is it what you expected? What happened to existing data in the database?
-    1. Run `npx knex migrate:rollback` and look in your database.
-    1. Run `npx knex migrate:latest` and look again.
-    1. Run `npx knex seed:run` and look again.
+    1. Run `npm run knex migrate:latest` to run the new migration applying the changes to the database. If you don't get any errors, inspect the database in the SQLite Manager (The application called DB Browser for SQLite that you set up in section 3). Is it what you expected? What happened to existing data in the database?
+    1. Run `npm run knex migrate:rollback` and look in your database.
+    1. Run `npm run knex migrate:latest` and look again.
+    1. Run `npm run knex seed:run` and look again.
 
 
 ### 10. Finish the "mark task complete" feature

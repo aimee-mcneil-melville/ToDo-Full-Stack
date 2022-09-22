@@ -25,8 +25,8 @@ User stories for Relational Database Management Systems (RDBMS) practice. These 
     ```
     cd knex-forms
     npm install
-    npx knex migrate:latest
-    npx knex seed:run
+    npm run knex migrate:latest
+    npm run knex seed:run
     npm run dev
     ```
   </details>
