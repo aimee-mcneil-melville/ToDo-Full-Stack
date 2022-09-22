@@ -11,16 +11,16 @@ The hope is that within a small community this could be a great go to for making
 
 ## The Tech
 
-A Boilerplate is already set up for you (Thanks Harrison!) with everything you will need to get started. This boilerplate is set up to use:
+A Boilerplate is already set up for you with everything you will need to get started. This boilerplate is set up to use:
 
 * [React](https://reactjs.org/docs/getting-started.html)
 * [Redux](https://redux.js.org/)
 * [Express](https://expressjs.com/en/api.html)
-* [Knex.js (SQL)](https://knexjs.org/)
+* [Knex.js](https://knexjs.org/)
 * [Bulma (CSS framework)](https://bulma.io/documentation/)
-* [JWT Auth (Local)](https://jwt.io/)
+* [Authenticare](https://www.npmjs.com/package/authenticare)
 
-The Migration and seeds for the users table, and all login functionality is already set up!
+The migration and seeds for the users table, and all login functionality is already set up!
 
 The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate that view in your project goals!
 
@@ -129,14 +129,21 @@ As a registered user:
  ---
 
 
+## Authentication
+
+Authentication is already set up in this project using the node module [authenticare](https://www.npmjs.com/package/authenticare). Users are currently able to login, logout, and register and all user information will be stored in a table in our database.
+
+If you wish to dive deeper on authenticare, docs are avalable [here](https://github.com/enspiral-dev-academy/authenticare/tree/main/docs). Of particular note are `getEncodedToken` and `getTokenDecoder` as they deal with how you add a token to your request and secure server routes respectively.
+
+
 ## Setup
 
 Run the following commands in your terminal:
 
 ```sh
 npm install
-npx knex migrate:latest
-npx knex seed:run
+npm run knex migrate:latest
+npm run knex seed:run
 cp .env.example .env
 ```
 
