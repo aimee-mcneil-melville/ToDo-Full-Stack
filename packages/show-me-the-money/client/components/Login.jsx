@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
-import { loginUser } from '../actions/auth'
+import { loginUser, authError } from '../actions/auth'
 
 function Login() {
   const navigateTo = useNavigate()
@@ -13,6 +13,10 @@ function Login() {
     username: '',
     password: '',
   })
+
+  useEffect(() => {
+    dispatch(authError(''))
+  }, [])
 
   const handleChange = (e) => {
     setFormData((currentFormData) => {

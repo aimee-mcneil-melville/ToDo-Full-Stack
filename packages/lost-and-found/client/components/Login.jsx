@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { loginUser, loginError } from '../actions/auth'
+
+import { loginUser, authError } from '../actions/auth'
 
 function Login() {
   const navigateTo = useNavigate()
@@ -14,7 +15,7 @@ function Login() {
   })
 
   useEffect(() => {
-    dispatch(loginError(''))
+    dispatch(authError(''))
   }, [])
 
   const handleChange = (e) => {

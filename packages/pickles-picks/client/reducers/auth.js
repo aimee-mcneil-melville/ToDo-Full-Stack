@@ -1,53 +1,46 @@
+import {
+  AUTH_REQUEST,
+  AUTH_FAILURE,
+  LOGIN,
+  LOGOUT,
+} from '../actions/auth'
+
 const initialState = {
+  user: null,
   isFetching: false,
   isAuthenticated: false,
-  user: {},
   errorMessage: '',
 }
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
-    case 'LOGIN_REQUEST':
+    case AUTH_REQUEST:
       return {
         ...state,
         isFetching: true,
         isAuthenticated: false,
         errorMessage: '',
       }
-    case 'LOGIN_SUCCESS':
+    case LOGIN:
       return {
-        ...state,
+        user: action.payload,
         isFetching: false,
         isAuthenticated: true,
-        user: action.user,
+        errorMessage: '',
       }
-    case 'LOGIN_FAILURE':
+    case LOGOUT:
       return {
-        ...state,
-        isFetching: false,
-        isAuthenticated: false,
-        errorMessage: action.message,
-      }
-    case 'LOGOUT_SUCCESS':
-      return {
-        ...state,
-        isFetching: false,
-        isAuthenticated: false,
         user: null,
-      }
-    case 'REGISTER_REQUEST':
-      return {
-        ...state,
-        isFetching: true,
+        isFetching: false,
         isAuthenticated: false,
         errorMessage: '',
       }
-    case 'REGISTER_FAILURE':
+    case AUTH_FAILURE:
       return {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        errorMessage: action.message,
+        errorMessage: action.payload,
       }
     default:
       return state

@@ -1,86 +1,75 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
 
-export function requestLogin() {
+export const AUTH_REQUEST = 'AUTH_REQUEST'
+export const AUTH_FAILURE = 'AUTH_FAILURE'
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+
+export function authRequest() {
   return {
-    type: 'LOGIN_REQUEST',
-    isFetching: true,
-    isAuthenticated: false,
+    type: AUTH_REQUEST,
   }
 }
 
-export function receiveLogin(user) {
+export function authError(message) {
   return {
-    type: 'LOGIN_SUCCESS',
-    isFetching: false,
-    isAuthenticated: true,
-    user,
+    type: AUTH_FAILURE,
+    payload: message,
   }
 }
 
-export function loginError(message) {
+export function receiveUser(user) {
   return {
-    type: 'LOGIN_FAILURE',
-    isFetching: false,
-    isAuthenticated: false,
-    message,
-  }
-}
-
-export function loginUser(creds, confirmSuccess) {
-  return (dispatch) => {
-    dispatch(requestLogin())
-    return login(creds)
-      .then((userInfo) => {
-        dispatch(receiveLogin(userInfo))
-        confirmSuccess()
-      })
-      .catch((err) => {
-        dispatch(loginError(err))
-      })
-  }
-}
-
-export function requestLogout() {
-  return {
-    type: 'LOGOUT_REQUEST',
-    isFetching: true,
-    isAuthenticated: true,
+    type: LOGIN,
+    payload: user,
   }
 }
 
 export function receiveLogout() {
   return {
-    type: 'LOGOUT_SUCCESS',
-    isFetching: false,
-    isAuthenticated: false,
+    type: LOGOUT,
+  }
+}
+
+export function registerUserRequest(creds, confirmSuccess) {
+  return (dispatch) => {
+    dispatch(authRequest())
+    register(creds)
+      .then((userInfo) => {
+        dispatch(receiveUser(userInfo))
+        confirmSuccess()
+      })
+      .catch((err) => dispatch(authError(err)))
+  }
+}
+
+export function loginUser(creds, confirmSuccess) {
+  return (dispatch) => {
+    dispatch(authRequest())
+    return login(creds)
+      .then((userInfo) => {
+        dispatch(receiveUser(userInfo))
+        confirmSuccess()
+      })
+      .catch((err) => {
+        dispatch(authError(err))
+      })
   }
 }
 
 export function logoutUser(confirmSuccess) {
   return (dispatch) => {
-    dispatch(requestLogout())
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
   }
 }
 
-export function registerUserRequest(creds, confirmSuccess) {
-  return (dispatch) => {
-    register(creds)
-      .then((userInfo) => {
-        dispatch(receiveLogin(userInfo))
-        confirmSuccess()
-      })
-      .catch((err) => dispatch(loginError(err)))
-  }
-}
-
 export function checkAuth(confirmSuccess) {
   return (dispatch) => {
     if (isAuthenticated()) {
-      dispatch(receiveLogin(getUserTokenInfo()))
+      dispatch(receiveUser(getUserTokenInfo()))
       confirmSuccess()
     }
   }

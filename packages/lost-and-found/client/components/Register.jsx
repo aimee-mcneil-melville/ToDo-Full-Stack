@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { loginError, registerUserRequest } from '../actions/auth'
+import { authError, registerUserRequest } from '../actions/auth'
 
 function Register() {
   const navigateTo = useNavigate()
@@ -18,7 +18,7 @@ function Register() {
   })
 
   useEffect(() => {
-    dispatch(loginError(''))
+    dispatch(authError(''))
   }, [])
 
   const handleChange = (e) => {
@@ -37,7 +37,7 @@ function Register() {
     const { password, confirm_password } = formData
 
     if (confirm_password != password) {
-      dispatch(loginError("Passwords don't match"))
+      dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
       const userInfo = { ...formData }
