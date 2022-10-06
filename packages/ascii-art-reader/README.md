@@ -4,7 +4,7 @@ Build a state of the (ASCII) art terminal client. Don't forget to maximise your 
 
 Learning objectives:
 1. Reading and writing files.
-1. Getting used to asynchronous functions and callbacks.
+1. Getting used to async functions that return promises.
 1. A first try at writing tests for async functions.
 
 When complete, your application might look like this:
@@ -46,7 +46,7 @@ Before you begin work, you may want to read the section about [terminal helpers]
 
     - Here's where you show a list of filenames from the `data` directory. You can choose to keep these in your code for now
     - Hint: start counting from 0, it will make indexing an array that much easier
-    - Hint: you might want to look up `fs.readdir()`
+    - Hint: read the docs for [fsPromises.readdir()](https://nodejs.org/api/fs.html#fspromisesreaddirpath-options)
   </details>
 
 - [ ] As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)
@@ -56,8 +56,8 @@ Before you begin work, you may want to read the section about [terminal helpers]
     - There's a section on [terminal helpers](#terminal-helpers) below. Try using the `readline` function, it's a good way to practice callbacks
     - Again, start small. Try to get the number from the user and display it in the terminal
     - Once you have that, use the number to get the filename. Maybe the filenames are in an array, and the numbers are the array indices?
-    - When you have the right filename, use `fs.readFile` to load the file
-    - Finally, inside the callback for `fs.readFile`, use `console.log` to output the file's contents to the terminal
+    - When you have the right filename, use `fsPromises.readFile` to load the file
+    - Finally, inside the callback for `fsPromises.readFile`, use `console.log` to output the file's contents to the terminal
   </details>
 
 ---
@@ -90,7 +90,7 @@ Ready for more? Here's some ideas for what to work on next!
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-    - Here's your chance to practice with `fs.writeFile`!
+    - Here's your chance to practice with `fsPromises.writeFile`!
     - Don't get too fancy at first. Just accept a line of input into a variable, and write that variable out again to a file called `data/comments.txt`.
   </details>
 
@@ -127,7 +127,7 @@ Still not enough for you? Check these out:
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-    Hint: `fs.readdir` This is another chance to practice callbacks.
+    Hint: `fsPromises.readdir` This is another chance to practice promises.
   
   </details>
 
@@ -184,7 +184,7 @@ Writing programs for the terminal will be a new experience for some. Our advice 
   Something you may find is that you need a way to wait for input from the terminal, for example when choosing which file to display. `readline`, which comes with the Node standard library, will let you pause your program until the user hits enter, then call whatever function you want:
 
   ```js
-  const readline = require('readline')
+  const readline = require('node:readline/promises');
 
   function pressEnter () {
     const rl = readline.createInterface({
@@ -192,16 +192,15 @@ Writing programs for the terminal will be a new experience for some. Our advice 
       output: process.stdout
     })
 
-    rl.question('Which file should I load? ', function (input) {
+    return rl.question('Which file should I load? ').then((input) => {
       rl.close()
-
       // Call any functions you like here. For example:
-      loadFile(input)
+      return loadFile(input)
     })
   }
   ```
 
-  As you can see, `readline` gives you even more practice with callbacks!
+  As you can see, `readline` gives you even more practice with promises!
 </details>
 
 <details>
