@@ -53,7 +53,7 @@ Before you begin work, you may want to read the section about [terminal helpers]
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-    - There's a section on [terminal helpers](#terminal-helpers) below. Try using the `readline` function, it's a good way to practice callbacks
+    - There's a section on [terminal helpers](#terminal-helpers) below. Try using the `prompt` package, it's a good way to practice promises
     - Again, start small. Try to get the number from the user and display it in the terminal
     - Once you have that, use the number to get the filename. Maybe the filenames are in an array, and the numbers are the array indices?
     - When you have the right filename, use `fsPromises.readFile` to load the file
@@ -179,34 +179,7 @@ We don't always write tests that hit the filesystem, because they can be quite s
 Writing programs for the terminal will be a new experience for some. Our advice is to keep it really simple at first.
 
 <details>
-  <summary>About <code>readline</code></summary>
-
-  Something you may find is that you need a way to wait for input from the terminal, for example when choosing which file to display. `readline`, which comes with the Node standard library, will let you pause your program until the user hits enter, then call whatever function you want:
-
-  ```js
-  const readline = require('node:readline/promises');
-
-  function pressEnter () {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    })
-
-    return rl.question('Which file should I load? ').then((input) => {
-      rl.close()
-      // Call any functions you like here. For example:
-      return loadFile(input)
-    })
-  }
-  ```
-
-  As you can see, `readline` gives you even more practice with promises!
-</details>
-
-<details>
   <summary>About <code>prompt</code></summary>
-
-  If you want to get a little more fancy, try using the `prompt` npm package for input. An example of how you might use it:
 
   ```js
   const prompt = require('prompt')
@@ -221,18 +194,21 @@ Writing programs for the terminal will be a new experience for some. Our advice 
     message: 'Make your choice'
   }
 
-  prompt.get(choice, function (err, result) {
-    // Do something with result.choice here...
-  })
+  prompt.get(choice)
+    .then(result => {
+      // Do something with result.choice here...
+    })
   ```
 
-  The callback you pass to `prompt.get` will receive an object that has a property with the name of your input, so for example:
+  The promise returned by `prompt.get` will resolve to an object like this:
 
   ```js
   {
     choice: '1'
   }
   ```
+
+  [Read the docs for more](https://www.npmjs.com/package/prompt)
 </details>
 
 ---
