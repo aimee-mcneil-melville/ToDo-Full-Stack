@@ -2,8 +2,8 @@ const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
 // TODO: set the domain and audience (API Identifier)
-const domain = `https://`
-const audience = ''
+const domain = 'https://'
+const audience = 'https://'
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
