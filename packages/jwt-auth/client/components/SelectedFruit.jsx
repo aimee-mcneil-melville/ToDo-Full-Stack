@@ -6,7 +6,7 @@ import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
-  // TODO: call the useAuth0 hook and destructure 
+  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
   const [editing, setEditing] = useState(selected)
 
   const handleEditChange = (e) => {
@@ -43,12 +43,11 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
-  const { name: currentName, username: user } = selected
+  const { name: currentName } = selected
 
   return (
     <>
       <h2>Selected: {currentName}</h2>
-      <p>Originally added by {user}</p>
       <GridForm onSubmit={handleUpdate}>
         <ColOne>Name:</ColOne>
         <ColTwoText
