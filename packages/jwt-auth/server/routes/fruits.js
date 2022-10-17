@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err.message)
+      res.status(500).send('Something went wrong')
     })
 })
 
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // POST /api/v1/fruits
 router.post('/', (req, res) => {
   const { fruit } = req.body
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err.message)
+      res.status(500).send('Something went wrong')
     })
 })
 
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 // PUT /api/v1/fruits
 router.put('/', (req, res) => {
   const { fruit } = req.body
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
   const fruitToUpdate = {
     id: fruit.id,
     added_by_user: auth0Id,
@@ -58,7 +58,7 @@ router.put('/', (req, res) => {
           .status(403)
           .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
-        res.status(500).send(err.message)
+        res.status(500).send('Something went wrong')
       }
     })
 })
@@ -80,7 +80,7 @@ router.delete('/:id', (req, res) => {
           .status(403)
           .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
-        res.status(500).send(err.message)
+        res.status(500).send('Something went wrong')
       }
     })
 })
