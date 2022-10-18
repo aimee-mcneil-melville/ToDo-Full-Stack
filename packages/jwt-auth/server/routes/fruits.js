@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // POST /api/v1/fruits
 router.post('/', (req, res) => {
   const { fruit } = req.body
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 // PUT /api/v1/fruits
 router.put('/', (req, res) => {
   const { fruit } = req.body
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
   const fruitToUpdate = {
     id: fruit.id,
     added_by_user: auth0Id,
@@ -67,7 +67,7 @@ router.put('/', (req, res) => {
 // DELETE /api/v1/fruits
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
 
   db.userCanEdit(id, auth0Id)
     .then(() => db.deleteFruit(id))

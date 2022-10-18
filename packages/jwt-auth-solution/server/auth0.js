@@ -1,4 +1,4 @@
-const jwt = require('express-jwt')
+const { expressjwt: jwt } = require('express-jwt')
 const jwks = require('jwks-rsa')
 
 const domain = 'https://dev-academy-sarah.au.auth0.com'
