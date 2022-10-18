@@ -7,7 +7,7 @@ function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
   // TODO: replace placeholder user object with the one from auth0
   const user = {
-    username: 'john.doe',
+    nickname: 'john.doe',
   }
 
   const handleLogOff = (e) => {
@@ -28,9 +28,7 @@ function Nav() {
           <NavLink to="/" onClick={handleLogOff}>
             Log off
           </NavLink>
-          <p>
-            {user.username}
-          </p>
+          <p>{user.nickname}</p>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <NavLink to="/" onClick={handleSignIn}>
