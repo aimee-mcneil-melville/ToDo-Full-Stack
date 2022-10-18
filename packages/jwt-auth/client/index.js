@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     /**
      * Auth0Provider is a component that has a hook that provides
-     * all authorization operations
+     * all authentication operations
      *
      * TODO: replace the empty strings below with your own domain, clientId, and audience
      */
