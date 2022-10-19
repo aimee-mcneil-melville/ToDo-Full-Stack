@@ -78,7 +78,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.50.1",
     "sass-loader": "12.6.0",
-    "sqlite3": "^5.0.8",
+    "sqlite3": "^5.1.2",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
@@ -88,8 +88,8 @@
     "authenticare": "^0.4.9",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "knex": "^2.1.0",
-    "pg": "^8.7.1"
+    "knex": "^2.3.0",
+    "pg": "^8.8.0"
   },
   "browserslist": "> 2%, not dead"
 }

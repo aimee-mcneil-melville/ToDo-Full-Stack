@@ -75,10 +75,10 @@
     "@babel/preset-typescript": "^7.17.12"
   },
   "dependencies": {
-    "sqlite3": "^5.0.8",
+    "sqlite3": "^5.1.2",
     "express": "^4.17.2",
-    "knex": "^2.1.0",
-    "pg": "^8.7.1",
+    "knex": "^2.3.0",
+    "pg": "^8.8.0",
     "superagent": "7.1.1"
   },
   "prettier": {

@@ -17,8 +17,8 @@
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
   "dependencies": {
-    "knex": "^2.1.0",
-    "sqlite3": "^5.0.8"
+    "knex": "^2.3.0",
+    "sqlite3": "^5.1.2"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
