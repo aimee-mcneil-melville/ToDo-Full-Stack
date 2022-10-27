@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 
 const router = express.Router()
 
@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
   try {
     res.json({ statement: 'Welcome to external APIs!' })
   } catch (err) {
-    res.status(500).send(err.message)
+    res.status(500).send(err != null && (err as Error).message)
   }
 })
 
-module.exports = router
+export default router

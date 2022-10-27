@@ -1,7 +1,7 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 
-const welcome = require('./routes/welcome')
+import welcome from './routes/welcome'
 
 const server = express()
 
@@ -10,4 +10,4 @@ server.use(express.static(path.join(__dirname, './public')))
 
 server.use('/api/v1/welcome', welcome)
 
-module.exports = server
+export default server
