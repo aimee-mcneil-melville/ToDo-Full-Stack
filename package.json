@@ -13,8 +13,8 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@devacademy/eslint-config": "^1.4.0",
     "eslint": "^8.10.0",
-    "@devacademy/eslint-config": "^1.3.3",
     "prettier": "^2.5.1"
   },
   "prettier": {

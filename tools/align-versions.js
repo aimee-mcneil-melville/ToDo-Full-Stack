@@ -11,6 +11,7 @@ const correctVersions = {
   '@babel/preset-env': '^7.15.6',
   '@babel/preset-react': '^7.14.5',
   '@babel/register': '^7.13.14',
+  '@devacademy/eslint-config': '^1.4.0',
   '@testing-library/jest-dom': '^5.16.5',
   '@testing-library/dom': '^8.17.1',
   '@testing-library/user-event': '^12.7.1',
