@@ -1,4 +1,16 @@
-export default {
+type Country = {
+  code: string
+  name: string
+}
+
+interface IContinent {
+  image: string
+  countries: Country[]
+}
+
+type ContinentData = Record<string, IContinent>
+
+const data: ContinentData = {
   Africa: {
     image: 'South-Africa.jpg',
     countries: [
@@ -287,3 +299,5 @@ export default {
     ],
   },
 }
+
+export default data
