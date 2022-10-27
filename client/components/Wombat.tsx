@@ -1,6 +1,8 @@
-import React from 'react'
+interface IProps {
+  name: string
+}
 
-function Wombat(props) {
+function Wombat(props: IProps) {
   const wombat = props.name
 
   return <div>{wombat}</div>

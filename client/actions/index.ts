@@ -9,3 +9,7 @@
 //     word,
 //   }
 // }
+
+export type TWombatAction =
+  | { type: 'ADD_WOMBAT'; payload: string }
+  | { type: 'DEL_WOMBAT'; payload: string }

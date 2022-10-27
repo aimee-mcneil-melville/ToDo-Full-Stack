@@ -1,9 +1,8 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hooks'
 import Wombat from './Wombat'
 
 function Wombats() {
-  const wombats = useSelector((state) => state.wombats)
+  const wombats = useAppSelector((state) => state.wombats)
 
   return (
     <div>
