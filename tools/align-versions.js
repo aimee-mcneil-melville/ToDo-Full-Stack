@@ -25,12 +25,15 @@ const correctVersions = {
   'eslint-plugin-jsx-a11y': '^6.5.1',
   express: '^4.17.2',
   'express-handlebars': '^6.0.2',
+  'express-jwt': '^7.7.5',
+  'express-jwt-authz': '^2.4.1',
   jest: '^27.5.1',
   jsdom: '^20.0.0',
-  knex: '^2.1.0',
+  'jwks-rsa': '^2.1.5',
+  knex: '^2.3.0',
   'mini-css-extract-plugin': '^2.3.0',
   nodemon: '^2.0.15',
-  pg: '^8.7.1',
+  pg: '^8.8.0',
   'react-redux': '^7.2.5',
   redux: '^4.1.1',
   'regenerator-runtime': '^0.13.7',
@@ -49,7 +52,7 @@ const correctVersions = {
   prettier: '2.6.1',
   'eslint-plugin-react': '^7.29.4',
   '@testing-library': '^12.1.3',
-  sqlite3: '^5.0.8',
+  sqlite3: '^5.1.2',
 }
 
 const main = async () => {

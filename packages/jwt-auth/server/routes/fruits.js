@@ -67,7 +67,7 @@ router.put('/', (req, res) => {
 // DELETE /api/v1/fruits
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
-  const auth0Id = req.user?.sub
+  const auth0Id = req.auth?.sub
 
   db.userCanEdit(id, auth0Id)
     .then(() => db.deleteFruit(id))

@@ -24,8 +24,8 @@
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
-    "knex": "^2.1.0",
-    "sqlite3": "^5.0.8"
+    "knex": "^2.3.0",
+    "sqlite3": "^5.1.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",

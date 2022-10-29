@@ -34,9 +34,9 @@
     "express": "^4.17.2",
     "express-jwt": "^7.7.5",
     "express-jwt-authz": "^2.4.1",
-    "jwks-rsa": "^2.0.4",
-    "knex": "^2.1.0",
-    "sqlite3": "^5.0.8"
+    "jwks-rsa": "^2.1.5",
+    "knex": "^2.3.0",
+    "sqlite3": "^5.1.2"
   },
   "devDependencies": {
     "@auth0/auth0-react": "^1.8.0",

@@ -1,11 +1,12 @@
 const express = require('express')
-const checkJwt = require('../auth0')
+// TODO: import checkJwt
 
 const db = require('../db/users')
 const router = express.Router()
 
+// TODO: use checkJwt as middleware
 // GET /api/v1/users
-router.get('/', checkJwt, (req, res) => {
+router.get('/', (req, res) => {
   const auth0_id = req.auth?.sub
 
   if (!auth0_id) {
@@ -15,15 +16,13 @@ router.get('/', checkJwt, (req, res) => {
       .then((user) => {
         res.json(user ? user : null)
       })
-      .catch((err) => {
-        console.error(err)
-        res.status(500).send(err.message)
-      })
+      .catch((err) => res.status(500).send(err.message))
   }
 })
 
+// TODO: use checkJwt as middleware
 // POST /api/v1/users
-router.post('/', checkJwt, (req, res) => {
+router.post('/', (req, res) => {
   const auth0_id = req.auth?.sub
   const { username, icon } = req.body
   const userDetails = {

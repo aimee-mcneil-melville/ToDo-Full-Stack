@@ -37,11 +37,11 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
     "express": "^4.17.2",
-    "express-jwt": "^6.1.0",
+    "express-jwt": "^7.7.5",
     "express-jwt-authz": "^2.4.1",
-    "jwks-rsa": "^2.0.4",
-    "knex": "^2.1.0",
-    "pg": "^8.7.1",
+    "jwks-rsa": "^2.1.5",
+    "knex": "^2.3.0",
+    "pg": "^8.8.0",
     "superagent": "7.1.1"
   },
   "devDependencies": {
@@ -76,7 +76,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.50.1",
     "sass-loader": "12.6.0",
-    "sqlite3": "^5.0.8",
+    "sqlite3": "^5.1.2",
     "style-loader": "^3.3.0",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
