@@ -1,4 +1,10 @@
-export default [
+export type TOtherBlog = {
+  id: number
+  blogTitle: string
+  link: string
+}
+
+const otherBlogs: TOtherBlog[] = [
   {
     id: 1,
     blogTitle: 'Wilber',
@@ -40,3 +46,5 @@ export default [
     link: 'https://uncle.net/blog',
   },
 ]
+
+export default otherBlogs
