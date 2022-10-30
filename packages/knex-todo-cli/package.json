@@ -13,7 +13,7 @@
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
   "eslintConfig": {
-    "extends": "eda"
+    "extends": "@devacademy"
   },
   "keywords": [],
   "author": "Dev Academy Aotearoa",
@@ -23,8 +23,8 @@
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
+    "@devacademy/eslint-config": "^1.4.0",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
