@@ -9,14 +9,19 @@
     "dev": "run-p client server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
-    "server": "node server",
-    "lint": "eslint --ext .js,.jsx ."
+    "server": "ts-node server",
+    "lint": "eslint --ext .js,.jsx,.tsx,.ts ."
   },
   "babel": {
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "eslintConfig": {
@@ -28,13 +33,19 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "@devacademy/eslint-config": "^1.4.0",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -45,18 +56,23 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.2.2",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2",
-    "@babel/preset-typescript": "^7.17.12",
-    "@devacademy/eslint-config": "^1.4.0"
+    "webpack-cli": "^4.9.2"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   },
   "browserslist": "> 2%, not dead"
 }
