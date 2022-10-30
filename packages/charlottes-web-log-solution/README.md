@@ -35,6 +35,33 @@ Our task is to create all of the components that comprise the page and wire up d
     The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
 
     We will need to import the data from the appropriate files and pass the needed data to the components using props.
+
+    The data also provides pre-built types for you to build out your prop types
+
+    Here's an example of how you may use that data in your components:
+
+    ```ts
+    // client/data/post.ts
+    export type TPost = {
+      id: number
+      title: string
+      date: string
+      commentCount: number
+      paragraphs: string[]
+    }
+
+    // client/components/Post.tsx
+    import type { TPost } from '../data/post'
+
+    type Props = {
+      post: TPost,
+      // ... other props
+    }
+
+    export default function Post({ post, /* other props... */ }: Props) {
+      return (/* ... */)
+    }
+    ```
   </details>
 
 - [ ] Understand the design requirements
