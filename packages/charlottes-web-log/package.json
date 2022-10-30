@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "run-p client:build server",
     "dev": "run-p client:watch server:watch",
