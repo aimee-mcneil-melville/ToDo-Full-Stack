@@ -1,8 +1,8 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 
-const posts = require('./routes/posts')
-const comments = require('./routes/comments')
+import posts from './routes/posts'
+import comments from './routes/comments'
 
 const server = express()
 server.use(express.static(path.join(__dirname, 'public')))
@@ -16,4 +16,4 @@ server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-module.exports = server
+export default server

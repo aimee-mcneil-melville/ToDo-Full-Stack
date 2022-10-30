@@ -1,10 +1,9 @@
-const express = require('express')
+import express from 'express'
 
 // eslint-disable-next-line no-unused-vars
-const db = require('../db/db')
+import db from '../db/db'
 
 const router = express.Router()
 
 // put routes here
-
-module.exports = router
+export default router
