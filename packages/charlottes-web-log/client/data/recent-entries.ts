@@ -1,4 +1,10 @@
-export default [
+export type TRecentEntry = {
+  id: number
+  name: string
+  link: string
+}
+
+const recentEntries: TRecentEntry[] = [
   {
     id: 1,
     name: 'A warm wind',
@@ -60,3 +66,5 @@ export default [
     link: 'https://charlotte.net/blog/the-miracle',
   },
 ]
+
+export default recentEntries
