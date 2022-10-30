@@ -9,10 +9,12 @@
     "add-challenges": "node tools/add-challenges.js",
     "format": "prettier --write 'packages/**/*.js' 'packages/**/*.jsx'"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@devacademy/eslint-config": "^1.4.0",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
     "prettier": "^2.5.1"
   },
   "prettier": {
