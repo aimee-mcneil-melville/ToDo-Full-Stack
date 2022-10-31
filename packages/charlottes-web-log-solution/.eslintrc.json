@@ -1,1 +1,2 @@
-{ "extends": "@devacademy/eslint-config/react" }
+{ "extends": "@devacademy/eslint-config/react",
+"ignorePatterns": ["bundle.js"] }
