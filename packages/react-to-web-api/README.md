@@ -41,7 +41,7 @@ This exercise reverses the roles from yesterday: today the API has been (partial
 
 The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
 
-- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array
+- [ ] Add a `loader` attribute to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array
 
 - [ ] Also add a `useEffect` hook to `<App>`
   <details style="padding-left: 2em">

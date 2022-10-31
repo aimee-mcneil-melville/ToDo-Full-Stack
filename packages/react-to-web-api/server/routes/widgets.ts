@@ -1,9 +1,9 @@
-const express = require('express')
+import express from 'express'
+import { getWidgets } from '../db/db'
+
 const router = express.Router()
 
-import {getWidgets} from'../db/db'
-
-router.get('/', (req, res) => {
+router.get('/', (req: express.Request, res: express.Response) => {
   getWidgets()
     .then((widgets) => {
       res.json(widgets)

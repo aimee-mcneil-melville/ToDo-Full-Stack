@@ -20,7 +20,7 @@
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
   "dependencies": {
-    "react-router-dom": "^6.2.2"
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
