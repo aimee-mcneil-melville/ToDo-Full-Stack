@@ -1,12 +1,10 @@
-import React from 'react'
-
 import Board from './Board'
 import startingTiles from '../startingTiles'
 
 const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'
 
-function App(props) {
+function App() {
   const isMatch = false
   const matchCount = 0
 
