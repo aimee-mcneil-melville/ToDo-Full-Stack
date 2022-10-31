@@ -12,7 +12,7 @@
     "lint": "eslint ."
   },
   "eslintConfig": {
-    "extends": "eda"
+    "extends": "@devacademy"
   },
   "dependencies": {
     "express": "^4.17.2",
@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
@@ -29,6 +28,7 @@
     "eslint-plugin-react": "^7.29.4",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "supertest": "^6.2.2"
+    "supertest": "^6.2.2",
+    "@devacademy/eslint-config": "^1.5.1"
   }
 }
