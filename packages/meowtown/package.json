@@ -23,7 +23,7 @@
     "jest": "^29.2.2",
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
-    "@devacademy/eslint-config": "^1.4.0"
+    "@devacademy/eslint-config": "^1.5.1"
   },
   "prettier": {
     "semi": false,

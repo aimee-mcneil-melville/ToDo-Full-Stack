@@ -1,7 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import { IPost } from '../IPost'
 
-function PostSummary(props) {
+interface IProps {
+  post: IPost
+  children?: React.ReactNode
+}
+
+function PostSummary(props: IProps) {
   const { title, text, dateCreated, id } = props.post
   const paragraphs = text?.split('\n') || []
   return (
@@ -10,7 +15,7 @@ function PostSummary(props) {
         <header className="post-header">
           <h2 className="post-title">{title}</h2>
           <p className="post-meta">
-            Date Created: {new Date(dateCreated).toDateString()}
+            Date Created: {new Date(dateCreated!).toDateString()}
           </p>
         </header>
       </Link>

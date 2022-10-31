@@ -1,4 +1,11 @@
-export default [
+export type TTile = {
+  id: number
+  value: string
+  isVisible: boolean
+  info: string
+}
+
+const startingTiles: TTile[] = [
   { id: 1, value: '\u{1F330}', isVisible: false, info: 'chestnut' },
   { id: 2, value: '\u{1F33D}', isVisible: false, info: 'ear of maze' },
   { id: 3, value: '\u{1F33E}', isVisible: false, info: 'ear of rice' },
@@ -16,3 +23,5 @@ export default [
   { id: 15, value: '\u{1F341}', isVisible: false, info: 'maple leaf' },
   { id: 16, value: '\u{1F340}', isVisible: false, info: 'four leaf clover' },
 ]
+
+export default startingTiles

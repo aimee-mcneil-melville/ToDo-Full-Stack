@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   useParams,
   Link,
@@ -12,12 +11,15 @@ import { deletePost } from '../api'
 
 import PostSummary from './PostSummary'
 import Comment from './Comment'
+import { IUseFetchPosts } from './hooks/useFetchPosts'
+import { IPost } from '../IPost'
 
 function Post() {
   const { id } = useParams()
-  const { posts, loading, error, fetchPosts } = useOutletContext()
+  const { posts, loading, error, fetchPosts } =
+    useOutletContext<IUseFetchPosts>()
   const navigate = useNavigate()
-  const post = posts.find((post) => post.id === Number(id)) || {}
+  const post = posts.find((post) => post.id === Number(id)) || ({} as IPost)
   const {
     comments,
     error: commentsError,
