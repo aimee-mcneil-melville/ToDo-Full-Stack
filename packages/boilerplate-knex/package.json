@@ -2,9 +2,6 @@
   "name": "boilerplate-knex",
   "version": "0.1.4",
   "description": "Express boilerplate with Knex.js",
-  "engines": {
-    "node": "16.x"
-  },
   "main": "index.js",
   "scripts": {
     "start": "node index",
