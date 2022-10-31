@@ -1,12 +1,15 @@
-import React from 'react'
-
 import { Route, Routes } from 'react-router-dom'
 
 import Post from './Post'
 import Posts from './Posts'
 import PostForm from './PostForm'
 
-function AppRoutes(props) {
+interface IProps {
+  posts: any[]
+  fetchPosts: any
+}
+
+function AppRoutes(props: IProps) {
   return (
     <div>
       <Routes>

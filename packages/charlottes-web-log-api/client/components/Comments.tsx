@@ -1,9 +1,17 @@
-import React from 'react'
 import { Link, Route } from 'react-router-dom'
+import { IComment } from '../IComment'
 
 import Comment from './Comment'
 import CommentForm from './CommentForm'
-function Comments(props) {
+import { IFetchComments } from './hooks/useFetchComments'
+
+interface IProps {
+  fetchComments: IFetchComments
+  postId: number
+  comments: IComment[]
+}
+
+function Comments(props: IProps) {
   const { postId, comments, fetchComments } = props
   return (
     <div>

@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { updateComment, addCommentByPostId } from '../api'
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
+import { IUseFetchPosts } from './hooks/useFetchPosts'
 
-function CommentForm(props) {
+interface IProps {
+  comment: string
+  commentId: number
+  variant?: 'new' | 'edit'
+  setEditing: (_: boolean) => void
+}
+
+function CommentForm(props: IProps) {
   const { id: postId } = useParams()
   const navigate = useNavigate()
-  const { fetchComments } = useOutletContext()
+  const { fetchComments } = useOutletContext<IUseFetchPosts>()
   const [newComment, setNewComment] = useState(props.comment || '')
 
   const onSubmit = (e) => {
@@ -16,7 +24,7 @@ function CommentForm(props) {
         props.setEditing(false)
       })
     } else if (props.variant === 'new') {
-      return addCommentByPostId(postId, newComment).then(() => {
+      return addCommentByPostId(Number(postId), newComment).then(() => {
         fetchComments(postId)
         setNewComment('')
         navigate(`/posts/${postId}`)

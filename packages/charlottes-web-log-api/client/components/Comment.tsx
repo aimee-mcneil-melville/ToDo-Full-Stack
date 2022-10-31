@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
+import { IComment } from '../IComment'
+import { IFetchComments } from './hooks/useFetchComments'
 
-function Comment(props) {
-  const { comment, fetchComments } = props
+interface IProps {
+  comment: IComment
+  fetchComments: IFetchComments
+}
+
+function Comment({ comment, fetchComments }: IProps) {
   const [editing, setEditing] = useState(false)
 
   return editing ? (
@@ -34,6 +40,7 @@ function Comment(props) {
           onClick={(e) => {
             console.log('delete comment', comment.id)
             e.preventDefault()
+
             return deleteComment(comment.id).then(() => {
               fetchComments(comment.postId)
             })
