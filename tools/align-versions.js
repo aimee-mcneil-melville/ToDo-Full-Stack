@@ -3,6 +3,7 @@ const { existsSync } = require('fs')
 const Path = require('path/posix')
 
 const correctVersions = {
+  '@auth0/auth0-react': '^1.12.0',
   '@babel/core': '^7.15.6',
   '@babel/plugin-proposal-class-properties': '^7.14.5',
   '@babel/plugin-proposal-object-rest-spread': '^7.15.6',
@@ -11,6 +12,7 @@ const correctVersions = {
   '@babel/preset-env': '^7.15.6',
   '@babel/preset-react': '^7.14.5',
   '@babel/register': '^7.13.14',
+  '@reduxjs/toolkit': '^1.8.6',
   '@testing-library/jest-dom': '^5.16.5',
   '@testing-library/dom': '^8.17.1',
   '@testing-library/user-event': '^12.7.1',
@@ -31,7 +33,7 @@ const correctVersions = {
   'mini-css-extract-plugin': '^2.3.0',
   nodemon: '^2.0.15',
   pg: '^8.7.1',
-  'react-redux': '^7.2.5',
+  'react-redux': '^8.0.4',
   redux: '^4.1.1',
   'regenerator-runtime': '^0.13.7',
   'style-loader': '^3.3.0',
@@ -47,9 +49,11 @@ const correctVersions = {
   react: '^18.0.2',
   'react-dom': '^18.2.0',
   prettier: '2.6.1',
+  prompt: '^1.3.0',
   'eslint-plugin-react': '^7.29.4',
   '@testing-library': '^12.1.3',
   sqlite3: '^5.0.8',
+  typescript: '^4.8.4',
 }
 
 const main = async () => {
