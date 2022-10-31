@@ -46,7 +46,10 @@
     "knex": "^2.3.0",
     "lodash": "^4.17.20",
     "sqlite3": "^5.1.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
@@ -70,9 +73,6 @@
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.2",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
     "ts-jest": "^29.0.3",

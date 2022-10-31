@@ -1,6 +1,11 @@
-import React from 'react'
+import { IPost } from '../IPost'
 import PostSummary from './PostSummary'
-function Posts(props) {
+
+interface IProps {
+  posts: IPost[]
+}
+
+function Posts(props: IProps) {
   return (
     <div className="posts">
       <h1 className="content-subhead">Posts</h1>

@@ -41,7 +41,7 @@ function Comment({ comment, fetchComments }: IProps) {
             console.log('delete comment', comment.id)
             e.preventDefault()
 
-            return deleteComment(comment.id).then(() => {
+            return deleteComment(comment.id!).then(() => {
               fetchComments(comment.postId)
             })
           }}
