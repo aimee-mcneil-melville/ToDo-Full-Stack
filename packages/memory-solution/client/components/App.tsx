@@ -1,25 +1,46 @@
 import Board from './Board'
-import startingTiles from '../startingTiles'
+import startingTiles, { TTile } from '../startingTiles'
+import { useState } from 'react'
 
 const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'
+const numMatchesToWin = startingTiles.length / 2
 
 function App() {
-  const isMatch = false
-  const matchCount = 0
+  const [matchCount, setMatchCount] = useState(0)
+  const [isMatch, setIsMatch] = useState(false)
+  const [tiles, setTiles] = useState(() =>
+    startingTiles.map((tile) => ({ ...tile, isVisible: false }))
+  )
 
-  const hasWon = matchCount === startingTiles.length / 2
+  console.log(tiles)
 
-  const reset = () => {}
+  const hasWon = matchCount === numMatchesToWin
 
-  const evalMatch = () => {}
+  const reset = () => {
+    setMatchCount(0)
+    setIsMatch(false)
+    setTiles(() => {
+      return startingTiles.map((tile) => ({ ...tile, isVisible: false }))
+    })
+  }
+
+  const evalMatch = (tile1: TTile, tile2: TTile) => {
+    if (tile1.value === tile2.value) {
+      setMatchCount(matchCount + 1)
+      setIsMatch(true)
+    } else {
+      setIsMatch(false)
+    }
+  }
 
   return (
     <div className="game">
       <h1>Welcome to the Memory Game</h1>
       <h2>Match all the tiles to win</h2>
+      <p>Matches left: {numMatchesToWin - matchCount}</p>
 
-      <Board tiles={startingTiles} evalMatch={evalMatch} />
+      <Board setTiles={setTiles} tiles={tiles} evalMatch={evalMatch} />
 
       <h5>{hasWon && winMessage}</h5>
       <h5>{!isMatch && tryAgain}</h5>
