@@ -7,11 +7,10 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom'
-import { getWidgets } from './apiClient'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route index element={<p>hello</p>} />
+    <Route index element={<App/>} />
   )
 )
 const app = document.getElementById('app') as HTMLInputElement
