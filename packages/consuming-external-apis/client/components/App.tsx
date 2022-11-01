@@ -4,9 +4,8 @@ import { getWelcome } from '../apiClient'
 
 function App() {
   const welcome = useLoaderData()
-  const [welcomeStatement, setWelcomeStatement] = useState(welcome)
 
-  return <h1>{welcomeStatement}</h1>
+  return <h1>{welcome}</h1>
 }
 
 export default App
