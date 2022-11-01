@@ -3,7 +3,7 @@ import { useLoaderData} from 'react-router-dom'
 import { getWelcome } from '../apiClient'
 
 function App() {
-  const welcome = useLoaderData()
+  const welcome = useLoaderData() as string
 
   return <h1>{welcome}</h1>
 }
