@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/exercise-arrays#readme",
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": "eda"
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.5.1",
     "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",

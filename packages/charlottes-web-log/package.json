@@ -3,32 +3,24 @@
   "version": "0.1.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log.git",
-  "main": "server/index.ts",
+  "main": "server/index.js",
   "scripts": {
-    "start": "run-p client:build server",
-    "dev": "run-p client:watch server:watch",
+    "start": "run-p webpack server",
+    "dev": "run-p client server",
     "webpack": "webpack --config ./client/webpack.config.js",
-    "client:watch": "npm run webpack -- --watch",
-    "client:build": "npm run webpack -- --mode production",
-    "server": "ts-node server/index.ts",
-    "server:watch": "nodemon server/index.ts",
-    "test": "jest",
-    "lint": "eslint --ext .js,.ts,.tsx ."
+    "client": "npm run webpack -- --watch",
+    "server": "node server",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
+      "@babel/preset-react"
     ]
   },
   "eslintConfig": {
-    "extends": "@devacademy/eslint-config/react",
+    "extends": "eda/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -43,14 +35,9 @@
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.17.12",
-    "@types/express": "^4.17.14",
-    "@types/jest": "^29.2.0",
-    "@types/node": "^18.11.8",
-    "@types/react": "^18.0.23",
-    "@types/react-dom": "^18.0.7",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -61,22 +48,15 @@
     "jest": "^29.2.2",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "ts-jest": "^29.0.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.3",
+    "react": "^18.0.2",
+    "react-dom": "^18.2.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
-    "@devacademy/eslint-config": "^1.5.1"
+    "@babel/preset-typescript": "^7.17.12"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"
 }

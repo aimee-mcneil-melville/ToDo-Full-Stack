@@ -1,5 +1,5 @@
-const path = require('path')
-const express = require('express')
+import path from 'path';
+import express from 'express';
 
 const widgets = require('./routes/widgets')
 
@@ -9,4 +9,4 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/widgets', widgets)
 
-module.exports = server
+export default server

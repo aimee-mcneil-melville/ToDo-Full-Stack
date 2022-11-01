@@ -2,9 +2,6 @@
   "name": "boilerplate-knex",
   "version": "0.1.4",
   "description": "Express boilerplate with Knex.js",
-  "engines": {
-    "node": "16.x"
-  },
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -37,6 +34,7 @@
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^5.16.5",
     "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
@@ -44,11 +42,10 @@
     "eslint-plugin-react": "^7.29.4",
     "jest": "^29.2.2",
     "prettier": "2.6.1",
-    "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.5.1"
+    "supertest": "^6.2.2"
   },
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": "eda"
   },
   "prettier": {
     "semi": false,

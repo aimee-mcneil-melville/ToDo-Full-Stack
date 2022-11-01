@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "description": "React components consuming Web APIs",
   "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "node server",
     "test": "jest --watchAll",
@@ -21,7 +21,7 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@devacademy/eslint-config/react",
+    "extends": "eda/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -34,13 +34,21 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "@babel/register": "^7.13.14",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.3",
-    "@testing-library/user-event": "^12.7.1",
+    "@testing-library/react": "^13.4",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
+    "@types/react-router": "^5.1.19",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/supertest": "^2.0.12",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
+    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -48,24 +56,23 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "jest": "^29.2.2",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.2",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2",
-    "@babel/preset-typescript": "^7.17.12",
-    "@devacademy/eslint-config": "^1.5.1"
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@babel/register": "^7.13.14",
-    "sqlite3": "^5.1.2",
     "express": "^4.17.2",
-    "knex": "^2.3.0"
+    "knex": "^2.3.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.2"
   },
   "prettier": {
     "semi": false,
