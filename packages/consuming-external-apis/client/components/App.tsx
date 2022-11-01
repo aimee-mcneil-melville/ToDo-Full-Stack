@@ -1,19 +1,10 @@
 import { useState, useEffect } from 'react'
-
+import { useLoaderData} from 'react-router-dom'
 import { getWelcome } from '../apiClient'
 
 function App() {
-  const [welcomeStatement, setWelcomeStatement] = useState('')
-
-  useEffect(() => {
-    getWelcome()
-      .then((res) => {
-        setWelcomeStatement(res.statement)
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
-  })
+  const welcome = useLoaderData()
+  const [welcomeStatement, setWelcomeStatement] = useState(welcome)
 
   return <h1>{welcomeStatement}</h1>
 }

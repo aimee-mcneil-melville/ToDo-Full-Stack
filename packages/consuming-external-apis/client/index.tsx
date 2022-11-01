@@ -1,7 +1,21 @@
-import ReactDOM from 'react-dom'
-
+import React from 'react'
 import App from './components/App'
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom'
+import { getWelcome } from './apiClient'
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('app'))
-})
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route index element={<App/>} loader={getWelcome}/>
+  )
+)
+const app = document.getElementById('app') as HTMLInputElement
+ReactDOM.createRoot(app).render(
+    <RouterProvider router={router} />
+)
