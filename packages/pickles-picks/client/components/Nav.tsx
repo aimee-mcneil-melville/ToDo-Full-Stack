@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { Store } from '../../types'
 
 import { logoutUser } from '../actions/auth'
 
 function Nav() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   const [burgerVisible, setBurgerVisible] = useState(false)
 

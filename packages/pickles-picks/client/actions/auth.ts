@@ -32,7 +32,7 @@ export function receiveLogout() {
   }
 }
 
-export function registerUserRequest(creds, confirmSuccess) {
+export function registerUserRequest(creds, confirmSuccess): any {
   return (dispatch) => {
     dispatch(authRequest())
     register(creds)
@@ -44,7 +44,7 @@ export function registerUserRequest(creds, confirmSuccess) {
   }
 }
 
-export function loginUser(creds, confirmSuccess) {
+export function loginUser(creds, confirmSuccess): any {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
@@ -58,7 +58,7 @@ export function loginUser(creds, confirmSuccess) {
   }
 }
 
-export function logoutUser(confirmSuccess) {
+export function logoutUser(confirmSuccess):any {
   return (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
@@ -66,7 +66,7 @@ export function logoutUser(confirmSuccess) {
   }
 }
 
-export function checkAuth(confirmSuccess) {
+export function checkAuth(confirmSuccess):any {
   return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))

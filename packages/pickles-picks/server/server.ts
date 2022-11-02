@@ -9,5 +9,4 @@ server.use(express.json())
 server.use(express.static(path.join('server', 'public')))
 
 server.use('/api/v1', authRoutes)
-
-module.exports = server
+export default server

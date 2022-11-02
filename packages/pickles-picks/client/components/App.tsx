@@ -8,10 +8,11 @@ import Nav from './Nav'
 import Home from './Home'
 
 import { checkAuth } from '../actions/auth'
+import { Store } from '../../types'
 
 function App() {
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { Store } from '../../types'
 
 import { authError, registerUserRequest } from '../actions/auth'
 
 function Register() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
@@ -33,14 +34,13 @@ function Register() {
     e.preventDefault()
     e.target.reset()
 
-    const { password, confirm_password } = formData
+    const { password, confirm_password, username, email_address } = formData
 
     if (confirm_password != password) {
       dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
-      const userInfo = { ...formData }
-      delete userInfo.confirm_password
+      const userInfo = { username, password, email_address }
       dispatch(registerUserRequest(userInfo, confirmSuccess))
     }
   }

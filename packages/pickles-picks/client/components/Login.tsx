@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { loginUser, authError } from '../actions/auth'
+import { Store } from '../../types'
 
 function Login() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
