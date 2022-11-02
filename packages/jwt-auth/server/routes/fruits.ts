@@ -1,14 +1,14 @@
 import express from 'express'
 // TODO: import checkJwt
 
-import db from '../db/fruits'
+import {getFruits,addFruit,deleteFruit,updateFruit,userCanEdit} from '../db/fruits'
 
 const router = express.Router()
 
 // A public endpoint that anyone can access
 // GET /api/v1/fruits
 router.get('/', (req, res) => {
-  db.getFruits()
+  getFruits()
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
@@ -27,8 +27,8 @@ router.post('/', (req, res) => {
     average_grams_each: fruit.averageGramsEach,
   }
 
-  db.addFruit(newFruit)
-    .then(() => db.getFruits())
+  addFruit(newFruit)
+    .then(() => getFruits())
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
@@ -48,9 +48,9 @@ router.put('/', (req, res) => {
     average_grams_each: fruit.averageGramsEach,
   }
 
-  db.userCanEdit(fruit.id, auth0Id)
-    .then(() => db.updateFruit(fruitToUpdate))
-    .then(() => db.getFruits())
+  userCanEdit(fruit.id, auth0Id)
+    .then(() => updateFruit(fruitToUpdate))
+    .then(() => getFruits())
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
@@ -70,7 +70,7 @@ router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.auth?.sub
 
-  db.userCanEdit(id, auth0Id)
+  userCanEdit(id, auth0Id)
     .then(() => db.deleteFruit(id))
     .then(() => db.getFruits())
     .then((fruits) => res.json({ fruits }))
