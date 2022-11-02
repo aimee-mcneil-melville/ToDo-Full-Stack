@@ -12,7 +12,7 @@ import { getWelcome } from './apiClient'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route index element={<div> hello </div>} />
+    <Route index element={<App/>} loader={async ()=> await getWelcome()}/>
   )
 )
 const app = document.getElementById('app') as HTMLInputElement
