@@ -1,7 +1,8 @@
-const express = require('express')
+import express from 'express'
 // TODO: import checkJwt
 
-const db = require('../db/fruits')
+import db from '../db/fruits'
+
 const router = express.Router()
 
 // A public endpoint that anyone can access
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err.message)
+      res.status(500).send('Something went wrong')
     })
 })
 
@@ -31,7 +32,7 @@ router.post('/', (req, res) => {
     .then((fruits) => res.json({ fruits }))
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err.message)
+      res.status(500).send('Something went wrong')
     })
 })
 
@@ -58,7 +59,7 @@ router.put('/', (req, res) => {
           .status(403)
           .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
-        res.status(500).send(err.message)
+        res.status(500).send('Something went wrong')
       }
     })
 })
@@ -80,9 +81,9 @@ router.delete('/:id', (req, res) => {
           .status(403)
           .send('Unauthorized: Only the user who added the fruit may update it')
       } else {
-        res.status(500).send(err.message)
+        res.status(500).send('Something went wrong')
       }
     })
 })
 
-module.exports = router
+export default router

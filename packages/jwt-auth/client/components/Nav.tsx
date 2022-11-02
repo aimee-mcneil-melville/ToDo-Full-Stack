@@ -1,12 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { NavLink, NavGroup } from './Styled'
 
 function Nav() {
-  const user = useSelector((state) => state.loggedInUser)
-  // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect
+  // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
+  // TODO: replace placeholder user object with the one from auth0
+  const user = {
+    nickname: 'john.doe',
+  }
 
   const handleLogOff = (e) => {
     e.preventDefault()
@@ -26,12 +28,7 @@ function Nav() {
           <NavLink to="/" onClick={handleLogOff}>
             Log off
           </NavLink>
-          <p>
-            <span role="img" alt={user.icon}>
-              {user.icon}
-            </span>
-            {' ' + user.username}
-          </p>
+          <p>{user.nickname}</p>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <NavLink to="/" onClick={handleSignIn}>

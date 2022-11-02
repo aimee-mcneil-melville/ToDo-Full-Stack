@@ -1,46 +1,36 @@
-const connection = require('./connection')
+import connection from './connection'
+import {Fruit} from '../../types'
 
-module.exports = {
-  getFruits,
-  addFruit,
-  updateFruit,
-  deleteFruit,
-  userCanEdit,
-}
-
-function sort(fruitArray) {
+function sort(fruitArray: Fruit[]) {
   const allFruits = [...fruitArray]
   allFruits.sort((a, b) => a.id - b.id)
   return allFruits
 }
 
-function getFruits(db = connection) {
+export function getFruits(db = connection) {
   return db('fruits')
-    .join('users', 'added_by_user', 'auth0_id')
     .select(
       'id',
       'name',
       'average_grams_each as averageGramsEach',
-      'added_by_user as addedByUser',
-      'username',
-      'icon'
+      'added_by_user as addedByUser'
     )
     .then((fruits) => sort(fruits))
 }
 
-function addFruit(fruit, db = connection) {
+export function addFruit(fruit: Fruit, db = connection) {
   return db('fruits').insert(fruit)
 }
 
-function updateFruit(newFruit, db = connection) {
+export function updateFruit(newFruit: Fruit, db = connection) {
   return db('fruits').where('id', newFruit.id).update(newFruit)
 }
 
-function deleteFruit(id, db = connection) {
+export function deleteFruit(id: Pick<Fruit, 'id'>, db = connection) {
   return db('fruits').where('id', id).delete()
 }
 
-function userCanEdit(fruitId, auth0Id, db = connection) {
+export function userCanEdit(fruitId: Pick<Fruit, 'id'>, auth0Id: Pick<Fruit, 'added_by_user'>, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+// TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
-  // TODO: read token from global state
+  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
   const [editing, setEditing] = useState(selected)
 
   const handleEditChange = (e) => {
@@ -18,6 +19,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
 
   const handleUpdate = (e) => {
     e.preventDefault()
+    // TODO: getAccessToken from auth0
     // TODO: pass token as second parameter
     updateFruit(editing, 'token')
       .then((remoteFruits) => setFruits(remoteFruits))
@@ -27,6 +29,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }
 
   const handleDelete = () => {
+    // TODO: get accessToken from auth0
     // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')
       .then(setFruits)
@@ -40,12 +43,11 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
-  const { name: currentName, username: user } = selected
+  const { name: currentName } = selected
 
   return (
     <>
       <h2>Selected: {currentName}</h2>
-      <p>Originally added by {user}</p>
       <GridForm onSubmit={handleUpdate}>
         <ColOne>Name:</ColOne>
         <ColTwoText

@@ -1,9 +1,9 @@
-const jwt = require('express-jwt')
-const jwks = require('jwks-rsa')
+import { expressjwt as jwt } from 'express-jwt'
+import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
-const domain = `https://`
-const audience = ''
+const domain = 'https://'
+const audience = 'https://'
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
@@ -17,4 +17,4 @@ const checkJwt = jwt({
   algorithms: ['RS256'],
 })
 
-module.exports = checkJwt
+export default checkJwt
