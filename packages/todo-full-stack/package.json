@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Todo Full Stack",
   "repository": "https://https://github.com/dev-academy-challenges/todo-full-stack",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
@@ -13,10 +13,10 @@
     "test:watch": "jest --noStackTrace --watchAll",
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
-    "dev:server": "nodemon --watch server server/index.js",
+    "dev:server": "nodemon --watch server server/index.ts",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "lint": "eslint --ext .js,.jsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "keywords": [
     "fullstack"
@@ -27,7 +27,12 @@
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "eslintConfig": {
@@ -42,9 +47,13 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4",
     "@testing-library/user-event": "^12.7.1",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "eslint": "^8.10.0",
@@ -71,16 +80,22 @@
     "sass-loader": "12.6.0",
     "style-loader": "^3.3.0",
     "supertest": "^6.2.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2",
-    "@babel/preset-typescript": "^7.17.12"
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "sqlite3": "^5.1.2",
     "pg": "^8.8.0",
+    "sqlite3": "^5.1.2",
     "superagent": "7.1.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   },
   "prettier": {
     "semi": false,
