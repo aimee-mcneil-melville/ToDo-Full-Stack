@@ -4,12 +4,19 @@ import React, { useState } from 'react'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
+import { Fruit } from '../../types'
 
-function AddFruit({ setFruits, closeAddForm, setError }) {
+type Props = {
+  setFruits: ()=> void
+  closeAddForm: () => void
+  setError: () => void
+}
+
+function AddFruit(props: Props) {
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
   const [newFruit, setNewFruit] = useState(false)
-
-  const handleAddChange = (e) => {
+  const { setFruits, closeAddForm, setError } = props
+  const handleAddChange = (e: React.FocusEvent) => {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,

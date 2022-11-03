@@ -15,7 +15,7 @@ export function getFruits(db = connection) {
       'average_grams_each as averageGramsEach',
       'added_by_user as addedByUser'
     )
-    .then((fruits) => sort(fruits))
+    .then((fruits: Fruit[]) => sort(fruits))
 }
 
 export function addFruit(fruit: Fruit, db = connection) {
@@ -26,15 +26,15 @@ export function updateFruit(newFruit: Fruit, db = connection) {
   return db('fruits').where('id', newFruit.id).update(newFruit)
 }
 
-export function deleteFruit(id: Pick<Fruit, 'id'>, db = connection) {
+export function deleteFruit(id: number, db = connection) {
   return db('fruits').where('id', id).delete()
 }
 
-export function userCanEdit(fruitId: Pick<Fruit, 'id'>, auth0Id: Pick<Fruit, 'added_by_user'>, db = connection) {
+export function userCanEdit(fruitId: number, auth0Id: string, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()
-    .then((fruit) => {
+    .then((fruit: Fruit) => {
       if (fruit.added_by_user !== auth0Id) {
         throw new Error('Unauthorized')
       }
