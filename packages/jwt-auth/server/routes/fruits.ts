@@ -16,7 +16,7 @@ const router = express.Router()
 // GET /api/v1/fruits
 router.get('/', (req, res) => {
   getFruits()
-    .then((fruits: Fruit[]) => res.json({ fruits }))
+    .then((fruits: JsonFruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       res.status(500).send('Something went wrong')
@@ -29,7 +29,7 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
 
-  const newFruit = {
+  const newFruit: Fruit = {
     added_by_user: auth0Id!,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
@@ -37,7 +37,7 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
 
   addFruit(newFruit)
     .then(() => getFruits())
-    .then((fruits: Fruit[]) => res.json({ fruits }))
+    .then((fruits: JsonFruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       res.status(500).send('Something went wrong')
@@ -46,7 +46,7 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
 
 // TODO: use checkJwt as middleware
 // PUT /api/v1/fruits
-router.put('/', (req: PostRequest, res) => {
+router.put('/', (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
   const fruitToUpdate = {
@@ -62,7 +62,7 @@ router.put('/', (req: PostRequest, res) => {
   userCanEdit(fruit.id, auth0Id)
     .then(() => updateFruit(fruitToUpdate as any))
     .then(() => getFruits())
-    .then((fruits: Fruit[]) => res.json({ fruits }))
+    .then((fruits: JsonFruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
@@ -75,16 +75,9 @@ router.put('/', (req: PostRequest, res) => {
     })
 })
 
-type Tparams = {
-  params: {
-    id:number
-  }
-}
-interface DeleteRequest extends Express.Request, Tparams, JwtAuth {}
-
 // TODO: use checkJwt as middleware
 // DELETE /api/v1/fruits
-router.delete('/:id', (req: DeleteRequest, res) => {
+router.delete('/:id', (req: JwtRequest, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.auth?.sub
 
@@ -94,7 +87,7 @@ router.delete('/:id', (req: DeleteRequest, res) => {
   userCanEdit(id, auth0Id)
     .then(() => deleteFruit(id))
     .then(() => getFruits())
-    .then((fruits: Fruit[]) => res.json({ fruits }))
+    .then((fruits: JsonFruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
