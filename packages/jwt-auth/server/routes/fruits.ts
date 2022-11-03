@@ -1,9 +1,14 @@
 import express from 'express'
-import Fruits from '../../client/components/Fruits'
+import { JsonFruit, Fruit } from '../../types'
 // TODO: import checkJwt
-import {Fruit, TypedRequestBody, PostFruitReq} from '../../types'
 
-import {getFruits,addFruit,deleteFruit,updateFruit,userCanEdit} from '../db/fruits'
+import {
+  getFruits,
+  addFruit,
+  deleteFruit,
+  updateFruit,
+  userCanEdit,
+} from '../db/fruits'
 
 const router = express.Router()
 
@@ -18,12 +23,27 @@ router.get('/', (req, res) => {
     })
 })
 
+interface FruitBody {
+  body: { fruit: JsonFruit }
+}
+
+interface JwtAuth {
+  auth?: { sub: string }
+}
+
+interface PostRequest extends Express.Request, FruitBody, JwtAuth {}
+
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', (req: any, res) => {
+router.post('/', (req: PostRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
-  const newFruit: Fruit = {
+
+  if (!auth0Id) {
+    throw new Error()
+  }
+
+  const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
@@ -40,7 +60,7 @@ router.post('/', (req: any, res) => {
 
 // TODO: use checkJwt as middleware
 // PUT /api/v1/fruits
-router.put('/', (req: any, res) => {
+router.put('/', (req: PostRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
   const fruitToUpdate = {
@@ -50,8 +70,11 @@ router.put('/', (req: any, res) => {
     average_grams_each: fruit.averageGramsEach,
   }
 
+  if (!auth0Id) {
+    throw new Error()
+  }
   userCanEdit(fruit.id, auth0Id)
-    .then(() => updateFruit(fruitToUpdate))
+    .then(() => updateFruit(fruitToUpdate as any))
     .then(() => getFruits())
     .then((fruits: Fruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
@@ -66,17 +89,27 @@ router.put('/', (req: any, res) => {
     })
 })
 
+type Tparams = {
+  params: {
+    id:number
+  }
+}
+interface DeleteRequest extends Express.Request, Tparams, JwtAuth {}
+
 // TODO: use checkJwt as middleware
 // DELETE /api/v1/fruits
-router.delete('/:id', (req: any, res) => {
+router.delete('/:id', (req: DeleteRequest, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.auth?.sub
 
+  if (!auth0Id) {
+    throw new Error()
+  }
   userCanEdit(id, auth0Id)
     .then(() => deleteFruit(id))
     .then(() => getFruits())
-    .then((fruits) => res.json({ fruits }))
-    .catch((err) => {
+    .then((fruits: Fruit[]) => res.json({ fruits }))
+    .catch((err: Error) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
         res
