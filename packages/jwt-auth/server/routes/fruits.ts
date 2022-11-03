@@ -1,6 +1,6 @@
 import express from 'express'
-import { JsonFruit } from '../../types'
-// TODO: import checkJwt
+import { JsonFruit, Fruit } from '../../types'
+import checkJwt, { JwtRequest } from '../auth0'
 
 import {
   getFruits,
@@ -23,28 +23,14 @@ router.get('/', (req, res) => {
     })
 })
 
-interface FruitBody {
-  body: { fruit: JsonFruit }
-}
-
-interface JwtAuth {
-  auth?: { sub: string }
-}
-
-interface PostRequest extends Express.Request, FruitBody, JwtAuth {}
-
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', (req: PostRequest, res) => {
+router.post('/', checkJwt, (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
 
-  if (!auth0Id) {
-    throw new Error()
-  }
-
   const newFruit = {
-    added_by_user: auth0Id,
+    added_by_user: auth0Id!,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
   }
