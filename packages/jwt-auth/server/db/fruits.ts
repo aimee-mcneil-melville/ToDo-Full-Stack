@@ -1,9 +1,9 @@
 import connection from './connection'
-import {Fruit} from '../../types'
+import { Fruit } from '../../types'
 
 function sort(fruitArray: Fruit[]) {
   const allFruits = [...fruitArray]
-  allFruits.sort((a, b) => a.id - b.id)
+  allFruits.sort((a, b) => (a.id || 0) - (b.id || 0))
   return allFruits
 }
 
@@ -30,7 +30,11 @@ export function deleteFruit(id: Pick<Fruit, 'id'>, db = connection) {
   return db('fruits').where('id', id).delete()
 }
 
-export function userCanEdit(fruitId: Pick<Fruit, 'id'>, auth0Id: Pick<Fruit, 'added_by_user'>, db = connection) {
+export function userCanEdit(
+  fruitId: Pick<Fruit, 'id'>,
+  auth0Id: Pick<Fruit, 'added_by_user'>,
+  db = connection
+) {
   return db('fruits')
     .where('id', fruitId)
     .first()

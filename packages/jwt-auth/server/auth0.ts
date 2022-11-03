@@ -11,7 +11,7 @@ const checkJwt = jwt({
     rateLimit: true,
     jwksRequestsPerMinute: 5,
     jwksUri: `${domain}/.well-known/jwks.json`,
-  }),
+  }) as any,
   audience: audience,
   issuer: `${domain}/`,
   algorithms: ['RS256'],

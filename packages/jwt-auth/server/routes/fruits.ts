@@ -1,7 +1,14 @@
 import express from 'express'
+import { JsonFruit } from '../../types'
 // TODO: import checkJwt
 
-import {getFruits,addFruit,deleteFruit,updateFruit,userCanEdit} from '../db/fruits'
+import {
+  getFruits,
+  addFruit,
+  deleteFruit,
+  updateFruit,
+  userCanEdit,
+} from '../db/fruits'
 
 const router = express.Router()
 
@@ -16,11 +23,26 @@ router.get('/', (req, res) => {
     })
 })
 
+interface FruitBody {
+  body: { fruit: JsonFruit }
+}
+
+interface JwtAuth {
+  auth?: { sub: string }
+}
+
+interface PostRequest extends Express.Request, FruitBody, JwtAuth {}
+
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', (req, res) => {
+router.post('/', (req: PostRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
+
+  if (!auth0Id) {
+    throw new Error()
+  }
+
   const newFruit = {
     added_by_user: auth0Id,
     name: fruit.name,

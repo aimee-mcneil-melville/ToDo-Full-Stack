@@ -1,6 +1,13 @@
 export type Fruit = {
-  id: number
+  id?: number
   name: string
   average_grams_each: number
   added_by_user: string
+}
+
+export type JsonFruit = {
+  id: number
+  name: string
+  averageGramsEach: number
+  addedByUser: string
 }
