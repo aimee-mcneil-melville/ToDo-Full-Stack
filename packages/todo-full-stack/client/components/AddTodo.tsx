@@ -1,7 +1,7 @@
 import React from 'react'
 
 // eslint-disable-next-line no-unused-vars
-function AddTodo(props) {
+function AddTodo() {
   return (
     <>
       <input
