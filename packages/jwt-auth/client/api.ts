@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { FormFruit, JsonFruit } from '../types'
 
 const rootUrl = '/api/v1'
 
@@ -9,7 +10,7 @@ export function getFruits() {
     .catch(logError)
 }
 
-export function addFruit(fruit, token) {
+export function addFruit(fruit: FormFruit, token: string) {
   return request
     .post(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)
@@ -18,7 +19,7 @@ export function addFruit(fruit, token) {
     .catch(logError)
 }
 
-export function updateFruit(fruit, token) {
+export function updateFruit(fruit: JsonFruit, token: string) {
   return request
     .put(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)
@@ -27,7 +28,7 @@ export function updateFruit(fruit, token) {
     .catch(logError)
 }
 
-export function deleteFruit(id, token) {
+export function deleteFruit(id: number, token: string) {
   return request
     .delete(`${rootUrl}/fruits/${id}`)
     .set('Authorization', `Bearer ${token}`)
@@ -35,8 +36,8 @@ export function deleteFruit(id, token) {
     .catch(logError)
 }
 
-function logError(err) {
-  if (err.response.text === 'Username Taken') {
+function logError(err: Error) {
+  if (err.message === 'Username Taken') {
     throw new Error('Username already taken - please choose another')
   } else if (err.message === 'Forbidden') {
     throw new Error(

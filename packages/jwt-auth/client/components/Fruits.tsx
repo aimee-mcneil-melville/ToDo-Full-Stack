@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import {FormFruit, JsonFruit} from '../../types'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { Error } from './Styled'
@@ -7,16 +7,22 @@ import { Error } from './Styled'
 import { getFruits } from '../api'
 
 function Fruits() {
+  const selectedFruit: JsonFruit = {
+    id: 0,
+    name: '',
+    averageGramsEach: 0,
+    addedByUser: ''
+  }
   const [error, setError] = useState('')
-  const [fruits, setFruits] = useState([])
+  const [fruits, setFruits] = useState<JsonFruit[]>([])
   const [adding, setAdding] = useState(false)
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState<JsonFruit>(selectedFruit)
 
   const hideError = () => {
     setError('')
   }
 
-  const openAddForm = (e) => {
+  const openAddForm = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) => {
     e.preventDefault()
     setAdding(true)
     clearSelected()
@@ -26,16 +32,16 @@ function Fruits() {
     setAdding(false)
   }
 
-  const setSelectHandler = (fruit, e) => {
+  const setSelectHandler = (fruit: JsonFruit, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
     setSelected(fruit)
     closeAddForm()
   }
 
   const clearSelected = () => {
-    setSelected(null)
+    setSelected(selectedFruit)
   }
-
+// TODO remove useEffect Sophia!
   useEffect(() => {
     getFruits()
       .then((remoteFruits) => setFruits(remoteFruits))
@@ -47,7 +53,7 @@ function Fruits() {
       <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
 
       <ul>
-        {fruits.map((fruit) => (
+        {fruits.map((fruit: JsonFruit) => (
           <li key={fruit.id}>
             <a
               href="#"

@@ -32,10 +32,12 @@ export const Error = styled.div`
   color: red;
   cursor: pointer;
 `
-
+type Props = {
+  selected: string
+}
 export const RadioLabel = styled.label`
   padding: 5px;
-  ${(props) =>
+  ${(props: Props) =>
     props.selected &&
     `
     border-radius: 15%;

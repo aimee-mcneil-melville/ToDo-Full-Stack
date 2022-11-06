@@ -1,5 +1,5 @@
 import express from 'express'
-import { JsonFruit, Fruit } from '../../types'
+import { JsonFruit, Fruit, SavedFruit } from '../../types'
 import checkJwt, { JwtRequest } from '../auth0'
 
 import {
@@ -33,7 +33,7 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
     added_by_user: auth0Id!,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
-  } 
+  }
 
   addFruit(newFruit)
     .then(() => getFruits())
@@ -60,7 +60,7 @@ router.put('/', (req: JwtRequest, res) => {
     throw new Error()
   }
   userCanEdit(fruit.id, auth0Id)
-    .then(() => updateFruit(fruitToUpdate as any))
+    .then(() => updateFruit(fruitToUpdate as SavedFruit))
     .then(() => getFruits())
     .then((fruits: JsonFruit[]) => res.json({ fruits }))
     .catch((err: Error) => {

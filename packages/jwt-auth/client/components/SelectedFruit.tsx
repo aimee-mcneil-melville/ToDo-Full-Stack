@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react'
 // TODO: import useAuth0
-
+import { JsonFruit, FormFruit } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
+type Props = {
+  selected: JsonFruit
+  clearSelected: () => void
+  setFruits: (fruits: JsonFruit[]) => void
+  setError: (err: string) => void
+}
 
-function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
+function SelectedFruit(props: Props) {
+  const { selected, clearSelected, setError, setFruits } = props
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
   const [editing, setEditing] = useState(selected)
 
-  const handleEditChange = (e) => {
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setEditing({
       ...editing,
@@ -17,7 +24,7 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
     })
   }
 
-  const handleUpdate = (e) => {
+  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // TODO: getAccessToken from auth0
     // TODO: pass token as second parameter
@@ -28,7 +35,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
       .catch((err) => setError(err.message))
   }
 
-  const handleDelete = () => {
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
     // TODO: get accessToken from auth0
     // TODO: pass token as second parameter
     deleteFruit(editing.id, 'token')

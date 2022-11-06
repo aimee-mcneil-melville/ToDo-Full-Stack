@@ -10,12 +10,12 @@ function Nav() {
     nickname: 'john.doe',
   }
 
-  const handleLogOff = (e) => {
+  const handleLogOff = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
     console.log('log off')
   }
 
-  const handleSignIn = (e) => {
+  const handleSignIn = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
     console.log('sign in')
   }

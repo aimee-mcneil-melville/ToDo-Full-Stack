@@ -1,30 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 // TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
-import { Fruit } from '../../types'
+import { JsonFruit, FormFruit } from '../../types'
 
 type Props = {
-  setFruits: ()=> void
+  setFruits: (fruits: JsonFruit[]) => void
   closeAddForm: () => void
-  setError: () => void
+  setError: (err: string) => void
 }
 
 function AddFruit(props: Props) {
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  const [newFruit, setNewFruit] = useState(false)
+  const selectedFruit: FormFruit = {
+    name: '',
+    averageGramsEach: 0,
+    addedByUser: ''
+  }
+  const [newFruit, setNewFruit] = useState<FormFruit>(selectedFruit)
   const { setFruits, closeAddForm, setError } = props
-  const handleAddChange = (e: React.FocusEvent) => {
+  const handleAddChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
       [name]: value,
     })
   }
-
-  const handleAdd = (e) => {
+  const handleAdd = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const fruit = { ...newFruit }
     // TODO: pass token as second parameter
@@ -51,7 +55,7 @@ function AddFruit(props: Props) {
 
         <ColOne>Average Grams Each:</ColOne>
         <ColTwoText
-          type="text"
+          type="number"
           name="averageGramsEach"
           aria-label="adding-grams"
           value={addingGrams || ''}

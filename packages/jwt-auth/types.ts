@@ -6,8 +6,9 @@ export type Fruit = {
 
 export type SavedFruit = Fruit & { id: number }
 
-export type JsonFruit = {
-  id: number
+export type JsonFruit = FormFruit & { id: number }
+
+export type FormFruit = {
   name: string
   averageGramsEach: number
   addedByUser: string
