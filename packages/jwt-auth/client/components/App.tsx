@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { NavLink, NavGroup } from './Styled'
-import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
+import Fruits from './Fruits'
 
 function App() {
   return (
     <>
       <Nav />
-      <Outlet />
+      <Routes>
+        <Route path="/" element={<Fruits />} />
+      </Routes>
     </>
   )
 }

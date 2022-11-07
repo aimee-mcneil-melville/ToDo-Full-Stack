@@ -2,7 +2,6 @@ import React from 'react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { NavLink, NavGroup } from './Styled'
-import { Outlet} from 'react-router-dom'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect

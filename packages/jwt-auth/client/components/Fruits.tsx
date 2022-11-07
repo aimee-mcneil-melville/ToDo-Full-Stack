@@ -1,16 +1,19 @@
-import { useState, MouseEvent } from 'react'
+import { useState, useEffect, MouseEvent } from 'react'
 import { FruitCamel } from '../../types'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
-import Error from './Error'
-import { useLoaderData, useOutletContext } from 'react-router-dom'
+import { Error } from './Styled'
+import { getFruits } from '../api'
 
 function Fruits() {
-  const fruitData = useLoaderData() as FruitCamel[]
-  const [fruits, setFruits] = useState(fruitData)
+  const [error, setError] = useState('')
+  const [fruits, setFruits] = useState([] as FruitCamel[])
   const [adding, setAdding] = useState(false)
   const [selected, setSelected] = useState<number | undefined>()
-  const [error, setError] = useState('')
+
+  const hideError = () => {
+    setError('')
+  }
 
   const openAddForm = (e: MouseEvent) => {
     e.preventDefault()
@@ -32,9 +35,16 @@ function Fruits() {
     setSelected(0)
   }
 
+  useEffect(() => {
+    getFruits()
+      .then((remoteFruits) => setFruits(remoteFruits))
+      .catch((err) => setError(err.message))
+  }, [])
+
   return (
     <>
-      <Error error={error} setError={setError} />
+      <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
+
       <ul>
         {fruits.map((fruit: FruitCamel) => (
           <li key={fruit.id}>

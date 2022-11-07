@@ -1,9 +1,9 @@
 import request from 'superagent'
-import { FruitCamel,FruitSnake } from '../types'
+import { FruitCamel, FruitSnake } from '../types'
 
 const rootUrl = '/api/v1'
 
-export function getFruits(): Promise<FruitCamel> {
+export function getFruits(): Promise<FruitCamel[]> {
   return request
     .get(`${rootUrl}/fruits`)
     .then((res) => res.body.fruits)
