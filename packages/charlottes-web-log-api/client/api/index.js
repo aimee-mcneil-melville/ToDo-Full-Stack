@@ -54,7 +54,7 @@ export function getCommentsByPostId(postId) {
 export function addCommentByPostId(postId, comment) {
   return request
     .post(`/v1/posts/${postId}/comments`)
-    .send(comment)
+    .send({ comment })
     .then((res) => {
       validateNoSnakeCase(res.body)
       return res.body
