@@ -8,9 +8,8 @@ import React, {
 // TODO: import useAuth0
 import { FruitCamel } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-
 import { updateFruit, deleteFruit } from '../api'
-type Props = {
+interface Props {
   selected: FruitCamel
   clearSelected: () => void
   setFruits: (fruits: FruitCamel[]) => void
