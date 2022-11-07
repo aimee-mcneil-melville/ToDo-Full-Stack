@@ -1,13 +1,13 @@
 import request from 'supertest'
 import server from '../server'
-import { getWidgets } from '../db/db'
+import * as db from '../db/db'
 import { mocked } from 'jest-mock'
 
 jest.mock('../db/db')
 
 describe('GET /api/v1/widgets', () => {
   it('responds with widgets array on getWidgets success', () => {
-    const mockedGetWidgets = mocked(getWidgets)
+    const mockedGetWidgets = mocked(db.getWidgets)
     mockedGetWidgets.mockImplementation(() =>
       Promise.resolve([
         { id: 1, name: 'test 1', price: 1.23, mfg: 'Test 1 Inc.', inStock: 4 },
@@ -30,7 +30,7 @@ describe('GET /api/v1/widgets', () => {
       })
   })
   it('responds with 500 and error on getWidgets rejection', () => {
-    const mockedGetWidgets = mocked(getWidgets)
+    const mockedGetWidgets = mocked(db.getWidgets)
     mockedGetWidgets.mockImplementation(() =>
       Promise.reject(new Error('mock DB error'))
     )
