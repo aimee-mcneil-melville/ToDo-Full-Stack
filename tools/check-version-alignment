@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+
+const FS = require('node:fs/promises')
+const { existsSync } = require('node:fs')
+const Path = require('node:path')
+
+const main = async () => {
+  const flags = {}
+  for (const flag of process.argv.slice(2)) {
+    if (flag.startsWith('--')) {
+      flags[flag.slice(2)] = true
+    }
+  }
+
+  if (flags.fix) {
+    const json = await FS.readFile(
+      Path.join(__dirname, 'versions.json'),
+      'utf-8'
+    )
+    let correctVersions = JSON.parse(json)
+
+    await forEachPackage(async (packageObj) => {
+      const { dependencies, devDependencies } = packageObj
+      let modified = false
+
+      for (const name in correctVersions) {
+        const version = correctVersions[name]
+        if (
+          dependencies &&
+          dependencies[name] &&
+          dependencies[name] !== version
+        ) {
+          dependencies[name] = version
+          modified = true
+        }
+
+        if (
+          devDependencies &&
+          devDependencies[name] &&
+          devDependencies[name] !== version
+        ) {
+          devDependencies[name] = version
+          modified = true
+        }
+      }
+
+      if (!modified) {
+        return null
+      }
+
+      return packageObj
+    })
+  }
+  const versions = {}
+  await forEachPackage(async (packageObj, dir) => {
+    const deps = {
+      ...(packageObj.dependencies || {}),
+      ...(packageObj.devDependencies || {}),
+    }
+
+    for (const depName in deps) {
+      const version = deps[depName]
+      if (!versions[depName]) {
+        versions[depName] = {}
+      }
+
+      if (!versions[depName][version]) {
+        versions[depName][version] = []
+      }
+
+      versions[depName][version].push(dir)
+    }
+
+    return null
+  })
+
+  let badbois = {}
+  for (const k in versions) {
+    if (Object.keys(versions[k]).length > 1) {
+      badbois[k] = versions[k]
+    }
+  }
+
+  if (Object.keys(badbois).length > 0) {
+    process.exitCode = 2
+    process.stderr.write(`Unaligned versions found\n`)
+    process.stdout.write(JSON.stringify(badbois, null, 2) + '\n')
+  }
+}
+
+const forEachPackage = async (f) => {
+  const dirs = await FS.readdir(Path.join(__dirname, '..', 'packages'))
+  let updatedCount = 0
+  for (const dir of dirs) {
+    const packagePath = Path.join(
+      __dirname,
+      '..',
+      'packages',
+      dir,
+      'package.json'
+    )
+    if (!existsSync(packagePath)) {
+      continue
+    }
+
+    const json = await FS.readFile(packagePath, 'utf8')
+    const packageObj = JSON.parse(json)
+    const newPackage = await f(packageObj, dir)
+
+    if (newPackage != null) {
+      updatedCount++
+      const output = `${JSON.stringify(packageObj, null, 2)}\n`
+
+      await FS.writeFile(packagePath, output, 'utf-8')
+    }
+  }
+
+  if (updatedCount) {
+    console.log(
+      `Updated ${updatedCount} packages, please run "npm install" to update your package-lock.json`
+    )
+  }
+}
+
+main().catch((err) => {
+  process.exitCode = 1
+  console.error(`check-version-alignment failed: ${err}`)
+})

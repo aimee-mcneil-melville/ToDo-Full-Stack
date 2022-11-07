@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+START="$PWD"
+
+for DIR in  ./packages/*; do
+  if [[ -f "${DIR}/package.json" ]]; then
+    cd $DIR
+    for RULE in $SCRIPT_DIR/rules/*; do
+      if [[ -f $RULE && -x $RULE ]]; then
+        $RULE $@
+      fi
+    done
+    cd $START
+  fi
+done

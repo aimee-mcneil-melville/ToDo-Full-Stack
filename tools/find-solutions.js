@@ -11,7 +11,6 @@ const main = async () => {
   const solved = []
 
   for (const challenge of challenges) {
-    // const packagePath = path.join(__dirname, '..', 'packages', challenge)
     try {
       console.log(`Looking for solutions for ${challenge}`)
       const { stdout } = await exec(

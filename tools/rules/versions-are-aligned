@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+const FS = require('node:fs/promises')
+const Path = require('node:path')
+
+const main = async () => {
+  const json = await FS.readFile(
+    Path.join(__dirname, '..', 'versions.json'),
+    'utf-8'
+  )
+  let correctVersions = JSON.parse(json)
+  const packageJson = await FS.readFile('package.json', 'utf-8')
+  const packageObj = JSON.parse(packageJson)
+
+  const { dependencies, devDependencies } = packageObj
+  let modified = false
+
+  for (const name in correctVersions) {
+    const version = correctVersions[name]
+    if (dependencies && dependencies[name] && dependencies[name] !== version) {
+      dependencies[name] = version
+      modified = true
+    }
+
+    if (
+      devDependencies &&
+      devDependencies[name] &&
+      devDependencies[name] !== version
+    ) {
+      devDependencies[name] = version
+      modified = true
+    }
+  }
+
+  if (!modified) {
+    return
+  }
+
+  if (process.argv.slice(2).includes('--fix')) {
+    process.stderr.write(`Updating dependencies in ${packageObj.name}\n`)
+    await FS.writeFile(
+      'package.json',
+      `${JSON.stringify(packageObj, null, 2)}\n`,
+      'utf-8'
+    )
+    return
+  }
+
+  if (modified === true) {
+    process.exitCode = -1
+    process.stderr.write(
+      `some dependencies in ${packageObj.name} did not match\n`
+    )
+  }
+}
+
+main().catch((err) => {
+  process.exitCode = 1
+  process.stderr.write(`versions-are-aligned-failed: ${err}\n`)
+})
