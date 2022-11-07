@@ -9,10 +9,10 @@ function Fruits() {
   const fruitData = useLoaderData() as FruitCamel[]
   const [fruits, setFruits] = useState(fruitData)
   const [adding, setAdding] = useState(false)
-  const [selected, setSelected] = useState<Number>(0)
+  const [selected, setSelected] = useState<number | undefined>()
   const [error, setError] = useState('')
 
-  const openAddForm = (e: MouseEvent<HTMLAnchorElement>) => {
+  const openAddForm = (e: MouseEvent) => {
     e.preventDefault()
     setAdding(true)
     clearSelected()
@@ -22,10 +22,7 @@ function Fruits() {
     setAdding(false)
   }
 
-  const setSelectHandler = (
-    fruit: FruitCamel,
-    e: MouseEvent<HTMLAnchorElement>
-  ) => {
+  const setSelectHandler = (fruit: FruitCamel, e: MouseEvent) => {
     e.preventDefault()
     setSelected(fruit.id)
     closeAddForm()
@@ -64,10 +61,10 @@ function Fruits() {
         </a>
       )}
 
-      {selected && (
+      {selected && fruits[selected] && (
         <SelectedFruit
           fruits={fruits}
-          selected={selected}
+          selected={fruits[selected]}
           clearSelected={clearSelected}
           setError={setError}
           setFruits={setFruits}

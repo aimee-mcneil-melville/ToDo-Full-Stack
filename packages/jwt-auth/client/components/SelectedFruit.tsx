@@ -1,22 +1,32 @@
-import React, { useState, useEffect, ChangeEvent, MouseEvent, FormEvent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  ChangeEvent,
+  MouseEvent,
+  FormEvent,
+} from 'react'
 // TODO: import useAuth0
 import { FruitCamel } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 type Props = {
-  selected: number
+  selected: FruitCamel
   clearSelected: () => void
   setFruits: (fruits: FruitCamel[]) => void
-  setError: (err: string) => void
   fruits: FruitCamel[]
+  setError: (err: string) => void
 }
 
-function SelectedFruit(props: Props) {
-  const { selected, clearSelected, setError, setFruits, fruits } = props
+function SelectedFruit({
+  selected,
+  clearSelected,
+  setError,
+  setFruits,
+}: Props) {
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  const selectedFruit = fruits.find((fruit) => fruit.id === selected)
-  const [editing, setEditing] = useState(selectedFruit)
+  // const selectedFruit = fruits.find((fruit) => fruit.id === selected)
+  const [editing, setEditing] = useState(selected)
 
   const handleEditChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -26,7 +36,7 @@ function SelectedFruit(props: Props) {
     })
   }
 
-  const handleUpdate = (e: FormEvent<HTMLFormElement>) => {
+  const handleUpdate = (e: FormEvent) => {
     e.preventDefault()
     // TODO: getAccessToken from auth0
     // TODO: pass token as second parameter
@@ -37,20 +47,17 @@ function SelectedFruit(props: Props) {
       .catch((err) => setError(err.message))
   }
 
-  const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleDelete = (e: MouseEvent) => {
     e.preventDefault()
     // TODO: get accessToken from auth0
     // TODO: pass token as second parameter
-    deleteFruit(editing.id, 'token')
+
+    deleteFruit(editing.id!, 'token')
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
       .catch((err) => setError(err.message))
   }
-
-  useEffect(() => {
-    setEditing(selected)
-  }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
   const { name: currentName } = selected
