@@ -4,7 +4,7 @@ const useIsAuthenticated = () => {
   // TODO: call the useAuth0 hook, destructure and return isAuthenticated
   return true
 }
-type Props = {
+interface Props {
   children: React.ReactNode
 }
 export function IfAuthenticated(props: Props) {

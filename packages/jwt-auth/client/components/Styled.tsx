@@ -32,7 +32,7 @@ export const Error = styled.div`
   color: red;
   cursor: pointer;
 `
-type Props = {
+interface Props {
   selected: string
 }
 export const RadioLabel = styled.label`
