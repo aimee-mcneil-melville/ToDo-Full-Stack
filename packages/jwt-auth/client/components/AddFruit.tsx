@@ -6,7 +6,7 @@ import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 import { addFruit } from '../api'
 import { FruitCamel } from '../../types'
 
-type Props = {
+interface Props {
   setFruits: (fruits: FruitCamel[]) => void
   closeAddForm: () => void
   setError: (err: string) => void
