@@ -1,6 +1,6 @@
 import request from 'supertest'
 import server from '../server'
-import {getWidgets} from '../db/db'
+import { getWidgets } from '../db/db'
 import { mocked } from 'jest-mock'
 
 jest.mock('../db/db')
