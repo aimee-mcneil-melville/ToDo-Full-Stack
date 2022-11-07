@@ -1,25 +1,25 @@
-import React, { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react'
 // TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
-import { JsonFruit, FormFruit } from '../../types'
+import { FruitCamel } from '../../types'
 
 type Props = {
-  setFruits: (fruits: JsonFruit[]) => void
+  setFruits: (fruits: FruitCamel[]) => void
   closeAddForm: () => void
   setError: (err: string) => void
 }
 
 function AddFruit(props: Props) {
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  const selectedFruit: FormFruit = {
+  const selectedFruit: FruitCamel = {
     name: '',
     averageGramsEach: 0,
-    addedByUser: ''
+    addedByUser: '',
   }
-  const [newFruit, setNewFruit] = useState<FormFruit>(selectedFruit)
+  const [newFruit, setNewFruit] = useState(selectedFruit)
   const { setFruits, closeAddForm, setError } = props
   const handleAddChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target

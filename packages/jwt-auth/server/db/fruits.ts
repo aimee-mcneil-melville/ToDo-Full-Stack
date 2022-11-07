@@ -1,11 +1,6 @@
 import connection from './connection'
-import { Fruit, JsonFruit, SavedFruit} from '../../types'
+import { FruitSnake} from '../../types'
 
-function sort(fruitArray: JsonFruit[]) {
-  const allFruits = [...fruitArray]
-  allFruits.sort((a, b) => (a.id || 0) - (b.id || 0))
-  return allFruits
-}
 
 export function getFruits(db = connection) {
   return db('fruits')
@@ -15,14 +10,14 @@ export function getFruits(db = connection) {
       'average_grams_each as averageGramsEach',
       'added_by_user as addedByUser'
     )
-    .then((fruits: JsonFruit[]) => sort(fruits))
+    .orderBy('id')
 }
 
-export function addFruit(fruit: Fruit, db = connection) {
+export function addFruit(fruit: FruitSnake, db = connection) {
   return db('fruits').insert(fruit)
 }
 
-export function updateFruit(newFruit: SavedFruit, db = connection) {
+export function updateFruit(newFruit: FruitSnake, db = connection) {
   return db('fruits').where('id', newFruit.id).update(newFruit)
 }
 
@@ -38,7 +33,7 @@ export function userCanEdit(
   return db('fruits')
     .where('id', fruitId)
     .first()
-    .then((fruit: Fruit) => {
+    .then((fruit: FruitSnake) => {
       if (fruit.added_by_user !== auth0Id) {
         throw new Error('Unauthorized')
       }

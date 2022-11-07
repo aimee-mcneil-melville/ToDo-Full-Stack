@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import {FormFruit, JsonFruit} from '../../types'
+import { useState, MouseEvent } from 'react'
+import { FruitCamel } from '../../types'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
-import { Error } from './Styled'
-
-import { getFruits } from '../api'
+import Error from './Error'
+import { useLoaderData, useOutletContext } from 'react-router-dom'
 
 function Fruits() {
-  const selectedFruit: JsonFruit = {
-    id: 0,
-    name: '',
-    averageGramsEach: 0,
-    addedByUser: ''
-  }
-  const [error, setError] = useState('')
-  const [fruits, setFruits] = useState<JsonFruit[]>([])
+  const fruitData = useLoaderData() as FruitCamel[]
+  const [fruits, setFruits] = useState(fruitData)
   const [adding, setAdding] = useState(false)
-  const [selected, setSelected] = useState<JsonFruit>(selectedFruit)
+  const [selected, setSelected] = useState<Number>(0)
+  const [error, setError] = useState('')
 
-  const hideError = () => {
-    setError('')
-  }
-
-  const openAddForm = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) => {
+  const openAddForm = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     setAdding(true)
     clearSelected()
@@ -32,28 +22,24 @@ function Fruits() {
     setAdding(false)
   }
 
-  const setSelectHandler = (fruit: JsonFruit, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const setSelectHandler = (
+    fruit: FruitCamel,
+    e: MouseEvent<HTMLAnchorElement>
+  ) => {
     e.preventDefault()
-    setSelected(fruit)
+    setSelected(fruit.id)
     closeAddForm()
   }
 
   const clearSelected = () => {
-    setSelected(selectedFruit)
+    setSelected(0)
   }
-// TODO remove useEffect Sophia!
-  useEffect(() => {
-    getFruits()
-      .then((remoteFruits) => setFruits(remoteFruits))
-      .catch((err) => setError(err.message))
-  }, [])
 
   return (
     <>
-      <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
-
+      <Error error={error} setError={setError} />
       <ul>
-        {fruits.map((fruit: JsonFruit) => (
+        {fruits.map((fruit: FruitCamel) => (
           <li key={fruit.id}>
             <a
               href="#"
@@ -80,6 +66,7 @@ function Fruits() {
 
       {selected && (
         <SelectedFruit
+          fruits={fruits}
           selected={selected}
           clearSelected={clearSelected}
           setError={setError}

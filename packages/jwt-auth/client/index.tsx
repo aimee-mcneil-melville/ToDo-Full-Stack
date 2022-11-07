@@ -1,28 +1,36 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import * as ReactDOM from 'react-dom/client'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { BrowserRouter as Router } from 'react-router-dom'
-
+import Fruits from './components/Fruits'
 import App from './components/App'
+import { getFruits } from './api'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom'
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    /**
-     * Auth0Provider is a component that has a hook that provides
-     * all authentication operations
-     *
-     * TODO: replace the empty strings below with your own domain, clientId, and audience
-     */
-    <Auth0Provider
-      domain=""
-      clientId=""
-      redirectUri={window.location.origin}
-      audience=""
-    >
-      <Router>
-        <App />
-      </Router>
-    </Auth0Provider>,
-    document.getElementById('app')
+const router = createBrowserRouter(
+  createRoutesFromElements(
+      <Route path="/" element={<App/>}>
+      <Route
+        index path="/"
+        element={<Fruits />}
+        loader={async () => await getFruits()}
+        // errorElement={<ErrorElement/>}
+      />
+    </Route>
   )
-})
+)
+const app = document.getElementById('app') as HTMLInputElement
+ReactDOM.createRoot(app).render(
+  <Auth0Provider
+    domain=""
+    clientId=""
+    redirectUri={window.location.origin}
+    audience=""
+  >
+    <RouterProvider router={router} />
+  </Auth0Provider>
+)

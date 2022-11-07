@@ -1,4 +1,3 @@
-import React from 'react'
 // TODO: import useAuth0 function
 
 const useIsAuthenticated = () => {
