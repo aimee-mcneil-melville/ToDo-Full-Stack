@@ -1,6 +1,10 @@
-import React from 'react'
+import type { Beer } from './BeerList'
 
-function BeerListItem(props) {
+interface Props {
+  beer: Beer
+}
+
+function BeerListItem(props: Props) {
   const { name, brewery, country, abv } = props.beer
   return (
     <div className="beer">

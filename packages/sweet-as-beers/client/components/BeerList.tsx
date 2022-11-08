@@ -1,8 +1,8 @@
-import React from 'react'
-
 import BeerListItem from './BeerListItem'
 
 import beerData from '../../data/beers'
+
+export type Beer = typeof beerData.beers[number]
 
 function BeerList() {
   return (

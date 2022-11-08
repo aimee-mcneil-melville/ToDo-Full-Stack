@@ -1,8 +1,6 @@
-import React from 'react'
-
 function Cart() {
   // TODO: replace cart
-  const cart = []
+  const cart = [] as { id: number; name: string; quantity: number }[]
 
   return (
     <div className="cart">
