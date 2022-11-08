@@ -1,28 +1,18 @@
-#!/usr/bin/env node
-const FS = require('node:fs/promises')
-const Path = require('node:path/posix')
 const BABEL_PRESETS = [
   '@babel/preset-typescript',
   '@babel/preset-env',
   ['@babel/preset-react', { runtime: 'automatic' }],
 ]
 
-const main = async () => {
-  const packageJson = await FS.readFile('package.json', 'utf-8')
-  const json = await FS.readFile(
-    Path.join(__dirname, '..', 'versions.json'),
-    'utf-8'
-  )
-  const versions = JSON.parse(json)
-  const packageObj = JSON.parse(packageJson)
-  const { babel, dependencies, devDependencies, browserslist } = packageObj
+module.exports = async ({ package: packageFile, versions, fix }) => {
+  const { babel, dependencies, devDependencies, browserslist } = packageFile
   if (!babel && !('webpack' in { ...dependencies, devDependencies })) {
     return
   }
 
   let modified = false
   if (browserslist !== '> 2%, not dead') {
-    packageObj.browserslist = '> 2%, not dead'
+    packageFile.browserslist = '> 2%, not dead'
     process.stderr.write(`browserslist should be: '> 2%, not dead'\n`)
     modified = true
   }
@@ -45,18 +35,11 @@ const main = async () => {
     modified = true
   }
 
-  if (process.argv.slice(2).includes('--fix')) {
-    const newJson = JSON.stringify(packageObj, null, 2)
-    await FS.writeFile('package.json', newJson, 'utf-8')
+  if (modified && !fix) {
+    throw new Error(`babel is misconfigured`)
   }
 
   if (modified) {
-    process.stderr.write(`babel misconfigured in ${process.cwd()}\n`)
-    process.exitCode = 1
+    return packageFile
   }
 }
-
-main().catch((e) => {
-  process.exitCode = 1
-  process.stderr.write(`babel-is-configured failed: ${e}\n`)
-})
