@@ -1,4 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useState,
+  ChangeEvent,
+  MouseEvent,
+  FormEvent,
+  BaseSyntheticEvent,
+  FormEventHandler,
+  DetailedHTMLProps,
+  FormHTMLAttributes,
+} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Store } from '../../types'
@@ -21,18 +31,17 @@ function Register() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [e.target.name]: e.target.value,
       }
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    e.target.reset()
+   e.currentTarget.reset()
 
     const { password, confirm_password, username, email_address } = formData
 
@@ -46,7 +55,7 @@ function Register() {
   }
 
   return (
-    <form className="Register form box" onSubmit={handleSubmit}>
+    <form className="Register form box" onSubmit={(e)=> console.log(e)}>
       <h1 className="title is-2">Register</h1>
       <hr />
       {auth.errorMessage && (

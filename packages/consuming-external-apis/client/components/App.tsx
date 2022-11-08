@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import { getWelcome } from '../apiClient'
 
-type TWelcome = {
+interface Welcome {
   statement: string
 }
 function App() {
-  const welcome = useLoaderData() as TWelcome
+  const welcome = useLoaderData() as Welcome
   const navigation = useNavigation()
   return navigation.state === 'loading' ? (
     <h1>Loading...</h1>
