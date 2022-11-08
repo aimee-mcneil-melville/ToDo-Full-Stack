@@ -1,6 +1,6 @@
-import { SHOW_ERROR, REQUEST_POSTS, RECEIVE_POSTS } from '../actions'
+import { SHOW_ERROR, REQUEST_POSTS, RECEIVE_POSTS, Action } from '../actions'
 
-function waiting(state = false, action) {
+function waiting(state = false, action: Action): boolean {
   const { type } = action
 
   switch (type) {

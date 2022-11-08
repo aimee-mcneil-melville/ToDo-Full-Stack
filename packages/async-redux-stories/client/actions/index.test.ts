@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import * as actions from '../../client/actions'
+import * as actions from '.'
 
 test('fetchPosts', () => {
   const scope = nock('http://localhost')

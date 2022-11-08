@@ -1,7 +1,7 @@
 import nock from 'nock'
 import request from 'supertest'
 
-import server from '../server/server'
+import server from './server'
 
 test('GET /api/v1/reddit/subreddit', () => {
   const scope = nock('http://www.reddit.com')

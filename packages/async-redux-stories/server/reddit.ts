@@ -1,5 +1,5 @@
-const express = require('express')
-const request = require('superagent')
+import express from 'express'
+import request from 'superagent'
 
 const router = express.Router()
 
@@ -16,4 +16,4 @@ router.get('/subreddit/:subreddit', (req, res) => {
     })
 })
 
-module.exports = router
+export default router

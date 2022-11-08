@@ -1,11 +1,11 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 
-const redditRoutes = require('./reddit')
+import redditRoutes from './reddit'
 const server = express()
 
 server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/reddit', redditRoutes)
 
-module.exports = server
+export default server
