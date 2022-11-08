@@ -1,11 +1,14 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hooks'
 
 function WaitIndicator() {
-  const showIndicator = useSelector((state) => state.waiting)
+  const showIndicator = useAppSelector((state) => state.waiting)
 
   return showIndicator ? (
-    <img className="wait-indicator" src="/animated-circle.gif" />
+    <img
+      className="wait-indicator"
+      alt="a wait indicator"
+      src="/animated-circle.gif"
+    />
   ) : null
 }
 
