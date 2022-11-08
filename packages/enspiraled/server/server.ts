@@ -1,8 +1,8 @@
-var path = require('path')
-var express = require('express')
+import path from 'node:path'
+import express from 'express'
 
 var server = express()
 
 server.use(express.static(path.join(__dirname, 'public')))
 
-module.exports = server
+export default server
