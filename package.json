@@ -18,6 +18,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "colorette": "^2.0.19",
     "dotenv": "^16.0.0"
   }
 }

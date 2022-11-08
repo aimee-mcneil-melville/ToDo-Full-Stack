@@ -33,6 +33,6 @@ module.exports = async ({
   }
 
   if (modified === true) {
-    throw new Error(`some dependencies in ${packageObj.name} did not match\n`)
+    throw new Error(`some dependencies in ${packageObj.name} did not match`)
   }
 }

@@ -3,6 +3,8 @@ const { existsSync } = require('node:fs')
 const FS = require('node:fs/promises')
 const Path = require('node:path/posix')
 
+const { red, green } = require('colorette')
+
 const main = async () => {
   const fix = process.argv.slice(2).includes('--fix')
 
@@ -17,11 +19,18 @@ const main = async () => {
   const packages = await FS.readdir(Path.join(__dirname, '../packages'))
   let failed = false
 
+  const padWidth = Math.max(...packages.map((_) => _.length)) + 1
+
   for (const package of packages) {
     const path = Path.resolve(__dirname, '../packages', package)
     const packagePath = Path.join(path, 'package.json')
     if (!existsSync(packagePath)) {
-      process.stderr.write(`INFO: no package.json file: ${path}\n`)
+      process.stderr.write(
+        `${green(`[INFO]`)} ${'no package.json file '.padEnd(
+          padWidth + 1,
+          '-'
+        )} ${package}\n`
+      )
       continue
     }
 
@@ -43,7 +52,9 @@ const main = async () => {
           }
         } catch (e) {
           process.stderr.write(
-            `rule ${rule.name} failed for ${package}: ${e}\n`
+            `${red('[FAIL]')} ${(package + ' ').padEnd(padWidth, '-')}- ${
+              rule.name
+            }\n`
           )
         }
       }

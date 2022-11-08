@@ -26,7 +26,7 @@ module.exports = async ({ package, path, versions, fix }) => {
         throw new Error(`Unexpected eslintConfig.extends ${eslint.extends}`)
     }
 
-    process.stderr.write(`Outdated eslintConfig detected\n`)
+    // process.stderr.write(`Outdated eslintConfig detected\n`)
 
     if (fix) {
       return package

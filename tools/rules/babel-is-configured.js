@@ -13,7 +13,7 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   let modified = false
   if (browserslist !== '> 2%, not dead') {
     packageFile.browserslist = '> 2%, not dead'
-    process.stderr.write(`browserslist should be: '> 2%, not dead'\n`)
+    // process.stderr.write(`browserslist should be: '> 2%, not dead'\n`)
     modified = true
   }
 
@@ -22,14 +22,14 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     JSON.stringify(babel.presets) !== JSON.stringify(BABEL_PRESETS)
   ) {
     babel.presets = BABEL_PRESETS
-    process.stderr.write(`babel presets misconfigured\n`)
+    // process.stderr.write(`babel presets misconfigured\n`)
     modified = true
   }
 
   if (!devDependencies['@babel/preset-typescript']) {
-    process.stderr.write(
-      `@babel/preset-typescript missing from devDependencies\n`
-    )
+    // process.stderr.write(
+    //   `@babel/preset-typescript missing from devDependencies\n`
+    // )
     devDependencies['@babel/preset-typescript'] =
       versions['@babel/preset-typescript']
     modified = true
