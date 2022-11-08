@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const FS = require('fs').promises
 const { existsSync } = require('fs')
 const Path = require('path')

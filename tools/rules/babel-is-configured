@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+const FS = require('node:fs/promises')
+const Path = require('node:path/posix')
+const BABEL_PRESETS = [
+  '@babel/preset-typescript',
+  '@babel/preset-env',
+  ['@babel/preset-react', { runtime: 'automatic' }],
+]
+
+const main = async () => {
+  const packageJson = await FS.readFile('package.json', 'utf-8')
+  const json = await FS.readFile(
+    Path.join(__dirname, '..', 'versions.json'),
+    'utf-8'
+  )
+  const versions = JSON.parse(json)
+  const packageObj = JSON.parse(packageJson)
+  const { babel, dependencies, devDependencies, browserslist } = packageObj
+  if (!babel && !('webpack' in { ...dependencies, devDependencies })) {
+    return
+  }
+
+  let modified = false
+  if (browserslist !== '> 2%, not dead') {
+    packageObj.browserslist = '> 2%, not dead'
+    process.stderr.write(`browserslist should be: '> 2%, not dead'\n`)
+    modified = true
+  }
+
+  if (
+    !babel.presets ||
+    JSON.stringify(babel.presets) !== JSON.stringify(BABEL_PRESETS)
+  ) {
+    babel.presets = BABEL_PRESETS
+    process.stderr.write(`babel presets misconfigured\n`)
+    modified = true
+  }
+
+  if (!devDependencies['@babel/preset-typescript']) {
+    process.stderr.write(
+      `@babel/preset-typescript missing from devDependencies\n`
+    )
+    devDependencies['@babel/preset-typescript'] =
+      versions['@babel/preset-typescript']
+    modified = true
+  }
+
+  if (process.argv.slice(2).includes('--fix')) {
+    const newJson = JSON.stringify(packageObj, null, 2)
+    await FS.writeFile('package.json', newJson, 'utf-8')
+  }
+
+  if (modified) {
+    process.stderr.write(`babel misconfigured in ${process.cwd()}\n`)
+    process.exitCode = 1
+  }
+}
+
+main().catch((e) => {
+  process.exitCode = 1
+  process.stderr.write(`babel-is-configured failed: ${e}\n`)
+})
