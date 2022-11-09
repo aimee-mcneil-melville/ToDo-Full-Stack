@@ -1,6 +1,6 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
-
+import { User } from '../../server/db/users'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
@@ -12,14 +12,14 @@ export function authRequest() {
   }
 }
 
-export function authError(message) {
+export function authError(message: string) {
   return {
     type: AUTH_FAILURE,
     payload: message,
   }
 }
 
-export function receiveUser(user) {
+export function receiveUser(user: User) {
   return {
     type: LOGIN,
     payload: user,
