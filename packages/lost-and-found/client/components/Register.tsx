@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { authError, registerUserRequest } from '../actions/auth'
+import {Store } from './App'
 
 function Register() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',

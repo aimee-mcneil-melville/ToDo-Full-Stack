@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -6,12 +6,21 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Home from './Home'
-
+import { User } from '../../server/db/users'
 import { checkAuth } from '../actions/auth'
+
+export interface Store {
+  auth: {
+    isAuthenticated: boolean
+    user: User
+    isFetching: boolean
+    errorMessage: string
+  }
+}
 
 function App() {
   const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const auth = useSelector((redux: Store) => redux.auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}
