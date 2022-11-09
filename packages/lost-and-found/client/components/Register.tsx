@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { User } from '../../server/db/users'
 
 import { authError, registerUserRequest } from '../actions/auth'
 import {Store } from './App'
+ 
+interface Form extends User {
+  confirm_password?: string
+}
 
 function Register() {
   const navigateTo = useNavigate()
   const dispatch = useDispatch()
   const auth = useSelector((redux: Store) => redux.auth)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Form>({
     username: '',
     contact_details: '',
     email_address: '',
