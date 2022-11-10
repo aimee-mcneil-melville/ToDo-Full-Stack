@@ -63,8 +63,6 @@ Check out the `App.jsx` component. It currently contains the main header, a `<Ho
     We can use `Object.keys()` on what is exported from `data/continents.js` to get a list of continent names.
   </details>
 
-- [ ] Import and use the `<Nav>` component so that it shows on all pages
-
 - [ ] Import and then use the `<Routes>` and `<Route>` components from `react-router-dom`, so that the `<Home>` component will only show on `'/'`
 
 ---
