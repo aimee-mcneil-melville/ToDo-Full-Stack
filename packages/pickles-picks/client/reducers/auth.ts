@@ -5,6 +5,8 @@ import {
   LOGOUT,
 } from '../actions/auth'
 
+import {User} from '../../common/User'
+
 const initialState = {
   user: null,
   isFetching: false,
@@ -12,7 +14,13 @@ const initialState = {
   errorMessage: '',
 }
 
-export default function auth(state = initialState, action) {
+type Action =
+  | { type: 'AUTH_REQUEST'; payload: null }
+  | { type: 'LOGIN'; payload: User }
+  | { type: 'LOGOUT'; payload: null }
+  | { type: 'AUTH_FAILURE'; payload: null }
+
+export default function auth(state = initialState, action: Action) {
   switch (action.type) {
     case AUTH_REQUEST:
       return {

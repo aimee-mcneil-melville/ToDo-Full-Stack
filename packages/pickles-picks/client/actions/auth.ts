@@ -6,10 +6,11 @@ export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
-interface User {
-  username: string
-  password: string
-  email_address: string
+import { User } from '../../common/User'
+
+interface ConfirmSuccess {
+  (): void
+  (): void
 }
 
 export function authRequest() {
@@ -25,7 +26,7 @@ export function authError(message: string) {
   }
 }
 
-export function receiveUser(user:User) {
+export function receiveUser(user: string) {
   return {
     type: LOGIN,
     payload: user,
@@ -38,11 +39,14 @@ export function receiveLogout() {
   }
 }
 
-export function registerUserRequest(creds, confirmSuccess): any {
+export function registerUserRequest(
+  creds: User,
+  confirmSuccess: ConfirmSuccess
+) {
   return (dispatch) => {
     dispatch(authRequest())
     register(creds)
-      .then((userInfo:User) => {
+      .then((userInfo: string) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
@@ -50,21 +54,21 @@ export function registerUserRequest(creds, confirmSuccess): any {
   }
 }
 
-export function loginUser(creds, confirmSuccess): any {
+export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
-      .then((userInfo) => {
+      .then((userInfo: string) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
-      .catch((err) => {
-        dispatch(authError(err))
+      .catch((err: Error) => {
+        dispatch(authError(err.message))
       })
   }
 }
 
-export function logoutUser(confirmSuccess):any {
+export function logoutUser(confirmSuccess: ConfirmSuccess) {
   return (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
@@ -72,7 +76,7 @@ export function logoutUser(confirmSuccess):any {
   }
 }
 
-export function checkAuth(confirmSuccess):any {
+export function checkAuth(confirmSuccess: ConfirmSuccess) {
   return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
