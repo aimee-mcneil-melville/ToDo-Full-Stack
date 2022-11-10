@@ -1,28 +1,17 @@
-import { render } from 'react-dom'
 import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
 
-import reducers from './reducers'
+import { createRoot } from 'react-dom/client'
+
 import App from './components/App'
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
-  }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+import store from './store'
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(
+  createRoot(document.getElementById('app') as HTMLElement).render(
     <Provider store={store}>
       <Router>
         <App />
       </Router>
-    </Provider>,
-    document.getElementById('app')
+    </Provider>
   )
 })

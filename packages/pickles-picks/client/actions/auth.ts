@@ -1,39 +1,44 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
+import { User } from '../../common/User'
+import type { AppThunkAction } from '../store'
+
+export type Action =
+  | { type: 'AUTH_REQUEST' }
+  | { type: 'AUTH_FAILURE'; payload: string }
+  | { type: 'LOGIN'; payload: User }
+  | { type: 'LOGOUT' }
 
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
-
-import { User } from '../../common/User'
-
 interface ConfirmSuccess {
   (): void
   (): void
 }
 
-export function authRequest() {
+export function authRequest(): Action {
   return {
     type: AUTH_REQUEST,
   }
 }
 
-export function authError(message: string) {
+export function authError(message: string): Action {
   return {
     type: AUTH_FAILURE,
     payload: message,
   }
 }
 
-export function receiveUser(user: string) {
+export function receiveUser(user: User): Action {
   return {
     type: LOGIN,
     payload: user,
   }
 }
 
-export function receiveLogout() {
+export function receiveLogout(): Action {
   return {
     type: LOGOUT,
   }
@@ -42,11 +47,11 @@ export function receiveLogout() {
 export function registerUserRequest(
   creds: User,
   confirmSuccess: ConfirmSuccess
-) {
+): AppThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     register(creds)
-      .then((userInfo: string) => {
+      .then((userInfo: User) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
@@ -54,11 +59,14 @@ export function registerUserRequest(
   }
 }
 
-export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
+export function loginUser(
+  creds: User,
+  confirmSuccess: ConfirmSuccess
+): AppThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
-      .then((userInfo: string) => {
+      .then((userInfo: User) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
@@ -68,7 +76,7 @@ export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
   }
 }
 
-export function logoutUser(confirmSuccess: ConfirmSuccess) {
+export function logoutUser(confirmSuccess: ConfirmSuccess): AppThunkAction {
   return (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
@@ -76,7 +84,7 @@ export function logoutUser(confirmSuccess: ConfirmSuccess) {
   }
 }
 
-export function checkAuth(confirmSuccess: ConfirmSuccess) {
+export function checkAuth(confirmSuccess: ConfirmSuccess): AppThunkAction {
   return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
