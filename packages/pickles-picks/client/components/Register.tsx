@@ -1,8 +1,7 @@
 import {
   useEffect,
   useState,
-  ChangeEvent,
-  FormEvent,
+    FormEvent,
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +25,7 @@ function Register() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
