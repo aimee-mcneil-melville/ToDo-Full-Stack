@@ -1,12 +1,12 @@
-const express = require('express')
-const path = require('path')
+import express from 'express'
+import path from'path'
 
-const authRoutes = require('./routes/auth')
+import authRoutes from './routes/auth'
 
 const server = express()
 
-server.use(express.json())
 server.use(express.static(path.join('server', 'public')))
 
 server.use('/api/v1', authRoutes)
+
 export default server
