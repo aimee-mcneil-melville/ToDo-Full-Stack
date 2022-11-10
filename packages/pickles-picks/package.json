@@ -31,11 +31,16 @@
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "eslintConfig": {
-    "extends": "eda/react",
+    "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -57,7 +62,6 @@
     "css-loader": "^6.3.0",
     "dotenv-webpack": "^6.0.0",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -82,7 +86,8 @@
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "@devacademy/eslint-config": "^1.5.1"
   },
   "dependencies": {
     "authenticare": "^0.4.9",
