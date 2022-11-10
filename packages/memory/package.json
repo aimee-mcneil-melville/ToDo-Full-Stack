@@ -23,7 +23,12 @@
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "jest": {
@@ -31,7 +36,7 @@
     "testURL": "http://localhost"
   },
   "eslintConfig": {
-    "extends": "eda/react",
+    "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -49,7 +54,6 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -64,7 +68,8 @@
     "react-dom": "^18.2.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
-    "@babel/preset-typescript": "^7.17.12"
+    "@babel/preset-typescript": "^7.17.12",
+    "@devacademy/eslint-config": "^1.5.1"
   },
   "prettier": {
     "semi": false,

@@ -1,13 +1,8 @@
-import React, {
+import {
   useEffect,
   useState,
   ChangeEvent,
-  MouseEvent,
   FormEvent,
-  BaseSyntheticEvent,
-  FormEventHandler,
-  DetailedHTMLProps,
-  FormHTMLAttributes,
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -55,7 +50,7 @@ function Register() {
   }
 
   return (
-    <form className="Register form box" onSubmit={(e)=> console.log(e)}>
+    <form className="Register form box" onSubmit={handleSubmit}>
       <h1 className="title is-2">Register</h1>
       <hr />
       {auth.errorMessage && (

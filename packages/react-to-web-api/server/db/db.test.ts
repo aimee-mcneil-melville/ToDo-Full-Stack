@@ -11,6 +11,10 @@ beforeAll(() => {
 beforeEach(() => {
   return testDb.seed.run()
 })
+
+afterAll(() => {
+  testDb.destroy()
+})
  
 describe('getWidgets', () => {
   it('returns the correct widgets array', () => {

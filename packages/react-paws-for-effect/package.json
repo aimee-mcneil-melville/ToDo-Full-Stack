@@ -4,12 +4,12 @@
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "build": "webpack --config ./client/webpack.config.js --mode production",
     "dev": "run-p watch:client watch:server",
     "watch:client": "webpack --config ./client/webpack.config.js --watch",
-    "watch:server": "nodemon --watch server",
-    "lint": "eslint --ext .js,.jsx .",
+    "watch:server": "nodemon server/index.ts",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --verbose"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",
@@ -23,11 +23,16 @@
     "presets": [
       "@babel/preset-typescript",
       "@babel/preset-env",
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "eslintConfig": {
-    "extends": "eda/react",
+    "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
       "bundle.js"
     ]
@@ -45,7 +50,7 @@
     "@testing-library/react": "^13.4",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
+    "@devacademy/eslint-config": "^1.5.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -68,6 +73,7 @@
     "singleQuote": true
   },
   "jest": {
+    "preset": "ts-jest",
     "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"

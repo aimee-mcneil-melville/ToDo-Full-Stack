@@ -38,50 +38,64 @@ This exercise reverses the roles from yesterday: today the API has been (partial
   - Investigate the shape of the data in the database
   </details>
 
+### 2. Setting up the `<App>` component
+
+The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
+
+- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array
+
+- [ ] Also add a `useEffect` hook to `<App>`
+  <details style="padding-left: 2em">
+    <summary>More about <code>&lt;useEffect&gt;</code></summary>
+
+  `useEffect` accepts a function as its first parameter. Eventually we will call the API function from here, but for now just have this function do a `console.log('using the effect')`
+
+  - Remember to pass an empty array to `useEffect` as the second parameter (so that the function only runs once - when the component mounts)
+  - Refresh the app in your browser the with DevTools console open. Make sure you can see your `useEffect` message
+  </details>
+
+---
+
 ## Building up the stack
 
-### 2. Connecting the server API to the client API
+### 3. Connecting the server API to the client API
 
 - [ ] Using Insomnia, test that the existing GET route for widgets is working, and see what data it returns
   <details style="padding-left: 2em">
     <summary>More about the GET route</summary>
 
-  Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.ts`. A GET route using that DB function is also in place in `routes/widgets.ts`.
+  Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.js`. A GET route using that DB function is also in place in `routes/widgets.js`.
 
   Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Insomnia.
   </details>
 
-- [ ] Using the `getWidgets` function in `apiClient.ts` and the `superagent` library, make a GET request to `'/api/v1/widgets/'`, just like we did with Insomnia
+- [ ] Using the `getWidgets` function in `apiClient.js` and the `superagent` library, make a GET request to `'/api/v1/widgets/'`, just like we did with Insomnia
   <details style="padding-left: 2em">
     <summary>More about the <code>getWidgets</code> request</summary>
 
-  This time looking in the client folder, you'll find a `getWidgets` function in `apiClient.ts`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`. If all goes well, it should be returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
+  This time looking in the client folder, you'll find a `getWidgets` function in `apiClient.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`. If all goes well, it should be returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
   </details>
 
-- [ ] Import this `getWidgets` function from `apiClient.ts` into `index.tsx`
+- [ ] Import this `getWidgets` function from `apiClient.js` into `App.jsx`
 
-### 3. Setting up the `<index.tsx>` component
+### 4. Connecting the client API to the user interface (UI)
 
-The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
-
-- [ ] Add a `loader` attribute to the index`<Route>` and call our `getWidgets` API inside the loader, this will retrieve our `widgets` from the database on navigation to the corresponding component(element).
-
-### 4. Setting up the `<App.tsx>` component
-
-- [ ] import `useLoaderData` from `react-router-dom` and call it before the return of your component.
+- [ ] In the function you passed to `useEffect`, call the `getWidgets` function
   <details style="padding-left: 2em">
-    <summary>More about useLoaderData()</summary>
-    - It should look something like this `const x = useLoaderData()`. This is a hook that allows us to access the return value of our API. (which was just called in the loader in our Route). For clarity, you will want to name it after the data you expect to recieve, in our case lets name it `WidgetsData`. Now let's log it on the line underneath! `console.log('widgets', widgetsData)`.
-    - Refresh the app in your browser. Make sure you can see the array of widget data in the console.
+    <summary>More about <code>getWidgets</code> inside <code>useEffect</code></summary>
+
+  - Superagent uses a promise-based interface, so you will need to chain a `.then()` block after this
+  - Inside your `.then()` block, `console.log` the result of `getWidgets`
+  - Refresh the app in your browser again. Make sure you can see the array of widget data in the console
   </details>
 
-- [ ] Set up state to store your `WidgetData` using `useState()`. Set your new `WidgetsData` variable as the initial state by passing it into the hook.
+- [ ] Remove the `console.log` and instead use the `setWidgets` function (from your `useState`) to update state with the widget data from the API
 
----
+- [ ] Use the React Dev Tools to check that state updates as you expect
 
 ### 5. Updating the UI to consume the data
 
-- [ ] Modify your component so that it return and displays the widgets from the component state.
+- [ ] Modify the `jsx` your component returns so that it displays the widgets from the component state
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
@@ -101,10 +115,10 @@ These next steps will be full stack, requiring you to make changes to both the f
   <summary>More about adding a widget</summary>
   
   The steps you might take to complete this could be:
-  - Create a POST route on the server side in `widgets.ts`. Test you can get a response for it in Insomnia
+  - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia
   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia
-  - Create an `addWidget` function in `apiClient.ts` that will make a POST request to the API route you just built
-  - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.ts` and hook it up to your form's submit handler
+  - Create an `addWidget` function in `apiClient.js` that will make a POST request to the API route you just built
+  - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.js` and hook it up to your form's submit handler
   - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...
   - Create an "Add Widget" button in `<App>` to conditionally render your `<AddWidget>` form
 </details>
