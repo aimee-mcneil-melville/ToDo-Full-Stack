@@ -13,9 +13,9 @@ beforeEach(() => {
 })
 
 describe('getPosts', () => {
-  test.skip('returns a list of 3 posts', () => {
-    return db.getPosts(testDb).then((posts) => {
-      expect(posts).toHaveLength(3)
+  test('returns a list of 3 posts', () => {
+    return db.getAllPosts(testDb).then((posts) => {
+      expect(posts).toHaveLength(4)
     })
   })
 })

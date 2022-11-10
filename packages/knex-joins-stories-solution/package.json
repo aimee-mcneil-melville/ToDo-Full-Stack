@@ -4,11 +4,11 @@
   "description": "Practise joins",
   "main": "index.js",
   "scripts": {
-    "knex": "knex",
+    "start": "node index",
     "dev": "nodemon index",
-    "debug": "node --inspect --debug-brk index",
-    "test": "tape 'tests/**/*.test.js' | tap-spec",
-    "start": "node index"
+    "knex": "knex",
+    "lint": "eslint .",
+    "test": "jest --watch --noStackTrace"
   },
   "repository": {
     "type": "git",
