@@ -3,24 +3,25 @@ import {
   AUTH_FAILURE,
   LOGIN,
   LOGOUT,
+  Action
 } from '../actions/auth'
 
-import {User} from '../../common/User'
+import { User } from '../../common/User'
 
-const initialState = {
-  user: null,
+const initialState: State = {
+  user: undefined,
   isFetching: false,
   isAuthenticated: false,
   errorMessage: '',
 }
+interface State {
+  user?: User
+  isFetching: boolean
+  isAuthenticated: boolean
+  errorMessage?: string
+}
 
-type Action =
-  | { type: 'AUTH_REQUEST'; payload: null }
-  | { type: 'LOGIN'; payload: User }
-  | { type: 'LOGOUT'; payload: null }
-  | { type: 'AUTH_FAILURE'; payload: null }
-
-export default function auth(state = initialState, action: Action) {
+export default function auth(state = initialState, action: Action): State {
   switch (action.type) {
     case AUTH_REQUEST:
       return {
@@ -38,7 +39,7 @@ export default function auth(state = initialState, action: Action) {
       }
     case LOGOUT:
       return {
-        user: null,
+        user: undefined,
         isFetching: false,
         isAuthenticated: false,
         errorMessage: '',

@@ -1,20 +1,19 @@
-import {
-  useEffect,
-  useState,
-    FormEvent,
-} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-import { Store } from '../../types'
-
+import { User } from '../../common/User'
 import { authError, registerUserRequest } from '../actions/auth'
+
+interface Form extends User {
+  confirm_password?: string
+}
 
 function Register() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux: Store) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((state) => state.auth)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Form>({
     username: '',
     email_address: '',
     password: '',
@@ -33,7 +32,7 @@ function Register() {
     })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
    e.currentTarget.reset()
 
