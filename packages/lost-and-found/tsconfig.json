@@ -19,6 +19,6 @@
     "noEmit": true,
     "allowJs": true
   }, "include": [
-    "client/**/*", "server/**/*", "Authenticare.d.ts"
+    "client/**/*", "server/**/*", "authenticare.d.ts"
   ]
 }

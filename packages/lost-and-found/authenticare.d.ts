@@ -13,8 +13,8 @@ declare module 'authenticare/client' {
   export const isAuthenticated: () => boolean
   export const getDecodedToken: () => string
   export const logOff: () => void
-  export const register: (user: User, url: Url) => Promise<unknown>
-  export const signIn: (user: User, url: Url) => Promise<unknown>
+  export const register: (user: User, url: Url) => Promise<any>
+  export const signIn: (user: User, url: Url) => Promise<any>
 }
 
 declare module 'authenticare/server' {

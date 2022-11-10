@@ -1,7 +1,7 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
 import { User } from '../../common/User'
-import { Dispatch } from 'redux'
+// import { Dispatch } from 'redux'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
@@ -20,7 +20,7 @@ export function authError(message: string) {
   }
 }
 
-export function receiveUser(user: User) {
+export function receiveUser(user: string) {
   return {
     type: LOGIN,
     payload: user,
@@ -41,7 +41,7 @@ export function registerUserRequest(
   creds: User,
   confirmSuccess: ConfirmSuccess
 ) {
-  return (dispatch: Dispatch) => {
+  return (dispatch) => {
     dispatch(authRequest())
     register(creds)
       .then((userInfo) => {
@@ -53,10 +53,10 @@ export function registerUserRequest(
 }
 
 export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
-  return (dispatch: Dispatch) => {
+  return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
-      .then((userInfo: User) => {
+      .then((userInfo) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
@@ -67,7 +67,7 @@ export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
 }
 
 export function logoutUser(confirmSuccess: ConfirmSuccess) {
-  return (dispatch: Dispatch) => {
+  return (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
@@ -75,7 +75,7 @@ export function logoutUser(confirmSuccess: ConfirmSuccess) {
 }
 
 export function checkAuth(confirmSuccess: ConfirmSuccess) {
-  return (dispatch: Dispatch) => {
+  return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
       confirmSuccess()

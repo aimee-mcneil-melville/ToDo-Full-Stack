@@ -6,7 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Home from './Home'
-import { User } from '../../server/db/users'
+import { User } from '../../common/User'
 import { checkAuth } from '../actions/auth'
 
 export interface Store {
