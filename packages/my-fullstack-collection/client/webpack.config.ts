@@ -1,7 +1,7 @@
-const path = require('path')
+import path from 'path'
 
 module.exports = {
-  entry: ['./client/index.js'],
+  entry: ['./client/index.tsx'],
   output: {
     path: path.join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
