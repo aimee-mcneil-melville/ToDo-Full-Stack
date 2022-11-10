@@ -3,7 +3,7 @@ exports.up = (knex) => {
     table.increments('id').primary()
     table.string('name')
     table.integer('average_grams_each')
-    table.string('added_by_user') // .references('users.auth0_id')
+    table.string('added_by_user').references('users.auth0_id')
   })
 }
 
