@@ -9,21 +9,25 @@ const errorMessages = {
   INVALID_CREDENTIALS: 'Sorry, your username or password is incorrect.',
 }
 
-export function register(creds) {
+export function register(creds: User) {
   return authRegister(creds, { baseUrl })
     .then((mystery) => {
       console.log('then', mystery)
       return mystery
     })
-    .catch((err) => {
+    .catch((err: Error) => {
       console.log(err.message)
-      throw errorMessages[err.message]
+      if (err.message === 'USERNAME_UNAVAILABLE' || err.message === 'INVALID_CREDENTIALS')
+        throw errorMessages[err.message]
+      throw new Error (err.message)
     })
 }
 
-export function login(creds) {
-  return authLogin(creds, { baseUrl }).catch((err) => {
+export function login(creds: User) {
+  return authLogin(creds, { baseUrl }).catch((err: Error) => {
     console.log(err.message)
-    throw errorMessages[err.message]
+    if (err.message === 'USERNAME_UNAVAILABLE' || err.message === 'INVALID_CREDENTIALS')
+      throw errorMessages[err.message]
+    throw new Error (err.message)
   })
 }
