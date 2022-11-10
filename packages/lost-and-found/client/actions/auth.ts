@@ -1,37 +1,44 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
 import { User } from '../../common/User'
-// import { Dispatch } from 'redux'
+import type { AppDispatch } from '../store'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
-export function authRequest() {
+export type Action =
+  | { type: 'AUTH_REQUEST' }
+  | { type: 'AUTH_FAILURE'; payload: string }
+  | { type: 'LOGIN'; payload: User }
+  | { type: 'LOGOUT' }
+
+export function authRequest(): Action {
   return {
     type: AUTH_REQUEST,
   }
 }
 
-export function authError(message: string) {
+export function authError(message: string): Action {
   return {
     type: AUTH_FAILURE,
     payload: message,
   }
 }
 
-export function receiveUser(user: string) {
+export function receiveUser(user: User): Action {
   return {
     type: LOGIN,
     payload: user,
   }
 }
 
-export function receiveLogout() {
+export function receiveLogout(): Action {
   return {
     type: LOGOUT,
   }
 }
+
 interface ConfirmSuccess {
   (): void
   (): void
@@ -41,7 +48,7 @@ export function registerUserRequest(
   creds: User,
   confirmSuccess: ConfirmSuccess
 ) {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     dispatch(authRequest())
     register(creds)
       .then((userInfo) => {
@@ -53,7 +60,7 @@ export function registerUserRequest(
 }
 
 export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     dispatch(authRequest())
     return login(creds)
       .then((userInfo) => {
@@ -67,7 +74,7 @@ export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
 }
 
 export function logoutUser(confirmSuccess: ConfirmSuccess) {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
@@ -75,7 +82,7 @@ export function logoutUser(confirmSuccess: ConfirmSuccess) {
 }
 
 export function checkAuth(confirmSuccess: ConfirmSuccess) {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
       confirmSuccess()

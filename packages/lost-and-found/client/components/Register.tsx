@@ -1,25 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../common/User'
 
 import { authError, registerUserRequest } from '../actions/auth'
-import {Store } from './App'
 
-import type { RootState, AppDispatch } from '../index'
-
-// Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch: () => AppDispatch = useDispatch
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
- 
 interface Form extends User {
   confirm_password?: string
 }
 
 function Register() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux: Store) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((redux) => redux.auth)
 
   const [formData, setFormData] = useState<Form>({
     username: '',
