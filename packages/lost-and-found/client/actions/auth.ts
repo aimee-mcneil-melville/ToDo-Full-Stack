@@ -1,6 +1,7 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
-import { User } from '../../server/db/users'
+import { User } from '../../common/User'
+import { Dispatch } from 'redux'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_FAILURE = 'AUTH_FAILURE'
 export const LOGIN = 'LOGIN'
@@ -31,9 +32,16 @@ export function receiveLogout() {
     type: LOGOUT,
   }
 }
+interface ConfirmSuccess {
+  (): void
+  (): void
+}
 
-export function registerUserRequest(creds, confirmSuccess) {
-  return (dispatch) => {
+export function registerUserRequest(
+  creds: User,
+  confirmSuccess: ConfirmSuccess
+) {
+  return (dispatch: Dispatch) => {
     dispatch(authRequest())
     register(creds)
       .then((userInfo) => {
@@ -44,30 +52,30 @@ export function registerUserRequest(creds, confirmSuccess) {
   }
 }
 
-export function loginUser(creds, confirmSuccess) {
-  return (dispatch) => {
+export function loginUser(creds: User, confirmSuccess: ConfirmSuccess) {
+  return (dispatch: Dispatch) => {
     dispatch(authRequest())
     return login(creds)
-      .then((userInfo) => {
+      .then((userInfo: User) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
-      .catch((err) => {
-        dispatch(authError(err))
+      .catch((err: Error) => {
+        dispatch(authError(err.message))
       })
   }
 }
 
-export function logoutUser(confirmSuccess) {
-  return (dispatch) => {
+export function logoutUser(confirmSuccess: ConfirmSuccess) {
+  return (dispatch: Dispatch) => {
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
   }
 }
 
-export function checkAuth(confirmSuccess) {
-  return (dispatch) => {
+export function checkAuth(confirmSuccess: ConfirmSuccess) {
+  return (dispatch: Dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
       confirmSuccess()

@@ -1,13 +1,7 @@
 import connection from './connection'
 import { generateHash } from 'authenticare/server'
+import { User } from '../../common/User'
 
-export interface User {
-  username: string
-  password?: string
-  email_address: string
-  contact_details: string
-  hash?: string
-}
 
 export function createUser(user: User, db = connection) {
   const newUser = { ...user }

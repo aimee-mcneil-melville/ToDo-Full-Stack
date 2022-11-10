@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { User } from '../../server/db/users'
+import { User } from '../../common/User'
 
 import { authError, registerUserRequest } from '../actions/auth'
 import {Store } from './App'
+
+import type { RootState, AppDispatch } from '../index'
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch: () => AppDispatch = useDispatch
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
  
 interface Form extends User {
   confirm_password?: string
@@ -27,7 +33,7 @@ function Register() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
@@ -36,9 +42,9 @@ function Register() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    e.target.reset()
+    e.currentTarget.reset()
 
     const { password, confirm_password } = formData
 

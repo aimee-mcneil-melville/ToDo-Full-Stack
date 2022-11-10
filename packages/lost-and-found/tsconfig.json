@@ -18,5 +18,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "noEmit": true,
     "allowJs": true
-  }
+  }, "include": [
+    "client/**/*", "server/**/*", "Authenticare.d.ts"
+  ]
 }

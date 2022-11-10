@@ -5,7 +5,7 @@ import {
   LOGOUT,
 } from '../actions/auth'
 
-import { User } from '../../server/db/users'
+import { User } from '../../common/User'
 
 const initialState = {
   user: null,
