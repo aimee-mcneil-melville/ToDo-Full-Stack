@@ -24,7 +24,7 @@ export function register(creds: Register) {
         err.message === 'INVALID_CREDENTIALS'
       )
         throw errorMessages[err.message]
-      throw new Error(err.message)
+      throw 'Woops! Something went wrong!'
     })
 }
 
@@ -36,6 +36,6 @@ export function login(creds: Cred) {
       err.message === 'INVALID_CREDENTIALS'
     )
       throw errorMessages[err.message]
-    throw new Error(err.message)
+    throw 'Woops! Something went wrong!'
   })
 }
