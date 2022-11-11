@@ -1,3 +1,4 @@
+import { JwtResponse } from 'authenticare/client'
 import {
   AUTH_REQUEST,
   AUTH_FAILURE,
@@ -6,7 +7,7 @@ import {
   Action
 } from '../actions/auth'
 
-import { User } from '../../common/User'
+
 
 const initialState: State = {
   user: undefined,
@@ -15,7 +16,7 @@ const initialState: State = {
   errorMessage: '',
 }
 interface State {
-  user?: User
+  user?: JwtResponse
   isFetching: boolean
   isAuthenticated: boolean
   errorMessage?: string

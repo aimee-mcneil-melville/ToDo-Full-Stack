@@ -14,10 +14,11 @@
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 
     /* Type Checking */
-    "strict": true /* Enable all strict
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
+    "strict": true, /* Enable all strict
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
     "noEmit": true,
-    "allowJs": true
+    "allowJs": true,
   },
-  "include": ["server/**/*", "client/**/*", "authenticare.d.ts"]
+  "ts-node": {"files": true},
+  "include": ["server/**/*", "client/**/*", "typings/**/*"]
 }

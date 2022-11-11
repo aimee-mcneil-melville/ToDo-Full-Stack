@@ -1,11 +1,12 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-import { User } from '../../common/User'
+import { Cred , Register} from 'authenticare/client'
 import { authError, registerUserRequest } from '../actions/auth'
 
-interface Form extends User {
+interface Form extends Cred {
   confirm_password?: string
+  email_address?: string
 }
 
 function Register() {
@@ -24,10 +25,12 @@ function Register() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = () => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value} = e.currentTarget
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
+        [name]: value,
       }
     })
   }
@@ -42,7 +45,7 @@ function Register() {
       dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
-      const userInfo = { username, password, email_address }
+      const userInfo: Register = { username, password, email_address: email_address as string }
       dispatch(registerUserRequest(userInfo, confirmSuccess))
     }
   }

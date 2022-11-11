@@ -1,12 +1,13 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
-import { User } from '../../common/User'
 import type { AppThunkAction } from '../store'
+import { JwtResponse, Cred, Register } from 'authenticare/client'
+
 
 export type Action =
   | { type: 'AUTH_REQUEST' }
   | { type: 'AUTH_FAILURE'; payload: string }
-  | { type: 'LOGIN'; payload: User }
+  | { type: 'LOGIN'; payload: JwtResponse }
   | { type: 'LOGOUT' }
 
 export const AUTH_REQUEST = 'AUTH_REQUEST'
@@ -31,7 +32,7 @@ export function authError(message: string): Action {
   }
 }
 
-export function receiveUser(user: User): Action {
+export function receiveUser(user: JwtResponse): Action {
   return {
     type: LOGIN,
     payload: user,
@@ -45,13 +46,13 @@ export function receiveLogout(): Action {
 }
 
 export function registerUserRequest(
-  creds: User,
+  creds: Register,
   confirmSuccess: ConfirmSuccess
 ): AppThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     register(creds)
-      .then((userInfo: User) => {
+      .then((userInfo: JwtResponse ) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
@@ -60,13 +61,13 @@ export function registerUserRequest(
 }
 
 export function loginUser(
-  creds: User,
+  creds: Cred,
   confirmSuccess: ConfirmSuccess
 ): AppThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
-      .then((userInfo: User) => {
+      .then((userInfo: JwtResponse) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })

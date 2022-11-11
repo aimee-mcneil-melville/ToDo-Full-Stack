@@ -1,8 +1,8 @@
 import connection from './connection'
-import { generateHash } from 'authenticare/server'
-import {ServerUser} from '../../common/User'
+import { User, generateHash } from 'authenticare/server'
 
-export function createUser(user: ServerUser, db = connection) {
+
+export function createUser(user: User, db = connection) {
   const newUser = { ...user }
   if (newUser.password) {
   return generateHash(newUser.password).then((passwordHash) => {
@@ -16,7 +16,7 @@ export function createUser(user: ServerUser, db = connection) {
 export function userExists(username : string, db = connection) {
   return db('users')
     .where('username', username)
-    .then((users: ServerUser[]) => users.length > 0)
+    .then((users: User[]) => users.length > 0)
 }
 
 export function getUserByUsername(username: string, db = connection) {
