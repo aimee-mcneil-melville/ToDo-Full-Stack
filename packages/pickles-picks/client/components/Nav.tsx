@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { logoutUser } from '../actions/auth'
 
 function Nav() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((state) => state.auth)
 
   const [burgerVisible, setBurgerVisible] = useState(false)
 
