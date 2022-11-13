@@ -6,7 +6,7 @@ import {
   Action,
 } from '../actions/auth'
 
-import { User } from '../../common/User'
+import { JwtResponse } from 'authenticare/client'
 
 const initialState: State = {
   user: undefined,
@@ -16,7 +16,7 @@ const initialState: State = {
 }
 
 interface State {
-  user?: User
+  user?: JwtResponse
   isFetching: boolean
   isAuthenticated: boolean
   errorMessage?: string

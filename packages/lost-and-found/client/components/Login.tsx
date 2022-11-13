@@ -1,7 +1,7 @@
 import { useEffect, useState, FormEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-
+import { Cred } from 'authenticare/client'
 import { loginUser, authError } from '../actions/auth'
 
 function Login() {
@@ -9,7 +9,7 @@ function Login() {
   const dispatch = useAppDispatch()
   const auth = useAppSelector((state) => state.auth)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Cred>({
     username: '',
     password: '',
   })

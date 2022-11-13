@@ -1,12 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-import { User } from '../../common/User'
+import { Cred , Register} from 'authenticare/client'
 
 import { authError, registerUserRequest } from '../actions/auth'
 
-interface Form extends User {
-  confirm_password?: string
+interface Form extends Cred {
+  confirm_password?: string,
+  email_address: string,
+  contact_details: string
 }
 
 function Register() {
@@ -39,14 +41,13 @@ function Register() {
     e.preventDefault()
     e.currentTarget.reset()
 
-    const { password, confirm_password } = formData
+    const { password, confirm_password, username, contact_details, email_address } = formData
 
     if (confirm_password != password) {
       dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
-      const userInfo = { ...formData }
-      delete userInfo.confirm_password
+      const userInfo: Register = { username, password, contact_details, email_address }
       dispatch(registerUserRequest(userInfo, confirmSuccess))
     }
   }

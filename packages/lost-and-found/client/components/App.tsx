@@ -6,17 +6,8 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Home from './Home'
-import { User } from '../../common/User'
 import { checkAuth } from '../actions/auth'
 
-export interface Store {
-  auth: {
-    isAuthenticated: boolean
-    user: User
-    isFetching: boolean
-    errorMessage: string
-  }
-}
 
 function App() {
   const dispatch = useAppDispatch()
