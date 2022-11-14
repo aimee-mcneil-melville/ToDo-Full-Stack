@@ -1,8 +1,9 @@
 import { SET_FRUITS } from '../actions'
+import type { Action } from '../actions'
 
-const initialState = []
+const initialState = [] as string[]
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Action) => {
   const { type, payload } = action
   switch (type) {
     case SET_FRUITS:

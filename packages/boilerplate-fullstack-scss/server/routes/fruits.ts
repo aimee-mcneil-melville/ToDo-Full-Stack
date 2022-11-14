@@ -1,11 +1,11 @@
-const express = require('express')
+import { Router } from 'express'
 
-const db = require('../db/fruits')
+import { getFruits } from '../db/fruits'
 
-const router = express.Router()
+const router = Router()
 
 router.get('/', (req, res) => {
-  db.getFruits()
+  getFruits()
     .then((results) => {
       res.json({ fruits: results.map((fruit) => fruit.name) })
     })
@@ -15,4 +15,4 @@ router.get('/', (req, res) => {
     })
 })
 
-module.exports = router
+export default router
