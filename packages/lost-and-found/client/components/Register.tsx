@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
+import { Cred, Register as AuthRegister } from 'authenticare/client'
 
 import { authError, registerUserRequest } from '../actions/auth'
 
+interface Form extends Cred {
+  confirm_password?: string
+  email_address: string
+  contact_details: string
+}
+
 function Register() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((redux) => redux.auth)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Form>({
     username: '',
     contact_details: '',
     email_address: '',
@@ -21,7 +28,7 @@ function Register() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
@@ -30,18 +37,28 @@ function Register() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    e.target.reset()
+    e.currentTarget.reset()
 
-    const { password, confirm_password } = formData
+    const {
+      password,
+      confirm_password,
+      username,
+      contact_details,
+      email_address,
+    } = formData
 
     if (confirm_password != password) {
       dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
-      const userInfo = { ...formData }
-      delete userInfo.confirm_password
+      const userInfo: AuthRegister = {
+        username,
+        password,
+        contact_details,
+        email_address,
+      }
       dispatch(registerUserRequest(userInfo, confirmSuccess))
     }
   }
