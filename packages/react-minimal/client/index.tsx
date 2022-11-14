@@ -1,14 +1,11 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+import { createRoot } from 'react-dom/client'
 
 const data = { name: 'humans' }
 
-function helloTemplate(props) {
+function helloTemplate(props: { name: string }) {
   return <div>hello {props.name}</div>
 }
 
 const view = helloTemplate(data)
 
-const placeToMount = document.getElementById('root')
-
-ReactDOM.render(view, placeToMount)
+createRoot(document.getElementById('root') as HTMLElement).render(view)
