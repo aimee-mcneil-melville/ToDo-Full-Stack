@@ -4,7 +4,7 @@ const path = require('path')
 // public/bundle.*
 
 module.exports = {
-  entry: './client/index.jsx',
+  entry: './client/index.tsx',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
