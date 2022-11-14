@@ -105,3 +105,22 @@ export function CatOwner({ cats, phoneNumber }: Props) {
   // ...
 }
 ```
+
+## Common files
+
+When types are shared between the client and server, we should keep these in
+a folder called common.
+
+e.g.
+
+`/common/User.ts`
+
+```typescript
+interface User {
+  id: number
+  username: string
+  emailAddress: string
+}
+```
+
+Modules in common should not use any node.js or browser specific functionality.
