@@ -1,6 +1,4 @@
-import React from 'react'
-
-function App() {
+function App(): JSX.Element {
   return (
     <>
       <header className="header">
