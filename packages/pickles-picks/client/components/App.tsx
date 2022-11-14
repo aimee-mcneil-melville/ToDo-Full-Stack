@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 import Login from './Login'
 import Register from './Register'
@@ -10,8 +10,8 @@ import Home from './Home'
 import { checkAuth } from '../actions/auth'
 
 function App() {
-  const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((state) => state.auth)
 
   useEffect(() => {
     const confirmSuccess = () => {}
