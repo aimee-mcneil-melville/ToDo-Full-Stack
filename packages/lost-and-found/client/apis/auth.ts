@@ -4,6 +4,7 @@ import {
   Register,
   Cred,
 } from 'authenticare/client'
+
 import { baseApiUrl as baseUrl } from '../config'
 
 const errorMessages = {
@@ -19,17 +20,23 @@ export function register(creds: Register) {
     })
     .catch((err: Error) => {
       console.log(err.message)
-      if (err.message === 'USERNAME_UNAVAILABLE' || err.message === 'INVALID_CREDENTIALS')
+      if (
+        err.message === 'USERNAME_UNAVAILABLE' ||
+        err.message === 'INVALID_CREDENTIALS'
+      )
         throw errorMessages[err.message]
-      throw new Error (err.message)
+      throw new Error(err.message)
     })
 }
 
 export function login(creds: Cred) {
   return authLogin(creds, { baseUrl }).catch((err: Error) => {
     console.log(err.message)
-    if (err.message === 'USERNAME_UNAVAILABLE' || err.message === 'INVALID_CREDENTIALS')
+    if (
+      err.message === 'USERNAME_UNAVAILABLE' ||
+      err.message === 'INVALID_CREDENTIALS'
+    )
       throw errorMessages[err.message]
-    throw new Error (err.message)
+    throw new Error(err.message)
   })
 }

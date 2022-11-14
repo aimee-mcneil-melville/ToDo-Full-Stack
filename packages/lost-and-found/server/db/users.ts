@@ -1,7 +1,5 @@
 import connection from './connection'
-import { generateHash } from 'authenticare/server'
-import { User } from '../../common/User'
-
+import { generateHash, User } from 'authenticare/server'
 
 export function createUser(user: User, db = connection) {
   const newUser = { ...user }

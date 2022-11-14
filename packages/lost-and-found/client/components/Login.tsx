@@ -19,10 +19,11 @@ function Login() {
   }, [])
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [e.currentTarget.name]: e.currentTarget.value,
+        [name]: value,
       }
     })
   }
