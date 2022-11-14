@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState, FormEvent } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-
+import { Cred } from 'authenticare/client'
 import { loginUser, authError } from '../actions/auth'
 
 function Login() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((state) => state.auth)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Cred>({
     username: '',
     password: '',
   })
@@ -18,16 +18,17 @@ function Login() {
     dispatch(authError(''))
   }, [])
 
-  const handleChange = (e) => {
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [e.target.name]: e.target.value,
+        [name]: value,
       }
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     const confirmSuccess = () => navigateTo('/')
     dispatch(loginUser(formData, confirmSuccess))
