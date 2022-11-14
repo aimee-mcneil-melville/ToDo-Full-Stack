@@ -22,7 +22,7 @@ function PostForm(props) {
     if (props.variant === 'edit') {
       return updatePost(id, newPost).then(() => {
         fetchPosts()
-        navigate(`/posts/${newPost.id}`)
+        navigate(`/posts/${id}`)
       })
     } else if (props.variant === 'new') {
       return addPost(newPost).then((newPost) => {
