@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+// TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { addFruit } from '../api'
 
 function AddFruit({ setFruits, closeAddForm, setError }) {
-  // TODO: read token from global state
+  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
   const [newFruit, setNewFruit] = useState(false)
 
   const handleAddChange = (e) => {
