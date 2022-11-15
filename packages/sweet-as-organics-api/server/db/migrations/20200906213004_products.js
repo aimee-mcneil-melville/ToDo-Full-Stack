@@ -4,6 +4,7 @@ exports.up = (knex) => {
     table.string('description')
     table.string('name')
     table.string('country')
+    table.timestamps(true, true)
   })
 }
 

@@ -1,6 +1,7 @@
-exports.seed = (knex) => {
-  const empty = (table) => () => knex(table).del()
-
-  return empty('products')()
-  // .then(empty('table_name'))
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.seed = async (knex) => {
+  await knex('products').del()
 }

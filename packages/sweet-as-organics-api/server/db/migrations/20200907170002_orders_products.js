@@ -3,6 +3,7 @@ exports.up = (knex) => {
     table.integer('product_id').references('products.id')
     table.integer('order_id').references('orders.id')
     table.integer('quantity')
+    table.timestamps(true, true)
   })
 }
 
