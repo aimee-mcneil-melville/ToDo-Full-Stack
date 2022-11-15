@@ -30,6 +30,7 @@ Make sure to align-versions after adding these packages (use `npm run align-vers
 
     /* Type Checking */
     "strict": true /* Enable all strict
+    "allowJs": true
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "noEmit": true
   }
