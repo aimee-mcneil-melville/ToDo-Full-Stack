@@ -27,7 +27,7 @@ export function showError(errorMessage) {
 export function fetchPosts(subreddit) {
   return (dispatch) => {
     dispatch(requestPosts())
-    fetchSubreddit(subreddit)
+    return fetchSubreddit(subreddit)
       .then((posts) => {
         dispatch(receivePosts(posts))
       })
