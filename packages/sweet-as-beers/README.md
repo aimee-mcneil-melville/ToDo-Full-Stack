@@ -29,8 +29,8 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
     Before we jump into the code editor, let's do some thinking about what we need to accomplish.
   </details>
 
-### 1. Setting up the store
-- [ ] Set up the store, wrapping `<App>` with the `<Provider>` in `client/index.js`. Include Redux dev tools
+### 1. Setting up the Redux store
+- [ ] Set up the Redux store, wrapping `<App>` with the `<Provider>` in `client/index.js`. Include Redux dev tools
   <details style="padding-left: 2em">
     <summary>More about the store</summary>
 
