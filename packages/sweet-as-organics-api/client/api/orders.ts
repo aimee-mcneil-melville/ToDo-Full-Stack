@@ -26,5 +26,5 @@ export function patchOrderStatus(id: number, status: OrderStatus) {
     .send({
       status,
     })
-    .then((res) => res.body)
+    .then((res) => res.body as OrderWithProducts)
 }

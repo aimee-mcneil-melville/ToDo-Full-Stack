@@ -1,7 +1,7 @@
 export interface DatabaseRow {
-  id?: number
-  createdAt?: string
-  updatedAt?: string
+  id: number
+  createdAt: string
+  updatedAt: string
 }
 
 export interface OrderCreate {
@@ -26,14 +26,12 @@ export interface OrderWithProducts {
   id: number
   status: OrderStatus
   createdAt: string
-  products: { id: number; name: string; quantity: number }[]
+  products: CartItemWithQuantity[]
 }
 
-export interface Order extends OrderCreate, Required<DatabaseRow> {}
-export interface Product extends ProductCreate, Required<DatabaseRow> {}
-export interface OrderProduct
-  extends OrderProductCreate,
-    Required<DatabaseRow> {}
+export interface Order extends OrderCreate, DatabaseRow {}
+export interface Product extends ProductCreate, DatabaseRow {}
+export interface OrderProduct extends OrderProductCreate, DatabaseRow {}
 
 export type CartItem = Pick<Product, 'id' | 'name'>
 

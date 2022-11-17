@@ -54,8 +54,14 @@ export function placeOrder(
           onSuccess()
         }
       })
-      .catch((err) => {
-        const errMessage = err.response?.text || err.message
+      .catch((err: unknown) => {
+        let errMessage: string
+        if (err instanceof Error) {
+          errMessage = err.message
+        } else {
+          errMessage =
+            (err as { response?: { text: string } }).response?.text || ''
+        }
         dispatch(showError(errMessage))
       })
   }
