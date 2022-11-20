@@ -40,7 +40,7 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
 
     * On the on-campus computers, `git-iam` is already set up for you
     * Online students, please install and configure `git-iam` (following the instructions in the `remote-git-iam` repo)
-    * If you're working solo on your own machine, you will have configured git globally already, and you don't need `git-iam`
+    * If you're working on your own machine, you will have configured git globally already, and you don't need `git-iam`
 
     ```shell
     git iam DRIVERS_FIRST_NAME
@@ -98,7 +98,7 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
     <summary>More about pushing</summary>
 
     ``` shell
-    git push origin YourName-PartnersName
+    git push origin partner1-partner2
     ```
   </details>
 
@@ -107,7 +107,7 @@ Let's get to know each other better! We'll play an icebreaker called Two Truths 
 
 ### 3. Prepare to bust
 
-- [ ] Find a pair to bust
+- [ ] Find a pair to bust (your pair will be matched with another pair)
   <details style="padding-left: 2em">
     <summary>More about pairing</summary>
 
