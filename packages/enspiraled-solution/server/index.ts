@@ -1,4 +1,4 @@
-var server = require('./server')
+import server from './server'
 
 var PORT = process.env.PORT || 3000
 
