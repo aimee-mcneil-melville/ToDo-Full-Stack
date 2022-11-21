@@ -1,7 +1,8 @@
+import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
-import Home from './Home'
 
-function App() {
+// STRETCH: Use nested routes
+export default function Main() {
   return (
     <>
       <div className="title">
@@ -11,13 +12,11 @@ function App() {
         />
         <h1>Navigating the worldwide routes</h1>
       </div>
-      {/* This 'main' div is only for styling (so we can use flexbox) */}
+
       <div className="main">
         <Nav />
-        <Home />
+        <Outlet />
       </div>
     </>
   )
 }
-
-export default App

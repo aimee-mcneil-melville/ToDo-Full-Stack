@@ -46,7 +46,7 @@ This exercise asks you to build an experience to navigate continents and their c
      ```jsx
      import { BrowserRouter as Router } from 'react-router-dom'
      ```
-  2. Inside our `ReactDOM.render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
+  2. Inside our `root.render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
 
   **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
 
@@ -158,9 +158,7 @@ Currently each country just shows a string of its neighbours' country codes.
 
 - Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population
 
-- Read about React Router's [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes) and [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes). Now try nesting the routes for `<Home>`, `<Continent>` and `<Country>` within `<Nav>`. The `<Home>` component should render on the index route, i.e. when the URL is just `http://localhost:3000/`.
-
-**Note:** It's probably not good application design to have everything nested inside the `<Nav>` component (if it's called `<Nav>` it should just be for navigation!) but Nested Routes are a useful feature of React Router, and this stretch task will give you practice with them.
+- Read about React Router's [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes) and [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes). Pull the common elements from `<App />` (i.e. the heading and the `<Nav />`) and to a new component named `<Main />`, try nesting the routes for `<Home>`, `<Continent>` and `<Country>` in `<Main />`. The `<Home>` component should render on the index route, i.e. when the URL is just `http://localhost:3000/`.
 
 </details>
 
