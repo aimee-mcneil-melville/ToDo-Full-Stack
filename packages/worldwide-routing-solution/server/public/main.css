@@ -4,8 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.main,
-.title {
+.main, .title {
   display: flex;
   flex-direction: row;
 }
@@ -26,9 +25,4 @@ a {
 
 img {
   max-height: 200px;
-}
-
-.selected {
-  font-weight: bold;
-  list-style-type: circle;
 }

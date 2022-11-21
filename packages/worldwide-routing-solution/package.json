@@ -5,11 +5,13 @@
   "repository": "https://github.com/dev-academy-challenges/worldwide-routing.git",
   "main": "server/index.js",
   "scripts": {
-    "start": "run-p webpack server",
-    "dev": "run-p client server",
+    "build": "npm run webpack -- --mode production",
+    "start": "node server",
+    "dev": "run-p client:watch server:watch",
     "webpack": "webpack --config client/webpack.config.js",
-    "client": "npm run webpack -- --watch",
     "server": "node server",
+    "client:watch": "npm run webpack -- --watch",
+    "server:watch": "nodemon server",
     "test": "jest --watch --noStackTrace",
     "lint": "eslint --ext .js,.jsx ."
   },
@@ -49,6 +51,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "jest": "^29.2.2",
+    "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
     "react": "^18.0.2",
@@ -65,6 +68,9 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "browserslist": "> 2%, not dead"
 }
