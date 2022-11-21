@@ -8,9 +8,6 @@ const randomColor = () =>
 export default function Pixel() {
   const [color, setColor] = useState(randomColor())
 
-  // * **onDoubleClick**: turn the components white
-  // * **onDragEnter**: turn the components yellow as you click and drag through them
-
   const handleMouseEnter = useCallback(() => {
     setColor('green')
   }, [])
