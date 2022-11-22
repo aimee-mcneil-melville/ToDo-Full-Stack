@@ -14,6 +14,10 @@ Make sure to align-versions after adding these packages (use `npm run align-vers
 
 ```json
 {
+  "ts-node": {
+    "transpileOnly": true
+  },
+
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
