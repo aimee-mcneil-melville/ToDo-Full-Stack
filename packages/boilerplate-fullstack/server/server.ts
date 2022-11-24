@@ -1,7 +1,7 @@
-const express = require('express')
-const path = require('path')
+import express from 'express'
+import path from 'path'
 
-const fruitRoutes = require('./routes/fruits')
+import fruitRoutes from './routes/fruits'
 
 const server = express()
 
@@ -10,4 +10,4 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/fruits', fruitRoutes)
 
-module.exports = server
+export default server

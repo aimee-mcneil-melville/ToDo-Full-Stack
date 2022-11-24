@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 import { fetchFruits } from '../actions'
 
 function App() {
-  const fruits = useSelector((state) => state.fruits)
-  const dispatch = useDispatch()
+  const fruits = useAppSelector((state) => state.fruits)
+  const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchFruits())
   }, [])

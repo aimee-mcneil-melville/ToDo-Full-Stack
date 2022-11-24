@@ -1,15 +1,18 @@
 import { getFruits } from '../apis/fruits'
+import type { AppThunkAction } from '../store'
+
+export type Action = { type: typeof SET_FRUITS; payload: string[] }
 
 export const SET_FRUITS = 'SET_FRUITS'
 
-export function setFruits(fruits) {
+export function setFruits(fruits: string[]): Action {
   return {
     type: SET_FRUITS,
     payload: fruits,
   }
 }
 
-export function fetchFruits() {
+export function fetchFruits(): AppThunkAction {
   return (dispatch) => {
     return getFruits().then((fruits) => {
       dispatch(setFruits(fruits))
