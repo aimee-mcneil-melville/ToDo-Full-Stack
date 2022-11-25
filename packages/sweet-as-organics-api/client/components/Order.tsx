@@ -1,8 +1,21 @@
-import React from 'react'
-
 import OrderItem from './OrderItem'
 
-function Order(props) {
+interface OrderProduct {
+  id: number
+  name: string
+  quantity: number
+}
+
+interface Props {
+  order: {
+    id: number
+    products: OrderProduct[]
+    createdAt: string
+    status: string
+  }
+}
+
+function Order(props: Props) {
   const { id, products, createdAt, status } = props.order
 
   function cancelOrder() {

@@ -1,15 +1,23 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-
+import { ChangeEvent } from 'react'
 import { deleteFromCart, updateCart } from '../actions/cart'
+import { useAppDispatch } from '../hooks'
 
-function CartItem(props) {
+interface Props {
+  item: {
+    name: string
+    id: number
+    quantity: number
+  }
+}
+
+function CartItem(props: Props) {
   const { name, id, quantity } = props.item
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
-  function update(e) {
-    const newQuantity = e.target.value
-    const isValidQuantity = !isNaN(Number(newQuantity))
+  function update(e: ChangeEvent<HTMLInputElement>) {
+    const newQuantity = Number(e.currentTarget.value)
+    const isValidQuantity = !isNaN(newQuantity)
+
     if (isValidQuantity) {
       const updateInfo = { id, newQuantity }
       dispatch(updateCart(updateInfo))

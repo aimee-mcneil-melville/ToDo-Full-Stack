@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import type { ReactNode } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
 
 import { addToCart } from '../actions/cart'
@@ -7,15 +8,20 @@ import { fetchProducts } from '../actions/products'
 
 import ProductListItem from './ProductListItem'
 
-function ProductList({ children }) {
-  const products = useSelector((state) => state.products)
+interface Props {
+  children: ReactNode
+}
+
+function ProductList({ children }: Props) {
+  const products = useAppSelector((state) => state.products)
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
     dispatch(fetchProducts())
   }, [])
 
-  function addProductToCart(product) {
+  function addProductToCart(product: { id: number; name: string }) {
     const { id, name } = product
     const newCartItem = { id, name }
     dispatch(addToCart(newCartItem))

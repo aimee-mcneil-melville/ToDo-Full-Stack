@@ -1,14 +1,8 @@
-const connection = require('./connection')
+import connection from './connection'
 
-const { formatOrder, formatOrderList } = require('../formatter')
+import { formatOrder, formatOrderList } from '../formatter'
 
-module.exports = {
-  listOrders,
-  addOrder,
-  editOrderStatus,
-}
-
-function listOrders(db = connection) {
+export function listOrders(db = connection) {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
@@ -23,7 +17,7 @@ function listOrders(db = connection) {
     .then(formatOrderList)
 }
 
-function addOrder(orderRequest, db = connection) {
+export function addOrder(orderRequest, db = connection) {
   // remove item names from order (we have the id)
   const order = orderRequest.map((item) => {
     return {
@@ -48,7 +42,7 @@ function addOrder(orderRequest, db = connection) {
     .then(([id]) => addOrderLines(id, order, db))
 }
 
-function addOrderLines(id, order, db = connection) {
+export function addOrderLines(id, order, db = connection) {
   const orderLines = order.map((item) => {
     return {
       order_id: id,

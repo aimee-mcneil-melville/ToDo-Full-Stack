@@ -1,6 +1,11 @@
-import React from 'react'
+interface Props {
+  product: {
+    name: string
+    quantity: number
+  }
+}
 
-function OrderItem(props) {
+function OrderItem(props: Props) {
   const { name, quantity } = props.product
   return (
     <tr>

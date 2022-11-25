@@ -1,9 +1,12 @@
-import React from 'react'
-
+import type { ReactNode } from 'react'
 import Order from './Order'
 
-function OrderList({ children }) {
-  const orders = []
+interface Props {
+  children: ReactNode
+}
+
+function OrderList({ children }: Props) {
+  const orders = [] as any[]
   return (
     <div className="orderlist">
       {children} {/* Holds the WaitIndicator */}

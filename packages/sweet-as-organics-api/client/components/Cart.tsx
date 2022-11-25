@@ -1,13 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-
+import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useAppSelector } from '../hooks'
 import CartItem from './CartItem'
 
-function Cart(props) {
-  const { children } = props
-  const cart = useSelector((state) => state.cart)
+interface Props {
+  children: ReactNode
+  history: unknown
+}
+
+function Cart({ children }: Props) {
+  const cart = useAppSelector((state) => state.cart)
 
   function submitCart() {
     console.log('coming soon!')

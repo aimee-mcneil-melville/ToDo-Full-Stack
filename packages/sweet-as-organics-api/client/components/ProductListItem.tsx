@@ -1,6 +1,11 @@
-import React from 'react'
+import type { Product } from '../../common/Product'
 
-function ProductListItem(props) {
+interface Props {
+  product: Product
+  addToCart: (product: { id: number; name: string }) => void
+}
+
+function ProductListItem(props: Props) {
   const product = props.product
 
   function addToCart() {

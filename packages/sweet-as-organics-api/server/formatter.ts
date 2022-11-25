@@ -1,14 +1,9 @@
-module.exports = {
-  formatOrder,
-  formatOrderList,
-}
-
-function createDateTimeString(timestamp) {
+export function createDateTimeString(timestamp) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-function createOrder(orderLine) {
+export function createOrder(orderLine) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
@@ -17,7 +12,7 @@ function createOrder(orderLine) {
   }
 }
 
-function createProduct(orderLine) {
+export function createProduct(orderLine) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
@@ -25,14 +20,14 @@ function createProduct(orderLine) {
   }
 }
 
-function sortByIdAscending(arr) {
+export function sortByIdAscending<T extends { id: number }>(arr: T[]) {
   arr.sort((a, b) => {
     return a.id - b.id
   })
   return arr
 }
 
-function sortByIdDescending(arr) {
+export function sortByIdDescending<T extends { id: number }>(arr: T[]) {
   arr.sort((a, b) => {
     return b.id - a.id
   })
