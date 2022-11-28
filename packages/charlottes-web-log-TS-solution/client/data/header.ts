@@ -1,9 +1,9 @@
-export type THeader = {
+export type Header = {
   title: string
   link: string
 }
 
-const header: THeader = {
+const header: Header = {
   title: "Charlotte's Web Log",
   link: '/',
 }

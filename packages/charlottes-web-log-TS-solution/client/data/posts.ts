@@ -1,4 +1,4 @@
-export type TPost = {
+export type Post = {
   id: number
   title: string
   date: string
@@ -6,7 +6,7 @@ export type TPost = {
   paragraphs: string[]
 }
 
-const posts: TPost[] = [
+const posts: Post[] = [
   {
     id: 126,
     title: 'The beginning of an idea',

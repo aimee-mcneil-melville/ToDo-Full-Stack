@@ -9,7 +9,7 @@
     "dev": "run-p client server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
-    "server": "node server",
+    "server": "ts-node server/index.ts",
     "lint": "eslint --ext .js,.jsx ."
   },
   "babel": {
