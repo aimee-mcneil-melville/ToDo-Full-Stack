@@ -28,7 +28,7 @@ function Nav() {
           <NavLink to="/" onClick={handleLogOff}>
             Log off
           </NavLink>
-          <p>{user.nickname}</p>
+          <p>{user?.nickname}</p>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <NavLink to="/" onClick={handleSignIn}>
