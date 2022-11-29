@@ -1,7 +1,11 @@
 import type * as type from '../data/header'
 
-const Header = ({ title }: type.Header) => {
-  return <h2>{title}</h2>
+export default function Header ({ link, title }: type.Header) {
+  return (
+    <div className='header'>
+    <h1>
+      <a href={link}>{title}</a>
+    </h1>
+  </div>
+  )
 }
-
-export default Header

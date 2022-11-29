@@ -6,8 +6,11 @@ import footerProps from '../data/footer'
 
 function App() {
   return (
-    <div>
+    <div className='app'>
       <Header {...headerProps}/>
+      <div className='body-container'>
+
+      </div>
       <Footer {...footerProps} />
     </div>
   )

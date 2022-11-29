@@ -1,0 +1,14 @@
+.body-container {
+  display: flex;
+}
+
+.header {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 4em;
+  text-align: center;
+}
+

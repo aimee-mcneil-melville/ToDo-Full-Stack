@@ -1,12 +1,10 @@
 import type * as type from '../data/footer'
 
-const Footer = ({ copyright, author }: type.Footer) => {
+export default function Footer ({ copyright, author }: type.Footer) {
   return (
-    <>
+    <div className='footer'>
       <p>{copyright}</p>
       <p>{author}</p>
-    </>
+    </div>
   )
-}
-
-export default Footer
+  }
