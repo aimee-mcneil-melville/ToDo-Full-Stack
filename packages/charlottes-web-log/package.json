@@ -10,7 +10,7 @@
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
     "server": "node server",
-    "lint": "eslint --ext .js,.jsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "babel": {
     "presets": [

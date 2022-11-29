@@ -13,7 +13,7 @@
     "dev:all": "run-p dev:client dev:server",
     "dev": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "lint": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
     "start": "node server",
     "test": "jest"

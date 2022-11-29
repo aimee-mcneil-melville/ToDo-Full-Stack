@@ -2,7 +2,7 @@
   "name": "meowtown",
   "version": "0.0.1",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "start": "node index",
     "dev": "nodemon index"
   },

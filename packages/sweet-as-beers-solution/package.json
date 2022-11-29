@@ -9,7 +9,7 @@
     "server": "nodemon server",
     "start": "node server",
     "test": "jest --watchAll",
-    "lint": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "webpack": "webpack --config ./client/webpack.config.js"
   },
   "author": "Dev Academy Aotearoa",

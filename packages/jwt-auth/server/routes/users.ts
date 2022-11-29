@@ -1,7 +1,7 @@
 import express from 'express'
 // TODO: import checkJwt
 
-import db from '../db/users'
+import db from '../db/users' 
 
 const router = express.Router()
 

@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index --ignore data.json",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watchAll"
   },
   "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",

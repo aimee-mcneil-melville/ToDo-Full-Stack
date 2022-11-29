@@ -8,7 +8,7 @@
     "dev": "nodemon index",
     "knex": "knex",
     "test": "jest",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
     "format": "prettier -w *.js routes seeds migrations",
     "build": "knex migrate:latest"

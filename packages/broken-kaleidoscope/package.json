@@ -16,7 +16,7 @@
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server/index.ts",
-    "lint": "eslint --ext .js,.jsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "babel": {
     "presets": [
@@ -72,7 +72,7 @@
     "react-dom": "^18.2.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4",
+    "typescript": "~4.8.4",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"

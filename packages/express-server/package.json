@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index",
     "test": "jest --watchAll",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "homepage": "https://github.com/dev-academy-challenges/express-server#readme",
   "repository": {

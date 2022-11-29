@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index",
     "knex": "knex",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watch --noStackTrace"
   },
   "repository": {
@@ -30,9 +30,12 @@
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2"
   },
+  "eslintConfig": {
+    "extends": "@devacademy"
+  },
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
+    "@devacademy/eslint-config": "^1.5.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",

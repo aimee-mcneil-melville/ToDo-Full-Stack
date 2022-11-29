@@ -4,7 +4,7 @@
   "description": "Kata for working with types, functions and modules",
   "scripts": {
     "test": "jest --watchAll --noStackTrace",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index",
     "knex": "knex",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watch --noStackTrace"
   },
   "repository": {

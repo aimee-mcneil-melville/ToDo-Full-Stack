@@ -4,7 +4,7 @@
   "description": "A kata that explores testing and the array commands",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@
     "client": "webpack --watch",
     "server": "node server",
     "test": "jest --noStackTrace",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "author": "Dev Academy Aotearoa",
   "license": "MIT",

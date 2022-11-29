@@ -11,7 +11,7 @@
     "dev:server": "nodemon --watch server server/index.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "webpack": "webpack --config ./client/webpack.config.js",
-    "lint": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
     "build": "run-p build:client build:server",

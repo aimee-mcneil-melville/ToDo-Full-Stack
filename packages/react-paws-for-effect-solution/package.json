@@ -9,7 +9,7 @@
     "dev": "run-p watch:client watch:server",
     "watch:client": "webpack --config ./client/webpack.config.js --watch",
     "watch:server": "nodemon --watch server",
-    "lint": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --verbose"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",

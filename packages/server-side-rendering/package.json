@@ -9,7 +9,7 @@
     "start": "node index",
     "dev": "nodemon index",
     "test": "jest --watchAll",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "eslintConfig": {
     "extends": "@devacademy"

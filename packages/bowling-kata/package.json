@@ -5,7 +5,7 @@
   "main": "game.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "repository": {
     "type": "git",

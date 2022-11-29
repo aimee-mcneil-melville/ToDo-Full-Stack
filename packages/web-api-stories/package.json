@@ -8,7 +8,7 @@
     "dev": "nodemon index",
     "knex": "knex",
     "test": "jest --watchAll",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "repository": {
     "type": "git",
