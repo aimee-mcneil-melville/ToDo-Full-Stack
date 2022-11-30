@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Route, Routes, Outlet } from 'react-router-dom'
 import useFetchPosts from './hooks/useFetchPosts'
 

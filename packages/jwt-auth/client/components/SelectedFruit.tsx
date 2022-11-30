@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  MouseEvent,
-  FormEvent,
-} from 'react'
+import { useState, ChangeEvent, MouseEvent, FormEvent } from 'react'
 // TODO: import useAuth0
 import { FruitCamel } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
