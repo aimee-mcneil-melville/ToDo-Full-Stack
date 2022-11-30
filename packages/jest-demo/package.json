@@ -8,6 +8,6 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "jest": "^29.2.2"
   }
 }

@@ -69,7 +69,7 @@ But if you're looking for a bit more direction, read on.
 
 ### 4. Displaying a tile when clicked
 
-- [ ] When a `<Tile>` is clicked, display it, using state and an event handler from the `<Board>` component
+- [ ] When a `<Tile>` is clicked, display it, using state and an event handler on the `<Board>` component
   <details style="padding-left: 2em">
     <summary>More about showing the <code>&lt;Tile&gt;</code></summary>
 
@@ -123,6 +123,7 @@ But if you're looking for a bit more direction, read on.
   * [Handling Events in React](https://17.reactjs.org/docs/handling-events.html)
   * [React TestUtils](https://17.reactjs.org/docs/test-utils.html)
 </details>
+
 
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=memory)

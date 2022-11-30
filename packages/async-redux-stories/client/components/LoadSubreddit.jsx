@@ -1,10 +1,9 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../hooks'
 
 import { fetchPosts } from '../actions'
 
 function LoadSubreddit({ children }) {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <div>
