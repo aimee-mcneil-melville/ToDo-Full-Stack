@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent, ChangeEvent} from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
 import { addPost, updatePost } from '../api'
 import type useFetchPosts from './hooks/useFetchPosts'

@@ -1,6 +1,5 @@
 import connection from './connection'
-import { FruitSnake} from '../../types'
-
+import { FruitSnake } from '../../types'
 
 export function getFruits(db = connection) {
   return db('fruits')
@@ -25,11 +24,7 @@ export function deleteFruit(id: number, db = connection) {
   return db('fruits').where('id', id).delete()
 }
 
-export function userCanEdit(
-  fruitId: number,
-  auth0Id: string,
-  db = connection
-) {
+export function userCanEdit(fruitId: number, auth0Id: string, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()
