@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 import { useAuth0 } from '@auth0/auth0-react'

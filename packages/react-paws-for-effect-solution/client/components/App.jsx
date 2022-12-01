@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Dog from './Dog'
 import Subtitle from './Subtitle'
 

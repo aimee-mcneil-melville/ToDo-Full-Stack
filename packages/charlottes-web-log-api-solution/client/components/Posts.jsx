@@ -1,4 +1,3 @@
-import React from 'react'
 import PostSummary from './PostSummary'
 function Posts(props) {
   return (

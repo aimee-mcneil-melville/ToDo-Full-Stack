@@ -97,6 +97,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.3",
     "@types/react-redux": "^7.1.24",
     "authenticare": "^0.4.9",
     "dotenv": "^10.0.0",

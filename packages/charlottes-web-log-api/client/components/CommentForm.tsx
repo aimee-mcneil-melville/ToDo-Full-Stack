@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { updateComment, addCommentByPostId } from '../api'
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
 import { IFetchComments } from './hooks/useFetchComments'
@@ -17,7 +17,7 @@ function CommentForm(props: IProps) {
   const { fetchComments } = useOutletContext<any>()
   const [newComment, setNewComment] = useState(props.comment || '')
 
-  const onSubmit = (e: React.FormEvent<any>) => {
+  const onSubmit = (e: FormEvent<any>) => {
     e.preventDefault()
     if (props.variant === 'edit') {
       return updateComment(props.commentId!, newComment).then(() => {

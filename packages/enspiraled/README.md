@@ -73,7 +73,6 @@ After you've completed this project, this is what it can look like after a few c
       <summary>Tip</summary>
 
       ```jsx
-      import React from 'react'
 
       export default function Circle(props) {
 
