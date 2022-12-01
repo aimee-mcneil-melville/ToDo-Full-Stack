@@ -1,10 +1,8 @@
-const express = require('express')
+import express from 'express'
 
-const db = require('../db/products')
+import * as db from '../db/products'
 
 const router = express.Router()
-
-module.exports = router
 
 router.get('/', (req, res) => {
   db.listProducts()
@@ -15,3 +13,5 @@ router.get('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+export default router
