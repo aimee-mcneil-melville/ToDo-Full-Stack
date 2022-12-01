@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-import { Cred , Register} from 'authenticare/client'
+import { Cred , RegisterUser} from 'authenticare/client'
 import { authError, registerUserRequest } from '../actions/auth'
 
 interface Form extends Cred {
@@ -45,7 +45,7 @@ function Register() {
       dispatch(authError("Passwords don't match"))
     } else {
       const confirmSuccess = () => navigateTo('/')
-      const userInfo: Register = { username, password, email_address: email_address as string }
+      const userInfo: RegisterUser = { username, password, email_address: email_address as string }
       dispatch(registerUserRequest(userInfo, confirmSuccess))
     }
   }
