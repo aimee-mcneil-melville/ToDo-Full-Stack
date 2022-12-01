@@ -1,9 +1,5 @@
-const connection = require('./connection')
+import connection from './connection'
 
-module.exports = {
-  listProducts,
-}
-
-function listProducts(db = connection) {
+export function listProducts(db = connection) {
   return db('products').select()
 }

@@ -1,7 +1,7 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 
-const products = require('./routes/products')
+import products from './routes/products'
 
 const server = express()
 
@@ -17,4 +17,4 @@ server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-module.exports = server
+export default server
