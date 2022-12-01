@@ -19,10 +19,10 @@ module.exports = {
       filename: ':memory:',
     },
     migrations: {
-      directory: path.join(__dirname, 'migrations')
+      directory: path.join(__dirname, 'migrations'),
     },
     seeds: {
-      directory: path.join(__dirname, 'seeds')
+      directory: path.join(__dirname, 'seeds'),
     },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
