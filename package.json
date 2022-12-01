@@ -2,7 +2,7 @@
   "name": "challenges",
   "scripts": {
     "lint": "./tools/lint",
-    "format": "prettier --write 'packages/**/*.js' 'packages/**/*.jsx'"
+    "format": "prettier --write 'packages/**/*.js' 'packages/**/*.jsx' 'packages/**/*.tsx' 'packages/**/*.ts'"
   },
   "workspaces": [
     "packages/*"
