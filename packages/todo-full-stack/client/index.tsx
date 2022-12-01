@@ -1,17 +1,21 @@
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from '@redux-devtools/extension';
 import thunk from 'redux-thunk'
 
 import reducers from './reducers'
 import App from './components/App'
 
-const composeEnhancers =
-  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+
+const store = createStore(
+  reducers,
+  composeWithDevTools(
+    applyMiddleware(thunk))
+);
 
 document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('app')!).render(
+  createRoot(document.getElementById('app') as HTMLElement).render(
     <Provider store={store}>
       <App />
     </Provider>
