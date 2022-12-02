@@ -3,7 +3,6 @@ import { login, register } from '../apis/auth'
 import type { AppThunkAction } from '../store'
 import { JwtResponse, Cred, Register } from 'authenticare/client'
 
-
 export type Action =
   | { type: 'AUTH_REQUEST' }
   | { type: 'AUTH_FAILURE'; payload: string }
@@ -52,7 +51,7 @@ export function registerUserRequest(
   return (dispatch) => {
     dispatch(authRequest())
     register(creds)
-      .then((userInfo: JwtResponse ) => {
+      .then((userInfo: JwtResponse) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })

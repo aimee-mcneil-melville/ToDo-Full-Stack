@@ -4,10 +4,8 @@ import {
   AUTH_FAILURE,
   LOGIN,
   LOGOUT,
-  Action
+  Action,
 } from '../actions/auth'
-
-
 
 const initialState: State = {
   user: undefined,

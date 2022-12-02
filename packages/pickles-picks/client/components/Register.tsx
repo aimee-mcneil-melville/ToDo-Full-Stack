@@ -23,7 +23,7 @@ function Register() {
 
   useEffect(() => {
     dispatch(authError(''))
-  }, [])
+  }, [dispatch])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget

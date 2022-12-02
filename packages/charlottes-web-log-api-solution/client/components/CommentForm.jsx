@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { updateComment, addCommentByPostId } from '../api'
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const NamePlate = (props) => (
   <div className="dog">
     <div className="dog-name-plate">
