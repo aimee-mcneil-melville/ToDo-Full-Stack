@@ -39,11 +39,12 @@ Learning objectives:
 
   If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.tsx`, we find this:
 
-  ```js
+  ```tsx
+  import { createRoot } from 'react-dom/client'
   import App from './components/App'
 
   document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(<App />, document.getElementById('app'))
+    createRoot(document.getElementById('app') as HTMLElement).render(<App />)
   })
   ```
 
@@ -54,12 +55,18 @@ Learning objectives:
   <details style="padding-left: 2em">
     <summary>More about <code>App.jsx</code></summary>
 
-  ```jsx
-  const App = () => (
-    <div className="container">
-      <img className="spinner" src="/images/paw.png" />
-    </div>
-  )
+  ```tsx
+  function App() {
+    return (
+      <div className="container">
+        <img
+          className="spinner"
+          alt="a spinning paw-print"
+          src="/images/paw.png"
+        />
+      </div>
+    )
+  }
 
   export default App
   ```
@@ -79,8 +86,14 @@ Let's try another component.
 
   Copy/paste the following for the contents of Dog.jsx
 
-  ```jsx
-  const Dog = (props) => {
+  ```tsx
+  interface Props {
+    name: string
+    breed: string
+    superpower: string
+  }
+
+  function Dog(props: Props) {
     return (
       <div className="dog-wrapper">
         <div className="dog">
@@ -134,7 +147,7 @@ Let's try another component.
   In `App.tsx`, import the `<Dog>` component
 
   ```js
-  import Dog from './Dog.jsx'
+  import Dog from './Dog'
   ```
 
   and add a `<Dog>` tag (use Desdemona, above if you like). The JSX returned should look something like this:
@@ -165,10 +178,10 @@ Let's try another component.
 
   Rendering `<Subtitle>` into the `<App>` might look like this:
 
-  ```jsx
-  <img className='spinner' src='/images/paw.png' />
-  <Subtitle text='Canines using supercanine abilities for social good.' />
-  <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
+  ```tsx
+  <img className="spinner" src="/images/paw.png" />
+  <Subtitle text="Canines using supercanine abilities for social good." />
+  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
   ```
 
   You should see something like this:
