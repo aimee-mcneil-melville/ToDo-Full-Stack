@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Todo Full Stack",
   "repository": "https://https://github.com/dev-academy-challenges/todo-full-stack",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
@@ -13,7 +13,7 @@
     "test:watch": "jest --noStackTrace --watchAll",
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
-    "dev:server": "nodemon --watch ts-node server server/index.js",
+    "dev:server": "nodemon --watch ts-node server server/index.ts",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
