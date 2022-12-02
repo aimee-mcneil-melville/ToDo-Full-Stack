@@ -1,5 +1,5 @@
 import express from 'express'
-import { FruitCamel,FruitSnake } from '../../types'
+import { FruitCamel, FruitSnake } from '../../types'
 import checkJwt, { JwtRequest } from '../auth0'
 
 import {

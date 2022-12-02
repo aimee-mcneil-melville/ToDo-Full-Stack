@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Pic from './Pic'
 import NamePlate from './NamePlate'
 

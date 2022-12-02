@@ -1,5 +1,3 @@
-import React from 'react'
-
 import BeerListItem from './BeerListItem'
 
 import beerData from '../../data/beers'

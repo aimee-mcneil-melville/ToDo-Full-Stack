@@ -11,4 +11,3 @@ export type FruitCamel = {
   averageGramsEach: number
   addedByUser: string
 }
-

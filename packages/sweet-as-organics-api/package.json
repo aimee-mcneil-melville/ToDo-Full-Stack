@@ -7,7 +7,7 @@
     "start": "node server",
     "dev": "run-p client server",
     "client": "webpack --watch --config client/webpack.config.js",
-    "server": "nodemon server",
+    "server": "nodemon server/index.ts",
     "knex": "knex --knexfile server/db/knexfile.js",
     "test": "jest --watchAll --verbose",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
@@ -33,6 +33,7 @@
     ]
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2"

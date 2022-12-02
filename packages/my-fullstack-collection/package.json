@@ -83,6 +83,7 @@
   },
   "dependencies": {
     "@devacademy/eslint-config": "^1.6.0",
+    "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "pg": "^8.8.0",
