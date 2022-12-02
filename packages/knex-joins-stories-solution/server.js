@@ -1,4 +1,4 @@
-const path = require('path')
+const { join } = require('node:path')
 
 const express = require('express')
 const hbs = require('express-handlebars')
@@ -19,7 +19,7 @@ server.engine(
   })
 )
 server.set('view engine', 'hbs')
-server.set('views', path.join(__dirname, 'views'))
+server.set('views', join(__dirname, 'views'))
 server.use(express.static('public'))
 
 // Routes
