@@ -2,7 +2,7 @@ import knex from 'knex'
 const config = require('./knexfile').test
 const testDb = knex(config)
 
-import {getWidgets, TWidget} from './db'
+import { getWidgets, TWidget } from './db'
 
 beforeAll(() => {
   return testDb.migrate.latest()
@@ -15,7 +15,7 @@ beforeEach(() => {
 afterAll(() => {
   testDb.destroy()
 })
- 
+
 describe('getWidgets', () => {
   it('returns the correct widgets array', () => {
     return getWidgets(testDb).then((widgets: TWidget[]) => {

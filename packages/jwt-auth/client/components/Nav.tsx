@@ -1,4 +1,4 @@
-import React from 'react'
+import { MouseEvent } from 'react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { NavLink, NavGroup } from './Styled'
@@ -10,12 +10,12 @@ function Nav() {
     nickname: 'john.doe',
   }
 
-  const handleLogOff = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleLogOff = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     console.log('log off')
   }
 
-  const handleSignIn = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleSignIn = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     console.log('sign in')
   }
@@ -28,7 +28,7 @@ function Nav() {
           <NavLink to="/" onClick={handleLogOff}>
             Log off
           </NavLink>
-          <p>{user.nickname}</p>
+          <p>{user?.nickname}</p>
         </IfAuthenticated>
         <IfNotAuthenticated>
           <NavLink to="/" onClick={handleSignIn}>

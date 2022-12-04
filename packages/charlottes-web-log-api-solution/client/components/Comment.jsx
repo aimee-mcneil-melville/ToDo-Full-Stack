@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
 

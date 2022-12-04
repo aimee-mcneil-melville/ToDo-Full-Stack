@@ -2,7 +2,7 @@
   "name": "meowtown",
   "version": "0.0.1",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "start": "node index",
     "dev": "nodemon index"
   },
@@ -23,7 +23,7 @@
     "jest": "^29.2.2",
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
-    "@devacademy/eslint-config": "^1.5.1"
+    "@devacademy/eslint-config": "^1.6.0"
   },
   "prettier": {
     "semi": false,

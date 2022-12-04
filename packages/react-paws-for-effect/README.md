@@ -39,11 +39,14 @@ Learning objectives:
 
   If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.tsx`, we find this:
 
-  ```ts
+
+  ```tsx
+  import { createRoot } from 'react-dom/client'
+
   import App from './components/App'
 
   document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(<App />, document.getElementById('app'))
+    createRoot(document.getElementById('app') as HTMLElement).render(<App />)
   })
   ```
 
@@ -55,11 +58,17 @@ Learning objectives:
     <summary>More about <code>App.tsx</code></summary>
 
   ```tsx
-  const App = () => (
-    <div className="container">
-      <img className="spinner" src="/images/paw.png" />
-    </div>
-  )
+  function App() {
+    return (
+      <div className="container">
+        <img
+          className="spinner"
+          alt="a spinning paw-print"
+          src="/images/paw.png"
+        />
+      </div>
+    )
+  }
 
   export default App
   ```
@@ -80,7 +89,13 @@ Let's try another component.
   Copy/paste the following for the contents of Dog.tsx
 
   ```tsx
-  const Dog = (props) => {
+  interface Props {
+    name: string
+    breed: string
+    superpower: string
+  }
+
+  function Dog(props: Props) {
     return (
       <div className="dog-wrapper">
         <div className="dog">
@@ -133,7 +148,8 @@ Let's try another component.
 
   In `App.tsx`, import the `<Dog>` component
 
-  ```ts
+<<<<<<< HEAD
+  ```tsx
   import Dog from './Dog.tsx'
   ```
 
@@ -166,9 +182,15 @@ Let's try another component.
   Rendering `<Subtitle>` into the `<App>` might look like this:
 
   ```tsx
+<<<<<<< HEAD
   <img className='spinner' src='/images/paw.png' />
   <Subtitle text='Canines using supercanine abilities for social good.' />
   <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
+=======
+  <img className="spinner" src="/images/paw.png" />
+  <Subtitle text="Canines using supercanine abilities for social good." />
+  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+>>>>>>> main
   ```
 
   You should see something like this:

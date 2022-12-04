@@ -128,6 +128,13 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 ### 6. Submit the form
 
 - [ ] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events/add` route, in `routes/events.js`
+<details style="padding-left: 2em">
+  <summary>Tips</summary>
+
+  - You likely need to rename the `locationId` property of the body object to be `location_id` before passing it to the database
+  - You may also want to ensure that `location_id` has a type of `Number` rather than `String`
+</details>
+
 - [ ] Build an `addNewEvent` function with an `event` parameter
   <details style="padding-left: 2em">
     <summary>Tip</summary>

@@ -118,7 +118,13 @@ We want to be able to update and delete our tasks. But before we do that we need
 
     You'll want to add a new function in `db.js` that can delete a row given its `id`. Look how the other functions work. You might need to review promises.
 
-    To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). Remember that you will need to pass an argument through from the `todo` module to so you can tell your DB function which task to delete. **Hint: accessing that `userInputs` array might come in handy right about now...**
+    To use the new function, add a function in `commands.js` called `deleteTodo` (or similar). Remember that you will need to pass an argument through from the `todo` module to so you can tell your DB function which task to delete. You likely want to pass the id as the **first** parameter to `deleteTodo`, as below. This is so the optional db parameter can be safely omitted.
+    
+    ```
+    function deleteTodo(id, db = connection) {}
+    ```
+    
+    **Additional hint**: accessing that `userInputs` array might come in handy right about now...
 
     If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
   </details>

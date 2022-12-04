@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { loginUser, authError } from '../actions/auth'
 interface FormData {
-  username: string,
+  username: string
   password: string
 }
 function Login() {
@@ -22,7 +22,7 @@ function Login() {
   }, [])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.currentTarget
+    const { name, value } = e.currentTarget
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
