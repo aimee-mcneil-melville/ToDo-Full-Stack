@@ -20,4 +20,3 @@ export function updateCart(e, item, setCart, cart) {
   )
   setCart(newCart)
 }
-

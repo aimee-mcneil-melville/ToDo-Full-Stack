@@ -8,7 +8,6 @@ import Nav from './Nav'
 import Home from './Home'
 import { checkAuth } from '../actions/auth'
 
-
 function App() {
   const dispatch = useAppDispatch()
   const auth = useAppSelector((state) => state.auth)

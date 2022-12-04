@@ -6,7 +6,7 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "knex": "knex",
     "test": "jest --verbose"
   },
@@ -20,9 +20,18 @@
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2"
   },
+  "eslintConfig": {
+    "extends": "@devacademy"
+  },
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-eda": "^1.2.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "@devacademy/eslint-config": "^1.6.0",
     "jest": "^29.2.2"
   }
 }

@@ -79,7 +79,6 @@ Let's try another component.
 
     Copy/paste the following for the contents of Dog.jsx
     ```jsx
-    import React from 'react'
 
     const Dog = (props) => {
       return (

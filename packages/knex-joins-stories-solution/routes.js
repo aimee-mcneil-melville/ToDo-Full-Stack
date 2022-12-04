@@ -9,9 +9,13 @@ router.get('/', function (req, res) {
 })
 
 router.get('/list', function (req, res) {
-  knex('wombles').then(function (wombles) {
-    res.render('list', { wombles: wombles })
-  })
+  knex('wombles')
+    .then(function (wombles) {
+      res.render('list', { wombles: wombles })
+    })
+    .catch((e) => {
+      res.sendStatus(500)
+    })
 })
 
 router.get('/view/:id', function (req, res) {
@@ -22,6 +26,9 @@ router.get('/view/:id', function (req, res) {
     .then(function (wombles) {
       const womble = wombles[0]
       res.render('view', womble)
+    })
+    .catch((e) => {
+      res.sendStatus(500)
     })
 })
 
@@ -35,6 +42,9 @@ router.get('/assignments', function (req, res) {
     .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
     .then(function (wombles) {
       res.render('assignments', { wombles: wombles })
+    })
+    .catch((e) => {
+      res.sendStatus(500)
     })
 })
 

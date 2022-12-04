@@ -1,7 +1,7 @@
 import path from 'node:path'
 import express from 'express'
 
-var server = express()
+const server = express()
 
 server.use(express.static(path.join(__dirname, 'public')))
 
