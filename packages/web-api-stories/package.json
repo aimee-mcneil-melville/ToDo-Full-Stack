@@ -4,7 +4,7 @@
   "description": "Practice creating Web APIs",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "ts-node index.ts",
     "dev": "nodemon index",
     "knex": "knex",
     "test": "jest --watchAll",
