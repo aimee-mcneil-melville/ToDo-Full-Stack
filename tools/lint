@@ -17,7 +17,7 @@ const main = async () => {
     .map((name) => ({ name, check: require(`./rules/${name}`) }))
 
   const packages = await FS.readdir(Path.join(__dirname, '../packages'))
-  let failed = false
+  let failed = 0
 
   const padWidth = Math.max(...packages.map((_) => _.length)) + 1
 
@@ -47,10 +47,12 @@ const main = async () => {
           })
 
           if (fix && result && typeof result === 'object') {
+            console.log(`writing ${path}`)
             const json = JSON.stringify(result, null, 2)
             await FS.writeFile(packagePath, json, 'utf-8')
           }
         } catch (e) {
+          failed++
           process.stderr.write(
             `${red('[FAIL]')} ${(package + ' ').padEnd(padWidth, '-')}- ${
               rule.name
@@ -64,7 +66,10 @@ const main = async () => {
   }
 
   if (failed) {
-    process.stderr.write(`lint failed\n`)
+    process.stderr.write(
+      `______________________________________________________________\n\n`
+    )
+    process.stderr.write(`Lint failed: ${failed} rules broken\n`)
     process.exitCode = 1
   }
 }

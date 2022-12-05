@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import AddTodo from './AddTodo'
 
 function App() {
-
   return (
     <>
       <header className="header">

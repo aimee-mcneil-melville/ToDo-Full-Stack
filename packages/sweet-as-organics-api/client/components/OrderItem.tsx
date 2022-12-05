@@ -1,12 +1,12 @@
-import { CartItemWithQuantity } from '../../common/interfaces'
-
 interface Props {
-  product: CartItemWithQuantity
+  product: {
+    name: string
+    quantity: number
+  }
 }
 
-export default function OrderItem(props: Props) {
+function OrderItem(props: Props) {
   const { name, quantity } = props.product
-
   return (
     <tr>
       <td>{name}</td>
@@ -14,3 +14,5 @@ export default function OrderItem(props: Props) {
     </tr>
   )
 }
+
+export default OrderItem

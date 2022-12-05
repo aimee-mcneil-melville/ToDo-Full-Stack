@@ -1,20 +1,41 @@
+<<<<<<< HEAD:packages/sweet-as-organics-api-solution/client/components/CartItem.tsx
 import type * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { CartItemWithQuantity } from '../../common/interfaces'
 
+=======
+import { ChangeEvent } from 'react'
+>>>>>>> main:packages/sweet-as-organics-api/client/components/CartItem.tsx
 import { deleteFromCart, updateCart } from '../actions/cart'
+import { useAppDispatch } from '../hooks'
 
 interface Props {
+<<<<<<< HEAD:packages/sweet-as-organics-api-solution/client/components/CartItem.tsx
   item: CartItemWithQuantity
+=======
+  item: {
+    name: string
+    id: number
+    quantity: number
+  }
+>>>>>>> main:packages/sweet-as-organics-api/client/components/CartItem.tsx
 }
 
 function CartItem(props: Props) {
   const { name, id, quantity } = props.item
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
+  function update(e: ChangeEvent<HTMLInputElement>) {
+    const newQuantity = Number(e.currentTarget.value)
+    const isValidQuantity = !isNaN(newQuantity)
+
+<<<<<<< HEAD:packages/sweet-as-organics-api-solution/client/components/CartItem.tsx
   function update(e: React.ChangeEvent<HTMLInputElement>) {
     const newQuantity = parseInt(e.target.value)
     if (!newQuantity) {
+=======
+    if (isValidQuantity) {
+>>>>>>> main:packages/sweet-as-organics-api/client/components/CartItem.tsx
       const updateInfo = { id, newQuantity }
       dispatch(updateCart(updateInfo))
     }

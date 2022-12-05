@@ -20,7 +20,7 @@ function ProductList({ children }: Props) {
 
   useEffect(() => {
     dispatch(fetchProducts())
-  }, [])
+  }, [dispatch])
 
   function addProductToCart(product: Product) {
     const { id, name } = product

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
 import { addPost, updatePost } from '../api'
 import type useFetchPosts from './hooks/useFetchPosts'
@@ -29,7 +29,7 @@ function PostForm(props: IProps) {
     }
   }, [post, loading])
 
-  function onSubmit(e: React.FormEvent<any>) {
+  function onSubmit(e: FormEvent<any>) {
     e.preventDefault()
     if (!completePostData(newPost)) return null
     if (props.variant === 'edit') {
@@ -55,7 +55,7 @@ function PostForm(props: IProps) {
   }
 
   function handleChange(
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) {
     setNewPost({ ...newPost, [e.target.name]: e.target.value })
   }

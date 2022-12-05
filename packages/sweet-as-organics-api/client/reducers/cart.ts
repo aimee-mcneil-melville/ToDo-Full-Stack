@@ -1,5 +1,5 @@
 import { CartItem, CartItemWithQuantity } from '../../common/interfaces'
-import { AppAction } from '../actions'
+import type { AppAction } from '../actions'
 import { ADD_TO_CART, DELETE_FROM_CART, UPDATE_CART } from '../actions/cart'
 
 const initialState: CartItemWithQuantity[] = []

@@ -1,4 +1,3 @@
-import React from 'react'
 import Wombat from './Wombat'
 import store from '../store'
 import AddWombat from './AddWombat'

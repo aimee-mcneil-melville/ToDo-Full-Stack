@@ -1,9 +1,9 @@
-function createDateTimeString(timestamp: string | Date | number) {
+export function createDateTimeString(timestamp) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-function createOrder(orderLine: OrderLine) {
+export function createOrder(orderLine) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
@@ -12,7 +12,7 @@ function createOrder(orderLine: OrderLine) {
   }
 }
 
-function createProduct(orderLine: OrderLine) {
+export function createProduct(orderLine) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
@@ -20,40 +20,41 @@ function createProduct(orderLine: OrderLine) {
   }
 }
 
-type OrderLine = {
-  productId: number
-  orderId: number
-  quantity: number
-  createdAt: string
-  status: string
-  name: string
+export function sortByIdAscending<T extends { id: number }>(arr: T[]) {
+  arr.sort((a, b) => {
+    return a.id - b.id
+  })
+  return arr
 }
-type OrderLines = OrderLine[]
-type OrderProductOutput = {
-  id: number
-  status: string
-  createdAt: string
-  products: { id: number; name: string; quantity: number }[]
+
+export function sortByIdDescending<T extends { id: number }>(arr: T[]) {
+  arr.sort((a, b) => {
+    return b.id - a.id
+  })
+  return arr
 }
-export function formatOrder(orderLines: OrderLines): OrderProductOutput {
-  const order = createOrder(orderLines[0])
 
-  order.products = orderLines.map((o) => createProduct(o))
-
+function formatOrder(orderLines) {
+  let order
+  orderLines.forEach((item) => {
+    !order
+      ? (order = createOrder(item))
+      : order.products.push(createProduct(item))
+  })
+  order.products = sortByIdAscending(order.products)
   return order
 }
 
-export function formatOrderList(orderLines: OrderLines): OrderProductOutput[] {
-  const orders: OrderProductOutput[] = []
-
-  orderLines.forEach((orderLine) => {
-    const order = orders.find((o) => o.id === orderLine.orderId)
-    if (order) {
-      order.products.push(createProduct(orderLine))
-    } else {
-      orders.push(createOrder(orderLine))
-    }
+function formatOrderList(orderLines) {
+  const orderList = []
+  orderLines.forEach((item) => {
+    const order = orderList.find((o) => o.id === item.orderId)
+    !order
+      ? orderList.push(createOrder(item))
+      : (order.products = sortByIdAscending([
+          ...order.products,
+          createProduct(item),
+        ]))
   })
-
-  return orders
+  return sortByIdDescending(orderList)
 }

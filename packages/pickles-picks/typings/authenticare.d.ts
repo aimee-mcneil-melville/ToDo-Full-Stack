@@ -1,15 +1,15 @@
- interface Credentials {
+interface Credentials {
   username: string
   password: string
 }
 
- interface RegisterUser {
+interface RegisterUser {
   username: string
   password: string
   email_address: string
 }
 
- interface UserData {
+interface UserData {
   username: string
   password?: string
   email_address: string
@@ -22,10 +22,10 @@ interface Url {
 
 interface Jwt {
   email_address: string
-  exp:number
-  iat:number
-  id:number
-  username:string
+  exp: number
+  iat: number
+  id: number
+  username: string
 }
 declare module 'authenticare/client' {
   export type JwtResponse = Jwt
@@ -36,7 +36,7 @@ declare module 'authenticare/client' {
   export const isAuthenticated: () => boolean
   export const getDecodedToken: () => Jwt
   export const logOff: () => void
-  export const register: (user: RegisterUser, url: Url) => Promise<any>
+  export const register: (user: Register, url: Url) => Promise<any>
   export const signIn: (user: Credentials, url: Url) => Promise<any>
 }
 
