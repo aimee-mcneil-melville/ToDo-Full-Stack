@@ -1,9 +1,9 @@
-export type TFooter = {
+export type Footer = {
   copyright: number
   author: string
 }
 
-const footer: TFooter = {
+const footer: Footer = {
   copyright: 1980,
   author: 'E. B. White',
 }

@@ -1,10 +1,10 @@
-export type TOtherBlog = {
+export type OtherBlog = {
   id: number
   blogTitle: string
   link: string
 }
 
-const otherBlogs: TOtherBlog[] = [
+const otherBlogs: OtherBlog[] = [
   {
     id: 1,
     blogTitle: 'Wilber',
