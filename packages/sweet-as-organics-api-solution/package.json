@@ -1,5 +1,5 @@
 {
-  "name": "sweet-as-organics-api",
+  "name": "sweet-as-organics-api-solution",
   "version": "0.2.0",
   "description": "Getting familiar with Redux and async functions",
   "main": "server/index.js",
