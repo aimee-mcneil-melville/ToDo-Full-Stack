@@ -4,7 +4,7 @@
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "build": "webpack",
     "dev": "run-p watch:client watch:server",
     "watch:client": "webpack --config ./client/webpack.config.js --watch",
