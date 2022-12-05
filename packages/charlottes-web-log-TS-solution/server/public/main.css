@@ -12,3 +12,13 @@
   text-align: center;
 }
 
+/* Posts */
+
+.posts {
+  flex-basis: 60%;
+}
+
+.posts .date,
+.posts .comment-count {
+  color: gray;
+}

@@ -3,9 +3,9 @@ import Post from './Post'
 
 export default function Posts() {
   return (
-    <div className='posts'>
+    <div className="posts">
       {postsData.map((post) => {
-        return <Post key={post.id} post={post}/>
+        return <Post key={post.id} post={post} />
       })}
     </div>
   )
