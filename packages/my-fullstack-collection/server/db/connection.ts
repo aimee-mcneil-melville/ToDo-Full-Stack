@@ -1,10 +1,10 @@
+import knexFile from './knexfile'
 import knex from 'knex'
-import config from './knexfile'
 
-type Config = typeof config
-type ConfigKeys = keyof Config
+type Environment = 'production' | 'test' | 'development'
 
-const env = (process.env.NODE_ENV as ConfigKeys) || 'development'
-const connection = knex(config[env])
+const environment = (process.env.NODE_ENV || 'development') as Environment
+const config = knexFile[environment]
+const connection = knex(config)
 
-module.exports = connection
+export default connection
