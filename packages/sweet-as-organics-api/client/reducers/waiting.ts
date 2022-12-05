@@ -6,7 +6,6 @@ import { SHOW_ERROR } from '../actions/error'
 import type { AppAction } from '../actions'
 
 function waiting(state = false, action: AppAction) {
-  // can't type guard here unless we are really finicky
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
       return true

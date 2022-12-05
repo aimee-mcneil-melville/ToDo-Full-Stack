@@ -1,16 +1,13 @@
 import type * as React from 'react'
-import { useEffect } from 'react'
+import { OrderWithProducts } from '../../common/interfaces'
 import Order from './Order'
-import { fetchOrders } from '../actions/orders'
-import { useAppDispatch, useAppSelector } from '../hooks'
 
-function OrderList({ children }: { children: React.ReactNode }) {
-  const dispatch = useAppDispatch()
-  const orders = useAppSelector((state) => state.orders)
+interface Props {
+  children: React.ReactNode
+}
 
-  useEffect(() => {
-    dispatch(fetchOrders())
-  }, [])
+function OrderList({ children }: Props) {
+  const orders: OrderWithProducts[] = []
 
   return (
     <div className="orderlist">

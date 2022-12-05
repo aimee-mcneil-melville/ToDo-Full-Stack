@@ -1,19 +1,20 @@
 import type * as React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { placeOrder } from '../actions/orders'
-import { useAppDispatch, useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks'
 import CartItem from './CartItem'
 
-function Cart(props: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode
+}
+
+function Cart(props: Props) {
   const { children } = props
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
 
   const cart = useAppSelector((state) => state.cart)
 
   function submitCart() {
-    dispatch(placeOrder(cart, () => navigate('/orders')))
+    console.log('coming soon!')
   }
 
   return cart.length ? (

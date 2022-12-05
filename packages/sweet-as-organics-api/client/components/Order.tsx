@@ -8,7 +8,9 @@ interface Props {
 export default function Order(props: Props) {
   const { id, products, createdAt, status } = props.order
 
-  function cancelOrder() {}
+  function cancelOrder() {
+    console.log('coming soon!')
+  }
 
   function completeOrder() {
     console.log('coming soon!')

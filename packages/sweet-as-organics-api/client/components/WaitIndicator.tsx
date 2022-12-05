@@ -1,6 +1,5 @@
 import { useAppSelector } from '../hooks'
 
-// TODO: conver this to use useAppSelector
 export default function WaitIndicator() {
   const loading = useAppSelector((state) => state.waiting)
 

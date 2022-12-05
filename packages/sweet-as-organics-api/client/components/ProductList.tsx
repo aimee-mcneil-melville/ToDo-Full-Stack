@@ -9,7 +9,11 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 
 import ProductListItem from './ProductListItem'
 
-function ProductList({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode
+}
+
+function ProductList({ children }: Props) {
   const products = useAppSelector((state) => state.products)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
