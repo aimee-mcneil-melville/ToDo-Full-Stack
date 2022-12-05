@@ -15,7 +15,7 @@
     "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "test": "jest"
   },
   "keywords": [
