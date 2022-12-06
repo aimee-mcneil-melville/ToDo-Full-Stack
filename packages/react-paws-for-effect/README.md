@@ -39,7 +39,6 @@ Learning objectives:
 
   If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.tsx`, we find this:
 
-
   ```tsx
   import { createRoot } from 'react-dom/client'
 
@@ -150,7 +149,12 @@ Let's try another component.
 
 <<<<<<< HEAD
   ```tsx
+  import Dog from './Dog'
+=======
+<<<<<<< HEAD
+  ```tsx
   import Dog from './Dog.tsx'
+>>>>>>> main
   ```
 
   and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
@@ -183,6 +187,11 @@ Let's try another component.
 
   ```tsx
 <<<<<<< HEAD
+  <img className="spinner" src="/images/paw.png" />
+  <Subtitle text="Canines using supercanine abilities for social good." />
+  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+=======
+<<<<<<< HEAD
   <img className='spinner' src='/images/paw.png' />
   <Subtitle text='Canines using supercanine abilities for social good.' />
   <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
@@ -190,6 +199,7 @@ Let's try another component.
   <img className="spinner" src="/images/paw.png" />
   <Subtitle text="Canines using supercanine abilities for social good." />
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+>>>>>>> main
 >>>>>>> main
   ```
 
