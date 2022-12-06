@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "run-p webpack server",
     "dev": "run-p client server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
     "server": "ts-node server/index.ts",
-    "lint": "eslint --ext .js,.jsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "babel": {
     "presets": [
