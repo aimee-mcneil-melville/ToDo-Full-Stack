@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
   "main": "server/index.ts",
   "scripts": {
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "test": "jest --watchAll",
     "dev": "run-p dev:client dev:server",
     "dev:client": "webpack --watch --config client/webpack.config.js",
