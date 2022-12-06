@@ -7,8 +7,8 @@
     "start": "ts-node server/index.ts",
     "build": "webpack",
     "dev": "run-p watch:client watch:server",
-    "watch:client": "webpack --config ./client/webpack.config.js --watch",
-    "watch:server": "nodemon --watch server",
+    "watch:client": "webpack --config ./client/webpack.config.js",
+    "watch:server": "nodemon --watch server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --verbose"
   },

@@ -7,7 +7,7 @@
     "start": "ts-node server/index.ts",
     "build": "webpack --config ./client/webpack.config.js --mode production",
     "dev": "run-p watch:client watch:server",
-    "watch:client": "webpack --config ./client/webpack.config.js --watch",
+    "watch:client": "webpack --config ./client/webpack.config.js",
     "watch:server": "nodemon server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --verbose"
