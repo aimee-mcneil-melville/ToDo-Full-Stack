@@ -147,8 +147,14 @@ Let's try another component.
 
   In `App.tsx`, import the `<Dog>` component
 
+<<<<<<< HEAD
   ```tsx
   import Dog from './Dog'
+=======
+<<<<<<< HEAD
+  ```tsx
+  import Dog from './Dog.tsx'
+>>>>>>> main
   ```
 
   and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
@@ -180,9 +186,21 @@ Let's try another component.
   Rendering `<Subtitle>` into the `<App>` might look like this:
 
   ```tsx
+<<<<<<< HEAD
   <img className="spinner" src="/images/paw.png" />
   <Subtitle text="Canines using supercanine abilities for social good." />
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+=======
+<<<<<<< HEAD
+  <img className='spinner' src='/images/paw.png' />
+  <Subtitle text='Canines using supercanine abilities for social good.' />
+  <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
+=======
+  <img className="spinner" src="/images/paw.png" />
+  <Subtitle text="Canines using supercanine abilities for social good." />
+  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+>>>>>>> main
+>>>>>>> main
   ```
 
   You should see something like this:

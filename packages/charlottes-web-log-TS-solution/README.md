@@ -40,9 +40,9 @@ Our task is to create all of the components that comprise the page and wire up d
 
     Here's an example of how you may use that data in your components:
 
-    ```tsx
+    ```ts
     // client/data/post.ts
-    export type Post = {
+    export type TPost = {
       id: number
       title: string
       date: string
@@ -51,10 +51,10 @@ Our task is to create all of the components that comprise the page and wire up d
     }
 
     // client/components/Post.tsx
-    import type { Post } from '../data/post'
+    import type { TPost } from '../data/post'
 
     type Props = {
-      post: Post,
+      post: TPost,
       // ... other props
     }
 
