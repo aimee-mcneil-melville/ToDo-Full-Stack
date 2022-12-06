@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "An exercise to practice React state in components",
   "repository": "https://github.com/dev-academy-challenges/memory.git",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "run-p webpack server",
     "dev": "run-p client server",

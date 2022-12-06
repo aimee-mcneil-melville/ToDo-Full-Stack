@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node index.ts",
-    "dev": "nodemon index",
+    "dev": "nodemon index.ts",
     "knex": "knex",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."

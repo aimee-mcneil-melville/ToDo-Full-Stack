@@ -2,12 +2,12 @@
   "name": "react-paws-for-effect",
   "version": "0.3.0",
   "description": "A 'first React app' tutorial/challenge",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "ts-node server/index.ts",
     "build": "webpack --config ./client/webpack.config.js --mode production",
     "dev": "run-p watch:client watch:server",
-    "watch:client": "webpack --config ./client/webpack.config.js",
+    "watch:client": "webpack --config ./client/webpack.config.js --watch",
     "watch:server": "nodemon server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --verbose"
