@@ -7,8 +7,8 @@
   "scripts": {
     "start": "run-p webpack server",
     "dev": "run-p client server",
-    "webpack": "webpack",
-    "client": "webpack --watch",
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "client": "npm run webpack -- --watch",
     "server": "node server",
     "test": "jest --noStackTrace",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
