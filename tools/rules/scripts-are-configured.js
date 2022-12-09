@@ -1,14 +1,14 @@
-const EXPECTED_SCRIPTS = {
-  start: 'ts-node server/index.ts',
-  'build:client': 'NODE_ENV=production webpack',
-  'build:server': 'knex --knexfile ./server/db/knexfile.js migrate:latest',
-  dev: 'run-p dev:client dev:server',
-  'dev:client': 'webpack --watch',
-  'dev:server': 'nodemon server/index.ts',
-  lint: 'eslint --ext .js,.jsx,.ts,.tsx',
-  test: 'jest',
-  knex: 'knex --knexfile ./server/db/knexfile.js',
-}
+// const EXPECTED_SCRIPTS = {
+//   start: 'ts-node server/index.ts',
+//   'build:client': 'NODE_ENV=production webpack',
+//   'build:server': 'knex --knexfile ./server/db/knexfile.js migrate:latest',
+//   dev: 'run-p dev:client dev:server',
+//   'dev:client': 'webpack --watch',
+//   'dev:server': 'nodemon server/index.ts',
+//   lint: 'eslint --ext .js,.jsx,.ts,.tsx',
+//   test: 'jest',
+//   knex: 'knex --knexfile ./server/db/knexfile.js',
+// }
 
 module.exports = async ({ package: packageFile, versions, fix }) => {
   const { scripts, dependencies, devDependencies } = packageFile
@@ -17,3 +17,45 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     return
   }
 }
+
+// Express
+// express-server
+// "start": "node index",
+
+// server-side-rendering
+// "start": "node index",
+// "dev": "nodemon index",
+
+// pupparazzi
+// "start": "node index",
+// "dev": "nodemon index --ignore data.json",
+
+// Knex
+// knex-todo-cli & knex-join-stories & boilerplate-express-api
+// "knex": "knex",
+
+// dreamfest
+// "knex": "knex --knexfile db/knexfile.js", --> This will change to the below if we move all server files into a server directory.
+
+// todo-full-stack & boilerplate-fullstack
+// "knex": "knex --knexfile ./server/db/knexfile.js",
+
+// React
+// react-paws-for-effect
+// "start": "ts-node server/index.ts",
+// "build": "npm run webpack --mode production",
+
+// "dev": "run-p dev:server dev:client",
+// "dev:client": "npm run webpack -- --watch",
+// "dev:server": "nodemon server/index.ts",
+// "webpack": "webpack --config ./client/webpack.config.js",
+
+// charlottes-web-log
+// "start": "run-p webpack build",
+// "build": "ts-node server/index.ts",
+
+// same as lines 48-51
+
+// Every Repo
+// "test": "jest --watchAll",
+// "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
