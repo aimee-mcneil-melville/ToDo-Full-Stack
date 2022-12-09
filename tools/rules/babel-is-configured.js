@@ -6,7 +6,7 @@ const BABEL_PRESETS = [
 
 module.exports = async ({ package: packageFile, versions, fix }) => {
   const { babel, dependencies, devDependencies, browserslist } = packageFile
-  if (!babel && !('webpack' in { ...dependencies, devDependencies })) {
+  if (!babel && !('webpack' in { ...dependencies, ...devDependencies })) {
     return
   }
 
