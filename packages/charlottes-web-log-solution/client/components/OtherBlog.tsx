@@ -1,6 +1,6 @@
 import type { TOtherBlog } from '../data/other-blogs'
 
-type Props = {
+interface Props {
   blog: TOtherBlog
 }
 

@@ -1,4 +1,4 @@
-export type OtherBlog = {
+export interface OtherBlog {
   id: number
   blogTitle: string
   link: string

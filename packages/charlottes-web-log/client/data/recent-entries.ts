@@ -1,4 +1,4 @@
-export type RecentEntry = {
+export interface RecentEntry {
   id: number
   name: string
   link: string
