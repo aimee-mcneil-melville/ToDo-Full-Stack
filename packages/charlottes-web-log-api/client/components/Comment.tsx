@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
-import { IComment } from '../IComment'
-import { IFetchComments } from './hooks/useFetchComments'
+import { Comment } from '../common/Comment'
+import { FetchComments } from './hooks/useFetchComments'
 
-interface IProps {
-  comment: IComment
-  fetchComments: IFetchComments
+interface Props {
+  comment: Comment
+  fetchComments: FetchComments
 }
 
-function Comment({ comment, fetchComments }: IProps) {
+function Comment({ comment, fetchComments }: Props) {
   const [editing, setEditing] = useState(false)
 
   return editing ? (

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { getCommentsByPostId } from '../../api'
-import { IComment } from '../../IComment'
+import { Comment } from '../../common/Comment'
 
 // eslint-disable-next-line no-unused-vars
-export type IFetchComments = (id: number) => void
+export type FetchComments = (id: number) => void
 
 function useFetchComments(id: number) {
-  const [comments, setComments] = useState([] as IComment[])
+  const [comments, setComments] = useState([] as Comment[])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 

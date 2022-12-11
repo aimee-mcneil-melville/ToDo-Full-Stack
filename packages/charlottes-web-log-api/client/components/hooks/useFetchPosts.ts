@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getPosts } from '../../api'
-import { IPost } from '../../IPost'
+import { IPost } from '../../common/Post'
 
 // eslint-disable-next-line no-unused-vars
 export type IFetchPosts = (id: number) => void
