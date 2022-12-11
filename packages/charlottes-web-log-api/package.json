@@ -3,19 +3,19 @@
   "version": "0.2.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log-api.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
     "build": "webpack --config ./client/webpack.config.js",
     "dev:client": "npm run build -- --watch",
-    "dev:server": "nodemon server",
+    "dev:server": "nodemon server/index.ts",
     "dev:all": "run-p dev:client dev:server",
-    "dev": "nodemon server",
+    "dev": "nodemon server/index.ts",
     "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "test": "jest"
   },
   "keywords": [

@@ -4,7 +4,7 @@
   "description": "Getting familiar with Redux and async functions",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server",
+    "start": "ts-node server/index.ts",
     "dev": "run-p client server",
     "client": "webpack --watch --config client/webpack.config.js",
     "server": "nodemon server/index.ts",
