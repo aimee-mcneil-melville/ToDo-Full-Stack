@@ -1,14 +1,14 @@
-type Country = {
+interface Country {
   code: string
   name: string
 }
 
-interface IContinent {
+interface Continent {
   image: string
   countries: Country[]
 }
 
-type ContinentData = Record<string, IContinent>
+type ContinentData = Record<string, Continent>
 
 const data: ContinentData = {
   Africa: {
