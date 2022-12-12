@@ -1,5 +1,5 @@
 // TODO: Uncomment. (commented out to pass linting)
-// const { capitalise, validateDay } = require('./helpers')
+// const { capitalise, validateDay } = require('../helpers')
 
 // TODO: Write these tests (remove .todo)
 describe('capitalise', () => {
