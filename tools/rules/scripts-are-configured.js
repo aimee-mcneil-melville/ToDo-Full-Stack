@@ -14,7 +14,17 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   const { scripts, dependencies, devDependencies } = packageFile
   const deps = { ...dependencies, ...devDependencies }
 
-  if ('express' in deps && !('react' in deps)) {
+  // Every repo should have both these scripts
+  if ('jest' in deps) {
+    scripts.test = 'jest --watchAll'
+  }
+
+  if ('eslint' in deps) {
+    scripts.lint = 'eslint --ext .js,.jsx,.ts,.tsx .'
+  }
+
+  // Express and Express with Knex without TS
+  if ('express' in deps && !('typescript' in deps)) {
     scripts.start = 'node index'
     scripts.dev = 'nodemon index'
     devDependencies.nodemon = '^2.0.15'
@@ -23,13 +33,9 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     }
   }
 
-  // Every repo should have both these scripts
-  if ('jest' in deps) {
-    scripts.test = 'jest --watchAll'
-  }
-
-  if ('eslint' in deps) {
-    scripts.lint = 'eslint --ext .js,.jsx,.ts,.tsx .'
+  if ('knex' in deps && !('express' in deps)) {
+    scripts.knex = 'knex'
+    scripts.test = 'echo "Error: no test specified" && exit 1'
   }
 
   return packageFile
