@@ -22,22 +22,15 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
 // express-server
 // "start": "node index",
 
-// server-side-rendering
+// server-side-rendering & pupparazzi
 // "start": "node index",
 // "dev": "nodemon index",
 
-// pupparazzi
-// "start": "node index",
-// "dev": "nodemon index --ignore data.json",
-
 // Knex
-// knex-todo-cli & knex-join-stories & boilerplate-express-api
+// knex-todo-cli & boilerplate-express-api
 // "knex": "knex",
 
-// dreamfest
-// "knex": "knex --knexfile db/knexfile.js", --> This will change to the below if we move all server files into a server directory.
-
-// todo-full-stack & boilerplate-fullstack
+// todo-full-stack, knex-join-stories, dreamfest & boilerplate-fullstack
 // "knex": "knex --knexfile ./server/db/knexfile.js",
 
 // React
