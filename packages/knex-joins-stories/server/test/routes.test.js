@@ -1,5 +1,5 @@
 const request = require('supertest')
-const server = require('..')
+const server = require('../server')
 
 test('list wombles', () => {
   const expected = 'WOMBLES!'

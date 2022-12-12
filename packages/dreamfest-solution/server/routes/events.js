@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { eventDays, capitalise, validateDay } = require('../helpers')
+const { eventDays, capitalise, validateDay } = require('./helpers')
 const db = require('../db')
 
 const router = express.Router()

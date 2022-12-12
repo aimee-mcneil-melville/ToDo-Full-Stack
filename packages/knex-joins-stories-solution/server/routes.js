@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const development = require('./knexfile').development
+const development = require('./db/knexfile').development
 const knex = require('knex')(development)
 
 router.get('/', function (req, res) {

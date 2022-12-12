@@ -3,8 +3,8 @@ const { render } = require('../../test-utils')
 
 require('@testing-library/jest-dom')
 
-const server = require('..')
-const lib = require('../../lib')
+const server = require('../server')
+const lib = require('../lib')
 
 jest.mock('./lib', () => ({
   getPuppyData: jest.fn(),

@@ -1,6 +1,6 @@
 const supertest = require('supertest')
 
-const app = require('..')
+const app = require('../server')
 
 test('profile 1 should be Silvia', function (done) {
   supertest(app).get('/profiles/1').end(checkProfileIsSilvia)
