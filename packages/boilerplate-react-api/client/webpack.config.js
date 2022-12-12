@@ -1,9 +1,9 @@
-const path = require('path')
+const { join } = require('node:path')
 
 module.exports = {
-  entry: path.join(__dirname, 'index.tsx'),
+  entry: join(__dirname, 'index.tsx'),
   output: {
-    path: path.join(__dirname, '../server/public'),
+    path: join(__dirname, '../server/public'),
     filename: 'bundle.js',
   },
   mode: 'development',
@@ -21,6 +21,6 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, '../server/public'),
+    contentBase: join(__dirname, '../server/public'),
   },
 }

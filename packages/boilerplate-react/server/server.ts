@@ -1,8 +1,8 @@
-const path = require('path')
+const { join } = require('node:path')
 const express = require('express')
 
 const server = express()
 
-server.use(express.static(path.join(__dirname, 'public')))
+server.use(express.static(join(__dirname, 'public')))
 
 module.exports = server
