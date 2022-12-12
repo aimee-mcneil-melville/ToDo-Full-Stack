@@ -14,20 +14,28 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   const { scripts, dependencies, devDependencies } = packageFile
   const deps = { ...dependencies, ...devDependencies }
 
+  let errors = ''
+  const errorMessage = `Scripts are misconfigured: ${errors}`
+  let modified = false
+
   // Every repo should have both these scripts
   if ('jest' in deps) {
-    scripts.test = 'jest --watchAll'
+    if (scripts.test != 'jest --watchAll') {
+      scripts.test = 'jest --watchAll'
+      errors += `test script in: ${packageFile.name} is incorrect, \n`
+      modified = true
+    }
   }
 
   if ('eslint' in deps) {
     scripts.lint = 'eslint --ext .js,.jsx,.ts,.tsx .'
   }
 
-  // Express and Express with Knex without TS
+  // Express and Express and Knex without TS
   if ('express' in deps && !('typescript' in deps)) {
     scripts.start = 'node index'
     scripts.dev = 'nodemon index'
-    devDependencies.nodemon = '^2.0.15'
+    devDependencies.nodemon = versions.nodemon
     if ('knex' in deps) {
       scripts.knex = 'knex --knexfile ./server/db/knexfile.js'
     }
@@ -38,12 +46,23 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     scripts.test = 'echo "Error: no test specified" && exit 1'
   }
 
-  return packageFile
+  // Express, and Express and Knex with TS
+  if ('express' in deps && 'typescript' in deps) {
+    scripts.start = 'ts-node server/index.ts'
+  }
+
+  if (modified && !fix) {
+    throw new Error(errorMessage)
+  }
+
+  if (modified) {
+    return packageFile
+  }
 }
 
 // I am going to attempt to have a script working for both Express and Knex projects
 
-// Every Repo
+// DONE Every Repo
 // "test": "jest --watchAll",
 // "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
 
