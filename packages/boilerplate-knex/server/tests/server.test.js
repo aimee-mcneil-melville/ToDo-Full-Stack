@@ -4,7 +4,7 @@ const { screen } = require('@testing-library/dom')
 require('@testing-library/jest-dom')
 /* eslint-disable jest/no-conditional-expect */
 
-jest.mock('../db', () => ({
+jest.mock('../../db', () => ({
   getUser: (id) =>
     Promise.resolve({ id: id, name: 'test user', email: 'test@user.nz' }),
   getUsers: () =>
