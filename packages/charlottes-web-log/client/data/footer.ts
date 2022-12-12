@@ -1,4 +1,4 @@
-export type Footer = {
+export interface Footer  {
   copyright: number
   author: string
 }

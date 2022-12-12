@@ -1,8 +1,8 @@
-import path from 'node:path'
+import { join } from 'node:path'
 import express from 'express'
 
 const server = express()
 
-server.use(express.static(path.join(__dirname, 'public')))
+server.use(express.static(join(__dirname, 'public')))
 
 export default server

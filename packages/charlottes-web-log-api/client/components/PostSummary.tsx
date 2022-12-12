@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { IPost } from '../IPost'
+import { Post } from '../common/Post'
 
-interface IProps {
-  post: IPost
+interface Props {
+  post: Post
   children?: React.ReactNode
 }
 
-function PostSummary(props: IProps) {
+function PostSummary(props: Props) {
   const { title, text, dateCreated, id } = props.post
   const paragraphs = text?.split('\n') || []
   return (

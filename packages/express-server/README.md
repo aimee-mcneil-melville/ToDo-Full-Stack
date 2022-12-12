@@ -26,7 +26,7 @@ After each section:
 
 ### 2. Respond with a predefined file
 
-- [ ] Create an HTML file called `silvia.html` that represents a user's profile
+- [ ] In the server folder, create an HTML file called `silvia.html` that represents a user's profile
   <details style="padding-left: 2em">
     <summary>Tips</summary>
   

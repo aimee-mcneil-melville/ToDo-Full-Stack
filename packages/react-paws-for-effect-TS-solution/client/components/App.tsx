@@ -9,9 +9,9 @@ function App() {
         alt="a spinning paw-print"
         src="/images/paw.png"
       />
-      <Subtitle text='Doggos'/>
-      <Dog name='Fido' breed='Bulldog' superpower='plays fetch'/>
-      <Dog name='Bruce' breed='Dachshund' superpower='barks'/>
+      <Subtitle text="Doggos" />
+      <Dog name="Fido" breed="Bulldog" superpower="plays fetch" />
+      <Dog name="Bruce" breed="Dachshund" superpower="barks" />
     </div>
   )
 }

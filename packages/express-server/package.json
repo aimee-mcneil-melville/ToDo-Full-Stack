@@ -6,7 +6,7 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "start": "node index",
+    "start": "node server/index",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },

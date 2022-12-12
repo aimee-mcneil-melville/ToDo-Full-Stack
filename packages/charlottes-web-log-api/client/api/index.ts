@@ -1,8 +1,8 @@
 import request from 'superagent'
-import { IComment } from '../IComment'
-import { IPost } from '../IPost'
+import { Comment } from '../common/Comment'
+import { Post } from '../common/Post'
 
-export function getPosts(): Promise<IPost[]> {
+export function getPosts(): Promise<Post[]> {
   return request
     .get('/v1/posts')
     .then((res) => {
@@ -12,7 +12,7 @@ export function getPosts(): Promise<IPost[]> {
     .catch(errorHandler('GET', '/v1/posts'))
 }
 
-export function addPost(post: IPost): Promise<Post> {
+export function addPost(post: Post): Promise<Post> {
   return request
     .post('/v1/posts')
     .send(post)
@@ -43,11 +43,11 @@ export function deletePost(postId: number): Promise<unknown> {
     .catch(errorHandler('DELETE', '/v1/posts/:id'))
 }
 
-export function getCommentsByPostId(postId: number): Promise<IComment[]> {
+export function getCommentsByPostId(postId: number): Promise<Comment[]> {
   return request
     .get(`/v1/posts/${postId}/comments`)
     .then((res) => {
-      res.body.forEach((comment: IComment) => validateNoSnakeCase(comment))
+      res.body.forEach((comment: Comment) => validateNoSnakeCase(comment))
       return res.body
     })
     .catch(errorHandler('GET', '/v1/posts/:id/comments'))
@@ -101,7 +101,7 @@ function validateNoSnakeCase(response: any) {
   }
 }
 
-function validatePostResponse(method: string, route: string, post: IPost) {
+function validatePostResponse(method: string, route: string, post: Post) {
   if (!post) {
     throw Error(`Error: ${method} ${route} should return a blog post`)
   }

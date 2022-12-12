@@ -1,8 +1,8 @@
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
-const path = require('path')
+const { join } = require('node:path')
 const request = require('superagent')
-require('dotenv').config({ path: path.join(__dirname, '.env') })
+require('dotenv').config({ path: join(__dirname, '.env') })
 
 const domain = process.env.AUTH0_DOMAIN
 const ssoAudience = process.env.AUTH0_SSO_AUDIENCE
