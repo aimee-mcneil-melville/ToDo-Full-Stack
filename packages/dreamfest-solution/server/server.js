@@ -1,4 +1,4 @@
-const path = require('path')
+const { join } = require('node:path')
 const express = require('express')
 const hbs = require('express-handlebars')
 
@@ -17,7 +17,7 @@ module.exports = server
  * configure the server
  *************************/
 
-const publicFolder = path.join(__dirname, 'public')
+const publicFolder = join(__dirname, 'public')
 server.use(express.static(publicFolder))
 server.use(express.urlencoded({ extended: false }))
 

@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="container has-text-centered">

@@ -1,4 +1,4 @@
-const path = require('path')
+const { join } = require('node:path')
 const express = require('express')
 
 const server = express()
@@ -15,7 +15,7 @@ server.get('/profile', (req, res) => {
   const name = req.query.name
   if (!name) res.redirect('/compliment')
 
-  const filePath = path.join(__dirname, 'public', name.toLowerCase() + '.html')
+  const filePath = join(__dirname, 'public', name.toLowerCase() + '.html')
   res.sendFile(filePath)
 })
 
@@ -28,7 +28,7 @@ server.get('/profiles/:id', (req, res) => {
   }
 
   const name = users[id]
-  const filePath = path.join(__dirname, 'public', name + '.html')
+  const filePath = join(__dirname, 'public', name + '.html')
   res.sendFile(filePath)
 })
 

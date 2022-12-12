@@ -1,4 +1,4 @@
-export type Header = {
+export interface Header {
   title: string
   link: string
 }
