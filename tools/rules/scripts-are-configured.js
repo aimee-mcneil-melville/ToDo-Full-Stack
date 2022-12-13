@@ -1,12 +1,24 @@
-const EXPECTED_SCRIPTS = {
-  start: 'ts-node server/index.ts',
-  'build:client': 'NODE_ENV=production webpack',
-  'build:server': 'knex --knexfile ./server/db/knexfile.js migrate:latest',
-  dev: 'run-p dev:client dev:server',
-  'dev:client': 'webpack --watch',
-  'dev:server': 'nodemon server/index.ts',
-  lint: 'eslint --ext .js,.jsx,.ts,.tsx',
-  test: 'jest',
+// const EXPECTED_SCRIPTS = {
+//   start: 'ts-node server/index.ts',
+//   'build:client': 'NODE_ENV=production webpack',
+//   'build:server': 'knex --knexfile ./server/db/knexfile.js migrate:latest',
+//   dev: 'run-p dev:client dev:server',
+//   'dev:client': 'webpack --watch',
+//   'dev:server': 'nodemon server/index.ts',
+//   lint: 'eslint --ext .js,.jsx,.ts,.tsx',
+//   test: 'jest',
+//   knex: 'knex --knexfile ./server/db/knexfile.js',
+// }
+
+const COMMON_SCRIPTS = {
+  test: 'jest --watchAll',
+  lint: 'eslint --ext .js,.jsx,.ts,.tsx .',
+  noTest: 'echo "Error: no test specified" && exit 1',
+}
+
+const JS_SCRIPTS = {
+  start: 'node server/index',
+  dev: 'nodemon server/index',
   knex: 'knex --knexfile ./server/db/knexfile.js',
 }
 
@@ -14,36 +26,67 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   const { scripts, dependencies, devDependencies } = packageFile
   const deps = { ...dependencies, ...devDependencies }
 
+  let modified = false
   let errors = ''
   const errorMessage = `Scripts are misconfigured: ${errors}`
-  let modified = false
+
+  const message = (scriptName) =>
+    (errors += `${scriptName} script in: ${packageFile.name} is incorrect, \n`)
 
   // Every repo should have both these scripts
   if ('jest' in deps) {
-    if (scripts.test != 'jest --watchAll') {
-      scripts.test = 'jest --watchAll'
-      errors += `test script in: ${packageFile.name} is incorrect, \n`
+    if (scripts.test != COMMON_SCRIPTS.test) {
+      scripts.test = COMMON_SCRIPTS.test
+      message('test')
       modified = true
     }
   }
 
   if ('eslint' in deps) {
-    scripts.lint = 'eslint --ext .js,.jsx,.ts,.tsx .'
+    if (scripts.lint != COMMON_SCRIPTS.lint) {
+      scripts.lint = COMMON_SCRIPTS.lint
+      message('lint')
+      modified = true
+    }
   }
 
   // Express and Express and Knex without TS
   if ('express' in deps && !('typescript' in deps)) {
-    scripts.start = 'node index'
-    scripts.dev = 'nodemon index'
+    if (scripts.start != JS_SCRIPTS.start) {
+      scripts.start = JS_SCRIPTS.start
+      message('start')
+      modified = true
+    }
+    if (scripts.dev != JS_SCRIPTS.dev) {
+      scripts.dev = JS_SCRIPTS.dev
+      message('dev')
+      modified = true
+    }
+
     devDependencies.nodemon = versions.nodemon
+
     if ('knex' in deps) {
-      scripts.knex = 'knex --knexfile ./server/db/knexfile.js'
+      if (scripts.knex != JS_SCRIPTS.knex) {
+        scripts.knex = JS_SCRIPTS.knex
+        message('knex')
+        modified = true
+      }
     }
   }
 
   if ('knex' in deps && !('express' in deps)) {
-    scripts.knex = 'knex'
-    scripts.test = 'echo "Error: no test specified" && exit 1'
+    if (scripts.knex != 'knex') {
+      scripts.knex = 'knex'
+      message('knex')
+      modified = true
+    }
+    if ('jest' in deps) {
+      if (scripts.test != COMMON_SCRIPTS.noTest) {
+        scripts.test = COMMON_SCRIPTS.noTest
+        message('test')
+        modified = true
+      }
+    }
   }
 
   // Express, and Express and Knex with TS
