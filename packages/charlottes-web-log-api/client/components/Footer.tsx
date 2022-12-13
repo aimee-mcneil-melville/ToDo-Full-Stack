@@ -1,11 +1,8 @@
 function Footer() {
-  const copyright = '1952 Harper & Brothers'
-  const author = 'E. B. White'
-
   return (
     <div className="footer">
-      <div>&copy; {copyright}</div>
-      <div>{author}</div>
+      <div>&copy; 1952 Harper & Brothers</div>
+      <div>E. B. White</div>
     </div>
   )
 }

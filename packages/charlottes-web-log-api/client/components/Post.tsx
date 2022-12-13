@@ -11,13 +11,13 @@ import { deletePost } from '../api'
 
 import PostSummary from './PostSummary'
 import Comment from './Comment'
-import { IUseFetchPosts } from './hooks/useFetchPosts'
-import { IPost } from '../IPost'
+import { UseFetchPosts } from './hooks/useFetchPosts'
+import { Post as IPost } from '../../common/post'
 
 function Post() {
   const { id } = useParams()
   const { posts, loading, error, fetchPosts } =
-    useOutletContext<IUseFetchPosts>()
+    useOutletContext<UseFetchPosts>()
   const navigate = useNavigate()
   const post = posts.find((post) => post.id === Number(id)) || ({} as IPost)
   const {

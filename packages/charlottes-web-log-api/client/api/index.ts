@@ -1,19 +1,20 @@
 import request from 'superagent'
 
-import { IComment } from '../IComment'
-import { IPost } from '../IPost'
+import { Comment } from '../../common/comment'
 
-export function getPosts(): Promise<IPost[]> {
+import { Post } from '../../common/post'
+
+export function getPosts(): Promise<Post[]> {
   return request
     .get('/v1/posts')
     .then((res) => {
-      res.body.forEach((post: string) => validateNoSnakeCase(post as any))
+      res.body.forEach((post: string) => validateNoSnakeCase(post))
       return res.body
     })
     .catch(errorHandler('GET', '/v1/posts'))
 }
 
-export function addPost(post: IPost): Promise<IPost> {
+export function addPost(post: Post): Promise<Post> {
   return request
     .post('/v1/posts')
     .send(post)
@@ -25,7 +26,7 @@ export function addPost(post: IPost): Promise<IPost> {
     .catch(errorHandler('POST', '/v1/posts'))
 }
 
-export function updatePost(postId: string, post: IPost) {
+export function updatePost(postId: string, post: Post) {
   return request
     .patch(`/v1/posts/${postId}`)
     .send(post)
@@ -44,11 +45,11 @@ export function deletePost(postId: number): Promise<unknown> {
     .catch(errorHandler('DELETE', '/v1/posts/:id'))
 }
 
-export function getCommentsByPostId(postId: number): Promise<IComment[]> {
+export function getCommentsByPostId(postId: number): Promise<Comment[]> {
   return request
     .get(`/v1/posts/${postId}/comments`)
     .then((res) => {
-      res.body.forEach((comment: IComment) => validateNoSnakeCase(comment))
+      res.body.forEach((comment: Comment) => validateNoSnakeCase(comment))
       return res.body
     })
     .catch(errorHandler('GET', '/v1/posts/:id/comments'))
@@ -95,14 +96,14 @@ function errorHandler(method: string, route: string) {
   }
 }
 
-function validateNoSnakeCase(response: any) {
+function validateNoSnakeCase(response: string | Comment) {
   const hasSnakeCase = Object.keys(response).some((key) => key.includes('_'))
   if (hasSnakeCase) {
     throw Error('Error: you should not be returning properties in snake_case')
   }
 }
 
-function validatePostResponse(method: string, route: string, post: IPost) {
+function validatePostResponse(method: string, route: string, post: Post) {
   if (!post) {
     throw Error(`Error: ${method} ${route} should return a blog post`)
   }
