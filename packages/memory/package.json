@@ -6,10 +6,11 @@
   "main": "index.ts",
   "scripts": {
     "start": "run-p webpack server",
-    "dev": "run-p client server",
+    "dev": "run-p dev:client dev:server",
     "webpack": "webpack --config ./client/webpack.config.js",
-    "client": "npm run webpack -- --watch",
-    "server": "node server",
+    "dev:client": "npm run webpack -- --watch",
+    "dev:server": "nodemon server/index.ts",
+    "server": "ts-node server/index.ts",
     "test": "jest --noStackTrace",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
@@ -65,6 +66,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^29.2.2",
+    "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
     "react": "^18.0.2",
