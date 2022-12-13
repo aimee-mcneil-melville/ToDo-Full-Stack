@@ -119,7 +119,7 @@ Let's try another component.
 
   The props come from what we would normally think of as **attributes** on the component's tag in JSX:
 
-  ```jsx
+  ```tsx
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
   ```
 
@@ -147,30 +147,25 @@ Let's try another component.
 
   In `App.tsx`, import the `<Dog>` component
 
-<<<<<<< HEAD
-  ```tsx
-  import Dog from './Dog'
-=======
-<<<<<<< HEAD
-  ```tsx
-  import Dog from './Dog.tsx'
->>>>>>> main
-  ```
+```tsx
+import Dog from './Dog'
+```
 
-  and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
+and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
 
-  ```tsx
-  <div className="container">
-    <img className="spinner" src="/images/paw.png" />
-    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
-  </div>
-  ```
+```tsx
+<div className="container">
+  <img className="spinner" src="/images/paw.png" />
+  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+</div>
+```
 
-  > To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+> To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 
-  You should see something like this in the browser:
+You should see something like this in the browser:
 
-  ![A Dog component](screenshots/dog.png)
+![A Dog component](screenshots/dog.png)
+
   </details>
 
 - [ ] Try adding more dogs, right underneath the first one. Notice what happens when you don't provide one of the values?
@@ -186,21 +181,9 @@ Let's try another component.
   Rendering `<Subtitle>` into the `<App>` might look like this:
 
   ```tsx
-<<<<<<< HEAD
   <img className="spinner" src="/images/paw.png" />
   <Subtitle text="Canines using supercanine abilities for social good." />
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
-=======
-<<<<<<< HEAD
-  <img className='spinner' src='/images/paw.png' />
-  <Subtitle text='Canines using supercanine abilities for social good.' />
-  <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
-=======
-  <img className="spinner" src="/images/paw.png" />
-  <Subtitle text="Canines using supercanine abilities for social good." />
-  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
->>>>>>> main
->>>>>>> main
   ```
 
   You should see something like this:
