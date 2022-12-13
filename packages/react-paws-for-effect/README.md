@@ -117,7 +117,7 @@ Let's try another component.
   <details style="padding-left: 2em">
     <summary>More about props</summary>
 
-  The props come from what we would normally think of as **attributes** on the component's tag in JSX:
+  The props come from what we would normally think of as **attributes** on the component's tag in TSX:
 
   ```tsx
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
@@ -147,24 +147,24 @@ Let's try another component.
 
   In `App.tsx`, import the `<Dog>` component
 
-```tsx
-import Dog from './Dog'
-```
+  ```tsx
+  import Dog from './Dog'
+  ```
 
-and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
+  and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
 
-```tsx
-<div className="container">
-  <img className="spinner" src="/images/paw.png" />
-  <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
-</div>
-```
+  ```tsx
+  <div className="container">
+    <img className="spinner" src="/images/paw.png" />
+    <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
+  </div>
+  ```
 
-> To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+  > To understand why no explicit 'return' statement is needed here, check out MDN's docs on [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 
-You should see something like this in the browser:
+  You should see something like this in the browser:
 
-![A Dog component](screenshots/dog.png)
+  ![A Dog component](screenshots/dog.png)
 
   </details>
 
