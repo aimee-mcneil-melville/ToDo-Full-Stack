@@ -1,10 +1,4 @@
-export type TRecentEntry = {
-  id: number
-  name: string
-  link: string
-}
-
-const recentEntries: TRecentEntry[] = [
+const recentEntries = [
   {
     id: 1,
     name: 'A warm wind',

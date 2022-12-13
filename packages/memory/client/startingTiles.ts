@@ -1,11 +1,4 @@
-export type TTile = {
-  id: number
-  value: string
-  isVisible: boolean
-  info: string
-}
-
-const startingTiles: TTile[] = [
+const startingTiles = [
   { id: 1, value: '\u{1F330}', isVisible: false, info: 'chestnut' },
   { id: 2, value: '\u{1F33D}', isVisible: false, info: 'ear of maze' },
   { id: 3, value: '\u{1F33E}', isVisible: false, info: 'ear of rice' },

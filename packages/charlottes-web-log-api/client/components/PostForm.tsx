@@ -2,9 +2,9 @@ import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
 import { addPost, updatePost } from '../api'
 import type useFetchPosts from './hooks/useFetchPosts'
-type IFetchPosts = ReturnType<typeof useFetchPosts>
+type FetchPosts = ReturnType<typeof useFetchPosts>
 
-interface IProps {
+interface Props {
   variant?: 'edit' | 'new'
   loading?: boolean
 }
@@ -15,10 +15,10 @@ interface Post {
   id?: number
 }
 
-function PostForm(props: IProps) {
+function PostForm(props: Props) {
   const navigate = useNavigate()
   const { id } = useParams()
-  const { posts, loading, fetchPosts } = useOutletContext<IFetchPosts>()
+  const { posts, loading, fetchPosts } = useOutletContext<FetchPosts>()
   const post = posts.find((post) => post.id === Number(id))
   const [newPost, setNewPost] = useState({ title: '', text: '' })
   const [errorMessage, setErrorMessage] = useState('')

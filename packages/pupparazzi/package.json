@@ -6,8 +6,8 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index --ignore data.json",
+    "start": "node server/index",
+    "dev": "nodemon server/index",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watchAll"
   },

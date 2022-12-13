@@ -1,4 +1,4 @@
-const path = require('path')
+const { join } = require('node:path')
 
 const express = require('express')
 const hbs = require('express-handlebars')
@@ -17,7 +17,7 @@ server.set('view engine', 'hbs')
 // middleware
 
 server.use(express.urlencoded({ extended: false }))
-server.use(express.static(path.join(__dirname, 'public')))
+server.use(express.static(join(__dirname, 'public')))
 
 // sample data
 
