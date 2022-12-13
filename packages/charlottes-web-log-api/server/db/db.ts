@@ -1,71 +1,84 @@
-import knexFile from './knexfile'
-import knex from 'knex'
-
-const config = knexFile.development
-// eslint-disable-next-line no-unused-vars
-const connection = knex(config)
-
-const postToCamelCase = (post: any) => ({
-  id: post.id,
-  title: post.title,
-  dateCreated: post.date_created,
-  text: post.text,
-})
-
-const postFromCamelCase = (camel: any) => ({
-  id: camel.id,
-  title: camel.title,
-  date_created: camel.dateCreated,
-  text: camel.text,
-})
-
-const commentToCamelCase = (comment: any) => ({
-  id: comment.id,
-  postId: comment.post_id,
-  datePosted: comment.date_posted,
-  comment: comment.comment,
-})
-
-const commentFromCamelCase = (camel: any) => ({
-  id: camel.id,
-  post_id: camel.postId,
-  date_posted: camel.datePosted,
-  comment: camel.comment,
-})
-
-export const allPosts = async (db = connection) => {
-  const db_posts = await db('Posts').select('*')
-  return db_posts.map(postToCamelCase)
+import connection from './connection'
+ 
+export function getAllPosts(db = connection) {
+   return db('posts').select(
+     'id',
+     'title',
+     'date_created as dateCreated',
+     'text'
+   )
+ }
+ 
+export function getPost(id: number, db = connection) {
+   return db('posts')
+     .select('id', 'title', 'date_created as dateCreated', 'text')
+     .where('id', id)
+     .first()
+ }
+// TODO: rather than making a second database call to fetch the newly-created
+// (or newly-updated) record, a more efficient approach would be to reconstruct
+// the record based on the details passed in, plus the id returned from the first
+// database call
+export function addPost(post: { title: string; text: string }, db = connection) {
+  return db('posts')
+    .insert({ ...post, date_created: Date.now() })
+    .then((ids) => {
+      return getPost(ids[0])
+    })
 }
 
-export const getPost = async (id: number, db = connection) => {
-  const db_post = await db.select('Posts').where({ id }).first()
-  return postToCamelCase(db_post)
+export function updatePost(id: number, post: { title: string; text: string }, db = connection) {
+  return db('posts')
+    .update({ title: post.title, text: post.text })
+    .where('id', id)
+    .then(() => {
+      return getPost(id)
+    })
 }
 
-export const getCommentsForPost = async (id: number, db = connection) => {
-  const comments = await db('Comments').select().where({ post_id: id })
-  return comments.map(commentToCamelCase)
+// TODO: when deleting a post, also delete its comments
+export function deletePost(id: number, db = connection) {
+  return db('posts').delete().where('id', id)
 }
 
-export const updatePost = async (id: number, camel: any, db = connection) => {
-  const db_post = postFromCamelCase(camel)
-  return await db('Posts').update(db_post).where({ id })
+export function getComments(postId: number, db = connection) {
+  return db('comments')
+    .select('id', 'post_id as postId', 'date_posted as datePosted', 'comment')
+    .where('post_id', postId)
 }
 
-export const deletePost = async (id: number, db = connection) => {
-  await db('Posts').delete().where({ id })
+export function getComment(id: number, db = connection) {
+  return db('comments')
+    .select('id', 'post_id as postId', 'date_posted as datePosted', 'comment')
+    .where('id', id)
+    .first()
 }
 
-export const updateComment = async (
-  id: number,
-  camel: any,
-  db = connection
-) => {
-  const db_comment = commentFromCamelCase(camel)
-  await db('Comments').update(db_comment).where({ id })
+export function addComment(postId: number, comment: {comment: string}, db = connection) {
+  return db('comments')
+    .insert({
+      post_id: postId,
+      date_posted: Date.now(),
+      comment: comment.comment,
+    })
+    .then((ids) => {
+      return getComment(ids[0])
+    })
 }
 
-export const deleteComment = async (id: number, db = connection) => {
-  await db('Comments').delete().where({ id })
+export function updateComment(id: number, comment: {comment: string}, db = connection) {
+  return db('comments')
+    .update({
+      comment: comment.comment,
+    })
+    .where('id', id)
+    .then(() => {
+      return getComment(id)
+    })
 }
+
+export function deleteComment(id: number, db = connection) {
+  return db('comments').delete().where('id', id)
+}
+
+

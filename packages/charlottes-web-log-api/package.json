@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log-api.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {

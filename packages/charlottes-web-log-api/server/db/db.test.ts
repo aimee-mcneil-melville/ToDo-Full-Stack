@@ -1,21 +1,21 @@
-const knex = require('knex')
-const config = require('./knexfile').test
-const testDb = knex(config)
+// import knex from 'knex'
+// import config from './knexfile'.test
+// import testDb = knex(config)
 
-const db = require('./db')
+// import db from './db'
 
-beforeAll(() => {
-  return testDb.migrate.latest()
-})
+// beforeAll(() => {
+//   return testDb.migrate.latest()
+// })
 
-beforeEach(() => {
-  return testDb.seed.run()
-})
+// beforeEach(() => {
+//   return testDb.seed.run()
+// })
 
-describe('getPosts', () => {
-  test.skip('returns a list of 3 posts', () => {
-    return db.getPosts(testDb).then((posts) => {
-      expect(posts).toHaveLength(3)
-    })
-  })
-})
+// describe('getPosts', () => {
+//   test.skip('returns a list of 3 posts', () => {
+//     return db.getPosts(testDb).then((posts) => {
+//       expect(posts).toHaveLength(3)
+//     })
+//   })
+// })

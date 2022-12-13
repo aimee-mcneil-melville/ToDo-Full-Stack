@@ -1,31 +1,23 @@
 import express from 'express'
 
 // eslint-disable-next-line no-unused-vars
-import * as db from '../db/db'
+import { updateComment, deleteComment } from '../db/db'
 
 const router = express.Router()
 
-router.delete('/:id', async (req, res) => {
-  try {
-    const id = Number(req.params.id)
-    await db.deleteComment(id)
-    res.sendStatus(200)
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
+router.patch('/:commentId', (req, res) => {
+  const id = Number(req.params.commentId)
+  const comment = req.body
+  return updateComment(id, comment).then((comment) => {
+    res.json(comment)
+  })
 })
 
-router.patch('/:id', async (req, res) => {
-  try {
-    const id = Number(req.params.id)
-    const comment = req.body
-    await db.updateComment(id, comment)
-    res.json({ id, ...comment })
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
+router.delete('/:commentId', (req, res) => {
+  const id = Number(req.params.commentId)
+  return deleteComment(id).then(() => {
+    res.sendStatus(200)
+  })
 })
 
 export default router

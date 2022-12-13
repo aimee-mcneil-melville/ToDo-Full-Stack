@@ -27,7 +27,7 @@ function PostForm(props: IProps) {
     if (props.variant === 'edit' && !loading && post) {
       setNewPost({ title: post.title, text: post.text })
     }
-  }, [post, loading])
+  }, [post, loading, props.variant])
 
   function onSubmit(e: FormEvent<any>) {
     e.preventDefault()

@@ -1,62 +1,51 @@
 import express from 'express'
 
 // eslint-disable-next-line no-unused-vars
-import * as db from '../db/db'
+import {getComments, addComment, getAllPosts, addPost, updatePost, deletePost} from '../db/db'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-  try {
-    const posts = await db.allPosts()
-    res.json(posts)
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
-})
-
-router.get('/:id', async (req, res) => {
-  try {
-    const post = await db.getPost(Number(req.params.id))
-    res.json(post)
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
-})
-
-router.patch('/:id', async (req, res) => {
-  try {
-    const id = Number(req.params.id)
-    const post = req.body
-    await db.updatePost(id, post)
-    res.json({ id, ...post })
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
-})
-
-router.delete('/:id', async (req, res) => {
-  try {
-    const id = Number(req.params.id)
-    await db.deletePost(id)
-    res.sendStatus(200)
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
-})
-
-router.get('/:id/comments', async (req, res) => {
-  try {
-    const comments = await db.getCommentsForPost(Number(req.params.id))
+router.get('/:postId/comments', (req, res) => {
+  const postId = Number(req.params.postId)
+  return getComments(postId).then((comments) => {
     res.json(comments)
-  } catch (e) {
-    console.error(e)
-    res.sendStatus(500)
-  }
+  })
 })
 
-// put routes here
+router.post('/:postId/comments', (req, res) => {
+  const postId = Number(req.params.postId)
+  const comment = req.body
+  return addComment(postId, comment).then((comment) => {
+    res.json(comment)
+  })
+})
+
+router.get('/', (req, res) => {
+  return getAllPosts().then((posts) => {
+    res.json(posts)
+  })
+})
+
+router.post('/', (req, res) => {
+  const post = req.body
+  return addPost(post).then((post) => {
+    res.json(post)
+  })
+})
+
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const post = req.body
+  return updatePost(id, post).then((post) => {
+    res.json(post)
+  })
+})
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  return deletePost(id).then(() => {
+    res.sendStatus(200)
+  })
+})
+
 export default router

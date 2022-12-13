@@ -1,4 +1,5 @@
 import request from 'superagent'
+
 import { IComment } from '../IComment'
 import { IPost } from '../IPost'
 
@@ -12,7 +13,7 @@ export function getPosts(): Promise<IPost[]> {
     .catch(errorHandler('GET', '/v1/posts'))
 }
 
-export function addPost(post: IPost): Promise<Post> {
+export function addPost(post: IPost): Promise<IPost> {
   return request
     .post('/v1/posts')
     .send(post)
@@ -24,7 +25,7 @@ export function addPost(post: IPost): Promise<Post> {
     .catch(errorHandler('POST', '/v1/posts'))
 }
 
-export function updatePost(postId: string, post: Post) {
+export function updatePost(postId: string, post: IPost) {
   return request
     .patch(`/v1/posts/${postId}`)
     .send(post)
