@@ -1,9 +1,4 @@
-export interface Header {
-  title: string
-  link: string
-}
-
-const header: Header = {
+const header = {
   title: "Charlotte's Web Log",
   link: '/',
 }

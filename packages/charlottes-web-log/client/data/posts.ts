@@ -1,12 +1,4 @@
-export interface Post {
-  id: number
-  title: string
-  date: string
-  commentCount: number
-  paragraphs: string[]
-}
-
-const posts: Post[] = [
+const posts = [
   {
     id: 126,
     title: 'The beginning of an idea',

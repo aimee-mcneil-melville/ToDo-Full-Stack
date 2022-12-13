@@ -1,10 +1,4 @@
-export interface RecentEntry {
-  id: number
-  name: string
-  link: string
-}
-
-const recentEntries: RecentEntry[] = [
+const recentEntries = [
   {
     id: 1,
     name: 'A warm wind',

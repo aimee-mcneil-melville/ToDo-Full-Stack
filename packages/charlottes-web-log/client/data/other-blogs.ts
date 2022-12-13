@@ -1,10 +1,4 @@
-export interface OtherBlog {
-  id: number
-  blogTitle: string
-  link: string
-}
-
-const otherBlogs: OtherBlog[] = [
+const otherBlogs = [
   {
     id: 1,
     blogTitle: 'Wilber',
