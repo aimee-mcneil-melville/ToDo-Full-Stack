@@ -124,9 +124,11 @@ Our task is to create all of the components that comprise the page and wire up d
 <details>
   <summary>More about stretch challenges</summary>
   
-  Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
+  Because the paragraphs are arrays of strings React asks us to use a key to make them distinct. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
 
-For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+[The rules of keys](https://beta.reactjs.org/learn/rendering-lists#rules-of-keys) give you methods to think about how to choose a good value for key.
+
+Since paragraphs in a blogpost don't change order it's safe to use their index in the array as their key... but for a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
 
 </details>
 
