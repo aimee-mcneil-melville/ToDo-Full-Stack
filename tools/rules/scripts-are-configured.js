@@ -15,7 +15,7 @@ const JS_SCRIPTS = {
 }
 
 const DB_SCRIPTS = {
-  'db-reset': 'rnpm run db:delete && npm run db:migrate && npm run db:seed',
+  'db:reset': 'npm run db:delete && npm run db:migrate && npm run db:seed',
   'db:delete': 'rm server/db/dev.sqlite3',
   'db:migrate': 'npm run knex migrate:latest',
   'db:seed': 'npm run knex seed:run',
@@ -39,8 +39,14 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
 
   function message(scriptName) {
     errors =
-      errors + `  ${scriptName} script in: ${packageFile.name} is incorrect, \n`
+      errors +
+      `  ${scriptName} script in: ${packageFile.name} ${
+        fix ? 'was fixed' : 'is incorrect'
+      }, \n`
   }
+
+  // New proposed logic
+  // ==================
 
   // Every repo should have both these scripts
   if ('jest' in deps) {
@@ -59,31 +65,102 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     }
   }
 
-  // Express and Express and Knex without TS
-  if ('express' in deps && !('typescript' in deps)) {
-    if (scripts.start != JS_SCRIPTS.start) {
-      scripts.start = JS_SCRIPTS.start
-      message('start')
-      modified = true
-    }
-    if (scripts.dev != JS_SCRIPTS.dev) {
-      scripts.dev = JS_SCRIPTS.dev
-      message('dev')
-      modified = true
-    }
-
-    devDependencies.nodemon = versions.nodemon // maybe we don't need this?
-
-    if ('knex' in deps) {
-      if (scripts.knex != JS_SCRIPTS.knex) {
-        scripts.knex = JS_SCRIPTS.knex
-        message('knex')
+  if ('express' in deps) {
+    if ('typescript' in deps) {
+      if (scripts.start != TS_SCRIPTS.start) {
+        scripts.start = TS_SCRIPTS.start
+        message('start')
         modified = true
       }
-    }
-  }
+      if ('webpack' in deps) {
+        if (scripts.webpack != TS_SCRIPTS.webpack) {
+          scripts.webpack = TS_SCRIPTS.webpack
+          message('webpack')
+          modified = true
+        }
+        if (scripts.dev != TS_SCRIPTS.dev) {
+          scripts.dev = TS_SCRIPTS.dev
+          message('dev')
+          modified = true
+        }
+        // Does this incorrect naming exist
+        if (scripts['watch:client']) {
+          delete scripts['watch:client']
+          scripts['dev:client'] = TS_SCRIPTS['dev:client']
+          message('dev:client')
+          modified = true
+        }
+        if (scripts['dev:client'] != TS_SCRIPTS['dev:client']) {
+          scripts['dev:client'] = TS_SCRIPTS['dev:client']
+          message('dev:client')
+          modified = true
+        }
+        // Does this incorrect naming exist
+        if (scripts['watch:server']) {
+          delete scripts['watch:server']
+          scripts['dev:server'] = TS_SCRIPTS['dev:server']
+          message('dev:server')
+          modified = true
+        }
+        if (scripts['dev:server'] != TS_SCRIPTS['dev:server']) {
+          scripts['dev:server'] = TS_SCRIPTS['dev:server']
+          message('dev:server')
+          modified = true
+        }
+        if ('knex' in deps) {
+          if (scripts.knex != JS_SCRIPTS.knex) {
+            scripts.knex = JS_SCRIPTS.knex
+            message('knex')
+            modified = true
+          }
+          // These scripts are best used for automating the deletion of the sqlite3 DB
+          if (scripts['db:reset'] != DB_SCRIPTS['db:reset']) {
+            scripts['db:reset'] = DB_SCRIPTS['db:reset']
+            message('db:reset')
+            modified = true
+          }
+          if (scripts['db:delete'] != DB_SCRIPTS['db:delete']) {
+            scripts['db:delete'] = DB_SCRIPTS['db:delete']
+            message('db:delete')
+            modified = true
+          }
+          if (scripts['db:migrate'] != DB_SCRIPTS['db:migrate']) {
+            scripts['db:migrate'] = DB_SCRIPTS['db:migrate']
+            message('db:migrate')
+            modified = true
+          }
+          if (scripts['db:seed'] != DB_SCRIPTS['db:seed']) {
+            scripts['db:seed'] = DB_SCRIPTS['db:seed']
+            message('db:seed')
+            modified = true
+          }
+        }
+      }
+    } else {
+      // Has Express but NO TypeScript
+      if (scripts.start != JS_SCRIPTS.start) {
+        scripts.start = JS_SCRIPTS.start
+        message('start')
+        modified = true
+      }
+      if (scripts.dev != JS_SCRIPTS.dev) {
+        scripts.dev = JS_SCRIPTS.dev
+        message('dev')
+        modified = true
+      }
 
-  if ('knex' in deps && !('express' in deps)) {
+      devDependencies.nodemon = versions.nodemon // maybe we don't need this?
+
+      if ('knex' in deps) {
+        if (scripts.knex != JS_SCRIPTS.knex) {
+          scripts.knex = JS_SCRIPTS.knex
+          message('knex')
+          modified = true
+        }
+      }
+    }
+  } else {
+    // No Express and in Dependencies
     if (scripts.knex != 'knex') {
       scripts.knex = 'knex'
       message('knex')
@@ -100,61 +177,19 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     }
   }
 
-  // TS scripts
-  if ('express' in deps && 'typescript' in deps) {
-    if (scripts.start != TS_SCRIPTS.start) {
-      scripts.start = TS_SCRIPTS.start
-      message('start')
-      modified = true
-    }
-    if ('webpack' in deps) {
-      if (scripts.webpack != TS_SCRIPTS.webpack) {
-        scripts.webpack = TS_SCRIPTS.webpack
-        message('webpack')
-        modified = true
-      }
-      if (scripts.dev != TS_SCRIPTS.dev) {
-        scripts.dev = TS_SCRIPTS.dev
-        message('dev')
-        modified = true
-      }
-      // Does this incorrect naming exist
-      if (scripts['watch:client']) {
-        delete scripts['watch:client']
-        scripts['dev:client'] = TS_SCRIPTS['dev:client']
-        message('dev:client')
-        modified = true
-      }
-      if (scripts['dev:client'] != TS_SCRIPTS['dev:client']) {
-        scripts['dev:client'] = TS_SCRIPTS['dev:client']
-        message('dev:client')
-        modified = true
-      }
-      // Does this incorrect naming exist
-      if (scripts['watch:server']) {
-        delete scripts['watch:server']
-        scripts['dev:server'] = TS_SCRIPTS['dev:server']
-        message('dev:server')
-        modified = true
-      }
-      if (scripts['dev:server'] != TS_SCRIPTS['dev:server']) {
-        scripts['dev:server'] = TS_SCRIPTS['dev:server']
-        message('dev:server')
-        modified = true
-      }
-    }
-  }
+  let errorMessage = `\nScripts are misconfigured: \n${errors}`
 
   // Exit code
   if (modified && !fix) {
-    let errorMessage = `\nScripts are misconfigured: \n${errors}`
     // console.log(errors)
     throw new Error(errorMessage)
   }
 
   if (modified) {
-    return packageFile
+    return [packageFile, errorMessage]
   }
+
+  // ==================
 }
 
 // REFERENCES
