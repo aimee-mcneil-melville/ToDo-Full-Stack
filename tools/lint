@@ -47,7 +47,7 @@ const main = async () => {
           })
 
           if (fix && result && typeof result === 'object') {
-            console.log(`writing ${path}`)
+            console.log(`writing ${path}${result[1] ? `\n${result[1]}` : null}`)
             const json = JSON.stringify(result[0], null, 2)
             await FS.writeFile(packagePath, json, 'utf-8')
           }
