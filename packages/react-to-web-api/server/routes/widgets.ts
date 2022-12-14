@@ -3,7 +3,7 @@ import { getWidgets } from '../db/db'
 
 const router = express.Router()
 
-router.get('/', (req: express.Request, res: express.Response) => {
+router.get('/', (req, res: express.Response) => {
   getWidgets()
     .then((widgets) => {
       res.json(widgets)
