@@ -7,17 +7,20 @@ In this exercise, we're going to use modular React components to build a blog fo
 ## Setup
 
 ### 0. Cloning and installation
+
 - [ ] Clone this repo, and from the repo's folder, install packages, and run the dev server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    Your terminal commands probably look like:
-    ```sh
-    git clone [url to this repo]
-    cd charlottes-web-log
-    npm install
-    npm run dev
-    ```
+  Your terminal commands probably look like:
+
+  ```sh
+  git clone [url to this repo]
+  cd charlottes-web-log
+  npm install
+  npm run dev
+  ```
+
   </details>
 
 ---
@@ -32,47 +35,64 @@ Our task is to create all of the components that comprise the page and wire up d
   <details style="padding-left: 2em">
     <summary>More about using the provided data</summary>
 
-    The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
+  The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
 
-    We will need to import the data from the appropriate files and pass the needed data to the components using props.
+  We will need to import the data into:
 
-    The data also provides pre-built types for you to build out your prop types
+  - `Footer.tsx` (e.g. `import data from '../data/footer'`)
+  - `Header.tsx`
+  - `Posts.tsx`
+  - `OtherBlogs.tsx`
+  - `RecentEntries.tsx`
 
-    Here's an example of how you may use that data in your components:
+  and for those that need children, pass the needed data to their child components (e.g. `Post.tsx`) using [props](https://beta.reactjs.org/learn/passing-props-to-a-component).
 
-    ```tsx
-    // client/data/post.ts
-    export type Post = {
+  Here's an example of how you may use that data in your components:
+
+  ```tsx
+  import postData from '../data/posts'
+  import Post from './Post'
+
+  export default function Posts() {
+    return (
+      <>
+        {postData.map((post) => (
+          <Post post={post} />
+        ))}
+      </>
+    )
+  }
+  ```
+
+  and how that `Post` component may be defined
+
+  ```tsx
+  interface Props {
+    post: {
       id: number
       title: string
       date: string
       commentCount: number
       paragraphs: string[]
     }
+  }
 
-    // client/components/Post.tsx
-    import type { Post } from '../data/post'
+  export default function Post({ post }: Props) {
+    return (/* ... */)
+  }
+  ```
 
-    type Props = {
-      post: Post,
-      // ... other props
-    }
-
-    export default function Post({ post, /* other props... */ }: Props) {
-      return (/* ... */)
-    }
-    ```
   </details>
 
 - [ ] Understand the design requirements
   <details style="padding-left: 2em">
     <summary>More about design requirements</summary>
 
-    Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox. Also, consider applying a class to each component using `className` (instead of the `class` we use in HTML) to **namespace** the styles of each component.
+  Try to not use a UI framework like Bootstrap. Rather, try to use the CSS Flexbox. Also, consider applying a class to each component using `className` (instead of the `class` we use in HTML) to **namespace** the styles of each component.
 
-    Here is the rough layout we are trying to achieve:
+  Here is the rough layout we are trying to achieve:
 
-    ![Wireframe of the homepage, header at top, footer at bottom. The main content of the page is a three-column layout with "Other blogs" on the left, "Posts" in the centre and "Recent entries" on the right](basic-layout.png)
+  ![Wireframe of the homepage, header at top, footer at bottom. The main content of the page is a three-column layout with "Other blogs" on the left, "Posts" in the centre and "Recent entries" on the right](basic-layout.png)
 
   </details>
 
@@ -97,7 +117,7 @@ Our task is to create all of the components that comprise the page and wire up d
 - [ ] `RecentEntries`: build a container to hold the list of recent entries
 - [ ] `RecentEntry`: build the component for a single entry
 
-----
+---
 
 ## Stretch
 
@@ -106,8 +126,10 @@ Our task is to create all of the components that comprise the page and wire up d
   
   Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
 
-  For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+
 </details>
 
 ---
+
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=charlottes-web-log)
