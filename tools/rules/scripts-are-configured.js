@@ -1,11 +1,6 @@
 // const UNIMPLEMENTATED_SCRIPTS = {
 //   'build:client': 'NODE_ENV=production webpack',
 //   'build:server': 'knex --knexfile ./server/db/knexfile.js migrate:latest',
-//   'db-reset': 'run-s db:*',
-//   'db:delete': 'rm server/db/dev.sqlite3',
-//   'db:migrate': 'npm run knex migrate:latest',
-//   'db:seed': 'npm run knex seed:run',
-// }
 
 const COMMON_SCRIPTS = {
   test: 'jest --watchAll',
@@ -17,6 +12,13 @@ const JS_SCRIPTS = {
   start: 'node server/index',
   dev: 'nodemon server/index',
   knex: 'knex --knexfile ./server/db/knexfile.js',
+}
+
+const DB_SCRIPTS = {
+  'db-reset': 'rnpm run db:delete && npm run db:migrate && npm run db:seed',
+  'db:delete': 'rm server/db/dev.sqlite3',
+  'db:migrate': 'npm run knex migrate:latest',
+  'db:seed': 'npm run knex seed:run',
 }
 
 const TS_SCRIPTS = {
@@ -86,6 +88,8 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
       message('knex')
       modified = true
     }
+
+    // This test script is for knex-todo-cli
     if ('jest' in deps) {
       if (scripts.test != COMMON_SCRIPTS.noTest) {
         scripts.test = COMMON_SCRIPTS.noTest
