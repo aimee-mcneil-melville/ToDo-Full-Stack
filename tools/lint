@@ -6,7 +6,7 @@ const Path = require('node:path/posix')
 const { red, green } = require('colorette')
 
 const main = async () => {
-  const fix = process.argv.slice(2).includes('--fix')
+  const fix = process.argv.slice(2) //.includes('--fix')
 
   const versions = JSON.parse(
     await FS.readFile(Path.join(__dirname, './versions.json'))
@@ -56,7 +56,7 @@ const main = async () => {
           process.stderr.write(
             `${red('[FAIL]')} ${(package + ' ').padEnd(padWidth, '-')}- ${
               rule.name
-            }\n`
+            }: ${e}\n`
           )
         }
       }

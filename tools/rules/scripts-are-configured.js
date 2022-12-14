@@ -36,10 +36,11 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
 
   let modified = false
   let errors = ''
-  const errorMessage = `Scripts are misconfigured: \n ${errors}`
 
-  const message = (scriptName) =>
-    (errors += `${scriptName} script in: ${packageFile.name} is incorrect, \n`)
+  function message(scriptName) {
+    errors =
+      errors + `  ${scriptName} script in: ${packageFile.name} is incorrect, \n`
+  }
 
   // Every repo should have both these scripts
   if ('jest' in deps) {
@@ -146,6 +147,8 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
 
   // Exit code
   if (modified && !fix) {
+    let errorMessage = `\nScripts are misconfigured: \n${errors}`
+    // console.log(errors)
     throw new Error(errorMessage)
   }
 
