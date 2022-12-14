@@ -1,15 +1,11 @@
-const environment = process.env.NODE_ENV || 'development'
-const config = require('./knexfile')[environment]
-const connection = require('knex')(config)
+import config from './knexfile'
+import knex from 'knex'
+import Widget from '../../common/Widget'
 
-export interface TWidget {
-  id: number
-  name: string
-  price: number
-  mfg: string
-  inStock: number
-}
+type Environment = 'production' | 'test' | 'development'
+const environment = (process.env.NODE_ENV as Environment) || 'development'
+const connection = knex(config[environment])
 
-export function getWidgets(db = connection): Promise<TWidget[]> {
+export function getWidgets(db = connection): Promise<Widget[]> {
   return db('widgets').select()
 }
