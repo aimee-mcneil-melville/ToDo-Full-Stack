@@ -177,16 +177,15 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
     }
   }
 
-  let errorMessage = `\nScripts are misconfigured: \n${errors}`
-
   // Exit code
   if (modified && !fix) {
-    // console.log(errors)
+    let errorMessage = `\nScripts are misconfigured: \n${errors}`
+
     throw new Error(errorMessage)
   }
 
   if (modified) {
-    return [packageFile, errorMessage]
+    return [packageFile, errors]
   }
 
   // ==================
