@@ -29,7 +29,7 @@ module.exports = async ({
 
   if (fix) {
     process.stderr.write(`Updating dependencies in ${packageObj.name}\n`)
-    return [packageObj]
+    return { result: packageObj }
   }
 
   if (modified === true) {

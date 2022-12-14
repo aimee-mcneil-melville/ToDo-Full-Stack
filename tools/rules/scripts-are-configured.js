@@ -185,7 +185,7 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   }
 
   if (modified) {
-    return [packageFile, errors]
+    return { result: packageFile, errors }
   }
 
   // ==================

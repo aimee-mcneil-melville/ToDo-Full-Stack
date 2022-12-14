@@ -40,6 +40,6 @@ module.exports = async ({ package: packageFile, versions, fix }) => {
   }
 
   if (modified) {
-    return [packageFile]
+    return { result: packageFile }
   }
 }
