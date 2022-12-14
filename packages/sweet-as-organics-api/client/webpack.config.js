@@ -1,10 +1,10 @@
-const path = require('path')
+const { join } = require('node:path')
 
 module.exports = {
-  entry: path.join(__dirname, 'index.tsx'),
+  entry: join(__dirname, 'index.tsx'),
   mode: 'development',
   output: {
-    path: path.join(__dirname, '../server/public'),
+    path: join(__dirname, '../server/public'),
     filename: 'bundle.js',
   },
   module: {
@@ -12,7 +12,7 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.(j|t)sx?$/,
-        exclude: path.join(__dirname, '../node_modules'),
+        exclude: join(__dirname, '../node_modules'),
       },
     ],
   },
