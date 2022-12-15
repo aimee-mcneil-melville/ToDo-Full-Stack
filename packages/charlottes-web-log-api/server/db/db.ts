@@ -1,71 +1,25 @@
-import knexFile from './knexfile'
-import knex from 'knex'
-
-const config = knexFile.development
-// eslint-disable-next-line no-unused-vars
-const connection = knex(config)
-
-const postToCamelCase = (post: any) => ({
-  id: post.id,
-  title: post.title,
-  dateCreated: post.date_created,
-  text: post.text,
-})
-
-const postFromCamelCase = (camel: any) => ({
-  id: camel.id,
-  title: camel.title,
-  date_created: camel.dateCreated,
-  text: camel.text,
-})
-
-const commentToCamelCase = (comment: any) => ({
-  id: comment.id,
-  postId: comment.post_id,
-  datePosted: comment.date_posted,
-  comment: comment.comment,
-})
-
-const commentFromCamelCase = (camel: any) => ({
-  id: camel.id,
-  post_id: camel.postId,
-  date_posted: camel.datePosted,
-  comment: camel.comment,
-})
-
-export const allPosts = async (db = connection) => {
-  const db_posts = await db('Posts').select('*')
-  return db_posts.map(postToCamelCase)
+import connection from './connection'
+ 
+export function getAllPosts(db = connection) {
+   return
+ }
+ 
+export function getPost( db = connection) {
+ }
+// TODO: rather than making a second database call to fetch the newly-created
+// (or newly-updated) record, a more efficient approach would be to reconstruct
+// the record based on the details passed in, plus the id returned from the first
+// database call
+export function addPost(db = connection) {
+  return 
 }
 
-export const getPost = async (id: number, db = connection) => {
-  const db_post = await db.select('Posts').where({ id }).first()
-  return postToCamelCase(db_post)
+export function updatePost(db = connection) {
+  return 
 }
 
-export const getCommentsForPost = async (id: number, db = connection) => {
-  const comments = await db('Comments').select().where({ post_id: id })
-  return comments.map(commentToCamelCase)
+// TODO: when deleting a post, also delete its comments
+export function deletePost(db = connection) {
+  return 
 }
 
-export const updatePost = async (id: number, camel: any, db = connection) => {
-  const db_post = postFromCamelCase(camel)
-  return await db('Posts').update(db_post).where({ id })
-}
-
-export const deletePost = async (id: number, db = connection) => {
-  await db('Posts').delete().where({ id })
-}
-
-export const updateComment = async (
-  id: number,
-  camel: any,
-  db = connection
-) => {
-  const db_comment = commentFromCamelCase(camel)
-  await db('Comments').update(db_comment).where({ id })
-}
-
-export const deleteComment = async (id: number, db = connection) => {
-  await db('Comments').delete().where({ id })
-}

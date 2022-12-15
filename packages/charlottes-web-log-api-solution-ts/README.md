@@ -38,11 +38,10 @@ You won't need the front-end for the purposes of this challenge.
 
 The database migrations and seeds have already been written for you so you don't have to worry about designing the database and populating it with data.
 
-- Write your database functions in `server/db/db.ts`
-- Write your API functions in `server/routes/posts.ts` and `server/routes/comments.ts`
+- Write your database functions in `server/db/db.js`
+- Write your API functions in `server/routes/posts.js` and `server/routes/comments.js`
 - Use Insomnia or VS Code's Thunder Client extension to verify that your API is behaving according to the specification described
 - Try implementing the database and API routes one at a time (i.e. write the database query first, and then write the corresponding API route before moving on to the next database query)
-
 
 <details>
   <summary>Overview of all routes</summary>
@@ -71,9 +70,7 @@ The database migrations and seeds have already been written for you so you don't
   <summary>Tips</summary>
 
   - Instead of using `res.render` you will need to use `res.json`
-  - The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries. 
-  - Your data will need to be typed. Because the backend feilds are using snake_case, you will need to use different types to that in the folder 'common', as these types are for the frontend. Be careful that you do not have circular imports, or any repetition in declaring your types. 
-  
+  - The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries
 </details>
 <br />
 
@@ -300,7 +297,7 @@ Well done!
   <summary>More about stretch challenges</summary>
 
   - Write some tests for your API routes using `supertest`
-  - Add the ability to like / dislike comments (once you have done the migrations/seeds/queries/api routes, you will need to write some front end `api` functions and `React` components to display these - have a particular look at the `client/api/index.ts` and `client/components/Post.tsx` for pointers on how to add client side API routes and front end components)
+  - Add the ability to like / dislike comments (once you have done the migrations/seeds/queries/api routes, you will need to write some front end `api` functions and `React` components to display these - have a particular look at the `client/api/index.js` and `client/components/Post.jsx` for pointers on how to add client side API routes and front end components)
   - Remember converting snake_case into camelCase for some db field names? This works well when converting just one or two, but could be troublesome with many. Try using an external library to handle this. You may find the following links useful:
     - https://www.npmjs.com/package/camelcase-keys
     - https://lodash.com/docs/4.17.4#camelCase
