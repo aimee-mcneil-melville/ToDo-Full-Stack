@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
-import { Comment as IComment} from '../../common/comment'
+import { Comment as CommentData} from '../../common/comment'
 import { FetchComments } from './hooks/useFetchComments'
 
 interface Props {
-  comment: IComment
+  comment: CommentData
   fetchComments: FetchComments
 }
 
@@ -18,7 +18,6 @@ function Comment({ comment, fetchComments }: Props) {
       comment={comment.comment}
       setEditing={setEditing}
       variant="edit"
-      fetchComments={fetchComments}
     />
   ) : (
     <div className="comment" key={comment.id}>

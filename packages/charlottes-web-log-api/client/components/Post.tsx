@@ -12,14 +12,14 @@ import { deletePost } from '../api'
 import PostSummary from './PostSummary'
 import Comment from './Comment'
 import { UseFetchPosts } from './hooks/useFetchPosts'
-import { Post as IPost } from '../../common/post'
+import { Post as PostData } from '../../common/post'
 
 function Post() {
   const { id } = useParams()
   const { posts, loading, error, fetchPosts } =
     useOutletContext<UseFetchPosts>()
   const navigate = useNavigate()
-  const post = posts.find((post) => post.id === Number(id)) || ({} as IPost)
+  const post = posts.find((post) => post.id === Number(id)) || ({} as PostData)
   const {
     comments,
     error: commentsError,
