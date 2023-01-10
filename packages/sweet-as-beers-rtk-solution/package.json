@@ -1,0 +1,88 @@
+{
+  "name": "sweet-as-beers",
+  "version": "0.2.1",
+  "description": "Getting more comfortable with React and Redux",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "run-p client server",
+    "client": "npm run webpack -- --watch",
+    "server": "nodemon server/index.ts",
+    "start": "ts-node server/index.ts",
+    "test": "jest --watchAll",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "webpack": "webpack --config ./client/webpack.config.js"
+  },
+  "author": "Dev Academy Aotearoa",
+  "license": "ISC",
+  "keywords": [
+    "frontend"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-typescript",
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@devacademy/eslint-config/react",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "@babel/register": "^7.13.14",
+    "@devacademy/eslint-config": "^1.6.0",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "babel-loader": "^8.2.2",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.3.1",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.6.1",
+    "react": "^18.0.2",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.8.4",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "browserslist": "> 2%, not dead"
+}
