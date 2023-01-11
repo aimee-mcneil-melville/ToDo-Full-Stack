@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import activePage from './slices/activePage'
-import cart from './slices/cart'
+
+// import example from './slices/example'
 
 export const store = configureStore({
   reducer: {
-    activePage,
-    cart,
+    // example,
   },
 })
 
