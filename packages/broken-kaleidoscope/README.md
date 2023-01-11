@@ -141,7 +141,7 @@ It's high time we stopped being so monochromatic.
     There a number of examples on how to do this out there (try a search on 'random hex color') but the one we like is this (adapted from [this Stack Overflow comment](https://stackoverflow.com/questions/1484506/random-color-generator#comment81414569_5365036)):
 
     ```js
-    `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
+    `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0')}`
     ```
 
     Edit the initial state for `style` so that it uses the above code to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
