@@ -1,5 +1,5 @@
 {
-  "name": "sweet-as-beers-rtk-solution",
+  "name": "sweet-as-beers-rtk",
   "version": "0.2.1",
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
