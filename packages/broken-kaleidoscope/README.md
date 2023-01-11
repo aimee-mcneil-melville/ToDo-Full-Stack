@@ -40,12 +40,14 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
   <details style="padding-left: 2em">
     <summary>More about the <code>&lt;Pixel&gt;</code> component</summary>
 
-    Leave the `<div>` empty. You won't be able to see it yet, but you'll be able to check if it has been rendered using the inspect feature of your browser's development tools. You can call the component whatever you like. We like `<Pixel />` because it evokes the idea of a small colourful square, and that's what we're going to be working with: lots of colourful squares!
+    Leave the `<div>` empty. You won't be able to see anything yet. You can call the component whatever you like. We like `<Pixel />` because it evokes the idea of a small colourful square, and that's what we're going to be working with: lots of colourful squares!
 
 - [ ] Place the `<Pixel>` component in the render method of `<App>` so that it'll make it into the DOM
 - [ ] Use the browser dev tools to check that it exists, before moving on
   <details style="padding-left: 2em">
     <summary>Tip</summary>
+
+    You won't be able to see it yet, but you'll be able to check if it has been rendered using the inspect feature of your browser's development tools. 
 
     In the dev tools, it will look like this:
 
