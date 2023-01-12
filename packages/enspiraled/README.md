@@ -44,25 +44,31 @@ After you've completed this project, this is what it can look like after a few c
   Here are its contents:
 
   ```tsx
-  function App(props) {
+  interface Props {
+  width: number
+  height: number
+  }
+
+  function App({ width, height }: Props) {
     const circle = {
-      cx: props.width / 2,
-      cy: props.height / 2,
+      cx: width / 2,
+      cy: height / 2,
       level: 0,
       r: 256,
     }
 
     return (
-      <svg width={props.width} height={props.height}>
+      <svg width={width} height={height}>
         <circle cx={circle.cx} cy={circle.cy} r={circle.r} />
       </svg>
     )
   }
 
   export default App
+
   ```
 
-  The `App` component has no state, but receives two props, `width` and `height` (which are the width and height of the page--have a look in `client/index.js` to see how these are retrieved).
+  The `App` component has no state, but receives two props, `width` and `height` (which are the width and height of the page--have a look in `client/index.tsx` to see how these are retrieved).
 
   This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey (see `server/public/css/app.css`). It's important to note that this TSX will render The SVG elements, **not React controls**. We know this because `<svg>` and `<circle>` are lower case.
 
@@ -73,7 +79,9 @@ After you've completed this project, this is what it can look like after a few c
       <summary>Tip</summary>
 
   ```tsx
-  export default function Circle(props) {
+  // define your props interface here
+
+  export default function Circle(props: Props) {
 
     // ... other logic
 
