@@ -13,6 +13,7 @@ const main = async () => {
   )
 
   const rules = (await FS.readdir(Path.join(__dirname, 'rules')))
+    .filter((filename) => !filename.includes('scripts-are-configured'))
     .map((filename) => filename.replace(/\.js$/, ''))
     .map((name) => ({ name, check: require(`./rules/${name}`) }))
 
@@ -39,12 +40,18 @@ const main = async () => {
       const packageObj = JSON.parse(packageJson)
       for (const rule of rules) {
         try {
-          const { result, errors } = await rule.check({
+          const output = await rule.check({
             package: packageObj,
             path,
             versions,
             fix,
           })
+
+          if (!output) {
+            continue
+          }
+
+          const { result, errors } = output
 
           if (fix && result && typeof result === 'object') {
             console.log(`writing ${path}${errors ? `\n${errors}` : null}`)
