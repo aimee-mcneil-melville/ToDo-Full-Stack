@@ -72,20 +72,19 @@ After you've completed this project, this is what it can look like after a few c
     <details style="padding-left: 2em">
       <summary>Tip</summary>
 
-      ```jsx
+  ```tsx
+  export default function Circle(props) {
 
-      export default function Circle(props) {
+    // ... other logic
 
-        // ... other logic
-
-        return (
-          <>
-          {/* ... other components */}
-            <circle cx={props.cx} cy={props.cy} r={props.r} />
-          </>
-        )
-      }
-      ```
+    return (
+      <>
+      {/* ... other components */}
+        <circle cx={props.cx} cy={props.cy} r={props.r} />
+      </>
+    )
+  }
+  ```
 
     </details>
 
