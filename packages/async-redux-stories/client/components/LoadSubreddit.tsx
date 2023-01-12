@@ -12,7 +12,7 @@ function LoadSubreddit({ children }: Props) {
 
   return (
     <div>
-      <button onClick={() => dispatch(fetchPosts('hliasudfhias'))}>
+      <button onClick={() => dispatch(fetchPosts('newzealand'))}>
         Fetch Posts
       </button>
       {children}
