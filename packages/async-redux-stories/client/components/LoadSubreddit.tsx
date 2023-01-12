@@ -1,13 +1,18 @@
 import { useAppDispatch } from '../hooks'
 
 import { fetchPosts } from '../actions'
+import { ReactNode } from 'react'
 
-function LoadSubreddit({ children }) {
+interface Props {
+  children: ReactNode
+}
+
+function LoadSubreddit({ children }: Props) {
   const dispatch = useAppDispatch()
 
   return (
     <div>
-      <button onClick={() => dispatch(fetchPosts('newzealand'))}>
+      <button onClick={() => dispatch(fetchPosts('hliasudfhias'))}>
         Fetch Posts
       </button>
       {children}
