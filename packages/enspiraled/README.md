@@ -37,13 +37,13 @@ After you've completed this project, this is what it can look like after a few c
 
 ### 1. Getting situated
 
-- [ ] Examine `client/components/App.jsx`
+- [ ] Examine `client/components/App.tsx`
   <details style="padding-left: 2em">
     <summary>More about the <code>&lt;App&gt;</code> component</summary>
 
   Here are its contents:
 
-  ```jsx
+  ```tsx
   function App(props) {
     const circle = {
       cx: props.width / 2,
@@ -64,11 +64,11 @@ After you've completed this project, this is what it can look like after a few c
 
   The `App` component has no state, but receives two props, `width` and `height` (which are the width and height of the page--have a look in `client/index.js` to see how these are retrieved).
 
-  This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey (see `server/public/css/app.css`). It's important to note that this JSX will render The SVG elements, **not React controls**. We know this because `<svg>` and `<circle>` are lower case.
+  This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey (see `server/public/css/app.css`). It's important to note that this TSX will render The SVG elements, **not React controls**. We know this because `<svg>` and `<circle>` are lower case.
 
   </details>
 
-- [ ] Since each SVG `<circle>` element will be the same, create a new `Circle.jsx` React component for it
+- [ ] Since each SVG `<circle>` element will be the same, create a new `Circle.tsx` React component for it
     <details style="padding-left: 2em">
       <summary>Tip</summary>
 
