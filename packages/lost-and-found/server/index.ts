@@ -1,9 +1,10 @@
+import * as dotenv from 'dotenv'
+import server from './server'
+
 if (!process.env.NODE_ENV || process.env.NODE_ENV == 'development') {
-  const envConfig = require('dotenv').config()
+  const envConfig = dotenv.config()
   if (envConfig.error) throw envConfig.error
 }
-
-import server from './server'
 
 const PORT = process.env.PORT || 3000
 
