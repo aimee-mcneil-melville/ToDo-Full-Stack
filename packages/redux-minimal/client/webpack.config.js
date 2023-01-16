@@ -1,7 +1,7 @@
 const { join } = require('node:path')
 
 module.exports = {
-  entry: join(__dirname, 'index.js'),
+  entry: join(__dirname, 'index.tsx'),
   mode: 'development',
   output: {
     path: join(__dirname, '../server/public'),

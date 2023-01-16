@@ -1,6 +1,6 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
-import type { AppThunkAction } from '../store'
+import type { ThunkAction } from '../store'
 import { JwtResponse, Cred, Register } from 'authenticare/client'
 
 export type Action =
@@ -47,22 +47,25 @@ export function receiveLogout(): Action {
 export function registerUserRequest(
   creds: Register,
   confirmSuccess: ConfirmSuccess
-): AppThunkAction {
+): ThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
-    register(creds)
+
+    return register(creds)
       .then((userInfo: JwtResponse) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
-      .catch((err: Error) => dispatch(authError(err.message)))
+      .catch((err: Error) => {
+        dispatch(authError(err.message))
+      })
   }
 }
 
 export function loginUser(
   creds: Cred,
   confirmSuccess: ConfirmSuccess
-): AppThunkAction {
+): ThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
@@ -76,15 +79,15 @@ export function loginUser(
   }
 }
 
-export function logoutUser(confirmSuccess: ConfirmSuccess): AppThunkAction {
-  return (dispatch) => {
+export function logoutUser(confirmSuccess: ConfirmSuccess): ThunkAction {
+  return async (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
   }
 }
 
-export function checkAuth(confirmSuccess: ConfirmSuccess): AppThunkAction {
+export function checkAuth(confirmSuccess: ConfirmSuccess): ThunkAction {
   return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))

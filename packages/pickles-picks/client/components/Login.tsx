@@ -3,10 +3,12 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
 
 import { loginUser, authError } from '../actions/auth'
+
 interface FormData {
   username: string
   password: string
 }
+
 function Login() {
   const navigateTo = useNavigate()
   const dispatch = useAppDispatch()
@@ -19,7 +21,7 @@ function Login() {
 
   useEffect(() => {
     dispatch(authError(''))
-  }, [])
+  }, [dispatch])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget

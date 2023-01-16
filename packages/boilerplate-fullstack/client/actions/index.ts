@@ -1,5 +1,5 @@
 import { getFruits } from '../apis/fruits'
-import type { AppThunkAction } from '../store'
+import type { ThunkAction } from '../store'
 
 export type Action = { type: typeof SET_FRUITS; payload: string[] }
 
@@ -12,7 +12,7 @@ export function setFruits(fruits: string[]): Action {
   }
 }
 
-export function fetchFruits(): AppThunkAction {
+export function fetchFruits(): ThunkAction {
   return (dispatch) => {
     return getFruits().then((fruits) => {
       dispatch(setFruits(fruits))

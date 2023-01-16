@@ -45,7 +45,7 @@ This challenge will guide you to experiment with Redux using an atypical React s
 
 ### 2. Adding to the reducer
 
-- [ ] Add an `UPDATE_WOMBAT` action to the reducer in `reducers/wombats.js`
+- [ ] Add an `UPDATE_WOMBAT` action to the reducer in `reducers/wombats.ts`
   <details style="padding-left: 2em">
     <summary>More about new reducer features</summary>
 
@@ -108,7 +108,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 ### 7. Adding a new reducer
 
 - [ ] Add a new reducer file for another animal. We already have `wombats`; how about `aardvarks`?
-- [ ] In `reducers/index.js`, pass your new reducer file to `combineReducers`
+- [ ] In `reducers/index.ts`, pass your new reducer file to `combineReducers`
 - [ ] Add some actions to the new reducer
 
 ### 8. Using the new reducer
