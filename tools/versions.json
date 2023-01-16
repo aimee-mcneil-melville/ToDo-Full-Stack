@@ -11,7 +11,7 @@
   "@devacademy/eslint-config": "^1.6.0",
   "@types/react": "^18.0.23",
   "@types/react-dom": "^18.0.7",
-  "@reduxjs/toolkit": "^1.8.6",
+  "@reduxjs/toolkit": "^1.9.1",
   "@testing-library/jest-dom": "^5.16.5",
   "@testing-library/dom": "^8.17.1",
   "@testing-library/user-event": "^12.7.1",
