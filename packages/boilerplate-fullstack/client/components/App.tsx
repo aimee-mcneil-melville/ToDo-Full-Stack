@@ -8,7 +8,7 @@ function App() {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchFruits())
-  }, [])
+  }, [dispatch])
 
   return (
     <>
