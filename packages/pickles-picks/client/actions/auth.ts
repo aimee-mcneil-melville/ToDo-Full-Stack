@@ -65,7 +65,7 @@ export function registerUserRequest(
 export function loginUser(
   creds: Cred,
   confirmSuccess: ConfirmSuccess
-): AppThunkAction {
+): ThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
     return login(creds)
@@ -79,15 +79,15 @@ export function loginUser(
   }
 }
 
-export function logoutUser(confirmSuccess: ConfirmSuccess): AppThunkAction {
-  return (dispatch) => {
+export function logoutUser(confirmSuccess: ConfirmSuccess): ThunkAction {
+  return async (dispatch) => {
     removeUser()
     dispatch(receiveLogout())
     confirmSuccess()
   }
 }
 
-export function checkAuth(confirmSuccess: ConfirmSuccess): AppThunkAction {
+export function checkAuth(confirmSuccess: ConfirmSuccess): ThunkAction {
   return (dispatch) => {
     if (isAuthenticated()) {
       dispatch(receiveUser(getUserTokenInfo()))
