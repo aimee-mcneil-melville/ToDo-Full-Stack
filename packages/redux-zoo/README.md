@@ -33,7 +33,7 @@ This challenge will guide you through building an app to create, update, and del
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    You will need to investigate `reducers/wombats.js` to work out what the payload should be for each of these types
+    You will need to investigate `reducers/wombats.ts` to work out what the payload should be for each of these types
   </details>
   <details style="padding-left: 2em">
     <summary>More about dispatching</summary>
@@ -50,7 +50,7 @@ This challenge will guide you through building an app to create, update, and del
 
 ### 2. Adding to the reducer
 
-- [ ] Add an `UPDATE_WOMBAT` action to the reducer in `reducers/wombats.js`
+- [ ] Add an `UPDATE_WOMBAT` action to the reducer in `reducers/wombats.ts`
   <details style="padding-left: 2em">
     <summary>More about new reducer features</summary>
 
@@ -118,7 +118,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 
 ### 6. Refactoring your actions
 
-- [ ] Starting with `ADD_WOMBAT`, write a function in `client/actions/index.js` to **produce** the action: these are called **action creators**.
+- [ ] Starting with `ADD_WOMBAT`, write a function in `client/actions/index.ts` to **produce** the action: these are called **action creators**.
   <details style="padding-left: 2em">
     <summary>Tip</summary>
     
@@ -130,7 +130,7 @@ Add a delete button next to each of the wombats so they can be deleted:
 ### 7. Adding a new reducer
 
 - [ ] Add a new reducer file for another animal. We already have `wombats`; how about `aardvarks`?
-- [ ] In `reducers/index.js`, pass your new reducer file to `combineReducers`
+- [ ] In `reducers/index.ts`, pass your new reducer file to `combineReducers`
 - [ ] Add some actions to the new reducer
 
 ### 8. Using the new reducer
