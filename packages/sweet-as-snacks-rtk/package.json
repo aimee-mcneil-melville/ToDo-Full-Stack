@@ -1,11 +1,17 @@
 {
-  "name": "boilerplate-react-webpack",
+  "name": "sweet-as-snacks-rtk",
   "version": "0.2.3",
-  "description": "A webpack React starter",
-  "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
+  "description": "practice with redux toolkit",
+  "repository": "https://github.com/dev-academy-challenges/challenges.git",
   "main": "server/index.js",
-  "author": "EDA",
+  "author": "Dev Academy Aotearoa",
   "license": "ISC",
+  "keywords": [
+    "frontend",
+    "redux",
+    "redux-toolkit",
+    "react"
+  ],
   "scripts": {
     "dev": "run-p dev:client dev:server build:css",
     "dev:client": "vite",
@@ -18,9 +24,6 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx .",
     "build:css": "npx tailwindcss -i client/input.css -o server/public/main.css --watch"
   },
-  "keywords": [
-    "frontend"
-  ],
   "babel": {
     "presets": [
       "@babel/preset-typescript",
