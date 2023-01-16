@@ -1,10 +1,10 @@
-import { TWombatAction } from '../actions'
+import { WombatAction } from '../actions'
 
 const initialWombatState = ['Gertrude', 'Bartholemew']
 
 const wombatReducer = (
   state = initialWombatState,
-  action: TWombatAction
+  action: WombatAction
 ): string[] => {
   const { type, payload } = action
   switch (type) {
