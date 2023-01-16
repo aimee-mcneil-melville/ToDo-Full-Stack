@@ -12,7 +12,7 @@ function Wombats() {
       <ul>
         {wombats.map((wombat) => (
           <li key={wombat}>
-            <Wombat wombat={wombat} />
+            <Wombat name={wombat} />
           </li>
         ))}
       </ul>

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
+
 import store from '../store'
 
 function AddWombat() {
   const [input, setInput] = useState('')
 
-  function handleChange(event) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setInput(event.target.value)
   }
 
@@ -13,6 +14,7 @@ function AddWombat() {
       type: 'ADD_WOMBAT',
       payload: input,
     })
+    setInput('')
   }
   return (
     <section>
