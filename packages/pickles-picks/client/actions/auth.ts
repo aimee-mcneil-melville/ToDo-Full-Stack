@@ -1,6 +1,6 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
-import type { AppThunkAction } from '../store'
+import type { ThunkAction } from '../store'
 import { JwtResponse, Cred, Register } from 'authenticare/client'
 
 export type Action =
@@ -47,15 +47,18 @@ export function receiveLogout(): Action {
 export function registerUserRequest(
   creds: Register,
   confirmSuccess: ConfirmSuccess
-): AppThunkAction {
+): ThunkAction {
   return (dispatch) => {
     dispatch(authRequest())
-    register(creds)
+
+    return register(creds)
       .then((userInfo: JwtResponse) => {
         dispatch(receiveUser(userInfo))
         confirmSuccess()
       })
-      .catch((err: Error) => dispatch(authError(err.message)))
+      .catch((err: Error) => {
+        dispatch(authError(err.message))
+      })
   }
 }
 
