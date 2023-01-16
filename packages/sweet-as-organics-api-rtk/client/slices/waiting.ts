@@ -12,7 +12,7 @@ const waitingSlice = createSlice({
       () => true
     )
     builder.addMatcher(
-      // if any async action ends with /fulffilled or rejected, set waiting to false
+      // if any async action ends with /fulfilled or rejected, set waiting to false
       (action: AnyAction) =>
         action.type.endsWith('/fulfilled') || action.type.endsWith('/rejected'),
       () => false
