@@ -28,9 +28,9 @@ User stories for practicing React and Redux by adding and removing items from a 
   This one is done for you! Take a look at it anyway to see how it works. In particular, identify:
     - the **action** and **action creator**
     - the **reducer**
-    - the **container** and **presentation** components
+    - the **components**
   
-  Notice that `<AddWord>` is a mixture of both container and presentation: it returns JSX, but it uses `react-redux`'s `useDispatch` function to allow it to fire off **actions**.
+  Notice that `<AddWord>` returns JSX, but also uses `useAppDispatch` function to fire off **actions**.
   </details>
 
 - [ ] As a user, I want to enter the URL of an image and have it display as an image on the page so that I can save all my cute animal pictures
@@ -38,11 +38,10 @@ User stories for practicing React and Redux by adding and removing items from a 
     <summary>More about adding images</summary>
 
   Here's an opportunity to practice everything in the previous user story. We'll need to:
-    - create a new action creator in `actions/index.js`
-    - create a new reducer in `reducers/images.js`
-    - add the reducer to the `combineReducers` call in `reducers/index.js`
+    - create a new action creator in `actions/index.ts`
+    - create a new reducer in `reducers/images.ts`
+    - add the reducer to the `combineReducers` call in `reducers/index.ts`
     - create `<Images>` and `<Image>` components
-    - create an `<ImageContainer>` container
     - create an `<AddImage>` component to enter the URL
   </details>
 
@@ -52,7 +51,8 @@ User stories for practicing React and Redux by adding and removing items from a 
     <summary>More about deleting words</summary>
 
     - We'll need a new action creator and a modified reducer
-    - We'll probably need to add `useSelector` in `<WordContainer>`. Look at the [Redux with React documentation](https://redux.js.org/tutorials/fundamentals/part-5-ui-react#using-redux-with-react) if you get stuck.
+    - We'll probably need to add the id to the props in `<Word>`. 
+    - We'll need to dispatch the new action with `useAppDispatch`
   </details>
 
 - [ ] As a user, I want to click a button next to any image and delete it from the list so that I can get rid of pics that just aren't cute anymore
