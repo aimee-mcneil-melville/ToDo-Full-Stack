@@ -1,12 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
+interface Props {
+  beer: {
+    id: number
+    name: string
+    brewery: string
+    country: string
+    style: string
+    abv: string
+  }
+}
+
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 import { addBeer, updateBeerAmount, navigate } from '../actions'
 
-function BeerListItem(props) {
+function BeerListItem(props: Props) {
   const { id, name, brewery, country, abv } = props.beer
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
-  const beerInCart = useSelector((state) =>
+  const beerInCart = useAppSelector((state) =>
     state.cart.find((item) => item.id === id)
   )
 

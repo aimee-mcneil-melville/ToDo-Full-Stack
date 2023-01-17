@@ -1,7 +1,12 @@
-import type { Beer } from './BeerList'
-
 interface Props {
-  beer: Beer
+  beer: {
+    id: number
+    name: string
+    brewery: string
+    country: string
+    style: string
+    abv: string
+  }
 }
 
 function BeerListItem(props: Props) {

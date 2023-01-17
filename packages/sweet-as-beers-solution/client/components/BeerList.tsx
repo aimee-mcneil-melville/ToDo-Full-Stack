@@ -1,5 +1,4 @@
 import BeerListItem from './BeerListItem'
-
 import beerData from '../../data/beers'
 
 function BeerList() {

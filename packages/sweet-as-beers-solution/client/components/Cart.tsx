@@ -1,18 +1,23 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState, ChangeEvent } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 import { navigate, trashBeer, updateMultiple } from '../actions'
 
+interface ChangeItem {
+  id: number
+  quantity: number
+}
+
 function Cart() {
-  const dispatch = useDispatch()
-  const cart = useSelector((state) => state.cart)
-  const [changes, setChanges] = useState({})
+  const dispatch = useAppDispatch()
+  const cart = useAppSelector((state) => state.cart)
+  const [changes, setChanges] = useState([] as ChangeItem[])
 
   const goBack = () => {
     dispatch(navigate('home'))
   }
 
-  const remove = (id) => {
+  const remove = (id: number) => {
     dispatch(trashBeer(id))
   }
 
@@ -20,11 +25,8 @@ function Cart() {
     dispatch(updateMultiple(changes))
   }
 
-  const handleType = (id, evt) => {
-    setChanges({
-      ...changes,
-      [id]: Number(evt.target.value),
-    })
+  const handleType = (id: number, evt: ChangeEvent<HTMLInputElement>) => {
+    setChanges([...changes, { id: id, quantity: Number(evt.target.value) }])
   }
 
   return (
@@ -46,7 +48,10 @@ function Cart() {
                   <input
                     className="update-input"
                     onChange={(e) => handleType(id, e)}
-                    value={changes[id] || quantity}
+                    value={
+                      changes.find((item) => item.id === id)?.quantity ||
+                      quantity
+                    }
                   />
                 </td>
                 <td>
