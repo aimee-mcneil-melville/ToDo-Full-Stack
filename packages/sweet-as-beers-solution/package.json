@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "run-p client server",
     "client": "npm run webpack -- --watch",
-    "server": "nodemon server",
-    "start": "node server",
+    "server": "nodemon server/index.ts",
+    "start": "ts-node server/index.ts",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "webpack": "webpack --config ./client/webpack.config.js"
