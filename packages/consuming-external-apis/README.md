@@ -58,14 +58,13 @@ If you're not sure where to start, you can use one of the APIs listed below.
   <summary>Simple APIs (no API key required or CORS restrictions)</summary>
 
 - https://www.boredapi.com: suggest a random activity
-- https://dog.ceo/api: dog pictures
+- https://dog.ceo/dog-api: dog pictures
 - https://randomfox.ca/floof: random fox pictures
 - https://pokeapi.co/docs/v2: Pokémon
 - https://swapi.dev: Star Wars
 - https://disneyapi.dev/docs: Disney characters
 - https://open-meteo.com/: weather
 - https://wheretheiss.at/w/developer: get the latitude and longitude of the International Space Station
-- https://eda-te-reo.herokuapp.com: whakataukī (Māori proverbs) and their translations
 </details>
 <br />
 
