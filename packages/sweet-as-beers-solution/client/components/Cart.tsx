@@ -3,15 +3,10 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 
 import { navigate, trashBeer, updateMultiple } from '../actions'
 
-interface ChangeItem {
-  id: number
-  quantity: number
-}
-
 function Cart() {
   const dispatch = useAppDispatch()
   const cart = useAppSelector((state) => state.cart)
-  const [changes, setChanges] = useState([] as ChangeItem[])
+  const [changes, setChanges] = useState({} as Record<string, number>)
 
   const goBack = () => {
     dispatch(navigate('home'))
@@ -26,7 +21,10 @@ function Cart() {
   }
 
   const handleType = (id: number, evt: ChangeEvent<HTMLInputElement>) => {
-    setChanges([...changes, { id: id, quantity: Number(evt.target.value) }])
+    setChanges({
+      ...changes,
+      [id]: Number(evt.target.value),
+    })
   }
 
   return (
@@ -48,10 +46,7 @@ function Cart() {
                   <input
                     className="update-input"
                     onChange={(e) => handleType(id, e)}
-                    value={
-                      changes.find((item) => item.id === id)?.quantity ||
-                      quantity
-                    }
+                    value={changes[id] || quantity}
                   />
                 </td>
                 <td>

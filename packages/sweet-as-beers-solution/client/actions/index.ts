@@ -13,7 +13,7 @@ export type Action =
   | { type: 'UPDATE_ONE_QUANTITY'; payload: { id: number; amt: number } }
   | {
       type: 'UPDATE_MULTIPLE_BEERS'
-      payload: { id: number; quantity: number }[]
+      payload: Record<string, number>
     }
   | { type: 'TRASH_BEER'; payload: number }
 
@@ -43,11 +43,11 @@ export const updateBeerAmount = (id: number, newQuantity: number): Action => {
 }
 // need common type
 export const updateMultiple = (
-  objArrWithNewQuants: { id: number; quantity: number }[]
+  objWithNewQuants: Record<string, number>
 ): Action => {
   return {
     type: UPDATE_MULTIPLE,
-    payload: objArrWithNewQuants,
+    payload: objWithNewQuants,
   }
 }
 

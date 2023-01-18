@@ -30,11 +30,10 @@ function reducer(state = initialState, action: Action) {
 
     case UPDATE_MULTIPLE:
       return state.map((beer) => {
-        payload.map((item) => {
-          if (item.id === beer.id) {
-            beer.quantity = item.quantity
-          }
-        })
+        const updatedAmt = action.payload[beer.id]
+        if (updatedAmt) {
+          beer.quantity = updatedAmt
+        }
         return beer
       })
 
