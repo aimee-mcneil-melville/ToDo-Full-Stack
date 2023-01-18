@@ -7,8 +7,9 @@ router.use(express.json())
 
 router.get('/subreddit/:subreddit', (req, res) => {
   request
-    .get(`http://www.reddit.com/r/${req.params.subreddit}.json`)
+    .get(`https://www.reddit.com/r/${req.params.subreddit}.json`)
     .then((result) => {
+      console.log('reddit status', result.statusCode, result.body.error)
       res.json(result.body.data.children)
     })
     .catch((err) => {

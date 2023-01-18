@@ -1,32 +1,30 @@
 import { useState, FormEvent } from 'react'
 import { updateComment, addCommentByPostId } from '../api'
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
-import { IFetchComments } from './hooks/useFetchComments'
+import { FetchComments } from './hooks/useFetchComments'
 
-interface IProps {
+interface Props {
   comment?: string
   commentId?: number
-  variant?: 'new' | 'edit'
+  variant: 'new' | 'edit'
   setEditing?: (_: boolean) => void
-  fetchComments?: IFetchComments
 }
 
-function CommentForm(props: IProps) {
+function CommentForm(props: Props) {
   const { id: postId } = useParams()
   const navigate = useNavigate()
-  const { fetchComments } = useOutletContext<any>()
+  const { fetchComments } = useOutletContext() as {fetchComments: FetchComments}
   const [newComment, setNewComment] = useState(props.comment || '')
 
-  const onSubmit = (e: FormEvent<any>) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (props.variant === 'edit') {
       return updateComment(props.commentId!, newComment).then(() => {
-        props.fetchComments!(Number(postId))
-        props.setEditing!(false)
-      })
+        fetchComments(Number(postId))
+        props.setEditing && props.setEditing(false)      })
     } else if (props.variant === 'new') {
       return addCommentByPostId(Number(postId), newComment).then(() => {
-        fetchComments(postId)
+        fetchComments(Number(postId))
         setNewComment('')
         navigate(`/posts/${postId}`)
       })

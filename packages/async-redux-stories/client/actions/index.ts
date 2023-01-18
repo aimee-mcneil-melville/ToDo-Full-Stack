@@ -1,4 +1,5 @@
 import { fetchSubreddit } from '../apis/reddit'
+import type { ThunkAction } from '../store'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -32,8 +33,8 @@ export function showError(errorMessage: string): Action {
   }
 }
 
-export function fetchPosts(subreddit: string) {
-  return (dispatch: (_: Action) => void) => {
+export function fetchPosts(subreddit: string): ThunkAction {
+  return (dispatch) => {
     dispatch(requestPosts())
     return fetchSubreddit(subreddit)
       .then((posts) => {

@@ -1,6 +1,8 @@
 import { Action, Posts, RECEIVE_POSTS } from '../actions'
 
-function subreddits(state = [], action: Action): Posts {
+const initialState = [] as any[]
+
+function subreddits(state = initialState, action: Action): Posts {
   const { type, payload } = action
 
   switch (type) {

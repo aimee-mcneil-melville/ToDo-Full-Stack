@@ -44,7 +44,7 @@ module.exports = async ({ package, path, versions, fix }) => {
   // process.stderr.write(`Outdated eslintConfig detected\n`)
 
   if (fix) {
-    return package
+    return { result: package }
   }
 
   throw new Error('eslint misconfigured')

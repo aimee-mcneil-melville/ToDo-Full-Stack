@@ -1,10 +1,10 @@
-const path = require('path')
+const { join } = require('node:path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: ['./client/index.tsx', './client/styles/index.scss'],
   output: {
-    path: path.join(__dirname, '..', 'server', 'public'),
+    path: join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
   },
   mode: 'development',

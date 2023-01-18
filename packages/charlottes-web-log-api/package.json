@@ -3,20 +3,23 @@
   "version": "0.2.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log-api.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config ./client/webpack.config.js",
+    "dev": "run-p dev:server dev:client",
+    "dev:server": "nodemon --watch server server/index.ts",
     "dev:client": "npm run build -- --watch",
-    "dev:server": "nodemon server",
-    "dev:all": "run-p dev:client dev:server",
-    "dev": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
+    "db-reset": "run-s db:*",
+    "db:delete": "rm server/db/dev.sqlite3",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "build": "webpack --config client/webpack.config.js",
+    "test": "jest --verbose --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
-    "start": "node server",
-    "test": "jest"
+    "start": "node server"
   },
   "keywords": [
     "fullstack"

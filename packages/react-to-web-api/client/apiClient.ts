@@ -1,6 +1,6 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import request from 'superagent'
-// eslint-disable-next-line no-unused-vars
+import Widget from '../common/Widget'
 const widgetUrl = '/api/v1/widgets/'
 
 export function getWidgets() {}

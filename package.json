@@ -2,6 +2,7 @@
   "name": "challenges",
   "scripts": {
     "lint": "./tools/lint",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write 'packages/**/*.js' 'packages/**/*.jsx' 'packages/**/*.tsx' 'packages/**/*.ts'"
   },
   "workspaces": [

@@ -23,7 +23,7 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
     <summary>What's included</summary>
 
   - All of the React components are in place
-  - We can find the beer data in `data/beers.js`
+  - We can find the beer data in `data/beers.ts`
   - Redux has been installed, but not yet configured
   - The `actions` and `reducers` folders have been created, but no actions or reducers have been created yet
   - The beer listing displays the beers, but the "Add to cart" link doesn't do anything yet
@@ -33,11 +33,13 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
 
 ### 1. Setting up the store
 
-- [ ] Set up the store, wrapping `<App>` with the `<Provider>` in `client/index.tsx`. Include Redux dev tools
+- [ ] Set up the store, import the reducer and Redux dev tools into `client/store.ts`. Include the Redux dev tools by importing `devToolsEnhancer` from `'@redux-devtools/extension'`. Complete the store set up by passing the reducer as the first argument to `createStore` and pass `devToolsEnhancer()` as the second argument.
+
+- [ ] Wrap `<App>` with the `<Provider>` in `client/index.tsx` and pass it the store. 
   <details style="padding-left: 2em">
     <summary>More about the store</summary>
 
-  Before we start building our action creators and reducers, create the store and wrap our `<App>` with the `<Provider>` in `client/index.js`. It may also help to consider what the store will look like.
+  Before we start building our action creators and reducers, create the store and wrap our `<App>` with the `<Provider>`. It may also help to consider what the store will look like.
 
   <strong>The shape of the store</strong>
 
@@ -148,10 +150,10 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
 
   It might look like this
 
-  ```js
+  ```typescript
   export const ADD_TO_CART = 'ADD_TO_CART'
 
-  export function addToCart(id, name) {
+  export function addToCart(id: number, name: string) {
     return {
       type: ADD_TO_CART,
       payload: {
@@ -168,7 +170,7 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-  - The click event handler we wrote earlier in `client/components/BeerListItem.jsx` should also dispatch the `ADD_TO_CART` action with the id and name of the beer associated with the clicked link
+  - The click event handler we wrote earlier in `client/components/BeerListItem.tsx` should also dispatch the `ADD_TO_CART` action with the id and name of the beer associated with the clicked link
   </details>
 
 - [ ] Create a reducer that will manage the contents of the cart, starting with an `ADD_TO_CART` action
@@ -181,7 +183,7 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
   - When the reducer is processing the `ADD_TO_CART` action, it should default to `1` for the `quantity` of the cart item it's adding
   - Pay attention the shape of the action object, for example to get the id of the new beer we'll need to use `action.payload.id`
   - This is a reasonable shape for the `cart` once it has items in it:
-  `js [ { id: 1, name: 'HBIB Ginger Fusion', quantity: 1 }, { id: 2, name: 'Mangose & Melons', quantity: 1 } ] `
+  ` [ { id: 1, name: 'HBIB Ginger Fusion', quantity: 1 }, { id: 2, name: 'Mangose & Melons', quantity: 1 } ] `
   </details>
 
 ### 7. Displaying the cart
@@ -272,7 +274,7 @@ In this challenge we'll build part of a fictitious clearing house for beer - spe
   - The `cart` parameter passed to `updateQuantities` can have this shape:
 
     ```js
-    ;[
+    [
       {
         id: 1,
         quantity: 4,

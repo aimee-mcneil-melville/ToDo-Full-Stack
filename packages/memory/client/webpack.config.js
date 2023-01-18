@@ -1,10 +1,10 @@
-const path = require('path')
+const { join } = require('node:path')
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'index.tsx'),
+  entry: join(__dirname, 'index.tsx'),
   output: {
-    path: path.join(__dirname, '../server/public'),
+    path: join(__dirname, '../server/public'),
     filename: 'bundle.js',
   },
   module: {

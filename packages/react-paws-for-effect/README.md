@@ -41,6 +41,7 @@ Learning objectives:
 
   ```tsx
   import { createRoot } from 'react-dom/client'
+
   import App from './components/App'
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -53,7 +54,7 @@ Learning objectives:
 
 - [ ] Next, take a look at `client/components/App.tsx`
   <details style="padding-left: 2em">
-    <summary>More about <code>App.jsx</code></summary>
+    <summary>More about <code>App.tsx</code></summary>
 
   ```tsx
   function App() {
@@ -78,13 +79,13 @@ Learning objectives:
 
 Let's try another component.
 
-- [ ] In your editor, make a new component file called `Dog.jsx`, and give it some content
+- [ ] In your editor, make a new component file called `Dog.tsx`, and give it some content
   <details style="padding-left: 2em">
-    <summary>More about <code>Dog.jsx</code></summary>
+    <summary>More about <code>Dog.tsx</code></summary>
 
   First, save it into the `client/components` directory.
 
-  Copy/paste the following for the contents of Dog.jsx
+  Copy/paste the following for the contents of Dog.tsx
 
   ```tsx
   interface Props {
@@ -116,9 +117,9 @@ Let's try another component.
   <details style="padding-left: 2em">
     <summary>More about props</summary>
 
-  The props come from what we would normally think of as **attributes** on the component's tag in JSX:
+  The props come from what we would normally think of as **attributes** on the component's tag in TSX:
 
-  ```jsx
+  ```tsx
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
   ```
 
@@ -132,7 +133,7 @@ Let's try another component.
   }
   ```
 
-  When we refer to a prop in JSX we have to put it inside curly braces, like this:
+  When we refer to a prop in TSX we have to put it inside curly braces, like this:
 
   ```jsx
   <span>{props.name}</span>
@@ -146,13 +147,13 @@ Let's try another component.
 
   In `App.tsx`, import the `<Dog>` component
 
-  ```js
+  ```tsx
   import Dog from './Dog'
   ```
 
-  and add a `<Dog>` tag (use Desdemona, above if you like). The JSX returned should look something like this:
+  and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
 
-  ```jsx
+  ```tsx
   <div className="container">
     <img className="spinner" src="/images/paw.png" />
     <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
@@ -164,6 +165,7 @@ Let's try another component.
   You should see something like this in the browser:
 
   ![A Dog component](screenshots/dog.png)
+
   </details>
 
 - [ ] Try adding more dogs, right underneath the first one. Notice what happens when you don't provide one of the values?

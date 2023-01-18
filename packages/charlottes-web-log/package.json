@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "description": "A spider's blog about her web",
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log.git",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "run-p webpack server",
     "dev": "run-p client server",
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
-    "server": "node server",
+    "server": "ts-node server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "babel": {
@@ -42,6 +42,9 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.17.12",
     "@devacademy/eslint-config": "^1.6.0",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -57,6 +60,9 @@
     "prettier": "2.6.1",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.8.4",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   },

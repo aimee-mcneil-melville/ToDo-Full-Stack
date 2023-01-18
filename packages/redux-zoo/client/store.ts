@@ -1,12 +1,8 @@
 import { createStore } from 'redux'
 import reducers from './reducers'
+import { devToolsEnhancer } from '@redux-devtools/extension'
 
-const store = createStore(
-  reducers,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-)
-
+const store = createStore(reducers, devToolsEnhancer())
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 

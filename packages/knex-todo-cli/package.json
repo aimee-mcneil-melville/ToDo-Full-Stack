@@ -19,9 +19,7 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
-  "dependencies": {
-    "react-router-dom": "^6.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",

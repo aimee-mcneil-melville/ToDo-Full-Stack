@@ -1,8 +1,9 @@
 import knex from 'knex'
-const config = require('./knexfile').test
-const testDb = knex(config)
+import config from './knexfile'
 
-import { getWidgets, TWidget } from './db'
+const testDb = knex(config.test)
+
+import { getWidgets } from './db'
 
 beforeAll(() => {
   return testDb.migrate.latest()
@@ -18,7 +19,7 @@ afterAll(() => {
 
 describe('getWidgets', () => {
   it('returns the correct widgets array', () => {
-    return getWidgets(testDb).then((widgets: TWidget[]) => {
+    return getWidgets(testDb).then((widgets) => {
       expect(widgets).toHaveLength(3)
       expect(widgets[0]).toHaveProperty('mfg')
       expect(widgets[1].inStock).toBe(8)

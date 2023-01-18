@@ -1,20 +1,20 @@
-import nock from 'nock'
-
+import { fetchSubreddit } from '../apis/reddit'
 import * as actions from '.'
 
-test('fetchPosts', () => {
-  const scope = nock('http://localhost')
-    .get('/api/v1/reddit/subreddit/bananas')
-    .reply(200, [{ data: 'yay, bananas' }])
+jest.mock('../apis/reddit')
 
+const mockedFetchSubreddit = jest.mocked(fetchSubreddit)
+
+test('fetchPosts', () => {
+  mockedFetchSubreddit.mockResolvedValue([])
   const dispatch = jest.fn()
 
   return actions
-    .fetchPosts('bananas')(dispatch)
+    .fetchPosts('bananas')(dispatch, jest.fn())
     .then(() => {
       expect(dispatch.mock.calls).toHaveLength(2)
       expect(dispatch.mock.calls[0][0].type).toBe('REQUEST_POSTS')
       expect(dispatch.mock.calls[1][0].type).toBe('RECEIVE_POSTS')
-      scope.done()
+      expect(mockedFetchSubreddit).toHaveBeenCalledWith('bananas')
     })
 })

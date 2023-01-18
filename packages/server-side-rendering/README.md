@@ -39,7 +39,7 @@ When you're learning a new technology, make sure you start simple and get that w
     Make sure it's working by having it send something like `res.send('Hello, world!')`
   </details>
 
-- [ ] Create a layout file in `views/layouts`. It should be called `main.hbs`
+- [ ] Create a layout file in `server/views/layouts`. It should be called `main.hbs`
   <details style="padding-left: 2em">
     <summary>More about the layout file</summary>
 
@@ -135,7 +135,7 @@ The rest of this exercise should follow the same arc - gradually layering up det
 <details>
   <summary>Using <code>art.json</code></summary>
 
-  Any time you want to use this data, you can include `const art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
+  Any time you want to use this data, you can include `const art = require('./data/art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
 
   ```js
   const viewData = {
