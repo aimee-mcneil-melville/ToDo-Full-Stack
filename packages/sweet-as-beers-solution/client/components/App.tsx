@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hooks'
 
 import Header from './Header'
 import BeerList from './BeerList'
 import Cart from './Cart'
 
 function App() {
-  const page = useSelector((state) => state.page)
+  const page = useAppSelector((state) => state.page)
 
   return (
     <div className="app">

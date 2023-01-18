@@ -3,24 +3,34 @@ import {
   DELETE_BEER,
   UPDATE_MULTIPLE,
   UPDATE_QUANTITY,
+  Action,
 } from '../actions'
 
-function reducer(state = [], action) {
-  switch (action.type) {
+interface CartItem {
+  id: number
+  name: string
+  quantity: number
+}
+
+const initialState: CartItem[] = []
+
+function reducer(state = initialState, action: Action) {
+  const { type, payload } = action
+  switch (type) {
     case ADD_BEER:
-      return [...state, action.beer]
+      return [...state, payload]
 
     case UPDATE_QUANTITY:
       return state.map((beer) => {
-        if (beer.id === action.id) {
-          beer.quantity = action.amt
+        if (beer.id === payload.id) {
+          beer.quantity = payload.amt
         }
         return beer
       })
 
     case UPDATE_MULTIPLE:
       return state.map((beer) => {
-        const updatedAmt = action.changes[beer.id]
+        const updatedAmt = action.payload[beer.id]
         if (updatedAmt) {
           beer.quantity = updatedAmt
         }
@@ -28,7 +38,7 @@ function reducer(state = [], action) {
       })
 
     case DELETE_BEER:
-      return state.filter((beer) => beer.id !== action.id)
+      return state.filter((beer) => beer.id !== payload)
 
     default:
       return state
