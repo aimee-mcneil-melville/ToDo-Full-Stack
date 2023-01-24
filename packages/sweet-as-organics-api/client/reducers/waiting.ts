@@ -3,8 +3,9 @@ import {
   FETCH_PRODUCTS_SUCCESS,
 } from '../actions/products'
 import { SHOW_ERROR } from '../actions/error'
+import type { AppAction } from '../actions'
 
-function waiting(state = false, action) {
+function waiting(state = false, action: AppAction) {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
       return true

@@ -1,12 +1,14 @@
-import type { ReactNode } from 'react'
+import type * as React from 'react'
+import { OrderWithProducts } from '../../common/interfaces'
 import Order from './Order'
 
 interface Props {
-  children: ReactNode
+  children: React.ReactNode
 }
 
 function OrderList({ children }: Props) {
-  const orders = [] as any[]
+  const orders: OrderWithProducts[] = []
+
   return (
     <div className="orderlist">
       {children} {/* Holds the WaitIndicator */}

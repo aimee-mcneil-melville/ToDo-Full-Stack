@@ -33,7 +33,6 @@
     ]
   },
   "dependencies": {
-    "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2"
@@ -53,6 +52,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4",
     "@types/express": "^4.17.14",
+    "@types/superagent": "^4.1.15",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
     "babel-loader": "^8.2.2",

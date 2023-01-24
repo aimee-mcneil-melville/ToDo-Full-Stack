@@ -1,26 +1,30 @@
+import { AppAction } from '.'
+import { Product } from '../../common/interfaces'
 import { getProducts } from '../api/products'
-import { showError } from '../actions/error'
-import type { AppThunkAction } from '../store'
-import { Product } from '../../common/Product'
+import { AppThunkAction } from '../store'
+import { showError } from './error'
 
 export const FETCH_PRODUCTS_PENDING = 'FETCH_PRODUCTS_PENDING'
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
 
-export type Action =
-  | { type: typeof FETCH_PRODUCTS_PENDING; payload: unknown }
-  | { type: typeof FETCH_PRODUCTS_SUCCESS; payload: Product[] }
+export type ProductAction =
+  | { type: typeof FETCH_PRODUCTS_PENDING }
+  | { type: typeof FETCH_PRODUCTS_SUCCESS; payload: { products: Product[] } }
 
-export function fetchProductsPending(): Action {
+export const isProductAction = (action: AppAction): action is ProductAction => {
+  return action.type.includes('_PRODUCTS_')
+}
+
+export function fetchProductsPending(): ProductAction {
   return {
     type: FETCH_PRODUCTS_PENDING,
-    payload: undefined,
   }
 }
 
-export function fetchProductsSuccess(products: Product[]): Action {
+export function fetchProductsSuccess(products: Product[]): ProductAction {
   return {
     type: FETCH_PRODUCTS_SUCCESS,
-    payload: products,
+    payload: { products: products },
   }
 }
 
