@@ -18,7 +18,6 @@ When complete, your application might look like this:
   3. Components are stylised and configured using [Tailwindcss](https://tailwindcss.com/). You are welcome to read the code to understand what is going on but not expected to make any styling changes.
 
 </details>
-<br />
 
 - [ ] Clone this repo and `cd` into the new directory
 
@@ -37,8 +36,6 @@ When complete, your application might look like this:
 
 - [ ] Navigate to the link provided in the terminal
 
-<br />
-
 ## User stories
 
 In this challenge, we are going to build a simple vending machine.
@@ -48,8 +45,6 @@ In this challenge, we are going to build a simple vending machine.
 1. As an Admin, I want to be able to see how much money the vending machine has.
 
 **Note**: This vending machine lets you buy only one product at a time.
-
-## Requirements
 
 ## 1. Display messages on Screen
 - [ ] As a I user, I want to be able read instructions coming from the vending machine
@@ -65,7 +60,7 @@ Take a look at `slices/machine.ts`, the `initialState` has a `message` property 
 You should now see *Deposit funds* displayed on the page.
 </details>
 
-### 2. Deposit money
+## 2. Deposit money
 
 - [ ] As I user, I want to be able to deposit money.
 
@@ -88,7 +83,7 @@ Check Redux devtools and you should be able to see the deposit updates.
 </details>
 
 
-### 3. Display deposited money
+## 3. Display deposited money
 
 - [ ] As a user, I want to see the deposited amount displayed on the page.
 
@@ -97,10 +92,12 @@ Check Redux devtools and you should be able to see the deposit updates.
 
 1. In the `machine.ts`, update the `deposit` action - from previous step - and update the `message` property to show a message telling the user the amount that has been deposited, e.g  *Deposited $5.00 - Please select a snack*
 
+Tip: there is a formatMoney helper function provided in machine.ts to format into $0.00
+
 You should see the deposited amount displayed on the page after inputing a number and pressing *Enter*
 </details>
 
-### 4. Display products
+## 4. Display products
 
 - [ ] As a user I want to be able to view products on the screen with the their prices and how many products are in stock. 
 
@@ -115,14 +112,14 @@ In the `Products.tsx`, the component imports and uses the data that is coming fr
 You should expect no changes in the UI, however, the current component is connected and aware of any changes that happens to global state.
 </details>
 
-### 5. Select products
+## 5. Select products
 
 - [ ] As a user I want to be able to select a product and see the stock decrease. I will also see a message that will prompt me to Collect product.
 
 <details style="padding-left: 2em">
   <summary>More about selecting products</summary>
 
-In the `ProductItem.tsx`, there is an event handler named `handleOnClick`.
+In the `ProductItem.tsx`, there is an event handler named `handleClick`.
 
 1. Dispatch the `select` action and pass the `id` of the product that is passed as props to it.
 
@@ -132,33 +129,34 @@ Now the `id` is passed to the reducer and it's time to write the logic for it, h
 
 1. Define the `state` and `{ payload }` as parameters
 
-2. Find the selected product by using the `payload`
+1. Find the selected product by using the `payload`
 
-3. Update the `revenue` property by adding the selected products price. The `revenue` is how much sales profit the machine has made. 
+1. Set the `dispenser` to the selected product name
 
-4. Reset the `deposit` to `0`
+1. Update the `revenue` property by adding the selected products price. The `revenue` is how much sales profit the machine has made. 
 
-5. Set the `message` property to look like `Collect product`
+1. Reset the `deposit` to `0`
 
-6. Update the `change` property. Change should be the `deposit - price of selected product`
+1. Set the `message` property to look like `Collect product`
 
-7. Update the `products` property and decrement the `stock` for the selected product. *Hint:* use `.filter()` or `.map()`
+1. Update the `change` property. Change should be the `deposit - price of selected product`
 
-8. Add a conditional to prevent selecting products when the deposited amount is less than the product's price. 
+1. Update the `products` property and decrement the `stock` for the selected product. *Hint:* use `.filter()` or `.map()`
 
-9. Add another conditional to prevent users from selecting products that are not in stock. 
+1. Add a conditional to prevent selecting products when the deposited amount is less than the product's price. 
+
+1. Add another conditional to prevent users from selecting products that are not in stock. 
 
 Take a look at Redux devtools and you should be able to see the global state updates as expected.
 </details>
 
-### 6. Update ProductItem Component
+## 6. Update the Components
 
-- [ ] Users should be able to know if an product is selectable by using a different cursor icon
-
-<details style="padding-left: 2em">
-<summary>More about mouse hover when selecting a products</summary>
+- [ ] Users should be able to know if an product is selectable by using a different cursor icon and see their change quantity
 
 In `ProductItem.tsx` component:
+<details style="padding-left: 2em">
+<summary>More about mouse hover when selecting a products</summary>
 
 1. Read the `deposit` value from global state and check  if the `deposit` is greater than or equal to the `price` of the product and assign this boolean to `canSelect`. For example:
 
@@ -171,7 +169,11 @@ const canVote = useAppSelector((state) => state.user.age >= 16)
 You should be able to see a different cursor icon when you hover on a product that is not in stock or the deposited amount is less than the product's price. 
 </details>
 
-### 7. Collecting a Product
+In the `Change.tsx` component:
+
+1. Call the `useAppSelector` and read the `change` property and assign it to `change`
+
+## 7. Collecting a Product
 
 - [ ] As a user I want to be able collect my product.
 
@@ -182,19 +184,21 @@ In `machine.ts`, find the `openDispenser` reducer:
 
 1. Reset the `dispenser` property to null
 
-2. Set the `message` property to a new values saying 'Depoist funds' to inform the user that this is the end of a vending machine cycle
+1. Set the `message` property to a new values saying 'Depoist funds' to inform the user that this is the end of a vending machine cycle
 
-3. Reset the `change` property to `0`
+1. Reset the `change` property to `0`
 
-Now let's swtich to the `Dispenser.tsx`:
+Now let's switch to the `Dispenser.tsx`:
 
-4. Dispatch the `openDispenser` action in the event handler
+1. Dispatch the `openDispenser` action in the event handler
 
-5. Call the `useAppSelector` and read the `dispenser` property and assign it to `productInDispenser`
+1. Call the `useAppSelector` and read the `dispenser` property and assign it to `productInDispenser`
 
-You should see the product disappears when collecting an product and see a message displayed.
+You should see the product disappears when clicking (collecting) the product from the dispenser.
 </details>
 
-### 8. Stretch
+## 8. Stretch
 
-Make the necessary updates so that the vending machine allows users to select more than one product after depositing the right amount.
+- Add a button to show the revenue from global state using the `Revenue.tsx` component. Maybe you could add another button which dispatches an action which clears the revenue.
+- Make the necessary updates so that the vending machine allows users to select more than one product after depositing the right amount.
+- Write tests.
