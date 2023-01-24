@@ -32,7 +32,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
   ```js
   server.get('*', (req, res) => {
-    res.sendFile(path.resolve('server/public/index.html'))
+    res.sendFile(join('server/public/index.html'))
   })
   ```
 
@@ -46,7 +46,7 @@ This exercise asks you to build an experience to navigate continents and their c
      ```jsx
      import { BrowserRouter as Router } from 'react-router-dom'
      ```
-  2. Inside our `ReactDOM.render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
+  2. Inside our `render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
 
   **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
 
