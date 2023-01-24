@@ -18,7 +18,6 @@ When complete, your application might look like this:
   3. Components are stylised and configured using [Tailwindcss](https://tailwindcss.com/). You are welcome to read the code to understand what is going on but not expected to make any styling changes.
 
 </details>
-<br />
 
 - [ ] Clone this repo and `cd` into the new directory
 
@@ -38,7 +37,6 @@ When complete, your application might look like this:
 - [ ] Navigate to the link provided in the terminal
 
 <br />
----
 
 ## User stories
 
