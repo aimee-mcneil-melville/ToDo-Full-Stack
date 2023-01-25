@@ -1,15 +1,16 @@
+import type * as React from 'react'
 import { useEffect } from 'react'
-import type { ReactNode } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router-dom'
+import { Product } from '../../common/interfaces'
 
 import { addToCart } from '../actions/cart'
 import { fetchProducts } from '../actions/products'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 import ProductListItem from './ProductListItem'
 
 interface Props {
-  children: ReactNode
+  children: React.ReactNode
 }
 
 function ProductList({ children }: Props) {
@@ -19,9 +20,9 @@ function ProductList({ children }: Props) {
 
   useEffect(() => {
     dispatch(fetchProducts())
-  }, [])
+  }, [dispatch])
 
-  function addProductToCart(product: { id: number; name: string }) {
+  function addProductToCart(product: Product) {
     const { id, name } = product
     const newCartItem = { id, name }
     dispatch(addToCart(newCartItem))

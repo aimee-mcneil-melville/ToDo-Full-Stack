@@ -1,21 +1,11 @@
+import { OrderWithProducts } from '../../common/interfaces'
 import OrderItem from './OrderItem'
 
-interface OrderProduct {
-  id: number
-  name: string
-  quantity: number
-}
-
 interface Props {
-  order: {
-    id: number
-    products: OrderProduct[]
-    createdAt: string
-    status: string
-  }
+  order: OrderWithProducts
 }
 
-function Order(props: Props) {
+export default function Order(props: Props) {
   const { id, products, createdAt, status } = props.order
 
   function cancelOrder() {
@@ -37,8 +27,8 @@ function Order(props: Props) {
       <table>
         <thead>
           <tr>
-            <td role="columnheader">Product</td>
-            <td role="columnheader">Quantity</td>
+            <th>Product</th>
+            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
@@ -65,5 +55,3 @@ function Order(props: Props) {
     </div>
   )
 }
-
-export default Order

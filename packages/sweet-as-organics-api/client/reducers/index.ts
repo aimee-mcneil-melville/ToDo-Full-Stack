@@ -1,3 +1,4 @@
+// TODO: conver redux stuffs to ts
 import { combineReducers } from 'redux'
 
 import products from './products'

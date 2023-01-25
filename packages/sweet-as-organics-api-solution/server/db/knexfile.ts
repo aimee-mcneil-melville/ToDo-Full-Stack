@@ -1,6 +1,7 @@
-const path = require('path')
+import path from 'path'
+import { Knex } from 'knex'
 
-module.exports = {
+const config: Record<string, Knex.Config> = {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -45,3 +46,5 @@ module.exports = {
     },
   },
 }
+
+export default config
