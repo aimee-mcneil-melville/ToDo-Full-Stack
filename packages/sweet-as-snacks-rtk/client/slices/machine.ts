@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import products from '../products'
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { formatMoney } from '../utils'
 
 export type Product = typeof products[0]

@@ -1,9 +1,8 @@
-import React from 'react'
+import { Product } from '../slices/machine'
 
-// eslint-disable-next-line no-unused-vars
-function ProductItem({ id, name, price, stock }) {
-  // TODO: select the deposit from global state and check if the 
-  // deposited amount is greater than or equal to the price 
+function ProductItem({ id, name, price, stock }: Product) {
+  // TODO: select the deposit from global state and check if the
+  // deposited amount is greater than or equal to the price
   const canSelect = false
   // TODO: replace `true` and check if the stock is greater than 0
   const inStock = true

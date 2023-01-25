@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function DepositSlot() {
   const [amount, setAmount] = useState(0)
 
-  function handleChange(event) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     // the '+' sign means cast to a number
     if (!isNaN(+event.target.value)) {
       setAmount(Number(event.target.value))
     }
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     // TODO: dispatch the deposit action from slice
     setAmount(0)

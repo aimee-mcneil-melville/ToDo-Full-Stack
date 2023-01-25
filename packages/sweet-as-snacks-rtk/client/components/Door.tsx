@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Door() {
   // TODO: select the product in door from global state
   const productInDoor: string | null = null

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Change from './Change'
 import Products from './Products'
 import DepositSlot from './DepositSlot'

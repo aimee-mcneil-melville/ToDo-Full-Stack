@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { formatMoney } from '../utils';
 
 function Revenue() {
