@@ -53,15 +53,17 @@ Our task is to create all of the components that comprise the page and wire up d
   import postData from '../data/posts'
   import Post from './Post'
 
-  export default function Posts() {
+  function Posts() {
     return (
-      <>
+      <div>
         {postData.map((post) => (
           <Post post={post} />
         ))}
-      </>
+      </div>
     )
   }
+
+  export default Posts
   ```
 
   and how that `Post` component may be defined
@@ -77,9 +79,11 @@ Our task is to create all of the components that comprise the page and wire up d
     }
   }
 
-  export default function Post({ post }: Props) {
+  function Post({ post }: Props) {
     return (/* ... */)
   }
+
+  export default Post
   ```
 
   </details>
@@ -128,7 +132,7 @@ Our task is to create all of the components that comprise the page and wire up d
 
 [The rules of keys](https://beta.reactjs.org/learn/rendering-lists#rules-of-keys) give you methods to think about how to choose a good value for key.
 
-Since paragraphs in a blogpost don't change order it's safe to use their index in the array as their key... but for a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+Since paragraphs in a blog post don't change order it's safe to use their index in the array as their key... but for a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
 
 </details>
 

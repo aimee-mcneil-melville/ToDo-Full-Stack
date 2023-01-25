@@ -45,8 +45,8 @@ After you've completed this project, this is what it can look like after a few c
 
   ```tsx
   interface Props {
-  width: number
-  height: number
+    width: number
+    height: number
   }
 
   function App({ width, height }: Props) {
