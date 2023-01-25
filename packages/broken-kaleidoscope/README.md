@@ -64,7 +64,7 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
   <details style="padding-left: 2em">
     <summary>More about styling in JSX</summary>
 
-    We need to see our component. For today, we'll make it visible by using the `style` JSX attribute. This directly corresponds to the `style` attribute on HTML elements, but instead of pure CSS syntax we use a JavaScript object. Here's an example:
+    We need to see our component. For today, we'll make it visible by using the `style` TSX attribute. This directly corresponds to the `style` attribute on HTML elements, but instead of pure CSS syntax we use a JavaScript object. Here's an example:
 
     ```jsx
       <div style={{
@@ -114,7 +114,7 @@ We're going to need more than one `<Pixel>` here.
 
 ### 4. State your business
 
-To easily work with the values we use in the `style` JSX attribute, we should put them into component state.
+To easily work with the values we use in the `style` TSX attribute, we should put them into component state.
 
 - [ ] Create a new state called `style`, using the `useState` method. It's initial state should be a suitable style object
   <details style="padding-left: 2em">
@@ -123,7 +123,7 @@ To easily work with the values we use in the `style` JSX attribute, we should pu
     To review how `useState` is implemented, [see the React docs](https://reactjs.org/docs/hooks-state.html#recap). The example there sets the initial state to `0`, but we will be using an object.
   </details>
 
-- [ ] Next, change your component JSX to refer to `style` instead of including an object literal
+- [ ] Next, change your component TSX to refer to `style` instead of including an object literal
   <details style="padding-left: 2em">
     <summary>More about using the `style` state</summary>
 
@@ -189,7 +189,7 @@ We can illustrate this by responding to some **events**.
     ```
   </details>
 
-- [ ] Finally, add an `onClick` attribute to your JSX that calls `clickHandler` whenever the component is clicked
+- [ ] Finally, add an `onClick` attribute to your TSX that calls `clickHandler` whenever the component is clicked
 - [ ] Check your work in the browser. You should see the `<Pixel>`s change colour when you click on them
 
 > Don't forget to look in the JavaScript console in your devtools to see any errors that might be occurring, especially if the result you see is not what you expected.
@@ -207,9 +207,9 @@ Have some fun!
     Try:
 
     * **onMouseEnter**: turn the components green as you pass the mouse over them
-    * **onContextMenu**: turn the components black as you right-click on them (hint: checkout `evt.preventDefault()` and `onContextMenu`)
     * **onDoubleClick**: turn the components white
     * **onDragEnter**: turn the components yellow as you click and drag through them
+    
   </details>
 
 ### 8. Hi-res
@@ -241,7 +241,7 @@ Time to crank up the resolution.
       ]
     ```
 
-    > The ability to return an array of JSX components was introduced with React 16.
+    > The ability to return an array of TSX components was introduced with React 16.
   </details>
 
 - [ ] Programmatically generate an array of **many** `<Pixel>`s, rather than coding them manually
@@ -265,8 +265,10 @@ Time to crank up the resolution.
 
 <details>
   <summary>More about stretch challenges</summary>
+
+  Turn the components black as you right-click on them (hint: checkout `evt.preventDefault()` and `onContextMenu`). This may require that you import the `MouseEvent` type from react (read about more event types on this handy [TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/#list-of-event-types)).
   
-  Reduce the number of components rendered to something reasonable (500-1000) and try changing their colour on a timer every two seconds or so (hint: check out `setInterval`)
+  Reduce the number of components rendered to something reasonable (500-1000) and try changing their colour on a timer every two seconds or so (hint: check out `useEffect` and `setInterval` vs `setTimeout`)
 </details>
 
 ---
