@@ -134,6 +134,8 @@ The database migrations and seeds have already been written for you so you don't
     ```
 
     **Hint:** What does the `insert` knex method return? How might we use that information to generate the response data shown above?
+
+    Rather than making a second database call to fetch the newly-created record, a more efficient approach would be to reconstruct the record based on the details given to the route, plus the information returned from the database query.
   </details>
 
 - [ ] Update an existing blog post
