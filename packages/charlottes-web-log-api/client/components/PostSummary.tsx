@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Post } from '../common/Post'
+import { Post } from '../../common/post'
 
 interface Props {
   post: Post
