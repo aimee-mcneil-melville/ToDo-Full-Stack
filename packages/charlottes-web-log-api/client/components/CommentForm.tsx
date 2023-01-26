@@ -18,16 +18,19 @@ function CommentForm(props: Props) {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (props.variant === 'edit') {
-      return updateComment(props.commentId!, newComment).then(() => {
+    if (props.variant === 'edit' && props.commentId) {
+      updateComment(props.commentId, newComment).then(() => {
         fetchComments(Number(postId))
-        props.setEditing && props.setEditing(false)      })
+        props.setEditing && props.setEditing(false)
+      })
+      .catch((err) => console.log(err))
     } else if (props.variant === 'new') {
-      return addCommentByPostId(Number(postId), newComment).then(() => {
+      addCommentByPostId(Number(postId), newComment).then(() => {
         fetchComments(Number(postId))
         setNewComment('')
         navigate(`/posts/${postId}`)
       })
+      .catch((err) => console.log(err))
     }
   }
 
