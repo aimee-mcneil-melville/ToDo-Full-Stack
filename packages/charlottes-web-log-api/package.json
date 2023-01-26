@@ -7,19 +7,15 @@
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
+    "start": "ts-node server",
     "dev": "run-p dev:server dev:client",
     "dev:server": "nodemon --watch server server/index.ts",
     "dev:client": "npm run build -- --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "db-reset": "run-s db:*",
-    "db:delete": "rm server/db/dev.sqlite3",
-    "db:migrate": "npm run knex migrate:latest",
-    "db:seed": "npm run knex seed:run",
     "build": "webpack --config client/webpack.config.js",
     "test": "jest --verbose --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint:fix": "eslint . --fix",
-    "start": "node server"
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "fullstack"
@@ -45,8 +41,7 @@
   "dependencies": {
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "lodash": "^4.17.20",
-    "sqlite3": "^5.1.2"
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
@@ -71,6 +66,7 @@
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
+    "sqlite3": "^5.1.2",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
