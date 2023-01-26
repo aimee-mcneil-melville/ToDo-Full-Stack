@@ -171,9 +171,11 @@ The database migrations and seeds have already been written for you so you don't
     Request type and route:<br />
     **DELETE `/v1/posts/:id`**
 
-    Response: Nothing (status OK)
+    Response: Nothing (status 200 - OK)
 
-    You may also want to browse the contents of your database in DB Browser or VS Code's SQLite Viewer to verify that deletion has worked as expected.
+    As the Comments table has a field called `post_id` that `references` the Posts table, you will also need to delete any comments with a foreign key matching that post.
+
+    Comments won't be able to reference a foreign key that doesn't exist. 
   </details>
 
 **Hint:** You can always re-run the seeds of your database to start over with a clean set of records.
