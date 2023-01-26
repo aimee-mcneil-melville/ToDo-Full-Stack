@@ -72,7 +72,8 @@ The database migrations and seeds have already been written for you so you don't
 
   - Instead of using `res.render` you will need to use `res.json`
   - The database fields are snake_case, but the frontend fields are camelCase. To make this work, you need to make sure you convert the fields from snake_case to camelCase when sending from the server to the client, and camelCase to snake_case when posting to the server. Remember that you can use the `as` keyword in your Knex `select` calls to control the names of the properties that come back from your queries. 
-  - Your data will need to be typed. Because the backend fields are using snake_case, you will need to use different types to that in the folder 'common', as these types are for the frontend. Be careful that you do not have circular imports, or any repetition in declaring your types. 
+  - Your data will need to be typed. Depending on how you code the backend, you may need to use different types to that in the folder 'common', as these types are in camelCase for the frontend.
+  - Types for promises (such as those returned from `db` functions) can be written like `Promise<___>`, with the type for the expected result written inside the angle brackets `<>`. An example of this would be `Promise<Post[]>` for a promise that results in an array of Posts.
   
 </details>
 <br />
