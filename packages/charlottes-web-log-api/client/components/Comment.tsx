@@ -37,12 +37,11 @@ function Comment({ comment, fetchComments }: Props) {
         <button
           className="pure-button button-error"
           onClick={(e) => {
-            console.log('delete comment', comment.id)
             e.preventDefault()
-
-            return deleteComment(comment.id!).then(() => {
-              fetchComments(comment.postId)
-            })
+            if (!comment.id) return
+            deleteComment(comment.id)
+              .then(() => fetchComments(comment.postId))
+              .catch((err) => console.log(err))
           }}
         >
           Delete

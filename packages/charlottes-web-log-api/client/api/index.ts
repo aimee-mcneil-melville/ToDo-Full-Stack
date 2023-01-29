@@ -1,7 +1,6 @@
 import request from 'superagent'
 
 import { Comment } from '../../common/comment'
-
 import { Post } from '../../common/post'
 
 export function getPosts(): Promise<Post[]> {
