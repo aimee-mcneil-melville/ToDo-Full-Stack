@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hooks'
 
 import Word from './Word'
 
 function Words() {
-  const words = useSelector((state) => state.words)
+  const words = useAppSelector((state) => state.words)
 
   return (
     <div>
