@@ -1,4 +1,8 @@
-const Subtitle = (props: { text: string }) => {
+interface Props {
+  text: string
+}
+
+const Subtitle = (props: Props) => {
   return <h2>{props.text}</h2>
 }
 
