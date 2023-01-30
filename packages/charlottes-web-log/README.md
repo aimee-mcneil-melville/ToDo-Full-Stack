@@ -57,7 +57,7 @@ Our task is to create all of the components that comprise the page and wire up d
     return (
       <div>
         {postData.map((post) => (
-          <Post post={post} />
+          <Post key={post.id} {...post} />
         ))}
       </div>
     )
@@ -70,17 +70,20 @@ Our task is to create all of the components that comprise the page and wire up d
 
   ```tsx
   interface Props {
-    post: {
-      id: number
-      title: string
-      date: string
-      commentCount: number
-      paragraphs: string[]
-    }
+    id: number
+    title: string
+    date: string
+    commentCount: number
+    paragraphs: string[]
   }
 
-  function Post({ post }: Props) {
-    return (/* ... */)
+  function Post(props: Props) {
+    return (
+      <div>
+        <h3>{props.title}</h3>
+        ...
+      </div>
+    )
   }
 
   export default Post

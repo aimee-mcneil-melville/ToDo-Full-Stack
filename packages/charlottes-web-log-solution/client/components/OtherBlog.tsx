@@ -1,13 +1,12 @@
-import type { TOtherBlog } from '../data/other-blogs'
-
 interface Props {
-  blog: TOtherBlog
+  blogTitle: string
+  link: string
 }
 
-export default function OtherBlog({ blog }: Props) {
+export default function OtherBlog({ blogTitle, link }: Props) {
   return (
-    <li className="other-blog">
-      <a href={blog.link}>{blog.blogTitle}</a>
+    <li>
+      <a href={link}>{blogTitle}</a>
     </li>
   )
 }

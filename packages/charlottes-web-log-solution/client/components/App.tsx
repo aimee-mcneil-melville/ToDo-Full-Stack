@@ -1,19 +1,23 @@
 import Header from './Header'
-import OtherBlogs from './OtherBlogs'
-import Posts from './Posts'
-import RecentEntries from './RecentEntries'
+import headerProps from '../data/header'
+
 import Footer from './Footer'
+import footerProps from '../data/footer'
+
+import Posts from './Posts'
+import OtherBlogs from './OtherBlogs'
+import RecentEntries from './RecentEntries'
 
 function App() {
   return (
     <div className="app">
-      <Header />
+      <Header {...headerProps} />
       <div className="body-container">
         <OtherBlogs />
         <Posts />
         <RecentEntries />
       </div>
-      <Footer />
+      <Footer {...footerProps} />
     </div>
   )
 }

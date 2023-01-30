@@ -1,11 +1,9 @@
-import type { TRecentEntry } from '../data/recent-entries'
-
-type Props = {
-  entry: TRecentEntry
+interface Props {
+  name: string
+  link: string
 }
 
-export default function RecentEntry({ entry }: Props) {
-  const { link, name } = entry
+export default function RecentEntry({ name, link }: Props) {
   return (
     <li className="recent-entry">
       <a href={link}>{name}</a>
