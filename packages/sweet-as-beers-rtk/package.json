@@ -10,7 +10,8 @@
     "start": "ts-node server/index.ts",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "webpack": "webpack --config ./client/webpack.config.js"
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",

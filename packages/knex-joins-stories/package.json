@@ -8,7 +8,8 @@
     "dev": "nodemon server/index",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "test": "jest --watch --noStackTrace"
+    "test": "jest --watch --noStackTrace",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "repository": {
     "type": "git",

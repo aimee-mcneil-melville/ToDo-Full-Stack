@@ -13,7 +13,9 @@ interface Props {
 function CommentForm(props: Props) {
   const { id: postId } = useParams()
   const navigate = useNavigate()
-  const { fetchComments } = useOutletContext() as {fetchComments: FetchComments}
+  const { fetchComments } = useOutletContext() as {
+    fetchComments: FetchComments
+  }
   const [newComment, setNewComment] = useState(props.comment || '')
 
   const onSubmit = (e: FormEvent) => {

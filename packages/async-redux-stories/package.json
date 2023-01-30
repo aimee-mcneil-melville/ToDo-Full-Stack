@@ -11,7 +11,8 @@
     "start": "ts-node server/index.ts",
     "webpack": "webpack --config client/webpack.config.js",
     "build": "npm run webpack",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",

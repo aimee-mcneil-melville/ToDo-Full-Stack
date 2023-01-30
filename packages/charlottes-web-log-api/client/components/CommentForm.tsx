@@ -13,24 +13,28 @@ interface Props {
 function CommentForm(props: Props) {
   const { id: postId } = useParams()
   const navigate = useNavigate()
-  const { fetchComments } = useOutletContext() as {fetchComments: FetchComments}
+  const { fetchComments } = useOutletContext() as {
+    fetchComments: FetchComments
+  }
   const [newComment, setNewComment] = useState(props.comment || '')
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (props.variant === 'edit' && props.commentId) {
-      updateComment(props.commentId, newComment).then(() => {
-        fetchComments(Number(postId))
-        props.setEditing && props.setEditing(false)
-      })
-      .catch((err) => console.log(err))
+      updateComment(props.commentId, newComment)
+        .then(() => {
+          fetchComments(Number(postId))
+          props.setEditing && props.setEditing(false)
+        })
+        .catch((err) => console.log(err))
     } else if (props.variant === 'new') {
-      addCommentByPostId(Number(postId), newComment).then(() => {
-        fetchComments(Number(postId))
-        setNewComment('')
-        navigate(`/posts/${postId}`)
-      })
-      .catch((err) => console.log(err))
+      addCommentByPostId(Number(postId), newComment)
+        .then(() => {
+          fetchComments(Number(postId))
+          setNewComment('')
+          navigate(`/posts/${postId}`)
+        })
+        .catch((err) => console.log(err))
     }
   }
 

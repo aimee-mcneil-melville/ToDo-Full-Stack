@@ -20,7 +20,8 @@
     "h:deploy": "git push heroku main",
     "h:migrate": "heroku run npm run knex migrate:latest",
     "h:rollback": "heroku run npm run knex migrate:rollback",
-    "h:seed": "heroku run npm run knex seed:run"
+    "h:seed": "heroku run npm run knex seed:run",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "keywords": [
     "fullstack"

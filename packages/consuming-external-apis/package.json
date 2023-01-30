@@ -16,7 +16,8 @@
     "build": "npm run webpack",
     "server": "ts-node server/index.ts",
     "test": "jest --watchAll",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [
