@@ -57,7 +57,7 @@ Our task is to create all of the components that comprise the page and wire up d
     return (
       <div>
         {postData.map((post) => (
-          <Post post={post} />
+          <Post key={post.id} {...post} />
         ))}
       </div>
     )
