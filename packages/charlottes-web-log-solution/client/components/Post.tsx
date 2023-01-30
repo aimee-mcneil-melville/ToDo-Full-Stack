@@ -1,11 +1,12 @@
-import type * as type from '../data/posts'
-
 interface Props {
-  post: type.Post
+  id: number
+  title: string
+  date: string
+  commentCount: number
+  paragraphs: string[]
 }
 
-export default function Post({ post }: Props) {
-  const { title, date, commentCount, paragraphs } = post
+export default function Post({ title, date, commentCount, paragraphs }: Props) {
   return (
     <div className="post">
       <h2>{title}</h2>

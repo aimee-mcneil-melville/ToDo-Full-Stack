@@ -7,7 +7,13 @@ export default function OtherBlogs() {
       <header>Other Blogs</header>
       <ul>
         {otherBlogsData.map((blog) => {
-          return <OtherBlog key={blog.id} blog={blog} />
+          return (
+            <OtherBlog
+              key={blog.id}
+              blogTitle={blog.blogTitle}
+              link={blog.link}
+            />
+          )
         })}
       </ul>
     </div>

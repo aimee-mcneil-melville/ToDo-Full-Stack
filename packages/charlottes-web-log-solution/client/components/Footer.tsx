@@ -1,10 +1,13 @@
-import type * as type from '../data/footer'
+interface Props {
+  copyright: number
+  author: string
+}
 
-export default function Footer ({ copyright, author }: type.Footer) {
+export default function Footer({ copyright, author }: Props) {
   return (
-    <div className='footer'>
+    <div className="footer">
       <p>{copyright}</p>
       <p>{author}</p>
     </div>
   )
-  }
+}

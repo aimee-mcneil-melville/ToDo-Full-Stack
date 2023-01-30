@@ -7,7 +7,9 @@ export default function RecentEntries() {
       <header>Recent Entries</header>
       <ul>
         {entriesData.map((entry) => {
-          return <RecentEntry key={entry.id} entry={entry} />
+          return (
+            <RecentEntry key={entry.id} name={entry.name} link={entry.link} />
+          )
         })}
       </ul>
     </div>

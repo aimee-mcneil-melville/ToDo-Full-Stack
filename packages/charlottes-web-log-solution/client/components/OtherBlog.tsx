@@ -1,11 +1,9 @@
-import type * as type from '../data/other-blogs'
-
 interface Props {
-  blog: type.OtherBlog
+  blogTitle: string
+  link: string
 }
 
-export default function OtherBlog({ blog }: Props) {
-  const { blogTitle, link } = blog
+export default function OtherBlog({ blogTitle, link }: Props) {
   return (
     <li>
       <a href={link}>{blogTitle}</a>
