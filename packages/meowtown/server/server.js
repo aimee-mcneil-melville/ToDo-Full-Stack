@@ -13,6 +13,7 @@ const hbsConfig = {
 }
 server.engine('hbs', hbs.engine(hbsConfig))
 server.set('view engine', 'hbs')
+server.set('views', __dirname + '/views')
 
 // middleware
 
