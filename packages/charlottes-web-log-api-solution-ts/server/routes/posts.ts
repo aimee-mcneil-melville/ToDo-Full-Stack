@@ -1,7 +1,14 @@
 import express from 'express'
 
 // eslint-disable-next-line no-unused-vars
-import {getComments, addComment, getAllPosts, addPost, updatePost, deletePost} from '../db/db'
+import {
+  getComments,
+  addComment,
+  getAllPosts,
+  addPost,
+  updatePost,
+  deletePost,
+} from '../db/db'
 
 const router = express.Router()
 

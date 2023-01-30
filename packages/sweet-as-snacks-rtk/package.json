@@ -22,7 +22,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "build:css": "npx tailwindcss -i client/input.css -o server/public/main.css --watch"
+    "build:css": "npx tailwindcss -i client/input.css -o server/public/main.css --watch",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [

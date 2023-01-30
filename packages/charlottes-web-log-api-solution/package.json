@@ -16,7 +16,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
     "start": "ts-node server/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "keywords": [
     "fullstack"
