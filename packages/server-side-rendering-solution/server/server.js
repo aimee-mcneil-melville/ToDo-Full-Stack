@@ -13,7 +13,7 @@ server.engine(
   })
 )
 server.set('view engine', 'hbs')
-server.set('views', __dirname + '/views',);
+server.set('views', __dirname + '/views')
 server.use(express.static(__dirname + '/public'))
 
 // Routes
