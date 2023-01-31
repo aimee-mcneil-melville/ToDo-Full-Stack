@@ -1,4 +1,6 @@
-export default {
+const header = {
   title: "Charlotte's Web Log",
   link: '/',
-} as const
+}
+
+export default header

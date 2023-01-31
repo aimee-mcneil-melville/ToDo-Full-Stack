@@ -10,7 +10,8 @@
     "server": "nodemon server/index.ts",
     "knex": "knex --knexfile server/db/knexfile.js",
     "test": "jest --watchAll --verbose",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",

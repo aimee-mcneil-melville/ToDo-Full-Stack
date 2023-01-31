@@ -10,7 +10,8 @@
     "webpack": "webpack --config ./client/webpack.config.js",
     "client": "npm run webpack -- --watch",
     "server": "ts-node server/index.ts",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [

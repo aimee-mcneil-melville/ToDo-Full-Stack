@@ -16,7 +16,8 @@
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run build -- --watch",
     "dev:server": "nodemon server/index.ts",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [

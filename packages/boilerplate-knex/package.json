@@ -10,7 +10,7 @@
     "test": "jest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier -w *.js routes seeds migrations",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
     "build": "knex migrate:latest"
   },
   "repository": {

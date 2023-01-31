@@ -10,7 +10,8 @@
     "dev:client": "webpack --config ./client/webpack.config.js --watch",
     "dev:server": "nodemon server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "repository": "https://github.com/dev-academy-challenges/react-paws-for-effect.git",
   "author": "Dev Academy Aotearoa",

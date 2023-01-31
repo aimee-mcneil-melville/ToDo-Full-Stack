@@ -2,10 +2,7 @@ import path from 'path'
 import express from 'express'
 
 import products from './routes/products'
-<<<<<<< HEAD:packages/sweet-as-organics-api-solution/server/server.ts
 import orders from './routes/orders'
-=======
->>>>>>> main:packages/sweet-as-organics-api/server/server.ts
 
 const server = express()
 

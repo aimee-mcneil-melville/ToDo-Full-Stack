@@ -14,7 +14,8 @@
     "db:seed": "npm run knex seed:run",
     "build": "webpack --config client/webpack.config.js",
     "test": "jest --verbose --watchAll",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [

@@ -12,7 +12,8 @@
     "dev:server": "nodemon server/index.ts",
     "server": "ts-node server/index.ts",
     "test": "jest --noStackTrace",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
   "license": "MIT",

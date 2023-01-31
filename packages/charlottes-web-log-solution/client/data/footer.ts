@@ -1,4 +1,6 @@
-export default {
+const footer = {
   copyright: 1980,
   author: 'E. B. White',
-} as const
+}
+
+export default footer

@@ -13,7 +13,8 @@
     "client:watch": "npm run webpack -- --watch",
     "server:watch": "nodemon server/index.ts",
     "test": "jest --watch --noStackTrace",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [
