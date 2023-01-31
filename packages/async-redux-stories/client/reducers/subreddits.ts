@@ -1,7 +1,7 @@
 import { Action, RECEIVE_POSTS } from '../actions/reddit'
 import { Post } from '../posts';
 
-const initialState = [] as Post[]
+const initialState: Post[] = []
 
 function subreddits(state = initialState, action: Action): Post[] {
   const { type, payload } = action
