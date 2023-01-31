@@ -1,4 +1,4 @@
-import { Action, Posts, RECEIVE_POSTS } from '../actions'
+import { Action, Posts, RECEIVE_POSTS } from '../actions/reddit'
 
 const initialState = [] as any[]
 
