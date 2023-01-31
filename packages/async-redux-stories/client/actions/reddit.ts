@@ -1,17 +1,16 @@
-import { fetchSubreddit } from '../apis/reddit'
 import type { ThunkAction } from '../store'
+import { Post, RawPostArr } from '../posts'
 
-export const SHOW_ERROR = 'SHOW_ERROR'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+import { fetchSubreddit } from '../apis/reddit'
+
 export const REQUEST_POSTS = 'REQUEST_POSTS'
-
-type RawPosts = { data: any }[]
-export type Posts = any[]
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const SHOW_ERROR = 'SHOW_ERROR'
 
 export type Action =
-  | { type: typeof SHOW_ERROR; payload: string }
-  | { type: typeof REQUEST_POSTS; payload: undefined }
-  | { type: typeof RECEIVE_POSTS; payload: Posts }
+| { type: typeof REQUEST_POSTS; payload: undefined }
+| { type: typeof RECEIVE_POSTS; payload: Post[] }
+| { type: typeof SHOW_ERROR; payload: string }
 
 export function requestPosts(): Action {
   return {
@@ -19,7 +18,7 @@ export function requestPosts(): Action {
   } as Action
 }
 
-export function receivePosts(posts: RawPosts): Action {
+export function receivePosts(posts: RawPostArr): Action {
   return {
     type: RECEIVE_POSTS,
     payload: posts.map((post) => post.data),
