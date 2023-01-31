@@ -1,5 +1,5 @@
 import { fetchSubreddit } from '../apis/reddit'
-import * as actions from '.'
+import * as actions from './reddit'
 
 jest.mock('../apis/reddit')
 
