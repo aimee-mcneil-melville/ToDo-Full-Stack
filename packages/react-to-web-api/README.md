@@ -112,7 +112,7 @@ The widget data is being stored in a database (on our server side), so we'll hav
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
-  Perhaps you could use a `.map` here to render a new `<Widget>` component for each widget.
+  You could use a `.map` here to render a new `<Widget>` component for each widget.
 </details>
 
 ---
@@ -123,11 +123,11 @@ These next steps will be full stack, requiring you to make changes to both the f
 
 ### 6. Adding, deleting, and updating widgets
 
-- [ ] Add the ability to add a widget
+- [ ] Add the ability to add a widget (HTTP POST)
 <details style="padding-left: 2em">
   <summary>More about adding a widget</summary>
   
-  The steps you might take to complete this could be:
+  Some steps you could take to complete this are:
   - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia
   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia
   - Create an `addWidget` function in `apiClient.js` that will make a POST request to the API route you just built
