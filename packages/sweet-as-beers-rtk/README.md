@@ -30,7 +30,7 @@ One of the important tasks when working with Redux is to design the shape of the
 
 Given that, our Redux store should look similar to object below once we have implemented a couple of the following steps further on in the readme.
 
-```js
+```ts
 {
   cart: [
     {
@@ -59,7 +59,7 @@ To do this you'll create a slice with a navigate action inside it and dispatch y
 
 1. Create an 'activePage' slice in `client/slices/activePage.ts`. The _skeleton_ will look something like this:
 
-```js
+```ts
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store'
 
@@ -89,7 +89,7 @@ export default activePageSlice.reducer
 
 3. Define the action in your activePage slice to navigate between pages. We will use `action.payload.page` in our reducer to do this. This will look something like:
 
-```js
+```ts
 import type { PayloadAction } from '@reduxjs/toolkit' // this is a type that we can use to type our action
 
 interface Payload {
@@ -114,7 +114,7 @@ export const { navigate } = activePageSlice.actions
   - navigate is the name given to the action, and thus is what we destructure at the bottom when we want to export it
   - navigate is a function which receives the current `state` and the `action` which is an object that looks like:
 
-  ```js
+  ```ts
   action: {
     type: 'activePage/navigate', // we want to talk to the 'navigate' function in the 'activePage' slice
     payload: { // variables to give to the function
@@ -160,7 +160,7 @@ So, as a user, when I click the 'Add to Cart' button which is located in the `Be
 
 4. Now that we've organized our thoughts in step 3. Let's put them into action. Create a new slice called `cart` in `cartSlice.ts`
 
-```js
+```ts
 import { createSlice } from '@reduxjs/toolkit'
 
 const cartSlice = createSlice({
@@ -183,7 +183,7 @@ export const { itemAdded } = cartSlice.actions
 
 _When you have this in place, ensure that when you click the beer links, you can see the action dispatched and the store changing in the Redux Dev Tools._ Your store should look something like this:
 
-```js
+```ts
 [
   {
     id: 1,
@@ -230,7 +230,7 @@ Ensure you can now add a beer that's already in the cart and its quantity will b
 
 Let's make it possible to remove an item from the cart. To do so, follow the same pattern as above, except you don't need to create the cart slice this time. Instead, add a new reducer function. For example:
 
-```js
+```ts
 import { createSlice } from '@reduxjs/toolkit'
 
 const cartSlice = createSlice({
@@ -272,7 +272,7 @@ Add a `handleUpdate` event handler in `<Cart />` and call it from the input boxe
 
 Create a helper function in your cartSlice that helps dispatch the `quantitiesUpdated` action that looks similar to this:
 
-```js
+```ts
    export const { itemAdded, itemRemoved, quantitiesUpdated } = cartSlice.actions
 ```
 
