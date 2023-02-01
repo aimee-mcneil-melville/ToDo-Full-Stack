@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 import { updateFruit, deleteFruit } from '../api'
 
 function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
-  const token = useSelector((state) => state.loggedInUser.token)
+  const { getAccessTokenSilently } = useAuth0()
   const [editing, setEditing] = useState(selected)
 
   const handleEditChange = (e) => {
@@ -19,7 +19,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
 
   const handleUpdate = (e) => {
     e.preventDefault()
-    updateFruit(editing, token)
+    getAccessTokenSilently()
+      .then((token) => updateFruit(editing, token))
       .then((remoteFruits) => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
@@ -27,7 +28,8 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }
 
   const handleDelete = () => {
-    deleteFruit(editing.id, token)
+    getAccessTokenSilently()
+      .then((token) => deleteFruit(editing.id, token))
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
@@ -39,12 +41,11 @@ function SelectedFruit({ selected, clearSelected, setError, setFruits }) {
   }, [selected])
 
   const { name: editingName, averageGramsEach: editingGrams } = editing
-  const { name: currentName, username: user } = selected
+  const { name: currentName } = selected
 
   return (
     <>
       <h2>Selected: {currentName}</h2>
-      <p>Originally added by {user}</p>
       <GridForm onSubmit={handleUpdate}>
         <ColOne>Name:</ColOne>
         <ColTwoText

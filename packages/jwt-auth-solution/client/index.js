@@ -1,12 +1,8 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
-
-import store from './store'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -17,16 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
      * TODO: replace the empty strings below with your own domain, clientId, and audience
      */
     <Auth0Provider
-      domain={'dev-academy-sarah.au.auth0.com'}
-      clientId={'56NSPesWvy1BHcycLcoSHvuZX07Vl4ds'}
+      domain="dev-academy-sarah.au.auth0.com"
+      clientId="56NSPesWvy1BHcycLcoSHvuZX07Vl4ds"
       redirectUri={window.location.origin}
       audience="https://fruits/api"
     >
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
+      <Router>
+        <App />
+      </Router>
     </Auth0Provider>,
     document.getElementById('app')
   )

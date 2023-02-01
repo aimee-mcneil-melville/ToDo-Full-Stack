@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Footer() {
   const copyright = '1952 Harper & Brothers'
   const author = 'E. B. White'

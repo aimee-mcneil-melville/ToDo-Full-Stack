@@ -4,7 +4,7 @@
 
 ```sh
 npm install -D \
-  typescript ts-node ts-jest \
+  typescript ts-node ts-jest jest-environment-jsdom \
   @types/react @types/express @types/react-dom
 ```
 
@@ -14,6 +14,10 @@ Make sure to align-versions after adding these packages (use `npm run align-vers
 
 ```json
 {
+  "ts-node": {
+    "transpileOnly": true
+  },
+
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
@@ -27,9 +31,11 @@ Make sure to align-versions after adding these packages (use `npm run align-vers
     /* Interop Constraints */
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "allowJs": true,
 
     /* Type Checking */
     "strict": true /* Enable all strict
+    "allowJs": true
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "noEmit": true
   }

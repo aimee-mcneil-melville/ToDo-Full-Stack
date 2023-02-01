@@ -1,17 +1,14 @@
-const path = require('path')
+const { join } = require('node:path')
 
 module.exports = {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: path.join(__dirname, 'dev.sqlite3'),
+      filename: join(__dirname, 'dev.sqlite3'),
     },
-    migrations: {
-      directory: path.join(__dirname, 'migrations'),
-    },
-    seeds: {
-      directory: path.join(__dirname, 'seeds'),
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
@@ -22,26 +19,13 @@ module.exports = {
       filename: ':memory:',
     },
     migrations: {
-      directory: path.join(__dirname, 'migrations'),
+      directory: join(__dirname, 'migrations'),
     },
     seeds: {
-      directory: path.join(__dirname, 'seeds'),
-    },
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      directory: join(__dirname, 'seeds'),
     },
     pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: 'knex_migrations',
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 

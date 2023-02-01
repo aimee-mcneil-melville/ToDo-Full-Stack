@@ -44,7 +44,7 @@ When complete, your application might look like this:
   <details style="padding-left: 2em">
     <summary>More about the server</summary>
 
-    1. In the `server.js`, add an HTTP GET root route (`/`). For now, let's just send the word 'Pupparazzi'
+    1. In the `server/server.js`, add an HTTP GET root route (`/`). For now, let's just send the word 'Pupparazzi'
     1. Start the server and go to http://localhost:3000 to see if we are winning
     
     Now that we have a root route, let's use it to see some puppies.

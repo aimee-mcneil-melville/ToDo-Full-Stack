@@ -1,3 +1,3 @@
 {
-    "extends": "eda/core"
+    "extends": "@devacademy"
 }

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-
+import { useAuth0 } from '@auth0/auth0-react'
 import { addFruit } from '../api'
 
 function AddFruit({ setFruits, closeAddForm, setError }) {
-  const token = useSelector((state) => state.loggedInUser.token)
+  const { getAccessTokenSilently } = useAuth0()
   const [newFruit, setNewFruit] = useState(false)
 
   const handleAddChange = (e) => {
@@ -20,7 +19,8 @@ function AddFruit({ setFruits, closeAddForm, setError }) {
   const handleAdd = (e) => {
     e.preventDefault()
     const fruit = { ...newFruit }
-    addFruit(fruit, token)
+    getAccessTokenSilently()
+      .then((token) => addFruit(fruit, token))
       .then(setFruits)
       .then(closeAddForm)
       .catch((err) => setError(err.message))
