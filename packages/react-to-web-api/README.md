@@ -42,7 +42,20 @@ This exercise reverses the roles from yesterday: today the API has been (partial
 
 The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
 
-- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array
+- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array with the type `Widget[]`.
+  <details style="padding-left: 2em">
+    <summary>More about <code>&lt;useState&gt;</code> and types</summary>
+
+  If `useState` is given an empty array as its initial value TypeScript will assume the array's type is `never[]`, an array that is always empty. To allow us to later store data in this array we need to cast the type using the `as` keyword.
+  
+  To store `widgets` our useState will look like this:
+  ```ts
+  const [widgets, setWidgets] = useState([] as Widget[])
+  ```
+  
+  The Widget interface is already defined in `common/Widget.ts`.
+
+  </details>
 
 - [ ] Also add a `useEffect` hook to `<App>`
   <details style="padding-left: 2em">
