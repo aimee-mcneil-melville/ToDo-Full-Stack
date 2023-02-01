@@ -22,8 +22,6 @@ npm run dev
 Before we jump into the code editor, let's do some thinking about what we need to accomplish.
 
 ## Shape of the store 
-TODO: tidy up `client/store.ts` and `slices/index.ts` so that all reducers are `combined` into `slices/index.ts`.
-And update this readme so that students don`t get confused.
 
 One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of changing data that multiple components will use:
 
