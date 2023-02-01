@@ -14,7 +14,7 @@ npm run dev
 ## Starting place
 
 - All of the React components are in place.
-- You can find the beer data in `data/beers.js`.
+- You can find the beer data in `data/beers.ts`.
 - Redux Toolkit has been installed, but not yet configured.
 - The 'slices' folder has been created, but no real slices are in place yet.
 - The beer listing displays the beers, but the _Add to cart_ link doesn't do anything yet.
@@ -49,7 +49,7 @@ Given that, our Redux store should look similar to object below once we have imp
 }
 ```
 
-Now we should have a sense of what our reducers will be creating. But before we start building our slices, take this time to create the store (in store.js) and wrap our `<App>` with the `<Provider>` in `client/index.js`.
+Now we should have a sense of what our reducers will be creating. But before we start building our slices, take this time to create the store (in store.ts) and wrap our `<App>` with the `<Provider>` in `client/index.ts`.
 
 **Note:** Redux Toolkit automatically sets up the Redux Dev Tools for us to use in our browser.
 
@@ -59,11 +59,11 @@ In this section, we'll use a value in the Redux store to determine whether we re
 
 To do this you'll create a slice with a navigate action inside it and dispatch your action from a click event in your components.
 
-1. Create an 'activePage' slice in `client/slices/activePage.js`. The _skeleton_ will look something like this:
+1. Create an 'activePage' slice in `client/slices/activePage.ts`. The _skeleton_ will look something like this:
 
 ```js
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState} from '../store'
+import { RootState } from '../store'
 
 export const activePageSlice = createSlice({
   name: 'activePage',
@@ -92,16 +92,20 @@ export default activePageSlice.reducer
 3. Define the action in your activePage slice to navigate between pages. We will use `action.payload.page` in our reducer to do this. This will look something like:
 
 ```js
+import type { PayloadAction } from '@reduxjs/toolkit' // this is a type that we can use to type our action
+
 interface Payload {
   page: string
 }
 
 // ... rest of our activePage slice
+
 reducers: {
   navigate: (_, action: PayloadAction<Payload> /** Payload is typed */) => {
     return action.payload.page
   }
 }
+
 // ... rest of our activePage slice
 
 export const { navigate } = activePageSlice.actions
@@ -123,9 +127,9 @@ export const { navigate } = activePageSlice.actions
 
   - whatever is returned from this function is now the new state
 
-4. Now we need to import our `activePage` reducer to the `store.js`
+4. Now we need to import our `activePage` reducer to the `store.ts`
 
-5. Add a click event handler to the `<a>` tag in `client/components/BeerListItem.jsx`. Import the `useDispatch` hook and have it dispatch the `navigate` action, with the value of `'cart'`. (Actions are called with an object (which is its payload), an example action might be `navigate({ page: 'cart' })`)
+5. Add a click event handler to the `<a>` tag in `client/components/BeerListItem.tsx`. Import the `useDispatch` hook and have it dispatch the `navigate` action, with the value of `'cart'`. (Actions are called with an object (which is its payload), an example action might be `navigate({ page: 'cart' })`)
 
 6. If you try to click the "Add to cart" link for a beer now, you should be shown the `<Cart />` component (though there will be nothing in it).
 
@@ -156,7 +160,7 @@ So, as a user, when I click the 'Add to Cart' button which is located in the `Be
    - Our state will store an array of objects, each object will contain an `id`, `name`, and `quantity`
    - Our state will have a function to add an item to the cart with the same name as our dispatched action above
 
-4. Now that we've organized our thoughts in step 3. Let's put them into action. Create a new slice called `cart` in `cartSlice.js`
+4. Now that we've organized our thoughts in step 3. Let's put them into action. Create a new slice called `cart` in `cartSlice.ts`
 
 ```js
 import { createSlice } from '@reduxjs/toolkit'
@@ -206,7 +210,7 @@ You can define your selector function in the component:
 
 `const cart = useSelector((state) => state.cart)`
 
-Or you can define and export it in `cartSlice.js`:
+Or you can define and export it in `cartSlice.ts`:
 
 `const selectCart = (state) => state.cart`
 
@@ -256,7 +260,7 @@ Write a click handler for the delete button that dispatches the `itemRemoved` wi
 
 Now let's give the user an easier way of changing the quantities of items in the cart. In this section, you'll create a new action creator, update the existing reducer function and dispatch the new action from an event handler in `<Cart>`. You will also have to manage some component state to keep track of which items have had their quantities updated.
 
-As the user is updating the quantities of the items in their cart, you'll maintain those changes in the `<Cart />` component's local state. When they click the _Update_ button, that's when you'll dispatch the `updateQuantities` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
+As the user is updating the quantities of the items in their cart, you'll maintain those changes in the `<Cart />` component's local state. When they click the _Update_ button, that's when you'll dispatch the `quantitiesUpdated` action to update the Redux store. Do not dispatch any actions in the `onChange` event of the inputs.
 
 Before you continue to the next paragraph, consider what the component state needs to look like in order to keep track of the quantities of each cart item. Think through how you're going to update the state for each individual item quantities in the `onChange` handler. You won't be able to use the `name` attribute from the input field, because that will be the same for each item. Remember that you are already accessing the `cart` data from your Redux store.
 
@@ -274,7 +278,7 @@ Create a helper function in your cartSlice that helps dispatch the `quantitiesUp
    export const { itemAdded, itemRemoved, quantitiesUpdated } = cartSlice.actions
 ```
 
-Dispatch the `updateQuantities` action from the `onClick` handler of the Update button. The payload for this action will be the new `cart` array that you've been updating in local state.
+Dispatch the `quantitiesUpdated` action from the `onClick` handler of the Update button. The payload for this action will be the new `cart` array that you've been updating in local state.
 
 Our existing `cart` reducer can be used once you've added to it how the state should change when this `quantitiesUpdated` action is dispatched. Make these edits and verify the reducer is working correctly using the Redux DevTools if you need to troubleshoot anything. Your action should appear as `cart/quantitiesUpdated`
 
