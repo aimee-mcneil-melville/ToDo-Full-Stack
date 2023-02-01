@@ -36,19 +36,13 @@ Some possibilities are listed below if you want a place to start, otherwise find
 
 ### 2. Building API calls
 
-- [ ] Create the functions that make your API calls in `client/apiClient.ts`, and call those functions within your React Routes.
+- [ ] Create the functions that make your API calls in `client/apiClient.ts`, and call those functions within your React components
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    There is a basic API route set up for you - you may wish to use this as a template.
+  </details>
 
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  There is a basic API route set up for you - you may wish to use this as a template. There are a few different ways of handling loading and errors with React Router. Have a look at their documentation to learn about the different approaches.
-
-  loader: https://reactrouter.com/en/main/route/loader
-  errors: https://reactrouter.com/en/main/route/error-element
-  loading state: https://reactrouter.com/en/main/hooks/use-navigation
-
-
-</details>
 
 ## API Suggestions
 
@@ -99,6 +93,23 @@ If you're not sure where to start, you can use one of the APIs listed below.
 </details>
 <br />
 If any of the examples in this list are out of date, please let your facilitators know and create a Pull Request on this repo!
+
+---
+
+## Stretch
+
+- [ ] Use the functionality built into `react-router` to make your API calls
+<details style="padding-left: 2em">
+  <summary>Tip</summary>
+  
+  There are a few different ways of handling loading and errors with React Router. Have a look at their documentation to learn about the different approaches.
+
+  - loader: https://reactrouter.com/en/main/route/loader
+  - errors: https://reactrouter.com/en/main/route/error-element
+  - loading state: https://reactrouter.com/en/main/hooks/use-navigation
+
+
+</details>
 
 ---
 
