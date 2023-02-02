@@ -1,6 +1,6 @@
 import express, { Response } from 'express'
 import { getWidgets } from '../db/db'
-import Widget from '../../common/Widget'
+import { Widget } from '../../models/Widget'
 
 const router = express.Router()
 
