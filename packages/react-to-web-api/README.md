@@ -64,19 +64,19 @@ The widget data is being stored in a database (on our server side), so we'll hav
   <details style="padding-left: 2em">
     <summary>More about the GET route</summary>
 
-  Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.js`. A GET route using that DB function is also in place in `routes/widgets.js`.
+  Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.ts`. A GET route using that DB function is also in place in `routes/widgets.ts`.
 
   Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Insomnia.
   </details>
 
-- [ ] Using the `getWidgets` function in `apiClient.js` and the `superagent` library, make a GET request to `'/api/v1/widgets/'`, just like we did with Insomnia
+- [ ] Using the `getWidgets` function in `apiClient.ts` and the `superagent` library, make a GET request to `'/api/v1/widgets/'`, just like we did with Insomnia
   <details style="padding-left: 2em">
     <summary>More about the <code>getWidgets</code> request</summary>
 
-  This time looking in the client folder, you'll find a `getWidgets` function in `apiClient.js`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`. If all goes well, it should be returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
+  This time looking in the client folder, you'll find a `getWidgets` function in `apiClient.ts`. Use `superagent` to make a GET request to `'/api/v1/widgets/'`. If all goes well, it should be returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
   </details>
 
-- [ ] Import this `getWidgets` function from `apiClient.js` into `App.jsx`
+- [ ] Import this `getWidgets` function from `apiClient.ts` into `App.tsx`
 
 ### 4. Connecting the client API to the user interface (UI)
 
@@ -95,11 +95,21 @@ The widget data is being stored in a database (on our server side), so we'll hav
 
 ### 5. Updating the UI to consume the data
 
-- [ ] Modify the `jsx` your component returns so that it displays the widgets from the component state
+- [ ] Modify the `tsx` your component returns so that it displays the widgets from the component state
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
-  Perhaps you could use a `.map` here to render a new `<Widget>` component for each widget.
+  Perhaps you could use a `.map` here to render a new `<Widget>` component for each widget. 
+
+   To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import
+  ```ts
+  import * as Models from '../../models/Widget'
+
+  interface Props extends Models.Widget {
+    // include additional props here when required
+  }
+  ```
+
 </details>
 
 ---
@@ -115,10 +125,10 @@ These next steps will be full stack, requiring you to make changes to both the f
   <summary>More about adding a widget</summary>
   
   The steps you might take to complete this could be:
-  - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia
+  - Create a POST route on the server side in `widgets.ts`. Test you can get a response for it in Insomnia
   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia
-  - Create an `addWidget` function in `apiClient.js` that will make a POST request to the API route you just built
-  - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.js` and hook it up to your form's submit handler
+  - Create an `addWidget` function in `apiClient.ts` that will make a POST request to the API route you just built
+  - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.ts` and hook it up to your form's submit handler
   - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...
   - Create an "Add Widget" button in `<App>` to conditionally render your `<AddWidget>` form
 </details>
@@ -129,7 +139,7 @@ These next steps will be full stack, requiring you to make changes to both the f
 
 ### 7. Enhancing widget info
 
-- [ ] Extend the database schema to include a `rating`for each widget
+- [ ] Extend the database schema to include a `rating` for each widget
 <details style="padding-left: 2em">
   <summary>More about widget ratings</summary>
   
