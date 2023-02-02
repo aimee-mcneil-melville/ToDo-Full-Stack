@@ -1,10 +1,9 @@
-import express, { Response } from 'express'
+import express from 'express'
 import { getWidgets } from '../db/db'
-import { Widget } from '../../models/Widget'
 
 const router = express.Router()
 
-router.get('/', (req, res: Response<Widget[]>) => {
+router.get('/', (req, res) => {
   getWidgets()
     .then((widgets) => {
       res.json(widgets)

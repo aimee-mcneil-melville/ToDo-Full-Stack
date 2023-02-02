@@ -42,7 +42,20 @@ This exercise reverses the roles from yesterday: today the API has been (partial
 
 The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
 
-- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array
+- [ ] Add a `useState` hook to the `<App>` component, so we can store `widgets` in component state. Make the initial value an empty array with the type `Widget[]`.
+  <details style="padding-left: 2em">
+    <summary>More about <code>&lt;useState&gt;</code> and types</summary>
+
+  If `useState` is given an empty array as its initial value TypeScript will assume the array's type is `never[]`, an array that is always empty. To allow us to later store data in this array we need to cast the type using the `as` keyword.
+  
+  To store `widgets` our useState will look like this:
+  ```ts
+  const [widgets, setWidgets] = useState([] as Widget[])
+  ```
+  
+  The Widget interface is already defined in `common/Widget.ts`.
+
+  </details>
 
 - [ ] Also add a `useEffect` hook to `<App>`
   <details style="padding-left: 2em">
@@ -99,7 +112,7 @@ The widget data is being stored in a database (on our server side), so we'll hav
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
-  Perhaps you could use a `.map` here to render a new `<Widget>` component for each widget. 
+  You could use a `.map` here to render a new `<Widget>` component for each widget. 
 
    To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import
   ```ts
@@ -120,12 +133,12 @@ These next steps will be full stack, requiring you to make changes to both the f
 
 ### 6. Adding, deleting, and updating widgets
 
-- [ ] Add the ability to add a widget
+- [ ] Add the ability to add a widget (HTTP POST)
 <details style="padding-left: 2em">
   <summary>More about adding a widget</summary>
   
-  The steps you might take to complete this could be:
-  - Create a POST route on the server side in `widgets.ts`. Test you can get a response for it in Insomnia
+  Some steps you could take to complete this are:
+  - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia
   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia
   - Create an `addWidget` function in `apiClient.ts` that will make a POST request to the API route you just built
   - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.ts` and hook it up to your form's submit handler
