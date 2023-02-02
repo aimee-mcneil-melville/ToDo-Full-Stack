@@ -1,4 +1,5 @@
-import { join } from 'node:path'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import path, { join } from 'node:path'
 import express from 'express'
 
 const server = express()
