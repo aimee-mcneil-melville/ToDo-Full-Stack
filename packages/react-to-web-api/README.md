@@ -53,7 +53,7 @@ The widget data is being stored in a database (on our server side), so we'll hav
   const [widgets, setWidgets] = useState([] as Widget[])
   ```
   
-  The Widget interface is already defined in `common/Widget.ts`.
+  The Widget interface is already defined in `models/Widget.ts`.
 
   </details>
 
@@ -114,13 +114,12 @@ The widget data is being stored in a database (on our server side), so we'll hav
   
   You could use a `.map` here to render a new `<Widget>` component for each widget. 
 
-   To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import
+   To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import and update the cast for the type with dot notation.
+   
   ```ts
   import * as Models from '../../models/Widget'
 
-  interface Props extends Models.Widget {
-    // include additional props here when required
-  }
+  const [widgets, setWidgets] = useState([] as Models.Widget[])
   ```
 
 </details>
