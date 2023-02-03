@@ -6,3 +6,7 @@
   display: none;
 }
 
+form {
+  display: grid;
+  width: max-content;
+}
