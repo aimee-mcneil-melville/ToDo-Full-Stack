@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import * as Models from '../../models/Widget'
-import { getWidgets, addWidget } from '../apiClient'
+import { getWidgets, addWidget, deleteWidget } from '../apiClient'
 import Widget from './Widget'
 import AddWidget from './AddWidget'
 
@@ -22,12 +22,20 @@ function App() {
       .catch((e: unknown) => console.error(e))
   }
 
+  const delWidget = (id: number) => {
+    deleteWidget(id)
+      .then(() => {
+        setWidgets(widgets.filter((widget) => widget.id !== id))
+      })
+      .catch((e: unknown) => console.error(e))
+  }
+
   return (
     <div>
       <h1>Widgets for the win!</h1>
 
       {widgets.map((widget) => (
-        <Widget key={widget.id} {...widget} />
+        <Widget key={widget.id} {...widget} delWidget={delWidget} />
       ))}
 
       {showAdd ? (

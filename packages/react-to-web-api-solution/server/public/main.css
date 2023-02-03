@@ -1,3 +1,7 @@
+.widget-details {
+  margin-bottom: 1rem;
+}
+
 .widget-details .visible {
   display: block;
 }

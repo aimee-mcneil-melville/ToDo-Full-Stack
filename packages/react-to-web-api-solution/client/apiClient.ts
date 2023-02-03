@@ -14,3 +14,7 @@ export function addWidget(widget: WidgetData): Promise<Widget[]> {
     .send(widget)
     .then((res) => res.body)
 }
+
+export function deleteWidget(id: number) {
+  return request.del(`${widgetUrl}${id}`).then((res) => res.body)
+}

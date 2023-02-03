@@ -16,3 +16,7 @@ export function addWidget(
 ): Promise<number[]> {
   return db('widgets').insert(widget)
 }
+
+export function delWidget(id: number, db = connection): Promise<number[]> {
+  return db('widgets').where({ id }).del()
+}
