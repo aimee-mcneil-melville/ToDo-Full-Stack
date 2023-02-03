@@ -1,6 +1,5 @@
 import * as Models from '../../models/Widget'
-
-type Props = Models.Widget
+interface Props extends Models.Widget {}
 
 export default function Widget(props: Props) {
   const { name, price, mfg, inStock } = props
