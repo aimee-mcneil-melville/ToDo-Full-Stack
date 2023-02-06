@@ -23,6 +23,7 @@ server.use(express.urlencoded({ extended: false }))
 
 server.engine('hbs', hbs.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
+server.set('views', join(__dirname, 'views'))
 
 /*
  * define the routes

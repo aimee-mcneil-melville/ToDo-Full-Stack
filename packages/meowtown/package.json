@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "start": "node index",
-    "dev": "nodemon index",
+    "start": "node server/index",
+    "dev": "nodemon server/index",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
