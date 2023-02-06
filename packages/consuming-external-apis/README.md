@@ -96,21 +96,4 @@ If any of the examples in this list are out of date, please let your facilitator
 
 ---
 
-## Stretch
-
-- [ ] Use the functionality built into `react-router` to make your API calls
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  There are a few different ways of handling loading and errors with React Router. Have a look at their documentation to learn about the different approaches.
-
-  - loader: https://reactrouter.com/en/main/route/loader
-  - errors: https://reactrouter.com/en/main/route/error-element
-  - loading state: https://reactrouter.com/en/main/hooks/use-navigation
-
-
-</details>
-
----
-
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=consuming-external-apis)
