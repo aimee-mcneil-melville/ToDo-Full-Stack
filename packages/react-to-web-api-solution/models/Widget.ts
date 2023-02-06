@@ -3,6 +3,7 @@ export interface WidgetData {
   price: number
   mfg: string
   inStock: number
+  rating: number
 }
 
 export interface Widget extends WidgetData {

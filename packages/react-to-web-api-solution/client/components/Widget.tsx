@@ -8,7 +8,8 @@ interface Props extends Models.Widget {
 }
 
 export default function Widget(props: Props) {
-  const { id, name, price, mfg, inStock, delWidget, patchWidget } = props
+  const { id, name, price, mfg, inStock, rating, delWidget, patchWidget } =
+    props
   const [edit, setEdit] = useState(false)
 
   const editWidget = (widget: Models.WidgetData) => {
@@ -26,6 +27,7 @@ export default function Widget(props: Props) {
           <p>Price: {price}</p>
           <p>Manufacturer: {mfg}</p>
           <p>In stock: {inStock}</p>
+          <p>Rating: {rating}/5</p>
           <button onClick={() => delWidget(id)}>Delete</button>
           <button onClick={() => setEdit(true)}>Edit</button>
         </div>

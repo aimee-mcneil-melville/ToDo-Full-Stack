@@ -11,6 +11,7 @@ export default function WidgetForm({
   price,
   mfg,
   inStock,
+  rating,
   submitWidget,
   setShowForm,
 }: Props) {
@@ -19,6 +20,7 @@ export default function WidgetForm({
     price: price || 0.0,
     mfg: mfg || '',
     inStock: inStock || 0,
+    rating: rating || 0,
   }
 
   const [form, setForm] = useState(formInitialState)
@@ -61,6 +63,14 @@ export default function WidgetForm({
           value={form.inStock}
           name="inStock"
           id="inStock"
+        />
+
+        <label htmlFor="rating">Rating:</label>
+        <input
+          onChange={handleChange}
+          value={form.rating}
+          name="rating"
+          id="rating"
         />
 
         <button>Submit</button>
