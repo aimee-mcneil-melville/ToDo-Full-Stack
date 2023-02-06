@@ -42,7 +42,7 @@
     "prettier": "2.6.1",
     "sqlite3": "^5.1.2",
     "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.6.0"
+    "@devacademy/eslint-config": "^1.8.0"
   },
   "jest": {
     "testEnvironment": "node"

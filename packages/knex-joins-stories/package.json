@@ -43,7 +43,7 @@
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
     "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.6.0"
+    "@devacademy/eslint-config": "^1.8.0"
   },
   "jest": {
     "testEnvironment": "node"
