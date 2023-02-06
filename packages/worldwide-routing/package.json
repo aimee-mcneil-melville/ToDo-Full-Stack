@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/worldwide-routing.git",
   "main": "server/index.js",
   "scripts": {
-    "build": "npm run webpack -- --mode production",
+    "build": "tsc && npm run webpack -- --mode production",
     "start": "ts-node server/index.ts",
     "dev": "run-p client:watch server:watch",
     "webpack": "webpack --config client/webpack.config.js",

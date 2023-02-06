@@ -1,9 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import path, { join } from 'node:path'
+import path from 'node:path'
 import express from 'express'
 
 const server = express()
 
-server.use(express.static(join(__dirname, 'public')))
+server.use(express.static(path.join(__dirname, 'public')))
 
 export default server
