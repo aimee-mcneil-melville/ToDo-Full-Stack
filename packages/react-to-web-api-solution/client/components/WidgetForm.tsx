@@ -1,17 +1,24 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
-import { WidgetData } from '../../models/Widget'
+import { Widget, WidgetData } from '../../models/Widget'
 
-interface Props {
+interface Props extends Partial<Widget> {
   submitWidget: (widget: WidgetData) => void
-  setShowAdd: (showAdd: boolean) => void
+  setShowForm: (showAdd: boolean) => void
 }
 
-export default function AddWidget({ submitWidget, setShowAdd }: Props) {
+export default function WidgetForm({
+  name,
+  price,
+  mfg,
+  inStock,
+  submitWidget,
+  setShowForm,
+}: Props) {
   const formInitialState = {
-    name: '',
-    price: 0.0,
-    mfg: '',
-    inStock: 0,
+    name: name || '',
+    price: price || 0.0,
+    mfg: mfg || '',
+    inStock: inStock || 0,
   }
 
   const [form, setForm] = useState(formInitialState)
@@ -57,7 +64,7 @@ export default function AddWidget({ submitWidget, setShowAdd }: Props) {
         />
 
         <button>Submit</button>
-        <button type="button" onClick={() => setShowAdd(false)}>
+        <button type="button" onClick={() => setShowForm(false)}>
           Cancel
         </button>
       </form>

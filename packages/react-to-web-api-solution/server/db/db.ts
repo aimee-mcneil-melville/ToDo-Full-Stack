@@ -20,3 +20,11 @@ export function addWidget(
 export function delWidget(id: number, db = connection): Promise<number[]> {
   return db('widgets').where({ id }).del()
 }
+
+export function updateWidget(
+  id: number,
+  widget: WidgetData,
+  db = connection
+): Promise<number[]> {
+  return db('widgets').where({ id }).update(widget)
+}

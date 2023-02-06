@@ -18,3 +18,10 @@ export function addWidget(widget: WidgetData): Promise<Widget[]> {
 export function deleteWidget(id: number) {
   return request.del(`${widgetUrl}${id}`).then((res) => res.body)
 }
+
+export function updateWidget(id: number, widget: WidgetData): Promise<Widget> {
+  return request
+    .patch(`${widgetUrl}${id}`)
+    .send(widget)
+    .then((res) => res.body)
+}

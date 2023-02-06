@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react'
 import * as Models from '../../models/Widget'
 import { getWidgets, addWidget, deleteWidget } from '../apiClient'
 import Widget from './Widget'
-import AddWidget from './AddWidget'
+import WidgetForm from './WidgetForm'
 
 function App() {
   const [widgets, setWidgets] = useState([] as Models.Widget[])
-  const [showAdd, setShowAdd] = useState(false)
+  const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
     getWidgets()
@@ -18,7 +18,7 @@ function App() {
   const submitWidget = (widget: Models.WidgetData) => {
     addWidget(widget)
       .then((widgets) => setWidgets(widgets))
-      .finally(() => setShowAdd(false))
+      .finally(() => setShowForm(false))
       .catch((e: unknown) => console.error(e))
   }
 
@@ -30,18 +30,31 @@ function App() {
       .catch((e: unknown) => console.error(e))
   }
 
+  const patchWidget = (updatedWidget: Models.Widget) => {
+    setWidgets(
+      widgets.map((widget) =>
+        widget.id === updatedWidget.id ? updatedWidget : widget
+      )
+    )
+  }
+
   return (
     <div>
       <h1>Widgets for the win!</h1>
 
       {widgets.map((widget) => (
-        <Widget key={widget.id} {...widget} delWidget={delWidget} />
+        <Widget
+          key={widget.id}
+          {...widget}
+          delWidget={delWidget}
+          patchWidget={patchWidget}
+        />
       ))}
 
-      {showAdd ? (
-        <AddWidget submitWidget={submitWidget} setShowAdd={setShowAdd} />
+      {showForm ? (
+        <WidgetForm submitWidget={submitWidget} setShowForm={setShowForm} />
       ) : (
-        <button onClick={() => setShowAdd(true)}>Add Widget</button>
+        <button onClick={() => setShowForm(true)}>Add Widget</button>
       )}
     </div>
   )
