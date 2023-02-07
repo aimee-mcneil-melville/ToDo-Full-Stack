@@ -1,75 +1,55 @@
 # Sweet As Organics
 
-The Sweet As team have diversified! They are now selling a variety of organic foods, but have this time chosen to store their stock data in a database. This is the first time we've seen the full stack in play, Redux included. With some features already complete, the code base is bigger than it has been in previous challenges.
+The Sweet As team have diversified! They are now selling a variety of organic foods, but have this time chosen to store their stock data in a database.
 
 ## Setup
 
-### 0. Installation and migrations
+After cloning this repo
 
-- [ ] Clone this repo and `cd` into the new directory
-- [ ] Install packages, run migrations and seeds, and start the dev server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
+```sh
+cd sweet-as-organics-api-rtk
+npm install
+npm run knex migrate:latest
+npm run knex seed:run
+npm run dev
+```
 
-    Commands might look like this:
+Check that everything is running on [localhost:3000](http://localhost:3000). The app should look quite familiar, but let's check out how it differs from Sweet As Beers.
 
-    ```
-    npm i
-    npm run knex migrate:latest
-    npm run knex seed:run
-    npm run dev
-    ```
-  </details>
+## Understanding the codebase
+This is the first time we've seen the full stack in play, redux toolkit included. With some features already complete, the code base is bigger than it has been in previous challenges.
 
-- [ ] Check that everything is running on [localhost:3000](http://localhost:3000)
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
+Take some time to familiarise yourself with how it's all working together by exploring the `ProductList` component, specifically how the array of products is being retrieved from our API and stored in Redux. Feel free to step through it yourself if you're feeling confident/up for a challenge, or:
 
-    The app should look quite familiar, but let's check out how it differs from Sweet As Beers.
-  </details>
+<details><summary>Try exploring these things:</summary>
 
----
+* How the `products` getting on to `ProductList` component.
+* How that `products` array gets into the Redux store in the first place. What's happening in `ProductList`'s `useEffect` method?
+* Check out that `fetchProducts` async action creator. It calls a `getProducts()` function asynchronously. What does that function do?
+* On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Postman or Insomnia to see if this route works like you expect. What is the shape of the data returned?
+* Follow the path back to the client side. How does the `products` data get back to that `fetchProducts` async action creator? What happens to the data then?
+* Check out the `extraReducers` in `productsSlice`. What does `fetchProducts.fulfilled` return?
+* Open your Redux devtools, and as you refresh the Shop (ProductList) page, see how those dispatched actions update the store state. Can you confirm that understanding by taking a look at the slices?
+* What does setting the `waiting` state do in terms of UI? Using the timeline slider at the bottom of your Redux devtools is a good way to see how the UI is changing based on different actions.
+* Notice `waiting` slice is watching for an action type that ends with `pending`, `fulfilled` or `rejected`.
 
-## Requirements
+</details>
 
-Our job will be to implement the functionality for the My Orders page. The React components and the database functions are already in place, so we'll be working with the stuff in the middle - Redux, API calls with Superagent and server side routes.
+<br>
 
-### 1. Understanding the code base
-- [ ] Explore the existing code base, either independently or using the guidance below
-  <details style="padding-left: 2em">
-    <summary>More about the existing code base</summary>
+Both the Shop and Cart pages are completed, with their data managed in the Redux store.
 
-    <strong>Explore products and the `<ProductList>` component:</strong>
-    
-    * How are the `products` getting on to `<ProductList>`'s props?
-    * How does the `products` array get into the Redux store in the first place? What's happening in `<ProductList>`'s `useEffect` method?
-    * Check out the `fetchProducts` action creator. It returns a function rather than an object, which means it is an **async action creator**. It calls a `getProducts` function. What does that function do?
-    
-    <br />
-    <strong>Explore data moving up and down the full stack:</strong>
+Your job will be to implement the functionality for the `My Orders` page. The React components and the database functions are already in place, so you'll be working with the stuff in the middle - Redux, API calls with Superagent and server side routes.
 
-    * On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Insomnia to see if this route works like you expect.
-    * Follow the path back to the client side. How does the `products` data get back to that async `fetchProducts` action creator? What happens to the data then?
-  
-    <br />
-    <strong>Explore the existing reducers:</strong>
+## Add an order
+Once a user has their cart ready, they should be able to place their order with Sweet As Organics. Let's get the Place Order button working in `Cart`.
 
-    * Open your Redux devtools, and as you refresh the Shop (<ProductList>) page, see how those dispatched actions update the store state. Can you confirm that understanding by taking a look at the reducers?
-    * What does setting the `waiting` state do in terms of UI? Using the timeline slider at the bottom of your Redux devtools is a good way to see how the UI is changing based on different actions.
-    * Notice how both the `products` and `waiting` reducers are watching for an action type of `FETCH_PRODUCTS_SUCCESS`, so those two different parts of the Redux store state get updated from the one action!
+A potential approach could be:
 
-    <br />
-    Both the Shop and Cart pages are completed, with their data managed in the Redux store.
-  </details>
+### 1. Creating order routes
 
-## Placing an order
-
-Let's get the "Place Order" button working in `<Cart>`. A potential approach could be:
-
-### 2. Creating order routes
-
-- [ ] Create a new routes file (`server/routes/orders.js`) and configure our server to use those routes with an `/api/v1/orders` prefix
-- [ ] Create a new POST route that uses the `addOrder` function from `server/db/orders.js`
+- [ ] Create a new routes file (`server/routes/orders.ts`) and configure our server to use those routes with an `/api/v1/orders` prefix
+- [ ] Create a new POST route that uses the `addOrder` function from `server/db/orders.ts`
   <details style="padding-left: 2em">
     <summary>More about the <code>addOrder</code> POST route</summary>
   
@@ -84,156 +64,130 @@ Let's get the "Place Order" button working in `<Cart>`. A potential approach cou
     Also browse our `dev.sqlite3` file to ensure the new order is being inserted. We should see rows added to both the `orders` and `orders_products` tables.
   </details>
 
-### 3. Creating the order API on the client side
+### 2. Creating the order API on the client side
 
-- [ ]  Add a `client/api/orders.js` file, and create a `postOrder` function that uses `superagent` to make a POST request to the route we just made
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    Remember it's going to need to send some order data.
-  </details>
+- [ ] Add a `client/api/orders.ts` file, and create a `postOrder` function that uses `superagent` to make a POST request to the route you just made. (Remember it's going to need to send some order data)
 
-### 4. Working with actions and reducers to place an order
+### 3. Working with redux toolkit to place an order
 
-- [ ] Create a `client/actions/orders.js` file to hold our new action creators
+- [ ] Create a `client/slices/orders.ts` file and use `createAsyncThunk` to hold your new async action creator. Call it `placeOrder`. 
   <details style="padding-left: 2em">
     <summary>Tips</summary>
-    
-    Think about what we're going to need the new async action creator (perhaps call it `placeOrder`) to do.
-  
-    * First, it should dispatch a pending action, so the user gets feedback that something is happening.
-    * Then use the `postOrder` function from `client/api/orders.js` to make the POST request.
+
+    Think about what what we're going to need the async action creator to do. Take a look at some of the other slice files for inspiration if you need.
+    * What do you need to import into your file?
+    * For your async action creator the first parameter will be the name of the action creator, perhapse `orders/placeOrder`.
+    * The second parameter will be an `async` function that takes in `cart` as a parameter.
+   * Then use the `postOrder` function from `client/api/orders.ts` to make the POST request.
     * We know our route only sends back a `201` status, so we won't have any data to deal with when the `postOrder` promise resolves.
-    * We should still dispatch a success action though, so our wait indicator stops spinning.
-    * A catch block is often a good idea ;)
   </details>
 
-- [ ] Update the `waiting` reducer so it sets the state to `true` and `false` appropriately
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    It's looking like the only part of the Redux store that cares about these `placeOrder` actions is the `waiting` state.
-  </details>
-
-- [ ] Dispatch this `placeOrder` action from within a submit handler function on the `<Cart>`. Be sure to pass in the `cart`
-
-### 5. Checking your work
-
-- [ ] Try it! Add something to the cart, place an order, and see what happens
-  <details style="padding-left: 2em">
-    <summary>More about placing an order</summary>
-
-    Can you see the pending and success actions in your Redux devtools? Has the order been added to the database?
-    
-    Notice that even when placing the order occurs successfully, the cart doesn't empty. When a user starts shopping again, they would have to manually remove the previous order items from their cart, or end up with double ups! Perhaps the `cart` reducer could also be watching for a `PLACE_ORDER_SUCCESS` action?
-
-### 6. Enhancing the order experience
-It would also be great to redirect the user to the My Orders page once their order had been placed. However, we'd only want to redirect if the API call succeeds.
-
-- [ ] Redirect users when their order is successfully placed
-  <details style="padding-left: 2em">
-    <summary>More about redirecting on order completion</summary>
-  
-    * The `dispatch` function itself doesn't have a `.then`, because it doesn't expect actions to be async. If we want to redirect after the order is placed, we'll need to do so inside the `.then` in the `placeOrder` action creator.
-    * After we dispatch the success action, we might perform the redirect with the `useNavigate` method of `react-router-dom`, which is already used in our application to send users to the cart upon adding a product.
-  </details>
-
----
-
-## Viewing orders
-
-We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (<ProductList>) page. 
-
-### 7. Setting up the orders APIs
-- [ ] Create a new GET route in `server/routes/orders.js` that uses `db.listOrders`
+- [ ] Create a slice for orders which uses your placeOrder async action creator.
   <details style="padding-left: 2em">
     <summary>Tips</summary>
     
-    * This db function returns an array of orders
-    * Test that our route works as we expect before moving on
+    Think about what you need to put in your slice.
+    * What is the intial state?
+    * Add the fulfilled state of placeOrder to the extraReducers.
+    * Don't forget to export the reducer and the async action.
+    * Add the reducer to the `store`
   </details>
-
-- [ ] Create a `getOrders` function in `client/api/orders.js` to make the API call to our new route
-
-### 8. Working with actions and reducers to get all orders
-- [ ] Create a `fetchOrders` async action creator, which dispatches pending and success actions, and calls the `getOrders` function
-- [ ] Create a new `orders` reducer, which can watch for the `FETCH_ORDERS_SUCCESS` action and set the store state to the new `orders` array
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
   
-    * Be sure to import this new reducer into `client/reducers/index.js` and use it inside the `combineReducers` so we get some orders showing up in our Redux store!
-  </details>
-- [ ] Also make sure to update the `waiting` reducer
+- [ ] For the final piece of the puzzle, let's dispatch this `placeOrder` action from the `Cart.tsx` Dispatch it within a submit handler function – and don't forget to pass in the `cart`!).
+- [ ] Try it! Add something to your cart and place your order. Can you see the pending and success actions in your Redux devtools? Has your order been added to the database?
 
-### 9. Dispatching `fetchOrders`
-- [ ] Dispatch the `fetchOrders` action from a `useEffect` hook in the `<OrderList>` component
+### 4.Emptying the Cart
+
+- [ ] Notice that even when placing the order occurs successfully, the cart doesn't empty. When a user starts shopping again, they would have to manually remove the previous order items from their cart, or end up with double ups! Perhaps the `cart` reducer could also be watching for a `placeOrder.fulfilled` action?
+- [ ] It would also be great to navigate the user to the My Orders page once their order had been placed. However, we'd only want to redirect if the API call succeeds.
   <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    We'll need to import the `dispatch` hook and use it in the `<OrderList>` component.
+    <summary>Tips</summary>
+  * Use `unwrap()` on the `dispatch` function and then chain it with a `.then()` and a `catch()` as below:
+   ```js
+    dispatch(myAsyncActionCreator())
+      .unwrap() // 👈
+      .then((value) => ...)
+      .catch(error => ...)
+  ```
+  * Here is a link to [Redux-toolkit](https://redux-toolkit.js.org/api/createAsyncThunk#unwrapping-result-actions) explaining error handling when dispatching async actions from the UI.
   </details>
 
+## View your orders
+We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (ProductList) page.
+
+### 5. Setting up the orders API
+
+- [ ] Create a new GET route in `server/routes/orders.ts` that uses `db.listOrders()`
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
+
+      * This db function returns an array of orders.
+      * Test your route works as you expect before moving on.
+    </details>
+
+- [ ] Create a `getOrders` function in `client/api/orders.ts` to make the API call to your new route.
+
+### 6. Working with Redux Toolkit to get all orders
+- [ ] Create a `fetchOrders` async action creator that calls the `getOrders` function.
+- [ ] Create a new `orders` slice, which can watch for the `fulfilled` promise state and set the store state to the new `orders` array. 
+    <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+      * Be sure to import this new reducer into `client/store.ts` and use it inside the `configureStore reducer` object.
+    </details>
+
+### 7. Dispatching fetchOrders    
+- [ ] Dispatch the `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to import the `dispatch` hook and use it in the OrderList component.
 - [ ] Check your Redux devtools - can you see the orders?
 
-### 10. Displaying the list of orders
-- [ ] Update `<OrderList>` to display the `order` from the store
-  <details style="padding-left: 2em">
-    <summary>More about displaying orders from the store</summary>
-
-    `<OrderList>` is expecting to have an `orders` array, but currently this is hardcoded to an empty array. We'll need to make use of `useSelector` to get the `orders` from the Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
-  </details>
-
----
-
-## Updating order status
-Amazing! There are all of our orders - but currently they're all pending. Let's give our users a way to let Sweet As Organics know when they've received their order, or to cancel their order if they make a mistake.
-
-<details>
-  <summary>Can we delete orders?</summary>
-  
-  Sweet As Organics wants to keep track of all orders, even cancelled ones, so rather than deleting the order, we'll just change its status to `cancelled`. Likewise, we can change the status to `completed` once an order has been received.
-</details>
-<br />
-
-### 11. Creating routes for updating orders
-- [ ] Create a PATCH route on our server side that uses `db.editOrderStatus(id: number, newStatus: string)`
-  <details style="padding-left: 2em">
-    <summary>Tips</summary>
-
-    * `editOrderStatus` returns the updated order, which we can respond with
-    * Test that our route works as we expect before hitting it from the client side
-  </details>
-
-- [ ] Create a client side `patchOrderStatus` function which makes the API call to that route, sending the new status and the id
-
-### 12. Working with actions and reducers for updating orders
-
-- [ ] Create an `updateOrderStatus` async action creator, which dispatches pending and success actions
-  <details style="padding-left: 2em">
-    <summary>Tips</summary>
-  
-    * The success action should have an `order` property, so we can update the `orders` array in `client/reducers/orders.js`
-    * Also make sure to update the `waiting` reducer
-  </details>
-
-- [ ] Dispatch the `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers on the `<Order>` component
-  <details style="padding-left: 2em">
+### 8. Displaying the list of orders
+- [ ] Update <OrderList> to display the order from the store
+    <details style="padding-left: 2em">
     <summary>Tip</summary>
+
+      * `OrderList.tsx` is expecting to have an `orders` array, but currently this is hardcoded to an empty array. You'll need to make use of `useAppSelector` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
+    </details>
+
+## Update order status
+Amazing! There are all of our orders - but currently they're all pending. Let's give our users a way to let Sweet As Organics know when they've received their order, or cancel their order if they make a mistake.
+
+Sweet As Organics wants to keep track of all orders, even cancelled ones, so rather than deleting the order, we'll just change its status to `cancelled`. Likewise, we can change the status to `completed` once an order has been received.
+
+### 9. Creating routes for updating orders
+- [ ] Create a PATCH route on your server side that uses `db.editOrderStatus(id: number, newStatus: string)`.
+    <details style="padding-left: 2em">
+    <summary>Tip</summary>
+
+      * `editOrderStatus` returns the updated order, which you can respond with.
+      * Test your route works as you expect before hitting it from the client side.
     
-    Use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!
-  </details>
+    </details>
+- [ ] Create a client side `patchOrderStatus` function which makes the API call to that route, sending the new status and the id.
 
----
+### 10. Working with Redux Toolkit to update orders
+- [ ] Create and use an `updateOrderStatus` async action creator in `client/slices/orders.ts` which updates the `orders` array.
+- [ ] Dispatch your `updateOrderStatus` action from the `cancelOrder` and `completeOrder` click handlers in `Order.tsx`.
+    <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-## Stretch
+      * use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!
+    
+    </details>
 
-<details>
-  <summary>More about stretch challenges</summary>
+## Stretch: Use this challenge to complete your Trello assessment  (WD03 - Frontend: Create a rich client application using a modern frontend JavaScript framework)
 
-  Give the Sweet As team some admin rights - add the ability to add, remove or update a product.
+Now it's time to put all of what we've learned and implement a new feature that covers the web full-stack. To pass the Trello you need to add:
+* A new Database table or column
+* Database functions which read and write to your new table or column
+* That Data needs to be accessed and altered via a JSON API
+* Redux is used to manage storing data on the front end
+* Either a new React component or modify an existing component so you can display the data and allow users to alter data via API
 
-  Write some tests! We've got the full stack available to us to test - write some that you feel you've had the least practice in.
-</details>
+What you'll need:
+* Create a new table in the database, this could be anthing you would like i.e add the country of origin for the products, profile page or anything that will help you create a new DB table that you can read and write to!
+* You'll need to think back to week 5 and other weeks to implement the server-side. Remember `routes` and `db` functions? And our good friend insomnia to test our route functions? Will you need to use any `joins` in your `db` functions?
+* What about the client-side? Remember now we consume `apis`? Do you need a new api or slice file?
+* You can start implementing what you've learned about Redux and Thunk. Follow what you have already implemented to inform how you will complete this.
+* Do you need to make a new `React` component? Will you use `useEffect` and `useState`?
 
----
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=sweet-as-organics-api)
+Write some tests! You've got the full stack available to you to test - write some that you feel you've had the least practice in.
