@@ -27,7 +27,8 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom"
   },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
