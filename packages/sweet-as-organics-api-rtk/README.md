@@ -124,8 +124,8 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-      * This db function returns an array of orders.
-      * Test your route works as you expect before moving on.
+    * This db function returns an array of orders.
+    * Test your route works as you expect before moving on.
     </details>
 
 - [ ] Create a `getOrders` function in `client/api/orders.ts` to make the API call to your new route.
@@ -136,7 +136,7 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
     <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-      * Be sure to import this new reducer into `client/store.ts` and use it inside the `configureStore reducer` object.
+    * Be sure to import this new reducer into `client/store.ts` and use it inside the `configureStore reducer` object.
     </details>
 
 ### 7. Dispatching fetchOrders    
@@ -148,7 +148,7 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
     <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-      * `OrderList.tsx` is expecting to have an `orders` array, but currently this is hardcoded to an empty array. You'll need to make use of `useAppSelector` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
+    * `OrderList.tsx` is expecting to have an `orders` array, but currently this is hardcoded to an empty array. You'll need to make use of `useAppSelector` to get the `orders` from your Redux store into the component, and then we should have a snazzy list of orders displaying on the page!
     </details>
 
 ## Update order status
@@ -161,8 +161,8 @@ Sweet As Organics wants to keep track of all orders, even cancelled ones, so rat
     <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-      * `editOrderStatus` returns the updated order, which you can respond with.
-      * Test your route works as you expect before hitting it from the client side.
+    * `editOrderStatus` returns the updated order, which you can respond with.
+    * Test your route works as you expect before hitting it from the client side.
     
     </details>
 - [ ] Create a client side `patchOrderStatus` function which makes the API call to that route, sending the new status and the id.
@@ -173,8 +173,7 @@ Sweet As Organics wants to keep track of all orders, even cancelled ones, so rat
     <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-      * use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!
-    
+    * use the strings `'cancelled'` and `'completed'` for the new statuses to change the status symbol colour for the order - the CSS is already in place!
     </details>
 
 ## Stretch: Use this challenge to complete your Trello assessment  (WD03 - Frontend: Create a rich client application using a modern frontend JavaScript framework)
@@ -189,12 +188,11 @@ Now it's time to put all of what we've learned and implement a new feature that 
     <details style="padding-left: 2em">
     <summary>Things to think about</summary>
 
-      * Create a new table in the database, this could be anthing you would like i.e add the country of origin for the products, profile page or anything that will help you create a new DB table that you can read and write to!
-      * You'll need to think back to week 5 and other weeks to implement the server-side. Remember `routes` and `db` functions? And our good friend insomnia to test our route functions? Will you need to use any `joins` in your `db` functions?
-      * What about the client-side? Remember now we consume `apis`? Do you need a new api or slice file?
-      * You can start implementing what you've learned about Redux and Thunk. Follow what you have already implemented to inform how you will complete this.
-      * Do you need to make a new `React` component? Will you use `useEffect` and `useState`?
-    
+    * Create a new table in the database, this could be anthing you would like i.e add the country of origin for the products, profile page or anything that will help you create a new DB table that you can read and write to!
+    * You'll need to think back to week 5 and other weeks to implement the server-side. Remember `routes` and `db` functions? And our good friend insomnia to test our route functions? Will you need to use any `joins` in your `db` functions?
+    * What about the client-side? Remember now we consume `apis`? Do you need a new api or slice file?
+    * You can start implementing what you've learned about Redux and Thunk. Follow what you have already implemented to inform how you will complete this.
+    * Do you need to make a new `React` component? Will you use `useEffect` and `useState`?
     </details>
 
 Write some tests! You've got the full stack available to you to test - write some that you feel you've had the least practice in.
