@@ -109,6 +109,7 @@ A potential approach could be:
       .then((value) => ...)
       .catch(error => ...)
   ```
+  
   * Here is a link to [Redux-toolkit](https://redux-toolkit.js.org/api/createAsyncThunk#unwrapping-result-actions) explaining error handling when dispatching async actions from the UI.
   </details>
 
