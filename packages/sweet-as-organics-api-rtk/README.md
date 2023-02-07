@@ -103,13 +103,14 @@ A potential approach could be:
   <details style="padding-left: 2em">
     <summary>Tips</summary>
   * Use `unwrap()` on the `dispatch` function and then chain it with a `.then()` and a `catch()` as below:
-   ```js
+
+   ```ts
     dispatch(myAsyncActionCreator())
       .unwrap() // 👈
       .then((value) => ...)
       .catch(error => ...)
   ```
-  
+
   * Here is a link to [Redux-toolkit](https://redux-toolkit.js.org/api/createAsyncThunk#unwrapping-result-actions) explaining error handling when dispatching async actions from the UI.
   </details>
 
@@ -138,7 +139,7 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
     </details>
 
 ### 7. Dispatching fetchOrders    
-- [ ] Dispatch the `fetchOrders` action from a `useEffect` hook in `OrderList.jsx`. You'll need to import the `dispatch` hook and use it in the OrderList component.
+- [ ] Dispatch the `fetchOrders` action from a `useEffect` hook in `OrderList.tsx`. You'll need to import the `dispatch` hook and use it in the OrderList component.
 - [ ] Check your Redux devtools - can you see the orders?
 
 ### 8. Displaying the list of orders
