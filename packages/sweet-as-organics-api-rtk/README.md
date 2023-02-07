@@ -23,15 +23,15 @@ Take some time to familiarise yourself with how it's all working together by exp
 
 <details><summary>Try exploring these things:</summary>
 
-* How the `products` getting on to `ProductList` component.
-* How that `products` array gets into the Redux store in the first place. What's happening in `ProductList`'s `useEffect` method?
-* Check out that `fetchProducts` async action creator. It calls a `getProducts()` function asynchronously. What does that function do?
-* On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Postman or Insomnia to see if this route works like you expect. What is the shape of the data returned?
-* Follow the path back to the client side. How does the `products` data get back to that `fetchProducts` async action creator? What happens to the data then?
-* Check out the `extraReducers` in `productsSlice`. What does `fetchProducts.fulfilled` return?
-* Open your Redux devtools, and as you refresh the Shop (ProductList) page, see how those dispatched actions update the store state. Can you confirm that understanding by taking a look at the slices?
-* What does setting the `waiting` state do in terms of UI? Using the timeline slider at the bottom of your Redux devtools is a good way to see how the UI is changing based on different actions.
-* Notice `waiting` slice is watching for an action type that ends with `pending`, `fulfilled` or `rejected`.
+- [ ] How the `products` getting on to `ProductList` component.
+- [ ] How that `products` array gets into the Redux store in the first place. What's happening in `ProductList`'s `useEffect` method?
+- [ ] Check out that `fetchProducts` async action creator. It calls a `getProducts()` function asynchronously. What does that function do?
+- [ ] On our server side, we have `/api/v1/products` GET route that uses a DB function - you could fire up a tool like Postman or Insomnia to see if this route works like you expect. What is the shape of the data returned?
+- [ ] Follow the path back to the client side. How does the `products` data get back to that `fetchProducts` async action creator? What happens to the data then?
+- [ ] Check out the `extraReducers` in `productsSlice`. What does `fetchProducts.fulfilled` return?
+- [ ] Open your Redux devtools, and as you refresh the Shop (ProductList) page, see how those dispatched actions update the store state. Can you confirm that understanding by taking a look at the slices?
+- [ ] What does setting the `waiting` state do in terms of UI? Using the timeline slider at the bottom of your Redux devtools is a good way to see how the UI is changing based on different actions.
+- [ ] Notice `waiting` slice is watching for an action type that ends with `pending`, `fulfilled` or `rejected`.
 
 </details>
 
@@ -61,7 +61,7 @@ A potential approach could be:
   <details style="padding-left: 2em">
     <summary>Tip</summary>
     
-    Also browse our `dev.sqlite3` file to ensure the new order is being inserted. We should see rows added to both the `orders` and `orders_products` tables.
+    * Also browse our `dev.sqlite3` file to ensure the new order is being inserted. We should see rows added to both the `orders` and `orders_products` tables.
   </details>
 
 ### 2. Creating the order API on the client side
@@ -102,6 +102,7 @@ A potential approach could be:
 - [ ] It would also be great to navigate the user to the My Orders page once their order had been placed. However, we'd only want to redirect if the API call succeeds.
   <details style="padding-left: 2em">
     <summary>Tips</summary>
+
   * Use `unwrap()` on the `dispatch` function and then chain it with a `.then()` and a `catch()` as below:
 
    ```ts
@@ -185,11 +186,15 @@ Now it's time to put all of what we've learned and implement a new feature that 
 * Redux is used to manage storing data on the front end
 * Either a new React component or modify an existing component so you can display the data and allow users to alter data via API
 
-What you'll need:
-* Create a new table in the database, this could be anthing you would like i.e add the country of origin for the products, profile page or anything that will help you create a new DB table that you can read and write to!
-* You'll need to think back to week 5 and other weeks to implement the server-side. Remember `routes` and `db` functions? And our good friend insomnia to test our route functions? Will you need to use any `joins` in your `db` functions?
-* What about the client-side? Remember now we consume `apis`? Do you need a new api or slice file?
-* You can start implementing what you've learned about Redux and Thunk. Follow what you have already implemented to inform how you will complete this.
-* Do you need to make a new `React` component? Will you use `useEffect` and `useState`?
+    <details style="padding-left: 2em">
+    <summary>Things to think about</summary>
+
+      * Create a new table in the database, this could be anthing you would like i.e add the country of origin for the products, profile page or anything that will help you create a new DB table that you can read and write to!
+      * You'll need to think back to week 5 and other weeks to implement the server-side. Remember `routes` and `db` functions? And our good friend insomnia to test our route functions? Will you need to use any `joins` in your `db` functions?
+      * What about the client-side? Remember now we consume `apis`? Do you need a new api or slice file?
+      * You can start implementing what you've learned about Redux and Thunk. Follow what you have already implemented to inform how you will complete this.
+      * Do you need to make a new `React` component? Will you use `useEffect` and `useState`?
+    
+    </details>
 
 Write some tests! You've got the full stack available to you to test - write some that you feel you've had the least practice in.
