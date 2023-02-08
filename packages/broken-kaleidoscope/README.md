@@ -36,7 +36,7 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
 
 ### 1. Rendering an empty `div`
 
-- [ ] Create a component that only has one job: return a `<div>` using JSX. Let's call it `<Pixel>`
+- [ ] Create a component that only has one job: return a `<div>` using TSX. Let's call it `<Pixel>`
   <details style="padding-left: 2em">
     <summary>More about the <code>&lt;Pixel&gt;</code> component</summary>
 
@@ -62,11 +62,11 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
 
 - [ ] Add a `style` attribute on the `<div>` in your component
   <details style="padding-left: 2em">
-    <summary>More about styling in JSX</summary>
+    <summary>More about styling in TSX</summary>
 
     We need to see our component. For today, we'll make it visible by using the `style` TSX attribute. This directly corresponds to the `style` attribute on HTML elements, but instead of pure CSS syntax we use a JavaScript object. Here's an example:
 
-    ```jsx
+    ```tsx
       <div style={{
         fontFamily: 'Times New Roman'
       }}
@@ -74,7 +74,7 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
 
     Notice three things about this sample:
 
-    * the *first* set of curly braces indicates that we are using a JavaScript value in JSX
+    * the *first* set of curly braces indicates that we are using a JavaScript value in TSX
     * the *second* set of curly braces indicates an ordinary JavaScript object literal
     * instead of `font-family`, we use camelcase (`fontFamily`)
 
@@ -127,7 +127,7 @@ To easily work with the values we use in the `style` TSX attribute, we should pu
   <details style="padding-left: 2em">
     <summary>More about using the `style` state</summary>
 
-    When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the JSX.
+    When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the TSX.
 
     What you've just done is make your component more **flexible**. We can now manipulate the values any way we'd like using the `setStyle` function.
 
@@ -180,8 +180,8 @@ We can illustrate this by responding to some **events**.
   
     It will look like this:
 
-    ```js
-    const clickHandler = evt => {
+    ```ts
+    const clickHandler = (evt: UIEvent) => {
       setStyle({
         // ... new style here ...
       })
