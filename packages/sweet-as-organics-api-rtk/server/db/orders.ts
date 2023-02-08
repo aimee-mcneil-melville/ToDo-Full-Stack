@@ -1,8 +1,9 @@
 import connection from './connection'
+import { FormattedOrder } from '../../common/Order'
 
 import { formatOrder, formatOrderList } from '../formatter'
 
-export function listOrders(db = connection) {
+export function listOrders(db = connection): Promise<FormattedOrder[]> {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
@@ -14,7 +15,7 @@ export function listOrders(db = connection) {
       'status',
       'name'
     )
-    .then(formatOrderList)
+    .then((orderLines) => formatOrderList(orderLines))
 }
 
 export function addOrder(orderRequest, db = connection) {
