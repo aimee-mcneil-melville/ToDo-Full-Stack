@@ -37,7 +37,7 @@ export default function WidgetForm({
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="Widget form">
         <label htmlFor="name">Name:</label>
         <input
           onChange={handleChange}
