@@ -8,7 +8,7 @@ interface Continent {
   countries: Country[]
 }
 
-type ContinentData = Record<string, Continent>
+export type ContinentData = Record<string, Continent>
 
 const data: ContinentData = {
   Africa: {
