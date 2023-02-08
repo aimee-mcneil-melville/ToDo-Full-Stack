@@ -1,11 +1,11 @@
 import { FormattedOrder, OrderDB } from '../common/Order'
 
-export function createDateTimeString(timestamp) {
+export function createDateTimeString(timestamp: string | number | Date) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-export function createOrder(orderLine) {
+export function createOrder(orderLine: OrderDB) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
@@ -14,7 +14,7 @@ export function createOrder(orderLine) {
   }
 }
 
-export function createProduct(orderLine) {
+export function createProduct(orderLine: OrderDB) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
@@ -49,8 +49,8 @@ export function formatOrder(orderLines: OrderDB[]) {
   return order
 }
 
-export function formatOrderList(orderLines) {
-  const orderList = []
+export function formatOrderList(orderLines: OrderDB[]) {
+  const orderList = [] as FormattedOrder[]
   orderLines.forEach((item) => {
     const order = orderList.find((o) => o.id === item.orderId)
     !order
