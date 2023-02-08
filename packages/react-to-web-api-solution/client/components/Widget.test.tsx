@@ -1,6 +1,12 @@
 import nock from 'nock'
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  within,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import App from './App'
@@ -79,7 +85,7 @@ describe('Widget', () => {
   it('renders a widget with updated data when the save button is clicked', async () => {
     const loadScope = nock('http://localhost')
       .get('/api/v1/widgets/')
-      .reply(200, [testWidget])
+      .reply(200, [testWidget, { ...testWidget, id: 2, name: 'Widget' }])
 
     const updateScope = nock('http://localhost')
       .patch('/api/v1/widgets/1')
@@ -90,7 +96,10 @@ describe('Widget', () => {
     expect(widget).toBeInTheDocument()
     expect(loadScope.isDone()).toBe(true)
 
-    const editButton = screen.getByRole('button', { name: /Edit/i })
+    const editButton = within(widget.parentNode as HTMLElement).getByRole(
+      'button',
+      { name: /Edit/i }
+    )
     fireEvent.click(editButton)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })

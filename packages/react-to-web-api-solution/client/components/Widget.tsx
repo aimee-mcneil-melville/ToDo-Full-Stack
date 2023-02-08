@@ -17,13 +17,13 @@ export default function Widget(props: Props) {
     updateWidget(id, widget)
       .then((widget: Models.Widget) => patchWidget(widget))
       .finally(() => setEdit(false))
-      .catch((e: Error) => setError(e.message))
+      .catch((e: unknown) => setError(String(e)))
   }
 
   const removeWidget = () => {
     deleteWidget(id)
       .then(() => delWidget(id))
-      .catch((e: Error) => setError(e.message))
+      .catch((e: unknown) => setError(String(e)))
   }
 
   if (error) return <div className="error-message">{error}</div>

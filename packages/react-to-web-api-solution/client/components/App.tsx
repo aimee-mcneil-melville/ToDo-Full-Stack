@@ -13,14 +13,14 @@ function App() {
   useEffect(() => {
     getWidgets()
       .then((widgets) => setWidgets(widgets))
-      .catch((e: Error) => setError(e.message))
+      .catch((e: unknown) => setError(String(e)))
   }, [])
 
   const submitWidget = (widget: Models.WidgetData) => {
     addWidget(widget)
       .then((widgets) => setWidgets(widgets))
       .finally(() => setShowForm(false))
-      .catch((e: Error) => setError(e.message))
+      .catch((e: unknown) => setError(String(e)))
   }
   // API returns 200 status and state is filtered here to remove the deleted widget
   // Alternate option would be as above to return the updated list of widgets from the API
