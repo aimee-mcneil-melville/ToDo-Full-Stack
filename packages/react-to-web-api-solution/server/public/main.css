@@ -14,3 +14,7 @@ form {
   display: grid;
   width: max-content;
 }
+
+.error-message {
+  color: red;
+}
