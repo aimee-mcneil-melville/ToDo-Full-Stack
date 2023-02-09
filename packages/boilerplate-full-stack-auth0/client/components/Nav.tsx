@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { UIEvent } from 'react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hooks'
 
 export function useRegisterFn() {
   const { loginWithRedirect } = useAuth0()
@@ -14,21 +15,21 @@ export function useRegisterFn() {
 }
 
 function Nav() {
-  const user = useSelector((state) => state.user)
+  const user = useAppSelector((state) => state.user)
   const { loginWithRedirect, logout } = useAuth0()
   const register = useRegisterFn()
 
-  function handleLogin(event) {
+  function handleLogin(event: UIEvent) {
     event.preventDefault()
     loginWithRedirect()
   }
 
-  function handleLogoff(event) {
+  function handleLogoff(event: UIEvent) {
     event.preventDefault()
     logout()
   }
 
-  function handleRegister(event) {
+  function handleRegister(event: UIEvent) {
     event.preventDefault()
     register()
   }

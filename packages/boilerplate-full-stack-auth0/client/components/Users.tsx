@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsers } from '../actions/user'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 function Users() {
-  const dispatch = useDispatch()
-  const users = useSelector((state) => state.users)
+  const dispatch = useAppDispatch()
+  const users = useAppSelector((state) => state.users)
   useEffect(() => {
     dispatch(fetchUsers())
-  }, [])
+  }, [dispatch])
 
   return (
     <section className="users">
