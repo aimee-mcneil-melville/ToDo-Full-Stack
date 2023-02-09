@@ -24,7 +24,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
 ### 1. Preparing to use `<BrowserRouter>`
 
-- [ ] Add the configuration for `BrowserRouter` in our `server.js` (this must go AFTER the line that sets up our `public` folder)
+- [ ] Add the configuration for `BrowserRouter` in our `server.ts` (this must go AFTER the line that sets up our `public` folder)
   <details style="padding-left: 2em">
     <summary>More about configuration</summary>
 
@@ -38,7 +38,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
   </details>
 
-- [ ] Set up `<BrowserRouter>` in our `client/index.js`
+- [ ] Set up `<BrowserRouter>` in our `client/index.tsx`
   <details style="padding-left: 2em">
     <summary>More about <code>&lt;BrowserRouter&gt;</code> on the client side</summary>
 
@@ -52,7 +52,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
 ### 2. Building a Home
 
-Check out the `App.jsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
+Check out the `App.tsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
 
 <details>
   <summary>Image of worldwide-routing after completing this section</summary>
@@ -75,7 +75,7 @@ Check out the `App.jsx` component. It currently contains the main header, a `<Ho
 
 ### 3. Adding continents
 
-- [ ] Add a route for `continents/:name` to our `App.jsx`. We will use it to show the selected continent and its respective image from `data/continents.js` file
+- [ ] Add a route for `continents/:name` to our `App.tsx`. We will use it to show the selected continent and its respective image from `data/continents.ts` file
 
 - [ ] Create a `<Continent>` component for this route, and use `useParams` (imported from `react-router-dom`) to determine which continent to show
 
@@ -99,7 +99,7 @@ Check out the `App.jsx` component. It currently contains the main header, a `<Ho
 
 ### 5. Adding countries
 
-Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.js`.
+Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.ts`.
 
 - [ ] Create a route for this page. It should look something like: `continent/:name/:code`
 <details style="padding-left: 2em">
