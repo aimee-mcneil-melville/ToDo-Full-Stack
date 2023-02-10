@@ -18,14 +18,14 @@ describe('App', () => {
     expect(circle).toBeInTheDocument()
 
     userEvent.click(circle)
-
+    // after clicking the circle, there should be 5 more circles
     const circles = screen.getAllByTestId('circle')
     expect(circles).toHaveLength(5)
 
     const resetButton = screen.getByRole('button', { name: /reset/i })
     userEvent.click(resetButton)
-
-    const newCircle = screen.getByTestId('circle')
-    expect(newCircle).toBeInTheDocument()
+    // after clicking the reset button, there should be only 1 circle
+    const newCircle = screen.queryAllByTestId('circle')
+    expect(newCircle).toHaveLength(1)
   })
 })
