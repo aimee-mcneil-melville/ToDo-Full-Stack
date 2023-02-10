@@ -34,6 +34,7 @@ export default function Pixel() {
     <button
       onClick={handleClick}
       onDragEnter={handleDragEnter}
+      draggable={true}
       onContextMenu={handleContextMenu}
       onDoubleClick={handleDoubleClick}
       onMouseEnter={handleMouseEnter}
