@@ -1,8 +1,9 @@
-const express = require('express')
-const jwtAuthz = require('express-jwt-authz')
-const { getUserRoles, checkJwt } = require('../auth0')
+import express from 'express'
+import jwtAuthz from 'express-jwt-authz'
+import { getUserRoles, checkJwt } from '../auth0'
+import { UserData } from '../../models/user'
+import * as db from '../db/users'
 
-const db = require('../db/users')
 const router = express.Router()
 
 // middleware for checking permissions (authorization)
@@ -12,7 +13,7 @@ const checkAdmin = jwtAuthz(['read:my_private_route'], {
 
 // POST /api/v1/users/protected
 router.post('/', async (req, res) => {
-  const { auth0Id, name, email, description } = req.body
+  const { auth0Id, name, email, description } = req.body as UserData
   const user = { auth0Id, name, email, description }
 
   try {
@@ -72,4 +73,4 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

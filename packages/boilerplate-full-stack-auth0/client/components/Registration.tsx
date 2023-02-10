@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState, UIEvent, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
+import { UserData } from '../../models/user'
 import { addUser } from '../apis/users'
+import { useAppSelector } from '../hooks'
 
 function Registration() {
-  const user = useSelector((state) => state.user)
+  const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
@@ -12,18 +13,20 @@ function Registration() {
     name: '',
     email: '',
     description: '',
-  })
+  } as UserData)
 
   useEffect(() => {
     setForm({
       auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
+      name: user.name || '',
+      email: user.email || '',
       description: user.description,
     })
   }, [user])
 
-  function handleChange(e) {
+  function handleChange(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -31,11 +34,10 @@ function Registration() {
     })
   }
 
-  async function handleClick(e) {
+  async function handleClick(e: UIEvent) {
     e.preventDefault()
-    // registerUser(form, authUser, history.push)
     try {
-      await addUser(form)
+      await addUser(form as UserData)
       navigate('/')
     } catch (error) {
       console.error(error)

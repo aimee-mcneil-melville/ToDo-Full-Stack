@@ -9,7 +9,6 @@ const emptyUser = {
   email: '',
   name: '',
   token: '',
-  roles: [],
 }
 
 export function useAuthCache() {
@@ -22,7 +21,13 @@ export function useAuthCache() {
     }
 
     async function cacheUser() {
-      if (isAuthenticated) {
+      if (
+        isAuthenticated &&
+        user != null &&
+        user.sub &&
+        user.email &&
+        user.nickname
+      ) {
         try {
           const token = await getAccessTokenSilently()
           const roles = await getUserRoles(user.sub)

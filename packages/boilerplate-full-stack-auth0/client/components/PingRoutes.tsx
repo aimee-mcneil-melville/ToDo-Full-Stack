@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import request from 'superagent'
+import { useAppSelector } from '../hooks'
 
 function PingRoutes() {
-  const token = useSelector((state) => state.user.token)
+  const token = useAppSelector((state) => state.user.token)
   const [message, setMessage] = useState('')
 
   async function handlePublicEndpoint() {

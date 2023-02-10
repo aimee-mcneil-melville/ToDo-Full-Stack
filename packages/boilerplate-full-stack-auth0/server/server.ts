@@ -1,7 +1,7 @@
-const express = require('express')
-const { join } = require('node:path')
+import express from 'express'
+import { join } from 'node:path'
 
-const usersRoutes = require('./routes/users')
+import usersRoutes from './routes/users'
 
 const server = express()
 
@@ -14,4 +14,4 @@ server.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'))
 })
 
-module.exports = server
+export default server
