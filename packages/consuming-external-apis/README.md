@@ -39,7 +39,7 @@ In addition to hitting our own APIs with JavaScript, we can also make use of API
     const apiKey = process.env.YOUR_API_KEY_NAME
     ```
 
-    The `.gitignore` file includes `.env` which makes sure our personal api keys are not pushed up to GitHub. It is good practice to provide a sample file for others that will use the repository _(such as facilitators or team members)_ to know where to obtain and how to include their key. 
+    By including `.env` in the `.gitignore` file your personal api keys will not be pushed up to GitHub. It is good practice to provide a sample file for others that will use the repository _(such as facilitators or team members)_ to know where to obtain and how to include their key. 
     
     Create a `.env.sample` file:
 
