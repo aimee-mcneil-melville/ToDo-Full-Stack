@@ -118,7 +118,7 @@ Once you've got the functionality, have fun with new colours for each generation
 <details>
   <summary>Guidance on completing the challenge</summary>
   
-  - If you don't already have it installed, you should install the React DevTools browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) and [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)). This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) used by React
+  - If you don't already have it installed, you should install the React DevTools browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) and [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)). This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](https://reactjs.org/docs/faq-internals.html#what-is-the-virtual-dom) used by React
 
 ## Stretch
 
@@ -144,8 +144,8 @@ Woohoo! You've made some fractal circles! Now, let's make them more interesting.
 
 - [SVG](https://developer.mozilla.org/en/docs/Web/SVG)
 - [SVG `circle`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
-- [React Component](https://facebook.github.io/react/docs/reusable-components.html)
-- [React's `useState`](https://reactjs.org/docs/hooks-reference.html#usestate)
+- [React Component](https://beta.reactjs.org/learn/your-first-component)
+- [React's `useState`](https://beta.reactjs.org/reference/react/useState)
 - [Color](https://developer.mozilla.org/en/docs/Web/CSS/color_value)
 - [A Sierpinksi Triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle): A great example of graphical recursion
   </details>

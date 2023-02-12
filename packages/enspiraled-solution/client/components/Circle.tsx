@@ -41,6 +41,7 @@ export default function Circle({ cx, cy, r, level }: Props) {
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
         fill={color}
+        data-testid="circle"
       />
       {
         // STRETCH: Stop generating new circles once there are 7 generations of circles
