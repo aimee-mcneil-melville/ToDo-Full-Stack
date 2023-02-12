@@ -1,7 +1,7 @@
 {
   "name": "my-fullstack-collection-scss",
   "version": "0.1.0",
-  "description": "Some facts about movies",
+  "description": "Build a fullstack collection app, with SCSS",
   "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
   "main": "server/index.ts",
   "scripts": {
