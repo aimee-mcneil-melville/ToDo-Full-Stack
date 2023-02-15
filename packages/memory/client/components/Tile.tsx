@@ -5,7 +5,7 @@ interface Props extends TileData {
 }
 
 function Tile(props: Props) {
-  return <div className="tile">{props.value}</div>
+  return <button className="tile">{props.value}</button>
 }
 
 export default Tile
