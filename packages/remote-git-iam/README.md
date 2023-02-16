@@ -7,13 +7,13 @@ The purpose of git-iam is for students to post commits under their own name, eve
 ## Installation
 
 ```sh
-npm install git-iam --global
+npm install @devacademy/git-iam --global
 ```
 
 OR
 
 ```sh
-yarn global add git-iam
+yarn global add @devacademy/git-iam
 ```
 
 ## Configuration
@@ -73,13 +73,13 @@ But first make sure you've switched back to your own identity with `git iam <you
 To uninstall the package, run
 
 ```sh
-npm uninstall git-iam --global
+npm uninstall @devacademy/git-iam --global
 ```
 
 OR
 
 ```sh
-yarn global remove git-iam
+yarn global remove @devacademy/git-iam
 ```
 
 If after doing this you find that Git has forgotten your name and email address, you can re-supply them when prompted. "Your Name" should be your nicely-formatted name, not your GitHub username.
