@@ -7,13 +7,13 @@ The purpose of git-iam is for students to post commits under their own name, eve
 ## Installation
 
 ```sh
-npm install git-iam --global
+npm install @devacademy/git-iam --global
 ```
 
 OR
 
 ```sh
-yarn global add git-iam
+yarn global add @devacademy/git-iam
 ```
 
 ## Configuration
