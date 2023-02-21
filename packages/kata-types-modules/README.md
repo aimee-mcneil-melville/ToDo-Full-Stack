@@ -61,7 +61,7 @@ This challenge is designed to practice familiarity with types, functions, and mo
 
 ### 3. Common array methods
 
-The final three tests in `functions.js` ask you to implement 3 common functions we use on arrays:
+The final three tests in the `tests/functions` directory ask you to implement 3 common functions we use on arrays:
 
 - [ ] Build your own implementation of [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 - [ ] Build your own implementation of [`Array.filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
