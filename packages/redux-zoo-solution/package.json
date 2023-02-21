@@ -1,5 +1,5 @@
 {
-  "name": "redux-zoo",
+  "name": "redux-zoo-solution",
   "version": "0.1.0",
   "description": "React app with redux",
   "main": "server/index.js",
