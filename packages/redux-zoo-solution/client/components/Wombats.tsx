@@ -1,5 +1,6 @@
 import { useAppSelector } from '../hooks'
 import Wombat from './Wombat'
+import AddWombat from './AddWombat'
 
 function Wombats() {
   const wombats = useAppSelector((state) => state.wombats)
@@ -14,6 +15,7 @@ function Wombats() {
           </li>
         ))}
       </ul>
+      <AddWombat />
     </div>
   )
 }
