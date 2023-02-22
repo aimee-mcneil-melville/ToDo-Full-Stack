@@ -12,8 +12,8 @@ test('splitStringByCommas will not split a string if it has no commas', () => {
   expect(actual).toEqual(expected)
 })
 
-test('example showing how to use splitStringByCommas with the array map method, to split strings in an array', () => {
-  const input = [
+test('splitStringByCommas successfully splits different strings', () => {
+  const randomStrings = [
     'attack feet behind the couch destroy couch flop over',
     'give attitude,hide when guests come over',
     'hopped up on goofballs - hunt anything that moves!',
@@ -33,10 +33,7 @@ test('example showing how to use splitStringByCommas with the array map method, 
     ['beast under', 'the bed'],
   ]
 
-  // Note that we are passing `splitStringByCommas` into `input.map`, rather
-  // than calling it directly.
-  // Hint: familiarise yourself with `Array.prototype.map()` before making
-  // changes to your function!
-  const mapped = input.map(splitStringByCommas)
+  // Note that we are passing `splitStringByCommas` into `randomStrings.map`
+  const mapped = randomStrings.map(splitStringByCommas)
   expect(mapped).toEqual(expected)
 })

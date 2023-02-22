@@ -1,12 +1,12 @@
 const getType = require('../utilities').getType
 
-test('"42" is a string data type', () => {
+test('getType identifies "42" as a string data type', () => {
   const expected = 'string'
   const actual = getType('42')
   expect(actual).toBe(expected)
 })
 
-test('curly braces mean we have an object', () => {
+test('getType identifies an object data type', () => {
   const monster = {
     name: 'Cthulhu',
     email: 'cthulhu@thedeep.com',
