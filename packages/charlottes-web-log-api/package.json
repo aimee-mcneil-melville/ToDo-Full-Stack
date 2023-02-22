@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node server",
-    "dev": "run-p dev:server dev:client",
+    "dev": "run-p dev:server",
+    "dev:all": "run-p dev:server dev:client",
     "dev:server": "nodemon --watch server server/index.ts",
     "dev:client": "npm run build -- --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
