@@ -14,23 +14,19 @@ test('filterStringsWithCommas returns false if there is no comma present', () =>
 
 test('example showing how to use filterStringsWithCommas with the array filter method to pull all the strings in an array containing commas', () => {
   const input = [
-    '5942 Kenyon Drive',
-    'in,esse,XOXO,intelligentsia',
-    '1666',
-    '2015-11-15 04:30:11 +1300',
-    '1211-1221-1234-2201',
-    'heirloom,ut,umami,microdosing',
-    'Helmer Kassulke DVM',
-    'raphaelle@langoshreichel.biz',
-    '60.40.31.228',
-    '(482) 566-8710 x45067',
-    'carry,reiciendis,soluta,consectetur',
+    'attack feet behind the couch destroy couch flop over',
+    'give attitude,hide when guests come over',
+    'hopped up on goofballs - hunt anything that moves!',
+    'intently,stare,at,the,same,spot',
+    'make muffins;flop over',
+    'rub face on everything sweet',
+    'beast under,the bed',
   ]
 
   const expected = [
-    'in,esse,XOXO,intelligentsia',
-    'heirloom,ut,umami,microdosing',
-    'carry,reiciendis,soluta,consectetur',
+    'give attitude,hide when guests come over',
+    'intently,stare,at,the,same,spot',
+    'beast under,the bed',
   ]
 
   // Note that we are passing `filterStringsWithCommas` into `input.filter`,
