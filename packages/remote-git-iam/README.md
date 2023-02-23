@@ -10,12 +10,6 @@ The purpose of git-iam is for students to post commits under their own name, eve
 npm install @devacademy/git-iam --global
 ```
 
-OR
-
-```sh
-yarn global add @devacademy/git-iam
-```
-
 ## Configuration
 
 **Important Note for the Teaching Team:** Replace the link after the `--init` with a shareable link to the private git gist with the JSON object containing student github information. In order to create a quick JSON file of all the students, run the second part of this [script](https://github.com/dev-academy-programme/teaching-guide/tree/main/resources/scripts/add-people-to-github-org). Remember to add `/raw/` at the end of the git gist link. Delete this note after forking and editing the link.
@@ -74,12 +68,6 @@ To uninstall the package, run
 
 ```sh
 npm uninstall @devacademy/git-iam --global
-```
-
-OR
-
-```sh
-yarn global remove @devacademy/git-iam
 ```
 
 If after doing this you find that Git has forgotten your name and email address, you can re-supply them when prompted. "Your Name" should be your nicely-formatted name, not your GitHub username.
