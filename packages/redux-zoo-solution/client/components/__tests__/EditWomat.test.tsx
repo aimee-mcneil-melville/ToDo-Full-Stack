@@ -4,6 +4,7 @@
  * Unit test for the EditWombat component
  */
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 
 import { useAppDispatch } from '../../hooks'
@@ -36,7 +37,7 @@ describe('EditWombat', () => {
     render(<EditWombat name={wombat} />)
 
     const nameInput = screen.getByLabelText('Update Wombat:')
-    fireEvent.change(nameInput, { target: { value: 'Wiremu' } })
+    userEvent.type(nameInput, 'Wiremu')
     expect(nameInput).toHaveValue('Wiremu')
 
     const submitButton = screen.getByRole('button', { name: /update/i })

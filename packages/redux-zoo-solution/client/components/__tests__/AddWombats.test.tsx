@@ -4,6 +4,7 @@
  * Integration test for the AddWombats component
  */
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { Provider } from 'react-redux'
 
@@ -19,7 +20,7 @@ describe('AddWombats', () => {
     )
 
     const wombatInput = screen.getByLabelText('Name')
-    fireEvent.change(wombatInput, { target: { value: 'Wallace' } })
+    userEvent.type(wombatInput, 'Wallace')
     expect(wombatInput).toHaveValue('Wallace')
 
     const submitButton = screen.getByRole('button', { name: /submit/i })
