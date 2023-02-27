@@ -3,10 +3,10 @@ import Aardvarks from './Aardvarks'
 
 function App() {
   return (
-    <div>
+    <main>
       <Wombats />
       <Aardvarks />
-    </div>
+    </main>
   )
 }
 

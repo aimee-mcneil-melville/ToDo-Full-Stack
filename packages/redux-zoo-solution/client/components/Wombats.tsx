@@ -6,7 +6,7 @@ function Wombats() {
   const wombats = useAppSelector((state) => state.wombats)
 
   return (
-    <div>
+    <section>
       <h1>Wombats</h1>
       <ul>
         {wombats.map((wombat) => (
@@ -16,7 +16,7 @@ function Wombats() {
         ))}
       </ul>
       <AddWombat />
-    </div>
+    </section>
   )
 }
 

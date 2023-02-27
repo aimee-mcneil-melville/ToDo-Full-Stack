@@ -5,7 +5,7 @@ function Aardvarks() {
   const aardvarks = useAppSelector((state) => state.aardvarks)
 
   return (
-    <div>
+    <section>
       <h1>Aardvarks</h1>
       <ul>
         {aardvarks.map((aardvark) => (
@@ -14,7 +14,7 @@ function Aardvarks() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 
