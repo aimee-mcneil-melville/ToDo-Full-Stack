@@ -1,8 +1,4 @@
 const splitStringByCommas = require('../utilities').splitStringByCommas
-const filterStringsWithCommas = require('../utilities').filterStringsWithCommas
-
-const randomStrings = require('../data/random-strings')
-const arrayOfArrays = require('../data/array-of-arrays')
 
 test('splitStringByCommas will split a string at each comma', () => {
   const expected = ['hello', 'world']
@@ -10,16 +6,34 @@ test('splitStringByCommas will split a string at each comma', () => {
   expect(actual).toEqual(expected)
 })
 
-test('splitStringByCommas will split all strings in the arrayOfArrays, at each comma', () => {
-  const stringsWithCommas = randomStrings.filter(filterStringsWithCommas) || []
-  const mappedArray = stringsWithCommas.map(splitStringByCommas) || []
+test('splitStringByCommas will not split a string if it has no commas', () => {
+  const expected = ['hello world']
+  const actual = splitStringByCommas('hello world')
+  expect(actual).toEqual(expected)
+})
 
-  const arraysMatch =
-    mappedArray.length &&
-    mappedArray.every((arr, i) => {
-      return arr.every((str, j) => {
-        return str === arrayOfArrays[i][j]
-      })
-    })
-  expect(arraysMatch).toBeTruthy()
+test('splitStringByCommas successfully splits different strings', () => {
+  const randomStrings = [
+    'attack feet behind the couch destroy couch flop over',
+    'give attitude,hide when guests come over',
+    'hopped up on goofballs - hunt anything that moves!',
+    'intently,stare,at,the,same,spot',
+    'make muffins;flop over',
+    'rub face on everything sweet',
+    'beast under,the bed',
+  ]
+
+  const expected = [
+    ['attack feet behind the couch destroy couch flop over'],
+    ['give attitude', 'hide when guests come over'],
+    ['hopped up on goofballs - hunt anything that moves!'],
+    ['intently', 'stare', 'at', 'the', 'same', 'spot'],
+    ['make muffins;flop over'],
+    ['rub face on everything sweet'],
+    ['beast under', 'the bed'],
+  ]
+
+  // Note that we are passing `splitStringByCommas` into `randomStrings.map`
+  const mapped = randomStrings.map(splitStringByCommas)
+  expect(mapped).toEqual(expected)
 })

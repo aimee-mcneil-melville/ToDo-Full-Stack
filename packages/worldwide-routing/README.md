@@ -32,7 +32,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
   ```js
   server.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.sendFile(join(__dirname, 'public/index.html'))
   })
   ```
 

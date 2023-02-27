@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "Kata for working with types, functions and modules",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace",
+    "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
