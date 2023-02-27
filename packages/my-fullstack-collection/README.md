@@ -92,7 +92,8 @@ Our first job is getting something showing on the front end from our database. H
 
 <details>
   <summary>More about stretch challenges</summary>
-
+  
+  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
   - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
     - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, and this may require adjusting your database design
   - Could you add an external API (maybe an inspirational quote in the footer?)

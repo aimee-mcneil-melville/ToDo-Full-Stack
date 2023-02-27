@@ -146,6 +146,7 @@ When you're starting to get happier with this process, you could try reinforcing
 <details>
   <summary>More about stretch challenges</summary>
 
+  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
   - Currently our wombats state contains an array of strings, but often our data is stored in database tables and, when retrieved, this comes out as an array of objects. Update your wombat data to match this (perhaps with keys such as `id`, `name`, `furColour`, `favouriteToy`, etc). How does this change the add, delete, and update functionality?
   - Choose a CSS framework to implement and make this page prettier!
   - Write tests for your React components, actions creators, and reducers

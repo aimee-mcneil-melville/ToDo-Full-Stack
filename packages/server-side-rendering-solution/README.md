@@ -39,7 +39,7 @@ When you're learning a new technology, make sure you start simple and get that w
     Make sure it's working by having it send something like `res.send('Hello, world!')`
   </details>
 
-- [ ] Create a layout file in `views/layouts`. It should be called `main.hbs`
+- [ ] Create a layout file in `server/views/layouts`. It should be called `main.hbs`
   <details style="padding-left: 2em">
     <summary>More about the layout file</summary>
 
@@ -135,7 +135,7 @@ The rest of this exercise should follow the same arc - gradually layering up det
 <details>
   <summary>Using <code>art.json</code></summary>
 
-  Any time you want to use this data, you can include `const art = require('./art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
+  Any time you want to use this data, you can include `const art = require('./data/art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
 
   ```js
   const viewData = {
@@ -235,6 +235,13 @@ The rest of this exercise should follow the same arc - gradually layering up det
     - These testing libraries have already been installed
     - Create a `server.test.js` and test away!
     - In particular, testing both sides of any `{{#if}}`s we have, and that our `{{#each}}`s loop correctly, would be a great start!
+  </details>
+- [ ] Use the WAVE browser extension to find and address accessibility concerns
+  <details style="padding-left: 2em">
+    <summary>More about testing for accessibility</summary>
+
+    - [Watch a video demo](https://www.youtube.com/watch?v=sdIkpL9EiN4)
+    - Address any errors, contrast errors, and warnings
   </details>
 
 Take the chance to explore, play, experiment. Ask lots of questions!
