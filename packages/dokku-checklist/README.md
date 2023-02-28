@@ -77,7 +77,7 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
     # we want to match the same version of dokku that we have
     # on the server
     cd ~/.dokku
-    git checkout v0.28.1
+    git checkout v0.29.4
     ```
 
     Add these lines to your `~/.zshrc` file:
@@ -191,7 +191,7 @@ We need to create and deploy our apps to see them live.
     
     Make sure you copy the website url, not the git url, and paste it into your browser
 
-    **If you see the application error page, or if your site has issues starting, type `heroku logs --tail` into your command line in order to debug what may have gone wrong.**
+    **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
   </details>
 
 ---
