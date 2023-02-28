@@ -83,7 +83,7 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
     Add these lines to your `~/.zshrc` file:
 
     ```sh
-    export DOKKU_HOST='devacademy.online'
+    export DOKKU_HOST='devacademy.nz'
     alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
     ```
 
@@ -227,7 +227,7 @@ We need to create and deploy our apps to see them live.
     If that remote wasn't created for whatever reason, we can do it manually:
 
     ```sh
-    git remote add dokku dokku@devacademy.online:dreamfest
+    git remote add dokku dokku@devacademy.nz:dreamfest
     ```
 
     Your migrations should run during the build or on startup, but
