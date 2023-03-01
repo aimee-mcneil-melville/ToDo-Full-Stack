@@ -73,7 +73,8 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
 
     ```sh
     git clone git@github.com:dokku/dokku.git ~/.dokku
-
+    ```
+    ```
     # we want to match the same version of dokku that we have
     # on the server
     cd ~/.dokku
