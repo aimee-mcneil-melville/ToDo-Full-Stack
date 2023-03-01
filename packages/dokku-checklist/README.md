@@ -179,13 +179,13 @@ We need to create and deploy our apps to see them live.
     **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
 
     ```
-    git push heroku local-branch-name:main
+    git push dokku local-branch-name:main
     ```
 
     (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
   </details>
 
-- [ ] Open the deployed site with `heroku open` or by copying the url provided at the end of the deploy output logs
+- [ ] Open the deployed site with `dokku open` or by copying the url provided at the end of the deploy output logs
   <details style="padding-left: 2em">
     <summary>Tips</summary>
     
