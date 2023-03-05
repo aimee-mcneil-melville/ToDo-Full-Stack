@@ -73,12 +73,25 @@
   - [ ] Generator functions
   - [ ] ES7
 
+* Performance
+  - [ ] Measuring performance
+  - [ ] React rendering cycles
+  - [ ] Lazy loading
+  - [ ] Minification of JS and CSS
+
 * Security
   - [ ] CORS
   - [ ] SQL Injection attack
   - [ ] Cross site scripting
   - [ ] Heartbleed SSL vulnerability
   - [ ] Fundamentals of encryption
+  - [ ] Authentication vs Authorisation
+  - [ ] Input validation
+
+* Testing
+  - [ ] End-to-end testing
+  - [ ] Visual regression testing
+  - [ ] Automated testing for accessibility
 
 * Algorithms
   - [ ] Common sorting algorithms
@@ -107,6 +120,5 @@
   - [ ] How to make a Chrome Extension
   - [ ] Electron
   - [ ] IoT (Internet of Things)
-  - [ ] TypeScript
   - [ ] Elm
   - _Another topic that will be interesting for people (validate with teacher first)_
