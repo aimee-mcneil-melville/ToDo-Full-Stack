@@ -26,11 +26,13 @@ export function printGreeting(): void {
 
 // ----------- OPTIONAL PARAMS -----------
 
+// sumFrame accepts two balls and returns the sum of the two numbers
+// sometimes there may be a third ball, if there is, add it to the sum
 export function sumFrame(): void {
 }
 
 // greetFullName should return a string containing the full name
-// (including middle name if it exists)
+// including middle name if it exists
 export function greetFullName(): void {
 }
 

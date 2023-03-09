@@ -22,19 +22,12 @@ export function removeFirstItem(): void {
 
 // ----------- TYPE CASTING -----------
 
-// removeEmptySpots should take an array of nulls and another type and remove all null values
-// it should return a new array containing the remaining items
-export function removeEmptySpots(): void {
-}
-
+// getEmptyArray should return an empty array of any type
+// we can later call it like this: const arr = getEmptyArray<string>()
 export function getEmptyArray(): void {
 }
 
-export function addStringToArray() {
-  const arr = getEmptyArray()
-  // This SHOULD work
-  arr.push('hello')
-  // This should NOT work
-  arr.push(3)
-  return arr
+// removeEmptySpots should take an array of nulls and another type and remove all null values
+// it should return a new array containing the remaining items
+export function removeEmptySpots(): void {
 }

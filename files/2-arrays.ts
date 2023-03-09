@@ -30,11 +30,11 @@ export function removeEmptySpots(): void {
 
 // ----------- TUPLES -----------
 
-// generateUserName should return a username 
-// based on the first name, last name and year born
-// e.g. 'John Smith' born in 1980 should return 'smithjo_1980'
-// e.g. 'Jane Doe' born in 1990 should return 'doeja_1990'
-export function generateUserName(): void {
+// generateUsername should return a username 
+// based on a tuple containing the first name, last name and year born
+// e.g. generateUsername(['John', 'Smith', '1980']) should return 'smithjo_1980'
+// e.g. generateUsername(['Jane', 'Doe', '1965']) should return 'doeja_1965'
+export function generateUsername(): void {
 }
 
 // getNextMapCoord should return the next coordinate in the direction specified
