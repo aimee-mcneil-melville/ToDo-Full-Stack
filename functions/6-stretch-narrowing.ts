@@ -7,7 +7,6 @@
 export function getOpposite(): void {
 }
 
-
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-in-operator-narrowing
 
 interface Musician {

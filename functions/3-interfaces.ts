@@ -1,7 +1,8 @@
 interface Contact {
 }
 
-// getAddress returns the address of a contact object (id, name, address)
+// getAddress returns the address of a contact object
+// contacts have an id, name, and address that will need to be added to the interface above
 export function getAddress(): void {
 }
 

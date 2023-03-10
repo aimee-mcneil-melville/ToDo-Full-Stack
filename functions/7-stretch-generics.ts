@@ -32,11 +32,11 @@ export function getEmptyArray(): void {
 }
 
 /*
-  The following code is for testing purposes only.
+  The following code is for testing getEmptyArray.
 
   Once getEmptyArray is implemented, you can uncomment the code below
-  and fix the errors.
-  Check documentation about calling generic functions for more info.
+  and fix the errors to properly call it.
+  Check TS documentation about calling generic functions for more info.
 */
 
 // function getStringsInArray(): string[] {
