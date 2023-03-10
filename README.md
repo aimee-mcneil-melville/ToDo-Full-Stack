@@ -4,7 +4,7 @@ This repo contains a collection of exercises to help you get a first introductio
 
 Technically, it's a collection of tests, but at the moment, all the tests are broken as the functions they call need to be implemented in TypeScript.
 
-Check out the video here for more info: TODO: link video
+Check out the video here for more of an intro: [[video]](https://youtu.be/gespcv4r1xU)
 
 ## Setup / running this repo
 
@@ -49,7 +49,7 @@ TypeScript cares about the "shape" of our data . For example, we can't change a 
 
 It is a "statically typed" language, meaning that the types of variables and functions are known at compile time, rather than at runtime. Using node modules to help us, VSCode can help us write TypeScript code, and will tell us if we are doing something wrong.
 
-Check out the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) for more info, watch the video playlist above, or read on for a quick overview of the main features of TypeScript we will be exploring in this repo (there's plenty more out there!).
+Check out the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) for more info, or read on for a quick overview of the main features of TypeScript we will be exploring in this repo (there's plenty more out there!).
 
   </details>
 
