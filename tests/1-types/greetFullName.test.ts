@@ -1,4 +1,4 @@
-import { greetFullName } from "../../files/1-types"
+import { greetFullName } from "../../functions/1-types"
 
 describe('greetFullName (OPTIONAL PARAMETER)', () => {
   it('returns a string', () => {

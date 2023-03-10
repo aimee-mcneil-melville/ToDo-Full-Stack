@@ -1,4 +1,4 @@
-import { getLastSongPlayed } from "../../files/2-arrays"
+import { getLastSongPlayed } from "../../functions/2-arrays"
 
 describe('getLastSongPlayed', () => {
   it('returns a string', () => {

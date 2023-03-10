@@ -1,4 +1,4 @@
-import { sumFrame } from '../../files/1-types'
+import { sumFrame } from '../../functions/1-types'
 
 describe('sumFrame (OPTIONAL PARAMETER)', () => {
   it('returns a number', () => {

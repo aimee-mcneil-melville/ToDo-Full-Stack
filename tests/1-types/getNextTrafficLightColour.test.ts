@@ -1,4 +1,4 @@
-import { getNextTrafficLightColour } from '../../files/1-types'
+import { getNextTrafficLightColour } from '../../functions/1-types'
 
 describe('getNextTrafficLightColour (UNION PARAMS & RETURN)', () => {
   it('returns the next color in the sequence', () => {

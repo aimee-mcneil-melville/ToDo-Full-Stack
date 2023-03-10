@@ -1,4 +1,4 @@
-import { findLongestWord } from "../../files/2-arrays"
+import { findLongestWord } from "../../functions/2-arrays"
 
 describe('findLongestWord', () => {
   it('returns a string', () => {

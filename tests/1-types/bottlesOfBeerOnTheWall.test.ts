@@ -1,4 +1,4 @@
-import { bottlesOfBeerOnTheWall } from "../../files/1-types" 
+import { bottlesOfBeerOnTheWall } from "../../functions/1-types" 
 
 describe('bottlesOfBeerOnTheWall', () => {
   it('returns a string', () => {

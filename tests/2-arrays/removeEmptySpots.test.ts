@@ -1,4 +1,4 @@
-import { removeEmptySpots } from "../../files/2-arrays"
+import { removeEmptySpots } from "../../functions/2-arrays"
 
 describe('removeEmptySpots (UNION)', () => {
   it('returns a new array', () => {

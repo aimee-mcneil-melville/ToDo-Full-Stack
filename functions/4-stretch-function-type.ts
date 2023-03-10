@@ -1,3 +1,5 @@
+// DOCS: https://www.typescriptlang.org/docs/handbook/2/functions.html#function-type-expressions
+
 // callsFunction should not return anything
 // callsFunction should accept a function as a parameter and call the given function
 // the given function takes no arguments and does not return a value

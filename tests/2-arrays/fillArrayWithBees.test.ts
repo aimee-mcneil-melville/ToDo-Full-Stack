@@ -1,4 +1,4 @@
-import { fillArrayWithBees } from "../../files/2-arrays"
+import { fillArrayWithBees } from "../../functions/2-arrays"
 
 describe('fillArrayWithBees', () => {
   it('returns an array of the correct length', () => {

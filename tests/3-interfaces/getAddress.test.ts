@@ -1,4 +1,4 @@
-import { getAddress } from "../../files/3-interfaces"
+import { getAddress } from "../../functions/3-interfaces"
 
 const contacts = [
   { id: 1, name: 'John', address: '123 Main St' },

@@ -1,4 +1,4 @@
-import { getUser } from "../../files/3-interfaces"
+import { getUser } from "../../functions/3-interfaces"
 
 const users = {
   1: { name: 'John', verified: true, picture: 'https://example.com/john.jpg' },

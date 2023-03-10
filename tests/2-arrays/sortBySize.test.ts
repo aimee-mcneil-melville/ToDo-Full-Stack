@@ -1,4 +1,4 @@
-import { sortBySize } from "../../files/2-arrays"
+import { sortBySize } from "../../functions/2-arrays"
 
 describe('sortBySize', () => {
   it('returns a new array of the same length (not the original)', () => {

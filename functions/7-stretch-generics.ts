@@ -1,3 +1,5 @@
+// DOCS: https://www.typescriptlang.org/docs/handbook/2/generics.html
+
 // fillArrayWithAnything should take a value of any type and a number
 // and return an array of that value repeated the number of times
 // if the number is less than 1, return an empty array
@@ -20,14 +22,34 @@ export function getArrayOfBees(): void {
 export function removeFirstItem(): void {
 }
 
-// ----------- TYPE CASTING -----------
+// removeEmptySpots should take an array of nulls and another type and remove all null values
+// it should return a new array containing the remaining items
+// Hint: you may need a type assertion - https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions
+export function removeEmptySpots(): void {
+}
 
-// getEmptyArray should return an empty array of any type
-// we can later call it like this: const arr = getEmptyArray<string>()
 export function getEmptyArray(): void {
 }
 
-// removeEmptySpots should take an array of nulls and another type and remove all null values
-// it should return a new array containing the remaining items
-export function removeEmptySpots(): void {
-}
+/*
+  The following code is for testing purposes only.
+
+  Once getEmptyArray is implemented, you can uncomment the code below
+  and fix the errors.
+  Check documentation about calling generic functions for more info.
+*/
+
+// function getStringsInArray(): string[] {
+//   const arr = getEmptyArray()
+//   arr.push('hello')
+//   arr.push('world')
+//   return arr
+// }
+
+// function getNumbersInArray(): number[] {
+//   const arr = getEmptyArray()
+//   arr.push(1)
+//   arr.push(2)
+//   arr.push(3)
+//   return arr
+// }

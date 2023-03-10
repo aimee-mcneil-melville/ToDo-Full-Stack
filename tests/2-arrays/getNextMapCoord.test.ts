@@ -1,4 +1,4 @@
-import { getNextMapCoord } from "../../files/2-arrays"
+import { getNextMapCoord } from "../../functions/2-arrays"
 
 describe('getNextMapCoord (TUPLE and ALIAS)', () => {
   it('returns a tuple of the correct length', () => {
