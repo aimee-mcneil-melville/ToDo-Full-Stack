@@ -192,7 +192,7 @@ function sum(array: number[]): number {
 ### Tuples
 
   <details style="padding-left: 2em">
-    <summary>More about getting started</summary>
+    <summary>More about tuples</summary>
 
 Tuples are essentially an array of a fixed length. You often know the types of a typical array, but not the length, and so Tuples are defined a little differently. Tuples are defined with square brackets, and the types of the values in the array matching their positions, eg:
 
