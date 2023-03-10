@@ -10,19 +10,19 @@ Check out the video here for more info: TODO: link video
 
 - `npm install`
 - checkout a branch
-- run the tests ()
+- run the tests
 
 ## Running individual tests
 
 As you will need to implement the functions in the `functions` folder for tests to run, it is advised to run the tests individually to begin with. Check out the `functions` folder to see the files and functions you need to implement.
 
-To run the test for the first function in `1-types.ts`, getGreeting, run `npm test getGreeting` and follow this pattern for the other functions in all our files:
+To run the test for the first function in `1-types.ts` (getGreeting), run `npm test getGreeting`. Follow this pattern for the other functions in all our files:
 
 ```bash
 npm test <functionName>
 ```
-
-### Running all tests
+<details style="padding-left: 2em">
+  <summary>More about running tests</summary>
 
 Once you have implemented all the functions in a file, you can run all the tests with `npm test <filename>`, eg:
 
@@ -34,21 +34,31 @@ npm test 2-functions
 
 The stretch files can be run individually, or by running `npm test stretch`.
 
+</details>
+
 ## What is TypeScript?
 
 [TypeScript](https://www.typescriptlang.org/) is a superset of JavaScript, meaning it is JavaScript with extra features. 
 
-It cares about the "shape" of our data, and the types in our functions.For example, we can't change a variable from a string to a number, or pass a number to a function that expects a string.
+<details style="padding-left: 2em">
+  <summary>More about TypeScript</summary>
+
+TypeScript cares about the "shape" of our data . For example, we can't change a variable from a string to a number, or pass a number to a function that expects a string.
 
 It is a "statically typed" language, meaning that the types of variables and functions are known at compile time, rather than at runtime. Using node modules to help us, VSCode can help us write TypeScript code, and will tell us if we are doing something wrong.
 
-Check out the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) for more info, watch the video playlist above, or read on for a quick overview of the main features of TypeScript we will be exploring in this repo (there's always more!).
+Check out the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) for more info, watch the video playlist above, or read on for a quick overview of the main features of TypeScript we will be exploring in this repo (there's plenty more out there!).
+
+</details>
 
 ## Types
 
 TypeScript has a number of types, which are similar to those in JavaScript, but with some extra features.
 
 ### Basic types
+
+<details style="padding-left: 2em">
+  <summary>More about basic types</summary>
 
 - `string`, `number`, `boolean`, `null`, (etc..)
 - `any` - any type
@@ -72,7 +82,12 @@ let total = 0
 ```
 We usually just let TypeScript infer the type for us, but it's good to know that we can define the type explicitly if we need to.
 
+</details>
+
 ### Functions
+
+<details style="padding-left: 2em">
+  <summary>More about functions</summary>
 
 In TypeScript we define the types of the parameters and the return type of a function, eg:
 
@@ -90,7 +105,12 @@ const add = (a: number, b: number): number => {
 }
 ```
 
+</details>
+
 ### Optional parameters in functions
+
+<details style="padding-left: 2em">
+  <summary>More about optional parameters</summary>
 
 Unlike JavaScript, TypeScript will complain if we don't pass in the expected number of parameters to a function. We can make a parameter optional by adding a `?` after the parameter name, eg:
 
@@ -99,7 +119,12 @@ function greet(name?: string): string {
   return name ? `Hello ${name}` : "Hello World"
 }
 ```
+</details>
+
 ### Type aliases and Union types
+
+<details style="padding-left: 2em">
+  <summary>More about unions and type aliases</summary>
 
 Sometimes it's useful to have another name for a type. We can use a type alias for this, eg:
 
@@ -130,8 +155,12 @@ function log(value: MyStringOrNumber): void {
   console.log(value)
 }
 ```
+</details>
 
 ### Arrays
+
+<details style="padding-left: 2em">
+  <summary>More about arrays</summary>
 
 When identifying the type of an array we need to know what the contents of the array will be, eg:
 
@@ -156,8 +185,12 @@ function sum(array: number[]): number {
   return total
 }
 ```
+</details>
 
 ### Tuples
+
+<details style="padding-left: 2em">
+  <summary>More about getting started</summary>
 
 Tuples are essentially an array of a fixed length. You often know the types of a typical array, but not the length, and so Tuples are defined a little differently. Tuples are defined with square brackets, and the types of the values in the array matching their positions, eg:
 
@@ -165,8 +198,12 @@ Tuples are essentially an array of a fixed length. You often know the types of a
 const myTuple: [string, number] = ["hello", 1]
 const myOtherTuple: [string, number, boolean] = ["hello", 1, true]
 ```
+</details>
 
 ### Objects / Interfaces
+
+<details style="padding-left: 2em">
+  <summary>More about interfaces</summary>
 
 We can define the shape of an object type, which is a collection of key-value pairs, using an `Interface` in TypeScript eg:
 
@@ -182,8 +219,12 @@ const mike = {
 }
 ```
 > Note that the name of the interface is capitalised.
+</details>
 
 ### Optional Interface Keys
+
+<details style="padding-left: 2em">
+  <summary>More about optional keys</summary>
 
 Not all keys are always needed on our objects. Interfaces will assume if we have noted a key, we should have that key to match the shape. We can make a key optional by adding a `?` after the key name, eg:
 
@@ -203,7 +244,12 @@ const debbie = {
 }
 ```
 
+</details>
+
 ### Records
+
+<details style="padding-left: 2em">
+  <summary>More about records</summary>
 
 Sometimes we have data structures that are key-value pairs, but we don't know what keys we will have, even if we know the type of the values. We can define a record type, which is a collection of key-value pairs, eg:
 
@@ -252,7 +298,7 @@ pups = {
 }
 
 ```
-
+</details>
 
 ## Stretch
 
