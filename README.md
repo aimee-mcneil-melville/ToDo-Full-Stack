@@ -12,13 +12,15 @@ Check out the video here for more info: TODO: link video
 - checkout a branch
 - run the tests
 
+The files in this repo are numbered, and are meant to be completed in order as concepts in one file might be used by a later file. You will find all the functions to complete in the `functions` folder.
+
 ## Running individual tests
 
 As you will need to implement the functions in the `functions` folder for tests to run, it is advised to run the tests individually to begin with. Check out the `functions` folder to see the files and functions you need to implement.
 
 To run the test for the first function in `1-types.ts` (getGreeting), run `npm test getGreeting`. Follow this pattern for the other functions in all our files:
 
-```bash
+```sh
 npm test <functionName>
 ```
   <details style="padding-left: 2em">
@@ -309,7 +311,7 @@ The above are the core pieces that it's good to know and get familiar with for b
 - narrowing types
 - using generics
 
-You may find these useful at some points in bootcamp, but are supporting pieces or are less commonly going to be seen at first.
+You may find these useful at some points in bootcamp, but they are supporting pieces or are less commonly going to be seen at first.
 
 ## Official Resources
 
