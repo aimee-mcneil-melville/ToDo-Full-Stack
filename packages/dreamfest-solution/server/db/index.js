@@ -13,11 +13,16 @@ module.exports = {
   deleteEvent,
   getEventById,
   updateEvent,
+  getAllLocationsWithDesc,
 }
 
 // LOCATIONS
 
 function getAllLocations(db = connection) {
+  return db('locations').select('id', 'name')
+}
+
+function getAllLocationsWithDesc(db = connection) {
   return db('locations').select()
 }
 

@@ -41,6 +41,7 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.1",
     "express": "^4.17.2"
   },

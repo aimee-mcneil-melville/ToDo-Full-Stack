@@ -1,9 +1,9 @@
-const express = require('express')
-const path = require('path')
+import express from 'express'
+import path from 'path'
 
 const server = express()
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
-module.exports = server
+export default server

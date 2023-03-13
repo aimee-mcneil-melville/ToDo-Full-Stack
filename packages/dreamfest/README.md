@@ -107,7 +107,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
     If you find yourself struggling with the `updatedLocation` (object) parameter, you might start by using `id`, `name` and `description` parameters instead.
 
     * UPDATE the `locations` table with the updated location details
-    * Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form .
+    * Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form
   </details>
 
 ## Adding and deleting events
@@ -232,7 +232,18 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 </details>
 <br />
 
-### 11. Test helper functions
+### 11. Optimise database queries
+
+<details>
+  <summary>More about optimised database queries</summary>
+
+  With database queries, it's often most efficient to ask for only the data you need. Take a look at `getAllLocations`, and you might notice that selecting all fields will include the `description` data. But the description data for the full set of locations is only used by the `showLocations.hbs` view. Every other time we call `getAllLocations` the `description` is not used.
+  
+  Consider writing a separate db function (perhaps `getAllLocationsWithDesc`?) to request the complete data when needed, and updating `getAllLocations` to request only the necessary fields in all other cases.
+</details>
+<br />
+
+### 12. Test helper functions
 
 <details>
   <summary>More about testing helpers</summary>
