@@ -1,5 +1,5 @@
 import Board from './Board'
-import startingTiles, { TTile } from '../startingTiles'
+import startingTiles, { TileData } from '../startingTiles'
 import { useState } from 'react'
 
 const tryAgain = 'No match, try again'
@@ -25,7 +25,7 @@ function App() {
     })
   }
 
-  const evalMatch = (tile1: TTile, tile2: TTile) => {
+  const evalMatch = (tile1: TileData, tile2: TileData) => {
     if (tile1.value === tile2.value) {
       setMatchCount(matchCount + 1)
       setIsMatch(true)

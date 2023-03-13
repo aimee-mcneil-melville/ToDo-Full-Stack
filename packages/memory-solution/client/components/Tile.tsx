@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 
-import { TTile } from '../startingTiles'
+import { TileData } from '../startingTiles'
 
 type Props = {
-  onClick: (tile: TTile) => void
-  tile: TTile
+  onClick: (tile: TileData) => void
+  tile: TileData
 }
 
 function Tile(props: Props) {
