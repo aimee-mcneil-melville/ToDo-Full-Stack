@@ -181,7 +181,7 @@ We can illustrate this by responding to some **events**.
     It will look like this:
 
     ```ts
-    const clickHandler = (evt: UIEvent) => {
+    const handleClick = (evt: UIEvent) => {
       setStyle({
         // ... new style here ...
       })
@@ -189,7 +189,7 @@ We can illustrate this by responding to some **events**.
     ```
   </details>
 
-- [ ] Finally, add an `onClick` attribute to your TSX that calls `clickHandler` whenever the component is clicked
+- [ ] Finally, add an `onClick` attribute to your TSX that calls `handleClick` whenever the component is clicked
 - [ ] Check your work in the browser. You should see the `<Pixel>`s change colour when you click on them
 
 > Don't forget to look in the JavaScript console in your devtools to see any errors that might be occurring, especially if the result you see is not what you expected.
