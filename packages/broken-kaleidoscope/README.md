@@ -68,8 +68,9 @@ Ours is broken and won't look that pretty! It will be **colourful**, however.
 
     ```tsx
       <div style={{
-        fontFamily: 'Times New Roman'
-      }}
+          fontFamily: 'Times New Roman'
+        }}
+      />
     ```
 
     Notice three things about this sample:
@@ -114,29 +115,36 @@ We're going to need more than one `<Pixel>` here.
 
 ### 4. State your business
 
-To easily work with the values we use in the `style` TSX attribute, we should put them into component state.
+To easily change the colour for the `<Pixel>` being rendered, we should store the colour in component state.
 
-- [ ] Create a new state called `style`, using the `useState` method. It's initial state should be a suitable style object
+- [ ] Create a new state called `color`, using the `useState` method. It's initial state should be a suitable colour
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    To review how `useState` is implemented, [see the React docs](https://reactjs.org/docs/hooks-state.html#recap). The example there sets the initial state to `0`, but we will be using an object.
+    To review how `useState` is implemented, [see the React docs](https://beta.reactjs.org/reference/react/useState#usestate). The example there sets the initial state to `23`, but ours will be a string.
   </details>
 
-- [ ] Next, change your component TSX to refer to `style` instead of including an object literal
+- [ ] Next, change the `style` attribute in your TSX to refer to the `color` state
   <details style="padding-left: 2em">
-    <summary>More about using the `style` state</summary>
+    <summary>More about using the `color` state in the `style` attribute</summary>
+    ```tsx
+    <div style={{
+        height: '100px',
+        width: '100px',
+        backgroundColor: color
+      }}
+    />
+    ```
 
-    When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the style in state or in the TSX.
+    When you're done, there should be no change in the rendered output in your browser: it should work the same whether or not you have the color in state or in the TSX.
 
-    What you've just done is make your component more **flexible**. We can now manipulate the values any way we'd like using the `setStyle` function.
-
+    What you've done is make the `colour` for the `<Pixel>` a _reactive_ variable. We can now change it any way we'd like using the `setColour` function.
   </details>
 
 ### 5. Rainbow pixels
 
 It's high time we stopped being so monochromatic. 
-- [ ] Update your `<Pixel>` component so that the initial `style` state is a random colour (different for every pixel!)
+- [ ] Update your `<Pixel>` component so that the initial `color` state is a random colour (different for every pixel!)
   <details style="padding-left: 2em">
     <summary>More about generating random colours</summary>
     
@@ -146,7 +154,7 @@ It's high time we stopped being so monochromatic.
     `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0')}`
     ```
 
-    Edit the initial state for `style` so that it uses the above code to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
+    Edit the initial state for `colour` so that it uses the above code to generate a random hex colour (rather than a string like 'cornflowerblue' or 'red').
 
     When you refresh the page, what you're aiming for is something like this:
 
@@ -182,9 +190,7 @@ We can illustrate this by responding to some **events**.
 
     ```ts
     const handleClick = (event: UIEvent) => {
-      setStyle({
-        // ... new style here ...
-      })
+      setColour(/* ... new colour here ... */)
     }
     ```
   </details>
@@ -240,8 +246,6 @@ Time to crank up the resolution.
         <Pixel />
       ]
     ```
-
-    > The ability to return an array of TSX components was introduced with React 16.
   </details>
 
 - [ ] Programmatically generate an array of **many** `<Pixel>`s, rather than coding them manually
