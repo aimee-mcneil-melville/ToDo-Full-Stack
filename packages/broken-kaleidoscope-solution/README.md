@@ -181,7 +181,7 @@ We can illustrate this by responding to some **events**.
     It will look like this:
 
     ```ts
-    const clickHandler = (evt: UIEvent) => {
+    const handleClick = (event: UIEvent) => {
       setStyle({
         // ... new style here ...
       })
@@ -189,7 +189,7 @@ We can illustrate this by responding to some **events**.
     ```
   </details>
 
-- [ ] Finally, add an `onClick` attribute to your TSX that calls `clickHandler` whenever the component is clicked
+- [ ] Finally, add an `onClick` attribute to your TSX that calls `handleClick` whenever the component is clicked
 - [ ] Check your work in the browser. You should see the `<Pixel>`s change colour when you click on them
 
 > Don't forget to look in the JavaScript console in your devtools to see any errors that might be occurring, especially if the result you see is not what you expected.
@@ -266,7 +266,7 @@ Time to crank up the resolution.
 <details>
   <summary>More about stretch challenges</summary>
 
-  Turn the components black as you right-click on them (hint: checkout `evt.preventDefault()` and `onContextMenu`). This may require that you import the `MouseEvent` type from react (read about more event types on this handy [TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/#list-of-event-types)).
+  Turn the components black as you right-click on them (hint: checkout `event.preventDefault()` and `onContextMenu`). This may require that you import the `React.MouseEvent` type from react (read about more event types on this handy [TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/#list-of-event-types)).
   
   Reduce the number of components rendered to something reasonable (500-1000) and try changing their colour on a timer every two seconds or so (hint: check out `useEffect` and `setInterval` vs `setTimeout`)
 </details>

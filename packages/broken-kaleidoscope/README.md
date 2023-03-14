@@ -181,7 +181,7 @@ We can illustrate this by responding to some **events**.
     It will look like this:
 
     ```ts
-    const handleClick = (evt: UIEvent) => {
+    const handleClick = (event: UIEvent) => {
       setStyle({
         // ... new style here ...
       })
@@ -266,7 +266,7 @@ Time to crank up the resolution.
 <details>
   <summary>More about stretch challenges</summary>
 
-  Turn the components black as you right-click on them (hint: checkout `evt.preventDefault()` and `onContextMenu`). This may require that you import the `MouseEvent` type from react (read about more event types on this handy [TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/#list-of-event-types)).
+  Turn the components black as you right-click on them (hint: checkout `event.preventDefault()` and `onContextMenu`). This may require that you import the `React.MouseEvent` type from react (read about more event types on this handy [TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/#list-of-event-types)).
   
   Reduce the number of components rendered to something reasonable (500-1000) and try changing their colour on a timer every two seconds or so (hint: check out `useEffect` and `setInterval` vs `setTimeout`)
 </details>
