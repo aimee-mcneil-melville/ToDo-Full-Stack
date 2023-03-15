@@ -154,7 +154,7 @@ Currently each country just shows a string of its neighbours' country codes.
 
 - If you haven't already, add a "Home" link in the `<Nav>` component
 
-- Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are
+- Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are (Hint: Look up 'NavLink')
 
 - Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population
 
