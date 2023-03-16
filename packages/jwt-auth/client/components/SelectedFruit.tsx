@@ -1,59 +1,65 @@
 import { useState, ChangeEvent, MouseEvent, FormEvent } from 'react'
-// TODO: import useAuth0
 import { FruitCamel } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 import { updateFruit, deleteFruit } from '../api'
+import { useAuth0 } from '@auth0/auth0-react'
 interface Props {
-  selected: FruitCamel
+  fruit: FruitCamel
   clearSelected: () => void
   setFruits: (fruits: FruitCamel[]) => void
-  fruits: FruitCamel[]
   setError: (err: string) => void
+  editedValues: FruitCamel
+  setEditedValues: React.Dispatch<React.SetStateAction<FruitCamel>>
 }
 
 function SelectedFruit({
-  selected,
+  fruit,
   clearSelected,
   setError,
   setFruits,
+  editedValues,
+  setEditedValues,
 }: Props) {
-  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  // const selectedFruit = fruits.find((fruit) => fruit.id === selected)
-  const [editing, setEditing] = useState(selected)
+  const { getAccessTokenSilently } = useAuth0()
+  console.log('SelectedFruit: ')
+  console.log(fruit)
+  // const [editedValues, setEditedValues] = useState<FruitCamel>(fruit)
+  // setEditedValues({
+  //   name: fruit.name,
+  //   averageGramsEach: fruit.averageGramsEach,
+  // })
+  console.log(editedValues)
 
   const handleEditChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setEditing({
-      ...editing,
+    setEditedValues({
+      ...editedValues,
       [name]: value,
     })
   }
 
-  const handleUpdate = (e: FormEvent) => {
+  const handleUpdate = async (e: FormEvent) => {
     e.preventDefault()
-    // TODO: getAccessToken from auth0
-    // TODO: pass token as second parameter
-    updateFruit(editing, 'token')
+    const accessToken = await getAccessTokenSilently()
+    updateFruit(editedValues, accessToken)
       .then((remoteFruits) => setFruits(remoteFruits))
       .then(clearSelected)
       .then(() => setError(''))
       .catch((err) => setError(err.message))
   }
 
-  const handleDelete = (e: MouseEvent) => {
+  const handleDelete = async (e: MouseEvent) => {
     e.preventDefault()
-    // TODO: get accessToken from auth0
-    // TODO: pass token as second parameter
-
-    deleteFruit(editing.id!, 'token')
+    const accessToken = await getAccessTokenSilently()
+    deleteFruit(editedValues.id!, accessToken)
       .then(setFruits)
       .then(clearSelected)
       .then(() => setError(''))
       .catch((err) => setError(err.message))
   }
 
-  const { name: editingName, averageGramsEach: editingGrams } = editing
-  const { name: currentName } = selected
+  const { name: editingName, averageGramsEach: editingGrams } = editedValues
+  const { name: currentName } = fruit
 
   return (
     <>

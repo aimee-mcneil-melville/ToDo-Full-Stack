@@ -9,7 +9,9 @@ function Fruits() {
   const [error, setError] = useState('')
   const [fruits, setFruits] = useState([] as FruitCamel[])
   const [adding, setAdding] = useState(false)
-  const [selected, setSelected] = useState<number | undefined>()
+  // const [selectedId, setSelectedId] = useState<number | undefined>()
+  const [selectedFruit, setSelectedFruit] = useState<FruitCamel>()
+  const [editedValues, setEditedValues] = useState<FruitCamel>()
 
   const hideError = () => {
     setError('')
@@ -27,12 +29,19 @@ function Fruits() {
 
   const setSelectHandler = (fruit: FruitCamel, e: MouseEvent) => {
     e.preventDefault()
-    setSelected(fruit.id)
+    // setSelectedId(fruit.id)
+    // const foundFruit = findFruitById(fruit.id)
+
+    console.log('Fruits: ')
+    console.log(fruit)
+    setSelectedFruit(fruit)
+    setEditedValues(fruit)
+    console.log(selectedFruit)
     closeAddForm()
   }
 
   const clearSelected = () => {
-    setSelected(0)
+    setSelectedFruit(undefined)
   }
 
   useEffect(() => {
@@ -44,7 +53,6 @@ function Fruits() {
   return (
     <>
       <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
-
       <ul>
         {fruits.map((fruit: FruitCamel) => (
           <li key={fruit.id}>
@@ -58,7 +66,6 @@ function Fruits() {
           </li>
         ))}
       </ul>
-
       {adding ? (
         <AddFruit
           setError={setError}
@@ -70,14 +77,14 @@ function Fruits() {
           Add a Fruit
         </a>
       )}
-
-      {selected && fruits[selected] && (
+      {selectedFruit && (
         <SelectedFruit
-          fruits={fruits}
-          selected={fruits[selected]}
+          fruit={selectedFruit}
           clearSelected={clearSelected}
           setError={setError}
           setFruits={setFruits}
+          editedValues={editedValues}
+          setEditedValues={setEditedValues}
         />
       )}
     </>
