@@ -1,48 +1,21 @@
-import { useState, useEffect, MouseEvent } from 'react'
+// TODO: fix me
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useState, useEffect } from 'react'
 import { FruitCamel } from '../../types'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { Error } from './Styled'
-import { getFruits } from '../api'
+import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
+
+type ShowFormOptions = 'add' | 'selected' | 'none'
 
 function Fruits() {
   const [error, setError] = useState('')
-  const [fruits, setFruits] = useState([] as FruitCamel[])
-  const [adding, setAdding] = useState(false)
-  // const [selectedId, setSelectedId] = useState<number | undefined>()
-  const [selectedFruit, setSelectedFruit] = useState<FruitCamel>()
-  const [editedValues, setEditedValues] = useState<FruitCamel>()
+  const [fruits, setFruits] = useState<FruitCamel[]>([])
 
-  const hideError = () => {
-    setError('')
-  }
+  const [selectedFruit, setSelectedFruit] = useState<FruitCamel | null>(null)
 
-  const openAddForm = (e: MouseEvent) => {
-    e.preventDefault()
-    setAdding(true)
-    clearSelected()
-  }
-
-  const closeAddForm = () => {
-    setAdding(false)
-  }
-
-  const setSelectHandler = (fruit: FruitCamel, e: MouseEvent) => {
-    e.preventDefault()
-    // setSelectedId(fruit.id)
-    // const foundFruit = findFruitById(fruit.id)
-
-    console.log('Fruits: ')
-    console.log(fruit)
-    setSelectedFruit(fruit)
-    setEditedValues(fruit)
-    console.log(selectedFruit)
-    closeAddForm()
-  }
-
-  const clearSelected = () => {
-    setSelectedFruit(undefined)
-  }
+  const [shownForm, setShownForm] = useState<ShowFormOptions>('none')
 
   useEffect(() => {
     getFruits()
@@ -50,41 +23,82 @@ function Fruits() {
       .catch((err) => setError(err.message))
   }, [])
 
+  const handleAdd = async (fruit: FruitCamel) => {
+    // TODO: pass token as second parameter
+    const accessToken = await getAccessTokenSilently()
+
+    addFruit(fruit, accessToken)
+      .then(setFruits)
+      .then(handleCloseForm)
+      .then(hideError)
+      .catch((err) => setError(err.message))
+  }
+
+  const handleUpdateFruit = async (updatedFruit: FruitCamel) => {
+    const accessToken = await getAccessTokenSilently()
+
+    updateFruit(updatedFruit, accessToken)
+      .then(setFruits)
+      .then(handleCloseForm)
+      .then(hideError)
+      .catch((err) => setError(err.message))
+  }
+
+  const handleDeleteFruit = async (id: number) => {
+    const accessToken = await getAccessTokenSilently()
+
+    deleteFruit(id, accessToken)
+      .then(setFruits)
+      .then(handleCloseForm)
+      .then(hideError)
+      .catch((err) => setError(err.message))
+  }
+
+  const hideError = () => {
+    setError('')
+  }
+
+  const handleOpenAddForm = () => {
+    setShownForm('add')
+  }
+
+  const handleCloseForm = () => {
+    setSelectedFruit(null)
+    setShownForm('none')
+  }
+
+  const handleSelectFruit = (fruit: FruitCamel) => {
+    setSelectedFruit(fruit)
+
+    setShownForm('selected')
+  }
+
   return (
     <>
       <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
       <ul>
-        {fruits.map((fruit: FruitCamel) => (
+        {fruits.map((fruit) => (
           <li key={fruit.id}>
-            <a
-              href="#"
+            <button
               data-testid="fruit-link"
-              onClick={(e) => setSelectHandler(fruit, e)}
+              onClick={() => handleSelectFruit(fruit)}
             >
               {fruit.name}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
-      {adding ? (
-        <AddFruit
-          setError={setError}
-          setFruits={setFruits}
-          closeAddForm={closeAddForm}
-        />
+      {shownForm === 'add' ? (
+        <AddFruit onAdd={handleAdd} onClose={handleCloseForm} />
       ) : (
-        <a href="#" onClick={openAddForm}>
-          Add a Fruit
-        </a>
+        <button onClick={handleOpenAddForm}>Add a Fruit</button>
       )}
-      {selectedFruit && (
+      {shownForm === 'selected' && (
         <SelectedFruit
-          fruit={selectedFruit}
-          clearSelected={clearSelected}
-          setError={setError}
-          setFruits={setFruits}
-          editedValues={editedValues}
-          setEditedValues={setEditedValues}
+          fruit={selectedFruit!}
+          onUpdate={handleUpdateFruit}
+          onClose={handleCloseForm}
+          onDelete={handleDeleteFruit}
         />
       )}
     </>
@@ -92,3 +106,7 @@ function Fruits() {
 }
 
 export default Fruits
+async function getAccessTokenSilently() {
+  console.error('Not Implemented: getAccessTokenSilently')
+  return 'hello'
+}

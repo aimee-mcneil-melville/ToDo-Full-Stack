@@ -5,6 +5,7 @@ export type FruitSnake = {
   added_by_user: string
 }
 
+// TODO: make a non-optional id version
 export type FruitCamel = {
   id?: number
   name: string

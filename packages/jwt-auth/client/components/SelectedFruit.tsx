@@ -1,70 +1,51 @@
-import { useState, ChangeEvent, MouseEvent, FormEvent } from 'react'
+// TODO: fix me
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useState } from 'react'
 import { FruitCamel } from '../../types'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-import { updateFruit, deleteFruit } from '../api'
-import { useAuth0 } from '@auth0/auth0-react'
+
 interface Props {
   fruit: FruitCamel
-  clearSelected: () => void
-  setFruits: (fruits: FruitCamel[]) => void
-  setError: (err: string) => void
-  editedValues: FruitCamel
-  setEditedValues: React.Dispatch<React.SetStateAction<FruitCamel>>
+  onUpdate: (updatedFruit: FruitCamel) => void
+  onDelete: (id: number) => void
+  onClose: () => void
 }
 
-function SelectedFruit({
-  fruit,
-  clearSelected,
-  setError,
-  setFruits,
-  editedValues,
-  setEditedValues,
-}: Props) {
-  const { getAccessTokenSilently } = useAuth0()
-  console.log('SelectedFruit: ')
-  console.log(fruit)
-  // const [editedValues, setEditedValues] = useState<FruitCamel>(fruit)
-  // setEditedValues({
-  //   name: fruit.name,
-  //   averageGramsEach: fruit.averageGramsEach,
-  // })
-  console.log(editedValues)
+function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
+  const [prevFruit, setPrevFruit] = useState<number>(fruit.id!)
+  const [updatedFruit, setUpdatedFruit] = useState<FruitCamel>(fruit)
 
-  const handleEditChange = (e: ChangeEvent<HTMLInputElement>) => {
+  if (fruit.id !== prevFruit) {
+    setUpdatedFruit(fruit)
+    setPrevFruit(fruit.id!)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setEditedValues({
-      ...editedValues,
+
+    setUpdatedFruit({
+      ...updatedFruit,
       [name]: value,
     })
   }
 
-  const handleUpdate = async (e: FormEvent) => {
-    e.preventDefault()
-    const accessToken = await getAccessTokenSilently()
-    updateFruit(editedValues, accessToken)
-      .then((remoteFruits) => setFruits(remoteFruits))
-      .then(clearSelected)
-      .then(() => setError(''))
-      .catch((err) => setError(err.message))
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    onUpdate(updatedFruit)
   }
 
-  const handleDelete = async (e: MouseEvent) => {
-    e.preventDefault()
-    const accessToken = await getAccessTokenSilently()
-    deleteFruit(editedValues.id!, accessToken)
-      .then(setFruits)
-      .then(clearSelected)
-      .then(() => setError(''))
-      .catch((err) => setError(err.message))
+  const handleDeleteButtonClick = () => {
+    onDelete(fruit.id!)
   }
 
-  const { name: editingName, averageGramsEach: editingGrams } = editedValues
+  const { name: editingName, averageGramsEach: editingGrams } = updatedFruit
   const { name: currentName } = fruit
 
   return (
     <>
       <h2>Selected: {currentName}</h2>
-      <GridForm onSubmit={handleUpdate}>
+      <GridForm onSubmit={handleSubmit}>
         <ColOne>Name:</ColOne>
         <ColTwoText
           type="text"
@@ -72,7 +53,7 @@ function SelectedFruit({
           aria-label="selected-name"
           data-testid="selected-name"
           value={editingName || ''}
-          onChange={handleEditChange}
+          onChange={handleChange}
         />
 
         <ColOne>Average Grams Each:</ColOne>
@@ -82,7 +63,7 @@ function SelectedFruit({
           aria-label="selected-grams"
           data-testid="selected-grams"
           value={editingGrams || ''}
-          onChange={handleEditChange}
+          onChange={handleChange}
         />
 
         <Button type="submit" data-testid="update-button">
@@ -91,15 +72,11 @@ function SelectedFruit({
         <Button
           type="button"
           data-testid="delete-button"
-          onClick={handleDelete}
+          onClick={handleDeleteButtonClick}
         >
           Delete fruit
         </Button>
-        <Button
-          type="button"
-          data-testid="clear-button"
-          onClick={clearSelected}
-        >
+        <Button type="button" data-testid="clear-button" onClick={onClose}>
           Clear selection
         </Button>
       </GridForm>
