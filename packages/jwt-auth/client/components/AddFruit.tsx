@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import { useState } from 'react'
 // TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
@@ -19,7 +19,7 @@ function AddFruit({ onAdd, onClose }: Props) {
   const [newFruit, setNewFruit] = useState(selectedFruit)
   const { name: addingName, averageGramsEach: addingGrams } = newFruit
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setNewFruit({
       ...newFruit,
