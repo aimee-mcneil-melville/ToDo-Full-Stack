@@ -1,6 +1,6 @@
 # Authentication with JSON Web Tokens (JWTs)
 
-This repo contains a working app that includes CRUD operations for fruit. It has the beginnings of authentication such as a `<Nav>` component with hyperlinks for registering and signing in and a component to conditionally hide/show its child components based on if the user is authenticated.
+This repo contains a working app that includes CRUD operations for fruit. It has the beginnings of authentication such as a `<Nav>` component with buttons for registering and signing in and a component to conditionally hide/show its child components based on if the user is authenticated.
 
 Our task is to complete the authentication implementation of this app.
 
@@ -67,9 +67,9 @@ In order to complete the implementation of authentication for this app, we need 
 - [ ] Get familiar with the user interface
   <details style="padding-left: 2em">
     <summary>Tips</summary>
-    At this stage it's normal that "Log off" displays (as if you were logged in), even though you're not logged in.
+    At this stage it's normal that "Sign out" displays (as if you were logged in), even though you're not logged in.
 
-    Select some fruits and try to update their values, delete them, and add new ones. See which work and which give errors.
+    Select some fruits and try to update their values, delete them, and add new ones. See which work and which give errors. 
 
     Once you're comfortable enough with the app, proceed with a sense of curiosity as we enable authentication and lock down parts of the UI and some of the web API to only authenticated users.
   </details>
@@ -126,9 +126,9 @@ In order to complete the implementation of authentication for this app, we need 
 ## Client-side
 ### 5. Configuring Auth0Provider
 
-In `client/index.js`:
+In `client/index.tsx`:
 
-- [ ] Observe how `<Auth0Provider>` has been used in `client/index.js`
+- [ ] Observe how `<Auth0Provider>` has been used in `client/index.tsx`
   <details style="padding-left: 2em">
     <summary>More about <code>&lt;Auth0Provider&gt;</code></summary>
 
@@ -156,13 +156,13 @@ Commit your code and swap driver/navigator if you're pairing.
 
 ### 6. Determining if the current user is signed in
 
-In `client/components/Authenticated.jsx`:
+In `client/components/Authenticated.tsx`:
 
-- [ ] Explore `Authenticated.jsx` and the use of `isAuthenticated`
+- [ ] Explore `Authenticated.tsx` and the use of `isAuthenticated`
   <details style="padding-left: 2em">
-    <summary>More about <code>Authenticated.jsx</code></summary>
+    <summary>More about <code>Authenticated.tsx</code></summary>
 
-    Our existing code contains a couple of clever `<IfAuthenticated>` and `<IfNotAuthenticated>` components in `client/components/Authenticated.jsx`. They render their child components based on the authentication status of the user.
+    Our existing code contains a couple of clever `<IfAuthenticated>` and `<IfNotAuthenticated>` components in `client/components/Authenticated.tsx`. They render their child components based on the authentication status of the user.
 
     Fortunately, `@auth0/auth0-react` package exports a `useAuth0` hook. This hook exposes useful functions and values. Here we will use the `isAuthenticated` boolean value to see if there is an auth token, and that it hasn't yet expired. This hook does the checking behind the scenes. 
 
@@ -183,7 +183,7 @@ Now is a good time to commit your changes and swap driver/navigator if you're pa
 
 ### 7. Allowing the user to log in/out using Auth0
 
-In `client/components/Nav.jsx`:
+In `client/components/Nav.tsx`:
 
 - [ ] Import the `useAuth0` hook from `@auth0/auth0-react` and use it inside the `<Nav>` component
 - [ ] Destructure the `logout`, and `loginWithRedirect` functions out of the `useAuth0` hook
@@ -201,19 +201,19 @@ In `client/components/Nav.jsx`:
 
 Commit your code and swap driver/navigator if you're pairing.
 
-### 8. Reading user metadata in `Nav.jsx`
+### 8. Reading user metadata in `Nav.tsx`
 
 Currently, when we are signed in, we still see "john.doe" rendered as the nickname. Let's replace that with the nickname of the current user.
 
-In `client/components/Nav.jsx`:
+In `client/components/Nav.tsx`:
 
 - [ ] Delete the hard-coded value for `user` and replace it with the `user` object from `useAuth0`
   <details style="padding-left: 2em">
-    <summary>More about <code>user</code> in <code>Nav.jsx</code></summary>
+    <summary>More about <code>user</code> in <code>Nav.tsx</code></summary>
 
     Notice how `user?.nickname` has a question mark in front of it. This is called the [optional chaining operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining). When we sign in, the user object may still be null while the `user` object is being fetched from Auth0. This optional chaining operator will prevent the app from crashing if the user object is null (while the user is authenticated).
   </details>
-- [ ] When a user is signed in, try `console.log`ing the `user` object. You'll see that it has a `nickname` property; this is what is being rendered in `Nav.jsx`. You may try rendering other properties, such as `name`, `email`, or `image`.
+- [ ] When a user is signed in, try `console.log`ing the `user` object. You'll see that it has a `nickname` property; this is what is being rendered in `Nav.tsx`. You may try rendering other properties, such as `name`, `email`, or `image`.
 
 <br />
 
@@ -223,12 +223,12 @@ Commit your code and swap driver/navigator if you're pairing.
 
 We only want to allow a user to use our server routes if the user has been authenticated. We can retrieve a JWT token from Auth0 with `getAccessTokenSilently`, we want to pass it as a header when calling our server-side routes.
 
-- [ ] In `client/components/AddFruit.jsx` destructure `getAccessTokenSilently` and get the `token` property in the `handleAdd` event handler.
+- [ ] In `client/components/AddFruit.tsx` destructure `getAccessTokenSilently` and get the `token` property in the `handleAdd` event handler.
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
     `getAccessTokenSilently` returns a Promise, so you'll need to use either:
-    ```js
+    ```ts
     // async/await
     function handleMyEvent() {
       const token = await getAccessTokenSilently();
@@ -247,7 +247,7 @@ We only want to allow a user to use our server routes if the user has been authe
   </details>
 
 - [ ] Pass `token` to the `addFruit` function as the second parameter
-- [ ] In `client/components/SelectedFruit.jsx`, repeat the same steps for `handleUpdate` and `handleDelete`
+- [ ] Repeat the same steps for `handleUpdate` and `handleDelete`
 
 Commit your code and swap driver/navigator if you're pairing.
 
@@ -257,7 +257,7 @@ Commit your code and swap driver/navigator if you're pairing.
 
 ### 10. Setting up the JWT Middleware
 
-- [ ] In `server/auth0.js`, set the `domain`(1️⃣, see tip below for required format) and `audience`(3️⃣) values
+- [ ] In `server/auth0.ts`, set the `domain`(1️⃣, see tip below for required format) and `audience`(3️⃣) values
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
@@ -265,17 +265,17 @@ Commit your code and swap driver/navigator if you're pairing.
   </details>
 
 ### 11. Passing middleware to routes
-There are three routes in `server/routes/fruits.js` that we want to be accessible only for authenticated users.
+There are three routes in `server/routes/fruits.ts` that we want to be accessible only for authenticated users.
 
 - [ ] In each of the routes we want to protect, pass `checkJwt` as a second parameter
   <details style="padding-left: 2em">
     <summary>More about protecting routes</summary>
 
-    You'll need to import the `checkJwt` function from `server/auth0.js`.
+    You'll need to import the `checkJwt` function from `server/auth0.ts`.
 
     Passing `checkJwt` to the route might look like...
     
-    ```javascript
+    ```typescript
     route.post('/', checkJwt, (req, res) => {
       // do stuff here
     })
@@ -314,7 +314,7 @@ ___
 <details>
   <summary>Open cheatsheet</summary>
 
-```jsx
+```tsx
 // importing and using the useAuth0 hook
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -326,7 +326,7 @@ function MyComponent() {
 }
 ```
 
-```jsx
+```tsx
 // retrieve access token to give to API functions
   // async/await
   async function handleMyEvent() {
@@ -345,7 +345,7 @@ function MyComponent() {
   }
 ```
 
-```js
+```ts
 // secure an API route
 router.get('/my-protected-route', checkJwt, (req, res) => {
   // user is authenticated
