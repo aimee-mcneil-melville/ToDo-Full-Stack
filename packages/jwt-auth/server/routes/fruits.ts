@@ -29,8 +29,13 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
 
+  if (!auth0Id) {
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
+  }
+
   const newFruit: FruitSnakeCase = {
-    added_by_user: auth0Id!,
+    added_by_user: auth0Id,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
   }
@@ -57,8 +62,10 @@ router.put('/', (req: JwtRequest, res) => {
   }
 
   if (!auth0Id) {
-    throw new Error()
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
   }
+
   userCanEdit(fruit.id, auth0Id)
     .then(() => updateFruit(fruitToUpdate as FruitSnakeCase))
     .then(() => getFruits())
@@ -82,8 +89,10 @@ router.delete('/:id', (req: JwtRequest, res) => {
   const auth0Id = req.auth?.sub
 
   if (!auth0Id) {
-    throw new Error()
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
   }
+
   userCanEdit(id, auth0Id)
     .then(() => deleteFruit(id))
     .then(() => getFruits())
