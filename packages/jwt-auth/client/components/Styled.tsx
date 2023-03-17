@@ -28,7 +28,7 @@ export const Button = styled.button`
   width: 50%;
 `
 
-export const Error = styled.div`
+export const ErrorMessage = styled.div`
   color: red;
   cursor: pointer;
 `
