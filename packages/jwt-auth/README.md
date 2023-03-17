@@ -191,12 +191,12 @@ In `client/components/Nav.tsx`:
   <details style="padding-left: 2em">
     <summary>More about login and logout handlers</summary>
 
-    * In `handleLogoff` we'll call `logout`
+    * In `handleSignOut` we'll call `logout`
     * In `handleSignIn`, we'll call `loginWithRedirect`
 
     The "Sign In" link will redirect you to Auth0's authentication service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for the one Auth0 app. Even if you used the same email and password when creating an account on a different app, Auth0 will treat it as a new account that is specific to your Fruits app.
 
-    After you've registered your new user, you will be redirected back to `http://localhost:3000` and "Log off" will again be visible in the app.
+    After you've registered your new user, you will be redirected back to `http://localhost:3000` and "Sign out" will again be visible in the app.
   </details>
 
 Commit your code and swap driver/navigator if you're pairing.
@@ -223,7 +223,7 @@ Commit your code and swap driver/navigator if you're pairing.
 
 We only want to allow a user to use our server routes if the user has been authenticated. We can retrieve a JWT token from Auth0 with `getAccessTokenSilently`, we want to pass it as a header when calling our server-side routes.
 
-- [ ] In `client/components/AddFruit.tsx` destructure `getAccessTokenSilently` and get the `token` property in the `handleAdd` event handler.
+- [ ] In `client/components/Fruits.tsx` destructure `getAccessTokenSilently`, and call it in the `handleAdd` event handler to retrieve a token. Note: `getAccessTokenSilently` returns a Promise.
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
@@ -348,6 +348,7 @@ function MyComponent() {
 ```ts
 // secure an API route
 router.get('/my-protected-route', checkJwt, (req, res) => {
+  //                              ^? this is the middleware
   // user is authenticated
   const userId = req.auth?.sub
   // ...

@@ -9,13 +9,15 @@ interface Props {
   onClose: () => void
 }
 
+const emptyFruit: NewFruit = {
+  name: '',
+  averageGramsEach: 0,
+}
+
 function AddFruit({ onAdd, onClose }: Props) {
+  const [newFruit, setNewFruit] = useState(emptyFruit)
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  const selectedFruit: NewFruit = {
-    name: '',
-    averageGramsEach: 0,
-  }
-  const [newFruit, setNewFruit] = useState(selectedFruit)
+
   const { name: addingName, averageGramsEach: addingGrams } = newFruit
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

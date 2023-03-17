@@ -18,6 +18,9 @@ function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
     setPrevFruit(fruit.id)
   }
 
+  const { name: editingName, averageGramsEach: editingGrams } = updatedFruit
+  const { name: currentName } = fruit
+
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
@@ -36,9 +39,6 @@ function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
   const handleDeleteButtonClick = () => {
     onDelete(fruit.id)
   }
-
-  const { name: editingName, averageGramsEach: editingGrams } = updatedFruit
-  const { name: currentName } = fruit
 
   return (
     <>

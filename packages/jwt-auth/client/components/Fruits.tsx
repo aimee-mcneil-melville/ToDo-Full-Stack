@@ -59,6 +59,8 @@ function Fruits() {
   const [fruits, setFruits] = useState<Fruit[]>([])
   const [form, dispatch] = useReducer(reducer, initialState)
 
+  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
+
   useEffect(() => {
     getFruits()
       .then(setFruits)
