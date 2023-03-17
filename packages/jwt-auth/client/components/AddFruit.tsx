@@ -2,16 +2,16 @@ import { useState } from 'react'
 // TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-import { FruitCamel } from '../../types'
+import { Fruit } from '../../models/fruit'
 
 interface Props {
-  onAdd: (fruit: FruitCamel) => void
+  onAdd: (fruit: Fruit) => void
   onClose: () => void
 }
 
 function AddFruit({ onAdd, onClose }: Props) {
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  const selectedFruit: FruitCamel = {
+  const selectedFruit: Fruit = {
     name: '',
     averageGramsEach: 0,
     addedByUser: '',

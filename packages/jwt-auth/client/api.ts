@@ -1,16 +1,16 @@
 import request from 'superagent'
-import { FruitCamel, FruitSnake } from '../types'
+import { Fruit } from '../models/fruit'
 
 const rootUrl = '/api/v1'
 
-export function getFruits(): Promise<FruitCamel[]> {
+export function getFruits(): Promise<Fruit[]> {
   return request
     .get(`${rootUrl}/fruits`)
     .then((res) => res.body.fruits)
     .catch(logError)
 }
 
-export function addFruit(fruit: FruitCamel, token: string) {
+export function addFruit(fruit: Fruit, token: string) {
   return request
     .post(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)
@@ -19,7 +19,7 @@ export function addFruit(fruit: FruitCamel, token: string) {
     .catch(logError)
 }
 
-export function updateFruit(fruit: FruitCamel, token: string) {
+export function updateFruit(fruit: Fruit, token: string) {
   return request
     .put(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)

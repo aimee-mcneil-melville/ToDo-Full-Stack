@@ -1,19 +1,19 @@
 // TODO: fix me
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useState } from 'react'
-import { FruitCamel } from '../../types'
+import { Fruit } from '../../models/fruit'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 interface Props {
-  fruit: FruitCamel
-  onUpdate: (updatedFruit: FruitCamel) => void
+  fruit: Fruit
+  onUpdate: (updatedFruit: Fruit) => void
   onDelete: (id: number) => void
   onClose: () => void
 }
 
 function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
   const [prevFruit, setPrevFruit] = useState<number>(fruit.id!)
-  const [updatedFruit, setUpdatedFruit] = useState<FruitCamel>(fruit)
+  const [updatedFruit, setUpdatedFruit] = useState<Fruit>(fruit)
 
   if (fruit.id !== prevFruit) {
     setUpdatedFruit(fruit)

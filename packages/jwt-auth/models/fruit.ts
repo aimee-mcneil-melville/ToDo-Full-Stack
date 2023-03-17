@@ -1,4 +1,4 @@
-export type FruitSnake = {
+export type FruitSnakeCase = {
   id?: number
   name: string
   average_grams_each: number
@@ -6,7 +6,7 @@ export type FruitSnake = {
 }
 
 // TODO: make a non-optional id version
-export type FruitCamel = {
+export type Fruit = {
   id?: number
   name: string
   averageGramsEach: number

@@ -1,7 +1,7 @@
 // TODO: fix me
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useState, useEffect } from 'react'
-import { FruitCamel } from '../../types'
+import { Fruit } from '../../models/fruit'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { Error } from './Styled'
@@ -11,9 +11,9 @@ type ShowFormOptions = 'add' | 'selected' | 'none'
 
 function Fruits() {
   const [error, setError] = useState('')
-  const [fruits, setFruits] = useState<FruitCamel[]>([])
+  const [fruits, setFruits] = useState<Fruit[]>([])
 
-  const [selectedFruit, setSelectedFruit] = useState<FruitCamel | null>(null)
+  const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null)
 
   const [shownForm, setShownForm] = useState<ShowFormOptions>('none')
 
@@ -23,7 +23,7 @@ function Fruits() {
       .catch((err) => setError(err.message))
   }, [])
 
-  const handleAdd = async (fruit: FruitCamel) => {
+  const handleAdd = async (fruit: Fruit) => {
     // TODO: pass token as second parameter
     const accessToken = await getAccessTokenSilently()
 
@@ -34,7 +34,7 @@ function Fruits() {
       .catch((err) => setError(err.message))
   }
 
-  const handleUpdateFruit = async (updatedFruit: FruitCamel) => {
+  const handleUpdateFruit = async (updatedFruit: Fruit) => {
     const accessToken = await getAccessTokenSilently()
 
     updateFruit(updatedFruit, accessToken)
@@ -67,7 +67,7 @@ function Fruits() {
     setShownForm('none')
   }
 
-  const handleSelectFruit = (fruit: FruitCamel) => {
+  const handleSelectFruit = (fruit: Fruit) => {
     setSelectedFruit(fruit)
 
     setShownForm('selected')
