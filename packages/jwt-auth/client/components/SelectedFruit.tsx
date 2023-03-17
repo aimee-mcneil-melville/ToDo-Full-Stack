@@ -12,12 +12,12 @@ interface Props {
 }
 
 function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
-  const [prevFruit, setPrevFruit] = useState<number>(fruit.id!)
+  const [prevFruit, setPrevFruit] = useState<number>(fruit.id)
   const [updatedFruit, setUpdatedFruit] = useState<Fruit>(fruit)
 
   if (fruit.id !== prevFruit) {
     setUpdatedFruit(fruit)
-    setPrevFruit(fruit.id!)
+    setPrevFruit(fruit.id)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
   }
 
   const handleDeleteButtonClick = () => {
-    onDelete(fruit.id!)
+    onDelete(fruit.id)
   }
 
   const { name: editingName, averageGramsEach: editingGrams } = updatedFruit

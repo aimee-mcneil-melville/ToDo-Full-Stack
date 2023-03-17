@@ -1,7 +1,7 @@
 // TODO: fix me
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useState, useEffect } from 'react'
-import { Fruit } from '../../models/fruit'
+import { Fruit, NewFruit } from '../../models/fruit'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { Error } from './Styled'
@@ -23,7 +23,7 @@ function Fruits() {
       .catch((err) => setError(err.message))
   }, [])
 
-  const handleAdd = async (fruit: Fruit) => {
+  const handleAdd = async (fruit: NewFruit) => {
     // TODO: pass token as second parameter
     const accessToken = await getAccessTokenSilently()
 

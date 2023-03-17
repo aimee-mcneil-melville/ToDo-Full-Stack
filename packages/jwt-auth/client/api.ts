@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Fruit } from '../models/fruit'
+import { Fruit, NewFruit } from '../models/fruit'
 
 const rootUrl = '/api/v1'
 
@@ -10,7 +10,7 @@ export function getFruits(): Promise<Fruit[]> {
     .catch(logError)
 }
 
-export function addFruit(fruit: Fruit, token: string) {
+export function addFruit(fruit: NewFruit, token: string) {
   return request
     .post(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)

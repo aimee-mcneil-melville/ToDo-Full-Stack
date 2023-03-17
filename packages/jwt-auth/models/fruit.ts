@@ -7,8 +7,13 @@ export type FruitSnakeCase = {
 
 // TODO: make a non-optional id version
 export type Fruit = {
-  id?: number
+  id: number
   name: string
   averageGramsEach: number
   addedByUser: string
+}
+
+export type NewFruit = {
+  name: string
+  averageGramsEach: number
 }
