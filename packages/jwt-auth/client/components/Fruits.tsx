@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer } from 'react'
 import { Fruit, NewFruit } from '../../models/fruit'
-import SelectedFruit from './SelectedFruit'
+import SelectedFruitForm from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { ErrorMessage } from './Styled'
 import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
@@ -128,9 +128,7 @@ function Fruits() {
 
   return (
     <>
-      <ErrorMessage onClick={hideError}>
-        {error && `Error: ${error}`}
-      </ErrorMessage>
+      {error && <ErrorMessage onClick={hideError}>Error: {error}</ErrorMessage>}
       <ul>
         {fruits.map((fruit) => (
           <li key={fruit.id}>
@@ -146,11 +144,11 @@ function Fruits() {
         <button onClick={handleOpenAddForm}>Add a Fruit</button>
       )}
       {form.show === 'selected' && (
-        <SelectedFruit
+        <SelectedFruitForm
           fruit={form.selectedFruit}
           onUpdate={handleUpdate}
-          onClose={handleCloseForm}
           onDelete={handleDelete}
+          onClose={handleCloseForm}
         />
       )}
     </>

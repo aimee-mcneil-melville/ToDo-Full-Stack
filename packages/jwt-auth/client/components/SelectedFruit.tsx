@@ -1,5 +1,3 @@
-// TODO: fix me
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useState } from 'react'
 import { Fruit } from '../../models/fruit'
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
@@ -11,7 +9,7 @@ interface Props {
   onClose: () => void
 }
 
-function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
+function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
   const [prevFruit, setPrevFruit] = useState<number>(fruit.id)
   const [updatedFruit, setUpdatedFruit] = useState<Fruit>(fruit)
 
@@ -20,7 +18,7 @@ function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
     setPrevFruit(fruit.id)
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
     setUpdatedFruit({
@@ -51,9 +49,8 @@ function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
           type="text"
           name="name"
           aria-label="selected-name"
-          data-testid="selected-name"
-          value={editingName || ''}
-          onChange={handleChange}
+          value={editingName}
+          onChange={handleTextChange}
         />
 
         <ColOne>Average Grams Each:</ColOne>
@@ -61,27 +58,25 @@ function SelectedFruit({ fruit, onUpdate, onDelete, onClose }: Props) {
           type="text"
           name="averageGramsEach"
           aria-label="selected-grams"
-          data-testid="selected-grams"
-          value={editingGrams || ''}
-          onChange={handleChange}
+          value={editingGrams}
+          onChange={handleTextChange}
         />
 
-        <Button type="submit" data-testid="update-button">
+        <Button
+          type="submit"
+          disabled={editingName === '' || editingGrams === 0}
+        >
           Update fruit
         </Button>
-        <Button
-          type="button"
-          data-testid="delete-button"
-          onClick={handleDeleteButtonClick}
-        >
+        <Button type="button" onClick={handleDeleteButtonClick}>
           Delete fruit
         </Button>
-        <Button type="button" data-testid="clear-button" onClick={onClose}>
-          Clear selection
+        <Button type="button" onClick={onClose}>
+          Close
         </Button>
       </GridForm>
     </>
   )
 }
 
-export default SelectedFruit
+export default SelectedFruitForm

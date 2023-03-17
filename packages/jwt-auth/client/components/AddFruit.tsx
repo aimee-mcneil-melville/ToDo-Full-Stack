@@ -36,25 +36,25 @@ function AddFruit({ onAdd, onClose }: Props) {
     <>
       <h2>Add new</h2>
       <GridForm onSubmit={handleSubmit}>
-        <ColOne>Name:</ColOne>
+        <ColOne htmlFor="name">Name:</ColOne>
         <ColTwoText
           type="text"
           name="name"
-          aria-label="adding-name"
-          value={addingName || ''}
+          value={addingName}
           onChange={handleChange}
         />
 
-        <ColOne>Average Grams Each:</ColOne>
+        <ColOne htmlFor="averageGramsEach">Average Grams Each:</ColOne>
         <ColTwoText
           type="number"
           name="averageGramsEach"
-          aria-label="adding-grams"
-          value={addingGrams || ''}
+          value={addingGrams}
           onChange={handleChange}
         />
 
-        <Button type="submit">Add fruit</Button>
+        <Button type="submit" disabled={addingName === '' || addingGrams === 0}>
+          Add fruit
+        </Button>
         <Button type="button" onClick={onClose}>
           Close
         </Button>
