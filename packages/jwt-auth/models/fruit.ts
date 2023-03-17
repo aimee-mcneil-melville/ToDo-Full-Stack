@@ -1,19 +1,18 @@
-export type FruitSnakeCase = {
+export interface FruitSnakeCase {
   id?: number
   name: string
   average_grams_each: number
   added_by_user: string
 }
 
-// TODO: make a non-optional id version
-export type Fruit = {
+export interface Fruit {
   id: number
   name: string
   averageGramsEach: number
   addedByUser: string
 }
 
-export type NewFruit = {
+export interface NewFruit {
   name: string
   averageGramsEach: number
 }
