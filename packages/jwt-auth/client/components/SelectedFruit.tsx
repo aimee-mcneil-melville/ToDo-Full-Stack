@@ -1,5 +1,7 @@
+import type { Fruit } from '../../models/fruit'
+
 import { useState } from 'react'
-import { Fruit } from '../../models/fruit'
+
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
 
 interface Props {

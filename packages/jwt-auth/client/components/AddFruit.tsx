@@ -1,8 +1,8 @@
+import type { NewFruit } from '../../models/fruit'
+
 import { useState } from 'react'
-// TODO: import useAuth0
 
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-import { NewFruit } from '../../models/fruit'
 
 interface Props {
   onAdd: (fruit: NewFruit) => void
@@ -14,9 +14,8 @@ const emptyFruit: NewFruit = {
   averageGramsEach: 0,
 }
 
-function AddFruit({ onAdd, onClose }: Props) {
+function AddFruitForm({ onAdd, onClose }: Props) {
   const [newFruit, setNewFruit] = useState(emptyFruit)
-  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
 
   const { name: addingName, averageGramsEach: addingGrams } = newFruit
 
@@ -67,4 +66,4 @@ function AddFruit({ onAdd, onClose }: Props) {
   )
 }
 
-export default AddFruit
+export default AddFruitForm

@@ -1,9 +1,11 @@
+import type { Fruit, NewFruit } from '../../models/fruit'
+
 import { useState, useEffect, useReducer } from 'react'
-import { Fruit, NewFruit } from '../../models/fruit'
-import SelectedFruitForm from './SelectedFruit'
-import AddFruit from './AddFruit'
-import { ErrorMessage } from './Styled'
+
 import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
+import SelectedFruitForm from './SelectedFruit'
+import AddFruitForm from './AddFruit'
+import { ErrorMessage } from './Styled'
 
 type State =
   | {
@@ -141,7 +143,7 @@ function Fruits() {
         ))}
       </ul>
       {form.show === 'add' ? (
-        <AddFruit onAdd={handleAdd} onClose={handleCloseForm} />
+        <AddFruitForm onAdd={handleAdd} onClose={handleCloseForm} />
       ) : (
         <button onClick={handleOpenAddForm}>Add a Fruit</button>
       )}
