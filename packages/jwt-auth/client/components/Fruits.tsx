@@ -1,19 +1,63 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import { Fruit, NewFruit } from '../../models/fruit'
 import SelectedFruit from './SelectedFruit'
 import AddFruit from './AddFruit'
 import { ErrorMessage } from './Styled'
 import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
 
-type ShowFormOptions = 'add' | 'selected' | 'none'
+type State =
+  | {
+      selectedFruit: Fruit
+      show: 'selected'
+    }
+  | {
+      selectedFruit: null
+      show: 'add' | 'none'
+    }
+
+type Action =
+  | {
+      type: 'select'
+      payload: { fruit: Fruit }
+    }
+  | {
+      type: 'add'
+    }
+  | {
+      type: 'close'
+    }
+
+const initialState: State = {
+  selectedFruit: null,
+  show: 'none',
+}
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'select':
+      return {
+        selectedFruit: action.payload.fruit,
+        show: 'selected',
+      }
+    case 'add':
+      return {
+        selectedFruit: null,
+        show: 'add',
+      }
+    case 'close':
+      return {
+        selectedFruit: null,
+        show: 'none',
+      }
+    default:
+      return state
+  }
+}
 
 function Fruits() {
   const [error, setError] = useState('')
   const [fruits, setFruits] = useState<Fruit[]>([])
-
-  const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null)
-
-  const [shownForm, setShownForm] = useState<ShowFormOptions>('none')
+  const [form, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
     getFruits()
@@ -27,7 +71,7 @@ function Fruits() {
       const fruits = await addFruit(fruit, 'token')
 
       setFruits(fruits)
-      setShownForm('none')
+      handleCloseForm()
       hideError()
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -36,13 +80,13 @@ function Fruits() {
     }
   }
 
-  const handleUpdateFruit = async (updatedFruit: Fruit) => {
+  const handleUpdate = async (updatedFruit: Fruit) => {
     try {
       // TODO: pass token as second parameter
       const fruits = await updateFruit(updatedFruit, 'token')
 
       setFruits(fruits)
-      setShownForm('none')
+      handleCloseForm()
       hideError()
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -51,13 +95,13 @@ function Fruits() {
     }
   }
 
-  const handleDeleteFruit = async (id: number) => {
+  const handleDelete = async (id: number) => {
     try {
       // TODO: pass token as second parameter
       const fruits = await deleteFruit(id, 'token')
 
       setFruits(fruits)
-      setShownForm('none')
+      handleCloseForm()
       hideError()
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -71,18 +115,15 @@ function Fruits() {
   }
 
   const handleOpenAddForm = () => {
-    setSelectedFruit(null)
-    setShownForm('add')
+    dispatch({ type: 'add' })
   }
 
   const handleCloseForm = () => {
-    setSelectedFruit(null)
-    setShownForm('none')
+    dispatch({ type: 'close' })
   }
 
   const handleSelectFruit = (fruit: Fruit) => {
-    setSelectedFruit(fruit)
-    setShownForm('selected')
+    dispatch({ type: 'select', payload: { fruit } })
   }
 
   return (
@@ -93,27 +134,23 @@ function Fruits() {
       <ul>
         {fruits.map((fruit) => (
           <li key={fruit.id}>
-            <button
-              data-testid="fruit-link"
-              onClick={() => handleSelectFruit(fruit)}
-            >
+            <button onClick={() => handleSelectFruit(fruit)}>
               {fruit.name}
             </button>
           </li>
         ))}
       </ul>
-      {shownForm === 'add' ? (
+      {form.show === 'add' ? (
         <AddFruit onAdd={handleAdd} onClose={handleCloseForm} />
       ) : (
         <button onClick={handleOpenAddForm}>Add a Fruit</button>
       )}
-      {shownForm === 'selected' && (
+      {form.show === 'selected' && (
         <SelectedFruit
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          fruit={selectedFruit!}
-          onUpdate={handleUpdateFruit}
+          fruit={form.selectedFruit}
+          onUpdate={handleUpdate}
           onClose={handleCloseForm}
-          onDelete={handleDeleteFruit}
+          onDelete={handleDelete}
         />
       )}
     </>
