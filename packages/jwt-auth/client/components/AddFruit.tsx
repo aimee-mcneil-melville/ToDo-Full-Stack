@@ -40,6 +40,7 @@ function AddFruit({ onAdd, onClose }: Props) {
         <ColTwoText
           type="text"
           name="name"
+          id="name"
           value={addingName}
           onChange={handleChange}
         />
@@ -48,6 +49,7 @@ function AddFruit({ onAdd, onClose }: Props) {
         <ColTwoText
           type="number"
           name="averageGramsEach"
+          id="averageGramsEach"
           value={addingGrams}
           onChange={handleChange}
         />

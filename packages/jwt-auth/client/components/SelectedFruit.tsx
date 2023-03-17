@@ -44,20 +44,20 @@ function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
     <>
       <h2>Selected: {currentName}</h2>
       <GridForm onSubmit={handleSubmit}>
-        <ColOne>Name:</ColOne>
+        <ColOne htmlFor="name">Name:</ColOne>
         <ColTwoText
           type="text"
           name="name"
-          aria-label="selected-name"
+          id="name"
           value={editingName}
           onChange={handleTextChange}
         />
 
-        <ColOne>Average Grams Each:</ColOne>
+        <ColOne htmlFor="averageGramsEach">Average Grams Each:</ColOne>
         <ColTwoText
           type="text"
           name="averageGramsEach"
-          aria-label="selected-grams"
+          id="averageGramsEach"
           value={editingGrams}
           onChange={handleTextChange}
         />
