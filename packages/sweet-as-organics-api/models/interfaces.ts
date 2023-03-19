@@ -4,17 +4,17 @@ export interface DatabaseRow {
   updatedAt: string
 }
 
-export interface OrderCreate {
+export interface NewOrder {
   status: string
 }
 
-export interface ProductCreate {
+export interface NewProduct {
   name: string
   description: string
   country: string
 }
 
-export interface OrderProductCreate {
+export interface NewOrderProduct {
   orderId: number
   productId: number
   quantity: number
@@ -29,9 +29,9 @@ export interface OrderWithProducts {
   products: CartItemWithQuantity[]
 }
 
-export interface Order extends OrderCreate, DatabaseRow {}
-export interface Product extends ProductCreate, DatabaseRow {}
-export interface OrderProduct extends OrderProductCreate, DatabaseRow {}
+export interface Order extends NewOrder, DatabaseRow {}
+export interface Product extends NewProduct, DatabaseRow {}
+export interface OrderProduct extends NewOrderProduct, DatabaseRow {}
 
 export type CartItem = Pick<Product, 'id' | 'name'>
 
