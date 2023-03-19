@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Post } from '../../common/post'
+import { Post } from '../../models/post'
 
 interface Props {
   post: Post
@@ -10,6 +10,7 @@ function PostSummary(props: Props) {
   const { title, text, dateCreated, id } = props.post
   const paragraphs = text?.split('\n') || []
   const date = Number(dateCreated)
+
   return (
     <div className="post">
       <Link to={`/posts/${id}`}>

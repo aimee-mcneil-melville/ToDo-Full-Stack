@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getCommentsByPostId } from '../../api'
-import { Comment } from '../../../common/comment'
+import { Comment } from '../../../models/comment'
 
 export type FetchComments = (id: number) => void
 

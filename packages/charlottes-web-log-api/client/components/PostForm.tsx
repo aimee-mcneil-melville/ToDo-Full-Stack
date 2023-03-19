@@ -1,5 +1,6 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
+import { NewPost } from '../../models/post'
 import { addPost, updatePost } from '../api'
 import type useFetchPosts from './hooks/useFetchPosts'
 type FetchPosts = ReturnType<typeof useFetchPosts>
@@ -9,18 +10,12 @@ interface Props {
   loading?: boolean
 }
 
-interface Post {
-  text: string
-  title: string
-  id?: number
-}
-
 function PostForm(props: Props) {
   const navigate = useNavigate()
   const { id } = useParams()
   const { posts, loading, fetchPosts } = useOutletContext<FetchPosts>()
   const post = posts.find((post) => post.id === Number(id))
-  const [newPost, setNewPost] = useState({ title: '', text: '' })
+  const [newPost, setNewPost] = useState<NewPost>({ title: '', text: '' })
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
@@ -29,7 +24,7 @@ function PostForm(props: Props) {
     }
   }, [post, loading, props.variant])
 
-  function onSubmit(e: FormEvent<any>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!completePostData(newPost)) return null
     if (props.variant === 'edit' && id) {
@@ -45,7 +40,7 @@ function PostForm(props: Props) {
     }
   }
 
-  function completePostData(post: Post) {
+  function completePostData(post: NewPost) {
     if (post.text && post.title) {
       return true
     } else {
