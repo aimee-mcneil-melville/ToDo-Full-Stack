@@ -10,7 +10,7 @@ export function getFruits(): Promise<Fruit[]> {
     .catch(logError)
 }
 
-export function addFruit(fruit: NewFruit, token: string) {
+export function addFruit(fruit: NewFruit, token: string): Promise<Fruit[]> {
   return request
     .post(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)
@@ -19,7 +19,7 @@ export function addFruit(fruit: NewFruit, token: string) {
     .catch(logError)
 }
 
-export function updateFruit(fruit: Fruit, token: string) {
+export function updateFruit(fruit: Fruit, token: string): Promise<Fruit[]> {
   return request
     .put(`${rootUrl}/fruits`)
     .set('Authorization', `Bearer ${token}`)
@@ -28,7 +28,7 @@ export function updateFruit(fruit: Fruit, token: string) {
     .catch(logError)
 }
 
-export function deleteFruit(id: number, token: string) {
+export function deleteFruit(id: number, token: string): Promise<Fruit[]> {
   return request
     .delete(`${rootUrl}/fruits/${id}`)
     .set('Authorization', `Bearer ${token}`)
