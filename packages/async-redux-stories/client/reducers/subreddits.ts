@@ -1,5 +1,5 @@
 import { Action, RECEIVE_POSTS } from '../actions/reddit'
-import { Post } from '../posts';
+import { Post } from '../../models/post'
 
 const initialState: Post[] = []
 
