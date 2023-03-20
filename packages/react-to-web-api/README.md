@@ -137,7 +137,7 @@ These next steps will be full stack, requiring you to make changes to both the f
   <summary>More about adding a widget</summary>
   
   Some steps you could take to complete this are:
-  - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Insomnia
+  - Create a POST route on the server side in `widgets.ts`. Test you can get a response for it in Insomnia
   - Create the database function to add a new widget. Call this function in your route and test it works in Insomnia
   - Create an `addWidget` function in `apiClient.ts` that will make a POST request to the API route you just built
   - Create a new `<AddWidget>` component containing a form. Import the `addWidget` function from `apiClient.ts` and hook it up to your form's submit handler
