@@ -12,13 +12,7 @@ interface Props {
 }
 
 function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
-  const [prevFruit, setPrevFruit] = useState(fruit.id)
   const [updatedFruit, setUpdatedFruit] = useState(fruit)
-
-  if (fruit.id !== prevFruit) {
-    setUpdatedFruit(fruit)
-    setPrevFruit(fruit.id)
-  }
 
   const { name: editingName, averageGramsEach: editingGrams } = updatedFruit
   const { name: currentName } = fruit

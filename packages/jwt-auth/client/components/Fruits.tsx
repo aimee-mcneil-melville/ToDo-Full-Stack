@@ -1,6 +1,6 @@
 import type { Fruit, NewFruit } from '../../models/fruit'
 
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 
 import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
 import SelectedFruitForm from './SelectedFruit'
@@ -17,49 +17,15 @@ type State =
       show: 'add' | 'none'
     }
 
-type Action =
-  | {
-      type: 'select'
-      payload: { fruit: Fruit }
-    }
-  | {
-      type: 'add'
-    }
-  | {
-      type: 'close'
-    }
-
-const initialState: State = {
+const closedForm: State = {
   selectedFruit: null,
   show: 'none',
-}
-
-function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'select':
-      return {
-        selectedFruit: action.payload.fruit,
-        show: 'selected',
-      }
-    case 'add':
-      return {
-        selectedFruit: null,
-        show: 'add',
-      }
-    case 'close':
-      return {
-        selectedFruit: null,
-        show: 'none',
-      }
-    default:
-      return state
-  }
 }
 
 function Fruits() {
   const [error, setError] = useState('')
   const [fruits, setFruits] = useState<Fruit[]>([])
-  const [form, dispatch] = useReducer(reducer, initialState)
+  const [form, setForm] = useState<State>(closedForm)
 
   // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
 
@@ -119,15 +85,15 @@ function Fruits() {
   }
 
   const handleOpenAddForm = () => {
-    dispatch({ type: 'add' })
+    setForm({ show: 'add', selectedFruit: null })
   }
 
   const handleCloseForm = () => {
-    dispatch({ type: 'close' })
+    setForm(closedForm)
   }
 
   const handleSelectFruit = (fruit: Fruit) => {
-    dispatch({ type: 'select', payload: { fruit } })
+    setForm({ show: 'selected', selectedFruit: fruit })
   }
 
   return (
@@ -149,6 +115,7 @@ function Fruits() {
       )}
       {form.show === 'selected' && (
         <SelectedFruitForm
+          key={form.selectedFruit.id}
           fruit={form.selectedFruit}
           onUpdate={handleUpdate}
           onDelete={handleDelete}
