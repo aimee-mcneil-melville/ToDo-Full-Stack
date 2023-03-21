@@ -1,104 +1,78 @@
-import { useState, ChangeEvent, MouseEvent, FormEvent } from 'react'
-// TODO: import useAuth0
-import { FruitCamel } from '../../types'
+import type { Fruit } from '../../models/fruit'
+
+import { useState } from 'react'
+
 import { GridForm, ColOne, ColTwoText, Button } from './Styled'
-import { updateFruit, deleteFruit } from '../api'
+
 interface Props {
-  selected: FruitCamel
-  clearSelected: () => void
-  setFruits: (fruits: FruitCamel[]) => void
-  fruits: FruitCamel[]
-  setError: (err: string) => void
+  fruit: Fruit
+  onUpdate: (updatedFruit: Fruit) => void
+  onDelete: (id: number) => void
+  onClose: () => void
 }
 
-function SelectedFruit({
-  selected,
-  clearSelected,
-  setError,
-  setFruits,
-}: Props) {
-  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
-  // const selectedFruit = fruits.find((fruit) => fruit.id === selected)
-  const [editing, setEditing] = useState(selected)
+function SelectedFruitForm({ fruit, onUpdate, onDelete, onClose }: Props) {
+  const [updatedFruit, setUpdatedFruit] = useState(fruit)
 
-  const handleEditChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const { name: editingName, averageGramsEach: editingGrams } = updatedFruit
+  const { name: currentName } = fruit
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setEditing({
-      ...editing,
+
+    setUpdatedFruit({
+      ...updatedFruit,
       [name]: value,
     })
   }
 
-  const handleUpdate = (e: FormEvent) => {
-    e.preventDefault()
-    // TODO: getAccessToken from auth0
-    // TODO: pass token as second parameter
-    updateFruit(editing, 'token')
-      .then((remoteFruits) => setFruits(remoteFruits))
-      .then(clearSelected)
-      .then(() => setError(''))
-      .catch((err) => setError(err.message))
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    onUpdate(updatedFruit)
   }
 
-  const handleDelete = (e: MouseEvent) => {
-    e.preventDefault()
-    // TODO: get accessToken from auth0
-    // TODO: pass token as second parameter
-
-    deleteFruit(editing.id!, 'token')
-      .then(setFruits)
-      .then(clearSelected)
-      .then(() => setError(''))
-      .catch((err) => setError(err.message))
+  const handleDeleteButtonClick = () => {
+    onDelete(fruit.id)
   }
-
-  const { name: editingName, averageGramsEach: editingGrams } = editing
-  const { name: currentName } = selected
 
   return (
     <>
       <h2>Selected: {currentName}</h2>
-      <GridForm onSubmit={handleUpdate}>
-        <ColOne>Name:</ColOne>
+      <GridForm onSubmit={handleSubmit}>
+        <ColOne htmlFor="name">Name:</ColOne>
         <ColTwoText
           type="text"
           name="name"
-          aria-label="selected-name"
-          data-testid="selected-name"
-          value={editingName || ''}
-          onChange={handleEditChange}
+          id="name"
+          value={editingName}
+          onChange={handleTextChange}
         />
 
-        <ColOne>Average Grams Each:</ColOne>
+        <ColOne htmlFor="averageGramsEach">Average Grams Each:</ColOne>
         <ColTwoText
           type="text"
           name="averageGramsEach"
-          aria-label="selected-grams"
-          data-testid="selected-grams"
-          value={editingGrams || ''}
-          onChange={handleEditChange}
+          id="averageGramsEach"
+          value={editingGrams}
+          onChange={handleTextChange}
         />
 
-        <Button type="submit" data-testid="update-button">
+        <Button
+          type="submit"
+          disabled={editingName === '' || editingGrams === 0}
+        >
           Update fruit
         </Button>
-        <Button
-          type="button"
-          data-testid="delete-button"
-          onClick={handleDelete}
-        >
+        <Button type="button" onClick={handleDeleteButtonClick}>
           Delete fruit
         </Button>
-        <Button
-          type="button"
-          data-testid="clear-button"
-          onClick={clearSelected}
-        >
-          Clear selection
+        <Button type="button" onClick={onClose}>
+          Close
         </Button>
       </GridForm>
     </>
   )
 }
 
-export default SelectedFruit
+export default SelectedFruitForm

@@ -1,5 +1,5 @@
 import connection from './connection'
-import { FruitSnake } from '../../types'
+import { FruitSnakeCase } from '../../models/fruit'
 
 export function getFruits(db = connection) {
   return db('fruits')
@@ -12,11 +12,11 @@ export function getFruits(db = connection) {
     .orderBy('id')
 }
 
-export function addFruit(fruit: FruitSnake, db = connection) {
+export function addFruit(fruit: FruitSnakeCase, db = connection) {
   return db('fruits').insert(fruit)
 }
 
-export function updateFruit(newFruit: FruitSnake, db = connection) {
+export function updateFruit(newFruit: FruitSnakeCase, db = connection) {
   return db('fruits').where('id', newFruit.id).update(newFruit)
 }
 
@@ -28,7 +28,7 @@ export function userCanEdit(fruitId: number, auth0Id: string, db = connection) {
   return db('fruits')
     .where('id', fruitId)
     .first()
-    .then((fruit: FruitSnake) => {
+    .then((fruit: FruitSnakeCase) => {
       if (fruit.added_by_user !== auth0Id) {
         throw new Error('Unauthorized')
       }

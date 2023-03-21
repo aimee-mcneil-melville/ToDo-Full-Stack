@@ -1,13 +1,18 @@
-export type FruitSnake = {
+export interface FruitSnakeCase {
   id?: number
   name: string
   average_grams_each: number
   added_by_user: string
 }
 
-export type FruitCamel = {
-  id?: number
+export interface Fruit {
+  id: number
   name: string
   averageGramsEach: number
   addedByUser: string
+}
+
+export interface NewFruit {
+  name: string
+  averageGramsEach: number
 }
