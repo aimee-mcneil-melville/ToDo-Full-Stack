@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Screen() {
   // TODO: select the message from global state
   const message = 'Fix me'
