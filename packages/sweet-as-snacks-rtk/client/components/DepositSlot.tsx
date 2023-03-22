@@ -12,7 +12,7 @@ function DepositSlot() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    // TODO: dispatch the deposit action from slice
+    // TODO: import and dispatch the deposit action
     setAmount(0)
   }
 

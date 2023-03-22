@@ -16,6 +16,7 @@ When complete, your application might look like this:
   1. The server-side is already configured and we are not going to change it. We are using Vite as a bundler so as you save your work the localhost browser automatically updates with your changes - you don't need to refresh your webpage to see the changes you've made.
   2. The front-end has react components that are already written and stylised for you.
   3. Components are stylised and configured using [Tailwindcss](https://tailwindcss.com/). You are welcome to read the code to understand what is going on but not expected to make any styling changes.
+  4. There is a hooks file which exports some React hooks which have been `typed` so we can use them with TypeScript
 
 </details>
 
@@ -201,4 +202,4 @@ You should see the product disappears when clicking (collecting) the product fro
 
 - Add a button to show the revenue from global state using the `Revenue.tsx` component. Maybe you could add another button which dispatches an action which clears the revenue.
 - Make the necessary updates so that the vending machine allows users to select more than one product after depositing the right amount.
-- Write tests.
+- Write tests for redux and the react components
