@@ -1,10 +1,13 @@
-import header from '../data/header'
+interface Props {
+  title: string
+  link: string
+}
 
-export default function Header() {
+export default function Header({ link, title }: Props) {
   return (
     <div className="header">
       <h1>
-        <a href={header.link}>{header.title}</a>
+        <a href={link}>{title}</a>
       </h1>
     </div>
   )

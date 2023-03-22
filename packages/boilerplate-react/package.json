@@ -12,7 +12,8 @@
     "client:watch": "npm run webpack -- --watch",
     "server:watch": "nodemon server/index.ts",
     "test": "jest --watch --noStackTrace",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [
@@ -41,7 +42,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.17.12",
-    "@devacademy/eslint-config": "^1.6.0",
+    "@devacademy/eslint-config": "^1.8.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.23",

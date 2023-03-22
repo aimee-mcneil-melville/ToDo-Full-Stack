@@ -11,7 +11,8 @@
     "dev:client": "webpack --watch --config client/webpack.config.js",
     "dev:server": "nodemon --watch server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [
@@ -26,7 +27,8 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom"
   },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
@@ -44,10 +46,11 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/register": "^7.13.14",
-    "@devacademy/eslint-config": "^1.6.0",
+    "@devacademy/eslint-config": "^1.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4",
-    "@types/express": "^4.17.15",
+    "@types/express": "^4.17.14",
+    "@types/express-serve-static-core": "^4.17.33",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
     "@types/react-router": "^5.1.19",

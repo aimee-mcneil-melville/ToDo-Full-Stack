@@ -1,21 +1,21 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react'
 import Tile from './Tile'
-import type { TTile } from '../startingTiles'
+import { TileData } from '../startingTiles'
 import { useState } from 'react'
 
 type Props = {
-  tiles: TTile[]
-  setTiles: React.Dispatch<React.SetStateAction<TTile[]>>
-  evalMatch: (tile1: TTile, tile2: TTile) => void
+  tiles: TileData[]
+  setTiles: React.Dispatch<React.SetStateAction<TileData[]>>
+  evalMatch: (tile1: TileData, tile2: TileData) => void
 }
 
 function Board(props: Props) {
-  const [guessedTile, setGuessedTile] = useState<TTile | null>(null)
+  const [guessedTile, setGuessedTile] = useState<TileData | null>(null)
 
   const [isDisabled, setIsDisabled] = useState(false)
 
-  function handleClick(tile: TTile) {
+  function handleClick(tile: TileData) {
     if (isDisabled) return
     if (tile.isVisible) return
 

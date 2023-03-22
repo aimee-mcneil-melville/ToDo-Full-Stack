@@ -27,9 +27,10 @@ User stories for practice with async actions in Redux. We'll be using Reddit, a 
     
   This one is done for you! Take a look at it anyway to see how it works. In particular, identify:
   
+    - the **components** involved
     - the **action** and **action creator**. Take a good look at `fetchPosts` in particular. What does it return?
     - the **reducer**
-    - the **components** involved
+    - the **api request** in the client and matching **route** in the server
   
   The DevTools setup is a little different when you're using middleware: check out the [docs](https://github.com/zalmoxisus/redux-devtools-extension) for more details
 

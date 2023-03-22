@@ -24,7 +24,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
 ### 1. Preparing to use `<BrowserRouter>`
 
-- [ ] Add the configuration for `BrowserRouter` in our `server.js` (this must go AFTER the line that sets up our `public` folder)
+- [ ] Add the configuration for `BrowserRouter` in our `server.ts` (this must go AFTER the line that sets up our `public` folder)
   <details style="padding-left: 2em">
     <summary>More about configuration</summary>
 
@@ -32,13 +32,13 @@ This exercise asks you to build an experience to navigate continents and their c
 
   ```js
   server.get('*', (req, res) => {
-    res.sendFile(path.resolve('server/public/index.html'))
+    res.sendFile(join(__dirname, 'public/index.html'))
   })
   ```
 
   </details>
 
-- [ ] Set up `<BrowserRouter>` in our `client/index.js`
+- [ ] Set up `<BrowserRouter>` in our `client/index.tsx`
   <details style="padding-left: 2em">
     <summary>More about <code>&lt;BrowserRouter&gt;</code> on the client side</summary>
 
@@ -46,13 +46,13 @@ This exercise asks you to build an experience to navigate continents and their c
      ```jsx
      import { BrowserRouter as Router } from 'react-router-dom'
      ```
-  2. Inside our `ReactDOM.render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
+  2. Inside our `render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
 
   **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
 
 ### 2. Building a Home
 
-Check out the `App.jsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
+Check out the `App.tsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
 
 <details>
   <summary>Image of worldwide-routing after completing this section</summary>
@@ -75,7 +75,7 @@ Check out the `App.jsx` component. It currently contains the main header, a `<Ho
 
 ### 3. Adding continents
 
-- [ ] Add a route for `continents/:name` to our `App.jsx`. We will use it to show the selected continent and its respective image from `data/continents.js` file
+- [ ] Add a route for `continents/:name` to our `App.tsx`. We will use it to show the selected continent and its respective image from `data/continents.ts` file
 
 - [ ] Create a `<Continent>` component for this route, and use `useParams` (imported from `react-router-dom`) to determine which continent to show
 
@@ -99,7 +99,7 @@ Check out the `App.jsx` component. It currently contains the main header, a `<Ho
 
 ### 5. Adding countries
 
-Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.js`.
+Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.ts`.
 
 - [ ] Create a route for this page. It should look something like: `continent/:name/:code`
 <details style="padding-left: 2em">
@@ -154,7 +154,7 @@ Currently each country just shows a string of its neighbours' country codes.
 
 - If you haven't already, add a "Home" link in the `<Nav>` component
 
-- Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are
+- Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are (Hint: Look up 'NavLink')
 
 - Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population
 

@@ -7,9 +7,10 @@
   "license": "ISC",
   "scripts": {
     "start": "node server/index",
-    "dev": "nodemon server/index",
+    "dev": "nodemon server/index --ignore */data.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
   "repository": {
@@ -47,7 +48,7 @@
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
     "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.6.0"
+    "@devacademy/eslint-config": "^1.8.0"
   },
   "prettier": {
     "semi": false,

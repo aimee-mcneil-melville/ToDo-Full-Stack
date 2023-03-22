@@ -7,7 +7,7 @@ Learning objectives:
  1. Creating simple components
  2. Using components inside other components
  3. Passing props to components
- 4. Using JavaScript expressions inside JSX
+ 4. Using JavaScript expressions inside TSX
  5. Using `Array.map` to display a series of components
 
 
@@ -31,11 +31,11 @@ Learning objectives:
 
 ### 1. The `<App>` component
 
-- [ ] Investigate `server/public/index.html` and `client/index.js`
+- [ ] Investigate `server/public/index.html` and `client/index.ts`
   <details style="padding-left: 2em">
     <summary>More about the <code>index</code> files</summary>
 
-    If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.js`, we find this:
+    If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.ts`, we find this:
 
     ```js
     import App from './components/App'
@@ -51,9 +51,9 @@ Learning objectives:
     Plain 'ole `DOMContentLoaded`, like you've seen in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before **rendering** our components (making them show up on the page).
   </details>
 
-- [ ] Next, take a look at `client/components/App.jsx`
+- [ ] Next, take a look at `client/components/App.tsx`
   <details style="padding-left: 2em">
-    <summary>More about <code>App.jsx</code></summary>
+    <summary>More about <code>App.tsx</code></summary>
 
     ```jsx
     const App = () => (
@@ -65,20 +65,21 @@ Learning objectives:
     export default App
     ```
 
-    Effectively this whole functional component is a `render` function. All it does is return some [markup](https://en.wikipedia.org/wiki/Markup_language), expressed as [JSX](https://jsx.github.io/). Instead of rendering a template, such as we do when using [Handlebars](https://handlebarsjs.com), we're dealing here with small chunks of the page at a time which are inserted into `index.html`. Each 'chunk' (component) can contain other components, some of which can be repeated to build lists of items on the page.
+    Effectively this whole functional component is a `render` function. All it does is return some [markup](https://en.wikipedia.org/wiki/Markup_language), expressed as [TSX](https://jsx.github.io/). Instead of rendering a template, such as we do when using [Handlebars](https://handlebarsjs.com), we're dealing here with small chunks of the page at a time which are inserted into `index.html`. Each 'chunk' (component) can contain other components, some of which can be repeated to build lists of items on the page.
   </details>
 
 ### 2. The `<Dog>` component
 
 Let's try another component.
-- [ ] In your editor, make a new component file called `Dog.jsx`, and give it some content
+- [ ] In your editor, make a new component file called `Dog.tsx`, and give it some content
   <details style="padding-left: 2em">
     <summary>More about <code>Dog.jsx</code></summary>
 
     First, save it into the `client/components` directory.
 
-    Copy/paste the following for the contents of Dog.jsx
-    ```jsx
+    Copy/paste the following for the contents of Dog.tsx
+    ```tsx
+    import React from 'react'
 
     const Dog = (props) => {
       return (
@@ -97,15 +98,15 @@ Let's try another component.
     export default Dog
     ```
 
-    Notice that it looks a lot like `App.jsx`, except there are a few extra tags and we're making use of **props**.
+    Notice that it looks a lot like `App.tsx`, except there are a few extra tags and we're making use of **props**.
   </details>
 
   <details style="padding-left: 2em">
     <summary>More about props</summary>
 
-    The props come from what we would normally think of as **attributes** on the component's tag in JSX:
+    The props come from what we would normally think of as **attributes** on the component's tag in TSX:
 
-    ```jsx
+    ```tsx
     <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />
     ```
 
@@ -121,23 +122,23 @@ Let's try another component.
 
     When we refer to a prop in JSX we have to put it inside curly braces, like this:
 
-    ```jsx
+    ```tsx
     <span>{props.name}</span>
     ```
   </details>
 
-- [ ] Now let's use it. In `App.jsx`, import your new `<Dog>` component and give it some attributes
+- [ ] Now let's use it. In `App.tsx`, import your new `<Dog>` component and give it some attributes
   <details style="padding-left: 2em">
     <summary>More about implementing the <code>&lt;Dog&gt;</code> component</summary>
 
-    In `App.jsx`, import the `<Dog>` component
-    ```js
-    import Dog from './Dog.jsx'
+    In `App.tsx`, import the `<Dog>` component
+    ```ts
+    import Dog from './Dog.tsx'
     ```
 
     and add a `<Dog>` tag (use Desdemona, above if you like). The JSX returned should look something like this:
 
-    ```jsx
+    ```tsx
     (
       <div className='container'>
         <img className='spinner' src='/images/paw.png' />
@@ -165,7 +166,7 @@ Let's try another component.
 
     Rendering `<Subtitle>` into the `<App>` might look like this:
 
-    ```jsx
+    ```tsx
     <img className='spinner' src='/images/paw.png' />
     <Subtitle text='Canines using supercanine abilities for social good.' />
     <Dog name='Desdemona' breed='Bulldog' superpower='Heat vision' />

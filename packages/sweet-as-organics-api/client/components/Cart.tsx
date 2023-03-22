@@ -1,15 +1,16 @@
-import type { ReactNode } from 'react'
+import type * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAppSelector } from '../hooks'
 import CartItem from './CartItem'
 
 interface Props {
-  children: ReactNode
-  history: unknown
+  children: React.ReactNode
 }
 
-function Cart({ children }: Props) {
+function Cart(props: Props) {
+  const { children } = props
+
   const cart = useAppSelector((state) => state.cart)
 
   function submitCart() {
@@ -21,9 +22,9 @@ function Cart({ children }: Props) {
       <table>
         <thead>
           <tr>
-            <td role="columnheader">Product</td>
-            <td role="columnheader">Quantity</td>
-            <td role="columnheader">Remove</td>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>

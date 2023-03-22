@@ -1,12 +1,11 @@
-export interface Props {
-  info: string
-  isVisible: boolean
-  value: string
-  id: number
+import { TileData } from '../startingTiles'
+
+interface Props extends TileData {
+  // include additional props here
 }
 
 function Tile(props: Props) {
-  return <div className="tile">{props.value}</div>
+  return <button className="tile">{props.value}</button>
 }
 
 export default Tile

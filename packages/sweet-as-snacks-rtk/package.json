@@ -22,7 +22,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "build:css": "npx tailwindcss -i client/input.css -o server/public/main.css --watch"
+    "build:css": "npx tailwindcss -i client/input.css -o server/public/main.css --watch",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "babel": {
     "presets": [
@@ -82,7 +83,7 @@
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1",
-    "@devacademy/eslint-config": "^1.6.0"
+    "@devacademy/eslint-config": "^1.8.0"
   },
   "prettier": {
     "semi": false,

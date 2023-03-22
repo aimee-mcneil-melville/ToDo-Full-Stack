@@ -13,7 +13,9 @@ server.engine(
   })
 )
 server.set('view engine', 'hbs')
-server.use(express.static('public'))
+server.set('views', __dirname + '/views')
+const publicFolder = __dirname + '/public'
+server.use(express.static(publicFolder))
 server.use(express.urlencoded({ extended: true }))
 
 // Routes

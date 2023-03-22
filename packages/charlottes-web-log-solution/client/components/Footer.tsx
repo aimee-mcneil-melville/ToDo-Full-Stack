@@ -1,10 +1,13 @@
-import footer from '../data/footer'
+interface Props {
+  copyright: number
+  author: string
+}
 
-export default function Footer() {
+export default function Footer({ copyright, author }: Props) {
   return (
     <div className="footer">
-      <div>&copy; {footer.copyright}</div>
-      <div>{footer.author}</div>
+      <p>{copyright}</p>
+      <p>{author}</p>
     </div>
   )
 }

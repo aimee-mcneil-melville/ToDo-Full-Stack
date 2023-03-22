@@ -215,7 +215,7 @@ Now it's time to come clean (or not).
 
   * [GitHub Help](https://help.github.com/)
   * [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
-  * [Git Cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
+  * [Git Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
   * [Git homepage](https://git-scm.com/)
   * [GitHub Hello World](https://guides.github.com/activities/hello-world/)
   * [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)

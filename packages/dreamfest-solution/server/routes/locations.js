@@ -7,7 +7,7 @@ module.exports = router
 
 // GET /locations
 router.get('/', (req, res) => {
-  db.getAllLocations()
+  db.getAllLocationsWithDesc()
     .then((locations) => {
       const viewData = { locations }
       res.render('showLocations', viewData)

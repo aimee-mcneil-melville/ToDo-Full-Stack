@@ -7,7 +7,7 @@ Learning objectives:
 1.  Creating simple components
 2.  Using components inside other components
 3.  Passing props to components
-4.  Using JavaScript expressions inside JSX
+4.  Using JavaScript expressions inside TSX
 5.  Using `Array.map` to display a series of components
 
 ## Setup
@@ -49,7 +49,7 @@ Learning objectives:
   })
   ```
 
-  Plain 'ole `DOMContentLoaded`, like you've seen in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before **rendering** our components (making them show up on the page).
+  Plain ol' `DOMContentLoaded`, like you've seen in Foundations. So to start our React app off, we listen to make sure that the DOM has been loaded by the browser before **rendering** our components (making them show up on the page).
   </details>
 
 - [ ] Next, take a look at `client/components/App.tsx`
@@ -182,7 +182,7 @@ Let's try another component.
 
   ```tsx
   <img className="spinner" src="/images/paw.png" />
-  <Subtitle text="Canines using supercanine abilities for social good." />
+  <Subtitle text="Canines using super-canine abilities for social good." />
   <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
   ```
 

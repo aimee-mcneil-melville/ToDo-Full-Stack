@@ -1,5 +1,5 @@
-import type * as cart from './cart'
-import type * as error from './error'
-import type * as products from './products'
+import type { CartAction } from './cart'
+import type { ErrorAction } from './error'
+import type { ProductAction } from './products'
 
-export type Action = cart.Action | error.Action | products.Action
+export type AppAction = CartAction | ErrorAction | ProductAction

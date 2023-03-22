@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
-import { Comment as CommentData} from '../../common/comment'
+import { Comment as CommentData } from '../../common/comment'
 import { FetchComments } from './hooks/useFetchComments'
 
 interface Props {
@@ -37,12 +37,11 @@ function Comment({ comment, fetchComments }: Props) {
         <button
           className="pure-button button-error"
           onClick={(e) => {
-            console.log('delete comment', comment.id)
             e.preventDefault()
-
-            return deleteComment(comment.id!).then(() => {
-              fetchComments(comment.postId)
-            })
+            if (!comment.id) return
+            deleteComment(comment.id)
+              .then(() => fetchComments(comment.postId))
+              .catch((err) => console.log(err))
           }}
         >
           Delete
