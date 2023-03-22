@@ -1,7 +1,7 @@
 import Change from './Change'
 import Products from './Products'
 import DepositSlot from './DepositSlot'
-import Door from './Door'
+import Dispenser from './Dispenser'
 import Screen from './Screen'
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
         <Screen />
         <Products />
         <Change />
-        <Door />
+        <Dispenser />
       </section>
     </main>
   )
