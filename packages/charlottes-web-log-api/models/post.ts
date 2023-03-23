@@ -5,12 +5,12 @@ export interface Post {
   dateCreated: number
 }
 
-export interface NewPost {
+export interface PostData {
   title: string
   text: string
 }
 
-export interface UpdatePost {
+export interface PostUpdate {
   title?: string
   text?: string
 }

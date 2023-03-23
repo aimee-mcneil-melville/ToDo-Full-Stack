@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 import { Comment } from '../../models/comment'
-import { Post, NewPost } from '../../models/post'
+import { Post, PostData } from '../../models/post'
 
 export function getPosts(): Promise<Post[]> {
   return request
@@ -13,7 +13,7 @@ export function getPosts(): Promise<Post[]> {
     .catch(errorHandler('GET', '/v1/posts'))
 }
 
-export function addPost(post: NewPost): Promise<Post> {
+export function addPost(post: PostData): Promise<Post> {
   return request
     .post('/v1/posts')
     .send(post)
@@ -25,7 +25,7 @@ export function addPost(post: NewPost): Promise<Post> {
     .catch(errorHandler('POST', '/v1/posts'))
 }
 
-export function updatePost(postId: string, post: NewPost): Promise<Post> {
+export function updatePost(postId: string, post: PostData): Promise<Post> {
   return request
     .patch(`/v1/posts/${postId}`)
     .send(post)

@@ -5,7 +5,7 @@ export interface Comment {
   dateCreated: number
 }
 
-export interface NewComment {
+export interface CommentData {
   comment: string
   postId: number
 }

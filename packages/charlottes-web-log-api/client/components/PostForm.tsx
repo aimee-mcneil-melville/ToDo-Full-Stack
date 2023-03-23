@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
-import { NewPost } from '../../models/post'
+import { PostData } from '../../models/post'
 import { addPost, updatePost } from '../api'
 import type useFetchPosts from './hooks/useFetchPosts'
 type FetchPosts = ReturnType<typeof useFetchPosts>
@@ -15,7 +15,7 @@ function PostForm(props: Props) {
   const { id } = useParams()
   const { posts, loading, fetchPosts } = useOutletContext<FetchPosts>()
   const post = posts.find((post) => post.id === Number(id))
-  const [newPost, setNewPost] = useState<NewPost>({ title: '', text: '' })
+  const [newPost, setNewPost] = useState<PostData>({ title: '', text: '' })
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function PostForm(props: Props) {
     }
   }
 
-  function completePostData(post: NewPost) {
+  function completePostData(post: PostData) {
     if (post.text && post.title) {
       return true
     } else {
