@@ -3,6 +3,6 @@ export interface Fruit {
   name: string
 }
 
-export interface NewFruit {
+export interface FruitData {
   name: string
 }
