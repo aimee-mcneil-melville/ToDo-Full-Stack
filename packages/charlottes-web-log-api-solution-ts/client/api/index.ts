@@ -1,8 +1,8 @@
 import request from 'superagent'
 
-import { Comment } from '../../common/comment'
+import { Comment } from '../../models/comment'
 
-import { Post } from '../../common/post'
+import { Post } from '../../models/post'
 
 export function getPosts(): Promise<Post[]> {
   return request
