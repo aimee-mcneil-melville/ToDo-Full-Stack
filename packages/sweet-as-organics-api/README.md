@@ -68,8 +68,8 @@ Let's get the "Place Order" button working in `<Cart>`. A potential approach cou
 
 ### 2. Creating order routes
 
-- [ ] Create a new routes file (`server/routes/orders.js`) and configure our server to use those routes with an `/api/v1/orders` prefix
-- [ ] Create a new POST route that uses the `addOrder` function from `server/db/orders.js`
+- [ ] Create a new routes file (`server/routes/orders.ts`) and configure our server to use those routes with an `/api/v1/orders` prefix
+- [ ] Create a new POST route that uses the `addOrder` function from `server/db/orders.ts`
   <details style="padding-left: 2em">
     <summary>More about the <code>addOrder</code> POST route</summary>
   
@@ -86,7 +86,7 @@ Let's get the "Place Order" button working in `<Cart>`. A potential approach cou
 
 ### 3. Creating the order API on the client side
 
-- [ ]  Add a `client/api/orders.js` file, and create a `postOrder` function that uses `superagent` to make a POST request to the route we just made
+- [ ]  Add a `client/api/orders.ts` file, and create a `postOrder` function that uses `superagent` to make a POST request to the route we just made
   <details style="padding-left: 2em">
     <summary>Tip</summary>
     
@@ -95,14 +95,14 @@ Let's get the "Place Order" button working in `<Cart>`. A potential approach cou
 
 ### 4. Working with actions and reducers to place an order
 
-- [ ] Create a `client/actions/orders.js` file to hold our new action creators
+- [ ] Create a `client/actions/orders.ts` file to hold our new action creators
   <details style="padding-left: 2em">
     <summary>Tips</summary>
     
     Think about what we're going to need the new async action creator (perhaps call it `placeOrder`) to do.
   
     * First, it should dispatch a pending action, so the user gets feedback that something is happening.
-    * Then use the `postOrder` function from `client/api/orders.js` to make the POST request.
+    * Then use the `postOrder` function from `client/api/orders.ts` to make the POST request.
     * We know our route only sends back a `201` status, so we won't have any data to deal with when the `postOrder` promise resolves.
     * We should still dispatch a success action though, so our wait indicator stops spinning.
     * A catch block is often a good idea ;)
@@ -145,7 +145,7 @@ It would also be great to redirect the user to the My Orders page once their ord
 We've placed an order (WOO!)... but we need a way to see all the orders we've placed! This flow should be very similar to the `fetchProducts` for the Shop (<ProductList>) page. 
 
 ### 7. Setting up the orders APIs
-- [ ] Create a new GET route in `server/routes/orders.js` that uses `db.listOrders`
+- [ ] Create a new GET route in `server/routes/orders.ts` that uses `db.getAllOrders`
   <details style="padding-left: 2em">
     <summary>Tips</summary>
     
@@ -153,7 +153,7 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
     * Test that our route works as we expect before moving on
   </details>
 
-- [ ] Create a `getOrders` function in `client/api/orders.js` to make the API call to our new route
+- [ ] Create a `getOrders` function in `client/api/orders.ts` to make the API call to our new route
 
 ### 8. Working with actions and reducers to get all orders
 - [ ] Create a `fetchOrders` async action creator, which dispatches pending and success actions, and calls the `getOrders` function
@@ -161,7 +161,7 @@ We've placed an order (WOO!)... but we need a way to see all the orders we've pl
   <details style="padding-left: 2em">
     <summary>Tip</summary>
   
-    * Be sure to import this new reducer into `client/reducers/index.js` and use it inside the `combineReducers` so we get some orders showing up in our Redux store!
+    * Be sure to import this new reducer into `client/reducers/index.ts` and use it inside the `combineReducers` so we get some orders showing up in our Redux store!
   </details>
 - [ ] Also make sure to update the `waiting` reducer
 
@@ -196,11 +196,11 @@ Amazing! There are all of our orders - but currently they're all pending. Let's 
 <br />
 
 ### 11. Creating routes for updating orders
-- [ ] Create a PATCH route on our server side that uses `db.editOrderStatus(id: number, newStatus: string)`
+- [ ] Create a PATCH route on our server side that uses `db.updateOrderStatus(id: number, newStatus: string)`
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-    * `editOrderStatus` returns the updated order, which we can respond with
+    * `updateOrderStatus` returns the updated order, which we can respond with
     * Test that our route works as we expect before hitting it from the client side
   </details>
 
@@ -212,7 +212,7 @@ Amazing! There are all of our orders - but currently they're all pending. Let's 
   <details style="padding-left: 2em">
     <summary>Tips</summary>
   
-    * The success action should have an `order` property, so we can update the `orders` array in `client/reducers/orders.js`
+    * The success action should have an `order` property, so we can update the `orders` array in `client/reducers/orders.ts`
     * Also make sure to update the `waiting` reducer
   </details>
 
@@ -236,4 +236,4 @@ Amazing! There are all of our orders - but currently they're all pending. Let's 
 </details>
 
 ---
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=sweet-as-organics-api)
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrtskvT4Q/viewform?usp=pp_url&entry.1958421517=sweet-as-organics-api)

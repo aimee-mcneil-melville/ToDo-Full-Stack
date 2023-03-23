@@ -1,18 +1,31 @@
-export function createDateTimeString(timestamp) {
+import { OrderStatus, OrderWithProducts } from '../models/order'
+
+type OrderLine = {
+  productId: number
+  orderId: number
+  quantity: number
+  createdAt: string
+  status: string
+  name: string
+}
+type OrderLines = OrderLine[]
+
+function createDateTimeString(timestamp: string | Date | number) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-export function createOrder(orderLine) {
+// types make me wanna cry
+function createOrder(orderLine: OrderLine) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
-    status: orderLine.status,
+    status: orderLine.status as OrderStatus,
     products: [createProduct(orderLine)],
   }
 }
 
-export function createProduct(orderLine) {
+function createProduct(orderLine: OrderLine) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
@@ -20,41 +33,25 @@ export function createProduct(orderLine) {
   }
 }
 
-export function sortByIdAscending<T extends { id: number }>(arr: T[]) {
-  arr.sort((a, b) => {
-    return a.id - b.id
-  })
-  return arr
-}
+export function formatOrder(orderLines: OrderLines): OrderWithProducts {
+  const order = createOrder(orderLines[0])
 
-export function sortByIdDescending<T extends { id: number }>(arr: T[]) {
-  arr.sort((a, b) => {
-    return b.id - a.id
-  })
-  return arr
-}
+  order.products = orderLines.map((o) => createProduct(o))
 
-function formatOrder(orderLines) {
-  let order
-  orderLines.forEach((item) => {
-    !order
-      ? (order = createOrder(item))
-      : order.products.push(createProduct(item))
-  })
-  order.products = sortByIdAscending(order.products)
   return order
 }
 
-function formatOrderList(orderLines) {
-  const orderList = []
-  orderLines.forEach((item) => {
-    const order = orderList.find((o) => o.id === item.orderId)
-    !order
-      ? orderList.push(createOrder(item))
-      : (order.products = sortByIdAscending([
-          ...order.products,
-          createProduct(item),
-        ]))
+export function formatOrderList(orderLines: OrderLines) {
+  const orders: OrderWithProducts[] = []
+
+  orderLines.forEach((orderLine) => {
+    const order = orders.find((o) => o.id === orderLine.orderId)
+    if (order) {
+      order.products.push(createProduct(orderLine))
+    } else {
+      orders.push(createOrder(orderLine))
+    }
   })
-  return sortByIdDescending(orderList)
+
+  return orders
 }
