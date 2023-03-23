@@ -53,7 +53,7 @@ To see some output from the file you will need to make sure you use `console.log
     `arr2` and its result should look like this:
 
     ```js
-    const arr2 = [ 12, 22, 45, 47, 15, 63, 7 ]
+    const arr2 = [ 12, 22, 45, 47, 50, 63, 7 ]
     // [ "Fizz", 22, "FizzBuzz", 47, "Buzz", "Fizz", 7 ]
     ```
   </details>
@@ -112,7 +112,7 @@ We want to let our users generate their own fizzbuzz sequence without having to 
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    As a reminder, `process.argv` will give you access to any strings used in the terminal when you call a js file, so use this to set your `max` and log the result.
+    `process.argv` will give you access to any strings used in the terminal when you call a js file, so use this to set your `max` and log the result.
 
     ```sh
     node fizzbuzz 7

@@ -44,9 +44,10 @@ Before you begin work, you may want to read the section about [terminal helpers]
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-    - Here's where you show a list of filenames from the `data` directory. You can choose to keep these in your code for now
+    - Here's where you show a list of filenames from the `data` directory. You may choose to hard-code an array initially or you may go straight to reading file names from the `data` directory.
+    - Hint: read the docs for [fsPromises.readdir().](https://nodejs.org/api/fs.html#fspromisesreaddirpath-options) You may need to search "fsPromises.readdir" on that page.
     - Hint: start counting from 0, it will make indexing an array that much easier
-    - Hint: read the docs for [fsPromises.readdir()](https://nodejs.org/api/fs.html#fspromisesreaddirpath-options)
+    
   </details>
 
 - [ ] As a user, when I enter the number next to an artwork in the list, the artwork will be displayed (so that I can see it!)

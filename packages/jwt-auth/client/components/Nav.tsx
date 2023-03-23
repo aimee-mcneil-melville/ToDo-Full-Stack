@@ -1,7 +1,5 @@
-import { MouseEvent } from 'react'
-
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { NavLink, NavGroup } from './Styled'
+import { NavGroup, NavButton } from './Styled'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
@@ -10,30 +8,23 @@ function Nav() {
     nickname: 'john.doe',
   }
 
-  const handleLogOff = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    console.log('log off')
+  const handleSignOut = () => {
+    console.log('sign out')
   }
 
-  const handleSignIn = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
+  const handleSignIn = () => {
     console.log('sign in')
   }
 
   return (
     <>
       <NavGroup>
-        <NavLink to="/">Home</NavLink>
         <IfAuthenticated>
-          <NavLink to="/" onClick={handleLogOff}>
-            Log off
-          </NavLink>
-          <p>{user?.nickname}</p>
+          <NavButton onClick={handleSignOut}>Sign out</NavButton>
+          {user && <p>Signed in as: {user?.nickname}</p>}
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavLink to="/" onClick={handleSignIn}>
-            Sign In
-          </NavLink>
+          <NavButton onClick={handleSignIn}>Sign in</NavButton>
         </IfNotAuthenticated>
       </NavGroup>
       <h1>Fruit FTW!</h1>

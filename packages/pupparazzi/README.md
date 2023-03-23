@@ -58,7 +58,7 @@ When complete, your application might look like this:
 
     In our server file, change the GET `/` route function. We will use this route to:
 
-    1. read the puppies from our `data.json` file using `readFile` from `'node:fs/promises'` (don't forget to parse the data into a JavaScript object)
+    1. read the puppies from our `data.json` file (which lives in the sibling `./data` directory) using `readFile` from `'node:fs/promises'`. Don't forget to parse the data into a JavaScript object
     1. render the puppies using the `home` view (that has already been created) and your puppies data
   
     <br />

@@ -7,7 +7,7 @@ Learning objectives:
 1.  Creating simple components
 2.  Using components inside other components
 3.  Passing props to components
-4.  Using JavaScript expressions inside JSX
+4.  Using JavaScript expressions inside TSX
 5.  Using `Array.map` to display a series of components
 
 ## Setup

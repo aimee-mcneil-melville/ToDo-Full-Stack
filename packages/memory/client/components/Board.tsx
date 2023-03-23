@@ -1,7 +1,8 @@
-import Tile, { Props as TileProps } from './Tile'
+import Tile from './Tile'
+import { TileData } from '../startingTiles'
 
 interface Props {
-  tiles: TileProps[]
+  tiles: TileData[]
   evalMatch: () => void
 }
 

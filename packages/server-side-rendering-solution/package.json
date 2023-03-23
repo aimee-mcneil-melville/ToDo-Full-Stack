@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index",
+    "start": "node server/index",
+    "dev": "nodemon server/index",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
@@ -29,6 +29,6 @@
     "jest": "^29.2.2",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.6.0"
+    "@devacademy/eslint-config": "^1.8.0"
   }
 }

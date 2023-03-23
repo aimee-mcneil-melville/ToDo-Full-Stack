@@ -2,7 +2,7 @@ const { join } = require('node:path')
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
-  entry: './client/index.tsx',
+  entry: join(__dirname, 'index.tsx'),
   output: {
     path: join(__dirname, '../server/public'),
     filename: 'bundle.js',

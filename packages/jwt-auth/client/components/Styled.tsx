@@ -28,7 +28,7 @@ export const Button = styled.button`
   width: 50%;
 `
 
-export const Error = styled.div`
+export const ErrorMessage = styled.div`
   color: red;
   cursor: pointer;
 `
@@ -54,5 +54,9 @@ export const NavGroup = styled.nav`
 `
 
 export const NavLink = styled(Link)`
+  margin-right: 30px;
+`
+
+export const NavButton = styled.button`
   margin-right: 30px;
 `

@@ -236,6 +236,13 @@ The rest of this exercise should follow the same arc - gradually layering up det
     - Create a `server.test.js` and test away!
     - In particular, testing both sides of any `{{#if}}`s we have, and that our `{{#each}}`s loop correctly, would be a great start!
   </details>
+- [ ] Use the WAVE browser extension to find and address accessibility concerns
+  <details style="padding-left: 2em">
+    <summary>More about testing for accessibility</summary>
+
+    - [Watch a video demo](https://www.youtube.com/watch?v=sdIkpL9EiN4)
+    - Address any errors, contrast errors, and warnings
+  </details>
 
 Take the chance to explore, play, experiment. Ask lots of questions!
 

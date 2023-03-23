@@ -57,5 +57,15 @@ Here's a list of steps in case they are useful. You can build in any order you l
 - [ ] Build Thunk actions to get task from the API
 - [ ] Build Redux actions to save task data from the API (remove hard-code initialState)
 
+--- 
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+
+  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
+
+</details>
+
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=todo-full-stack)

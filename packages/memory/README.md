@@ -23,7 +23,7 @@ For this challenge, you'll be applying your understanding of React state and the
 <details style="padding-left: 2em">
   <summary>More about React DevTools</summary>
   
-  If you don't already have it installed, you should install the React DevTools browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) and [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)). This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](http://tonyfreed.com/blog/what_is_virtual_dom) used by React.
+  If you don't already have it installed, you should install the React DevTools browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) and [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)). This will add a tab in Developer Tools that will allow you to explore the [virtual DOM](https://reactjs.org/docs/faq-internals.html#what-is-the-virtual-dom) used by React.
 </details>
 
 ---
@@ -118,13 +118,12 @@ But if you're looking for a bit more direction, read on.
 <details>
   <summary>More reading</summary>
 
-- [React Component](https://17.reactjs.org/docs/components-and-props.html#function-and-class-components)
-- [`ReactDOM.render`](https://17.reactjs.org/docs/components-and-props.html#rendering-a-component)
-- [React State and Lifecycle](https://17.reactjs.org/docs/state-and-lifecycle.html)
-- [React's `useState`](https://reactjs.org/docs/hooks-reference.html#usestate)
-- [React's `setState`](https://17.reactjs.org/docs/react-component.html#setstate)
-- [Handling Events in React](https://17.reactjs.org/docs/handling-events.html)
-- [React TestUtils](https://17.reactjs.org/docs/test-utils.html)
+- [React Component](https://beta.reactjs.org/learn/your-first-component)
+- [`createRoot`](https://beta.reactjs.org/reference/react-dom/client/createRoot#root-render)
+- [React Managing State](https://beta.reactjs.org/learn/managing-state)
+- [React's `useState`](https://beta.reactjs.org/reference/react/useState)
+- [Reacting to Input with State](https://beta.reactjs.org/learn/reacting-to-input-with-state)
+- [Responding to Events in React](https://beta.reactjs.org/learn/responding-to-events)
 </details>
 
 ---
