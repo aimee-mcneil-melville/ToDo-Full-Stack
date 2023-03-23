@@ -1,12 +1,12 @@
 import { DatabaseRow } from './utility'
 
-export interface NewProduct {
+export interface ProductData {
   name: string
   description: string
   country: string
 }
 
-export interface Product extends NewProduct, DatabaseRow {}
+export interface Product extends ProductData, DatabaseRow {}
 
 export type CartItem = Pick<Product, 'id' | 'name'>
 

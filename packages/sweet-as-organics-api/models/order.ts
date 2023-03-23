@@ -1,13 +1,13 @@
 import { CartItemWithQuantity } from './product'
 import { DatabaseRow } from './utility'
 
-export interface NewOrder {
+export interface OrderData {
   status: string
 }
 
 export type OrderStatus = 'completed' | 'cancelled' | 'pending'
 
-export interface NewOrderProduct {
+export interface OrderProductData {
   orderId: number
   productId: number
   quantity: number
@@ -20,5 +20,5 @@ export interface OrderWithProducts {
   products: CartItemWithQuantity[]
 }
 
-export interface Order extends NewOrder, DatabaseRow {}
-export interface OrderProduct extends NewOrderProduct, DatabaseRow {}
+export interface Order extends OrderData, DatabaseRow {}
+export interface OrderProduct extends OrderProductData, DatabaseRow {}
