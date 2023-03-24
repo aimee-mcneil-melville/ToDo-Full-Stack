@@ -1,30 +1,31 @@
 import connection from './connection'
 
 import { formatOrder, formatOrderList } from '../formatter'
+import { Order, OrderWithProducts } from '../../models/order'
 
-export function listOrders(db = connection) {
+export function getAllOrders(db = connection): Promise<OrderWithProducts[]> {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
     .select(
-      'products.id as productId',
-      'orders.id as orderId',
+      'product_id as productId',
+      'order_id as orderId',
       'quantity',
-      'created_at as createdAt',
+      'orders.created_at as createdAt',
       'status',
       'name'
     )
     .then(formatOrderList)
 }
 
-export function addOrder(orderRequest, db = connection) {
-  // remove item names from order (we have the id)
-  const order = orderRequest.map((item) => {
-    return {
-      id: item.id,
-      quantity: item.quantity,
-    }
-  })
+export async function addOrder(
+  orderRequest: { id: number; quantity: number }[],
+  db = connection
+): Promise<void> {
+  const order = orderRequest.map((item) => ({
+    id: item.id,
+    quantity: item.quantity,
+  }))
 
   const hasInvalidQuantity = order.some((item) => item.quantity === 0)
   if (hasInvalidQuantity) {
@@ -32,17 +33,19 @@ export function addOrder(orderRequest, db = connection) {
       new Error('INVALID ORDER: Quantity required for all items')
     )
   }
-  // will only get here to insert if the order is valid
-  const timestamp = new Date(Date.now())
-  return db('orders')
-    .insert({
-      created_at: timestamp,
-      status: 'pending',
-    })
-    .then(([id]) => addOrderLines(id, order, db))
+
+  const [{ id }] = await db<Order>('orders')
+
+  if (!id) return Promise.reject(new Error('Order was not created'))
+
+  await addOrderLines(id, order, db)
 }
 
-export function addOrderLines(id, order, db = connection) {
+async function addOrderLines(
+  id: number,
+  order: { id: number; quantity: number }[],
+  db = connection
+): Promise<void> {
   const orderLines = order.map((item) => {
     return {
       order_id: id,
@@ -52,38 +55,46 @@ export function addOrderLines(id, order, db = connection) {
   })
   return db('orders_products')
     .insert(orderLines)
-    .then(() => null)
+    .then(() => undefined)
 }
 
-function editOrderStatus(id, newStatus, db = connection) {
-  return orderExists(id, db)
-    .then(() => {
-      return db('orders').update({ status: newStatus }).where('id', id)
-    })
-    .then(() => findOrderById(id, db))
+export async function updateOrderStatus(
+  id: number,
+  newStatus: 'pending' | 'cancelled' | 'success',
+  db = connection
+): Promise<OrderWithProducts> {
+  await orderExists(id, db)
+  await db('orders').update({ status: newStatus }).where('id', id)
+
+  return findOrderById(id, db)
 }
 
-function orderExists(id, db = connection) {
+function orderExists(id: number, db = connection): Promise<boolean> {
   return db('orders')
     .where('id', id)
     .first()
     .then((order) => {
       if (!order) throw new Error('Order not found')
+      return true
     })
 }
 
-function findOrderById(id, db = connection) {
+function findOrderById(
+  id: number,
+  db = connection
+): Promise<OrderWithProducts> {
   return db('orders_products')
     .join('orders', 'orders_products.order_id', 'orders.id')
     .join('products', 'orders_products.product_id', 'products.id')
     .select(
-      'products.id as productId',
-      'orders.id as orderId',
+      'product_id as productId',
+      'order_id as orderId',
       'quantity',
-      'created_at as createdAt',
+      'orders.created_at as createdAt',
       'status',
       'name'
     )
     .where('orders.id', id)
+    .orderBy('orders.id', 'asc')
     .then(formatOrder)
 }

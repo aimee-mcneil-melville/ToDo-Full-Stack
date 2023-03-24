@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
-import { Comment as CommentData } from '../../common/comment'
+import { Comment as CommentData } from '../../models/comment'
 import { FetchComments } from './hooks/useFetchComments'
 
 interface Props {
@@ -24,7 +24,7 @@ function Comment({ comment, fetchComments }: Props) {
       <p>
         <span className="comment-content">{comment.comment}</span>
         <span className="comment-date">
-          Date Posted: {new Date(comment.datePosted).toDateString()}
+          Date Posted: {new Date(comment.dateCreated).toDateString()}
         </span>
 
         <button

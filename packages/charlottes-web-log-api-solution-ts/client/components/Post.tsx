@@ -12,7 +12,7 @@ import { deletePost } from '../api'
 import PostSummary from './PostSummary'
 import Comment from './Comment'
 import { UseFetchPosts } from './hooks/useFetchPosts'
-import { Post as PostData } from '../../common/post'
+import { Post as PostData } from '../../models/post'
 
 function Post() {
   const { id } = useParams()
