@@ -1,34 +1,54 @@
 # Sweet As Beers
 
 In this challenge you'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
-
+___
 ## Setup
 
-After cloning this repo
+### 0. Installation
+
+- [ ] Clone this repo and cd into the new directory
+
+- [ ] Install packages and start the dev server with npm run dev
+
+<details style="padding-left: 2em">
+  <summary>Tip</summary>
 
 ```sh
 cd sweet-as-beers && npm i
 npm run dev
 ```
 
+</details>
+
+___
 ## Starting place
+
+- [ ] Have a look around the repository to get an idea of what is going on
+<details style="padding-left: 2em">
+<summary>What's Included</summary>
 
 - All of the React components are in place.
 - You can find the beer data in `data/beers.ts`.
-- Redux Toolkit has been installed, but not yet configured.
-- The 'slices' folder has been created, but no real slices are in place yet.
+- Redux Toolkit has been installed and the store has been created but the store has not yet been connected to the app - we will do this soon.
+- The 'slices' folder has been created, but no real slices are in place yet only an `example slice`.
 - The beer listing displays the beers, but the _Add to cart_ link doesn't do anything yet.
+</details>
 
-Before we jump into the code editor, let's do some thinking about what we need to accomplish.
+___
+## Redux Store
+### 1. Shape of the Store
 
-## Shape of the store
+One of the important tasks when working with Redux is to design the shape of the store.
 
-One of the important tasks when working with Redux is to design the shape of the store. If we think about the type of data that will be changing in this app, there are 2 clear pieces of changing data that multiple components will use:
+<details style="padding-left: 2em">
+<summary>Tips</summary>
+
+To decide what we will store in Redux we should think about the type of data that will be changing in the app which multiple components will use:
 
 1. The contents of the **cart** as an array of cart item objects
-2. The user's **active page** (React Router is a more appropriate choice to manage navigation, but let's use Redux instead because we need the practice)
+1. The user's **active page** (React Router is a more appropriate choice to manage navigation, but we'll use Redux instead for this challenge because we need the practice)
 
-Given that, our Redux store should look similar to the object below once we have implemented a couple of the following steps further on in the readme.
+Given that, our Redux store will look similar to the object below once we have implemented a couple of the following steps further on in the readme.
 
 ```ts
 {
@@ -47,46 +67,78 @@ Given that, our Redux store should look similar to the object below once we have
 }
 ```
 
-## Create the Store
+</details>
+</br>
 
-Now we should have a sense of what our reducers will be creating. But before we start building our slices, take this time to create the store (in `store.ts`) and wrap our `<App>` with the `<Provider>` in `client/index.tsx`.
+### 2. Connect the Store
+
+Now we should have a sense of what our reducers will be creating. But before we start building our slices, you will need to connect our store to the app.
+
+- [ ] In `client/index.tsx wrap` the  `<App>` with the `<Provider>`
+
+<details style="padding-left: 2em">
+  <summary>Tip</summary>
+
+```ts
+<Provider store={store}>
+  <App />
+</Provider>
+```
 
 **Note:** Redux Toolkit automatically sets up the Redux Dev Tools for us to use in our browser.
 
+</details>
+
+- [ ] Remember to import the `Provider` from `react-redux` and the `store` from the `./store`
+
+___
 ## Navigation
 
-In this section, we'll use a value in the Redux store to determine whether we render our `<BeerList />` component or our `<Cart />` component, changing the page we're viewing by updating this value in the store (i.e. changing the string `'home'`to be `'cart'`). We are doing this instead of using something like React Router to manage our pages, but you might choose either of these methods depending on the requirements of your project.
+### 3. Create a slice to navigate between pages
 
-To do this you'll create a slice with a navigate action inside it and dispatch your action from a click event in your components.
+In this section, we'll use a value in the Redux store to determine whether we render our `<BeerList />` component or our `<Cart />` component. Changing the page we're viewing by updating this value in the store (i.e. changing the string `'home'`to be `'cart'`). We are doing this instead of using something like React Router to manage our pages to practice using Redux.
 
-1. Create an 'activePage' slice in `client/slices/activePage.ts`. The _skeleton_ will look something like this:
+- [ ] Create an 'activePage' slice in `client/slices/activePage.ts` with a navigate action inside it.
 
-```ts
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../store'
+<details style="padding-left: 2em">
+  <summary>Tips</summary>
 
-export const activePageSlice = createSlice({
-  name: 'activePage',
-  initialState: 'home',
-  reducers: {
-    // this is where our navigate action will go
-  },
-})
+  The _skeleton_ will look something like this:
 
-export const selectActivePage = (state: RootState) => state.activePage
+  ```ts
+  import { createSlice } from '@reduxjs/toolkit'
+  import type { PayloadAction } from '@reduxjs/toolkit'
+  import { RootState } from '../store'
 
-// ... we will export our actions here
-// export const { actionName } = activePageSlice.actions
+  export const activePageSlice = createSlice({
+    name: 'activePage',
+    initialState: 'home',
+    reducers: {
+      // this is where our navigate action will go
+    },
+  })
 
-export default activePageSlice.reducer
-```
+  export const selectActivePage = (state: RootState) => state.activePage
 
-- Here's a breakdown of what's going on in the code above
-  - The `name` property dictates what the name of our state slice will be when we use it with `useAppSelector` and what action names will be in our Redux Dev Tools
-  - The `initialState` property is set to `home`, this means when we enter our application for the first time, we will want to render our home page, which in this case is `<BeerList />`
+  // ... we will export our actions here
+  // export const { actionName } = activePageSlice.actions
+
+  export default activePageSlice.reducer
+  ```
+
+<details>
+  <summary>Summary of the code above</summary>
+
+  - The `name` property dictates what the name of our state slice will be when we use it with `useAppSelector` and what action names will be in our Redux Dev Tools.
+  - The `initialState` property is set to `home`, this means when we enter our application for the first time, we will want to render our home page, which in this case is the `<BeerList />` component.
   - The `reducers` property stores all our actions and how they interact with the state. Each reducer will be a function which receives the `state` and the `action` as parameters. Data inputs will be stored in `action.payload`.
   - `export const selectActivePage` is just a little helper function so that we can use `const activePage = useAppSelector(selectActivePage)` in our component, rather than `const activePage = useAppSelector((state) => state.activePage)`, _this comes in handy when we want to make more complex selectors which can all be defined in a single place rather than through our components_
+</details>
+<br/>
+
+</details>
+
+- [ ] Dispatch your action from a click event in your components.
 
 1. Define an action in your activePage slice to navigate between pages. We will use `action.payload.page` in our reducer to do this. This will look something like:
 
