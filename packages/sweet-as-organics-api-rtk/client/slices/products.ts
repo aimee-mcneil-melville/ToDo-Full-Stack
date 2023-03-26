@@ -1,4 +1,4 @@
-import type { Product } from '../../common/Product'
+import type { Product } from '../../models/Product'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getProducts } from '../api/products'
 

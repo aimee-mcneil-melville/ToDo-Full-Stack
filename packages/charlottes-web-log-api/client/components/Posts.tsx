@@ -1,4 +1,4 @@
-import { Post } from '../../common/post'
+import { Post } from '../../models/post'
 import PostSummary from './PostSummary'
 
 interface Props {

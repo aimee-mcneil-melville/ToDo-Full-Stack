@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getPosts } from '../../api'
-import { Post } from '../../../common/post'
+import { Post } from '../../../models/post'
 
 export type FetchPosts = (id: number) => void
 export type UseFetchPosts = ReturnType<typeof useFetchPosts>

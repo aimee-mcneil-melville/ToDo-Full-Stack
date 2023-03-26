@@ -1,6 +1,6 @@
 import connection from './connection'
-import { Product } from '../../common/interfaces'
+import { Product } from '../../models/product'
 
-export function listProducts(db = connection) {
-  return db<Product>('products').select()
+export async function getAllProducts(db = connection): Promise<Product[]> {
+  return db('products').select()
 }

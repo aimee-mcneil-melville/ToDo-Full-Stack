@@ -1,4 +1,4 @@
-import { Product } from '../../common/interfaces'
+import { Product } from '../../models/product'
 import { AppAction } from '../actions'
 import { FETCH_PRODUCTS_SUCCESS, isProductAction } from '../actions/products'
 

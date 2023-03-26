@@ -1,6 +1,6 @@
 import { AppAction } from '.'
-import { Product } from '../../common/interfaces'
-import { getProducts } from '../api/products'
+import { Product } from '../../models/product'
+import * as API from '../api/products'
 import { AppThunkAction } from '../store'
 import { showError } from './error'
 
@@ -29,9 +29,9 @@ export function fetchProductsSuccess(products: Product[]): ProductAction {
 }
 
 export function fetchProducts(): AppThunkAction {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(fetchProductsPending())
-    return getProducts()
+    return API.getProducts()
       .then((products) => {
         dispatch(fetchProductsSuccess(products))
       })
