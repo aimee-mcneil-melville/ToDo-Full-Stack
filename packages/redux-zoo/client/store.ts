@@ -1,6 +1,7 @@
-import { createStore } from 'redux'
-import reducers from './reducers'
+import { legacy_createStore as createStore } from 'redux'
 import { devToolsEnhancer } from '@redux-devtools/extension'
+
+import reducers from './reducers'
 
 const store = createStore(reducers, devToolsEnhancer())
 export type RootState = ReturnType<typeof store.getState>
