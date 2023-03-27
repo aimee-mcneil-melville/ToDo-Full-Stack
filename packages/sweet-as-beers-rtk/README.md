@@ -98,7 +98,7 @@ ___
 
 In this section, we'll use a value in the Redux store to determine whether we render our `<BeerList />` component or our `<Cart />` component. Changing the page we're viewing by updating this value in the store (i.e. changing the string `'home'`to be `'cart'`). We are doing this instead of using something like React Router to manage our pages to practice using Redux.
 
-- [ ] Create an 'activePage' slice in `client/slices/activePage.ts` with a navigate action inside it.
+- [ ] Create an 'activePage' slice in `client/slices/activePage.ts` with an empty navigate action inside it. (Later you will `dispatch` your action from a click event in your components)
 
 <details style="padding-left: 2em">
   <summary>Tips</summary>
@@ -138,9 +138,10 @@ In this section, we'll use a value in the Redux store to determine whether we re
 
 </details>
 
-- [ ] Dispatch your action from a click event in your components.
+- [ ] Add functionality to your navigate action to navigate between pages by switching the the state to the value of the payload. We will use `action.payload.page` in our reducer to do this.
 
-1. Define an action in your activePage slice to navigate between pages. We will use `action.payload.page` in our reducer to do this. This will look something like:
+<details style="padding-left: 2em">
+  <summary>Tips</summary>
 
 ```ts
 interface Payload {
@@ -158,24 +159,30 @@ reducers: {
 export const { navigate } = activePageSlice.actions
 ```
 
-- Let's break this down:
+<details>
+  <summary>Let's break this code down</summary>
+  </details>
 
-  - navigate is the name given to the action, and thus is what we destructure at the bottom when we want to export it
-  - navigate is a function which receives the current `state` and the `action` which is an object that looks like:
+  - `navigate` is the name given to the action, and thus is what we destructure at the bottom when we want to export it
+  - The `navigate` action is a function which receives the current `state` and the `action` which is an object that looks like:
 
   ```ts
   action: {
     type: 'activePage/navigate', // we want to talk to the 'navigate' function in the 'activePage' slice
-    payload: { // variables to give to the function
+    payload: { // arguments to give to the function
       page: 'cart'
     }
   }
   ```
 
-  - whatever is returned from this function is now the new state
-  - Tip: if you are not using the `state` parameter in your reducer you can replace this with an underscrore, `_`, instead
+  - Whatever is returned from this function is now the new state
+  - Tip: if you are not using the `state` parameter in your reducer you can replace this with an underscore, `_`, instead
 
-1. Now we need to import our `activePage` reducer to the `store.ts`
+</details>
+
+- [ ] Import the `activePage` reducer to the `store.ts`
+
+### 4. Dispatch the navigate action from the app
 
 1. Add a click event handler to the `<a>` tag in `client/components/BeerListItem.tsx`. Import the `useAppDispatch` hook and have it dispatch the `navigate` action, with the value of `'cart'`. (Actions are called with an object (which is its payload), an example action might be `navigate({ page: 'cart' })`)
 
