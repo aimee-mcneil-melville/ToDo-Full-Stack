@@ -1,6 +1,6 @@
 import express from 'express'
 import { Fruit, FruitSnakeCase } from '../../models/fruit'
-import checkJwt, { JwtRequest } from '../auth0'
+import { JwtRequest } from '../auth0'
 
 import {
   getFruits,
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', checkJwt, (req: JwtRequest, res) => {
+router.post('/', (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
 
