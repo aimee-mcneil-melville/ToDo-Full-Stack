@@ -88,7 +88,8 @@ In order to complete the implementation of authentication for this app, we need 
     1. The default domain will be something like `dev-fsdf1y29`, but you should overwrite it with a domain of your own, in the format `cohortName-yourFirstName`, for example `matai-2021-john` 1️⃣. This value will be used later
     1. Select **Australia** as your **Region**
     1. Click **Create Account**
-    1. Make sure **Development** is selected as the **Environment tag**. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to **Settings**
+    1. Make sure **Development** is selected as the **Environment tag**. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to **Settings**.
+    ![Development Environment](readme/development-env-selected.png)
   </details>
 
 ### 3. Creating the "application"
@@ -99,10 +100,13 @@ In order to complete the implementation of authentication for this app, we need 
 
   1. Give your application a name, for example "Fruits App"
   1. Select **Single Page Web Applications** and click the **Create** button. This application will be used for our front-end app. On creating, you will be taken to the "Quick Start" tab of your new app
+  ![Create App](readme/create-application.png)
   1. Select the **Settings** tab
   1. Auth0 generated a random **ClientId** 2️⃣, make a note of it, because we will use this value later.
+  ![App Settings](readme/app-settings.png)
   1. Set the following values, in the **Application URIs** section:
-  
+    ![Application URIs](readme/callback-urls.png)
+    
     | Setting                   | Value                                                     |
     | ------------------------- | --------------------------------------------------------- |
     | Allowed Callback Url      | `http://localhost:3000/`                                  |
@@ -120,6 +124,7 @@ In order to complete the implementation of authentication for this app, we need 
   </details>
 - [ ] Give your API a name, for example, "fruits"
 - [ ] Set the **Identifier** field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later
+  ![New API](readme/new-api.png)
 
 ---
 
