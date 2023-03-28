@@ -1,8 +1,8 @@
 import connection from './connection'
-import { FormattedOrder } from '../../common/Order'
+import { FormattedOrder } from '../../models/Order'
 
 import { formatOrder, formatOrderList } from '../formatter'
-import { CartProduct } from '../../common/Cart'
+import { CartProduct } from '../../models/Cart'
 
 interface OrderItem {
   id: number

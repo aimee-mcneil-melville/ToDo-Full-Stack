@@ -1,4 +1,4 @@
-import { FormattedOrder, OrderDB } from '../common/Order'
+import { FormattedOrder, OrderDB } from '../models/Order'
 
 export function createDateTimeString(timestamp: string | number | Date) {
   const date = new Date(timestamp)
