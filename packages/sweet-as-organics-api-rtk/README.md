@@ -76,7 +76,7 @@ A potential approach could be:
 
     Think about what what we're going to need the async action creator to do. Take a look at some of the other slice files for inspiration if you need.
     * What do you need to import into your file?
-    * For your async action creator the first parameter will be the name of the action creator, perhapse `orders/placeOrder`.
+    * For your async action creator the first parameter will be the name of the action creator, perhaps `orders/placeOrder`.
     * The second parameter will be an `async` function that takes in `cart` as a parameter.
    * Then use the `postOrder` function from `client/api/orders.ts` to make the POST request.
     * We know our route only sends back a `201` status, so we won't have any data to deal with when the `postOrder` promise resolves.
