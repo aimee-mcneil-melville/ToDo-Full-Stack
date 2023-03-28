@@ -181,8 +181,9 @@ In `client/components/Authenticated.tsx`:
 
     Note that because `useIsAuthenticated` calls a hook inside of it and returns its value, it also becomes a hook, which is why we start the function name with `use`. 
 
-    With that in place, you can now see the "Sign in" link in the app.
   </details>
+
+Refresh the page and you should now see the "Sign in" link in the app.  It won't work yet!
 
 Now is a good time to commit your changes and swap driver/navigator if you're pairing.
 
@@ -203,6 +204,8 @@ In `client/components/Nav.tsx`:
 
     After you've registered your new user, you will be redirected back to `http://localhost:3000` and "Sign out" will again be visible in the app.
   </details>
+
+Check that you can sign-in and sign-out.
 
 Commit your code and swap driver/navigator if you're pairing.
 
