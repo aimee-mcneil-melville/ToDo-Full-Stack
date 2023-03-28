@@ -1,12 +1,13 @@
 import type { ReactNode } from 'react'
 import Order from './Order'
+import { FormattedOrder } from '../../models/Order'
 
 interface Props {
   children: ReactNode
 }
 
 function OrderList({ children }: Props) {
-  const orders = [] as any[]
+  const orders = [] as FormattedOrder[]
   return (
     <div className="orderlist">
       {children} {/* Holds the WaitIndicator */}
