@@ -41,6 +41,7 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.1",
     "express": "^4.17.2"
   },
@@ -52,8 +53,8 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/register": "^7.13.14",
-    "@devacademy/eslint-config": "^1.6.0",
-    "@types/express": "^4.17.15",
+    "@devacademy/eslint-config": "^1.8.0",
+    "@types/express": "^4.17.14",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
     "babel-loader": "^8.2.2",

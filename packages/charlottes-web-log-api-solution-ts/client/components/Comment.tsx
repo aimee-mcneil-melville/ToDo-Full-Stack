@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { deleteComment } from '../api'
 import CommentForm from './CommentForm'
-import { Comment as CommentData } from '../../common/comment'
+import { Comment as CommentData } from '../../models/comment'
 import { FetchComments } from './hooks/useFetchComments'
 
 interface Props {

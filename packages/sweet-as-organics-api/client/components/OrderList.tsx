@@ -1,5 +1,5 @@
 import type * as React from 'react'
-import { OrderWithProducts } from '../../common/interfaces'
+import { OrderWithProducts } from '../../models/order'
 import Order from './Order'
 
 interface Props {

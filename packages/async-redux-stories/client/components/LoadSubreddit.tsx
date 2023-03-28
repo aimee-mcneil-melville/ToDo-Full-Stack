@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../hooks'
 
-import { fetchPosts } from '../actions'
+import { fetchPosts } from '../actions/reddit'
 import { ReactNode } from 'react'
 
 interface Props {

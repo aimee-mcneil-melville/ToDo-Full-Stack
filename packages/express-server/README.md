@@ -7,7 +7,7 @@ Creating a web server with Express.js
 
 ### 0. Cloning and branching
 - [ ] Clone this repo and create a new branch for you or your pair
-- [ ] Start the server with `node .` or `npm start`
+- [ ] Start the server with `node server` or `npm start`
 
 ---
 
@@ -75,7 +75,7 @@ After each section:
     <summary>More about static files</summary>
 
     - Read ExpressJS docs recommendations regarding static files: http://expressjs.com/en/starter/static-files.html
-    - Create a `public` folder in the project's main folder
+    - Create a `public` folder in the project's server folder
     - Configure Express so it will serve static files from the `public` folder
 
     We won't see any changes in our application, yet!

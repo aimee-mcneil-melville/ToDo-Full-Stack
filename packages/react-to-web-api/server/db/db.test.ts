@@ -1,9 +1,9 @@
 import knex from 'knex'
+
 import config from './knexfile'
+import { getWidgets } from './db'
 
 const testDb = knex(config.test)
-
-import { getWidgets } from './db'
 
 beforeAll(() => {
   return testDb.migrate.latest()
@@ -14,7 +14,7 @@ beforeEach(() => {
 })
 
 afterAll(() => {
-  testDb.destroy()
+  return testDb.destroy()
 })
 
 describe('getWidgets', () => {

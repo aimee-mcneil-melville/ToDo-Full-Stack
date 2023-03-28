@@ -1,4 +1,4 @@
-const { capitalise, validateDay } = require('./helpers')
+const { capitalise, validateDay } = require('../routes/helpers')
 
 describe('capitalise', () => {
   test('returns a capitalised string', () => {

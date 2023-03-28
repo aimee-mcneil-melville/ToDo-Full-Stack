@@ -67,7 +67,6 @@
   - _Another CLI tool of your choice (validate with teacher first)_
 
 * UI Frameworks
-  - [ ] SCSS
   - [ ] Tailwind
   - [ ] Bulma
   - [ ] Material Design
@@ -77,10 +76,12 @@
   - [ ] CSS Grid
   - [ ] Flexbox
 
+* More CSS
+  - [ ] CSS pre- and post-processors (Sass, LESS)
+  - [ ] CSS architecture (SMACSS, ITCSS, BEM)
+
 * Accessibility
   - [ ] Browsing with assistive technologies _(or pick a single assistive tech)_
-  - [ ] Building accessible forms
-  - [ ] Testing accessibility
   - [ ] Legal requirements of web accessibility in NZ
 
 * Databases

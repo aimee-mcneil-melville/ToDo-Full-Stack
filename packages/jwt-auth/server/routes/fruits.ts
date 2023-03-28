@@ -1,6 +1,6 @@
 import express from 'express'
-import { FruitCamel, FruitSnake } from '../../types'
-import checkJwt, { JwtRequest } from '../auth0'
+import { Fruit, FruitSnakeCase } from '../../models/fruit'
+import { JwtRequest } from '../auth0'
 
 import {
   getFruits,
@@ -16,7 +16,7 @@ const router = express.Router()
 // GET /api/v1/fruits
 router.get('/', (req, res) => {
   getFruits()
-    .then((fruits: FruitCamel[]) => res.json({ fruits }))
+    .then((fruits: Fruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       res.status(500).send('Something went wrong')
@@ -25,19 +25,24 @@ router.get('/', (req, res) => {
 
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', checkJwt, (req: JwtRequest, res) => {
+router.post('/', (req: JwtRequest, res) => {
   const { fruit } = req.body
   const auth0Id = req.auth?.sub
 
-  const newFruit: FruitSnake = {
-    added_by_user: auth0Id!,
+  if (!auth0Id) {
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
+  }
+
+  const newFruit: FruitSnakeCase = {
+    added_by_user: auth0Id,
     name: fruit.name,
     average_grams_each: fruit.averageGramsEach,
   }
 
   addFruit(newFruit)
     .then(() => getFruits())
-    .then((fruits: FruitCamel[]) => res.json({ fruits }))
+    .then((fruits: Fruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       res.status(500).send('Something went wrong')
@@ -57,12 +62,14 @@ router.put('/', (req: JwtRequest, res) => {
   }
 
   if (!auth0Id) {
-    throw new Error()
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
   }
+
   userCanEdit(fruit.id, auth0Id)
-    .then(() => updateFruit(fruitToUpdate as FruitSnake))
+    .then(() => updateFruit(fruitToUpdate as FruitSnakeCase))
     .then(() => getFruits())
-    .then((fruits: FruitCamel[]) => res.json({ fruits }))
+    .then((fruits: Fruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       if (err.message === 'Unauthorized') {
@@ -82,12 +89,14 @@ router.delete('/:id', (req: JwtRequest, res) => {
   const auth0Id = req.auth?.sub
 
   if (!auth0Id) {
-    throw new Error()
+    console.error('No auth0Id')
+    return res.status(401).send('Unauthorized')
   }
+
   userCanEdit(id, auth0Id)
     .then(() => deleteFruit(id))
     .then(() => getFruits())
-    .then((fruits: FruitCamel[]) => res.json({ fruits }))
+    .then((fruits: Fruit[]) => res.json({ fruits }))
     .catch((err: Error) => {
       console.error(err)
       if (err.message === 'Unauthorized') {

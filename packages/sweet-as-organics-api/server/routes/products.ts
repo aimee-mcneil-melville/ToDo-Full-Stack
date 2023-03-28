@@ -4,14 +4,16 @@ import * as db from '../db/products'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.listProducts()
-    .then((products) => {
-      res.json(products)
-    })
-    .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
+router.get('/', async (req, res) => {
+  try {
+    const products = await db.getAllProducts()
+
+    res.json(products)
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).send('DATABASE ERROR: ' + error.message)
+    }
+  }
 })
 
 export default router

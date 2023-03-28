@@ -1,83 +1,125 @@
-import { useState, useEffect, MouseEvent } from 'react'
-import { FruitCamel } from '../../types'
-import SelectedFruit from './SelectedFruit'
-import AddFruit from './AddFruit'
-import { Error } from './Styled'
-import { getFruits } from '../api'
+import type { Fruit, NewFruit } from '../../models/fruit'
+
+import { useState, useEffect } from 'react'
+
+import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
+import SelectedFruitForm from './SelectedFruit'
+import AddFruitForm from './AddFruit'
+import { ErrorMessage } from './Styled'
+
+type State =
+  | {
+      selectedFruit: Fruit
+      show: 'selected'
+    }
+  | {
+      selectedFruit: null
+      show: 'add' | 'none'
+    }
+
+const closedForm: State = {
+  selectedFruit: null,
+  show: 'none',
+}
 
 function Fruits() {
   const [error, setError] = useState('')
-  const [fruits, setFruits] = useState([] as FruitCamel[])
-  const [adding, setAdding] = useState(false)
-  const [selected, setSelected] = useState<number | undefined>()
+  const [fruits, setFruits] = useState<Fruit[]>([])
+  const [form, setForm] = useState<State>(closedForm)
+
+  // TODO: call the useAuth0 hook and destructure getAccessTokenSilently
+
+  useEffect(() => {
+    getFruits()
+      .then(setFruits)
+      .catch((err) => setError(err.message))
+  }, [])
+
+  const handleAdd = async (fruit: NewFruit) => {
+    try {
+      // TODO: pass token as second parameter
+      const fruits = await addFruit(fruit, 'token')
+
+      setFruits(fruits)
+      handleCloseForm()
+      hideError()
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message)
+      }
+    }
+  }
+
+  const handleUpdate = async (updatedFruit: Fruit) => {
+    try {
+      // TODO: pass token as second parameter
+      const fruits = await updateFruit(updatedFruit, 'token')
+
+      setFruits(fruits)
+      handleCloseForm()
+      hideError()
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message)
+      }
+    }
+  }
+
+  const handleDelete = async (id: number) => {
+    try {
+      // TODO: pass token as second parameter
+      const fruits = await deleteFruit(id, 'token')
+
+      setFruits(fruits)
+      handleCloseForm()
+      hideError()
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message)
+      }
+    }
+  }
 
   const hideError = () => {
     setError('')
   }
 
-  const openAddForm = (e: MouseEvent) => {
-    e.preventDefault()
-    setAdding(true)
-    clearSelected()
+  const handleOpenAddForm = () => {
+    setForm({ show: 'add', selectedFruit: null })
   }
 
-  const closeAddForm = () => {
-    setAdding(false)
+  const handleCloseForm = () => {
+    setForm(closedForm)
   }
 
-  const setSelectHandler = (fruit: FruitCamel, e: MouseEvent) => {
-    e.preventDefault()
-    setSelected(fruit.id)
-    closeAddForm()
+  const handleSelectFruit = (fruit: Fruit) => {
+    setForm({ show: 'selected', selectedFruit: fruit })
   }
-
-  const clearSelected = () => {
-    setSelected(0)
-  }
-
-  useEffect(() => {
-    getFruits()
-      .then((remoteFruits) => setFruits(remoteFruits))
-      .catch((err) => setError(err.message))
-  }, [])
 
   return (
     <>
-      <Error onClick={hideError}>{error && `Error: ${error}`}</Error>
-
+      {error && <ErrorMessage onClick={hideError}>Error: {error}</ErrorMessage>}
       <ul>
-        {fruits.map((fruit: FruitCamel) => (
+        {fruits.map((fruit) => (
           <li key={fruit.id}>
-            <a
-              href="#"
-              data-testid="fruit-link"
-              onClick={(e) => setSelectHandler(fruit, e)}
-            >
+            <button onClick={() => handleSelectFruit(fruit)}>
               {fruit.name}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
-
-      {adding ? (
-        <AddFruit
-          setError={setError}
-          setFruits={setFruits}
-          closeAddForm={closeAddForm}
-        />
+      {form.show === 'add' ? (
+        <AddFruitForm onAdd={handleAdd} onClose={handleCloseForm} />
       ) : (
-        <a href="#" onClick={openAddForm}>
-          Add a Fruit
-        </a>
+        <button onClick={handleOpenAddForm}>Add a Fruit</button>
       )}
-
-      {selected && fruits[selected] && (
-        <SelectedFruit
-          fruits={fruits}
-          selected={fruits[selected]}
-          clearSelected={clearSelected}
-          setError={setError}
-          setFruits={setFruits}
+      {form.show === 'selected' && (
+        <SelectedFruitForm
+          key={form.selectedFruit.id}
+          fruit={form.selectedFruit}
+          onUpdate={handleUpdate}
+          onDelete={handleDelete}
+          onClose={handleCloseForm}
         />
       )}
     </>

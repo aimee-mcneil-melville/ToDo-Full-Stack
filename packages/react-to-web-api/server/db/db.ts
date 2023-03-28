@@ -1,11 +1,7 @@
-import config from './knexfile'
-import knex from 'knex'
-import Widget from '../../common/Widget'
+import connection from './connection'
 
-type Environment = 'production' | 'test' | 'development'
-const environment = (process.env.NODE_ENV as Environment) || 'development'
-const connection = knex(config[environment])
+import { Widget } from '../../models/Widget'
 
 export function getWidgets(db = connection): Promise<Widget[]> {
-  return db('widgets').select()
+  return db<Widget>('widgets').select()
 }

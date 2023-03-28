@@ -8,7 +8,7 @@ module.exports = {
   editPuppy,
 }
 
-const filepath = path.join(__dirname, 'data.json')
+const filepath = path.join(__dirname, './data/data.json')
 
 function getPuppyData(callback, fs = nodefs, log = console) {
   fs.readFile(filepath, 'utf8', (err, contents) => {

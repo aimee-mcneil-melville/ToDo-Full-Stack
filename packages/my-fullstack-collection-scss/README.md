@@ -70,7 +70,7 @@ Our first job is getting something showing on the front end from our database. H
     ```
   </details>
 
-- [ ] Use `useSelector` to display the redux state you hardcoded in the React Component
+- [ ] Use `useAppSelector` to display the redux state you hardcoded in the React Component
 
 ### 5. Building the API client
 - [ ] Build an API client in the front end to request the information from your routes
@@ -78,7 +78,7 @@ Our first job is getting something showing on the front end from our database. H
 ### 6. Building thunky actions
 - [ ] Build Thunk actions to use the API and get the information
 - [ ] Build Redux actions to save task data from the thunk
-- [ ] Use `useDispatch` and `useEffect` to dispatch the thunk when your app loads
+- [ ] Use `useAppDispatch` and `useEffect` to dispatch the thunk when your app loads
 
 ## Additional functionality
 

@@ -1,6 +1,6 @@
 import type * as React from 'react'
 import { useDispatch } from 'react-redux'
-import { CartItemWithQuantity } from '../../common/interfaces'
+import { CartItemWithQuantity } from '../../models/product'
 
 import { deleteFromCart, updateCart } from '../actions/cart'
 

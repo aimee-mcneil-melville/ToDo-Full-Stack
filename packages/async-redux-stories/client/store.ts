@@ -1,6 +1,7 @@
-import { createStore, applyMiddleware } from 'redux'
+import { legacy_createStore as createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from '@redux-devtools/extension'
+
 import type { ThunkAction as BaseThunkAction } from 'redux-thunk'
 import type { AnyAction } from 'redux'
 

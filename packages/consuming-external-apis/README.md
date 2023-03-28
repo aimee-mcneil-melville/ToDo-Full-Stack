@@ -2,7 +2,7 @@
 
 This exercise is about exploring the world of APIs available to us.
 
-In addition to hitting our own APIs with JavaScript, we can also make use of APIs exposed from all around the Internet! As how the API works (and what routes are exposed to us) depends on how it was coded by the developer or team of developers who created it, part of learning how to use external APIs is also about learning how to read their documentation.
+In addition to hitting our own APIs with JavaScript, we can also make use of APIs exposed from all around the Internet! As to how the API works (and what routes are exposed to us) depends on how it was coded by the developer or team of developers who created it, part of learning how to use external APIs is also about learning how to read their documentation.
 
 ## Setup
 
@@ -29,26 +29,38 @@ In addition to hitting our own APIs with JavaScript, we can also make use of API
   <summary>Tips</summary>
   
   * If you choose an API that enforces CORS, you'll need to consume that API from your server-side, and consume your own API from the client-side (i.e. using your server as a proxy).
-  * If you choose an API that requires a key or other authentication token, you will need to create a .env (to keep your key hidden from git).
+  * If you choose an API that requires a key or other authentication token, you will need to create a `.env` (to keep your key hidden from git). In order to use the `.env` file, you must import and setup dotenv as follows:
+
+    ```ts
+    import * as dotenv from 'dotenv' 
+    dotenv.config()
+
+    // to access the key variable
+    const apiKey = process.env.YOUR_API_KEY_NAME
+    ```
+
+    By including `.env` in the `.gitignore` file your personal api keys will not be pushed up to GitHub. It is good practice to provide a sample file for others that will use the repository _(such as facilitators or team members)_ to know where to obtain and how to include their key. 
+    
+    Create a `.env.sample` file:
+
+    ```
+    # Sign up for an api key at https://example.com/api-sign-up
+    YOUR_API_KEY_NAME=<api key>
+    ```
+
 </details>
 
 Some possibilities are listed below if you want a place to start, otherwise find one of your own!
 
 ### 2. Building API calls
 
-- [ ] Create the functions that make your API calls in `client/apiClient.ts`, and call those functions within your React Routes.
+- [ ] Create the functions that make your API calls in `client/apiClient.ts`, and call those functions within your React components
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    There is a basic API route set up for you - you may wish to use this as a template.
+  </details>
 
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  There is a basic API route set up for you - you may wish to use this as a template. There are a few different ways of handling loading and errors with React Router. Have a look at their documentation to learn about the different approaches.
-
-  loader: https://reactrouter.com/en/main/route/loader
-  errors: https://reactrouter.com/en/main/route/error-element
-  loading state: https://reactrouter.com/en/main/hooks/use-navigation
-
-
-</details>
 
 ## API Suggestions
 
@@ -69,7 +81,7 @@ If you're not sure where to start, you can use one of the APIs listed below.
 <br />
 
 <details>
-  <summary>APIs with CORS restrictions (serverside proxy required)</summary>
+  <summary>APIs with CORS restrictions (server-side proxy required)</summary>
 
 - https://www.affirmations.dev: positive affirmations/quotes
 - https://openlibrary.org/developers/api: books

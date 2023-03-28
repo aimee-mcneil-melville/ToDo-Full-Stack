@@ -7,7 +7,8 @@
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p dev:server dev:client",
+    "dev": "run-p dev:server",
+    "dev:all": "run-p dev:server dev:client",
     "dev:server": "nodemon --watch server server/index.ts",
     "dev:client": "npm run build -- --watch",
     "knex": "knex --knexfile server/db/knexfile.js",
@@ -54,7 +55,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.17.12",
-    "@devacademy/eslint-config": "^1.6.0",
+    "@devacademy/eslint-config": "^1.8.0",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
