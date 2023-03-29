@@ -89,7 +89,7 @@ In order to complete the implementation of authentication for this app, we need 
     1. Select **Australia** as your **Region**
     1. Click **Create Account**
     1. Make sure **Development** is selected as the **Environment tag**. This should be the default but you can check it by looking at what is displayed at the top left (in the black bar, immediately under your domain) or by going to **Settings**.
-    ![Development Environment](readme/development-env-selected.png)
+    * ![Development Environment](readme/development-env-selected.png)
   </details>
 
 ### 3. Creating the "application"
@@ -123,8 +123,13 @@ In order to complete the implementation of authentication for this app, we need 
     In order to protect our routes in the server-side, we need to verify that tokens passed from the client are valid. Creating an API that is linked to the Auth0 Application, the one that you just created, will check the token's validity.
   </details>
 - [ ] Give your API a name, for example, "fruits"
-- [ ] Set the **Identifier** field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later
-  ![New API](readme/new-api.png)
+- [ ] Set the **Identifier** field to be `https://fruits/api` 3️⃣, this value will be used as our `audience` later.
+
+  <details style="padding-left: 2em">
+    <summary>More about API Settings</summary>
+    
+    ![New API](readme/new-api.png)
+  </details>
 
 ---
 
