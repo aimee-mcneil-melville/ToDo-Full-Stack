@@ -1,4 +1,5 @@
-import { AnyAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import type { AnyAction } from '@reduxjs/toolkit'
 
 // this slice is used to track/listen whether any async actions are pending or not
 const waitingSlice = createSlice({
