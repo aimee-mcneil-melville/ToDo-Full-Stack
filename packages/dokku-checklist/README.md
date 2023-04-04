@@ -1,6 +1,7 @@
 # Deployment Checklist
 
-When we first use dokku, our apps have very few moving parts. To deploy these apps, you will at minimum need:
+Follow this guide to get your app deployed.  Note that depending your app's tech-stack, you might use the database configuration and environment sections or not.
+
 - [Dokku user setup](#dokku-user-setup)
 - [General app setup](#general-app-setup)
 - [Database Configuration](#databases)
