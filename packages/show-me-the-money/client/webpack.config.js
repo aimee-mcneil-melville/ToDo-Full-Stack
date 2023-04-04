@@ -1,10 +1,12 @@
-const path = require('path')
+// const path = require('path')
+const { join } = require('node:path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: ['./client/index.js', './client/styles/index.scss'],
+  entry: ['./client/index.tsx', './client/styles/index.scss'],
   output: {
-    path: path.join(__dirname, '..', 'server', 'public'),
+    path: join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
   },
   mode: 'development',
@@ -13,6 +15,9 @@ module.exports = {
       filename: 'styles.css',
       chunkFilename: '[id].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
+    }),
+    new Dotenv({
+      path: join(__dirname, '../.env'),
     }),
   ],
   module: {

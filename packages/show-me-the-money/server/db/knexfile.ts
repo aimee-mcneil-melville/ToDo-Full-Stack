@@ -1,6 +1,17 @@
 const path = require('path')
 
-module.exports = {
+interface Conn {
+  run: (
+    a: string,
+    b: CB
+  ) => void
+}
+
+interface CB {
+  arg: () => void
+}
+
+export default {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -8,7 +19,7 @@ module.exports = {
       filename: path.join(__dirname, 'dev.sqlite3'),
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      afterCreate: (conn: Conn, cb: CB) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
@@ -25,7 +36,7 @@ module.exports = {
       directory: path.join(__dirname, 'seeds'),
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      afterCreate: (conn: Conn, cb: CB) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 

@@ -1,13 +1,22 @@
-import { AUTH_REQUEST, AUTH_FAILURE, LOGIN, LOGOUT } from '../actions/auth'
+
+import { JwtResponse } from 'authenticare/client'
+import { AUTH_REQUEST, AUTH_FAILURE, LOGIN, LOGOUT, Action } from '../actions/auth'
+
+interface AuthState {
+  user?: JwtResponse
+  isFetching: boolean
+  isAuthenticated: boolean,
+  errorMessage?: string
+}
 
 const initialState = {
-  user: null,
+  user: undefined,
   isFetching: false,
   isAuthenticated: false,
   errorMessage: '',
 }
 
-export default function auth(state = initialState, action) {
+export default function auth(state = initialState, action: Action): AuthState {
   switch (action.type) {
     case AUTH_REQUEST:
       return {
@@ -25,7 +34,7 @@ export default function auth(state = initialState, action) {
       }
     case LOGOUT:
       return {
-        user: null,
+        user: undefined,
         isFetching: false,
         isAuthenticated: false,
         errorMessage: '',

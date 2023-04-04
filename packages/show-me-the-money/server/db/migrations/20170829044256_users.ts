@@ -1,5 +1,7 @@
-exports.up = function (knex) {
-  return knex.schema.createTable('users', (table) => {
+import { Knex } from "knex"
+
+exports.up = function (knex: Knex): Promise<void> {
+  return knex.schema.createTable('users', (table: Knex.TableBuilder) => {
     table.increments('id')
     table.string('username')
     table.string('hash')
@@ -10,6 +12,6 @@ exports.up = function (knex) {
   })
 }
 
-exports.down = function (knex) {
+exports.down = function (knex:Knex): Promise<void> {
   return knex.schema.dropTable('users')
 }

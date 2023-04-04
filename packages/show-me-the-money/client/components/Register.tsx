@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
 import { useNavigate } from 'react-router'
+import { Cred, Register as AuthRegister} from 'authenticare/client'
 
 import { authError, registerUserRequest } from '../actions/auth'
 
+interface Form extends Cred {
+  confirm_password?: string
+  first_name: string
+  last_name: string
+}
+
 function Register() {
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((redux) => redux.auth)
+  const dispatch = useAppDispatch()
+  const auth = useAppSelector((redux) => redux.auth)
 
   const [formData, setFormData] = useState({
     username: '',
@@ -19,9 +26,9 @@ function Register() {
 
   useEffect(() => {
     dispatch(authError(''))
-  }, [])
+  }, [dispatch])
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((currentFormData) => {
       return {
         ...currentFormData,
@@ -30,17 +37,21 @@ function Register() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    e.target.reset()
-    const { username, password, confirm_password, first_name, last_name } =
-      formData
+    e.currentTarget.reset()
+    const { username, password, confirm_password, first_name, last_name } = formData
+
     if (confirm_password != password)
       return dispatch(authError("Passwords don't match"))
+
     const confirmSuccess = () => navigateTo('/')
+    const userInfo: AuthRegister = {
+      username, password, first_name, last_name
+    }
     dispatch(
       registerUserRequest(
-        { username, password, first_name, last_name },
+        userInfo,
         confirmSuccess
       )
     )
