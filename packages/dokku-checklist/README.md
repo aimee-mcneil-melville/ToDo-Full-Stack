@@ -135,7 +135,9 @@ Across all apps there are some things we need to make sure are done when we try 
 
 ## Databases
 
-If your app includes a database, read this.
+If your app includes a database, read this.  Choose either Postgres or SQLite sections.
+
+Complete the seeding section for either technology.
 ### 5. Using a postgres database
 - [ ] Setting up a postgres instance
   <details style="padding-left: 2em">
@@ -169,14 +171,6 @@ If your app includes a database, read this.
     git remote add dokku dokku@devacademy.nz:dreamfest
     ```
 
-    Your migrations should run during the build or on startup, but
-    you probably need to run your seeds manually.
-
-    You can use `run` to run commands in your app container
-
-    ```sh
-    dokku run npm run knex seed:run
-    ```
   </details>
 
 ### Optional: Using a sqlite database only
@@ -205,6 +199,17 @@ If your app includes a database, read this.
       },
     ```
   </details>
+
+### Seeding your Database (for all DB tech)
+- [ ] Running your DB seeds.
+
+  Your migrations should run during the app build on Dokku's servers, but you will need to run your seeds manually.
+
+  You can use `run` to run commands in your app container.
+
+  ```sh
+  dokku run npm run knex seed:run
+  ```
 
 ---
 ## .env files
