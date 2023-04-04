@@ -3,11 +3,9 @@
 When we first use dokku, our apps have very few moving parts. To deploy these apps, you will at minimum need:
 - [Dokku user setup](#dokku-user-setup)
 - [General app setup](#general-app-setup)
+- [Database Configuration](#databases)
+- [Environment / .env Files](#env-files)
 - [Creating your Dokku app](#creating-and-deploying-your-dokku-app)
-
-Then when our apps become more complex, you will also need to consider:
-- [Databases](#databases)
-- [.env files](#env-files) (Auth & API keys)
 
 ---
 
@@ -74,13 +72,7 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
     ```sh
     git clone git@github.com:dokku/dokku.git ~/.dokku
     ```
-    ```
-    # we want to match the same version of dokku that we have
-    # on the server
-    cd ~/.dokku
-    git checkout v0.29.4
-    ```
-
+      
     Add these lines to your `~/.zshrc` file:
 
     ```sh
@@ -140,65 +132,10 @@ Across all apps there are some things we need to make sure are done when we try 
 
 ---
 
-## Creating and deploying your Dokku app
-
-We need to create and deploy our apps to see them live.
-
-### 5. Creating your app
-- [ ] Creating your app
-  <details style="padding-left: 2em">
-    <summary>How to create an app</summary>
-
-    In the git repo for your project run these commands (replace "my-pupparazzi") with the name of your app. eg "ysabel-pupparazzi-ahoaho-22"
-
-    ```sh
-    dokku apps:create my-pupparazzi
-    ```
-    
-    - If you would like to use this deployment for your WD04 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
-    - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
-  </details>
-
-### Optional: SSL certificate
-
-- [ ] Adding an SSL certificate with the Let's Encrypt plugin
-  <details style="padding-left: 2em">
-    <summary>How to enable encryption</summary>
-
-    In the repo for your app, you can run dokku commands and dokku will automatically operate on that application.
-
-    ```sh
-    dokku letsencrypt:enable
-    ```
-  </details>
-
-### 6. Deploying your app
-- [ ] Deploying your app
-  <details style="padding-left: 2em">
-    <summary>How to deploy an app</summary>
-
-    **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
-
-    ```
-    git push dokku local-branch-name:main
-    ```
-
-    (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
-  </details>
-
-- [ ] Open the deployed site with `dokku open` or by copying the url provided at the end of the deploy output logs
-  <details style="padding-left: 2em">
-    <summary>Tips</summary>
-    
-    Make sure you copy the website url, not the git url, and paste it into your browser
-
-    **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
-  </details>
-
----
-
 ## Databases
-### 7. Using a postgres database
+
+If your app includes a database, read this.
+### 5. Using a postgres database
 - [ ] Setting up a postgres instance
   <details style="padding-left: 2em">
     <summary>How to set up the database</summary>
@@ -252,7 +189,7 @@ We need to create and deploy our apps to see them live.
 
     ```sh
     dokku storage:ensure-directory dreamfest-storage
-    dokku storage:mount dreamfest dreamfest-storage:/app/storage
+    dokku storage:mount dreamfest /var/lib/dokku/data/storage/dreamfest-storage:/app/storage
     ```
 
     In your knexfile, you can configure the production to use a location in `/app/storage`.
@@ -271,7 +208,8 @@ We need to create and deploy our apps to see them live.
 ---
 ## .env files
 
-### 8. Secrets and NODE_ENV
+A .env file can be used to store API keys and other secrets.
+### 6. Secrets and NODE_ENV
 
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode
   <details style="padding-left: 2em">
@@ -295,3 +233,81 @@ We need to create and deploy our apps to see them live.
     dokku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
     ```
   </details>
+
+---
+## Creating and deploying your Dokku app
+
+We need to create and deploy our apps to see them live.
+
+### 7. Creating your app
+- [ ] Creating your app
+  <details style="padding-left: 2em">
+    <summary>How to create an app</summary>
+
+    In the git repo for your project run these commands (replace "my-pupparazzi") with the name of your app. eg "ysabel-pupparazzi-ahoaho-22"
+
+    ```sh
+    dokku apps:create my-pupparazzi
+    ```
+    
+    - If you would like to use this deployment for your WD04 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
+    - This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+  </details>
+
+### Optional: SSL certificate
+
+- [ ] Adding an SSL certificate with the Let's Encrypt plugin
+  <details style="padding-left: 2em">
+    <summary>How to enable encryption</summary>
+
+    In the repo for your app, you can run dokku commands and dokku will automatically operate on that application.
+
+    ```sh
+    dokku letsencrypt:enable
+    ```
+  </details>
+
+### 8. Deploying your app
+- [ ] Deploying your app
+  <details style="padding-left: 2em">
+    <summary>How to deploy an app</summary>
+
+    **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
+
+    ```
+    git push dokku local-branch-name:main
+    ```
+    
+    (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
+
+    **Trouble Shooting**
+
+    If Dokku responds with the error below:
+
+    ```
+    remote:  !     my-app currently has a deploy lock in place. Exiting...
+    remote:  !     Run 'apps:unlock' to release the existing deploy lock
+    To devacademy.nz:my-app
+    ! [remote rejected] my-branch -> main (pre-receive hook declined)
+    error: failed to push some refs to 'dokku@devacademy.nz:my-app'
+    ```
+
+    This is likely becuase a previous deployment did not complete.  Run the command it suggests to
+    resolve the issue and try to push again:
+
+    ```
+    dokku apps:unlock
+    ```
+
+  </details>
+
+- [ ] Open the deployed site with `dokku open` or by copying the url provided at the end of the deploy output logs
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
+    
+    Make sure you copy the website url, not the git url, and paste it into your browser
+
+    **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
+  </details>
+
+---
