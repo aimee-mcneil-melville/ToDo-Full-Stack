@@ -1,24 +1,13 @@
-import { useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { checkAuth } from '../actions/auth'
-
-import Login from './Login'
-import Register from './Register'
-import Nav from './Nav'
-import Meeting from './Meeting'
-import History from './History'
+import Login from "./Login";
+import Nav from "./Nav";
+import Meeting from "./Meeting";
+import History from "./History";
+import Welcome from "./Welcome";
+import { IfAuthenticated, IfNotAuthenticated } from "./Authenticated";
 
 function App() {
-  const auth = useAppSelector((reduxState) => reduxState.auth)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const confirmSuccess = () => {}
-    dispatch(checkAuth(confirmSuccess))
-  }, [dispatch])
-
   return (
     <>
       <div className="container has-text-centered">
@@ -30,22 +19,22 @@ function App() {
             <Nav />
           </div>
         </div>
-
         <div className="">
-          <Routes>
-            <Route
-              path="/"
-              element={auth.isAuthenticated ? <></> : <Login />}
-              />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/meeting" element={<Meeting />} />
-            <Route path="/history" element={<History />} />
-          </Routes>
+          <IfNotAuthenticated>
+            <Login />
+          </IfNotAuthenticated>
+
+          <IfAuthenticated>
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/meeting" element={<Meeting />} />
+              <Route path="/history" element={<History />} />
+            </Routes>
+          </IfAuthenticated>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

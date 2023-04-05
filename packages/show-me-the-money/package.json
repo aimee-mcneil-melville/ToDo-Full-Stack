@@ -12,15 +12,16 @@
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "webpack": "webpack --config ./client/webpack.config.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
     "build:server": "npm run knex -- migrate:latest",
-    "d:deploy": "git push dokku main",
-    "d:migrate": "dokku run npm run knex migrate:latest",
-    "d:rollback": "dokku run npm run knex migrate:rollback",
-    "d:seed": "dokku run npm run knex seed:run"
+    "dokku:deploy": "git push dokku main",
+    "dokku:migrate": "dokku run npm run knex migrate:latest",
+    "dokku:rollback": "dokku run npm run knex migrate:rollback",
+    "dokku:seed": "dokku run npm run knex seed:run"
   },
   "keywords": [
     "fullstack"
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@auth0/auth0-react": "^1.12.1",
     "@babel/core": "^7.15.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
@@ -66,7 +68,6 @@
     "babel-loader": "^8.2.2",
     "bulma": "^0.9.2",
     "css-loader": "^6.3.0",
-    "dotenv-webpack": "^6.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
@@ -98,8 +99,6 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "authenticare": "^0.4.9",
-    "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "pg": "^8.8.0",

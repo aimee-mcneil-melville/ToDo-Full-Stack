@@ -1,9 +1,9 @@
-import knex from 'knex'
-import knexfile from './knexfile'
+import knex from "knex";
+import knexfile from "./knexfile";
 
-type Environment = 'production' | 'test' | 'development'
+type Environment = "production" | "test" | "development";
 
-const env = (process.env.NODE_ENV || 'development') as Environment
-const connection = knex(knexfile[env])
+const env = (process.env.NODE_ENV || "development") as Environment;
+const connection = knex(knexfile[env]);
 
-export default connection
+export default connection;

@@ -1,23 +1,14 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { logoutUser } from '../actions/auth'
+import { useState } from "react";
+import { IfAuthenticated, IfNotAuthenticated } from "./Authenticated";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Nav() {
-  const navigateTo = useNavigate()
-  const dispatch = useAppDispatch()
-  const auth = useAppSelector((redux) => redux.auth)
-
-  const [burgerVisible, setBurgerVisible] = useState(false)
+  const [burgerVisible, setBurgerVisible] = useState(false);
+  const { logout, loginWithRedirect, user } = useAuth0();
 
   const toggleBurger = () => {
-    setBurgerVisible((currentBurgerState) => !currentBurgerState)
-  }
-  const logout = () => {
-    const confirmSuccess = () => navigateTo('/')
-    dispatch(logoutUser(confirmSuccess))
-  }
+    setBurgerVisible((currentBurgerState) => !currentBurgerState);
+  };
 
   return (
     <nav className="navbar">
@@ -26,7 +17,7 @@ function Nav() {
           <span
             onClick={toggleBurger}
             className={`navbar-burger burger ${
-              burgerVisible ? 'is-active' : ''
+              burgerVisible ? "is-active" : ""
             }`}
             data-target="navbarMenuHeroA"
           >
@@ -34,43 +25,36 @@ function Nav() {
             <span></span>
             <span></span>
           </span>
+          <IfAuthenticated>
+              <p className='subtitle'>{user?.nickname}</p>
+          </IfAuthenticated>
         </div>
         <div
           id="navbarMenuHeroA"
-          className={`navbar-menu ${burgerVisible ? 'is-active' : ''}`}
+          className={`navbar-menu ${burgerVisible ? "is-active" : ""}`}
         >
           <div className="navbar-end">
-            {auth.isAuthenticated ? (
-              <Link
-                to="/"
-                className="navbar-item is-large"
+            <IfAuthenticated>
+              <button
+                className="button is-primary is-normal"
                 onClick={() => logout()}
               >
                 Logout
-              </Link>
-            ) : (
-              <>
-                <Link
-                  onClick={toggleBurger}
-                  className="navbar-item is-large"
-                  to="/login"
-                >
-                  Login
-                </Link>
-                <Link
-                  onClick={toggleBurger}
-                  className="navbar-item"
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </>
-            )}
+              </button>
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              <button
+                className="button is-primary is-normal"
+                onClick={() => loginWithRedirect()}
+              >
+                Login
+              </button>
+            </IfNotAuthenticated>
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
