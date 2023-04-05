@@ -124,7 +124,7 @@ Across all apps there are some things we need to make sure are done when we try 
 
     </details>
 
-- [ ] The `start` script calls `node` (not `nodemon`)
+- [ ] The `start` script calls either `node` or `ts-node` (not `nodemon`)
   <details style="padding-left: 2em">
     <summary>More about setting the <code>start</code> script</summary>
     
@@ -137,7 +137,6 @@ Across all apps there are some things we need to make sure are done when we try 
 
 If your app includes a database, read this.  Choose either Postgres or SQLite sections.
 
-Complete the seeding section for either technology.
 ### 5. Using a postgres database
 - [ ] Setting up a postgres instance
   <details style="padding-left: 2em">
@@ -178,15 +177,6 @@ Complete the seeding section for either technology.
   <details style="padding-left: 2em">
     <summary>How to set the database engine</summary>
 
-    On heroku we had to use postgres in production, but with dokku it's easy to attach persistent storage to an application and we can use that persistent storage to hold our sqlite3 database.
-
-    This means that we could use the same database engine in dev and production if we wanted.
-
-    ```sh
-    dokku storage:ensure-directory dreamfest-storage
-    dokku storage:mount dreamfest /var/lib/dokku/data/storage/dreamfest-storage:/app/storage
-    ```
-
     In your knexfile, you can configure the production to use a location in `/app/storage`.
 
     ```javascript
@@ -199,17 +189,6 @@ Complete the seeding section for either technology.
       },
     ```
   </details>
-
-### Seeding your Database (for all DB tech)
-- [ ] Running your DB seeds.
-
-  Your migrations should run during the app build on Dokku's servers, but you will need to run your seeds manually.
-
-  You can use `run` to run commands in your app container.
-
-  ```sh
-  dokku run npm run knex seed:run
-  ```
 
 ---
 ## .env files
@@ -250,15 +229,30 @@ We need to create and deploy our apps to see them live.
   <details style="padding-left: 2em">
     <summary>How to create an app</summary>
 
-    In the git repo for your project run these commands (replace "my-pupparazzi") with the name of your app. eg "ysabel-pupparazzi-ahoaho-22"
+    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc-pupparazzi".
 
     ```sh
-    dokku apps:create my-pupparazzi
+    dokku apps:create my-app-name-pupparazzi
     ```
     
     - If you would like to use this deployment for your WD04 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
     - This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
   </details>
+
+### 8. Mounting storage for your app's database
+- [ ] Mounting app storage
+  <details style="padding-left: 2em">
+    <summary>App storage</summary>
+
+    On heroku we had to use postgres in production, but with dokku it's easy to attach persistent storage to an application and we can use that persistent storage to hold our sqlite3 database.
+
+    This means that we could use the same database engine in dev and production if we wanted.
+
+    ```sh
+    dokku storage:ensure-directory my-app-name-storage
+
+    dokku storage:mount my-app-name-storage:/app/storage
+    ```
 
 ### Optional: SSL certificate
 
@@ -273,7 +267,7 @@ We need to create and deploy our apps to see them live.
     ```
   </details>
 
-### 8. Deploying your app
+### 9. Deploying your app
 - [ ] Deploying your app
   <details style="padding-left: 2em">
     <summary>How to deploy an app</summary>
@@ -316,4 +310,16 @@ We need to create and deploy our apps to see them live.
     **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
   </details>
 
+### 10. Seeding your Database (for all DB tech)
+- [ ] Running your DB seeds.
+
+  Your migrations should run during the app build on Dokku's servers, but you will need to run your seeds manually.
+
+  You can use `run` to run commands in your app container.
+
+  ```sh
+  dokku run npm run knex seed:run
+  ```
+
 ---
+
