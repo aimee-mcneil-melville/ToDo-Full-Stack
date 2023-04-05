@@ -1,4 +1,4 @@
-const { join } = require('node.path')
+const { join } = require('node:path')
 
 module.exports = {
   development: {
