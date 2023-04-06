@@ -1,13 +1,12 @@
 # Deployment Checklist
 
-When we first use dokku, our apps have very few moving parts. To deploy these apps, you will at minimum need:
+Follow this guide to get your app deployed.  Note that depending your app's tech-stack, you might use the database configuration and environment sections or not.
+
 - [Dokku user setup](#dokku-user-setup)
 - [General app setup](#general-app-setup)
+- [Database Configuration](#databases)
+- [Environment / .env Files](#env-files)
 - [Creating your Dokku app](#creating-and-deploying-your-dokku-app)
-
-Then when our apps become more complex, you will also need to consider:
-- [Databases](#databases)
-- [.env files](#env-files) (Auth & API keys)
 
 ---
 
@@ -74,13 +73,7 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
     ```sh
     git clone git@github.com:dokku/dokku.git ~/.dokku
     ```
-    ```
-    # we want to match the same version of dokku that we have
-    # on the server
-    cd ~/.dokku
-    git checkout v0.29.4
-    ```
-
+      
     Add these lines to your `~/.zshrc` file:
 
     ```sh
@@ -131,7 +124,7 @@ Across all apps there are some things we need to make sure are done when we try 
 
     </details>
 
-- [ ] The `start` script calls `node` (not `nodemon`)
+- [ ] The `start` script calls either `node` or `ts-node` (not `nodemon`)
   <details style="padding-left: 2em">
     <summary>More about setting the <code>start</code> script</summary>
     
@@ -140,65 +133,11 @@ Across all apps there are some things we need to make sure are done when we try 
 
 ---
 
-## Creating and deploying your Dokku app
-
-We need to create and deploy our apps to see them live.
-
-### 5. Creating your app
-- [ ] Creating your app
-  <details style="padding-left: 2em">
-    <summary>How to create an app</summary>
-
-    In the git repo for your project run these commands (replace "my-pupparazzi") with the name of your app. eg "ysabel-pupparazzi-ahoaho-22"
-
-    ```sh
-    dokku apps:create my-pupparazzi
-    ```
-    
-    - If you would like to use this deployment for your WD04 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
-    - This will create an app on Heroku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
-  </details>
-
-### Optional: SSL certificate
-
-- [ ] Adding an SSL certificate with the Let's Encrypt plugin
-  <details style="padding-left: 2em">
-    <summary>How to enable encryption</summary>
-
-    In the repo for your app, you can run dokku commands and dokku will automatically operate on that application.
-
-    ```sh
-    dokku letsencrypt:enable
-    ```
-  </details>
-
-### 6. Deploying your app
-- [ ] Deploying your app
-  <details style="padding-left: 2em">
-    <summary>How to deploy an app</summary>
-
-    **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
-
-    ```
-    git push dokku local-branch-name:main
-    ```
-
-    (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
-  </details>
-
-- [ ] Open the deployed site with `dokku open` or by copying the url provided at the end of the deploy output logs
-  <details style="padding-left: 2em">
-    <summary>Tips</summary>
-    
-    Make sure you copy the website url, not the git url, and paste it into your browser
-
-    **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
-  </details>
-
----
-
 ## Databases
-### 7. Using a postgres database
+
+If your app includes a database, read this.  Choose either Postgres or SQLite sections.
+
+### 5: Option A: Using a postgres database
 - [ ] Setting up a postgres instance
   <details style="padding-left: 2em">
     <summary>How to set up the database</summary>
@@ -231,29 +170,12 @@ We need to create and deploy our apps to see them live.
     git remote add dokku dokku@devacademy.nz:dreamfest
     ```
 
-    Your migrations should run during the build or on startup, but
-    you probably need to run your seeds manually.
-
-    You can use `run` to run commands in your app container
-
-    ```sh
-    dokku run npm run knex seed:run
-    ```
   </details>
 
-### Optional: Using a sqlite database only
+### 5. Option B: Using a sqlite database
 - [ ] Setting up sqlite in production
   <details style="padding-left: 2em">
     <summary>How to set the database engine</summary>
-
-    On heroku we had to use postgres in production, but with dokku it's easy to attach persistent storage to an application and we can use that persistent storage to hold our sqlite3 database.
-
-    This means that we could use the same database engine in dev and production if we wanted.
-
-    ```sh
-    dokku storage:ensure-directory dreamfest-storage
-    dokku storage:mount dreamfest dreamfest-storage:/app/storage
-    ```
 
     In your knexfile, you can configure the production to use a location in `/app/storage`.
 
@@ -271,7 +193,8 @@ We need to create and deploy our apps to see them live.
 ---
 ## .env files
 
-### 8. Secrets and NODE_ENV
+A .env file can be used to store API keys and other secrets.
+### 6. Secrets and NODE_ENV
 
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode
   <details style="padding-left: 2em">
@@ -295,3 +218,172 @@ We need to create and deploy our apps to see them live.
     dokku config:set JWT_SECRET="shhhhhhhhh s3cr3t"
     ```
   </details>
+
+---
+## Creating and deploying your Dokku app
+
+We need to create and deploy our apps to see them live.
+
+### 7. Creating your app
+- [ ] Creating your app
+  <details style="padding-left: 2em">
+    <summary>How to create an app</summary>
+
+    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc_pupparazzi".
+
+    ```sh
+    dokku apps:create my-name_my-app-name
+    ```
+    This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+
+
+    **Trouble Shooting**
+
+    If Dokku responds with the error below:
+
+    ```sh
+    fatal: remote dokku already exists.
+    !     Dokku remote not added! Do you already have a dokku remote?
+    ```
+
+    This is likely becuase you already created a dokku app from this repo.  Open your `.git/config` file and see if a remoted called "dokku" already exists.  Either remove it and try again, or run `dokku apps:report` to find out what the app is currently called.  If you need to create a new app name, remove the dokku remote from `.git/config`.
+
+    ```sh
+    # Open the git config file too find or delete the dokku remote
+    code .git/config
+
+    # 
+    dokku apps:report
+    ```
+
+    If Dokku responds with the error below:
+
+    ```sh
+    dokku apps:create todo-full-stack                                                                             255 ↵
+    -----> Dokku remote added at devacademy.nz called dokku
+    -----> Application name is todo-full-stack
+    Enter passphrase for key '/home/alexc/.ssh/id_ed25519':
+    !     Name is already taken
+    !     Failed to execute dokku command over ssh: exit code 0
+    !     If there was no output from Dokku, ensure your configured SSH Key can connect to the remote server
+    ```
+
+    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc_pupparazzi'.
+
+
+
+  </details>
+
+### 8. Mounting storage for your app's database
+- [ ] Mounting app storage
+  <details style="padding-left: 2em">
+    <summary>App storage</summary>
+
+    On heroku we had to use postgres in production, but with dokku it's easy to attach persistent storage to an application and we can use that persistent storage to hold our sqlite3 database.
+
+    This means that we could use the same database engine in dev and production if we wanted.
+
+    ```sh
+    # Copy these lines separetly to run them one at a time
+    dokku storage:ensure-directory my-name_my-app-name-storage
+
+    dokku storage:mount my-name_my-app-name-storage:/app/storage
+    ```
+
+    Lastly, check the list of storage folders mounted for your the app.  There should be **only one item** in the list returned.
+
+    ```sh
+    dokku storage:list
+    ```
+
+    **Trouble Shooting**
+
+    If you see more than one storage item in that list, remove the redundant ones like this:
+
+    ```sh
+    dokku storage:unmount name-of-redundant-app-storage:/app/storage
+    ```
+
+### Optional: SSL certificate
+
+- [ ] Adding an SSL certificate with the Let's Encrypt plugin
+  <details style="padding-left: 2em">
+    <summary>How to enable encryption</summary>
+
+    In the repo for your app, you can run dokku commands and dokku will automatically operate on that application.
+
+    ```sh
+    dokku letsencrypt:enable
+    ```
+  </details>
+
+### 9. Deploying your app
+- [ ] Deploying your app
+  <details style="padding-left: 2em">
+    <summary>How to deploy an app</summary>
+
+    **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
+
+    ```sh
+    git push dokku local-branch-name:main
+    ```
+    
+    (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
+
+    **Trouble Shooting**
+
+    If Dokku responds with the error below:
+
+    ```sh
+    remote:  !     my-app currently has a deploy lock in place. Exiting...
+    remote:  !     Run 'apps:unlock' to release the existing deploy lock
+    To devacademy.nz:my-app
+    ! [remote rejected] my-branch -> main (pre-receive hook declined)
+    error: failed to push some refs to 'dokku@devacademy.nz:my-app'
+    ```
+
+    This is likely becuase a previous deployment did not complete.  Run the command it suggests to
+    resolve the issue and try to push again:
+
+    ```sh
+    dokku apps:unlock
+    ```
+
+    If you see the error below after a while, someone else might have used the same app name and storage as you.  Or you might have mounted more than one storage point.
+    
+    Refer to the Mounting storage Trouble Shooting section to fix this.
+
+    ```sh
+    -----> Executing release task from Procfile: npm run knex migrate:latest
+    remote:  !     Failed to create release execution container: Error response from daemon: Duplicate mount point: /app/storage
+    remote:
+    remote:  !     exit status 1
+    To devacademy.nz:todo-full-stack
+    ! [remote rejected] tian -> main (pre-receive hook declined)
+    error: failed to push some refs to 'dokku@devacademy.nz:todo-full-stack'
+    ```
+
+  </details>
+
+- [ ] Open the deployed site with `dokku open` or by copying the url provided at the end of the deploy output logs
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
+    
+    Make sure you copy the website url, not the git url, and paste it into your browser
+
+    **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
+  </details>
+
+### 10. Seeding your Database (for all DB tech)
+- [ ] Running your DB seeds.
+
+  Your migrations should run during the app build on Dokku's servers, but you will need to run your seeds manually.
+
+  You can use `run` to run commands in your app container.
+
+  ```sh
+  dokku run npm run knex seed:run
+  ```
+
+---
+
