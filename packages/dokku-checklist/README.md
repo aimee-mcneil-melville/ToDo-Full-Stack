@@ -190,11 +190,21 @@ If your app includes a database, read this.  Choose either Postgres or SQLite se
     ```
   </details>
 
+### 6. Procfile to migrate database
+
+To run your database migrations on Dokku, make sure you have a `Procfile` in the root of your project with these contents.
+
+#### Procfile
+```Procfile
+web: npm run start
+release: npm run knex migrate:latest
+```
+
 ---
 ## .env files
 
 A .env file can be used to store API keys and other secrets.
-### 6. Secrets and NODE_ENV
+### 7. Secrets and NODE_ENV
 
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode
   <details style="padding-left: 2em">
@@ -224,15 +234,17 @@ A .env file can be used to store API keys and other secrets.
 
 We need to create and deploy our apps to see them live.
 
-### 7. Creating your app
+### 8. Creating your app
 - [ ] Creating your app
   <details style="padding-left: 2em">
     <summary>How to create an app</summary>
 
-    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc_pupparazzi".
+    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc-pupparazzi".
+
+    Note that the name cannot include any underscores ('_').
 
     ```sh
-    dokku apps:create my-name_my-app-name
+    dokku apps:create my-name-my-app-name
     ```
     This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
 
@@ -268,13 +280,13 @@ We need to create and deploy our apps to see them live.
     !     If there was no output from Dokku, ensure your configured SSH Key can connect to the remote server
     ```
 
-    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc_pupparazzi'.
+    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc-pupparazzi'.
 
 
 
   </details>
 
-### 8. Mounting storage for your app's database
+### 9. Mounting storage for your app's database
 - [ ] Mounting app storage
   <details style="padding-left: 2em">
     <summary>App storage</summary>
@@ -285,9 +297,9 @@ We need to create and deploy our apps to see them live.
 
     ```sh
     # Copy these lines separetly to run them one at a time
-    dokku storage:ensure-directory my-name_my-app-name-storage
+    dokku storage:ensure-directory my-name-my-app-name-storage
 
-    dokku storage:mount my-name_my-app-name-storage:/app/storage
+    dokku storage:mount /var/lib/dokku/data/storage/my-name-my-app-name-storage:/app/storage
     ```
 
     Lastly, check the list of storage folders mounted for your the app.  There should be **only one item** in the list returned.
@@ -317,7 +329,7 @@ We need to create and deploy our apps to see them live.
     ```
   </details>
 
-### 9. Deploying your app
+### 10. Deploying your app
 - [ ] Deploying your app
   <details style="padding-left: 2em">
     <summary>How to deploy an app</summary>
@@ -374,10 +386,10 @@ We need to create and deploy our apps to see them live.
     **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
   </details>
 
-### 10. Seeding your Database (for all DB tech)
+### 11. Seeding your Database (for all DB tech)
 - [ ] Running your DB seeds.
 
-  Your migrations should run during the app build on Dokku's servers, but you will need to run your seeds manually.
+  Your migrations will run as part of the release phase (in your Procfile) however you will need to run your seeds manually.
 
   You can use `run` to run commands in your app container.
 
