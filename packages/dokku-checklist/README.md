@@ -137,7 +137,7 @@ Across all apps there are some things we need to make sure are done when we try 
 
 If your app includes a database, read this.  Choose either Postgres or SQLite sections.
 
-### 5. Using a postgres database
+### 5: Option A: Using a postgres database
 - [ ] Setting up a postgres instance
   <details style="padding-left: 2em">
     <summary>How to set up the database</summary>
@@ -172,7 +172,7 @@ If your app includes a database, read this.  Choose either Postgres or SQLite se
 
   </details>
 
-### Optional: Using a sqlite database only
+### 5. Option B: Using a sqlite database
 - [ ] Setting up sqlite in production
   <details style="padding-left: 2em">
     <summary>How to set the database engine</summary>
@@ -229,14 +229,47 @@ We need to create and deploy our apps to see them live.
   <details style="padding-left: 2em">
     <summary>How to create an app</summary>
 
-    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc-pupparazzi".
+    In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc_pupparazzi".
 
     ```sh
-    dokku apps:create my-app-name-pupparazzi
+    dokku apps:create my-name_my-app-name
     ```
-    
-    - If you would like to use this deployment for your WD04 assessment, please include your first name (or another identifier, e.g. nickname) in the app name.
-    - This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+    This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+
+
+    **Trouble Shooting**
+
+    If Dokku responds with the error below:
+
+    ```
+    fatal: remote dokku already exists.
+    !     Dokku remote not added! Do you already have a dokku remote?
+    ```
+
+    This is likely becuase you already created a dokku app from this repo.  Open your `.git/config` file and see if a remoted called "dokku" already exists.  Either remove it and try again, or run `dokku apps:report` to find out what the app is currently called.  If you need to create a new app name, remove the dokku remote from `.git/config`.
+
+    ```
+    code .git/config
+
+    dokku apps:report
+    ```
+
+    If Dokku responds with the error below:
+
+    ```
+    dokku apps:create todo-full-stack                                                                             255 ↵
+    -----> Dokku remote added at devacademy.nz called dokku
+    -----> Application name is todo-full-stack
+    Enter passphrase for key '/home/alexc/.ssh/id_ed25519':
+    !     Name is already taken
+    !     Failed to execute dokku command over ssh: exit code 0
+    !     If there was no output from Dokku, ensure your configured SSH Key can connect to the remote server
+    ```
+
+    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc-pupparazzi'.
+
+
+
   </details>
 
 ### 8. Mounting storage for your app's database
@@ -249,9 +282,23 @@ We need to create and deploy our apps to see them live.
     This means that we could use the same database engine in dev and production if we wanted.
 
     ```sh
-    dokku storage:ensure-directory my-app-name-storage
+    dokku storage:ensure-directory my-name_my-app-name-storage
 
-    dokku storage:mount my-app-name-storage:/app/storage
+    dokku storage:mount my-name_my-app-name-storage:/app/storage
+    ```
+
+    Lastly, check the list of storage folders mounted for your the app.  There should be **only one item** in the list returned.
+
+    ```
+    dokku storage:list
+    ```
+
+    **Trouble Shooting**
+
+    If you see more than one storage item in that list, remove the redundant ones like this:
+
+    ```
+    dokku storage:unmount name-of-redundant-app-storage:/app/storage
     ```
 
 ### Optional: SSL certificate
@@ -297,6 +344,20 @@ We need to create and deploy our apps to see them live.
 
     ```
     dokku apps:unlock
+    ```
+
+    If you see the error below after a while, someone else might have used the same app name and storage as you.  Or you might have mounted more than one storage point.
+    
+    Refer to the Mounting storage Trouble Shooting section to fix this.
+
+    ```
+    -----> Executing release task from Procfile: npm run knex migrate:latest
+    remote:  !     Failed to create release execution container: Error response from daemon: Duplicate mount point: /app/storage
+    remote:
+    remote:  !     exit status 1
+    To devacademy.nz:todo-full-stack
+    ! [remote rejected] tian -> main (pre-receive hook declined)
+    error: failed to push some refs to 'dokku@devacademy.nz:todo-full-stack'
     ```
 
   </details>
