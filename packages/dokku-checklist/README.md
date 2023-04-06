@@ -241,22 +241,24 @@ We need to create and deploy our apps to see them live.
 
     If Dokku responds with the error below:
 
-    ```
+    ```sh
     fatal: remote dokku already exists.
     !     Dokku remote not added! Do you already have a dokku remote?
     ```
 
     This is likely becuase you already created a dokku app from this repo.  Open your `.git/config` file and see if a remoted called "dokku" already exists.  Either remove it and try again, or run `dokku apps:report` to find out what the app is currently called.  If you need to create a new app name, remove the dokku remote from `.git/config`.
 
-    ```
+    ```sh
+    # Open the git config file too find or delete the dokku remote
     code .git/config
 
+    # 
     dokku apps:report
     ```
 
     If Dokku responds with the error below:
 
-    ```
+    ```sh
     dokku apps:create todo-full-stack                                                                             255 ↵
     -----> Dokku remote added at devacademy.nz called dokku
     -----> Application name is todo-full-stack
@@ -266,7 +268,7 @@ We need to create and deploy our apps to see them live.
     !     If there was no output from Dokku, ensure your configured SSH Key can connect to the remote server
     ```
 
-    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc-pupparazzi'.
+    This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc_pupparazzi'.
 
 
 
@@ -282,6 +284,7 @@ We need to create and deploy our apps to see them live.
     This means that we could use the same database engine in dev and production if we wanted.
 
     ```sh
+    # Copy these lines separetly to run them one at a time
     dokku storage:ensure-directory my-name_my-app-name-storage
 
     dokku storage:mount my-name_my-app-name-storage:/app/storage
@@ -289,7 +292,7 @@ We need to create and deploy our apps to see them live.
 
     Lastly, check the list of storage folders mounted for your the app.  There should be **only one item** in the list returned.
 
-    ```
+    ```sh
     dokku storage:list
     ```
 
@@ -297,7 +300,7 @@ We need to create and deploy our apps to see them live.
 
     If you see more than one storage item in that list, remove the redundant ones like this:
 
-    ```
+    ```sh
     dokku storage:unmount name-of-redundant-app-storage:/app/storage
     ```
 
@@ -321,7 +324,7 @@ We need to create and deploy our apps to see them live.
 
     **NOTE**: Dokku only has a `main` branch. so if you're deploying a local branch _other than_ `main`, you must specify which branch you're deploying with:
 
-    ```
+    ```sh
     git push dokku local-branch-name:main
     ```
     
@@ -331,7 +334,7 @@ We need to create and deploy our apps to see them live.
 
     If Dokku responds with the error below:
 
-    ```
+    ```sh
     remote:  !     my-app currently has a deploy lock in place. Exiting...
     remote:  !     Run 'apps:unlock' to release the existing deploy lock
     To devacademy.nz:my-app
@@ -342,7 +345,7 @@ We need to create and deploy our apps to see them live.
     This is likely becuase a previous deployment did not complete.  Run the command it suggests to
     resolve the issue and try to push again:
 
-    ```
+    ```sh
     dokku apps:unlock
     ```
 
@@ -350,7 +353,7 @@ We need to create and deploy our apps to see them live.
     
     Refer to the Mounting storage Trouble Shooting section to fix this.
 
-    ```
+    ```sh
     -----> Executing release task from Procfile: npm run knex migrate:latest
     remote:  !     Failed to create release execution container: Error response from daemon: Duplicate mount point: /app/storage
     remote:
