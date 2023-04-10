@@ -256,9 +256,11 @@ We need to create and deploy our apps to see them live.
     ```
     This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo
 
+  </details>
 
-    **Trouble Shooting**
-
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary> 
+  
     If Dokku responds with the error below:
 
     ```sh
@@ -333,13 +335,18 @@ We need to create and deploy our apps to see them live.
     dokku storage:list
     ```
 
-    **Trouble Shooting**
+  </details>
+
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary>    
 
     If you see more than one storage item in that list, remove the redundant ones like this:
 
     ```sh
     dokku storage:unmount name-of-redundant-app-storage:/app/storage
     ```
+
+  </details>
 
 ### Optional: SSL certificate
 
@@ -367,7 +374,10 @@ We need to create and deploy our apps to see them live.
     
     (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
 
-    **Trouble Shooting**
+  </details>
+
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary>
 
     If Dokku responds with the error below:
 
@@ -413,14 +423,18 @@ We need to create and deploy our apps to see them live.
 
 ### 11. Seeding your Database (for all DB tech)
 - [ ] Running your DB seeds.
+  <details style="padding-left: 2em">
+    <summary>Run those seeds</summary>
 
-  Your migrations will run as part of the release phase (in your Procfile) however you will need to run your seeds manually.
+    Your migrations will run as part of the release phase (in your Procfile) however you will need to run your seeds manually.
 
-  You can use `run` to run commands in your app container.
+    You can use `run` to run commands in your app container.
 
-  ```sh
-  dokku run npm run knex seed:run
-  ```
+    ```sh
+    dokku run npm run knex seed:run
+    ```
+
+  </details>
 
 ---
 
