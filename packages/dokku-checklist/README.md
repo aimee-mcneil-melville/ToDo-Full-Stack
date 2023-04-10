@@ -128,51 +128,18 @@ Across all apps there are some things we need to make sure are done when we try 
   <details style="padding-left: 2em">
     <summary>More about setting the <code>start</code> script</summary>
     
-    Dokku will use the `start` script (`npm run start`) to run your application and, unlike us, doesn't need the server restarting with changes. This is one reason we use a separate `npm run dev` script for working locally.
+    Dokku will use the `start` script (`npm run start`) to run your application.
+
+    > Reminder: If the `start` script in your package.json runs `ts-node`, make sure that `ts-node` appears once in the dependencies list ***and not*** in devDepedencies.
   </details>
 
 ---
 
 ## Databases
 
-If your app includes a database, read this.  Choose either Postgres or SQLite sections.
+If your app includes a database, read this.  We prefer to use a SQLite database since Postgres will take up another container on Dokku.  If you have a good reason to use Postgres, speak to one of your teachers.
 
-### 5: Option A: Using a postgres database
-- [ ] Setting up a postgres instance
-  <details style="padding-left: 2em">
-    <summary>How to set up the database</summary>
-
-    Many of our websites use a postgres database. So let's see how we can set that up.
-
-    Because our site won't really function until the database is available, we're going to use the `apps:create` command to initialise an app, and we'll attach a new database instance to it before we deploy a version of the app from git.
-
-    > Reminder: run these commands in the project's git repository
-
-    ```sh
-    # Create an empty application called "dreamfest"
-    dokku apps:create dreamfest
-    # Initialise a new postgres instance called "dreamfest-db"
-    dokku postgres:create dreamfest-db
-    # Attach the new database to the dreamfest app
-    dokku postgres:link dreamfest-db dreamfest
-    ```
-
-    When we ran `dokku apps:create` it should have added a remote called `dokku` so
-    to deploy we just:
-
-    ```sh
-    git push dokku
-    ```
-
-    If that remote wasn't created for whatever reason, we can do it manually:
-
-    ```sh
-    git remote add dokku dokku@devacademy.nz:dreamfest
-    ```
-
-  </details>
-
-### 5. Option B: Using a sqlite database
+### 5. Option A: Using a sqlite database
 - [ ] Setting up sqlite in production
   <details style="padding-left: 2em">
     <summary>How to set the database engine</summary>
@@ -190,15 +157,54 @@ If your app includes a database, read this.  Choose either Postgres or SQLite se
     ```
   </details>
 
-### 6. Procfile to migrate database
+### 5: Option B: Using a postgres database (speak to a teacher first)
+- [ ] Setting up a postgres instance
+  <details style="padding-left: 2em">
+    <summary>How to set up the database</summary>
 
-To run your database migrations on Dokku, make sure you have a `Procfile` in the root of your project with these contents.
+    Because our site won't really function until the database is available, we're going to use the `apps:create` command to initialise an app, and we'll attach a new database instance to it before we deploy a version of the app from git.
 
-#### Procfile
-```Procfile
-web: npm run start
-release: npm run knex migrate:latest
-```
+    > Reminder: run these commands in the project's git repository
+
+    ```sh
+    # Create an empty application called, eg: "alexc-dreamfest"
+    dokku apps:create my-name-my-app-name
+    # Initialise a new postgres instance called "alexc-dreamfest-db"
+    dokku postgres:create my-name-my-app-name-db
+    # Attach the new database to the dreamfest app
+    dokku postgres:link my-name-my-app-name-db my-name-my-app-name
+    ```
+
+    When we ran `dokku apps:create` it should have added a remote called `dokku` so
+    to deploy we just:
+
+    ```sh
+    git push dokku
+    ```
+
+    If that remote wasn't created for whatever reason, we can do it manually:
+
+    ```sh
+    git remote add dokku dokku@devacademy.nz:my-app-name
+    ```
+
+  </details>
+
+### 6. Procfile to migrate your database
+
+- [ ] Make sure you have a Procfile
+  <details style="padding-left: 2em">
+    <summary>Procfile details</summary>
+
+    To run your database migrations on Dokku, make sure you have a `Procfile` in the root of your project with these contents.
+
+    #### Procfile
+    ```Procfile
+    web: npm run start
+    release: npm run knex migrate:latest
+    ```
+
+  </details>
 
 ---
 ## .env files
@@ -239,6 +245,8 @@ We need to create and deploy our apps to see them live.
   <details style="padding-left: 2em">
     <summary>How to create an app</summary>
 
+    > Reminder: If you created an app during the optional Postgres database step, you can skip this step.
+
     In the git repo for your project run this command.  Use your corresponding app name, eg: "alexc-pupparazzi".
 
     Note that the name cannot include any underscores ('_').
@@ -246,11 +254,13 @@ We need to create and deploy our apps to see them live.
     ```sh
     dokku apps:create my-name-my-app-name
     ```
-    This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo. Run `git remote -v` in your terminal to see this.
+    This will create an app on Dokku from your terminal, and automatically add it as a remote in your local repo
 
+  </details>
 
-    **Trouble Shooting**
-
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary> 
+  
     If Dokku responds with the error below:
 
     ```sh
@@ -283,6 +293,22 @@ We need to create and deploy our apps to see them live.
     This is because the app name you used was already created by someone.  Make sure you use a unique app name, eg: 'alexc-pupparazzi'.
 
 
+    If you make a mistake or wish to remove one of your Dokku apps for any reason, run the command below:
+
+    ```sh
+    # To delete one of your apps
+    dokku apps:destroy app-name
+    ```
+
+    If your app was stopped for any reason, for example: the Dokku server was over-run with apps and a teacher stopped them all.  Then you may restart your app with the following commands:
+
+    ```sh
+    # List all apps to find your app name
+    dokku apps:list
+
+    # To start an app
+    dokku ps:start app-name
+    ```
 
   </details>
 
@@ -297,6 +323,7 @@ We need to create and deploy our apps to see them live.
 
     ```sh
     # Copy these lines separetly to run them one at a time
+    # Use your own app name of course
     dokku storage:ensure-directory my-name-my-app-name-storage
 
     dokku storage:mount /var/lib/dokku/data/storage/my-name-my-app-name-storage:/app/storage
@@ -308,13 +335,18 @@ We need to create and deploy our apps to see them live.
     dokku storage:list
     ```
 
-    **Trouble Shooting**
+  </details>
+
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary>    
 
     If you see more than one storage item in that list, remove the redundant ones like this:
 
     ```sh
     dokku storage:unmount name-of-redundant-app-storage:/app/storage
     ```
+
+  </details>
 
 ### Optional: SSL certificate
 
@@ -342,7 +374,10 @@ We need to create and deploy our apps to see them live.
     
     (Usually when we use `git push origin main`, it's actually short for `git push origin main:main`)
 
-    **Trouble Shooting**
+  </details>
+
+  <details style="padding-left: 2em">
+    <summary>Trouble Shooting</summary>
 
     If Dokku responds with the error below:
 
@@ -388,14 +423,18 @@ We need to create and deploy our apps to see them live.
 
 ### 11. Seeding your Database (for all DB tech)
 - [ ] Running your DB seeds.
+  <details style="padding-left: 2em">
+    <summary>Run those seeds</summary>
 
-  Your migrations will run as part of the release phase (in your Procfile) however you will need to run your seeds manually.
+    Your migrations will run as part of the release phase (in your Procfile) however you will need to run your seeds manually.
 
-  You can use `run` to run commands in your app container.
+    You can use `run` to run commands in your app container.
 
-  ```sh
-  dokku run npm run knex seed:run
-  ```
+    ```sh
+    dokku run npm run knex seed:run
+    ```
+
+  </details>
 
 ---
 
