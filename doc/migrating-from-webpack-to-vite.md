@@ -11,6 +11,7 @@ npm uninstall -w $PACKAGE \
     @babel/preset-typescript \
     babel-loader \
     babel-jest \
+    ts-jest \
     jest
 ```
 
