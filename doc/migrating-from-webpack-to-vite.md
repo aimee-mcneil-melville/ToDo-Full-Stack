@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w enspiraled \
+npm uninstall -w $PACKAGE \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
@@ -16,7 +16,7 @@ npm uninstall -w enspiraled \
 ```
 
 ```
-npm i -w $PACKAGE -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w enspiraled -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of shit from the package.json
@@ -68,6 +68,10 @@ export default defineConfig({
 })
 ```
 
+# move assets into the client folder
+
+css, images, favicons etc
+
 # move the index.html
 
 This will be in `./client/index.html` but we want it in
@@ -85,10 +89,10 @@ with:
 <script src="./client/index.tsx" type="module"></script>
 ```
 
-update the css ... somehow?
+update references to css and other assets
 
 # convert the tests
 
-This is a manual process
+This is a manual process, see [this post](https://github.com/enspiral-dev-academy/burying-the-lede/blob/main/posts/22-testing-changes.md) for differences
 
 # rewrite the solutions?
