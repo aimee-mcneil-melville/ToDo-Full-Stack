@@ -10,6 +10,6 @@ describe('<App />', () => {
   it('renders a board', () => {
     render(<App />)
     const board = screen.getByTestId('Board')
-    expect(board).toHaveTextContent('🌰🌽🌾🍍🍁🍍🌿🌽🌿🍀🌰🍇🌾🍇🍁🍀')
+    expect(board).toMatchSnapshot()
   })
 })
