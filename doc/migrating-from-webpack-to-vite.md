@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w $PACKAGE \
+npm uninstall -w enspiraled \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
