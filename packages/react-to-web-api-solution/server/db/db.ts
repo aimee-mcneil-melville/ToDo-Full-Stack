@@ -1,6 +1,6 @@
 import config from './knexfile'
 import knex from 'knex'
-import { Widget, WidgetData } from '../../models/Widget'
+import { Widget, NewWidget } from '../../models/Widget'
 
 type Environment = 'production' | 'test' | 'development'
 const environment = (process.env.NODE_ENV as Environment) || 'development'
@@ -11,7 +11,7 @@ export function getWidgets(db = connection): Promise<Widget[]> {
 }
 
 export function addWidget(
-  widget: WidgetData,
+  widget: NewWidget,
   db = connection
 ): Promise<number[]> {
   return db('widgets').insert(widget)
@@ -23,7 +23,7 @@ export function delWidget(id: number, db = connection): Promise<number[]> {
 
 export function updateWidget(
   id: number,
-  widget: WidgetData,
+  widget: NewWidget,
   db = connection
 ): Promise<number[]> {
   return db('widgets').where({ id }).update(widget)

@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { name, price, mfg, inStock, rating } = req.body
-  addWidget({ name, price, mfg, inStock, rating })
+  const { name, price, mfg, inStock } = req.body
+  addWidget({ name, price, mfg, inStock })
     .then(() => getWidgets())
     .then((widgets) => {
       res.json(widgets)
@@ -36,9 +36,9 @@ router.delete('/:id', (req, res) => {
 
 router.patch('/:id', (req, res) => {
   const { id } = req.params
-  const { name, price, mfg, inStock, rating } = req.body
-  updateWidget(Number(id), { name, price, mfg, inStock, rating })
-    .then(() => res.json({ id: Number(id), name, price, mfg, inStock, rating }))
+  const { name, price, mfg, inStock } = req.body
+  updateWidget(Number(id), { name, price, mfg, inStock })
+    .then(() => res.json({ id: Number(id), name, price, mfg, inStock }))
     .catch((err) => {
       res.status(500).send(err.message)
     })

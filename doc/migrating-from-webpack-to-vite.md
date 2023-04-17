@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w boilerplate-react \
+npm uninstall -w react-to-web-api \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
@@ -12,11 +12,12 @@ npm uninstall -w boilerplate-react \
     babel-loader \
     babel-jest \
     ts-jest \
-    jest
+    jest \
+    jest-environment-jsdom
 ```
 
 ```
-npm i -w boilerplate-react  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w react-to-web-api  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of shit from the package.json
