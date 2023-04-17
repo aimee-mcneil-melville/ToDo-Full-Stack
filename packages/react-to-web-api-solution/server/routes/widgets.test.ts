@@ -1,8 +1,9 @@
+import { describe, it, expect, vi } from 'vitest'
 import request from 'supertest'
 import server from '../server'
 import * as db from '../db/db'
 
-jest.mock('../db/db')
+vi.mock('../db/db')
 
 const testWidgets = [
   {
@@ -31,7 +32,7 @@ const testWidgets = [
   },
 ]
 
-const mockedGetWidgets = jest.mocked(db.getWidgets)
+const mockedGetWidgets = vi.mocked(db.getWidgets)
 
 describe('GET /api/v1/widgets', () => {
   it('responds with widgets array on getWidgets success', () => {
@@ -58,7 +59,7 @@ describe('GET /api/v1/widgets', () => {
 })
 
 describe('POST /api/v1/widgets', () => {
-  const mockedAddWidget = jest.mocked(db.addWidget)
+  const mockedAddWidget = vi.mocked(db.addWidget)
   it('responds with 200 on success and returns all of the widgets', () => {
     const newWidget = {
       name: 'test 4',
@@ -101,7 +102,7 @@ describe('POST /api/v1/widgets', () => {
 })
 
 describe('DELETE /api/v1/widgets/:id', () => {
-  const mockedDelWidget = jest.mocked(db.delWidget)
+  const mockedDelWidget = vi.mocked(db.delWidget)
   it('responds with 200 on success', () => {
     mockedDelWidget.mockResolvedValue([1])
     return request(server)
@@ -124,7 +125,7 @@ describe('DELETE /api/v1/widgets/:id', () => {
 })
 
 describe('PATCH /api/v1/widgets/:id', () => {
-  const mockedUpdateWidget = jest.mocked(db.updateWidget)
+  const mockedUpdateWidget = vi.mocked(db.updateWidget)
   it('responds with 200 on success and returns the updated widget', () => {
     const updatedWidget = {
       name: 'test 1',
