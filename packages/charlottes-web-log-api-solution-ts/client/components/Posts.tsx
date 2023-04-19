@@ -1,11 +1,11 @@
-import { IPost } from '../IPost'
+import { Post } from '../../models/post'
 import PostSummary from './PostSummary'
 
-interface IProps {
-  posts: IPost[]
+interface Props {
+  posts: Post[]
 }
 
-function Posts(props: IProps) {
+function Posts(props: Props) {
   return (
     <div className="posts">
       <h1 className="content-subhead">Posts</h1>

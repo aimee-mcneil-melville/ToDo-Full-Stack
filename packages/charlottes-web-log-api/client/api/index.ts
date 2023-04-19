@@ -5,82 +5,82 @@ import { Post, PostData } from '../../models/post'
 
 export function getPosts(): Promise<Post[]> {
   return request
-    .get('/v1/posts')
+    .get('/api/v1/posts')
     .then((res) => {
       res.body.forEach((post: string) => validateNoSnakeCase(post))
       return res.body
     })
-    .catch(errorHandler('GET', '/v1/posts'))
+    .catch(errorHandler('GET', '/api/v1/posts'))
 }
 
 export function addPost(post: PostData): Promise<Post> {
   return request
-    .post('/v1/posts')
+    .post('/api/v1/posts')
     .send(post)
     .then((res) => {
       validateNoSnakeCase(res.body)
       validatePostResponse('POST', 'v1/posts', res.body)
       return res.body
     })
-    .catch(errorHandler('POST', '/v1/posts'))
+    .catch(errorHandler('POST', '/api/v1/posts'))
 }
 
 export function updatePost(postId: string, post: PostData): Promise<Post> {
   return request
-    .patch(`/v1/posts/${postId}`)
+    .patch(`/api/v1/posts/${postId}`)
     .send(post)
     .then((res) => {
       validateNoSnakeCase(res.body)
       validatePostResponse('PATCH', 'v1/posts/:id', res.body)
       return res.body
     })
-    .catch(errorHandler('PATCH', '/v1/posts/:id'))
+    .catch(errorHandler('PATCH', '/api/v1/posts/:id'))
 }
 
 export function deletePost(postId: number): Promise<unknown> {
   return request
-    .del(`/v1/posts/${postId}`)
+    .del(`/api/v1/posts/${postId}`)
     .then((res) => res)
-    .catch(errorHandler('DELETE', '/v1/posts/:id'))
+    .catch(errorHandler('DELETE', '/api/v1/posts/:id'))
 }
 
 export function getCommentsByPostId(postId: number): Promise<Comment[]> {
   return request
-    .get(`/v1/posts/${postId}/comments`)
+    .get(`/api/v1/posts/${postId}/comments`)
     .then((res) => {
       res.body.forEach((comment: Comment) => validateNoSnakeCase(comment))
       return res.body
     })
-    .catch(errorHandler('GET', '/v1/posts/:id/comments'))
+    .catch(errorHandler('GET', '/api/v1/posts/:id/comments'))
 }
 
 export function addCommentByPostId(postId: number, comment: string) {
   return request
-    .post(`/v1/posts/${postId}/comments`)
+    .post(`/api/v1/posts/${postId}/comments`)
     .send({ comment })
     .then((res) => {
       validateNoSnakeCase(res.body)
       return res.body
     })
-    .catch(errorHandler('POST', '/v1/posts/:id/comments'))
+    .catch(errorHandler('POST', '/api/v1/posts/:id/comments'))
 }
 
 export function updateComment(id: number, comment: string): Promise<unknown> {
   return request
-    .patch(`/v1/comments/${id}`)
+    .patch(`/api/v1/comments/${id}`)
     .send({ comment })
     .then((res) => {
       validateNoSnakeCase(res.body)
       return res.body
     })
-    .catch(errorHandler('PATCH', '/v1/comments/:id'))
+    .catch(errorHandler('PATCH', '/api/v1/comments/:id'))
 }
 
 export function deleteComment(commentId: number): Promise<unknown> {
   return request
-    .del(`/v1/comments/${commentId}`)
+    .del(`/api/v1/comments/${commentId}`)
     .then((res) => res)
-    .catch(errorHandler('DELETE', '/v1/comments/:id'))
+    .catch(errorHandler('DELETE', '/api/v1/comments/:id'))
 }
 
 function errorHandler(method: string, route: string) {

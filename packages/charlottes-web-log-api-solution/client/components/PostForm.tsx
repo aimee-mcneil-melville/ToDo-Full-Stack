@@ -1,28 +1,36 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
+import { PostData } from '../../models/post'
 import { addPost, updatePost } from '../api'
+import type useFetchPosts from './hooks/useFetchPosts'
+type FetchPosts = ReturnType<typeof useFetchPosts>
 
-function PostForm(props) {
+interface Props {
+  variant?: 'edit' | 'new'
+  loading?: boolean
+}
+
+function PostForm(props: Props) {
   const navigate = useNavigate()
   const { id } = useParams()
-  const { posts, loading, fetchPosts } = useOutletContext()
-  const post = posts.find((post) => post.id === Number(id)) || {}
-  const [newPost, setNewPost] = useState({ title: '', text: '' })
+  const { posts, loading, fetchPosts } = useOutletContext<FetchPosts>()
+  const post = posts.find((post) => post.id === Number(id))
+  const [newPost, setNewPost] = useState<PostData>({ title: '', text: '' })
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
-    if (props.variant === 'edit' && !loading) {
-      setNewPost({ ...post })
+    if (props.variant === 'edit' && !loading && post) {
+      setNewPost({ title: post.title, text: post.text })
     }
-  }, [post])
+  }, [post, loading, props.variant])
 
-  function onSubmit(e) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!completePostData(newPost)) return null
-    if (props.variant === 'edit') {
-      return updatePost({ ...newPost, id }).then(() => {
+    if (props.variant === 'edit' && id) {
+      return updatePost(id, newPost).then(() => {
         fetchPosts()
-        navigate(`/posts/${newPost.id}`)
+        navigate(`/posts/${id}`)
       })
     } else if (props.variant === 'new') {
       return addPost(newPost).then((newPost) => {
@@ -32,7 +40,7 @@ function PostForm(props) {
     }
   }
 
-  function completePostData(post) {
+  function completePostData(post: PostData) {
     if (post.text && post.title) {
       return true
     } else {
@@ -41,7 +49,9 @@ function PostForm(props) {
     }
   }
 
-  function handleChange(e) {
+  function handleChange(
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) {
     setNewPost({ ...newPost, [e.target.name]: e.target.value })
   }
 

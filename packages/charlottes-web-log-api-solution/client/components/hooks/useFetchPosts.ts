@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react'
 import { getPosts } from '../../api'
+import { Post } from '../../../models/post'
+
+export type FetchPosts = (id: number) => void
+export type UseFetchPosts = ReturnType<typeof useFetchPosts>
 
 function useFetchPosts() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([] as Post[])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+
   function fetchPosts() {
     setLoading(true)
     setError('')
+
     getPosts()
       .then((posts) => {
         setPosts(posts)

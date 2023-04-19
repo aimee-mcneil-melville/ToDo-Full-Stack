@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
 import { getCommentsByPostId } from '../../api'
+import { Comment } from '../../../models/comment'
 
-function useFetchComments(id) {
-  const [comments, setComments] = useState([])
+export type FetchComments = (id: number) => void
+
+function useFetchComments(id: number) {
+  const [comments, setComments] = useState([] as Comment[])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  function fetchComments(id) {
+  function fetchComments(id: number) {
     setLoading(true)
     setError('')
     getCommentsByPostId(id)
