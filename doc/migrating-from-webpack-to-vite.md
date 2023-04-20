@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w charlottes-web-log-api \
+npm uninstall -w $PACKAGE \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
@@ -17,7 +17,7 @@ npm uninstall -w charlottes-web-log-api \
 ```
 
 ```
-npm i -w charlottes-web-log-api  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w $PACKAGE  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of shit from the package.json
