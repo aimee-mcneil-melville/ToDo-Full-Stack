@@ -112,7 +112,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ## Adding and deleting events
 
-### 5. Update the form
+### 5. Populate the drop-down in the form
 
 - [ ] Supply the "Add New Event" form with a list of all the locations to populate the drop-down
   <details style="padding-left: 2em">
