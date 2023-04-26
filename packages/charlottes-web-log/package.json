@@ -11,18 +11,6 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript",
-      "@babel/preset-env",
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ]
-  },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
