@@ -1,11 +1,11 @@
-const { join } = require('node:path')
+const path = require('path')
 
 module.exports = {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: join(__dirname, 'dev.sqlite3'),
+      filename: path.join(__dirname, 'dev.sqlite3'),
     },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
@@ -19,10 +19,10 @@ module.exports = {
       filename: ':memory:',
     },
     migrations: {
-      directory: join(__dirname, 'migrations'),
+      directory: path.join(__dirname, 'migrations'),
     },
     seeds: {
-      directory: join(__dirname, 'seeds'),
+      directory: path.join(__dirname, 'seeds'),
     },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),

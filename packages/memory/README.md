@@ -18,7 +18,7 @@ For this challenge, you'll be applying your understanding of React state and the
 
   </details>
 
-- [ ] Visit [http://localhost:3000](http://localhost:3000) in your browser
+- [ ] Visit [http://localhost:5173/](http://localhost:5173/) in your browser
 - [ ] Install React DevTools for your browser (if you haven't already)
 <details style="padding-left: 2em">
   <summary>More about React DevTools</summary>

@@ -1,4 +1,4 @@
-export interface WidgetData {
+export interface NewWidget {
   name: string
   price: number
   mfg: string
@@ -6,6 +6,11 @@ export interface WidgetData {
   rating: number
 }
 
-export interface Widget extends WidgetData {
+export interface Widget {
   id: number
+  name: string
+  price: number
+  mfg: string
+  inStock: number
+  rating: number
 }

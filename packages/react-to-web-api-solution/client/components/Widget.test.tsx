@@ -1,5 +1,6 @@
+// @vitest-environment jsdom
+import { describe, expect, it, vi } from 'vitest'
 import nock from 'nock'
-import '@testing-library/jest-dom'
 import {
   render,
   screen,
@@ -7,9 +8,7 @@ import {
   waitFor,
   within,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-
-import App from './App'
+import setupApp from '../test-utils'
 
 const testWidget = {
   id: 1,
@@ -30,14 +29,14 @@ describe('Widget', () => {
       .delete('/api/v1/widgets/1')
       .reply(200)
 
-    render(<App />)
+    const { user } = setupApp()
 
     const widget = await screen.findByRole('heading', { name: 'Test Widget' })
     expect(widget).toBeInTheDocument()
     expect(loadScope.isDone()).toBe(true)
 
     const deleteButton = screen.getByRole('button', { name: /Delete/i })
-    fireEvent.click(deleteButton)
+    await user.click(deleteButton)
 
     await waitFor(() => expect(widget).not.toBeInTheDocument())
 
@@ -48,12 +47,13 @@ describe('Widget', () => {
       .get('/api/v1/widgets/')
       .reply(200, [testWidget])
 
-    render(<App />)
+    const { user } = setupApp()
+
     const widget = await screen.findByRole('heading', { name: 'Test Widget' })
     expect(widget).toBeInTheDocument()
 
     const editButton = screen.getByRole('button', { name: /Edit/i })
-    fireEvent.click(editButton)
+    user.click(editButton)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
@@ -65,19 +65,19 @@ describe('Widget', () => {
       .get('/api/v1/widgets/')
       .reply(200, [testWidget])
 
-    render(<App />)
+    const { user } = setupApp()
 
     const widget = await screen.findByRole('heading', { name: 'Test Widget' })
     expect(widget).toBeInTheDocument()
 
     const editButton = screen.getByRole('button', { name: /Edit/i })
-    fireEvent.click(editButton)
+    await user.click(editButton)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
 
     const cancelButton = screen.getByRole('button', { name: /Cancel/i })
-    fireEvent.click(cancelButton)
+    await user.click(cancelButton)
 
     expect(form).not.toBeInTheDocument()
     expect(loadScope.isDone()).toBe(true)
@@ -91,7 +91,8 @@ describe('Widget', () => {
       .patch('/api/v1/widgets/1')
       .reply(200, { ...testWidget, name: 'Updated Widget' })
 
-    render(<App />)
+    const { user } = setupApp()
+
     const widget = await screen.findByRole('heading', { name: 'Test Widget' })
     expect(widget).toBeInTheDocument()
     expect(loadScope.isDone()).toBe(true)
@@ -100,16 +101,16 @@ describe('Widget', () => {
       'button',
       { name: /Edit/i }
     )
-    fireEvent.click(editButton)
+    await user.click(editButton)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
 
     const nameInput = screen.getByLabelText(/Name/i)
-    userEvent.type(nameInput, 'Updated Widget')
+    await user.type(nameInput, 'Updated Widget')
 
     const submitButton = screen.getByRole('button', { name: /Submit/i })
-    fireEvent.click(submitButton)
+    await user.click(submitButton)
 
     const updatedWidget = await screen.findByRole('heading', {
       name: 'Updated Widget',
@@ -118,6 +119,7 @@ describe('Widget', () => {
     expect(form).not.toBeInTheDocument()
     expect(updateScope.isDone()).toBe(true)
   })
+
   it('renders an error message when deleting the widget fails', async () => {
     const loadScope = nock('http://localhost')
       .get('/api/v1/widgets/')
@@ -127,18 +129,19 @@ describe('Widget', () => {
       .delete('/api/v1/widgets/1')
       .reply(500)
 
-    render(<App />)
+    const { user } = setupApp()
 
     await screen.findByRole('heading', { name: 'Test Widget' })
     expect(loadScope.isDone()).toBe(true)
 
     const deleteButton = await screen.getByRole('button', { name: /Delete/i })
-    fireEvent.click(deleteButton)
+    await user.click(deleteButton)
 
     const errorMessage = await screen.findByText(/Error/i)
     expect(errorMessage).toBeInTheDocument()
     expect(deleteScope.isDone()).toBe(true)
   })
+
   it('renders an error message when updating the widget fails', async () => {
     const loadScope = nock('http://localhost')
       .get('/api/v1/widgets/')
@@ -148,22 +151,22 @@ describe('Widget', () => {
       .patch('/api/v1/widgets/1')
       .reply(500)
 
-    render(<App />)
+    const { user } = setupApp()
 
     await screen.findByRole('heading', { name: 'Test Widget' })
     expect(loadScope.isDone()).toBe(true)
 
     const editButton = await screen.getByRole('button', { name: /Edit/i })
-    fireEvent.click(editButton)
+    await user.click(editButton)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
 
     const nameInput = screen.getByLabelText(/Name/i)
-    userEvent.type(nameInput, 'Updated Widget')
+    await user.type(nameInput, 'Updated Widget')
 
     const submitButton = screen.getByRole('button', { name: /Submit/i })
-    fireEvent.click(submitButton)
+    await user.click(submitButton)
 
     const errorMessage = await screen.findByText(/Error/i)
     expect(errorMessage).toBeInTheDocument()

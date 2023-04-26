@@ -1,26 +1,32 @@
-import knex from 'knex'
-import config from './knexfile'
-
-const testDb = knex(config.test)
-
+// @vitest-environment node
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
+import connection from './connection'
 import { addWidget, delWidget, getWidgets, updateWidget } from './db'
 
-beforeAll(() => testDb.migrate.latest())
-beforeEach(() => testDb.seed.run())
-afterAll(() => testDb.destroy())
+beforeAll(async () => {
+  await connection.migrate.latest()
+})
 
-describe('getWidgets', () => {
-  it('returns the correct widgets array', () => {
-    return getWidgets(testDb).then((widgets) => {
-      expect(widgets).toHaveLength(3)
-      expect(widgets[0]).toHaveProperty('mfg')
-      expect(widgets[1].inStock).toBe(8)
-    })
+beforeEach(async () => {
+  await connection.seed.run()
+})
+
+afterAll(async () => {
+  await connection.destroy()
+})
+
+describe.only('getWidgets', () => {
+  it('returns the correct widgets array', async () => {
+    const widgets = await getWidgets()
+
+    expect(widgets).toHaveLength(3)
+    expect(widgets[0]).toHaveProperty('mfg')
+    expect(widgets[1].inStock).toBe(8)
   })
 })
 
 describe('addWidget', () => {
-  it('adds a widget to the database', () => {
+  it('adds a widget to the database', async () => {
     const newWidget = {
       name: 'Test Widget',
       price: 99.99,
@@ -28,28 +34,26 @@ describe('addWidget', () => {
       inStock: 1,
       rating: 5,
     }
-    return addWidget(newWidget, testDb)
-      .then(() => getWidgets(testDb))
-      .then((widgets) => {
-        expect(widgets).toHaveLength(4)
-        expect(widgets[3]).toMatchObject(newWidget)
-      })
+
+    await addWidget(newWidget)
+    const widgets = await getWidgets()
+
+    expect(widgets).toHaveLength(4)
+    expect(widgets[3]).toMatchObject(newWidget)
   })
 })
 
 describe('delWidget', () => {
-  it('deletes a widget from the database', () => {
-    return delWidget(1, testDb)
-      .then(() => getWidgets(testDb))
-      .then((widgets) => {
-        expect(widgets).toHaveLength(2)
-        expect(widgets[0].id).not.toBe(1)
-      })
+  it('deletes a widget from the database', async () => {
+    await delWidget(1)
+    const widgets = await getWidgets()
+    expect(widgets).toHaveLength(2)
+    expect(widgets[0].id).not.toBe(1)
   })
 })
 
 describe('updateWidget', () => {
-  it('updates a widget in the database', () => {
+  it('updates a widget in the database', async () => {
     const updatedWidget = {
       name: 'Updated Widget',
       price: 99.99,
@@ -57,10 +61,9 @@ describe('updateWidget', () => {
       inStock: 1,
       rating: 5,
     }
-    return updateWidget(1, updatedWidget, testDb)
-      .then(() => getWidgets(testDb))
-      .then((widgets) => {
-        expect(widgets[0]).toMatchObject(updatedWidget)
-      })
+    await updateWidget(1, updatedWidget)
+    const widgets = await getWidgets()
+
+    expect(widgets[0]).toMatchObject(updatedWidget)
   })
 })

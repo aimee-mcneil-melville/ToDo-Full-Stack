@@ -1,28 +1,26 @@
-import knex from 'knex'
-
-import config from './knexfile'
+// @vitest-environment node
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
+import connection from './connection'
 import { getWidgets } from './db'
 
-const testDb = knex(config.test)
-
-beforeAll(() => {
-  return testDb.migrate.latest()
+beforeAll(async () => {
+  await connection.migrate.latest()
 })
 
-beforeEach(() => {
-  return testDb.seed.run()
+beforeEach(async () => {
+  await connection.seed.run()
 })
 
-afterAll(() => {
-  return testDb.destroy()
+afterAll(async () => {
+  await connection.destroy()
 })
 
 describe('getWidgets', () => {
-  it('returns the correct widgets array', () => {
-    return getWidgets(testDb).then((widgets) => {
-      expect(widgets).toHaveLength(3)
-      expect(widgets[0]).toHaveProperty('mfg')
-      expect(widgets[1].inStock).toBe(8)
-    })
+  it('returns the correct widgets array', async () => {
+    const widgets = await getWidgets()
+
+    expect(widgets).toHaveLength(3)
+    expect(widgets[0]).toHaveProperty('mfg')
+    expect(widgets[1].inStock).toBe(8)
   })
 })
