@@ -38,7 +38,7 @@ npm i -w $PACKAGE  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```json
 {
   "extends": "../tsconfig.json",
-  "include": [".", "../common"],
+  "include": [".", "../models"],
   "compilerOptions": {
     "outDir": "../dist",
     "noEmit": false
