@@ -92,6 +92,19 @@ with:
 
 update references to css and other assets
 
+# The server should only serve assets in production mode
+
+So `server.ts` should include something like this.
+
+```ts
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve(__dirname, '../index.html'))
+  })
+}
+```
+
 # convert the tests
 
 This is a manual process, see [this post](https://github.com/enspiral-dev-academy/burying-the-lede/blob/main/posts/22-testing-changes.md) for differences
