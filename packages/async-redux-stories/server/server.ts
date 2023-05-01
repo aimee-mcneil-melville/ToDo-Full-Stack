@@ -1,10 +1,15 @@
-import { join } from 'node:path'
+import * as Path from 'node:path'
 import express from 'express'
 
 import redditRoutes from './reddit'
 const server = express()
 
-server.use(express.static(join(__dirname, 'public')))
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve(__dirname, '../index.html'))
+  })
+}
 
 server.use('/api/v1/reddit', redditRoutes)
 

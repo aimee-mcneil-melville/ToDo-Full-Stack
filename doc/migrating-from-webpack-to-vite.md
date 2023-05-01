@@ -9,6 +9,7 @@ npm uninstall -w $PACKAGE \
     @babel/preset-env \
     @babel/preset-react  \
     @babel/preset-typescript \
+    eslint-plugin-jest \
     babel-loader \
     babel-jest \
     ts-jest \
