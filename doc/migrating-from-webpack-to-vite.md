@@ -20,7 +20,7 @@ npm uninstall -w $PACKAGE \
 npm i -w $PACKAGE  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
-# Remove a bunch of shit from the package.json
+# Remove a bunch of stuff from the package.json
 
 - [ ] remove the whole jest key
 - [ ] remove the whole babel key
