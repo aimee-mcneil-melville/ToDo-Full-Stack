@@ -93,20 +93,28 @@
 * Famous Programmers
   - [ ] Charles Babbage
   - [ ] Ada Lovelace
+  - [ ] Betty Holberton
   - [ ] Grace Hopper
   - [ ] Alan Turing
+  - [ ] Jean E. Sammet
+  - [ ] Sister Mary Kenneth Keller
   - [ ] Hedy Lamarr
   - [ ] Annie Easley
   - [ ] Margaret Hamilton
   - [ ] Mary Wilkes
   - [ ] Frank S Greene
+  - [ ] Frances Allen
   - [ ] Barbara Liskov
+  - [ ] Karen Sparck Jones
   - [ ] Ken Thompson
+  - [ ] Roberta Williams
   - [ ] Steve Wozniak
+  - [ ] Carol Shaw
   - [ ] Radia Perlman
   - [ ] Richard Stallman
   - [ ] Ross Ihaka
   - [ ] Mark Dean
+  - [ ] Sophie Wilson
   - [ ] Sandi Metz
   - [ ] Roy Fielding
   - [ ] Brendan Eich
