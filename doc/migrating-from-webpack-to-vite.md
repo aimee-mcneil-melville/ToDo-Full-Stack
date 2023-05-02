@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w $PACKAGE \
+npm uninstall -w redux-zoo \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
@@ -18,7 +18,7 @@ npm uninstall -w $PACKAGE \
 ```
 
 ```
-npm i -w $PACKAGE  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w redux-zoo  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of stuff from the package.json
