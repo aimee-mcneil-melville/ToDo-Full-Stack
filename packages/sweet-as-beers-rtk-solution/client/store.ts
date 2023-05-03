@@ -1,12 +1,11 @@
+// This file has already been configured
 import { configureStore } from '@reduxjs/toolkit'
-import activePage from './slices/activePage'
-import cart from './slices/cart'
+
+import rootReducer from './slices'
 
 export const store = configureStore({
-  reducer: {
-    activePage,
-    cart,
-  },
+  // You don't need to change anything here - add your reducers to client/slices/index.ts
+  reducer: rootReducer,
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
