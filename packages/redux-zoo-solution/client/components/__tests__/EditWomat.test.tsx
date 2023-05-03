@@ -1,14 +1,12 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import matchers from '@testing-library/jest-dom/matchers'
+import '../../test-setup'
 
 import { useAppDispatch } from '../../hooks'
 import EditWombat from '../EditWombat'
-
-expect.extend(matchers)
 
 vi.mock('../../hooks')
 
@@ -18,7 +16,6 @@ vi.mocked(useAppDispatch).mockReturnValue(fakeDispatch)
 
 beforeEach(() => {
   vi.clearAllMocks()
-  cleanup()
 })
 
 describe('EditWombat', () => {

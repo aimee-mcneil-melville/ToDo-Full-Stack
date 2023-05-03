@@ -5,6 +5,8 @@ import matchers, {
 } from '@testing-library/jest-dom/matchers'
 import userEvent from '@testing-library/user-event'
 import App from './components/App'
+import { Provider } from 'react-redux'
+import { initialiseStore } from './store'
 
 beforeEach(cleanup)
 expect.extend(matchers)
@@ -17,8 +19,16 @@ declare global {
       extends TestingLibraryMatchers<typeof expect.stringContaining, R> {}
   }
 }
+
 export default function setupApp() {
   const user = userEvent.setup()
-  const container = render(<App />)
+  const store = initialiseStore()
+
+  const container = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+
   return { user, ...container }
 }
