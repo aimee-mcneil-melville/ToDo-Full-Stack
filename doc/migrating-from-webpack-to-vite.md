@@ -3,7 +3,7 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w sweet-as-beers-rtk \
+npm uninstall -w redux-minimal \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
@@ -18,7 +18,7 @@ npm uninstall -w sweet-as-beers-rtk \
 ```
 
 ```
-npm i -w sweet-as-beers-rtk  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w redux-minimal -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of stuff from the package.json
