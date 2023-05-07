@@ -1,23 +1,18 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
+import type { ThunkDispatch, ThunkAction as BaseThunkAction } from 'redux-thunk'
+import thunk from 'redux-thunk'
 import { composeWithDevTools } from '@redux-devtools/extension'
-import type { ThunkAction as BaseThunkAction } from 'redux-thunk'
-import type { AnyAction } from 'redux'
-
 import reducers from './reducers'
+import type { Action } from './actions'
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
+
 export type RootState = ReturnType<typeof store.getState>
-export type ThunkAction<T = void> = BaseThunkAction<
-  Promise<T>,
+export type AppDispatch = ThunkDispatch<RootState, never, Action>
+export type ThunkAction = BaseThunkAction<
+  Promise<unknown>,
   RootState,
-  void,
-  AnyAction
+  never,
+  Action
 >
-
-const store = createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(thunkMiddleware))
-)
-
 export default store

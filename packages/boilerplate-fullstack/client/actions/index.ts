@@ -1,7 +1,10 @@
 import { getFruits } from '../apis/fruits'
 import type { ThunkAction } from '../store'
 
-export type Action = { type: typeof SET_FRUITS; payload: string[] }
+export type Action = {
+  type: typeof SET_FRUITS
+  payload: string[]
+}
 
 export const SET_FRUITS = 'SET_FRUITS'
 

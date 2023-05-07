@@ -3,12 +3,13 @@
 run these commands from the root, replace PACKAGE with the package you're migrating
 
 ```
-npm uninstall -w $PACKAGE \
+npm uninstall -w redux-minimal \
     webpack webpack-cli \
     @babel/core \
     @babel/preset-env \
     @babel/preset-react  \
     @babel/preset-typescript \
+    eslint-plugin-jest \
     babel-loader \
     babel-jest \
     ts-jest \
@@ -17,7 +18,7 @@ npm uninstall -w $PACKAGE \
 ```
 
 ```
-npm i -w $PACKAGE  -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
+npm i -w redux-minimal -D vite vitest @vitejs/plugin-react @vitest/coverage-c8
 ```
 
 # Remove a bunch of stuff from the package.json
@@ -91,6 +92,19 @@ with:
 ```
 
 update references to css and other assets
+
+# The server should only serve assets in production mode
+
+So `server.ts` should include something like this.
+
+```ts
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve(__dirname, '../index.html'))
+  })
+}
+```
 
 # convert the tests
 
