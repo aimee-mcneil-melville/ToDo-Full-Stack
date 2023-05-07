@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 
 import continents from '../../data/continents'
 
@@ -17,13 +17,13 @@ function Nav() {
       <ul>
         {list.map((continent) => (
           <li key={continent.name}>
-            <Link to={`/continent/${continent.name}`}>
+            <NavLink to={`/continent/${continent.name}`}>
               {continent.name === name ? (
                 <strong>{continent.name}</strong>
               ) : (
                 continent.name
               )}
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>

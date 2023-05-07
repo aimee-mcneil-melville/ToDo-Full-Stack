@@ -2,15 +2,16 @@ import { useParams, Link } from 'react-router-dom'
 import countries from '../../data/countries'
 
 export default function Country() {
-  const { code, name } = useParams()
+  const { code, id } = useParams()
   const country = countries.find((country) => country.code === code)
+  console.log(id);
 
   if (!country) {
     return <p>No country found with code: {code}</p>
   }
 
   return (
-    <section>
+    <section style={{ paddingLeft: '100px' }}>
       <h2>{country.name}</h2>
       <dl>
         <dt>
@@ -37,7 +38,7 @@ export default function Country() {
               if (!country) return <li key={code}>{code}</li>
               return (
                 <li key={code}>
-                  <Link to={`/continent/${name}/${code}`}>{country.name}</Link>
+                  <Link to={`/continent/${id}/${code}`}>{country.name}</Link>
                 </li>
               )
             })}

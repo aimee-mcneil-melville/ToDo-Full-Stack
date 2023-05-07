@@ -1,12 +1,10 @@
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 
-import App from './components/App'
+import { routes } from './routes'
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    <Router>
-      <App />
-    </Router>
+    <RouterProvider router={routes} />
   )
 })
