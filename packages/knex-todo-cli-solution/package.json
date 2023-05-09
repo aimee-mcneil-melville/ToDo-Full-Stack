@@ -21,7 +21,13 @@
     "sqlite3": "^5.1.2"
   },
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "eslint": "^8.10.0",

@@ -14,7 +14,13 @@
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "keywords": [],
   "author": "Dev Academy Aotearoa",
