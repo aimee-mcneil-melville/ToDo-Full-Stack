@@ -1,4 +1,4 @@
-import { OrderWithProducts } from '../../common/interfaces'
+import { OrderWithProducts } from '../../models/order'
 import OrderItem from './OrderItem'
 
 interface Props {

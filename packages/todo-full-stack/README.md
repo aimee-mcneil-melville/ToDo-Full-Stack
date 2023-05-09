@@ -5,17 +5,20 @@ For this challenge, we will build a todo app (which is a common way to practice 
 ## Setup
 
 ### 0. Cloning and installation
+
 - [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    You may also want to start a new branch
-    ```sh
-    cd todo-full-stack
-    npm i
-    git checkout -b <branchname>
-    npm run dev
-    ```
+  You may also want to start a new branch
+
+  ```sh
+  cd todo-full-stack
+  npm i
+  git checkout -b <branchname>
+  npm run dev
+  ```
+
   </details>
 
 - [ ] See the designs [here](http://localhost:3000/designs/)
@@ -23,8 +26,7 @@ For this challenge, we will build a todo app (which is a common way to practice 
 <details>
   <summary>More about using <code>npm</code> vs <code>npx</code></summary>
 
-  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-  - When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
 </details>
 
 ---
@@ -39,6 +41,7 @@ Here's a list of steps in case they are useful. You can build in any order you l
 - [ ] Build the migrations and seed data
 
 ### 2. Building the API
+
 - [ ] Build an API (back end route) to get the information from your database (list, add, update and delete)
 - [ ] Test your API with Insomnia
 
@@ -51,21 +54,25 @@ Here's a list of steps in case they are useful. You can build in any order you l
 - [ ] Build Redux reducers (the properties or keys of your state design are reducers, the values are hard-code static data as initialState)
 
 ## 4. Building the API client
+
 - [ ] Build API client in the front end
 
 ### 6. Building thunky actions
+
 - [ ] Build Thunk actions to get task from the API
 - [ ] Build Redux actions to save task data from the API (remove hard-code initialState)
 
---- 
+---
+
 ## Stretch
 
 <details>
   <summary>More about stretch challenges</summary>
 
-  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
+- Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
 
 </details>
 
 ---
+
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=todo-full-stack)

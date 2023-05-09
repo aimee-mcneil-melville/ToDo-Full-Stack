@@ -8,7 +8,7 @@ export default function WaitIndicator() {
     return (
       <img
         className="wait-indicator"
-        src="/animated-circle.gif"
+        src="../../images/animated-circle.gif"
         alt="loading..."
       />
     )

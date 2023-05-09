@@ -5,16 +5,14 @@
   "repository": "https://https://github.com/dev-academy-challenges/todo-full-stack",
   "main": "server/index.ts",
   "scripts": {
-    "build": "run-p build:client build:server",
-    "build:client": "npm run webpack -- --mode production",
-    "build:server": "npm run knex -- migrate:latest",
-    "start": "ts-node server/index.ts",
-    "test": "jest",
-    "test:watch": "jest --noStackTrace --watchAll",
+    "build": "run-s build:client build:server",
+    "build:client": "vite build",
+    "build:server": "tsc -p server/tsconfig.json",
+    "start": "node dist/server/index.js",
+    "test": "vitest",
     "dev": "run-p dev:client dev:server",
-    "dev:client": "npm run webpack -- --watch",
+    "dev:client": "vite",
     "dev:server": "nodemon server/index.ts",
-    "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -24,18 +22,6 @@
   ],
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript",
-      "@babel/preset-env",
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ]
-  },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
@@ -43,12 +29,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.15.6",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.17.12",
     "@devacademy/eslint-config": "^1.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4",
@@ -56,19 +36,17 @@
     "@types/express": "^4.17.14",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
-    "babel-loader": "^8.2.2",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@vitest/coverage-c8": "^0.31.0",
     "css-loader": "^6.3.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^29.2.2",
-    "mini-css-extract-plugin": "^2.3.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
@@ -79,14 +57,11 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.2",
     "sass": "^1.50.1",
-    "sass-loader": "12.6.0",
-    "style-loader": "^3.3.0",
     "supertest": "^6.2.2",
-    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "typescript": "~4.8.4",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "vite": "^4.3.5",
+    "vitest": "^0.31.0"
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
@@ -95,10 +70,6 @@
     "pg": "^8.8.0",
     "sqlite3": "^5.1.2",
     "superagent": "7.1.1"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
   },
   "prettier": {
     "semi": false,

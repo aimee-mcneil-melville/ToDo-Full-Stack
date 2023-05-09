@@ -1,4 +1,4 @@
-import { Product } from '../../common/interfaces'
+import { Product } from '../../models/product'
 
 interface Props {
   addToCart: (product: Product) => void

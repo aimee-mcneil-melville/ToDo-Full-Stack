@@ -8,7 +8,8 @@
     "dev": "nodemon server/index",
     "knex": "knex --knexfile server/db/knexfile.js",
     "test": "jest",
-    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint ."
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
