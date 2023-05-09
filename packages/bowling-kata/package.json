@@ -15,7 +15,13 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "eslint": "^8.10.0",

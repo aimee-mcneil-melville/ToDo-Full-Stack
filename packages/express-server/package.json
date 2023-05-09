@@ -20,7 +20,13 @@
     "url": "https://github.com/dev-academy-challenges/express-server/issues"
   },
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "dependencies": {
     "express": "^4.17.2",

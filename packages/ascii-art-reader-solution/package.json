@@ -7,6 +7,15 @@
     "start": "nodemon --ignore data/ index",
     "test": "jest --watch --noStackTrace"
   },
+  "eslintConfig": {
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/ascii-art-reader.git"

@@ -21,7 +21,13 @@
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "jest": {
     "testEnvironment": "node",

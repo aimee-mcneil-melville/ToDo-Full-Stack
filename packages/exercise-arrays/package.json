@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/exercise-arrays#readme",
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "eslint": "^8.10.0",

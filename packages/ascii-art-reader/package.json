@@ -20,7 +20,13 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/ascii-art-reader#readme",
   "eslintConfig": {
-    "extends": "@devacademy"
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "eslint": "^8.10.0",
