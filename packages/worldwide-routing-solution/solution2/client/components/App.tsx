@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
 
 // STRETCH: Use nested routes
-export default function Main() {
+export default function App() {
   return (
     <>
       <div className="title">
