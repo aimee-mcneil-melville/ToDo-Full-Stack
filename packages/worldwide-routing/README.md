@@ -22,35 +22,7 @@ This exercise asks you to build an experience to navigate continents and their c
 
 ## Requirements
 
-### 1. Preparing to use `<BrowserRouter>`
-
-- [ ] Add the configuration for `BrowserRouter` in our `server.ts` (this must go AFTER the line that sets up our `public` folder)
-  <details style="padding-left: 2em">
-    <summary>More about configuration</summary>
-
-  Our code will likely look like this:
-
-  ```js
-  server.get('*', (req, res) => {
-    res.sendFile(join(__dirname, 'public/index.html'))
-  })
-  ```
-
-  </details>
-
-- [ ] Set up `<BrowserRouter>` in our `client/index.tsx`
-  <details style="padding-left: 2em">
-    <summary>More about <code>&lt;BrowserRouter&gt;</code> on the client side</summary>
-
-  1. Import the router from `react-router-dom` at the top of the file
-     ```jsx
-     import { BrowserRouter as Router } from 'react-router-dom'
-     ```
-  2. Inside our `render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
-
-  **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
-
-### 2. Building a Home
+### 1. Building a Home
 
 Check out the `App.tsx` component. It currently contains the main header, a `<Home>` component containing user instructions, and the beginnings of the `<Nav>` component.
 
@@ -73,7 +45,7 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 
 ---
 
-### 3. Adding continents
+### 2. Adding continents
 
 - [ ] Add a route for `continents/:name` to our `App.tsx`. We will use it to show the selected continent and its respective image from `data/continents.ts` file
 
@@ -81,7 +53,7 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 
 - [ ] In the `<Continent>` component, also show a list of countries that the given continent contains
 
-### 4. Linking it up
+### 3. Linking it up
 
 - [ ] In the `<Nav>` component, use the `<Link>` component from `react-router-dom` to create links for the user to navigate to continents
 
@@ -97,7 +69,7 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 
 ---
 
-### 5. Adding countries
+### 4. Adding countries
 
 Now, we'll create a component for an individual country. This is the first time we'll need to use `data/countries.ts`.
 
@@ -126,7 +98,7 @@ Now, we'll create a component for an individual country. This is the first time 
 </details>
 <br />
 
-### 6. Adding neighbours
+### 5. Adding neighbours
 
 Currently each country just shows a string of its neighbours' country codes.
 
