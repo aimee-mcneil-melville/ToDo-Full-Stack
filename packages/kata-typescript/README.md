@@ -323,3 +323,7 @@ There's a lot more out there to see in TypeScript! And plenty of resources out t
 Some cool things if you're looking for even more TypeScript would be:
 - [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 - [Enums](https://www.typescriptlang.org/docs/handbook/enums.html)
+
+---
+
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=kata-typescript)
