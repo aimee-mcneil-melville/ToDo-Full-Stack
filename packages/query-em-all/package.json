@@ -1,51 +1,33 @@
 {
-  "name": "async-redux-stories",
+  "name": "query-em-all",
   "version": "0.1.2",
   "description": "React Redux with simple async action",
   "main": "server/index",
   "scripts": {
+    "start": "node dist/server/index.js",
     "dev": "run-p dev:server dev:client",
-    "dev:client": "npm run webpack -- --watch",
+    "dev:client": "vite",
     "dev:server": "nodemon server/index.ts",
-    "test": "jest --watchAll",
-    "start": "ts-node server/index.ts",
-    "webpack": "webpack --config client/webpack.config.js",
     "build": "npm run webpack",
+    "build:client": "vite build",
+    "build:server": "tsc -p server/tsconfig.json",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript",
-      "@babel/preset-env",
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ]
-  },
   "browserslist": "> 2%, not dead",
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
-      "bundle.js"
+      "dist"
     ]
   },
   "dependencies": {
-    "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.6",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.17.12",
     "@devacademy/eslint-config": "^1.8.0",
     "@types/express": "^4.17.14",
     "@types/jest": "^29.2.5",
@@ -53,7 +35,7 @@
     "@types/react-dom": "^18.0.7",
     "@types/superagent": "^4.1.15",
     "@types/supertest": "^2.0.12",
-    "babel-loader": "^8.2.2",
+    "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
@@ -63,8 +45,6 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^29.2.2",
-    "jest-environment-jsdom": "^29.3.1",
     "nock": "^12.0.3",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
@@ -72,15 +52,15 @@
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
+    "react-router-dom": "^6.11.1",
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.2",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
-    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "typescript": "~4.8.4",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "vite": "^4.3.6",
+    "vitest": "^0.31.0"
   },
   "prettier": {
     "semi": false,

@@ -1,9 +1,10 @@
 import request from 'superagent'
 import express from 'express'
+import { PokemonGeneration } from '../../models/pokemon'
 
 const router = express.Router()
 
-router.get('/pokemon/:generation', async (req, res) => {
+router.get('/generation/:generation', async (req, res) => {
   const generation = Number(req.params.generation)
 
   if (isNaN(generation) || generation < 1 || generation > 9) {
@@ -15,7 +16,17 @@ router.get('/pokemon/:generation', async (req, res) => {
       `https://pokeapi.co/api/v2/generation/${generation}`
     )
 
-    const pokemon = response.body.pokemon_species
+    const species = response.body.pokemon_species as {
+      name: string
+      url: string
+    }[]
+
+    const pokemon = species
+      .map((p) => ({
+        name: p.name,
+        id: Number(p.url.split('/')[6]),
+      }))
+      .sort((a, b) => Number(a.id) - Number(b.id))
     const region = response.body.main_region.name
     const name = response.body.name
 
@@ -23,7 +34,7 @@ router.get('/pokemon/:generation', async (req, res) => {
       pokemon,
       region,
       name,
-    })
+    } as PokemonGeneration)
   } catch (err) {
     if (err instanceof Error) {
       res.sendStatus(500).send(err.message)
@@ -33,7 +44,7 @@ router.get('/pokemon/:generation', async (req, res) => {
   }
 })
 
-router.get('/pokemon/:name', async (req, res) => {
+router.get('/:name', async (req, res) => {
   const name = req.params.name
 
   try {
@@ -50,3 +61,5 @@ router.get('/pokemon/:name', async (req, res) => {
     }
   }
 })
+
+export default router
