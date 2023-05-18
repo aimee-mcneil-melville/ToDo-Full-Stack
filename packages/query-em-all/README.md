@@ -122,7 +122,9 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 <details>
   <summary>More about stretch challenges</summary>
 
-  TODO
+  TODO: possible stretch challenges might include:
+    - moving `<PokemonList>` to `/generations/:generationId` and having `/` or `/search` be a dedicated search page
+    - adding a search bar to `<PokemonList>` that filters the list of Pokémon
 </details>
 
 ---
