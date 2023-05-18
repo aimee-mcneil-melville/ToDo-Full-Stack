@@ -7,7 +7,7 @@ export async function fetchAllPokemon(generation: number) {
     .then((res) => res.body as PartialPokemon[])
 }
 
-export async function fetchPokemon(name: string) {
+export async function fetchPokemonByName(name: string) {
   return request
     .get(`/api/v1/pokemon/${name}`)
     .then((res) => res.body as Pokemon)

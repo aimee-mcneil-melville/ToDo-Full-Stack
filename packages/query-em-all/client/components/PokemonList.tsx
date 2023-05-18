@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 export default function PokemonList() {
-  const pokemon = [
+  const pokemonList = [
     { id: 1, name: 'Bulbasaur' },
     { id: 2, name: 'Ivysaur' },
     { id: 3, name: 'Venusaur' },
@@ -9,9 +9,9 @@ export default function PokemonList() {
 
   return (
     <ul>
-      {pokemon.map((p) => (
+      {pokemonList.map((p) => (
         <li key={p.id}>
-          <Link to={`pokemon/${p.name}`}>{p.name}</Link>
+          <Link to={p.name}>{p.name}</Link>
         </li>
       ))}
     </ul>
