@@ -38,7 +38,7 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 
 - [ ] Create a new `QueryClient` instance and wrap the `<App>` component in a `<QueryClientProvider>` component, passing the `QueryClient` instance as a prop
 
- <details style="padding-left: 2em">
+  <details style="padding-left: 2em">
     <summary>Tip</summary>
 
     ```tsx
