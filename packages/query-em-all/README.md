@@ -88,7 +88,7 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 
 - [ ] As a user, if something goes wrong while fetching the list of Pokémon, I want to see an error state so that I know something went wrong
   <details style="padding-left: 2em">
-    <summary>More about specifying the subreddit</summary>
+    <summary>More about error states</summary>
  
     - `useQuery` returns an `isError` (true or false), and `error` properties that you can use to render an error state
 
