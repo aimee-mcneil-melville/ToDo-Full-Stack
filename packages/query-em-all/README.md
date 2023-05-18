@@ -24,7 +24,7 @@ Practice writing queries with React Query and displaying loading states, error s
   - `/` renders `<PokemonList>`, a list of hardcoded Pokémon
   - `/pokemon/:name` renders `<PokemonDetail>`, a single Pokémon (with lots more information), also hardcoded
 
-Visit [localhost:3000/](http://localhost:3000/) and [localhost:3000/pokemon/bulbasaur](http://localhost:3000/pokemon/bulbasaur) we will be replacing the hardcoded data with data from the API.
+Visit [localhost:3000/](http://localhost:3000/) and [localhost:3000/pokemon/bulbasaur](http://localhost:3000/pokemon/bulbasaur), Bulbasaur is currently our only resident Pokémon. We will be replacing the hardcoded data with data from the API.
 
 ### 2. Setting up React Query
 
@@ -38,7 +38,7 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 
 - [ ] Create a new `QueryClient` instance and wrap the `<App>` component in a `<QueryClientProvider>` component, passing the `QueryClient` instance as a prop
 
- <details> style="padding-left: 2em"
+ <details style="padding-left: 2em">
     <summary>Tip</summary>
 
     ```tsx
