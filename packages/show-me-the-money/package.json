@@ -101,7 +101,6 @@
   "dependencies": {
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "pg": "^8.8.0",
     "ts-node": "^10.9.1"
   },
   "browserslist": "> 2%, not dead"

@@ -67,7 +67,6 @@
     "@redux-devtools/extension": "^3.2.3",
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "pg": "^8.8.0",
     "sqlite3": "^5.1.2",
     "superagent": "7.1.1"
   },

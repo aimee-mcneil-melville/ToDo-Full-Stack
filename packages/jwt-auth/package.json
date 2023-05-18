@@ -19,7 +19,6 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
-
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [

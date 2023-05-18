@@ -9,7 +9,8 @@ const config: Record<string, Knex.Config> = {
       filename: path.join(__dirname, 'dev.sqlite3'),
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      afterCreate: (conn: any, cb: any) =>
+        conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
@@ -26,23 +27,20 @@ const config: Record<string, Knex.Config> = {
       directory: path.join(__dirname, 'seeds'),
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      afterCreate: (conn: any, cb: any) =>
+        conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
   production: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      filename: '/app/storage/prod.sqlite3',
     },
     pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: 'knex_migrations',
+      afterCreate: (conn: any, cb: any) =>
+        conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 }

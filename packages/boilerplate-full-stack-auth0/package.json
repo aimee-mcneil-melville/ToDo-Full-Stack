@@ -21,6 +21,18 @@
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-typescript",
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
+  },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
     "ignorePatterns": [
@@ -35,10 +47,16 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.3.0",
-    "pg": "^8.8.0",
     "superagent": "7.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
     "@devacademy/eslint-config": "^1.8.0",
     "@testing-library/react": "^13.4",
     "babel-loader": "^8.2.2",
@@ -46,6 +64,7 @@
     "dotenv": "^10.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",

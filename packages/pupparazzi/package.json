@@ -40,6 +40,7 @@
     "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
+    "@devacademy/eslint-config": "^1.8.0",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^5.16.5",
     "eslint": "^8.10.0",
@@ -53,8 +54,7 @@
     "jsdom": "^20.0.0",
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
-    "supertest": "^6.2.2",
-    "@devacademy/eslint-config": "^1.8.0"
+    "supertest": "^6.2.2"
   },
   "prettier": {
     "semi": false,
