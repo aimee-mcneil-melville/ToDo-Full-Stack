@@ -22,7 +22,6 @@ This repo is designed to provide space to code a fullstack app. It contains node
   <summary>More about using <code>npm</code> vs <code>npx</code></summary>
 
   - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-  - When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
 </details>
 
 ---
