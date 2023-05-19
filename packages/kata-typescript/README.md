@@ -4,7 +4,7 @@ This repo contains a collection of exercises to help you get a first introductio
 
 Technically, it's a collection of tests, but at the moment, all the tests are broken as the functions they call need to be implemented in TypeScript.
 
-Check out the video here for more of an intro: [[video]](https://youtu.be/gespcv4r1xU)
+Check out this video (from a previous cohort) for more of an intro: [[Kāhu TS video]](https://youtu.be/gespcv4r1xU)
 
 ## Setup / running this repo
 
