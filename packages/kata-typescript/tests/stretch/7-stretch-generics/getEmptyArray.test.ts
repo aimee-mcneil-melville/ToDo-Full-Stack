@@ -4,7 +4,6 @@ describe('getEmptyArray', () => {
   it('should return an array with no length', () => {
     const result = getEmptyArray()
     expect(Array.isArray(result)).toBe(true)
-    expect(result.length).toBe(0)
+    expect(result).toHaveLength(0)
   })
 })
-  

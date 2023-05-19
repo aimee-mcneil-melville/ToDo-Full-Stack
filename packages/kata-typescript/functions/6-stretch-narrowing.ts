@@ -4,8 +4,7 @@
 // if the item is a string, return the reversed string
 // if the item is a number, return the negative number
 // if the item is a boolean, return the opposite boolean
-export function getOpposite(): void {
-}
+export function getOpposite(): void {}
 
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-in-operator-narrowing
 
@@ -29,8 +28,7 @@ interface Improviser {
 // if the performer is a Musician, call play
 // if the performer is a Dancer, call dance
 // if the performer is an Improviser, call act
-export function nextAct(): void {
-}
+export function nextAct(): void {}
 
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
 
@@ -53,30 +51,25 @@ type Recycling = Paper | Glass | Metal
 export type Trash = Recycling | 'rubbish'
 
 // isMetal, isPaper, isGlass, isRecycling, and sortRecycling are all type guards
-// and should use the type predicate (in linked docs). 
+// and should use the type predicate (in linked docs).
 // They are functions that return a boolean value based on the type of the item passed in.
 
 // isMetal will be passed an item of Recycling
 // it should return true if the item is Metal
-export function isMetal(): void {
-}
+export function isMetal(): void {}
 
 // isPaper will be passed an item of Recycling
 // it should return true if the item is Paper
-export function isPaper(): void {
-}
+export function isPaper(): void {}
 
 // isGlass will be passed an item of Recycling
 // it should return true if the item is Glass
-export function isGlass(): void {
-}
+export function isGlass(): void {}
 
 // isRecycling will be passed an item of Trash
 // it should return false if the item is rubbish and true if it is Recycling
-export function isRecycling(item: Trash): void {
-}
+export function isRecycling(item: Trash): void {}
 
 // sortRecycling will be passed an array of Trash items
 // and should return an array of Recycling items only
-export function sortRecycling(): void {
-}
+export function sortRecycling(): void {}

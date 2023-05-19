@@ -19,6 +19,12 @@ describe('createUserObj', () => {
       role: 'user',
     }
 
-    expect(createUserObj('Hemi', 'hemi@hello.com', 'https://www.hello.com/hemi.jpg')).toEqual(expected)
+    const actual = createUserObj(
+      'Hemi',
+      'hemi@hello.com',
+      'https://www.hello.com/hemi.jpg'
+    )
+
+    expect(actual).toEqual(expected)
   })
 })

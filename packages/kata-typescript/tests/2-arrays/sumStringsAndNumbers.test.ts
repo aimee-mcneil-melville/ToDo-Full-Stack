@@ -1,4 +1,4 @@
-import { sumStringsAndNumbers } from "../../functions/2-arrays"
+import { sumStringsAndNumbers } from '../../functions/2-arrays'
 
 describe('sumStringsAndNumbers (UNION)', () => {
   it('returns a number', () => {

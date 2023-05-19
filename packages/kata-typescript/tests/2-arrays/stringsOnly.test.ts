@@ -1,4 +1,4 @@
-import { stringsOnly } from "../../functions/2-arrays"
+import { stringsOnly } from '../../functions/2-arrays'
 
 describe('stringsOnly (UNION)', () => {
   it('returns a new array', () => {
@@ -13,13 +13,13 @@ describe('stringsOnly (UNION)', () => {
     const arr = ['hello', null, 'world']
     const actual = stringsOnly(arr)
 
-    expect(actual.length).toBe(2)
+    expect(actual).toHaveLength(2)
     expect(actual).toEqual(['hello', 'world'])
 
     const arr2 = [null, null, null, null, null, null, null]
     const actual2 = stringsOnly(arr2)
 
-    expect(actual2.length).toBe(0)
+    expect(actual2).toHaveLength(0)
     expect(actual2).toEqual([])
   })
 })

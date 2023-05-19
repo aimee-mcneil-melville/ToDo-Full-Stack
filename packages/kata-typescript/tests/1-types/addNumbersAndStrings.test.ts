@@ -1,4 +1,4 @@
-import { addNumbersAndStrings } from "../../functions/1-types"
+import { addNumbersAndStrings } from '../../functions/1-types'
 
 describe('addNumbersAndStrings (PARAMS UNION TYPE)', () => {
   it('returns a number', () => {

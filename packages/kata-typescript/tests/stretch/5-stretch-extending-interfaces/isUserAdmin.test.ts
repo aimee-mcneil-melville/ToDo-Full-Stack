@@ -5,8 +5,8 @@ describe('isUserAdmin', () => {
     const user = {
       name: 'Josh',
       email: 'joshmygosh@hello.com',
-      role: 'admin' as 'admin',
-    }
+      role: 'admin',
+    } as const
 
     expect(isUserAdmin(user)).toBe(true)
   })
@@ -15,8 +15,8 @@ describe('isUserAdmin', () => {
     const user = {
       name: 'Josh',
       email: 'joshmygosh@hello.com',
-      role: 'user' as 'user',
-    }
+      role: 'user',
+    } as const
 
     expect(isUserAdmin(user)).toBe(false)
   })

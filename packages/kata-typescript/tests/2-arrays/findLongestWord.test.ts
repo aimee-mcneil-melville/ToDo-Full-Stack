@@ -1,4 +1,4 @@
-import { findLongestWord } from "../../functions/2-arrays"
+import { findLongestWord } from '../../functions/2-arrays'
 
 describe('findLongestWord', () => {
   it('returns a string', () => {
@@ -6,7 +6,14 @@ describe('findLongestWord', () => {
   })
 
   it('returns the longest word in the array', () => {
-    const words = ['bumbling', 'semiprecious', 'discombobulated', 'aaaaaa', 'giraffe', 'numbskull']
+    const words = [
+      'bumbling',
+      'semiprecious',
+      'discombobulated',
+      'aaaaaa',
+      'giraffe',
+      'numbskull',
+    ]
     expect(findLongestWord(words)).toBe('discombobulated')
   })
 })

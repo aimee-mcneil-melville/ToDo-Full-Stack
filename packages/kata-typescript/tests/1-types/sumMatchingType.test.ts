@@ -1,4 +1,4 @@
-import { sumMatchingType } from "../../functions/1-types"
+import { sumMatchingType } from '../../functions/1-types'
 
 describe('sumMatchingType (UNION TYPE PARAMS & RETURN)', () => {
   it('returns a number when both parameters are numbers', () => {

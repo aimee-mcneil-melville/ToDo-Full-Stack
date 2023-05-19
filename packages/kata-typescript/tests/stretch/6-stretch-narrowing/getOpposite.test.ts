@@ -15,4 +15,4 @@ describe('getOpposite', () => {
     expect(getOpposite(true)).toBe(false)
     expect(getOpposite(false)).toBe(true)
   })
-}) 
+})

@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-expect */
 import { getUser } from '../../functions/3-interfaces'
 
 const users = {
@@ -18,6 +19,9 @@ describe('getUser', () => {
 
   it('returns the correct user', () => {
     const actual = getUser(3, users)
+    expect.assertions(5)
+    expect(actual).not.toBeNull()
+
     if (actual !== null) {
       expect(actual.name).toBe('Minnie Mouse')
       expect(actual.verified).toBe(true)

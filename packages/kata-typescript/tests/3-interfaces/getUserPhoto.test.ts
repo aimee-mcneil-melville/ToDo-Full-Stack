@@ -1,4 +1,4 @@
-import { getUserPhoto } from "../../functions/3-interfaces"
+import { getUserPhoto } from '../../functions/3-interfaces'
 
 describe('getUserPhoto', () => {
   it('returns a string containing the users photo', () => {

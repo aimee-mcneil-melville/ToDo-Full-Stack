@@ -1,4 +1,4 @@
-import { verifyUser } from "../../functions/3-interfaces"
+import { verifyUser } from '../../functions/3-interfaces'
 
 describe('verifyUser', () => {
   const user = {

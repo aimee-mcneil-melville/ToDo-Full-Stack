@@ -1,4 +1,4 @@
-import { printGreeting } from "../../functions/1-types"
+import { printGreeting } from '../../functions/1-types'
 
 describe('printGreeting', () => {
   const spy = jest.spyOn(console, 'log').mockImplementation((str) => {})

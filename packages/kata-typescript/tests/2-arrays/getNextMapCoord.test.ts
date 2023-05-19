@@ -1,10 +1,10 @@
-import { getNextMapCoord } from "../../functions/2-arrays"
+import { getNextMapCoord } from '../../functions/2-arrays'
 
 describe('getNextMapCoord (TUPLE and ALIAS)', () => {
   it('returns a tuple of the correct length', () => {
     const actual = getNextMapCoord([1, 2], 'N')
     expect(Array.isArray(actual)).toBe(true)
-    expect(actual.length).toBe(2)
+    expect(actual).toHaveLength(2)
   })
 
   it('returns a tuple with the correct values', () => {

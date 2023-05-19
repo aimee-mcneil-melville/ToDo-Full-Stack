@@ -1,4 +1,4 @@
-import { getCar } from "../../../functions/5-stretch-extending-interfaces"
+import { getCar } from '../../../functions/5-stretch-extending-interfaces'
 
 describe('getCar', () => {
   it('getCars returns a Car', () => {

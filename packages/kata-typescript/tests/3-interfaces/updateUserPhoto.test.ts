@@ -1,4 +1,4 @@
-import { updateUserPhoto } from "../../functions/3-interfaces"
+import { updateUserPhoto } from '../../functions/3-interfaces'
 
 describe('updateUserPhoto', () => {
   const user = {
