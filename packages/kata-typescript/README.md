@@ -139,18 +139,24 @@ type MyString = string
 Type aliasing is commonly used with a union type, which is a type that can be one of a number of types, eg:
 
 ```ts
-type MyStringOrNumber = string | number
+type NumberOrNull = number | null
 ```
 
-These can both also be used in functions, eg:
+or when there are a few options for a type, eg:
 
 ```ts
+type Grade = "A" | "B" | "C" | "D" | "E" | "F"
+```
+
+Unions and type aliases can be used anywhere we might use a typical single type, such as in functions:
+
+```ts
+// union
 function log(value: string | number): void {
   console.log(value)
 }
 
-// or..
-
+// type alias
 type MyStringOrNumber = string | number
 
 function log(value: MyStringOrNumber): void {
@@ -199,6 +205,38 @@ Tuples are essentially an array of a fixed length. You often know the types of a
 ```ts
 const myTuple: [string, number] = ["hello", 1]
 const myOtherTuple: [string, number, boolean] = ["hello", 1, true]
+```
+  </details>
+
+### Type assertions
+
+  <details style="padding-left: 2em">
+    <summary>More about type assertions</summary>
+
+Type assertions are a way to help TypeScript infer the type of a variable. We can use the `as` keyword to help TypeScript get more specific, or more general, with a type.
+
+Without type assertions, TypeScript will infer the type of a variable based on the value assigned to it, eg:
+
+```ts
+  let oneOrNothing = 1
+  oneOrNothing = null     // this will cause an error, as we previously told TypeScript that oneOrNothing is a number
+
+  const nums = []
+  nums.push(1)
+  nums.push("hello")     // this should cause an error, but TypeScript has inferred the type of nums as any[]
+```
+
+Or we can use type assertions to help TypeScript infer the type of a variable, eg:
+
+```ts
+  type potentialNumber = number | null
+  
+  let oneOrNothing = 1 as potentialNumber
+  oneOrNothing = null           // this will now work as we have told TypeScript that oneOrNothing is a number OR null
+  
+  const nums = [] as number[]
+  nums.push(1)
+  nums.push("hello")            // this will now cause an error as it is not a number
 ```
   </details>
 
@@ -253,7 +291,7 @@ const debbie = {
   <details style="padding-left: 2em">
     <summary>More about records</summary>
 
-Sometimes we have data structures that are key-value pairs, but we don't know what keys we will have, even if we know the type of the values. We can define a record type, which is a collection of key-value pairs, eg:
+Sometimes we have data structures that are key-value pairs, but we don't know what specific keys they will have (though we do know the type of the values). For this we can use a record type, which is a description of key-value pairs, eg:
 
 ```ts
 let bowlingScores = {
@@ -263,7 +301,7 @@ let bowlingScores = {
   Ellie: 96 
 }
 ```
-would have the type: `Record<string, number>`.
+would have the type `Record<string, number>` as the keys are strings and the values are numbers.
 
 Or for a larger example:
 
