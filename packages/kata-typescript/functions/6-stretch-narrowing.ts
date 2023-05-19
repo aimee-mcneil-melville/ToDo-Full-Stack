@@ -72,7 +72,7 @@ export function isGlass(): void {
 }
 
 // isRecycling will be passed an item of Trash
-// it should return true if the item is Recycling
+// it should return false if the item is rubbish and true if it is Recycling
 export function isRecycling(item: Trash): void {
 }
 

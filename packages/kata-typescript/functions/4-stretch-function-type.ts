@@ -7,12 +7,13 @@ export function callsFunction(): void {
 }
 
 // wait should not return a value, but accepts a number and a function as parameters
-// instead it should call the function after the given number of milliseconds
+// it should call the function after the given number of milliseconds
 export function wait(): void {
 }
 
 // getIsTypeFn should accept a string as a parameter and return a function
-// the returned function should check the type of a given parameter matches the string from getIsTypeFn
+// the returned function should accept a value (of any type) and return a boolean if
+// the type of the value matches the string passed into getIsTypeFn
 export function getIsTypeFn(): void {
 }
 

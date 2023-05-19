@@ -18,14 +18,20 @@ export function fillArrayWithBees (): void {
 export function sortBySize(): void {
 }
 
+// ----------- ARRAYS WITH UNIONS -----------
+// Note: as we are dealing with multiple types in these arrays, TS may have a harder time inferring
+// the types you expect. E.g. if you choose use a built in method, you may need to add types to
+// the inner function to help TS infer the correct type.
+// You can also use type assertions to help TS infer the correct type.
+
 // sumStringsAndNumbers should return the sum of all the items in the array
 // regardless of whether they are strings or numbers
 export function sumStringsAndNumbers(): void {
 }
 
-// removeEmptySpots should return a new array with all the null values removed
-// Hint: use the filter method
-export function removeEmptySpots(): void {
+// stringsOnly will be passed an array of strings and some null values
+// it should return a new array with all the null values removed - strings only!
+export function stringsOnly(): void {
 }
 
 // ----------- TUPLES -----------

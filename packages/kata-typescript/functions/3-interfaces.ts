@@ -11,7 +11,7 @@ export function getAddress(): void {
 export function howManyFriends(): void {
 }
 
-// findThe Bat is passed an array of contacts 
+// findTheBat is passed an array of contacts
 // and returns the address of Batman
 // or null if there is no Batman
 export function findTheBat(): void {
@@ -42,8 +42,8 @@ export function getUserPhoto(): void {
 
 // ----------- RECORDS -----------
 
-// getUser is passed two arguments:
-// an id number, and an object with numbers as keys and Users as values
+// getUser is passed two arguments, an id number and
+// an object with numbers as keys and Users as values
 // getUser should return the user with the given id
 // or null if there is no user with that id
 export function getUser(): void {
