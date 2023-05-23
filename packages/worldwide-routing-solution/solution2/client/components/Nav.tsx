@@ -1,16 +1,16 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams } from 'react-router-dom'
 
-import continents from "../../data/continents";
+import continents from '../../data/continents'
 
 const list = Object.keys(continents).map((key) => ({
   ...continents[key],
   name: key,
-}));
+}))
 
 function Nav() {
   // STRETCH: Bold the selected continent in the `<Nav>` when viewing a continent or country
   // NB: this is better achieved with a NavLink
-  const { name } = useParams();
+  const { name } = useParams()
   return (
     <div>
       <h2>Nav</h2>
@@ -28,7 +28,7 @@ function Nav() {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default Nav;
+export default Nav
