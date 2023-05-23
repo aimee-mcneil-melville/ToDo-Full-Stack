@@ -26,12 +26,12 @@ This exercise asks you to build an experience to navigate continents and their c
 
 In this section we are going to be setting up the root route to display the `<App />`
 
-- [] In the `client/` folder, add a new file called `routes.tsx` 
-- [] Import `createBrowserRouter, createRoutesFromElements, Route` from `react-router-dom`
-- [] Now it's time to display the `<App />` component on the client-side root route `'/'` by using `createBrowserRouter, createRoutesFromElements, Route` (refer to the [docs](https://reactrouter.com/en/main/start/tutorial#jsx-routes) to learn more about Nested Routes)
-- [] Export the `routes` so that we can import it in `client/index.tsx`
-- [] Import the routes from client/routes.tsx into client/index.tsx.
-- [] In client/index.tsx , find the render() call and replace <App /> with <RouterProvider router={routes} />.
+- [ ] In the `client/` folder, add a new file called `routes.tsx` 
+- [ ] Import `createBrowserRouter, createRoutesFromElements, Route` from `react-router-dom`
+- [ ] Now it's time to display the `<App />` component on the client-side root route `'/'` by using `createBrowserRouter, createRoutesFromElements, Route` (refer to the [docs](https://reactrouter.com/en/main/start/tutorial#jsx-routes) to learn more about Nested Routes)
+- [ ] Export the `routes` so that we can import it in `client/index.tsx`
+- [ ] Import the routes from client/routes.tsx into client/index.tsx.
+- [ ] In client/index.tsx , find the render() call and replace <App /> with <RouterProvider router={routes} />.
 
 ### 2. Building a Home
 
