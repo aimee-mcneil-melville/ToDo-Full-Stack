@@ -1,4 +1,4 @@
-import { Link, NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 import continents from '../../data/continents'
 

@@ -22,33 +22,16 @@ This exercise asks you to build an experience to navigate continents and their c
 
 ## Requirements
 
-### 1. Preparing to use `<BrowserRouter>`
+### 1. Setting up Routes
 
-- [ ] Add the configuration for `BrowserRouter` in our `server.ts` (this must go AFTER the line that sets up our `public` folder)
-  <details style="padding-left: 2em">
-    <summary>More about configuration</summary>
+In this section we are going to be setting up the root route to display the `<App />`
 
-  Our code will likely look like this:
-
-  ```js
-  server.get('*', (req, res) => {
-    res.sendFile(join(__dirname, 'public/index.html'))
-  })
-  ```
-
-  </details>
-
-- [ ] Set up `<BrowserRouter>` in our `client/index.tsx`
-  <details style="padding-left: 2em">
-    <summary>More about <code>&lt;BrowserRouter&gt;</code> on the client side</summary>
-
-  1. Import the router from `react-router-dom` at the top of the file
-     ```jsx
-     import { BrowserRouter as Router } from 'react-router-dom'
-     ```
-  2. Inside our `render()` function, we can then wrap the `<App>` component in `<Router></Router>` tags
-
-  **Note:** We could place the router within the `<App>` instead, around specific components, but by wrapping it around `<App>` we will give everything access to the Router's functionality.
+- [ ] In the `client/` folder, add a new file called `routes.tsx` 
+- [ ] Import `createBrowserRouter, createRoutesFromElements, Route` from `react-router-dom`
+- [ ] Now it's time to display the `<App />` component on the client-side root route `'/'` by using `createBrowserRouter, createRoutesFromElements, Route` (refer to the [docs](https://reactrouter.com/en/main/start/tutorial#jsx-routes) to learn more about Nested Routes)
+- [ ] Export the `routes` so that we can import it in `client/index.tsx`
+- [ ] Import the routes from client/routes.tsx into client/index.tsx.
+- [ ] In client/index.tsx , find the render() call and replace <App /> with <RouterProvider router={routes} />.
 
 ### 2. Building a Home
 
@@ -60,7 +43,7 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 ![Web page showing a large title at top, a left navigation listing "Home" plus all seven continents as list items (but not links), and "Please select a continent from the nav list", in the centre](readme-images/release-1.png)
 
 </details>
-<br />
+<br />rea
 
 - [ ] Complete the `<Nav>` component so that it contains a list of continent names (like in the image) based on the information from `data/continents`. Add a list item for Home, too
   <details style="padding-left: 2em">
@@ -68,8 +51,6 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 
   We can use `Object.keys()` on what is exported from `data/continents.ts` to get a list of continent names.
   </details>
-
-- [ ] Import and then use the `<Routes>` and `<Route>` components from `react-router-dom`, so that the `<Home>` component will only show on `'/'`
 
 ---
 

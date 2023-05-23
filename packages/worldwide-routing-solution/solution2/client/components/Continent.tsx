@@ -11,16 +11,14 @@ export default function Continent() {
   }
 
   return (
-    <main className='main' >
+    <main className="main">
       <section>
         <h2>{id}</h2>
         <img src={`/images/${continent.image}`} alt={`name`} />
         <ul>
           {continent.countries.map((country) => (
             <li key={country.code}>
-              <Link to={`${country.code}`}>
-                {country.name}
-              </Link>
+              <Link to={`${country.code}`}>{country.name}</Link>
             </li>
           ))}
         </ul>
