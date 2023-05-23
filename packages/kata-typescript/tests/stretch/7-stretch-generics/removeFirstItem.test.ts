@@ -8,7 +8,7 @@ describe('removeFirstItem', () => {
 
   it('should alter the array so the item is no longer present', () => {
     const arr = [1, 2, 3]
-    expect(removeFirstItem(arr)).toEqual(1)
+    expect(removeFirstItem(arr)).toBe(1)
     expect(arr).toEqual([2, 3])
   })
 

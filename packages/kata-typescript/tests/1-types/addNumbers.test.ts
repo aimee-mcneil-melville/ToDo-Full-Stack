@@ -1,4 +1,4 @@
-import { addNumbers } from "../../functions/1-types"
+import { addNumbers } from '../../functions/1-types'
 
 describe('addNumbers', () => {
   it('returns a number', () => {

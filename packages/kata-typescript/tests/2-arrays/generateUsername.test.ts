@@ -1,4 +1,4 @@
-import { generateUsername } from "../../functions/2-arrays"
+import { generateUsername } from '../../functions/2-arrays'
 
 describe('generateUsername (TUPLE)', () => {
   it('returns a string', () => {

@@ -1,4 +1,4 @@
-import { generateNewUser } from "../../functions/3-interfaces"
+import { generateNewUser } from '../../functions/3-interfaces'
 
 describe('generateNewUser', () => {
   it('returns an object', () => {

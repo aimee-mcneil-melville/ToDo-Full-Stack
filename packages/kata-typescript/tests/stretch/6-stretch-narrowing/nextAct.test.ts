@@ -5,7 +5,7 @@ describe('nextAct', () => {
     const musician = {
       instrument: 'saxophone',
       style: 'jazz',
-      play: jest.fn()
+      play: jest.fn(),
     }
 
     nextAct(musician)
@@ -15,7 +15,7 @@ describe('nextAct', () => {
   it('should call the dance method on a Dancer', () => {
     const dancer = {
       style: 'ballet',
-      dance: jest.fn()
+      dance: jest.fn(),
     }
 
     nextAct(dancer)
@@ -25,7 +25,7 @@ describe('nextAct', () => {
   it('should call the act method on an Improviser', () => {
     const improviser = {
       funny: true,
-      act: jest.fn()
+      act: jest.fn(),
     }
 
     nextAct(improviser)

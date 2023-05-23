@@ -1,4 +1,4 @@
-import { getNextNum } from "../../functions/2-arrays"
+import { getNextNum } from '../../functions/2-arrays'
 
 describe('getNextNum', () => {
   it('returns a number', () => {

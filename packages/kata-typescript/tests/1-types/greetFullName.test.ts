@@ -1,4 +1,4 @@
-import { greetFullName } from "../../functions/1-types"
+import { greetFullName } from '../../functions/1-types'
 
 describe('greetFullName (OPTIONAL PARAMETER)', () => {
   it('returns a string', () => {
@@ -11,7 +11,11 @@ describe('greetFullName (OPTIONAL PARAMETER)', () => {
   })
 
   it('return contains the full name (including middle)', () => {
-    expect(greetFullName('first', 'last', 'middle')).toBe('Hello first middle last')
-    expect(greetFullName('Bruce', 'Wayne', 'Thomas')).toBe('Hello Bruce Thomas Wayne')
+    expect(greetFullName('first', 'last', 'middle')).toBe(
+      'Hello first middle last'
+    )
+    expect(greetFullName('Bruce', 'Wayne', 'Thomas')).toBe(
+      'Hello Bruce Thomas Wayne'
+    )
   })
 })

@@ -1,4 +1,4 @@
-import { fizzbuzz } from "../../functions/1-types"
+import { fizzbuzz } from '../../functions/1-types'
 
 describe('fizzbuzz (UNION RETURN TYPE)', () => {
   it('returns a string when the parameter is divisible by 3 and/or 5', () => {

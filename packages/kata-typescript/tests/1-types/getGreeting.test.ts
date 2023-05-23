@@ -1,4 +1,4 @@
-import { getGreeting } from "../../functions/1-types"
+import { getGreeting } from '../../functions/1-types'
 
 describe('getGreeting', () => {
   it('returns a string', () => {

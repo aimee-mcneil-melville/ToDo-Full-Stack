@@ -1,4 +1,4 @@
-import { getFullName } from "../../functions/1-types"
+import { getFullName } from '../../functions/1-types'
 
 describe('getFullName', () => {
   it('returns a string', () => {

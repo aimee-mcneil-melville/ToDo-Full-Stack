@@ -6,11 +6,11 @@ describe('getArrayOfZeros', () => {
   })
 
   it('should return an array of the specified length', () => {
-    expect(getArrayOfZeros(3).length).toBe(3)
+    expect(getArrayOfZeros(3)).toHaveLength(3)
   })
 
   it('should return an empty array if the number is less than 1', () => {
-    expect(getArrayOfZeros(-3).length).toBe(0)
+    expect(getArrayOfZeros(-3)).toHaveLength(0)
   })
 
   it('should return an array of zeros', () => {

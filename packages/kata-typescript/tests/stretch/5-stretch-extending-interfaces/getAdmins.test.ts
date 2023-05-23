@@ -1,14 +1,14 @@
 import { getAdmins } from '../../../functions/5-stretch-extending-interfaces'
 
-describe('getAdmins', () => {  
+describe('getAdmins', () => {
   it('returns an array of admins', () => {
     const users = [
-      { name: 'Hemi', email: 'hemi@hello.com', role: 'user' as 'user' },
-      { name: 'Marama', email: 'marama@hello.com', role: 'admin' as 'admin' },
-      { name: 'Lucy', email: 'luckyducky@hello.com', role: 'user' as 'user' },
-      { name: 'Josh', email: 'joshmygosh@hello.com', role: 'admin' as 'admin' },
+      { name: 'Hemi', email: 'hemi@hello.com', role: 'user' as const },
+      { name: 'Marama', email: 'marama@hello.com', role: 'admin' as const },
+      { name: 'Lucy', email: 'luckyducky@hello.com', role: 'user' as const },
+      { name: 'Josh', email: 'joshmygosh@hello.com', role: 'admin' as const },
     ]
-    
+
     const actual = getAdmins(users)
 
     expect(Array.isArray(actual)).toBe(true)
@@ -19,10 +19,10 @@ describe('getAdmins', () => {
 
   it('returns an empty array if there are no admins', () => {
     const users = [
-      { name: 'Hemi', email: 'hemi@hello.com', role: 'user' as 'user' },
-      { name: 'Marama', email: 'marama@hello.com', role: 'user' as 'user' },
-      { name: 'Lucy', email: 'luckyducky@hello.com', role: 'user' as 'user' },
-      { name: 'Josh', email: 'joshmygosh@hello.com', role: 'user' as 'user' },
+      { name: 'Hemi', email: 'hemi@hello.com', role: 'user' as const },
+      { name: 'Marama', email: 'marama@hello.com', role: 'user' as const },
+      { name: 'Lucy', email: 'luckyducky@hello.com', role: 'user' as const },
+      { name: 'Josh', email: 'joshmygosh@hello.com', role: 'user' as const },
     ]
 
     const actual = getAdmins(users)

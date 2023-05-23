@@ -1,4 +1,4 @@
-import { getIsTypeFn } from "../../../functions/4-stretch-function-type"
+import { getIsTypeFn } from '../../../functions/4-stretch-function-type'
 
 describe('getIsTypeFn', () => {
   it('returns a function', () => {

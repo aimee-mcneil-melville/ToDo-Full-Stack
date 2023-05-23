@@ -6,8 +6,8 @@ describe('upgradeToAdmin', () => {
       name: 'Lucy',
       email: 'luckyducky@hello.com',
       picture: 'https://www.hello.com/luckyducky.jpg',
-      role: 'user' as 'user',
-    }
+      role: 'user',
+    } as const
 
     const actual = upgradeToAdmin(user)
 

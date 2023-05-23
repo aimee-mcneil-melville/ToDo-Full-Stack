@@ -1,4 +1,4 @@
-import { getLastSongPlayed } from "../../functions/2-arrays"
+import { getLastSongPlayed } from '../../functions/2-arrays'
 
 describe('getLastSongPlayed', () => {
   it('returns a string', () => {
@@ -6,7 +6,13 @@ describe('getLastSongPlayed', () => {
   })
 
   it('returns the last item in the array', () => {
-    const songs = ['Flowers by Miley Cyrus', 'Resolution by Matt Corby', 'Green and Gold by Lianne La Havas', 'The Way Things Were by Isaac Waddington', 'Breezeblocks by Alt-j']
+    const songs = [
+      'Flowers by Miley Cyrus',
+      'Resolution by Matt Corby',
+      'Green and Gold by Lianne La Havas',
+      'The Way Things Were by Isaac Waddington',
+      'Breezeblocks by Alt-j',
+    ]
     expect(getLastSongPlayed(songs)).toBe('Breezeblocks by Alt-j')
   })
 })

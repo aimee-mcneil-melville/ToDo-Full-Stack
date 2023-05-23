@@ -4,7 +4,7 @@ describe('isRecycling', () => {
   it('should return true if the item is glass', () => {
     const item = {
       colour: 'green',
-      melt: jest.fn()
+      melt: jest.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)
@@ -13,7 +13,7 @@ describe('isRecycling', () => {
   it('should return true if the item is paper', () => {
     const item = {
       density: 'heavy',
-      compost: jest.fn()
+      compost: jest.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)
@@ -22,7 +22,7 @@ describe('isRecycling', () => {
   it('should return true if the item is metal', () => {
     const item = {
       type: 'aluminum',
-      magnetize: jest.fn()
+      magnetize: jest.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)

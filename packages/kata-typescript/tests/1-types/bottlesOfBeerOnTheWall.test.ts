@@ -1,4 +1,4 @@
-import { bottlesOfBeerOnTheWall } from "../../functions/1-types" 
+import { bottlesOfBeerOnTheWall } from '../../functions/1-types'
 
 describe('bottlesOfBeerOnTheWall', () => {
   it('returns a string', () => {
@@ -11,6 +11,8 @@ describe('bottlesOfBeerOnTheWall', () => {
   })
 
   it('returns "No more bottles of beer on the wall" when the number of bottles is 0', () => {
-    expect(bottlesOfBeerOnTheWall(0)).toBe('No more bottles of beer on the wall')
+    expect(bottlesOfBeerOnTheWall(0)).toBe(
+      'No more bottles of beer on the wall'
+    )
   })
 })
