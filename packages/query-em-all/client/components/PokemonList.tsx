@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom'
 
 export default function PokemonList() {
-  const pokemonList = [
-    { id: 1, name: 'Bulbasaur' },
-    { id: 2, name: 'Ivysaur' },
-    { id: 3, name: 'Venusaur' },
-  ]
+  const generation = {
+    name: 'generation-i',
+    region: 'Kanto',
+    pokemon: [{ id: 1, name: 'Bulbasaur' }],
+  }
 
   return (
-    <ul>
-      {pokemonList.map((p) => (
-        <li key={p.id}>
-          <Link to={p.name}>{p.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2>Pokémon in {generation.region}:</h2>
+      <ul>
+        {generation.pokemon.map((p) => (
+          <li key={p.id}>
+            <Link to={`pokemon/${p.name.toLowerCase()}`}>{p.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }

@@ -1,6 +1,6 @@
 import request from 'superagent'
 import express from 'express'
-import { PokemonGeneration } from '../../models/pokemon'
+import { Pokemon, PokemonGeneration } from '../../models/pokemon'
 
 const router = express.Router()
 
@@ -30,11 +30,17 @@ router.get('/generation/:generation', async (req, res) => {
     const region = response.body.main_region.name
     const name = response.body.name
 
+    type Response = {
+      generation: PokemonGeneration
+    }
+
     return res.json({
-      pokemon,
-      region,
-      name,
-    } as PokemonGeneration)
+      generation: {
+        pokemon,
+        region,
+        name,
+      },
+    } as Response)
   } catch (err) {
     if (err instanceof Error) {
       res.status(500).json({ message: err.message })
@@ -52,7 +58,11 @@ router.get('/:name', async (req, res) => {
       `https://pokeapi.co/api/v2/pokemon/${name}`
     )
 
-    return res.json(response.body)
+    type Response = {
+      pokemon: Pokemon
+    }
+
+    return res.json({ pokemon: response.body } as Response)
   } catch (err) {
     if (err instanceof Error) {
       res.status(500).json({ message: err.message })

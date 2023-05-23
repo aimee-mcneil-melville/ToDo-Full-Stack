@@ -24,7 +24,7 @@ Practice writing queries with React Query and displaying loading states, error s
   - `/` renders `<PokemonList>`, a list of hardcoded Pokémon
   - `/pokemon/:name` renders `<PokemonDetail>`, a single Pokémon (with lots more information), also hardcoded
 
-Visit [localhost:3000/](http://localhost:3000/) and [localhost:3000/pokemon/bulbasaur](http://localhost:3000/pokemon/bulbasaur), Bulbasaur is currently our only resident Pokémon. We will be replacing the hardcoded data with data from the API.
+Visit [localhost:5173/](http://localhost:5173/) and [localhost:5173/pokemon/bulbasaur](http://localhost:5173/pokemon/bulbasaur), Bulbasaur is currently our only resident Pokémon. We will be replacing the hardcoded data with data from the API.
 
 ### 2. Setting up React Query
 
@@ -64,12 +64,12 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 ### 1. Fetching a list of Pokémon from the API
 - [ ] As a user, I want to see a list of the first generation of Pokémon so that I can see what Pokémon there are
 
-  - In `<PokemonList>` use `useQuery` and `fetchAllPokemon` to render a list of Pokémon (just the names)
+  - In `<PokemonList>` use `useQuery` and `fetchPokemonGeneration` to render a list of Pokémon (just the names)
   <details style="padding-left: 2em">
     <summary>More about fetching Pokémon</summary>
     
-    - `fetchAllPokemon` takes a `generation` parameter, which is a number between 1 and 9, in this case, we want to fetch the first generation of Pokémon, so we can pass `1`
-    - `useQuery` takes a key (a string) and a function that returns a promise (`fetchAllPokemon`, in this case) and returns an object with a `data` property, which will eventually contain data returned by the promise
+    - `fetchPokemonGeneration` takes a `generation` parameter, which is a number between 1 and 9, in this case, we want to fetch the first generation of Pokémon, so we can pass `1`
+    - `useQuery` takes a key (a string) and a function that returns a promise (`fetchPokemonGeneration`, in this case) and returns an object with a `data` property, which will eventually contain data returned by the promise
 
     Read more about [keys](https://tanstack.com/query/latest/docs/react/guides/query-keys) and [queries](https://tanstack.com/query/latest/docs/react/guides/queries) in the [React Query docs](https://tanstack.com/query/latest/docs/react).
   </details>
