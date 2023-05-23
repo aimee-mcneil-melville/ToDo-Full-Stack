@@ -255,7 +255,7 @@ interface Person {
 
 const mike = {
   name: 'Michael',
-  age: 35
+  age: 35,
 }
 ```
 > Note that the name of the interface is capitalised.
@@ -275,15 +275,17 @@ interface Person {
 }
 
 const mike = {
-  name: 'Michael'
+  name: 'Michael',
 }
 
 const debbie = {
   name: 'Deborah',
-  age: 32
+  age: 32,
 }
 ```
-
+  
+Do note however that it's not a good idea to make all keys optional when using interfaces in TypeScript. Mandatory properties help to catch errors early and makes our code safer (aka the reason we're using TS!). So avoid making keys optional unless you have a specific reason for it.
+    
   </details>
 
 ### Records
@@ -297,8 +299,8 @@ Sometimes we have data structures that are key-value pairs, but we don't know wh
 let bowlingScores = {
   Michael: 10,
   Deborah: 20,
-  James: 30
-  Ellie: 96 
+  James: 30,
+  Ellie: 96,
 }
 ```
 would have the type `Record<string, number>` as the keys are strings and the values are numbers.
@@ -306,7 +308,7 @@ would have the type `Record<string, number>` as the keys are strings and the val
 Or for a larger example:
 
 ```ts
-Interface Puppy {
+interface Puppy {
   id: number
   name: string
   breed: string
@@ -319,22 +321,22 @@ pups = {
   Deborah: [
     {
       id: 1,
-      name: 'Bruno'
+      name: 'Bruno',
       breed: 'Labrador',
     },
     {
       id: 2,
-      name: 'Lola'
-      breed: 'Poodle',
-    }
-  ]
+      name: 'Zelda',
+      breed: 'Golden Retriever',
+    },
+  ],
   Michael: [
     {
       id: 2,
-      name: 'Lola'
+      name: 'Lola',
       breed: 'Poodle',
-    }
-  ]
+    },
+  ],
 }
 
 ```
