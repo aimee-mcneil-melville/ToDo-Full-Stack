@@ -191,7 +191,7 @@ Writing programs for the terminal will be a new experience for some. Our advice 
 
   const choice = {
     name: 'choice',
-    hidden: true,
+    hidden: false,
     message: 'Make your choice'
   }
 

@@ -16,6 +16,7 @@ interface UserData {
   contact_details: string
   hash?: string
 }
+
 interface Url {
   baseUrl: string
 }

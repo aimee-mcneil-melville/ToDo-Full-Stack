@@ -47,7 +47,6 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.3.0",
-    "pg": "^8.8.0",
     "superagent": "7.1.1"
   },
   "devDependencies": {

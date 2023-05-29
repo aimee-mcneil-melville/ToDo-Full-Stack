@@ -1,4 +1,5 @@
-import { Action, SET_FRUITS } from '../actions'
+import { SET_FRUITS } from '../actions'
+import type { Action } from '../actions'
 
 const initialState = [] as string[]
 

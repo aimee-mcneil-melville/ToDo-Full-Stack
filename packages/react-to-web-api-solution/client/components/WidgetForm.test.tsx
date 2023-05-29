@@ -1,9 +1,8 @@
+// @vitest-environment jsdom
+import { describe, expect, it } from 'vitest'
 import nock from 'nock'
-import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-
-import App from './App'
+import { render, screen, waitFor } from '@testing-library/react'
+import setupApp from '../test-utils'
 
 const testWidget = {
   id: 1,
@@ -24,10 +23,9 @@ describe('WidgetForm', () => {
       .post('/api/v1/widgets/')
       .reply(200, [testWidget])
 
-    render(<App />)
-
+    const { user } = setupApp()
     const button = await screen.findByRole('button', { name: /Add Widget/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
@@ -39,14 +37,14 @@ describe('WidgetForm', () => {
     const inStockInput = screen.getByLabelText(/In stock/i)
     const ratingInput = screen.getByLabelText(/Rating/i)
 
-    userEvent.type(nameInput, 'Test Widget')
-    userEvent.type(priceInput, '10.0')
-    userEvent.type(mfgInput, 'Test')
-    userEvent.type(inStockInput, '2')
-    userEvent.type(ratingInput, '5')
+    await user.type(nameInput, 'Test Widget')
+    await user.type(priceInput, '10.0')
+    await user.type(mfgInput, 'Test')
+    await user.type(inStockInput, '2')
+    await user.type(ratingInput, '5')
 
     const submitButton = screen.getByRole('button', { name: /Submit/i })
-    fireEvent.click(submitButton)
+    await user.click(submitButton)
 
     await waitFor(() => expect(postScope.isDone()).toBe(true))
 
@@ -65,17 +63,16 @@ describe('WidgetForm', () => {
       .post('/api/v1/widgets/')
       .reply(500)
 
-    render(<App />)
-
+    const { user } = setupApp()
     const button = await screen.findByRole('button', { name: /Add Widget/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
     expect(loadScope.isDone()).toBe(true)
 
     const submitButton = screen.getByRole('button', { name: /Submit/i })
-    fireEvent.click(submitButton)
+    await user.click(submitButton)
 
     await waitFor(() => expect(postScope.isDone()).toBe(true))
 

@@ -2,10 +2,11 @@
 
 ## Packages Included
 
-- react (webpack, babel, etc.)
+- react
 - react-router-dom
 - express
-- jest
+- vite
+- vitest
 - eslint
 
 ## Setup

@@ -1,16 +1,17 @@
+import { test, expect, vi }  from 'vitest'
 import { fetchSubreddit } from '../apis/reddit'
 import * as actions from './reddit'
 
-jest.mock('../apis/reddit')
+vi.mock('../apis/reddit')
 
-const mockedFetchSubreddit = jest.mocked(fetchSubreddit)
+const mockedFetchSubreddit = vi.mocked(fetchSubreddit)
 
 test('fetchPosts', () => {
   mockedFetchSubreddit.mockResolvedValue([])
-  const dispatch = jest.fn()
+  const dispatch = vi.fn()
 
   return actions
-    .fetchPosts('bananas')(dispatch, jest.fn())
+    .fetchPosts('bananas')(dispatch, vi.fn())
     .then(() => {
       expect(dispatch.mock.calls).toHaveLength(2)
       expect(dispatch.mock.calls[0][0].type).toBe('REQUEST_POSTS')

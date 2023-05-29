@@ -6,6 +6,15 @@
   "scripts": {
     "test": "jest"
   },
+  "eslintConfig": {
+    "extends": [
+      "@devacademy",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-academy-challenges/conways.git"

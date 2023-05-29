@@ -1,15 +1,17 @@
-/**
- * @jest-environment jsdom
- *
- * Unit test for the Wombats component
- */
-import { render, screen } from '@testing-library/react'
+// @vitest-environment jsdom
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { render, screen, cleanup } from '@testing-library/react'
 import Wombats from '../Wombats'
 
 import { useAppSelector } from '../../hooks'
-jest.mock('../../hooks')
 
-jest.mocked(useAppSelector).mockImplementation(() => ['wombat1', 'wombat2'])
+beforeEach(() => {
+  cleanup()
+})
+
+vi.mock('../../hooks')
+
+vi.mocked(useAppSelector).mockImplementation(() => ['wombat1', 'wombat2'])
 
 describe('Wombats', () => {
   it('renders a list of wombats', () => {

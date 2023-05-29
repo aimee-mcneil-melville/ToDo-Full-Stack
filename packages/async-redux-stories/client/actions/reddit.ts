@@ -1,5 +1,5 @@
 import type { ThunkAction } from '../store'
-import { Post, RawPostArr } from '../posts'
+import { Post, RawPostArr } from '../../models/post'
 
 import { fetchSubreddit } from '../apis/reddit'
 
@@ -8,14 +8,14 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
 export type Action =
-| { type: typeof REQUEST_POSTS; payload: null }
-| { type: typeof RECEIVE_POSTS; payload: Post[] }
-| { type: typeof SHOW_ERROR; payload: string }
+  | { type: typeof REQUEST_POSTS; payload: null }
+  | { type: typeof RECEIVE_POSTS; payload: Post[] }
+  | { type: typeof SHOW_ERROR; payload: string }
 
 export function requestPosts(): Action {
   return {
     type: REQUEST_POSTS,
-    payload: null
+    payload: null,
   }
 }
 

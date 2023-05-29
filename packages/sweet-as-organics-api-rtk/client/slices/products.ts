@@ -1,5 +1,6 @@
 import type { Product } from '../../models/Product'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 import { getProducts } from '../api/products'
 
 const initialState = [] as Product[]
@@ -17,9 +18,12 @@ const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (_, action) => {
-      return action.payload
-    })
+    builder.addCase(
+      fetchProducts.fulfilled,
+      (_, action: PayloadAction<Product[]>) => {
+        return action.payload
+      }
+    )
   },
 })
 

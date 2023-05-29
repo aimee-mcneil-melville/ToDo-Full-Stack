@@ -31,8 +31,6 @@ function Board(props: Props) {
         setIsDisabled(true)
         setTimeout(() => {
           toggleTile(guessedTile.id, false)
-          console.log('tile', tile)
-          console.log('guessedTile', guessedTile)
           toggleTile(tile.id, false)
           setGuessedTile(null)
           setIsDisabled(false)

@@ -1,22 +1,21 @@
-/**
- * @jest-environment jsdom
- *
- * Unit test for the EditWombat component
- */
+// @vitest-environment jsdom
+
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom'
+import '../../test-setup'
 
 import { useAppDispatch } from '../../hooks'
 import EditWombat from '../EditWombat'
 
-jest.mock('../../hooks')
+vi.mock('../../hooks')
 
-const fakeDispatch = jest.fn()
-jest.mocked(useAppDispatch).mockReturnValue(fakeDispatch)
+const fakeDispatch = vi.fn()
+
+vi.mocked(useAppDispatch).mockReturnValue(fakeDispatch)
 
 beforeEach(() => {
-  jest.clearAllMocks()
+  vi.clearAllMocks()
 })
 
 describe('EditWombat', () => {
@@ -32,12 +31,13 @@ describe('EditWombat', () => {
     expect(submitButton).toBeInTheDocument()
   })
 
-  it('allows the user to edit a wombat', () => {
+  it('allows the user to edit a wombat', async () => {
+    const user = userEvent.setup()
     const wombat = 'Wallace'
     render(<EditWombat name={wombat} />)
 
     const nameInput = screen.getByLabelText('Update Wombat:')
-    userEvent.type(nameInput, 'Wiremu')
+    await user.type(nameInput, 'Wiremu')
     expect(nameInput).toHaveValue('Wiremu')
 
     const submitButton = screen.getByRole('button', { name: /update/i })

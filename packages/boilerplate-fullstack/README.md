@@ -1,4 +1,4 @@
-# Boilerplate: Fullstack
+# Boilerplate: Fullstack with Sass
 
 ## Setup
 
@@ -12,6 +12,7 @@ This repo includes:
 * an API client module (`client/apis/fruits.js`)
 * configuration for Jest and testing library
 * configuration for server-side debugging in VS Code
+* configuration for preprocessing Sass
 * a single client-side test (`client/components/App.test.js`)
 
 ### Installation
@@ -32,4 +33,4 @@ npm run dev # to start the dev server
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
 ---
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-fullstack)
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-fullstack-scss)

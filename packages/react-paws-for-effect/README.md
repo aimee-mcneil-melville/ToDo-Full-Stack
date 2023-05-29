@@ -8,7 +8,6 @@ Learning objectives:
 2.  Using components inside other components
 3.  Passing props to components
 4.  Using JavaScript expressions inside TSX
-5.  Using `Array.map` to display a series of components
 
 ## Setup
 
@@ -23,6 +22,8 @@ Learning objectives:
   npm run dev
   ```
 
+  This should start a [vite](https://vitejs.dev) development server at [http://localhost:5173/]
+
   </details>
 
 ![Paw print](screenshots/paw.png)
@@ -33,11 +34,11 @@ Learning objectives:
 
 ### 1. The `<App>` component
 
-- [ ] Investigate `server/public/index.html` and `client/index.tsx`
+- [ ] Investigate `index.html` and `client/index.tsx`
   <details style="padding-left: 2em">
     <summary>More about the <code>index</code> files</summary>
 
-  If you take a look at `server/public/index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.tsx`, we find this:
+  If you take a look at `index.html`, you'll see there's a single div with the id `app`. It's just there for React to bind with. In `client/index.tsx`, we find this:
 
   ```tsx
   import { createRoot } from 'react-dom/client'
@@ -155,7 +156,7 @@ Let's try another component.
 
   ```tsx
   <div className="container">
-    <img className="spinner" src="/images/paw.png" />
+    <img className="spinner" alt="a spinning paw-print" src="/images/paw.png" />
     <Dog name="Desdemona" breed="Bulldog" superpower="Heat vision" />
   </div>
   ```
@@ -192,11 +193,16 @@ Let's try another component.
   </details>
 
 - [ ] Try modifying the components to add an image for each `<Dog>`
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  The `server/public/images` directory contains a few dog silhouettes.
-</details>
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    The `public/images` directory contains a few dog silhouettes. You can include files from the public folder like this:
+
+  ```tsx
+  <img src="/images/bulldog.png" alt="A bulldog" />
+  ```
+
+  </details>
 
 ---
 

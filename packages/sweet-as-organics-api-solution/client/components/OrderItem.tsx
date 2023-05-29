@@ -1,4 +1,4 @@
-import { CartItemWithQuantity } from '../../common/interfaces'
+import { CartItemWithQuantity } from '../../models/product'
 
 interface Props {
   product: CartItemWithQuantity
