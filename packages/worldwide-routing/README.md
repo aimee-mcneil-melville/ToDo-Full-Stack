@@ -26,12 +26,30 @@ This exercise asks you to build an experience to navigate continents and their c
 
 In this section we are going to be setting up the root route to display the `<App />`
 
-- [ ] In the `client/` folder, add a new file called `routes.tsx` 
+- [ ] In the `client/` folder, add a new file called `router.tsx`
 - [ ] Import `createBrowserRouter, createRoutesFromElements, Route` from `react-router-dom`
 - [ ] Now it's time to display the `<App />` component on the client-side root route `'/'` by using `createBrowserRouter, createRoutesFromElements, Route` (refer to the [docs](https://reactrouter.com/en/main/start/tutorial#jsx-routes) to learn more about Nested Routes)
-- [ ] Export the `routes` so that we can import it in `client/index.tsx`
-- [ ] Import the routes from client/routes.tsx into client/index.tsx.
-- [ ] In client/index.tsx , find the render() call and replace <App /> with <RouterProvider router={routes} />.
+
+  <details>
+    <summary>Tip</summary>
+
+  ```tsx
+  import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+  } from 'react-router-dom'
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(<Route path="/" element={<App />} />)
+  )
+  ```
+
+  </details>
+
+- [ ] Export the `router` so that we can import it in `client/index.tsx`
+- [ ] Import the router from `client/router.tsx` into `client/index.tsx`.
+- [ ] In `client/index.tsx` , find the `render()` call and replace `<App />` with `<RouterProvider router={router} />`.
 
 ### 2. Building a Home
 
@@ -43,9 +61,9 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 ![Web page showing a large title at top, a left navigation listing "Home" plus all seven continents as list items (but not links), and "Please select a continent from the nav list", in the centre](readme-images/release-1.png)
 
 </details>
-<br />rea
+<br />
 
-- [ ] Complete the `<Nav>` component so that it contains a list of continent names (like in the image) based on the information from `data/continents`. Add a list item for Home, too
+- [ ] Complete the `<Nav>` component so that it contains a list of continent names (like in the image) based on the information from `data/continents.ts`. Add a list item for Home, too
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
@@ -56,10 +74,23 @@ Check out the `App.tsx` component. It currently contains the main header, a `<Ho
 
 ### 3. Adding continents
 
-- [ ] Add a route for `continents/:name` to our `App.tsx`. We will use it to show the selected continent and its respective image from `data/continents.ts` file
+- [ ] In `App.tsx` replace `<Home />` with `<Outlet />` from `'react-router-dom'` to give nested routes a place to render their elements
+- [ ] Add an "index" route that points to `<Home />`, this route and the others will be "nested" inside the `/` route.
 
-- [ ] Create a `<Continent>` component for this route, and use `useParams` (imported from `react-router-dom`) to determine which continent to show
+  <details>
+    <summary>Tip</summary>
 
+  ```tsx
+  <Route path="/" element={<App />}>
+    <Route index element={<Home />} />
+  </Route>
+  ```
+
+  </details>
+
+- [ ] Create an empty component called `Continent`
+- [ ] Add a route for `continents/:name` to our `router.tsx`. We will use it to show the selected continent and its respective image from `data/continents.ts` file
+- [ ] Add a `useParams()` to the `Continent` component (imported from `react-router-dom`) to determine which continent to show
 - [ ] In the `<Continent>` component, also show a list of countries that the given continent contains
 
 ### 4. Linking it up
@@ -138,9 +169,6 @@ Currently each country just shows a string of its neighbours' country codes.
 - Bold the selected continent in the `<Nav>` when viewing a continent or country and/or change the bullet point style (as shown in the section 6 screenshot) so users will know where they are (Hint: Look up 'NavLink')
 
 - Countries currently show up in the order decided by the data files. Add a feature to show them alphabetically or perhaps even by population
-
-- Read about React Router's [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes) and [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes). Pull the common elements from `<App />` (i.e. the heading and the `<Nav />`) and to a new component named `<Main />`, try nesting the routes for `<Home>`, `<Continent>` and `<Country>` in `<Main />`. The `<Home>` component should render on the index route, i.e. when the URL is just `http://localhost:3000/`.
-
 </details>
 
 ---
