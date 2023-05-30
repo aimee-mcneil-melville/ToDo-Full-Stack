@@ -1,0 +1,99 @@
+{
+  "name": "jwt-auth",
+  "description": "An exercise to practice how to apply authentication",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "run-p dev:server dev:client",
+    "dev:server": "nodemon server/index.ts",
+    "dev:client": "npm run build -- --watch",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "db-reset": "run-s db:*",
+    "db:delete": "rm server/db/dev.sqlite3",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "build": "webpack --config client/webpack.config.js",
+    "test": "jest --verbose --watchAll",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-typescript",
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@devacademy/eslint-config/react",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-jwt": "^7.7.5",
+    "express-jwt-authz": "^2.4.1",
+    "jwks-rsa": "^2.1.5",
+    "knex": "^2.3.0",
+    "sqlite3": "^5.1.2"
+  },
+  "devDependencies": {
+    "@auth0/auth0-react": "^1.12.0",
+    "@babel/core": "^7.15.6",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "@devacademy/eslint-config": "^1.8.0",
+    "@tanstack/react-query": "^4.28.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4",
+    "@testing-library/user-event": "^12.7.1",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.15.3",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
+    "@types/styled-components": "^5.1.26",
+    "@types/supertest": "^2.0.12",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.2.2",
+    "jsdom": "^20.0.0",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.6.1",
+    "react": "^18.0.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
+    "regenerator-runtime": "^0.13.7",
+    "styled-components": "^5.3.1",
+    "superagent": "7.1.1",
+    "supertest": "^6.2.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.8.4",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "browserslist": "> 2%, not dead"
+}
