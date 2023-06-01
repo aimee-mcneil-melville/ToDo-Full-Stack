@@ -93,11 +93,11 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
 ### 3. Package.json
 
 - [ ] The `build` script calls `vite build`
-  <details style="padding-left: 2em">
-    <summary>More about setting the <code>build</code> script</summary>
-    
-    Dokku will use the `npm run build` to build your application
-  </details>
+<details style="padding-left: 2em">
+  <summary>More about setting the <code>build</code> script</summary>
+  
+  Dokku will use the `npm run build` to build your application
+</details>
 
 ### 4. Setting up your build for dokku
 
@@ -105,14 +105,14 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
   <details style="padding-left: 2em">
     <summary>Specifying buildpacks for your application</summary>
 
-    Create a file in the root of your project called `.buildpacks` and paste this into it:
+  Create a file in the root of your project called `.buildpacks` and paste this into it:
 
-    ```
-    https://github.com/heroku/heroku-buildpack-nodejs.git
-    https://github.com/dokku/heroku-buildpack-nginx.git
-    ```
+  ```
+  https://github.com/heroku/heroku-buildpack-nodejs.git
+  https://github.com/dokku/heroku-buildpack-nginx.git
+  ```
 
-    This configures dokku to treat us as a nodejs app during the build step, but to also set up nginx to serve our assets
+  This configures dokku to treat us as a nodejs app during the build step, but to also set up nginx to serve our assets
   </details>
 
 ## Creating and deploying your dokku app
@@ -145,7 +145,7 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
   assets are in the `dist` folder
 
   ```sh
-  dokku config:set static-app NGINX_ROOT=dist
+  dokku config:set NGINX_ROOT=dist
   ```
 
   This config tells nginx to serve the `index.html` file by default:
@@ -155,7 +155,6 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
   ```
 
   </details>
-
 
 ### 7. Deploying your app
 
