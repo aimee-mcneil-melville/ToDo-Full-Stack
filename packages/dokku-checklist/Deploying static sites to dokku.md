@@ -119,7 +119,41 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
 
   </details>
 
-### 5. Adding a Dockerfile
+### 5. Configuring your production environment
+
+- [ ] Application has an nginx.conf
+  <details style="padding-left: 2em">
+    <summary>Creating a dockerfile for your application</summary>
+
+  Nginx is the http server that serves our static assets, we need to configure it
+  to work the way we want
+
+  Create a file in the root of your project called nginx.conf
+
+  ```nginx.conf
+  events {
+    worker_connections 768;
+  }
+
+  http {
+    types_hash_max_size 2048;
+    include mime.types;
+    charset UTF-8;
+    server {
+      listen 80;
+      server_name  _;
+      root /app/www;
+      index index.html;
+      port_in_redirect off;
+
+      location / {
+          try_files $uri $uri/ /index.html;
+      }
+    }
+  }
+  ```
+
+  </details>
 
 - [ ] Application has a Dockerfile
   <details style="padding-left: 2em">
@@ -139,11 +173,13 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
 
   ENV NODE_ENV=production
   RUN npm run build
-  RUN npm prune --omit=dev
 
   FROM nginx:stable-alpine
   WORKDIR /app
-  COPY --from=BUILDER /app/dist /usr/share/nginx/html/
+
+  COPY --from=BUILDER /app/dist /app/www
+  COPY nginx.conf /etc/nginx/nginx.conf
+
   EXPOSE 80
   ```
 
