@@ -99,25 +99,9 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
   Dokku will use the `npm run build` to build your application
 </details>
 
-### 4. Setting up your build for dokku
-
-- [ ] Application has a build packs file
-  <details style="padding-left: 2em">
-    <summary>Specifying buildpacks for your application</summary>
-
-  Create a file in the root of your project called `.buildpacks` and paste this into it:
-
-  ```
-  https://github.com/heroku/heroku-buildpack-nodejs.git
-  https://github.com/dokku/heroku-buildpack-nginx.git
-  ```
-
-  This configures dokku to treat us as a nodejs app during the build step, but to also set up nginx to serve our assets
-  </details>
-
 ## Creating and deploying your dokku app
 
-### 5. Creating your app
+### 4. Creating your app
 
 - [ ] Creating your app
   <details style="padding-left: 2em">
@@ -135,28 +119,37 @@ Dokku is an open-source self-hosted PAAS tool which we will use to deploy our pr
 
   </details>
 
-### 6. Configuring nginx (a web server for static assets)
+### 5. Adding a Dockerfile
 
-- [ ] Nginx needs to be configured to serve your files correctly
+- [ ] Application has a Dockerfile
   <details style="padding-left: 2em">
-    <summary>How to configure nginx</summary>
+    <summary>Creating a dockerfile for your application</summary>
 
-  Run these commands in your app folder. The first config tells nginx that your
-  assets are in the `dist` folder
+  Dokku can use docker to set up a virtual machine to run your application. To configure this
+  create a file in the root of your repo called `Dockerfile` with these contents.
 
-  ```sh
-  dokku config:set NGINX_ROOT=dist
-  ```
+  ```Dockerfile
+  FROM node:18-alpine as BUILDER
+  WORKDIR /app
 
-  This config tells nginx to serve the `index.html` file by default:
+  COPY ["package.json", "package-lock.json*", "./"]
+  RUN npm ci
 
-  ```sh
-  dokku config:set NGINX_DEFAULT_REQUEST=index.html
+  COPY . .
+
+  ENV NODE_ENV=production
+  RUN npm run build
+  RUN npm prune --omit=dev
+
+  FROM nginx:stable-alpine
+  WORKDIR /app
+  COPY --from=BUILDER /app/dist /usr/share/nginx/html/
+  EXPOSE 80
   ```
 
   </details>
 
-### 7. Deploying your app
+### 6. Deploying your app
 
 - [ ] Deploying your app
   <details style="padding-left: 2em">
