@@ -22,7 +22,7 @@ This exercise reverses the roles from yesterday: today the API has been (partial
 
   </details>
 
-- [ ] Navigate to [http://localhost:3000](http://localhost:3000)
+- [ ] Navigate to [http://localhost:5173](http://localhost:5173)
 
 ---
 
@@ -47,12 +47,13 @@ The widget data is being stored in a database (on our server side), so we'll hav
     <summary>More about <code>&lt;useState&gt;</code> and types</summary>
 
   If `useState` is given an empty array as its initial value TypeScript will assume the array's type is `never[]`, an array that is always empty. To allow us to later store data in this array we need to cast the type using the `as` keyword.
-  
+
   To store `widgets` our useState will look like this:
+
   ```ts
   const [widgets, setWidgets] = useState([] as Widget[])
   ```
-  
+
   The Widget interface is already defined in `models/Widget.ts`.
 
   </details>
@@ -109,13 +110,13 @@ The widget data is being stored in a database (on our server side), so we'll hav
 ### 5. Updating the UI to consume the data
 
 - [ ] Modify the `tsx` your component returns so that it displays the widgets from the component state
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  You could use a `.map` here to render a new `<Widget>` component for each widget. 
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
+    
+    You could use a `.map` here to render a new `<Widget>` component for each widget.
 
-   To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import and update the cast for the type with dot notation.
-   
+  To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import and update the cast for the type with dot notation.
+
   ```ts
   import * as Models from '../../models/Widget'
 
