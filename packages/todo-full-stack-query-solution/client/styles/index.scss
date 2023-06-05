@@ -33,9 +33,9 @@ body {
   font-weight: 300;
 }
 
-:focus {
-  outline: 0;
-}
+// :focus {
+//   outline: 0;
+// } // removes focus when using tab navigation
 
 .hidden {
   display: none;
@@ -104,6 +104,15 @@ body {
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
 
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
 .main {
   position: relative;
   z-index: 2;
@@ -114,7 +123,7 @@ body {
   width: 1px;
   height: 1px;
   border: none; /* Mobile Safari */
-  opacity: 0;
+  // opacity: 0; /* removes focus when using tab navigation */
   position: absolute;
   right: 100%;
   bottom: 100%;
@@ -188,9 +197,9 @@ body {
   appearance: none;
 }
 
-.todo-list li .toggle {
-  opacity: 0;
-}
+// .todo-list li .toggle {
+//   opacity: 0;
+// } // removes focus when using tab navigation
 
 .todo-list li .toggle + label {
   /*
@@ -217,12 +226,12 @@ body {
 }
 
 .todo-list li.completed label {
-  color: #cdcdcd;
+  color: #b83f45; // fix for contrast
   text-decoration: line-through;
 }
 
 .todo-list li .destroy {
-  display: none;
+  // display: none; // show for tab navigation
   position: absolute;
   top: 0;
   right: 10px;
@@ -279,9 +288,10 @@ body {
 .todo-count {
   float: left;
   text-align: left;
+  margin: 0;
 }
 
-.todo-count strong {
+.todo-count .strong {
   font-weight: 300;
 }
 

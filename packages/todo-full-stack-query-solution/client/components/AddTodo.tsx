@@ -1,14 +1,34 @@
-// eslint-disable-next-line no-unused-vars
-function AddTodo() {
+import { useState } from 'react'
+import { useTodos } from '../hooks/useTodos'
+
+export default function AddTodo() {
+  const { addTodo } = useTodos()
+  const [newTask, setNewTask] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTask(e.target.value)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      addTodo.mutate(newTask)
+      setNewTask('')
+    }
+  }
+
   return (
     <>
+      <label htmlFor="add-todo" className="sr-only">
+        Add task to do
+      </label>
       <input
+        id="add-todo"
         className="new-todo"
         placeholder="What needs to be done?"
-        autoFocus={true}
+        onChange={handleChange}
+        value={newTask}
+        onKeyDown={handleKeyDown}
       />
     </>
   )
 }
-
-export default AddTodo

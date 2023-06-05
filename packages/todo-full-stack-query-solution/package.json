@@ -1,5 +1,5 @@
 {
-  "name": "todo-full-stack-query",
+  "name": "todo-full-stack-query-solution",
   "version": "0.1.0",
   "description": "Todo Full Stack",
   "main": "server/index.ts",
