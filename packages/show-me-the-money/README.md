@@ -19,12 +19,10 @@ A Boilerplate is already set up for you with everything you will need to get sta
 * [Redux](https://redux.js.org/)
 * [Express](https://expressjs.com/en/api.html)
 * [Knex.js](https://knexjs.org/)
+* [Auth0](https://www.auth0.com)
 * [Bulma (CSS framework)](https://bulma.io/documentation/)
-* [Authenticare](https://www.npmjs.com/package/authenticare)
 
-The migrations and seeds for the users table, and all login functionality is already set up!
-
-The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate that view in your project goals!
+The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate this perspective in your project goals!
 
 ## User Stories
 
@@ -34,7 +32,7 @@ As a user:
   * I want to register for the App under my name, and state my hourly wage
   * I want to start a new meeting, and add all the meeting members. (MVP: Add member names and wages manually)
   * I want to start my created meeting, and see a ($) cost tracker display the current meeting cost every second
-  * I want to be able to save a meeting's cost, attendess, duration and date/time when it is finished for later viewing
+  * I want to be able to save a meeting's cost, attendees, duration, and date/time when it is finished for later viewing
   * I want to be able to view previous meetings in date/time order, and see more information about a past meeting.
   * I want to see a graph of meeting costs over time
 
@@ -51,8 +49,8 @@ As a user:
 ## Views (Client Side)
   | name | purpose |
   | --- | --- |
-  | Login | View for user to enter their login credentials |
-  | Register | View for user to sign up for the App |
+  | Login | Welcome unregistered users and encourage them to login / sign up |
+  | Home | Welcome registered users and display links to other parts of the site |
   | CreateMeeting | View for user to arrange meeting attendees and information before starting the timer |
   | Meeting | View to display current meeting time, cost and other information while the meeting is in progress |
   | History | Display a list of past meetings the user has attended with select preview information |
@@ -63,7 +61,6 @@ As a user:
 
   | name | purpose |
   | --- | --- |
-  | auth | Store information regarding user logins, auth status and auth errors |
   | currentMeeting | Track meeting progress such as current cost and current duration |
   | meetings | store the list of meetings the user has attended in the past |
   | users | store the list of users who can attend meetings |
@@ -74,15 +71,11 @@ As a user:
 
  | type | data | purpose |
  | --- | --- | --- |
- | RECEIVE_MEETINGS | meetings | retreive meetings from the db and store in redux |
+ | RECEIVE_MEETINGS | meetings | retrieve meetings from the db and store in redux |
  | ADD_MEETING | meeting | Add a single meeting to the history after it is created |
 
- ### users
- | type | data | purpose |
- | --- | --- | --- |
- | RECEIVE_USERS | users | retreive the users from the server |
-
  ### currentMeeting
+
   | type | data | purpose |
 | --- | --- | --- |
 | START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state |
@@ -96,44 +89,40 @@ As a user:
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
-| Post | /api/auth/login | Yes | Log In a User | The Users JWT Token |
-| Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
 | Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings |
 | Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format |
-| Get | /api/meetings/:id/users | Yes | Get the attendees of a Meeting | An Array of User objects |
-| Get | /api/users | Yes | Get the users of the app | An Array of User Objects |
 
 ## DB (Server Side)
-  There should be three tables for MVP
-
-### Users
-  | Column Name | Data Type |
-  | --- | --- |
-  | id | Integer |
-  | username | String |
-  | first_name | String |
-  | last_name | String |
-  | hash | text |
+  There should be two tables for MVP. You may want/need to add additional columns and tables.
 
 ### Meetings
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | meeting_name | String |
-  | time | Timestamp |
-  | attendees | integer |
-  | cost | Decimal |
+  | duration | Integer |
+  | start_time | Timestamp |
+  | attendees | Integer |
+  | total_cost | Decimal |
 
-### Attendees (Join Table M2M)
-
-  Many Users attend Many Meetings
+### Attendees
 
  | Column Name | Data Type |
  | --- | --- |
- | user_id | Integer |
+ | id | Integer |
+ | name | String |
+ | wage | Decimal |
  | meeting_id | Integer |
 
  ---
+## Authentication
+
+Authentication is already set up in the client side of this project using Auth0. Users are currently able to login and logout.
+
+When you wish to protect your server side routes (those for registered users only), you may need to reference other exercises or materials.
+
+If you wish to replace the Auth0 authentication with your own, so you can customise the login for example, you will need to update the `client/index.tsx` file of the project with your own Auth0 details.
+
 
 ## Setup
 
@@ -141,70 +130,30 @@ Run the following commands in your terminal:
 
 ```sh
 npm install
-npm run knex migrate:latest
-npm run knex seed:run
-cp .env.example .env
-```
-
-To run in development:
-```sh
 npm run dev
 ```
 
-To run in production:
+To run before merging:
 ```sh
-npm start
+npm run lint
+npm run format
+npm run test
 ```
-
-## Authentication
-
-Authentication is already set up in this project using the node module [authenticare](https://www.npmjs.com/package/authenticare). Users are currently able to login, logout, and register and all user information will be stored in a table in our database.
-
-If you wish to dive deeper on authenticare, docs are avalable [here](https://github.com/enspiral-dev-academy/authenticare/tree/main/docs). Of particular note are `getEncodedToken` and `getTokenDecoder` as they deal with how you add a token to your request and secure server routes respectively.
-
-## Heroku!!!
-
-### Creating your app
-
-Create your app with `heroku create [name]`
-
-You can check that this was successful by running `heroku apps` to view a list of your apps
-
-
-### Adding postgres
-
-Add postgresql (hobby dev) to your app at `https://dashboard.heroku.com/apps/[APP NAME HERE]/resources`
-
-Check that pg has been added by running `heroku addons` to ensure the postgresql db is on your app
-
 
 ### Deploying!
 
-I have created several npm scripts that will be useful for deploying your app to heroku easily.
+There are several scripts in this project that may be useful when deploying your app to Dokku.
 
-To push your local master branch to your heroku app:
+To push your local main branch:
 ```sh
-npm run h:deploy
+npm run dokku:deploy
 ```
 
-Run heroku migrations:
+Run dokku migrations and seeds:
 ```sh
-npm run h:migrate
+npm run dokku:migrate
+npm run dokku:seed
 ```
-
-Run heroku seeds:
-```sh
-npm run h:seed
-```
-
-If ever you need to rollback, you can also:
-```sh
-npm run h:rollback
-```
-
-
-### Ta-Da!
-Your app should be deployed!
 
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=show-me-the-money)

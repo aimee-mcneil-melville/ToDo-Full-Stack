@@ -13,8 +13,6 @@ function App() {
     startingTiles.map((tile) => ({ ...tile, isVisible: false }))
   )
 
-  console.log(tiles)
-
   const hasWon = matchCount === numMatchesToWin
 
   const reset = () => {

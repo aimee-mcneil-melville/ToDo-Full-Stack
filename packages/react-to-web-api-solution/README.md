@@ -112,7 +112,7 @@ The widget data is being stored in a database (on our server side), so we'll hav
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
- You could use a `.map` here to render a new `<Widget>` component for each widget. 
+  You could use a `.map` here to render a new `<Widget>` component for each widget. 
 
    To avoid a name clash with the `<Widget>` component and the `Widget` type interface use a [_namespace_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#namespace_import) import and update the cast for the type with dot notation.
    

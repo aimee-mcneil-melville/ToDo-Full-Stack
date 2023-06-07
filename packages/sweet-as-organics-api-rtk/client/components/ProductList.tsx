@@ -18,6 +18,7 @@ function ProductList({ children }: Props) {
 
   useEffect(() => {
     dispatch(fetchProducts())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function addProductToCart(product: { id: number; name: string }) {

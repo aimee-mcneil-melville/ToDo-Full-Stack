@@ -8,4 +8,5 @@ test('deleteItemAtIndex returns an array without an element', () => {
 
   expect(actual).not.toContain(removed)
   expect(actual).not.toBe(names)
+  expect(actual).toEqual(['Aroha', 'Bob', 'Eleanor'])
 })

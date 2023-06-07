@@ -1,8 +1,8 @@
+// @vitest-environment jsdom
+import { describe, expect, it } from 'vitest'
 import nock from 'nock'
-import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-
-import App from './App'
+import { screen, waitFor } from '@testing-library/react'
+import setupApp from '../test-utils'
 
 const testWidget = {
   id: 1,
@@ -19,7 +19,7 @@ describe('App', () => {
       .get('/api/v1/widgets/')
       .reply(200, [testWidget])
 
-    render(<App />)
+    setupApp()
 
     const widget = await screen.findByRole('heading', { name: 'Test Widget' })
 
@@ -30,13 +30,10 @@ describe('App', () => {
   it('gives an error message when the API is down', async () => {
     const scope = nock('http://localhost').get('/api/v1/widgets/').reply(500)
 
-    render(<App />)
-
-    await waitFor(() => {
-      expect(scope.isDone()).toBe(true)
-    })
+    setupApp()
 
     const errorMessage = await screen.findByText(/Error/i)
+    expect(scope.isDone()).toBe(true)
 
     expect(errorMessage).toBeInTheDocument()
   })
@@ -46,9 +43,9 @@ describe('App', () => {
       .get('/api/v1/widgets/')
       .reply(200, [])
 
-    render(<App />)
+    const { user } = setupApp()
     const button = await screen.findByRole('button', { name: /Add Widget/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
 
@@ -61,15 +58,16 @@ describe('App', () => {
       .get('/api/v1/widgets/')
       .reply(200, [])
 
-    render(<App />)
+    const { user } = setupApp()
+
     const button = await screen.findByRole('button', { name: /Add Widget/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     const form = await screen.findByRole('form', { name: /Widget form/i })
     expect(form).toBeInTheDocument()
 
     const cancelButton = screen.getByRole('button', { name: /Cancel/i })
-    fireEvent.click(cancelButton)
+    await user.click(cancelButton)
 
     await waitFor(() => {
       expect(form).not.toBeInTheDocument()

@@ -1,17 +1,16 @@
 import { Provider } from 'react-redux'
 import { screen, render } from '@testing-library/react'
+import {} from 'ts-jest'
 
 import App from './App'
 import store from '../store'
 import { fetchFruits } from '../actions'
 
 jest.mock('../actions')
+const fetchFruits_ = fetchFruits as jest.Mock<ReturnType<typeof fetchFruits>>
+const mockStore = store as jest.Mocked<typeof store>
 
-const mockedFetchFruits = fetchFruits as jest.Mock<
-  ReturnType<typeof fetchFruits>
->
-mockedFetchFruits.mockImplementation(() => async () => {})
-
+fetchFruits_.mockImplementation(() => async () => {})
 test('page header includes fruit', () => {
   render(
     <Provider store={store}>
@@ -24,13 +23,8 @@ test('page header includes fruit', () => {
 
 test('renders an <li> for each fruit', () => {
   const fruits = ['orange', 'persimmons', 'kiwi fruit']
-  const store = {
-    subscribe: jest.fn(),
-    dispatch: jest.fn(),
-    getState: jest.fn(() => ({ fruits })),
-    replaceReducer: jest.fn(),
-    [Symbol.observable]: jest.fn(),
-  }
+  jest.spyOn(store, 'getState')
+  mockStore.getState.mockImplementation(() => ({ fruits }))
 
   render(
     <Provider store={store}>

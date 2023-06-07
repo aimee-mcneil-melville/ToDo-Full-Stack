@@ -12,7 +12,7 @@ module.exports = async ({ package, fix }) => {
   }
 
   if (
-    package?.devDependencies.prettier == null &&
+    package?.devDependencies?.prettier == null &&
     package?.scripts?.format != null
   ) {
     changed = true

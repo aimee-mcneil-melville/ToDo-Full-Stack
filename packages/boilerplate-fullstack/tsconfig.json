@@ -2,7 +2,6 @@
   "ts-node": {
     "transpileOnly": true
   },
-
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
@@ -22,5 +21,6 @@
     "strict": true /* Enable all strict
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "noEmit": true
-  }
+  },
+  "include": ["server/**/*", "client/**/*"]
 }

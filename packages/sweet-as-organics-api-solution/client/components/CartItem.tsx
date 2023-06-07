@@ -1,5 +1,5 @@
 import type * as React from 'react'
-import { CartItemWithQuantity } from '../../common/interfaces'
+import { CartItemWithQuantity } from '../../models/product'
 
 import { deleteFromCart, updateCart } from '../actions/cart'
 import { useAppDispatch } from '../hooks'
@@ -14,7 +14,7 @@ function CartItem(props: Props) {
 
   function update(e: React.ChangeEvent<HTMLInputElement>) {
     const newQuantity = parseInt(e.target.value)
-    if (!newQuantity) {
+    if (!isNaN(newQuantity)) {
       const updateInfo = { id, newQuantity }
       dispatch(updateCart(updateInfo))
     }

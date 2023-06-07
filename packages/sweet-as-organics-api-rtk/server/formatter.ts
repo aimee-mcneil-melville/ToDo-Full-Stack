@@ -1,9 +1,11 @@
-export function createDateTimeString(timestamp) {
+import { FormattedOrder, OrderDB } from '../models/Order'
+
+export function createDateTimeString(timestamp: string | number | Date) {
   const date = new Date(timestamp)
   return date.toLocaleTimeString() + ', ' + date.toDateString()
 }
 
-export function createOrder(orderLine) {
+export function createOrder(orderLine: OrderDB) {
   return {
     id: orderLine.orderId,
     createdAt: createDateTimeString(orderLine.createdAt),
@@ -12,7 +14,7 @@ export function createOrder(orderLine) {
   }
 }
 
-export function createProduct(orderLine) {
+export function createProduct(orderLine: OrderDB) {
   return {
     id: orderLine.productId,
     name: orderLine.name,
@@ -34,19 +36,21 @@ export function sortByIdDescending<T extends { id: number }>(arr: T[]) {
   return arr
 }
 
-function formatOrder(orderLines) {
-  let order
+export function formatOrder(orderLines: OrderDB[]) {
+  let order: FormattedOrder | undefined
   orderLines.forEach((item) => {
     !order
       ? (order = createOrder(item))
       : order.products.push(createProduct(item))
   })
-  order.products = sortByIdAscending(order.products)
+  order
+    ? (order.products = sortByIdAscending(order.products))
+    : (order = undefined)
   return order
 }
 
-function formatOrderList(orderLines) {
-  const orderList = []
+export function formatOrderList(orderLines: OrderDB[]) {
+  const orderList = [] as FormattedOrder[]
   orderLines.forEach((item) => {
     const order = orderList.find((o) => o.id === item.orderId)
     !order

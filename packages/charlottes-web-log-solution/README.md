@@ -37,13 +37,39 @@ Our task is to create all of the components that comprise the page and wire up d
 
   The data for the blog, excerpts from the [book](https://en.wikipedia.org/wiki/Charlotte%27s_Web), can be found in the `client/data` folder.
 
-  We will need to import the data from the appropriate files and pass the needed data to the components using props.
+  We will need to import the data into:
+
+  - `Footer.tsx` (e.g. `import data from '../data/footer'`)
+  - `Header.tsx`
+  - `Posts.tsx`
+  - `OtherBlogs.tsx`
+  - `RecentEntries.tsx`
+
+  and for those that need children, pass the needed data to their child components (e.g. `Post.tsx`) using [props](https://beta.reactjs.org/learn/passing-props-to-a-component).
 
   Here's an example of how you may use that data in your components:
 
-  ```ts
-  // client/components/Post.tsx
-  type Props = {
+  ```tsx
+  import postData from '../data/posts'
+  import Post from './Post'
+
+  function Posts() {
+    return (
+      <div>
+        {postData.map((post) => (
+          <Post key={post.id} {...post} />
+        ))}
+      </div>
+    )
+  }
+
+  export default Posts
+  ```
+
+  and how that `Post` component may be defined
+
+  ```tsx
+  interface Props {
     id: number
     title: string
     date: string
@@ -51,9 +77,16 @@ Our task is to create all of the components that comprise the page and wire up d
     paragraphs: string[]
   }
 
-  export default function Post(props: Props) {
-    return (/* ... */)
+  function Post(props: Props) {
+    return (
+      <div>
+        <h3>{props.title}</h3>
+        ...
+      </div>
+    )
   }
+
+  export default Post
   ```
 
   </details>
@@ -98,9 +131,11 @@ Our task is to create all of the components that comprise the page and wire up d
 <details>
   <summary>More about stretch challenges</summary>
   
-  Because of the way the paragraphs are arrays of strings, there isn't currently an intuitive way to provide a `key` for the paragraph we're mapping over. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
+  Because the paragraphs are arrays of strings React asks us to use a key to make them distinct. If you check the console in your browser's dev tools, you'll see a warning (unless you've already used a creative way to mitigate it).
 
-For a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
+[The rules of keys](https://beta.reactjs.org/learn/rendering-lists#rules-of-keys) give you methods to think about how to choose a good value for key.
+
+Since paragraphs in a blog post don't change order it's safe to use their index in the array as their key... but for a stretch, use [`hash-string`](https://www.npmjs.com/package/hash-string) to create and use a hash of the paragraph's text as the key.
 
 </details>
 

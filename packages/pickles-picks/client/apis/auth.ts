@@ -1,7 +1,7 @@
 import {
   register as authRegister,
   signIn as authLogin,
-  RegisterUser,
+  Register,
   Cred,
 } from 'authenticare/client'
 import { baseApiUrl as baseUrl } from '../config'
@@ -11,7 +11,7 @@ const errorMessages = {
   INVALID_CREDENTIALS: 'Sorry, your username or password is incorrect.',
 }
 
-export function register(creds: RegisterUser) {
+export function register(creds: Register) {
   return authRegister(creds, { baseUrl })
     .then((mystery) => {
       console.log('then', mystery)

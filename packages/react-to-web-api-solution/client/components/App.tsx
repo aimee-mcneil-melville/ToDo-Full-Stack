@@ -16,7 +16,7 @@ function App() {
       .catch((e: unknown) => setError(String(e)))
   }, [])
 
-  const submitWidget = (widget: Models.WidgetData) => {
+  const submitWidget = (widget: Models.NewWidget) => {
     addWidget(widget)
       .then((widgets) => setWidgets(widgets))
       .finally(() => setShowForm(false))

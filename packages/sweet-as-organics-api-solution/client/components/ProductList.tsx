@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Product } from '../../common/interfaces'
+import { Product } from '../../models/product'
 import { addToCart } from '../actions/cart'
 import { fetchProducts } from '../actions/products'
 import { useAppDispatch, useAppSelector } from '../hooks'

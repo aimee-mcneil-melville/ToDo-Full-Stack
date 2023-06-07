@@ -21,6 +21,7 @@ In this exercise, we're going to use modular React components to build a blog fo
   npm run dev
   ```
 
+  This will start a [vite](https://vitejs.dev) dev server at http://localhost:5174/
   </details>
 
 ---
