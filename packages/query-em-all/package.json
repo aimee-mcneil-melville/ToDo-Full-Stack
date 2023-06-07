@@ -1,7 +1,7 @@
 {
   "name": "query-em-all",
   "version": "0.1.2",
-  "description": "React Redux with simple async action",
+  "description": "React Query with a REST API (useQuery only)",
   "main": "server/index",
   "scripts": {
     "start": "node dist/server/index.js",
