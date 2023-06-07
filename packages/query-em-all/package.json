@@ -8,7 +8,7 @@
     "dev": "run-p dev:server dev:client",
     "dev:client": "vite",
     "dev:server": "nodemon server/index.ts",
-    "build": "npm run webpack",
+    "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "tsc -p server/tsconfig.json",
     "test": "vitest",
