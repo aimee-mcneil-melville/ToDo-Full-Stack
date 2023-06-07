@@ -1,4 +1,4 @@
-import { Pokemon } from '../../models/pokemon'
+import { type Pokemon } from '../../models/pokemon'
 import db from './connection'
 
 export async function getAllPokemon(): Promise<Pokemon[]> {
@@ -16,7 +16,7 @@ export async function addPokemon(name: string): Promise<Pokemon> {
 export async function renamePokemon(
   id: number,
   name: string
-): Promise<Pokemon | undefined> {
+): Promise<Pokemon> {
   return db('pokemon').where({ id }).update({ name }).returning(['id', 'name'])
 }
 
