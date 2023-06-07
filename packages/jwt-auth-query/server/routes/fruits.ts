@@ -6,18 +6,6 @@ import * as db from '../db/fruits'
 
 const router = express.Router()
 
-const checkJwt = (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
-) => {
-  // @ts-expect-error - heck you expressjwt
-  req.auth = {
-    sub: 'auth0|123',
-  }
-  next()
-}
-
 // A public endpoint that anyone can access
 // GET /api/v1/fruits
 router.get('/', async (req, res) => {
@@ -31,8 +19,9 @@ router.get('/', async (req, res) => {
   }
 })
 
+// TODO: use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', checkJwt, async (req: JwtRequest, res) => {
+router.post('/', async (req: JwtRequest, res) => {
   const { fruit } = req.body as { fruit: FruitData }
   const auth0Id = req.auth?.sub
 
@@ -58,7 +47,7 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
 
 // TODO: use checkJwt as middleware
 // PUT /api/v1/fruits
-router.put('/:id', checkJwt, async (req: JwtRequest, res) => {
+router.put('/:id', async (req: JwtRequest, res) => {
   const { fruit } = req.body as { fruit: FruitData }
   const auth0Id = req.auth?.sub
 
@@ -94,7 +83,7 @@ router.put('/:id', checkJwt, async (req: JwtRequest, res) => {
 
 // TODO: use checkJwt as middleware
 // DELETE /api/v1/fruits
-router.delete('/:id', checkJwt, async (req: JwtRequest, res) => {
+router.delete('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
   const auth0Id = req.auth?.sub
 
