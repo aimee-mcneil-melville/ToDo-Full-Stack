@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 export default function PokemonList() {
   const generation = {
     name: 'generation-i',
@@ -12,9 +10,7 @@ export default function PokemonList() {
       <h2>Pokémon in {generation.region}:</h2>
       <ul>
         {generation.pokemon.map((p) => (
-          <li key={p.id}>
-            <Link to={`pokemon/${p.name.toLowerCase()}`}>{p.name}</Link>
-          </li>
+          <li key={p.id}>{p.name}</li>
         ))}
       </ul>
     </>
