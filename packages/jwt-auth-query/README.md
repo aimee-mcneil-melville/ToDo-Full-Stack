@@ -23,7 +23,7 @@ Our task is to complete the authentication implementation of this app.
     ```
   </details>
 
-- [ ] Visit [http://localhost:3000](http://localhost:3000) in your browser
+- [ ] Visit [http://localhost:5173](http://localhost:5173) in your browser
 
 ---
 
@@ -105,9 +105,9 @@ In order to complete the implementation of authentication for this app, we need 
   
     | Setting                   | Value                                                     |
     | ------------------------- | --------------------------------------------------------- |
-    | Allowed Callback Url      | `http://localhost:3000/`                                  |
-    | Allowed Logout Url        | `http://localhost:3000/`                                  |
-    | Allowed Web Origins Url   | `http://localhost:3000/`                                  |
+    | Allowed Callback Url      | `http://localhost:5173/`                                  |
+    | Allowed Logout Url        | `http://localhost:5173/`                                  |
+    | Allowed Web Origins Url   | `http://localhost:5173/`                                  |
   7. Scroll down to the bottom of the page and click the **Save Changes** button
 
 ### 4. Creating the application API
@@ -196,7 +196,7 @@ In `client/components/Nav.tsx`:
 
     The "Sign In" link will redirect you to Auth0's authentication service and prompt you to enter an email and password. If this is your first time signing in, click on **Sign up** below the **Continue** button. This form allows you to create a new user (subscription) that is only used for the one Auth0 app. Even if you used the same email and password when creating an account on a different app, Auth0 will treat it as a new account that is specific to your Fruits app.
 
-    After you've registered your new user, you will be redirected back to `http://localhost:3000` and "Sign out" will again be visible in the app.
+    After you've registered your new user, you will be redirected back to `http://localhost:5173` and "Sign out" will again be visible in the app.
   </details>
 
 Commit your code and swap driver/navigator if you're pairing.
