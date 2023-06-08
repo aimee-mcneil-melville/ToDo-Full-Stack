@@ -5,7 +5,7 @@ export default function Footer() {
   const { status } = useParams()
   const { data, deleteTodo } = useTodos()
 
-  if (!data) {
+  if (!data || data.length === 0) {
     return null
   }
 

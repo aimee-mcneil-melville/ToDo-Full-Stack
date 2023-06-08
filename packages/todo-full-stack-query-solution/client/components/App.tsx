@@ -4,10 +4,7 @@ import AddTodo from './AddTodo'
 import AllComplete from './AllComplete'
 import Footer from './Footer'
 
-import { useTodos } from '../hooks/useTodos'
-
 export default function App() {
-  const { data } = useTodos()
   return (
     <>
       <header className="header">
@@ -18,7 +15,7 @@ export default function App() {
         <AllComplete />
         <Outlet />
       </section>
-      {data && data?.length > 0 ? <Footer /> : null}
+      <Footer />
     </>
   )
 }
