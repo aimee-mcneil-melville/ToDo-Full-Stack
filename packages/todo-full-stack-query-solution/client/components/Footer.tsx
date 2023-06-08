@@ -21,7 +21,8 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p className="todo-count">
-        <strong>{count}</strong> item{count > 1 ? 's' : null} left
+        <strong>{count}</strong> item{count > 1 || count === 0 ? 's ' : ' '}
+        left
       </p>
 
       <ul className="filters">
