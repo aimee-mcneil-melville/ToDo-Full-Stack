@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Task } from '../../common/task'
+import { Task } from '../../models/task'
 import { useTodos } from '../hooks/useTodos'
 
 interface Props {

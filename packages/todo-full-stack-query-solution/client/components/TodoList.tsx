@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import { useTodos } from '../hooks/useTodos'
-import { Task } from '../../common/task'
+import { Task } from '../../models/task'
 import Todo from './Todo'
 
 export default function TodoList() {

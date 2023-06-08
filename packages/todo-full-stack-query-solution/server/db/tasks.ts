@@ -1,6 +1,6 @@
 import connection from './connection'
 
-import { Task, TaskData } from '../../common/task'
+import { Task, TaskData } from '../../models/task'
 
 export function getAllTasks(): Promise<Task[]> {
   return connection('todos').select('*')
