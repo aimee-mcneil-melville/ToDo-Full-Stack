@@ -1,24 +1,13 @@
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-
-import { fetchFruits } from '../actions'
+import { useFruits } from '../hooks/useFruits'
 
 function App() {
-  const fruits = useAppSelector((state) => state.fruits)
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(fetchFruits())
-  }, [dispatch])
+  const { data } = useFruits()
 
   return (
     <>
       <div className="app">
         <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
       </div>
     </>
   )
