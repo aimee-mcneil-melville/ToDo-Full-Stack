@@ -30,17 +30,13 @@ router.get('/generation/:generation', async (req, res) => {
     const region = response.body.main_region.name
     const name = response.body.name
 
-    type Response = {
-      generation: PokemonGeneration
-    }
-
     return res.json({
       generation: {
         pokemon,
         region,
         name,
       },
-    } as Response)
+    } as { generation: PokemonGeneration })
   } catch (err) {
     if (err instanceof Error) {
       res.status(500).json({ message: err.message })
@@ -58,11 +54,7 @@ router.get('/:name', async (req, res) => {
       `https://pokeapi.co/api/v2/pokemon/${name}`
     )
 
-    type Response = {
-      pokemon: Pokemon
-    }
-
-    return res.json({ pokemon: response.body } as Response)
+    return res.json({ pokemon: response.body } as { pokemon: Pokemon })
   } catch (err) {
     if (err instanceof Error) {
       res.status(500).json({ message: err.message })
