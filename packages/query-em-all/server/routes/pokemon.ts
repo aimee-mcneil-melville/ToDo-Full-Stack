@@ -39,6 +39,9 @@ router.get('/generation/:generation', async (req, res) => {
     } as { generation: PokemonGeneration })
   } catch (err) {
     if (err instanceof Error) {
+      if (err.message === 'Not Found') {
+        return res.status(404).send(err.message)
+      }
       res.status(500).send(err.message)
     } else {
       res.sendStatus(500)
@@ -57,6 +60,9 @@ router.get('/:name', async (req, res) => {
     return res.json({ pokemon: response.body } as { pokemon: Pokemon })
   } catch (err) {
     if (err instanceof Error) {
+      if (err.message === 'Not Found') {
+        return res.status(404).send(err.message)
+      }
       res.status(500).send(err.message)
     } else {
       res.sendStatus(500)
