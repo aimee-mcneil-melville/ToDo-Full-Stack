@@ -1,13 +1,16 @@
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import store from './store'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import App from './components/App'
 
+const queryClient = new QueryClient()
+
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <App />
-    </Provider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 })

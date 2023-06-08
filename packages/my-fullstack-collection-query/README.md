@@ -1,10 +1,11 @@
 # Fullstack Collection App
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, API requests and React components that'll use React Query. Let's get going!
 
 ## Setup
 
 ### 0. Cloning and installation
+
 - [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
@@ -57,36 +58,28 @@ Our first job is getting something showing on the front end from our database. H
 ## Front end
 
 ### 4. Setting the stage
-
 - [ ] Build a React component with static html
-- [ ] Build Redux reducer. Start with a hardcoded initial state
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    For example:
-    ```js
-    const initialState = [{ id: 1, title: 'Ready Player One', author: 'Ernest Cline' }]
-    ```
-  </details>
-
-- [ ] Use `useAppSelector` to display the redux state you hardcoded in the React Component
 
 ### 5. Building the API client
 - [ ] Build an API client in the front end to request the information from your routes
 
-### 6. Building thunky actions
-- [ ] Build Thunk actions to use the API and get the information
-- [ ] Build Redux actions to save task data from the thunk
-- [ ] Use `useAppDispatch` and `useEffect` to dispatch the thunk when your app loads
+### 6. Querying Data 
+- [ ] Write a query with the `useQuery` hook to fetch the collection data from the API
+- [ ] Display the collection data you queried in a component (you may want to create a new component for this)
 
-## Additional functionality
+### 7. Create Data
+- [ ] (Optional) Create a new component for your new collection item form
+- [ ] Mutate data with the `useMutation` hook to create a new collection item via the API 
 
-### 7. Adding, deleting, and updating records
-- [ ] Include the ability to add a new record (will need a form in your components)
-- [ ] Include the ability to remove/delete records
-- [ ] Include the ability to update records (e.g. for correcting typos)
+### 8. Delete Data
+- [ ] Mutate data with the `useMutation` hook to delete an exisiting collection item via the API (you may want to add this to your collection display component)
+
+### 9. Update Data
+- [ ] (Optional) Create a new component for your update collection item form
+- [ ] Mutate data with the `useMutation` hook to update an exisiting collection item via the API 
 
 ---
+
 ## Stretch
 
 <details>

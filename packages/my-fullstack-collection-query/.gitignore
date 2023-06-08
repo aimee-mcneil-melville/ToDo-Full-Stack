@@ -7,12 +7,12 @@ node_modules
 # SQLite DBs
 *.sqlite3
 
-# Webpack bundle
-server/public/bundle.js
-server/public/bundle.js.map
+# Build products
+dist
 
 # Jest coverage report
-coverage/*
+coverage
 
 # Dotenv env settings
 .env
+
