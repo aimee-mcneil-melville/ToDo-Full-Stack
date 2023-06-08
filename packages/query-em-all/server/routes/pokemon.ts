@@ -39,7 +39,7 @@ router.get('/generation/:generation', async (req, res) => {
     } as { generation: PokemonGeneration })
   } catch (err) {
     if (err instanceof Error) {
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     } else {
       res.sendStatus(500)
     }
@@ -57,7 +57,7 @@ router.get('/:name', async (req, res) => {
     return res.json({ pokemon: response.body } as { pokemon: Pokemon })
   } catch (err) {
     if (err instanceof Error) {
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     } else {
       res.sendStatus(500)
     }
