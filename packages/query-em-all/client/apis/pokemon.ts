@@ -1,14 +1,14 @@
 import request from 'superagent'
 import type { Pokemon, PokemonGeneration } from '../../models/pokemon'
 
-export async function fetchPokemonGeneration(generation: number) {
+export async function fetchPokemonGeneration(
+  generation: number
+): Promise<PokemonGeneration> {
   return request
     .get(`/api/v1/pokemon/generation/${generation}`)
-    .then((res) => res.body.generation as PokemonGeneration)
+    .then((res) => res.body.generation)
 }
 
-export async function fetchPokemonByName(name: string) {
-  return request
-    .get(`/api/v1/pokemon/${name}`)
-    .then((res) => res.body.pokemon as Pokemon)
+export async function fetchPokemonByName(name: string): Promise<Pokemon> {
+  return request.get(`/api/v1/pokemon/${name}`).then((res) => res.body.pokemon)
 }

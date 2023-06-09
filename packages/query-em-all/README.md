@@ -69,6 +69,7 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
     <summary>More about fetching Pokémon</summary>
     
     - `fetchPokemonGeneration` takes a `generation` parameter, which is a number between 1 and 9, in this case, we want to fetch the first generation of Pokémon, so we can pass `1`
+    - Check the type in `models/pokemon.ts` a generation is an object with three properties: `{ region: string, name: string, pokemon: PartialPokemon[] }`
     - `useQuery` takes a key (a string) and a function that returns a promise (`fetchPokemonGeneration`, in this case) and returns an object with a `data` property, which will eventually contain data returned by the promise
 
     Read more about [keys](https://tanstack.com/query/latest/docs/react/guides/query-keys) and [queries](https://tanstack.com/query/latest/docs/react/guides/queries) in the [React Query docs](https://tanstack.com/query/latest/docs/react).
@@ -122,9 +123,10 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 <details>
   <summary>More about stretch challenges</summary>
 
-  TODO: possible stretch challenges might include:
-    - moving `<PokemonList>` to `/generations/:generationId` and having `/` or `/search` be a dedicated search page
-    - adding a search bar to `<PokemonList>` that filters the list of Pokémon
+  - [ ] As a user, on the homepage (`/`) I want to see a list of all the generations, so that I can click on one, go to `/generations/:generationId` and see the list of Pokémon for that generation
+
+  - [ ] As a user, I want to see a search bar at the top of the page, so that I can search for a Pokémon by name, when I hit enter, I want to be taken to `/search?name=pokemonName`, which should display a filtered list of Pokémon
+
 </details>
 
 ---
