@@ -1,19 +1,21 @@
-import { join } from 'node:path'
+import * as path from 'node:path'
 import express from 'express'
 
 import posts from './routes/posts'
 import comments from './routes/comments'
 
 const server = express()
-server.use(express.static(join(__dirname, 'public')))
 server.use(express.json())
 
 server.use('/api/v1/posts', posts)
 server.use('/api/v1/comments', comments)
 server.use('/api/v1/*', (req, res) => res.sendStatus(404))
 
-server.get('*', (req, res) => {
-  res.sendFile(join(__dirname, './public/index.html'))
-})
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../index.html'))
+  })
+}
 
 export default server

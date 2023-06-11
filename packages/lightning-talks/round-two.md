@@ -61,17 +61,19 @@
   - [ ] `git cherry-pick`
   - [ ] `git rebase`
 
-* Functional Programming
+* Programming paradigms
   - [ ] What is functional programming?
-  - [ ] Currying
+  - [ ] OOP (object oriented programming)
+  - [ ] Quantum computing - how does it compare to traditional programming?
 
-* ECMAScript 6 (ES6)
+* ECMAScript
   - [ ] Destructuring
   - [ ] Default parameters, Rest operators, Spread operators
   - [ ] `Map` and `Set`
   - [ ] Babel & Transpiling
   - [ ] Generator functions
   - [ ] ES7
+  - [ ] Prototypal inheritance
 
 * Performance
   - [ ] Measuring performance
