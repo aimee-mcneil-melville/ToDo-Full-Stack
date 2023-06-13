@@ -181,7 +181,7 @@ export const { navigate } = activePageSlice.actions
 </details>
 </details>
 
-- [ ] Import the `activePage` reducer to the `store.ts`
+- [ ] Add the `activePage` reducer to the `combineReducers()` call in `client/slices/index.ts` 
 
 ### 4. Dispatch the navigate action from the app
 
