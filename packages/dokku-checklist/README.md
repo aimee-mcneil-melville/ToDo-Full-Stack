@@ -199,6 +199,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
   COPY . .
 
   ENV NODE_ENV=production
+  RUN npm run build
   RUN npm prune --omit=dev
   ```
 
