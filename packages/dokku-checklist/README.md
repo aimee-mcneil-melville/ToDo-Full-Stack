@@ -140,7 +140,9 @@ Across all apps there are some things we need to make sure are done when we try 
 ### 5. Production snippet
 
 - [ ] Add the below snippet to the server.ts file
-
+ <details style="padding-left: 2em">
+    <summary>Snippet details</summary>
+   
 ```javascript
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static('../assets'))
@@ -149,6 +151,8 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
   ```
+
+</details>
 
 ## Databases
 
