@@ -149,18 +149,12 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
   ```
-### 6. Create dist folder
-- [ ] Run this command in the terminal to create the dist folder with your assets:
-```javascript
-npm run build && npm run start
-  ```
----
 
 ## Databases
 
 If your app includes a database, read this. We're going to use an sqlite database.
 
-### 7. Using a sqlite database
+### 6. Using a sqlite database
 
 - [ ] Setting up sqlite in production
   <details style="padding-left: 2em">
@@ -180,7 +174,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
   </details>
 
-### 8. Procfile to migrate your database
+### 7. Procfile to migrate your database
 
 - [ ] Make sure you have a Procfile
   <details style="padding-left: 2em">
@@ -197,7 +191,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
   </details>
 
-### 9. Adding a Dockerfile
+### 8. Adding a Dockerfile
 
 - [ ] Application has a Dockerfile
   <details style="padding-left: 2em">
@@ -228,7 +222,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
 A .env file can be used to store API keys and other secrets.
 
-### 10. Secrets and NODE_ENV
+### 9. Secrets and NODE_ENV
 
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode
   <details style="padding-left: 2em">
@@ -259,7 +253,7 @@ A .env file can be used to store API keys and other secrets.
 
 We need to create and deploy our apps to see them live.
 
-### 11. Creating your app
+### 10. Creating your app
 
 - [ ] Creating your app
   <details style="padding-left: 2em">
@@ -332,7 +326,7 @@ We need to create and deploy our apps to see them live.
 
   </details>
 
-### 12. Mounting storage for your app's database
+### 11. Mounting storage for your app's database
 
 - [ ] Mounting app storage
   <details style="padding-left: 2em">
@@ -375,7 +369,7 @@ We need to create and deploy our apps to see them live.
 
 ---
 
-### 13. Deploying your app
+### 12. Deploying your app
 
 - [ ] Deploying your app
   <details style="padding-left: 2em">
@@ -436,7 +430,7 @@ We need to create and deploy our apps to see them live.
   **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
   </details>
 
-### 14. Seeding your Database
+### 13. Seeding your Database
 
 - [ ] Running your DB seeds.
   <details style="padding-left: 2em">
