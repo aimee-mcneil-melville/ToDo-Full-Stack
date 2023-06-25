@@ -143,9 +143,9 @@ Across all apps there are some things we need to make sure are done when we try 
 
 ```javascript
 if (process.env.NODE_ENV === 'production') {
-  server.use('/assets', express.static('/app/dist/assets'))
+  server.use('/assets', express.static('../assets'))
   server.get('*', (req, res) => {
-    res.sendFile('/app/dist/index.html')
+    res.sendFile('../index.html')
   })
 }
   ```
