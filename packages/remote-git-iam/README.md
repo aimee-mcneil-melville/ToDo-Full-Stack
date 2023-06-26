@@ -12,12 +12,10 @@ npm install @devacademy/git-iam --global
 
 ## Configuration
 
-**Important Note for the Teaching Team:** Replace the link after the `--init` with a shareable link to the private git gist with the JSON object containing student github information. In order to create a quick JSON file of all the students, run the second part of this [script](https://github.com/dev-academy-programme/teaching-guide/tree/main/resources/scripts/add-people-to-github-org). Remember to add `/raw/` at the end of the git gist link. Delete this note after forking and editing the link.
-
 After installation:
 
 ```sh
-git-iam --init https://example.url
+git-iam --init https://example.url](https://gist.github.com/toolseda/2fbbe5cb6800ce040601e43069add44e/raw/
 ```
 
 This command
@@ -32,6 +30,7 @@ During pairing sessions, you should be switching between driver/navigator freque
 ```sh
 git iam jane
 ```
+
 **Replace jane with your or your pair's name.**
 This command temporarily changes the git configurations to recognise `Jane` as the developer. 
 
