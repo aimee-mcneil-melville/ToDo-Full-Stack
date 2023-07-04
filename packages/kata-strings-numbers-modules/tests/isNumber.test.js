@@ -1,4 +1,6 @@
-const isNumber = require('../utilities').isNumber
+import { test, expect } from 'vitest'
+import { isNumber } from '../utilities.js'
+
 
 test('"42" is not a number datatype', () => {
   const expected = false

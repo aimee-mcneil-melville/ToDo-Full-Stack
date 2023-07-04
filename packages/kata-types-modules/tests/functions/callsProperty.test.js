@@ -1,4 +1,5 @@
-const functions = require('../../functions')
+import * as functions from '../../functions.js'
+import { test, expect } from 'vitest'
 
 // Same deal: if you're not sure, don't worry too much. Ask a teacher for some guidance.
 test('functions.callsProperty accepts a parameter `obj` and calls obj.increment() (once)', function () {

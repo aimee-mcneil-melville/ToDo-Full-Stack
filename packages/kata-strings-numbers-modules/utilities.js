@@ -1,23 +1,23 @@
 /* eslint-disable no-unused-vars */
 
-function getType(thing) {}
+export function getType(thing) {}
 
-function isNumber(thing) {}
+export function isNumber(thing) {}
 
-function toNumber(str) {}
+export function toNumber(str) {}
 
-function isStringNumber(str) {}
+export function isStringNumber(str) {}
 
-function sum(a, b) {}
+export function sum(a, b) {}
 
-function addStrings(a, b) {}
+export function addStrings(a, b) {}
 
-function addNumbersOrStrings(a, b) {}
+export function addNumbersOrStrings(a, b) {}
 
-function hasComma(str) {}
+export function hasComma(str) {}
 
-function splitStringByCommas(str) {}
+export function splitStringByCommas(str) {}
 
-function isEmail(str) {}
+export function isEmail(str) {}
 
-function countIf(array, fn) {}
+export function countIf(array, fn) {}

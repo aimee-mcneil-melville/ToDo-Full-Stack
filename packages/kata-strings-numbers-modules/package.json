@@ -1,9 +1,10 @@
 {
   "name": "kata-strings-numbers-modules",
+  "type": "module",
   "version": "2.0.1",
   "description": "Kata for working with types, functions and modules",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
@@ -25,7 +26,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "jest": "^29.2.2",
     "prettier": "2.6.1"
   },
   "prettier": {

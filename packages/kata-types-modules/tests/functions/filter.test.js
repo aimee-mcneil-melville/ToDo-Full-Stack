@@ -1,4 +1,5 @@
-const functions = require('../../functions')
+import * as functions from '../../functions.js'
+import { test, expect } from 'vitest'
 
 // Write a filter implementation. Keep it uncomplicated, if you can!
 test('functions.filter takes an array as the first parameter, a function as the second parameter, and only returns elements for which the function returns true', function () {
