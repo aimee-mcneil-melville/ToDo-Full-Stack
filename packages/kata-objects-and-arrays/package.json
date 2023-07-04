@@ -1,9 +1,10 @@
 {
   "name": "kata-objects-and-arrays",
+  "type": "module",
   "version": "2.0.1",
   "description": "Kata for objects and arrays",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
@@ -28,8 +29,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "jest": "^29.2.2",
-    "prettier": "2.6.1"
+    "prettier": "2.6.1",
+    "vitest": "^0.32.4"
   },
   "prettier": {
     "semi": false,

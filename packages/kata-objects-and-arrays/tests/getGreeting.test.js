@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('getGreeting returns "Hello <name>"', () => {
   const expected = 'Hello Aardvark'
