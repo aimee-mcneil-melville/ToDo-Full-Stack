@@ -1,5 +1,6 @@
 {
   "name": "kata-data-structures",
+  "type": "module",
   "version": "2.0.1",
   "description": "Kata for data Structures",
   "scripts": {

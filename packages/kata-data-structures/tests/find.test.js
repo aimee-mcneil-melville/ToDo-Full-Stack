@@ -1,5 +1,6 @@
-const getContacts = require('./getContacts')
-const find = require('../find')
+import { test, expect } from 'vitest'
+import getContacts from './getContacts'
+import find from '../find'
 
 test('find finds the first matching object in the array', function () {
   // Arrange

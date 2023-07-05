@@ -1,2 +1,2 @@
 /* eslint-disable no-unused-vars */
-function getAddress(obj) {}
+export default function getAddress(obj) {}

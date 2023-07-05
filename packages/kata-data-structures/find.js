@@ -1,2 +1,2 @@
 /* eslint-disable no-unused-vars */
-function find(arr, searchDetails) {}
+export default function find(arr, searchDetails) {}

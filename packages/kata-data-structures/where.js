@@ -1,2 +1,2 @@
 /* eslint-disable no-unused-vars */
-function where(arr, searchDetails) {}
+export default function where(arr, searchDetails) {}

@@ -1,10 +1,11 @@
 {
   "name": "kata-number-patterns",
+  "type": "module",
   "version": "0.1.0",
   "description": "A kata to practice conditionals and iteration",
   "main": "index.js",
   "scripts": {
-    "test": "jest --noStackTrace",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
