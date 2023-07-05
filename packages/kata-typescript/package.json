@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest --watchAll",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "keywords": [],
   "author": "",
