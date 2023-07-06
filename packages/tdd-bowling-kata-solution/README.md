@@ -8,12 +8,13 @@ This kata aims to help you become familiar with test-first design, also commonly
   <summary>More about installation</summary>
   
   1. Clone this repository
-  1. Install Jest using npm
+  1. `npm install`
 </details>
 
-### 0. Preparing Jest
+### 0. Preparing a test runner
 
-- [ ] Change the `test` script in `package.json` to `"jest --watchAll"`
+- [ ] `npm install -D vitest`
+- [ ] Change the `test` script in `package.json` to `"vitest"`
 
 -----
 ## Tests (which drive development)
@@ -27,6 +28,8 @@ This kata aims to help you become familiar with test-first design, also commonly
     This help us check that our setup is working. Create `score.test.js` with these contents.
 
     ```js
+      import { test, expect } from 'vitest'
+
       test('test setup working', () => {
         expect(true).toBeTruthy()
       })
@@ -59,7 +62,7 @@ This kata aims to help you become familiar with test-first design, also commonly
     At the top of `score.test.js`, add a reference to the code we intend to test.
 
     ```js
-    const score = require('./score') // this is the line to add
+    import * as score from './score' // this is the line to add
     ```
     Now you'll notice we are getting an error because it can't find the `score` reference (because it doesn't exist yet).
   </details>
@@ -71,7 +74,7 @@ This kata aims to help you become familiar with test-first design, also commonly
     Create a new file `./score.js` file with the least amount of code.
     
     ```js
-    module.exports = {}
+    export {}
     ```
 
     After saving these changes, the single test should once again run and pass.
@@ -93,6 +96,7 @@ Now, we will test our least complicated frame.
       const frame = [0, 0]
       const expected = 0
       const actual = score.scoreFrame(frame)
+
       expect(actual).toBe(expected)
     })
     ```
@@ -106,8 +110,8 @@ Now, we will test our least complicated frame.
 
     To `./score.js`, modify the exports and add the `scoreFrame` method
     ```js
-    module.exports = {
-      scoreFrame: scoreFrame
+    export {
+      scoreFrame
     }
 
     function scoreFrame (frame) {
