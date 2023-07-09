@@ -1,11 +1,12 @@
 {
   "name": "ascii-art-reader-solution",
+  "type": "module",
   "version": "0.1.0",
   "description": "ASCII Art Reader: state of the (ASCII Art) terminal client!",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --ignore data/ index",
-    "test": "jest --watch --noStackTrace"
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -27,8 +28,8 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/ascii-art-reader#readme",
   "devDependencies": {
-    "jest": "^29.2.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "vitest": "^0.33.0"
   },
   "dependencies": {
     "prompt": "^1.3.0"

@@ -1,4 +1,7 @@
-var menu = require('./menu')
+import { main } from './menu.js'
 
 console.log(' Welcome!\n --------\n')
-menu.main()
+
+main().catch(e => { 
+  process.exitCode = 1
+})
