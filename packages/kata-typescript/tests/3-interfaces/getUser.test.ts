@@ -1,4 +1,4 @@
-/* eslint-disable jest/no-conditional-expect */
+import { describe, it, expect } from 'vitest'
 import { getUser } from '../../functions/3-interfaces'
 
 const users = {

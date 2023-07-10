@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { fillArrayWithBees } from '../../functions/2-arrays'
 
 describe('fillArrayWithBees', () => {

@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { sumFrame } from '../../functions/1-types'
 
 describe('sumFrame (OPTIONAL PARAMETER)', () => {

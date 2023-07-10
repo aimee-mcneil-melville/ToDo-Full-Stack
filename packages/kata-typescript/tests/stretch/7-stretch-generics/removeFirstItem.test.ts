@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { removeFirstItem } from '../../../functions/7-stretch-generics'
 
 describe('removeFirstItem', () => {

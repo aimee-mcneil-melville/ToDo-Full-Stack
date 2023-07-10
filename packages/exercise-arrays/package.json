@@ -28,18 +28,15 @@
     "@devacademy/eslint-config": "^1.8.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "prettier": "2.6.1"
+    "prettier": "2.6.1",
+    "vitest": "^0.32.4"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
-  },
-  "dependencies": {
-    "vitest": "^0.32.4"
   }
 }

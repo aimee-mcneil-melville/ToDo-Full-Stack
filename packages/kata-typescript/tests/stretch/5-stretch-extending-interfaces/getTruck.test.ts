@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getTruck } from '../../../functions/5-stretch-extending-interfaces'
 
 describe('getTruck', () => {

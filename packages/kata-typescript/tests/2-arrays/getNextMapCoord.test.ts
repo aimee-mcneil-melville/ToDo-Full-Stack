@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getNextMapCoord } from '../../functions/2-arrays'
 
 describe('getNextMapCoord (TUPLE and ALIAS)', () => {

@@ -30,10 +30,10 @@ async function save(comment, filename = 'data/comments.txt') {
   try {
     var commentLine = `${comment}\n`
     const file = await open(filename, 'a+')
-    console.log('Your comment has been saved for posterity. Congratulations.')
 
     await writeFile(file, commentLine, 'utf8')
     await file.close()
+    console.log('Your comment has been saved for posterity. Congratulations.')
   } catch (err) {
     console.error(err)
     console.error("Can't write to comments file.")

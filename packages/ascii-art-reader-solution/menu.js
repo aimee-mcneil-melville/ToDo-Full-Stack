@@ -93,6 +93,7 @@ async function areYouSure() {
     name: 'sure',
     message: 'Are you sure [y/N]?',
   })
+  
   return result.choice === 'y'
 }
 

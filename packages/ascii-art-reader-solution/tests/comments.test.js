@@ -2,7 +2,6 @@ import { test, expect} from 'vitest'
 import * as fs from 'node:fs/promises'
 import * as comments from '../comments.js'
 
-
 // Notice that some functions have been written to allow
 // an optional 'filename' parameter. This lets us pass the
 // location of our fake comments file, making the functions
@@ -48,7 +47,7 @@ test('comments.save correctly modifies file content', async () => {
   expect(actual).toBe(expected)
 
   } finally {
-      // Return file to it's original state
+    // Return file to it's original state
     await fs.writeFile(filename, 'wombat\n', 'utf8')
   }
 })

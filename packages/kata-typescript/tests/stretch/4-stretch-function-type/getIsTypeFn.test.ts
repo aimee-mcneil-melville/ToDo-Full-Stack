@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getIsTypeFn } from '../../../functions/4-stretch-function-type'
 
 describe('getIsTypeFn', () => {

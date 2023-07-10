@@ -4,7 +4,7 @@
   "version": "2.0.1",
   "description": "Kata for data Structures",
   "scripts": {
-    "test": "jest --watchAll --noStackTrace",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
@@ -16,23 +16,17 @@
   "license": "ISC",
   "eslintConfig": {
     "extends": [
-      "@devacademy",
-      "plugin:jest/recommended"
-    ],
-    "plugins": [
-      "jest"
+      "@devacademy"
     ]
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "jest": "^29.2.2",
     "prettier": "2.6.1"
   },
   "prettier": {

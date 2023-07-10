@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getUserPhoto } from '../../functions/3-interfaces'
 
 describe('getUserPhoto', () => {

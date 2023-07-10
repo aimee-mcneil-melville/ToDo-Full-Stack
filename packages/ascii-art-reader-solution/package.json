@@ -10,11 +10,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@devacademy",
-      "plugin:jest/recommended"
-    ],
-    "plugins": [
-      "jest"
+      "@devacademy"
     ]
   },
   "repository": {

@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { sortBySize } from '../../functions/2-arrays'
 
 describe('sortBySize', () => {
