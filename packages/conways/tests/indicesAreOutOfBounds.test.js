@@ -1,4 +1,5 @@
-const indicesAreOutOfBounds = require('../indicesAreOutOfBounds')
+import { test, expect } from 'vitest' 
+import indicesAreOutOfBounds from '../indicesAreOutOfBounds'
 
 test('indicesAreOutOfBounds', () => {
   const testArray = [

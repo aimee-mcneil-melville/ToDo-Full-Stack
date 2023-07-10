@@ -1,4 +1,5 @@
-const isOutOfBounds = require('../isOutOfBounds')
+import { test, expect } from 'vitest' 
+import isOutOfBounds from '../isOutOfBounds'
 
 test('isOutOfBounds', () => {
   const testArray = [1, 2, 3]

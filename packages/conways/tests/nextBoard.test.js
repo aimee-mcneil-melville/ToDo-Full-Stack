@@ -1,5 +1,7 @@
-const createBoard = require('../createBoard')
-const nextBoard = require('../nextBoard')
+import { test, expect } from 'vitest' 
+
+import createBoard from '../createBoard'
+import nextBoard from '../nextBoard'
 
 test('nextBoard is not equal to createBoard', () => {
   const board = createBoard(10)

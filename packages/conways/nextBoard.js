@@ -1,6 +1,6 @@
-const nextCellState = require('./nextCellState')
-const countAliveNeighbours = require('./countAliveNeighbours')
+import nextCellState from './nextCellState'
+import countAliveNeighbours from './countAliveNeighbours'
 
 function nextBoard(currentBoard) {}
 
-module.exports = nextBoard
+export default nextBoard
