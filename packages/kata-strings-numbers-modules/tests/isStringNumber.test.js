@@ -1,4 +1,5 @@
-const isStringNumber = require('../utilities').isStringNumber
+import { test, expect } from 'vitest'
+import { isStringNumber } from '../utilities.js'
 
 test('"42" is a string number', () => {
   const expected = true

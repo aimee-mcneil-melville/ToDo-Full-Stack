@@ -1,5 +1,9 @@
-const { within } = require('@testing-library/dom')
-const { JSDOM } = require('jsdom')
+import { within } from '@testing-library/dom'
+import { JSDOM } from 'jsdom'
 
-export const render = (response) =>
-  within(new JSDOM(response.text).window.document)
+const render = (response) => {
+  const { document } = new JSDOM(response.text).window
+  return within(document)
+}
+
+export { render }

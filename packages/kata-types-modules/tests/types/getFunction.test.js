@@ -1,4 +1,5 @@
-const types = require('../../types')
+import * as types from '../../types.js'
+import { test, expect } from 'vitest'
 
 test('types.getFunction returns a function', function () {
   const expected = 'function'

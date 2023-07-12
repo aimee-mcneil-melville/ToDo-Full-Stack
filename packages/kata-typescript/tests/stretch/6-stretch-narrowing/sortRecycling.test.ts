@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { sortRecycling, Trash } from '../../../functions/6-stretch-narrowing'
 
 describe('sortRecycling', () => {
@@ -9,12 +10,12 @@ describe('sortRecycling', () => {
   it('should remove all the rubbish from the array', () => {
     const trash = [
       'rubbish',
-      { colour: 'green', melt: jest.fn() },
+      { colour: 'green', melt: vi.fn() },
       'rubbish',
-      { density: 'light', compost: jest.fn() },
-      { type: 'aluminum', magnetize: jest.fn() },
+      { density: 'light', compost: vi.fn() },
+      { type: 'aluminum', magnetize: vi.fn() },
       'rubbish',
-      { colour: 'brown', compost: jest.fn() },
+      { colour: 'brown', compost: vi.fn() },
     ] as Trash[]
 
     const actual = sortRecycling(trash)

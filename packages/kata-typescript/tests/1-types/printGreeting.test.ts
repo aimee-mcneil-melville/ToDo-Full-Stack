@@ -1,7 +1,8 @@
+import { describe, it, expect, vi } from 'vitest'
 import { printGreeting } from '../../functions/1-types'
 
 describe('printGreeting', () => {
-  const spy = jest.spyOn(console, 'log').mockImplementation((str) => {})
+  const spy = vi.spyOn(console, 'log').mockImplementation((str) => {})
 
   it('does not return a value', () => {
     expect(printGreeting('name')).toBeUndefined()

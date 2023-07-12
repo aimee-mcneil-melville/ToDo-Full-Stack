@@ -1,21 +1,54 @@
-var fs = require('fs')
-var prompt = require('prompt')
+/* eslint-disable no-import-assign */
 
-var comments = require('./comments')
+import * as fs from 'node:fs/promises'
+import  prompt from 'prompt'
+import * as comments from './comments.js'
 
-module.exports = {
-  areYouSure: areYouSure,
-  enterComment: enterComment,
-  main: main,
-  pressEnter: pressEnter,
+
+export {
+  areYouSure,
+  enterComment,
+  main,
+  pressEnter,
 }
 
 prompt.message = ''
 prompt.delimiter = ' > '
 prompt.start()
 
-function main(cb) {
-  var next = cb || loader
+async function main() {
+  let result = await init()
+  for (;;) {
+    switch (result.choice) {
+      case 'q':
+        process.exitCode = 0
+        return
+  
+      case 'c':
+        await enterComment()
+        break
+  
+      case 'e':
+        if (await areYouSure()) {
+          await comments.erase()
+          await pressEnter()
+        }
+        break
+  
+      case 'v':
+        await comments.display()
+        await pressEnter()
+        break
+  
+      default:
+        await display(result.choice)
+    }
+
+    result = await init()
+  }
+}
+
+async function init() {
   console.log(
     ' Choose an artwork to display, or:\n',
     '  `c` to comment\n',
@@ -23,100 +56,63 @@ function main(cb) {
     '  `v` to view comments\n',
     '  `q` to quit\n'
   )
-  fs.readdir('data', function (err, files) {
-    var list = files.reduce(function (list, artwork, i) {
-      if (artwork === 'comments.txt') {
-        return list
-      }
-      return list + '  ' + i + ': ' + artwork + '\n'
-    }, '')
-    console.log(list)
+  const files = await fs.readdir('data')
 
-    var choice = {
-      name: 'choice',
-      message: 'Choice',
-    }
-    prompt.get(choice, next)
+  var list = files
+    .filter(fn => fn !== 'comments.txt')
+    .map((artwork, i) => ` ${i}: ${artwork}\n`)
+    .join('')
+
+  console.log(list)
+
+  return await prompt.get({
+    name: 'choice',
+    message: 'Choice',
   })
 }
 
-function enterComment() {
-  var comment = {
-    name: 'comment',
-    message: 'Enter your comment',
+async function enterComment() {
+  try {
+    const input = await prompt.get({
+      name: 'comment',
+      message: 'Enter your comment',
+    })
+    await comments.save(input.comment)
+  } catch (e) {
+    console.error("I don't understand that.")
+    await pressEnter()
   }
-  prompt.get(comment, function (err, input) {
-    if (err) {
-      console.error("I don't understand that.")
-      return pressEnter()
-    }
-    comments.save(input.comment, pressEnter)
-  })
 }
 
-function pressEnter(cb) {
-  var next = cb || loader
-  prompt.get('Hit <enter> to continue...', function () {
-    main(next)
-  })
+async function pressEnter() {
+  await prompt.get('Hit <enter> to continue...')
 }
 
-function areYouSure(yes) {
-  var sure = {
+async function areYouSure() {
+  const result = await prompt.get({
     name: 'sure',
     message: 'Are you sure [y/N]?',
-  }
-  prompt.get(sure, function (err, result) {
-    if (err) {
-      return main(loader)
-    }
-    if (result.sure !== 'y') {
-      return main(loader)
-    }
-    yes()
   })
+  
+  return result.choice === 'y'
 }
 
-function loader(err, result) {
-  if (err) {
-    return error("I don't understand that.")
-  }
+async function display(choice) {
+  try {
+    const files = await fs.readdir('data')
+    const  file = files[choice]
 
-  switch (result.choice) {
-    case 'q':
-      process.exit()
-
-    case 'c':
-      return enterComment()
-
-    case 'e':
-      return areYouSure(comments.erase, pressEnter)
-
-    case 'v':
-      return comments.display(pressEnter)
-
-    default:
-      display(result.choice)
-  }
-}
-
-function error(msg) {
-  console.error(msg)
-  pressEnter(loader)
-}
-
-function display(choice) {
-  fs.readdir('data', function (err, files) {
-    var file = files[choice]
     if (!file) {
-      return error("That's not one of the artworks!")
+      throw new Error("That's not one of the artworks!")
     }
-    fs.readFile('data/' + file, 'utf8', function (err, artwork) {
-      if (err) {
-        return error("Can't load that file.")
-      }
+    
+    try {
+      const artwork = await fs.readFile(`data/${file}`, 'utf8')
       console.log(artwork)
-      pressEnter(loader)
-    })
-  })
+    } catch (err) {
+      throw new Error("Can't load that file.")
+    }
+  } catch (err) {
+    console.error(err.message)
+  }
 }

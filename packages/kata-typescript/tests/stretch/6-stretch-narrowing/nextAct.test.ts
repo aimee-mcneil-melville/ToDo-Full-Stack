@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { nextAct } from '../../../functions/6-stretch-narrowing'
 
 describe('nextAct', () => {
@@ -5,7 +6,7 @@ describe('nextAct', () => {
     const musician = {
       instrument: 'saxophone',
       style: 'jazz',
-      play: jest.fn(),
+      play: vi.fn(),
     }
 
     nextAct(musician)
@@ -15,7 +16,7 @@ describe('nextAct', () => {
   it('should call the dance method on a Dancer', () => {
     const dancer = {
       style: 'ballet',
-      dance: jest.fn(),
+      dance: vi.fn(),
     }
 
     nextAct(dancer)
@@ -25,7 +26,7 @@ describe('nextAct', () => {
   it('should call the act method on an Improviser', () => {
     const improviser = {
       funny: true,
-      act: jest.fn(),
+      act: vi.fn(),
     }
 
     nextAct(improviser)

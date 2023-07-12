@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getNextTrafficLightColour } from '../../functions/1-types'
 
 describe('getNextTrafficLightColour (UNION PARAMS & RETURN)', () => {

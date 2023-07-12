@@ -1,5 +1,6 @@
-const getNeighbours = require('../getNeighbours')
-const createBoard = require('../createBoard.js')
+import { test, expect } from 'vitest' 
+import getNeighbours from '../getNeighbours'
+import createBoard from '../createBoard.js'
 
 test('getNeighbours in corner', () => {
   const board = createBoard(10)

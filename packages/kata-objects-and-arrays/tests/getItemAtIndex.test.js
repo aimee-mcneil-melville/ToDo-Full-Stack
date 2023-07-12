@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('getItemAtIndex returns the correct item for an existing index', () => {
   const alphabet = ['a', 'b', 'c', 'd', 'e']

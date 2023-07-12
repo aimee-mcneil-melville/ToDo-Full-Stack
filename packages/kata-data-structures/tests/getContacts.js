@@ -1,6 +1,4 @@
-module.exports = getContacts
-
-function getContacts() {
+export default function getContacts() {
   return [
     {
       id: '123',

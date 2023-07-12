@@ -53,38 +53,44 @@ In this exercise we'll practise some of the fundamentals of JavaScript and start
     You'll see some red output that looks like this:
 
     ```
-    FAIL  tests/getGreeting.test.js
-      ✕ getGreeting returns "Hello <name>" (4ms)
+    > kata-objects-and-arrays@2.0.1 test
+    > vitest getGreeting
 
-      ● getGreeting returns "Hello <name>"
 
-        expect(received).toBe(expected)
+    DEV  v0.32.4 /home/gerard/code/challenges/packages/kata-objects-and-arrays
 
-        Expected value to be (using ===):
-          "Hello Aardvark"
-        Received:
-          undefined
+    ❯ tests/getGreeting.test.js (1)
+      × getGreeting returns "Hello <name>"
 
-        Difference:
+    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-          Comparing two different types of values. Expected string but received undefined.
+    FAIL  tests/getGreeting.test.js > getGreeting returns "Hello <name>"
+    AssertionError: expected undefined to be 'Hello Aardvark' // Object.is equality
 
-    Test Suites: 1 failed, 1 total
-    Tests:       1 failed, 1 total
-    Snapshots:   0 total
-    Time:        0.619s, estimated 1s
-    Ran all test suites matching /getGreeting/i.
+    - Expected:
+    "Hello Aardvark"
 
-    Active Filters: filename /getGreeting/
-    › Press c to clear filters.
+    + Received:
+    undefined
 
-    Watch Usage
-    › Press a to run all tests.
-    › Press o to only run tests related to changed files.
-    › Press p to filter by a filename regex pattern.
-    › Press t to filter by a test name regex pattern.
-    › Press q to quit watch mode.
-    › Press Enter to trigger a test run.
+    ❯ tests/getGreeting.test.js:7:18
+          5|   const expected = 'Hello Aardvark'
+          6|   const actual = kata.getGreeting('Aardvark')
+          7|   expect(actual).toBe(expected)
+          |                  ^
+          8| })
+          9|
+
+    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+    Test Files  1 failed (1)
+          Tests  1 failed (1)
+      Start at  15:01:33
+      Duration  391ms (transform 76ms, setup 0ms, collect 24ms, tests 6ms, environment 0ms, prepare 116ms)
+
+
+    FAIL  Tests failed. Watching for file changes...
+          press h to show help, press q to quit
     ```
 </details>
 
@@ -147,16 +153,13 @@ The most important thing is not to panic! Welcome to your first introduction to 
     You'll notice that when you save `kata.js` the terminal indicates the test is now passing.
 
     ```
-    PASS  tests/getGreeting.test.js
-      ✓ getGreeting returns "Hello <name>" (1ms)
+      ✓ tests/getGreeting.test.js (1)
+        ✓ getGreeting returns "Hello <name>"
 
-    Test Suites: 1 passed, 1 total
-    Tests:       1 passed, 1 total
-    Snapshots:   0 total
-    Time:        0.069s, estimated 1s
-    Ran all test suites matching /getGreeting/i.
-
-    Watch Usage: Press w to show more.
+      Test Files  1 passed (1)
+            Tests  1 passed (1)
+        Start at  15:00:23
+        Duration  18ms
     ```
 
     One passed! Some coding pairs choose to treat these as high-five moments ... you can decide for yourselves.

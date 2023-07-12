@@ -60,7 +60,7 @@ const iterativeScore = (frames) => {
   return score
 }
 
-module.exports = {
+export  {
   isSpare,
   isStrike,
   iterativeScore,

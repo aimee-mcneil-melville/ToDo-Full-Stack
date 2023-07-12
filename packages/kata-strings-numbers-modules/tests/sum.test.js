@@ -1,4 +1,6 @@
-const sum = require('../utilities').sum
+import { test, expect } from 'vitest'
+import { sum } from '../utilities.js'
+
 
 test('sum successfully adds positive numbers', () => {
   const expected = 5

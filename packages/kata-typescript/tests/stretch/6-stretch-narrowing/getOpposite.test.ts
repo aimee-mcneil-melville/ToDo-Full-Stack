@@ -1,3 +1,5 @@
+
+import { describe, it, expect } from 'vitest'
 import { getOpposite } from '../../../functions/6-stretch-narrowing'
 
 describe('getOpposite', () => {

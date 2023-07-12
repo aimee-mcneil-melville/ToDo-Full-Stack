@@ -1,4 +1,5 @@
-const isUnderPopulated = require('../isUnderPopulated')
+import { test, expect } from 'vitest' 
+import isUnderPopulated from '../isUnderPopulated'
 
 test('isUnderPopulated normal cases', () => {
   const expecteds = {

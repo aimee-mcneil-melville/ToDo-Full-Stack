@@ -1,4 +1,6 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
+
 
 test('makeArrayOfItem (SINGULAR) makes an array out of one item', () => {
   const expected = ['dog', 'dog', 'dog']

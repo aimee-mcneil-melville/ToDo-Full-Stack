@@ -1,4 +1,5 @@
-const getType = require('../getType')
+import { test, expect } from 'vitest'
+import getType from '../getType'
 
 test('getType returns correct data type for number', function () {
   // Arrange

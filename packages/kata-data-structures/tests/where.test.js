@@ -1,5 +1,6 @@
-const getContacts = require('./getContacts')
-const where = require('../where')
+import { test, expect } from 'vitest'
+import getContacts from './getContacts'
+import where from '../where'
 
 test('where finds an object by id in an array', function () {
   // Arrange

@@ -43,15 +43,11 @@ This challenge is designed to practice familiarity with types, functions, and mo
   <details style="padding-left: 2em">
     <summary>More about writing and exporting</summary>
     
-    In order for the tests to test the functions, we need to **export** each function the tests are expecting. This is often done by exporting an object that contains the functions as properties. This is an example:
+    In order for the tests to test the functions, we need to **export** each function the tests are expecting. We're going to use the export keyword to do this.
 
     ```js
     // example.js
-    module.exports = {
-      doWork: doWork
-    }
-
-    function doWork () {
+    export function doWork () {
       return 'work'
     }
     ```

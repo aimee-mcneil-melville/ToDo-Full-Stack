@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('getValues returns own values for an object', () => {
   const dracula = {

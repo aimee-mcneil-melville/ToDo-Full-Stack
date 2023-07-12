@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { fizzbuzz } from '../../functions/1-types'
 
 describe('fizzbuzz (UNION RETURN TYPE)', () => {

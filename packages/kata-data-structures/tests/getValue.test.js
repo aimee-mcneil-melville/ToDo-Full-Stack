@@ -1,4 +1,6 @@
-const getValue = require('../getValue')
+import { test, expect } from 'vitest'
+
+import getValue from '../getValue'
 
 test('getValue gets a nested object by key', function () {
   // Arrange

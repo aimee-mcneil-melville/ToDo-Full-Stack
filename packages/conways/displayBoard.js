@@ -3,4 +3,4 @@ function displayBoard(board) {
   console.log(board)
 }
 
-module.exports = displayBoard
+export default displayBoard

@@ -1,4 +1,5 @@
-const functions = require('../../functions')
+import * as functions from '../../functions.js'
+import { test, expect } from 'vitest'
 
 // If you find this test confusing, don't worry! You don't need to understand it right now.
 // If you're curious, after class read up on call, apply, bind, and the `this` keyword.

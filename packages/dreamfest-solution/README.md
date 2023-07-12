@@ -102,7 +102,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 - [ ] Submitting the "Edit Location" form should send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.js`
 - [ ] Build an `updateLocation` function with an `updatedLocation` parameter (note the "d" in "updateD")
   <details style="padding-left: 2em">
-    <summary>More about the <code>updatedLocation</code> function</summary>
+    <summary>More about the <code>updateLocation</code> function</summary>
 
     If you find yourself struggling with the `updatedLocation` (object) parameter, you might start by using `id`, `name` and `description` parameters instead.
 
@@ -112,7 +112,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ## Adding and deleting events
 
-### 5. Update the form
+### 5. Populate the drop-down in the form
 
 - [ ] Supply the "Add New Event" form with a list of all the locations to populate the drop-down
   <details style="padding-left: 2em">

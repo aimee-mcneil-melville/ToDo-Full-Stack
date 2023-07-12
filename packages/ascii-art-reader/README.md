@@ -76,13 +76,29 @@ Ready for more? Here's some ideas for what to work on next!
 
     - Maybe turn the main menu into a function you can call any time you want to?
     - In order to not scroll the 'image' off the screen, you might want to ask the user to press enter before continuing.
+
+    Your main function might look a little like this.
+
+    ```js
+    // with no test, this loop will continue "forever"
+    for (;;) {
+      let input = await showMenu() 
+      switch (input.choice) {
+        /* all our cases */
+
+        default:
+          console.log("I didn't understand your choice")
+          await pressEnter() // prompt the user to press enter
+      }
+    }
+    ```
   </details>
 
 - [ ] As a user, I want to be able to quit when I press `q` so that I can return to the terminal prompt
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    Hint: `process.exit()`
+    Returning from the main function will exit the loop
   </details>
 
 ### 3. Comments
@@ -183,7 +199,7 @@ Writing programs for the terminal will be a new experience for some. Our advice 
   <summary>About <code>prompt</code></summary>
 
   ```js
-  const prompt = require('prompt')
+  import prompt from 'prompt'
 
   prompt.message = ''
   prompt.delimiter = ': '
@@ -195,10 +211,18 @@ Writing programs for the terminal will be a new experience for some. Our advice 
     message: 'Make your choice'
   }
 
-  prompt.get(choice)
-    .then(result => {
-      // Do something with result.choice here...
-    })
+  async function main() {
+    const result = await prompt.get(choice)
+    // do something with `result`
+  }
+
+  // run the async main function and catch any errors
+  main().catch(err => {
+    // if an error was thrown, show it in the console
+    console.error(err)
+    // ... then set the exit code to any non-zero integer 
+    process.exitCode = 1
+  })
   ```
 
   The promise returned by `prompt.get` will resolve to an object like this:

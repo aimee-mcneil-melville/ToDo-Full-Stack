@@ -1,17 +1,16 @@
-const request = require('supertest')
-const { render } = require('../../test-utils')
+import { describe, it, expect, vi } from 'vitest'
 
-require('@testing-library/jest-dom')
+import request from 'supertest'
+import { render } from '../../test-utils'
 
-const server = require('../server')
-const lib = require('../lib')
+import matchers from '@testing-library/jest-dom/matchers'
 
-jest.mock('./lib', () => ({
-  getPuppyData: jest.fn(),
-  getPuppyById: jest.fn(),
-  addNewPuppy: jest.fn(),
-  editPuppy: jest.fn(),
-}))
+import server from '../server'
+import { getPuppyData as _getPuppyData, getPuppyById as _getPuppyById, editPuppy as _editPuppy, addNewPuppy as _addNewPuppy } from '../lib'
+
+expect.extend(matchers)
+
+vi.mock('../lib')
 
 const mockPuppies = {
   puppies: [
@@ -22,7 +21,7 @@ const mockPuppies = {
 
 describe('GET /', () => {
   it('renders a list of puppies', () => {
-    lib.getPuppyData.mockImplementation((callback) => {
+    vi.mocked(_getPuppyData).mockImplementation((callback) => {
       callback(null, mockPuppies)
     })
 
@@ -37,7 +36,7 @@ describe('GET /', () => {
   })
 
   it('returns a 500 with the correct error message', () => {
-    lib.getPuppyData.mockImplementation((callback) => {
+    _getPuppyData.mockImplementation((callback) => {
       callback(new Error('test error message'))
     })
 
@@ -55,7 +54,7 @@ describe('GET /', () => {
 
 describe('GET /:id', () => {
   it('renders puppy details', () => {
-    lib.getPuppyById.mockImplementation((id, callback) => {
+    _getPuppyById.mockImplementation((id, callback) => {
       expect(id).toBe(2)
       callback(null, mockPuppies.puppies[1])
     })
@@ -74,7 +73,7 @@ describe('GET /:id', () => {
   })
 
   it('returns a 404 if the id is not found', () => {
-    lib.getPuppyById.mockImplementation((id, callback) => {
+    _getPuppyById.mockImplementation((id, callback) => {
       const error = new Error('test not found error')
       error.code = 404
       callback(error)
@@ -89,7 +88,7 @@ describe('GET /:id', () => {
   })
 
   it('returns a 500 with the correct error message', () => {
-    lib.getPuppyById.mockImplementation((id, callback) => {
+    vi.mocked(_getPuppyById).mockImplementation((id, callback) => {
       callback(new Error('test error message'))
     })
 
@@ -108,7 +107,7 @@ describe('POST /edit/:id', () => {
   it('receives puppy details and redirects to detail', () => {
     expect.assertions(6)
 
-    lib.editPuppy.mockImplementation((pup, callback) => {
+    _editPuppy.mockImplementation((pup, callback) => {
       const { id, name, owner, breed, image } = pup
       expect(id).toBe(2)
       expect(name).toBe('test name')
@@ -137,7 +136,7 @@ describe('POST /edit/:id', () => {
   })
 
   it('returns a 404 if the id is not found', () => {
-    lib.editPuppy.mockImplementation((pup, callback) => {
+    _editPuppy.mockImplementation((pup, callback) => {
       const error = new Error('test not found error')
       error.code = 404
       callback(error)
@@ -156,7 +155,7 @@ describe('POST /edit/:id', () => {
   })
 
   it('returns a 500 with the correct error message', () => {
-    lib.editPuppy.mockImplementation((pup, callback) => {
+    _editPuppy.mockImplementation((pup, callback) => {
       callback(new Error('test error message'))
     })
 
@@ -178,7 +177,7 @@ describe('POST /new', () => {
   it('receives the new puppy and redirects to detail', () => {
     expect.assertions(2)
 
-    lib.addNewPuppy.mockImplementation((pup, callback) => {
+    _addNewPuppy.mockImplementation((pup, callback) => {
       expect(pup.id).toBeUndefined()
       callback(null, 3)
     })
@@ -201,7 +200,7 @@ describe('POST /new', () => {
   })
 
   it('returns a 500 with the correct error message', () => {
-    lib.addNewPuppy.mockImplementation((pup, callback) => {
+    vi.mocked(_addNewPuppy).mockImplementation((pup, callback) => {
       callback(new Error('test error message'))
     })
 

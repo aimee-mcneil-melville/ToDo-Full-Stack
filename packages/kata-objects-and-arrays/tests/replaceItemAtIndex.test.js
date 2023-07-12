@@ -1,4 +1,6 @@
-var kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
+
 
 test('replaceItemAtIndex replaces the correct item', () => {
   const alphabet = ['a', 'b', 'c', 'd', 'e']

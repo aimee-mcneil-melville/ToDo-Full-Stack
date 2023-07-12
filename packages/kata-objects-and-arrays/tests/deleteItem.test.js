@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('deleteItem returns a new array without ALL instances of item', () => {
   const names = ['Aroha', 'Bob', 'Celia', 'Eleanor', 'Bob', 'Bob']
