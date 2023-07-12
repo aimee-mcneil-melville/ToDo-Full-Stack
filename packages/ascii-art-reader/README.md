@@ -163,7 +163,7 @@ We don't always write tests that hit the filesystem, because they can be quite s
     By now you should be getting used to setting up Node programs. Here's a reminder in case you need it, but most of it is already done for you:
 
     1. Create an npm `package.json` file using `npm init`.
-    1. Install `jest` as dev dependencies (use `-D`).
+    1. Install `vitest` as dev dependencies (use `-D`).
     1. Write a couple of scripts in your `package.json`:
         - one that starts the program
         - one that runs all the tests (you may wish to refer to the tdd-bowling-kata, for this)
