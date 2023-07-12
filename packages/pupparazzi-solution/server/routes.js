@@ -1,10 +1,10 @@
-const express = require('express')
+import { Router } from 'express'
 
-const lib = require('./lib')
+import * as lib from './lib'
 
-const router = express.Router()
+const router = Router()
 
-module.exports = router
+export default router
 
 router.get('/', (req, res) => {
   lib.getPuppyData((err, puppyData) => {
