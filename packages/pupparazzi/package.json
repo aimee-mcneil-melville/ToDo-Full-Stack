@@ -10,7 +10,7 @@
     "start": "node server/index",
     "dev": "nodemon server/index --ignore */data.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "test": "jest --watchAll",
+    "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
@@ -22,19 +22,7 @@
     "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
   },
   "eslintConfig": {
-    "extends": [
-      "@devacademy",
-      "plugin:jest/recommended"
-    ],
-    "plugins": [
-      "jest"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "watchPathIgnorePatterns": [
-      "data.json"
-    ]
+    "extends": ["@devacademy"]
   },
   "dependencies": {
     "express": "^4.17.2",
@@ -46,7 +34,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",

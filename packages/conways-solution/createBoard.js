@@ -1,9 +1,14 @@
 function createBoard(size) {
-  return createArray(size).map((_) => createArray(size, false))
+  let rows = [];
+  while (rows.length < size) {
+    let cells = [];
+    while (cells.length < size) {
+      cells.push(false);
+    }
+    rows.push(cells);
+  }
+
+  return rows;
 }
 
-function createArray(size, fill = null) {
-  return new Array(size).fill(fill)
-}
-
-module.exports = createBoard
+export default createBoard;

@@ -1,25 +1,23 @@
-const indicesAreOutOfBounds = require('./indicesAreOutOfBounds')
+import indicesAreOutOfBounds from "./indicesAreOutOfBounds";
 
 function getNeighbours(cellRow, cellColumn, board) {
-  return [
-    getTargetCell(cellRow - 1, cellColumn - 1, board), // tl
-    getTargetCell(cellRow - 1, cellColumn, board), // tm
-    getTargetCell(cellRow - 1, cellColumn + 1, board), // tr
+  let result = [];
+  for (let y of [-1, 0, 1])
+    for (let x of [-1, 0, 1]) {
+      if (y === 0 && x === 0) {
+        continue;
+      }
 
-    getTargetCell(cellRow, cellColumn - 1, board), // l
-    // m
-    getTargetCell(cellRow, cellColumn + 1, board), // r
+      let i = cellRow + y;
+      let j = cellColumn + x;
+      if (indicesAreOutOfBounds(i, j, board)) {
+        continue;
+      }
 
-    getTargetCell(cellRow + 1, cellColumn - 1, board), // bl
-    getTargetCell(cellRow + 1, cellColumn, board), // bm
-    getTargetCell(cellRow + 1, cellColumn + 1, board), // br
-  ].filter((item) => item != null)
+      result.push(board[i][j]);
+    }
+
+  return result;
 }
 
-function getTargetCell(cellRow, cellColumn, board) {
-  return !indicesAreOutOfBounds(cellRow, cellColumn, board)
-    ? board[cellRow][cellColumn]
-    : null
-}
-
-module.exports = getNeighbours
+export default getNeighbours;

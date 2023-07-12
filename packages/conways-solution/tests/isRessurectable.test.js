@@ -1,6 +1,7 @@
-const isRessurectable = require('../isRessurectable')
+import { test, expect } from "vitest";
+import isRessurectable from "../isRessurectable";
 
-test('isRessurectable normal cases', () => {
+test("isRessurectable normal cases", () => {
   const expecteds = {
     0: false,
     1: false,
@@ -11,12 +12,12 @@ test('isRessurectable normal cases', () => {
     6: false,
     7: false,
     8: false,
-  }
+  };
 
   Object.keys(expecteds).forEach((input) => {
-    const expected = expecteds[input]
-    const actual = isRessurectable(parseInt(input, 10))
+    const expected = expecteds[input];
+    const actual = isRessurectable(parseInt(input, 10));
 
-    expect(actual).toBe(expected)
-  })
-})
+    expect(actual).toBe(expected);
+  });
+});
