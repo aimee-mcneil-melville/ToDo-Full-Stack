@@ -1,7 +1,7 @@
-const express = require('express')
-const hbs = require('express-handlebars')
+import express from 'express'
+import * as hbs from 'express-handlebars'
 
-const userRoutes = require('./users')
+import userRoutes from './users.js'
 
 const server = express()
 
@@ -15,4 +15,4 @@ server.use(express.urlencoded({ extended: true }))
 
 server.use('/', userRoutes)
 
-module.exports = server
+export default server
