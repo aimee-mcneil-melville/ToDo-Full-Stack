@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p dev:server dev:client",
+    "dev": "tsx watch server/index.ts",
     "dev:server": "nodemon server/index.ts",
     "dev:client": "vite",
     "knex": "knex --knexfile server/db/knexfile.js",
@@ -13,7 +13,7 @@
     "db:delete": "rm server/db/dev.sqlite3",
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
-    "build": "run-s build:client build:server",
+    "build": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "build:client": "vite build",
     "build:server": "tsc -p server/tsconfig.json",
     "test": "vitest",
