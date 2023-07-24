@@ -1,4 +1,4 @@
-import server from './server'
+import server from './server.ts'
 
 const port = 3000
 
