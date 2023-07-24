@@ -1,4 +1,5 @@
-const addNumbersOrStrings = require('../utilities').addNumbersOrStrings
+import { test, expect } from 'vitest'
+import { addNumbersOrStrings } from '../utilities.js'
 
 test('addNumbersOrStrings can add numbers', () => {
   const expected = 5

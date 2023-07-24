@@ -1,6 +1,6 @@
-const createBoard = require('./createBoard')
-const nextBoard = require('./nextBoard')
-const displayBoard = require('./displayBoard')
+import createBoard from './createBoard'
+import nextBoard from './nextBoard'
+import displayBoard from './displayBoard'
 
 const size = 10
 const refreshInterval = 100

@@ -1,5 +1,5 @@
-const isOutOfBounds = require('./isOutOfBounds')
+import isOutOfBounds from './isOutOfBounds'
 
 function indicesAreOutOfBounds(rowIndex, columnIndex, board) {}
 
-module.exports = indicesAreOutOfBounds
+export default indicesAreOutOfBounds

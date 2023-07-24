@@ -1,4 +1,6 @@
-const lib = require('../lib')
+import { describe, it, expect, vi } from 'vitest'
+
+import { getPuppyData, getPuppyById, addNewPuppy, editPuppy } from '../lib'
 
 const mockPuppies = {
   puppies: [
@@ -22,7 +24,7 @@ describe('getPuppyData', () => {
       },
     }
 
-    lib.getPuppyData((err, puppyData) => {
+    getPuppyData((err, puppyData) => {
       expect(err).toBeNull()
       expect(puppyData.puppies).toHaveLength(3)
     }, mockfs)
@@ -35,9 +37,9 @@ describe('getPuppyData', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
 
-    lib.getPuppyData(
+    getPuppyData(
       (err, puppyData) => {
         expect(err.message).toMatch('Unable to load the data file')
         expect(logger.error).toHaveBeenCalledTimes(1)
@@ -55,9 +57,9 @@ describe('getPuppyData', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
 
-    lib.getPuppyData(
+    getPuppyData(
       (err, puppyData) => {
         expect(err.message).toMatch('Unable to parse the data file')
         expect(logger.error).toHaveBeenCalledTimes(1)
@@ -77,7 +79,7 @@ describe('getPuppyById', () => {
       },
     }
 
-    lib.getPuppyById(
+    getPuppyById(
       2,
       (err, puppyDetails) => {
         expect(err).toBeNull()
@@ -97,9 +99,9 @@ describe('getPuppyById', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
 
-    lib.getPuppyById(
+    getPuppyById(
       2,
       (err, puppyDetails) => {
         expect(err.message).toMatch('Unable to load the data file')
@@ -118,9 +120,9 @@ describe('getPuppyById', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
 
-    lib.getPuppyById(
+    getPuppyById(
       2,
       (err, puppyData) => {
         expect(err.message).toMatch('Unable to parse the data file')
@@ -139,7 +141,7 @@ describe('getPuppyById', () => {
       },
     }
 
-    lib.getPuppyById(
+    getPuppyById(
       9999,
       (err, puppyDetails) => {
         expect(err.message).toMatch('ID not found')
@@ -171,7 +173,7 @@ describe('addNewPuppy', () => {
 
     const newPup = { name: 'Rex', owner: 'Sue', image: 'rex.jpg', breed: 'Pug' }
 
-    lib.addNewPuppy(
+    addNewPuppy(
       newPup,
       (err, id) => {
         expect(err).toBeNull()
@@ -188,10 +190,10 @@ describe('addNewPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     const newPuppy = {} // doesn't matter that it's empty
 
-    lib.addNewPuppy(
+    addNewPuppy(
       newPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to load the data file')
@@ -209,10 +211,10 @@ describe('addNewPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     const newPuppy = {} // doesn't matter that it's empty
 
-    lib.addNewPuppy(
+    addNewPuppy(
       newPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to parse the data file')
@@ -233,10 +235,10 @@ describe('addNewPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     const newPuppy = {} // doesn't matter that it's empty
 
-    lib.addNewPuppy(
+    addNewPuppy(
       newPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to write the data file')
@@ -274,7 +276,7 @@ describe('editPuppy', () => {
       breed: 'Test breed',
     }
 
-    lib.editPuppy(
+    editPuppy(
       updatedPuppy,
       (err) => {
         expect(err).toBeUndefined()
@@ -290,10 +292,10 @@ describe('editPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     const updatedPuppy = {} // doesn't matter that it's empty
 
-    lib.editPuppy(
+    editPuppy(
       updatedPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to load the data file')
@@ -311,10 +313,10 @@ describe('editPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     const updatedPuppy = {} // doesn't matter that it's empty
 
-    lib.editPuppy(
+    editPuppy(
       updatedPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to parse the data file')
@@ -335,11 +337,11 @@ describe('editPuppy', () => {
       },
     }
 
-    const logger = { error: jest.fn() }
+    const logger = { error: vi.fn() }
     // doesn't matter that it isn't complete
     const updatedPuppy = { id: 2 }
 
-    lib.editPuppy(
+    editPuppy(
       updatedPuppy,
       (err) => {
         expect(err.message).toMatch('Unable to write the data file')
@@ -360,7 +362,7 @@ describe('editPuppy', () => {
     // doesn't matter that it isn't complete
     const updatedPuppy = { id: 9999 }
 
-    lib.editPuppy(
+    editPuppy(
       updatedPuppy,
       (err, puppyDetails) => {
         expect(err.message).toMatch('ID not found')

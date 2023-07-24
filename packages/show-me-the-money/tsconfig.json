@@ -23,5 +23,5 @@
     "allowJs": true
   }, "include": [
     "client/**/*", "server/**/*", "authenticare.d.ts"
-  ]
+, "vite.config.js"  ]
 }

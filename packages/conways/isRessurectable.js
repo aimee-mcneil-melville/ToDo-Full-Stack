@@ -1,3 +1,3 @@
 function isRessurectable(neighbourCount) {}
 
-module.exports = isRessurectable
+export default isRessurectable

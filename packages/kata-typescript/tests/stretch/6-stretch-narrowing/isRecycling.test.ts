@@ -1,10 +1,11 @@
+import { describe, it, expect, vi } from 'vitest'
 import { isRecycling } from '../../../functions/6-stretch-narrowing'
 
 describe('isRecycling', () => {
   it('should return true if the item is glass', () => {
     const item = {
       colour: 'green',
-      melt: jest.fn(),
+      melt: vi.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)
@@ -13,7 +14,7 @@ describe('isRecycling', () => {
   it('should return true if the item is paper', () => {
     const item = {
       density: 'heavy',
-      compost: jest.fn(),
+      compost: vi.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)
@@ -22,7 +23,7 @@ describe('isRecycling', () => {
   it('should return true if the item is metal', () => {
     const item = {
       type: 'aluminum',
-      magnetize: jest.fn(),
+      magnetize: vi.fn(),
     }
 
     expect(isRecycling(item)).toBe(true)

@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { bottlesOfBeerOnTheWall } from '../../functions/1-types'
 
 describe('bottlesOfBeerOnTheWall', () => {

@@ -1,14 +1,14 @@
-const nodefs = require('fs')
-const path = require('path')
+import nodefs from 'node:fs'
+import { join } from 'path'
 
-module.exports = {
+export  {
   getPuppyData,
   getPuppyById,
   addNewPuppy,
   editPuppy,
 }
 
-const filepath = path.join(__dirname, './data/data.json')
+const filepath = join(__dirname, '../data/data.json')
 
 function getPuppyData(callback, fs = nodefs, log = console) {
   fs.readFile(filepath, 'utf8', (err, contents) => {

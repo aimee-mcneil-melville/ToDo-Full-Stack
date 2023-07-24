@@ -1,5 +1,6 @@
-const getContacts = require('./getContacts')
-const getAddress = require('../getAddress')
+import { test, expect } from 'vitest'
+import getContacts from './getContacts'
+import getAddress from '../getAddress'
 
 test('getAddress returns the address property from objects in an array', function () {
   // Arrange

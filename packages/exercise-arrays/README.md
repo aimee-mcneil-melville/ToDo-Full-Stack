@@ -66,7 +66,7 @@ Refactor your code so that...
   - `findFirstOverFour`
   - `sumArray`
 
-- [ ] Using jest, write at least one test for each function
+- [ ] Using vitest, write at least one test for each function
 
 ## Stretch
 <details>

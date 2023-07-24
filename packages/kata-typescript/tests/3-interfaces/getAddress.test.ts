@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getAddress } from '../../functions/3-interfaces'
 
 const contacts = [

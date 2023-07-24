@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { sumMatchingType } from '../../functions/1-types'
 
 describe('sumMatchingType (UNION TYPE PARAMS & RETURN)', () => {

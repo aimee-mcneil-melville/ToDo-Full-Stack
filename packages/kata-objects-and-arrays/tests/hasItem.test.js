@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('hasItem returns true if item is in array', () => {
   const arr = ['a', 1, null, true]

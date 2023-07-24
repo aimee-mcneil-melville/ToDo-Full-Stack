@@ -45,7 +45,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.11.2"
   },
   "browserslist": "> 2%, not dead"
 }

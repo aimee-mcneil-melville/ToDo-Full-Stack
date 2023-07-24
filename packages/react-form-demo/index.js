@@ -1,15 +1,16 @@
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(
-    <MemoryRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-      </Routes>
-    </MemoryRouter>,
-    document.getElementById('app')
+  createRoot(
+    
+  ).render(
+  <MemoryRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+    </Routes>
+  </MemoryRouter>
   )
 })

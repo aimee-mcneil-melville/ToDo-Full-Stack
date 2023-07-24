@@ -1,4 +1,5 @@
-const matrix = require('../matrix')
+import { test, expect } from 'vitest'
+import { getMatrix, updateMatrix } from '../matrix'
 
 test('matrix.getMatrix creates 3x3 matrix', function () {
   // Arrange
@@ -9,7 +10,7 @@ test('matrix.getMatrix creates 3x3 matrix', function () {
   ]
 
   // Act
-  const actual = matrix.getMatrix(3)
+  const actual = getMatrix(3)
 
   // Assert
   expect(actual).toEqual(expected)
@@ -25,7 +26,7 @@ test('matrix.getMatrix creates 4x4 matrix', function () {
   ]
 
   // Act
-  const actual = matrix.getMatrix(4)
+  const actual = getMatrix(4)
 
   // Assert
   expect(actual).toEqual(expected)
@@ -45,7 +46,7 @@ test('matrix.updateMatrix can change the value at specified coordinates', functi
   ]
 
   // Act
-  const actual = matrix.updateMatrix(initialMatrix, [1, 2], 1)
+  const actual = updateMatrix(initialMatrix, [1, 2], 1)
 
   // Assert
   expect(actual).toEqual(expected)

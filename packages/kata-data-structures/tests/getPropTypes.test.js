@@ -1,4 +1,6 @@
-const getPropTypes = require('../getPropTypes')
+import { test, expect } from 'vitest'
+
+import getPropTypes from '../getPropTypes'
 
 test('getPropTypes returns the types of object properties', function () {
   // Arrange

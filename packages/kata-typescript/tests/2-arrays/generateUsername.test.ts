@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { generateUsername } from '../../functions/2-arrays'
 
 describe('generateUsername (TUPLE)', () => {

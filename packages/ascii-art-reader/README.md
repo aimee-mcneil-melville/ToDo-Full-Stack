@@ -76,13 +76,29 @@ Ready for more? Here's some ideas for what to work on next!
 
     - Maybe turn the main menu into a function you can call any time you want to?
     - In order to not scroll the 'image' off the screen, you might want to ask the user to press enter before continuing.
+
+    Your main function might look a little like this.
+
+    ```js
+    // with no test, this loop will continue "forever"
+    for (;;) {
+      let input = await showMenu() 
+      switch (input.choice) {
+        /* all our cases */
+
+        default:
+          console.log("I didn't understand your choice")
+          await pressEnter() // prompt the user to press enter
+      }
+    }
+    ```
   </details>
 
 - [ ] As a user, I want to be able to quit when I press `q` so that I can return to the terminal prompt
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    Hint: `process.exit()`
+    Returning from the main function will exit the loop
   </details>
 
 ### 3. Comments
@@ -147,7 +163,7 @@ We don't always write tests that hit the filesystem, because they can be quite s
     By now you should be getting used to setting up Node programs. Here's a reminder in case you need it, but most of it is already done for you:
 
     1. Create an npm `package.json` file using `npm init`.
-    1. Install `jest` as dev dependencies (use `-D`).
+    1. Install `vitest` as dev dependencies (use `-D`).
     1. Write a couple of scripts in your `package.json`:
         - one that starts the program
         - one that runs all the tests (you may wish to refer to the tdd-bowling-kata, for this)
@@ -183,7 +199,7 @@ Writing programs for the terminal will be a new experience for some. Our advice 
   <summary>About <code>prompt</code></summary>
 
   ```js
-  const prompt = require('prompt')
+  import prompt from 'prompt'
 
   prompt.message = ''
   prompt.delimiter = ': '
@@ -195,10 +211,18 @@ Writing programs for the terminal will be a new experience for some. Our advice 
     message: 'Make your choice'
   }
 
-  prompt.get(choice)
-    .then(result => {
-      // Do something with result.choice here...
-    })
+  async function main() {
+    const result = await prompt.get(choice)
+    // do something with `result`
+  }
+
+  // run the async main function and catch any errors
+  main().catch(err => {
+    // if an error was thrown, show it in the console
+    console.error(err)
+    // ... then set the exit code to any non-zero integer 
+    process.exitCode = 1
+  })
   ```
 
   The promise returned by `prompt.get` will resolve to an object like this:

@@ -1,4 +1,5 @@
-const countIf = require('../utilities').countIf
+import { test, expect } from 'vitest'
+import { countIf } from '../utilities.js'
 
 const mixedArray = [1, '21', null, Date.now(), 5, {}, 42]
 

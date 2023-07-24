@@ -1,9 +1,6 @@
-module.exports = {
-  examplePattern1,
-  examplePattern2,
-}
 
-function examplePattern1(max) {
+
+export function examplePattern1(max) {
   let output = ''
   const rows = Array(max).fill(0)
 
@@ -15,7 +12,7 @@ function examplePattern1(max) {
   return output
 }
 
-function examplePattern2(max) {
+export function examplePattern2(max) {
   let output = ''
   const rows = Array(max).fill(0)
 

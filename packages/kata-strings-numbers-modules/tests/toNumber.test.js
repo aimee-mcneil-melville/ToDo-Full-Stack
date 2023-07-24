@@ -1,4 +1,5 @@
-const toNumber = require('../utilities').toNumber
+import { test, expect } from 'vitest'
+import { toNumber } from '../utilities.js'
 
 test('toNumber can convert a string to a number if possible', () => {
   const expected = 42

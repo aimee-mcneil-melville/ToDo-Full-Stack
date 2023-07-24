@@ -1,4 +1,5 @@
-const game = require('../game')
+import { test, expect } from 'vitest'
+import * as game from './game'
 
 const simpleGame = [
   [1, 2],

@@ -1,5 +1,5 @@
-const getNeighbours = require('./getNeighbours')
+import getNeighbours from './getNeighbours'
 
 function countAliveNeighbours(cellRow, cellColumn, board) {}
 
-module.exports = countAliveNeighbours
+export default countAliveNeighbours

@@ -1,4 +1,4 @@
 /* eslint-disable no-unused-vars */
-function getMatrix(n) {}
+export function getMatrix(n) {}
 
-function updateMatrix(matrix, coords, value) {}
+export function updateMatrix(matrix, coords, value) {}

@@ -1,3 +1,3 @@
 function createBoard(size) {}
 
-module.exports = createBoard
+export default createBoard

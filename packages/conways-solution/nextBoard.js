@@ -1,15 +1,12 @@
-const nextCellState = require('./nextCellState')
-const countAliveNeighbours = require('./countAliveNeighbours')
+import nextCellState from "./nextCellState";
+import countAliveNeighbours from "./countAliveNeighbours";
 
 function nextBoard(currentBoard) {
-  return currentBoard.map((row, cellRow) =>
-    row.map((cell, cellColumn) =>
-      nextCellState(
-        cell,
-        countAliveNeighbours(cellRow, cellColumn, currentBoard)
-      )
+  return currentBoard.map((row, y) =>
+    row.map((cell, x) =>
+      nextCellState(cell, countAliveNeighbours(y, x, currentBoard))
     )
-  )
+  );
 }
 
-module.exports = nextBoard
+export default nextBoard;

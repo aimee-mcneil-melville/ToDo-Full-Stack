@@ -1,4 +1,5 @@
-const createBoard = require('../createBoard')
+import { test, expect } from 'vitest' 
+import createBoard from '../createBoard'
 
 test('createBoard returns boards with the correct dimensions', () => {
   for (let i = 1; i < 5; i++) {

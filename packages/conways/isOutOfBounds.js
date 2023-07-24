@@ -1,3 +1,3 @@
 function isOutOfBounds(index, array) {}
 
-module.exports = isOutOfBounds
+export default isOutOfBounds

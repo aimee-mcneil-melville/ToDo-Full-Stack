@@ -137,13 +137,28 @@ Across all apps there are some things we need to make sure are done when we try 
 
   </details>
 
----
+### 5. Production snippet
+
+- [ ] Add the below snippet to the server.ts file
+ <details style="padding-left: 2em">
+    <summary>Snippet details</summary>
+   
+```javascript
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static('../assets'))
+  server.get('*', (req, res) => {
+    res.sendFile('../index.html')
+  })
+}
+  ```
+
+</details>
 
 ## Databases
 
 If your app includes a database, read this. We're going to use an sqlite database.
 
-### 5. Using a sqlite database
+### 6. Using a sqlite database
 
 - [ ] Setting up sqlite in production
   <details style="padding-left: 2em">
@@ -163,7 +178,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
   </details>
 
-### 6. Procfile to migrate your database
+### 7. Procfile to migrate your database
 
 - [ ] Make sure you have a Procfile
   <details style="padding-left: 2em">
@@ -180,7 +195,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
   </details>
 
-### 7. Adding a Dockerfile
+### 8. Adding a Dockerfile
 
 - [ ] Application has a Dockerfile
   <details style="padding-left: 2em">
@@ -199,6 +214,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
   COPY . .
 
   ENV NODE_ENV=production
+  RUN npm run build
   RUN npm prune --omit=dev
   ```
 
@@ -210,7 +226,7 @@ If your app includes a database, read this. We're going to use an sqlite databas
 
 A .env file can be used to store API keys and other secrets.
 
-### 8. Secrets and NODE_ENV
+### 9. Secrets and NODE_ENV
 
 - [ ] If you are using the `dotenv` library and putting secret values in a `.env` file, make sure the .env config is only set up to run in development mode
   <details style="padding-left: 2em">
@@ -241,7 +257,7 @@ A .env file can be used to store API keys and other secrets.
 
 We need to create and deploy our apps to see them live.
 
-### 9. Creating your app
+### 10. Creating your app
 
 - [ ] Creating your app
   <details style="padding-left: 2em">
@@ -314,7 +330,7 @@ We need to create and deploy our apps to see them live.
 
   </details>
 
-### 10. Mounting storage for your app's database
+### 11. Mounting storage for your app's database
 
 - [ ] Mounting app storage
   <details style="padding-left: 2em">
@@ -357,7 +373,7 @@ We need to create and deploy our apps to see them live.
 
 ---
 
-### 11. Deploying your app
+### 12. Deploying your app
 
 - [ ] Deploying your app
   <details style="padding-left: 2em">
@@ -418,7 +434,7 @@ We need to create and deploy our apps to see them live.
   **If you see the application error page, or if your site has issues starting, type `dokku logs --tail` into your command line in order to debug what may have gone wrong.**
   </details>
 
-### 12. Seeding your Database
+### 13. Seeding your Database
 
 - [ ] Running your DB seeds.
   <details style="padding-left: 2em">

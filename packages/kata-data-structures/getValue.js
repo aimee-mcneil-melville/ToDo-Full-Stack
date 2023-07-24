@@ -1,2 +1,2 @@
 /* eslint-disable no-unused-vars */
-function getValue(obj, key) {}
+export default function getValue(obj, key) {}

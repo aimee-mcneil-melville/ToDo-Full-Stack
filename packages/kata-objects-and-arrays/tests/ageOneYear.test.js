@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
 
 test('ageOneYear returns a copy of the input object with an age property incremented', () => {
   const mickey = {

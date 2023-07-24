@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { findTheBat } from '../../functions/3-interfaces'
 
 const contacts = [

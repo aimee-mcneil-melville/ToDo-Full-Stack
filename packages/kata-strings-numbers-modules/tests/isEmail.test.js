@@ -1,4 +1,6 @@
-const isEmail = require('../utilities').isEmail
+import { test, expect } from 'vitest'
+import { isEmail } from '../utilities.js'
+
 
 test('isEmail detects an email address', () => {
   const expected = true

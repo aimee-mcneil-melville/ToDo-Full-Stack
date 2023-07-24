@@ -1,3 +1,3 @@
 function isOverPopulated(neighbourCount) {}
 
-module.exports = isOverPopulated
+export default isOverPopulated

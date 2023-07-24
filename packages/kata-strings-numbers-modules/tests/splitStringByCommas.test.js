@@ -1,4 +1,5 @@
-const splitStringByCommas = require('../utilities').splitStringByCommas
+import { test, expect } from 'vitest'
+import { splitStringByCommas } from '../utilities.js'
 
 test('splitStringByCommas will split a string at each comma', () => {
   const expected = ['hello', 'world']

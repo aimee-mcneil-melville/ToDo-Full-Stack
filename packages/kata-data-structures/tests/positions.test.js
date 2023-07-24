@@ -1,4 +1,5 @@
-const positions = require('../positions')
+import { test, expect } from 'vitest'
+import { getFirst, getLast } from '../positions'
 
 test('positions.getFirst gets the first item in an array', function () {
   // Arrange
@@ -6,7 +7,7 @@ test('positions.getFirst gets the first item in an array', function () {
   const expected = 'a'
 
   // Act
-  const actual = positions.getFirst(alphabet)
+  const actual = getFirst(alphabet)
 
   // Assert
   expect(actual).toBe(expected)
@@ -18,7 +19,7 @@ test('positions.getLast gets the last item in a small array', function () {
   const expected = 'e'
 
   // Act
-  const actual = positions.getLast(alphabet)
+  const actual = getLast(alphabet)
 
   // Assert
   expect(actual).toBe(expected)
@@ -57,7 +58,7 @@ test('positions.getLast gets the last item in a long array', function () {
   const expected = 'z'
 
   // Act
-  const actual = positions.getLast(alphabet)
+  const actual = getLast(alphabet)
 
   // Assert
   expect(actual).toBe(expected)

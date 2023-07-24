@@ -1,4 +1,6 @@
-const kata = require('../kata.js')
+import { test, expect } from 'vitest'
+import * as kata from './kata.js'
+
 
 test('unzipObject returns an array of key/value pairs', () => {
   const dracula = {

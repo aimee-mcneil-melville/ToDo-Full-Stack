@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { greetFullName } from '../../functions/1-types'
 
 describe('greetFullName (OPTIONAL PARAMETER)', () => {

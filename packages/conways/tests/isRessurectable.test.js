@@ -1,4 +1,5 @@
-const isRessurectable = require('../isRessurectable')
+import { test, expect } from 'vitest' 
+import isRessurectable from '../isRessurectable'
 
 test('isRessurectable normal cases', () => {
   const expecteds = {

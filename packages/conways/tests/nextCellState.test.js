@@ -1,4 +1,5 @@
-const nextCellState = require('../nextCellState')
+import { test, expect } from 'vitest' 
+import nextCellState from '../nextCellState'
 
 test('nextCellState', () => {
   expect(nextCellState(true, 2)).toBeTruthy()

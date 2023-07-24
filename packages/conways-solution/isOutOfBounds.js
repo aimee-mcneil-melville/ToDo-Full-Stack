@@ -1,5 +1,5 @@
 function isOutOfBounds(index, array) {
-  return index < 0 || index >= array.length
+  return index >= array.length || index < 0;
 }
 
-module.exports = isOutOfBounds
+export default isOutOfBounds;
