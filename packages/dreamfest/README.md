@@ -53,8 +53,8 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 1. Show all locations
 
-- [ ] Have a look at the `GET /locations` route in `routes/locations.ts`
-- [ ] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
+- [x] Have a look at the `GET /locations` route in `routes/locations.ts`
+- [x] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
 - [ ] Complete the route using your new database function
 <details style="padding-left: 2em">
   <summary>Tip</summary>

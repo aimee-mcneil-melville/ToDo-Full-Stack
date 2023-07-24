@@ -1,5 +1,6 @@
-// TODO: Uncomment. (commented out to pass linting)
-// const { capitalise, validateDay } = require('../routes/helpers')
+import { describe, test } from 'vitest'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { capitalise, validateDay } from "../routes/helpers.ts"
 
 // TODO: Write these tests (remove .todo)
 describe('capitalise', () => {

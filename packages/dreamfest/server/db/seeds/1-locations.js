@@ -1,5 +1,5 @@
-exports.seed = function (knex) {
-  return knex('locations').insert([
+export async function seed(knex) {
+  await knex('locations').insert([
     {
       id: 1,
       name: 'TangleStage',
