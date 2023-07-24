@@ -1,17 +1,13 @@
-const { join } = require('node:path')
+import * as Path from 'node:path/posix'
+import * as URL from 'node:url'
+import express from 'express'
+import hbs from 'express-handlebars'
 
-const express = require('express')
-const hbs = require('express-handlebars')
-
-const routes = require('./routes')
+import routes from './routes.js'
 
 const server = express()
 
-module.exports = server
-
 // Middleware
-
-server.use(express.urlencoded({ extended: true }))
 server.engine(
   'hbs',
   hbs.engine({
@@ -19,9 +15,15 @@ server.engine(
   })
 )
 server.set('view engine', 'hbs')
-server.set('views', join(__dirname, 'views'))
-server.use(express.static('public'))
+const __filename = URL.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(__filename)
+
+server.set('views', __dirname + '/views')
+const publicFolder = __dirname + '/public'
+server.use(express.static(publicFolder))
+server.use(express.urlencoded({ extended: true }))
 
 // Routes
-
 server.use('/', routes)
+
+export default server

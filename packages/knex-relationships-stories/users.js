@@ -1,6 +1,5 @@
-const express = require('express')
-
-const db = require('./db')
+import express from 'express'
+import * as db from './db.js'
 
 const router = express.Router()
 
@@ -14,4 +13,4 @@ router.get('/', (req, res) => {
     })
 })
 
-module.exports = router
+export default router

@@ -1,6 +1,14 @@
-const db = require('./db')
+import {
+  getAll,
+  close,
+  addTodo as _addTodo,
+  completeTodo as _completeTodo,
+  deleteTodo as _deleteTodo,
+  findTodos as _findTodos,
+  updateTodo as _updateTodo,
+} from './db.js'
 
-module.exports = {
+export {
   listTodos,
   addTodo,
   completeTodo,
@@ -11,35 +19,27 @@ module.exports = {
 }
 
 function listTodos() {
-  return db.getAll().then(formatTodos).catch(logError).finally(db.close)
+  return getAll().then(formatTodos).catch(logError).finally(close)
 }
 
 function addTodo(todo) {
-  return db.addTodo(todo).then(listTodos).catch(logError).finally(db.close)
+  return _addTodo(todo).then(listTodos).catch(logError).finally(close)
 }
 
 function completeTodo(id) {
-  return db.completeTodo(id).then(listTodos).catch(logError).finally(db.close)
+  return _completeTodo(id).then(listTodos).catch(logError).finally(close)
 }
 
 function deleteTodo(id) {
-  return db.deleteTodo(id).then(listTodos).catch(logError).finally(db.close)
+  return _deleteTodo(id).then(listTodos).catch(logError).finally(close)
 }
 
 function findTodos(search) {
-  return db
-    .findTodos(search)
-    .then(formatTodos)
-    .catch(logError)
-    .finally(db.close)
+  return _findTodos(search).then(formatTodos).catch(logError).finally(close)
 }
 
 function updateTodo(id, task) {
-  return db
-    .updateTodo(id, task)
-    .then(listTodos)
-    .catch(logError)
-    .finally(db.close)
+  return _updateTodo(id, task).then(listTodos).catch(logError).finally(close)
 }
 
 function formatTodos(todos) {

@@ -1,26 +1,23 @@
-const knex = require('knex')
-const testConfig = require('./knexfile').test
-const testDb = knex(testConfig)
-
-const db = require('./db')
+import { test, expect, beforeAll, beforeEach } from 'vitest'
+import * as db from './db.js'
 
 beforeAll(() => {
-  return testDb.migrate.latest()
+  return db.connection.migrate.latest()
 })
 
 beforeEach(() => {
-  return testDb.seed.run()
+  return db.connection.seed.run()
 })
 
 test('getUsers gets all users', () => {
   // One for each letter of the alphabet!
-  return db.getUsers(testDb).then((users) => {
+  return db.getUsers().then((users) => {
     expect(users).toHaveLength(26)
   })
 })
 
 test('getUser gets a single user', () => {
-  return db.getUser(99901, testDb).then((user) => {
+  return db.getUser(99901).then((user) => {
     expect(user.name).toBe('Ambitious Aardvark')
   })
 })

@@ -1,11 +1,5 @@
-<h1>Wombles List</h1>
-
-<div class='wombles'>
-  <ul>
-    {{#each wombles}}
-      <a href='/view/{{id}}'><li>{{name}}</li></a>
-    {{/each}}
-  </ul>
-</div>
-
-<a href='/'>Back</a>
+<ul>
+{{#each wombles}}
+  <li><a href="/wombles/{{id}}">{{name}}</a></li>
+{{/each}}
+</ul>

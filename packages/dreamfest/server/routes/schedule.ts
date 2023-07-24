@@ -1,7 +1,7 @@
 import express from 'express'
 
-import { validateDay } from './helpers'
-import * as db from '../db'
+import { validateDay } from './helpers.ts'
+import * as db from '../db/index.ts'
 
 const router = express.Router()
 

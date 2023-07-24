@@ -1,10 +1,11 @@
-import { join } from 'node:path'
+import * as Path from 'node:path'
+
 import express from 'express'
 import * as hbs from 'express-handlebars'
 
-import locationRoutes from './routes/locations'
-import scheduleRoutes from './routes/schedule'
-import eventRoutes from './routes/events'
+import locationRoutes from './routes/locations.ts'
+import scheduleRoutes from './routes/schedule.ts'
+import eventRoutes from './routes/events.ts' 
 
 /*
  * create the server
@@ -17,13 +18,13 @@ export default server
  * configure the server
  *************************/
 
-const publicFolder = join(__dirname, 'public')
+const publicFolder = Path.resolve('public')
 server.use(express.static(publicFolder))
 server.use(express.urlencoded({ extended: false }))
 
 server.engine('hbs', hbs.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
-server.set('views', join(__dirname, 'views'))
+server.set('views', Path.resolve('server/views'))
 
 /*
  * define the routes
