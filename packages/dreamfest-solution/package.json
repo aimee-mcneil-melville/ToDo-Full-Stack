@@ -1,13 +1,15 @@
 {
   "name": "dreamfest-solution",
+  "type": "module",
   "version": "0.1.0",
   "description": "NZ's premier culture festival",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index",
-    "dev": "nodemon server/index.ts",
+    "start": "node dist/server",
+    "dev": "tsx watch server/index.ts",
+    "build": "esbuild --bundle --platform=node --format=esm --outfile=dist/server.js  server/index.ts",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "test": "jest",
+    "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Dev Academy Aotearoa",
