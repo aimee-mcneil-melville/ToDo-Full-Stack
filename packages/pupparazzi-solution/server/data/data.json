@@ -9,10 +9,10 @@
     },
     {
       "id": 2,
-      "name": "Coco",
+      "name": "poop",
       "owner": "Chloe",
       "image": "/images/puppy2.jpg",
-      "breed": "Labrador"
+      "breed": "s"
     },
     {
       "id": 3,
@@ -48,6 +48,20 @@
       "owner": "Ricky",
       "image": "/images/puppy7.jpg",
       "breed": "Labrador"
+    },
+    {
+      "name": "Jimble",
+      "breed": "Dogg",
+      "owner": "me",
+      "image": "https://placekitten.com/200/200",
+      "id": 7
+    },
+    {
+      "name": "Jimble",
+      "breed": "Dogg",
+      "owner": "me",
+      "image": "https://placekitten.com/200/200",
+      "id": 8
     }
   ]
 }

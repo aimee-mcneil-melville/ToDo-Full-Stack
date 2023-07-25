@@ -1,4 +1,4 @@
-import knexFile from './knexfile.mjs'
+import knexFile from './knexfile.js'
 import knex from 'knex'
 import type { Location, LocationData } from '../../models/Location.ts'
 import type { Event, EventData, EventWithLocation } from '../../models/Event.ts'
