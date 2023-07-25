@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-conditional-expect */
 import { test, expect, beforeEach, beforeAll, afterAll } from 'vitest'
 
 import * as db from '../db/db.js'
