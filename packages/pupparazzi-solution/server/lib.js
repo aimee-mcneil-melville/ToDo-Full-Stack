@@ -27,7 +27,8 @@ export async function getPuppyById(id) {
 
 export async function addNewPuppy(newPuppy) {
   const puppyData = await getPuppyData()
-  newPuppy.id = puppyData.puppies.length
+  // this is not a perfect way to choose an ID
+  newPuppy.id = puppyData.puppies.length + 1
   puppyData.puppies.push(newPuppy)
 
   await savePuppyData(puppyData)
