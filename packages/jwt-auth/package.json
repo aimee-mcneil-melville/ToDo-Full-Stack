@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
+    "start": "node ./dist/server/index.js",
     "dev": "run-p dev:server dev:client",
     "dev:server": "tsx watch server/index.ts",
     "dev:client": "vite",
