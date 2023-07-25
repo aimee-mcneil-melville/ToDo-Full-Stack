@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "dev": "tsx watch server/index.ts",
-    "dev:server": "nodemon server/index.ts",
+    "dev": "run-p dev:server dev:client",
+    "dev:server": "tsx watch server/index.ts",
     "dev:client": "vite",
     "knex": "knex --knexfile server/db/knexfile.js",
     "db-reset": "run-s db:*",
