@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server",
     "dev": "tsx watch server/index.ts",
-    "build": "esbuild --bundle --platform=node --format=esm --outfile=dist/server.js  server/index.ts",
+    "build": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
