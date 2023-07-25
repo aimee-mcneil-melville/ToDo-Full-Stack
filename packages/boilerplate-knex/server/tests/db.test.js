@@ -1,35 +1,35 @@
 /* eslint-disable jest/no-conditional-expect */
-const testEnv = require('./test-environment')
-const db = require('../db/db')
+import { test, expect, beforeEach, beforeAll, afterAll } from 'vitest'
+
+import * as db from '../db/db.js'
 
 let testDb = null
 
-beforeEach(() => {
-  testDb = testEnv.getTestDb()
-  return testEnv.initialise(testDb)
+beforeAll(async () => {
+  await db.connection.migrate.latest()
 })
 
-afterEach(() => testEnv.cleanup(testDb))
 
-test('getUsers gets all users', () => {
+beforeEach(async () => {
+  await db.connection.seed.run()
+})
+
+afterAll(async () => {
+  await db.connection.destroy()
+})
+
+test('getUsers gets all users', async () => {
   // One for each letter of the alphabet!
   const expected = 3
-  return db
-    .getUsers(testDb)
-    .then((users) => {
-      const actual = users.length
-      expect(actual).toBe(expected)
-    })
-    .catch((err) => expect(err).toBeNull())
+  const users = await db.getUsers(testDb)
+  const actual = users.length
+  expect(actual).toBe(expected)
 })
 
-test('getUser gets a single user', () => {
+test('getUser gets a single user', async () => {
   const expected = 'test user 1'
-  return db
-    .getUser(99901, testDb)
-    .then((user) => {
-      const actual = user.name
-      expect(actual).toBe(expected)
-    })
-    .catch((err) => expect(err).toBeNull())
+  const user = await db.getUser(99901, testDb)
+  const actual = user.name
+
+  expect(actual).toBe(expected)
 })

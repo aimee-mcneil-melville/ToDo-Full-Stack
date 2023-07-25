@@ -1,17 +1,16 @@
-const express = require('express')
+import express from 'express'
 
-const db = require('../db/db')
+import * as db from '../db/db'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.getUsers()
-    .then((users) => {
-      res.render('index', { users: users })
-    })
-    .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
+router.get('/', async (req, res) => {
+  try {
+    const users = await db.getUsers()
+    res.render('index', { users: users })
+  } catch (err) {  
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  }
 })
 
-module.exports = router
+export default router

@@ -1,29 +1,30 @@
-/* eslint-disable jest/no-conditional-expect */
-const request = require('supertest')
-const { screen } = require('@testing-library/dom')
-require('@testing-library/jest-dom')
-/* eslint-disable jest/no-conditional-expect */
+import { test, expect, vi } from 'vitest'
+import request from 'supertest'
 
-jest.mock('../../db', () => ({
-  getUser: (id) =>
-    Promise.resolve({ id: id, name: 'test user', email: 'test@user.nz' }),
-  getUsers: () =>
-    Promise.resolve([
+import * as db from '../db/db.js'
+import server from '../server.js'
+import { render } from './test-utils.js'
+
+vi.mock('../db/db.js')
+
+
+test('GET /', async () => {
+  vi.mocked(db.getUser).mockImplementation(async (id) => {
+    return { id: id, name: 'test user', email: 'test@user.nz' }
+  })
+
+  vi.mocked(db.getUsers).mockImplementation(async () => {
+    return [
       { id: 2, name: 'test user 2', email: 'test2@user.nz' },
       { id: 4, name: 'test user 4', email: 'test4@user.nz' },
-    ]),
-}))
+    ]
+  })
 
-const server = require('../server')
-
-test('GET /', () => {
-  return request(server)
+  const res = await request(server)
     .get('/')
-    .expect(200)
-    .then((res) => {
-      document.body.innerHTML = res.text
-      const firstLiText = screen.getByText('test user 2 (test2@user.nz)')
-      expect(firstLiText).toBeInTheDocument()
-    })
-    .catch((err) => expect(err).toBeNull())
+   
+  expect(res.statusCode).toBe(200)
+  const screen = render(res)
+  const firstLiText = screen.getByText('test user 2 (test2@user.nz)')
+  expect(firstLiText).toBeInTheDocument()
 })
