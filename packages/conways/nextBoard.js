@@ -1,5 +1,5 @@
-import nextCellState from './nextCellState'
-import countAliveNeighbours from './countAliveNeighbours'
+import nextCellState from './nextCellState.js'
+import countAliveNeighbours from './countAliveNeighbours.js'
 
 function nextBoard(currentBoard) {}
 

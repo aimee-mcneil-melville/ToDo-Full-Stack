@@ -1,6 +1,6 @@
-import isOverPopulated from './isOverPopulated'
-import isUnderPopulated from './isUnderPopulated'
-import isRessurectable from './isRessurectable'
+import isOverPopulated from './isOverPopulated.js'
+import isUnderPopulated from './isUnderPopulated.js'
+import isRessurectable from './isRessurectable.js'
 
 function nextCellState(cellState, neighbourCount) {}
 
