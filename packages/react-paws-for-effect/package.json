@@ -1,5 +1,6 @@
 {
   "name": "react-paws-for-effect",
+  "type":"module",
   "version": "0.3.0",
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.ts",
