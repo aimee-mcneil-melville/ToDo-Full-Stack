@@ -9,7 +9,7 @@ import {
   deleteTodo,
   fetchTodos,
   updateTodo,
-} from '../apis/apiClient'
+} from '../apis/apiClient.ts'
 
 export function useTodos() {
   const query = useQuery(['todos'], fetchTodos)

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTodos } from '../hooks/useTodos'
+import { useTodos } from '../hooks/useTodos.ts' 
 
 export default function AllComplete() {
   const { data, updateTodo } = useTodos()

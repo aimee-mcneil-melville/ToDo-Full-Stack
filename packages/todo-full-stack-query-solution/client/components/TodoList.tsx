@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
 
-import { useTodos } from '../hooks/useTodos'
-import { Task } from '../../models/task'
-import Todo from './Todo'
+import { useTodos } from '../hooks/useTodos.ts'
+import { Task } from '../../models/task.ts'
+import Todo from './Todo.tsx'
 
 export default function TodoList() {
   const { data, isLoading, error } = useTodos()
