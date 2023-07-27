@@ -6,8 +6,11 @@
   "repository": "https://github.com/dev-academy-challenges/charlottes-web-log.git",
   "main": "server/index.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "start": "node dist/server.js",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "vite",
+    "build": "run-s build:client build:server",
+    "build:client": "vite build",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
