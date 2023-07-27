@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Fruit, NewFruit } from '../models/fruit.js'
+import { Fruit, NewFruit } from '../models/fruit.ts'
 
 const rootUrl = '/api/v1'
 
