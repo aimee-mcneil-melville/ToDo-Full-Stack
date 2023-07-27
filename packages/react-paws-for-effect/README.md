@@ -43,7 +43,7 @@ Learning objectives:
   ```tsx
   import { createRoot } from 'react-dom/client'
 
-  import App from './components/App'
+  import App from './components/App.tsx'
 
   document.addEventListener('DOMContentLoaded', () => {
     createRoot(document.getElementById('app') as HTMLElement).render(<App />)
@@ -149,7 +149,7 @@ Let's try another component.
   In `App.tsx`, import the `<Dog>` component
 
   ```tsx
-  import Dog from './Dog'
+  import Dog from './Dog.tsx'
   ```
 
   and add a `<Dog>` tag (use Desdemona, above if you like). The TSX returned should look something like this:
