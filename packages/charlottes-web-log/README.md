@@ -40,7 +40,7 @@ Our task is to create all of the components that comprise the page and wire up d
 
   We will need to import the data into:
 
-  - `Footer.tsx` (e.g. `import data from '../data/footer'`)
+  - `Footer.tsx` (e.g. `import data from '../data/footer.tsx'`)
   - `Header.tsx`
   - `Posts.tsx`
   - `OtherBlogs.tsx`
@@ -51,8 +51,8 @@ Our task is to create all of the components that comprise the page and wire up d
   Here's an example of how you may use that data in your components:
 
   ```tsx
-  import postData from '../data/posts'
-  import Post from './Post'
+  import postData from '../data/posts.ts'
+  import Post from './Post.tsx'
 
   function Posts() {
     return (
