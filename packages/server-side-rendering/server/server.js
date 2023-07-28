@@ -14,7 +14,7 @@ server.engine(
   })
 )
 
-const __filename = URL.fileURLtoPath(import.meta.url)
+const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
 server.set('view engine', 'hbs')

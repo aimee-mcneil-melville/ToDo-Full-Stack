@@ -103,12 +103,10 @@ The rest of this exercise should follow the same arc - gradually layering up det
 
 ## Consuming more complex objects
 
-> Did you know you could require JSON? Pretty handy when you need a bit of configuration data! You can't leave the extension off like you can with `.js`, though.
-
 <details>
-  <summary>About <code>art.json</code></summary>
+  <summary>About <code>art.js</code></summary>
 
-  We want you to explore and understand template rendering today, so we've provided you with data to work with. It's an array of objects brought into the program using `require`. Each object represents a piece of art.
+  We want you to explore and understand template rendering today, so we've provided you with data to work with. It's an array of objects brought into the program using `import`. Each object represents a piece of art.
 
   The each object in the array is structured like this:
 
@@ -135,12 +133,12 @@ The rest of this exercise should follow the same arc - gradually layering up det
 <details>
   <summary>Using <code>art.json</code></summary>
 
-  Any time you want to use this data, you can include `const art = require('./data/art.json')` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
+  Any time you want to use this data, you can include `import art from './data/art.js'` at the top of the file you want to use it in. Remember, `art` is an **array** and Handlebars expects you to pass it an **object**, so you might need to do something like this:
 
   ```js
   const viewData = {
     title: 'Gallery',
-    art: art,
+    art,
   }
   ```
 </details>
