@@ -6,9 +6,9 @@
   "main": "server/index.ts",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "run-p dev:client dev:server",
+    "dev": "run-p dev:client",
     "dev:client": "vite",
-    "build": "run-s build:client build:server",
+    "build": "run-s build:client",
     "build:client": "vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "vitest",
