@@ -32,7 +32,7 @@ When complete, your application might look like this:
   1. The order of routes is important. The first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
   1. There can only be one server response (e.g. `res.send()` or `res.render()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
   1. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
-  1. Don't forget to handle errors when your promises fail using `.catch(...)`
+  1. Don't forget to handle errors when your promises fail using `try { } catch (e) {  }`
   1. When in doubt check the [node `fs/promises` documentation](https://nodejs.org/api/fs.html#promises-api)
 </details>
 <br />
@@ -121,7 +121,7 @@ When complete, your application might look like this:
 
   1. Refactor the `readFile` and `writeFile` calls into a separate file (separation of concerns)
       - As these return promises to begin with, you will need to write functions around them which also return promises
-      - Write some tests using `jest` and `supertest`
+      - Write some tests using `vitest` and `supertest`
   1. Add a new view and route that includes a form which lets the user add a new puppy
 </details>
 
