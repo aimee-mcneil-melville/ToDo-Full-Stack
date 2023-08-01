@@ -1,5 +1,5 @@
 import { within } from '@testing-library/dom'
-import matchers from '@testing-library/jest-dom'
+import matchers from '@testing-library/jest-dom/matchers'
 import { expect } from 'vitest'
 import { JSDOM } from 'jsdom'
 
