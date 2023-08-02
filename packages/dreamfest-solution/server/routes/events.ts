@@ -74,7 +74,7 @@ router.get('/:id/edit', async (req, res, next) => {
       selected: data.id === event.locationId ? 'selected' : '',
     }))
 
-    // This is done for you
+    // This is done for you with an array of days imported from the helpers file
     const days = eventDays.map((eventDay) => ({
       value: eventDay,
       name: capitalise(eventDay),
