@@ -6,10 +6,8 @@
   "main": "server/index.ts",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "run-p dev:client",
-    "dev:client": "vite",
-    "build": "run-s build:client",
-    "build:client": "vite build",
+    "dev": "vite", 
+    "build": "vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
