@@ -1,5 +1,6 @@
 {
   "name": "broken-kaleidoscope",
+  "type": "module",
   "version": "0.1.1",
   "description": "Playing with random colours and React state.",
   "repository": "https://github.com/dev-academy-challenges/broken-kaleidoscope",
