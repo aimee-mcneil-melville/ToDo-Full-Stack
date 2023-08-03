@@ -5,7 +5,6 @@
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.ts",
   "scripts": {
-    "start": "node dist/server.js",
     "dev": "vite", 
     "build": "vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
