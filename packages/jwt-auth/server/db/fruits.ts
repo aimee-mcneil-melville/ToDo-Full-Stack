@@ -1,5 +1,5 @@
-import connection from './connection'
-import { FruitSnakeCase } from '../../models/fruit'
+import connection from './connection.ts'
+import { FruitSnakeCase } from '../../models/fruit.ts'
 
 export function getFruits(db = connection) {
   return db('fruits')

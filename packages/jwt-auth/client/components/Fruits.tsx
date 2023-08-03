@@ -1,11 +1,11 @@
-import type { Fruit, NewFruit } from '../../models/fruit'
+import type { Fruit, NewFruit } from '../../models/fruit.ts'
 
 import { useState, useEffect } from 'react'
 
-import { addFruit, deleteFruit, getFruits, updateFruit } from '../api'
-import SelectedFruitForm from './SelectedFruit'
-import AddFruitForm from './AddFruit'
-import { ErrorMessage } from './Styled'
+import { addFruit, deleteFruit, getFruits, updateFruit } from '../api.ts'
+import SelectedFruitForm from './SelectedFruit.tsx'
+import AddFruitForm from './AddFruit.tsx'
+import { ErrorMessage } from './Styled.tsx'
 
 type State =
   | {

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
-import Nav from './Nav'
-import Fruits from './Fruits'
+import Nav from './Nav.tsx'
+import Fruits from './Fruits.tsx'
 
 function App() {
   return (

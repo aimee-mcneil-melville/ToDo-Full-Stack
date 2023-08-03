@@ -1,3 +1,3 @@
-exports.seed = (knex) => {
+export function seed(knex) {
   return knex('fruits').del()
 }

@@ -1,6 +1,6 @@
 import express from 'express'
-import { Fruit, FruitSnakeCase } from '../../models/fruit'
-import { JwtRequest } from '../auth0'
+import { Fruit, FruitSnakeCase } from '../../models/fruit.ts'
+import { JwtRequest } from '../auth0.ts'
 
 import {
   getFruits,
@@ -8,7 +8,7 @@ import {
   deleteFruit,
   updateFruit,
   userCanEdit,
-} from '../db/fruits'
+} from '../db/fruits.ts'
 
 const router = express.Router()
 
