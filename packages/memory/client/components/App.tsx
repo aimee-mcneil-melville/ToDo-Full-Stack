@@ -1,5 +1,5 @@
-import Board from './Board'
-import startingTiles from '../startingTiles'
+import Board from './Board.tsx'
+import startingTiles from '../startingTiles.ts'
 
 const tryAgain = 'No match, try again'
 const winMessage = 'Congratulations, you matched all the tiles!'

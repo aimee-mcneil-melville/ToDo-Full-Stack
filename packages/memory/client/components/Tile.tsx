@@ -1,4 +1,4 @@
-import { TileData } from '../startingTiles'
+import { TileData } from '../startingTiles.ts'
 
 interface Props extends TileData {
   // include additional props here
