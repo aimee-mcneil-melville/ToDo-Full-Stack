@@ -1,17 +1,14 @@
-const db = require('./db')
+import { getTodos, close } from './db.js'
 
-function list() {
-  return db
-    .getTodos()
-    .then((todos) => {
-      printTodos(todos)
-    })
-    .catch((err) => {
-      logError(err)
-    })
-    .finally(() => {
-      db.close()
-    })
+export async function list() {
+  try {
+    const todos = await getTodos()
+    printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
 }
 
 function printTodos(todos) {
@@ -24,6 +21,3 @@ function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
-module.exports = {
-  list,
-}

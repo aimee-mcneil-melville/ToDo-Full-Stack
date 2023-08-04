@@ -1,17 +1,15 @@
-const config = require('./knexfile').development
-const connection = require('knex')(config)
+import * as knexfile from './knexfile.js'
+import knex from 'knex'
 
-function getTodos(db = connection) {
+
+const db = knex.default(knexfile.development)
+
+export function getTodos() {
   return db('todos').select()
 }
 
 // Your DB functions go here
-
-function close(db = connection) {
+export function close() {
   db.destroy()
 }
 
-module.exports = {
-  getTodos,
-  close,
-}

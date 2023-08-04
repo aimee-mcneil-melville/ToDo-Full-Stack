@@ -1,8 +1,12 @@
 {
   "name": "knex-todo-cli",
+  "type": "module",
   "version": "1.0.0",
   "description": "Command-line todo app using Knex.",
   "main": "commands.js",
+  "bin": {
+    "todo": "./todo.js"
+  },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "knex": "knex",
@@ -14,9 +18,7 @@
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
   "eslintConfig": {
-    "extends": [
-      "@devacademy"
-    ]
+    "extends": ["@devacademy"]
   },
   "keywords": [],
   "author": "Dev Academy Aotearoa",
