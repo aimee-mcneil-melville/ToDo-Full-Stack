@@ -1,5 +1,5 @@
-import Tile from './Tile'
-import { TileData } from '../startingTiles'
+import Tile from './Tile.tsx'
+import { TileData } from '../startingTiles.ts'
 
 interface Props {
   tiles: TileData[]
