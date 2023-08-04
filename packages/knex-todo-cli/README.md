@@ -28,12 +28,30 @@ We're building a simple command-line tool to manage our list of todos. We're fin
   <details style="padding-left: 2em">
     <summary>More about file permissions</summary>
 
-  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo list`. This means our programme will begin with the `todo` file.
+  Since this is a CLI (command-line interface) tool, instead of running our app using `node todo.js list`, we'd like to be able to run it like any other utility/script on our computer to make it easier to use. Running `chmod +x todo.js` in your terminal adds the executable flag to the file. Now you can run it in your console using `./todo.js list`. This means our programme will begin with the `todo.js` file.
 
-  Note: if you run `./todo list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
+  Note: if you run `./todo.js list` now, you will get an error because we still need to complete some more steps before we can show the contents of our database.
   </details>
 
 - [ ] Create the Knex configuration file (`knexfile.js`) with `npm run knex init`
+- [ ] Convert the knex file to an ecmascript module
+  <details style="padding-left: 2em">
+    <summary>How to convert knexfile to a module</summary>
+
+    To be an ESM module, we just replace:
+
+    ```js
+    module.exports = {
+    ```
+
+    with:
+
+    ```js
+    export default {
+    ```
+  </details>
+
+
 
 ---
 
@@ -42,6 +60,36 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 ### 1. The first migration
 
 - [ ] Use `npm run knex migrate:make todos` to create a migration file
+- [ ] Convert the migration to an ESM module
+  <details style="padding-left: 2em">
+    <summary>How to convert your migration to a module</summary>
+
+    To convert our migration functions we just replace this..
+
+    ```js
+    exports.up = function (knex) { 
+    ```
+
+    ... with
+
+    ```js
+    export function up(knex) {
+    ```
+
+    and replace ...
+
+    ```js
+    exports.down = function (knex) { 
+    ```
+
+    ... with
+
+    ```js
+    export function down(knex) {
+    ```
+
+  </details>
+	
 
 - [ ] Edit the new file in the new `migrations` folder so it will add (and drop) a table called `todos`
   <details style="padding-left: 2em">
@@ -62,6 +110,17 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 - [ ] Edit the new file in the new `seeds` folder so it will add new tasks to the `todos` table
   <details style="padding-left: 2em">
     <summary>Tip</summary>
+  First, we need to convert it to an ESM module by changing from this:
+
+  ```js
+  exports.seed = async function (knex) {
+  ```
+
+  to this...
+
+  ```js
+  export async function seed(knex) {
+  ```
 
   The documentation for [`del`](http://knexjs.org/#Builder-del%20/%20delete) and [`insert`](http://knexjs.org/#Builder-insert) might be helpful.
   </details>
@@ -89,12 +148,12 @@ We want to be able to update and delete our tasks. But before we do that we need
   <details style="padding-left: 2em">
     <summary>More about the <code>commands</code> file</summary>
 
-  If you type `./todo list` in your terminal, this should output a list of tasks. The input + output should look like this:
+  If you type `./todo.js list` in your terminal, this should output a list of tasks. The input + output should look like this:
 
   ```sh
-  $ ./todo list
+  $ ./todo.js list
 
-  1: vaccuum
+  1: vacuum
   2: buy groceries
   ```
 
@@ -110,12 +169,12 @@ We want to be able to update and delete our tasks. But before we do that we need
   
   In particular, what is `process.argv`? And how is it being used to get the command (`cmd`) that was typed (in our example, `list`)?
   
-  Start by using `console.log` to explore this, and try adding more inputs to see how that changes the result (i.e. `./todo list hello testing 123`)
+  Start by using `console.log` to explore this, and try adding more inputs to see how that changes the result (i.e. `./todo.js list hello testing 123`)
 </details>
 
 ### 5. Delete a task by ID
 
-- [ ] Enable users to complete a task by entering a command such as `./todo done 1` which will remove the task with `id` of `1` from the database
+- [ ] Enable users to complete a task by entering a command such as `./todo.js done 1` which will remove the task with `id` of `1` from the database
   <details style="padding-left: 2em">
     <summary>More about deleting a task</summary>
 
@@ -129,14 +188,14 @@ We want to be able to update and delete our tasks. But before we do that we need
 
   **Additional hint**: accessing that `userInputs` array might come in handy right about now...
 
-  If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `.catch` and `.finally` bits of code? What happens when you remove the `.finally` calls?
+  If it helps, look at how the `list` function is structured to give you some ideas. What is happening with those `catch` and `finally` bits of code? What happens when you remove the `finally` block?
   </details>
 
 ### 6. Add a new task
 
 It's all very well and good being able to delete tasks, but what happens when we run out of things to do?
 
-- [ ] Enable users to add a new task by entering a command such as `./todo add 'pet cat'`
+- [ ] Enable users to add a new task by entering a command such as `./todo.js add 'pet cat'`
 <details style="padding-left: 2em">
   <summary>More about adding a task</summary>
   
@@ -147,7 +206,7 @@ It's all very well and good being able to delete tasks, but what happens when we
 
 Users make mistakes. Let them update a task.
 
-- [ ] Enable users to update a task by id with a command such as `./todo update 1 'clean my room thoroughly'`
+- [ ] Enable users to update a task by id with a command such as `./todo.js update 1 'clean my room thoroughly'`
   <details style="padding-left: 2em">
     <summary>More about updating a task</summary>
 
@@ -162,7 +221,7 @@ Users make mistakes. Let them update a task.
 
 Busy people are complaining about having 200 tasks in their consoles. Add a feature that searches in the task string for a given word.
 
-- [ ] Enable users to search for tasks containing a search term by entering a command such as `./todo search 'wire'`
+- [ ] Enable users to search for tasks containing a search term by entering a command such as `./todo.js search 'wire'`
 
 ### 9. Preparing to complete tasks (non-destructively)
 
@@ -177,7 +236,7 @@ Users want to be able to mark a task as complete without removing it from the da
   What data type should we use to store our new field(s)?
   </details>
 
-- [ ] Fill in the `.down` function in your migration. It should undo the changes made in the `.up` function
+- [ ] Fill in the `down` function in your migration. It should undo the changes made in the `.up` function
 
 - [ ] Run and check the migration, and re-run the seeds
   <details style="padding-left: 2em">
@@ -217,14 +276,14 @@ Users want to be able to mark a task as complete without removing it from the da
 You'll find this challenge already has debugging set up for you, if you would like to use it. However, it won't start working until you complete the initial setup steps below! In addition, because we're debugging a **console** program, you'll need to change the `args` property in you debugger configuration to the actual command you'd like to debug. For example,
 
 ```json
-  "program": "${workspaceFolder}/todo",
+  "program": "${workspaceFolder}/todo.js",
   "args": [
       "done",
       "1"
   ]
 ```
 
-would debug the `./todo done 1` command. Ask a teacher for help if you're not sure!
+would debug the `./todo.js done 1` command. Ask a teacher for help if you're not sure!
 
 </details>
 

@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-
-const commands = require('./commands')
+import * as commands from './commands.js'
 
 const userInputs = process.argv
 const cmd = userInputs[2]
 
 switch (cmd) {
   case 'list':
-    commands.list()
+    await commands.list()
     break
 
   default:
