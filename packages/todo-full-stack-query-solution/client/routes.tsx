@@ -1,7 +1,7 @@
 import { createRoutesFromElements, Route } from 'react-router-dom'
 
-import App from './components/App'
-import TodoList from './components/TodoList'
+import App from './components/App.tsx'
+import TodoList from './components/TodoList.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>

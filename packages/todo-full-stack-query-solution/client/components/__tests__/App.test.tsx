@@ -2,7 +2,7 @@
 import nock from 'nock'
 import { screen, waitForElementToBeRemoved } from '@testing-library/react'
 import { describe, it, expect, afterEach, afterAll } from 'vitest'
-import { renderRoute } from '../../test-utils'
+import { renderRoute } from '../../test-utils.tsx'
 
 afterEach(() => {
   nock.cleanAll()

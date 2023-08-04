@@ -1,4 +1,4 @@
-import indicesAreOutOfBounds from './indicesAreOutOfBounds'
+import indicesAreOutOfBounds from './indicesAreOutOfBounds.js'
 
 function getNeighbours(cellRow, cellColumn, board) {}
 

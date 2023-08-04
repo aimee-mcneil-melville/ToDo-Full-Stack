@@ -1,10 +1,10 @@
-exports.up = function (knex) {
+export function up (knex) {
   return knex.schema.table('wombles', function (table) {
     table.integer('trait_id')
   })
 }
 
-exports.down = function (knex) {
+export function down(knex) {
   return knex.schema.table('wombles', function (table) {
     table.dropColumn('trait_id')
   })

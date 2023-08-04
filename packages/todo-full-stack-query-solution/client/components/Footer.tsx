@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { useTodos } from '../hooks/useTodos'
+import { useTodos } from '../hooks/useTodos.ts'
 
 export default function Footer() {
   const { status } = useParams()

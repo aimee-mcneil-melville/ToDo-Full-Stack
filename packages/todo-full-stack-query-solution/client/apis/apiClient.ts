@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-import { Task } from '../../models/task'
+import { Task } from '../../models/task.ts'
 const rootUrl = '/api/v1/todos'
 
 export async function fetchTodos(): Promise<Task[]> {

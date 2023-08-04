@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { Task } from '../../models/task'
-import { useTodos } from '../hooks/useTodos'
+import { Task } from '../../models/task.ts'
+import { useTodos } from '../hooks/useTodos.ts'
 
 interface Props {
   todo: Task

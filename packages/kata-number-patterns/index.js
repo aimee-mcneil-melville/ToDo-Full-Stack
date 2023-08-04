@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-const { examplePattern1, examplePattern2 } = require('./patterns')
+import { examplePattern1, examplePattern2 } from './patterns.js'
 
 const max = 7
 

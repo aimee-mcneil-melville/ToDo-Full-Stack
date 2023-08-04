@@ -1,4 +1,4 @@
-exports.seed = (knex) =>
+export const seed = (knex) =>
   knex('wombles')
     .del()
     .then(() =>

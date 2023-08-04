@@ -1,5 +1,6 @@
 {
   "name": "ascii-art-reader",
+  "type": "module",
   "version": "1.0.0",
   "description": "state of the (ASCII Art) terminal client",
   "main": "index.js",

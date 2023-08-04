@@ -1,7 +1,8 @@
-const config = require('./knexfile').development
-const database = require('knex')(config)
+import config from './knexfile.js'
+import { knex } from 'knex'
+const database = knex(config.development)
 
-module.exports = {
+export {
   getAll,
   addTodo,
   completeTodo,

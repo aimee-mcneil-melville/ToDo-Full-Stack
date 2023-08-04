@@ -1,7 +1,7 @@
-const server = require('./server')
+import server from './server.js'
 
 const PORT = 3000
 
 server.listen(PORT, function () {
-  console.log('CLEANING UP ALL OF THE THINGS THAT WE FIND... ON PORT', PORT)
+  console.log('Server listening on port', PORT)
 })

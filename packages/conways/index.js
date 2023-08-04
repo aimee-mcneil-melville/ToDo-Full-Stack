@@ -1,6 +1,6 @@
-import createBoard from './createBoard'
-import nextBoard from './nextBoard'
-import displayBoard from './displayBoard'
+import createBoard from './createBoard.js'
+import nextBoard from './nextBoard.js'
+import displayBoard from './displayBoard.js'
 
 const size = 10
 const refreshInterval = 100
