@@ -1,5 +1,6 @@
 {
   "name": "memory",
+  "type": "module",
   "version": "0.2.0",
   "description": "An exercise to practice React state in components",
   "repository": "https://github.com/dev-academy-challenges/memory.git",
