@@ -30,7 +30,7 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.3.0",
-    "sqlite3": "^5.1.6",
+    "sqlite3": "^5.1.2",
     "dotenv": "^10.0.0",
     "superagent": "7.1.1"
   },
