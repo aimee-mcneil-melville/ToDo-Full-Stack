@@ -8,7 +8,9 @@
     "types": ["vite/client"],
 
     /* Modules */
-    "module": "commonjs" /* Specify what module code is generated. */,
+    "module": "ES2020" /* Specify what module code is generated. */,
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
 
     /* Interop Constraints */
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
