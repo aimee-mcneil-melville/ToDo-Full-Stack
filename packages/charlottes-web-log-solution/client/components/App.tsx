@@ -1,12 +1,12 @@
-import Header from './Header'
-import headerProps from '../data/header'
+import Header from './Header.tsx'
+import headerProps from '../data/header.ts'
 
-import Footer from './Footer'
-import footerProps from '../data/footer'
+import Footer from './Footer.tsx'
+import footerProps from '../data/footer.ts'
 
-import Posts from './Posts'
-import OtherBlogs from './OtherBlogs'
-import RecentEntries from './RecentEntries'
+import Posts from './Posts.tsx'
+import OtherBlogs from './OtherBlogs.tsx'
+import RecentEntries from './RecentEntries.tsx'
 
 function App() {
   return (

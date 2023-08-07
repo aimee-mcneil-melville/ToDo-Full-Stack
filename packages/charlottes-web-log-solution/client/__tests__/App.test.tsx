@@ -6,7 +6,7 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 afterEach(cleanup)
 
-import App from '../components/App'
+import App from '../components/App.tsx'
 
 describe('<App />', () => {
   it('looks like this', () => {
