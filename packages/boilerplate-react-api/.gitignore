@@ -67,3 +67,5 @@ bundle.*
 dev.sqlite3
 
 tags
+
+/dist
