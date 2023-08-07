@@ -1,10 +1,9 @@
 import { useParams, Link } from 'react-router-dom'
-import countries from '../../data/countries'
+import countries from '../../data/countries.ts'
 
 export default function Country() {
   const { code, id } = useParams()
   const country = countries.find((country) => country.code === code)
-  console.log(id)
 
   if (!country) {
     return <p>No country found with code: {code}</p>

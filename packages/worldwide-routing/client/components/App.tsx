@@ -1,5 +1,5 @@
-import Nav from './Nav'
-import Home from './Home'
+import Nav from './Nav.tsx'
+import Home from './Home.tsx'
 
 function App() {
   return (

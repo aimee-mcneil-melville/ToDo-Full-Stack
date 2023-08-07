@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Nav from './Nav'
+import Nav from './Nav.tsx'
 
 // STRETCH: Use nested routes
 export default function App() {
