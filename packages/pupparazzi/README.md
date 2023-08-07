@@ -79,7 +79,7 @@ When complete, your application might look like this:
     <summary>More about puppy pages</summary>
   
     1. Take note of the url you are sent to (perhaps `/puppies/1`)
-    1. Create a `routes.js` file in the main repo directory - this will store all of our routes
+    1. Create a `routes.js` file in the `server/` directory - this will store all of our routes
     1. `require` Express in your `routes.js` file and create a router. Also, don't forget to export the router
     1. `require` and `use` our newly created `routes.js` file in our `server`. We'll use the string `/puppies` to define the prefix path for our router. Note that the `use` line of code should come **after** your server configuration and handlebars configuration
     1. Create a GET route in your `routes.js` to render a particular puppy. The route should contain the `id` as a parameter so you can access it via `req.params.id` (so perhaps `/:id`)
