@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks.ts'
 
-import { fetchFruits } from '../actions.ts'
+import { fetchFruits } from '../actions/index.ts'
 
 function App() {
   const fruits = useAppSelector((state) => state.fruits)
