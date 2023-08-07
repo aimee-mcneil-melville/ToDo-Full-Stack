@@ -1,30 +1,31 @@
-/* global test expect beforeEach afterEach */
-const testEnv = require('../test-environment')
+import { test, expect, beforeEach, beforeAll, afterAll } from 'vitest'
+import * as db from '../../db/db.js'
 
-const db = require('../../db')
-
-let testDb = null
-
-beforeEach(() => {
-  testDb = testEnv.getTestDb()
-  return testEnv.initialise(testDb)
+beforeAll(async () => {
+  await db.connection.migrate.latest()
 })
 
-afterEach(() => testEnv.cleanup(testDb))
+beforeEach(async () => {
+  await db.connection.seed.run()
+})
 
-test('getUsers gets all users', () => {
+afterAll(async () => {
+  await db.connection.destroy()
+})
+
+test('getUsers gets all users', async () => {
   // One for each letter of the alphabet
   const expected = 26
-  return db.getUsers(testDb).then((users) => {
-    const actual = users.length
-    expect(actual).toBe(expected)
-  })
+  const users = await db.getUsers()
+  const actual = users.length
+
+  expect(actual).toBe(expected)
 })
 
-test('getUser gets a user by ID', () => {
+test('getUser gets a user by ID', async () => {
   const expected = 'Ambitious Aardvark'
-  return db.getUser(99901, testDb).then((user) => {
-    const actual = user.name
-    expect(actual).toBe(expected)
-  })
+  const user = db.getUser(99901)
+  const actual = user.name
+
+  expect(actual).toBe(expected)
 })
