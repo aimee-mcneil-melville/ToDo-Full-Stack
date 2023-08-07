@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { setUser } from './actions/user'
-import { getUserRoles } from './apis/users'
+import { setUser } from './actions/user.ts'
+import { getUserRoles } from './apis/users.ts'
 import { useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 

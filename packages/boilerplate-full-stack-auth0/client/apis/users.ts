@@ -1,20 +1,18 @@
 import request from 'superagent'
-import { User, UserData } from '../../models/user'
+import { User, UserData } from '../../models/user.ts'
 
 const rootUrl = '/api/v1'
 
-export function getUsers() {
-  return request.get(rootUrl + '/users').then((res) => {
-    return res.body.users as User[]
-  })
+export async function getUsers() {
+  const res = await request.get(rootUrl + '/users')
+  return res.body.users as User[]
 }
 
-export function addUser(user: UserData) {
-  return request.post(rootUrl + '/users').send(user)
+export async function addUser(user: UserData) {
+  await request.post(rootUrl + '/users').send(user)
 }
 
-export function getUserRoles(id: string | undefined) {
-  return request.get(`${rootUrl}/users/${id}`).then((res) => {
-    return res.body.roles as string | undefined
-  })
+export async function getUserRoles(id: string | undefined) {
+  const res = await request.get(`${rootUrl}/users/${id}`)
+  return res.body.roles as string | undefined
 }

@@ -1,5 +1,5 @@
-import { User, UserData } from '../../models/user'
-import connection from './connection'
+import { User, UserData } from '../../models/user.ts'
+import connection from './connection.ts'
 
 export async function getUsers(db = connection) {
   const data = await db('users').select(
