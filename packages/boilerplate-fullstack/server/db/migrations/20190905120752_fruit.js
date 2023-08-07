@@ -1,10 +1,10 @@
-exports.up = function (knex) {
-  return knex.schema.createTable('fruit', (table) => {
+export async function up(knex) {
+  await knex.schema.createTable('fruit', (table) => {
     table.increments('id')
     table.string('name')
   })
 }
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('fruit')
+export async function down(knex) {
+  await knex.schema.dropTable('fruit')
 }

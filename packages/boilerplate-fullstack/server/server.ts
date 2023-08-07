@@ -1,7 +1,7 @@
 import express from 'express'
 import { join } from 'node:path'
 
-import fruitRoutes from './routes/fruits'
+import fruitRoutes from './routes/fruits.ts'
 
 const server = express()
 

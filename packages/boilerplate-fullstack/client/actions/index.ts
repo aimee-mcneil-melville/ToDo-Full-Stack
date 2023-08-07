@@ -1,5 +1,5 @@
-import { getFruits } from '../apis/fruits'
-import type { ThunkAction } from '../store'
+import { getFruits } from '../apis/fruits.ts'
+import type { ThunkAction } from '../store.ts'
 
 export type Action = {
   type: typeof SET_FRUITS

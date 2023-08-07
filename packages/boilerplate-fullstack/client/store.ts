@@ -2,8 +2,8 @@ import { createStore, applyMiddleware } from 'redux'
 import type { ThunkDispatch, ThunkAction as BaseThunkAction } from 'redux-thunk'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from '@redux-devtools/extension'
-import reducers from './reducers'
-import type { Action } from './actions'
+import reducers from './reducers.ts'
+import type { Action } from './actions.ts'
 
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
