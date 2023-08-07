@@ -1,5 +1,6 @@
 {
   "name": "boilerplate-full-stack-auth0",
+  "type": "module",
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
@@ -8,17 +9,16 @@
   ],
   "scripts": {
     "start": "node server",
-    "test": "jest",
-    "test:watch": "jest --noStackTrace --watchAll",
+    "test": "vitest",
+    "start": "node dist/server.js",
     "dev": "run-p dev:client dev:server",
-    "dev:client": "npm run webpack -- --watch",
-    "dev:server": "nodemon --watch server server/index.js",
-    "build": "run-p build:client build:server",
-    "build:client": "npm run webpack -- --mode production",
-    "build:server": "npm run knex -- migrate:latest",
+    "dev:client": "vite",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "run-s build:client build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
-    "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "babel": {

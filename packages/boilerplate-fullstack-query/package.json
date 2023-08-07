@@ -1,5 +1,6 @@
 {
   "name": "boilerplate-fullstack-query",
+  "type": "module",
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
@@ -7,14 +8,14 @@
     "fullstack"
   ],
   "scripts": {
-    "start": "node dist/server/index.js",
     "test": "vitest",
+    "start": "node dist/server.js",
     "dev": "run-p dev:client dev:server",
     "dev:client": "vite",
-    "dev:server": "nodemon server/index.ts",
+    "dev:server": "tsx watch server/index.ts",
     "build": "run-s build:client build:server",
     "build:client": "vite build",
-    "build:server": "tsc -p server/tsconfig.json",
+    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "knex": "knex --knexfile ./server/db/knexfile.js"
   },
@@ -44,6 +45,7 @@
     "@types/supertest": "^2.0.12",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-c8": "^0.30.1",
+    "esbuild": "^0.18.19",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -53,14 +55,13 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jsdom": "^22.1.0",
-    "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "sass": "^1.50.1",
     "supertest": "^6.2.2",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.12.7",
     "typescript": "~4.8.4",
     "vite": "^4.3.3",
     "vitest": "^0.30.1"

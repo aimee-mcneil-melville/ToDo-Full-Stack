@@ -1,4 +1,4 @@
-import { useFruits } from '../hooks/useFruits'
+import { useFruits } from '../hooks/useFruits.ts'
 
 function App() {
   const { data } = useFruits()
