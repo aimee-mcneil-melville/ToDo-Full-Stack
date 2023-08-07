@@ -1,5 +1,5 @@
-import Dog from './Dog'
-import Subtitle from './Subtitle'
+import Dog from './Dog.tsx'
+import Subtitle from './Subtitle.tsx'
 
 function App() {
   return (
