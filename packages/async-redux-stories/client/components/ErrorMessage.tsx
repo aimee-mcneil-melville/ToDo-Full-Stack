@@ -1,4 +1,4 @@
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks.ts'
 
 function ErrorMessage() {
   const errorMessage = useAppSelector((state) => state.errorMessage)

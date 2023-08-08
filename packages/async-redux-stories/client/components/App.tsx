@@ -1,7 +1,7 @@
-import ErrorMessage from './ErrorMessage'
-import LoadSubreddit from './LoadSubreddit'
-import SubredditList from './SubredditList'
-import WaitIndicator from './WaitIndicator'
+import ErrorMessage from './ErrorMessage.tsx'
+import LoadSubreddit from './LoadSubreddit.tsx'
+import SubredditList from './SubredditList.tsx'
+import WaitIndicator from './WaitIndicator.tsx'
 
 function App() {
   return (

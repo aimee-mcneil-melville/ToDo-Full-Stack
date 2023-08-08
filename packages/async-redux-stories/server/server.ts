@@ -1,7 +1,7 @@
 import * as Path from 'node:path'
 import express from 'express'
 
-import redditRoutes from './reddit'
+import redditRoutes from './reddit.ts'
 const server = express()
 
 if (process.env.NODE_ENV === 'production') {

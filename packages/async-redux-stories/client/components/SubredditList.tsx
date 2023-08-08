@@ -1,6 +1,6 @@
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks.ts'
 
-import Post from './Post'
+import Post from './Post.tsx'
 
 function Subreddit() {
   const subreddits = useAppSelector((state) => state.subreddits)
