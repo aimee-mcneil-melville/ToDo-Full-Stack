@@ -1,4 +1,4 @@
-import Pixel from './Pixel'
+import Pixel from './Pixel.tsx'
 
 function App() {
   return (

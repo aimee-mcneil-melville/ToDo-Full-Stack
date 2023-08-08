@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import App from './App.tsx'
 
 vi.spyOn(Math, 'random').mockImplementation(() => 7) // the most random number
 
