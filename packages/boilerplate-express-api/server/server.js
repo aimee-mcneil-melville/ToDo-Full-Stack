@@ -1,6 +1,5 @@
-const express = require('express')
-
-const users = require('./routes/users')
+import express from 'express'
+import users from './routes/users.js'
 
 const server = express()
 
@@ -10,4 +9,4 @@ server.use(express.json())
 // Routes
 server.use('/users', users)
 
-module.exports = server
+export default server

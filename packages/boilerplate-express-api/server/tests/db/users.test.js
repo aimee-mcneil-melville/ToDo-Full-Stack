@@ -24,7 +24,7 @@ test('getUsers gets all users', async () => {
 
 test('getUser gets a user by ID', async () => {
   const expected = 'Ambitious Aardvark'
-  const user = db.getUser(99901)
+  const user = await db.getUser(99901)
   const actual = user.name
 
   expect(actual).toBe(expected)
