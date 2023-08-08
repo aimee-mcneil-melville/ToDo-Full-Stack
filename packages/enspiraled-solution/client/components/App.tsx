@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import Circle from './Circle'
+import Circle from './Circle.tsx'
 
 interface Props {
   width: number
