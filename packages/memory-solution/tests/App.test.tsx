@@ -4,7 +4,7 @@ import { screen, render } from '@testing-library/react'
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
-import App from '../client/components/App'
+import App from '../client/components/App.tsx'
 
 describe('<App />', () => {
   it('renders a board', () => {

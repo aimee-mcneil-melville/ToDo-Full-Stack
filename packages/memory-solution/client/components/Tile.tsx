@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { TileData } from '../startingTiles'
+import { TileData } from '../startingTiles.ts'
 
 type Props = {
   onClick: (tile: TileData) => void
