@@ -1,6 +1,6 @@
 {
 	"name": "worldwide-routing-solution",
-  "type": "module",
+	"type": "module",
 	"version": "0.2.0",
 	"description": "Using React Router to navigate the globe",
 	"repository": "https://github.com/dev-academy-challenges/worldwide-routing.git",
@@ -14,7 +14,9 @@
 	},
 	"eslintConfig": {
 		"extends": "@devacademy/eslint-config/react",
-		"ignorePatterns": ["bundle.js"]
+		"ignorePatterns": [
+			"bundle.js"
+		]
 	},
 	"author": "Dev Academy Aotearoa",
 	"license": "ISC",
@@ -32,18 +34,15 @@
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
-		"nodemon": "^2.0.22",
 		"npm-run-all": "^4.1.5",
 		"prettier": "2.8.8",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.11.2",
-		"ts-node": "^10.9.1",
 		"typescript": "~5.0.4",
 		"vite": "^4.3.8",
 		"vitest": "^0.31.1"
 	},
-	"dependencies": {},
 	"prettier": {
 		"semi": false,
 		"singleQuote": true
