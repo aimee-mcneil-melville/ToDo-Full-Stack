@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
 
-import Main from './Main'
-import Home from './Home'
-import Continent from './Continent'
-import Country from './Country'
+import Main from './Main.tsx'
+import Home from './Home.tsx'
+import Continent from './Continent.tsx'
+import Country from './Country.tsx'
 
 function App() {
   return (

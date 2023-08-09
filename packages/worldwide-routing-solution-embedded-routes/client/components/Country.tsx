@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import countries from '../../data/countries'
+import countries from '../../data/countries.ts'
 
 export default function Country() {
   const { code, name } = useParams()
