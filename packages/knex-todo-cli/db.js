@@ -1,8 +1,7 @@
 import * as knexfile from './knexfile.js'
 import knex from 'knex'
 
-
-const db = knex.default(knexfile.development)
+const db = knex(knexfile.development)
 
 export function getTodos() {
   return db('todos').select()

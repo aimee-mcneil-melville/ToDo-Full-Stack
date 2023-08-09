@@ -1,10 +1,12 @@
 import knexFile from './knexfile.js'
-import knex from 'knex'
+import knex, { Knex } from 'knex'
 
 type Environment = 'production' | 'test' | 'development'
 
 const environment = (process.env.NODE_ENV || 'development') as Environment
 const config = knexFile[environment]
-const connection = knex.default(config)
+
+// @ts-expect-error https://github.com/knex/knex/issues/5358
+const connection: Knex = knex(config)
 
 export default connection

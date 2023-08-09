@@ -3,7 +3,8 @@ import knexfile from './knexfile.js'
 
 const environment = process.env.NODE_ENV || 'development'
 const config = knexfile[environment]
-export const connection = knex.default(config)
+
+export const connection = knex(config)
 
 export async function getUsers() {
   return connection('users').select()
