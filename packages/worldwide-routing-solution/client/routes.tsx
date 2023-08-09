@@ -4,10 +4,10 @@ import {
   Route,
 } from 'react-router-dom'
 
-import Continent from './components/Continent'
-import Country from './components/Country'
-import Home from './components/Home'
-import App from './components/App'
+import Continent from './components/Continent.tsx'
+import Country from './components/Country.tsx'
+import Home from './components/Home.tsx'
+import App from './components/App.tsx'
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(

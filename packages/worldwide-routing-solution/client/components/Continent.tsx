@@ -1,6 +1,6 @@
 import { useParams, Link, Outlet } from 'react-router-dom'
 
-import data from '../../data/continents'
+import data from '../../data/continents.ts'
 
 export default function Continent() {
   const { id } = useParams()
