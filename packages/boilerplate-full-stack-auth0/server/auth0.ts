@@ -1,10 +1,8 @@
 import { expressjwt as jwt, GetVerificationKey } from 'express-jwt'
 import jwks from 'jwks-rsa'
-import { join } from 'node:path'
 import request from 'superagent'
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
-dotenv.config({ path: join(__dirname, '.env') })
 
 const domain = process.env.AUTH0_DOMAIN
 const ssoAudience = process.env.AUTH0_SSO_AUDIENCE

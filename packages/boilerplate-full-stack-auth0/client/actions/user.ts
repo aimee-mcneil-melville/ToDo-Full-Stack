@@ -1,6 +1,6 @@
-import { getUsers } from '../apis/users'
-import { User, UserData } from '../../models/user'
-import { ThunkAction } from '../store'
+import { getUsers } from '../apis/users.ts'
+import { User, UserData } from '../../models/user.ts'
+import { ThunkAction } from '../store.ts'
 
 export const SET_USER = 'SET_USER'
 export const SET_USERS = 'SET_USERS'

@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 
-import AddTodo from './AddTodo'
-import AllComplete from './AllComplete'
-import Footer from './Footer'
+import AddTodo from './AddTodo.tsx'
+import AllComplete from './AllComplete.tsx'
+import Footer from './Footer.tsx'
 
 export default function App() {
   return (

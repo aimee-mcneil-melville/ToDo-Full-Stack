@@ -1,8 +1,8 @@
 import express from 'express'
 import jwtAuthz from 'express-jwt-authz'
-import { getUserRoles, checkJwt } from '../auth0'
-import { UserData } from '../../models/user'
-import * as db from '../db/users'
+import { getUserRoles, checkJwt } from '../auth0.ts'
+import { UserData } from '../../models/user.ts'
+import * as db from '../db/users.ts'
 
 const router = express.Router()
 

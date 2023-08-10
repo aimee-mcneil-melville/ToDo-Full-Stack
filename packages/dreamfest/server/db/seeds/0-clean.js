@@ -1,5 +1,4 @@
-exports.seed = (knex) => {
-  return knex('events')
-    .del()
-    .then(() => knex('locations').del())
+export async function seed(knex) {
+  await knex('events').del()
+  await knex('locations').del()
 }

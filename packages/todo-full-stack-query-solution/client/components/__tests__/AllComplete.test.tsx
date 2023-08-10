@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react'
 import { describe, it, expect, afterEach, afterAll } from 'vitest'
 
-import { renderRoute } from '../../test-utils'
+import { renderRoute } from '../../test-utils.tsx'
 
 afterEach(() => {
   nock.cleanAll()

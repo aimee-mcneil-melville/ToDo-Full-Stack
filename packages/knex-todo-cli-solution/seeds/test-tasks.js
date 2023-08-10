@@ -1,11 +1,8 @@
-exports.seed = (knex) => {
-  return knex('todos')
-    .del()
-    .then(() => {
-      return Promise.all([
-        knex('todos').insert({ id: 1, task: 'groceries' }),
-        knex('todos').insert({ id: 2, task: 'laundry' }),
-        knex('todos').insert({ id: 3, task: 'mow lawn' }),
-      ])
-    })
+export async function seed(knex) {
+  await knex('todos').del()
+  await knex('todos').insert([
+    { id: 1, task: 'groceries' },
+    { id: 2, task: 'laundry' },
+    { id: 3, task: 'mow lawn' },
+  ])
 }

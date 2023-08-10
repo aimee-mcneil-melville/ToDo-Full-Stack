@@ -1,7 +1,7 @@
-import type { ThunkAction } from '../store'
-import { Post, RawPostArr } from '../../models/post'
+import type { ThunkAction } from '../store.ts'
+import { Post, RawPostArr } from '../../models/post.ts'
 
-import { fetchSubreddit } from '../apis/reddit'
+import { fetchSubreddit } from '../apis/reddit.ts'
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -34,14 +34,13 @@ export function showError(errorMessage: string): Action {
 }
 
 export function fetchPosts(subreddit: string): ThunkAction {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestPosts())
-    return fetchSubreddit(subreddit)
-      .then((posts) => {
-        dispatch(receivePosts(posts))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
+    try {
+      const posts = await fetchSubreddit(subreddit)
+      dispatch(receivePosts(posts))
+    } catch (err) {
+      dispatch(showError((err as Error).message))
+    }
   }
 }

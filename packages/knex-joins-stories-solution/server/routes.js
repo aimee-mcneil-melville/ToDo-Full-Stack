@@ -1,51 +1,25 @@
-const express = require('express')
+import express from 'express'
+import * as db from './db/index.js'
 const router = express.Router()
 
-const development = require('./db/knexfile').development
-const knex = require('knex')(development)
-
-router.get('/', function (req, res) {
-  res.render('index')
+router.get('/', async (req, res, next) => {
+  try {
+    const wombles = await db.wombles()
+    res.render('list', {
+      wombles,
+    })
+  } catch (e) {
+    next(e)
+  }
 })
 
-router.get('/list', function (req, res) {
-  knex('wombles')
-    .then(function (wombles) {
-      res.render('list', { wombles: wombles })
-    })
-    .catch((e) => {
-      res.sendStatus(500)
-    })
+router.get('/wombles/:id', async (req, res, next) => {
+  try {
+    const womble = await db.getWomble(req.params.id)
+    res.render('womble', { ...womble })
+  } catch (e) {
+    next(e)
+  }
 })
 
-router.get('/view/:id', function (req, res) {
-  const id = req.params.id
-  knex('wombles')
-    .join('traits', 'wombles.trait_id', 'traits.id')
-    .where({ 'wombles.id': id })
-    .then(function (wombles) {
-      const womble = wombles[0]
-      res.render('view', womble)
-    })
-    .catch((e) => {
-      res.sendStatus(500)
-    })
-})
-
-router.get('/assignments', function (req, res) {
-  knex('wombles')
-    .select(
-      'wombles.id as womble_id',
-      'wombles.name as womble_name',
-      'rubbish.name as rubbish_name'
-    )
-    .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
-    .then(function (wombles) {
-      res.render('assignments', { wombles: wombles })
-    })
-    .catch((e) => {
-      res.sendStatus(500)
-    })
-})
-
-module.exports = router
+export default router

@@ -1,5 +1,5 @@
 import spinnerSrc from '../animated-circle.gif'
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks.ts'
 
 function WaitIndicator() {
   const showIndicator = useAppSelector((state) => state.waiting)

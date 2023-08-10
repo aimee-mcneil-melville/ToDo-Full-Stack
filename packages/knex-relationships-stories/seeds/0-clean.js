@@ -1,4 +1,4 @@
-exports.seed = (knex) => {
+export const seed = (knex) => {
   return knex('users').del()
 
   // Delete data from child table(s) first, and use .then() to delete from parent tables

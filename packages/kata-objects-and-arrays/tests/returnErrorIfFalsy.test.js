@@ -1,4 +1,5 @@
-const kata = require('../kata.js')
+import * as kata from '../kata.js'
+import { test, expect} from 'vitest'
 
 test('returnErrorIfFalsy returns the correct Error when passed 0', () => {
   const expected = new Error('Oh no, an error!')

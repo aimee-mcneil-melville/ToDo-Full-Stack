@@ -1,11 +1,12 @@
 {
   "name": "react-paws-for-effect",
+  "type": "module",
   "version": "0.3.0",
   "description": "A 'first React app' tutorial/challenge",
   "main": "server/index.ts",
   "scripts": {
+    "dev": "vite", 
     "build": "vite build",
-    "dev": "vite",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "vitest",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"

@@ -1,8 +1,8 @@
 import request from 'superagent'
 
 // TODO: using Insomnia, make an interface for the response!
-export function fetchSubreddit(subreddit: string) {
-  return request
+export async function fetchSubreddit(subreddit: string) {
+  const res = await request
     .get(`/api/v1/reddit/subreddit/${subreddit}`)
-    .then((res) => res.body)
+  return res.body
 }

@@ -1,5 +1,5 @@
-import { UserData } from '../../models/user'
-import { UserAction, SET_USER, CLEAR_USER } from '../actions/user'
+import { UserData } from '../../models/user.ts'
+import { UserAction, SET_USER, CLEAR_USER } from '../actions/user.ts'
 
 const emptyUser = {
   auth0Id: '',

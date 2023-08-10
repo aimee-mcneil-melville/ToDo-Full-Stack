@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
-import errorMessage from './errorMessage'
-import subreddits from './subreddits'
-import waiting from './waiting'
+import errorMessage from './errorMessage.ts'
+import subreddits from './subreddits.ts'
+import waiting from './waiting.ts'
 
 export default combineReducers({
   errorMessage,

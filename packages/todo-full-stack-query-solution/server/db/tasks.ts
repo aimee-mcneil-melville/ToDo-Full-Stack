@@ -1,6 +1,6 @@
-import connection from './connection'
+import connection from './connection.ts'
 
-import { Task, TaskData } from '../../models/task'
+import { Task, TaskData } from '../../models/task.ts'
 
 export function getAllTasks(): Promise<Task[]> {
   return connection('todos').select('*')

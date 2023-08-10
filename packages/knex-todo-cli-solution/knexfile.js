@@ -1,12 +1,13 @@
-const { join } = require('node:path')
+import * as Path from 'path/posix'
+import * as Url from 'url'
 
-module.exports = {
+const filename = Url.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(filename)
+
+export default {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
-    connection: {
-      filename: join(__dirname, 'dev.sqlite3'),
-    },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
@@ -19,10 +20,10 @@ module.exports = {
       filename: ':memory:',
     },
     migrations: {
-      directory: join(__dirname, 'migrations'),
+      directory: Path.join(__dirname, 'migrations'),
     },
     seeds: {
-      directory: join(__dirname, 'seeds'),
+      directory: Path.join(__dirname, 'seeds'),
     },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),

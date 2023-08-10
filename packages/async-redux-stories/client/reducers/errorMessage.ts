@@ -1,4 +1,4 @@
-import { SHOW_ERROR, Action } from '../actions/reddit'
+import { SHOW_ERROR, Action } from '../actions/reddit.ts'
 
 function errorMessage(state = '', action: Action): string {
   const { type } = action

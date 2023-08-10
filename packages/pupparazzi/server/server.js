@@ -1,17 +1,21 @@
-import express, { urlencoded } from 'express'
-import { engine } from 'express-handlebars'
+import * as Path from 'node:path'
+// import * as URL from 'node:url'
+
+import express from 'express'
+import hbs from 'express-handlebars'
+
 
 const server = express()
 
 // Server configuration
-const publicFolder = __dirname + '/public'
+const publicFolder = Path.resolve('public')
 server.use(express.static(publicFolder))
-server.use(urlencoded({ extended: false }))
+server.use(express.urlencoded({ extended: false }))
 
 // Handlebars configuration
-server.engine('hbs', engine({ extname: 'hbs' }))
+server.engine('hbs', hbs.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
-server.set('views', __dirname + '/views')
+server.set('views', Path.resolve('server/views'))
 
 // Your routes/router(s) should go here
 

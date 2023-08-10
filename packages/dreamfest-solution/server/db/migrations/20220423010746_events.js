@@ -1,5 +1,5 @@
-exports.up = function (knex) {
-  return knex.schema.createTable('events', (table) => {
+export async function up (knex) {
+  await knex.schema.createTable('events', (table) => {
     table.increments('id').primary()
     table.integer('location_id').references('locations.id')
     table.string('day')
@@ -9,6 +9,6 @@ exports.up = function (knex) {
   })
 }
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('events')
+export async function down (knex) {
+  await knex.schema.dropTable('events')
 }
