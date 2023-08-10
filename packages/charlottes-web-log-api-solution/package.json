@@ -8,7 +8,7 @@
   "author": "Dev Academy Aotearoa",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node ./dist/server.js",
     "dev": "run-p dev:client dev:server",
     "dev:all": "run-p dev:server dev:client",
     "dev:server": "tsx watch server/index.ts",
