@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react'
-import { updateComment, addCommentByPostId } from '../api'
+import { updateComment, addCommentByPostId } from '../api/index.ts'
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
-import { FetchComments } from './hooks/useFetchComments'
+import { FetchComments } from './hooks/useFetchComments.ts'
 
 interface Props {
   comment?: string

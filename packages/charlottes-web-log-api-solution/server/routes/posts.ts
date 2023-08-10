@@ -8,7 +8,7 @@ import {
   addPost,
   updatePost,
   deletePost,
-} from '../db/db'
+} from '../db/db.ts'
 
 const router = express.Router()
 
