@@ -4,7 +4,7 @@ import data from '../../data/continents.ts'
 
 export default function Continent() {
   const { id } = useParams()
-  const continent = data[id as keyof typeof data]
+  const continent = id !== undefined ? data[id] : undefined
 
   if (!continent) {
     return <p>No continent found called: {id}</p>

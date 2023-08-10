@@ -1,14 +1,16 @@
+import * as Path from 'node:path'
+
 import express from 'express'
-import path from 'path'
+
 
 const server = express()
-
 server.use(express.json())
 
 if (process.env.NODE_ENV === 'production') {
-  server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
+  server.use(express.static(Path.resolve('public')))
+  server.use('/assets', express.static(Path.resolve('./dist/assets')))
   server.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../index.html'))
+    res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
 

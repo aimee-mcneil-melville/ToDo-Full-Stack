@@ -1,5 +1,5 @@
 import knexFile from './knexfile.js'
-import knex from 'knex'
+import knex, { Knex } from 'knex'
 import type { Location, LocationData } from '../../models/Location.ts'
 import type { Event, EventWithLocation, EventData } from '../../models/Event.ts'
 
@@ -7,7 +7,9 @@ type Environment = 'production' | 'test' | 'development'
 
 const environment = (process.env.NODE_ENV || 'development') as Environment
 const config = knexFile[environment]
-const db = knex.default(config)
+
+// @ts-expect-error https://github.com/knex/knex/issues/5358
+const db: Knex = knex(config)
 
 export async function getAllLocations() {
   const locations = await db('locations').select('*')

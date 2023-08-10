@@ -1,16 +1,14 @@
-import { render } from 'react-dom'
+import * as ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import store from './store'
+import store from './store.ts'
+import config from './auth-config.ts'  
 
-// eslint-disable-next-line import/no-unresolved
-import config from './auth_config.json'
-
-import App from './components/App'
+import App from './components/App.tsx'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(
+  ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
       domain={config.domain}
       clientId={config.clientId}
@@ -23,6 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
         </Router>
       </Provider>
     </Auth0Provider>,
-    document.getElementById('app')
   )
 })

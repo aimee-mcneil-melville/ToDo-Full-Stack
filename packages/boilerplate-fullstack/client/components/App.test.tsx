@@ -1,16 +1,18 @@
+// @vitest-environment jsdom
 import { Provider } from 'react-redux'
 import { screen, render } from '@testing-library/react'
-import {} from 'ts-jest'
+import { test, expect, vi} from 'vitest'
 
-import App from './App'
-import store from '../store'
-import { fetchFruits } from '../actions'
+import App from './App.tsx'
+import store from '../store.ts'
+import { fetchFruits } from '../actions/index.ts'
 
-jest.mock('../actions')
-const fetchFruits_ = fetchFruits as jest.Mock<ReturnType<typeof fetchFruits>>
-const mockStore = store as jest.Mocked<typeof store>
+vi.mock('../actions')
 
-fetchFruits_.mockImplementation(() => async () => {})
+vi
+  .mocked(fetchFruits)
+  .mockImplementation(() => async () => {})
+
 test('page header includes fruit', () => {
   render(
     <Provider store={store}>
@@ -23,8 +25,8 @@ test('page header includes fruit', () => {
 
 test('renders an <li> for each fruit', () => {
   const fruits = ['orange', 'persimmons', 'kiwi fruit']
-  jest.spyOn(store, 'getState')
-  mockStore.getState.mockImplementation(() => ({ fruits }))
+  vi.spyOn(store, 'getState')
+  vi.mocked(store).getState.mockImplementation(() => ({ fruits }))
 
   render(
     <Provider store={store}>

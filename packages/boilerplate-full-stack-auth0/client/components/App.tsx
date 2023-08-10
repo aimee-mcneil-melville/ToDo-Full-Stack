@@ -1,9 +1,9 @@
-import Nav from './Nav'
-import PingRoutes from './PingRoutes'
-import Registration from './Registration'
-import Users from './Users'
+import Nav from './Nav.tsx'
+import PingRoutes from './PingRoutes.tsx'
+import Registration from './Registration.tsx'
+import Users from './Users.tsx'
 import { Routes, Route } from 'react-router-dom'
-import { useAuthCache } from '../auth0-utils'
+import { useAuthCache } from '../auth0-utils.ts'
 
 function App() {
   useAuthCache()

@@ -1,43 +1,39 @@
 /* global jest test expect */
-const request = require('supertest')
+import { test, expect, vi } from 'vitest'
+import request from 'supertest'
+import server from '../../server.js'
+import * as db from '../../db/db.js'
 
-const server = require('../../server')
+vi.mock('../../db/db.js')
 
-jest.mock('../../db', () => ({
-  getUser: (id) =>
-    Promise.resolve({ id: id, name: 'test user', email: 'test@user.nz' }),
-  getUsers: () =>
-    Promise.resolve([
-      { id: 2, name: 'test user 2', email: 'test2@user.nz' },
-      { id: 4, name: 'test user 4', email: 'test4@user.nz' },
-    ]),
-}))
+test('/users returns all users', async () => {
+  vi.mocked(db.getUsers)
+    .mockImplementation(
+      async () => [
+        { id: 2, name: 'test user 2', email: 'test2@user.nz' },
+        { id: 4, name: 'test user 4', email: 'test4@user.nz' },
+      ])
 
-test('/users returns all users', () => {
+
   const expected = 2
-  return request(server)
+  const res = await request(server)
     .get('/users')
     .expect('Content-Type', /json/)
     .expect(200)
-    .then((res) => {
-      expect(res.body.users.length).toBe(expected)
-    })
-    .catch((err) => {
-      expect(err).toBeFalsy()
-    })
+    
+  expect(res.body.users.length).toBe(expected)
 })
 
-test('/users/:id returns a user by ID', () => {
+test('/users/:id returns a user by ID', async () => {
+  vi.mocked(db.getUser).mockImplementation(async (id) =>
+    ({ id: id, name: 'test user', email: 'test@user.nz' })
+  )
+
   const expected = 'test@user.nz'
-  return request(server)
+  const res = await request(server)
     .get('/users/10')
     .expect('Content-Type', /json/)
     .expect(200)
-    .then((res) => {
-      expect(res.body.user.id).toBe(10)
-      expect(res.body.user.email).toBe(expected)
-    })
-    .catch((err) => {
-      expect(err).toBeFalsy()
-    })
+  expect(res.body.user.id).toBe(10)
+  expect(res.body.user.email).toBe(expected)
 })

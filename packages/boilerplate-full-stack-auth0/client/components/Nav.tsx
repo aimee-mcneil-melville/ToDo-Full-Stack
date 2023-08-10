@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { UIEvent } from 'react'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { useAppSelector } from '../hooks'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
+import { useAppSelector } from '../hooks.ts'
 
 export function useRegisterFn() {
   const { loginWithRedirect } = useAuth0()

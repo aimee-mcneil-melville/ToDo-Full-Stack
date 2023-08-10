@@ -1,14 +1,14 @@
-const express = require('express')
-const hbs = require('express-handlebars')
-const { join } = require('node:path')
+import express from 'express'
+import hbs from 'express-handlebars'
+import * as Path from 'node:path'
 
-const routes = require('./routes')
+import routes from './routes/index.js'
 
 const server = express()
 server.engine('hbs', hbs())
 server.set('view engine', 'hbs')
-server.set('views', join(__dirname, 'views'))
+server.set('views', Path.resolve('server/views'))
 server.use(express.urlencoded({ extended: true }))
 server.use('/', routes)
 
-module.exports = server
+export default server

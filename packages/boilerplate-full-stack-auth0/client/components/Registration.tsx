@@ -1,8 +1,8 @@
 import { useEffect, useState, UIEvent, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router'
-import { UserData } from '../../models/user'
-import { addUser } from '../apis/users'
-import { useAppSelector } from '../hooks'
+import { UserData } from '../../models/user.ts'
+import { addUser } from '../apis/users.ts'
+import { useAppSelector } from '../hooks.ts'
 
 function Registration() {
   const user = useAppSelector((state) => state.user)

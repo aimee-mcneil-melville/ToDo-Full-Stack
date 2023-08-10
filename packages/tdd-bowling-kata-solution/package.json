@@ -1,5 +1,6 @@
 {
   "name": "tdd-bowling-kata-solution",
+  "type": "module",
   "version": "1.0.0",
   "description": "A kata for test-first design (aka TDD)",
   "main": "index.js",

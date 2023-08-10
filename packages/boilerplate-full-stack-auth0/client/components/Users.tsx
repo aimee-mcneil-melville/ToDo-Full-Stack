@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { fetchUsers } from '../actions/user'
-import { useAppDispatch, useAppSelector } from '../hooks'
+import { fetchUsers } from '../actions/user.ts'
+import { useAppDispatch, useAppSelector } from '../hooks.ts'
 
 function Users() {
   const dispatch = useAppDispatch()

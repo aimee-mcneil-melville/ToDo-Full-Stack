@@ -1,5 +1,5 @@
-import { CLEAR_USERS, SET_USERS, UserAction } from '../actions/user'
-import { User } from '../../models/user'
+import { CLEAR_USERS, SET_USERS, UserAction } from '../actions/user.ts'
+import { User } from '../../models/user.ts'
 
 const initialState = [] as User[]
 

@@ -1,4 +1,4 @@
-import { SHOW_ERROR, REQUEST_POSTS, RECEIVE_POSTS, Action } from '../actions/reddit'
+import { SHOW_ERROR, REQUEST_POSTS, RECEIVE_POSTS, Action } from '../actions/reddit.ts'
 
 function waiting(state = false, action: Action): boolean {
   const { type } = action

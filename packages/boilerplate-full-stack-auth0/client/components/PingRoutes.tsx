@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import request from 'superagent'
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks.ts'
 
 function PingRoutes() {
   const token = useAppSelector((state) => state.user.token)
