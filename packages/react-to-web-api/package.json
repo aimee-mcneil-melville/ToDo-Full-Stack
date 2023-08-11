@@ -1,5 +1,6 @@
 {
   "name": "react-to-web-api",
+  "type": "module",
   "version": "0.2.1",
   "description": "React components consuming Web APIs",
   "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
