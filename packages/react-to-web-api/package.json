@@ -6,14 +6,15 @@
   "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
   "main": "server/index.ts",
   "scripts": {
-    "start": "node dist/server/index.js",
+    "start": "node dist/server.js",
     "test": "vitest",
     "dev": "run-p dev:client dev:server",
     "dev:client": "vite",
-    "dev:server": "nodemon --watch server",
+    "dev:server": "tsx watch server/index.ts",
     "build": "run-s build:client build:server",
     "build:client": "vite build",
-    "build:server": "tsc -p server/tsconfig.json",
+    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
+
     "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
