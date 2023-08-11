@@ -8,7 +8,7 @@ import {
   waitFor,
   within,
 } from '@testing-library/react'
-import setupApp from '../test-utils'
+import setupApp from '../test-utils.tsx'
 
 const testWidget = {
   id: 1,

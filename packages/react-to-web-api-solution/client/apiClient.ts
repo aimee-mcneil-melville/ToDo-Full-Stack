@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-import { Widget, NewWidget } from '../models/Widget'
+import { Widget, NewWidget } from '../models/Widget.ts'
 
 const widgetUrl = '/api/v1/widgets/'
 

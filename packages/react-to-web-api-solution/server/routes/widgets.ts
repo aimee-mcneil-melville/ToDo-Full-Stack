@@ -1,5 +1,5 @@
 import express from 'express'
-import { addWidget, getWidgets, delWidget, updateWidget } from '../db/db'
+import { addWidget, getWidgets, delWidget, updateWidget } from '../db/db.ts'
 
 const router = express.Router()
 

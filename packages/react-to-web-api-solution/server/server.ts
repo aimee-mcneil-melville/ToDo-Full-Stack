@@ -1,6 +1,6 @@
 import { join } from 'node:path'
 import express from 'express'
-import widgets from './routes/widgets'
+import widgets from './routes/widgets.ts'
 
 const server = express()
 server.use(express.json())

@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
-import connection from './connection'
-import { addWidget, delWidget, getWidgets, updateWidget } from './db'
+import connection from './connection.ts'
+import { addWidget, delWidget, getWidgets, updateWidget } from './db.ts'
 
 beforeAll(async () => {
   await connection.migrate.latest()

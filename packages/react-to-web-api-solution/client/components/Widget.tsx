@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import * as Models from '../../models/Widget'
-import { deleteWidget, updateWidget } from '../apiClient'
-import WidgetForm from './WidgetForm'
+import * as Models from '../../models/Widget.ts'
+import { deleteWidget, updateWidget } from '../apiClient.ts'
+import WidgetForm from './WidgetForm.tsx'
 interface Props extends Models.Widget {
   delWidget: (id: number) => void
   patchWidget: (widget: Models.Widget) => void
