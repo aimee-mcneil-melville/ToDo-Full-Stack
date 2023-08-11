@@ -13,7 +13,7 @@ export default function Widget(props: Props) {
   const [edit, setEdit] = useState(false)
   const [error, setError] = useState('' as string)
 
-  const editWidget = (widget: Models.WidgetData) => {
+  const editWidget = (widget: Models.NewWidget) => {
     updateWidget(id, widget)
       .then((widget: Models.Widget) => patchWidget(widget))
       .finally(() => setEdit(false))
