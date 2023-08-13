@@ -1,8 +1,8 @@
 {
   "extends": "../tsconfig.json",
-  "include": [".", "../common"],
+  "include": [".", "../models"],
   "compilerOptions": {
-    "outDir": "../dist/server",
-    "noEmit": false
+    "outDir": "../dist/server/server",
+    "noEmit": true
   }
 }
