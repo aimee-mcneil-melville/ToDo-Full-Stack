@@ -8,7 +8,7 @@ expect.extend(matchers)
 
 afterEach(cleanup)
 
-import App from '../App'
+import App from '../App.tsx'
 
 describe('App', () => {
   it('shows a circle', () => {

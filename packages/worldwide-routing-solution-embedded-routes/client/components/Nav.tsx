@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 
-import continents from '../../data/continents'
+import continents from '../../data/continents.ts'
 
 const list = Object.keys(continents).map((key) => ({
   ...continents[key],

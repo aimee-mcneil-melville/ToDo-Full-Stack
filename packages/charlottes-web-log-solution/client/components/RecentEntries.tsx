@@ -1,5 +1,5 @@
-import entriesData from '../data/recent-entries'
-import RecentEntry from './RecentEntry'
+import entriesData from '../data/recent-entries.ts'
+import RecentEntry from './RecentEntry.tsx'
 
 export default function RecentEntries() {
   return (
