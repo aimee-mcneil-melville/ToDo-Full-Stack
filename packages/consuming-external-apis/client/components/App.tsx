@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { getWelcome } from '../apiClient'
+import { getWelcome } from '../apiClient.ts'
 
 function App() {
   const [welcomeStatement, setWelcomeStatement] = useState('')

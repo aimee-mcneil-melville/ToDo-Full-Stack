@@ -1,7 +1,7 @@
 import { join } from 'node:path'
 import express from 'express'
 
-import welcome from './routes/welcome'
+import welcome from './routes/welcome.ts'
 
 const server = express()
 
