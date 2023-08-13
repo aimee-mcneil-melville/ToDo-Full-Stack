@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import wombatsReducer from './wombats'
-import aardvarkReducer from './aardvarks'
+import wombatsReducer from './wombats.ts'
+import aardvarkReducer from './aardvarks.ts'
 
 const reducer = combineReducers({
   wombats: wombatsReducer,

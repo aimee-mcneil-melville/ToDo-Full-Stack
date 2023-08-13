@@ -1,4 +1,4 @@
-import Wombats from './Wombats'
+import Wombats from './Wombats.tsx'
 
 function App() {
   return (
