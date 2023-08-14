@@ -1,4 +1,3 @@
-const { join } = require('node:path')
 import * as Path from 'node:path'
 import * as URL from 'node:url'
 
