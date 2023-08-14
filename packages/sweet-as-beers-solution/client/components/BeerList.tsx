@@ -1,5 +1,5 @@
-import BeerListItem from './BeerListItem'
-import beerData from '../../data/beers'
+import BeerListItem from './BeerListItem.tsx'
+import beerData from '../../data/beers.ts'
 
 function BeerList() {
   return (

@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
+import { useAppDispatch, useAppSelector } from '../hooks.ts'
 
-import { navigate, trashBeer, updateMultiple } from '../actions'
+import { navigate, trashBeer, updateMultiple } from '../actions/index.ts'
 
 function Cart() {
   const dispatch = useAppDispatch()

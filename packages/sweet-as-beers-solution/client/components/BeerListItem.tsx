@@ -9,9 +9,9 @@ interface Props {
   }
 }
 
-import { useAppDispatch, useAppSelector } from '../hooks'
+import { useAppDispatch, useAppSelector } from '../hooks.ts'
 
-import { addBeer, updateBeerAmount, navigate } from '../actions'
+import { addBeer, updateBeerAmount, navigate } from '../actions/index.ts'
 
 function BeerListItem(props: Props) {
   const { id, name, brewery, country, abv } = props.beer

@@ -1,7 +1,7 @@
 // This file has already been configured
 import { configureStore } from '@reduxjs/toolkit'
 
-import rootReducer from './slices'
+import rootReducer from './slices/index.ts'
 
 export const store = configureStore({
   // You don't need to change anything here - add your reducers to client/slices/index.ts

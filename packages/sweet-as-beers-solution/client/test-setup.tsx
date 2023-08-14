@@ -4,7 +4,7 @@ import matchers, {
   TestingLibraryMatchers,
 } from '@testing-library/jest-dom/matchers'
 import userEvent from '@testing-library/user-event'
-import App from './components/App'
+import App from './components/App.tsx'
 
 beforeEach(cleanup)
 expect.extend(matchers)

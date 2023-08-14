@@ -15,8 +15,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     // eslint-disable-next-line @typescript-eslint/ban-types
-    interface Matchers<R = void, T = {}>
-      extends TestingLibraryMatchers<typeof expect.stringContaining, R> {}
+    interface Matchers<R = void, T = {}> extends TestingLibraryMatchers<T, R> {}
   }
 }
 export default function setupApp() {

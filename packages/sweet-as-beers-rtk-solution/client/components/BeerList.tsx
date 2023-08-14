@@ -1,6 +1,6 @@
-import BeerListItem from './BeerListItem'
+import BeerListItem from './BeerListItem.tsx'
 
-import beerData from '../../data/beers'
+import beerData from '../../data/beers.ts'
 
 export type Beer = typeof beerData.beers[number]
 
