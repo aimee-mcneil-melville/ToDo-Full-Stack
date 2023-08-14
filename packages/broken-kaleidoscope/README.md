@@ -131,6 +131,7 @@ To easily change the colour for the `<Pixel>` being rendered, we should store th
 - [ ] Next, change the `style` attribute in your TSX to refer to the `color` state
   <details style="padding-left: 2em">
     <summary>More about using the `color` state in the `style` attribute</summary>
+    
     ```tsx
     <div style={{
         height: '100px',
