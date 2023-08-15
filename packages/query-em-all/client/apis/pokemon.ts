@@ -1,5 +1,5 @@
 import request from 'superagent'
-import type { Pokemon, PokemonGeneration } from '../../models/pokemon'
+import type { Pokemon, PokemonGeneration } from '../../models/pokemon.ts'
 
 export async function fetchPokemonGeneration(
   generation: number
