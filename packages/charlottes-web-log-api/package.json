@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "knex": "^2.3.0"
+    "knex": "^2.5.1"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
@@ -57,7 +57,7 @@
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "sqlite3": "^5.1.2",
+    "sqlite3": "^5.1.6",
     "superagent": "7.1.1",
     "supertest": "^6.2.2",
     "tsx": "^3.12.7",

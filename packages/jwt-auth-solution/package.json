@@ -42,10 +42,10 @@
     "express-jwt": "^7.7.5",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
-    "knex": "^2.3.0",
+    "knex": "^2.5.1",
     "react-redux": "^8.0.4",
     "redux": "^4.1.1",
-    "sqlite3": "^5.1.2"
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",

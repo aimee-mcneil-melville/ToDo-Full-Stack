@@ -29,8 +29,8 @@
     "express-jwt": "^7.7.5",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
-    "knex": "^2.3.0",
-    "sqlite3": "^5.1.2",
+    "knex": "^2.5.1",
+    "sqlite3": "^5.1.6",
     "dotenv": "^10.0.0",
     "superagent": "7.1.1"
   },

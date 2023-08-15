@@ -28,8 +28,8 @@
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
-    "knex": "^2.3.0",
-    "sqlite3": "^5.1.2"
+    "knex": "^2.5.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
