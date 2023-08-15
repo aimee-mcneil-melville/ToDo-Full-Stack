@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/conways#readme",
   "devDependencies": {
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   }
 }
