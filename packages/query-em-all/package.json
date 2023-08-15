@@ -1,5 +1,6 @@
 {
   "name": "query-em-all",
+  "type": "module",
   "version": "0.1.2",
   "description": "React Query with a REST API (useQuery only)",
   "main": "server/index",
