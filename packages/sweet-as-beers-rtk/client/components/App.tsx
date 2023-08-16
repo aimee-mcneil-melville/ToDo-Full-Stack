@@ -1,5 +1,5 @@
-import Header from './Header'
-import BeerList from './BeerList'
+import Header from './Header.tsx'
+import BeerList from './BeerList.tsx'
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { Beer } from '../components/BeerList'
-import { RootState } from '../store'
+import { Beer } from '../components/BeerList.tsx'
+import { RootState } from '../store.ts'
 
 // use Pick to create a new type that only has the properties we want + quantity
 export type CartItem = Pick<Beer, 'id' | 'name'> & { quantity: number }
@@ -50,5 +50,5 @@ export const cartSlice = createSlice({
 })
 
 export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions
-export const selectCart = (state: RootState) => state.cart
+export const selectCart = (state: RootState): CartItem[] => state.cart
 export default cartSlice.reducer

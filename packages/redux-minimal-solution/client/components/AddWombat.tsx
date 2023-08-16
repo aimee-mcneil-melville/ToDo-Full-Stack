@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 
-import store from '../store'
+import store from '../store.ts'
 
 function AddWombat() {
   const [input, setInput] = useState('')

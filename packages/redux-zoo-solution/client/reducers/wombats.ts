@@ -1,4 +1,4 @@
-import { WombatAction } from '../actions'
+import { WombatAction } from '../actions/index.ts'
 
 const initialWombatState = ['Gertrude', 'Bartholemew']
 

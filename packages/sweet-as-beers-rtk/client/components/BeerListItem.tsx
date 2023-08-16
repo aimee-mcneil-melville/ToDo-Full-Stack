@@ -1,4 +1,4 @@
-import type { Beer } from './BeerList'
+import type { Beer } from './BeerList.tsx'
 interface Props {
   beer: Beer
 }

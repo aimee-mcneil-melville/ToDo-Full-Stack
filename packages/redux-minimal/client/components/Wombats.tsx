@@ -1,6 +1,6 @@
-import Wombat from './Wombat'
+import Wombat from './Wombat.tsx'
 
-import store from '../store'
+import store from '../store.ts'
 
 function Wombats() {
   const state = store.getState()

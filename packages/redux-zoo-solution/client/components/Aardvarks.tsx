@@ -1,5 +1,5 @@
-import { useAppSelector } from '../hooks'
-import Aardvark from './Aardvark'
+import { useAppSelector } from '../hooks.ts'
+import Aardvark from './Aardvark.tsx'
 
 function Aardvarks() {
   const aardvarks = useAppSelector((state) => state.aardvarks)

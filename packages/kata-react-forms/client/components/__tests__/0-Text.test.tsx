@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { screen, within } from '@testing-library/react'
-import { renderRoute } from '../../test/utils'
+import { renderRoute } from '../../test/utils.tsx'
 
 describe('<TextForm />', () => {
   it.skip('should allow user to type text into input', async () => {
@@ -16,7 +16,7 @@ describe('<TextForm />', () => {
   })
 
   it.skip('should not make an HTTP request on submission', async () => {
-    jest.spyOn(console, 'error').mockImplementation(() => {})
+    vi.spyOn(console, 'error').mockImplementation(() => {})
     const { user } = renderRoute('/0')
 
     const input = screen.getByLabelText(/new item/i)

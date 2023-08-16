@@ -1,6 +1,6 @@
-import { describe, it, expect, vi } from 'vitest'
-import wombatReducer from '../wombats'
-import { addWombat, deleteWombat, updateWombat } from '../../actions'
+import { describe, it, expect } from 'vitest'
+import wombatReducer from '../wombats.ts'
+import { addWombat, deleteWombat, updateWombat } from '../../actions/index.ts'
 
 const initialState = ['Gertrude', 'Bartholemew']
 

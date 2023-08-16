@@ -1,5 +1,6 @@
 {
   "name": "sweet-as-beers-rtk-solution",
+  "type": "module",
   "version": "0.2.1",
   "description": "Getting more comfortable with React and Redux",
   "main": "server/index.js",
@@ -16,19 +17,16 @@
     "frontend"
   ],
   "eslintConfig": {
-    "extends": "@devacademy/eslint-config/react",
-    "ignorePatterns": [
-      "bundle.js"
-    ]
+    "extends": "@devacademy/eslint-config/react"
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/express": "^4.17.14",
-    "@types/react": "^18.0.23",
-    "@types/react-dom": "^18.0.7",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react": "^4.0.4",
     "@vitest/coverage-c8": "^0.30.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -38,15 +36,13 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "nodemon": "^2.0.15",
-    "npm-run-all": "^4.1.5",
     "prettier": "2.6.1",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "typescript": "^5.1.6",
-    "vite": "^4.3.4",
-    "vitest": "^0.30.1"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1"
   },
   "prettier": {
     "semi": false,

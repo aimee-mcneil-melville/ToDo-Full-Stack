@@ -1,7 +1,8 @@
 import { FormEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { navigate } from '../slices/activePage'
-import { selectCart, updateQuantity } from '../slices/cart'
+import { navigate } from '../slices/activePage.ts'
+import { selectCart, updateQuantity } from '../slices/cart.ts'
+
 
 function Cart() {
   const cart = useSelector(selectCart)
@@ -28,7 +29,7 @@ function Cart() {
             <td>Quantity</td>
             <td>Remove</td>
           </tr>
-        </thead>
+        </thead> 
         <tbody>
           {cart.map(({ id, name, quantity }) => {
             return (

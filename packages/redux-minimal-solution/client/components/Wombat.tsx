@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
-import store from '../store'
+import store from '../store.ts'
 
 interface Props {
   name: string

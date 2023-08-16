@@ -1,10 +1,12 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
-import { Props } from './Wombat'
-import { useAppDispatch } from '../hooks'
-import { deleteWombat, updateWombat } from '../actions'
+import { useAppDispatch } from '../hooks.ts'
+import { deleteWombat, updateWombat } from '../actions/index.ts'
 
-function EditWombat(props: Props) {
-  const wombat = props.name
+interface Props {
+  name: string
+}
+
+function EditWombat({ name: wombat }: Props) {
 
   const dispatch = useAppDispatch()
   const [newName, setNewName] = useState('')
