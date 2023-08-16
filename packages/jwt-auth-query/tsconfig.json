@@ -8,7 +8,7 @@
 
     /* Modules */
     "module": "ES2020" /* Specify what module code is generated. */,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
 
     /* Interop Constraints */
