@@ -2,8 +2,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function (knex) {
-  return knex.schema.table('widgets', (table) => {
+export async function up(knex) {
+  await knex.schema.table('widgets', (table) => {
     table.integer('rating')
   })
 }
@@ -12,8 +12,8 @@ exports.up = function (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function (knex) {
-  return knex.schema.table('widgets', (table) => {
+export async function down(knex) {
+  await knex.schema.table('widgets', (table) => {
     table.dropColumn('rating')
   })
 }
