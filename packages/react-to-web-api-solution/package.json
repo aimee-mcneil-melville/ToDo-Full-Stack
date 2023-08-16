@@ -60,9 +60,9 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "knex": "^2.3.0",
+    "knex": "^2.5.1",
     "react-dom": "^18.2.0",
-    "sqlite3": "^5.1.2"
+    "sqlite3": "^5.1.6"
   },
   "prettier": {
     "semi": false,
