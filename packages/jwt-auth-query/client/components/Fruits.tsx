@@ -1,10 +1,10 @@
-import { Fruit, FruitData } from '../../models/fruit'
+import { Fruit, FruitData } from '../../models/fruit.ts'
 
 import { useState } from 'react'
-import SelectedFruitForm from './SelectedFruit'
-import AddFruitForm from './AddFruit'
-import { ErrorMessage } from './Styled'
-import { useFruits } from '../hooks'
+import SelectedFruitForm from './SelectedFruit.tsx'
+import AddFruitForm from './AddFruit.tsx'
+import { ErrorMessage } from './Styled.tsx'
+import { useFruits } from '../hooks.ts'
 
 type FormState =
   | {
