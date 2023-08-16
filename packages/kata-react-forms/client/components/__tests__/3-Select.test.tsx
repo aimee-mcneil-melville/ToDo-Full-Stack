@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest'
 import { screen, within } from '@testing-library/react'
-import { renderRoute } from '../../test/utils'
+import { renderRoute } from '../../test/utils.tsx'
 
 describe('<SelectForm />', () => {
   it.skip('should be empty by default', () => {

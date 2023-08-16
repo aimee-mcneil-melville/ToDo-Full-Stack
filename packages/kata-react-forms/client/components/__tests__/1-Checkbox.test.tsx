@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest'
 import { screen, within } from '@testing-library/react'
-import { renderRoute } from '../../test/utils'
+import { renderRoute } from '../../test/utils.tsx'
 
 describe('<CheckboxForm />', () => {
   it.skip('should allow user to check a checkbox', async () => {
