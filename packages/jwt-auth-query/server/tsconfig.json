@@ -3,6 +3,6 @@
   "include": [".", "../models"],
   "compilerOptions": {
     "outDir": "../dist/server/server",
-    "noEmit": false
+    "noEmit": true
   }
 }
