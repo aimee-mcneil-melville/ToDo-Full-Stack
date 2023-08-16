@@ -32,9 +32,9 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^6.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
@@ -45,7 +45,7 @@
     "nodemon": "^2.0.15",
     "prettier": "2.6.1",
     "supertest": "^6.2.2",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "prettier": {
     "semi": false,

@@ -25,7 +25,7 @@
     "vitest": "^0.34.1"
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "@faker-js/faker": "^8.0.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",

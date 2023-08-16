@@ -30,6 +30,6 @@
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",
     "jsdom": "^22.1.0",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   }
 }
