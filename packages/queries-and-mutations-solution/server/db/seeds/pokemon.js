@@ -1,4 +1,4 @@
-const pokemon = require('../data/pokemon.js')
+import pokemon from '../data/pokemon.js'
 
 /**
  * @param { import("knex").Knex } knex

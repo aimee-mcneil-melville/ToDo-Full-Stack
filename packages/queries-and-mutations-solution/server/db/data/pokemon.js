@@ -1,4 +1,4 @@
-module.exports = [
+const pokemon = [
   {
     id: 1,
     name: 'Bulbasaur',
@@ -604,3 +604,5 @@ module.exports = [
     name: 'Mew',
   },
 ]
+
+export default pokemon
