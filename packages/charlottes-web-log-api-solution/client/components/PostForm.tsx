@@ -1,8 +1,8 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
-import { PostData } from '../../models/post'
-import { addPost, updatePost } from '../api'
-import type useFetchPosts from './hooks/useFetchPosts'
+import { PostData } from '../../models/post.ts'
+import { addPost, updatePost } from '../api/index.ts'
+import type useFetchPosts from './hooks/useFetchPosts.ts'
 type FetchPosts = ReturnType<typeof useFetchPosts>
 
 interface Props {

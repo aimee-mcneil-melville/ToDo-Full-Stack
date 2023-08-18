@@ -1,5 +1,5 @@
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { NavGroup, NavButton } from './Styled'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
+import { NavGroup, NavButton } from './Styled.tsx'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect

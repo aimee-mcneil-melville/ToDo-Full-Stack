@@ -1,5 +1,5 @@
 import express from 'express'
-import { getWidgets } from '../db/db'
+import { getWidgets } from '../db/db.ts'
 
 const router = express.Router()
 

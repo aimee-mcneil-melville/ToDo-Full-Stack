@@ -1,8 +1,8 @@
 import express from 'express'
-import { FruitData } from '../../models/fruit'
-import { JwtRequest } from '../auth0'
+import { FruitData } from '../../models/fruit.ts'
+import { JwtRequest } from '../auth0.ts'
 
-import * as db from '../db/fruits'
+import * as db from '../db/fruits.ts'
 
 const router = express.Router()
 

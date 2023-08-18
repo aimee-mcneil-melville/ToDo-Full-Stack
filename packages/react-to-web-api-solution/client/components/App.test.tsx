@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest'
 import nock from 'nock'
 import { screen, waitFor } from '@testing-library/react'
-import setupApp from '../test-utils'
+import setupApp from '../test-utils.tsx'
 
 const testWidget = {
   id: 1,

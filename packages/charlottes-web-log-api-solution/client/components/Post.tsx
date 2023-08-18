@@ -5,14 +5,14 @@ import {
   useOutletContext,
   useNavigate,
 } from 'react-router-dom'
-import useFetchComments from './hooks/useFetchComments'
+import useFetchComments from './hooks/useFetchComments.ts'
 
-import { deletePost } from '../api'
+import { deletePost } from '../api/index.ts'
 
-import PostSummary from './PostSummary'
-import Comment from './Comment'
-import { UseFetchPosts } from './hooks/useFetchPosts'
-import { Post as PostData } from '../../models/post'
+import PostSummary from './PostSummary.tsx'
+import Comment from './Comment.tsx'
+import { UseFetchPosts } from './hooks/useFetchPosts.ts'
+import { Post as PostData } from '../../models/post.ts'
 
 function Post() {
   const { id } = useParams()

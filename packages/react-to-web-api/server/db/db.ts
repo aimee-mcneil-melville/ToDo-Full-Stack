@@ -1,6 +1,6 @@
-import connection from './connection'
+import connection from './connection.ts'
 
-import { Widget } from '../../models/Widget'
+import { Widget } from '../../models/Widget.ts'
 
 export function getWidgets(db = connection): Promise<Widget[]> {
   return db<Widget>('widgets').select()

@@ -5,8 +5,8 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom'
 
-import AppLayout from './components/AppLayout'
-import PokemonList from './components/PokemonList'
+import AppLayout from './components/AppLayout.tsx'
+import PokemonList from './components/PokemonList.tsx'
 
 export const routes = createRoutesFromElements(
   <Route element={<AppLayout />}>

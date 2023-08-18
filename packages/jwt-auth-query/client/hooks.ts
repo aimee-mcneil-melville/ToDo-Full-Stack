@@ -1,7 +1,7 @@
 import { MutationFunction, useQuery } from '@tanstack/react-query'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import * as API from './api'
+import * as API from './api.ts'
 
 export function useFruits() {
   const query = useQuery({
