@@ -1,10 +1,10 @@
 import * as Path from 'node:path'
 import * as URL from 'node:url'
+
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
-import type { Knex } from 'knex'
 
-const config: { [key: string]: Knex.Config } = {
+export default {
   development: {
     client: 'sqlite3',
     connection: {
@@ -20,5 +20,3 @@ const config: { [key: string]: Knex.Config } = {
     useNullAsDefault: true,
   },
 }
-
-export default config
