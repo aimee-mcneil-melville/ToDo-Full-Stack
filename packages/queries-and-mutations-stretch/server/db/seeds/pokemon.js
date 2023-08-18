@@ -1,7 +1,11 @@
-import { Knex } from 'knex'
 import data from '../data/pokemon.ts'
 
-export async function seed(knex: Knex): Promise<void> {
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+
+export async function seed(knex) {
   await knex('pokemon').del()
 
   const pokemon = data.map((p) => ({
