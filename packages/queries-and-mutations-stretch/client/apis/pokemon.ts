@@ -1,5 +1,5 @@
 import request from 'superagent'
-import type { Pokemon, PartialPokemon } from '../../models/pokemon'
+import type { Pokemon, PartialPokemon } from '../../models/pokemon.ts'
 
 export async function fetchAllPokemon(generation: number) {
   return request

@@ -1,5 +1,5 @@
 import { Knex } from 'knex'
-import data from '../data/pokemon'
+import data from '../data/pokemon.ts'
 
 export async function seed(knex: Knex): Promise<void> {
   await knex('pokemon').del()
