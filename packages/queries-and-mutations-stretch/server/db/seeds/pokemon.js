@@ -1,4 +1,4 @@
-import data from '../data/pokemon.ts'
+import data from '../data/pokemon.js'
 
 /**
  * @param { import("knex").Knex } knex
