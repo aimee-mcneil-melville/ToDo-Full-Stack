@@ -1,6 +1,5 @@
-exports.seed = (knex) => {
+export async function seed(knex) {
   // Deletes ALL existing entries
-  return knex('Comments')
-    .del()
-    .then(() => knex('Posts').del())
+  await knex('Comments').del()
+  await knex('Posts').del()
 }
