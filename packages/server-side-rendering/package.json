@@ -1,14 +1,14 @@
 {
   "name": "server-side-rendering",
-  "type": "module",
   "version": "0.1.0",
   "description": "Server-side rendering with Handlebars templates",
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
-    "start": "node server/index",
-    "dev": "nodemon server/index",
+    "start": "node output.js",
+    "build": "esbuild server/index.jsx --bundle --outfile=output.js --platform=node --format=esm",
+    "dev": "nodemon server/index.js",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -20,12 +20,15 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "express-handlebars": "^6.0.2"
+    "express-handlebars": "^6.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^6.0.0",
+    "esbuild": "^0.19.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
