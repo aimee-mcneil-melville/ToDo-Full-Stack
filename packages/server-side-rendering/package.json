@@ -4,11 +4,14 @@
   "description": "Server-side rendering with Handlebars templates",
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-  "main": "index.jsx",
+  "main": "index.js",
   "scripts": {
-    "start": "node output.js",
-    "build": "esbuild server/index.jsx --bundle --outfile=output.js --platform=node --format=esm",
-    "dev": "nodemon server/index.js",
+    "start": "run-s build && start:server",
+    "start:server": "node dist/index.js",
+    "build": "esbuild server/index.js --bundle  --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev": "run-p build:watch dev:watch",
+    "build:watch": "esbuild server/index.js --bundle  --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev:watch": "nodemon dist/index.js",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
