@@ -7,10 +7,14 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "start": "node server/index",
-    "dev": "nodemon --ignore 'server/data/' server/index",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "start": "run-s build && start:server",
+    "start:server": "node dist/index.js",
+    "build": "esbuild server/index.js --bundle  --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev": "run-p build:watch dev:watch",
+    "build:watch": "esbuild server/index.js --bundle  --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev:watch": "nodemon dist/index.js",
     "test": "vitest",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
@@ -26,12 +30,15 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "express-handlebars": "^6.0.2"
+    "express-handlebars": "^6.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^6.0.0",
+    "esbuild": "^0.19.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
