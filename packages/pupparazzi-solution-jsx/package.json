@@ -12,7 +12,7 @@
     "build": "esbuild server/index.js --bundle --packages=external --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
     "dev": "run-p build:watch dev:watch",
     "build:watch": "esbuild server/index.js --bundle --packages=external --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
-    "dev:watch": "nodemon dist/index.js",
+    "dev:watch": "nodemon dist/index.js --ignore 'server/data/'",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"

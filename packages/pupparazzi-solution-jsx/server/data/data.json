@@ -48,6 +48,13 @@
       "owner": "Ricky",
       "image": "/images/puppy7.jpg",
       "breed": "Labrador"
+    },
+    {
+      "name": "name",
+      "breed": "breed",
+      "owner": "owner",
+      "image": "",
+      "id": 8
     }
   ]
 }
