@@ -1,4 +1,4 @@
-import server from './server.js'
+import server from './server.jsx'
 
 const port = 3000
 
