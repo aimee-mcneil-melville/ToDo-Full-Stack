@@ -6,3 +6,4 @@ styles.*
 *.log
 dev.sqlite3
 .env
+packages/server-side-rendering/dist
