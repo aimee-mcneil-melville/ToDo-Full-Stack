@@ -1,0 +1,53 @@
+{
+  "name": "pupparazzi",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Challenge to learn server side rendering and callbacks",
+  "main": "index.js",
+  "author": "Dev Academy Aotearoa",
+  "license": "ISC",
+  "scripts": {
+    "start": "node server/index",
+    "dev": "nodemon --ignore 'server/data/' server/index",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "test": "vitest",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/pupparazzi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/pupparazzi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/pupparazzi/issues"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@devacademy"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
+  },
+  "devDependencies": {
+    "@devacademy/eslint-config": "^1.9.1",
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/jest-dom": "^6.0.0",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "jsdom": "^22.1.0",
+    "nodemon": "^2.0.15",
+    "prettier": "2.6.1",
+    "supertest": "^6.2.2",
+    "vitest": "^0.34.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}

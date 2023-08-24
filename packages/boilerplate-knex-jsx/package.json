@@ -1,0 +1,55 @@
+{
+  "name": "boilerplate-knex",
+  "type": "module",
+  "version": "0.1.4",
+  "description": "Express boilerplate with Knex.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index",
+    "knex": "knex --knexfile ./server/db/knexfile.js",
+    "test": "vitest",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
+    "build": "echo 'Placeholder build step'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/boilerplate-knex.git"
+  },
+  "author": "Dev Academy Aotearoa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/boilerplate-knex/issues"
+  },
+  "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "knex": "^2.5.1",
+    "nodemon": "^2.0.15",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "@devacademy/eslint-config": "^1.9.1",
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/jest-dom": "^6.0.0",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "jsdom": "^22.1.0",
+    "prettier": "2.6.1",
+    "supertest": "^6.2.2",
+    "vitest": "^0.34.1"
+  },
+  "eslintConfig": {
+    "extends": "@devacademy"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
