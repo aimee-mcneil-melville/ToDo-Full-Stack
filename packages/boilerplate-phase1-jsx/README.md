@@ -7,7 +7,7 @@
 Phase 1 boilerplate project with:
 
 - Express
-- Express Handlebars
+- react & react-dom
 - vitest
 
 ### Installation
