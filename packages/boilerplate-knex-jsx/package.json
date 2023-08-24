@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-knex",
+  "name": "boilerplate-knex-jsx",
   "type": "module",
   "version": "0.1.4",
   "description": "Express boilerplate with Knex.js",
