@@ -1,0 +1,61 @@
+{
+  "name": "knex-joins-stories-jsx",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Practise joins",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-s build && start:server",
+    "start:server": "node dist/index.js",
+    "build": "esbuild server/index.js --bundle --packages=external --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev": "run-p build:watch dev:watch",
+    "build:watch": "esbuild server/index.js --bundle --packages=external --outfile=dist/index.js --jsx=automatic --platform=node --format=esm --watch",
+    "dev:watch": "nodemon dist/index.js --ignore 'server/data/'",
+    "test": "vitest",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-academy-challenges/knex-joins-stories.git"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@devacademy"
+    ]
+  },
+  "keywords": [],
+  "author": "Enspiral Dev Academy",
+  "license": "ISC",
+  "homepage": "https://github.com/dev-academy-challenges/knex-joins-stories#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "knex": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "@devacademy/eslint-config": "^1.9.1",
+    "@testing-library/dom": "^8.17.1",
+    "@testing-library/jest-dom": "^6.0.0",
+    "esbuild": "^0.19.2",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "jsdom": "^22.1.0",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.6.1",
+    "supertest": "^6.2.2",
+    "vitest": "^0.34.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
