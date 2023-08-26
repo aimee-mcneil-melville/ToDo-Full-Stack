@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="output.css" rel="stylesheet" />
+  </head>
+  <body class="grid place-items-center min-h-screen">
+    <div class="w-11/12 rounded-2xl border p-4">
+      <div class="flex flex-col gap-4">
+        <div
+          id="header"
+          class="flex justify-between items-center bg-gradient-to-r from-pink-500 to-blue-500 p-4 text-white font-bold tracking-widest text-3xl font-mono italic underline"
+        >
+          <p>Hack the Airlines</p>
+
+          <img src="./public/logo.png" class="w-16 aspect-square" />
+        </div>
+        <div id="detail" class="grid grid-cols-4 gap-8 gap-y-5">
+          <div class="grid grid-cols-2 gap-y-10">
+            <div class="font-bold">Carrier</div>
+            <div class="uppercase font-serif">Air Chatham</div>
+            <div class="font-bold">Name</div>
+            <div class="uppercase font-serif">anwar/ahmad</div>
+
+            <div class="font-bold">From</div>
+            <div class="uppercase font-serif">Whakatane</div>
+
+            <div class="font-bold">To</div>
+            <div class="uppercase font-serif">Auckland</div>
+          </div>
+          <div class="grid grid-cols-2 gap-y-10">
+            <div class="font-bold">Flight</div>
+            <div class="uppercase font-serif">3C 0827</div>
+            <div class="font-bold">Date</div>
+            <div class="uppercase font-serif">13 jul</div>
+            <div class="font-bold">Seat</div>
+            <div class="uppercase font-serif">2c</div>
+            <div class="font-bold">Class</div>
+            <div class="uppercase font-serif">R</div>
+          </div>
+          <div class="grid grid-cols-2 gap-y-10">
+            <div class="font-bold">Ticket No.</div>
+            <div class="uppercase font-serif">12345</div>
+            <div class="font-bold">Gate</div>
+            <div class="uppercase font-serif">2</div>
+            <div class="font-bold">Departure</div>
+            <div class="uppercase font-serif">09 JUL 10:00am</div>
+            <div class="font-bold">Est. Arrival</div>
+            <div class="uppercase font-serif">10 JUL 11:00pm</div>
+          </div>
+
+          <div id="barcode" class="row-span-3 bg-green-300 flex justify-center">
+            <img src="barcode.png" alt="barcode" />
+          </div>
+        </div>
+        <div class="text-xs text-center font-mono">
+          www.bananaairlines.com 0800-banana-help
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
