@@ -7,7 +7,7 @@ function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="output.css" rel="stylesheet" />
       </head>
-      <body class="grid place-items-center min-h-screen print:block">
+      <body className="grid place-items-center min-h-screen print:block">
         {children}
       </body>
     </html>
