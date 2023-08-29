@@ -1,7 +1,7 @@
-import type { Beer } from './BeerList'
+import type { Beer } from './BeerList.tsx'
 import { useDispatch } from 'react-redux'
-import { navigate } from '../slices/activePage'
-import { addToCart } from '../slices/cart'
+import { navigate } from '../slices/activePage.ts'
+import { addToCart } from '../slices/cart.ts'
 interface Props {
   beer: Beer
 }

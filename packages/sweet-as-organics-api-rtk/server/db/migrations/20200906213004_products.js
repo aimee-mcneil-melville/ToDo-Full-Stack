@@ -1,5 +1,5 @@
-exports.up = (knex) => {
-  return knex.schema.createTable('products', (table) => {
+export async function up(knex) {
+  await knex.schema.createTable('products', (table) => {
     table.increments('id')
     table.string('description')
     table.string('name')
@@ -7,6 +7,6 @@ exports.up = (knex) => {
   })
 }
 
-exports.down = (knex) => {
-  return knex.schema.dropTable('products')
+export async function down(knex) {
+  await knex.schema.dropTable('products')
 }

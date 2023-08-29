@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Pokemon } from '../../models/pokemon'
+import { Pokemon } from '../../models/pokemon.ts'
 
 export default function PokemonDetail() {
   const { name } = useParams()

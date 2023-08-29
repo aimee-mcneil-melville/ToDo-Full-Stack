@@ -134,9 +134,9 @@ The database migrations and seeds have already been written for you so you don't
     }
     ```
 
-    **Hint:** What does the `insert` knex method return? How might we use that information to generate the response data shown above?
+    **Hint:** What does the `insert` knex method return by default? How might we use [the `returning` knex method](https://knexjs.org/guide/query-builder.html#returning) to get more useful data?
 
-    Rather than making a second database call to fetch the newly-created record, a more efficient approach would be to reconstruct the record based on the details given to the route, plus the information returned from the database query.
+    Alternately, upon a successful insertion, we could reconstruct the record based on the details given to the route, plus the default information returned from the database insertion.
   </details>
 
 - [ ] Update an existing blog post

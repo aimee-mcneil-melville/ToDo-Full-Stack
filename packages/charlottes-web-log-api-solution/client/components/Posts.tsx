@@ -1,5 +1,5 @@
-import { Post } from '../../models/post'
-import PostSummary from './PostSummary'
+import { Post } from '../../models/post.ts'
+import PostSummary from './PostSummary.tsx'
 
 interface Props {
   posts: Post[]

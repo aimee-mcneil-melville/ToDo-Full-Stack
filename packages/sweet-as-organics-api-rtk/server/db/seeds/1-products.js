@@ -1,5 +1,5 @@
-exports.seed = (knex) => {
-  return knex('products').insert([
+export async function seed(knex) {
+  await knex('products').insert([
     {
       id: 1,
       name: 'Sweet As Peanut Butter',

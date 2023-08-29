@@ -1,7 +1,7 @@
 import request from 'superagent'
 
-import { Comment } from '../../models/comment'
-import { Post, PostData } from '../../models/post'
+import { Comment } from '../../models/comment.ts'
+import { Post, PostData } from '../../models/post.ts'
 
 export function getPosts(): Promise<Post[]> {
   return request

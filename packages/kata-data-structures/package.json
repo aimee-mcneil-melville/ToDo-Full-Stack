@@ -20,7 +20,7 @@
     ]
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",

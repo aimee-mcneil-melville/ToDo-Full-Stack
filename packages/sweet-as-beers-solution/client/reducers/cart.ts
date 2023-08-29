@@ -4,7 +4,7 @@ import {
   UPDATE_MULTIPLE,
   UPDATE_QUANTITY,
   Action,
-} from '../actions'
+} from '../actions/index.ts'
 
 interface CartItem {
   id: number

@@ -1,6 +1,6 @@
-exports.seed = (knex) => {
+export async function seed(knex) {
   // Deletes ALL existing entries
-  return knex('widgets')
+  await knex('widgets')
     .del()
     .then(() => {
       // Inserts seed entries

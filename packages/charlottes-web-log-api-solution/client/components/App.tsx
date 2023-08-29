@@ -1,11 +1,11 @@
 import { Route, Routes, Outlet } from 'react-router-dom'
-import useFetchPosts from './hooks/useFetchPosts'
+import useFetchPosts from './hooks/useFetchPosts.ts'
 
-import Layout from './Layout'
-import Post from './Post'
-import Posts from './Posts'
-import PostForm from './PostForm'
-import CommentForm from './CommentForm'
+import Layout from './Layout.tsx'
+import Post from './Post.tsx'
+import Posts from './Posts.tsx'
+import PostForm from './PostForm.tsx'
+import CommentForm from './CommentForm.tsx'
 
 function App() {
   const { posts, loading, error, fetchPosts } = useFetchPosts()

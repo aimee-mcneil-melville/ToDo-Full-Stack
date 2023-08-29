@@ -1,5 +1,5 @@
-import otherBlogsData from '../data/other-blogs'
-import OtherBlog from './OtherBlog'
+import otherBlogsData from '../data/other-blogs.ts'
+import OtherBlog from './OtherBlog.tsx'
 
 export default function OtherBlogs() {
   return (

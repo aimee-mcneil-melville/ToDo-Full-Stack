@@ -1,6 +1,6 @@
 import request from 'superagent'
 import express from 'express'
-import { Pokemon, PokemonGeneration } from '../../models/pokemon'
+import { Pokemon, PokemonGeneration } from '../../models/pokemon.ts'
 
 const router = express.Router()
 

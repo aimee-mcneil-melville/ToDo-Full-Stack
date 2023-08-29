@@ -1,5 +1,5 @@
-import Board from './Board'
-import startingTiles, { TileData } from '../startingTiles'
+import Board from './Board.tsx'
+import startingTiles, { TileData } from '../startingTiles.ts'
 import { useState } from 'react'
 
 const tryAgain = 'No match, try again'

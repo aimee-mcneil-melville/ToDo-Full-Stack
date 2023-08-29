@@ -16,10 +16,12 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "eslintConfig": {
-    "extends": ["@devacademy"]
+    "extends": [
+      "@devacademy"
+    ]
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
@@ -27,7 +29,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "prettier": "2.6.1",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "prettier": {
     "semi": false,

@@ -1,11 +1,11 @@
 import { createRoutesFromElements, Route } from 'react-router-dom'
 
-import AppLayout from './components/AppLayout'
-import TextForm from './components/0-Text'
-import CheckboxForm from './components/1-Checkbox'
-import TextAndCheckboxForm from './components/2-TextAndCheckbox'
-import SelectForm from './components/3-Select'
-import AddingAndDeletingForm from './components/4-AddingAndRemoving'
+import AppLayout from './components/AppLayout.tsx'
+import TextForm from './components/0-Text.tsx'
+import CheckboxForm from './components/1-Checkbox.tsx'
+import TextAndCheckboxForm from './components/2-TextAndCheckbox.tsx'
+import SelectForm from './components/3-Select.tsx'
+import AddingAndDeletingForm from './components/4-AddingAndRemoving.tsx'
 
 export const routes = createRoutesFromElements(
   <Route element={<AppLayout />}>

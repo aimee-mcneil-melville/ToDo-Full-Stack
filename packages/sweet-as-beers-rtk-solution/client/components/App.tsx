@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 
-import Header from './Header'
-import BeerList from './BeerList'
-import { RootState } from '../store'
-import Cart from './Cart'
+import Header from './Header.tsx'
+import BeerList from './BeerList.tsx'
+import { RootState } from '../store.ts'
+import Cart from './Cart.tsx'
 
 function App() {
   const activePage = useSelector<RootState>((state) => state.activePage)

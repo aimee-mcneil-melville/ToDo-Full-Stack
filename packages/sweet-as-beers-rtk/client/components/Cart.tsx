@@ -1,4 +1,4 @@
-import { Beer } from './BeerList'
+import { Beer } from './BeerList.tsx'
 
 type CartItem = Pick<Beer, 'id' | 'name'> & { quantity: number }
 

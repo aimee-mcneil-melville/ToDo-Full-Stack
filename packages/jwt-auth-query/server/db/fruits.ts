@@ -1,5 +1,5 @@
-import connection from './connection'
-import { Fruit, FruitSnakeCase, FruitData } from '../../models/fruit'
+import connection from './connection.ts'
+import { Fruit, FruitSnakeCase, FruitData } from '../../models/fruit.ts'
 
 const columns = [
   'id',

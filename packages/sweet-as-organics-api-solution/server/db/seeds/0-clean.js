@@ -2,6 +2,6 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.seed = async (knex) => {
+export async function seed(knex) {
   await knex('products').del()
 }

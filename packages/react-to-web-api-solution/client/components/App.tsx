@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
-import * as Models from '../../models/Widget'
-import { getWidgets, addWidget } from '../apiClient'
-import Widget from './Widget'
-import WidgetForm from './WidgetForm'
+import * as Models from '../../models/Widget.ts'
+import { getWidgets, addWidget } from '../apiClient.ts'
+import Widget from './Widget.tsx'
+import WidgetForm from './WidgetForm.tsx'
 
 function App() {
   const [widgets, setWidgets] = useState([] as Models.Widget[])

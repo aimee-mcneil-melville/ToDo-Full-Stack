@@ -1,7 +1,7 @@
 import express from 'express'
 
 // eslint-disable-next-line no-unused-vars
-import { updateComment, deleteComment } from '../db/db'
+import { updateComment, deleteComment } from '../db/db.ts'
 
 const router = express.Router()
 

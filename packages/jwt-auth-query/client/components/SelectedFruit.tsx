@@ -1,8 +1,8 @@
-import { Fruit } from '../../models/fruit'
+import { Fruit } from '../../models/fruit.ts'
 
 import { useState } from 'react'
 
-import { GridForm, ColOne, ColTwoText, Button } from './Styled'
+import { GridForm, ColOne, ColTwoText, Button } from './Styled.tsx'
 
 interface Props {
   fruit: Fruit

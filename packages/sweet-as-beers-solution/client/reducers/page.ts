@@ -1,4 +1,4 @@
-import { CHANGE_PAGE, Action } from '../actions'
+import { CHANGE_PAGE, Action } from '../actions/index.ts'
 
 const initialState = 'home'
 

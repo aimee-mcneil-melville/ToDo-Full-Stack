@@ -1,5 +1,5 @@
-import Wombats from './Wombats'
-import Aardvarks from './Aardvarks'
+import Wombats from './Wombats.tsx'
+import Aardvarks from './Aardvarks.tsx'
 
 function App() {
   return (

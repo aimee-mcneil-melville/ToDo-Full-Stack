@@ -1,6 +1,6 @@
-import { useAppSelector } from '../hooks'
-import Wombat from './Wombat'
-import AddWombat from './AddWombat'
+import { useAppSelector } from '../hooks.ts'
+import Wombat from './Wombat.tsx'
+import AddWombat from './AddWombat.tsx'
 
 function Wombats() {
   const wombats = useAppSelector((state) => state.wombats)

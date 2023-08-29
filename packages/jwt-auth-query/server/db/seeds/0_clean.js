@@ -1,3 +1,3 @@
-exports.seed = (knex) => {
-  return knex('fruits').del()
+export async function seed(knex) {
+  await knex('fruits').del()
 }

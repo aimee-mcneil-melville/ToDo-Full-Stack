@@ -18,8 +18,8 @@
     "url": "git+https://github.com/dev-academy-challenges/knex-todo-cli.git"
   },
   "dependencies": {
-    "knex": "^2.3.0",
-    "sqlite3": "^5.1.2"
+    "knex": "^2.5.1",
+    "sqlite3": "^5.1.6"
   },
   "eslintConfig": {
     "extends": [
@@ -27,13 +27,13 @@
     ]
   },
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.8.0",
+    "@devacademy/eslint-config": "^1.9.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   }
 }

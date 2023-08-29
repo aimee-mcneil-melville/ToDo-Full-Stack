@@ -1,8 +1,8 @@
 import * as path from 'node:path'
 import express from 'express'
 
-import posts from './routes/posts'
-import comments from './routes/comments'
+import posts from './routes/posts.ts'
+import comments from './routes/comments.ts'
 
 const server = express()
 server.use(express.json())

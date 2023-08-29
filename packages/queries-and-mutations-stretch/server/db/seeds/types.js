@@ -1,13 +1,16 @@
-import { Knex } from 'knex'
-import data from '../data/pokemon'
+import data from '../data/pokemon.js'
 
-export async function seed(knex: Knex): Promise<void> {
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+
+export async function seed(knex) {
   await knex('types').del()
 
   // Create a unique set of types
   // e.g., Set { 'Grass', 'Poison', 'Fire', 'Flying', 'Water', 'Bug', 'Normal' }
-  const typeSet = new Set<string>()
-  data.forEach((p) => {
+  const typeSet = data.forEach((p) => {
     p.type.forEach((t) => {
       typeSet.add(t)
     })

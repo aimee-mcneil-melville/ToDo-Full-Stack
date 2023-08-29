@@ -1,8 +1,8 @@
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks.ts'
 
-import Header from './Header'
-import BeerList from './BeerList'
-import Cart from './Cart'
+import Header from './Header.tsx'
+import BeerList from './BeerList.tsx'
+import Cart from './Cart.tsx'
 
 function App() {
   const page = useAppSelector((state) => state.page)

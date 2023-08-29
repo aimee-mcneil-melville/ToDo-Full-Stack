@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { Pokemon } from '../../models/pokemon'
-import { getAllPokemon } from '../apis/pokemon'
-import PokemonListItem from './PokemonListItem'
+import { Pokemon } from '../../models/pokemon.ts'
+import { getAllPokemon } from '../apis/pokemon.ts'
+import PokemonListItem from './PokemonListItem.tsx'
 
 export default function PokemonList() {
   const { data: pokemon } = useQuery<Pokemon[]>(['pokemon'], getAllPokemon)

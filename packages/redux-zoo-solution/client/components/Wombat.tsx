@@ -1,4 +1,4 @@
-import EditWombat from './EditWombat'
+import EditWombat from './EditWombat.tsx'
 
 export interface Props {
   name: string

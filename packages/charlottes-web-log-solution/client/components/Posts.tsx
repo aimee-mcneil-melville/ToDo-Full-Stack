@@ -1,5 +1,5 @@
-import postsData from '../data/posts'
-import Post from './Post'
+import postsData from '../data/posts.ts'
+import Post from './Post.tsx'
 
 export default function Posts() {
   return (

@@ -1,8 +1,8 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
-import { Widget, WidgetData } from '../../models/Widget'
+import { Widget, NewWidget } from '../../models/Widget.ts'
 
 interface Props extends Partial<Widget> {
-  submitWidget: (widget: WidgetData) => void
+  submitWidget: (widget: NewWidget) => void
   setShowForm: (showAdd: boolean) => void
 }
 

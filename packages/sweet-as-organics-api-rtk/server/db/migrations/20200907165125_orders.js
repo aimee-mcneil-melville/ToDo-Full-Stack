@@ -1,11 +1,11 @@
-exports.up = (knex) => {
-  return knex.schema.createTable('orders', (table) => {
+export async function up(knex) {
+  await knex.schema.createTable('orders', (table) => {
     table.increments('id')
     table.date('created_at')
     table.string('status')
   })
 }
 
-exports.down = (knex) => {
-  return knex.schema.dropTable('orders')
+export async function down(knex) {
+  await knex.schema.dropTable('orders')
 }
