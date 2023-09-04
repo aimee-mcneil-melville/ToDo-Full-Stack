@@ -58,7 +58,7 @@ describe('<SelectForm />', () => {
     expect(listItems).toEqual(['ferrari'])
   })
 
-  it.skip('should clear select upon submissino', async () => {
+  it.skip('should clear select upon submission', async () => {
     const { user } = renderRoute('/3')
 
     const select = screen.getByRole('combobox', { name: /select/i })
