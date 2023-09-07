@@ -42,7 +42,7 @@ export default function TextInputForm() {
   )
 }
 ```
-The forms will have between 1-3 inputs of varying types (e.g., text, checkbox, select). They will start as unctontrolled inputs. Your job will be to turn them into [controlled inputs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
+The forms will have between 1-3 inputs of varying types (e.g., text, checkbox, select). They will start as uncontrolled inputs. Your job will be to turn them into [controlled inputs](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable).
 
 There are a set of tests in [`client/__tests__`](./client/__tests__). They are all currently skipped, and if you uncomment them, they _mostly_ fail.
 
