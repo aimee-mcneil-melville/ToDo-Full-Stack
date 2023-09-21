@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query"
-import request from "superagent"
+import { useQuery } from '@tanstack/react-query'
+import request from 'superagent'
 
-import type { Location } from "../../models/Location.ts"
+import type { Location } from '../../models/Location.ts'
 
 export default function useLocations() {
   return useQuery({

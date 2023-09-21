@@ -1,5 +1,5 @@
 import LocationsNav from './LocationsNav.tsx'
-import useLocations from '../hooks/use-locations.ts'
+import { useLocations } from '../hooks/api.ts'
 
 export default function LocationsList() {
   const { isLoading, isError, data } = useLocations()

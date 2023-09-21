@@ -1,44 +1,71 @@
 import { useState, useCallback, ChangeEvent, FormEvent } from 'react'
-import useUpdateLocation from "../hooks/use-update-location.ts"
+import useUpdateLocation from '../hooks/use-update-location.ts'
 
 interface Props {
-  id: number,
-  name: string,
+  id: number
+  name: string
   description: string
 }
 
 export default function EditLocationForm({ id, name, description }: Props) {
-    // I guess I should do these as props?
-    const [formState, setFormState] = useState({
-      name,
-      description
-    })
+  // I guess I should do these as props?
+  const [formState, setFormState] = useState({
+    name,
+    description,
+  })
 
-    const updateLocation = useUpdateLocation()
-  
-    const handleChange = useCallback((evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const updateLocation = useUpdateLocation()
+
+  const handleChange = useCallback(
+    (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = evt.currentTarget
-      setFormState(prev => ({
+      setFormState((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }))
-    }, [])
+    },
+    []
+  )
 
-    const handleSubmit = useCallback(async (e: FormEvent) => {
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
       e.preventDefault()
       updateLocation.mutate({ id, ...formState })
-    }, [formState])
-  
+    },
+    [formState]
+  )
 
-  return <form onSubmit={handleSubmit} className="form" aria-busy={updateLocation.isLoading}>
-    {updateLocation.isError && <h3>{String(updateLocation.failureReason)}</h3>}
-    {updateLocation.isSuccess && <h3>Location updated!</h3>}
-    
-    <label htmlFor="name">Location name</label>
-    <input type="text" id="name" name="name" placeholder="Location name" value={formState.name} onChange={handleChange} />
-    
-    <label htmlFor="description">Description</label>
-    <textarea rows={4} id="description" name="description" placeholder="Location description" onChange={handleChange} value={formState.description}/>
-    <button disabled={updateLocation.isLoading}>Update location</button>
-  </form>
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="form"
+      aria-busy={updateLocation.isLoading}
+    >
+      {updateLocation.isError && (
+        <h3>{String(updateLocation.failureReason)}</h3>
+      )}
+      {updateLocation.isSuccess && <h3>Location updated!</h3>}
+
+      <label htmlFor="name">Location name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Location name"
+        value={formState.name}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="description">Description</label>
+      <textarea
+        rows={4}
+        id="description"
+        name="description"
+        placeholder="Location description"
+        onChange={handleChange}
+        value={formState.description}
+      />
+      <button disabled={updateLocation.isLoading}>Update location</button>
+    </form>
+  )
 }

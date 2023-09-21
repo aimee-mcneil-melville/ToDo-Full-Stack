@@ -7,6 +7,7 @@ import scheduleRoutes from './routes/schedule.ts'
 import eventRoutes from './routes/events.ts'
 
 const server = express()
+
 server.use(express.json())
 server.use('/api/v1/locations', locationRoutes)
 server.use('/api/v1/schedule', scheduleRoutes)

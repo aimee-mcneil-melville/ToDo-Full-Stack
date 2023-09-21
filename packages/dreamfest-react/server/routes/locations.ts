@@ -24,7 +24,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-// PATCH /locations/edit
 router.patch('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)

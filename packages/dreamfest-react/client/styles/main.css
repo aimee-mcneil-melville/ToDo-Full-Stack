@@ -16,7 +16,7 @@ body {
 }
 
 header {
-  background-image: url('/images/forest-header.jpg');
+  background-image: url('../images/forest-header.jpg');
   background-size: cover;
   background-position: center;
   background-color: #000724;
@@ -105,22 +105,22 @@ p {
 
 /* Assign icons to list items */
 .cards li:nth-of-type(5n+1) {
-  background-image: url('/images/icons/icon-1.png');
+  background-image: url('../images/icons/icon-1.png');
 }
 
 .cards li:nth-of-type(5n+2) {
-  background-image: url('/images/icons/icon-2.png');
+  background-image: url('../images/icons/icon-2.png');
 }
 
 .cards li:nth-of-type(5n+3) {
-  background-image: url('/images/icons/icon-3.png');
+  background-image: url('../images/icons/icon-3.png');
 }
 .cards li:nth-of-type(5n+4) {
-  background-image: url('/images/icons/icon-4.png');
+  background-image: url('../images/icons/icon-4.png');
 }
 
 .cards li:nth-of-type(5n+5) {
-  background-image: url('/images/icons/icon-5.png');
+  background-image: url('../images/icons/icon-5.png');
 }
 
 .location, .event {

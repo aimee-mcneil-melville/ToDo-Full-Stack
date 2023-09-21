@@ -42,14 +42,20 @@ export async function getEventsForDay(day: string) {
       'events.id as id',
       'location_id as locationId',
       'events.name as eventName',
-      'locations.name as locationName'
+      'locations.name as locationName',
+      'events.description as description'
     )
 
   return events as EventWithLocation[]
 }
 
 export async function getEventById(id: number) {
-  const { location_id, ...data } = await db('events').where({ id }).first()
+  const result = await db('events').where({ id }).first()
+  if (result == undefined) {
+    return undefined
+  }
+
+  const { location_id, ...data } = result
   return {
     ...data,
     locationId: location_id,
@@ -71,8 +77,9 @@ export async function updateEvent(id: number, data: Partial<EventData>) {
 }
 
 export async function createEvent(event: EventData) {
-  const [id] = await db('events').insert(event).returning('id')
+  const { locationId: location_id, ...data } = event
+  const [id] = await db('events')
+    .insert({ location_id, ...data })
+    .returning('id')
   return id
 }
-
-// TODO: write some more database functions
