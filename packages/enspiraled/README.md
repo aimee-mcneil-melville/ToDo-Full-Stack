@@ -4,7 +4,7 @@ For this challenge, you'll be making a basic fractal generator that starts with 
 
 After you've completed this project, this is what it can look like after a few clicks:
 
-![A large red circle in the centre with four blue circles half its diameter, centered on the top, bottom, left and right edges of the red circle. The pattern repeats at smaller and smaller circle sizes several more times in different colours, creating a rudimentary fractal.](./server/public/images/enspiral.png)
+![A large red circle in the centre with four blue circles half its diameter, centered on the top, bottom, left and right edges of the red circle. The pattern repeats at smaller and smaller circle sizes several more times in different colours, creating a rudimentary fractal.](./client/images/enspiral.png)
 
 ## Setup
 
@@ -28,7 +28,7 @@ After you've completed this project, this is what it can look like after a few c
 
   This is what your starting place looks like:
 
-  ![A single red circle centred in a white field](./server/public/images/base-circle.png)
+  ![A single circle centred in a white field](./client/images/base-circle.png)
   </details>
 
 ---
@@ -70,7 +70,9 @@ After you've completed this project, this is what it can look like after a few c
 
   The `App` component has no state, but receives two props, `width` and `height` (which are the width and height of the page--have a look in `client/index.tsx` to see how these are retrieved).
 
-  This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey (see `server/public/css/app.css`). It's important to note that this TSX will render The SVG elements, **not React controls**. We know this because `<svg>` and `<circle>` are lower case.
+  This component renders [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Web/SVG): an `<svg>` element with an SVG `<circle>` element in it. It has a radius of 256px (`r`) and is filled with a translucent grey (see `client/css/app.css`). It's important to note that this TSX will render The SVG elements, **not React controls**. We know this because `<svg>` and `<circle>` are lower case.
+
+  You don't need to know much about `<svg>` and `<circle>` to complete this challenge, but if you're interested, you can find the docs [here](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) and [here](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle).
 
   </details>
 
