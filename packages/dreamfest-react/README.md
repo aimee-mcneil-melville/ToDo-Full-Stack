@@ -38,7 +38,7 @@ Let's get stuck in!
   npm run dev
   ```
 
-  This will create and populate the database with the existing migrations and seeds, and start the server with `nodemon`.
+  This will create and populate the database with the existing migrations and seeds, and start the server.
   </details>
 
 - [ ] Get familiar with the current state of the app and the existing codebase

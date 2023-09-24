@@ -1,12 +1,15 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import { render, screen, fireEvent } from '@testing-library/react'
-
+// @vitest-environment jsdom
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { test, expect, beforeEach, vi} from 'vitest'
 import ItemForm from './ItemForm'
 import localDbMock from '../localDbMock'
+import '@testing-library/jest-dom/vitest'
+import * as matchers from '@testing-library/jest-dom/matchers'
+expect.extend(matchers)
+beforeEach(cleanup)
 
 test('Can reset the form from <em>added</em> form inputs', async () => {
-  const resetMock = jest.fn()
+  const resetMock = vi.fn()
 
   // render the `ItemForm` component
   render(<ItemForm editItem={null} reset={resetMock} />)
@@ -43,7 +46,7 @@ test('Can reset the form from <em>added</em> form inputs', async () => {
 
 test('Can reset the form from <em>edited</em> form inputs', async () => {
   const editItem = localDbMock().getItems()[0]
-  const resetMock = jest.fn()
+  const resetMock = vi.fn()
 
   // render the `ItemForm` component with an editItem
   render(<ItemForm editItem={editItem} reset={resetMock} />)

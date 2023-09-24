@@ -1,9 +1,13 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import { render, screen, fireEvent } from '@testing-library/react'
+// @vitest-environment jsdom
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { test, expect, beforeEach} from 'vitest'
 
 import Items from './Items'
 import localDbMock from '../localDbMock'
+import '@testing-library/jest-dom/vitest'
+import * as matchers from '@testing-library/jest-dom/matchers'
+expect.extend(matchers)
+beforeEach(cleanup)
 
 test('Shows a list of items', async () => {
   // render the component
