@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default function EditLocationForm({ id, name, description }: Props) {
-  // I guess I should do these as props?
   const [formState, setFormState] = useState({
     name,
     description,
