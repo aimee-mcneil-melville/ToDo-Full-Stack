@@ -1,6 +1,6 @@
 {
   "name": "queries-and-mutations-solution",
-  "type":"module",
+  "type": "module",
   "version": "0.1.2",
   "description": "React Query with Queries and Mutations, using Pokémon data",
   "main": "server/index",
@@ -60,7 +60,7 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   },
   "prettier": {
     "semi": false,

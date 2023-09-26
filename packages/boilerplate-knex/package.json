@@ -34,7 +34,7 @@
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/jest-dom": "^6.1.3",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
@@ -43,7 +43,7 @@
     "jsdom": "^22.1.0",
     "prettier": "2.6.1",
     "supertest": "^6.2.2",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   },
   "eslintConfig": {
     "extends": "@devacademy"

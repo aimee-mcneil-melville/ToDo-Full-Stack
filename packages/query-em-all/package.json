@@ -12,7 +12,6 @@
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
-
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -36,7 +35,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/superagent": "^4.1.15",
     "@types/supertest": "^2.0.12",
-    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react": "^4.0.4",
     "esbuild": "^0.19.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -60,7 +59,7 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   },
   "prettier": {
     "semi": false,
