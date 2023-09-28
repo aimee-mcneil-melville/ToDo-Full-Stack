@@ -71,7 +71,12 @@ export async function updateEvent(id: number, data: Partial<EventData>) {
 }
 
 export async function createEvent(event: EventData) {
-  const [id] = await db('events').insert(event).returning('id')
+  const { locationId: location_id, ...data } = event
+  const newEvent = {
+    ...data,
+    location_id,
+  }
+  const [id] = await db('events').insert(newEvent).returning('id')
   return id
 }
 
