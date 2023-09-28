@@ -1,12 +1,14 @@
 import LineUpNav from './LineUpNav'
 import { Location } from '../../models/Location.ts'
+import { Day } from '../../models/Day.ts'
 
 interface Props {
   locations: Location[]
-  days: { value: number; name: string; selected?: boolean }[]
+  days: Day[]
+  selectedDayName: string
 }
 
-function AddEvent({ locations, days }: Props) {
+function AddEvent({ locations, days, selectedDayName }: Props) {
   return (
     <>
       <LineUpNav />
@@ -33,11 +35,9 @@ function AddEvent({ locations, days }: Props) {
         </select>
 
         <label htmlFor="day">Day</label>
-        <select id="day" name="day">
-          {days.map(({ value, name, selected }) => (
-            <option value={value} selected={selected}>
-              {name}
-            </option>
+        <select id="day" name="day" defaultValue={selectedDayName}>
+          {days.map(({ value, name }) => (
+            <option value={value}>{name}</option>
           ))}
         </select>
 

@@ -1,14 +1,18 @@
 import LineUpNav from './LineUpNav'
 import { Location } from '../../models/Location.ts'
 import { Event } from '../../models/Event.ts'
+import { Day } from '../../models/Day.ts'
 
 interface Props {
   locations: Location[]
-  days: { value: number; name: string; selected?: boolean }[]
+  days: Day[]
   event: Event
+  selectedLocationId: number
+  selectedDayName: string
 }
 
-function EditEvent({ event, locations, days }: Props) {
+function EditEvent(props: Props) {
+  const { event, locations, days, selectedLocationId, selectedDayName } = props
   return (
     <>
       <LineUpNav />
@@ -18,7 +22,7 @@ function EditEvent({ event, locations, days }: Props) {
       </h2>
 
       <form method="POST" action="/events/edit" className="form">
-        <input type="hidden" name="id" value={event.id} />
+        <input type="hidden" name="id" defaultValue={event.id} />
 
         <label htmlFor="name" className="label">
           Event Name
@@ -28,7 +32,7 @@ function EditEvent({ event, locations, days }: Props) {
           id="name"
           name="name"
           placeholder="Event name"
-          value={event.name}
+          defaultValue={event.name}
         />
 
         <label htmlFor="description" className="label">
@@ -39,16 +43,19 @@ function EditEvent({ event, locations, days }: Props) {
           id="description"
           name="description"
           placeholder="Event description"
-        >
-          {event.description}
-        </textarea>
+          defaultValue={event.description}
+        ></textarea>
 
         <label htmlFor="location" className="label">
           Location
         </label>
-        <select id="location" name="locationId">
-          {locations.map(({ id, name, selected }) => (
-            <option value={id} selected={selected}>
+        <select
+          id="location"
+          name="locationId"
+          defaultValue={selectedLocationId}
+        >
+          {locations.map(({ id, name }) => (
+            <option key={id} value={id}>
               {name}
             </option>
           ))}
@@ -57,9 +64,10 @@ function EditEvent({ event, locations, days }: Props) {
         <label htmlFor="day" className="label">
           Day
         </label>
-        <select id="day" name="day">
-          {days.map(({ value, name, selected }) => (
-            <option value={value} selected={selected}>
+        <select id="day" name="day" defaultValue={selectedDayName}>
+          <option value="">Select a day</option>
+          {days.map(({ value, name }) => (
+            <option key={value} value={value}>
               {name}
             </option>
           ))}
@@ -71,7 +79,7 @@ function EditEvent({ event, locations, days }: Props) {
           id="time"
           name="time"
           placeholder="Example: 1pm - 2pm"
-          value={event.time}
+          defaultValue={event.time}
         />
 
         <div></div>
@@ -79,8 +87,8 @@ function EditEvent({ event, locations, days }: Props) {
       </form>
 
       <form method="POST" action="/events/delete" className="form">
-        <input type="hidden" name="id" value={event.id} />
-        <input type="hidden" name="day" value={event.day} />
+        <input type="hidden" name="id" defaultValue={event.id} />
+        <input type="hidden" name="day" defaultValue={event.day} />
         <div></div>
         <button className="delete">Delete event</button>
       </form>

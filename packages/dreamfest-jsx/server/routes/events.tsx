@@ -1,7 +1,13 @@
+import { renderToStaticMarkup } from 'react-dom/server'
 import express from 'express'
 
 import { eventDays, capitalise, validateDay } from './helpers.ts'
+import Layout from '../components/Layout.tsx'
+import AddEvent from '../components/AddEvent.tsx'
 import * as db from '../db/index.ts'
+import EditEvent from '../components/EditEvent.tsx'
+import { Location } from '../../models/Location.ts'
+import { Event } from '../../models/Event.ts'
 
 const router = express.Router()
 export default router
@@ -12,7 +18,7 @@ router.get('/add/:day', (req, res) => {
   const days = eventDays.map((eventDay) => ({
     value: eventDay,
     name: capitalise(eventDay),
-    selected: eventDay === day ? 'selected' : '',
+    selected: eventDay === day,
   }))
 
   // TODO: Replace this with all of the locations in the database
@@ -20,15 +26,22 @@ router.get('/add/:day', (req, res) => {
     {
       id: 1,
       name: 'TangleStage',
+      description: 'Not the biggest stage, but perhaps the most hip.',
     },
     {
       id: 2,
       name: 'Yella Yurt',
+      description: "It's a freakin' yurt! Get in here!",
     },
   ]
 
-  const viewData = { locations, days, day }
-  res.render('addEvent', viewData)
+  res.send(
+    renderToStaticMarkup(
+      <Layout>
+        <AddEvent locations={locations} days={days} selectedDayName={day} />
+      </Layout>
+    )
+  )
 })
 
 // POST /events/add
@@ -62,7 +75,7 @@ router.get('/:id/edit', (req, res) => {
 
   // TODO: Replace event below with the event from the database using its id
   // NOTE: It should have the same shape as this one
-  const event = {
+  const event: Event = {
     id: id,
     locationId: 1,
     day: 'friday',
@@ -74,24 +87,32 @@ router.get('/:id/edit', (req, res) => {
 
   // TODO: Replace locations below with all of the locations from the database
   // NOTE: The objects should have the same shape as these.
-  // The selected property should have a value of
-  // either 'selected' or '' based on event.locationId above.
-  const locations = [
-    { id: 1, name: 'TangleStage', selected: '' },
-    { id: 2, name: 'Yella Yurt', selected: 'selected' },
-    { id: 3, name: 'Puffy Paddock', selected: '' },
-    { id: 4, name: 'Kombucha Karavan', selected: '' },
+  const locations: Location[] = [
+    { id: 1, name: 'TangleStage', description: '' },
+    { id: 2, name: 'Yella Yurt', description: '' },
+    { id: 3, name: 'Puffy Paddock', description: '' },
+    { id: 4, name: 'Kombucha Karavan', description: '' },
   ]
 
   // This is done for you with an array of days imported from the helpers file
   const days = eventDays.map((eventDay) => ({
     value: eventDay,
     name: capitalise(eventDay),
-    selected: eventDay === event.day ? 'selected' : '',
   }))
 
-  const viewData = { event, locations, days }
-  res.render('editEvent', viewData)
+  res.send(
+    renderToStaticMarkup(
+      <Layout>
+        <EditEvent
+          event={event}
+          locations={locations}
+          days={days}
+          selectedDayName={event.day}
+          selectedLocationId={event.locationId}
+        />
+      </Layout>
+    )
+  )
 })
 
 // POST /events/edit

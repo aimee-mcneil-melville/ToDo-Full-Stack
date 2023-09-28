@@ -1,5 +1,5 @@
-import Footer from '../partials/footer'
-import Header from '../partials/header'
+import Footer from './Footer.tsx'
+import Header from './Header.tsx'
 
 interface Props {
   children: React.ReactNode
