@@ -82,6 +82,10 @@ p {
   margin: 0;
 }
 
+.edit-title {
+  color: #1a5068;
+}
+
 .data {
   color: #1a5068;
   overflow: hidden;
