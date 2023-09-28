@@ -4,7 +4,7 @@ import express from 'express'
 import * as hbs from 'express-handlebars'
 
 import locationRoutes from './routes/locations.tsx'
-import scheduleRoutes from './routes/schedule.ts'
+import scheduleRoutes from './routes/schedule.tsx'
 import eventRoutes from './routes/events.tsx'
 
 /*

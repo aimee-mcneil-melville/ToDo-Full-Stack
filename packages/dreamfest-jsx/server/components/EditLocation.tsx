@@ -12,11 +12,11 @@ function EditLocation({ location }: Props) {
       <LineUpNav />
 
       <h2>
-        edit location: <span className="data">{name}</span>
+        edit location: <span className="edit-title">{name}</span>
       </h2>
 
       <form method="POST" action="/locations/edit" className="form">
-        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="id" defaultValue={id} />
 
         <label htmlFor="name">Location name</label>
         <input
@@ -24,7 +24,7 @@ function EditLocation({ location }: Props) {
           id="name"
           name="name"
           placeholder="Location name"
-          value={name}
+          defaultValue={name}
         />
 
         <label htmlFor="description">Description</label>
@@ -33,9 +33,8 @@ function EditLocation({ location }: Props) {
           id="description"
           name="description"
           placeholder="Location description"
-        >
-          {description}
-        </textarea>
+          defaultValue={description}
+        ></textarea>
 
         <div></div>
         <button>Update location</button>

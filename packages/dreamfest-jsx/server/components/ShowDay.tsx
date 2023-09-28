@@ -12,7 +12,7 @@ function ShowDay({ day, events }: Props) {
       <LineUpNav />
 
       <h2>
-        events: <span className="data">{day}</span>
+        events: <span className="edit-title">{day}</span>
       </h2>
       <a className="nav" href={`/events/add/${day}`}>
         add event

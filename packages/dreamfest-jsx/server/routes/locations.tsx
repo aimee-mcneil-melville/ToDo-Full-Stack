@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import Layout from '../components/Layout.tsx'
 import ShowLocation from '../components/ShowLocation.tsx'
 import * as db from '../db/index.ts'
+import EditLocation from '../components/EditLocation.tsx'
 
 const router = express.Router()
 
@@ -39,14 +40,20 @@ router.get('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
 
   // TODO: Get the location based on its id and replace this viewData
-  const viewData = {
+  const location = {
     id: id,
     name: 'TangleStage',
     description:
       'Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip. Not the biggest stage, but perhaps the most hip.',
   }
 
-  res.render('editLocation', viewData)
+  res.send(
+    renderToStaticMarkup(
+      <Layout>
+        <EditLocation location={location} />
+      </Layout>
+    )
+  )
 })
 
 // POST /locations/edit
