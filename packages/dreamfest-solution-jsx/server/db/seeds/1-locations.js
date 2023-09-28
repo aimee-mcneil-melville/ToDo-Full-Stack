@@ -1,4 +1,4 @@
-export async function seed (knex) {
+export async function seed(knex) {
   await knex('locations').insert([
     {
       id: 1,
