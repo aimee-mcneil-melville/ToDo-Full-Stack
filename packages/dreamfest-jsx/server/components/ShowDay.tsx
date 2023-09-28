@@ -19,7 +19,7 @@ function ShowDay({ day, events }: Props) {
       </a>
 
       <ul className="cards">
-        {events.map(({ eventName, locationName, time, description }) => (
+        {events.map(({ id, eventName, locationName, time, description }) => (
           <li className="card">
             <div className="event">
               <span className="title">{eventName}</span>
@@ -33,7 +33,7 @@ function ShowDay({ day, events }: Props) {
               </div>
             </div>
             <p className="event-description data">{description}</p>
-            <a href="/events/{id}/edit">edit event</a>
+            <a href={`/events/${id}/edit`}>edit event</a>
           </li>
         ))}
       </ul>
