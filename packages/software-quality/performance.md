@@ -28,12 +28,3 @@ Additional to our standard curriculum:
 
 2. Demonstrate an understanding of quality practices for software development, such as automated testing, performance, and security
 
-## Required
-Choose and implement two [software quality measures](../software-quality/) to complete CP02.
-
-## Requirements
-
-* I have selected and implemented any **two** performance optimisations, either from the list above or of my own choosing
-* I have included a comment in my CP02 submission to tell the facilitator which performance optimisations I have selected and implemented
-* **Check:** My application runs and I have implemented at least two of the above performance optimisations, and I have included a comment on CP02 to explain which performance optimisations I have selected and implemented
-* **Submit:** I have checked what I am submitting does the above, and I have posted a link to my branch or commit(s) that displays the criteria

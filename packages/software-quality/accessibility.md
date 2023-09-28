@@ -22,14 +22,3 @@ Additional to our standard curriculum:
 ## Learning objective(s)
 
 2. Demonstrate an understanding of quality practices for software development, such as automated testing, performance, and security
-
-## Required
-Choose and implement two [software quality measures](../software-quality/) to complete CP02.
-
-## Requirements for fulfilling CP02
-
-* I have selected and implemented any **two** accessibility measures, either from the list above or of my own choosing
-* I have included a comment in my CP02 submission to tell the facilitator which accessibility measures I have selected and implemented **and which pages I've tested**, if applicable
-* If I have chosen to test with a screenreader, I have included a few sentences describing what I learned from the process
-* **Check:** My application runs and I have implemented at least two of the above accessibility measures, and I have included a comment on CP02 to explain which accessibility measures I have selected and implemented. If applicable, I have also included **which pages I've tested** and/or a few sentences about the experience of testing with a screenreader
-* **Submit:** I have checked what I am submitting does the above, and I have posted a link to my branch or commit(s) that displays the criteria

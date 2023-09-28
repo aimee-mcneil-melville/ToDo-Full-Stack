@@ -8,7 +8,7 @@ Possible security measures you might implement...
 
 Covered in our curriculum:
   * implement user authentication, as seen in the `jwt-auth` challenge
-  * use excellent [error-handling hygiene](https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html)
+  * use excellent [error-handling hygiene](https://owasp-top-10-proactive-controls-2018.readthedocs.io/en/latest/c10-handle-errors-exceptions.html)
 
 Additional to our standard curriculum:
   * use [secure headers](https://owasp.org/www-project-secure-headers/)
@@ -25,14 +25,3 @@ Additional to our standard curriculum:
 ## Learning objective(s)
 
 2. Demonstrate an understanding of quality practices for software development, such as automated testing, performance, and security
-
-## Required
-
-Choose and implement two [software quality measures](../software-quality/) to complete CP02.
-
-## Requirements
-
-* I have selected and implemented any **two** security measures, either from the list above or of my own choosing
-* I have included a comment in my CP02 submission to tell the facilitator which security measures I have selected and implemented
-* **Check:** My application runs and I have implemented at least two of the above security measures, and I have included a comment on CP02 to explain which security measures I have selected and implemented
-* **Submit:** I have checked what I am submitting does the above, and I have posted a link to my branch or commit(s) that displays the criteria
