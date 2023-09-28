@@ -3,7 +3,7 @@ import * as Path from 'node:path'
 import express from 'express'
 import * as hbs from 'express-handlebars'
 
-import locationRoutes from './routes/locations.ts'
+import locationRoutes from './routes/locations.tsx'
 import scheduleRoutes from './routes/schedule.ts'
 import eventRoutes from './routes/events.tsx'
 

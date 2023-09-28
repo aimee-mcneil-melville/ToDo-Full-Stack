@@ -1,5 +1,8 @@
 import express from 'express'
+import { renderToStaticMarkup } from 'react-dom/server'
 
+import Layout from '../components/Layout.tsx'
+import ShowLocation from '../components/ShowLocation.tsx'
 import * as db from '../db/index.ts'
 
 const router = express.Router()
@@ -22,8 +25,13 @@ router.get('/', (req, res) => {
     },
   ]
 
-  const viewData = { locations }
-  res.render('showLocations', viewData)
+  res.send(
+    renderToStaticMarkup(
+      <Layout>
+        <ShowLocation locations={locations} />
+      </Layout>
+    )
+  )
 })
 
 // GET /locations/4/edit
