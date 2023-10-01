@@ -11,7 +11,6 @@ const __dirname = Path.dirname(new URL(import.meta.url).pathname)
 
 // Server configuration
 const publicFolder = Path.join(__dirname, '../public')
-console.log('publicFolder', publicFolder)
 server.use(express.static(publicFolder))
 
 server.get('/', (req, res) => {
