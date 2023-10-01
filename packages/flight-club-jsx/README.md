@@ -37,7 +37,7 @@ Spend some time to familiarise yourself with the database structure and think ab
    - Navigate to `http://localhost:3000/1234` to view the ticket (boarding pass), currently it's hardcoded
    - Write a db function that queries all ticket information in one query
    - Call the db function in `server.js`
-   - Go to `views/ticket` and replace the hardcoded values with the data passed from `viewData`
+   - Go to `server/server.jsx` and replace the hardcoded values with the data passed from `data`
    - Add any missing columns to the `tickets` table and to the `seed` file
 
 ### As an Airport staff (Stretch)
