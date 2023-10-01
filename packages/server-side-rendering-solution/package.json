@@ -1,5 +1,6 @@
 {
   "name": "server-side-rendering-solution",
+  "type": "module",
   "version": "0.1.0",
   "description": "Server-side rendering with Handlebars templates",
   "author": "Dev Academy",
@@ -28,6 +29,6 @@
     "eslint-plugin-react": "^7.29.4",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   }
 }

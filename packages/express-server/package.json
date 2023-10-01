@@ -46,7 +46,7 @@
     "eslint-plugin-react": "^7.29.4",
     "jsdom": "^22.1.0",
     "prettier": "2.6.1",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   },
   "prettier": {
     "semi": false,

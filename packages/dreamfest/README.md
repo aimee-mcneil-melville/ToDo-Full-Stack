@@ -235,24 +235,45 @@ _ If you delete a location that has an event, what happens to the event? Why?
 </details>
 <br />
 
-### 11. Optimise database queries
+### 11. Test helper functions
 
 <details>
-  <summary>More about optimised database queries</summary>
+  <summary>More about testing helpers</summary>
+
+Some tests have been created in `helpers.test.ts` but they haven't been written yet. They are just testing the functions exported from `helpers.ts` so they should be pretty easy (as far as testing goes). Some of the functionality hasn't been implemented in the helper functions, so you'll need to do that too. Perhaps this is a good time to revisit test-driven development (write the tests before implementing the functionality in `helpers.ts`). Remember red, green, refactor! \* Note that the `validateDay` function will use a `days` parameter if one is supplied, or if not then it will use the hard-coded `eventDays` value (similar to `db = connection` that you've been using in your functions)
+
+</details>
+<br />
+
+### 12. Quality measures
+
+<details>
+  <summary>Optimising database queries</summary>
 
 With database queries, it's often most efficient to ask for only the data you need. Take a look at `getAllLocations`, and you might notice that selecting all fields will include the `description` data. But the description data for the full set of locations is only used by the `showLocations.hbs` view. Every other time we call `getAllLocations` the `description` is not used.
 
 Consider writing a separate db function (perhaps `getAllLocationsWithDesc`?) to request the complete data when needed, and updating `getAllLocations` to request only the necessary fields in all other cases.
 
 </details>
-<br />
-
-### 12. Test helper functions
 
 <details>
-  <summary>More about testing helpers</summary>
+  <summary>Optimising images</summary>
 
-Some tests have been created in `helpers.test.ts` but they haven't been written yet. They are just testing the functions exported from `helpers.ts` so they should be pretty easy (as far as testing goes). Some of the functionality hasn't been implemented in the helper functions, so you'll need to do that too. Perhaps this is a good time to revisit test-driven development (write the tests before implementing the functionality in `helpers.ts`). Remember red, green, refactor! \* Note that the `validateDay` function will use a `days` parameter if one is supplied, or if not then it will use the hard-coded `eventDays` value (similar to `db = connection` that you've been using in your functions)
+  Another way to improve the performance of a site is by making sure images are fit for purpose. Saving images to the best format and resolution will ensure you don't unnecessarily slow down the experience for users. For more detail, check out [this resource](https://web.dev/fast/#optimize-your-images).
+
+</details>
+
+<details>
+  <summary>Linting and formatting</summary>
+
+  We've already put in place automatic tools that help to format your code in a consistent way. This helps others read your code and makes your life easier, too! If you've ever noticed that whitespace or quotes change when you save a file, you've seen Prettier in action. In addition, we've set up a set of "lint" rules which may have caused angry-looking underlines on your code. You can explicitly cause eslint to run and output errors and warnings by running `npm run lint` from the command line. Fix any problems it informs you of, and your code will be that much cleaner.
+
+</details>
+
+<details>
+  <summary>Separation of concerns</summary>
+
+  Separation of concerns is the idea that a function, component, or file should have a single responsibility. Having CSS in a separate file from your HTML is one early example. You will likely have been doing this without thinking too much about it, but check to make sure that your functions and files aren't doing too much. If you find a function that's doing several things, refactor it! Separation of concerns helps keep code maintainable and testable.
 
 </details>
 

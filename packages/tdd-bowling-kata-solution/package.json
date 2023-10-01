@@ -10,6 +10,6 @@
   "author": "Don Smith <don@devacademy.co.nz>",
   "license": "ISC",
   "devDependencies": {
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   }
 }

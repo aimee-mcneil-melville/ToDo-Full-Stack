@@ -12,7 +12,6 @@
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
-
     "knex": "knex --knexfile server/db/knexfile.ts",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
@@ -61,7 +60,7 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.4"
   },
   "prettier": {
     "semi": false,

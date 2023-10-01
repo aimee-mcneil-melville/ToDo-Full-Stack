@@ -163,7 +163,32 @@ These next steps will be full stack, requiring you to make changes to both the f
 
 - [ ] Refactor your code into separate components (if it isn't already)
 
-- [ ] Write tests for your components
+---
+
+## Stretch
+
+### 9. Quality measures
+
+<details>
+  <summary>Testing for accessibility</summary>
+
+  Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form with the [WAVE browser extension](https://wave.webaim.org/extension/), and fix any errors, contrast errors, and alerts.
+
+  Need a refresher? [Watch a video demo](https://www.youtube.com/watch?v=sdIkpL9EiN4)
+
+</details>
+
+<details>
+  <summary>Full-stack unit tests</summary>
+
+  Try writing unit tests for the "add a widget" feature all the way up and down the stack. This will likely look like:
+  - Testing for component rendering or event handling
+  - Testing a component that uses an apiClient function (this will require nock)
+  - Testing a route
+  - Testing a database function
+
+  If you finish that, keep adding test coverage to more of the app.
+</details>
 
 ---
 
