@@ -4,7 +4,7 @@ import * as URL from 'node:url'
 import express from 'express'
 import handlebars from 'express-handlebars'
 
-import userRoutes from './routes/users.js'
+import userRoutes from './routes/users.tsx'
 
 const server = express()
 
