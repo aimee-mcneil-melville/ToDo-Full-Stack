@@ -3,7 +3,7 @@
 Learning objectives:
 
 1. Learn Express router
-1. Practise using callback functions
+1. Practise using promises
 1. Practise server side rendering
 
 When complete, your application might look like this:
@@ -30,9 +30,10 @@ When complete, your application might look like this:
   <summary>Important tips for completing the challenge</summary>
 
   1. The order of routes is important. The first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
-  2. There can only be one server response (e.g. `res.send()` or `res.render()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
-  3. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
-  4. Don't forget the error response format of callback functions (if in doubt check the [node `fs` documentation](https://nodejs.org/api/fs.html))
+  1. There can only be one server response (e.g. `res.send()` or `res.render()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
+  1. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
+  1. Don't forget to handle errors when your promises fail using `try { } catch (e) {  }`
+  1. When in doubt check the [node `fs/promises` documentation](https://nodejs.org/api/fs.html#promises-api)
 </details>
 <br />
 
@@ -43,7 +44,7 @@ When complete, your application might look like this:
   <details style="padding-left: 2em">
     <summary>More about the server</summary>
 
-    1. In the `server.js`, add an HTTP GET root route (`/`). For now, let's just send the word 'Pupparazzi'
+    1. In the `server/server.js`, add an HTTP GET root route (`/`). For now, let's just send the word 'Pupparazzi'
     1. Start the server and go to http://localhost:3000 to see if we are winning
     
     Now that we have a root route, let's use it to see some puppies.
@@ -78,7 +79,7 @@ When complete, your application might look like this:
     <summary>More about puppy pages</summary>
   
     1. Take note of the url you are sent to (perhaps `/puppies/1`)
-    1. Create a `routes.js` file in the main repo directory - this will store all of our routes
+    1. Create a `routes.js` file in the `server/` directory - this will store all of our routes
     1. `require` Express in your `routes.js` file and create a router. Also, don't forget to export the router
     1. `require` and `use` our newly created `routes.js` file in our `server`. We'll use the string `/puppies` to define the prefix path for our router. Note that the `use` line of code should come **after** your server configuration and handlebars configuration
     1. Create a GET route in your `routes.js` to render a particular puppy. The route should contain the `id` as a parameter so you can access it via `req.params.id` (so perhaps `/:id`)
@@ -104,7 +105,7 @@ When complete, your application might look like this:
     1. Create an object of the updated puppy data from the request body
     1. Read in the JSON file and locate the puppy we are going to update
     1. Update the puppy in the array
-    1. Write the entire array back into the JSON file
+    1. Write the entire array back into the JSON file (with `fsPromises.writeFile`)
     1. Redirect to the GET `/puppies/:id` route
 
     If all goes well, you should be able to update the puppy information. If that isn't happening, undoing the changes you've made to the JSON file might come in handy.
@@ -118,10 +119,21 @@ When complete, your application might look like this:
 
   If you've reached this point, congratulations! As a stretch, you might like to do the following:
 
-  1. Refactor the `fs.readFile` and `fs.writeFile` calls into a separate file (separation of concerns)
-      - As these are async calls to begin with, you will need to write functions around them which accept and call callback functions as a parameter (don't forget the error response format when calling those callbacks)
-  1. Write some tests using `jest` and `supertest` (don't forget to `npm install` these)
+  1. Refactor the `readFile` and `writeFile` calls into a separate file (separation of concerns)
+      - As these return promises to begin with, you will need to write functions around them which also return promises
+      - Write some tests using `vitest` and `supertest`
   1. Add a new view and route that includes a form which lets the user add a new puppy
+</details>
+
+## E2E tests and submitting this challenge for marking
+
+<details>
+  <summary>How to submit this challenge</summary>
+
+  This challenge ships with some end-to-end tests written in playwright, if you are submitting this
+  challenge to complete an NZQA requirement, please make sure these tests are passing _before_ you submit.
+
+  Read this short guide on [how to run them](./doc/end-to-end-testing.md).
 </details>
 
 ---

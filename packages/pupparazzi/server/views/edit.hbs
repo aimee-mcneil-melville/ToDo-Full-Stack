@@ -1,21 +1,21 @@
-<form class="form" action="/puppies/{{id}}/edit" method="post">
+<form class="form" action="/edit/{{id}}" method="post">
   <img class="img-circle" src="{{image}}" alt="{{name}}">
   <label for="name" class="form-item">
     Name:
-    <input type="text" name="name" value="{{name}}">
+    <input type="text" name="name" id="name" value="{{name}}">
   </label>
   
   <label for="breed" class="form-item">
     Breed:
-    <input type="text" name="breed" value="{{breed}}">
+    <input type="text" name="breed" id="breed" value="{{breed}}">
   </label>
   
   <label for="owner" class="form-item">
     Owner:
-    <input type="text" name="owner" value="{{owner}}">
+    <input type="text" name="owner" id="owner" value="{{owner}}">
   </label>
   
   <input type="hidden" name="image" value="{{image}}">
   
-  <input type="submit" name="" value="Submit">
+  <input type="submit" value="Submit">
 </form>
