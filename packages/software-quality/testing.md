@@ -28,13 +28,3 @@ Additional to our standard curriculum:
 ## Learning objective(s)
 
 2. Demonstrate an understanding of quality practices for software development, such as automated testing, performance, and security
-
-## Required
-Choose and implement two [software quality measures](../software-quality/) to complete CP02.
-
-## Requirements
-
-* I have selected and implemented any **one** testing option, either from the list above or of my own choosing
-* I have included a comment in my CP02 submission to tell the facilitator which testing measure I have selected and implemented
-* **Check:** My application runs and I have implemented at least one of the above testing measures, and I have included a comment on CP02 to explain which testing measure I have selected and implemented
-* **Submit:** I have checked what I am submitting does the above, and I have posted a link to my branch or commit(s) that displays the criteria

@@ -299,12 +299,45 @@ Now our middleware is ready to be used.
 
 🎉 Congratulations, you made it! 🎉
 
+---
 ## Stretch
 
+### 12. Conditionally displayed content
 <details>
-  <summary>More about stretch challenges</summary>
+  <summary>More about conditionally displayed content</summary>
 
   Some of the buttons and/or links are only valid in certain circumstances (if you're logged in, if you're the person who created that fruit, etc.). What improvements can you make to the app so that users only see buttons/links that they're actually allowed to use?
+</details>
+
+### 13. Quality measures
+
+<details>
+  <summary>Error-handling hygiene</summary>
+
+  Handling errors properly benefits app developers and end-users alike, but it's also a security concern. Revealing the specifics of what exactly has gone wrong can give malicious parties information they can use to plan an attack. To prevent this, identify places in your code where an error could occur, catch those errors, and provide a "sanitized" response without sending the full details to the browser. If possible, tell the user how to fix the problem.
+  
+  See a really in-depth list of [error-handling practices](https://www.iansresearch.com/resources/all-blogs/post/security-blog/2023/08/17/error-handling-and-logging-checklist). You don't need to go this far, but it's a great list, if you're curious!
+
+</details>
+
+<details>
+  <summary>Linting and formatting</summary>
+
+  We've already put in place automatic tools that help to format your code in a consistent way. This helps others read your code and makes your life easier, too! If you've ever noticed that whitespace or quotes change when you save a file, you've seen Prettier in action. In addition, we've set up a set of "lint" rules which may have caused angry-looking underlines on your code. You can explicitly cause eslint to run and output errors and warnings by running `npm run lint` from the command line. Fix any problems it informs you of, and your code will be that much cleaner.
+
+</details>
+
+<details>
+  <summary>Consistent code conventions</summary>
+
+  Similar tasks in your code should be accomplished the same way everywhere. Some examples could be:
+  
+  - using if/else vs ternaries vs logical conjunctions (&&)
+  - using typescript interfaces vs defining types inline
+  - using async...await vs .then for asynchronous functions
+
+  If you have an established convention and you find you need to break it for some reason, be sure to include a comment explaining why.
+
 </details>
 
 ___

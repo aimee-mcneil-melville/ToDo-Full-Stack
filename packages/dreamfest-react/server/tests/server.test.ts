@@ -4,7 +4,6 @@ import request  from 'supertest'
 import server from '../server'
 import * as db from '../db/index.ts'
 
-
 vi.mock('../db/index.ts')
 
 describe('Schedule API', () => {

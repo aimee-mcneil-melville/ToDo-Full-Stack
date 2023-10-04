@@ -1,7 +1,5 @@
 We can be proud of anything we've built, whether or not it even works, but what does it mean for software to be built at a high level of quality? Opinions will vary widely between businesses, teams, and individual developers, especially with regards to what is the **most** important, but here we'll go into some detail on a few of the common answers to this question.
 
-In particular, each topic page will describe how you might implement that quality measure for the assessment "CP02 - Use two or more software quality practises to improve an application". Remember to implement two measures for a single application, and include a comment in your CP02 submission to let your facilitator know what you've chosen.
-
 - [Performance](performance.md)
 - [Security](security.md)
 - [Accessibility](accessibility.md)
