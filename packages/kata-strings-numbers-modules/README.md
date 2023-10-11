@@ -31,24 +31,12 @@ This kata is similar to the others. Some tests have been written in the `tests` 
     <summary>More about <code>getType</code></summary>
 
     ```js
-    function getType (thing) {
+    export function getType (thing) {
       return typeof thing
     }
     ```
   </details>
 
-- [ ] Export the function so `tests/getType.test.js` can access the function
-  <details style="padding-left: 2em">
-    <summary>More about exporting</summary>
-    
-    Put this at the top of `utilities.js`:
-
-    ```js
-    module.exports = {
-      getType: getType
-    }
-    ```
-  </details>
 
 - [ ] Save `utilities.js` and verify that the test is now passing
 
@@ -60,7 +48,6 @@ This kata is similar to the others. Some tests have been written in the `tests` 
   <details style="padding-left: 2em">
     <summary>Tips</summary>
     
-    - Don't forget to export each of the functions once you've implemented them
     - Be sure you understand how to use `typeof`
     - You are permitted &mdash; encouraged, even &mdash; to read the tests. Be aware that some of the tests use data defined in `./data/*.js`, so you may need to inspect those files to get a sense of the data being used
     - If you get stuck with `NaN`, you should know that 
