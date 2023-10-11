@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     <Auth0Provider
       domain=""
       clientId=""
-      redirectUri={window.location.origin}
-      audience=""
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+        audience: '',
+      }}
     >
       <Router>
         <App />
