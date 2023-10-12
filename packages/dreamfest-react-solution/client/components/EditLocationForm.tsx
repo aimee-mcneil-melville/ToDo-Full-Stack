@@ -64,6 +64,7 @@ export default function EditLocationForm({ id, name, description }: Props) {
         onChange={handleChange}
         value={formState.description}
       />
+      <div></div>
       <button disabled={updateLocation.isLoading}>Update location</button>
     </form>
   )

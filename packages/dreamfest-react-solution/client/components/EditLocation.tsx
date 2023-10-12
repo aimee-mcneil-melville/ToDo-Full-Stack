@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import LocationsNav from './LocationsNav.tsx'
 import EditLocationForm from './EditLocationForm.tsx'
 import { useLocationData } from '../hooks/api.ts'
+import LoadingIndicator from './LoadingIndicator.tsx'
 
 export default function EditLocation() {
   const params = useParams()
@@ -13,7 +14,7 @@ export default function EditLocation() {
   if (isLoading) {
     return (
       <main aria-live="polite" aria-busy={true}>
-        <p>Loading...</p>
+        <LoadingIndicator />
       </main>
     )
   }

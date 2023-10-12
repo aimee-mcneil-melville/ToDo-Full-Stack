@@ -1,6 +1,7 @@
 import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import { useLocations } from '../hooks/api.ts'
 import { EventData } from '../../models/Event.ts'
+import LoadingIndicator from './LoadingIndicator.tsx'
 
 interface Props extends EventData {
   submitLabel: string
@@ -49,7 +50,7 @@ export default function EditEventForm({
   )
 
   if (locations.isLoading) {
-    return 'Loading...'
+    return <LoadingIndicator />
   }
 
   if (locations.isError || !locations.data) {

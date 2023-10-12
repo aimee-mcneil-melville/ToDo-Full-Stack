@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import LineupNav from './LineupNav'
 import { useSchedule } from '../hooks/api.ts'
+import LoadingIndicator from './LoadingIndicator.tsx'
 
 export default function DaySchedule() {
   const { day } = useParams()
@@ -10,7 +11,7 @@ export default function DaySchedule() {
     return (
       <>
         <LineupNav />
-        <p>Loading...</p>
+        <LoadingIndicator />
       </>
     )
   }
@@ -23,12 +24,14 @@ export default function DaySchedule() {
   return (
     <>
       <LineupNav />
+
       <h2>
         events: <span className="data">{day}</span>
       </h2>
-      <a className="nav" href={`/events/add/${day}`}>
+
+      <Link className="nav" to={`/events/add/${day}`}>
         add event
-      </a>
+      </Link>
 
       <ul className="cards">
         {events.map(({ eventName, id, locationName, time, description }) => (
@@ -45,7 +48,7 @@ export default function DaySchedule() {
               </div>
             </div>
             <p className="event-description data">{description}</p>
-            <a href={`/events/${id}/edit`}>edit event</a>
+            <Link to={`/events/${id}/edit`}>edit event</Link>
           </li>
         ))}
       </ul>

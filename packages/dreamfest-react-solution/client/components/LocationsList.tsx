@@ -1,5 +1,7 @@
 import LocationsNav from './LocationsNav.tsx'
+import { Link } from 'react-router-dom'
 import { useLocations } from '../hooks/api.ts'
+import LoadingIndicator from './LoadingIndicator.tsx'
 
 export default function LocationsList() {
   const { isLoading, isError, data } = useLocations()
@@ -8,7 +10,7 @@ export default function LocationsList() {
     return (
       <>
         <LocationsNav />
-        Loading...
+        <LoadingIndicator />
       </>
     )
   }
@@ -27,7 +29,7 @@ export default function LocationsList() {
             <div className="location">
               <span className="title">{data.name}</span>
               <p className="data">{data.description}</p>
-              <a href={`/locations/${data.id}/edit`}>edit location</a>
+              <Link to={`/locations/${data.id}/edit`}>edit location</Link>
             </div>
           </li>
         ))}

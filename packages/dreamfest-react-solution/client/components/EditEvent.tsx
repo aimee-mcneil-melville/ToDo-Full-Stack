@@ -5,6 +5,7 @@ import EditEventForm from './EditEventForm'
 import LineupNav from './LineupNav'
 
 import { useDeleteEvent, useEditEvent, useEventData } from '../hooks/api.ts'
+import LoadingIndicator from './LoadingIndicator.tsx'
 
 export default function EditEvent() {
   const params = useParams()
@@ -24,7 +25,7 @@ export default function EditEvent() {
   }, [])
 
   if (event.isLoading) {
-    return 'Loading...'
+    return <LoadingIndicator />
   }
 
   if (event.isError || !event.data) {
