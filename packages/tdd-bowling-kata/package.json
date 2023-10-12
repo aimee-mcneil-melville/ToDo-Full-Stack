@@ -10,6 +10,5 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "devDependencies": {
-    "vitest": "^0.34.4"
   }
 }
