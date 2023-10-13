@@ -4,7 +4,7 @@ import * as db from '../db/index.ts'
 
 const router = express.Router()
 
-// GET /locations
+// GET /api/v1/locations
 router.get('/', async (req, res, next) => {
   try {
     const locations = await db.getAllLocations()

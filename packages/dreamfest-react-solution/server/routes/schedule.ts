@@ -5,7 +5,7 @@ import * as db from '../db/index.ts'
 
 const router = express.Router()
 
-// GET /schedule/friday
+// GET api/v1/schedule/friday
 router.get('/:day', async (req, res, next) => {
   try {
     const day = validateDay(req.params.day)
