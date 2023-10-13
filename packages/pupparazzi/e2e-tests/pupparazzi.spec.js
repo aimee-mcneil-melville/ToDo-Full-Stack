@@ -2,10 +2,22 @@
 import { test, expect } from '@playwright/test'
 import * as fs from 'node:fs/promises'
 
+let initialData 
+
+test.beforeAll(async () => {
+  // remember how our data looked when we started
+  initialData = await fs.readFile('./server/data/data.json', 'utf8')
+})
+
 test.beforeEach(async () => {
   // before each test, we'll set up our database to a
   // predefined state
   await resetData()
+})
+
+test.afterAll(async () => {
+  // when we're done we can put it back to normal
+  await fs.writeFile('./server/data/data.json', initialData, 'utf8')
 })
 
 test('has title', async ({ page }) => {
