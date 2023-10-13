@@ -27,7 +27,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "prettier": "2.6.1"
+    "prettier": "2.6.1",
+    "vitest": "^0.34.6"
   },
   "prettier": {
     "semi": false,

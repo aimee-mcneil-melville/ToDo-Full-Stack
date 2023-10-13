@@ -16,6 +16,20 @@ This kata aims to help you become familiar with test-first design, also commonly
 - [ ] `npm install -D vitest`
 - [ ] Change the `test` script in `package.json` to `"vitest"`
 
+<details style="padding-left: 2em">
+  <summary>More about the test script</summary>
+
+  You'll see a line in `package.json` that says
+  ```
+  "test": "echo \"Error: no test specified\" && exit 1"
+  ```
+  This is what will happen when you run `npm test` or `npm t`. Instead of echoing an error, replace it with `"vitest"` so it reads
+  ```
+  "test": "vitest"
+  ```
+
+</details>
+
 -----
 ## Tests (which drive development)
 
@@ -55,9 +69,9 @@ This kata aims to help you become familiar with test-first design, also commonly
 
 ### 2. Preparing to test frames
 
-- [ ] `require` a new file, `./score`, from `score.test.js`
+- [ ] import a new file, `./score`, from `score.test.js`
   <details style="padding-left: 2em">
-    <summary>More about requiring</summary>
+    <summary>More about importing</summary>
 
     At the top of `score.test.js`, add a reference to the code we intend to test.
 
@@ -67,11 +81,11 @@ This kata aims to help you become familiar with test-first design, also commonly
     Now you'll notice we are getting an error because it can't find the `score` reference (because it doesn't exist yet).
   </details>
 
-- [ ] Create `./score.js` which exports an empty object
+- [ ] Create `score.js` which exports an empty object
   <details style="padding-left: 2em">
-    <summary>More about <code>./score.js</code></summary>
+    <summary>More about <code>score.js</code></summary>
 
-    Create a new file `./score.js` file with the least amount of code.
+    Create a new `score.js` file in the top level of your project. For now, it will contain the minimum amount of code required to get the test to pass.
     
     ```js
     export {}
@@ -276,12 +290,31 @@ Now let's add a feature that can score a normal frame (one without a spare or a 
     Maybe we could create an `isTenth` variable and pass it when calling `scoreFrame`?
   </details>
 
+### 10. Score a perfect game
+
+- [ ] Add a test that scores a perfect game
+
+<details style="padding-left: 2em">
+  <summary>More about a perfect game</summary>
+
+  A perfect game should result in a score of 300.
+  ```
+  const frames = [
+    [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]
+  ]
+  ```
+
+  You may find that scoring a perfect game reveals some flaws in your logic (maybe when scoring the 9th frame?). Make adjustments until the tests pass!
+</details>
+
 -----
 ## Stretch
 
 ### Create a client to consume the game module
 
 Name it `index.js` so we can run it with `npm start`.
+
+Perhaps have a look at the [prompt](https://www.npmjs.com/package/prompt) package.
 
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=tdd-bowling-kata)

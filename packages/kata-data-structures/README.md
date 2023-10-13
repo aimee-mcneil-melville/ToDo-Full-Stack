@@ -28,20 +28,12 @@ Before working on a function, take turns explaining what each test is doing with
   <details style="padding-left: 2em">
     <summary>More about the <code>getType</code> test</summary>
     
-    You'll notice the test is failing with a `TypeError: getType is not a function`. The test file is calling `require` on the correct file, but `getType.js` isn't exporting the function.
+    You'll notice the test is failing.
   </details>
 
 ### 2. Implementing `getType`
 
 - [ ] Open the folder in VS Code using `code .` and open `getType.js`
-- [ ] Export the function by adding `module.exports = getType` and save the file
-  <details style="padding-left: 2em">
-    <summary>Tips</summary>
-
-    - Now you'll notice the tests are failing for different reasons
-    - Make sure you do `module.exports = getType` exactly as written here - this exports just the one function, which is what `getType.test.js` is expecting. Another style you'll commonly see is `module.exports = { myFunction, anotherFunction }`, which exports an object with two properties which are functions. Either way is fine so long as what one file is exporting matches what the other file is expecting in its `require` line
-  </details>
-
 - [ ] Implement the `getType` function
   <details style="padding-left: 2em">
     <summary>More about <code>getType</code></summary>
