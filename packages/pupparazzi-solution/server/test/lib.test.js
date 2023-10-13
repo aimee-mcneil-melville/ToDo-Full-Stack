@@ -1,6 +1,9 @@
+import * as fs from 'node:fs/promises'
 import { describe, it, expect, vi } from 'vitest'
 
 import { getPuppyData, getPuppyById, addNewPuppy, editPuppy } from '../lib'
+
+vi.mock('node:fs/promises')
 
 const mockPuppies = {
   puppies: [
@@ -17,256 +20,131 @@ const mockPuppies = {
 }
 
 describe('getPuppyData', () => {
-  it('returns an array of puppy data on success', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-    }
+  it('returns an array of puppy data on success', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    getPuppyData((err, puppyData) => {
-      expect(err).toBeNull()
-      expect(puppyData.puppies).toHaveLength(3)
-    }, mockfs)
+    const puppyData = await getPuppyData()
+    expect(puppyData.puppies).toHaveLength(3)
   })
 
-  it('returns an error when it cannot load the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(new Error('test load error'))
-      },
-    }
+  it('returns an error when it cannot load the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      throw new Error('test load error')
+    })
 
-    const logger = { error: vi.fn() }
-
-    getPuppyData(
-      (err, puppyData) => {
-        expect(err.message).toMatch('Unable to load the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-        expect(puppyData).toBeUndefined()
-      },
-      mockfs,
-      logger
-    )
+    await expect(getPuppyData()).rejects.toThrow('test load error')
+    expect(fs.readFile).toBeCalled()
   })
 
-  it('returns an error when it cannot parse the JSON', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, 'this is not a json document')
-      },
-    }
+  it('returns an error when it cannot parse the JSON', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return 'Invalid json'
+    })
 
-    const logger = { error: vi.fn() }
-
-    getPuppyData(
-      (err, puppyData) => {
-        expect(err.message).toMatch('Unable to parse the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-        expect(puppyData).toBeUndefined()
-      },
-      mockfs,
-      logger
-    )
+    await expect(getPuppyData()).rejects.toThrow()
+    expect(fs.readFile).toBeCalled()
   })
 })
 
 describe('getPuppyById', () => {
-  it('returns puppy details on success', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-    }
+  it('returns puppy details on success', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    getPuppyById(
-      2,
-      (err, puppyDetails) => {
-        expect(err).toBeNull()
-        expect(puppyDetails.name).toBe('Coco')
-        expect(puppyDetails.owner).toBe('Chloe')
-        expect(puppyDetails.image).toBe('/img/2.jpg')
-        expect(puppyDetails.breed).toBe('Lab')
-      },
-      mockfs
-    )
+    const puppyDetails = await getPuppyById(2)
+    expect(puppyDetails.name).toBe('Coco')
+    expect(puppyDetails.owner).toBe('Chloe')
+    expect(puppyDetails.image).toBe('/img/2.jpg')
+    expect(puppyDetails.breed).toBe('Lab')
   })
 
-  it('returns an error when it cannot load the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(new Error('test load error'))
-      },
-    }
+  it('returns an error when it cannot load the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      throw new Error('test load error')
+    })
 
-    const logger = { error: vi.fn() }
-
-    getPuppyById(
-      2,
-      (err, puppyDetails) => {
-        expect(err.message).toMatch('Unable to load the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-        expect(puppyDetails).toBeUndefined()
-      },
-      mockfs,
-      logger
-    )
+    await expect(getPuppyById(2)).rejects.toThrow()
   })
 
-  it('returns an error when it cannot parse the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, 'this is not a json document')
-      },
-    }
+  it('returns an error when it cannot parse the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return 'Invalid JSON'
+    })
 
-    const logger = { error: vi.fn() }
-
-    getPuppyById(
-      2,
-      (err, puppyData) => {
-        expect(err.message).toMatch('Unable to parse the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-        expect(puppyData).toBeUndefined()
-      },
-      mockfs,
-      logger
-    )
+    await expect(getPuppyById(2)).rejects.toThrow()
   })
 
-  it('returns an error when it cannot find the puppy id', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-    }
+  it('returns an error when it cannot find the puppy id', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    getPuppyById(
-      9999,
-      (err, puppyDetails) => {
-        expect(err.message).toMatch('ID not found')
-        expect(puppyDetails).toBeUndefined()
-      },
-      mockfs
-    )
+    await expect(getPuppyById(9999)).rejects.toThrow('ID not found')
   })
 })
 
 describe('addNewPuppy', () => {
-  it('adds a new puppy on success', () => {
-    expect.assertions(7)
+  it('adds a new puppy on success', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-      writeFile: (filepath, contents, enc, callback) => {
-        const encoding = enc.toLowerCase().replace('-', '')
-        expect(encoding).toMatch('utf8')
-        expect(contents).toMatch('Rex')
-        expect(contents).toMatch('Sue')
-        expect(contents).toMatch('rex.jpg')
-        expect(contents).toMatch('Pug')
-        callback()
-      },
-    }
+    vi.mocked(fs.writeFile).mockImplementation(async () => {})
 
     const newPup = { name: 'Rex', owner: 'Sue', image: 'rex.jpg', breed: 'Pug' }
-
-    addNewPuppy(
-      newPup,
-      (err, id) => {
-        expect(err).toBeNull()
-        expect(id).toBe(4)
-      },
-      mockfs
+    const id = await addNewPuppy(newPup)
+    expect(fs.writeFile).toBeCalledWith(
+      expect.any(String),
+      expect.any(String),
+      'utf-8'
     )
+    expect(id).toBe(4)
   })
 
-  it('returns an error when it cannot load the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(new Error('test load error'))
-      },
-    }
+  it('returns an error when it cannot load the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      throw new Error('test load error')
+    })
 
-    const logger = { error: vi.fn() }
     const newPuppy = {} // doesn't matter that it's empty
 
-    addNewPuppy(
-      newPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to load the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
+    await expect(addNewPuppy(newPuppy)).rejects.toThrow('test load error')
   })
 
-  it('returns an error when it cannot parse the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, 'this is not a json document')
-      },
-    }
+  it('returns an error when it cannot parse the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return 'this is not a json document'
+    })
 
-    const logger = { error: vi.fn() }
     const newPuppy = {} // doesn't matter that it's empty
-
-    addNewPuppy(
-      newPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to parse the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
+    await expect(addNewPuppy(newPuppy)).rejects.toThrow()
   })
 
-  it('returns an error when it cannot write the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-      writeFile: (filepath, contents, enc, callback) => {
-        callback(new Error('test error message'))
-      },
-    }
+  it('returns an error when it cannot write the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    const logger = { error: vi.fn() }
+    vi.mocked(fs.writeFile).mockImplementation(async () => {
+      throw new Error('test error message')
+    })
+
     const newPuppy = {} // doesn't matter that it's empty
 
-    addNewPuppy(
-      newPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to write the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
+    await expect(addNewPuppy(newPuppy)).rejects.toThrow()
   })
 })
 
 describe('editPuppy', () => {
-  it('updates a new puppy on success', () => {
-    expect.assertions(6)
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-      writeFile: (filepath, contents, enc, callback) => {
-        const encoding = enc.toLowerCase().replace('-', '')
-        expect(encoding).toMatch('utf8')
-        expect(contents).toMatch('Test Pup')
-        expect(contents).toMatch('Test Owner')
-        expect(contents).toMatch('test.jpg')
-        expect(contents).toMatch('Test breed')
-        callback()
-      },
-    }
+  it('updates a new puppy on success', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
+
+    vi.mocked(fs.writeFile).mockImplementation(async () => {})
 
     const updatedPuppy = {
       id: 2,
@@ -276,99 +154,59 @@ describe('editPuppy', () => {
       breed: 'Test breed',
     }
 
-    editPuppy(
-      updatedPuppy,
-      (err) => {
-        expect(err).toBeUndefined()
-      },
-      mockfs
+    const newPuppies = mockPuppies.puppies.map((pup) => {
+      return pup.id === 2 ? updatedPuppy : pup
+    })
+
+    await editPuppy(updatedPuppy)
+    expect(fs.writeFile).toBeCalledWith(
+      expect.any(String),
+      JSON.stringify({ puppies: newPuppies }, null, 2),
+      'utf-8'
     )
   })
 
-  it('returns an error when it cannot load the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(new Error('test load error'))
-      },
-    }
+  it('returns an error when it cannot load the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      throw new Error()
+    })
 
-    const logger = { error: vi.fn() }
+    const updatedPuppy = {} // doesn't matter that it's empty
+    await expect(editPuppy(updatedPuppy)).rejects.toThrow()
+  })
+
+  it('returns an error when it cannot parse the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return 'not a json document'
+    })
+
     const updatedPuppy = {} // doesn't matter that it's empty
 
-    editPuppy(
-      updatedPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to load the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
+    await expect(editPuppy(updatedPuppy)).rejects.toThrow()
   })
 
-  it('returns an error when it cannot parse the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, 'this is not a json document')
-      },
-    }
+  it('returns an error when it cannot write the file', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
-    const logger = { error: vi.fn() }
-    const updatedPuppy = {} // doesn't matter that it's empty
+    vi.mocked(fs.writeFile).mockImplementation(async () => {
+      throw new Error('test error message')
+    })
 
-    editPuppy(
-      updatedPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to parse the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
-  })
-
-  it('returns an error when it cannot write the file', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-      writeFile: (filepath, contents, enc, callback) => {
-        callback(new Error('test error message'))
-      },
-    }
-
-    const logger = { error: vi.fn() }
     // doesn't matter that it isn't complete
     const updatedPuppy = { id: 2 }
-
-    editPuppy(
-      updatedPuppy,
-      (err) => {
-        expect(err.message).toMatch('Unable to write the data file')
-        expect(logger.error).toHaveBeenCalledTimes(1)
-      },
-      mockfs,
-      logger
-    )
+    await expect(editPuppy(updatedPuppy)).rejects.toThrow()
   })
 
-  it('returns an error when it cannot find the puppy id', () => {
-    const mockfs = {
-      readFile: (filepath, encoding, callback) => {
-        callback(null, JSON.stringify({ ...mockPuppies }))
-      },
-    }
+  it('returns an error when it cannot find the puppy id', async () => {
+    vi.mocked(fs.readFile).mockImplementation(async () => {
+      return JSON.stringify({ ...mockPuppies })
+    })
 
     // doesn't matter that it isn't complete
     const updatedPuppy = { id: 9999 }
 
-    editPuppy(
-      updatedPuppy,
-      (err, puppyDetails) => {
-        expect(err.message).toMatch('ID not found')
-        expect(puppyDetails).toBeUndefined()
-      },
-      mockfs
-    )
+    await expect(editPuppy(updatedPuppy)).rejects.toThrow('ID not found')
   })
 })

@@ -125,5 +125,16 @@ When complete, your application might look like this:
   1. Add a new view and route that includes a form which lets the user add a new puppy
 </details>
 
+## E2E tests and submitting this challenge for marking
+
+<details>
+  <summary>How to submit this challenge</summary>
+
+  This challenge ships with some end-to-end tests written in playwright, if you are submitting this
+  challenge to complete an NZQA requirement, please make sure these tests are passing _before_ you submit.
+
+  Read this short guide on [how to run them](./doc/end-to-end-testing.md).
+</details>
+
 ---
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=pupparazzi)
