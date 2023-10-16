@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #AFC2D5;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  min-width: 360px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+header {
+  background-image: url('../images/forest-header.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #000724;
+  width: 100%;
+}
+
+a:link, a:visited  {
+  color: #000724;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #B80C09;
+}
+
+h1 {
+  padding: 128px 0 48px 48px;
+  font-size: 3.5em;
+  color: white;
+}
+
+h2 {
+  display: inline-block;
+  margin: 1rem 0 1rem 3rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+nav {
+  background-color: #feffb1;
+  width: 100%;
+  padding: 0.25rem 0 0.25rem 0;
+}
+
+nav a, .nav {
+  display: inline-block;
+  margin-left: 3rem;
+  padding: 1rem 0 1rem 0;
+  font-size: large;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #000724;
+}
+
+@media (max-width:630px) {
+  nav a, .nav {
+    display: block;
+    padding: 5px;
+  }
+}
+
+@media (min-width:630px) {
+  .nav {
+    float: right;
+    margin-right: 3rem;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.data {
+  color: #1A5068;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 3rem 2rem 3rem;
+}
+
+.card {
+  background-size: 75px;
+  background-repeat: no-repeat;
+  background-position: center top 10px;
+  background-color: #ECF6FA;
+  box-shadow: 5px 5px 15px #999;
+  padding: 15px;
+  margin: 10px;
+  width: 209px;
+  list-style: none;
+}
+
+/* Assign icons to list items */
+.cards li:nth-of-type(5n+1) {
+  background-image: url('../images/icons/icon-1.png');
+}
+
+.cards li:nth-of-type(5n+2) {
+  background-image: url('../images/icons/icon-2.png');
+}
+
+.cards li:nth-of-type(5n+3) {
+  background-image: url('../images/icons/icon-3.png');
+}
+.cards li:nth-of-type(5n+4) {
+  background-image: url('../images/icons/icon-4.png');
+}
+
+.cards li:nth-of-type(5n+5) {
+  background-image: url('../images/icons/icon-5.png');
+}
+
+.location, .event {
+  display: flex;
+  flex-direction: column;
+}
+
+.location > p {
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.title {
+  font-weight: bold;
+  color: #1A5068;
+  font-size: 1.125rem;
+  margin-top: 80px;
+  border-top: 3px solid #AFC2D5;
+  padding-top: 10px;
+}
+
+.time-location {
+  margin-top: 15px;
+  font-size: 0.875rem;
+}
+
+.event-description {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+label {
+  display: inline-block;
+  min-width: 90px;
+  text-align: right;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+@media (max-width:630px) {
+  label {
+    text-align: left;
+  }
+}
+
+button {
+  background-color: #AFC2D5;
+  border: none;
+  padding: 15px;
+  font-size: 0.8rem;
+}
+
+button:hover {
+  background-color: #1A5068;
+  color: white;
+}
+
+textarea {
+  width: 300px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 200px  300px;
+  grid-auto-flow: row;
+  grid-gap: 0.8em;
+  padding: 1.1em;
+  width: max-content;
+}
+
+@media (max-width:630px) {
+  .form {
+    margin-left: 2rem;
+    grid-template-columns: 300px;
+  }
+}
+
+/* Tricks to make footer stay at the bottom of the page */
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 60px;    /* Footer height */
+  background-color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #1A5068;
+  text-align: center;
+}
+
+footer p {
+  display: inline-block;
+  padding-top: 10px;
+  margin: 0 10px;
+  color: white;
+}
+
+footer a:link, footer a:visited {
+  color: #AFC2D5;
+}
+
+footer a:hover {
+  color: white;
+}
+
+.loading-indicator {
+  display: block;
+  margin: 10vh auto;
+  width: 20px;
+  height: 20px;
+  border: 10px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  border-top-color: rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+
+  animation: spin 1.4s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

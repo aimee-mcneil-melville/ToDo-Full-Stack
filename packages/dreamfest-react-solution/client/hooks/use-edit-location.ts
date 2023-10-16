@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import request from 'superagent'
-import { Location } from '../../models/Location.ts'
+import { Location } from '../../models/Location.js'
 
-export default function useUpdateLocation() {
+export default function useEditLocation() {
   const queryClient = useQueryClient()
 
   return useMutation({
