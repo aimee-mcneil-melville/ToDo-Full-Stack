@@ -46,7 +46,6 @@ When you're learning a new technology, make sure you start simple and get that w
     - Express Handlebars requires a default layout in order to render templates, and unless we've customised the configuration, the name should be `main.hbs`
     - See [the docs](https://github.com/ericf/express-handlebars) for more on layouts
     - It should look just like a standard HTML page, but with `{{{body}}}` between the `<body></body>` tags (notice there are **three** sets of curly braces there, not two)!
-    - You can include whatever CSS you like: perhaps [Skeleton](https://cdnjs.com/libraries/skeleton) from a CDN if you just want a quick start?
   </details>
 
 - [ ] Set the home route to `render` the provided `home.hbs` view
@@ -252,6 +251,7 @@ Take the chance to explore, play, experiment. Ask lots of questions!
   - Including the title in the data object passed to `res.render` each time works ok, but what if some developer in the future forgets to pass it? It'd be great if there was some way in the template of providing a default title... maybe there's a way using the `{{#if}}` helper?
   - We could shift the data access of our `art` object to a `data.js` file, and only export utility functions with names like `getAll` and `getById(1)`
   - Did you know you can define your own Handlebars helpers, like `{{#if}}` and `{{#each}}`? Try writing a simple helper that (for example) truncates numbers to display only two decimal places
+  - Add some styling! Consider where we store files that we will load into the browser. Maybe near the images?
 </details>
 
 ## Further reading
