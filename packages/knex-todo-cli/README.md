@@ -24,7 +24,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 
   </details>
 
-- [ ] Set file permissions using `chmod +x todo`
+- [ ] Set file permissions using `chmod +x todo.js`
   <details style="padding-left: 2em">
     <summary>More about file permissions</summary>
 
@@ -133,7 +133,7 @@ We're building a simple command-line tool to manage our list of todos. We're fin
 <details style="padding-left: 2em">
   <summary>More about viewing data</summary>
   
-  There are a number of different options for peeking into your SQLite database. You can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the campus computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
+  There are a number of different options for peeking into your SQLite database. We recommend you use the SQLite Viewer VS Code extension. Alternatively, you can install a desktop application, such as the [DB Browser for SQLite](https://sqlitebrowser.org/) (installed on the campus computers) or [DBeaver](https://dbeaver.io) (great for all of the common relational databases - not just SQLite). Or you can use an online tool such as this [SQLite Viewer](https://inloop.github.io/sqlite-viewer/).
 </details>
 
 ---
