@@ -80,7 +80,7 @@
   - [ ] CSS pre- and post-processors (Sass, LESS)
   - [ ] CSS architecture (SMACSS, ITCSS, BEM)
 
-* Accessibility (This is a large topic that can be sensitive to a lot of people. When talking about these topics, please focus on the technologies themselves.)
+* Accessibility (This is a large topic that can be sensitive for a lot of people. When talking about these topics, please focus on the technologies themselves.)
   - [ ] Browsing with assistive technologies _(or pick a single assistive tech)_
   - [ ] Legal requirements of web accessibility in NZ
 
