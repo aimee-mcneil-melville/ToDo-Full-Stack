@@ -1,4 +1,4 @@
-export async function up (knex) {
+export async function up(knex) {
   await knex.schema.createTable('events', (table) => {
     table.increments('id').primary()
     table.integer('location_id').references('locations.id')
@@ -9,6 +9,6 @@ export async function up (knex) {
   })
 }
 
-export async function down (knex) {
+export async function down(knex) {
   await knex.schema.dropTable('events')
 }

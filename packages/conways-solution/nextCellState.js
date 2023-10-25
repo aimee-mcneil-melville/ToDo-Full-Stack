@@ -1,21 +1,20 @@
-import isOverPopulated from "./isOverPopulated";
-import isUnderPopulated from "./isUnderPopulated";
-import isRessurectable from "./isRessurectable";
+import isOverPopulated from './isOverPopulated'
+import isUnderPopulated from './isUnderPopulated'
+import isRessurectable from './isRessurectable'
 
 function nextCellState(cellState, neighbourCount) {
-
   if (
     cellState &&
     (isOverPopulated(neighbourCount) || isUnderPopulated(neighbourCount))
   ) {
-    return false;
+    return false
   }
 
   if (!cellState && isRessurectable(neighbourCount)) {
-    return true;
+    return true
   }
 
-  return cellState;
+  return cellState
 }
 
-export default nextCellState;
+export default nextCellState

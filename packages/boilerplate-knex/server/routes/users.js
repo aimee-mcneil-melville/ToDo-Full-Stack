@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const users = await db.getUsers()
     res.render('index', { users: users })
-  } catch (err) {  
+  } catch (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
   }
 })

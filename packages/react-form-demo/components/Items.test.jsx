@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
-import { test, expect, beforeEach} from 'vitest'
+import { test, expect, beforeEach } from 'vitest'
 
 import Items from './Items'
 import localDbMock from '../localDbMock'

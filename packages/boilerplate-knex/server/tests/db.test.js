@@ -8,7 +8,6 @@ beforeAll(async () => {
   await db.connection.migrate.latest()
 })
 
-
 beforeEach(async () => {
   await db.connection.seed.run()
 })

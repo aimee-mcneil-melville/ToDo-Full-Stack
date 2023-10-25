@@ -10,7 +10,7 @@ router.get('/:day', async (req, res, next) => {
   try {
     const day = validateDay(req.params.day)
     // TODO: replace this data with the results of calling  db.getEventsForDay
-    const events =  [
+    const events = [
       {
         id: 1,
         day: 'friday',

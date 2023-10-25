@@ -12,7 +12,6 @@ import { routes } from './routes.tsx'
 beforeEach(cleanup)
 expect.extend(matchers)
 
-
 export function renderRoute(location = '/') {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -22,7 +21,7 @@ export function renderRoute(location = '/') {
       },
     },
   })
-  
+
   const router = createMemoryRouter(routes, {
     initialEntries: [location],
   })

@@ -1,7 +1,6 @@
 import { describe, beforeEach, beforeAll, it, expect } from 'vitest'
 import { connection, getEventsForDay } from '../index.ts'
 
-
 beforeAll(async () => {
   await connection.migrate.latest()
 })

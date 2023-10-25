@@ -6,7 +6,12 @@ import { render } from '../../test-utils'
 import matchers from '@testing-library/jest-dom/matchers'
 
 import server from '../server'
-import { getPuppyData as _getPuppyData, getPuppyById as _getPuppyById, editPuppy as _editPuppy, addNewPuppy as _addNewPuppy } from '../lib'
+import {
+  getPuppyData as _getPuppyData,
+  getPuppyById as _getPuppyById,
+  editPuppy as _editPuppy,
+  addNewPuppy as _addNewPuppy,
+} from '../lib'
 
 expect.extend(matchers)
 

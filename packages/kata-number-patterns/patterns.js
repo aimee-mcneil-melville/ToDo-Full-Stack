@@ -1,5 +1,3 @@
-
-
 export function examplePattern1(max) {
   let output = ''
   const rows = Array(max).fill(0)

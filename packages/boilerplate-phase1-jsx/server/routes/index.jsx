@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
     renderToStaticMarkup(
       <Layout>
         <Index />
-      </Layout>,
-    ),
+      </Layout>
+    )
   )
 })
 

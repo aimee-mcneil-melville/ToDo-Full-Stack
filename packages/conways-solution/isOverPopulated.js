@@ -1,5 +1,5 @@
 function isOverPopulated(neighbourCount) {
-  return neighbourCount > 3;
+  return neighbourCount > 3
 }
 
-export default isOverPopulated;
+export default isOverPopulated

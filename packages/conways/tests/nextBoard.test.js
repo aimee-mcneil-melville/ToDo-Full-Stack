@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest' 
+import { test, expect } from 'vitest'
 
 import createBoard from '../createBoard'
 import nextBoard from '../nextBoard'

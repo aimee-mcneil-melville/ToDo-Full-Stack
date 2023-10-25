@@ -1,5 +1,5 @@
 {
-  "name": "dreamfest-react-solution",
+  "name": "dreamfest-react",
   "type": "module",
   "version": "0.1.0",
   "description": "NZ's premier culture festival",
@@ -19,11 +19,7 @@
   },
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
-  "keywords": [
-    "db",
-    "database",
-    "backend"
-  ],
+  "keywords": ["db", "database", "backend"],
   "homepage": "https://github.com/dev-academy-challenges/dreamfest#readme",
   "repository": {
     "type": "git",

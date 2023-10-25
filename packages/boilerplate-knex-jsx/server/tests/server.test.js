@@ -7,7 +7,6 @@ import { render } from './test-utils.js'
 
 vi.mock('../db/db.js')
 
-
 test('GET /', async () => {
   vi.mocked(db.getUser).mockImplementation(async (id) => {
     return { id: id, name: 'test user', email: 'test@user.nz' }
@@ -20,9 +19,8 @@ test('GET /', async () => {
     ]
   })
 
-  const res = await request(server)
-    .get('/')
-   
+  const res = await request(server).get('/')
+
   expect(res.statusCode).toBe(200)
   const screen = render(res)
   const firstLiText = screen.getByText('test user 2 (test2@user.nz)')

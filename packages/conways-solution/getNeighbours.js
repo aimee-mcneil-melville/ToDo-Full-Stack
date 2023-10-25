@@ -1,23 +1,23 @@
-import indicesAreOutOfBounds from "./indicesAreOutOfBounds";
+import indicesAreOutOfBounds from './indicesAreOutOfBounds'
 
 function getNeighbours(cellRow, cellColumn, board) {
-  let result = [];
+  let result = []
   for (let y of [-1, 0, 1])
     for (let x of [-1, 0, 1]) {
       if (y === 0 && x === 0) {
-        continue;
+        continue
       }
 
-      let i = cellRow + y;
-      let j = cellColumn + x;
+      let i = cellRow + y
+      let j = cellColumn + x
       if (indicesAreOutOfBounds(i, j, board)) {
-        continue;
+        continue
       }
 
-      result.push(board[i][j]);
+      result.push(board[i][j])
     }
 
-  return result;
+  return result
 }
 
-export default getNeighbours;
+export default getNeighbours

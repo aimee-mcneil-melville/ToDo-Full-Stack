@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest' 
+import { test, expect } from 'vitest'
 import isOverPopulated from '../isOverPopulated'
 
 test('isOverPopulated normal cases', () => {

@@ -4,7 +4,6 @@ import * as Path from 'node:path'
 import express from 'express'
 import hbs from 'express-handlebars'
 
-
 const server = express()
 
 // Server configuration

@@ -1,7 +1,6 @@
 import { test, expect } from 'vitest'
 import { isEmail } from '../utilities.js'
 
-
 test('isEmail detects an email address', () => {
   const expected = true
   const actual = isEmail('user@company.com')

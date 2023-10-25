@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test'
 import * as fs from 'node:fs/promises'
 
-let initialData 
+let initialData
 
 test.beforeAll(async () => {
   // remember how our data looked when we started

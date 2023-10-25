@@ -11,7 +11,7 @@ router.post('/', async (req, res, next) => {
   try {
     const { name, description, time, locationId } = req.body
     const day = validateDay(req.body.day)
-    
+
     const id = await db.createEvent({
       name,
       description,

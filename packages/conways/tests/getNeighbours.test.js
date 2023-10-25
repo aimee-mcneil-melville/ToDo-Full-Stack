@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest' 
+import { test, expect } from 'vitest'
 import getNeighbours from '../getNeighbours'
 import createBoard from '../createBoard.js'
 

@@ -11,4 +11,3 @@ export function getTodos() {
 export function close() {
   db.destroy()
 }
-
