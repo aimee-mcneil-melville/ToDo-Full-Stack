@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
-    const data = await db.detailsById(id)
+    const data = await db.byId(id)
     res.json(data)
   } catch (error) {
     next(error)

@@ -1,13 +1,13 @@
-import { useParams, Link } from "react-router-dom"
-import { useArtworkDetails } from "../hooks/api"
-import LoadingIndicator from "./LoadingIndicator"
-import ErrorMessage from "./ErrorMessage"
+import { useParams } from 'react-router-dom'
+import { useArtworkDetails } from '../hooks/api.ts'
+import LoadingIndicator from './LoadingIndicator'
+import ErrorMessage from './ErrorMessage'
 
 export default function ArtworkDetails() {
-  const params = useParams()  
+  const params = useParams()
   const id = Number(params.id)
   const detail = useArtworkDetails(id)
-  
+
   if (detail.isLoading) {
     return <LoadingIndicator />
   }
@@ -16,18 +16,13 @@ export default function ArtworkDetails() {
     return <ErrorMessage error={detail.error} />
   }
 
-  const {
-    name, medium, description, gallery_name, gallery_id
-  } = detail.data
+  const { name, medium, description } = detail.data
 
-  return <>
-    <h2>Artwork: {name}</h2>
-    <em>Medium: {medium}</em>
-    <p>{description}</p>
-    {
-      gallery_id == undefined ? null : <>
-        <p>Currently at <Link to={`/galleries/${gallery_id}`}>{gallery_name}</Link></p>
-      </> 
-    }
-  </>
+  return (
+    <>
+      <h2>Artwork: {name}</h2>
+      <em>Medium: {medium}</em>
+      <p>{description}</p>
+    </>
+  )
 }

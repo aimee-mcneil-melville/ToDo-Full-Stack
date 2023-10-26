@@ -19,8 +19,7 @@ describe('GET /api/v1/artworks/1', () => {
     })
 
     // ACT
-    const res = await request(server)
-      .get('/api/v1/artworks/1')
+    const res = await request(server).get('/api/v1/artworks/1')
 
     // ASSERT
     expect(res.statusCode).toBe(200)

@@ -40,7 +40,7 @@
     "@devacademy/eslint-config": "^1.9.1",
     "@tanstack/react-query": "^5.0.5",
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/jest-dom": "^6.1.3",
+    "@testing-library/jest-dom": "^6.1.4",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",

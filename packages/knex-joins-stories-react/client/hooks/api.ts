@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import request from 'superagent'
-import { Artwork, ArtworkDetails } from '../../models/artwork.ts'
-import { Gallery, GalleryDetails } from '../../models/gallery.ts'
+import { Artwork } from '../../models/artwork.ts'
+import { Gallery } from '../../models/gallery.ts'
 
 export function useArtworks() {
   return useQuery({
@@ -18,7 +18,7 @@ export function useArtworkDetails(id: number) {
     queryKey: ['artworks', id],
     queryFn: async () => {
       const data = await request.get(`/api/v1/artworks/${id}`)
-      return data.body as ArtworkDetails
+      return data.body as Artwork
     },
   })
 }
@@ -38,7 +38,7 @@ export function useGalleryDetails(id: number) {
     queryKey: ['galleries', id],
     queryFn: async () => {
       const data = await request.get(`/api/v1/galleries/${id}`)
-      return data.body as GalleryDetails
+      return data.body as Gallery
     },
   })
 }

@@ -54,7 +54,7 @@ artworks are being displayed in which galleries.
 
     They should be a number between 1 and 6 to match up to the IDs of the galleries.
   </details>
-  
+
 ### 2. Add details to the `GET /api/v1/artworks/:id` route
 - [ ] Update our type definitions
  

@@ -9,6 +9,7 @@
     "packages/*"
   ],
   "devDependencies": {},
+  "resolutions": { "vitest": "0.34.6" },
   "prettier": {
     "semi": false,
     "singleQuote": true
