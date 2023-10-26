@@ -13,7 +13,7 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  await knex.schema.alterTable('artworks', t => {
+  await knex.schema.alterTable('artworks', (t) => {
     t.dropColumn('gallery_id')
   })
 }

@@ -7,7 +7,10 @@ export async function all() {
 }
 
 export async function byId(id: number) {
-  const gallery = await connection('galleries').select('*').where({ id }).first()
+  const gallery = await connection('galleries')
+    .select('*')
+    .where({ id })
+    .first()
   return gallery as Gallery
 }
 
@@ -30,15 +33,16 @@ export async function detailsById(gallery_id: number) {
   }
 
   const artworks = []
-  const { name, description, id } = data[0] 
+  const { name, description, id } = data[0]
   for (const info of data) {
     if (info.artwork_id != undefined) {
-      const { artwork_id, artwork_name, artwork_medium, artwork_description} = info
+      const { artwork_id, artwork_name, artwork_medium, artwork_description } =
+        info
       artworks.push({
         id: artwork_id,
         name: artwork_name,
         medium: artwork_medium,
-        description: artwork_description
+        description: artwork_description,
       })
     }
   }

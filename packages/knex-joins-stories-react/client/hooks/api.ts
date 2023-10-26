@@ -13,13 +13,13 @@ export function useArtworks() {
   })
 }
 
-export function useArtworkDetail(id: number) {
+export function useArtworkDetails(id: number) {
   return useQuery({
     queryKey: ['artworks', id],
     queryFn: async () => {
       const data = await request.get(`/api/v1/artworks/${id}`)
       return data.body as ArtworkDetails
-    }
+    },
   })
 }
 
@@ -32,7 +32,6 @@ export function useGalleries() {
     },
   })
 }
-
 
 export function useGalleryDetails(id: number) {
   return useQuery({

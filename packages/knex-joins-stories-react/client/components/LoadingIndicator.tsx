@@ -1,3 +1,3 @@
 export default function LoadingIndicator() {
-  return <span className="loading-indicator"></span>
+  return <span aria-label="Loading..." className="loading-indicator"></span>
 }

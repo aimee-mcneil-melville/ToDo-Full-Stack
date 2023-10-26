@@ -8,7 +8,7 @@ export interface Artwork extends ArtworkData {
   id: number
 }
 
-// TODO: 
+// TODO:
 export interface ArtworkDetails extends Artwork {
   gallery_id: number
   gallery_name: string

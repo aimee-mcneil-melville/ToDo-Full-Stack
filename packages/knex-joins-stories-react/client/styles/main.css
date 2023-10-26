@@ -1,8 +1,21 @@
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
 header {
   border-bottom: solid 0.1rem #ccc;
   padding: 0 0 1rem; 
   margin: 0 0 2rem;
 }
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+
 
 .navigation__list { 
   list-style: none;

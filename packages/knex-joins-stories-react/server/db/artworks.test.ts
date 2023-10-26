@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeAll, beforeEach } from 'vitest'
-import connection from "./connection.ts";
-import * as artworks from './artworks.ts';
-import * as galleries from './galleries.ts'
+import connection from './connection.ts'
+import * as artworks from './artworks.ts'
 
 beforeAll(async () => {
   await connection.migrate.latest()
@@ -17,7 +16,7 @@ describe('.all()', () => {
     expect(data).toHaveLength(12)
   })
 
-  it ('returns artworks in the expected shape', async () => {
+  it('returns artworks in the expected shape', async () => {
     const data = await artworks.all()
     expect(data[0]).toMatchInlineSnapshot(`
       {
@@ -26,6 +25,30 @@ describe('.all()', () => {
         "id": 1,
         "medium": "Syrup and butter on a vinyl record",
         "name": "Pancake Paradise",
+      }
+    `)
+  })
+})
+
+describe('.byId(id)', () => {
+  it('pulls out the right artwork', async () => {
+    const data = await artworks.byId(3)
+    expect(data).toHaveProperty('id', 3)
+    expect(data).to
+    expect(data).toHaveProperty(
+      'medium',
+      'Chewing gum wrappers and glitter on canvas'
+    )
+    expect(data).toHaveProperty('name', 'Bubblegum Galaxy')
+    expect(data).toMatchInlineSnapshot(`
+      {
+        "description": "A sparkling galaxy made of chewed gum wrappers, where planets of bubblegum pop and sugary stars light up the universe.",
+        "gallery_description": "Welcome to The Wacky Brushstroke Wonderland, a place where imagination runs wild and artistic boundaries are non-existent. Our gallery is a playground for the eccentric and the whimsical.",
+        "gallery_id": 3,
+        "gallery_name": "The Wacky Brushstroke Wonderland",
+        "id": 3,
+        "medium": "Chewing gum wrappers and glitter on canvas",
+        "name": "Bubblegum Galaxy",
       }
     `)
   })

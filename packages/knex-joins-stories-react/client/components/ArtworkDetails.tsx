@@ -1,12 +1,12 @@
 import { useParams, Link } from "react-router-dom"
-import { useArtworkDetail } from "../hooks/api"
+import { useArtworkDetails } from "../hooks/api"
 import LoadingIndicator from "./LoadingIndicator"
 import ErrorMessage from "./ErrorMessage"
 
 export default function ArtworkDetails() {
   const params = useParams()  
   const id = Number(params.id)
-  const detail = useArtworkDetail(id)
+  const detail = useArtworkDetails(id)
   
   if (detail.isLoading) {
     return <LoadingIndicator />

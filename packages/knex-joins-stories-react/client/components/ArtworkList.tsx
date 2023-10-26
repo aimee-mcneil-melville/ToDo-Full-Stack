@@ -16,17 +16,17 @@ export default function ArtworkList() {
   return (
     <>
       <h2>artworks</h2>
-        {artworks.data.map((artwork) => (
-          <div key={artwork.id}>
-            <h3>
-              <Link to={`/artworks/${artwork.id}`}>{artwork.name}</Link>
-            </h3>
-            <p>
-              <em>({artwork.medium})</em>
-            </p>
-            <p>{artwork.description}</p>
-          </div>
-        ))}
+      {artworks.data.map((artwork) => (
+        <div key={artwork.id}>
+          <h3>
+            <Link to={`/artworks/${artwork.id}`}>{artwork.name}</Link>
+          </h3>
+          <p>
+            <em>({artwork.medium})</em>
+          </p>
+          <p>{artwork.description}</p>
+        </div>
+      ))}
     </>
   )
 }

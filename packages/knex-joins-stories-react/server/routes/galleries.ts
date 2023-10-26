@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/:id', async (req, res, next) => {
-  try { 
+  try {
     const id = Number(req.params.id)
     const data = await db.detailsById(id)
     res.json(data)

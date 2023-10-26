@@ -14,8 +14,13 @@ export async function all() {
 export async function byId(id: number) {
   const data = await connection('artworks')
     .leftJoin('galleries', 'artworks.gallery_id', 'galleries.id')
-    .select('artworks.*','galleries.name as gallery_name', 'galleries.description as gallery_description')
-    .where('artworks.id', id).first()
+    .select(
+      'artworks.*',
+      'galleries.name as gallery_name',
+      'galleries.description as gallery_description'
+    )
+    .where('artworks.id', id)
+    .first()
 
   return data as ArtworkDetails
 }
