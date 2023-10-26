@@ -1,9 +1,8 @@
 {
-  "name": "knex-joins-stories-react",
+  "name": "art-rover",
   "type": "module",
   "version": "0.1.0",
   "description": "Practise joins",
-  "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
     "dev": "run-p dev:client dev:server",
