@@ -38,7 +38,7 @@ artworks are being displayed in which galleries.
     <summary>Adding a new column</summary>
     To update an existing table in a migration we're going to use: `knex.schema.alterTable('artworks', (table) => { ... })`
 
-    This column should be explicitly related to the gallery table, using `table.foreign('gallery_id').references('galleries.id')`
+    This column should be explicitly related to the gallery table, using `table.integer('gallery_id').references('galleries.id')`
 
     To add a strategy for what we should do when the gallery that an artwork references is deleted, we can use a trigger on the constraint. In this case a good idea is to set the gallery id to `NULL` with `.onDelete('SET NULL')`
 
@@ -166,7 +166,7 @@ artworks are being displayed in which galleries.
   We're going to define a new interface in [gallery](./models/gallery.ts) called `GalleryDetails`
 
   ```typescript
-  import Artwork from './artwork.ts'
+  import { Artwork } from './artwork.ts'
 
   export interface GalleryDetails extends Gallery {
     artworks: Artwork[]
@@ -196,7 +196,7 @@ artworks are being displayed in which galleries.
   up-to-date and passing.
 
 ### 5. Update the gallery details page
-- [ ] Update the return type of our data hook
+- [ ] Update the return type of `useGalleryDetails`
 - [ ] Add a list of artworks to the Gallery Details page
   
   Each list item should link to the artwork detail page
