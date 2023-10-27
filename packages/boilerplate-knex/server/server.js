@@ -16,6 +16,8 @@ server.engine('hbs', handlebars.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 server.set('views', Path.join(__dirname, 'views'))
 server.use(express.urlencoded({ extended: true }))
+const publicFolder = Path.resolve('public')
+server.use(express.static(publicFolder))
 
 // Routes
 server.use('/', userRoutes)
