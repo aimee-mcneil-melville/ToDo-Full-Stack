@@ -98,8 +98,8 @@ The widget data is being stored in a database (on our server side), so we'll hav
   <details style="padding-left: 2em">
     <summary>More about <code>getWidgets</code> inside <code>useEffect</code></summary>
 
-  - Superagent uses a promise-based interface, so you will need to chain a `.then()` block after this
-  - Inside your `.then()` block, `console.log` the result of `getWidgets`
+  - Superagent uses a promise-based interface, so you will need to await the results
+  - `console.log` the result of `getWidgets`
   - Refresh the app in your browser again. Make sure you can see the array of widget data in the console
   </details>
 
