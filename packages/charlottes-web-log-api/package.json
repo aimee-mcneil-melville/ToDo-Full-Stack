@@ -9,7 +9,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "run-p dev:client dev:server",
+    "comment": "HEY YOU. The dev script intentionally only runs the back end for this challenge.",
+    "dev": "run-p dev:server",
+    "COMMENT2": "^^^See first comment",
     "dev:all": "run-p dev:server dev:client",
     "dev:server": "tsx watch server/index.ts",
     "dev:client": "vite",
