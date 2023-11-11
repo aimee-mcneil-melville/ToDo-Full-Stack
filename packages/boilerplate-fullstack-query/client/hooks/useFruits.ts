@@ -7,7 +7,7 @@ import {
 import { getFruits } from '../apis/fruits.ts'
 
 export function useFruits() {
-  const query = useQuery(['fruits'], getFruits)
+  const query = useQuery({ queryKey: ['fruits'], queryFn: getFruits })
   return {
     ...query,
     // Extra queries go here e.g. addFruit: useAddFruit()
