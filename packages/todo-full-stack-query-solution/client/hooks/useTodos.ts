@@ -12,7 +12,7 @@ import {
 } from '../apis/apiClient.ts'
 
 export function useTodos() {
-  const query = useQuery(['todos'], fetchTodos)
+  const query = useQuery({ queryKey: ['todos'], queryFn: fetchTodos })
   return {
     ...query,
     addTodo: useAddTodo(),
