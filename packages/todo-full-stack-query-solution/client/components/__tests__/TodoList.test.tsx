@@ -4,7 +4,7 @@ import {
   screen,
   within,
   waitForElementToBeRemoved,
-} from '@testing-library/react'
+} from '@testing-library/react/pure'
 import { describe, it, expect, afterEach, afterAll, vi } from 'vitest'
 import { renderRoute } from '../../test-utils.tsx'
 

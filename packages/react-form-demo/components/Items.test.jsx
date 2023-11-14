@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react/pure'
 import { test, expect, beforeEach } from 'vitest'
 
 import Items from './Items'
