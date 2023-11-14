@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest'
 import nock from 'nock'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react/pure'
 import setupApp from '../test-utils.tsx'
 
 const testWidget = {

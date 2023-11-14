@@ -1,5 +1,5 @@
 import { expect, beforeEach } from 'vitest'
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react/pure'
 import matchers from '@testing-library/jest-dom/matchers'
 import '@testing-library/jest-dom/vitest'
 import userEvent from '@testing-library/user-event'
