@@ -7,7 +7,7 @@ The quality of the application overall will also take into account the quality a
 Possible code quality measures you might implement...
 
 Covered in our curriculum:
-* use eslint and prettier.js. Your code adheres to the pre-generated patterns provided by Dev Academy project templates. Linting runs without errors or warnings
+* use eslint and prettier.js. Your code adheres to the pre-generated patterns provided by Dev Academy project templates. Linting runs without errors or warnings. Silencing linting errors is not an acceptable solution   
 * apply separation of concerns. Here is [an article using React as an example](https://engineering.teknasyon.com/separation-of-concerns-on-the-front-end-with-react-fd5d4afcc298). Generally, files will be shorter than 100 lines and contain only closely related code functionality. Functions will serve a single purpose
 * [avoid side effects of functions](https://www.freecodecamp.org/news/pure-function-vs-impure-function/)
 * apply consistent code conventions. Similar tasks in your code should be accomplished the same way everywhere, for example using if/else vs ternaries vs logical conjunctions (&&), or using typescript interfaces vs types
