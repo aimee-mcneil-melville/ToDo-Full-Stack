@@ -34,7 +34,7 @@ Spend some time to familiarise yourself with the database structure and think ab
 1. What is the total weight of your luggage where `is_lost` equals `true`?
 1. List the airport `phone` and `email` where your lost luggage are found at, so that you can contact them
 1. Print the boarding pass
-   - Navigate to `http://localhost:3000/1234` to view the ticket (boarding pass), currently it's hardcoded
+   - Navigate to `http://localhost:5173/1234` to view the ticket (boarding pass), currently it's hardcoded
    - Write a db function that queries all ticket information in one query
    - Call the db function in `server.ts`
    - Go to `server/server.ts` and replace the hardcoded values with the data passed from `data`
