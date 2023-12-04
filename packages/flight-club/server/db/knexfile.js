@@ -24,7 +24,7 @@ export default {
       directory: Path.join(__dirname, 'migrations'),
     },
     seeds: {
-      directory: Path.join(__dirname, 'seeds'),
+      directory: Path.join(__dirname, 'test-seeds'),
     },
     useNullAsDefault: true,
     pool: {
