@@ -5,31 +5,44 @@ In addition to `vitest`, pupparazzi ships with some end-to-end (E2E) tests, usin
 ## How to run the E2E tests
 
 In addition to `npm install`, playwright will need to make sure the browsers it will run tests in are installed in your environment. You can do this via npx:
+
 ```sh
-npx playwright install
+npx playwright install 'Desktop Chrome'
 ```
+
 or with an npm script:
+
 ```sh
 npm run install-browsers
 ```
 
 Now, you should have everything you need so you can run the tests with npx:
+
 ```sh
 npx playwright test
 ```
+
 ... or as an npm script
+
 ```sh
 npm run e2e-test
 ```
+
 If you're interested in exploring the playwright tests, or you get stuck you
 might want to run the playwright ui. This allows you to see the state of the app
 when individual steps are happening.
+
 ```sh
 npx playwright test --ui
 ```
 
+... or
 
-##  Configuration and setup
+```sh
+npm run e2e-test -- --ui
+```
+
+## Configuration and setup
 
 These tests are very similar to what we write with vitest and you can read them [here](../e2e-tests/pupparazzi.spec.js)
 
