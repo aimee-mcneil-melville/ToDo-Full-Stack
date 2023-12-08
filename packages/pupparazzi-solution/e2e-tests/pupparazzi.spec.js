@@ -1,8 +1,9 @@
 // @ts-check
 import { test, expect } from '@playwright/test'
+import { existsSync } from 'node:fs'
 import * as fs from 'node:fs/promises'
 
-let initialData
+let initialData = ''
 
 test.beforeAll(async () => {
   // remember how our data looked when we started
@@ -75,64 +76,8 @@ test('making a brand new puppy', async ({ page }) => {
   await expect(page.getByText('Breed: Baby')).toBeVisible()
 })
 
-const data = {
-  puppies: [
-    {
-      id: 1,
-      name: 'Fido',
-      owner: 'Fred',
-      image: '/images/puppy1.jpg',
-      breed: 'Labrador',
-    },
-    {
-      id: 2,
-      name: 'Coco',
-      owner: 'Chloe',
-      image: '/images/puppy2.jpg',
-      breed: 'Labrador',
-    },
-    {
-      id: 3,
-      name: 'Magnum',
-      owner: 'Michael',
-      image: '/images/puppy3.jpg',
-      breed: 'Rottweiler',
-    },
-    {
-      id: 4,
-      name: 'Sadie',
-      owner: 'Sam',
-      image: '/images/puppy4.jpg',
-      breed: 'Labrador',
-    },
-    {
-      id: 5,
-      name: 'Murphy',
-      owner: 'Matthew',
-      image: '/images/puppy5.jpg',
-      breed: 'Pug',
-    },
-    {
-      id: 6,
-      name: 'Bella',
-      owner: 'Brianna',
-      image: '/images/puppy6.jpg',
-      breed: 'Labrador',
-    },
-    {
-      id: 7,
-      name: 'Rocky',
-      owner: 'Ricky',
-      image: '/images/puppy7.jpg',
-      breed: 'Labrador',
-    },
-  ],
-}
-
 async function resetData() {
-  await fs.writeFile(
-    './server/data/data.json',
-    JSON.stringify(data, null, 2),
-    'utf8'
-  )
+  if (existsSync('storage/data.json')) {
+    await fs.unlink('storage/data.json')
+  }
 }
