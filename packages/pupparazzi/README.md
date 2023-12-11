@@ -4,7 +4,6 @@ Learning objectives:
 
 1. Learn Express router
 1. Practise using promises
-1. Practise server side rendering
 
 When complete, your application might look like this:
 
@@ -13,13 +12,12 @@ When complete, your application might look like this:
 ## Setup
 
 ### 0. Cloning and installation
+
 - [ ] After cloning this repo, install dependencies with `npm install`, and start the dev server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>More about getting started</summary>
 
-    - To start the server: `npm start`
-    - To debug the server (and have it reload with Nodemon after changes): `npm run dev`
-    - To run the tests: `npm test`
+  - To run the tests: `npm test`
   </details>
 
 ---
@@ -29,62 +27,168 @@ When complete, your application might look like this:
 <details>
   <summary>Important tips for completing the challenge</summary>
 
-  1. The order of routes is important. The first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
-  1. There can only be one server response (e.g. `res.send()` or `res.render()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
-  1. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
-  1. Don't forget to handle errors when your promises fail using `try { } catch (e) {  }`
-  1. When in doubt check the [node `fs/promises` documentation](https://nodejs.org/api/fs.html#promises-api)
+1. The order of routes is important. The first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
+1. There can only be one server response (e.g. `res.send()` or `res.json()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
+1. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
+1. Don't forget to handle errors when your promises fail using `try { } catch (e) { }`
+1. When in doubt check the [node `fs/promises` documentation](https://nodejs.org/api/fs.html#promises-api)
 </details>
 <br />
 
 ## Requirements
 
-### 1. Server setup
-- [ ] Let's get our server running with a default route
+### 1. Getting started
+
+- [ ] Have a look through the code, 
+
+- [ ] With the development server running, visit our site at http://localhost:5173, you'll see that a lot of the functionality is broken. In the network tab you can see that our api calls are coming back as 404s
+
+- [ ] Run our tests with `npm test`, you'll see that our frontend tests are passing but our backend tests are failing
+
+- [ ] Let's get our first route going, set up a handler `GET /api/v1/puppies/` that returns an array of puppies
+
   <details style="padding-left: 2em">
     <summary>More about the server</summary>
 
-    1. In the `server/server.js`, add an HTTP GET root route (`/`). For now, let's just send the word 'Pupparazzi'
-    1. Start the server and go to http://localhost:3000 to see if we are winning
-    
-    Now that we have a root route, let's use it to see some puppies.
+    Create a new file at `server/routes/puppies.ts`, we'll put all our puppy related routes in here.
+
+    In express we collect together related routes like this in a router:
+    ```js
+    import express from 'express'
+
+    const router = express.Router()
+    export default router
+    ```
+    Then we'll add our root puppy route handler and for now, we'll just send an empty array:
+    ```js
+    router.get('/', async (req, res, next) => {
+      res.json([])
+    })
+    ```
+    In `server/server.ts` we integrate our new router with `server.use` which we pass 
+    the prefix `/api/v1/puppies` we want to route from.
+    ```js
+    import puppies from './routes/puppies.ts'
+    // make sure you have this line to set up the JSON middleware
+    server.use(express.json())
+    server.use('/api/v1/puppies', puppies)
+    ```
+
+    Start the server and go to http://localhost:5173/api/v1/puppies to see the JSON output
+
+    Now that we have our basic setup, let's load some actual puppies
   </details>
 
-### 2. Displaying puppies on the root route
+- [ ] Use the default puppies from `server/initial-data.ts`
+  <details>
+    <summary>More about our default puppies</summary>
 
-- [ ] As a user, I want to see some puppies, so that I can say "awwww"
-  <details style="padding-left: 2em">
-    <summary>More about displaying puppies</summary>
+    Since `initial-data.ts` is part of our source code, we can `import` it.
+     
+    This kind of data is usually called "seed data" or "seeds"
 
-    In our server file, change the GET `/` route function. We will use this route to:
+    Once you have your routehandler sending the initial data, you should be able to see some puppies in the frontend
 
-    1. read the puppies from our `data.json` file (which lives in the sibling `./data` directory) using `readFile` from `'node:fs/promises'`. Don't forget to parse the data into a JavaScript object
-    1. render the puppies using the `home` view (that has already been created) and your puppies data
-  
-    <br />
-
-    **If your page renders, but there are no puppies:**
-    - check what data the view is expecting to receive 
-    - `console.log` the view data object you are passing to the render and make sure this matches what the view is expecting
-
-     <br />
-
-    You should now have the puppies rendering on the `/` page. If you click on the picture however, the link it takes you to is broken (because we haven't written it yet). Let's fix that now.
+    One of our backend tests should be passing now. Take a look at the tests and try to understand why that one is passing and the others aren't
   </details>
+
+- [ ] Read puppies from `storage/data.json` (if it exists)
+
+  <details>
+    <summary>Reading puppies from our data file</summary>
+
+    Since `initial-data.ts` is part of our source code, it won't change while the app is running. Instead we will keep our data as it changes in a file `storage/data.json`.
+
+    Use `readFile` from `node:fs/promises` to read the JSON file.
+
+    ```js
+    import * as fs from 'node:fs/promises'
+    ```
+
+    If the file doesn't exist, `readFile` will throw a special error with the code `ENOENT`. We can check for this specific error and return our initial data as a fallback. For any other error we will re-`throw` it
+
+    ```js
+    try {
+      ...
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        return initialData
+      }
+
+      throw error
+    }
+    ```
+
+    When you've finished this, our route tests should pass.
+  </details>
+
 
 ### 3. Displaying the detailed puppy page
 
 - [ ] As a user, I want to click on a puppy and see their name, breed, and who their owner is
   <details style="padding-left: 2em">
     <summary>More about puppy pages</summary>
-  
-    1. Take note of the url you are sent to (perhaps `/puppies/1`)
-    1. Create a `routes.js` file in the `server/` directory - this will store all of our routes
-    1. `require` Express in your `routes.js` file and create a router. Also, don't forget to export the router
-    1. `require` and `use` our newly created `routes.js` file in our `server`. We'll use the string `/puppies` to define the prefix path for our router. Note that the `use` line of code should come **after** your server configuration and handlebars configuration
-    1. Create a GET route in your `routes.js` to render a particular puppy. The route should contain the `id` as a parameter so you can access it via `req.params.id` (so perhaps `/:id`)
-    1. Similarly to the `/` route in `server.js`, it should read the puppies from our JSON file, but this time, we will need to use the id to find only the selected puppy from the `puppies` array
-    1. Render the puppy. As before, the `details` view has already been created for you
+
+   The frontend is set up for this, we just need to set up the API route.
+
+   We want to e.g. `GET /api/v1/puppies/1` and get a document that looks like this:
+
+   ```json
+   {
+    "id": 1,
+    "name": "Fido",
+    "owner":"Fred",
+    "image":"/images/puppy1.jpg",
+    "breed":"Labrador"
+   }
+   ```
+
+   Start by opening [routes.tests.ts](./server/routes.test.ts), we can use the tests that are already there
+   as a template.
+
+   These new tests will do a different request:
+
+   ```js
+   const res = await request(server).get('/api/v1/puppies/1')
+   ```
+
+   and update the assertions in our new test to match what we expect, that they will return a JSON document representing a single puppy.
+
+   If you run `npm test`, you'll see that our new tests are failing. That's great! Now let's make them green again.
+   
+   Write a function that gets an array of _all the puppies_ and then returns one with a matching ID if it
+   exists or undefined otherwise. You can probably re-use the function you wrote to get all the puppies previously
+
+   You can start with something like this: 
+
+   ```ts
+   import type { Puppy } from '../models/Puppy.ts'
+
+   async function getPuppyById(id: number): Promise<Puppy | undefined> {
+    ...
+   }
+   ```
+
+   You can either loop through the puppies or use [`array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+   Next, add a new route handler in [`puppies.ts`](./server/routes/puppies.ts) which uses a route param:
+
+   ```js
+   router.get('/:id', async (res, req, next) => {
+    const id = Number(req.params.id)
+    console.log(id)
+   })
+   ```
+   Using the `:` in route pattern like that means that `:id` is a path parameter, e.g. it will match `/api/v1/puppies/1` and req.params will look like this: `{ id: '1' }` 
+
+   Use that `id` variable to call `getPuppyById`, if it resolves with a Puppy you can call `res.json(puppy)` but
+   if the it doesn't find one (i.e. `puppy` is `undefined`), the we should `res.sendStatus(404)` the HTTP Status code for [Not Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404). 
+
+   If everything went well, then the tests you wrote should be passing now.
+
+   Hit `http://localhost:5173/api/v1/puppies/1` in Thunderclient, Insomnia or Bruno and confirm that it's showing what you expect.
+
+   Visit the page at `http://localhost:5173/1` to confirm that the individual puppy view is working.
   </details>
 
 ### 4. Updating a puppy
@@ -93,36 +197,134 @@ When complete, your application might look like this:
   <details style="padding-left: 2em">
     <summary>More about pupdates</summary>
 
-    For this, we are going to need GET a form to edit/update the puppy information. This form also needs to POST the updated information from the form to the server. Hence, we are going to need two routes this time (don't panic!)
+  Visit `http://localhost:5173/2/edit` to see the edit form, this is already hooked up to
+  our API to load the values, but to save the values we need a new route at `PATCH /api/v1/puppies/:id`
+  
+  Open [routes.tests.ts](./server/routes.test.ts) again, and we can write a new test for this route.
 
-    For the GET `/puppies/:id/edit` route:
+  For this test we'll mock out both the readFile and writeFile
+  ```js
+  vi.mocked(fs.readFile).mockImplementation(async () => {
+    const puppies = [
+      {
+        id: 1,
+        name: 'Fido',
+        owner: 'Fred',
+        image: '/images/puppy1.jpg',
+        breed: 'Labrador',
+      },
+      {
+        id: 2,
+        name: 'Coco',
+        owner: 'Chloe',
+        image: '/images/puppy2.jpg',
+        breed: 'Labrador',
+      },
+    ]
+    // simulate a data file with pnly two puppies... a sad state
+    return JSON.stringify({ puppies }, null, 2) 
+  })
 
-    1. Loop through our JSON file and find the puppy that we want to edit (don't forget that id as a parameter)
-    1. Render the form using the `edit` view and the puppy data that we want to edit
+  vi.mocked(fs.writeFile).mockImplementation(async () => {})
+  ```
+  This time we'll simulate a patch request:
+  ```js
+  const res = await request(server)
+    .patch('/api/v1/puppies/2')
+    .send({ name: 'Sam', breed: 'Pug', owner: 'Fred', image: '/images/puppy3.jpg' })
+  ```
 
-    For the POST `/puppies/:id/edit` route:
-    
-    1. Create an object of the updated puppy data from the request body
-    1. Read in the JSON file and locate the puppy we are going to update
-    1. Update the puppy in the array
-    1. Write the entire array back into the JSON file (with `fsPromises.writeFile`)
-    1. Redirect to the GET `/puppies/:id` route
+  It's important to make an assertion about the `res.statusCode` (in this case we'll expect `204`), but
+  the main thing we're looking for is "did the data file get updated", so we'll make an assertion 
+  that `fs.writeFile` was called.
+  ```js
+  expect(fs.writeFile).toHaveBeenCalled()
+  ```
+  Usually we could write a `.toHaveBeenCalledWith(...)` to make very specific assertions about 
+  the arguments to the function, but in this case we're dealing with JSON so it's harder to be that specific.
 
-    If all goes well, you should be able to update the puppy information. If that isn't happening, undoing the changes you've made to the JSON file might come in handy.
+  For example, the keys in a JSON object can be in any order and there are many ways to represent a given string.
+
+  vitest mocks remember each time they were called, so what we can do is:
+  1. get the lastCall to `fs.writeFile`
+  1. take the 2nd argument from it
+  1. parse it with `JSON.parse`
+  1. compare the result with what we expect
+
+  that might look like this:
+  ```js
+  const lastCall = vi.mocked(fs.writeFile).mocks.lastCall
+  const json = lastCall?.[1]
+  const data = JSON.parse(json)
+
+  // this is what should be written back to the data file
+  expect(data).toEqual({
+    puppies: [
+      {
+        id: 1,
+        name: 'Fido',
+        owner: 'Fred',
+        image: '/images/puppy1.jpg',
+        breed: 'Labrador',
+      },
+      {
+        id: 2,
+        name: 'Sam',
+        breed: 'Pug',
+        owner: 'Fred',
+        image: '/images/puppy3.jpg'
+      },
+    ]
+  })
+  ```
+
+  We should now have a red test, let's make it green.
+
+  First, we'll take care of the data-handling side of it.
+
+  ```ts
+  import type { PuppyData } from '../models/Puppy.ts' 
+
+  async function updatePuppy(id: number, data: PuppyData): Promise<void> {
+    ...
+  }
+  ```
+  In this function:
+
+  1. Read in the JSON file to get the list of puppies
+  1. locate a puppy with the matching ID
+  1. update or replace that puppy in the array
+  1. Write the entire array back into the JSON file (with `fs.writeFile`)
+
+  Now we'll add a route in [puppiest.ts](./server/routes/puppies.ts):
+
+  ```ts
+  router.patch('/:id', async (req, res, next) => {
+    try {
+      const id = Number(req.params.id)
+      await updatePuppy(id, req.body)
+    } catch (error) {
+      next(error)
+    }
+  })
+  ```
+
+  Check that your test has turned green, if it hasn't fire up Insomnia, Bruno or Thunderclient and 
+  see if sending a `PATCH` request to `http://localhost:5173/api/v1/puppies/1` behaves like we would expect.
+
+  When your test is green, load up the edit form: http://localhost:5173/1/edit and check that everything works as expected.
   </details>
-
 
 ## Stretch
 
 <details>
   <summary>More about stretch challenges</summary>
 
-  If you've reached this point, congratulations! As a stretch, you might like to do the following:
+If you've reached this point, congratulations! As a stretch, you might like to do the following:
 
-  1. Refactor the `readFile` and `writeFile` calls into a separate file (separation of concerns)
-      - As these return promises to begin with, you will need to write functions around them which also return promises
-      - Write some tests using `vitest` and `supertest`
-  1. Add a new view and route that includes a form which lets the user add a new puppy
+1. Refactor the `readFile` and `writeFile` calls into a separate file (separation of concerns)
+   - As these return promises to begin with, you will need to write functions around them which also return promises
+1. Add a new react component and client-side route that shows a form which lets the user add a new puppy
 </details>
 
 ## E2E tests and submitting this challenge for marking
@@ -130,11 +332,13 @@ When complete, your application might look like this:
 <details>
   <summary>How to submit this challenge</summary>
 
-  This challenge ships with some end-to-end tests written in playwright, if you are submitting this
-  challenge to complete an NZQA requirement, please make sure these tests are passing _before_ you submit.
+This challenge ships with some end-to-end tests written in playwright, if you are submitting this
+challenge to complete an NZQA requirement, please make sure these tests are passing _before_ you submit.
 
-  Read this short guide on [how to run them](./doc/end-to-end-testing.md).
+Read this short guide on [how to run them](./doc/end-to-end-testing.md).
+
 </details>
 
 ---
+
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=pupparazzi)

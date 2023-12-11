@@ -1,5 +1,4 @@
 import * as fs from 'node:fs/promises'
-import { existsSync } from 'node:fs'
 import * as Path from 'node:path'
 import { Puppy, PuppyData } from '../models/Puppy.ts'
 import initialData from './initial-data.ts'
@@ -11,13 +10,21 @@ interface Data {
 }
 
 async function read() {
-  if (existsSync(path)) {
+  try {
     const json = await fs.readFile(path, 'utf-8')
     const obj = JSON.parse(json)
     return obj as Data
-  } else {
-    return initialData
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      return initialData
+    }
+
+    throw error
   }
+}
+
+function hasErrorCode(error: unknown, code: string): boolean {
+  return error != undefined && typeof error === 'object' && 'code' in error && error.code === code
 }
 
 async function write(obj: Data) {
@@ -39,7 +46,7 @@ export async function create(data: PuppyData) {
   return id
 }
 
-export async function byId(id: number) {
+export async function getById(id: number) {
   const { puppies } = await read()
   const puppy = puppies.find((pup) => pup.id === id)
   return puppy

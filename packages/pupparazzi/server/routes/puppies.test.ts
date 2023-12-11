@@ -1,12 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import request from 'supertest'
 import * as fs from 'node:fs/promises'
-import { existsSync } from 'node:fs'
 
 import server from '../server.ts'
 
 vi.mock('node:fs/promises')
-vi.mock('node:fs')
 
 const testData = {
   puppies: [
@@ -36,11 +34,17 @@ const testData = {
 
 describe('Listing all puppies', () => {
   it("lists the default puppies when there's no data file", async () => {
-    vi.mocked(existsSync).mockImplementation(() => false)
+    vi.mocked(fs.readFile).mockImplementation(() => {
+      // ERROR: this file does not exist
+      const error = new Error() as any
+      error.message = 'No such file'
+      error.code = 'ENOENT'
+      throw error
+    })
 
     const res = await request(server).get('/api/v1/puppies')
     expect(res.statusCode).toBe(200)
-    expect(res.body).toMatchInlineSnapshot(`
+    expect(res.body).toEqual(
       [
         {
           "breed": "Labrador",
@@ -92,19 +96,17 @@ describe('Listing all puppies', () => {
           "owner": "Ricky",
         },
       ]
-    `)
-    expect(existsSync).toHaveBeenCalledWith(expect.any(String))
+    )
   })
 
   it('lists the puppies in the data file if it exists', async () => {
-    vi.mocked(existsSync).mockImplementation(() => true)
     vi.mocked(fs.readFile).mockImplementation(async () =>
       JSON.stringify(testData, null, 2)
     )
 
     const res = await request(server).get('/api/v1/puppies')
-    expect(res.statusCode).toBe(200)
-    expect(res.body).toMatchInlineSnapshot(`
+    expect(res.statusCode).toBe(204)
+    expect(res.body).toEqual(
       [
         {
           "breed": "Pug",
@@ -128,6 +130,6 @@ describe('Listing all puppies', () => {
           "owner": "Jerm",
         },
       ]
-    `)
+    )
   })
 })

@@ -2,16 +2,11 @@ import express from 'express'
 import * as store from '../store.ts'
 
 const router = express.Router()
-
+export default router
 // list all the puppies
 // GET /api/v1/puppies/
 router.get('/', async (req, res, next) => {
-  try {
-    const puppies = await store.getAll()
-    res.json(puppies)
-  } catch (error) {
-    next(error)
-  }
+  res.json([])
 })
 
 // create a brand new puppy
@@ -50,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
       return
     }
 
-    const pup = await store.byId(id)
+    const pup = await store.getById(id)
     if (pup == undefined) {
       res.status(404)
     }
@@ -82,5 +77,3 @@ router.patch('/:id', async (req, res, next) => {
     next(error)
   }
 })
-
-export default router
