@@ -36,8 +36,9 @@ describe('Listing all puppies', () => {
   it("lists the default puppies when there's no data file", async () => {
     vi.mocked(fs.readFile).mockImplementation(() => {
       // ERROR: this file does not exist
-      const error = new Error() as any
+      const error = new Error()
       error.message = 'No such file'
+      // @ts-expect-error error doesn't have property .code
       error.code = 'ENOENT'
       throw error
     })

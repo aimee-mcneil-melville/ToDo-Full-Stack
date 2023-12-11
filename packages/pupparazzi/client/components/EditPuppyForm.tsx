@@ -4,11 +4,10 @@ import { PuppyData } from '../../models/Puppy'
 interface Props extends PuppyData {
   pending: boolean
   onUpdate: (data: PuppyData) => void
-  onDelete: () => void
 }
 
 export default function EditPuppyForm(props: Props) {
-  const { onUpdate, onDelete, pending, ...puppy } = props
+  const { onUpdate, pending, ...puppy } = props
   const [{ name, breed, owner, image }, setFormState] = useState(puppy)
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
@@ -16,14 +15,6 @@ export default function EditPuppyForm(props: Props) {
       return
     }
     onUpdate({ name, breed, owner, image })
-  }
-
-  const handleDelete = () => {
-    if (pending) {
-      return
-    }
-
-    onDelete()
   }
 
   const handleChange = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +42,6 @@ export default function EditPuppyForm(props: Props) {
         <input name="image" id="image" value={image} onChange={handleChange} />
       </div>
       <button data-pending={pending}>Submit</button>
-      <button data-pending={pending} onClick={handleDelete}>
-        Delete
-      </button>
     </form>
   )
 }

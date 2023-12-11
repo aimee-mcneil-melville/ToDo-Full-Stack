@@ -10,7 +10,7 @@ describe('A link to Coco', () => {
       .get('/api/v1/puppies')
       .reply(200, testData())
 
-    const { user, ...screen } = renderRoute('/')
+    const { ...screen } = renderRoute('/')
     const link = await screen.findByRole('link', { name: /Coco/ })
     expect(link).toBeVisible()
     expect(scope.isDone()).toBe(true)

@@ -15,6 +15,7 @@
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "test": "vitest",
+    "lint": "eslint server client",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
     "e2e-test": "playwright test",
     "install-browsers": "playwright install chromium"
@@ -29,7 +30,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@devacademy/react"
+      "@devacademy/eslint-config/react"
     ]
   },
   "dependencies": {

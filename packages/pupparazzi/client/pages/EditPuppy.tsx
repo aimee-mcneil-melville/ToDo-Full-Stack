@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useDeletePuppy, usePuppy, useUpdatePuppy } from '../hooks/api.ts'
+import { usePuppy, useUpdatePuppy } from '../hooks/api.ts'
 import ErrorMessage from '../components/ErrorMessage.tsx'
 import LoadingIndicator from '../components/LoadingIndicator.tsx'
 import EditPuppyForm from '../components/EditPuppyForm.tsx'
@@ -15,18 +15,13 @@ export default function EditPuppy() {
 
   const puppy = usePuppy(id)
   const edit = useUpdatePuppy(id)
-  const del = useDeletePuppy(id)
-  const navigate = useNavigate()
 
-  const handleDelete = useCallback(async () => {
-    await del.mutateAsync()
-    navigate('/')
-  }, [del])
+  const navigate = useNavigate()
 
   const handleUpdate = useCallback(async (puppy: Partial<PuppyData>) => {
     await edit.mutateAsync({ puppy })
     navigate(`/${id}`)
-  }, [])
+  }, [edit, navigate, id])
 
   if (puppy.isLoading) {
     return <LoadingIndicator />
@@ -38,9 +33,8 @@ export default function EditPuppy() {
 
   return (
     <EditPuppyForm
-      onDelete={handleDelete}
       onUpdate={handleUpdate}
-      pending={edit.isPending || del.isPending}
+      pending={edit.isPending}
       {...puppy.data}
     />
   )

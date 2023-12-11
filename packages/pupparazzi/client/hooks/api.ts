@@ -36,18 +36,6 @@ export function useCreatePuppy() {
   })
 }
 
-export function useDeletePuppy(id: number) {
-  const client = useQueryClient()
-  return useMutation({
-    async mutationFn() {
-      await request.delete(`/api/v1/puppies/${id}`)
-    },
-    onSuccess() {
-      client.invalidateQueries({ queryKey: ['puppies'] })
-    },
-  })
-}
-
 export function useUpdatePuppy(id: number) {
   const client = useQueryClient()
 
