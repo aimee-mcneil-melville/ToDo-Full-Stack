@@ -45,59 +45,57 @@ describe('Listing all puppies', () => {
 
     const res = await request(server).get('/api/v1/puppies')
     expect(res.statusCode).toBe(200)
-    expect(res.body).toEqual(
-      [
-        {
-          "breed": "Labrador",
-          "id": 1,
-          "image": "/images/puppy1.jpg",
-          "name": "Fido",
-          "owner": "Fred",
-        },
-        {
-          "breed": "Labrador",
-          "id": 2,
-          "image": "/images/puppy2.jpg",
-          "name": "Coco",
-          "owner": "Chloe",
-        },
-        {
-          "breed": "Rottweiler",
-          "id": 3,
-          "image": "/images/puppy3.jpg",
-          "name": "Magnum",
-          "owner": "Michael",
-        },
-        {
-          "breed": "Labrador",
-          "id": 4,
-          "image": "/images/puppy4.jpg",
-          "name": "Sadie",
-          "owner": "Sam",
-        },
-        {
-          "breed": "Pug",
-          "id": 5,
-          "image": "/images/puppy5.jpg",
-          "name": "Murphy",
-          "owner": "Matthew",
-        },
-        {
-          "breed": "Labrador",
-          "id": 6,
-          "image": "/images/puppy6.jpg",
-          "name": "Bella",
-          "owner": "Brianna",
-        },
-        {
-          "breed": "Labrador",
-          "id": 7,
-          "image": "/images/puppy7.jpg",
-          "name": "Rocky",
-          "owner": "Ricky",
-        },
-      ]
-    )
+    expect(res.body).toEqual([
+      {
+        breed: 'Labrador',
+        id: 1,
+        image: '/images/puppy1.jpg',
+        name: 'Fido',
+        owner: 'Fred',
+      },
+      {
+        breed: 'Labrador',
+        id: 2,
+        image: '/images/puppy2.jpg',
+        name: 'Coco',
+        owner: 'Chloe',
+      },
+      {
+        breed: 'Rottweiler',
+        id: 3,
+        image: '/images/puppy3.jpg',
+        name: 'Magnum',
+        owner: 'Michael',
+      },
+      {
+        breed: 'Labrador',
+        id: 4,
+        image: '/images/puppy4.jpg',
+        name: 'Sadie',
+        owner: 'Sam',
+      },
+      {
+        breed: 'Pug',
+        id: 5,
+        image: '/images/puppy5.jpg',
+        name: 'Murphy',
+        owner: 'Matthew',
+      },
+      {
+        breed: 'Labrador',
+        id: 6,
+        image: '/images/puppy6.jpg',
+        name: 'Bella',
+        owner: 'Brianna',
+      },
+      {
+        breed: 'Labrador',
+        id: 7,
+        image: '/images/puppy7.jpg',
+        name: 'Rocky',
+        owner: 'Ricky',
+      },
+    ])
   })
 
   it('lists the puppies in the data file if it exists', async () => {
@@ -107,30 +105,28 @@ describe('Listing all puppies', () => {
 
     const res = await request(server).get('/api/v1/puppies')
     expect(res.statusCode).toBe(204)
-    expect(res.body).toEqual(
-      [
-        {
-          "breed": "Pug",
-          "id": 1,
-          "image": "/images/dog1.jpg",
-          "name": "Coco",
-          "owner": "James",
-        },
-        {
-          "breed": "Dog",
-          "id": 2,
-          "image": "/images/dog2.jpg",
-          "name": "Fido",
-          "owner": "Jimmy",
-        },
-        {
-          "breed": "Frog",
-          "id": 3,
-          "image": "/images/dog3.jpg",
-          "name": "Kermit",
-          "owner": "Jerm",
-        },
-      ]
-    )
+    expect(res.body).toEqual([
+      {
+        breed: 'Pug',
+        id: 1,
+        image: '/images/dog1.jpg',
+        name: 'Coco',
+        owner: 'James',
+      },
+      {
+        breed: 'Dog',
+        id: 2,
+        image: '/images/dog2.jpg',
+        name: 'Fido',
+        owner: 'Jimmy',
+      },
+      {
+        breed: 'Frog',
+        id: 3,
+        image: '/images/dog3.jpg',
+        name: 'Kermit',
+        owner: 'Jerm',
+      },
+    ])
   })
 })

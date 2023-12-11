@@ -18,10 +18,13 @@ export default function EditPuppy() {
 
   const navigate = useNavigate()
 
-  const handleUpdate = useCallback(async (puppy: Partial<PuppyData>) => {
-    await edit.mutateAsync({ puppy })
-    navigate(`/${id}`)
-  }, [edit, navigate, id])
+  const handleUpdate = useCallback(
+    async (puppy: Partial<PuppyData>) => {
+      await edit.mutateAsync({ puppy })
+      navigate(`/${id}`)
+    },
+    [edit, navigate, id]
+  )
 
   if (puppy.isLoading) {
     return <LoadingIndicator />
