@@ -1,7 +1,7 @@
-import { test, expect } from "vitest";
-import isOverPopulated from "../isOverPopulated";
+import { test, expect } from 'vitest'
+import isOverPopulated from '../isOverPopulated'
 
-test("isOverPopulated normal cases", () => {
+test('isOverPopulated normal cases', () => {
   const expecteds = {
     0: false,
     1: false,
@@ -12,12 +12,12 @@ test("isOverPopulated normal cases", () => {
     6: true,
     7: true,
     8: true,
-  };
+  }
 
   Object.keys(expecteds).forEach((input) => {
-    const expected = expecteds[input];
-    const actual = isOverPopulated(input);
+    const expected = expecteds[input]
+    const actual = isOverPopulated(input)
 
-    expect(actual).toBe(expected);
-  });
-});
+    expect(actual).toBe(expected)
+  })
+})

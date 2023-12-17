@@ -7,7 +7,7 @@ import {
   fireEvent,
   waitFor,
   within,
-} from '@testing-library/react'
+} from '@testing-library/react/pure'
 import setupApp from '../test-utils.tsx'
 
 const testWidget = {

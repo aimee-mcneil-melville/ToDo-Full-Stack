@@ -1,6 +1,6 @@
 function displayBoard(board) {
   // eslint-disable-next-line no-console
-  console.log(board);
+  console.log(board)
 }
 
-export default displayBoard;
+export default displayBoard

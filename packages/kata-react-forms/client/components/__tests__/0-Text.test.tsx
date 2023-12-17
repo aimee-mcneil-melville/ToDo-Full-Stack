@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest'
-import { screen, within } from '@testing-library/react'
+import { screen, within } from '@testing-library/react/pure'
 import { renderRoute } from '../../test/utils.tsx'
 
 describe('<TextForm />', () => {

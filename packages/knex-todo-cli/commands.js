@@ -20,4 +20,3 @@ function printTodos(todos) {
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
-

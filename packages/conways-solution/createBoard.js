@@ -1,14 +1,14 @@
 function createBoard(size) {
-  let rows = [];
+  let rows = []
   while (rows.length < size) {
-    let cells = [];
+    let cells = []
     while (cells.length < size) {
-      cells.push(false);
+      cells.push(false)
     }
-    rows.push(cells);
+    rows.push(cells)
   }
 
-  return rows;
+  return rows
 }
 
-export default createBoard;
+export default createBoard

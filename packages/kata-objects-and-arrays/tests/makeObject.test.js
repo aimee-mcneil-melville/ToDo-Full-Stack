@@ -1,5 +1,5 @@
 import * as kata from '../kata.js'
-import { test, expect} from 'vitest'
+import { test, expect } from 'vitest'
 
 test('makeObject makes objects', () => {
   const expected1 = { name: 'mix' }

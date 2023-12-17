@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react/pure'
 import userEvent from '@testing-library/user-event'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 

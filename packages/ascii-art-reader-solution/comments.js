@@ -2,7 +2,7 @@ import { readFile, truncate, open, writeFile } from 'node:fs/promises'
 export { display, get, erase, save }
 
 async function get(filename = 'data/comments.txt') {
-  return readFile(filename,'utf8')
+  return readFile(filename, 'utf8')
 }
 
 async function display() {
@@ -17,9 +17,9 @@ async function display() {
   }
 }
 
-async function erase( filename = 'data/comments.txt') {
+async function erase(filename = 'data/comments.txt') {
   try {
-    await truncate(filename , 0)
+    await truncate(filename, 0)
     console.log('All comments have been deleted.')
   } catch (err) {
     console.error("Can't delete the comments from the comments file.")

@@ -1,4 +1,4 @@
-import { test, expect} from 'vitest'
+import { test, expect } from 'vitest'
 import * as fs from 'node:fs/promises'
 import * as comments from '../comments.js'
 
@@ -39,13 +39,12 @@ test('comments.save correctly modifies file content', async () => {
   const filename = 'tests/data/comments-to-save.txt'
   const expected = 'wombat\naardvark\n'
   try {
-  // Act
-  await comments.save('aardvark', filename)
+    // Act
+    await comments.save('aardvark', filename)
 
-  const actual = await fs.readFile(filename, 'utf8')
-  // Assert
-  expect(actual).toBe(expected)
-
+    const actual = await fs.readFile(filename, 'utf8')
+    // Assert
+    expect(actual).toBe(expected)
   } finally {
     // Return file to it's original state
     await fs.writeFile(filename, 'wombat\n', 'utf8')

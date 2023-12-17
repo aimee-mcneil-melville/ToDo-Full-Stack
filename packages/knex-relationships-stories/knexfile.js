@@ -39,6 +39,6 @@ export default {
     ...defaults,
     connection: {
       filename: '/app/storage/prod.sqlite3',
-    }
+    },
   },
 }

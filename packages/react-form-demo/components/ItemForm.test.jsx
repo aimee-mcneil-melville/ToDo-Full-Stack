@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
-import { test, expect, beforeEach, vi} from 'vitest'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react/pure'
+import { test, expect, beforeEach, vi } from 'vitest'
 import ItemForm from './ItemForm'
 import localDbMock from '../localDbMock'
 import '@testing-library/jest-dom/vitest'

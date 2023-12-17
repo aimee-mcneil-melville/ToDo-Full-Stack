@@ -1,7 +1,6 @@
 import { test, expect } from 'vitest'
 import { hasComma } from '../utilities.js'
 
-
 test('hasComma returns true if there is a comma present', () => {
   const expected = true
   const actual = hasComma('hello, world')

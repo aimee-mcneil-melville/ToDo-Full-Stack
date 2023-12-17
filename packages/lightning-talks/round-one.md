@@ -80,7 +80,7 @@
   - [ ] CSS pre- and post-processors (Sass, LESS)
   - [ ] CSS architecture (SMACSS, ITCSS, BEM)
 
-* Accessibility
+* Accessibility (This is a large topic that can be sensitive for a lot of people. When talking about these topics, please focus on the technologies themselves.)
   - [ ] Browsing with assistive technologies _(or pick a single assistive tech)_
   - [ ] Legal requirements of web accessibility in NZ
 
@@ -95,7 +95,7 @@
   - [ ] Ada Lovelace
   - [ ] Betty Holberton
   - [ ] Grace Hopper
-  - [ ] Alan Turing
+  - [ ] Alan Turing (When talking about Alan Turing, please touch on the atrocities that he had to endure, as well as his achievements.)
   - [ ] Jean E. Sammet
   - [ ] Sister Mary Kenneth Keller
   - [ ] Hedy Lamarr
@@ -117,7 +117,6 @@
   - [ ] Sophie Wilson
   - [ ] Sandi Metz
   - [ ] Roy Fielding
-  - [ ] Brendan Eich
   - [ ] Linus Torvalds
   - [ ] Maru Nihoniho
   - [ ] David Heinemeier Hansson (DHH)

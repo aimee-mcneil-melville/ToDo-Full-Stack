@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react/pure'
 import userEvent from '@testing-library/user-event'
 import matchers from '@testing-library/jest-dom/matchers'
 import App from '../App.tsx'

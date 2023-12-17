@@ -1,4 +1,4 @@
-export async function seed (knex) {
+export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('fruit').del()
 

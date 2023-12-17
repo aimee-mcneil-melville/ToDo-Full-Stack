@@ -1,5 +1,5 @@
 import * as types from '../../types.js'
-import { test, expect} from 'vitest'
+import { test, expect } from 'vitest'
 
 test('types.getNull returns null', function () {
   const expected = null

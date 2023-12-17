@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest' 
+import { test, expect } from 'vitest'
 import nextCellState from '../nextCellState'
 
 test('nextCellState', () => {

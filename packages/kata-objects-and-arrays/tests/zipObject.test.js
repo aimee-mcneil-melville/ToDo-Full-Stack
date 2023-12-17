@@ -1,7 +1,6 @@
 import { test, expect } from 'vitest'
 import * as kata from './kata.js'
 
-
 test('zipObject returns an object by combining key and value arrays', () => {
   const draculaReborn = {
     name: 'Count Dracula',

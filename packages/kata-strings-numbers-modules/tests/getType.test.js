@@ -1,7 +1,6 @@
 import { test, expect } from 'vitest'
 import { getType } from '../utilities.js'
 
-
 test('getType identifies "42" as a string data type', () => {
   const expected = 'string'
   const actual = getType('42')

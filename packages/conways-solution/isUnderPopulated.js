@@ -1,5 +1,5 @@
 function isUnderPopulated(neighbourCount) {
-  return neighbourCount < 2;
+  return neighbourCount < 2
 }
 
-export default isUnderPopulated;
+export default isUnderPopulated

@@ -11,6 +11,6 @@ export default defineConfig({
   },
   define: {
     // required for authenticare to work
-    "global": 'globalThis',
+    global: 'globalThis',
   },
 })

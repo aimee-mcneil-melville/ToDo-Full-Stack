@@ -36,7 +36,11 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
 
 - [ ] In `client/index.tsx` import `{ QueryClient, QueryClientProvider }` from `@tanstack/react-query`
 
-- [ ] Create a new `QueryClient` instance and wrap the `<App>` component in a `<QueryClientProvider>` component, passing the `QueryClient` instance as a prop
+- [ ] In `client/index.tsx` import `{ ReactQueryDevTools }` from `@tanstack/react-query-devtools`
+
+- [ ] Create a new `QueryClient` instance and wrap the `<RouterProvider />` component in a `<QueryClientProvider>` component, passing the `QueryClient` instance as a prop
+
+- [ ] Within the `QueryClient` instance, add in the `<ReactQueryDevTools />` component.
 
   <details style="padding-left: 2em">
     <summary>Tip</summary>
@@ -50,9 +54,11 @@ npm i @tanstack/react-query @tanstack/react-query-devtools
     root.render(
       // wrapping the app in a QueryClientProvider
       // and passing the QueryClient instance as a prop
+      // Adding ReactQueryDevTools
       <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      <QueryClientProvider />
     )
     ```
   </details>

@@ -1,16 +1,10 @@
 /* eslint-disable no-import-assign */
 
 import * as fs from 'node:fs/promises'
-import  prompt from 'prompt'
+import prompt from 'prompt'
 import * as comments from './comments.js'
 
-
-export {
-  areYouSure,
-  enterComment,
-  main,
-  pressEnter,
-}
+export { areYouSure, enterComment, main, pressEnter }
 
 prompt.message = ''
 prompt.delimiter = ' > '
@@ -23,23 +17,23 @@ async function main() {
       case 'q':
         process.exitCode = 0
         return
-  
+
       case 'c':
         await enterComment()
         break
-  
+
       case 'e':
         if (await areYouSure()) {
           await comments.erase()
           await pressEnter()
         }
         break
-  
+
       case 'v':
         await comments.display()
         await pressEnter()
         break
-  
+
       default:
         await display(result.choice)
     }
@@ -59,7 +53,7 @@ async function init() {
   const files = await fs.readdir('data')
 
   var list = files
-    .filter(fn => fn !== 'comments.txt')
+    .filter((fn) => fn !== 'comments.txt')
     .map((artwork, i) => ` ${i}: ${artwork}\n`)
     .join('')
 
@@ -93,19 +87,19 @@ async function areYouSure() {
     name: 'sure',
     message: 'Are you sure [y/N]?',
   })
-  
+
   return result.choice === 'y'
 }
 
 async function display(choice) {
   try {
     const files = await fs.readdir('data')
-    const  file = files[choice]
+    const file = files[choice]
 
     if (!file) {
       throw new Error("That's not one of the artworks!")
     }
-    
+
     try {
       const artwork = await fs.readFile(`data/${file}`, 'utf8')
       console.log(artwork)

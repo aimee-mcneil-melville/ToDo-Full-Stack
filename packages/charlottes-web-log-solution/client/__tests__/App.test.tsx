@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, afterEach } from 'vitest'
-import { screen, render, cleanup } from '@testing-library/react'
+import { screen, render, cleanup } from '@testing-library/react/pure'
 import matchers from '@testing-library/jest-dom/matchers'
 
 expect.extend(matchers)

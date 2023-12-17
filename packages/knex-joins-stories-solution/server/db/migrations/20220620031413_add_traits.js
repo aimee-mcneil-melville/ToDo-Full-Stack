@@ -1,4 +1,4 @@
-export function up (knex) {
+export function up(knex) {
   return knex.schema.table('wombles', function (table) {
     table.integer('trait_id')
   })
