@@ -4,8 +4,9 @@ Learning objectives:
 
 1. Learn Express router
 1. Practise using promises
+1. Practise testing and TDD (test driven development)
 
-When complete, your application might look like this:
+Our app is incomplete. We use a combination of TDD and user stories to get it to work in the way we want it to. When complete, your application might look like this:
 
 ![Screenshot of a very simple page with the stylized title "Pupparazzi" and a link reading "Home" above a circular image of a puppy. All on a pink background](screenshot.png)
 
@@ -27,7 +28,7 @@ When complete, your application might look like this:
 <details>
   <summary>Important tips for completing the challenge</summary>
 
-1. The order of routes is important. The first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
+1. The order of routes is important. When your app is running, the first one that matches will be used. So if you have a `/:id` route before an `/edit` route, a request to `/edit` will choose the `/:id` route and the value of `req.params.id` will be `"edit"`.
 1. There can only be one server response (e.g. `res.send()` or `res.json()`) per request. If you have multiple potential responses (like a success and an error response) make sure to write your logic so that the route responds appropriately.
 1. Make sure to `JSON.parse` and `JSON.stringify` when reading/writing JSON data.
 1. Don't forget to handle errors when your promises fail using `try { } catch (e) { }`
@@ -39,33 +40,35 @@ When complete, your application might look like this:
 
 ### 1. Getting started
 
-- [ ] Have a look through the code, 
+Let's get familiar with the code base so you can begin to understand what needs to be done to get it to work. 
 
-- [ ] With the development server running, visit our site at http://localhost:5173, you'll see that a lot of the functionality is broken. In the network tab you can see that our api calls are coming back as 404s
+- [ ] Firstly, have a look through the code. Familiarise yourself with the structure and different folders/files. Think about how data will move through the stack. 
 
-- [ ] Run our tests with `npm test`, you'll see that our frontend tests are passing but our backend tests are failing
+- [ ] If you have the development server running `npm run dev`, you can visit our site at http://localhost:5173. You'll see that a lot of the functionality is broken. In the network tab on your brower's development tools, you can see that our api calls are coming back as 404s. 
 
-- [ ] Let's get our first route going, set up a handler `GET /api/v1/puppies/` that returns an array of puppies
+- [ ] Notice how there are tests to test the data at different points of the stack. Run our tests with `npm test`, you'll see that our frontend tests are passing but our backend tests are failing
+
+- [ ] Now that you have an idea of what is going on, let's get our first route going, set up a handler `GET /api/v1/puppies/` that returns an array of puppies
 
   <details style="padding-left: 2em">
     <summary>More about the server</summary>
 
-    Create a new file at `server/routes/puppies.ts`, we'll put all our puppy related routes in here.
+    Create a new file at `server/routes/puppies.ts`. We'll put all our puppy related routes in here.
 
-    In express we collect together related routes like this in a router:
+    In Express, we can group together routes that are related, like user routes or 'puppy' routes. We group them in what's called a "router". We can collect them together like this: 
     ```js
     import express from 'express'
 
     const router = express.Router()
     export default router
     ```
-    Then we'll add our root puppy route handler and for now, we'll just send an empty array:
+    Then we'll add our root ('/') puppy route handler. For now, we'll just send an empty array:
     ```js
     router.get('/', async (req, res, next) => {
       res.json([])
     })
     ```
-    In `server/server.ts` we integrate our new router with `server.use` which we pass 
+    Now let's hook up this routes. In `server/server.ts` we integrate our new router with `server.use` which we can then pass 
     the prefix `/api/v1/puppies` we want to route from.
     ```js
     import puppies from './routes/puppies.ts'
@@ -76,20 +79,20 @@ When complete, your application might look like this:
 
     Start the server and go to http://localhost:5173/api/v1/puppies to see the JSON output
 
-    Now that we have our basic setup, let's load some actual puppies
+    Now that we have our basic setup, let's load some actual puppies. 
   </details>
 
-- [ ] Use the default puppies from `server/initial-data.ts`
+- [ ] Use the 'default' puppies from `server/initial-data.ts`
   <details>
-    <summary>More about our default puppies</summary>
+    <summary>More about our 'default' puppies</summary>
 
-    Since `initial-data.ts` is part of our source code, we can `import` it.
+    Since `initial-data.ts` is part of our source code, we can `import` it. Notice the `export default` for the puppies data which allows us to import it. 
      
     This kind of data is usually called "seed data" or "seeds"
 
-    Once you have your routehandler sending the initial data, you should be able to see some puppies in the frontend
+    Now back in your puppy route handler, have it send this seed data instead on the empty array. You should now be able to see some puppies in the frontend.
 
-    One of our backend tests should be passing now. Take a look at the tests and try to understand why that one is passing and the others aren't
+    Check for updates in your tests. One of our backend tests should be passing now. Take a look at the tests and try to understand why that one is passing and the others aren't. 
   </details>
 
 - [ ] Read puppies from `storage/data.json` (if it exists)
@@ -125,13 +128,15 @@ When complete, your application might look like this:
 
 ### 3. Displaying the detailed puppy page
 
-- [ ] As a user, I want to click on a puppy and see their name, breed, and who their owner is
+For this step, let's use a 'user story' to figure out what functionailty to build into our app. 
+
+- [ ] As a user, I want to click on a puppy and see their name, breed, and who their owner is.
   <details style="padding-left: 2em">
     <summary>More about puppy pages</summary>
 
-   The frontend is set up for this, we just need to set up the API route.
+   The frontend is set up for this, we just need to set up the API route that get's the data of a specific puppy using it's unique identifier (id). So our API route needs to include the `/:id` parameter (more on this soon!). 
 
-   We want to e.g. `GET /api/v1/puppies/1` and get a document that looks like this:
+   For example: `GET /api/v1/puppies/1` will get a document that looks like this:
 
    ```json
    {
@@ -181,26 +186,28 @@ When complete, your application might look like this:
    ```
    Using the `:` in route pattern like that means that `:id` is a path parameter, e.g. it will match `/api/v1/puppies/1` and req.params will look like this: `{ id: '1' }` 
 
-   Use that `id` variable to call `getPuppyById`, if it resolves with a Puppy you can call `res.json(puppy)` but
+   Use that `id` variable to call `getPuppyById`. If it resolves with a Puppy you can call `res.json(puppy)` but
    if the it doesn't find one (i.e. `puppy` is `undefined`), the we should `res.sendStatus(404)` the HTTP Status code for [Not Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404). 
 
    If everything went well, then the tests you wrote should be passing now.
 
-   Hit `http://localhost:5173/api/v1/puppies/1` in Thunderclient, Insomnia or Bruno and confirm that it's showing what you expect.
+   Hit `http://localhost:5173/api/v1/puppies/1` in Thunderclient, Insomnia or Bruno (or your other favourite Rest API Client) and confirm that it's showing what you expect.
 
    Visit the page at `http://localhost:5173/1` to confirm that the individual puppy view is working.
   </details>
 
 ### 4. Updating a puppy
 
+Let's use another user story: 
+
 - [ ] As a user, I want to be able to update the puppy's name, breed, and owner
   <details style="padding-left: 2em">
     <summary>More about pupdates</summary>
 
-  Visit `http://localhost:5173/2/edit` to see the edit form, this is already hooked up to
-  our API to load the values, but to save the values we need a new route at `PATCH /api/v1/puppies/:id`
+  Visit `http://localhost:5173/2/edit` to see the edit form. This is already hooked up to
+  our API to load the values. Now to save the values we need a new route at `PATCH /api/v1/puppies/:id`
   
-  Open [routes.tests.ts](./server/routes.test.ts) again, and we can write a new test for this route.
+  Open [routes.tests.ts](./server/routes.test.ts) and let's a new test for this route.
 
   For this test we'll mock out both the readFile and writeFile
   ```js
@@ -221,13 +228,13 @@ When complete, your application might look like this:
         breed: 'Labrador',
       },
     ]
-    // simulate a data file with pnly two puppies... a sad state
+    // simulate a data file with only two puppies... a sad state
     return JSON.stringify({ puppies }, null, 2) 
   })
 
   vi.mocked(fs.writeFile).mockImplementation(async () => {})
   ```
-  This time we'll simulate a patch request:
+  This time we'll simulate a `PATCH` request:
   ```js
   const res = await request(server)
     .patch('/api/v1/puppies/2')
