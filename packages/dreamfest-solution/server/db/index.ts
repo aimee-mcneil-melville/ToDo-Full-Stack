@@ -7,20 +7,20 @@ type Environment = 'production' | 'test' | 'development'
 
 const environment = (process.env.NODE_ENV || 'development') as Environment
 const config = knexFile[environment]
-const db = knex(config)
+export const connection = knex(config)
 
 export async function getAllLocations() {
-  const locations = await db('locations').select('*')
+  const locations = await connection('locations').select('*')
   return locations as Location[]
 }
 
 export async function getLocationById(id: number) {
-  const location = await db('locations').where({ id }).first()
+  const location = await connection('locations').where({ id }).first()
   return location as Location
 }
 
 export async function updateLocation(id: number, data: Partial<LocationData>) {
-  const [location] = await db('locations')
+  const [location] = await connection('locations')
     .update(data)
     .where({ id })
     .returning('*')
@@ -29,12 +29,12 @@ export async function updateLocation(id: number, data: Partial<LocationData>) {
 }
 
 export async function createlocation(location: LocationData) {
-  const [id] = await db('locations').insert(location)
+  const [id] = await connection('locations').insert(location)
   return id
 }
 
 export async function getEventsForDay(day: string) {
-  const events = await db('events')
+  const events = await connection('events')
     .join('locations', 'events.location_id', 'locations.id')
     .where({ day })
     .select(
@@ -42,14 +42,20 @@ export async function getEventsForDay(day: string) {
       'events.id as id',
       'location_id as locationId',
       'events.name as eventName',
-      'locations.name as locationName'
+      'locations.name as locationName',
+      'events.description as description'
     )
 
   return events as EventWithLocation[]
 }
 
 export async function getEventById(id: number) {
-  const { location_id, ...data } = await db('events').where({ id }).first()
+  const result = await connection('events').where({ id }).first()
+  if (result == undefined) {
+    return undefined
+  }
+
+  const { location_id, ...data } = result
   return {
     ...data,
     locationId: location_id,
@@ -57,12 +63,12 @@ export async function getEventById(id: number) {
 }
 
 export async function deleteEvent(id: number) {
-  await db('events').delete().where({ id })
+  await connection('events').delete().where({ id })
 }
 
 export async function updateEvent(id: number, data: Partial<EventData>) {
   const { locationId: location_id, ...data_ } = data
-  const [event] = await db('events')
+  const [event] = await connection('events')
     .update({ location_id, ...data_ })
     .where({ id })
     .returning('*')
@@ -71,8 +77,9 @@ export async function updateEvent(id: number, data: Partial<EventData>) {
 }
 
 export async function createEvent(event: EventData) {
-  const [id] = await db('events').insert(event).returning('id')
+  const { locationId: location_id, ...data } = event
+  const [id] = await connection('events')
+    .insert({ location_id, ...data })
+    .returning('id')
   return id
 }
-
-// TODO: write some more database functions

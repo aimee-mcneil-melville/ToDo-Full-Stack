@@ -4,35 +4,32 @@ import * as db from '../db/index.ts'
 
 const router = express.Router()
 
-// GET /locations
+// GET /api/v1/locations
 router.get('/', async (req, res, next) => {
   try {
     const locations = await db.getAllLocations()
-    const viewData = { locations }
-    res.render('showLocations', viewData)
+    res.json({ locations })
   } catch (e) {
     next(e)
   }
 })
 
-// GET /locations/4/edit
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params
+  try {
+    const location = await db.getLocationById(Number(id))
+    res.json(location)
+  } catch (e) {
+    next(e)
+  }
+})
+
+router.patch('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
-    const viewData = await db.getLocationById(id)
-
-    res.render('editLocation', viewData)
-  } catch (e) {
-    next(e)
-  }
-})
-
-// POST /locations/edit
-router.post('/edit', async (req, res, next) => {
-  try {
-    const { id, ...data } = req.body
-    await db.updateLocation(id, data)
-    res.redirect('/locations')
+    const { name, description } = req.body
+    await db.updateLocation(id, { name, description })
+    res.sendStatus(204)
   } catch (e) {
     next(e)
   }
