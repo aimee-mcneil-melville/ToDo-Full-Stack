@@ -68,10 +68,13 @@ Let's get familiar with the code base so you can begin to understand what needs 
       res.json([])
     })
     ```
-    Now let's hook up this routes. In `server/server.ts` we integrate our new router with `server.use` which we can then pass 
-    the prefix `/api/v1/puppies` we want to route from.
+    Now let's hook up the router. In `server/server.ts` we first import our router. 
     ```js
     import puppies from './routes/puppies.ts'
+    ```
+    Then we integrate our new router with `server.use` which we can then pass 
+    the prefix `/api/v1/puppies` we want to route from.
+    ```js
     // make sure you have this line to set up the JSON middleware
     server.use(express.json())
     server.use('/api/v1/puppies', puppies)
