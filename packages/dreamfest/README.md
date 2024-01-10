@@ -38,7 +38,7 @@ Let's get stuck in!
   npm run dev
   ```
 
-  This will create and populate the database with the existing migrations and seeds, and start the server with `nodemon`.
+  This will create and populate the database with the existing migrations and seeds, and start the server.
   </details>
 
 - [ ] Get familiar with the current state of the app and the existing codebase
@@ -53,8 +53,8 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 1. Show all locations
 
-- [x] Have a look at the `GET /locations` route in `routes/locations.ts`
-- [x] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
+- [ ] Have a look at the `GET /api/v1/locations` route in `server/routes/locations.ts`
+- [ ] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
 - [ ] Complete the route using your new database function
 <details style="padding-left: 2em">
   <summary>Tip</summary>
@@ -64,7 +64,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 2. Show events for a day
 
-- [ ] Have a look at the `GET /schedule/:day` route in `routes/schedule.js`
+- [ ] Have a look at the `GET /api/v1/schedule/:day` route in `server/routes/schedule.js`
 - [ ] Build a `getEventsByDay` function with a `day` parameter. Today we'll put all our database functions in `db/index.ts`
   <details style="padding-left: 2em">
     <summary>More about the <code>getEventsByDay</code> function</summary>
@@ -82,14 +82,14 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 3. Show the form
 
-- [ ] Look at the `GET /locations/4/edit` route in `routes/locations.ts`
+- [ ] Look at the `GET /api/v1/locations/4/edit` route in `server/routes/locations.ts`
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
   This route supplies the current data to the form, ready for the user to edit it.
 </details>
 
-- [ ] Build a `getLocationById` function with an `id` parameter
+- [ ] Build a `getLocationById` function in `server/db/index.ts` with an `id` parameter
 - [ ] Be sure the form is being populated correctly
   <details style="padding-left: 2em">
     <summary>Tips</summary>
@@ -100,15 +100,19 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 4. Submit the form
 
-- [ ] Submitting the "Edit Location" form should send an HTTP POST request which will hit your `POST /locations/edit` route, in `routes/locations.ts`
-- [ ] Build an `updateLocation` function with an `updatedLocation` parameter (note the "d" in "updateD")
+- [ ] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations` route, in `routes/locations.ts`
+  <details style="padding-left: 2em">
+    <summary>making a PATCH request</summary>
+  You can import the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
+  mutation that makes PATCH requests to a specific location.
+  </details>
+- [ ] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
   <details style="padding-left: 2em">
     <summary>More about the <code>updateLocation</code> function</summary>
 
   If you find yourself struggling with the `updatedLocation` (object) parameter, you might start by using `id`, `name` and `description` parameters instead.
 
   - UPDATE the `locations` table with the updated location details
-  - Be sure `res.redirect('/locations')` is inside your `.then` function. This will take the user back to the main locations page instead of leaving them on the page with the edit form
   </details>
 
 ## Adding and deleting events
@@ -123,7 +127,6 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
   
   You've already written a `getAllLocations` function, now use it in your route. 
   * Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
-  * Be sure `res.render('addEvent', viewData)` is inside your `.then` function
 </details>
 
 ### 6. Submit the form
@@ -137,11 +140,6 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
   </details>
 
 - [ ] Build an `addNewEvent` function with an `event` parameter
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-  Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
-  </details>
 
 ### 7. Delete events
 
@@ -156,12 +154,6 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
   </details>
 
 - [ ] Build a `deleteEvent` function with an `id` parameter
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-  Be sure to redirect to the `/schedule/:day` route from inside your `.then` function.
-  </details>
-
 ---
 
 ## Stretch
@@ -173,7 +165,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 **Show the form**
 
-1. Look at the `GET /events/:id/edit` route in `routes/events.ts`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
+1. Look at the `GET /events/:id` route in `routes/events.ts`. This route supplies the current data to the "Edit Event" form, ready for the user to edit it.
 2. Build a `getEventById` function with an `id` parameter. Use this in your route.
 
 **Update the form**
@@ -199,18 +191,17 @@ You'll need to create new things in this step, but referring to existing feature
 
 **Show the form**
 
-1. In `views/showLocations.hbs`, create an "Add Location" link (similar to the "Add Event" link in `views/showDay.hbs`)
-2. Create a new `views/addLocation.hbs` form
-   - Look at `views/editLocation.hbs` and `views/addEvent.hbs` for guidance
-3. Create a `GET /locations/add` route in `routes/locations.ts` to render `views/addLocation.hbs`
+1. In `client/components/LocationsList.tsx`, create an "Add Location" link (similar to the "Add Event" link in `client/components/DaySchedule.tsx`)
+2. Create a new component at `client/components/NewLocation.tsx`
+   - Look at `client/components/EditLocation.tsx` and `client/components/NewEvent.tsx` for guidance
+3. add a client-side route in `client/routes.tsx` so that `/locations/add` shows our new component
 
 **Submit the form**
 
-4. Create `POST /locations/add` in `routes/locations.ts`
+4. Create a `POST /api/v1/locations` route in `routes/locations.ts`
 5. Build an `addNewLocation` function with a `locationInfo` parameter
-
-   - Don't forget `res.redirect('/locations')`
-
+6. Create a hook with `useMutation` to connect our `NewLocation` component to the API
+  - Refer to `client/hooks/use-create-event.ts` when writing your hook function
 </details>
 <br />
 
@@ -223,15 +214,14 @@ You'll need to create new things in this step too, but referring to existing fea
 
 **Create link**
 
-1. Add a new "Delete" form and button to `views/editLocation.hbs` (see `views/editEvent.hbs`)
+1. Add a new "Delete" form and button to `client/components/EditLocation.tsx` (see `client/components/EditEvent.tsx`)
    - Pass the `id` as a hidden form field
 
 **Create route**
 
-2. Create a `POST /locations/delete` route in `routes/locations.ts`
+2. Create a `DELETE /api/v1/locations/:id` route in `routes/locations.ts`
 3. Build a `deleteLocation` function with an `id` parameter
-_ Remember your old friend `res.redirect('/locations')`
-_ If you delete a location that has an event, what happens to the event? Why?
+_ If you delete a location that has an event, what happens to the event? Why?_
 </details>
 <br />
 

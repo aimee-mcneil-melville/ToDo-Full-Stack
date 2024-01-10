@@ -5,16 +5,12 @@ import * as db from '../db/index.ts'
 
 const router = express.Router()
 
-// GET /schedule/friday
-router.get('/:day', (req, res) => {
-  const day = validateDay(req.params.day)
-
-  // TODO: Replace the hard-coded `events` array in the viewData with a set of events from the
-  // database. Do this by selecting events that have a "day" field matching the `day` route parameter.
-  // Continue to supply the `day` as a property of the viewData, alongside the array of events.
-  const viewData = {
-    day: day,
-    events: [
+// GET api/v1/schedule/friday
+router.get('/:day', async (req, res, next) => {
+  try {
+    const day = validateDay(req.params.day)
+    // TODO: replace this data with the results of calling  db.getEventsForDay
+    const events = [
       {
         id: 1,
         day: 'friday',
@@ -33,10 +29,11 @@ router.get('/:day', (req, res) => {
           'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
         locationName: 'Yella Yurt',
       },
-    ],
+    ]
+    res.json({ day, events })
+  } catch (e) {
+    next(e)
   }
-
-  res.render('showDay', viewData)
 })
 
 export default router
