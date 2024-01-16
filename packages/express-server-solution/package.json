@@ -25,11 +25,11 @@
   "homepage": "https://github.com/dev-academy-challenges/express-server#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "supertest": "^6.2.2"
+    "supertest": "^6.3.4"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",
     "jsdom": "^22.1.0",
-    "vitest": "^0.34.4"
+    "vitest": "^1.2.0"
   }
 }

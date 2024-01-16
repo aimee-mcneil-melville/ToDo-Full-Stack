@@ -28,6 +28,6 @@
     "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
-    "vitest": "^0.34.4"
+    "vitest": "^1.2.0"
   }
 }

@@ -24,8 +24,7 @@
     "@devacademy/eslint-config": "^1.9.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^4.0.4",
-    "@vitest/coverage-c8": "^0.30.1",
+    "@vitejs/plugin-react": "^4.2.1",
     "esbuild": "^0.18.18",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -41,9 +40,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.4"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0",
+    "vitest": "^1.2.0"
   },
   "prettier": {
     "semi": false,

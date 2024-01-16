@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "supertest": "^6.2.2"
+    "supertest": "^6.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
@@ -46,7 +46,7 @@
     "eslint-plugin-react": "^7.29.4",
     "jsdom": "^22.1.0",
     "prettier": "2.6.1",
-    "vitest": "^0.34.4"
+    "vitest": "^1.2.0"
   },
   "prettier": {
     "semi": false,
