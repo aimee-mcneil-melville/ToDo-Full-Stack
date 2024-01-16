@@ -41,7 +41,7 @@
     "@devacademy/eslint-config": "^1.9.1",
     "@tanstack/react-query": "^5.0.5",
     "@testing-library/dom": "^8.17.1",
-    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
     "@types/superagent": "^4.1.20",
