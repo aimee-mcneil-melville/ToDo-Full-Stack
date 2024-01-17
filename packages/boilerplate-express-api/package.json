@@ -3,11 +3,12 @@
   "type": "module",
   "version": "0.1.2",
   "description": "Express boilerplate for APIs with Knex.js",
-  "main": "index.js",
+  "main": "server/index.ts",
   "scripts": {
-    "start": "node index",
-    "dev": "node --watch index",
-    "knex": "knex",
+    "start": "node dist/index.js",
+    "dev": "tsx watch server/index.ts",
+    "build": "esbuild --packages=external --platform=node --format=esm --outfile=dist/index.js --bundle server/index.ts",
+    "knex": "knex --knexfile ./server/db/knexfile.js",
     "test": "vitest"
   },
   "repository": {
@@ -25,7 +26,9 @@
   },
   "homepage": "https://github.com/dev-academy-challenges/boilerplate-express-api#readme",
   "devDependencies": {
-    "supertest": "^6.3.4"
+    "supertest": "^6.3.4",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "express": "^4.17.2",

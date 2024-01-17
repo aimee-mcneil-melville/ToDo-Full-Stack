@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
-    "@redux-devtools/extension": "^3.2.3",
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@tanstack/react-query": "^4.29.12",
     "@tanstack/react-query-devtools": "^4.29.12",

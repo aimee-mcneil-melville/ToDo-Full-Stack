@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
@@ -9,4 +9,3 @@ COPY . .
 ENV NODE_ENV=production
 RUN npm run build --if-present
 RUN npm prune --omit=dev
-CMD ["npm", "run", "start"]
