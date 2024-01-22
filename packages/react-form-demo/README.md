@@ -1,6 +1,6 @@
 # React Form Handling
 
-This challenge starts with a form powered entirely by React (and webpack) and offers some suggestions for practicing React with interaction.
+This challenge starts with a form powered entirely by React and offers some suggestions for practicing React with interaction.
 
 ## Setup
 
