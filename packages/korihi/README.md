@@ -111,6 +111,10 @@ If you visit your own profile page at `/u/$USER_NAME` (or by clicking on your us
 
   use the [AuthorPostForm](./client/components/AuthorPostForm.tsx) as a reference
 
+- [ ] Write tests for your new form
+
+  Use the [AuthoringANewPost](./client/pages/AuthoringANewPost.test.tsx) tests as an example
+
 ---
 
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=korihi)

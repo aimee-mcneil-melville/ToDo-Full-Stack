@@ -62,35 +62,9 @@ export function usePost(id: number) {
   })
 }
 
-export function usePosts(beforeId?: number) {
-  const { username, password, authFailed } = useCredentials()
-
-  return useQuery({
-    queryKey: ['posts', beforeId, { username, password }],
-    queryFn: async () => {
-      if (!username || !password) {
-        throw new Error()
-      }
-
-      const qs = beforeId ? { beforeId } : {}
-      try {
-        const res = await request
-          .get(`${API_HOST}/api/v1/posts`)
-          .query(qs)
-          .auth(username, password, { type: 'basic' })
-
-        return res.body as PagedPosts
-      } catch (err) {
-        if (isUnauthorized(err)) {
-          authFailed(String(err))
-        }
-
-        throw err
-      }
-    },
-
-    enabled: !!(username && password),
-  })
+export function usePosts() {
+  // TODO: replace this with a real implementation
+  return { isLoading: true, isError: false, data: null }
 }
 
 export function usePostsBy(author: string, beforeId?: number) {
@@ -116,27 +90,12 @@ export function usePostsBy(author: string, beforeId?: number) {
 }
 
 export function useCreatePost() {
-  const qc = useQueryClient()
-  const { username, password } = useCredentials()
-
-  return useMutation({
-    mutationFn: async (values: { text: string }) => {
-      if (!username || !password) {
-        throw new Error('Missing credentials')
-      }
-      const { text } = values
-      const res = await request
-        .post(`${API_HOST}/api/v1/posts`)
-        .auth(username, password, { type: 'basic' })
-        .send({ text })
-
-      return res.body
-    },
-
-    onSuccess: async () => {
-      qc.invalidateQueries({ queryKey: ['posts'] })
-    },
-  })
+  return {
+    mutate: (args: { text: string }) => {},
+    isPending: true,
+    isError: false,
+    error: null
+  }
 }
 
 export function useReplyTo() {

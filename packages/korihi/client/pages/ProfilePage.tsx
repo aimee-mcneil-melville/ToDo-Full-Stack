@@ -3,7 +3,6 @@ import Profile from '../components/Profile.tsx'
 import PostsBy from '../components/PostsBy.tsx'
 import useCredentials from '../hooks/use-auth.ts'
 import { useUserData } from '../hooks/use-userdata.ts'
-import EditProfileForm from '../components/EditProfileForm.tsx'
 
 export default function ProfilePage() {
   const { username } = useParams()
@@ -19,7 +18,7 @@ export default function ProfilePage() {
       {user.data && user.data.user_name === currentUser && (
         <>
           <h3>Edit your profile data</h3>
-          <EditProfileForm {...user.data} />
+          {/* TODO: Implement a form to edit profile data */}
         </>
       )}
       <PostsBy username={username} />
