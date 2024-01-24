@@ -1,5 +1,5 @@
 {
-  "name": "consuming-external-apis",
+  "name": "consuming-server-apis",
   "type": "module",
   "version": "0.2.2",
   "description": "Consuming External APIs",
