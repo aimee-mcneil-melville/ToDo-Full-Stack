@@ -1,4 +1,4 @@
-# External APIs - Choose your own adventure!
+# Consuming external APIs from our server - Choose your own adventure!
 
 This exercise is about exploring the world of APIs available to us.
 
@@ -25,28 +25,27 @@ In addition to hitting our own APIs with JavaScript, we can also make use of API
 ### 1. Choosing an API
 
 - [ ] Choose an API to work with
-<details style="padding-left: 2em">
-  <summary>Tips</summary>
-  
-  * If you choose an API that enforces CORS, you'll need to consume that API from your server-side, and consume your own API from the client-side (i.e. using your server as a proxy).
-  * If you choose an API that requires a key or other authentication token, you will need to create a `.env` (to keep your key hidden from git). In order to use the `.env` file, you must import and setup dotenv as follows:
-
-    ```ts
-    import * as dotenv from 'dotenv' 
-    dotenv.config()
-
-    // to access the key variable
-    const apiKey = process.env.YOUR_API_KEY_NAME
-    ```
-
-    By including `.env` in the `.gitignore` file your personal api keys will not be pushed up to GitHub. It is good practice to provide a sample file for others that will use the repository _(such as facilitators or team members)_ to know where to obtain and how to include their key. 
+  <details style="padding-left: 2em">
+    <summary>Tips</summary>
     
-    Create a `.env.sample` file:
+    * If you choose an API that enforces CORS, you'll need to consume that API from your server-side, and consume your own API from the client-side (i.e. using your server as a proxy).
+    * If you choose an API that requires a key or other authentication token, you will need to create a `.env` (to keep your key hidden from git). In order to use the `.env` file, you must import and setup dotenv as follows:
 
-    ```
-    # Sign up for an api key at https://example.com/api-sign-up
-    YOUR_API_KEY_NAME=<api key>
-    ```
+      ```ts
+      import 'dotenv/config'
+
+      // to access the key variable
+      const apiKey = process.env.YOUR_API_KEY_NAME
+      ```
+
+      By including `.env` in the `.gitignore` file your personal api keys will not be pushed up to GitHub. It is good practice to provide a sample file for others that will use the repository _(such as facilitators or team members)_ to know where to obtain and how to include their key.
+
+      Create a `.env.sample` file:
+
+      ```bash
+      # Sign up for an api key at https://example.com/api-sign-up
+      YOUR_API_KEY_NAME=<api key>
+      ```
 
 </details>
 
@@ -55,12 +54,11 @@ Some possibilities are listed below if you want a place to start, otherwise find
 ### 2. Building API calls
 
 - [ ] Create the functions that make your API calls in `client/apiClient.ts`, and call those functions within your React components
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-    
-    There is a basic API route set up for you - you may wish to use this as a template.
-  </details>
-
+<details style="padding-left: 2em">
+  <summary>Tip</summary>
+  
+  There is a basic API route set up for you - you may wish to use this as a template.
+</details>
 
 ## API Suggestions
 

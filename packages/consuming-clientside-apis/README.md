@@ -1,4 +1,4 @@
-# External APIs - Choose your own adventure!
+# Consuming external APIs directly from the browser - Choose your own adventure!
 
 This exercise is about exploring the world of APIs available to us.
 
