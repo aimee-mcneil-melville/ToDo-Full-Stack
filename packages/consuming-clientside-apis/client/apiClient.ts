@@ -1,10 +1,14 @@
 import request from 'superagent'
-import { Welcome } from '../models/welcome.ts'
-
-const serverURL = '/api/v1'
+import { AmiiboCollection } from '../models/amiibo.ts'
 
 // *** EXAMPLE ***
-export function getWelcome(): Promise<Welcome> {
-  return request.get(`${serverURL}/welcome`).then((response) => response.body)
+export async function getAmiiboWithName(
+  name: string
+): Promise<AmiiboCollection> {
+  const response = await request
+    .get(`https://www.amiiboapi.com/api/amiibo/`)
+    .query({ name })
+
+  return response.body
 }
 // ***   ***   ***
