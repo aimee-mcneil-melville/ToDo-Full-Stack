@@ -1,21 +1,25 @@
-# Boilerplate: Phase 1
+# Phase 1 Boilerplate
+
+## Packages Included
+
+- react
+- react-router-dom
+- @tanstack/react-query
+- vite
+- vitest
+- eslint
 
 ## Setup
 
-### What's included
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-Phase 1 boilerplate project with:
-
-- Express
-- Express Handlebars
-- vitest
-
-### Installation
-
-```
-npm install
-npm start
-```
+    ```sh
+    npm install
+    npm run dev
+    ```
+  </details>
 
 ---
 

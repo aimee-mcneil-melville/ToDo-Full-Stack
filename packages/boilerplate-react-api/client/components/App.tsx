@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react'
 import { getGreeting } from '../apiClient.ts'
+import { useQuery } from '@tanstack/react-query'
 
 const App = () => {
-  const [greeting, setGreeting] = useState('')
   const [count, setCount] = useState(0)
-  const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
-    getGreeting()
-      .then((greeting) => {
-        console.log(greeting)
-        setGreeting(greeting)
-        setIsError(false)
-      })
-      .catch((err) => {
-        console.log(err)
-        setIsError(true)
-      })
-  }, [count])
+  const {
+    data: greeting,
+    isError,
+    isLoading,
+  } = useQuery({ queryKey: ['greeting', count], queryFn: getGreeting })
+
+  if (isLoading) return <p>Loading...</p>
 
   return (
     <>
