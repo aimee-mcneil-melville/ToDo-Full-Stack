@@ -47,6 +47,9 @@ In addition to hitting our own APIs with JavaScript, we can also make use of API
       YOUR_API_KEY_NAME=<api key>
       ```
 
+      ```json
+   ```
+
 </details>
 
 Some possibilities are listed below if you want a place to start, otherwise find one of your own!

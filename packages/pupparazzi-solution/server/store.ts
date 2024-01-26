@@ -11,12 +11,16 @@ interface Data {
 }
 
 async function read() {
-  if (existsSync(path)) {
+  try {
     const json = await fs.readFile(path, 'utf-8')
     const obj = JSON.parse(json)
     return obj as Data
-  } else {
-    return initialData
+  } catch (e) {
+    if ((e as any).code === 'ENOENT') {
+      return initialData
+    }
+
+    throw e
   }
 }
 
