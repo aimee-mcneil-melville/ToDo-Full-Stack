@@ -42,12 +42,10 @@ export function usePosts() {
   }
 }
 
-export function usePostsBy(author: string, beforeId?: number) {
+export function usePostsBy(author: string) {
   return useQuery({
-    queryKey: ['posts', beforeId],
+    queryKey: ['posts', 'by', author],
     queryFn: async () => {
-      const qs = beforeId ? { beforeId } : {}
-
       const res = await request
         .get(`${API_HOST}/api/v1/posts/by/${author}`)
         .query(qs)
@@ -59,8 +57,9 @@ export function usePostsBy(author: string, beforeId?: number) {
 }
 
 export function useCreatePost() {
+  // TODO: complete this function to create new posts
   return {
-    mutate: (args: { text: string }) => {},
+    mutate: (_: { text: string }) => {},
     isPending: true,
     isError: false,
     error: null,

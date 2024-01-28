@@ -1,5 +1,9 @@
 # Korihi: A micro blog for a macro world
 
+Korihi is a micro-blogging application like twitter/x, bluesky or mastodon, but the frontend isn't quite finished
+
+You're going to use the existing API to complete some of our app's features
+
 ## Setup
 
 ### 0. Installation
@@ -18,6 +22,8 @@
   VITE_USERNAME='put your username here'
   VITE_PASSWORD='put your password here'
   ```
+
+  _Warning_: this is not how we would store or provide your password in a more realistic app
 
 - [ ] Install packages and start the dev server
   ```sh
