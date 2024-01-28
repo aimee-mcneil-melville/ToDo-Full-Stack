@@ -5,12 +5,18 @@
 ### 0. Installation
 
 - [ ] Clone this repo and `cd` into the new directory
+- [ ] Get a username and password
+
+  Your facilitator should have assigned you a username and a randomly generated password, make sure you keep them somewhere so you don't forget them
+
 - [ ] Create a `.env` file in your root with your `VITE_API_HOST`
 
   We're going to develop against the live API so your `.env` file should look like this
 
   ```.env
   VITE_API_HOST='https://korihi.devacademy.life'
+  VITE_USERNAME='put your username here'
+  VITE_PASSWORD='put your password here'
   ```
 
 - [ ] Install packages and start the dev server
@@ -20,11 +26,7 @@
   ```
 - [ ] Visit the home-page
 
-  Vite will log out a url similar to [http://localhost:5173]
-
-- [ ] Get a username and password
-
-  Your facilitator should have assigned you a username and a randomly generated password. Make sure you have it saved somewhere.
+  Vite will log out a url similar to [[http://localhost:5173]]
 
 - [ ] Investigate the API
 
@@ -47,10 +49,8 @@
 
   <detail>
     <summary>Hints</summary>
-    - get the username and password with `useCredentials`
     - use `.auth` to add authentication to the request
     - use superagent to make a `GET` request to the same URL we used earlier 
-    - set the `enabled:` option to `false` when either `username` or `password` is missing
     - cast your `response.body` to a `PagedPosts`
   </detail>
 
@@ -58,7 +58,7 @@
 
 - [ ] Run the tests for the timeline page
 
-      Filter toe these specific tests with`npm test -- TimelinePageShowsPosts`
+      Filter to these specific tests with`npm test -- TimelinePageShowsPosts`
 
 ## 2. Authoring posts
 
@@ -78,7 +78,6 @@
 
   <details>
     <summary>Hints</summary>
-    - call `useCredentials()` to get the username and password
     - call `useQueryClient()` to get an instance of the queryClient
     - provide a `mutationFn` that is async, accepts an object of values and makes a POST request
       to the API
