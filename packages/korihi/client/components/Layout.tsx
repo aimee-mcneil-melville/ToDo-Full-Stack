@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
-import LoginForm from './LoginForm.tsx'
+import { USERNAME } from '../env.ts'
 
 export default function Layout() {
   return (
@@ -15,7 +15,7 @@ export default function Layout() {
             <p>Microblogging in a macro world</p>
           </div>
           <div className="five columns">
-            <LoginForm />
+            Logged in as <Link to={`/u/${USERNAME}`}>{USERNAME}</Link>
           </div>
         </div>
       </header>

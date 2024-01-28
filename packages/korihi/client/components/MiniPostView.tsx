@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Post } from '../../models/Post.ts'
 import { TimeStamp } from './RelativeTimestamp.tsx'
-import { API_HOST } from '../api-host.ts'
+import { API_HOST } from '../env.ts'
 
 interface Props extends Post {}
 

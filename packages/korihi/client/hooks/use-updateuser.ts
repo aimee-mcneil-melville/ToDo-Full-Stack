@@ -1,11 +1,9 @@
 import request from 'superagent'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { API_HOST } from '../api-host'
-import useCredentials from './use-auth'
+import { API_HOST, USERNAME, PASSWORD } from '../env.ts'
 
 export function useUpdateUser() {
   const qc = useQueryClient()
-  const { username, password } = useCredentials()
 
   return useMutation({
     mutationFn: async (values: {
@@ -13,20 +11,15 @@ export function useUpdateUser() {
       bio?: string
       personal_pronouns?: string
     }) => {
-      if (!username || !password) {
-        throw new Error('Missing credentials')
-      }
-
       const res = await request
-        .put(`${API_HOST}/api/v1/users/${username}`)
-        .auth(username, password, { type: 'basic' })
+        .put(`${API_HOST}/api/v1/users/${PASSWORD}`)
+        .auth(USERNAME, PASSWORD, { type: 'basic' })
         .send(values)
 
       return res.body
     },
     onSuccess: async () => {
-      qc.invalidateQueries({ queryKey: ['user'] })
-      qc.invalidateQueries({ queryKey: ['posts'] })
+      qc.invalidateQueries({ queryKey: ['user', USERNAME] })
     },
   })
 }
