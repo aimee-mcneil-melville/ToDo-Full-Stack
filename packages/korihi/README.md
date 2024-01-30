@@ -36,9 +36,11 @@ You're going to use the existing API to complete some of our app's features
 
 - [ ] Investigate the API
 
-  Open up Bruno or Thunderclient and make a `GET` request to `https://korihi.devacademy.life/api/v1/posts`
+  Open up Thunderclient and make a `GET` request to `https://korihi.devacademy.life/api/v1/posts`
 
-  Korihi uses [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme), so make sure you configure your username and password
+  Korihi uses [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme), so make sure you configure your username and password in Thunder client:
+
+![auth screenshot](./doc/auth-screenshot-thunderclient.png)
 
   You should see a list of posts presented as a JSON document
 
