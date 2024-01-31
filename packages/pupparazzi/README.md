@@ -103,7 +103,7 @@ Let's get familiar with the code base so you can begin to understand what needs 
   Now back in your puppy route handler, have it send this data instead of the empty array. You should now be able to see some puppies in the frontend.
 
   ```ts
-  import * as store from './store.ts'
+  import * as store from '../store.ts'
 
   router.get('/', async (req, res, next) => {
     const data = await store.getPuppies()
@@ -112,6 +112,8 @@ Let's get familiar with the code base so you can begin to understand what needs 
   ```
 
   Check for updates in your tests. One of our backend tests should be passing now. Take a look at the tests and try to understand why that one is passing and the others aren't.
+
+And if you visit the browser now, you should be able to see our beautiful pups :)
   </details>
 
 ### 2. Displaying the detailed puppy page
@@ -136,7 +138,7 @@ For this step, let's use a 'user story' to figure out what functionailty to buil
   }
   ```
 
-  Start by opening [routes.tests.ts](./server/routes.test.ts), we can use the tests that are already there
+  Start by opening [puppies.tests.ts](./server/puppies.test.ts), we can use the tests that are already there
   as a template.
 
   These new tests will do a different request:
@@ -196,7 +198,7 @@ Let's use another user story:
   Visit `http://localhost:5173/2/edit` to see the edit form. This is already hooked up to
   our API to load the values. Now to save the values we need a new route at `PATCH /api/v1/puppies/:id`
 
-  Open [routes.tests.ts](./server/routes.test.ts) and let's a new test for this route.
+  Open [puppies.tests.ts](./server/puppies.test.ts) and let's write a new test for this route.
 
   For this test we'll mock out both the readFile and writeFile
 
