@@ -7,7 +7,7 @@ export function usePuppies() {
     queryKey: ['puppies'],
     queryFn: async () => {
       const res = await request.get('/api/v1/puppies')
-      return res.body as Array<Puppy>
+      return res.body.puppies as Array<Puppy>
     },
   })
 }
