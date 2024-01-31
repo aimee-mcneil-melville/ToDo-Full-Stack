@@ -23,7 +23,7 @@ After each section:
 ### 1. Respond with a string
 
 - [ ] Create a route called `/compliment` within `server.js` that responds with a nice compliment using `res.send("What a fancy blazer~")`
-- [ ] Check the `Content-Type` header in Thunderclient, this mime-type is the default for `res.send` when you pass a string
+- [ ] Check the `Content-Type` header in Thunderclient, this is the default type for `res.send` when you pass a string
 
 ### 2. Respond with some JSON
 
@@ -57,7 +57,7 @@ After each section:
 - `res.sendFile` wants an absolute path, so we'll use `Path.resolve('./server/secrets.txt')`
 </details>
 
-- [ ] Check your route in Thunderclient, make a note of the mime-type
+- [ ] Check your route in Thunderclient, make a note of the value of the `Content-Type` header
 - [ ] Create a new version of the file as a [JSON](https://www.json.org/json-en.html) document called `secrets.json`, send that file instead of your text file
   <details style="padding-left: 2em">
     <summary>Tips</summary>
@@ -66,7 +66,7 @@ After each section:
   - I'm going to read these secrets, so don't put anything too good in there
   </details>
 
-- [ ] Check your route in Thunderclient again, make a note of the mime-type
+- [ ] Check your route in Thunderclient again, make a note of the `Content-Type`
 
 ### 3. Respond based on the query
 
@@ -89,74 +89,51 @@ After each section:
 
 ### 4. Respond based on a URL parameter
 
-- [ ] Create a `/profiles` route (notice the `s`) that accepts an `:id` parameter
+- [ ] Create a GET route for `/secrets/:type`, `:type` is a path parameter
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
-  - If you navigate to `/profiles/1` return `silvia.html`
-  - If you navigate to `/profiles/2` return `sampson.html`
+  - look at `req.params.type`
+  - You'll likely use `if/else` statements or a `switch/case` statement
+  - If you request `/secrets/mystical` respond with `mystical-secrets.json`
+  - If you request `/secrets/kitchen` respond with `kitchen-secrets.json`
+  - If you request `/secrets/lizards` send a 404 status (Not Found)
+
   </details>
 
----
+### 4. Post data to the server
 
-## More server features
-
-### 5. Enable a folder of static files
-
-- [ ] Set up a folder to serve static files
-  <details style="padding-left: 2em">
-    <summary>More about static files</summary>
-
-  - Read ExpressJS docs recommendations regarding static files: http://expressjs.com/en/starter/static-files.html
-  - Create a `public` folder in the project's server folder
-  - Configure Express so it will serve static files from the `public` folder
-
-  We won't see any changes in our application, yet!
-  </details>
-
-- [ ] Style `silvia.html` and `sampson.html` with a new `styles.css` file
-  <details style="padding-left: 2em">
-    <summary>More about connecting the CSS</summary>
-
-  - Create a CSS file called `styles.css` that makes `silvia.html` and `sampson.html` look nicer (or at least different) and save it to the `public` folder
-  - Add a link to `/styles.css` (note the `/`) to `silvia.html` and `sampson.html` so the styles will be applied
-  - Make sure you can still view the individual profile pages (sections 3 and 4 above) and that the styles are now visible
-  - You might need to adjust the HTML files a bit, once you start writing CSS
-  </details>
-
-- [ ] For Silvia and Sampson's photos, replace the external URLs with references to locally-hosted images
-  <details style="padding-left: 2em">
-    <summary>More about using images from your own server</summary>
-
-  - Save Silvia and Sampson's photos into your `public` folder
-  - Then update your `<img>` tags (in `silvia.html` and `sampson.html`) to point to the images in the `public` folder instead of the external image URLs you used in step 2
-  </details>
-
-### 6. Refactor
-
-- [ ] Make sure your code is readable, doesn't contain any duplication, and has consistent indenting and appropriate naming.
-- [ ] Make sure all previous steps still work
-
-### 7. Post data to the server
-
-- [ ] <details style="padding-left: 2em">
-                                                                                                                                                                                                                                                                                                                                                            <summary>More about the form</summary>
-
-  - Create an HTML page called `get-name.html` in your `public` folder
-  - Add a form to `get-name.html` that has a `name` input field
-  - The form should `post` to `/named-compliment`
-  </details>
-
-- [ ] Configure the server and a route to handle the form submission
+- [ ] Add a POST route at `/compliment-me`
   <details style="padding-left: 2em">
     <summary>More about handling submission</summary>
 
-  - Add `express.json` as middleware to `server.ts`. Check out the Express documentation for how to use it and ask for help if you need it
-  - Create a route called `/named-compliment` that responds with a nice compliment using the submitted name. You can use `res.send('named compliment wrapped in HTML markup')`
+  - Add `express.json` as middleware to `server.ts`
+    ```js
+    server.use(express.json())
+    ```
+  - Read `req.body` as an object with `name`, `age`, `heightM`, e.g.
+
+    ```json
+    {
+      "name": "Gerard",
+      "age": 49, // future proofed
+      "heightM": 1.75
+    }
+    ```
+
+  - Respond with a compliment customised for the request, e.g.
+    ```js
+    const { name, age, heightM } = req.body
+    const isTall = heightM >  1.8288
+    res.json({
+      text: `Go off ${name} ${isTall ? 'big fella' : 'short king'}, you don't look ${age} at all (not implying that looking older is worse)`
+      sincerity: 0.6
+    })
+    ```
+    </details>
 
 - [ ] POST to the new endpoint from Thunderclient
-  - Make a POST request [http://localhost:3000/horoscope], insert a name and submit the form. The compliment should be specific to the name submitted
-  </details>
+      Make a POST request to `http://localhost:3000/compliment` with a JSON object and see the compliment come back at you!
 
 ---
 
