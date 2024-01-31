@@ -45,7 +45,7 @@ describe('Listing all puppies', () => {
 
     const res = await request(server).get('/api/v1/puppies')
     expect(res.statusCode).toBe(200)
-    expect(res.body).toEqual([
+    expect(res.body.puppies).toEqual([
       {
         breed: 'Labrador',
         id: 1,
