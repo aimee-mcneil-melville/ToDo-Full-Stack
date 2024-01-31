@@ -138,7 +138,7 @@ For this step, let's use a 'user story' to figure out what functionailty to buil
   }
   ```
 
-  Start by opening [puppies.tests.ts](./server/puppies.test.ts), we can use the tests that are already there
+  Start by opening [puppies.tests.ts](./server/routes/puppies.test.ts), we can use the tests that are already there
   as a template.
 
   These new tests will do a different request:
@@ -198,7 +198,7 @@ Let's use another user story:
   Visit `http://localhost:5173/2/edit` to see the edit form. This is already hooked up to
   our API to load the values. Now to save the values we need a new route at `PATCH /api/v1/puppies/:id`
 
-  Open [puppies.tests.ts](./server/puppies.test.ts) and let's write a new test for this route.
+  Open [puppies.tests.ts](./server/routes/puppies.test.ts) and let's write a new test for this route.
 
   For this test we'll mock out both the readFile and writeFile
 
