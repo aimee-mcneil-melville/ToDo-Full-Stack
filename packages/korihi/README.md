@@ -58,10 +58,11 @@ You should see a list of posts presented as a JSON document
 
   <detail>
     <summary>Hints</summary>
-    - use `.auth` to add authentication to the request
-    - use superagent to make a `GET` request to the same URL we used earlier 
-    - cast your `response.body` to a `PagedPosts`
-  </detail>
+
+  - use `.auth` to add authentication to the request
+  - use superagent to make a `GET` request to the same URL we used earlier
+  - cast your `response.body` to a `PagedPosts`
+    </detail>
 
 - [ ] Go to the home page at [[http://localhost:5173]] and you should see the latest posts
 
@@ -93,6 +94,7 @@ You should see a list of posts presented as a JSON document
 
   <details>
     <summary>Hints</summary>
+    
     - call `useQueryClient()` to get an instance of the queryClient
     - provide a `mutationFn` that is async, accepts an object of values and makes a POST request
       to the API
