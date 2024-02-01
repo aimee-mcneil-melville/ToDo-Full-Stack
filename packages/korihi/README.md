@@ -8,10 +8,19 @@ You're going to use the existing API to complete some of our app's features
 
 ### 0. Installation
 
-- [ ] Clone this repo and `cd` into the new directory
 - [ ] Get a username and password
 
   Your facilitator should have assigned you a username and a randomly generated password, make sure you keep them somewhere so you don't forget them
+
+- [ ] Investigate the API
+
+  Open up Thunderclient and make a `GET` request to `https://korihi.devacademy.life/api/v1/posts`
+
+  Korihi uses [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme), so make sure you configure your username and password in Thunder client:
+
+![auth screenshot](./doc/auth-screenshot-thunderclient.png)
+
+- [ ] Clone this repo and `cd` into the new directory
 
 - [ ] Create a `.env` file in your root with your `VITE_API_HOST`
 
@@ -34,15 +43,7 @@ You're going to use the existing API to complete some of our app's features
 
   Vite will log out a url similar to [[http://localhost:5173]]
 
-- [ ] Investigate the API
-
-  Open up Thunderclient and make a `GET` request to `https://korihi.devacademy.life/api/v1/posts`
-
-  Korihi uses [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme), so make sure you configure your username and password in Thunder client:
-
-![auth screenshot](./doc/auth-screenshot-thunderclient.png)
-
-  You should see a list of posts presented as a JSON document
+You should see a list of posts presented as a JSON document
 
 ## 1. Write the hook to fetch posts for the timeline
 
@@ -62,23 +63,29 @@ You're going to use the existing API to complete some of our app's features
     - cast your `response.body` to a `PagedPosts`
   </detail>
 
-- [ ] Check the timeline page in the browser
+- [ ] Go to the home page at [[http://localhost:5173]] and you should see the latest posts
 
 - [ ] Run the tests for the timeline page
 
       Filter to these specific tests with`npm test -- TimelinePageShowsPosts`
 
-## 2. Authoring posts
+## 2. Writing posts
 
-- [ ] Author a post with Bruno/Thunderclient
+- [ ] write a post with Bruno/Thunderclient
 
-  We author a post by sending a POST request to `/api/v1/posts`
+  We write a post by sending a POST request to `/api/v1/posts`
+
+  The body of the post should be a JSON document like this:
+
+  ```json
+  { "text": "Hello Korihi" }
+  ```
 
   Don't forget to include your username and password with Basic Authentication
 
   Visit the home page to see your new post on the timeline
 
-- [ ] Write a mutation to author a post
+- [ ] Write a mutation to write a post
 
   In `./client/hooks/use-posts.ts` delete the placeholder `useCreatePost` function and write your own with `useMutation`.
 
@@ -93,7 +100,7 @@ You're going to use the existing API to complete some of our app's features
       the client you got from `useQueryClient()`. This will mark the timeline data as stale forcing it to refresh.
   </details>
 
-- [ ] Author a post in the browser
+- [ ] Write a post in the browser
 
   The form at the top of the page should work now (if you're logged in), so write a post and see it
   appear in the timeline.

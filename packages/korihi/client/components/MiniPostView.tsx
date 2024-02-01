@@ -10,7 +10,7 @@ export default function MiniPostView({ author, text, created_at, id }: Props) {
     <div className="mini-post__wrapper">
       <img
         className="mini-post__pfp"
-        src={`${API_HOST}/users/${author.user_name}/avatar`}
+        src={`${API_HOST}/api/v1/users/${author.user_name}/avatar`}
         alt={`portrait of ${author.user_name}`}
       />
       <div className="mini-post__body">

@@ -23,7 +23,7 @@ export default function MaxiPostView({
       )}
       <img
         className="maxi-post__pfp"
-        src={`${API_HOST}/users/${author.user_name}/avatar`}
+        src={`${API_HOST}/api/v1/users/${author.user_name}/avatar`}
         alt={`portrait of ${author.user_name}`}
       />
       <div className="maxi-post__body">
