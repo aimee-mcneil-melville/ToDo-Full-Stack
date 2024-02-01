@@ -7,7 +7,7 @@ Creating a web server with Express.js
 ### 0. Cloning and branching
 
 - [ ] Clone this repo and create a new branch for you or your pair
-- [ ] Start the server with `node server` or `npm start`
+- [ ] Start the server with `npm run dev`
 
 ---
 
@@ -22,7 +22,7 @@ After each section:
 
 ### 1. Respond with a string
 
-- [ ] Create a route called `/compliment` within `server.js` that responds with a nice compliment using `res.send("What a fancy blazer~")`
+- [ ] Create a route called `/compliment` within `server.ts` that responds with a nice compliment using `res.send("What a fancy blazer~")`
 - [ ] Check the `Content-Type` header in Thunderclient, this is the default type for `res.send` when you pass a string
 
 ### 2. Respond with some JSON
@@ -53,8 +53,10 @@ After each section:
 - [ ] Create a GET route called `/secrets` and respond with the new file
 <details style="padding-left: 2em">
 <summary>Tips</summary>
+
 - use `res.sendFile` and pass it a the path
 - `res.sendFile` wants an absolute path, so we'll use `Path.resolve('./server/secrets.txt')`
+- Use `import * as Path from 'node:path'` to get access to all the path functions
 </details>
 
 - [ ] Check your route in Thunderclient, make a note of the value of the `Content-Type` header
@@ -75,8 +77,10 @@ After each section:
   <summary>Tip</summary>
   
   - These can also contain arrays of strings
+  - Remember! JSON strings _always_ use double quotes `"` and never single-quotes `'`
   - Make sure the contents are different enough that you can easily tell them apart
 </details>
+
 - [ ] Change the `/secrets` route to accept query string parameters
   <details style="padding-left: 2em">
     <summary>More about query string params</summary>
@@ -97,7 +101,7 @@ After each section:
   - You'll likely use `if/else` statements or a `switch/case` statement
   - If you request `/secrets/mystical` respond with `mystical-secrets.json`
   - If you request `/secrets/kitchen` respond with `kitchen-secrets.json`
-  - If you request `/secrets/lizards` send a 404 status (Not Found)
+  - If you request `/secrets/lizards` use `res.sendStatus(404)` to send "Not Found"
 
   </details>
 
@@ -116,7 +120,7 @@ After each section:
     ```json
     {
       "name": "Gerard",
-      "age": 49, // future proofed
+      "age": 49,
       "heightM": 1.75
     }
     ```
@@ -124,16 +128,18 @@ After each section:
   - Respond with a compliment customised for the request, e.g.
     ```js
     const { name, age, heightM } = req.body
-    const isTall = heightM >  1.8288
+    const isTall = heightM > 1.8288
     res.json({
-      text: `Go off ${name} ${isTall ? 'big fella' : 'short king'}, you don't look ${age} at all (not implying that looking older is worse)`
-      sincerity: 0.6
+      text: `Go off ${name} ${
+        isTall ? 'big fella' : 'short king'
+      }, you don't look ${age} at all (not implying that looking older is worse)`,
+      sincerity: 0.6,
     })
     ```
     </details>
 
 - [ ] POST to the new endpoint from Thunderclient
-      Make a POST request to `http://localhost:3000/compliment` with a JSON object and see the compliment come back at you!
+      Make a POST request to `http://localhost:3000/compliment-me` with a JSON object and see the compliment come back at you!
 
 ---
 
