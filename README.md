@@ -1,77 +1,79 @@
-# Challenges
+# TODO App
 
-Challenges is a monorepo that contains the standard challenges we use in bootcamp
+For this challenge, we will build a todo app (which is a common way to practice a new technology), using the full stack! From the database to the server, the API client, React and React Query, this app will ask you to use everything you've learned.
 
-Each challenge package is in `packages`, e.g. the pupparazzi challenge is in
-`packages/pupparazzi`
+## Setup
 
-## Forking to cohort
+### 0. Cloning and installation
 
-Since we have all challenges in one repository we can't use the old process of
-forking each challenge into each new cohort organisation on github anymore.
+- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+  <details style="padding-left: 2em">
+    <summary>Tip</summary>
 
-[Spork](https://github.com/dev-academy-challenges/spork) is a CLI tool that
-provides a new workflow.
+  You may also want to start a new branch
 
-## Workspaces
+  ```sh
+  cd todo-full-stack
+  npm i
+  git checkout -b <branchname>
+  npm run dev
+  ```
 
-We're using the [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) feature set to manage the
-packages. This means we have one `package-lock.json` file in the repo root.
+  </details>
 
-`npm` should be called from the repo root as well.
+- [ ] See the designs [here](http://localhost:5173/designs/index.html)
 
-To install modules for all packages:
+<details>
+  <summary>More about using <code>npm</code> vs <code>npx</code></summary>
 
-```sh
-npm install
-```
+- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
+</details>
 
-To install a new package into pupparazzi:
+---
 
-```sh
-npm install --save-dev --workspace pupparazzi vite@2.9.9
-```
+## Requirements
 
-To run lint for pupparazzi:
+Here's a list of steps in case they are useful. You can build in any order you like though ;)
 
-```sh
-npm run --workspace pupparazzi lint
-```
+## Back end (Server-side)
 
-To run lint for all packages (if they have a lint script):
+### 1. Building the database
 
-```sh
-npm run --workspaces --if-present lint
-```
+- [ ] Design a database to store a list of tasks, e.g. task details, priority, completed yes/no
+- [ ] Build the migrations and seed data
 
-To run prettier for all packages:
+### 2. Building the API
 
-```sh
-npm run format
-```
+- [ ] Build an API (back end route) to get the information from your database (list, add, update and delete)
+- [ ] Test your API with Insomnia
 
-## Aligned versions
+## Front end (Client-side)
 
-Aligning versions of dependencies is intended to reduce the burden of
-maintenance, when we upgrade e.g. react versions, we can do all the challenges
-at once. We can run `npm audit` and fix it in once place, etc. It was a big part
-of the motivation for a monorepo.
+### 3. Setting the stage
 
-Each challenge should have the same version string for any given package in
-their `package.json`, e.g. if they have a dependency on `knex` it should be on
-`^1.0.3`. These versions are listed in `tools/align-versions.js`
+- [ ] Build a React component with static html
+- [ ] Follow the [design](./public/designs/index.html) template for classNames and html element layout
 
-In order to see a list of versions that are not correctly aligned run:
+### 4. Building the API client
 
-```sh
-npm run unaligned-versions
-```
+- [ ] Build API client in the front end
 
-Based on the output of this script, you should update `tools/align-versions.js`
-by choosing one of the versions, and then run:
+### 5. Querying Data 
 
-```sh
-npm run align-versions
-```
+- [ ] Write a query with the `useQuery` hook to fetch the task data from the API
+- [ ] Mutate data with the `useMutation` hook to create, update, and delete task data via the API 
 
-(This is just an alias for `node tools/align-versions.js`)
+---
+
+## Stretch
+
+<details>
+  <summary>More about stretch challenges</summary>
+
+- Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
+
+</details>
+
+---
+
+[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=todo-full-stack)
