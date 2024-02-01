@@ -11,6 +11,10 @@ import { Puppy } from '../../models/Puppy.ts'
 beforeEach(cleanup)
 expect.extend(matchers)
 
+interface Data {
+  puppies: Puppy[]
+}
+
 export function testData() {
   return {
     puppies: [
@@ -36,7 +40,7 @@ export function testData() {
       image: '/images/dog3.jpg',
     },
   ],
-  } as { puppies: Puppy[] }
+  } as Data
 }
 
 export function renderRoute(path = '/') {
