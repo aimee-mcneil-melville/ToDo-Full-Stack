@@ -8,26 +8,26 @@ vi.mock('node:fs/promises')
 
 const testData = {
   puppies: [
-    {
+     {
       id: 1,
-      name: 'Coco',
-      owner: 'James',
-      breed: 'Pug',
-      image: '/images/dog1.jpg',
+      name: 'Fido',
+      owner: 'Fred',
+      image: '/images/puppy1.jpg',
+      breed: 'Labrador',
     },
     {
       id: 2,
-      name: 'Fido',
-      owner: 'Jimmy',
-      breed: 'Dog',
-      image: '/images/dog2.jpg',
+      name: 'Coco',
+      owner: 'Chloe',
+      image: '/images/puppy2.jpg',
+      breed: 'Labrador',
     },
     {
       id: 3,
-      name: 'Kermit',
-      owner: 'Jerm',
-      breed: 'Frog',
-      image: '/images/dog3.jpg',
+      name: 'Magnum',
+      owner: 'Michael',
+      image: '/images/puppy3.jpg',
+      breed: 'Rottweiler',
     },
   ],
 }
@@ -104,29 +104,29 @@ describe('Listing all puppies', () => {
     )
 
     const res = await request(server).get('/api/v1/puppies')
-    expect(res.statusCode).toBe(204)
-    expect(res.body).toEqual([
+    expect(res.statusCode).toBe(200)
+    expect(res.body.puppies).toEqual([
       {
-        breed: 'Pug',
-        id: 1,
-        image: '/images/dog1.jpg',
-        name: 'Coco',
-        owner: 'James',
-      },
-      {
-        breed: 'Dog',
-        id: 2,
-        image: '/images/dog2.jpg',
-        name: 'Fido',
-        owner: 'Jimmy',
-      },
-      {
-        breed: 'Frog',
-        id: 3,
-        image: '/images/dog3.jpg',
-        name: 'Kermit',
-        owner: 'Jerm',
-      },
+      id: 1,
+      name: 'Fido',
+      owner: 'Fred',
+      image: '/images/puppy1.jpg',
+      breed: 'Labrador',
+    },
+    {
+      id: 2,
+      name: 'Coco',
+      owner: 'Chloe',
+      image: '/images/puppy2.jpg',
+      breed: 'Labrador',
+    },
+    {
+      id: 3,
+      name: 'Magnum',
+      owner: 'Michael',
+      image: '/images/puppy3.jpg',
+      breed: 'Rottweiler',
+    },
     ])
   })
 })
