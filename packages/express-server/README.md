@@ -141,6 +141,8 @@ After each section:
 - [ ] POST to the new endpoint from Thunderclient
       Make a POST request to `http://localhost:3000/compliment-me` with a JSON object and see the compliment come back at you!
 
+      Your data will go in the JSON tab under Body
+
 ---
 
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=express-server)
