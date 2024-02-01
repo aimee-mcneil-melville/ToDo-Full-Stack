@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import MaxiPostView from '../components/MaxiPostView.tsx'
 import { usePost } from '../hooks/use-posts.ts'
 import Replies from '../components/Replies.tsx'
-import AuthorReplyForm from '../components/AuthorReplyForm.tsx'
+import WriteReplyForm from '../components/WriteReplyForm.tsx'
 import LoadingIndicator from '../components/LoadingIndicator.tsx'
 import ErrorMessage from '../components/ErrorMessage.tsx'
 
@@ -27,7 +27,7 @@ export default function PostPage() {
           <Replies id={id} />
         </div>
         <div className="five columns">
-          <AuthorReplyForm id={id} />
+          <WriteReplyForm id={id} />
         </div>
       </div>
     </>

@@ -52,7 +52,7 @@ beforeEach(() => {
 
 vi.setSystemTime(1705538770253)
 
-describe('Authoring a post', () => {
+describe('Writing a post', () => {
   it('sends data to the API', async () => {
     const initialLoad = nock('https://korihi.devacademy.life')
       .get('/api/v1/posts')

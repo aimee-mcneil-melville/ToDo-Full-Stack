@@ -1,10 +1,10 @@
 import AllPosts from '../components/AllPosts.tsx'
-import AuthorPostForm from '../components/AuthorPostForm.tsx'
+import WritePostForm from '../components/WritePostForm.tsx'
 
 function TimelinePage() {
   return (
     <>
-      <AuthorPostForm />
+      <WritePostForm />
       <AllPosts />
     </>
   )

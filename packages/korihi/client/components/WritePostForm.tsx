@@ -4,46 +4,40 @@ import {
   KeyboardEvent,
   useCallback,
   useState,
-  useRef,
 } from 'react'
-import { useReplyTo } from '../hooks/use-posts'
+import { useCreatePost } from '../hooks/use-posts'
 import ErrorMessage from './ErrorMessage'
-interface Props {
-  id: number
-}
 
-export default function AuthorReplyForm({ id }: Props) {
-  const replyTo = useReplyTo()
+export default function WritePostForm() {
+  const createPost = useCreatePost()
   const [formState, setFormState] = useState({ text: '' })
-  const form = useRef<HTMLFormElement>(null)
 
   const submit = useCallback(() => {
-    if (replyTo.isPending || !form.current) {
+    if (createPost.isPending) {
       return
     }
 
-    const data = new FormData(form.current)
-    const text = data.get('text')
+    const { text } = formState
     setFormState({ text: '' })
 
     if (text && typeof text === 'string') {
-      replyTo.mutate({ text, id })
+      createPost.mutate({ text })
     }
-  }, [replyTo, id])
-
-  const handleSubmit = useCallback(
-    (evt: FormEvent<HTMLFormElement>) => {
-      evt.preventDefault()
-      submit()
-    },
-    [submit],
-  )
+  }, [createPost, formState])
 
   const handleKeyDown = useCallback(
     (evt: KeyboardEvent) => {
       if (evt.key === 'Enter' && evt.ctrlKey) {
         submit()
       }
+    },
+    [submit],
+  )
+
+  const handleSubmit = useCallback(
+    (evt: FormEvent<HTMLFormElement>) => {
+      evt.preventDefault()
+      submit()
     },
     [submit],
   )
@@ -55,11 +49,11 @@ export default function AuthorReplyForm({ id }: Props) {
 
   return (
     <form
-      ref={form}
       onSubmit={handleSubmit}
-      data-submitting={replyTo.isPending}
+      aria-label="Compose post"
+      data-submitting={createPost.isPending}
     >
-      {replyTo.isError && <ErrorMessage error={replyTo.error} />}
+      {createPost.isError && <ErrorMessage error={createPost.error} />}
       <div>
         <textarea
           aria-label="Post text"
@@ -68,14 +62,14 @@ export default function AuthorReplyForm({ id }: Props) {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           value={formState.text}
-          className="reply-form__text-input"
+          className="compose-form__text-input"
           placeholder="What's up with you?"
-        ></textarea>
+        />
       </div>
       <div>
         <small className="compose-form__hint">ctrl + enter to submit</small>
       </div>
-      <button data-submitting={replyTo.isPending}>Reply</button>
+      <button data-submitting={createPost.isPending}>Send</button>
     </form>
   )
 }

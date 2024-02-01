@@ -47,6 +47,12 @@ You should see a list of posts presented as a JSON document
 
 ## 1. Write the hook to fetch posts for the timeline
 
+- [ ] Run the tests for the timeline page
+
+  Filter to these specific tests with`npm test -- TimelinePageShowsPosts`
+
+  Right now, they're probably all failing
+
 - [ ] Take a look at the component AllPosts.tsx
       This component imports a hook called usePosts to get the post data
 
