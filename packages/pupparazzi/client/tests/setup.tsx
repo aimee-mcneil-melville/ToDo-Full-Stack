@@ -6,12 +6,18 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import * as matchers from '@testing-library/jest-dom/matchers'
 import '@testing-library/jest-dom/vitest'
 import routes from '../routes.tsx'
+import { Puppy } from '../../models/Puppy.ts'
 
 beforeEach(cleanup)
 expect.extend(matchers)
 
+interface Data {
+  puppies: Puppy[]
+}
+
 export function testData() {
-  return [
+  return {
+    puppies: [
     {
       id: 1,
       name: 'Coco',
@@ -33,7 +39,8 @@ export function testData() {
       breed: 'Frog',
       image: '/images/dog3.jpg',
     },
-  ] as Puppy[]
+  ],
+  } as Data
 }
 
 export function renderRoute(path = '/') {

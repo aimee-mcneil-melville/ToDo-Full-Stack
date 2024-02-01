@@ -1,8 +1,8 @@
-import type { PuppyData } from '../models/Puppy.ts'
+import type { PuppyData, Puppy } from '../models/Puppy.ts'
 import initialData from './initial-data.ts'
 
 interface Data {
-  puppies: PuppyData[]
+  puppies: Puppy[]
 }
 
 export async function getPuppies(): Promise<Data> {

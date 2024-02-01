@@ -27,7 +27,7 @@ describe('A link to Coco', () => {
 
     const scope2 = nock('http://localhost')
       .get('/api/v1/puppies/1')
-      .reply(200, testData()[0])
+      .reply(200, testData().puppies[0])
     await user.click(link)
     const heading = await screen.findByRole('heading', { name: 'Coco' })
     expect(heading).toBeVisible()
