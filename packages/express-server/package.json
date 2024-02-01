@@ -7,7 +7,7 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "start": "node server/index",
+    "dev": "tsx watch server/index.ts",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -30,22 +30,21 @@
     ]
   },
   "dependencies": {
-    "express": "^4.17.2",
-    "supertest": "^6.3.4"
+    "express": "^4.17.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.6",
-    "@babel/eslint-parser": "^7.17.0",
     "@devacademy/eslint-config": "^1.9.1",
-    "@testing-library/dom": "^8.17.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "jsdom": "^22.1.0",
     "prettier": "2.6.1",
+    "supertest": "^6.3.4",
+
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
     "vitest": "^1.2.0"
   },
   "prettier": {
