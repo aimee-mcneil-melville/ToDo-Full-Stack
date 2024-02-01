@@ -250,8 +250,9 @@ Let's use another user story:
   the arguments to the function, but in this case we're dealing with JSON so it's harder to be that specific.
 
   For example, the keys in a JSON object can be in any order and there are many ways to represent a given string.
+  If we can't be sure of the order we can use `toEqual`
 
-  vitest mocks remember each time they were called, so what we can do is:
+  Luckily vitest mocks remember each time they were called, so what we can do is:
 
   1. get the lastCall to `fs.writeFile`
   1. take the 2nd argument from it
@@ -261,8 +262,8 @@ Let's use another user story:
   that might look like this:
 
   ```js
-  const lastCall = vi.mocked(fs.writeFile).mocks.lastCall
-  const json = lastCall?.[1]
+  const lastCall = vi.mocked(fs.writeFile).mock.lastCall
+  const json = lastCall?.[1] as string
   const data = JSON.parse(json)
 
   // this is what should be written back to the data file
@@ -303,7 +304,7 @@ Let's use another user story:
   1. call `getPuppies()` to get the list of puppies
   1. locate a puppy with the matching ID
   1. update or replace that puppy in the array
-  1. Write the entire array into the JSON file (with `fs.writeFile`)
+  1. Write the entire array in a new blank file in the storage folder (with `fs.writeFile`). We will call this file data.json. You don't actually have to create this file, the writeFile function will do it for you as long as the path is correct.
 
   Now we'll add a route in [puppiest.ts](./server/routes/puppies.ts):
 
@@ -311,15 +312,14 @@ Let's use another user story:
   router.patch('/:id', async (req, res, next) => {
     try {
       const id = Number(req.params.id)
-      await updatePuppy(id, req.body)
+      await store.updatePuppy(id, req.body)
+      res.sendStatus(204)
     } catch (error) {
       next(error)
     }
   })
   ```
-
-  Check that your test has turned green, if it hasn't fire up Insomnia, Bruno or Thunderclient and
-  see if sending a `PATCH` request to `http://localhost:5173/api/v1/puppies/1` behaves like we would expect.
+Your tests still won't pass yet (That will happen after we bring in readFile in the next step). But you should be able to update a puppy in the browser and see the new data.json file created with the new pups. You will also see the updated puppies on the homepage. However, if you restart the server and checkout the homepage, you will see that the old pups are back. This is because, we are still displaying the puppies from initialData.
 
 - [ ] Read the updated puppies from `storage/data.json`
 
