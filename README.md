@@ -74,6 +74,10 @@ Here's a list of steps in case they are useful. You can build in any order you l
 
 </details>
 
+## Submitting this Challenge for Marking
+
+This challenge can be used for the following trello assessments: 
+- **CP02 - Use two or more software quality practises to improve an application**
 ---
 
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=todo-full-stack)
