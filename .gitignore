@@ -1,9 +1,17 @@
-.DS_Store
-.idea/
+# Node modules
 node_modules
-bundle.*
-styles.*
+
+# Logs
 *.log
-dev.sqlite3
+
+# SQLite DBs
+*.sqlite3
+
+# Build products
+/dist
+
+# Jest coverage report
+coverage/*
+
+# Dotenv env settings
 .env
-coverage
