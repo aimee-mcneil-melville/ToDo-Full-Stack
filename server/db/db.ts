@@ -18,10 +18,6 @@ export function deleteTask(id: number) {
   return connection('todos').where({ id }).delete()
 }
 
-export function updateTask(
-  id: number,
-  task: string,
-  completed: boolean,
-): Promise<Task> {
-  return connection('todos').where('id', id).update({ task, completed })
+export function updateTask(id: number, task: string): Promise<Task> {
+  return connection('todos').where('id', id).update({ task })
 }
