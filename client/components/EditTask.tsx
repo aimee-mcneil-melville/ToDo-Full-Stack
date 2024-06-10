@@ -7,10 +7,10 @@ import { Task, TaskData } from '../../models/models'
 interface Props extends Task {
   id: number
   task: string
-  onCancel: () => void
+  completed: boolean
 }
 
-export function EditTask({ id, task, onCancel }: Props) {
+export function EditTask({ id, task }: Props) {
   const queryClient = useQueryClient()
   const updateTodoMutation = useMutation({
     mutationFn: (task: TaskData) => updateTodo(id, task),
@@ -18,7 +18,6 @@ export function EditTask({ id, task, onCancel }: Props) {
       queryClient.invalidateQueries({
         queryKey: ['todos'],
       })
-      onCancel()
     },
   })
 
@@ -34,13 +33,6 @@ export function EditTask({ id, task, onCancel }: Props) {
     })
   }
 
-  // console.log(
-  //   'Text changed:',
-  //   event.target.value,
-  //   'on input:',
-  //   event.target.name,
-  // )
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     updateTodoMutation.mutate(form)
@@ -49,7 +41,6 @@ export function EditTask({ id, task, onCancel }: Props) {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="task">New Todo: </label>
         <input
           onChange={(e) => handleChange(e)}
           id="task"
@@ -58,10 +49,7 @@ export function EditTask({ id, task, onCancel }: Props) {
           value={form.task}
           // autoFocus={true}
         />
-        <button>Update</button>
-        <button type="button" onClick={onCancel}>
-          Cancel
-        </button>
+        <button type="submit">Update</button>
       </form>
     </>
   )

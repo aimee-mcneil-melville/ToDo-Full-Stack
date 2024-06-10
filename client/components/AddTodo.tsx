@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { addTodo } from '../apis/apiClient'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { TaskData } from '../../models/models'
 
 // eslint-disable-next-line no-unused-vars
 function AddTodo() {
   const queryClient = useQueryClient()
   const addTodoMutation = useMutation({
-    mutationFn: (task) => addTodo(task),
+    mutationFn: (task: TaskData) => addTodo(task),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['todos'],
@@ -37,7 +38,7 @@ function AddTodo() {
           value={form}
           // autoFocus={true}
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </>
   )
