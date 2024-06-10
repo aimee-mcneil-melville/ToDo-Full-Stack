@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Task } from '../../models/models'
+import { Task, TaskData } from '../../models/models'
 
 const rootUrl = '/api/v1/todos/'
 
@@ -16,6 +16,6 @@ export async function addTodo(task: string) {
   await request.post(rootUrl).send(newTask)
 }
 
-export async function updateTodo(id: number, task: string) {
+export async function updateTodo(id: number, task: TaskData) {
   await request.patch(`${rootUrl}${id}`).send(task)
 }
