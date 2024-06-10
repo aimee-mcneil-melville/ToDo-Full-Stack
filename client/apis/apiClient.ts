@@ -3,7 +3,7 @@ import { Task, TaskData } from '../../models/models'
 
 const rootUrl = '/api/v1/todos/'
 
-export async function fetchTodos(): Promise<Task> {
+export async function fetchTodos(): Promise<Task[]> {
   const res = await request.get(rootUrl)
   return res.body
 }

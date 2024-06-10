@@ -49,12 +49,12 @@ router.delete('/:id', async (req, res) => {
 router.patch('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
-    const { task, completed } = req.body
+    const { task } = req.body
     // const updatedTask = {
     //   task: task,
     //   completed: completed,
     // }
-    await db.updateTask(id, task, completed)
+    await db.updateTask(id, task)
     res.json(202)
   } catch (error) {
     console.log(error)
